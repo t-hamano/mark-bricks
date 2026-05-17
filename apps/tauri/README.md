@@ -20,14 +20,14 @@ Desktop application for MarkBricks. Built on Tauri 2 + React, it hosts the WordP
 Run from the repository root:
 
 ```sh
-npm run dev:tauri      # Start Vite + Tauri
-npm run build:tauri    # Build the frontend and bundle Tauri
-npm run tauri          # Pass-through to the tauri CLI
+pnpm dev:tauri      # Start Vite + Tauri
+pnpm build:tauri    # Build the frontend and bundle Tauri
+pnpm tauri          # Pass-through to the tauri CLI
 ```
 
 Bumping the version:
 
 ```sh
-npm version <patch|minor|major> -w apps/tauri
+pnpm --filter mark-bricks-desktop version <patch|minor|major>
 # Updates package.json / Cargo.toml / Cargo.lock / tauri.conf.json in one shot
 ```

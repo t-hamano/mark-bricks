@@ -13,7 +13,7 @@
 		"version": "node scripts/bump-version.mjs && git add package.json src-tauri/Cargo.toml src-tauri/Cargo.lock src-tauri/tauri.conf.json"
 	},
 	"dependencies": {
-		"@mark-bricks/editor": "*",
+		"@mark-bricks/editor": "workspace:*",
 		"@tauri-apps/api": "^2",
 		"@tauri-apps/plugin-dialog": "^2",
 		"@tauri-apps/plugin-store": "^2",

@@ -4,17 +4,13 @@
 	"version": "0.0.0",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
-	"workspaces": [
-		"packages/*",
-		"apps/*",
-		"storybook"
-	],
+	"packageManager": "pnpm@10.33.0",
 	"scripts": {
-		"dev:tauri": "npm run dev -w apps/tauri",
-		"build:tauri": "npm run build -w apps/tauri",
-		"tauri": "npm run tauri -w apps/tauri",
-		"storybook": "npm run storybook -w storybook",
-		"build-storybook": "npm run build-storybook -w storybook",
+		"dev:tauri": "pnpm --filter mark-bricks-desktop dev",
+		"build:tauri": "pnpm --filter mark-bricks-desktop build",
+		"tauri": "pnpm --filter mark-bricks-desktop tauri",
+		"storybook": "pnpm --filter @mark-bricks/storybook storybook",
+		"build-storybook": "pnpm --filter @mark-bricks/storybook build-storybook",
 		"lint:js": "eslint .",
 		"lint:js:fix": "eslint . --fix",
 		"lint:css": "stylelint \"{packages,apps}/**/*.{css,scss}\"",

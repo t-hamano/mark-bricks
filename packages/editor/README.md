@@ -218,7 +218,7 @@ createRoot( document.getElementById( 'root' )! ).render( <App /> );
 Translatable strings flow from source to bundled dictionary in three steps: `__()` calls in the source are extracted into a `.pot` template, translators fill in the per-locale `.po` files, and those are combined into the `languages/mark-bricks-{locale}.json` dictionaries the editor loads at runtime.
 
 ```sh
-npm run i18n:make-pot -w packages/editor   # Extract .pot from sources
-npm run i18n:make-po  -w packages/editor   # Generate / merge .po from .pot
-npm run i18n:make-json -w packages/editor  # Combine .po + Gutenberg into .json
+pnpm --filter @mark-bricks/editor i18n:make-pot    # Extract .pot from sources
+pnpm --filter @mark-bricks/editor i18n:make-po     # Generate / merge .po from .pot
+pnpm --filter @mark-bricks/editor i18n:make-json   # Combine .po + Gutenberg into .json
 ```

@@ -20,7 +20,7 @@ The `*.json` files are runtime artifacts loaded via `setLocaleData()` from `@wor
 ### 1. Update the POT (after source code changes)
 
 ```bash
-npm run i18n:make-pot
+pnpm i18n:make-pot
 ```
 
 Scans `src/**` and regenerates `mark-bricks.pot` via `@wp-blocks/make-pot`.
@@ -29,8 +29,8 @@ Run this whenever new translatable strings are added or removed.
 ### 2. Sync the PO (after the POT changes)
 
 ```bash
-npm run i18n:make-po           # default: ja
-npm run i18n:make-po -- pt_BR  # specify a different locale
+pnpm i18n:make-po          # default: ja
+pnpm i18n:make-po pt_BR    # specify a different locale
 ```
 
 Updates `mark-bricks-<locale>.po` against the POT:
@@ -49,8 +49,8 @@ Edit the `msgstr` fields in the `.po` directly, or use a tool such as Poedit.
 ### 4. Build JSON files (before release / after translation updates)
 
 ```bash
-npm run i18n:make-json           # default: ja
-npm run i18n:make-json -- pt_BR  # specify a different locale
+pnpm i18n:make-json          # default: ja
+pnpm i18n:make-json pt_BR    # specify a different locale
 ```
 
 -   Verifies that the `.po` exists (errors out and points to `i18n:make-po` if missing).
@@ -86,9 +86,9 @@ The override file is optional, never auto-generated, and tracked by hand.
 ## Adding a new locale
 
 ```bash
-npm run i18n:make-po -- <locale>     # creates an empty .po
+pnpm i18n:make-po <locale>     # creates an empty .po
 # → translate mark-bricks-<locale>.po
-npm run i18n:make-json -- <locale>   # build the JSON files
+pnpm i18n:make-json <locale>   # build the JSON files
 ```
 
 `<locale>` is a WordPress locale slug (e.g. `ja`, `pt_BR`, `de_DE`, `zh_CN`). See the [WordPress locale list](https://translate.wordpress.org/locale/) for the full set.

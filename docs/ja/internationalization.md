@@ -20,7 +20,7 @@ MarkBricks の翻訳ファイルの生成と運用方法を説明します。
 ### 1. POT を更新する (ソースコード変更後)
 
 ```bash
-npm run i18n:make-pot
+pnpm i18n:make-pot
 ```
 
 `src/**` を走査し、`@wp-blocks/make-pot` で `mark-bricks.pot` を再生成します。
@@ -29,8 +29,8 @@ npm run i18n:make-pot
 ### 2. PO を同期する (POT 変更後)
 
 ```bash
-npm run i18n:make-po           # デフォルト: ja
-npm run i18n:make-po -- pt_BR  # 別のロケールを指定する場合
+pnpm i18n:make-po          # デフォルト: ja
+pnpm i18n:make-po pt_BR    # 別のロケールを指定する場合
 ```
 
 POT を基準に `mark-bricks-<locale>.po` を更新します:
@@ -49,8 +49,8 @@ POT を基準に `mark-bricks-<locale>.po` を更新します:
 ### 4. JSON ファイルを生成する (リリース前 / 翻訳更新後)
 
 ```bash
-npm run i18n:make-json           # デフォルト: ja
-npm run i18n:make-json -- pt_BR  # 別のロケールを指定する場合
+pnpm i18n:make-json          # デフォルト: ja
+pnpm i18n:make-json pt_BR    # 別のロケールを指定する場合
 ```
 
 -   `.po` の存在を確認します (見つからない場合は `i18n:make-po` の実行を促してエラー終了します)。
@@ -85,9 +85,9 @@ npm run i18n:make-json -- pt_BR  # 別のロケールを指定する場合
 ## 新しいロケールを追加する
 
 ```bash
-npm run i18n:make-po -- <locale>     # 空の .po を作成
+pnpm i18n:make-po <locale>     # 空の .po を作成
 # → mark-bricks-<locale>.po を翻訳
-npm run i18n:make-json -- <locale>   # JSON ファイルを生成
+pnpm i18n:make-json <locale>   # JSON ファイルを生成
 ```
 
 `<locale>` は WordPress のロケールスラッグです (例: `ja`, `pt_BR`, `de_DE`, `zh_CN`)。一覧は [WordPress locale list](https://translate.wordpress.org/locale/) を参照してください。
