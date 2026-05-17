@@ -1,6 +1,10 @@
 @use "@wordpress/base-styles/mixins";
 
-:root {
+// `@wordpress/block-editor`'s outer-UI stylesheet also declares
+// `--wp-admin-theme-color` on `:root`, and it loads after this file, so a
+// plain `:root` here would lose. The doubled `:root:root` raises specificity
+// enough to win regardless of stylesheet order.
+:root:root {
 
 	@include mixins.admin-scheme(#3858e9);
 }
