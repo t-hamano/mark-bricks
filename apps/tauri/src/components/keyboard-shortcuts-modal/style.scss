@@ -1,0 +1,32 @@
+.keyboard-shortcuts-modal__section-title {
+	font-size: var(--wpds-typography-font-size-lg);
+	font-weight: var(--wpds-typography-font-weight-medium);
+	margin: 0 0 var(--wpds-dimension-padding-md);
+}
+
+.keyboard-shortcuts-modal__shortcut-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border-top:
+		var(--wpds-border-width-xs) solid
+		var(--wpds-color-stroke-surface-neutral-weak);
+}
+
+.keyboard-shortcuts-modal__shortcut {
+	padding: var(--wpds-dimension-padding-sm) 0;
+	border-bottom:
+		var(--wpds-border-width-xs) solid
+		var(--wpds-color-stroke-surface-neutral-weak);
+}
+
+.keyboard-shortcuts-modal__shortcut-key {
+	background: var(--wpds-color-bg-interactive-neutral-strong-disabled);
+	border-radius: var(--wpds-border-radius-sm);
+	font-family: var(--wpds-typography-font-family-mono);
+	font-size: var(--wpds-typography-font-size-xs);
+	font-weight: var(--wpds-typography-font-weight-medium);
+	padding:
+		calc(var(--wpds-dimension-base) * 0.5)
+		var(--wpds-dimension-padding-sm);
+}

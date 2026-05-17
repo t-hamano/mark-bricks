@@ -1,0 +1,24 @@
+.wp-block-list-item {
+
+	+ .wp-block-list-item {
+		margin-top: 0.3em;
+	}
+
+	&:has(> input[type="checkbox"]) {
+		list-style: none;
+	}
+
+	> .wp-block-list {
+		margin-top: 0.3em;
+	}
+
+	input {
+		cursor: pointer;
+		width: 1.2em;
+		height: 1.2em;
+		position: absolute;
+		left: -1.6em;
+		margin: 0;
+		top: 0.2em;
+	}
+}

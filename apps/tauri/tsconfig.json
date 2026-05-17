@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"lib": [ "ES2020", "DOM", "DOM.Iterable" ]
+	},
+	"include": [
+		"src",
+		"../../packages/editor/src/block-library/wp-block-library.d.ts"
+	],
+	"references": [ { "path": "./tsconfig.node.json" } ]
+}

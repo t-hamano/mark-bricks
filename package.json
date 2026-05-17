@@ -1,0 +1,55 @@
+{
+	"name": "mark-bricks-monorepo",
+	"private": true,
+	"version": "0.0.0",
+	"author": "Aki Hamano",
+	"license": "GPL-2.0-or-later",
+	"workspaces": [
+		"packages/*",
+		"apps/*",
+		"storybook"
+	],
+	"scripts": {
+		"dev:tauri": "npm run dev -w apps/tauri",
+		"build:tauri": "npm run build -w apps/tauri",
+		"tauri": "npm run tauri -w apps/tauri",
+		"storybook": "npm run storybook -w storybook",
+		"build-storybook": "npm run build-storybook -w storybook",
+		"lint:js": "eslint .",
+		"lint:js:fix": "eslint . --fix",
+		"lint:css": "stylelint \"{packages,apps}/**/*.{css,scss}\"",
+		"lint:css:fix": "stylelint \"{packages,apps}/**/*.{css,scss}\" --fix",
+		"lint": "npm run lint:js && npm run lint:css",
+		"lint:fix": "npm run lint:js:fix && npm run lint:css:fix",
+		"type-check": "tsc -p packages/editor/tsconfig.json --noEmit && tsc -p apps/tauri/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.json --noEmit",
+		"format": "prettier --write .",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,json,yml,yaml,md}": [
+			"prettier --write"
+		],
+		"*.{js,jsx,ts,tsx}": [
+			"eslint --fix"
+		],
+		"*.{css,scss}": [
+			"prettier --write",
+			"stylelint --fix"
+		],
+		"apps/tauri/src-tauri/**/*.rs": [
+			"rustfmt --edition 2021"
+		]
+	},
+	"devDependencies": {
+		"@wordpress/eslint-plugin": "^25.1.0",
+		"@wordpress/prettier-config": "^4.45.0",
+		"@wordpress/stylelint-config": "^23.37.0",
+		"eslint": "^9.39.4",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.0.4",
+		"prettier": "npm:wp-prettier@3.0.3",
+		"stylelint": "^16.26.1",
+		"stylelint-scss": "^6.14.0",
+		"typescript": "~5.8.3"
+	}
+}

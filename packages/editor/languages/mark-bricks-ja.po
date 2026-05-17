@@ -1,0 +1,418 @@
+# Copyright (C) 2026 @mark-bricks/editor
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: @mark-bricks/editor 0.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"POT-Creation-Date: 2026-05-17T14:21:25.979Z\n"
+"PO-Revision-Date: 2026-05-17T14:21:41.193Z\n"
+"Last-Translator: Aki Hamano <->\n"
+"Language-Team: Aki Hamano <->\n"
+"X-Generator: @wp-blocks/make-pot 1.6.6\n"
+"Language: ja\n"
+"X-Domain: mark-bricks\n"
+
+#: src/components/list-view-outline/index.tsx:159
+msgid "(Empty heading)"
+msgstr "(空白見出し)"
+
+#: src/components/list-view-outline/index.tsx:175
+msgid "(Incorrect heading level)"
+msgstr "(見出しレベルに間違いがあります)"
+
+#: src/components/list-view-outline/index.tsx:187
+msgid "(Multiple H1 headings are not recommended)"
+msgstr "(複数の H1 見出しは非推奨です)"
+
+#: style.css
+#. Name of the generic
+msgid "@mark-bricks/editor"
+msgstr ""
+
+#: style.css
+#. Author of the generic
+msgid "Aki Hamano"
+msgstr "Aki Hamano"
+
+#: src/block-library/image/edit.tsx:216
+msgid "Alt text"
+msgstr "代替テキスト"
+
+#: src/format-library/link.tsx:143
+#: src/block-library/image/edit.tsx:165
+#: src/block-library/image/edit.tsx:251
+#: src/block-library/image/edit.tsx:323
+msgid "Apply"
+msgstr "適用"
+
+#: src/components/editor-header/index.tsx:87
+msgid "Block Inserter"
+msgstr "ブロックインサーター"
+
+#: src/format-library/bold.tsx:17
+msgid "Bold"
+msgstr "太字"
+
+#: src/block-library/image/edit.tsx:101
+#: src/block-library/image/edit.tsx:336
+msgid "Browse local file"
+msgstr "ローカルファイルを参照"
+
+#: src/block-library/quote/edit.tsx:94
+msgid "Caution"
+msgstr "注意"
+
+#: src/block-library/table/edit.tsx:317
+msgid "Cell content"
+msgstr "セルの内容"
+
+#: src/block-library/code/edit.tsx:99
+msgid "Change language"
+msgstr "言語を変更"
+
+#: src/components/keyboard-shortcuts/hooks.ts:78
+msgid "Change the block type after adding a new paragraph."
+msgstr "新しい段落を追加した後にブロックタイプを変更。"
+
+#: src/block-library/code/edit.tsx:116
+msgid "Choose language…"
+msgstr "言語を選択…"
+
+#: src/format-library/clear-formatting.tsx:21
+msgid "Clear formatting"
+msgstr "書式をクリア"
+
+#: src/components/list-view-sidebar/index.tsx:68
+#: src/components/inserter-sidebar/index.tsx:161
+msgid "Close"
+msgstr "閉じる"
+
+#: src/components/editor-header/index.tsx:86
+msgid "Close Block Inserter"
+msgstr "ブロックインサーターを閉じる"
+
+#: src/block-library/table/edit.tsx:253
+msgid "Column count"
+msgstr "カラム数"
+
+#: src/components/keyboard-shortcuts/hooks.ts:106
+msgid "Convert the selected text into a link."
+msgstr "選択したテキストをリンクに変換する。"
+
+#: src/block-library/table/edit.tsx:275
+msgid "Create Table"
+msgstr "表を作成"
+
+#: src/block-library/quote/edit.tsx:144
+msgid "Default"
+msgstr "デフォルト"
+
+#: src/block-library/table/edit.tsx:394
+msgid "Delete column"
+msgstr "列を削除"
+
+#: src/block-library/table/edit.tsx:367
+msgid "Delete row"
+msgstr "行を削除"
+
+#: src/block-library/image/edit.tsx:225
+msgid "Describes the image for screen readers."
+msgstr "スクリーンリーダー用に画像を説明します。"
+
+#: src/components/keyboard-shortcuts/index.tsx:99
+msgid "Display these keyboard shortcuts."
+msgstr "これらのキーボードショートカットを表示。"
+
+#: src/components/list-view-sidebar/index.tsx:47
+#: src/components/editor-header/index.tsx:122
+msgid "Document Overview"
+msgstr "ドキュメント概観"
+
+#: src/block-library/image/edit.tsx:189
+msgid "Edit alt and title"
+msgstr "代替テキストとタイトルを編集"
+
+#: src/block-library/table/edit.tsx:347
+msgid "Edit table"
+msgstr "表を編集"
+
+#: src/block-library/image/edit.tsx:114
+msgid "Enter URL or file path"
+msgstr "URL またはファイルパスを入力"
+
+#: src/block-library/image/edit.tsx:221
+msgid "Enter alt text…"
+msgstr "代替テキストを入力…"
+
+#: src/format-library/link.tsx:123
+#: src/block-library/image/edit.tsx:236
+msgid "Enter title…"
+msgstr "タイトルを入力…"
+
+#: src/block-library/image/edit.tsx:355
+msgid "Failed to load image."
+msgstr "画像の読み込みに失敗しました。"
+
+#: src/components/keyboard-shortcuts/hooks.ts:82
+msgid "Forward-slash"
+msgstr "スラッシュ"
+
+#: src/block-library/quote/edit.tsx:141
+msgid "GitHub alert type"
+msgstr "GitHub アラートタイプ"
+
+# %d: heading level (1-6)
+#: src/components/list-view-outline/index.tsx:109
+msgid "H%d"
+msgstr "H%d"
+
+#: src/block-library/table/edit.tsx:316
+msgid "Header label"
+msgstr "ヘッダーラベル"
+
+#: src/block-library/heading/edit.tsx:53
+msgid "Heading"
+msgstr "見出し"
+
+#: src/components/editor-header/index.tsx:121
+msgid "Hide Document Overview"
+msgstr "ドキュメント概観を非表示"
+
+#: src/block-library/image/edit.tsx:85
+msgid "Image"
+msgstr "画像"
+
+#: src/block-library/quote/edit.tsx:66
+msgid "Important"
+msgstr "重要"
+
+#: src/block-library/list-item/edit.tsx:70
+msgid "Indent"
+msgstr "インデント"
+
+#: src/format-library/code.tsx:17
+msgid "Inline code"
+msgstr "インラインコード"
+
+#: src/block-library/table/edit.tsx:238
+msgid "Insert a table for sharing data."
+msgstr "表形式のデータを挿入します。"
+
+#: src/block-library/table/edit.tsx:385
+msgid "Insert column after"
+msgstr "列を右に挿入"
+
+#: src/block-library/table/edit.tsx:376
+msgid "Insert column before"
+msgstr "列を左に挿入"
+
+#: src/block-library/table/edit.tsx:359
+msgid "Insert row after"
+msgstr "行を下に挿入"
+
+#: src/block-library/table/edit.tsx:351
+msgid "Insert row before"
+msgstr "行を上に挿入"
+
+#: src/format-library/italic.tsx:17
+msgid "Italic"
+msgstr "イタリック"
+
+#: src/block-library/code/edit.tsx:113
+msgid "Language"
+msgstr "言語"
+
+#: src/format-library/link.tsx:33
+msgid "Link"
+msgstr "リンク"
+
+#: src/block-library/list-item/edit.tsx:121
+msgid "List"
+msgstr "リスト"
+
+#: src/components/list-view-sidebar/index.tsx:78
+msgid "List View"
+msgstr "リスト表示"
+
+#: src/block-library/list-item/edit.tsx:120
+msgid "List text"
+msgstr "リストのテキスト"
+
+#: src/components/keyboard-shortcuts/hooks.ts:92
+msgid "Make the selected text bold."
+msgstr "選択したテキストを太字にする。"
+
+#: src/components/keyboard-shortcuts/hooks.ts:134
+msgid "Make the selected text inline code."
+msgstr "選択したテキストをインラインコードにする。"
+
+#: src/components/keyboard-shortcuts/hooks.ts:99
+msgid "Make the selected text italic."
+msgstr "選択したテキストをイタリックにする。"
+
+#: src/components/list-view-outline/index.tsx:97
+msgid ""
+"Navigate the structure of your document and address issues like empty or "
+"incorrect heading levels."
+msgstr "ドキュメントの構造を調べ、空白や不正確な見出しレベルなどの問題に対処します。"
+
+#: src/block-library/quote/edit.tsx:38
+msgid "Note"
+msgstr "ノート"
+
+#: src/block-library/list/edit.tsx:54
+msgid "Ordered"
+msgstr "順序付きリスト"
+
+#: src/block-library/list-item/edit.tsx:63
+msgid "Outdent"
+msgstr "インデント解除"
+
+#: src/components/list-view-sidebar/index.tsx:83
+msgid "Outline"
+msgstr "アウトライン"
+
+#: src/format-library/link.tsx:117
+#: src/block-library/image/edit.tsx:146
+#: src/block-library/image/edit.tsx:150
+msgid "Paste or type URL"
+msgstr "URL を入力または貼り付け"
+
+#: src/block-library/image/edit.tsx:307
+msgid "Paste or type URL or file path"
+msgstr "URL またはファイルパスを入力または貼り付け"
+
+#: src/components/editor-header/index.tsx:109
+msgid "Redo"
+msgstr "やり直す"
+
+#: src/components/keyboard-shortcuts/index.tsx:62
+msgid "Redo your last undo."
+msgstr "前回の取り消しをやり直す。"
+
+#: src/format-library/link.tsx:134
+msgid "Remove"
+msgstr "削除"
+
+#: src/components/keyboard-shortcuts/hooks.ts:113
+msgid "Remove a link."
+msgstr "リンクを削除する。"
+
+#: src/block-library/image/edit.tsx:272
+msgid "Replace image"
+msgstr "画像を置換"
+
+#: src/block-library/image/edit.tsx:344
+msgid "Reset"
+msgstr "リセット"
+
+#: src/block-library/table/edit.tsx:263
+msgid "Row count"
+msgstr "行数"
+
+#: src/components/inserter-sidebar/index.tsx:154
+msgid "Search"
+msgstr "検索"
+
+#: src/components/inserter-sidebar/index.tsx:153
+msgid "Search for blocks"
+msgstr "ブロックを検索"
+
+#: src/components/keyboard-shortcuts/index.tsx:89
+msgid "Show or hide the List View."
+msgstr "リスト表示を切り替えます。"
+
+#: src/format-library/link.tsx:124
+#: src/block-library/image/edit.tsx:240
+msgid "Shown as a tooltip on hover."
+msgstr "ホバー時にツールチップとして表示されます。"
+
+#: src/format-library/strikethrough.tsx:17
+msgid "Strikethrough"
+msgstr "打ち消し線"
+
+#: src/components/keyboard-shortcuts/hooks.ts:127
+msgid "Strikethrough the selected text."
+msgstr "選択したテキストに打ち消し線を引く。"
+
+#: src/components/keyboard-shortcuts/index.tsx:76
+msgid "Switch between the visual editor and the code editor."
+msgstr "ビジュアルエディターとコードエディターを切り替える。"
+
+#: src/block-library/table/edit.tsx:237
+msgid "Table"
+msgstr "テーブル"
+
+#: src/block-library/quote/edit.tsx:52
+msgid "Tip"
+msgstr "ヒント"
+
+#: src/format-library/link.tsx:120
+#: src/block-library/image/edit.tsx:231
+msgid "Title"
+msgstr "タイトル"
+
+#: src/block-library/list-item/edit.tsx:107
+msgid "Toggle task"
+msgstr "タスクを切り替え"
+
+#: src/block-library/list-item/edit.tsx:132
+msgid "Turn into a regular item"
+msgstr "通常の項目に変換"
+
+#: src/block-library/list-item/edit.tsx:133
+msgid "Turn into a task item"
+msgstr "タスク項目に変換"
+
+#: src/block-library/paragraph/edit.tsx:39
+msgid "Type / to choose a block"
+msgstr "ブロックを選択するには「/」を入力"
+
+#: src/format-library/link.tsx:114
+msgid "URL"
+msgstr "URL"
+
+#: src/block-library/image/edit.tsx:303
+msgid "URL or file path"
+msgstr "URL またはファイルパス"
+
+#: src/components/keyboard-shortcuts/hooks.ts:120
+msgid "Underline the selected text."
+msgstr "選択したテキストに下線を引く。"
+
+#: src/components/editor-header/index.tsx:100
+msgid "Undo"
+msgstr "元に戻す"
+
+#: src/components/keyboard-shortcuts/index.tsx:52
+msgid "Undo your last changes."
+msgstr "直前の変更を取り消す。"
+
+#: src/block-library/list/edit.tsx:48
+msgid "Unordered"
+msgstr "順序なしリスト"
+
+#: src/block-library/image/edit.tsx:86
+msgid "Upload an image from your device or insert from a URL."
+msgstr "デバイスから画像をアップロードするか、URL から挿入します。"
+
+#: style.css
+#. Description of the generic
+msgid "Visual markdown block editor."
+msgstr "ビジュアルマークダウンブロックエディター。"
+
+#: src/block-library/quote/edit.tsx:80
+msgid "Warning"
+msgstr "警告"
+
+#: src/block-library/html/edit.tsx:43
+msgid "Write HTML…"
+msgstr "HTML を入力…"
+
+#: src/block-library/code/edit.tsx:68
+msgid "Write code…"
+msgstr "コードを入力..."

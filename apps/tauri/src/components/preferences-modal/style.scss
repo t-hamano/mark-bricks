@@ -1,0 +1,65 @@
+@use "@wordpress/base-styles/mixins";
+@use "@wordpress/base-styles/breakpoints";
+@use "@wordpress/base-styles/variables";
+
+$sidebar-width: calc(var(--wpds-dimension-base) * 50);
+
+.preferences-modal {
+
+	@media (max-width: #{ (breakpoints.$break-medium - 1) }) {
+
+		.components-modal__content {
+			padding: 0;
+		}
+	}
+
+	@include mixins.break-medium() {
+		height: 70%;
+	}
+
+	.components-modal__children-container {
+		height: 100%;
+	}
+}
+
+.preferences-modal__tabs {
+	background: var(--wpds-color-bg-surface-neutral-strong);
+	padding: var(--wpds-dimension-padding-lg);
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+
+	@include mixins.break-medium() {
+		position: absolute;
+		top: calc(#{variables.$header-height} + var(--wpds-dimension-padding-sm));
+		left: calc(var(--wpds-dimension-base) * 6);
+		bottom: 0;
+		padding: 0;
+		width: $sidebar-width;
+	}
+}
+
+.preferences-modal__panels {
+	padding: var(--wpds-dimension-padding-lg);
+
+	@include mixins.break-medium() {
+		width: 100%;
+		margin-left: $sidebar-width;
+		padding-top: 0;
+		padding-right: 0;
+		padding-left: var(--wpds-dimension-padding-xl);
+	}
+
+	.components-input-control__label {
+		white-space: nowrap;
+	}
+
+	.components-base-control {
+		max-width: calc(var(--wpds-dimension-base) * 80);
+	}
+
+	.components-button {
+		align-self: flex-start;
+	}
+}

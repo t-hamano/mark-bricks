@@ -1,0 +1,31 @@
+.wp-block-code {
+	position: relative;
+	padding: 1.5rem 1rem;
+	color: #1f2328;
+	border-radius: 6px;
+	line-height: 1.45;
+	background: #f6f8fa;
+	border: 1px solid #d1d9e0;
+
+	.cm-editor {
+		color: inherit;
+		background: inherit;
+	}
+
+	.cm-focused {
+		outline: none;
+	}
+
+	&[data-language]::before {
+		content: attr(data-language);
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 0 0.5rem;
+		pointer-events: none;
+		border-right: 1px solid #d1d9e0;
+		border-bottom: 1px solid #d1d9e0;
+		z-index: 1;
+		border-bottom-right-radius: 3px;
+	}
+}

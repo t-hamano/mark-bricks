@@ -1,0 +1,62 @@
+{
+	"name": "mark-bricks-vscode",
+	"displayName": "MarkBricks",
+	"description": "Visual markdown editor powered by the WordPress block editor.",
+	"version": "0.0.0",
+	"private": true,
+	"publisher": "akihamano",
+	"author": "Aki Hamano",
+	"license": "GPL-2.0-or-later",
+	"engines": {
+		"vscode": "^1.85.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"markdown",
+		"editor",
+		"visual",
+		"wysiwyg"
+	],
+	"main": "./dist/extension.cjs",
+	"contributes": {
+		"customEditors": [
+			{
+				"viewType": "markBricks.visualEditor",
+				"displayName": "MarkBricks (Visual)",
+				"selector": [
+					{
+						"filenamePattern": "*.md"
+					}
+				],
+				"priority": "option"
+			}
+		],
+		"commands": [
+			{
+				"command": "markBricks.openVisual",
+				"title": "Open with MarkBricks"
+			},
+			{
+				"command": "markBricks.openText",
+				"title": "Open with Text Editor"
+			}
+		],
+		"configuration": {
+			"title": "MarkBricks",
+			"properties": {}
+		}
+	},
+	"scripts": {
+		"build": "echo \"TODO: bundle extension host and webview\" && exit 0",
+		"package": "vsce package"
+	},
+	"dependencies": {
+		"@mark-bricks/editor": "*"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.85.0",
+		"@vscode/vsce": "^3"
+	}
+}

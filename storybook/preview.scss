@@ -1,0 +1,13 @@
+@use "@wordpress/base-styles/mixins";
+
+:root {
+
+	@include mixins.admin-scheme(#3858e9);
+}
+
+body {
+	color: #1f2328;
+	font-family: var(--wpds-typography-font-family-body);
+	font-size: var(--wpds-typography-font-size-md);
+	line-height: 1.5;
+}

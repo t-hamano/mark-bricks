@@ -1,0 +1,49 @@
+/**
+ * WordPress dependencies
+ */
+import { BlockControls, RichTextShortcut } from '@wordpress/block-editor';
+import { ToolbarButton } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
+import { formatBold } from '@wordpress/icons';
+import { displayShortcut } from '@wordpress/keycodes';
+import { toggleFormat } from '@wordpress/rich-text';
+
+/**
+ * Internal dependencies
+ */
+import type { FormatEditProps } from './types';
+
+const name = 'core/bold';
+const title = __( 'Bold', 'mark-bricks' );
+
+function Edit( { isActive, value, onChange, onFocus }: FormatEditProps ) {
+	const onClick = () => {
+		onChange( toggleFormat( value, { type: name } ) );
+		onFocus();
+	};
+
+	return (
+		<>
+			<RichTextShortcut type="primary" character="b" onUse={ onClick } />
+			<BlockControls group="inline">
+				<ToolbarButton
+					icon={ formatBold }
+					title={ title }
+					onClick={ onClick }
+					isActive={ isActive }
+					shortcut={ displayShortcut.primary( 'b' ) }
+				/>
+			</BlockControls>
+		</>
+	);
+}
+
+export const bold = {
+	name,
+	title,
+	tagName: 'strong',
+	className: null,
+	interactive: false,
+	object: false,
+	edit: Edit,
+};

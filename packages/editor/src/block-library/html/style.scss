@@ -1,0 +1,14 @@
+.wp-block-html {
+	padding: 1rem;
+	font-size: 85%;
+	border: 1px solid;
+
+	.cm-editor {
+		color: inherit;
+		background: inherit;
+	}
+
+	.cm-focused {
+		outline: none;
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"name": "@mark-bricks/storybook",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Storybook workspace for MarkBricks.",
+	"license": "GPL-2.0-or-later",
+	"type": "module",
+	"scripts": {
+		"storybook": "storybook dev -p 6006 -c .",
+		"build-storybook": "storybook build -c ."
+	},
+	"dependencies": {
+		"@mark-bricks/editor": "*"
+	},
+	"devDependencies": {
+		"@storybook/addon-docs": "^10.4.0",
+		"@storybook/react-vite": "^10.2.9",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"@vitejs/plugin-react": "^4.6.0",
+		"@wordpress/components": "^33.0.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"sass": "^1.99.0",
+		"storybook": "^10.2.9",
+		"vite": "^7.0.4"
+	}
+}

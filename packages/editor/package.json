@@ -1,0 +1,74 @@
+{
+	"name": "@mark-bricks/editor",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Visual markdown block editor.",
+	"author": "Aki Hamano",
+	"license": "GPL-2.0-or-later",
+	"type": "module",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"default": "./src/index.ts"
+		}
+	},
+	"scripts": {
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"i18n:make-pot": "make-pot . languages --slug=mark-bricks --include \"src/**\" --charset=utf-8 --skip-audit --headers \"email:-\"",
+		"i18n:make-po": "node scripts/make-po.mjs",
+		"i18n:make-json": "node scripts/make-json.mjs"
+	},
+	"dependencies": {
+		"@codemirror/commands": "^6.10.3",
+		"@codemirror/language": "^6.12.3",
+		"@codemirror/language-data": "^6.5.2",
+		"@codemirror/state": "^6.6.0",
+		"@codemirror/view": "^6.43.0",
+		"@monaco-editor/react": "^4.7.0",
+		"@wordpress/base-styles": "^7.0.0",
+		"@wordpress/block-editor": "^15.18.0",
+		"@wordpress/block-library": "^9.45.0",
+		"@wordpress/blocks": "^15.18.0",
+		"@wordpress/components": "^33.0.0",
+		"@wordpress/compose": "^7.45.0",
+		"@wordpress/data": "^10.45.0",
+		"@wordpress/element": "^6.45.0",
+		"@wordpress/escape-html": "^3.45.0",
+		"@wordpress/i18n": "^6.18.0",
+		"@wordpress/icons": "^13.0.0",
+		"@wordpress/keyboard-shortcuts": "^5.45.0",
+		"@wordpress/keycodes": "^4.45.0",
+		"@wordpress/private-apis": "^1.45.0",
+		"@wordpress/rich-text": "^7.45.0",
+		"@wordpress/theme": "^0.12.0",
+		"@wordpress/ui": "^0.12.0",
+		"clsx": "^2.1.1",
+		"hast-util-from-html": "^2.0.3",
+		"remark-gfm": "^4.0.1",
+		"remark-parse": "^11.0.0",
+		"remark-stringify": "^11.0.0",
+		"unified": "^11.0.5",
+		"uuid": "^11.1.0"
+	},
+	"peerDependencies": {
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	},
+	"devDependencies": {
+		"@types/hast": "^3.0.4",
+		"@types/mdast": "^4.0.4",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"@types/wordpress__block-editor": "^15.0.6",
+		"@wp-blocks/make-pot": "^1.6.6",
+		"gettext-parser": "^9.0.2",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"sass": "^1.99.0",
+		"vite": "^7.0.4",
+		"vitest": "^2.1.9"
+	}
+}

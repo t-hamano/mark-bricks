@@ -1,0 +1,22 @@
+.wp-block-table {
+	margin: 0;
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		table-layout: fixed;
+	}
+
+	th,
+	td {
+		border: 1px solid currentcolor;
+		padding: 0.5em;
+		vertical-align: top;
+		word-break: break-word;
+	}
+
+	th {
+		font-weight: 600;
+		text-align: inherit;
+	}
+}

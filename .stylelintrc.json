@@ -1,0 +1,12 @@
+{
+	"extends": "@wordpress/stylelint-config/scss-stylistic",
+	"ignoreFiles": [
+		"tmp/**",
+		"**/dist/**",
+		"**/src-tauri/**",
+		"**/node_modules/**"
+	],
+	"rules": {
+		"selector-class-pattern": null
+	}
+}

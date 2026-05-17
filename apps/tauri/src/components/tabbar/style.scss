@@ -1,0 +1,106 @@
+.tabbar {
+	background: var(--wpds-color-bg-surface-neutral-weak);
+	border-bottom:
+		var(--wpds-border-width-xs) solid
+		var(--wpds-color-stroke-surface-neutral-weak);
+	position: relative;
+	padding-right: calc(var(--wpds-dimension-base) * 10);
+}
+
+.tabbar__tabs {
+	flex: 1 1 auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.tabbar__tab {
+	position: relative;
+}
+
+.tabbar__close {
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: var(--wpds-dimension-base);
+	color: var(--wpds-color-fg-content-neutral-weak);
+	min-width: calc(var(--wpds-dimension-base) * 5) !important;
+	height: calc(var(--wpds-dimension-base) * 5) !important;
+
+	&:focus,
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.tabbar__activate {
+	min-width: calc(var(--wpds-dimension-base) * 24);
+	max-width: calc(var(--wpds-dimension-base) * 50);
+	background: none;
+	border: none;
+	border-top:
+		var(--wpds-border-width-xs) solid
+		var(--wpds-color-stroke-surface-neutral-weak);
+	border-right:
+		var(--wpds-border-width-xs) solid
+		var(--wpds-color-stroke-surface-neutral-weak);
+	height: calc(var(--wpds-dimension-base) * 6);
+	padding-left: calc(var(--wpds-dimension-base) * 2);
+	padding-right: calc(var(--wpds-dimension-base) * 8);
+	font-size: var(--wpds-typography-font-size-xs);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: pointer;
+
+	&.is-active {
+		background: var(--wpds-color-bg-surface-neutral-strong);
+
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: calc(-1 * var(--wpds-border-width-xs));
+			height: var(--wpds-border-width-xs);
+			background: var(--wpds-color-bg-surface-neutral-strong);
+		}
+	}
+
+	&:hover + .tabbar__close,
+	&.is-active + .tabbar__close {
+		opacity: 1;
+	}
+
+	&:focus {
+		outline:
+			var(--wp-admin-border-width-focus) solid
+			var(--wp-admin-theme-color);
+		outline-offset: calc(-1 * var(--wpds-border-width-focus));
+	}
+}
+
+.tabbar__dirty {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 28px;
+	width: var(--wpds-dimension-base);
+	height: var(--wpds-dimension-base);
+	border-radius: 50%;
+	background: var(--wpds-color-fg-content-neutral-weak);
+	opacity: 0;
+
+	&.is-dirty {
+		opacity: 1;
+	}
+}
+
+.tabbar__new {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	min-width: calc(var(--wpds-dimension-base) * 5) !important;
+	height: calc(var(--wpds-dimension-base) * 5) !important;
+}
