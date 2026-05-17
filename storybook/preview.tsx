@@ -7,7 +7,7 @@ const preview: Preview = {
 		layout: 'fullscreen',
 		docs: {
 			canvas: {
-				sourceState: 'shown',
+				sourceState: 'hidden',
 			},
 		},
 	},
