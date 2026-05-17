@@ -14,7 +14,7 @@ export type Platform = {
 	 * Opens a native image file picker and resolves with the path to
 	 * store in the block, or `null` when the user cancels.
 	 */
-	pickImageFile: () => Promise< string | null >;
+	pickImageFile?: () => Promise< string | null >;
 	/**
 	 * Converts a stored path into a URL the current webview can render
 	 * in an `<img>` tag. Async because some hosts (e.g. VS Code) must
@@ -24,7 +24,6 @@ export type Platform = {
 };
 
 const defaultPlatform: Platform = {
-	pickImageFile: async () => null,
 	resolveImageSrc: async ( path ) => path,
 };
 

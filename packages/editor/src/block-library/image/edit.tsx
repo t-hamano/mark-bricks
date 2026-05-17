@@ -88,18 +88,20 @@ export default function Edit( props: BlockEditProps ) {
 						'mark-bricks'
 					) }
 				>
-					<Button
-						size="compact"
-						variant="secondary"
-						onClick={ async () => {
-							const path = await pickImageFile();
-							if ( path ) {
-								setAttributes( { url: path } );
-							}
-						} }
-					>
-						{ __( 'Browse local file', 'mark-bricks' ) }
-					</Button>
+					{ pickImageFile && (
+						<Button
+							size="compact"
+							variant="secondary"
+							onClick={ async () => {
+								const path = await pickImageFile();
+								if ( path ) {
+									setAttributes( { url: path } );
+								}
+							} }
+						>
+							{ __( 'Browse local file', 'mark-bricks' ) }
+						</Button>
+					) }
 					<Button
 						size="compact"
 						variant="secondary"
@@ -324,17 +326,22 @@ export default function Edit( props: BlockEditProps ) {
 								</Button>
 							</Stack>
 							<NavigableMenu>
-								<MenuItem
-									onClick={ async () => {
-										onClose();
-										const path = await pickImageFile();
-										if ( path ) {
-											setAttributes( { url: path } );
-										}
-									} }
-								>
-									{ __( 'Browse local file', 'mark-bricks' ) }
-								</MenuItem>
+								{ pickImageFile && (
+									<MenuItem
+										onClick={ async () => {
+											onClose();
+											const path = await pickImageFile();
+											if ( path ) {
+												setAttributes( { url: path } );
+											}
+										} }
+									>
+										{ __(
+											'Browse local file',
+											'mark-bricks'
+										) }
+									</MenuItem>
+								) }
 								<MenuItem
 									onClick={ () => {
 										setAttributes( { url: '' } );
