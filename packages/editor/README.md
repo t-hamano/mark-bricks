@@ -4,6 +4,9 @@ The host-agnostic React component package at the heart of MarkBricks. It minimiz
 
 Hosts (the Tauri app, the VSCode extension, ...) consume this package and render the `<Editor />` component, passing in only the host-specific configuration (content, settings, header actions) via props.
 
+> [!NOTE]
+> This is a private package. `@mark-bricks/editor` is not published to npm. It lives in this monorepo and is consumed by the hosts via pnpm's `workspace:` protocol — the usage examples below document the `<Editor />` API for those in-repo hosts, not an installable package.
+
 ## What it provides
 
 ### Block editor
