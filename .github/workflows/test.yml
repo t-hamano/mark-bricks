@@ -1,0 +1,39 @@
+name: Test
+
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+
+# Cancel previous runs for the same branch / PR.
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+    cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+    test:
+        name: Test
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v6
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+                  cache: pnpm
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Run tests
+              run: pnpm -r --if-present test
