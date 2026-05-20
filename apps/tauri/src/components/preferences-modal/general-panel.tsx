@@ -70,7 +70,7 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 					/>
 					<Button
 						variant="secondary"
-						size="small"
+						size="compact"
 						isBusy={ isChecking }
 						disabled={ isChecking }
 						onClick={ onCheckClick }
