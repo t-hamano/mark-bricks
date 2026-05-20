@@ -1,3 +1,9 @@
+# [0.3.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.2.0...tauri-v0.3.0) (2026-05-20)
+
+### Features
+
+-   **tauri:** add github-based auto updater ([3daed7e](https://github.com/t-hamano/mark-bricks/commit/3daed7e430feec9b0f6c1b5d942fe25c9432917d))
+
 # [0.2.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.1.0...tauri-v0.2.0) (2026-05-20)
 
 ### Bug Fixes
