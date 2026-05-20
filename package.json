@@ -21,7 +21,7 @@
 		"lint:css:fix": "stylelint \"{packages,apps}/**/*.{css,scss}\" --fix",
 		"lint": "npm run lint:js && npm run lint:css",
 		"lint:fix": "npm run lint:js:fix && npm run lint:css:fix",
-		"type-check": "tsc -p packages/editor/tsconfig.json --noEmit && tsc -p apps/tauri/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.json --noEmit",
+		"type-check": "tsc -p packages/editor/tsconfig.json --noEmit && tsc -p apps/tauri/tsconfig.json --noEmit && tsc -p apps/tauri/e2e/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.json --noEmit",
 		"test": "pnpm -r --if-present test",
 		"format": "prettier --write .",
 		"prepare": "husky"
