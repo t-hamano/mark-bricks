@@ -33,6 +33,10 @@ export async function openFile() {
 		return;
 	}
 
+	await openFilePath( path );
+}
+
+export async function openFilePath( path: string ) {
 	const tabs = select( tabsStore ).getTabs();
 	const existing = tabs.find( ( t ) => t.filePath === path );
 
