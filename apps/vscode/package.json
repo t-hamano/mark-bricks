@@ -51,7 +51,8 @@
 	"scripts": {
 		"build": "echo \"TODO: bundle extension host and webview\" && exit 0",
 		"package": "vsce package",
-		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor && git add CHANGELOG.md package.json"
+		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor && git add CHANGELOG.md package.json",
+		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor"
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*"
