@@ -27,6 +27,7 @@ import KeyboardShortcutsModal from '../keyboard-shortcuts-modal';
 import PreferencesModal from '../preferences-modal';
 import Tabbar from '../tabbar';
 import useAppCloseGuard from '../../hooks/use-app-close-guard';
+import useAutoUpdater from '../../hooks/use-auto-updater';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
 import platform from '../../platform';
@@ -35,6 +36,7 @@ import './style.scss';
 
 export function App() {
 	useShortcuts();
+	useAutoUpdater();
 
 	const [ appName, setAppName ] = useState< string >( '' );
 	const [ appVersion, setAppVersion ] = useState< string >( '' );

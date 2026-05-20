@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import { useState } from 'react';
 import { LOCALES, type Locale } from '@mark-bricks/editor';
 
 /**
@@ -9,6 +10,11 @@ import { LOCALES, type Locale } from '@mark-bricks/editor';
 import { Button, SelectControl, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Stack, Tabs } from '@wordpress/ui';
+
+/**
+ * Internal dependencies
+ */
+import { checkForUpdates } from '../../hooks/use-auto-updater';
 
 export type GeneralSettings = {
 	locale: Locale;
@@ -21,6 +27,17 @@ type Props = {
 };
 
 export function GeneralPanel( { settings, onChange }: Props ) {
+	const [ isChecking, setIsChecking ] = useState( false );
+
+	const onCheckClick = async () => {
+		setIsChecking( true );
+		try {
+			await checkForUpdates();
+		} finally {
+			setIsChecking( false );
+		}
+	};
+
 	return (
 		<Tabs.Panel value="general">
 			<Stack direction="column" gap="xl">
@@ -51,8 +68,17 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 							onChange( { checkUpdatesAuto: value } )
 						}
 					/>
-					<Button variant="secondary" size="small">
-						{ __( 'Check for updates', 'mark-bricks' ) }
+					<Button
+						variant="secondary"
+						size="small"
+						isBusy={ isChecking }
+						disabled={ isChecking }
+						onClick={ onCheckClick }
+						accessibleWhenDisabled
+					>
+						{ isChecking
+							? __( 'Checking…', 'mark-bricks' )
+							: __( 'Check for updates', 'mark-bricks' ) }
 					</Button>
 				</Stack>
 			</Stack>
