@@ -129,15 +129,9 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 					<Text variant="heading-xl" render={ <h2 /> }>
 						{ __( 'File associations', 'mark-bricks' ) }
 					</Text>
-					<p>
-						{ __(
-							'Make MarkBricks the default app for opening Markdown files (.md, .markdown).',
-							'mark-bricks'
-						) }
-					</p>
 					<Button
 						variant="secondary"
-						size="small"
+						size="compact"
 						isBusy={ associateStatus.kind === 'busy' }
 						disabled={ associateStatus.kind === 'busy' }
 						onClick={ onAssociateClick }
