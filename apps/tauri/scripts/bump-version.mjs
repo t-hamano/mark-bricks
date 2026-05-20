@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -61,3 +62,21 @@ tauriConf.version = version;
 writeFileSync( tauriConfPath, JSON.stringify( tauriConf, null, '\t' ) + '\n' );
 
 console.log( `Bumped version to ${ version }` );
+
+// npm version cannot detect this monorepo's .git from a workspace subdir
+// (@npmcli/git's is() doesn't walk up), so it silently skips commit/tag. We
+// run them here instead. `.npmrc` sets `git-tag-version=false` to prevent
+// npm from even trying.
+const git = ( ...args ) =>
+	execFileSync( 'git', args, { cwd: rootDir, stdio: 'inherit' } );
+
+git(
+	'add',
+	'CHANGELOG.md',
+	'package.json',
+	'src-tauri/Cargo.toml',
+	'src-tauri/Cargo.lock',
+	'src-tauri/tauri.conf.json'
+);
+git( 'commit', '-m', `chore(release): tauri v${ version }` );
+git( 'tag', `tauri-v${ version }` );
