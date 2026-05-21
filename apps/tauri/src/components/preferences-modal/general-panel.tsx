@@ -8,14 +8,9 @@ import { LOCALES, type Locale } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import {
-	Button,
-	Notice,
-	SelectControl,
-	ToggleControl,
-} from '@wordpress/components';
+import { Button, SelectControl, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Stack, Tabs, Text } from '@wordpress/ui';
+import { Notice, Stack, Tabs, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -143,49 +138,41 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 						) }
 					</Button>
 					{ associateStatus.kind === 'set' && (
-						<Notice
-							status="success"
-							isDismissible={ false }
-							politeness="polite"
-						>
-							{ __(
-								'MarkBricks is now the default app for Markdown files.',
-								'mark-bricks'
-							) }
-						</Notice>
+						<Notice.Root intent="success">
+							<Notice.Description>
+								{ __(
+									'MarkBricks is now the default app for Markdown files.',
+									'mark-bricks'
+								) }
+							</Notice.Description>
+						</Notice.Root>
 					) }
 					{ associateStatus.kind === 'opened-settings' && (
-						<Notice
-							status="info"
-							isDismissible={ false }
-							politeness="polite"
-						>
-							{ __(
-								'Opened the system settings. Select MarkBricks under the .md file type to finish.',
-								'mark-bricks'
-							) }
-						</Notice>
+						<Notice.Root intent="info">
+							<Notice.Description>
+								{ __(
+									'Opened the system settings. Select MarkBricks under the .md file type to finish.',
+									'mark-bricks'
+								) }
+							</Notice.Description>
+						</Notice.Root>
 					) }
 					{ associateStatus.kind === 'unsupported' && (
-						<Notice
-							status="warning"
-							isDismissible={ false }
-							politeness="polite"
-						>
-							{ __(
-								'This platform does not support setting the default app from inside MarkBricks. Please configure it from your system file manager.',
-								'mark-bricks'
-							) }
-						</Notice>
+						<Notice.Root intent="warning">
+							<Notice.Description>
+								{ __(
+									'This platform does not support setting the default app from inside MarkBricks. Please configure it from your system file manager.',
+									'mark-bricks'
+								) }
+							</Notice.Description>
+						</Notice.Root>
 					) }
 					{ associateStatus.kind === 'error' && (
-						<Notice
-							status="error"
-							isDismissible={ false }
-							politeness="polite"
-						>
-							{ associateStatus.message }
-						</Notice>
+						<Notice.Root intent="error">
+							<Notice.Description>
+								{ associateStatus.message }
+							</Notice.Description>
+						</Notice.Root>
 					) }
 				</Stack>
 			</Stack>
