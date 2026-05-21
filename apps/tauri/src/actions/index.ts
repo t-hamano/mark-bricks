@@ -17,15 +17,14 @@ import { dispatch, select } from '@wordpress/data';
  */
 import tabsStore from '../store';
 
-const FILE_FILTERS = [ { name: 'Markdown', extensions: [ 'md' ] } ];
-
 export function newFile() {
 	dispatch( tabsStore ).openTab();
 }
 
 export async function openFile() {
+	const extensions = await invoke< string[] >( 'get_markdown_extensions' );
 	const path = await openDialog( {
-		filters: FILE_FILTERS,
+		filters: [ { name: 'Markdown', extensions } ],
 		multiple: false,
 	} );
 
@@ -33,6 +32,10 @@ export async function openFile() {
 		return;
 	}
 
+	await openFilePath( path );
+}
+
+export async function openFilePath( path: string ) {
 	const tabs = select( tabsStore ).getTabs();
 	const existing = tabs.find( ( t ) => t.filePath === path );
 
@@ -95,7 +98,10 @@ export async function saveTabAs( id: string ) {
 		return false;
 	}
 
-	const path = await saveDialog( { filters: FILE_FILTERS } );
+	const extensions = await invoke< string[] >( 'get_markdown_extensions' );
+	const path = await saveDialog( {
+		filters: [ { name: 'Markdown', extensions } ],
+	} );
 
 	if ( typeof path !== 'string' ) {
 		return false;

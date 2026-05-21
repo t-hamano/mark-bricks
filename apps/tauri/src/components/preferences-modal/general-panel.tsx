@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { useState } from 'react';
+import { invoke } from '@tauri-apps/api/core';
 import { LOCALES, type Locale } from '@mark-bricks/editor';
 
 /**
@@ -9,7 +10,7 @@ import { LOCALES, type Locale } from '@mark-bricks/editor';
  */
 import { Button, SelectControl, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Stack, Tabs } from '@wordpress/ui';
+import { Notice, Stack, Tabs, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -26,8 +27,21 @@ type Props = {
 	onChange: ( edits: Partial< GeneralSettings > ) => void;
 };
 
+type AssociateStatus =
+	| { kind: 'idle' }
+	| { kind: 'busy' }
+	| { kind: 'set' }
+	| { kind: 'declined' }
+	| { kind: 'unsupported' }
+	| { kind: 'error'; message: string };
+
 export function GeneralPanel( { settings, onChange }: Props ) {
 	const [ isChecking, setIsChecking ] = useState( false );
+	const [ associateStatus, setAssociateStatus ] = useState< AssociateStatus >(
+		{
+			kind: 'idle',
+		}
+	);
 
 	const onCheckClick = async () => {
 		setIsChecking( true );
@@ -35,6 +49,29 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 			await checkForUpdates();
 		} finally {
 			setIsChecking( false );
+		}
+	};
+
+	const onAssociateClick = async () => {
+		setAssociateStatus( { kind: 'busy' } );
+		try {
+			const result = await invoke< string >(
+				'set_as_default_markdown_handler'
+			);
+			if (
+				result === 'set' ||
+				result === 'declined' ||
+				result === 'unsupported'
+			) {
+				setAssociateStatus( { kind: result } );
+			} else {
+				setAssociateStatus( { kind: 'idle' } );
+			}
+		} catch ( error ) {
+			setAssociateStatus( {
+				kind: 'error',
+				message: String( error ),
+			} );
 		}
 	};
 
@@ -80,6 +117,51 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 							? __( 'Checking…', 'mark-bricks' )
 							: __( 'Check for updates', 'mark-bricks' ) }
 					</Button>
+				</Stack>
+				<Stack direction="column" gap="md">
+					<Text variant="heading-xl" render={ <h2 /> }>
+						{ __( 'File associations', 'mark-bricks' ) }
+					</Text>
+					<Button
+						variant="secondary"
+						size="compact"
+						isBusy={ associateStatus.kind === 'busy' }
+						disabled={ associateStatus.kind === 'busy' }
+						onClick={ onAssociateClick }
+						accessibleWhenDisabled
+					>
+						{ __(
+							'Set as default for Markdown files',
+							'mark-bricks'
+						) }
+					</Button>
+					{ associateStatus.kind === 'set' && (
+						<Notice.Root intent="success">
+							<Notice.Description>
+								{ __(
+									'MarkBricks is now the default app for Markdown files.',
+									'mark-bricks'
+								) }
+							</Notice.Description>
+						</Notice.Root>
+					) }
+					{ associateStatus.kind === 'unsupported' && (
+						<Notice.Root intent="warning">
+							<Notice.Description>
+								{ __(
+									'This platform does not support setting the default app from inside MarkBricks. Please configure it from your system file manager.',
+									'mark-bricks'
+								) }
+							</Notice.Description>
+						</Notice.Root>
+					) }
+					{ associateStatus.kind === 'error' && (
+						<Notice.Root intent="error">
+							<Notice.Description>
+								{ associateStatus.message }
+							</Notice.Description>
+						</Notice.Root>
+					) }
 				</Stack>
 			</Stack>
 		</Tabs.Panel>
