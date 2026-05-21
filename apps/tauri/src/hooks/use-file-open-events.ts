@@ -41,6 +41,11 @@ async function openPaths( paths: string[] ) {
 	}
 }
 
+/**
+ * Opens Markdown files the OS hands to the app. It listens for the `open-files`
+ * event the Rust backend emits while the app is running, then drains
+ * `take_pending_open_files` for paths delivered before the listener existed.
+ */
 export default function useFileOpenEvents() {
 	useEffect( () => {
 		let unlisten: UnlistenFn | undefined;
@@ -57,8 +62,7 @@ export default function useFileOpenEvents() {
 			}
 
 			// Drain any file paths the OS handed us before the listener
-			// was attached (e.g. cold-start "Open with" on macOS, or .md
-			// path passed on argv on Windows/Linux).
+			// was attached.
 			const pending = await invoke< string[] >(
 				'take_pending_open_files'
 			);

@@ -3,26 +3,29 @@ use std::sync::{Mutex, OnceLock};
 
 use tauri::{Emitter, Manager};
 
+/// Writes the given text to a file, replacing any existing contents.
 #[tauri::command]
 fn write_text_file(path: String, contents: String) -> Result<(), String> {
     std::fs::write(&path, contents).map_err(|e| e.to_string())
 }
 
+/// Reads a file and returns its text contents.
 #[tauri::command]
 fn read_text_file(path: String) -> Result<String, String> {
     std::fs::read_to_string(&path).map_err(|e| e.to_string())
 }
 
-/// Markdown paths the OS handed us before the frontend attached its
-/// `open-files` listener — cold-start "Open with", argv, or a forwarded
-/// second instance. A process-global buffer rather than Tauri-managed state,
-/// because the single-instance callback can fire before the app's `setup`
-/// hook runs, so `try_state` would return `None` and the paths would be lost.
+/// Markdown files the OS asked us to open before the app window was ready to
+/// receive them — for example when opening a file starts the app, or a second
+/// launch passes its file to the first. We hold them in a simple shared place
+/// because they can arrive before startup finishes, when the usual storage is
+/// not ready yet and they would otherwise be lost.
 fn pending_open_files() -> &'static Mutex<Vec<String>> {
     static PENDING: OnceLock<Mutex<Vec<String>>> = OnceLock::new();
     PENDING.get_or_init(|| Mutex::new(Vec::new()))
 }
 
+/// Returns the files waiting to be opened, clearing them so they are taken only once.
 #[tauri::command]
 fn take_pending_open_files() -> Vec<String> {
     std::mem::take(&mut *pending_open_files().lock().unwrap())
@@ -49,138 +52,84 @@ fn set_as_default_markdown_handler() -> Result<String, String> {
     }
 }
 
+/// Asks macOS to make MarkBricks the default app for Markdown files.
+///
+/// Returns `"set"` if it is (or becomes) the default. On modern macOS the
+/// change is gated by a system prompt, so this waits a few seconds for the
+/// user's choice and returns `"declined"` if they dismiss it.
 #[cfg(target_os = "macos")]
 fn set_default_markdown_handler_macos() -> Result<String, String> {
-    use std::ffi::c_void;
-    use std::os::raw::c_int;
+    use core_foundation::base::TCFType;
+    use core_foundation::string::{CFString, CFStringRef};
 
-    type CFAllocatorRef = *const c_void;
-    type CFStringRef = *const c_void;
-    type CFIndex = isize;
-    type Boolean = u8;
-    type CFStringCompareFlags = u32;
-
-    const KCFSTRING_ENCODING_UTF8: u32 = 0x0800_0100;
     const KLS_ROLES_ALL: u32 = 0xFFFF_FFFF;
-    const KCF_COMPARE_EQUAL: c_int = 0;
 
-    #[link(name = "CoreFoundation", kind = "framework")]
-    extern "C" {
-        fn CFStringCreateWithBytes(
-            alloc: CFAllocatorRef,
-            bytes: *const u8,
-            num_bytes: CFIndex,
-            encoding: u32,
-            is_external_representation: Boolean,
-        ) -> CFStringRef;
-        fn CFStringCompare(
-            the_string1: CFStringRef,
-            the_string2: CFStringRef,
-            compare_options: CFStringCompareFlags,
-        ) -> c_int;
-        fn CFRelease(cf: *const c_void);
-    }
-
+    // The two LaunchServices calls have no maintained crate, so keep them as a
+    // minimal FFI block; `core-foundation` handles the strings and memory.
     #[link(name = "CoreServices", kind = "framework")]
     extern "C" {
         fn LSSetDefaultRoleHandlerForContentType(
-            in_content_type: CFStringRef,
-            in_role: u32,
-            in_handler_bundle_id: CFStringRef,
-        ) -> c_int;
+            content_type: CFStringRef,
+            role: u32,
+            handler_bundle_id: CFStringRef,
+        ) -> i32;
         fn LSCopyDefaultRoleHandlerForContentType(
-            in_content_type: CFStringRef,
-            in_role: u32,
+            content_type: CFStringRef,
+            role: u32,
         ) -> CFStringRef;
     }
 
-    fn make_cfstring(s: &str) -> CFStringRef {
-        unsafe {
-            CFStringCreateWithBytes(
-                std::ptr::null(),
-                s.as_ptr(),
-                s.len() as CFIndex,
-                KCFSTRING_ENCODING_UTF8,
-                0,
-            )
-        }
-    }
+    let bundle_id = CFString::new("com.markbricks.app");
+    let uti = CFString::new("net.daringfireball.markdown");
 
-    // Returns true if MarkBricks is currently the default handler for `uti`.
-    // SAFETY: caller must keep `uti` and `bundle_id` alive for the duration.
-    unsafe fn current_default_matches(uti: CFStringRef, bundle_id: CFStringRef) -> bool {
-        let current = LSCopyDefaultRoleHandlerForContentType(uti, KLS_ROLES_ALL);
+    // Whether MarkBricks is the current default handler for the UTI.
+    let is_default = || {
+        let current = unsafe {
+            LSCopyDefaultRoleHandlerForContentType(uti.as_concrete_TypeRef(), KLS_ROLES_ALL)
+        };
         if current.is_null() {
             return false;
         }
-        let equal = CFStringCompare(current, bundle_id, 0) == KCF_COMPARE_EQUAL;
-        CFRelease(current);
-        equal
-    }
+        // `LSCopy…` follows the Create Rule, so wrap it to release on drop.
+        let current = unsafe { CFString::wrap_under_create_rule(current) };
+        current.to_string() == bundle_id.to_string()
+    };
 
-    let bundle_id = make_cfstring("com.markbricks.app");
-    let uti = make_cfstring("net.daringfireball.markdown");
-    if bundle_id.is_null() || uti.is_null() {
-        if !bundle_id.is_null() {
-            unsafe { CFRelease(bundle_id) };
-        }
-        if !uti.is_null() {
-            unsafe { CFRelease(uti) };
-        }
-        return Err("Failed to create CFStrings".to_string());
-    }
-
-    // If we're already the default, calling Set is a no-op and no system
-    // prompt would appear — short-circuit and report success.
-    if unsafe { current_default_matches(uti, bundle_id) } {
-        unsafe {
-            CFRelease(uti);
-            CFRelease(bundle_id);
-        }
+    // If we're already the default, Set is a no-op and shows no prompt.
+    if is_default() {
         return Ok("set".to_string());
     }
 
-    let status = unsafe { LSSetDefaultRoleHandlerForContentType(uti, KLS_ROLES_ALL, bundle_id) };
+    let status = unsafe {
+        LSSetDefaultRoleHandlerForContentType(
+            uti.as_concrete_TypeRef(),
+            KLS_ROLES_ALL,
+            bundle_id.as_concrete_TypeRef(),
+        )
+    };
     if status != 0 {
-        unsafe {
-            CFRelease(uti);
-            CFRelease(bundle_id);
-        }
         return Err(format!(
             "LSSetDefaultRoleHandlerForContentType failed (OSStatus {status})"
         ));
     }
 
-    // On modern macOS (Sonoma+) the call above always returns success, but
-    // the actual change is gated by a system confirmation prompt the user
-    // can dismiss. Poll the live default for a few seconds to learn the
-    // user's choice.
-    let mut became_default = false;
+    // On modern macOS the call above succeeds immediately, but the real change
+    // is gated by a system prompt the user can dismiss. Poll the live default
+    // for a few seconds to learn their choice.
     for _ in 0..20 {
         std::thread::sleep(std::time::Duration::from_millis(500));
-        if unsafe { current_default_matches(uti, bundle_id) } {
-            became_default = true;
-            break;
+        if is_default() {
+            return Ok("set".to_string());
         }
     }
 
-    unsafe {
-        CFRelease(uti);
-        CFRelease(bundle_id);
-    }
-
-    if became_default {
-        Ok("set".to_string())
-    } else {
-        Ok("declined".to_string())
-    }
+    Ok("declined".to_string())
 }
 
+/// Opens the Windows "Default apps" settings for the user to choose.
 #[cfg(target_os = "windows")]
 fn open_windows_default_apps_settings() -> Result<String, String> {
     use std::process::Command;
-    // `cmd /c start "" <url>` is the canonical way to launch a shell URI
-    // (ms-settings:) on Windows without inheriting handles or blocking.
     Command::new("cmd")
         .args(["/c", "start", "", "ms-settings:defaultapps"])
         .spawn()
@@ -188,18 +137,41 @@ fn open_windows_default_apps_settings() -> Result<String, String> {
     Ok("idle".to_string())
 }
 
-fn is_markdown_path(s: &str) -> bool {
+/// Reads the Markdown file extensions from tauri.conf.json (lower-cased, no dot).
+fn markdown_extensions(config: &tauri::Config) -> Vec<String> {
+    config
+        .bundle
+        .file_associations
+        .iter()
+        .flatten()
+        .flat_map(|assoc| assoc.ext.iter())
+        .map(|ext| ext.to_string().to_ascii_lowercase())
+        .collect()
+}
+
+/// Returns the configured Markdown extensions to the frontend.
+#[tauri::command]
+fn get_markdown_extensions(app: tauri::AppHandle) -> Vec<String> {
+    markdown_extensions(app.config())
+}
+
+/// Whether `s` looks like a Markdown file, judged by its file extension against
+/// the configured `exts` (compared case-insensitively).
+fn is_markdown_path(s: &str, exts: &[String]) -> bool {
+    // Arguments starting with "-" are command-line flags, not file paths.
     if s.starts_with('-') {
         return false;
     }
-    let p = Path::new(s);
-    let Some(ext) = p.extension().and_then(|e| e.to_str()) else {
+    let Some(ext) = Path::new(s).extension().and_then(|e| e.to_str()) else {
         return false;
     };
-    matches!(ext.to_ascii_lowercase().as_str(), "md" | "markdown")
+    let ext = ext.to_ascii_lowercase();
+    exts.iter().any(|e| *e == ext)
 }
 
-fn collect_markdown_paths<I, S>(args: I) -> Vec<String>
+/// Picks the Markdown file paths out of the process arguments, skipping the
+/// first entry (the program's own path).
+fn collect_markdown_paths<I, S>(args: I, exts: &[String]) -> Vec<String>
 where
     I: IntoIterator<Item = S>,
     S: AsRef<str>,
@@ -208,40 +180,40 @@ where
         .skip(1)
         .filter_map(|s| {
             let s = s.as_ref();
-            is_markdown_path(s).then(|| s.to_string())
+            is_markdown_path(s, exts).then(|| s.to_string())
         })
         .collect()
 }
 
-#[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    let ctx = tauri::generate_context!();
+    let exts = markdown_extensions(ctx.config());
+
     // Seed this instance's own argv-provided files before the event loop;
     // the single-instance callback may fire before `setup` would have run.
     pending_open_files()
         .lock()
         .unwrap()
-        .extend(collect_markdown_paths(std::env::args()));
+        .extend(collect_markdown_paths(std::env::args(), &exts));
 
     let mut builder = tauri::Builder::default();
 
-    #[cfg(desktop)]
-    {
-        builder = builder.plugin(tauri_plugin_single_instance::init(|app, argv, _cwd| {
-            if let Some(window) = app.get_webview_window("main") {
-                let _ = window.set_focus();
-            }
-            let paths = collect_markdown_paths(argv);
-            if !paths.is_empty() {
-                // Buffer *before* emitting: a still-cold-starting frontend
-                // hasn't attached its `open-files` listener yet, so a bare
-                // emit would be dropped. The buffer lets it drain these via
-                // `take_pending_open_files`. `openFilePath` dedupes by path,
-                // so a file delivered through both routes opens only one tab.
-                pending_open_files().lock().unwrap().extend(paths.clone());
-                let _ = app.emit("open-files", paths);
-            }
-        }));
-    }
+    builder = builder.plugin(tauri_plugin_single_instance::init(|app, argv, _cwd| {
+        if let Some(window) = app.get_webview_window("main") {
+            let _ = window.set_focus();
+        }
+        let exts = markdown_extensions(app.config());
+        let paths = collect_markdown_paths(argv, &exts);
+        if !paths.is_empty() {
+            // Buffer *before* emitting: a still-cold-starting frontend
+            // hasn't attached its `open-files` listener yet, so a bare
+            // emit would be dropped. The buffer lets it drain these via
+            // `take_pending_open_files`. `openFilePath` dedupes by path,
+            // so a file delivered through both routes opens only one tab.
+            pending_open_files().lock().unwrap().extend(paths.clone());
+            let _ = app.emit("open-files", paths);
+        }
+    }));
 
     builder
         .plugin(tauri_plugin_store::Builder::new().build())
@@ -252,12 +224,13 @@ pub fn run() {
             write_text_file,
             read_text_file,
             take_pending_open_files,
-            set_as_default_markdown_handler
+            set_as_default_markdown_handler,
+            get_markdown_extensions
         ])
-        .build(tauri::generate_context!())
+        .build(ctx)
         .expect("error while building tauri application")
         .run(|app, event| {
-            #[cfg(any(target_os = "macos", target_os = "ios"))]
+            #[cfg(target_os = "macos")]
             if let tauri::RunEvent::Opened { urls } = event {
                 let paths: Vec<String> = urls
                     .iter()
@@ -271,7 +244,7 @@ pub fn run() {
                 let _ = app.emit("open-files", paths);
             }
 
-            #[cfg(not(any(target_os = "macos", target_os = "ios")))]
+            #[cfg(not(target_os = "macos"))]
             let _ = (app, event);
         });
 }
