@@ -4,6 +4,12 @@
 import { useEffect } from 'react';
 import { invoke } from '@tauri-apps/api/core';
 import { listen, type UnlistenFn } from '@tauri-apps/api/event';
+import { message } from '@tauri-apps/plugin-dialog';
+
+/**
+ * WordPress dependencies
+ */
+import { __, _n } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -11,14 +17,27 @@ import { listen, type UnlistenFn } from '@tauri-apps/api/event';
 import { openFilePath } from '../actions';
 
 async function openPaths( paths: string[] ) {
+	const failed: string[] = [];
+
 	for ( const path of paths ) {
 		try {
 			await openFilePath( path );
 		} catch {
-			// Ignore individual failures (e.g. file moved/deleted between
-			// the OS handing us the path and us reading it). The remaining
-			// paths in the batch should still be honored.
+			failed.push( path );
 		}
+	}
+
+	if ( failed.length > 0 ) {
+		const intro = _n(
+			'Could not open the following file:',
+			'Could not open the following files:',
+			failed.length,
+			'mark-bricks'
+		);
+		await message( `${ intro }\n${ failed.join( '\n' ) }`, {
+			title: __( 'Open file', 'mark-bricks' ),
+			kind: 'error',
+		} );
 	}
 }
 
