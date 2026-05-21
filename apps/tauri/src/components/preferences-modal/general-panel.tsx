@@ -32,7 +32,6 @@ type AssociateStatus =
 	| { kind: 'busy' }
 	| { kind: 'set' }
 	| { kind: 'declined' }
-	| { kind: 'opened-settings' }
 	| { kind: 'unsupported' }
 	| { kind: 'error'; message: string };
 
@@ -62,7 +61,6 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 			if (
 				result === 'set' ||
 				result === 'declined' ||
-				result === 'opened-settings' ||
 				result === 'unsupported'
 			) {
 				setAssociateStatus( { kind: result } );
@@ -142,16 +140,6 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 							<Notice.Description>
 								{ __(
 									'MarkBricks is now the default app for Markdown files.',
-									'mark-bricks'
-								) }
-							</Notice.Description>
-						</Notice.Root>
-					) }
-					{ associateStatus.kind === 'opened-settings' && (
-						<Notice.Root intent="info">
-							<Notice.Description>
-								{ __(
-									'Opened the system settings. Select MarkBricks under the .md file type to finish.',
 									'mark-bricks'
 								) }
 							</Notice.Description>

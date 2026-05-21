@@ -30,8 +30,9 @@ fn take_pending_open_files() -> Vec<String> {
 
 /// Result variants for `set_as_default_markdown_handler`.
 /// - `"set"`: we changed the default handler directly.
-/// - `"opened-settings"`: we punted to the OS settings UI (Windows).
+/// - `"declined"`: the user dismissed the macOS confirmation.
 /// - `"unsupported"`: this platform has no in-app path.
+/// - `"idle"`: we opened the OS settings (Windows); no outcome to report.
 #[tauri::command]
 fn set_as_default_markdown_handler() -> Result<String, String> {
     #[cfg(target_os = "macos")]
@@ -184,7 +185,7 @@ fn open_windows_default_apps_settings() -> Result<String, String> {
         .args(["/c", "start", "", "ms-settings:defaultapps"])
         .spawn()
         .map_err(|e| e.to_string())?;
-    Ok("opened-settings".to_string())
+    Ok("idle".to_string())
 }
 
 fn is_markdown_path(s: &str) -> bool {
