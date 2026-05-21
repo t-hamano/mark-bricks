@@ -1,7 +1,7 @@
 use std::path::Path;
-use std::sync::Mutex;
+use std::sync::{Mutex, OnceLock};
 
-use tauri::{Emitter, Manager, State};
+use tauri::{Emitter, Manager};
 
 #[tauri::command]
 fn write_text_file(path: String, contents: String) -> Result<(), String> {
@@ -13,12 +13,19 @@ fn read_text_file(path: String) -> Result<String, String> {
     std::fs::read_to_string(&path).map_err(|e| e.to_string())
 }
 
-struct PendingOpenFiles(Mutex<Vec<String>>);
+/// Markdown paths the OS handed us before the frontend attached its
+/// `open-files` listener — cold-start "Open with", argv, or a forwarded
+/// second instance. A process-global buffer rather than Tauri-managed state,
+/// because the single-instance callback can fire before the app's `setup`
+/// hook runs, so `try_state` would return `None` and the paths would be lost.
+fn pending_open_files() -> &'static Mutex<Vec<String>> {
+    static PENDING: OnceLock<Mutex<Vec<String>>> = OnceLock::new();
+    PENDING.get_or_init(|| Mutex::new(Vec::new()))
+}
 
 #[tauri::command]
-fn take_pending_open_files(state: State<'_, PendingOpenFiles>) -> Vec<String> {
-    let mut guard = state.0.lock().unwrap();
-    std::mem::take(&mut *guard)
+fn take_pending_open_files() -> Vec<String> {
+    std::mem::take(&mut *pending_open_files().lock().unwrap())
 }
 
 /// Result variants for `set_as_default_markdown_handler`.
@@ -207,6 +214,13 @@ where
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    // Seed this instance's own argv-provided files before the event loop;
+    // the single-instance callback may fire before `setup` would have run.
+    pending_open_files()
+        .lock()
+        .unwrap()
+        .extend(collect_markdown_paths(std::env::args()));
+
     let mut builder = tauri::Builder::default();
 
     #[cfg(desktop)]
@@ -217,6 +231,12 @@ pub fn run() {
             }
             let paths = collect_markdown_paths(argv);
             if !paths.is_empty() {
+                // Buffer *before* emitting: a still-cold-starting frontend
+                // hasn't attached its `open-files` listener yet, so a bare
+                // emit would be dropped. The buffer lets it drain these via
+                // `take_pending_open_files`. `openFilePath` dedupes by path,
+                // so a file delivered through both routes opens only one tab.
+                pending_open_files().lock().unwrap().extend(paths.clone());
                 let _ = app.emit("open-files", paths);
             }
         }));
@@ -233,11 +253,6 @@ pub fn run() {
             take_pending_open_files,
             set_as_default_markdown_handler
         ])
-        .setup(|app| {
-            let initial = collect_markdown_paths(std::env::args());
-            app.manage(PendingOpenFiles(Mutex::new(initial)));
-            Ok(())
-        })
         .build(tauri::generate_context!())
         .expect("error while building tauri application")
         .run(|app, event| {
@@ -251,9 +266,7 @@ pub fn run() {
                 if paths.is_empty() {
                     return;
                 }
-                if let Some(state) = app.try_state::<PendingOpenFiles>() {
-                    state.0.lock().unwrap().extend(paths.clone());
-                }
+                pending_open_files().lock().unwrap().extend(paths.clone());
                 let _ = app.emit("open-files", paths);
             }
 
