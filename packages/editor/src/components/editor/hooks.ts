@@ -96,18 +96,26 @@ export function useMarkdownDocument( {
 
 	const debouncedEmitMarkdown = useDebounce( emitMarkdown, 500 );
 
-	// Skip the mount run of the block-to-markdown effect so opening the
-	// editor does not emit an onChange before any edit happened.
-	const isInitialRender = useRef( true );
+	// The block tree as first loaded from `content`. While present still
+	// equals it (and nothing was edited), skip emitting. Reference
+	// comparison instead of a one-shot flag stays correct under StrictMode,
+	// whose double-invoked mount effect would otherwise emit and dirty a
+	// freshly opened file.
+	const initialPresentRef = useRef( history.present );
+	const hasUserEditedRef = useRef( false );
 
 	// Convert block edits back into markdown and report them upstream.
 	// Runs for any block change (typing, structural edits, undo/redo)
 	// because they all flow through history.present.
 	useEffect( () => {
-		if ( isInitialRender.current ) {
-			isInitialRender.current = false;
+		if (
+			! hasUserEditedRef.current &&
+			history.present === initialPresentRef.current
+		) {
 			return;
 		}
+		// Latch so undo back to the initial tree still emits.
+		hasUserEditedRef.current = true;
 		if ( ! isVisualMode ) {
 			return;
 		}
