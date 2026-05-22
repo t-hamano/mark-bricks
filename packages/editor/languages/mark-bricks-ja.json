@@ -1,5 +1,5 @@
 {
-	"translation-revision-date": "2026-05-17T14:21:41.193Z",
+	"translation-revision-date": "2026-05-22T03:36:01.803Z",
 	"domain": "mark-bricks",
 	"locale_data": {
 		"mark-bricks": {
@@ -145,6 +145,188 @@
 				"plural-forms": "nplurals=1; plural=0;",
 				"lang": "ja_JP"
 			},
+			"View Posts": [],
+			"View posts": [],
+			"No newer revisions": [],
+			"No older revisions": [],
+			"Revisions %1$s–%2$s": [],
+			"Open revisions screen: %s revisions": [],
+			"site identity\u0004Identity": [],
+			"table footer\u0004Footer label": [],
+			"table header\u0004Header label": [],
+			"verb\u0004Reply": [],
+			"The Classic block is being phased out. It’s recommended to use other blocks for the best editing experience.": [],
+			"The Classic block is being phased out. Convert this content to blocks for the best editing experience, or move it to a Custom HTML block to preserve the markup as-is.": [],
+			"Pseudo state": [],
+			"Viewport": [],
+			"Post type not found.": [],
+			"Image editing tools": [],
+			"Could not save media. %s": [],
+			"These shortcuts work when the image editor has focus.": [],
+			"Shift + Arrow keys": [],
+			"Pan or resize crop (large step)": [],
+			"Zoom out": [],
+			"Zoom in": [],
+			"Arrow keys": [],
+			"Pan": [],
+			"Show handles to adjust the crop box.": [],
+			"Resize crop area": [],
+			"Crop options": [],
+			"When this area is focused, use arrow keys to move the image and plus or minus to zoom. Tab to resize handles and controls.": [],
+			"Crop area": [],
+			"Use arrow keys to resize the crop area. Hold Shift for larger steps.": [],
+			"Crop %1$d%% by %2$d%%": [],
+			"Rotation %d degrees": [],
+			"Zoom %d%%": [],
+			"Flip removed": [],
+			"Flipped vertically": [],
+			"Flipped horizontally": [],
+			"Flipped horizontally and vertically": [],
+			"Media details": [],
+			"Dashboard saved.": [],
+			"Widget modules": [],
+			"Add widgets to start customizing your dashboard.": [],
+			"Your dashboard is empty": [],
+			"This widget encountered an error.": [],
+			"Add widget": [],
+			"Widget list": [],
+			"All customizations will be permanently lost.": [],
+			"Reset dashboard to default?": [],
+			"Add widgets": [],
+			"You do not have permission to install plugins. Please ask a site administrator to install them for you.": [],
+			"Plugins cannot be installed here due to your site configuration. Install them manually using your normal deployment workflow.": [],
+			"https://wordpress.org/plugins/%s/": [],
+			"Where this taxonomy appears: REST API, admin UI, and front-end surfaces.": [],
+			"Whether terms can be displayed in the Tag Cloud widget.": [],
+			"Available in Tag Cloud widget": [],
+			"Whether terms are selectable in the theme nav menu builder.": [],
+			"Available in nav menus": [],
+			"Whether to display a column for the taxonomy on the associated post type list tables.": [],
+			"Show admin column": [],
+			"Show in Quick Edit": [],
+			"Whether to show the taxonomy in the admin menu. Has no effect when Show admin UI is off; the value is preserved either way.": [],
+			"Show in admin menu": [],
+			"Whether to generate a default admin interface for managing terms.": [],
+			"Show admin UI": [],
+			"Whether front-end queries (e.g. ?taxonomy=…&term=…) can return terms from this taxonomy.": [],
+			"Publicly queryable": [],
+			"Required for the block editor. Turn off only for taxonomies that should not be exposed via REST.": [],
+			"View terms": [],
+			"Duplicate taxonomy": [],
+			"Failed to duplicate taxonomy.": [],
+			"taxonomy\u0004%s (Copy)": [],
+			"Failed to create post type.": [],
+			"Core identity, taxonomies, supports, and activation.": [],
+			"Edit this post type. Expand the Labels section to adjust labels.": [],
+			"Define a new post type. Fill in the essentials under General; expand Labels to customize.": [],
+			"Quick edit post type": [],
+			"Failed to update post type.": [],
+			"\"%s\" post type updated.": [],
+			"Override the text WordPress shows in admin lists, menus, and forms. Auto-fill replaces every label below with values derived from the current plural and singular names — including any you have already customized. Clearing removes all overrides so WordPress falls back to its defaults. If you rename the post type after auto-filling, click Auto-fill again to keep them in sync.": [],
+			"Screen reader text for the admin list table.": [],
+			"Items list": [],
+			"Screen reader text for the admin list pagination.": [],
+			"Items list navigation": [],
+			"Screen reader text for the admin list filter controls.": [],
+			"Filter posts list": [],
+			"Filter items list": [],
+			"Uploaded to this post": [],
+			"Uploaded to this item": [],
+			"Shown in the media library uploader.": [],
+			"Insert into post": [],
+			"Insert into item": [],
+			"Shown above the parent dropdown. Not used on non-hierarchical post types.": [],
+			"Parent Page:": [],
+			"Title of the Attributes meta box. Not used on non-hierarchical post types.": [],
+			"Post Attributes": [],
+			"Used in the navigation menus block when adding a link to the post type archive.": [],
+			"Post Archives": [],
+			"No posts found in Trash.": [],
+			"Not found in trash": [],
+			"Shown in the admin list when no posts match.": [],
+			"Search Posts": [],
+			"Used as the link label for the post type archive.": [],
+			"View items": [],
+			"New item": [],
+			"Edit Post": [],
+			"Shown in the admin menu and on toolbar buttons.": [],
+			"View pages": [],
+			"Duplicate post type": [],
+			"Failed to duplicate post type.": [],
+			"\"%s\" post type created.": [],
+			"post type\u0004%s (Copy)": [],
+			"One or more taxonomies that should be associated with this post type.": [],
+			"This post type key is already in use.": [],
+			"Lower case letters, numbers, underscores, and dashes only. Maximum length: 20 characters.": [],
+			"Changing the key renames the post type — existing posts may become inaccessible until a migration updates the database.": [],
+			"Post type key": [],
+			"Editor features and metadata enabled for posts of this type.": [],
+			"Supports": [],
+			"Required for the block editor. Disable only if posts of this type should not be available via the REST API.": [],
+			"Show in REST API": [],
+			"Whether the post type has an archive page (e.g. /book/). Requires permalink rewrite rules to be flushed after enabling.": [],
+			"Has archive": [],
+			"When on, posts of this type can have parent-child relationships like pages, and the parent picker is shown in the editor. When off, they behave like posts.": [],
+			"Whether the post type is intended for use publicly either via the admin interface or by front-end users.": [],
+			"Optional summary of the post type. Shown in admin UIs that surface post type details.": [],
+			"Post formats": [],
+			"Trackbacks": [],
+			"%s list": [],
+			"%s list navigation": [],
+			"Filter %s list": [],
+			"Use as featured image": [],
+			"Uploaded to this %s": [],
+			"Insert into %s": [],
+			"%s Attributes": [],
+			"%s Archives": [],
+			"No %s found in Trash.": [],
+			"+%d": [],
+			"%d more item": [],
+			"Show %d more": [],
+			"Enabled and registered with WordPress when active.": [],
+			"Some errors occurred while deleting the post types: %s": [],
+			"Failed to delete post types.": [],
+			"Failed to delete post type.": [],
+			"%d post type deleted.": [],
+			"\"%s\" post type deleted.": [],
+			"Some errors occurred while deactivating the post types: %s": [],
+			"An error occurred while deactivating the post type: %s": [],
+			"Failed to deactivate post types.": [],
+			"Failed to deactivate post type.": [],
+			"%d post type deactivated.": [],
+			"Post type deactivated.": [],
+			"Some errors occurred while activating the post types: %s": [],
+			"An error occurred while activating the post type: %s": [],
+			"Failed to activate post types.": [],
+			"Failed to activate post type.": [],
+			"%d post type activated.": [],
+			"Post type activated.": [],
+			"Post Types": [],
+			"Sorry, you are not allowed to view guidelines.": [],
+			"Enables a UI for creating and managing custom taxonomies and custom post types under Settings.": [],
+			"Enables a dedicated route-based media editor screen for editing media items (metadata and content).": [],
+			"Media Editor (Route)": [],
+			"Enables UI changes aimed at deprecating the Classic block, including prompts on existing Classic blocks to migrate their content to blocks or to a Custom HTML block.": [],
+			"Classic block deprecation": [],
+			"Dashboard identifier as produced by the build pipeline.": [],
+			"Widget type names must contain a namespace prefix. Example: my-plugin/my-custom-widget-type": [],
+			"Widget type names must not contain uppercase characters.": [],
+			"Widget type names must be strings.": [],
+			"Script-module handle for the widget metadata entry point.": [],
+			"Script-module handle for the widget render entry point.": [],
+			"Sorry, you are not allowed to view widget modules.": [],
+			"Invalid widget module name.": [],
+			"Widget module name including namespace.": [],
+			"Add post type": [],
+			"User post type": [],
+			"User post types": [],
+			"Content Types": [],
+			"Number of terms in this taxonomy.": [],
+			"The post type key \"%s\" is reserved by an existing post type.": [],
+			"Another user-defined post type already uses this key.": [],
+			"Post type keys must be 1–20 characters and may only contain lowercase letters, numbers, hyphens, and underscores.": [],
+			"Number of posts of this post type, matching the count shown in the admin list table's \"All\" view.": [],
+			"Typed post type configuration.": [],
 			"Edit pattern": [ "パターンを編集" ],
 			"Dimension size name\u0004100%": [ "100%" ],
 			"Dimension size name\u000475%": [ "75%" ],
@@ -291,10 +473,6 @@
 			],
 			"Keep editing": [ "編集を続行" ],
 			"Could not save image. %s": [ "画像を保存できませんでした。%s" ],
-			"Drag the crop edges to resize freely. When off, the crop is fixed to the selected ratio.": [
-				"切り抜きの端をドラッグして自由にサイズを変更できます。オフの場合、切り抜きは選択した比率に固定されます。"
-			],
-			"Freeform crop": [ "自由な切り抜き" ],
 			"Fine rotation": [ "回転の微調整" ],
 			"Flip vertical": [ "垂直に反転" ],
 			"Flip horizontal": [ "水平に反転" ],
@@ -333,7 +511,6 @@
 				"サイトタイトルブロックを介してサイトのレイアウト内に表示されます。"
 			],
 			"Replace %s": [ "%sを置換" ],
-			"Identity": [ "識別情報" ],
 			"Theme activated.": [ "テーマを有効化しました。" ],
 			"Theme activated and site updated.": [
 				"テーマを有効化し、サイトを更新しました。"
@@ -414,8 +591,7 @@
 			"modal title\u0004Manage allowed blocks": [
 				"許可するブロックを管理"
 			],
-			"State": [ "状態" ],
-			"State: %s": [ "状態: %s" ],
+			"States": [],
 			"Minimum width": [ "最小幅" ],
 			"Indent all paragraphs": [ "すべての段落をインデントする" ],
 			"Indents the first line of each paragraph after the first one.": [
@@ -547,8 +723,6 @@
 			"Check that your file contains valid JSON markup and try again.": [
 				"ファイルに正しい JSON マークアップが含まれていることを確認してから、もう一度お試しください。"
 			],
-			"Expand %s guidelines": [ "%s ガイドラインを開く" ],
-			"Collapse %s guidelines": [ "%s ガイドラインを閉じる" ],
 			"Focus-visible": [ "focus-visible" ],
 			"Focus": [ "focus" ],
 			"Visited": [ "visited" ],
@@ -572,12 +746,8 @@
 			"Control features in the AI plugin": [ "AI プラグインの制御機能" ],
 			"Activate the AI plugin": [ "AI プラグインを有効化" ],
 			"Install the AI plugin": [ "AI プラグインをインストール" ],
-			"The <strong>AI plugin</strong> can use your connectors to generate featured images, alt text, titles, excerpts and more. <a>Learn more</a>": [
-				"<strong>AI プラグイン</strong>はコネクタを使用して、アイキャッチ画像、代替テキスト、タイトル、抜粋などを生成できます。<a>さらに詳しく</a>"
-			],
-			"The <strong>AI plugin</strong> is installed. Connect a provider below to generate featured images, alt text, titles, excerpts, and more. <a>Learn more</a>": [
-				"<strong>AI プラグイン</strong>がインストールされています。以下のプロバイダーと接続すると、アイキャッチ画像、代替テキスト、タイトル、抜粋などを生成できます。<a>さらに詳しく</a>"
-			],
+			"The <strong>AI plugin</strong> can use your AI connectors to generate featured images, alt text, titles, excerpts and more. <a>Learn more</a>": [],
+			"The <strong>AI plugin</strong> is installed. Connect an AI provider below to generate featured images, alt text, titles, excerpts, and more. <a>Learn more</a>": [],
 			"The <strong>AI plugin</strong> is ready to use. You can use it to generate featured images, alt text, titles, excerpts and more. <a>Learn more</a>": [
 				"<strong>AI プラグイン</strong> はすぐに使用できます。このプラグインを使用するとアイキャッチ画像、代替テキスト、タイトル、抜粋などを生成できます。<a>さらに詳しく</a>"
 			],
@@ -730,9 +900,6 @@
 				"キーを変更するとタクソノミー名が変更されます。既存のタームは、データベースを更新するマイグレーションが実行されるまでアクセスできなくなる可能性があります。"
 			],
 			"Taxonomy key": [ "タクソノミーキー" ],
-			"Active taxonomies are enabled and registered with WordPress.": [
-				"タクソノミーを有効化し、WordPress に登録しました。"
-			],
 			"When on, terms behave like categories with parent-child relationships. When off, terms behave like tags.": [
 				"オンにすると、タームは親子関係を持ち、カテゴリーのように動作します。オフにすると、タグのように動作します。"
 			],
@@ -1007,9 +1174,6 @@
 				"新しいダッシュボード体験を有効化する。サイズ変更、並び順変更可能なウィジェット。プラグインが登録可能、ユーザーがカスタマイズ可能。"
 			],
 			"New Dashboard experience": [ "新しいダッシュボード体験" ],
-			"Enables a UI for creating and managing custom taxonomies under Settings. Custom post types will be explored soon.": [
-				"カスタムタクソノミーの作成、管理 UI を「設定」の下で有効化する。カスタム投稿タイプも予定されています。"
-			],
 			"Content types": [ "コンテンツタイプ" ],
 			"Enables guidelines feature for managing editorial voice and tone guidelines under Settings.": [
 				"ガイドライン機能を有効化する。編集上の方針やトーンに関するガイドラインを「設定」の下で管理できます。"
@@ -1041,9 +1205,6 @@
 				"切り抜き、調整、メタデータ用の画像編集インプレースモーダルを有効化する。画像ブロックのようにブロックで開き、ナビゲーションは現在の投稿から切り替わりません。"
 			],
 			"Media Editor Modal": [ "メディアエディターモーダル" ],
-			"Adds an \"Edit media\" action on image blocks for editing the attached media item (metadata and content) in the editor.": [
-				"画像ブロックに「メディアを編集」操作を追加する。添付されたメディア項目 (メタデータとコンテンツ) をエディター内で編集できます。"
-			],
 			"experiments group name\u0004Media": [ "メディア" ],
 			"experiments group name\u0004Blocks": [ "ブロック" ],
 			"Dashboard (Beta)": [ "ダッシュボード (ベータ)" ],
@@ -1273,7 +1434,6 @@
 			"Parent block is hidden on %s": [ "親ブロックは %s で非表示" ],
 			"Block is hidden on %s": [ "ブロックは %s で非表示" ],
 			"%1$d of %2$d Item": [ "%1$d / %2$d 項目" ],
-			"Media Editor": [ "メディアエディター" ],
 			"Block pattern description\u0004A navigation overlay with vertically and horizontally centered navigation": [
 				"ナビゲーションオーバーレイ、縦と横で中央揃えしたナビゲーション"
 			],
@@ -1542,7 +1702,7 @@
 			"Run abilities and workflows": [ "アビリティとワークフローを実行" ],
 			"Empty.": [ "空。" ],
 			"Enables the Workflow Palette for running workflows composed of abilities, from a unified interface.": [
-				"ワークフローパレットを有効化する。アクティビティで構成されたワークフローを統一されたインターフェースから実行できます。"
+				"ワークフローパレットを有効化する。アビリティで構成されたワークフローを統一されたインターフェースから実行できます。"
 			],
 			"Workflow Palette": [ "ワークフローパレット" ],
 			"Script modules to load into the import map.": [
@@ -1603,9 +1763,7 @@
 				"新しいセクションを導入し、コンテンツを整理して、訪問者 (および検索エンジン) がコンテンツの構造を理解しやすくします。"
 			],
 			"Embed an X post.": [ "X 投稿を埋め込む。" ],
-			"If this breadcrumbs block appears in a template or template part that’s shown on the homepage, enable this option to display the breadcrumb trail. Otherwise, this setting has no effect.": [
-				"このパンくずリストブロックが、ホームページ上に表示されるテンプレートまたはテンプレートパーツ内にある場合は、このオプションを有効にしてパンくずリストを表示してください。それ以外の場合、この設定に効果はありません。"
-			],
+			"If this Breadcrumbs block appears in a template or template part that’s shown on the homepage, enable this option to display the breadcrumb trail. Otherwise, this setting has no effect.": [],
 			"Show on homepage": [ "ホームページ上に表示" ],
 			"Finish editing a design.": [ "デザインの編集を終了する。" ],
 			"The page you're looking for does not exist": [
@@ -3253,6 +3411,7 @@
 			"Some errors occurred while reverting the items: %s": [
 				"項目を元に戻す際に複数のエラーが発生しました: %s"
 			],
+			"An error occurred while deleting the post type: %s": [],
 			"An error occurred while reverting the items: %s": [
 				"項目を元に戻す際にエラーが発生しました: %s"
 			],
@@ -3804,6 +3963,7 @@
 			"Patterns that are kept in sync across the site.": [
 				"サイト全体で同期されるパターン。"
 			],
+			"Are you sure you want to delete %d post type?": [],
 			"Empty pattern": [ "空のパターン" ],
 			"An error occurred while deleting the items.": [
 				"項目を削除中にエラーが発生しました。"
@@ -3892,7 +4052,6 @@
 			"Image size option for resolution control\u0004Thumbnail": [
 				"サムネイル"
 			],
-			"Scale": [ "スケール" ],
 			"Scale down the content to fit the space if it is too big. Content that is too small will have additional padding.": [
 				"大きなコンテンツはスペースに合わせて縮小されます。小さなコンテンツにはパディングが追加されます。"
 			],
@@ -4034,6 +4193,7 @@
 			"https://wordpress.org/documentation/article/page-post-settings-sidebar/#excerpt": [
 				"https://wordpress.org/documentation/article/page-post-settings-sidebar/#excerpt"
 			],
+			"Add New Post": [],
 			"https://wordpress.org/documentation/article/embeds/": [
 				"https://wordpress.org/documentation/article/embeds/"
 			],
@@ -4581,6 +4741,7 @@
 			"Right border": [ "右枠線" ],
 			"Left border": [ "左枠線" ],
 			"Top border": [ "上枠線" ],
+			"Reset to default": [ "デフォルトに戻す" ],
 			"Border color picker.": [ "枠線のカラーピッカー。" ],
 			"Border color and style picker.": [ "枠線とスタイルピッカー。" ],
 			"Link sides": [ "まとめて指定する" ],
@@ -5024,6 +5185,7 @@
 			],
 			"Link to comment": [ "コメントへのリンク" ],
 			"Link to authors URL": [ "投稿者 URL へのリンク" ],
+			"New %s": [ "新規%s" ],
 			"Choose an existing %s or create a new one.": [
 				"既存の%sを選択するか、新規に作成します。"
 			],
@@ -5919,6 +6081,7 @@
 			],
 			"Image, Date, & Title": [ "画像、日付、タイトル" ],
 			"Title & Date": [ "タイトルと日付" ],
+			"Posts list": [],
 			"Font weight": [ "フォントの太さ" ],
 			"Font style": [ "フォントスタイル" ],
 			"%1$d %2$s": [ "%1$d %2$s" ],
@@ -6266,6 +6429,7 @@
 			"survey": [ "アンケート" ],
 			"social": [ "ソーシャル" ],
 			"Loading…": [ "読み込み中 ..." ],
+			"Customize": [],
 			"Add template": [ "テンプレートを追加" ],
 			"Global Styles": [ "グローバルスタイル" ],
 			"Empty template": [ "空のテンプレート" ],
@@ -6283,8 +6447,6 @@
 			"Post Author": [ "投稿者" ],
 			"Choose": [ "選択" ],
 			"Theme": [ "テーマ" ],
-			"Footer label": [ "フッターラベル" ],
-			"Header label": [ "ヘッダーラベル" ],
 			"The description will be displayed in the menu if the current theme supports it.": [
 				"使用中のテーマが対応している場合はメニューに説明が表示されます。"
 			],
@@ -6658,6 +6820,7 @@
 			"This image has an empty alt attribute; its file name is %s": [
 				"画像に alt 属性が指定されていません。ファイル名: %s"
 			],
+			"Posts list navigation": [],
 			"All Blocks": [ "すべてのブロック" ],
 			"Link inserted.": [ "リンクを挿入しました。" ],
 			"Warning: the link has been inserted but may have errors. Please test it.": [
@@ -6817,6 +6980,7 @@
 				"公開前チェックを常に表示する。"
 			],
 			"Take over": [ "引き継ぐ" ],
+			"All Posts": [ "投稿一覧" ],
 			"Another user is currently working on this post (<PreviewLink />), which means you cannot make changes, unless you take over.": [
 				"他のユーザーが現在この投稿を編集中です (<PreviewLink />)。引き継ぎの操作を行わない限り、変更を加えることはできません。"
 			],
@@ -6869,6 +7033,7 @@
 			],
 			"Title": [ "タイトル" ],
 			"Fullscreen mode": [ "フルスクリーンモード" ],
+			"View Post": [],
 			"Beautiful landscape": [ "美しい風景" ],
 			"Close panel": [ "パネルを閉じる" ],
 			"Convert to Classic Block": [ "クラシックブロックに変換" ],
@@ -7084,6 +7249,7 @@
 			"Inline image": [ "インライン画像" ],
 			"Available block types": [ "利用可能なブロックタイプ" ],
 			"Transform to": [ "変換:" ],
+			"Remove block": [ "ブロックを削除" ],
 			"Open publish panel": [ "公開パネルを開く" ],
 			"Large": [ "大" ],
 			"Show download button": [ "ダウンロードボタンを表示" ],
@@ -7130,6 +7296,7 @@
 			"Showing large initial letter.": [ "先頭文字を大きく表示します。" ],
 			"Remove item": [ "項目を削除" ],
 			"Color code: %s": [ "カラーコード: %s" ],
+			"Whether to show the taxonomy in the Quick/Bulk Edit panel.": [],
 			"Whether a taxonomy is intended for use publicly either via the admin interface or by front-end users.": [
 				"タクソノミーが管理画面またはサイト上で表示されることを想定しているかどうか。"
 			],
@@ -7166,6 +7333,7 @@
 			"term\u0004%s removed": [ "%sを削除しました" ],
 			"term\u0004%s added": [ "%sを追加しました" ],
 			"imperative verb\u0004Preview": [ "プレビュー" ],
+			"New Post": [],
 			"Trashing failed": [ "ゴミ箱に入れられません" ],
 			"Updating failed.": [ "更新に失敗しました。" ],
 			"Scheduling failed.": [ "予約投稿に失敗しました。" ],
@@ -7224,6 +7392,7 @@
 			"Standard": [ "標準" ],
 			"Aside": [ "アサイド" ],
 			"Featured image": [ "アイキャッチ画像" ],
+			"Remove featured image": [ "アイキャッチ画像を削除" ],
 			"Set as featured image": [ "アイキャッチ画像として設定" ],
 			"Learn more about manual excerpts": [
 				"手動抜粋についてさらに詳しく"
@@ -7451,6 +7620,8 @@
 			"Revisions": [ "リビジョン" ],
 			"%s ago": [ "%s前" ],
 			"%s from now": [ "今から%s" ],
+			"Widget type \"%s\" is not registered.": [],
+			"Widget type \"%s\" is already registered.": [],
 			"Icon names must contain a namespace prefix. Example: my-plugin/my-custom-icon": [
 				"アイコン名には名前空間接頭詞が必要です。例: my-plugin/my-custom-icon"
 			],
