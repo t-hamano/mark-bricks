@@ -18,7 +18,7 @@ import {
 import type { FormatEditProps } from './types';
 
 const name = 'mark-bricks/clear-formatting';
-const title = __( 'Clear formatting', 'mark-bricks' );
+const title = () => __( 'Clear formatting', 'mark-bricks' );
 
 function Edit( { value, onChange, onFocus }: FormatEditProps ) {
 	const formatTypes = useSelect(
@@ -45,7 +45,7 @@ function Edit( { value, onChange, onFocus }: FormatEditProps ) {
 		<BlockControls group="inline">
 			<ToolbarButton
 				icon={ cancelCircleFilled }
-				title={ title }
+				title={ title() }
 				onClick={ onClick }
 			/>
 		</BlockControls>

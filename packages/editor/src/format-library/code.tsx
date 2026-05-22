@@ -14,7 +14,7 @@ import { toggleFormat } from '@wordpress/rich-text';
 import type { FormatEditProps } from './types';
 
 const name = 'core/code';
-const title = __( 'Inline code', 'mark-bricks' );
+const title = () => __( 'Inline code', 'mark-bricks' );
 
 function Edit( { isActive, value, onChange, onFocus }: FormatEditProps ) {
 	const onClick = () => {
@@ -28,7 +28,7 @@ function Edit( { isActive, value, onChange, onFocus }: FormatEditProps ) {
 			<BlockControls group="inline">
 				<ToolbarButton
 					icon={ codeIcon }
-					title={ title }
+					title={ title() }
 					onClick={ onClick }
 					isActive={ isActive }
 					shortcut={ displayShortcut.access( 'x' ) }

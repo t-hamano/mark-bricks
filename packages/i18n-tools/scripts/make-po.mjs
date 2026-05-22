@@ -1,13 +1,6 @@
 import { readFile, writeFile, access } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import gettextParser from 'gettext-parser';
-
-const __dirname = path.dirname( fileURLToPath( import.meta.url ) );
-const ROOT = path.resolve( __dirname, '..' );
-const LANGUAGES_DIR = path.join( ROOT, 'languages' );
-const SLUG = 'mark-bricks';
-const POT_PATH = path.join( LANGUAGES_DIR, `${ SLUG }.pot` );
 
 async function exists( p ) {
 	try {
@@ -88,17 +81,27 @@ function countEntries( po ) {
 	return n;
 }
 
-async function main() {
-	const locale = process.argv[ 2 ] || 'ja';
-	const poPath = path.join( LANGUAGES_DIR, `${ SLUG }-${ locale }.po` );
+/**
+ * Merge the POT template into a per-locale .po file, preserving existing
+ * translations. Creates the .po file when missing.
+ *
+ * @param {Object} options
+ * @param {string} options.root   Package root that owns the `languages/` dir.
+ * @param {string} options.slug   Text domain / file slug (e.g. `mark-bricks`).
+ * @param {string} options.locale Locale code (e.g. `ja`).
+ */
+export async function makePo( { root, slug, locale } ) {
+	const languagesDir = path.join( root, 'languages' );
+	const potPath = path.join( languagesDir, `${ slug }.pot` );
+	const poPath = path.join( languagesDir, `${ slug }-${ locale }.po` );
 
-	if ( ! ( await exists( POT_PATH ) ) ) {
+	if ( ! ( await exists( potPath ) ) ) {
 		throw new Error(
-			`POT not found: ${ POT_PATH }. Run \`npm run i18n:make-pot\` first.`
+			`POT not found: ${ potPath }. Run \`npm run i18n:make-pot\` first.`
 		);
 	}
 
-	const pot = gettextParser.po.parse( await readFile( POT_PATH ) );
+	const pot = gettextParser.po.parse( await readFile( potPath ) );
 
 	let mode;
 	let stats;
@@ -124,12 +127,7 @@ async function main() {
 	await writeFile( poPath, out );
 
 	console.log(
-		`✅ ${ mode } ${ path.relative( ROOT, poPath ) }`,
+		`✅ ${ mode } ${ path.relative( root, poPath ) }`,
 		`(total ${ stats.total }, kept ${ stats.kept }, new ${ stats.added }, dropped ${ stats.dropped })`
 	);
 }
-
-main().catch( ( err ) => {
-	console.error( '❌', err );
-	process.exit( 1 );
-} );

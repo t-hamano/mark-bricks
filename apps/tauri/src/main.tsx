@@ -1,18 +1,25 @@
 /**
  * External dependencies
  */
-import { applyLocale } from '@mark-bricks/editor';
+import {
+	applyLocale as applyEditorLocale,
+	registerBlocks,
+	registerFormats,
+} from '@mark-bricks/editor';
 
 /**
  * Internal dependencies
  */
 import { getInitialLanguage } from './preferences';
+import { applyDesktopLocale } from './i18n';
 
 async function main() {
-	// Apply locale BEFORE importing any module that calls `__()` at
-	// module load time.
 	const initialLanguage = await getInitialLanguage();
-	applyLocale( initialLanguage );
+	const locale = applyEditorLocale( initialLanguage );
+
+	applyDesktopLocale( locale );
+	registerBlocks();
+	registerFormats();
 
 	const [ React, { default: ReactDOM }, { App }, { setupPreferences } ] =
 		await Promise.all( [

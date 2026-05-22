@@ -1,0 +1,411 @@
+# Copyright (C) 2026 mark-bricks-desktop
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: mark-bricks-desktop 0.3.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"POT-Creation-Date: 2026-05-22T07:16:16.765Z\n"
+"PO-Revision-Date: 2026-05-22T07:16:17.235Z\n"
+"Last-Translator: Aki Hamano <->\n"
+"Language-Team: Aki Hamano <->\n"
+"X-Generator: @wp-blocks/make-pot 1.6.6\n"
+"Language: ja\n"
+"X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/components/dirty-confirm-dialog/index.tsx:62
+msgid "\"%s\" has unsaved changes. Do you want to save before closing?"
+msgstr "「%s」に保存されていない変更があります。閉じる前に保存しますか？"
+
+#: src/store/reducer.ts:46
+#: src/store/constants.ts:13
+msgid "(Untitled)"
+msgstr "(無題)"
+
+#: src/components/header-actions/index.tsx:235
+#: src/components/about-modal/index.tsx:34
+msgid "About"
+msgstr "MarkBricks について"
+
+#: src/components/header-actions/index.tsx:161
+msgid "Access all block and document tools in a single place"
+msgstr "すべてのブロックツールとドキュメントツールに 1 か所でアクセス"
+
+#: style.css
+#. Author of the generic
+msgid "Aki Hamano"
+msgstr ""
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:52
+msgid "Always open List View"
+msgstr "常にリストビューを開く"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:100
+msgid "Base font size of the content area, in pixels."
+msgstr "コンテンツ領域の基本フォントサイズ (ピクセル単位)。"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:242
+msgid "Block shortcuts"
+msgstr "ブロックショートカット"
+
+#: src/components/dirty-confirm-dialog/index.tsx:75
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/components/preferences-modal/general-panel.tsx:118
+msgid "Check for updates"
+msgstr "アップデートを確認"
+
+#: src/components/preferences-modal/general-panel.tsx:99
+msgid "Check updates automatically"
+msgstr "自動的にアップデートを確認"
+
+#: src/components/preferences-modal/general-panel.tsx:117
+msgid "Checking…"
+msgstr "確認中…"
+
+#: src/components/tabbar/index.tsx:178
+msgid "Close"
+msgstr "閉じる"
+
+# %s: tab title.
+#: src/components/tabbar/index.tsx:276
+msgid "Close %s"
+msgstr "%s を閉じる"
+
+#: src/components/tabbar/index.tsx:187
+msgid "Close other tabs"
+msgstr "他のタブを閉じる"
+
+#: src/hooks/use-shortcuts.ts:77
+msgid "Close the active tab."
+msgstr "アクティブなタブを閉じます。"
+
+#: src/components/preferences-modal/index.tsx:156
+#: src/components/header-actions/index.tsx:81
+#: src/components/header-actions/index.tsx:200
+msgid "Code editor"
+msgstr "コードエディター"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:68
+msgid "Content width"
+msgstr "コンテンツ幅"
+
+#: src/hooks/use-file-open-events.ts:31
+msgid "Could not open the following file:"
+msgid_plural "Could not open the following files:"
+msgstr[0] "次のファイルを開けませんでした:"
+msgstr[1] "次のファイルを開けませんでした:"
+
+#: src/components/editor-placeholder/index.tsx:24
+msgid "Create a new Markdown file or open an existing one to start editing."
+msgstr "新しい Markdown ファイルを作成するか、既存のファイルを開いて編集を始めましょう。"
+
+#: src/hooks/use-shortcuts.ts:41
+msgid "Create a new file."
+msgstr "新しいファイルを作成します。"
+
+#: src/preferences/constants.ts:45
+msgid "Dark"
+msgstr "ダーク"
+
+#: src/components/dirty-confirm-dialog/index.tsx:85
+msgid "Discard"
+msgstr "破棄"
+
+#: src/components/dirty-confirm-dialog/index.tsx:84
+msgid "Discard changes"
+msgstr "変更を破棄"
+
+#: src/components/editor-placeholder/index.tsx:52
+msgid "Drop a Markdown file to open it"
+msgstr "Markdown ファイルをドロップして開く"
+
+#: src/components/header-actions/index.tsx:184
+msgid "Editor"
+msgstr "エディター"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:65
+msgid "Editor styles"
+msgstr "エディタースタイル"
+
+#: src/components/preferences-modal/general-panel.tsx:123
+msgid "File associations"
+msgstr "ファイルの関連付け"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:230
+msgid "File shortcuts"
+msgstr "ファイルショートカット"
+
+#: src/components/header-actions/index.tsx:118
+msgid "Files"
+msgstr "ファイル"
+
+#: src/components/header-actions/index.tsx:170
+msgid "Focus on one block at a time"
+msgstr "一度に 1 つのブロックにフォーカス"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:107
+msgid "Font family"
+msgstr "フォントファミリー"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:88
+#: src/components/preferences-modal/code-editor-panel.tsx:51
+msgid "Font size"
+msgstr "フォントサイズ"
+
+#: src/components/preferences-modal/index.tsx:150
+msgid "General"
+msgstr "一般"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:234
+msgid "Global shortcuts"
+msgstr "グローバルショートカット"
+
+#: src/preferences/constants.ts:72
+msgid "Handwriting"
+msgstr "手書き"
+
+#: src/preferences/constants.ts:52
+msgid "High Contrast Dark"
+msgstr "ハイコントラスト (ダーク)"
+
+#: src/preferences/constants.ts:48
+msgid "High Contrast Light"
+msgstr "ハイコントラスト (ライト)"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:46
+msgid "Highlight misspelled words while editing."
+msgstr "編集中にスペルミスのある単語を強調表示します。"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:213
+#: src/components/header-actions/index.tsx:227
+msgid "Keyboard shortcuts"
+msgstr "キーボードショートカット"
+
+#: src/components/preferences-modal/general-panel.tsx:83
+msgid "Language"
+msgstr "言語"
+
+#: src/preferences/constants.ts:44
+msgid "Light"
+msgstr "ライト"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:250
+msgid "List View shortcuts"
+msgstr "リストビューのショートカット"
+
+# %s: new version number
+#: src/hooks/use-auto-updater.ts:45
+msgid "MarkBricks %s is available. Install now?"
+msgstr "MarkBricks %s が利用可能です。今すぐインストールしますか？"
+
+#: src/components/preferences-modal/general-panel.tsx:141
+msgid "MarkBricks is now the default app for Markdown files."
+msgstr "MarkBricks が Markdown ファイルの既定のアプリになりました。"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:82
+msgid "Maximum width of the content area, in pixels."
+msgstr "コンテンツ領域の最大幅 (ピクセル単位)。"
+
+#: src/preferences/constants.ts:68
+msgid "Monospace"
+msgstr "等幅"
+
+#: src/components/header-actions/index.tsx:126
+msgid "New"
+msgstr "新規"
+
+#: src/components/tabbar/index.tsx:141
+#: src/components/editor-placeholder/index.tsx:35
+msgid "New file"
+msgstr "新規ファイル"
+
+#: src/components/tabbar/index.tsx:124
+msgid "New…"
+msgstr "新規…"
+
+#: src/components/editor-placeholder/index.tsx:21
+msgid "No file open"
+msgstr "開いているファイルがありません"
+
+#: src/hooks/use-shortcuts.ts:49
+msgid "Open a file."
+msgstr "ファイルを開きます。"
+
+#: src/hooks/use-file-open-events.ts:38
+msgid "Open file"
+msgstr "ファイルを開く"
+
+#: src/components/tabbar/index.tsx:150
+#: src/components/editor-placeholder/index.tsx:44
+msgid "Open file…"
+msgstr "ファイルを開く…"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:57
+msgid "Opens the List View panel by default."
+msgstr "デフォルトでリストビューパネルを開きます。"
+
+#: src/components/header-actions/index.tsx:135
+msgid "Open…"
+msgstr "開く…"
+
+#: src/components/header-actions/index.tsx:106
+msgid "Options"
+msgstr "オプション"
+
+#: src/components/preferences-modal/index.tsx:131
+#: src/components/header-actions/index.tsx:245
+msgid "Preferences"
+msgstr "環境設定"
+
+#: src/components/about-modal/index.tsx:46
+msgid "Report an issue"
+msgstr "問題を報告"
+
+#: src/components/preferences-modal/general-panel.tsx:92
+msgid "Restart the app to apply the new language."
+msgstr "新しい言語を適用するにはアプリを再起動してください。"
+
+#: src/components/preferences-modal/code-editor-panel.tsx:94
+msgid "Restore default settings"
+msgstr "デフォルト設定に戻す"
+
+#: src/preferences/constants.ts:60
+msgid "Sans-serif"
+msgstr "サンセリフ"
+
+#: src/components/tabbar/index.tsx:198
+#: src/components/header-actions/index.tsx:102
+#: src/components/header-actions/index.tsx:144
+#: src/components/dirty-confirm-dialog/index.tsx:88
+msgid "Save"
+msgstr "保存"
+
+#: src/components/header-actions/index.tsx:153
+msgid "Save As…"
+msgstr "名前を付けて保存…"
+
+#: src/components/tabbar/index.tsx:209
+msgid "Save as…"
+msgstr "名前を付けて保存…"
+
+#: src/hooks/use-shortcuts.ts:65
+msgid "Save the active file under a new name."
+msgstr "アクティブなファイルを新しい名前で保存します。"
+
+#: src/hooks/use-shortcuts.ts:57
+msgid "Save the active file."
+msgstr "アクティブなファイルを保存します。"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:238
+msgid "Selection shortcuts"
+msgstr "選択ショートカット"
+
+#: src/preferences/constants.ts:64
+msgid "Serif"
+msgstr "セリフ"
+
+#: src/components/preferences-modal/general-panel.tsx:133
+msgid "Set as default for Markdown files"
+msgstr "Markdown ファイルの既定のアプリにする"
+
+#: src/components/preferences-modal/code-editor-panel.tsx:77
+msgid "Show line numbers"
+msgstr "行番号を表示"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:41
+msgid "Spell check"
+msgstr "スペルチェック"
+
+#: src/components/header-actions/index.tsx:169
+msgid "Spotlight mode"
+msgstr "スポットライトモード"
+
+#: src/components/header-actions/index.tsx:174
+msgid "Spotlight mode activated."
+msgstr "スポットライトモードを有効にしました。"
+
+#: src/components/header-actions/index.tsx:178
+msgid "Spotlight mode deactivated."
+msgstr "スポットライトモードを無効にしました。"
+
+#: src/preferences/constants.ts:57
+msgid "System Default"
+msgstr "システムのデフォルト"
+
+#: src/components/preferences-modal/code-editor-panel.tsx:64
+msgid "Tab size"
+msgstr "タブ幅"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:246
+msgid "Text formatting"
+msgstr "テキストの書式設定"
+
+#: src/components/preferences-modal/code-editor-panel.tsx:41
+msgid "Theme"
+msgstr "テーマ"
+
+#: src/components/preferences-modal/general-panel.tsx:151
+msgid ""
+"This platform does not support setting the default app from inside "
+"MarkBricks. Please configure it from your system file manager."
+msgstr "このプラットフォームでは MarkBricks 内から既定のアプリを設定できません。システムのファイルマネージャーから設定してください。"
+
+#: src/components/header-actions/index.tsx:219
+msgid "Tools"
+msgstr "ツール"
+
+#: src/components/header-actions/index.tsx:160
+msgid "Top toolbar"
+msgstr "トップツールバー"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:113
+msgid "Typeface used for the content area."
+msgstr "コンテンツ領域で使用する書体。"
+
+#: src/hooks/use-auto-updater.ts:66
+#: src/components/tabbar/index.tsx:264
+#: src/components/dirty-confirm-dialog/index.tsx:53
+msgid "Unsaved changes"
+msgstr "保存されていない変更"
+
+#: src/hooks/use-auto-updater.ts:35
+#: src/hooks/use-auto-updater.ts:85
+msgid "Update"
+msgstr "アップデート"
+
+#: src/hooks/use-auto-updater.ts:49
+msgid "Update available"
+msgstr "アップデートが利用可能"
+
+# %s: error message
+#: src/hooks/use-auto-updater.ts:81
+msgid "Update check failed: %s"
+msgstr "アップデートの確認に失敗しました: %s"
+
+#: src/components/header-actions/index.tsx:156
+msgid "View"
+msgstr "表示"
+
+#: src/components/preferences-modal/index.tsx:153
+#: src/components/header-actions/index.tsx:189
+msgid "Visual editor"
+msgstr "ビジュアルエディター"
+
+#: src/hooks/use-auto-updater.ts:33
+msgid "You are using the latest version."
+msgstr "最新バージョンを使用しています。"
+
+#: src/hooks/use-auto-updater.ts:61
+msgid "You have unsaved changes. Please save them before updating."
+msgstr "保存されていない変更があります。アップデートする前に保存してください。"
+
+#: style.css
+#. Name of the generic
+msgid "mark-bricks-desktop"
+msgstr ""
