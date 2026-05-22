@@ -10,6 +10,8 @@
 		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"tauri": "tauri",
+		"build:debug": "tauri build --debug --no-bundle",
+		"e2e:smoke": "pnpm --filter @mark-bricks/tauri-e2e smoke",
 		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor && node scripts/bump-version.mjs",
 		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor"
 	},

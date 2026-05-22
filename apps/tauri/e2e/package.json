@@ -1,0 +1,10 @@
+{
+	"name": "@mark-bricks/tauri-e2e",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build:app": "pnpm --filter mark-bricks-desktop exec tauri build --debug --no-bundle",
+		"smoke": "node scripts/smoke-launch.mjs"
+	}
+}
