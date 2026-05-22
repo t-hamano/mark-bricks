@@ -25,6 +25,7 @@ export default [
 	{
 		files: [
 			'{packages,apps}/*/scripts/**/*.{js,mjs,cjs}',
+			'.github/scripts/**/*.{js,mjs,cjs}',
 			'apps/*/e2e/**/*.{js,mjs,cjs}',
 		],
 		rules: {
