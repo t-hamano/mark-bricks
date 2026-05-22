@@ -20,7 +20,7 @@ import { Stack, Tabs, Text } from '@wordpress/ui';
  */
 import {
 	DEFAULT_PREFERENCES,
-	THEME_OPTIONS,
+	getThemeOptions,
 } from '../../preferences/constants';
 
 const DEFAULT_CODE_EDITOR_STYLES =
@@ -43,7 +43,7 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 						size="compact"
 						label={ __( 'Theme', 'mark-bricks' ) }
 						value={ settings.theme }
-						options={ THEME_OPTIONS }
+						options={ getThemeOptions() }
 						onChange={ ( value ) =>
 							onChange( {
 								theme: value as CodeEditorSettings[ 'theme' ],
