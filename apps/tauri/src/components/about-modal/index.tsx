@@ -7,9 +7,14 @@ import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { Badge, Link, Stack, Text } from '@wordpress/ui';
 
+/**
+ * Internal dependencies
+ */
+import { bugs } from '../../../package.json';
+
 export const ABOUT_MODAL_NAME = 'mark-bricks/about';
 
-const REPORT_ISSUE_URL = 'https://example.com/issues';
+const REPORT_ISSUE_URL = bugs.url;
 
 type Props = {
 	name: string;
