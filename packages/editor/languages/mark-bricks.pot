@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-05-17T14:21:25.979Z\n"
+"POT-Creation-Date: 2026-05-22T03:35:37.771Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -44,23 +44,23 @@ msgid "URL"
 msgstr ""
 
 #: src/format-library/link.tsx:117
-#: src/block-library/image/edit.tsx:146
-#: src/block-library/image/edit.tsx:150
+#: src/block-library/image/edit.tsx:148
+#: src/block-library/image/edit.tsx:152
 msgid "Paste or type URL"
 msgstr ""
 
 #: src/format-library/link.tsx:120
-#: src/block-library/image/edit.tsx:231
+#: src/block-library/image/edit.tsx:233
 msgid "Title"
 msgstr ""
 
 #: src/format-library/link.tsx:123
-#: src/block-library/image/edit.tsx:236
+#: src/block-library/image/edit.tsx:238
 msgid "Enter title…"
 msgstr ""
 
 #: src/format-library/link.tsx:124
-#: src/block-library/image/edit.tsx:240
+#: src/block-library/image/edit.tsx:242
 msgid "Shown as a tooltip on hover."
 msgstr ""
 
@@ -69,9 +69,9 @@ msgid "Remove"
 msgstr ""
 
 #: src/format-library/link.tsx:143
-#: src/block-library/image/edit.tsx:165
-#: src/block-library/image/edit.tsx:251
-#: src/block-library/image/edit.tsx:323
+#: src/block-library/image/edit.tsx:167
+#: src/block-library/image/edit.tsx:253
+#: src/block-library/image/edit.tsx:325
 msgid "Apply"
 msgstr ""
 
@@ -89,24 +89,6 @@ msgstr ""
 
 #: src/format-library/bold.tsx:17
 msgid "Bold"
-msgstr ""
-
-#: src/components/list-view-sidebar/index.tsx:47
-#: src/components/editor-header/index.tsx:122
-msgid "Document Overview"
-msgstr ""
-
-#: src/components/list-view-sidebar/index.tsx:68
-#: src/components/inserter-sidebar/index.tsx:161
-msgid "Close"
-msgstr ""
-
-#: src/components/list-view-sidebar/index.tsx:78
-msgid "List View"
-msgstr ""
-
-#: src/components/list-view-sidebar/index.tsx:83
-msgid "Outline"
 msgstr ""
 
 #: src/components/list-view-outline/index.tsx:97
@@ -130,6 +112,24 @@ msgstr ""
 
 #: src/components/list-view-outline/index.tsx:187
 msgid "(Multiple H1 headings are not recommended)"
+msgstr ""
+
+#: src/components/list-view-sidebar/index.tsx:47
+#: src/components/editor-header/index.tsx:122
+msgid "Document Overview"
+msgstr ""
+
+#: src/components/list-view-sidebar/index.tsx:68
+#: src/components/inserter-sidebar/index.tsx:161
+msgid "Close"
+msgstr ""
+
+#: src/components/list-view-sidebar/index.tsx:78
+msgid "List View"
+msgstr ""
+
+#: src/components/list-view-sidebar/index.tsx:83
+msgid "Outline"
 msgstr ""
 
 #: src/components/keyboard-shortcuts/index.tsx:52
@@ -348,48 +348,48 @@ msgstr ""
 msgid "Upload an image from your device or insert from a URL."
 msgstr ""
 
-#: src/block-library/image/edit.tsx:101
-#: src/block-library/image/edit.tsx:336
+#: src/block-library/image/edit.tsx:102
+#: src/block-library/image/edit.tsx:339
 msgid "Browse local file"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:114
+#: src/block-library/image/edit.tsx:116
 msgid "Enter URL or file path"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:189
+#: src/block-library/image/edit.tsx:191
 msgid "Edit alt and title"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:216
+#: src/block-library/image/edit.tsx:218
 msgid "Alt text"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:221
+#: src/block-library/image/edit.tsx:223
 msgid "Enter alt text…"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:225
+#: src/block-library/image/edit.tsx:227
 msgid "Describes the image for screen readers."
 msgstr ""
 
-#: src/block-library/image/edit.tsx:272
+#: src/block-library/image/edit.tsx:274
 msgid "Replace image"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:303
+#: src/block-library/image/edit.tsx:305
 msgid "URL or file path"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:307
+#: src/block-library/image/edit.tsx:309
 msgid "Paste or type URL or file path"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:344
+#: src/block-library/image/edit.tsx:351
 msgid "Reset"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:355
+#: src/block-library/image/edit.tsx:362
 msgid "Failed to load image."
 msgstr ""
 
