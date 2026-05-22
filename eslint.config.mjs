@@ -23,7 +23,10 @@ export default [
 		},
 	},
 	{
-		files: [ '{packages,apps}/*/scripts/**/*.{js,mjs,cjs}' ],
+		files: [
+			'{packages,apps}/*/scripts/**/*.{js,mjs,cjs}',
+			'apps/*/e2e/**/*.{js,mjs,cjs}',
+		],
 		rules: {
 			'no-console': 'off',
 		},
