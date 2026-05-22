@@ -22,6 +22,7 @@
 		"lint": "npm run lint:js && npm run lint:css",
 		"lint:fix": "npm run lint:js:fix && npm run lint:css:fix",
 		"i18n:make-pot": "pnpm -r --if-present i18n:make-pot",
+		"i18n:make-po": "pnpm -r --if-present i18n:make-po",
 		"i18n:make-json": "pnpm -r --if-present i18n:make-json",
 		"type-check": "tsc -p packages/editor/tsconfig.json --noEmit && tsc -p apps/tauri/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.json --noEmit",
 		"test": "pnpm -r --if-present test",
