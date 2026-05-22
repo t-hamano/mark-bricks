@@ -248,3 +248,6 @@ pub fn run() {
             let _ = (app, event);
         });
 }
+
+#[cfg(test)]
+mod tests;
