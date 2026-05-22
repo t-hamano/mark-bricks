@@ -13,7 +13,7 @@ import { dispatch, select } from '@wordpress/data';
  * Internal dependencies
  */
 import tabsStore from '../store';
-import { openDroppedPaths, openFilePath, saveTab } from '.';
+import { openFilePath, saveTab } from '.';
 
 afterEach( () => {
 	clearMocks();
@@ -98,26 +98,5 @@ describe( 'saveTab', () => {
 			{ path: '/docs/save.md', contents: 'edited body' },
 		] );
 		expect( requireTab( '/docs/save.md' ).isDirty ).toBe( false );
-	} );
-} );
-
-describe( 'openDroppedPaths', () => {
-	it( 'opens only files with a configured markdown extension', async () => {
-		const reads: string[] = [];
-		mockIPC( ( cmd, payload ) => {
-			if ( cmd === 'read_text_file' ) {
-				reads.push( ( payload as { path: string } ).path );
-				return '';
-			}
-		} );
-
-		await openDroppedPaths( [
-			'/drop/a.md',
-			'/drop/b.txt',
-			'/drop/c.markdown',
-			'/drop/no-ext',
-		] );
-
-		expect( reads ).toEqual( [ '/drop/a.md', '/drop/c.markdown' ] );
 	} );
 } );

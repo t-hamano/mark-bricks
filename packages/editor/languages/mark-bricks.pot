@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-05-22T03:35:37.771Z\n"
+"POT-Creation-Date: 2026-05-22T13:28:33.985Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -91,6 +91,24 @@ msgstr ""
 msgid "Bold"
 msgstr ""
 
+#: src/components/list-view-sidebar/index.tsx:47
+#: src/components/editor-header/index.tsx:122
+msgid "Document Overview"
+msgstr ""
+
+#: src/components/list-view-sidebar/index.tsx:68
+#: src/components/inserter-sidebar/index.tsx:161
+msgid "Close"
+msgstr ""
+
+#: src/components/list-view-sidebar/index.tsx:78
+msgid "List View"
+msgstr ""
+
+#: src/components/list-view-sidebar/index.tsx:83
+msgid "Outline"
+msgstr ""
+
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
@@ -112,24 +130,6 @@ msgstr ""
 
 #: src/components/list-view-outline/index.tsx:187
 msgid "(Multiple H1 headings are not recommended)"
-msgstr ""
-
-#: src/components/list-view-sidebar/index.tsx:47
-#: src/components/editor-header/index.tsx:122
-msgid "Document Overview"
-msgstr ""
-
-#: src/components/list-view-sidebar/index.tsx:68
-#: src/components/inserter-sidebar/index.tsx:161
-msgid "Close"
-msgstr ""
-
-#: src/components/list-view-sidebar/index.tsx:78
-msgid "List View"
-msgstr ""
-
-#: src/components/list-view-sidebar/index.tsx:83
-msgid "Outline"
 msgstr ""
 
 #: src/components/keyboard-shortcuts/index.tsx:52
@@ -188,14 +188,6 @@ msgstr ""
 msgid "Make the selected text inline code."
 msgstr ""
 
-#: src/components/inserter-sidebar/index.tsx:153
-msgid "Search for blocks"
-msgstr ""
-
-#: src/components/inserter-sidebar/index.tsx:154
-msgid "Search"
-msgstr ""
-
 #: src/components/editor-header/index.tsx:86
 msgid "Close Block Inserter"
 msgstr ""
@@ -214,6 +206,14 @@ msgstr ""
 
 #: src/components/editor-header/index.tsx:121
 msgid "Hide Document Overview"
+msgstr ""
+
+#: src/components/inserter-sidebar/index.tsx:153
+msgid "Search for blocks"
+msgstr ""
+
+#: src/components/inserter-sidebar/index.tsx:154
+msgid "Search"
 msgstr ""
 
 #: src/block-library/table/edit.tsx:237
@@ -304,42 +304,6 @@ msgstr ""
 msgid "Type / to choose a block"
 msgstr ""
 
-#: src/block-library/list-item/edit.tsx:63
-msgid "Outdent"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:70
-msgid "Indent"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:107
-msgid "Toggle task"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:120
-msgid "List text"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:121
-msgid "List"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:132
-msgid "Turn into a regular item"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:133
-msgid "Turn into a task item"
-msgstr ""
-
-#: src/block-library/list/edit.tsx:48
-msgid "Unordered"
-msgstr ""
-
-#: src/block-library/list/edit.tsx:54
-msgid "Ordered"
-msgstr ""
-
 #: src/block-library/image/edit.tsx:85
 msgid "Image"
 msgstr ""
@@ -391,6 +355,42 @@ msgstr ""
 
 #: src/block-library/image/edit.tsx:362
 msgid "Failed to load image."
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:63
+msgid "Outdent"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:70
+msgid "Indent"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:107
+msgid "Toggle task"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:120
+msgid "List text"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:121
+msgid "List"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:132
+msgid "Turn into a regular item"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:133
+msgid "Turn into a task item"
+msgstr ""
+
+#: src/block-library/list/edit.tsx:48
+msgid "Unordered"
+msgstr ""
+
+#: src/block-library/list/edit.tsx:54
+msgid "Ordered"
 msgstr ""
 
 #: src/block-library/html/edit.tsx:43

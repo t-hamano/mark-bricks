@@ -54,17 +54,6 @@ export async function openFilePath( path: string ) {
 	dispatch( tabsStore ).openFileTab( path, contents );
 }
 
-export async function openDroppedPaths( paths: string[] ) {
-	const filteredPaths = paths.filter( ( path ) => {
-		const ext = path.split( '.' ).pop()?.toLowerCase();
-		return ext !== undefined && MARKDOWN_EXTENSIONS.includes( ext );
-	} );
-
-	for ( const path of filteredPaths ) {
-		await openFilePath( path );
-	}
-}
-
 export async function saveActiveFile() {
 	const id = select( tabsStore ).getActiveTabId();
 

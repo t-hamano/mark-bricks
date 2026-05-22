@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-05-22T09:19:58.453Z\n"
+"POT-Creation-Date: 2026-05-22T13:28:34.478Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -104,6 +104,7 @@ msgstr ""
 
 #: src/hooks/use-auto-updater.ts:43
 #: src/hooks/use-auto-updater.ts:93
+#: src/components/preferences-modal/general-panel.tsx:105
 msgid "Update"
 msgstr ""
 
@@ -136,12 +137,12 @@ msgid "New…"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:141
-#: src/components/editor-placeholder/index.tsx:35
+#: src/components/editor-placeholder/index.tsx:38
 msgid "New file"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:150
-#: src/components/editor-placeholder/index.tsx:44
+#: src/components/editor-placeholder/index.tsx:47
 msgid "Open file…"
 msgstr ""
 
@@ -170,47 +171,52 @@ msgid "Close %s"
 msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:41
+#: src/components/preferences-modal/code-editor-panel.tsx:40
+msgid "Settings"
+msgstr ""
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:44
 msgid "Spell check"
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:46
+#: src/components/preferences-modal/visual-editor-panel.tsx:49
 msgid "Highlight misspelled words while editing."
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:52
+#: src/components/preferences-modal/visual-editor-panel.tsx:55
 msgid "Always open List View"
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:57
+#: src/components/preferences-modal/visual-editor-panel.tsx:60
 msgid "Opens the List View panel by default."
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:65
+#: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Editor styles"
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:68
+#: src/components/preferences-modal/visual-editor-panel.tsx:71
 msgid "Content width"
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:82
+#: src/components/preferences-modal/visual-editor-panel.tsx:85
 msgid "Maximum width of the content area, in pixels."
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:88
-#: src/components/preferences-modal/code-editor-panel.tsx:51
+#: src/components/preferences-modal/visual-editor-panel.tsx:91
+#: src/components/preferences-modal/code-editor-panel.tsx:54
 msgid "Font size"
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:100
+#: src/components/preferences-modal/visual-editor-panel.tsx:103
 msgid "Base font size of the content area, in pixels."
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:107
+#: src/components/preferences-modal/visual-editor-panel.tsx:110
 msgid "Font family"
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:113
+#: src/components/preferences-modal/visual-editor-panel.tsx:116
 msgid "Typeface used for the content area."
 msgstr ""
 
@@ -235,56 +241,59 @@ msgid "Code editor"
 msgstr ""
 
 #: src/components/preferences-modal/general-panel.tsx:83
+#: src/components/preferences-modal/general-panel.tsx:88
 msgid "Language"
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:92
+#: src/components/preferences-modal/general-panel.tsx:97
 msgid "Restart the app to apply the new language."
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:99
+#: src/components/preferences-modal/general-panel.tsx:108
 msgid "Check updates automatically"
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:117
+#: src/components/preferences-modal/general-panel.tsx:126
+#: src/components/about-modal/index.tsx:81
 msgid "Checking…"
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:118
+#: src/components/preferences-modal/general-panel.tsx:127
+#: src/components/about-modal/index.tsx:82
 msgid "Check for updates"
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:123
+#: src/components/preferences-modal/general-panel.tsx:132
 msgid "File associations"
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:133
+#: src/components/preferences-modal/general-panel.tsx:142
 msgid "Set as default for Markdown files"
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:141
+#: src/components/preferences-modal/general-panel.tsx:150
 msgid "MarkBricks is now the default app for Markdown files."
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:151
+#: src/components/preferences-modal/general-panel.tsx:160
 msgid ""
 "This platform does not support setting the default app from inside "
 "MarkBricks. Please configure it from your system file manager."
 msgstr ""
 
-#: src/components/preferences-modal/code-editor-panel.tsx:41
+#: src/components/preferences-modal/code-editor-panel.tsx:44
 msgid "Theme"
 msgstr ""
 
-#: src/components/preferences-modal/code-editor-panel.tsx:64
+#: src/components/preferences-modal/code-editor-panel.tsx:67
 msgid "Tab size"
 msgstr ""
 
-#: src/components/preferences-modal/code-editor-panel.tsx:77
+#: src/components/preferences-modal/code-editor-panel.tsx:80
 msgid "Show line numbers"
 msgstr ""
 
-#: src/components/preferences-modal/code-editor-panel.tsx:94
+#: src/components/preferences-modal/code-editor-panel.tsx:97
 msgid "Restore default settings"
 msgstr ""
 
@@ -374,20 +383,16 @@ msgid "Tools"
 msgstr ""
 
 #: src/components/header-actions/index.tsx:235
-#: src/components/about-modal/index.tsx:39
+#: src/components/about-modal/index.tsx:55
 msgid "About"
 msgstr ""
 
-#: src/components/editor-placeholder/index.tsx:21
+#: src/components/editor-placeholder/index.tsx:24
 msgid "No file open"
 msgstr ""
 
-#: src/components/editor-placeholder/index.tsx:24
+#: src/components/editor-placeholder/index.tsx:27
 msgid "Create a new Markdown file or open an existing one to start editing."
-msgstr ""
-
-#: src/components/editor-placeholder/index.tsx:52
-msgid "Drop a Markdown file to open it"
 msgstr ""
 
 # %s: tab title.
@@ -407,6 +412,6 @@ msgstr ""
 msgid "Discard"
 msgstr ""
 
-#: src/components/about-modal/index.tsx:51
+#: src/components/about-modal/index.tsx:85
 msgid "Report an issue"
 msgstr ""
