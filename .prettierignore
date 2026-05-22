@@ -4,5 +4,5 @@ tmp
 src-tauri/target
 src-tauri/gen
 package-lock.json
-languages/mark-bricks-*.json
-!languages/mark-bricks-override-*.json
+**/languages/mark-bricks-*.json
+!**/languages/mark-bricks-override-*.json

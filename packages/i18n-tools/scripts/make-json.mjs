@@ -1,13 +1,6 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import gettextParser from 'gettext-parser';
-
-const __dirname = path.dirname( fileURLToPath( import.meta.url ) );
-const ROOT = path.resolve( __dirname, '..' );
-const LANGUAGES_DIR = path.join( ROOT, 'languages' );
-const SLUG = 'mark-bricks';
-const DEFAULT_LOCALE = 'ja';
 
 // EOT (U+0004) separator between msgctxt and msgid in the Jed key format.
 const CONTEXT_SEPARATOR = String.fromCharCode( 0x04 );
@@ -21,14 +14,14 @@ async function exists( p ) {
 	}
 }
 
-// Convert mark-bricks-<locale>.po into a Jed-style messages dict for the `mark-bricks` domain.
-async function buildPluginMessages( locale ) {
-	const poPath = path.join( LANGUAGES_DIR, `${ SLUG }-${ locale }.po` );
+// Convert <slug>-<locale>.po into a Jed-style messages dict for the `<slug>` domain.
+async function buildPluginMessages( languagesDir, slug, locale ) {
+	const poPath = path.join( languagesDir, `${ slug }-${ locale }.po` );
 	const po = gettextParser.po.parse( await readFile( poPath ) );
 
 	const messages = {
 		'': {
-			domain: SLUG,
+			domain: slug,
 			'plural-forms':
 				po.headers[ 'Plural-Forms' ] ?? 'nplurals=2; plural=(n!=1);',
 			lang: po.headers.Language ?? locale,
@@ -84,44 +77,61 @@ async function buildGutenbergMessages( locale ) {
 	};
 }
 
-async function main() {
-	const locale = process.argv[ 2 ] || DEFAULT_LOCALE;
-
-	const poPath = path.join( LANGUAGES_DIR, `${ SLUG }-${ locale }.po` );
+/**
+ * Compile the per-locale .po into a Jed-style JSON catalog consumable by
+ * `@wordpress/i18n`. Optionally bundles Gutenberg's `default` domain so a
+ * standalone host (the editor package) ships its dependency translations.
+ *
+ * @param {Object}  options
+ * @param {string}  options.root             Package root that owns `languages/`.
+ * @param {string}  options.slug             Text domain / file slug.
+ * @param {string}  options.locale           Locale code (e.g. `ja`).
+ * @param {boolean} options.includeGutenberg Bundle the `default` (Gutenberg) domain.
+ */
+export async function makeJson( {
+	root,
+	slug,
+	locale,
+	includeGutenberg = false,
+} ) {
+	const languagesDir = path.join( root, 'languages' );
+	const poPath = path.join( languagesDir, `${ slug }-${ locale }.po` );
 	if ( ! ( await exists( poPath ) ) ) {
 		throw new Error(
 			`PO file not found: ${ path.relative(
-				ROOT,
+				root,
 				poPath
 			) }. Run \`npm run i18n:make-po -- ${ locale }\` first.`
 		);
 	}
 
-	const plugin = await buildPluginMessages( locale );
-	const gutenberg = await buildGutenbergMessages( locale );
+	const plugin = await buildPluginMessages( languagesDir, slug, locale );
+	const localeData = { [ slug ]: plugin.messages };
+
+	let gutenberg;
+	if ( includeGutenberg ) {
+		gutenberg = await buildGutenbergMessages( locale );
+		localeData.default = gutenberg.messages;
+	}
 
 	const payload = {
 		'translation-revision-date':
 			plugin.revisionDate ?? new Date().toISOString(),
-		domain: SLUG,
-		locale_data: {
-			[ SLUG ]: plugin.messages,
-			default: gutenberg.messages,
-		},
+		domain: slug,
+		locale_data: localeData,
 	};
 
-	const jsonPath = path.join( LANGUAGES_DIR, `${ SLUG }-${ locale }.json` );
+	const jsonPath = path.join( languagesDir, `${ slug }-${ locale }.json` );
 	await writeFile( jsonPath, JSON.stringify( payload ) + '\n' );
 	console.log(
-		`✅ Wrote ${ path.relative( ROOT, jsonPath ) } (${
+		`✅ Wrote ${ path.relative( root, jsonPath ) } (${
 			plugin.translated
-		} app strings, ${
-			Object.keys( gutenberg.messages ).length - 1
-		} gutenberg strings)`
+		} app strings${
+			gutenberg
+				? `, ${
+						Object.keys( gutenberg.messages ).length - 1
+				  } gutenberg strings`
+				: ''
+		})`
 	);
 }
-
-main().catch( ( err ) => {
-	console.error( '❌', err );
-	process.exit( 1 );
-} );

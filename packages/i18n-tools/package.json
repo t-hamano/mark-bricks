@@ -1,0 +1,16 @@
+{
+	"name": "@mark-bricks/i18n-tools",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Shared i18n build tooling (gettext PO/JSON pipeline) for MarkBricks packages.",
+	"author": "Aki Hamano",
+	"license": "GPL-2.0-or-later",
+	"type": "module",
+	"bin": {
+		"mb-i18n": "./scripts/cli.mjs"
+	},
+	"dependencies": {
+		"@wp-blocks/make-pot": "^1.6.6",
+		"gettext-parser": "^9.0.2"
+	}
+}

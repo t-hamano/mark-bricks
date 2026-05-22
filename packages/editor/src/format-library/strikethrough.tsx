@@ -14,7 +14,7 @@ import { toggleFormat } from '@wordpress/rich-text';
 import type { FormatEditProps } from './types';
 
 const name = 'core/strikethrough';
-const title = __( 'Strikethrough', 'mark-bricks' );
+const title = () => __( 'Strikethrough', 'mark-bricks' );
 
 function Edit( { isActive, value, onChange, onFocus }: FormatEditProps ) {
 	const onClick = () => {
@@ -28,7 +28,7 @@ function Edit( { isActive, value, onChange, onFocus }: FormatEditProps ) {
 			<BlockControls group="inline">
 				<ToolbarButton
 					icon={ formatStrikethrough }
-					title={ title }
+					title={ title() }
 					onClick={ onClick }
 					isActive={ isActive }
 					shortcut={ displayShortcut.access( 'd' ) }

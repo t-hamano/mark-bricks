@@ -16,10 +16,10 @@ import { strikethrough } from './strikethrough';
 const formats = [ bold, italic, code, strikethrough, link, clearFormatting ];
 
 export function registerFormats() {
-	formats.forEach( ( { name, ...settings } ) =>
-		registerFormatType(
-			name,
-			settings as unknown as Parameters< typeof registerFormatType >[ 1 ]
-		)
+	formats.forEach( ( { name, title, ...settings } ) =>
+		registerFormatType( name, {
+			...settings,
+			title: title(),
+		} as unknown as Parameters< typeof registerFormatType >[ 1 ] )
 	);
 }

@@ -17,9 +17,9 @@
 	"scripts": {
 		"test": "vitest run",
 		"test:watch": "vitest",
-		"i18n:make-pot": "make-pot . languages --slug=mark-bricks --include \"src/**\" --charset=utf-8 --skip-audit --headers \"email:-\"",
-		"i18n:make-po": "node scripts/make-po.mjs",
-		"i18n:make-json": "node scripts/make-json.mjs"
+		"i18n:make-pot": "mb-i18n make-pot",
+		"i18n:make-po": "mb-i18n make-po",
+		"i18n:make-json": "mb-i18n make-json --gutenberg"
 	},
 	"dependencies": {
 		"@codemirror/commands": "^6.10.3",
@@ -62,9 +62,8 @@
 		"@types/mdast": "^4.0.4",
 		"@types/react": "^18.3.12",
 		"@types/react-dom": "^18.3.1",
+		"@mark-bricks/i18n-tools": "workspace:*",
 		"@types/wordpress__block-editor": "^15.0.6",
-		"@wp-blocks/make-pot": "^1.6.6",
-		"gettext-parser": "^9.0.2",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"sass": "^1.99.0",

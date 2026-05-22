@@ -30,7 +30,7 @@ import {
 import type { FormatEditProps } from './types';
 
 const name = 'core/link';
-const title = __( 'Link', 'mark-bricks' );
+const title = () => __( 'Link', 'mark-bricks' );
 
 type InlineLinkUIProps = {
 	value: RichTextValue;
@@ -184,7 +184,7 @@ function Edit( {
 			<BlockControls group="inline">
 				<ToolbarButton
 					icon={ linkIcon }
-					title={ title }
+					title={ title() }
 					onClick={ openPopover }
 					isActive={ isActive }
 					shortcut={ displayShortcut.primary( 'k' ) }

@@ -112,6 +112,9 @@ importers:
                 specifier: ^18.3.1
                 version: 18.3.1(react@18.3.1)
         devDependencies:
+            '@mark-bricks/i18n-tools':
+                specifier: workspace:*
+                version: link:../../packages/i18n-tools
             '@tauri-apps/cli':
                 specifier: ^2
                 version: 2.11.2
@@ -251,6 +254,9 @@ importers:
                 specifier: ^11.1.0
                 version: 11.1.1
         devDependencies:
+            '@mark-bricks/i18n-tools':
+                specifier: workspace:*
+                version: link:../i18n-tools
             '@types/hast':
                 specifier: ^3.0.4
                 version: 3.0.4
@@ -266,12 +272,6 @@ importers:
             '@types/wordpress__block-editor':
                 specifier: ^15.0.6
                 version: 15.0.6(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-            '@wp-blocks/make-pot':
-                specifier: ^1.6.6
-                version: 1.6.6
-            gettext-parser:
-                specifier: ^9.0.2
-                version: 9.0.2
             react:
                 specifier: ^18.3.1
                 version: 18.3.1
@@ -287,6 +287,15 @@ importers:
             vitest:
                 specifier: ^2.1.9
                 version: 2.1.9(@types/node@25.8.0)(jsdom@25.0.1)(sass@1.99.0)
+
+    packages/i18n-tools:
+        dependencies:
+            '@wp-blocks/make-pot':
+                specifier: ^1.6.6
+                version: 1.6.6
+            gettext-parser:
+                specifier: ^9.0.2
+                version: 9.0.2
 
     storybook:
         dependencies:
