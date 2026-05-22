@@ -55,5 +55,14 @@
 		"stylelint": "^16.26.1",
 		"stylelint-scss": "^6.14.0",
 		"typescript": "~5.8.3"
+	},
+	"pnpm": {
+		"packageExtensions": {
+			"@wp-blocks/make-pot": {
+				"dependencies": {
+					"minimatch": "^10"
+				}
+			}
+		}
 	}
 }
