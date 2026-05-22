@@ -149,12 +149,6 @@ fn markdown_extensions(config: &tauri::Config) -> Vec<String> {
         .collect()
 }
 
-/// Returns the configured Markdown extensions to the frontend.
-#[tauri::command]
-fn get_markdown_extensions(app: tauri::AppHandle) -> Vec<String> {
-    markdown_extensions(app.config())
-}
-
 /// Whether `s` looks like a Markdown file, judged by its file extension against
 /// the configured `exts` (compared case-insensitively).
 fn is_markdown_path(s: &str, exts: &[String]) -> bool {
@@ -224,8 +218,7 @@ pub fn run() {
             write_text_file,
             read_text_file,
             take_pending_open_files,
-            set_as_default_markdown_handler,
-            get_markdown_extensions
+            set_as_default_markdown_handler
         ])
         .build(ctx)
         .expect("error while building tauri application")

@@ -17,14 +17,20 @@ import { dispatch, select } from '@wordpress/data';
  */
 import tabsStore from '../store';
 
+/**
+ * Markdown file extensions, mirroring the `fileAssociations` entry in
+ * tauri.conf.json. Hard-coded so the frontend need not round-trip to the
+ * backend just to populate dialog filters.
+ */
+const MARKDOWN_EXTENSIONS = [ 'md', 'markdown' ];
+
 export function newFile() {
 	dispatch( tabsStore ).openTab();
 }
 
 export async function openFile() {
-	const extensions = await invoke< string[] >( 'get_markdown_extensions' );
 	const path = await openDialog( {
-		filters: [ { name: 'Markdown', extensions } ],
+		filters: [ { name: 'Markdown', extensions: MARKDOWN_EXTENSIONS } ],
 		multiple: false,
 	} );
 
@@ -49,13 +55,12 @@ export async function openFilePath( path: string ) {
 }
 
 export async function openDroppedPaths( paths: string[] ) {
-	const extensions = await invoke< string[] >( 'get_markdown_extensions' );
-	const isMarkdown = ( path: string ) => {
+	const filteredPaths = paths.filter( ( path ) => {
 		const ext = path.split( '.' ).pop()?.toLowerCase();
-		return ext !== undefined && extensions.includes( ext );
-	};
+		return ext !== undefined && MARKDOWN_EXTENSIONS.includes( ext );
+	} );
 
-	for ( const path of paths.filter( isMarkdown ) ) {
+	for ( const path of filteredPaths ) {
 		await openFilePath( path );
 	}
 }
@@ -110,9 +115,8 @@ export async function saveTabAs( id: string ) {
 		return false;
 	}
 
-	const extensions = await invoke< string[] >( 'get_markdown_extensions' );
 	const path = await saveDialog( {
-		filters: [ { name: 'Markdown', extensions } ],
+		filters: [ { name: 'Markdown', extensions: MARKDOWN_EXTENSIONS } ],
 	} );
 
 	if ( typeof path !== 'string' ) {

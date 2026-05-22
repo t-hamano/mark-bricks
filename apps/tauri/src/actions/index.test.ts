@@ -105,9 +105,6 @@ describe( 'openDroppedPaths', () => {
 	it( 'opens only files with a configured markdown extension', async () => {
 		const reads: string[] = [];
 		mockIPC( ( cmd, payload ) => {
-			if ( cmd === 'get_markdown_extensions' ) {
-				return [ 'md', 'markdown' ];
-			}
 			if ( cmd === 'read_text_file' ) {
 				reads.push( ( payload as { path: string } ).path );
 				return '';
