@@ -1,3 +1,5 @@
+## [0.5.1](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.5.0...tauri-v0.5.1) (2026-05-22)
+
 # [0.5.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.4.0...tauri-v0.5.0) (2026-05-22)
 
 ### Bug Fixes
