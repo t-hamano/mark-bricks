@@ -3,7 +3,6 @@ name: Update README Download Links
 on:
     release:
         types: [published]
-    # Manual rerun for an already-published tag, e.g. after re-uploading assets.
     workflow_dispatch:
         inputs:
             tag:

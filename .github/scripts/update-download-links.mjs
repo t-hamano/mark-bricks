@@ -14,10 +14,6 @@ if ( ! tag ) {
 const repo = process.env.GITHUB_REPOSITORY || 't-hamano/mark-bricks';
 const serverUrl = process.env.GITHUB_SERVER_URL || 'https://github.com';
 
-// One primary installer per platform. `id` matches the HTML-comment markers
-// that wrap the link in README.md (e.g. `<!-- download:windows -->...<!--
-// /download:windows -->`); `match` finds the asset by file-name suffix so the
-// version embedded in the name never has to be hardcoded here.
 const platforms = [
 	{
 		id: 'windows',
@@ -36,7 +32,6 @@ const platforms = [
 	},
 ];
 
-// Read the published release's asset names from the GitHub CLI.
 const assetsJson = execFileSync(
 	'gh',
 	[ 'release', 'view', tag, '--repo', repo, '--json', 'assets' ],
@@ -49,8 +44,6 @@ const escapeRegExp = ( value ) =>
 
 let readme = readFileSync( readmePath, 'utf8' );
 
-// Replace only the link sitting between each platform's markers; the markers
-// stay in place so the same README can be updated on every release.
 for ( const { id, text, match } of platforms ) {
 	const asset = assets.find( ( name ) => match.test( name ) );
 	if ( ! asset ) {
