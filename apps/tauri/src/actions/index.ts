@@ -48,6 +48,18 @@ export async function openFilePath( path: string ) {
 	dispatch( tabsStore ).openFileTab( path, contents );
 }
 
+export async function openDroppedPaths( paths: string[] ) {
+	const extensions = await invoke< string[] >( 'get_markdown_extensions' );
+	const isMarkdown = ( path: string ) => {
+		const ext = path.split( '.' ).pop()?.toLowerCase();
+		return ext !== undefined && extensions.includes( ext );
+	};
+
+	for ( const path of paths.filter( isMarkdown ) ) {
+		await openFilePath( path );
+	}
+}
+
 export async function saveActiveFile() {
 	const id = select( tabsStore ).getActiveTabId();
 
