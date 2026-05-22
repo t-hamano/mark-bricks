@@ -24,8 +24,16 @@ const platforms = [
 		text: 'Installer (`.exe`)',
 		match: /_x64-setup\.exe$/,
 	},
-	{ id: 'macos', text: 'Disk image (`.dmg`)', match: /\.dmg$/ },
-	{ id: 'linux', text: 'AppImage', match: /\.AppImage$/ },
+	{
+		id: 'macos',
+		text: 'Disk image (`.dmg`)',
+		match: /\.dmg$/,
+	},
+	{
+		id: 'linux',
+		text: 'AppImage',
+		match: /\.AppImage$/,
+	},
 ];
 
 // Read the published release's asset names from the GitHub CLI.
