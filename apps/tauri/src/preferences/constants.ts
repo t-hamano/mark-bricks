@@ -40,7 +40,7 @@ export const DEFAULT_PREFERENCES = {
 	},
 };
 
-export const THEME_OPTIONS: { value: string; label: string }[] = [
+export const getThemeOptions = (): { value: string; label: string }[] => [
 	{ value: 'vs', label: __( 'Light', 'mark-bricks' ) },
 	{ value: 'vs-dark', label: __( 'Dark', 'mark-bricks' ) },
 	{
@@ -53,7 +53,7 @@ export const THEME_OPTIONS: { value: string; label: string }[] = [
 	},
 ];
 
-export const FONT_FAMILY_OPTIONS: { value: string; label: string }[] = [
+export const getFontFamilyOptions = (): { value: string; label: string }[] => [
 	{ value: '', label: __( 'System Default', 'mark-bricks' ) },
 	{
 		value: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif",

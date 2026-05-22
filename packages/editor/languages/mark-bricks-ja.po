@@ -76,7 +76,7 @@ msgstr "言語を変更"
 
 #: src/components/keyboard-shortcuts/hooks.ts:78
 msgid "Change the block type after adding a new paragraph."
-msgstr "新しい段落を追加した後にブロックタイプを変更。"
+msgstr "新規段落の追加後、ブロックタイプを変更します。"
 
 #: src/block-library/code/edit.tsx:116
 msgid "Choose language…"
@@ -125,7 +125,7 @@ msgstr "スクリーンリーダー用に画像を説明します。"
 
 #: src/components/keyboard-shortcuts/index.tsx:99
 msgid "Display these keyboard shortcuts."
-msgstr "これらのキーボードショートカットを表示。"
+msgstr "これらのキーボードショートカットを表示する。"
 
 #: src/components/list-view-sidebar/index.tsx:47
 #: src/components/editor-header/index.tsx:122
@@ -159,7 +159,7 @@ msgstr "画像の読み込みに失敗しました。"
 
 #: src/components/keyboard-shortcuts/hooks.ts:82
 msgid "Forward-slash"
-msgstr "スラッシュ"
+msgstr "前方スラッシュ"
 
 #: src/block-library/quote/edit.tsx:141
 msgid "GitHub alert type"
@@ -252,7 +252,7 @@ msgstr "選択したテキストをインラインコードにする。"
 
 #: src/components/keyboard-shortcuts/hooks.ts:99
 msgid "Make the selected text italic."
-msgstr "選択したテキストをイタリックにする。"
+msgstr "選択したテキストを斜体にする。"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -304,7 +304,7 @@ msgstr "リンクを削除する。"
 
 #: src/block-library/image/edit.tsx:274
 msgid "Replace image"
-msgstr "画像を置換"
+msgstr "画像の置き換え"
 
 #: src/block-library/image/edit.tsx:351
 msgid "Reset"
@@ -324,7 +324,7 @@ msgstr "ブロックを検索"
 
 #: src/components/keyboard-shortcuts/index.tsx:89
 msgid "Show or hide the List View."
-msgstr "リスト表示を切り替えます。"
+msgstr "リストビューの表示、非表示。"
 
 #: src/format-library/link.tsx:124
 #: src/block-library/image/edit.tsx:242
@@ -337,7 +337,7 @@ msgstr "打ち消し線"
 
 #: src/components/keyboard-shortcuts/hooks.ts:127
 msgid "Strikethrough the selected text."
-msgstr "選択したテキストに打ち消し線を引く。"
+msgstr "選択したテキストに取り消し線を追加する。"
 
 #: src/components/keyboard-shortcuts/index.tsx:76
 msgid "Switch between the visual editor and the code editor."
@@ -382,7 +382,7 @@ msgstr "URL またはファイルパス"
 
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Underline the selected text."
-msgstr "選択したテキストに下線を引く。"
+msgstr "選択したテキストに下線を付ける。"
 
 #: src/components/editor-header/index.tsx:100
 msgid "Undo"

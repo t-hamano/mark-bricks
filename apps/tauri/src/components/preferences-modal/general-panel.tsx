@@ -78,23 +78,32 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 	return (
 		<Tabs.Panel value="general">
 			<Stack direction="column" gap="xl">
-				<SelectControl
-					size="compact"
-					label={ __( 'Language', 'mark-bricks' ) }
-					value={ settings.locale }
-					options={ LOCALES.map( ( l ) => ( {
-						value: l.code,
-						label: l.name,
-					} ) ) }
-					onChange={ ( value ) =>
-						onChange( { locale: value as Locale } )
-					}
-					help={ __(
-						'Restart the app to apply the new language.',
-						'mark-bricks'
-					) }
-				/>
-				<Stack direction="column" gap="lg">
+				<Stack direction="column" gap="md">
+					<Text variant="heading-xl" render={ <h2 /> }>
+						{ __( 'Language', 'mark-bricks' ) }
+					</Text>
+					<SelectControl
+						hideLabelFromVision
+						size="compact"
+						label={ __( 'Language', 'mark-bricks' ) }
+						value={ settings.locale }
+						options={ LOCALES.map( ( l ) => ( {
+							value: l.code,
+							label: l.name,
+						} ) ) }
+						onChange={ ( value ) =>
+							onChange( { locale: value as Locale } )
+						}
+						help={ __(
+							'Restart the app to apply the new language.',
+							'mark-bricks'
+						) }
+					/>
+				</Stack>
+				<Stack direction="column" gap="md">
+					<Text variant="heading-xl" render={ <h2 /> }>
+						{ __( 'Update', 'mark-bricks' ) }
+					</Text>
 					<ToggleControl
 						label={ __(
 							'Check updates automatically',
