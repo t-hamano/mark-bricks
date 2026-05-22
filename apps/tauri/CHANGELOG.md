@@ -1,3 +1,20 @@
+# [0.5.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.4.0...tauri-v0.5.0) (2026-05-22)
+
+### Bug Fixes
+
+-   **repo:** align ja translations with gutenberg wording ([#19](https://github.com/t-hamano/mark-bricks/issues/19)) ([47cd076](https://github.com/t-hamano/mark-bricks/commit/47cd0764a601fece7729760ec3be1786b65a8eb1))
+-   **tauri:** localize preference selects and unify ja shortcut tone ([#22](https://github.com/t-hamano/mark-bricks/issues/22)) ([144196e](https://github.com/t-hamano/mark-bricks/commit/144196e08d294f89c974a3bbb0594308039e86b9))
+-   **tauri:** remove window file drop to restore editor block dragging ([abe74ca](https://github.com/t-hamano/mark-bricks/commit/abe74cadffef3140e89a045709b3967358879285))
+-   **tauri:** source report-issue link from package.json bugs url ([#17](https://github.com/t-hamano/mark-bricks/issues/17)) ([f13297e](https://github.com/t-hamano/mark-bricks/commit/f13297e609a0565dd8a734679f600a3c7127867b))
+
+### Features
+
+-   **repo:** gitignore built i18n dictionaries and cache gutenberg translations ([#23](https://github.com/t-hamano/mark-bricks/issues/23)) ([1b6ce50](https://github.com/t-hamano/mark-bricks/commit/1b6ce500331674bb12d62c0b19db3a2a1c2c150d))
+-   **repo:** localize the tauri app and add shared i18n tooling ([#16](https://github.com/t-hamano/mark-bricks/issues/16)) ([62b66f1](https://github.com/t-hamano/mark-bricks/commit/62b66f1335884c82c3babe2c8671b923adf57d44))
+-   **tauri:** add check-for-updates button to about modal ([#20](https://github.com/t-hamano/mark-bricks/issues/20)) ([ff202ec](https://github.com/t-hamano/mark-bricks/commit/ff202ec843b5234ea33597f2c090084a1f67d886))
+-   **tauri:** group preferences panels into labeled sections ([#21](https://github.com/t-hamano/mark-bricks/issues/21)) ([51ad252](https://github.com/t-hamano/mark-bricks/commit/51ad252461460bb3b078a9159548ec2834c7a90c))
+-   **tauri:** show current version in up-to-date dialog ([#18](https://github.com/t-hamano/mark-bricks/issues/18)) ([adac979](https://github.com/t-hamano/mark-bricks/commit/adac979d41c452e29ff645bde6a13b6e1c0ea4bb))
+
 # [0.4.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.3.0...tauri-v0.4.0) (2026-05-22)
 
 ### Bug Fixes
