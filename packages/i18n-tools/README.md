@@ -56,25 +56,21 @@ pnpm --filter <package> i18n:make-po    # 2. Sync .po against the .pot
 pnpm --filter <package> i18n:make-json  # 3. Build the .json dictionary
 ```
 
-The commands run relative to the package's own directory (`root` defaults to the current working directory), so each host owns its own `languages/` dir and dictionaries.
+Each command runs in the current package directory, so each host owns its own `languages/` dir and dictionaries. The text domain is fixed to `mark-bricks` and `make-pot` scans `src/**` — neither is configurable, since every package in this monorepo follows the same convention.
 
 ## Commands
 
 ```
-mb-i18n make-pot  [--slug=<slug>] [--root=<dir>] [--include=<glob>]
-mb-i18n make-po   [locale] [--slug=<slug>] [--root=<dir>]
-mb-i18n make-json [--slug=<slug>] [--root=<dir>]
+mb-i18n make-pot
+mb-i18n make-po   [locale]
+mb-i18n make-json
 ```
 
-Defaults: `locale=ja`, `slug=mark-bricks`, `root=cwd`, `include=src/**`.
+`make-po` defaults to locale `ja`; `make-json` builds every locale it finds.
 
 ### `make-pot`
 
-Extracts `__()`-family calls from the source files matched by `--include` into `languages/<slug>.pot`, by wrapping the [`@wp-blocks/make-pot`](https://www.npmjs.com/package/@wp-blocks/make-pot) CLI.
-
--   `--include=<glob>` — sources to scan. Default: `src/**`.
--   `--slug=<slug>` — text domain / file slug. Default: `mark-bricks`.
--   `--root=<dir>` — package root that owns the `languages/` dir. Default: cwd.
+Extracts `__()`-family calls from `src/**` into `languages/mark-bricks.pot`, by wrapping the [`@wp-blocks/make-pot`](https://www.npmjs.com/package/@wp-blocks/make-pot) CLI.
 
 ### `make-po`
 

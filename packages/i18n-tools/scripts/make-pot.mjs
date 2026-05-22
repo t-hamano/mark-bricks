@@ -20,18 +20,17 @@ function resolveMakePotBin() {
  * depend only on `@mark-bricks/i18n-tools`.
  *
  * @param {Object} options
- * @param {string} options.root      Package root that owns the `languages/` dir.
- * @param {string} options.slug      Text domain / file slug (e.g. `mark-bricks`).
- * @param {string} [options.include] Glob of sources to scan (default `src/**`).
+ * @param {string} options.root Package root that owns the `languages/` dir.
+ * @param {string} options.slug Text domain / file slug (e.g. `mark-bricks`).
  */
-export function makePot( { root, slug, include = 'src/**' } ) {
+export function makePot( { root, slug } ) {
 	const args = [
 		resolveMakePotBin(),
 		'.',
 		'languages',
 		`--slug=${ slug }`,
 		'--include',
-		include,
+		'src/**',
 		'--charset=utf-8',
 		'--skip-audit',
 		'--headers',
