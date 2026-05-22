@@ -6,8 +6,8 @@
 	"license": "GPL-2.0-or-later",
 	"type": "module",
 	"scripts": {
-		"storybook": "pnpm --filter @mark-bricks/editor i18n:make-json && storybook dev -p 6006 -c .",
-		"build-storybook": "pnpm --filter @mark-bricks/editor i18n:make-json && storybook build -c ."
+		"storybook": "storybook dev -p 6006 -c .",
+		"build-storybook": "storybook build -c ."
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*"

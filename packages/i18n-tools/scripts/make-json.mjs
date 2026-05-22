@@ -1,15 +1,6 @@
-import { access, readdir, readFile, writeFile } from 'node:fs/promises';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { poToJedMessages } from './jed.mjs';
-
-async function exists( p ) {
-	try {
-		await access( p );
-		return true;
-	} catch {
-		return false;
-	}
-}
 
 // Convert <slug>-<locale>.po into a Jed-style messages dict for the `<slug>` domain.
 async function buildPluginMessages( languagesDir, slug, locale ) {
@@ -58,51 +49,63 @@ async function mergeLocalGutenberg( languagesDir, locale, localeData ) {
 }
 
 /**
- * Compile the per-locale .po into a Jed-style JSON catalog consumable by
- * `@wordpress/i18n`, merging any committed Gutenberg dictionaries found next to
- * it. The output is gitignored and regenerated at build time.
+ * Compile every committed `<slug>-<locale>.po` in the package into its Jed-style
+ * JSON catalog for `@wordpress/i18n`, merging any matching committed Gutenberg
+ * dictionary. Locales are discovered from the `.po` files on disk — there is no
+ * locale argument — so adding a `.po` is all it takes for the next build to pick
+ * it up. The output is gitignored and regenerated on install / by hand.
  *
  * @param {Object} options
- * @param {string} options.root   Package root that owns `languages/`.
- * @param {string} options.slug   Text domain / file slug.
- * @param {string} options.locale Locale code (e.g. `ja`).
+ * @param {string} options.root Package root that owns `languages/`.
+ * @param {string} options.slug Text domain / file slug.
  */
-export async function makeJson( { root, slug, locale } ) {
+export async function makeJson( { root, slug } ) {
 	const languagesDir = path.join( root, 'languages' );
-	const poPath = path.join( languagesDir, `${ slug }-${ locale }.po` );
-	if ( ! ( await exists( poPath ) ) ) {
+	const locales = ( await readdir( languagesDir ) )
+		.filter( ( f ) => f.startsWith( `${ slug }-` ) && f.endsWith( '.po' ) )
+		.map( ( f ) => f.slice( `${ slug }-`.length, -'.po'.length ) )
+		.sort();
+
+	if ( locales.length === 0 ) {
 		throw new Error(
-			`PO file not found: ${ path.relative(
+			`No ${ slug }-<locale>.po found in ${ path.relative(
 				root,
-				poPath
-			) }. Run \`npm run i18n:make-po -- ${ locale }\` first.`
+				languagesDir
+			) }. Run \`npm run i18n:make-po\` first.`
 		);
 	}
 
-	const plugin = await buildPluginMessages( languagesDir, slug, locale );
-	const localeData = { [ slug ]: plugin.messages };
-	const gutenbergStrings = await mergeLocalGutenberg(
-		languagesDir,
-		locale,
-		localeData
-	);
+	for ( const locale of locales ) {
+		const plugin = await buildPluginMessages( languagesDir, slug, locale );
+		const localeData = { [ slug ]: plugin.messages };
+		const gutenbergStrings = await mergeLocalGutenberg(
+			languagesDir,
+			locale,
+			localeData
+		);
 
-	const payload = {
-		'translation-revision-date':
-			plugin.revisionDate ?? new Date().toISOString(),
-		domain: slug,
-		locale_data: localeData,
-	};
+		const payload = {
+			'translation-revision-date':
+				plugin.revisionDate ?? new Date().toISOString(),
+			domain: slug,
+			locale_data: localeData,
+		};
 
-	const jsonPath = path.join( languagesDir, `${ slug }-${ locale }.json` );
-	// Minified: this dictionary is gitignored and the bundler re-minifies it on
-	// import, so its on-disk format is read by neither humans nor git.
-	await writeFile( jsonPath, JSON.stringify( payload ) + '\n' );
-	console.log(
-		`✅ Wrote ${ path.relative( root, jsonPath ) } (${
-			plugin.translated
-		} app strings${
-			gutenbergStrings ? `, ${ gutenbergStrings } gutenberg strings` : ''
-		})`
-	);
+		const jsonPath = path.join(
+			languagesDir,
+			`${ slug }-${ locale }.json`
+		);
+		// Minified: this dictionary is gitignored and the bundler re-minifies it
+		// on import, so its on-disk format is read by neither humans nor git.
+		await writeFile( jsonPath, JSON.stringify( payload ) + '\n' );
+		console.log(
+			`✅ Wrote ${ path.relative( root, jsonPath ) } (${
+				plugin.translated
+			} app strings${
+				gutenbergStrings
+					? `, ${ gutenbergStrings } gutenberg strings`
+					: ''
+			})`
+		);
+	}
 }
