@@ -14,7 +14,7 @@ import { Stack, Tabs, Text } from '@wordpress/ui';
  */
 import {
 	DEFAULT_PREFERENCES,
-	FONT_FAMILY_OPTIONS,
+	getFontFamilyOptions,
 } from '../../preferences/constants';
 
 const DEFAULT_EDITOR_STYLES = DEFAULT_PREFERENCES[ 'mark-bricks' ].editorStyles;
@@ -109,7 +109,7 @@ export function VisualEditorPanel( { settings, onChange }: Props ) {
 						size="compact"
 						label={ __( 'Font family', 'mark-bricks' ) }
 						value={ settings.fontFamily }
-						options={ FONT_FAMILY_OPTIONS }
+						options={ getFontFamilyOptions() }
 						onChange={ ( value ) =>
 							onChange( { fontFamily: value } )
 						}

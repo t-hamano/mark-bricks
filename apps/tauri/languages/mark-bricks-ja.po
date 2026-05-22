@@ -83,7 +83,7 @@ msgstr "他のタブを閉じる"
 
 #: src/hooks/use-shortcuts.ts:77
 msgid "Close the active tab."
-msgstr "アクティブなタブを閉じます。"
+msgstr "アクティブなタブを閉じる。"
 
 #: src/components/preferences-modal/index.tsx:156
 #: src/components/header-actions/index.tsx:81
@@ -107,7 +107,7 @@ msgstr "新しい Markdown ファイルを作成するか、既存のファイ�
 
 #: src/hooks/use-shortcuts.ts:41
 msgid "Create a new file."
-msgstr "新しいファイルを作成します。"
+msgstr "新しいファイルを作成。"
 
 #: src/preferences/constants.ts:45
 msgid "Dark"
@@ -235,7 +235,7 @@ msgstr "開いているファイルがありません"
 
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
-msgstr "ファイルを開きます。"
+msgstr "ファイルを開く。"
 
 #: src/hooks/use-file-open-events.ts:38
 msgid "Open file"
@@ -296,11 +296,11 @@ msgstr "名前を付けて保存…"
 
 #: src/hooks/use-shortcuts.ts:65
 msgid "Save the active file under a new name."
-msgstr "アクティブなファイルを新しい名前で保存します。"
+msgstr "アクティブなファイルを新しい名前で保存。"
 
 #: src/hooks/use-shortcuts.ts:57
 msgid "Save the active file."
-msgstr "アクティブなファイルを保存します。"
+msgstr "アクティブなファイルを保存。"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:238
 msgid "Selection shortcuts"
