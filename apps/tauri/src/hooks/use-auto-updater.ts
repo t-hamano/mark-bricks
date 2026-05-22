@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { check } from '@tauri-apps/plugin-updater';
 import { relaunch } from '@tauri-apps/plugin-process';
 import { ask, message } from '@tauri-apps/plugin-dialog';
+import { getVersion } from '@tauri-apps/api/app';
 
 /**
  * WordPress dependencies
@@ -30,7 +31,14 @@ export async function checkForUpdates( { silent = false }: CheckOptions = {} ) {
 		if ( ! update ) {
 			if ( ! silent ) {
 				await message(
-					__( 'You are using the latest version.', 'mark-bricks' ),
+					sprintf(
+						/* translators: %s: current version number */
+						__(
+							'You are using the latest version (%s).',
+							'mark-bricks'
+						),
+						await getVersion()
+					),
 					{
 						title: __( 'Update', 'mark-bricks' ),
 						kind: 'info',
