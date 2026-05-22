@@ -33,7 +33,7 @@ msgstr "MarkBricks について"
 
 #: src/components/header-actions/index.tsx:161
 msgid "Access all block and document tools in a single place"
-msgstr "すべてのブロックツールとドキュメントツールに 1 か所でアクセス"
+msgstr "ブロック・文書ツールを同じ場所にまとめる"
 
 #: style.css
 #. Author of the generic
@@ -66,7 +66,7 @@ msgstr "自動的にアップデートを確認"
 
 #: src/components/preferences-modal/general-panel.tsx:117
 msgid "Checking…"
-msgstr "確認中…"
+msgstr "確認しています ..."
 
 #: src/components/tabbar/index.tsx:178
 msgid "Close"
@@ -147,7 +147,7 @@ msgstr "ファイル"
 
 #: src/components/header-actions/index.tsx:170
 msgid "Focus on one block at a time"
-msgstr "一度に 1 つのブロックにフォーカス"
+msgstr "ひとつのブロックに集中"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:107
 msgid "Font family"
@@ -261,7 +261,7 @@ msgstr "オプション"
 #: src/components/preferences-modal/index.tsx:131
 #: src/components/header-actions/index.tsx:245
 msgid "Preferences"
-msgstr "環境設定"
+msgstr "設定"
 
 #: src/components/about-modal/index.tsx:46
 msgid "Report an issue"
@@ -328,11 +328,11 @@ msgstr "スポットライトモード"
 
 #: src/components/header-actions/index.tsx:174
 msgid "Spotlight mode activated."
-msgstr "スポットライトモードを有効にしました。"
+msgstr "スポットライトモードを有効化しました。"
 
 #: src/components/header-actions/index.tsx:178
 msgid "Spotlight mode deactivated."
-msgstr "スポットライトモードを無効にしました。"
+msgstr "スポットライトモードを停止しました。"
 
 #: src/preferences/constants.ts:57
 msgid "System Default"
@@ -344,7 +344,7 @@ msgstr "タブ幅"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:246
 msgid "Text formatting"
-msgstr "テキストの書式設定"
+msgstr "書式設定"
 
 #: src/components/preferences-modal/code-editor-panel.tsx:41
 msgid "Theme"
