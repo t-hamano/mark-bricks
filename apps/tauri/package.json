@@ -21,6 +21,7 @@
 		"i18n:make-pot": "mb-i18n make-pot",
 		"i18n:make-po": "mb-i18n make-po",
 		"i18n:make-json": "mb-i18n make-json",
+		"preversion": "node scripts/check-releasable.mjs",
 		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor && node scripts/bump-version.mjs",
 		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor"
 	},
