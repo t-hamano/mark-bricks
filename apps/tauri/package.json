@@ -11,6 +11,8 @@
 		"preview": "vite preview",
 		"tauri": "tauri",
 		"build:debug": "tauri build --debug --no-bundle",
+		"test": "vitest run",
+		"test:watch": "vitest",
 		"test:rust": "cargo test --manifest-path src-tauri/Cargo.toml",
 		"e2e:smoke": "pnpm --filter @mark-bricks/tauri-e2e smoke",
 		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor && node scripts/bump-version.mjs",
@@ -44,8 +46,10 @@
 		"@types/react": "^18.3.12",
 		"@types/react-dom": "^18.3.1",
 		"@vitejs/plugin-react": "^4.6.0",
+		"jsdom": "^25.0.1",
 		"sass": "^1.99.0",
 		"typescript": "~5.8.3",
-		"vite": "^7.0.4"
+		"vite": "^7.0.4",
+		"vitest": "^2.1.9"
 	}
 }
