@@ -7,7 +7,7 @@ import { makeJson } from './make-json.mjs';
 const USAGE = `Usage:
   mb-i18n make-pot  [--slug=<slug>] [--root=<dir>] [--include=<glob>]
   mb-i18n make-po   [locale] [--slug=<slug>] [--root=<dir>]
-  mb-i18n make-json [locale] [--slug=<slug>] [--root=<dir>] [--gutenberg]
+  mb-i18n make-json [locale] [--slug=<slug>] [--root=<dir>]
 
 Defaults: locale=ja, slug=mark-bricks, root=cwd, include=src/**`;
 
@@ -48,12 +48,7 @@ async function main() {
 			await makePo( { root, slug, locale } );
 			break;
 		case 'make-json':
-			await makeJson( {
-				root,
-				slug,
-				locale,
-				includeGutenberg: Boolean( flags.gutenberg ),
-			} );
+			await makeJson( { root, slug, locale } );
 			break;
 		default:
 			console.error( USAGE );

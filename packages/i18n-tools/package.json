@@ -9,6 +9,9 @@
 	"bin": {
 		"mb-i18n": "./scripts/cli.mjs"
 	},
+	"exports": {
+		"./jed": "./scripts/jed.mjs"
+	},
 	"dependencies": {
 		"@wp-blocks/make-pot": "^1.6.6",
 		"gettext-parser": "^9.0.2"

@@ -272,6 +272,9 @@ importers:
             '@types/wordpress__block-editor':
                 specifier: ^15.0.6
                 version: 15.0.6(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+            fflate:
+                specifier: ^0.8.2
+                version: 0.8.3
             react:
                 specifier: ^18.3.1
                 version: 18.3.1
@@ -7612,6 +7615,12 @@ packages:
         peerDependenciesMeta:
             picomatch:
                 optional: true
+
+    fflate@0.8.3:
+        resolution:
+            {
+                integrity: sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==,
+            }
 
     file-entry-cache@11.1.3:
         resolution:
@@ -18325,6 +18334,8 @@ snapshots:
     fdir@6.5.0(picomatch@4.0.4):
         optionalDependencies:
             picomatch: 4.0.4
+
+    fflate@0.8.3: {}
 
     file-entry-cache@11.1.3:
         dependencies:

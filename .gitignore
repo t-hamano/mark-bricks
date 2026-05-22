@@ -17,6 +17,10 @@ dist-ssr
 storybook-static
 *.local
 
+# Generated Jed dictionaries
+**/languages/mark-bricks-*.json
+!**/languages/mark-bricks-override-*.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

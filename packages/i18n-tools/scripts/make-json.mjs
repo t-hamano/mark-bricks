@@ -1,9 +1,6 @@
-import { access, readFile, writeFile } from 'node:fs/promises';
+import { access, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import gettextParser from 'gettext-parser';
-
-// EOT (U+0004) separator between msgctxt and msgid in the Jed key format.
-const CONTEXT_SEPARATOR = String.fromCharCode( 0x04 );
+import { poToJedMessages } from './jed.mjs';
 
 async function exists( p ) {
 	try {
@@ -17,83 +14,60 @@ async function exists( p ) {
 // Convert <slug>-<locale>.po into a Jed-style messages dict for the `<slug>` domain.
 async function buildPluginMessages( languagesDir, slug, locale ) {
 	const poPath = path.join( languagesDir, `${ slug }-${ locale }.po` );
-	const po = gettextParser.po.parse( await readFile( poPath ) );
-
-	const messages = {
-		'': {
-			domain: slug,
-			'plural-forms':
-				po.headers[ 'Plural-Forms' ] ?? 'nplurals=2; plural=(n!=1);',
-			lang: po.headers.Language ?? locale,
-		},
-	};
-
-	let translated = 0;
-	for ( const ctxKey of Object.keys( po.translations ) ) {
-		for ( const idKey of Object.keys( po.translations[ ctxKey ] ) ) {
-			if ( idKey === '' ) {
-				continue;
-			}
-			const entry = po.translations[ ctxKey ][ idKey ];
-			if ( ! entry.msgstr.some( ( s ) => s ) ) {
-				continue;
-			}
-			const key = ctxKey
-				? `${ ctxKey }${ CONTEXT_SEPARATOR }${ idKey }`
-				: idKey;
-			messages[ key ] = entry.msgstr;
-			translated++;
-		}
-	}
-
-	return {
-		messages,
-		revisionDate: po.headers[ 'PO-Revision-Date' ],
-		translated,
-	};
+	return poToJedMessages( await readFile( poPath ), {
+		domain: slug,
+		fallbackLang: locale,
+	} );
 }
 
-// Fetch Gutenberg translations from translate.wordpress.org as a Jed-style messages dict for the `default` domain.
-async function buildGutenbergMessages( locale ) {
-	const url = `https://translate.wordpress.org/projects/wp-plugins/gutenberg/stable/${ locale }/default/export-translations/?format=jed1x`;
+/**
+ * Merge any committed Gutenberg dictionaries sitting next to the .po into
+ * `localeData`. A standalone host that ships the WordPress block editor needs
+ * these so its dependency strings (the `default` domain) are translated too.
+ *
+ * The files are produced offline by the editor's `i18n:fetch-gutenberg` script
+ * and named `gutenberg-<version>-<locale>.json`, so make-json never touches the
+ * network. Anything starting with `gutenberg` whose locale matches is merged.
+ *
+ * @param {string} languagesDir Directory holding the catalogs.
+ * @param {string} locale       Locale code (e.g. `ja`).
+ * @param {Object} localeData   Domain→messages map to merge into (mutated).
+ * @return {Promise<number>} Count of merged message keys (excluding '' headers).
+ */
+async function mergeLocalGutenberg( languagesDir, locale, localeData ) {
+	const files = ( await readdir( languagesDir ) )
+		.filter(
+			( f ) =>
+				f.startsWith( 'gutenberg' ) && f.endsWith( `-${ locale }.json` )
+		)
+		.sort();
 
-	console.log( `⏳ Fetching ${ locale }/default from ${ url }` );
-
-	const res = await fetch( url );
-	if ( ! res.ok ) {
-		throw new Error( `Fetch failed: ${ res.status } ${ url }` );
+	let merged = 0;
+	for ( const file of files ) {
+		const data = JSON.parse(
+			await readFile( path.join( languagesDir, file ), 'utf8' )
+		);
+		for ( const [ domain, dict ] of Object.entries(
+			data.locale_data ?? {}
+		) ) {
+			localeData[ domain ] = { ...localeData[ domain ], ...dict };
+			merged += Object.keys( dict ).filter( ( k ) => k !== '' ).length;
+		}
 	}
-
-	const jed = await res.json();
-	const dict = jed.locale_data?.messages;
-	if ( ! dict ) {
-		throw new Error( `No locale_data.messages in response from ${ url }` );
-	}
-	dict[ '' ] = { ...dict[ '' ], domain: 'default' };
-
-	return {
-		messages: dict,
-		revisionDate: jed[ 'translation-revision-date' ],
-	};
+	return merged;
 }
 
 /**
  * Compile the per-locale .po into a Jed-style JSON catalog consumable by
- * `@wordpress/i18n`. Optionally bundles Gutenberg's `default` domain so a
- * standalone host (the editor package) ships its dependency translations.
+ * `@wordpress/i18n`, merging any committed Gutenberg dictionaries found next to
+ * it. The output is gitignored and regenerated at build time.
  *
- * @param {Object}  options
- * @param {string}  options.root             Package root that owns `languages/`.
- * @param {string}  options.slug             Text domain / file slug.
- * @param {string}  options.locale           Locale code (e.g. `ja`).
- * @param {boolean} options.includeGutenberg Bundle the `default` (Gutenberg) domain.
+ * @param {Object} options
+ * @param {string} options.root   Package root that owns `languages/`.
+ * @param {string} options.slug   Text domain / file slug.
+ * @param {string} options.locale Locale code (e.g. `ja`).
  */
-export async function makeJson( {
-	root,
-	slug,
-	locale,
-	includeGutenberg = false,
-} ) {
+export async function makeJson( { root, slug, locale } ) {
 	const languagesDir = path.join( root, 'languages' );
 	const poPath = path.join( languagesDir, `${ slug }-${ locale }.po` );
 	if ( ! ( await exists( poPath ) ) ) {
@@ -107,12 +81,11 @@ export async function makeJson( {
 
 	const plugin = await buildPluginMessages( languagesDir, slug, locale );
 	const localeData = { [ slug ]: plugin.messages };
-
-	let gutenberg;
-	if ( includeGutenberg ) {
-		gutenberg = await buildGutenbergMessages( locale );
-		localeData.default = gutenberg.messages;
-	}
+	const gutenbergStrings = await mergeLocalGutenberg(
+		languagesDir,
+		locale,
+		localeData
+	);
 
 	const payload = {
 		'translation-revision-date':
@@ -122,16 +95,14 @@ export async function makeJson( {
 	};
 
 	const jsonPath = path.join( languagesDir, `${ slug }-${ locale }.json` );
+	// Minified: this dictionary is gitignored and the bundler re-minifies it on
+	// import, so its on-disk format is read by neither humans nor git.
 	await writeFile( jsonPath, JSON.stringify( payload ) + '\n' );
 	console.log(
 		`✅ Wrote ${ path.relative( root, jsonPath ) } (${
 			plugin.translated
 		} app strings${
-			gutenberg
-				? `, ${
-						Object.keys( gutenberg.messages ).length - 1
-				  } gutenberg strings`
-				: ''
+			gutenbergStrings ? `, ${ gutenbergStrings } gutenberg strings` : ''
 		})`
 	);
 }
