@@ -1,0 +1,66 @@
+name: Update README Download Links
+
+on:
+    release:
+        types: [published]
+    # Manual rerun for an already-published tag, e.g. after re-uploading assets.
+    workflow_dispatch:
+        inputs:
+            tag:
+                description: Desktop release tag to source download links from (e.g. tauri-v0.5.0)
+                required: true
+                type: string
+
+# Avoid overlapping runs racing on the same branch.
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.release.tag_name || inputs.tag }}
+    cancel-in-progress: false
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    update-download-links:
+        name: Update README download links
+        # Only desktop releases carry the bundled installers we link to.
+        if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'tauri-v') }}
+        runs-on: ubuntu-latest
+        env:
+            TAG: ${{ github.event.release.tag_name || inputs.tag }}
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        steps:
+            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+              with:
+                  ref: main
+
+            - name: Setup Node.js
+              uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+              with:
+                  node-version-file: .nvmrc
+
+            - name: Rewrite README download links
+              run: node .github/scripts/update-download-links.mjs "$TAG"
+
+            - name: Open pull request with the update
+              run: |
+                  if git diff --quiet -- README.md; then
+                    echo "Download links already current for $TAG; nothing to do."
+                    exit 0
+                  fi
+                  branch="docs/download-links-$TAG"
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git switch -c "$branch"
+                  git add README.md
+                  git commit -m "docs(repo): update download links for $TAG"
+                  git push --force origin "$branch"
+                  if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+                    gh pr create \
+                      --base main \
+                      --head "$branch" \
+                      --title "docs(repo): update download links for $TAG" \
+                      --body "Automated update of the README download links to the \`$TAG\` release assets."
+                  else
+                    echo "An open PR already exists for $branch; updated its branch."
+                  fi

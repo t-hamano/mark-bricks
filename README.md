@@ -11,7 +11,13 @@ MarkBricks is delivered as the following applications.
 
 ## Download
 
-Download the latest desktop app for your platform (Windows, macOS, or Linux) from the [latest release](https://github.com/t-hamano/mark-bricks/releases/latest). Older versions and release notes are on the [Releases page](https://github.com/t-hamano/mark-bricks/releases).
+Download **MarkBricks Desktop** for your platform. Older versions and release notes are on the [Releases page](https://github.com/t-hamano/mark-bricks/releases).
+
+| Platform | Download                                                                                                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Windows  | <!-- download:windows -->[Installer (`.exe`)](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.4.0/MarkBricks_0.4.0_x64-setup.exe)<!-- /download:windows --> |
+| macOS    | <!-- download:macos -->[Disk image (`.dmg`)](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.4.0/MarkBricks_0.4.0_universal.dmg)<!-- /download:macos -->    |
+| Linux    | <!-- download:linux -->[AppImage](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.4.0/MarkBricks_0.4.0_amd64.AppImage)<!-- /download:linux -->              |
 
 ## Structure
 
