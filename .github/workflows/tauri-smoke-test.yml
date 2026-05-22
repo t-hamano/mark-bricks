@@ -1,4 +1,4 @@
-name: Tauri Smoke
+name: Tauri Smoke Test
 
 on:
     pull_request:
@@ -6,7 +6,7 @@ on:
             - 'apps/tauri/**'
             - 'packages/editor/**'
             - 'pnpm-lock.yaml'
-            - '.github/workflows/tauri-smoke.yml'
+            - '.github/workflows/tauri-smoke-test.yml'
     push:
         branches:
             - main
@@ -14,7 +14,7 @@ on:
             - 'apps/tauri/**'
             - 'packages/editor/**'
             - 'pnpm-lock.yaml'
-            - '.github/workflows/tauri-smoke.yml'
+            - '.github/workflows/tauri-smoke-test.yml'
     workflow_dispatch:
 
 concurrency:
