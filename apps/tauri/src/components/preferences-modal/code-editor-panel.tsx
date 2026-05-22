@@ -13,7 +13,7 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Stack, Tabs } from '@wordpress/ui';
+import { Stack, Tabs, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -36,6 +36,9 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 		<Tabs.Panel value="code-editor">
 			<Stack direction="column" gap="3xl">
 				<Stack direction="column" gap="md">
+					<Text variant="heading-xl" render={ <h2 /> }>
+						{ __( 'Settings', 'mark-bricks' ) }
+					</Text>
 					<SelectControl
 						size="compact"
 						label={ __( 'Theme', 'mark-bricks' ) }

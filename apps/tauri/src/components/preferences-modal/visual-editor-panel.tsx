@@ -37,6 +37,9 @@ export function VisualEditorPanel( { settings, onChange }: Props ) {
 		<Tabs.Panel value="visual-editor">
 			<Stack direction="column" gap="xl">
 				<Stack direction="column" gap="md">
+					<Text variant="heading-xl" render={ <h2 /> }>
+						{ __( 'Settings', 'mark-bricks' ) }
+					</Text>
 					<ToggleControl
 						label={ __( 'Spell check', 'mark-bricks' ) }
 						checked={ settings.spellCheck }
