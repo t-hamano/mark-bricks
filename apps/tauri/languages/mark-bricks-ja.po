@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.3.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-05-22T07:16:16.765Z\n"
-"PO-Revision-Date: 2026-05-22T07:16:17.235Z\n"
+"POT-Creation-Date: 2026-05-22T09:19:58.453Z\n"
+"PO-Revision-Date: 2026-05-22T09:20:18.843Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -27,7 +27,7 @@ msgid "(Untitled)"
 msgstr "(無題)"
 
 #: src/components/header-actions/index.tsx:235
-#: src/components/about-modal/index.tsx:34
+#: src/components/about-modal/index.tsx:39
 msgid "About"
 msgstr "MarkBricks について"
 
@@ -200,7 +200,7 @@ msgid "List View shortcuts"
 msgstr "リストビューのショートカット"
 
 # %s: new version number
-#: src/hooks/use-auto-updater.ts:45
+#: src/hooks/use-auto-updater.ts:53
 msgid "MarkBricks %s is available. Install now?"
 msgstr "MarkBricks %s が利用可能です。今すぐインストールしますか？"
 
@@ -263,7 +263,7 @@ msgstr "オプション"
 msgid "Preferences"
 msgstr "設定"
 
-#: src/components/about-modal/index.tsx:46
+#: src/components/about-modal/index.tsx:51
 msgid "Report an issue"
 msgstr "問題を報告"
 
@@ -368,23 +368,23 @@ msgstr "トップツールバー"
 msgid "Typeface used for the content area."
 msgstr "コンテンツ領域で使用する書体。"
 
-#: src/hooks/use-auto-updater.ts:66
+#: src/hooks/use-auto-updater.ts:74
 #: src/components/tabbar/index.tsx:264
 #: src/components/dirty-confirm-dialog/index.tsx:53
 msgid "Unsaved changes"
 msgstr "保存されていない変更"
 
-#: src/hooks/use-auto-updater.ts:35
-#: src/hooks/use-auto-updater.ts:85
+#: src/hooks/use-auto-updater.ts:43
+#: src/hooks/use-auto-updater.ts:93
 msgid "Update"
 msgstr "アップデート"
 
-#: src/hooks/use-auto-updater.ts:49
+#: src/hooks/use-auto-updater.ts:57
 msgid "Update available"
 msgstr "アップデートが利用可能"
 
 # %s: error message
-#: src/hooks/use-auto-updater.ts:81
+#: src/hooks/use-auto-updater.ts:89
 msgid "Update check failed: %s"
 msgstr "アップデートの確認に失敗しました: %s"
 
@@ -397,11 +397,12 @@ msgstr "表示"
 msgid "Visual editor"
 msgstr "ビジュアルエディター"
 
-#: src/hooks/use-auto-updater.ts:33
-msgid "You are using the latest version."
-msgstr "最新バージョンを使用しています。"
+# %s: current version number
+#: src/hooks/use-auto-updater.ts:36
+msgid "You are using the latest version (%s)."
+msgstr "最新バージョン (%s) を使用しています。"
 
-#: src/hooks/use-auto-updater.ts:61
+#: src/hooks/use-auto-updater.ts:69
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "保存されていない変更があります。アップデートする前に保存してください。"
 
