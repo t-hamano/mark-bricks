@@ -4,6 +4,10 @@ A visual Markdown editor powered by the WordPress block editor.
 
 MarkBricks minimizes and specializes the WordPress block editor for Markdown editing, so you can write Markdown as visual blocks or as raw source — and switch between the two at any time.
 
+## Download
+
+Download the latest desktop app for your platform (Windows, macOS, or Linux) from the [latest release](https://github.com/t-hamano/mark-bricks/releases/latest). Older versions and release notes are on the [Releases page](https://github.com/t-hamano/mark-bricks/releases).
+
 ## Structure
 
 This is a pnpm monorepo. The editor itself lives in a host-agnostic package that each host application consumes.
