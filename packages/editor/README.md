@@ -30,7 +30,6 @@ import {
 	registerFormats,
 } from '@mark-bricks/editor';
 
-// Once, at app startup, in this order:
 applyLocale( navigator.language );
 registerBlocks();
 registerFormats();

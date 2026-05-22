@@ -15,9 +15,6 @@ import { strikethrough } from './strikethrough';
 
 const formats = [ bold, italic, code, strikethrough, link, clearFormatting ];
 
-// `title` is a function so it resolves against the active locale at
-// registration time (called via the Editor's lazy registration, after the
-// host applies the locale) rather than being frozen at module load.
 export function registerFormats() {
 	formats.forEach( ( { name, title, ...settings } ) =>
 		registerFormatType( name, {
