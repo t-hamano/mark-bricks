@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="apps/tauri/src-tauri/app-icon.png" alt="MarkBricks" width="120" height="120" />
+</p>
+
 # MarkBricks
 
 A visual Markdown editor that minimizes and specializes the WordPress block editor for Markdown editing.

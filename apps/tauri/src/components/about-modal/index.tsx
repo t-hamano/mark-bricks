@@ -17,6 +17,7 @@ import { Badge, Link, Stack, Text } from '@wordpress/ui';
  */
 import { bugs } from '../../../package.json';
 import { checkForUpdates } from '../../hooks/use-auto-updater';
+import appIcon from '../../assets/app-icon.png';
 
 export const ABOUT_MODAL_NAME = 'mark-bricks/about';
 
@@ -56,12 +57,25 @@ export default function AboutModal( { name, version }: Props ) {
 			onRequestClose={ () => closeModal() }
 			className="about-modal"
 		>
-			<Stack direction="column" align="stretch" gap="xl">
-				<Stack direction="row" justify="center" align="center" gap="md">
-					<Text variant="heading-2xl">{ name }</Text>
-					{ version && (
-						<Badge intent="informational">{ `v${ version }` }</Badge>
-					) }
+			<Stack direction="column" align="stretch" gap="3xl">
+				<Stack direction="column" align="center" gap="lg">
+					<img
+						src={ appIcon }
+						alt={ name }
+						width={ 96 }
+						height={ 96 }
+					/>
+					<Stack
+						direction="row"
+						justify="center"
+						align="center"
+						gap="lg"
+					>
+						<Text variant="heading-2xl">{ name }</Text>
+						{ version && (
+							<Badge intent="informational">{ `v${ version }` }</Badge>
+						) }
+					</Stack>
 				</Stack>
 				<Stack
 					direction="row"
