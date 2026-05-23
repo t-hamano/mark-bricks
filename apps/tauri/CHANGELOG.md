@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.6.0...tauri-v0.6.1) (2026-05-23)
+
+### Bug Fixes
+
+-   **tauri:** allow blob: in frame-src so the editor iframe loads ([34d4d2e](https://github.com/t-hamano/mark-bricks/commit/34d4d2ec33535c3eb6d80adbd0f4fa2597b1e4be))
+-   **tauri:** open os-associated markdown files by hardcoding extensions ([3528055](https://github.com/t-hamano/mark-bricks/commit/3528055f34e97a2d436a1115ad4ea73c0361e489))
+
 # [0.6.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.5.1...tauri-v0.6.0) (2026-05-23)
 
 ### Bug Fixes
