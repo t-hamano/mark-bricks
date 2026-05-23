@@ -252,6 +252,9 @@ importers:
                 specifier: ^11.1.0
                 version: 11.1.1
         devDependencies:
+            '@mark-bricks/fixtures':
+                specifier: workspace:*
+                version: link:../fixtures
             '@mark-bricks/i18n-tools':
                 specifier: workspace:*
                 version: link:../i18n-tools
@@ -289,6 +292,8 @@ importers:
                 specifier: ^2.1.9
                 version: 2.1.9(@types/node@25.8.0)(jsdom@25.0.1)(sass@1.99.0)
 
+    packages/fixtures: {}
+
     packages/i18n-tools:
         dependencies:
             '@wp-blocks/make-pot':
@@ -303,6 +308,9 @@ importers:
             '@mark-bricks/editor':
                 specifier: workspace:*
                 version: link:../packages/editor
+            '@mark-bricks/fixtures':
+                specifier: workspace:*
+                version: link:../packages/fixtures
         devDependencies:
             '@storybook/addon-docs':
                 specifier: ^10.4.0

@@ -10,7 +10,8 @@
 		"build-storybook": "storybook build -c ."
 	},
 	"dependencies": {
-		"@mark-bricks/editor": "workspace:*"
+		"@mark-bricks/editor": "workspace:*",
+		"@mark-bricks/fixtures": "workspace:*"
 	},
 	"devDependencies": {
 		"@storybook/addon-docs": "^10.4.0",
