@@ -1,12 +1,7 @@
 use super::*;
 
-fn exts() -> Vec<String> {
-    vec!["md".to_string(), "markdown".to_string()]
-}
-
 #[test]
 fn is_markdown_path_classifies_arguments() {
-    let exts = exts();
     // (argument, expected, what the case demonstrates)
     let cases = [
         ("notes.md", true, "configured extension"),
@@ -28,7 +23,7 @@ fn is_markdown_path_classifies_arguments() {
     ];
     for (arg, expected, desc) in cases {
         assert_eq!(
-            is_markdown_path(arg, &exts),
+            is_markdown_path(arg),
             expected,
             "{desc}: is_markdown_path({arg:?})"
         );
@@ -37,7 +32,6 @@ fn is_markdown_path_classifies_arguments() {
 
 #[test]
 fn collect_markdown_paths_selects_files_from_args() {
-    let exts = exts();
     // (argv, expected opened files, what the case demonstrates). The first argv
     // entry is the program's own path and is never opened.
     let cases: [(&[&str], &[&str], &str); 4] = [
@@ -59,7 +53,7 @@ fn collect_markdown_paths_selects_files_from_args() {
         (&["mark-bricks"], &[], "no files yields an empty list"),
     ];
     for (argv, expected, desc) in cases {
-        let got = collect_markdown_paths(argv.iter().copied(), &exts);
+        let got = collect_markdown_paths(argv.iter().copied());
         let expected: Vec<String> = expected.iter().map(|s| s.to_string()).collect();
         assert_eq!(got, expected, "{desc}: argv={argv:?}");
     }

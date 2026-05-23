@@ -137,21 +137,11 @@ fn open_windows_default_apps_settings() -> Result<String, String> {
     Ok("idle".to_string())
 }
 
-/// Reads the Markdown file extensions from tauri.conf.json (lower-cased, no dot).
-fn markdown_extensions(config: &tauri::Config) -> Vec<String> {
-    config
-        .bundle
-        .file_associations
-        .iter()
-        .flatten()
-        .flat_map(|assoc| assoc.ext.iter())
-        .map(|ext| ext.to_string().to_ascii_lowercase())
-        .collect()
-}
+const MARKDOWN_EXTENSIONS: [&str; 2] = ["md", "markdown"];
 
 /// Whether `s` looks like a Markdown file, judged by its file extension against
-/// the configured `exts` (compared case-insensitively).
-fn is_markdown_path(s: &str, exts: &[String]) -> bool {
+/// [`MARKDOWN_EXTENSIONS`] (compared case-insensitively).
+fn is_markdown_path(s: &str) -> bool {
     // Arguments starting with "-" are command-line flags, not file paths.
     if s.starts_with('-') {
         return false;
@@ -160,12 +150,12 @@ fn is_markdown_path(s: &str, exts: &[String]) -> bool {
         return false;
     };
     let ext = ext.to_ascii_lowercase();
-    exts.iter().any(|e| *e == ext)
+    MARKDOWN_EXTENSIONS.contains(&ext.as_str())
 }
 
 /// Picks the Markdown file paths out of the process arguments, skipping the
 /// first entry (the program's own path).
-fn collect_markdown_paths<I, S>(args: I, exts: &[String]) -> Vec<String>
+fn collect_markdown_paths<I, S>(args: I) -> Vec<String>
 where
     I: IntoIterator<Item = S>,
     S: AsRef<str>,
@@ -174,21 +164,20 @@ where
         .skip(1)
         .filter_map(|s| {
             let s = s.as_ref();
-            is_markdown_path(s, exts).then(|| s.to_string())
+            is_markdown_path(s).then(|| s.to_string())
         })
         .collect()
 }
 
 pub fn run() {
     let ctx = tauri::generate_context!();
-    let exts = markdown_extensions(ctx.config());
 
     // Seed this instance's own argv-provided files before the event loop;
     // the single-instance callback may fire before `setup` would have run.
     pending_open_files()
         .lock()
         .unwrap()
-        .extend(collect_markdown_paths(std::env::args(), &exts));
+        .extend(collect_markdown_paths(std::env::args()));
 
     let mut builder = tauri::Builder::default();
 
@@ -196,8 +185,7 @@ pub fn run() {
         if let Some(window) = app.get_webview_window("main") {
             let _ = window.set_focus();
         }
-        let exts = markdown_extensions(app.config());
-        let paths = collect_markdown_paths(argv, &exts);
+        let paths = collect_markdown_paths(argv);
         if !paths.is_empty() {
             // Buffer *before* emitting: a still-cold-starting frontend
             // hasn't attached its `open-files` listener yet, so a bare

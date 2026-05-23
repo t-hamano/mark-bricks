@@ -17,11 +17,6 @@ import { dispatch, select } from '@wordpress/data';
  */
 import tabsStore from '../store';
 
-/**
- * Markdown file extensions, mirroring the `fileAssociations` entry in
- * tauri.conf.json. Hard-coded so the frontend need not round-trip to the
- * backend just to populate dialog filters.
- */
 const MARKDOWN_EXTENSIONS = [ 'md', 'markdown' ];
 
 export function newFile() {
