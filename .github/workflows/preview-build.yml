@@ -11,6 +11,11 @@ name: Preview Build
 on:
     pull_request:
         types: [opened, synchronize, reopened, ready_for_review]
+        paths:
+            - 'apps/tauri/**'
+            - 'packages/editor/**'
+            - 'pnpm-lock.yaml'
+            - '.github/workflows/preview-build.yml'
 
 # Cancel superseded runs for the same PR.
 concurrency:
