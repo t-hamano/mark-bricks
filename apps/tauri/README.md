@@ -1,33 +1,21 @@
 # MarkBricks Desktop
 
-Desktop application for MarkBricks. Built on Tauri 2 + React, it hosts the WordPress block editor exposed by `@mark-bricks/editor` and adapts it for editing local Markdown files.
-
-## Stack
-
--   Tauri 2 + Vite + React
--   Frontend: TypeScript / SCSS
--   Persistence: `tauri-plugin-store`
--   File I/O: Rust commands (`read_text_file` / `write_text_file`) + `tauri-plugin-dialog`
-
-## File operations
-
-`@mark-bricks/editor` is host-agnostic, so file I/O is implemented entirely in this app under `src/actions/file.ts` and triggered from the host-owned UI (header buttons, keyboard shortcuts, tab close):
-
--   `newFile` / `openFile` / `saveActiveFile` / `saveActiveFileAs` / `requestCloseActiveTab`
+Desktop application for MarkBricks. Built on Tauri 2 + Vite + React, it hosts the WordPress block editor exposed by `@mark-bricks/editor` and adapts it for editing local Markdown files. Persistence uses `tauri-plugin-store`, and file I/O goes through Rust commands plus `tauri-plugin-dialog`.
 
 ## Development
 
 Run from the repository root:
 
 ```sh
-pnpm dev:tauri      # Start Vite + Tauri
-pnpm build:tauri    # Build the frontend and bundle Tauri
-pnpm tauri          # Pass-through to the tauri CLI
-```
+# Start Vite + Tauri
+pnpm dev:tauri
 
-Bumping the version:
+# Build the frontend and bundle Tauri
+pnpm build:tauri
 
-```sh
-pnpm --filter mark-bricks-desktop version <patch|minor|major>
-# Updates package.json / Cargo.toml / Cargo.lock / tauri.conf.json in one shot
+# Pass-through to the tauri CLI
+pnpm tauri
+
+# Bump the version (updates package.json / Cargo.toml / Cargo.lock / tauri.conf.json in one shot)
+pnpm version:tauri <patch|minor|major>
 ```
