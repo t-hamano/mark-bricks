@@ -12,22 +12,22 @@ A sample document that showcases every block and text format you can use.
 
 ###### Heading level 6
 
-### A heading with **bold**, _italic_ and `code`
+### A heading with **bold**, *italic* and `code`
 
 ## Inline formatting
 
-This paragraph has _emphasis_, **strong**, `inline code`, ~~strikethrough~~
+This paragraph has *emphasis*, **strong**, `inline code`, ~~strikethrough~~
 and a [link](https://example.com).
 
-A link [with a title](https://example.com 'Example title') too.
+A link [with a title](https://example.com "Example title") too.
 
-Strong wrapping emphasis: **bold with _italic_ inside**.
+Strong wrapping emphasis: **bold with *italic* inside**.
 
-A link wrapping formatting: [**bold** and _italic_ link](https://example.com).
+A link wrapping formatting: [**bold** and *italic* link](https://example.com).
 
 Strong wrapping code: **bold with `code` inside**.
 
-Deeply nested: **bold _italic ~~struck~~_ end**.
+Deeply nested: **bold *italic ~~struck~~* end**.
 
 A hard break ends this line\
 and the text continues here.
@@ -46,33 +46,33 @@ Inline code containing HTML: `<div class="x">`.
 
 ## Unordered list
 
--   First item
--   Second item with _emphasis_ and `code`
-    -   Nested item
-    -   Another nested item
-        -   Deeply nested item
--   Third item
+- First item
+- Second item with *emphasis* and `code`
+  - Nested item
+  - Another nested item
+    - Deeply nested item
+- Third item
 
 ## Ordered list
 
 1. Ordered item one
 2. Ordered item two
-    1. Nested ordered item
-    2. Another nested ordered item
+   1. Nested ordered item
+   2. Another nested ordered item
 3. Ordered item three
 
 ## Task list
 
--   [x] Completed task
--   [ ] Pending task with a [link](https://example.com)
--   [ ] Pending task with **bold**
+- [x] Completed task
+- [ ] Pending task with a [link](https://example.com)
+- [ ] Pending task with **bold**
 
 ## Blockquote
 
-> A plain quote with _emphasis_, **strong** and a
+> A plain quote with *emphasis*, **strong** and a
 > [link](https://example.com).
 >
-> > Nested quote with **bold _italic_**.
+> > Nested quote with **bold *italic***.
 
 ## Quote alerts
 

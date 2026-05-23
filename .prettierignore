@@ -5,3 +5,7 @@ src-tauri/target
 src-tauri/gen
 package-lock.json
 **/languages/*.json
+
+# Golden fixtures committed in the converter's canonical serialization form.
+# Prettier reformats Markdown differently, which would break round-trip tests.
+packages/fixtures/markdown
