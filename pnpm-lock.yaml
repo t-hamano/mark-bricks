@@ -146,8 +146,6 @@ importers:
                 specifier: ^2.1.9
                 version: 2.1.9(@types/node@25.8.0)(jsdom@25.0.1)(sass@1.99.0)
 
-    apps/tauri/e2e: {}
-
     apps/vscode:
         dependencies:
             '@mark-bricks/editor':

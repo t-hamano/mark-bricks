@@ -15,7 +15,7 @@ import path from 'node:path';
 import process from 'node:process';
 
 const __dirname = path.dirname( fileURLToPath( import.meta.url ) );
-const tauriAppRoot = path.resolve( __dirname, '..', '..' );
+const tauriAppRoot = path.resolve( __dirname, '..' );
 const binaryName =
 	process.platform === 'win32' ? 'mark-bricks.exe' : 'mark-bricks';
 const binaryPath = path.join(
@@ -31,7 +31,7 @@ const LIVENESS_MS = Number( process.env.SMOKE_LIVENESS_MS ?? 8000 );
 if ( ! existsSync( binaryPath ) ) {
 	console.error(
 		`[smoke] Debug binary not found at ${ binaryPath }.\n` +
-			`        Run \`pnpm tauri build --debug --no-bundle\` first.`
+			`        Run \`pnpm build:debug\` first.`
 	);
 	process.exit( 1 );
 }

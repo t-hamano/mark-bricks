@@ -1,5 +1,4 @@
 packages:
     - 'packages/*'
     - 'apps/*'
-    - 'apps/*/e2e'
     - 'storybook'

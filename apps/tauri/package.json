@@ -17,7 +17,7 @@
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"test:rust": "cargo test --manifest-path src-tauri/Cargo.toml",
-		"e2e:smoke": "pnpm --filter @mark-bricks/tauri-e2e smoke",
+		"e2e:smoke": "node scripts/smoke-launch.mjs",
 		"i18n:make-pot": "mb-i18n make-pot",
 		"i18n:make-po": "mb-i18n make-po",
 		"i18n:make-json": "mb-i18n make-json",
