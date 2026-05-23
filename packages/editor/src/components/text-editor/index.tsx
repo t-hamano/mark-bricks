@@ -1,9 +1,9 @@
 /**
  * External dependencies
  */
-import MonacoEditor, { type Monaco, type OnMount } from '@monaco-editor/react';
-import type { editor as monacoEditor } from 'monaco-editor';
-import { useEffect, useMemo, useRef } from 'react';
+import * as monaco from 'monaco-editor';
+import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+import { useEffect, useRef } from 'react';
 
 /**
  * WordPress dependencies
@@ -19,6 +19,10 @@ import {
 } from './markdown-commands';
 import { BUILTIN_THEMES, type CodeEditorTheme } from './themes';
 import './style.scss';
+
+// Monaco offloads heavy work to a web worker. Tell it to use the Vite-bundled
+// worker so it loads locally instead of fetching from a CDN.
+self.MonacoEnvironment = { getWorker: () => new EditorWorker() };
 
 export type CodeEditorSettings = {
 	theme: CodeEditorTheme;
@@ -46,93 +50,125 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 		...settings,
 	};
 
-	const monacoRef = useRef< Monaco | null >( null );
-	const editorRef = useRef< monacoEditor.IStandaloneCodeEditor | null >(
+	const containerRef = useRef< HTMLDivElement >( null );
+	const editorRef = useRef< monaco.editor.IStandaloneCodeEditor | null >(
 		null
 	);
 
-	// Intercepts Enter/Backspace to drive Markdown list/quote auto-continuation,
-	// since Monaco has no built-in support for it.
-	const handleMount: OnMount = ( editor, monaco ) => {
-		monacoRef.current = monaco;
-		editorRef.current = editor;
-		monaco.editor.setTheme( theme in BUILTIN_THEMES ? theme : 'vs' );
-		editor.getModel()?.updateOptions( { tabSize, insertSpaces: true } );
+	const contentRef = useRef( content );
+	contentRef.current = content;
 
-		editor.onKeyDown( ( e ) => {
-			if (
-				e.keyCode === monaco.KeyCode.Enter &&
-				! e.shiftKey &&
-				! e.altKey &&
-				! e.ctrlKey &&
-				! e.metaKey
-			) {
-				if ( insertNewlineContinueMarkup( editor ) ) {
-					e.preventDefault();
-					e.stopPropagation();
-				}
+	const onChangeRef = useRef( onChange );
+	onChangeRef.current = onChange;
+
+	const initialSettingsRef = useRef( {
+		theme,
+		fontSize,
+		tabSize,
+		showLineNumbers,
+	} );
+
+	// Create the editor once; the effects below keep it in sync. Enter/Backspace
+	// are intercepted for Markdown list/quote auto-continuation.
+	useEffect( () => {
+		const container = containerRef.current;
+		if ( ! container ) {
+			return;
+		}
+
+		const initialSettings = initialSettingsRef.current;
+		const editor = monaco.editor.create( container, {
+			value: contentRef.current,
+			language: 'markdown',
+			theme:
+				initialSettings.theme in BUILTIN_THEMES
+					? initialSettings.theme
+					: DEFAULT_CODE_EDITOR_SETTINGS.theme,
+			fontSize: initialSettings.fontSize,
+			lineNumbers: initialSettings.showLineNumbers ? 'on' : 'off',
+			wordWrap: 'on',
+			minimap: { enabled: false },
+			scrollBeyondLastLine: false,
+			automaticLayout: true,
+			padding: { top: 12, bottom: 12 },
+		} );
+
+		editor.getModel()?.updateOptions( {
+			tabSize: initialSettings.tabSize,
+			insertSpaces: true,
+		} );
+		editorRef.current = editor;
+
+		const changeSubscription = editor.onDidChangeModelContent( () => {
+			const value = editor.getValue();
+			if ( value === contentRef.current ) {
 				return;
 			}
+			onChangeRef.current( value );
+		} );
 
+		const keySubscription = editor.onKeyDown( ( e ) => {
+			const hasModifier =
+				e.shiftKey || e.altKey || e.ctrlKey || e.metaKey;
+			if ( hasModifier ) {
+				return;
+			}
 			if (
-				e.keyCode === monaco.KeyCode.Backspace &&
-				! e.shiftKey &&
-				! e.altKey &&
-				! e.ctrlKey &&
-				! e.metaKey
+				e.keyCode === monaco.KeyCode.Enter &&
+				insertNewlineContinueMarkup( editor )
 			) {
-				if ( deleteMarkupBackward( editor ) ) {
-					e.preventDefault();
-					e.stopPropagation();
-				}
+				e.preventDefault();
+				e.stopPropagation();
+			} else if (
+				e.keyCode === monaco.KeyCode.Backspace &&
+				deleteMarkupBackward( editor )
+			) {
+				e.preventDefault();
+				e.stopPropagation();
 			}
 		} );
-	};
 
+		return () => {
+			changeSubscription.dispose();
+			keySubscription.dispose();
+			editor.dispose();
+			editorRef.current = null;
+		};
+	}, [] );
+
+	// Reflect external `content` changes (e.g. switching tabs) into the model.
 	useEffect( () => {
-		if ( monacoRef.current ) {
-			monacoRef.current.editor.setTheme(
-				theme in BUILTIN_THEMES ? theme : 'vs'
-			);
+		const editor = editorRef.current;
+		if ( editor && editor.getValue() !== content ) {
+			editor.setValue( content );
 		}
+	}, [ content ] );
+
+	// Apply theme changes.
+	useEffect( () => {
+		monaco.editor.setTheme(
+			theme in BUILTIN_THEMES ? theme : DEFAULT_CODE_EDITOR_SETTINGS.theme
+		);
 	}, [ theme ] );
 
+	// Sync editor-level options that can change after mount.
+	useEffect( () => {
+		editorRef.current?.updateOptions( {
+			fontSize,
+			lineNumbers: showLineNumbers ? 'on' : 'off',
+		} );
+	}, [ fontSize, showLineNumbers ] );
+
+	// `tabSize`/`insertSpaces` are model options, not editor options.
 	useEffect( () => {
 		editorRef.current
 			?.getModel()
 			?.updateOptions( { tabSize, insertSpaces: true } );
 	}, [ tabSize ] );
 
-	const options =
-		useMemo< monacoEditor.IStandaloneEditorConstructionOptions >(
-			() => ( {
-				wordWrap: 'on',
-				lineNumbers: showLineNumbers ? 'on' : 'off',
-				fontSize,
-				minimap: { enabled: false },
-				scrollBeyondLastLine: false,
-				automaticLayout: true,
-				padding: { top: 12, bottom: 12 },
-			} ),
-			[ showLineNumbers, fontSize ]
-		);
-
 	return (
 		<Stack className="text-editor" direction="column" gap="lg">
-			<MonacoEditor
-				className="text-editor__monaco"
-				value={ content }
-				onChange={ ( next ) => {
-					const value = next ?? '';
-					if ( value === content ) {
-						return;
-					}
-					onChange( value );
-				} }
-				onMount={ handleMount }
-				language="markdown"
-				options={ options }
-			/>
+			<div ref={ containerRef } className="text-editor__monaco" />
 		</Stack>
 	);
 }
