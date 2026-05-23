@@ -1,0 +1,18 @@
+{
+	"name": "@mark-bricks/fixtures",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Shared Markdown fixtures for smoke tests, round-trip tests and Storybook content.",
+	"author": "Aki Hamano",
+	"license": "GPL-2.0-or-later",
+	"type": "module",
+	"main": "./index.ts",
+	"types": "./index.ts",
+	"exports": {
+		".": {
+			"types": "./index.ts",
+			"default": "./index.ts"
+		},
+		"./smoke-test.md": "./markdown/smoke-test.md"
+	}
+}
