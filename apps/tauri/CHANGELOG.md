@@ -1,3 +1,9 @@
+# [0.8.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.7.0...tauri-v0.8.0) (2026-05-23)
+
+### Features
+
+-   **tauri:** replace lone blank tab when opening a file ([9908753](https://github.com/t-hamano/mark-bricks/commit/990875321e90189344ff01c5ccb9b4dc2d1bd317))
+
 # [0.7.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.6.0...tauri-v0.7.0) (2026-05-23)
 
 ### Bug Fixes
