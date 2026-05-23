@@ -37,8 +37,9 @@ export async function openFile() {
 }
 
 export async function openFilePath( path: string ) {
-	const tabs = select( tabsStore ).getTabs();
-	const existing = tabs.find( ( t ) => t.filePath === path );
+	const existing = select( tabsStore )
+		.getTabs()
+		.find( ( t ) => t.filePath === path );
 
 	if ( existing ) {
 		dispatch( tabsStore ).setActiveTab( existing.id );
@@ -46,7 +47,20 @@ export async function openFilePath( path: string ) {
 	}
 
 	const contents = await invoke< string >( 'read_text_file', { path } );
+
+	// When the only open tab is an untouched Untitled tab, replace it with the
+	// opened file rather than leaving an empty tab behind.
+	const tabs = select( tabsStore ).getTabs();
+	const blankTab =
+		tabs.length === 1 && ! tabs[ 0 ].filePath && ! tabs[ 0 ].isDirty
+			? tabs[ 0 ]
+			: null;
+
 	dispatch( tabsStore ).openFileTab( path, contents );
+
+	if ( blankTab ) {
+		dispatch( tabsStore ).closeTab( blankTab.id );
+	}
 }
 
 export async function saveActiveFile() {

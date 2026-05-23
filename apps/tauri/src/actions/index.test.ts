@@ -52,6 +52,56 @@ describe( 'openFilePath', () => {
 		expect( select( tabsStore ).getActiveTabId() ).toBe( tab.id );
 	} );
 
+	it( 'replaces a lone blank Untitled tab instead of opening a second tab', async () => {
+		mockIPC( ( cmd ) => {
+			if ( cmd === 'read_text_file' ) {
+				return '# Replaced\n';
+			}
+		} );
+
+		// Start from a single blank Untitled tab, like a freshly launched app.
+		for ( const tab of select( tabsStore ).getTabs() ) {
+			dispatch( tabsStore ).closeTab( tab.id );
+		}
+		dispatch( tabsStore ).openTab();
+		const blankId = select( tabsStore ).getActiveTabId();
+
+		await openFilePath( '/docs/replace-blank.md' );
+
+		const tabs = select( tabsStore ).getTabs();
+		expect( tabs ).toHaveLength( 1 );
+		expect( tabs[ 0 ].filePath ).toBe( '/docs/replace-blank.md' );
+		expect( tabs.some( ( t ) => t.id === blankId ) ).toBe( false );
+		expect( select( tabsStore ).getActiveTabId() ).toBe( tabs[ 0 ].id );
+	} );
+
+	it( 'keeps blank Untitled tabs when more than one is open', async () => {
+		mockIPC( ( cmd ) => {
+			if ( cmd === 'read_text_file' ) {
+				return '# Added\n';
+			}
+		} );
+
+		// Two blank Untitled tabs: opening a file should add a third, not replace.
+		for ( const tab of select( tabsStore ).getTabs() ) {
+			dispatch( tabsStore ).closeTab( tab.id );
+		}
+		dispatch( tabsStore ).openTab();
+		const firstBlankId = select( tabsStore ).getActiveTabId();
+		dispatch( tabsStore ).openTab();
+		const secondBlankId = select( tabsStore ).getActiveTabId();
+
+		await openFilePath( '/docs/added.md' );
+
+		const tabs = select( tabsStore ).getTabs();
+		expect( tabs ).toHaveLength( 3 );
+		expect( tabs.some( ( t ) => t.id === firstBlankId ) ).toBe( true );
+		expect( tabs.some( ( t ) => t.id === secondBlankId ) ).toBe( true );
+		expect( select( tabsStore ).getActiveTabId() ).toBe(
+			requireTab( '/docs/added.md' ).id
+		);
+	} );
+
 	it( 'focuses an already-open file instead of reading it again', async () => {
 		const read = vi.fn( () => 'body' );
 		mockIPC( ( cmd ) => {
