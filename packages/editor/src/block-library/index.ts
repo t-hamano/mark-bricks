@@ -34,16 +34,6 @@ const blocks = [
 	html,
 ];
 
-// Disable settings menus that Markdown cannot represent (alignment, color,
-// typography, etc.) so unnecessary UI is not shown for these blocks.
-const SUPPORTS_OVERRIDES = {
-	align: false,
-	lock: false,
-	visibility: false,
-	color: false,
-	typography: false,
-} as unknown as Partial< BlockSupports >;
-
 export function registerBlocks() {
 	blocks.forEach( ( block ) =>
 		registerBlockType(
@@ -52,8 +42,17 @@ export function registerBlocks() {
 				...block.metadata,
 				supports: {
 					...block.metadata.supports,
-					...SUPPORTS_OVERRIDES,
-				},
+					// Disable settings menus that Markdown cannot represent
+					// so unnecessary UI is not shown for these blocks.
+					align: false,
+					lock: false,
+					visibility: false,
+					color: false,
+					typography: false,
+				} as unknown as BlockSupports,
+				// Drop core block style variations ; this app has no use
+				// for them.
+				styles: [],
 			},
 			block.settings
 		)
