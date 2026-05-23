@@ -1,3 +1,9 @@
+# [0.9.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.8.0...tauri-v0.9.0) (2026-05-23)
+
+### Features
+
+-   **editor:** style inline code in the canvas ([8472aed](https://github.com/t-hamano/mark-bricks/commit/8472aed7c0561db7f359ac604ac5821f2d8c4c5f))
+
 # [0.8.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.7.0...tauri-v0.8.0) (2026-05-23)
 
 ### Features
