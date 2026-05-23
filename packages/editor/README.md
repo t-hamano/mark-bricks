@@ -1,180 +1,16 @@
 # @mark-bricks/editor
 
+> [!NOTE]
+> This is a private package. `@mark-bricks/editor` is not published to npm. It lives in this monorepo and is consumed by the hosts via pnpm's `workspace:` protocol
+
 The host-agnostic React component package at the heart of MarkBricks. It minimizes and specializes the WordPress block editor for Markdown editing, and ships the matching blocks, formats, a Monaco-based source editor and i18n.
 
 Hosts (the Tauri app, the VSCode extension, ...) consume this package and render the `<Editor />` component, passing in only the host-specific configuration (content, settings, header actions) via props.
 
-> [!NOTE]
-> This is a private package. `@mark-bricks/editor` is not published to npm. It lives in this monorepo and is consumed by the hosts via pnpm's `workspace:` protocol — the usage examples below document the `<Editor />` API for those in-repo hosts, not an installable package.
+This package provides two main features:
 
-## What it provides
-
-### Block editor
-
-Provides the basic blocks and inline formats needed to author Markdown. It also ships the surrounding editing UI — block inserter, list view, document outline, and keyboard shortcuts — so hosts get a full Markdown editing experience out of the box.
-
-### Source code editor
-
-A [Monaco Editor](https://microsoft.github.io/monaco-editor/)-based source editor is bundled alongside the block editor for editing raw Markdown. Its appearance and behavior are configured by the host, and Markdown-aware key bindings are wired in on top of Monaco.
-
-## Usage
-
-Once at app startup, register the editor's blocks and formats — after `applyLocale`, so block/format titles resolve in the active locale. Then import the `<Editor />` component, hold the Markdown content in host state, and feed it back through `content` / `onChange`.
-
-```tsx
-import { useState } from 'react';
-import {
-	Editor,
-	applyLocale,
-	registerBlocks,
-	registerFormats,
-} from '@mark-bricks/editor';
-
-applyLocale( navigator.language );
-registerBlocks();
-registerFormats();
-
-function App() {
-	const [ content, setContent ] = useState( '# Hello, MarkBricks' );
-
-	return <Editor content={ content } onChange={ setContent } />;
-}
-```
-
-To switch between the block editor and the Monaco source editor, own `editorMode` in host state and pass `onEditorModeChange`:
-
-```tsx
-import { useState } from 'react';
-import { Editor } from '@mark-bricks/editor';
-
-function App() {
-	const [ content, setContent ] = useState( '' );
-	const [ editorMode, setEditorMode ] = useState< 'visual' | 'text' >(
-		'visual'
-	);
-
-	return (
-		<Editor
-			content={ content }
-			onChange={ setContent }
-			editorMode={ editorMode }
-			onEditorModeChange={ setEditorMode }
-			settings={ { fixedToolbar: true } }
-			editorStyles={ { contentWidth: 800 } }
-		/>
-	);
-}
-```
-
-## Props
-
-### `content`: `string`
-
-Current Markdown content.
-
--   Required: Yes
-
-### `onChange`: `( content: string ) => void`
-
-Called whenever the user edits the document.
-
--   Required: Yes
-
-### `editorMode`: `'visual' | 'text'`
-
-Selects between the block editor (`visual`) and the Monaco source editor (`text`).
-
--   Required: No
--   Default: `'visual'`
-
-### `onEditorModeChange`: `Dispatch< SetStateAction< 'visual' | 'text' > >`
-
-Setter for `editorMode`. Pass this when the host owns `editorMode` in state so the editor's own mode-switching UI can update it.
-
--   Required: No
-
-### `settings`: `object`
-
-Optional editor configuration. All fields are individually optional; omitted fields fall back to built-in defaults.
-
--   Required: No
-
-#### `settings.showListViewByDefault`: `boolean`
-
-Opens the list view sidebar on mount.
-
--   Required: No
--   Default: `false`
-
-#### `settings.fixedToolbar`: `boolean`
-
-Pins the block toolbar to the top of the editor instead of letting it float per block.
-
--   Required: No
--   Default: `false`
-
-#### `settings.focusMode`: `boolean`
-
-Enables focus mode, which dims non-focused blocks.
-
--   Required: No
--   Default: `false`
-
-#### `settings.spellCheck`: `boolean`
-
-Toggles the browser spellchecker on the visual canvas.
-
--   Required: No
--   Default: `false`
-
-#### `settings.codeEditor`: `Partial<CodeEditorSettings>`
-
-Monaco source editor settings. All fields are individually optional; omitted fields fall back to the defaults shown below.
-
--   Required: No
-
-| Field             | Type                                            | Default | Description                                                               |
-| ----------------- | ----------------------------------------------- | ------- | ------------------------------------------------------------------------- |
-| `theme`           | `'vs' \| 'vs-dark' \| 'hc-light' \| 'hc-black'` | `'vs'`  | Monaco theme id: Light / Dark / High Contrast Light / High Contrast Dark. |
-| `fontSize`        | `number`                                        | `14`    | Editor font size in pixels.                                               |
-| `tabSize`         | `number`                                        | `4`     | Number of spaces inserted per Tab.                                        |
-| `showLineNumbers` | `boolean`                                       | `true`  | Show the gutter line numbers.                                             |
-
-### `headerActions`: `ReactNode`
-
-Custom content rendered in the editor header.
-
--   Required: No
-
-### `editorStyles`: `object`
-
-Visual canvas styling. All fields are optional.
-
--   Required: No
-
-| Field          | Type     | Default | Description                                                          |
-| -------------- | -------- | ------- | -------------------------------------------------------------------- |
-| `contentWidth` | `number` | `700`   | Maximum width of the content area, in pixels.                        |
-| `fontSize`     | `number` | `13`    | Base font size of the content area, in pixels.                       |
-| `fontFamily`   | `string` | —       | CSS `font-family` stack applied to the content area.                 |
-| `css`          | `string` | —       | Extra CSS injected into the canvas iframe, for theming the document. |
-
-### `style`: `CSSProperties`
-
-Inline style applied to the outer container. The editor fills its parent's height by default; use this to override sizing or add other styling.
-
--   Required: No
-
-### `platform`: `object`
-
-Host integration callbacks for environment-specific operations (file pickers, path resolution). The editor stays environment-agnostic and only invokes these; each host injects its own implementation. All fields are optional; omitted fields fall back to no-op defaults.
-
--   Required: No
-
-| Field             | Type                                    | Description                                                                           |
-| ----------------- | --------------------------------------- | ------------------------------------------------------------------------------------- |
-| `pickImageFile`   | `() => Promise< string \| null >`       | Opens a native image file picker; resolves with the stored path, or `null` on cancel. |
-| `resolveImageSrc` | `( path: string ) => Promise< string >` | Converts a stored path into a URL the current webview can render in an `<img>` tag.   |
+-   **Block editor** — the basic blocks and inline formats needed to author Markdown, plus the surrounding editing UI (block inserter, list view, document outline, keyboard shortcuts).
+-   **Source code editor** — a [Monaco Editor](https://microsoft.github.io/monaco-editor/)-based source editor for editing raw Markdown, configured by the host with Markdown-aware key bindings wired in on top.
 
 ## Localization
 
@@ -182,65 +18,24 @@ Localization is built on `@wordpress/i18n`. Dictionaries from `languages/mark-br
 
 Call `applyLocale()` once at startup, before the editor renders and before any module that calls `__()` at module load is imported. Switching locale afterward requires an app restart.
 
-```tsx
-import { useState, type ChangeEvent } from 'react';
-import { createRoot } from 'react-dom/client';
-import {
-	Editor,
-	LOCALES,
-	applyLocale,
-	getLocale,
-	type Locale,
-} from '@mark-bricks/editor';
-
-// Apply the locale before anything renders. Unknown values fall back to
-// navigator.language, then 'en'. applyLocale returns the resolved Locale.
-const locale: Locale = applyLocale( localStorage.getItem( 'locale' ) );
-document.documentElement.lang = locale;
-
-function App() {
-	const [ content, setContent ] = useState( '# Hello, MarkBricks' );
-
-	// Switching locale requires re-running applyLocale at startup, so persist
-	// the choice and reload.
-	const onLocaleChange = ( e: ChangeEvent< HTMLSelectElement > ) => {
-		localStorage.setItem( 'locale', e.target.value );
-		window.location.reload();
-	};
-
-	return (
-		<>
-			<select defaultValue={ getLocale() } onChange={ onLocaleChange }>
-				{ LOCALES.map( ( { code, name } ) => (
-					<option key={ code } value={ code }>
-						{ name }
-					</option>
-				) ) }
-			</select>
-			<Editor content={ content } onChange={ setContent } />
-		</>
-	);
-}
-
-createRoot( document.getElementById( 'root' )! ).render( <App /> );
-```
-
 ## Localization pipeline
 
 The translation files in [`languages/`](./languages/) — the `mark-bricks.pot` template, the per-locale `mark-bricks-<locale>.po` sources, and the compiled `mark-bricks-<locale>.json` dictionaries — are built with the shared [`@mark-bricks/i18n-tools`](../i18n-tools/README.md) CLI, wired here as the `i18n:make-pot` / `i18n:make-po` / `i18n:make-json` scripts. See that package's README for the pipeline and the command reference.
 
 ```sh
-pnpm --filter @mark-bricks/editor i18n:make-pot   # 1. Extract .pot after source changes
-pnpm --filter @mark-bricks/editor i18n:make-po    # 2. Sync .po against the .pot
-#    → translate the msgstr fields in mark-bricks-<locale>.po
-pnpm --filter @mark-bricks/editor i18n:make-json  # 3. Build the .json dictionary
+# 1. Extract .pot after source changes
+pnpm --filter @mark-bricks/editor i18n:make-pot
+# 2. Sync .po against the .pot → translate the msgstr fields in mark-bricks-<locale>.po
+pnpm --filter @mark-bricks/editor i18n:make-po
+# 3. Build the .json dictionary
+pnpm --filter @mark-bricks/editor i18n:make-json
 ```
 
 Because the editor ships the WordPress block editor standalone, its `i18n:make-json` runs with `--gutenberg`: each `mark-bricks-<locale>.json` bundles both the `mark-bricks` domain (from the `.po`) and the `default` domain (Gutenberg strings fetched from `translate.wordpress.org`).
 
 ### Overriding translations
 
-The `default` domain is fetched from WordPress.org, but its msgids do not always match the `@wordpress/*` packages bundled into the app; mismatched strings fall through untranslated. To patch them — or to fix a `mark-bricks` string without rebuilding the `.po` — drop a `mark-bricks-override-<locale>.json` next to the dictionary. It uses the same Jed format, is merged on top at the message level, and survives `i18n:make-json` re-runs.
+The `default` domain's msgids don't always match the bundled `@wordpress/*` packages, so some strings fall through untranslated. To patch them — or fix a `mark-bricks` string without rebuilding the `.po` — drop a `mark-bricks-override-<locale>.json` next to the dictionary. Same Jed format, merged on top per message, and it survives `i18n:make-json` re-runs.
 
 ```json
 {
