@@ -1,7 +1,7 @@
 {
 	"name": "mark-bricks-desktop",
 	"private": true,
-	"version": "0.6.0",
+	"version": "0.6.1",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
 	"bugs": {
