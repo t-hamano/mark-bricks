@@ -1,3 +1,14 @@
+# [0.6.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.5.1...tauri-v0.6.0) (2026-05-23)
+
+### Bug Fixes
+
+-   **tauri:** restrict asset protocol scope to image files ([#28](https://github.com/t-hamano/mark-bricks/issues/28)) ([1e0757e](https://github.com/t-hamano/mark-bricks/commit/1e0757e2096e6a62c8970068d434051b9ba91cec))
+
+### Features
+
+-   **tauri:** adopt new cube app icon ([#27](https://github.com/t-hamano/mark-bricks/issues/27)) ([ef2ba6f](https://github.com/t-hamano/mark-bricks/commit/ef2ba6fdd26d13939ba3cbd5b005b4b19e58c4b7))
+-   **tauri:** enable strict content security policy ([ea5f00f](https://github.com/t-hamano/mark-bricks/commit/ea5f00f6a03a5f445f56ad1e0a0f910b1f2c29d6))
+
 ## [0.5.1](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.5.0...tauri-v0.5.1) (2026-05-22)
 
 # [0.5.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.4.0...tauri-v0.5.0) (2026-05-22)
