@@ -1,3 +1,16 @@
+# [0.7.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.6.0...tauri-v0.7.0) (2026-05-23)
+
+### Bug Fixes
+
+-   **editor:** localize heading block variations ([85e9b3a](https://github.com/t-hamano/mark-bricks/commit/85e9b3af91887d3de56f5e127db5702903e6f3d0))
+-   **tauri:** allow blob: in frame-src so the editor iframe loads ([34d4d2e](https://github.com/t-hamano/mark-bricks/commit/34d4d2ec33535c3eb6d80adbd0f4fa2597b1e4be))
+-   **tauri:** open os-associated markdown files by hardcoding extensions ([3528055](https://github.com/t-hamano/mark-bricks/commit/3528055f34e97a2d436a1115ad4ea73c0361e489))
+-   **tauri:** relax script-src csp so editor iframe bootstraps correctly ([23fc8ec](https://github.com/t-hamano/mark-bricks/commit/23fc8ec276329188581d142b4bdf0fb8483b6ba4))
+
+### Features
+
+-   **editor:** drop block style variations ([8ccf2f9](https://github.com/t-hamano/mark-bricks/commit/8ccf2f9af7792d383d8af29b9e6182a29f7392ae))
+
 ## [0.6.1](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.6.0...tauri-v0.6.1) (2026-05-23)
 
 ### Bug Fixes
