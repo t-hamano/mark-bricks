@@ -27,9 +27,11 @@ Download **MarkBricks Desktop** for your platform. Older versions and release no
 
 This is a pnpm monorepo. The editor itself lives in a host-agnostic package that each host application consumes.
 
--   **[`packages/editor`](packages/editor)** — `@mark-bricks/editor`. The host-agnostic React component at the heart of MarkBricks. Ships the blocks, inline formats, a Monaco-based source editor, and i18n. Hosts render the `<Editor />` component and pass in only host-specific configuration.
 -   **[`apps/tauri`](apps/tauri)** — Desktop application. Built on Tauri 2 + React, it hosts `@mark-bricks/editor` for editing local Markdown files.
 -   **[`apps/vscode`](apps/vscode)** — VSCode extension. Embeds the editor as a custom editor for `.md` files. **Not yet implemented.**
+-   **[`packages/editor`](packages/editor)** — `@mark-bricks/editor`. The host-agnostic React component at the heart of MarkBricks. Ships the blocks, inline formats, a Monaco-based source editor, and i18n. Hosts render the `<Editor />` component and pass in only host-specific configuration.
+-   **[`packages/i18n-tools`](packages/i18n-tools)** — `@mark-bricks/i18n-tools`. Private shared i18n build tooling. Provides the `mb-i18n` CLI that runs the gettext PO/JSON pipeline (extract `.pot` → sync per-locale `.po` → build the Jed-format `.json` dictionaries `@wordpress/i18n` loads), consumed by the hosts via pnpm's `workspace:` protocol.
+-   **[`packages/fixtures`](packages/fixtures)** — `@mark-bricks/fixtures`. Shared Markdown fixtures consumed by Storybook, the round-trip tests, and manual smoke tests.
 -   **[`storybook`](storybook)** — Storybook workspace for previewing the editor.
 
 ## Storybook
