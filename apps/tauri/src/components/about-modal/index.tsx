@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { useState } from 'react';
+import { openUrl } from '@tauri-apps/plugin-opener';
 
 /**
  * WordPress dependencies
@@ -95,7 +96,14 @@ export default function AboutModal( { name, version }: Props ) {
 							? __( 'Checking…', 'mark-bricks' )
 							: __( 'Check for updates', 'mark-bricks' ) }
 					</Button>
-					<Link href={ REPORT_ISSUE_URL } openInNewTab>
+					<Link
+						href={ REPORT_ISSUE_URL }
+						openInNewTab
+						onClick={ ( event ) => {
+							event.preventDefault();
+							openUrl( REPORT_ISSUE_URL );
+						} }
+					>
 						{ __( 'Report an issue', 'mark-bricks' ) }
 					</Link>
 				</Stack>
