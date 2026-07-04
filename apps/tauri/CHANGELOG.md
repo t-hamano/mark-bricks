@@ -1,3 +1,11 @@
+## [0.9.1](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.9.0...tauri-v0.9.1) (2026-07-04)
+
+### Bug Fixes
+
+-   **tauri:** allow blob editor iframe under csp on webkit ([cda7367](https://github.com/t-hamano/mark-bricks/commit/cda73671091c2c79886a12d836558eeee9b5b3f9))
+-   **tauri:** drop redundant node_modules stylesheet links ([368f120](https://github.com/t-hamano/mark-bricks/commit/368f1203c4140362fd2882b0a8317bfc1f769365))
+-   **tauri:** open report-issue link in the system browser ([2d648c0](https://github.com/t-hamano/mark-bricks/commit/2d648c0ecd568c6b42280fe6b8cb0dfa4ea5596f))
+
 # [0.9.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.8.0...tauri-v0.9.0) (2026-05-23)
 
 ### Features
