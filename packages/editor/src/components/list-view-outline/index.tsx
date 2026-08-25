@@ -91,7 +91,7 @@ export function ListViewOutline() {
 					<Text
 						variant="body-sm"
 						style={ {
-							color: 'var(--wpds-color-fg-content-neutral-weak)',
+							color: 'var(--wpds-color-foreground-content-neutral-weak)',
 						} }
 					>
 						{ __(

@@ -297,7 +297,7 @@ export default function Edit( props: BlockEditProps ) {
 										'0 var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-sm)',
 									margin: '0 calc( -1 * var(--wpds-dimension-padding-sm) ) var(--wpds-dimension-padding-sm)',
 									borderBottom:
-										'var(--wpds-border-width-xs) solid var(--wpds-color-bg-interactive-neutral-strong-active)',
+										'var(--wpds-border-width-xs) solid var(--wpds-color-background-interactive-neutral-strong-active)',
 								} }
 							>
 								<div style={ { flex: 1 } }>

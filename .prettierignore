@@ -1,5 +1,6 @@
 node_modules
 dist
+storybook-static
 tmp
 src-tauri/target
 src-tauri/gen

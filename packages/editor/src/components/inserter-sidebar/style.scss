@@ -1,10 +1,8 @@
 .inserter-sidebar {
 	flex: 0 0 auto;
 	position: relative;
-	border-right:
-		var(--wpds-border-width-xs) solid
-		var(--wpds-color-stroke-surface-neutral-weak);
-	background: var(--wpds-color-bg-surface-neutral-strong);
+	border-right: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	background: var(--wpds-color-background-surface-neutral-strong);
 	overflow: hidden;
 	z-index: 35;
 }
@@ -19,9 +17,7 @@
 	padding: var(--wpds-dimension-padding-sm);
 
 	&.is-scrolled {
-		border-bottom:
-			var(--wpds-border-width-xs) solid
-			var(--wpds-color-stroke-surface-neutral-weak);
+		border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
 	}
 }
 

@@ -5,7 +5,7 @@
 
 	@include mixins.reset;
 	height: 100%;
-	background: var(--wpds-color-bg-surface-neutral-strong);
+	background: var(--wpds-color-background-surface-neutral-strong);
 	overflow: hidden;
 }
 
@@ -28,15 +28,15 @@
 	}
 
 	.components-input-control__input.components-input-control__input.components-input-control__input {
-		height: calc(var(--wpds-dimension-base) * 8);
-		min-height: calc(var(--wpds-dimension-base) * 8);
+		height: var(--wpds-dimension-size-md);
+		min-height: var(--wpds-dimension-size-md);
 	}
 }
 
 // Dropdown
 .components-dropdown-menu__menu-item svg {
-	width: calc(var(--wpds-dimension-base) * 5);
-	height: calc(var(--wpds-dimension-base) * 5);
+	width: var(--wpds-dimension-size-xs);
+	height: var(--wpds-dimension-size-xs);
 }
 
 // Toolbar
@@ -49,18 +49,18 @@
 		}
 
 		.components-button {
-			min-width: calc(var(--wpds-dimension-base) * 10);
+			min-width: var(--wpds-dimension-size-lg);
 
 			svg {
-				min-width: calc(var(--wpds-dimension-base) * 5);
-				width: calc(var(--wpds-dimension-base) * 5);
-				height: calc(var(--wpds-dimension-base) * 5);
+				min-width: var(--wpds-dimension-size-xs);
+				width: var(--wpds-dimension-size-xs);
+				height: var(--wpds-dimension-size-xs);
 			}
 		}
 	}
 
 	.components-toolbar-group {
-		min-height: calc(var(--wpds-dimension-base) * 10);
+		min-height: var(--wpds-dimension-size-lg);
 		padding-left: var(--wpds-dimension-padding-xs);
 		padding-right: var(--wpds-dimension-padding-xs);
 
@@ -76,33 +76,33 @@
 			min-width: 32px;
 
 			&::before {
-				left: var(--wpds-dimension-base);
-				right: var(--wpds-dimension-base);
+				left: var(--wpds-dimension-size-5xs);
+				right: var(--wpds-dimension-size-5xs);
 			}
 
 			svg {
-				min-width: calc(var(--wpds-dimension-base) * 5);
-				width: calc(var(--wpds-dimension-base) * 5);
-				height: calc(var(--wpds-dimension-base) * 5);
+				min-width: var(--wpds-dimension-size-xs);
+				width: var(--wpds-dimension-size-xs);
+				height: var(--wpds-dimension-size-xs);
 			}
 		}
 	}
 
 	.components-button:not(.block-editor-block-mover-button) {
-		height: calc(var(--wpds-dimension-base) * 10);
+		height: var(--wpds-dimension-size-lg);
 
 		&::before {
-			height: calc(var(--wpds-dimension-base) * 6);
+			height: var(--wpds-dimension-size-sm);
 		}
 	}
 
 	@media (max-width: #{ (breakpoints.$break-small - 1) }) {
 
 		.components-button {
-			height: calc(var(--wpds-dimension-base) * 10);
+			height: var(--wpds-dimension-size-lg);
 
 			&::before {
-				height: calc(var(--wpds-dimension-base) * 6);
+				height: var(--wpds-dimension-size-sm);
 			}
 		}
 	}
@@ -111,10 +111,10 @@
 .block-editor-block-popover .components-accessible-toolbar.block-editor-block-contextual-toolbar {
 
 	&.has-parent {
-		margin-left: calc(var(--wpds-dimension-base) * 12);
+		margin-left: 48px;
 
 		.block-editor-block-parent-selector {
-			left: calc(var(--wpds-dimension-base) * -12 - 1px);
+			left: calc(-48px - 1px);
 		}
 	}
 }

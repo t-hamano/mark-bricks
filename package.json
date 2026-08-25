@@ -48,9 +48,9 @@
 	"devDependencies": {
 		"@commitlint/cli": "^19.6.1",
 		"@commitlint/config-conventional": "^19.6.0",
-		"@wordpress/eslint-plugin": "^25.1.0",
-		"@wordpress/prettier-config": "^4.45.0",
-		"@wordpress/stylelint-config": "^23.37.0",
+		"@wordpress/eslint-plugin": "^25.9.0",
+		"@wordpress/prettier-config": "^4.53.0",
+		"@wordpress/stylelint-config": "^24.2.0",
 		"conventional-changelog-cli": "^5.0.0",
 		"eslint": "^9.39.4",
 		"husky": "^9.1.7",

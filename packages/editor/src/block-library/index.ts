@@ -38,7 +38,6 @@ export function registerBlocks() {
 	blocks.forEach( ( block ) =>
 		registerBlockType(
 			{
-				name: block.name,
 				...block.metadata,
 				supports: {
 					...block.metadata.supports,

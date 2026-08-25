@@ -1,25 +1,19 @@
 .editor-header {
-	height: calc(var(--wpds-dimension-base) * 10);
+	height: var(--wpds-dimension-size-lg);
 	padding: 0 var(--wpds-dimension-padding-sm);
-	border-bottom:
-		var(--wpds-border-width-xs) solid
-		var(--wpds-color-stroke-surface-neutral-weak);
+	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
 }
 
 .editor-header__document-tools .components-button {
-	height: calc(var(--wpds-dimension-base) * 10) !important;
-	min-width: calc(var(--wpds-dimension-base) * 10);
+	height: var(--wpds-dimension-size-lg) !important;
+	min-width: var(--wpds-dimension-size-lg);
 	padding: var(--wpds-dimension-padding-xs);
 }
 
 .editor-header__block-toolbar {
 	margin-right: auto;
-	border-left:
-		var(--wpds-border-width-xs) solid
-		var(--wpds-color-stroke-surface-neutral-weak);
-	border-right:
-		var(--wpds-border-width-xs) solid
-		var(--wpds-color-stroke-surface-neutral-weak);
+	border-left: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	border-right: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
 
 	.block-editor-block-contextual-toolbar {
 

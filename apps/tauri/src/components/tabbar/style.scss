@@ -1,10 +1,8 @@
 .tabbar {
-	background: var(--wpds-color-bg-surface-neutral-weak);
-	border-bottom:
-		var(--wpds-border-width-xs) solid
-		var(--wpds-color-stroke-surface-neutral-weak);
+	background: var(--wpds-color-background-surface-neutral-weak);
+	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
 	position: relative;
-	padding-right: calc(var(--wpds-dimension-base) * 10);
+	padding-right: var(--wpds-dimension-size-lg);
 }
 
 .tabbar__tabs {
@@ -22,10 +20,10 @@
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	right: var(--wpds-dimension-base);
-	color: var(--wpds-color-fg-content-neutral-weak);
-	min-width: calc(var(--wpds-dimension-base) * 5) !important;
-	height: calc(var(--wpds-dimension-base) * 5) !important;
+	right: var(--wpds-dimension-size-5xs);
+	color: var(--wpds-color-foreground-content-neutral-weak);
+	min-width: var(--wpds-dimension-size-xs) !important;
+	height: var(--wpds-dimension-size-xs) !important;
 
 	&:focus,
 	&:hover {
@@ -34,19 +32,15 @@
 }
 
 .tabbar__activate {
-	min-width: calc(var(--wpds-dimension-base) * 24);
-	max-width: calc(var(--wpds-dimension-base) * 50);
+	min-width: 96px;
+	max-width: 200px;
 	background: none;
 	border: none;
-	border-top:
-		var(--wpds-border-width-xs) solid
-		var(--wpds-color-stroke-surface-neutral-weak);
-	border-right:
-		var(--wpds-border-width-xs) solid
-		var(--wpds-color-stroke-surface-neutral-weak);
-	height: calc(var(--wpds-dimension-base) * 6);
-	padding-left: calc(var(--wpds-dimension-base) * 2);
-	padding-right: calc(var(--wpds-dimension-base) * 8);
+	border-top: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	border-right: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	height: var(--wpds-dimension-size-sm);
+	padding-left: var(--wpds-dimension-size-4xs);
+	padding-right: var(--wpds-dimension-size-md);
 	font-size: var(--wpds-typography-font-size-xs);
 	overflow: hidden;
 	white-space: nowrap;
@@ -54,7 +48,7 @@
 	cursor: pointer;
 
 	&.is-active {
-		background: var(--wpds-color-bg-surface-neutral-strong);
+		background: var(--wpds-color-background-surface-neutral-strong);
 
 		&::after {
 			content: "";
@@ -63,7 +57,7 @@
 			right: 0;
 			bottom: calc(-1 * var(--wpds-border-width-xs));
 			height: var(--wpds-border-width-xs);
-			background: var(--wpds-color-bg-surface-neutral-strong);
+			background: var(--wpds-color-background-surface-neutral-strong);
 		}
 	}
 
@@ -73,9 +67,7 @@
 	}
 
 	&:focus {
-		outline:
-			var(--wp-admin-border-width-focus) solid
-			var(--wp-admin-theme-color);
+		outline: var(--wp-admin-border-width-focus) solid var(--wp-admin-theme-color);
 		outline-offset: calc(-1 * var(--wpds-border-width-focus));
 	}
 }
@@ -85,10 +77,10 @@
 	top: 50%;
 	transform: translateY(-50%);
 	right: 28px;
-	width: var(--wpds-dimension-base);
-	height: var(--wpds-dimension-base);
+	width: var(--wpds-dimension-size-5xs);
+	height: var(--wpds-dimension-size-5xs);
 	border-radius: 50%;
-	background: var(--wpds-color-fg-content-neutral-weak);
+	background: var(--wpds-color-foreground-content-neutral-weak);
 	opacity: 0;
 
 	&.is-dirty {
@@ -101,6 +93,6 @@
 	right: 10px;
 	top: 50%;
 	transform: translateY(-50%);
-	min-width: calc(var(--wpds-dimension-base) * 5) !important;
-	height: calc(var(--wpds-dimension-base) * 5) !important;
+	min-width: var(--wpds-dimension-size-xs) !important;
+	height: var(--wpds-dimension-size-xs) !important;
 }

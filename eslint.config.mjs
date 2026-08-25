@@ -6,6 +6,7 @@ export default [
 			'tmp/**',
 			'**/src-tauri/**',
 			'**/dist/**',
+			'**/storybook-static/**',
 			'**/node_modules/**',
 		],
 	},

@@ -1,8 +1,6 @@
 .mobile-block-toolbar {
 	flex: 0 0 auto;
-	border-bottom:
-		var(--wpds-border-width-xs) solid
-		var(--wpds-color-stroke-surface-neutral-weak);
+	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
 
 	.block-editor-block-contextual-toolbar.is-unstyled {
 		box-shadow: none;

@@ -2,7 +2,7 @@
 @use "@wordpress/base-styles/breakpoints";
 @use "@wordpress/base-styles/variables";
 
-$sidebar-width: calc(var(--wpds-dimension-base) * 50);
+$sidebar-width: 200px;
 
 .preferences-modal {
 
@@ -23,7 +23,7 @@ $sidebar-width: calc(var(--wpds-dimension-base) * 50);
 }
 
 .preferences-modal__tabs {
-	background: var(--wpds-color-bg-surface-neutral-strong);
+	background: var(--wpds-color-background-surface-neutral-strong);
 	padding: var(--wpds-dimension-padding-lg);
 	position: sticky;
 	top: 0;
@@ -33,7 +33,7 @@ $sidebar-width: calc(var(--wpds-dimension-base) * 50);
 	@include mixins.break-medium() {
 		position: absolute;
 		top: calc(#{variables.$header-height} + var(--wpds-dimension-padding-sm));
-		left: calc(var(--wpds-dimension-base) * 6);
+		left: var(--wpds-dimension-size-sm);
 		bottom: 0;
 		padding: 0;
 		width: $sidebar-width;
@@ -56,7 +56,7 @@ $sidebar-width: calc(var(--wpds-dimension-base) * 50);
 	}
 
 	.components-base-control {
-		max-width: calc(var(--wpds-dimension-base) * 80);
+		max-width: var(--wpds-dimension-surface-width-sm);
 	}
 
 	.components-button {

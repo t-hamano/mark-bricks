@@ -23,8 +23,8 @@
 	line-height: 1;
 
 	svg {
-		width: calc(var(--wpds-dimension-base) * 5);
-		height: calc(var(--wpds-dimension-base) * 5);
+		width: var(--wpds-dimension-size-xs);
+		height: var(--wpds-dimension-size-xs);
 		fill: currentcolor;
 	}
 }
