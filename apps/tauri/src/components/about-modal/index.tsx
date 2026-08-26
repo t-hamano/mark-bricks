@@ -86,7 +86,7 @@ export default function AboutModal( { name, version }: Props ) {
 				>
 					<Button
 						variant="outline"
-						size="small"
+						size="compact"
 						loading={ isChecking }
 						loadingAnnouncement={ __( 'Checking…', 'mark-bricks' ) }
 						disabled={ isChecking }
