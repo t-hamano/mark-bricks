@@ -73,7 +73,7 @@ export default function HeaderActions( {
 				shortcut={ toggleModeShortcut }
 				variant="minimal"
 				tone="neutral"
-				size="small"
+				size="compact"
 				onClick={ () =>
 					onEditorModeChange(
 						editorMode === 'text' ? 'visual' : 'text'
@@ -82,7 +82,7 @@ export default function HeaderActions( {
 				aria-pressed={ editorMode === 'text' }
 			/>
 			<Button
-				size="small"
+				size="compact"
 				onClick={ () => {
 					saveActiveFile();
 				} }
@@ -98,7 +98,7 @@ export default function HeaderActions( {
 				popoverProps={ { placement: 'bottom-end' } }
 				toggleProps={ {
 					tooltipPosition: 'bottom',
-					size: 'small',
+					size: 'compact',
 					iconSize: 20,
 				} }
 			>

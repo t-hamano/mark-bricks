@@ -160,7 +160,7 @@ export function InserterSidebar( { toggleRef }: Props ) {
 						label={ __( 'Close', 'mark-bricks' ) }
 						variant="minimal"
 						tone="neutral"
-						size="small"
+						size="compact"
 						onClick={ closeInserterSidebar }
 					/>
 				</Stack>
