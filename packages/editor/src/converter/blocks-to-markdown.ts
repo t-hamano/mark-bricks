@@ -25,6 +25,7 @@ import * as quoteConverter from '../block-library/quote/converter';
 import * as htmlConverter from '../block-library/html/converter';
 import * as detailsConverter from '../block-library/details/converter';
 import type { NodeResult } from '../block-library/types';
+import { linkHandler } from './autolink-literal';
 import { inlineMarkerHandlers } from './inline-marker';
 
 /**
@@ -90,12 +91,17 @@ export function blocksToMarkdown( blocks: Block[] ): string {
 				type: 'root',
 				children: [ result.node ],
 			};
+			// Inline markers and links are serialized the same way for
+			// every block, so the handlers are installed here rather than in
+			// each converter.
+			const { handlers, ...options } = result.options ?? {};
 			return unified()
 				.use( remarkStringify, {
-					...result.options,
+					...options,
 					handlers: {
 						...inlineMarkerHandlers,
-						...result.options?.handlers,
+						link: linkHandler,
+						...handlers,
 					},
 				} )
 				.use( remarkGfm )
