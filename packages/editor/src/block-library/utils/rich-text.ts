@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { fromHtml } from 'hast-util-from-html';
-import type { RootContent } from 'hast';
+import type { Element, RootContent } from 'hast';
 import type { PhrasingContent } from 'mdast';
 
 /**
@@ -10,6 +10,52 @@ import type { PhrasingContent } from 'mdast';
  */
 import { escapeAttribute, escapeHTML } from '@wordpress/escape-html';
 import { RichTextData } from '@wordpress/rich-text';
+
+/**
+ * The marker characters CommonMark accepts for emphasis and strong emphasis.
+ */
+export type InlineMarker = '*' | '_';
+
+declare module 'mdast' {
+	interface EmphasisData {
+		marker?: InlineMarker;
+	}
+	interface StrongData {
+		marker?: InlineMarker;
+	}
+}
+
+/**
+ * The attribute that carries a non-default marker through a block's inline
+ * content. `*` is the default and is therefore never written out.
+ */
+const MARKER_ATTRIBUTE = 'data-markdown-marker';
+
+/**
+ * The `hast` property name `hast-util-from-html` derives from
+ * {@link MARKER_ATTRIBUTE}.
+ */
+const MARKER_PROPERTY = 'dataMarkdownMarker';
+
+/**
+ * Reads the marker an element carries, if any.
+ *
+ * @param node hast element.
+ * @return The marker, or `undefined` when the element carries none.
+ */
+function readMarker( node: Element ): InlineMarker | undefined {
+	return node.properties?.[ MARKER_PROPERTY ] === '_' ? '_' : undefined;
+}
+
+/**
+ * Renders the marker attribute for a node that carries a non-default marker.
+ *
+ * @param marker The node's marker, if any.
+ * @return The attribute to insert into the opening tag, or an empty string.
+ */
+function writeMarker( marker: InlineMarker | undefined ): string {
+	return marker === '_' ? ` ${ MARKER_ATTRIBUTE }="_"` : '';
+}
 
 /**
  * Flattens phrasing content to plain text, discarding all formatting.
@@ -67,13 +113,23 @@ function hastToPhrasing( nodes: RootContent[] ): PhrasingContent[] {
 			case 'em':
 			case 'i':
 				if ( children.length > 0 ) {
-					result.push( { type: 'emphasis', children } );
+					const marker = readMarker( node );
+					result.push( {
+						type: 'emphasis',
+						children,
+						...( marker ? { data: { marker } } : {} ),
+					} );
 				}
 				break;
 			case 'strong':
 			case 'b':
 				if ( children.length > 0 ) {
-					result.push( { type: 'strong', children } );
+					const marker = readMarker( node );
+					result.push( {
+						type: 'strong',
+						children,
+						...( marker ? { data: { marker } } : {} ),
+					} );
 				}
 				break;
 			case 's':
@@ -140,11 +196,13 @@ export function inlineToContent( children: PhrasingContent[] ): string {
 				case 'inlineCode':
 					return `<code>${ escapeHTML( node.value ) }</code>`;
 				case 'emphasis':
-					return `<em>${ inlineToContent( node.children ) }</em>`;
+					return `<em${ writeMarker(
+						node.data?.marker
+					) }>${ inlineToContent( node.children ) }</em>`;
 				case 'strong':
-					return `<strong>${ inlineToContent(
-						node.children
-					) }</strong>`;
+					return `<strong${ writeMarker(
+						node.data?.marker
+					) }>${ inlineToContent( node.children ) }</strong>`;
 				case 'delete':
 					return `<s>${ inlineToContent( node.children ) }</s>`;
 				case 'link': {
