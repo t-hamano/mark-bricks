@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T03:42:05.713Z\n"
+"POT-Creation-Date: 2026-08-26T03:57:44.833Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -157,7 +157,7 @@ msgstr ""
 #: src/components/tabbar/index.tsx:197
 #: src/components/header-actions/index.tsx:103
 #: src/components/header-actions/index.tsx:145
-#: src/components/dirty-confirm-dialog/index.tsx:82
+#: src/components/dirty-confirm-dialog/index.tsx:112
 msgid "Save"
 msgstr ""
 
@@ -400,15 +400,19 @@ msgid "Create a new Markdown file or open an existing one to start editing."
 msgstr ""
 
 # %s: tab title.
-#: src/components/dirty-confirm-dialog/index.tsx:76
+#: src/components/dirty-confirm-dialog/index.tsx:80
 msgid "\"%s\" has unsaved changes. Do you want to save before closing?"
 msgstr ""
 
-#: src/components/dirty-confirm-dialog/index.tsx:85
+#: src/components/dirty-confirm-dialog/index.tsx:95
+msgid "Cancel"
+msgstr ""
+
+#: src/components/dirty-confirm-dialog/index.tsx:104
 msgid "Discard changes"
 msgstr ""
 
-#: src/components/dirty-confirm-dialog/index.tsx:86
+#: src/components/dirty-confirm-dialog/index.tsx:105
 msgid "Discard"
 msgstr ""
 

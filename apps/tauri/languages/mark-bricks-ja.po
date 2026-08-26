@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T03:42:05.713Z\n"
-"PO-Revision-Date: 2026-08-26T03:42:26.151Z\n"
+"POT-Creation-Date: 2026-08-26T03:57:44.833Z\n"
+"PO-Revision-Date: 2026-08-26T03:57:45.153Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/components/dirty-confirm-dialog/index.tsx:76
+#: src/components/dirty-confirm-dialog/index.tsx:80
 msgid "\"%s\" has unsaved changes. Do you want to save before closing?"
 msgstr "「%s」に保存されていない変更があります。閉じる前に保存しますか？"
 
@@ -51,6 +51,10 @@ msgstr "コンテンツ領域の基本フォントサイズ (ピクセル単位)
 #: src/components/keyboard-shortcuts-modal/index.tsx:242
 msgid "Block shortcuts"
 msgstr "ブロックショートカット"
+
+#: src/components/dirty-confirm-dialog/index.tsx:95
+msgid "Cancel"
+msgstr "キャンセル"
 
 #: src/components/preferences-modal/general-panel.tsx:126
 #: src/components/about-modal/index.tsx:95
@@ -111,11 +115,11 @@ msgstr "新しいファイルを作成。"
 msgid "Dark"
 msgstr "ダーク"
 
-#: src/components/dirty-confirm-dialog/index.tsx:86
+#: src/components/dirty-confirm-dialog/index.tsx:105
 msgid "Discard"
 msgstr "破棄"
 
-#: src/components/dirty-confirm-dialog/index.tsx:85
+#: src/components/dirty-confirm-dialog/index.tsx:104
 msgid "Discard changes"
 msgstr "変更を破棄"
 
@@ -277,7 +281,7 @@ msgstr "サンセリフ"
 #: src/components/tabbar/index.tsx:197
 #: src/components/header-actions/index.tsx:103
 #: src/components/header-actions/index.tsx:145
-#: src/components/dirty-confirm-dialog/index.tsx:82
+#: src/components/dirty-confirm-dialog/index.tsx:112
 msgid "Save"
 msgstr "保存"
 
