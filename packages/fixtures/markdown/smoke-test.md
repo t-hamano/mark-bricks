@@ -125,6 +125,25 @@ plain code block without a language
 | Quote   | `> text`        | Supports GFM alerts  |
 | Code    | Fenced block    | Tagged with language |
 
+## Details
+
+<details>
+<summary>A collapsed section</summary>
+
+Hidden content is written as Markdown, so it can hold **any** block.
+
+- A list item
+- Another list item
+
+</details>
+
+<details open>
+<summary>A section that starts open</summary>
+
+The `open` attribute expands the section by default.
+
+</details>
+
 ## Custom HTML
 
 <div class="callout">

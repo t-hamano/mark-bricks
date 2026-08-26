@@ -23,6 +23,7 @@ import * as listConverter from '../block-library/list/converter';
 import * as imageConverter from '../block-library/image/converter';
 import * as quoteConverter from '../block-library/quote/converter';
 import * as htmlConverter from '../block-library/html/converter';
+import * as detailsConverter from '../block-library/details/converter';
 import type { NodeResult } from '../block-library/types';
 
 /**
@@ -57,6 +58,8 @@ export function blockToNode( block: Block ): NodeResult | null {
 			return quoteConverter.toNode( block );
 		case 'core/html':
 			return htmlConverter.toNode( block );
+		case 'core/details':
+			return detailsConverter.toNode( block );
 		default:
 			return null;
 	}
