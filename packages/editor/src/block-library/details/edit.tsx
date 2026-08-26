@@ -82,6 +82,7 @@ export default function Edit( {
 				>
 					<RichText
 						identifier="summary"
+						tagName="span"
 						placeholder={ __( 'Write summary…', 'mark-bricks' ) }
 						withoutInteractiveFormatting
 						value={ richTextToString( summary ) }
