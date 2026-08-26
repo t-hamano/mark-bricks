@@ -15,6 +15,12 @@ import type { Block } from '@wordpress/blocks';
 import { createBlock } from '../utils';
 import * as listItemConverter from '../list-item/converter';
 import type { NodeResult } from '../types';
+import {
+	DEFAULT_SPACING,
+	detectSpacing,
+	listItemHandler,
+	normalizeSpacing,
+} from './spacing';
 import type { BlockAttributes, ListMarker } from './types';
 
 const DEFAULT_ORDERED_MARKER: ListMarker = '.';
@@ -53,9 +59,9 @@ function detectMarker( node: List, source: string ): ListMarker {
  * Converts an mdast List node into a `core/list` block.
  *
  * Each `listItem` child becomes a `core/list-item` inner block. CommonMark
- * allows several marker characters and a loose/tight spacing, none of which
- * `core/list` represents, so they are detected from `source` and stored on
- * `markdownData` for round-tripping.
+ * allows several marker characters, a loose/tight spacing, and one to four
+ * spaces after the marker, none of which `core/list` represents, so they are
+ * detected from `source` and stored on `markdownData` for round-tripping.
  *
  * ## Unordered
  *
@@ -76,6 +82,16 @@ function detectMarker( node: List, source: string ): ListMarker {
  * 2. two
  * ```
  *
+ * ## Marker spacing
+ *
+ * One to four spaces may follow the marker, which also fixes the column the
+ * item content and anything nested inside it is indented to.
+ *
+ * ```md
+ * -   one
+ * -   two
+ * ```
+ *
  * @param node   mdast List node from remark-parse.
  * @param source The original markdown source, required to detect the marker
  *               via `node.position`.
@@ -88,6 +104,7 @@ export function toBlock( node: List, source: string ): Block {
 		markdownData: {
 			marker: detectMarker( node, source ),
 			spread: !! node.spread,
+			spacing: detectSpacing( node, source ),
 		},
 	};
 	// A `start` of 1 is the implicit default, so it is only stored when the
@@ -109,7 +126,8 @@ export function toBlock( node: List, source: string ): Block {
  * are only meaningful for the top-level `stringify` call).
  *
  * @param block `core/list` block.
- * @return mdast List node, with `listItem` children built recursively.
+ * @return mdast List node, with `listItem` children built recursively and a
+ *         non-default marker spacing attached as `data.spacing`.
  */
 export function buildListNode( block: Block ): List {
 	const { ordered, start, markdownData } =
@@ -126,6 +144,13 @@ export function buildListNode( block: Block ): List {
 	if ( ordered ) {
 		node.start = start ?? 1;
 	}
+	// The marker spacing has no stringify option, so it travels on the node
+	// for the custom `listItem` handler to read. The default spacing is what
+	// the built-in handler emits anyway, so it is left off the node.
+	const spacing = normalizeSpacing( markdownData?.spacing );
+	if ( spacing !== DEFAULT_SPACING ) {
+		node.data = { spacing };
+	}
 	return node;
 }
 
@@ -136,6 +161,11 @@ export function buildListNode( block: Block ): List {
  * is walked and the first marker of each kind wins. Nested lists that use a
  * different marker of the *same* kind cannot be represented and fall back to
  * this marker (known limitation).
+ *
+ * The marker spacing has no equivalent option, so a list that does not use
+ * the default spacing installs {@link listItemHandler}, which reads the
+ * spacing from each List node and therefore stays exact however deeply the
+ * lists nest.
  *
  * @param block Top-level `core/list` block.
  * @return remark-stringify options.
@@ -155,6 +185,11 @@ function deriveOptions( block: Block ): Options {
 					options.bullet = marker as Options[ 'bullet' ];
 				}
 			}
+			if (
+				normalizeSpacing( markdownData?.spacing ) !== DEFAULT_SPACING
+			) {
+				options.handlers = { listItem: listItemHandler };
+			}
 		}
 		current.innerBlocks.forEach( visit );
 	};
@@ -166,8 +201,10 @@ function deriveOptions( block: Block ): Options {
  * Converts a `core/list` block back into an mdast List node.
  *
  * The marker is restored from `markdownData.marker` via the remark-stringify
- * `bullet` / `bulletOrdered` options, and the loose/tight spacing from
- * `markdownData.spread` via the `spread` flag on the List and `listItem` nodes.
+ * `bullet` / `bulletOrdered` options, the loose/tight spacing from
+ * `markdownData.spread` via the `spread` flag on the List and `listItem`
+ * nodes, and the marker spacing from `markdownData.spacing` via a custom
+ * `listItem` handler.
  *
  * @param block `core/list` block.
  * @return mdast List node together with serialization options.

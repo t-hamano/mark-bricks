@@ -20,6 +20,7 @@ export const settings: Partial< BlockConfiguration > = {
 			default: {
 				marker: '-',
 				spread: false,
+				spacing: 1,
 			},
 		},
 	},

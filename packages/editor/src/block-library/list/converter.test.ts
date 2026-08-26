@@ -52,7 +52,7 @@ describe( 'core/list', () => {
 			expect( blocks[ 0 ].name ).toBe( 'core/list' );
 			expect( blocks[ 0 ].attributes ).toEqual( {
 				ordered: false,
-				markdownData: { marker: '-', spread: false },
+				markdownData: { marker: '-', spread: false, spacing: 1 },
 			} );
 			expect( blocks[ 0 ].innerBlocks ).toHaveLength( 2 );
 			expect( blocks[ 0 ].innerBlocks[ 0 ].name ).toBe(
@@ -68,13 +68,13 @@ describe( 'core/list', () => {
 			expect( star[ 0 ].name ).toBe( 'core/list' );
 			expect( star[ 0 ].attributes ).toEqual( {
 				ordered: false,
-				markdownData: { marker: '*', spread: false },
+				markdownData: { marker: '*', spread: false, spacing: 1 },
 			} );
 			const plus = markdownToBlocks( markdown( '+ one' ) );
 			expect( plus[ 0 ].name ).toBe( 'core/list' );
 			expect( plus[ 0 ].attributes ).toEqual( {
 				ordered: false,
-				markdownData: { marker: '+', spread: false },
+				markdownData: { marker: '+', spread: false, spacing: 1 },
 			} );
 		} );
 
@@ -83,7 +83,7 @@ describe( 'core/list', () => {
 			expect( blocks[ 0 ].name ).toBe( 'core/list' );
 			expect( blocks[ 0 ].attributes ).toEqual( {
 				ordered: true,
-				markdownData: { marker: '.', spread: false },
+				markdownData: { marker: '.', spread: false, spacing: 1 },
 			} );
 		} );
 
@@ -92,8 +92,39 @@ describe( 'core/list', () => {
 			expect( blocks[ 0 ].name ).toBe( 'core/list' );
 			expect( blocks[ 0 ].attributes ).toEqual( {
 				ordered: true,
-				markdownData: { marker: ')', spread: false },
+				markdownData: { marker: ')', spread: false, spacing: 1 },
 			} );
+		} );
+
+		it( 'detects the marker spacing', () => {
+			const unordered = markdownToBlocks( markdown( '-   one' ) );
+			expect( unordered[ 0 ].name ).toBe( 'core/list' );
+			expect( unordered[ 0 ].attributes ).toEqual( {
+				ordered: false,
+				markdownData: { marker: '-', spread: false, spacing: 3 },
+			} );
+			const ordered = markdownToBlocks( markdown( '1.  one' ) );
+			expect( ordered[ 0 ].name ).toBe( 'core/list' );
+			expect( ordered[ 0 ].attributes ).toEqual( {
+				ordered: true,
+				markdownData: { marker: '.', spread: false, spacing: 2 },
+			} );
+		} );
+
+		it( 'detects the marker spacing of a nested list separately', () => {
+			const blocks = markdownToBlocks(
+				markdown( '-   one', '    -  nested' )
+			);
+			expect( blocks[ 0 ].name ).toBe( 'core/list' );
+			expect(
+				( blocks[ 0 ].attributes as BlockAttributes ).markdownData
+					.spacing
+			).toBe( 3 );
+			const nested = blocks[ 0 ].innerBlocks[ 0 ].innerBlocks[ 0 ];
+			expect( nested.name ).toBe( 'core/list' );
+			expect(
+				( nested.attributes as BlockAttributes ).markdownData.spacing
+			).toBe( 2 );
 		} );
 
 		it( 'preserves a non-default start number', () => {
@@ -104,7 +135,7 @@ describe( 'core/list', () => {
 			expect( blocks[ 0 ].attributes ).toEqual( {
 				ordered: true,
 				start: 3,
-				markdownData: { marker: '.', spread: false },
+				markdownData: { marker: '.', spread: false, spacing: 1 },
 			} );
 		} );
 
@@ -163,7 +194,11 @@ describe( 'core/list', () => {
 					list(
 						{
 							ordered: false,
-							markdownData: { marker: '-', spread: false },
+							markdownData: {
+								marker: '-',
+								spread: false,
+								spacing: 1,
+							},
 						},
 						[ listItem( 'one' ), listItem( 'two' ) ]
 					),
@@ -177,7 +212,11 @@ describe( 'core/list', () => {
 					list(
 						{
 							ordered: false,
-							markdownData: { marker: '*', spread: false },
+							markdownData: {
+								marker: '*',
+								spread: false,
+								spacing: 1,
+							},
 						},
 						[ listItem( 'one' ) ]
 					),
@@ -191,7 +230,11 @@ describe( 'core/list', () => {
 					list(
 						{
 							ordered: true,
-							markdownData: { marker: '.', spread: false },
+							markdownData: {
+								marker: '.',
+								spread: false,
+								spacing: 1,
+							},
 						},
 						[ listItem( 'one' ), listItem( 'two' ) ]
 					),
@@ -206,7 +249,11 @@ describe( 'core/list', () => {
 						{
 							ordered: true,
 							start: 3,
-							markdownData: { marker: '.', spread: false },
+							markdownData: {
+								marker: '.',
+								spread: false,
+								spacing: 1,
+							},
 						},
 						[ listItem( 'three' ), listItem( 'four' ) ]
 					),
@@ -214,13 +261,50 @@ describe( 'core/list', () => {
 			).toBe( markdown( '3. three', '4. four' ) );
 		} );
 
-		it( 'nests a child core/list under its item', () => {
+		it( 'emits the stored marker spacing', () => {
 			expect(
 				blocksToMarkdown( [
 					list(
 						{
 							ordered: false,
-							markdownData: { marker: '-', spread: false },
+							markdownData: {
+								marker: '-',
+								spread: false,
+								spacing: 3,
+							},
+						},
+						[ listItem( 'one' ), listItem( 'two' ) ]
+					),
+				] )
+			).toBe( markdown( '-   one', '-   two' ) );
+			expect(
+				blocksToMarkdown( [
+					list(
+						{
+							ordered: true,
+							markdownData: {
+								marker: '.',
+								spread: false,
+								spacing: 2,
+							},
+						},
+						[ listItem( 'one' ), listItem( 'two' ) ]
+					),
+				] )
+			).toBe( markdown( '1.  one', '2.  two' ) );
+		} );
+
+		it( 'indents a nested list to the wider content column', () => {
+			expect(
+				blocksToMarkdown( [
+					list(
+						{
+							ordered: false,
+							markdownData: {
+								marker: '-',
+								spread: false,
+								spacing: 3,
+							},
 						},
 						[
 							listItem( 'one', [
@@ -230,6 +314,62 @@ describe( 'core/list', () => {
 										markdownData: {
 											marker: '-',
 											spread: false,
+											spacing: 1,
+										},
+									},
+									[ listItem( 'nested' ) ]
+								),
+							] ),
+							listItem( 'two' ),
+						]
+					),
+				] )
+			).toBe( markdown( '-   one', '    - nested', '-   two' ) );
+		} );
+
+		it( 'keeps the task marker after a wider marker spacing', () => {
+			expect(
+				blocksToMarkdown( [
+					list(
+						{
+							ordered: false,
+							markdownData: {
+								marker: '-',
+								spread: false,
+								spacing: 3,
+							},
+						},
+						[
+							listItem( 'todo', [], { checked: false } ),
+							listItem( 'done', [], { checked: true } ),
+							listItem( 'plain' ),
+						]
+					),
+				] )
+			).toBe( markdown( '-   [ ] todo', '-   [x] done', '-   plain' ) );
+		} );
+
+		it( 'nests a child core/list under its item', () => {
+			expect(
+				blocksToMarkdown( [
+					list(
+						{
+							ordered: false,
+							markdownData: {
+								marker: '-',
+								spread: false,
+								spacing: 1,
+							},
+						},
+						[
+							listItem( 'one', [
+								list(
+									{
+										ordered: false,
+										markdownData: {
+											marker: '-',
+											spread: false,
+											spacing: 1,
 										},
 									},
 									[ listItem( 'nested' ) ]
@@ -248,7 +388,11 @@ describe( 'core/list', () => {
 					list(
 						{
 							ordered: false,
-							markdownData: { marker: '-', spread: false },
+							markdownData: {
+								marker: '-',
+								spread: false,
+								spacing: 1,
+							},
 						},
 						[
 							listItem( 'todo', [], { checked: false } ),
@@ -294,6 +438,35 @@ describe( 'core/list', () => {
 
 		it( 'preserves a task list', () => {
 			const md = markdown( '- [ ] todo', '- [x] done', '- plain' );
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+
+		it.each( [ 1, 2, 3, 4 ] )(
+			'preserves a marker followed by %i space(s)',
+			( spacing ) => {
+				const spaces = ' '.repeat( spacing );
+				const md = markdown( `-${ spaces }one`, `-${ spaces }two` );
+				expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+			}
+		);
+
+		it( 'preserves the marker spacing of an ordered list', () => {
+			const md = markdown( '1.  one', '2.  two' );
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+
+		it( 'preserves the marker spacing of a nested list', () => {
+			const md = markdown( '-   one', '    -  nested', '-   two' );
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+
+		it( 'preserves the marker spacing of a loose list', () => {
+			const md = markdown( '-   one', '', '-   two' );
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+
+		it( 'preserves the marker spacing of a task list', () => {
+			const md = markdown( '-  [ ] todo', '-  [x] done', '-  plain' );
 			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
 		} );
 	} );

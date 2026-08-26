@@ -21,5 +21,7 @@ export type BlockAttributes = Block[ 'attributes' ] & {
 	markdownData: {
 		marker: ListMarker;
 		spread: boolean;
+		// Spaces between the marker and the content, from 1 to 4.
+		spacing: number;
 	};
 };
