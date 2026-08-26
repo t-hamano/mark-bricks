@@ -101,10 +101,6 @@ export default function Edit( {
 				>
 					<RichText
 						identifier="summary"
-						aria-label={ __(
-							'Write summary. Press Enter to expand or collapse the details.',
-							'mark-bricks'
-						) }
 						placeholder={ __( 'Write summary…', 'mark-bricks' ) }
 						withoutInteractiveFormatting
 						value={ richTextToString( summary ) }
