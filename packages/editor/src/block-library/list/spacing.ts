@@ -130,13 +130,8 @@ export const listItemHandler: ListItemHandle = (
 		bullet = `${ start + index }${ bullet }`;
 	}
 
-	// The content column: the marker plus the spaces that follow it.
 	const size = bullet.length + normalizeSpacing( list?.data?.spacing );
 	const padding = ' '.repeat( size - bullet.length );
-
-	// A GFM task item carries a boolean `checked`. The checkbox is part of the
-	// item's first paragraph, so it sits after the padding and does not shift
-	// the content column.
 	const head = node.children[ 0 ];
 	const checkbox =
 		typeof node.checked === 'boolean' && head?.type === 'paragraph'

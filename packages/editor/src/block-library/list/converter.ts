@@ -144,9 +144,6 @@ export function buildListNode( block: Block ): List {
 	if ( ordered ) {
 		node.start = start ?? 1;
 	}
-	// The marker spacing has no stringify option, so it travels on the node
-	// for the custom `listItem` handler to read. The default spacing is what
-	// the built-in handler emits anyway, so it is left off the node.
 	const spacing = normalizeSpacing( markdownData?.spacing );
 	if ( spacing !== DEFAULT_SPACING ) {
 		node.data = { spacing };
