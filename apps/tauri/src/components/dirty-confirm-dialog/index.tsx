@@ -1,17 +1,14 @@
 /**
  * WordPress dependencies
  */
-import { Modal } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
-import { Button, Stack, Text } from '@wordpress/ui';
+import { AlertDialog, getWpCompatOverlaySlot } from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
-import { saveTab } from '../../actions';
 import tabsStore from '../../store';
-import './style.scss';
 
 export default function DirtyConfirmDialog() {
 	const { pendingTab } = useSelect( ( select ) => {
@@ -31,66 +28,45 @@ export default function DirtyConfirmDialog() {
 
 	const cancel = () => setPendingCloseId( null );
 
-	const dontSave = () => {
+	const discard = () => {
 		const id = pendingTab.id;
-		setPendingCloseId( null );
-		closeTab( id );
-	};
-
-	const save = async () => {
-		const id = pendingTab.id;
-		const ok = await saveTab( id );
-
-		if ( ! ok ) {
-			return;
-		}
-
 		setPendingCloseId( null );
 		closeTab( id );
 	};
 
 	return (
-		<Modal
-			title={ __( 'Unsaved changes', 'mark-bricks' ) }
-			onRequestClose={ cancel }
-			className="dirty-confirm-dialog"
-			size="small"
+		<AlertDialog.Root
+			open
+			onOpenChange={ ( open ) => {
+				if ( ! open ) {
+					cancel();
+				}
+			} }
+			onConfirm={ discard }
 		>
-			<Stack direction="column" gap="md">
-				<Text>
-					{ sprintf(
-						/* translators: %s: tab title. */
-						__(
-							'"%s" has unsaved changes. Do you want to save before closing?',
-							'mark-bricks'
-						),
-						pendingTab.title
-					) }
-				</Text>
-				<Stack gap="sm" justify="flex-end">
-					<Button
-						variant="minimal"
-						tone="neutral"
-						size="compact"
-						onClick={ cancel }
-					>
-						{ __( 'Cancel', 'mark-bricks' ) }
-					</Button>
-					<Button
-						className="dirty-confirm-dialog__discard"
-						variant="minimal"
-						size="compact"
-						onClick={ dontSave }
-					>
-						{ pendingTab.filePath
-							? __( 'Discard changes', 'mark-bricks' )
-							: __( 'Discard', 'mark-bricks' ) }
-					</Button>
-					<Button size="compact" onClick={ save }>
-						{ __( 'Save', 'mark-bricks' ) }
-					</Button>
-				</Stack>
-			</Stack>
-		</Modal>
+			<AlertDialog.Popup
+				intent="irreversible"
+				title={ __( 'Unsaved changes', 'mark-bricks' ) }
+				description={ sprintf(
+					/* translators: %s: tab title. */
+					__(
+						'"%s" has unsaved changes. Do you want to discard them and close?',
+						'mark-bricks'
+					),
+					pendingTab.title
+				) }
+				cancelButtonText={ __( 'Cancel', 'mark-bricks' ) }
+				confirmButtonText={
+					pendingTab.filePath
+						? __( 'Discard changes', 'mark-bricks' )
+						: __( 'Discard', 'mark-bricks' )
+				}
+				portal={
+					<AlertDialog.Portal
+						container={ getWpCompatOverlaySlot() }
+					/>
+				}
+			/>
+		</AlertDialog.Root>
 	);
 }

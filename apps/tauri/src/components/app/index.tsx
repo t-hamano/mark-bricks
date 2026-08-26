@@ -14,7 +14,7 @@ import {
  */
 import { useDispatch, useSelect } from '@wordpress/data';
 import { store as preferencesStore } from '@wordpress/preferences';
-import { Stack } from '@wordpress/ui';
+import { Stack, useEnableWpCompatOverlaySlot } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -36,6 +36,10 @@ import tabsStore from '../../store';
 import './style.scss';
 
 export function App() {
+	// Portals @wordpress/ui overlays into a body-level slot that stacks above
+	// @wordpress/components overlays. Required while both libraries coexist.
+	useEnableWpCompatOverlaySlot();
+
 	useShortcuts();
 	useAutoUpdater();
 	useFileOpenEvents();

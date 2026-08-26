@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T05:45:58.207Z\n"
-"PO-Revision-Date: 2026-08-26T05:45:58.706Z\n"
+"POT-Creation-Date: 2026-08-26T08:04:56.259Z\n"
+"PO-Revision-Date: 2026-08-26T08:04:56.788Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,9 +17,9 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/components/dirty-confirm-dialog/index.tsx:63
-msgid "\"%s\" has unsaved changes. Do you want to save before closing?"
-msgstr "「%s」に保存されていない変更があります。閉じる前に保存しますか？"
+#: src/components/dirty-confirm-dialog/index.tsx:52
+msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
+msgstr "「%s」に保存されていない変更があります。変更を破棄して閉じますか？"
 
 #: src/store/reducer.ts:46
 #: src/store/constants.ts:13
@@ -27,7 +27,7 @@ msgid "(Untitled)"
 msgstr "(無題)"
 
 #: src/components/header-actions/index.tsx:226
-#: src/components/about-modal/index.tsx:57
+#: src/components/about-modal/index.tsx:79
 msgid "About"
 msgstr "MarkBricks について"
 
@@ -48,16 +48,16 @@ msgstr "常にリストビューを開く"
 msgid "Base font size of the content area, in pixels."
 msgstr "コンテンツ領域の基本フォントサイズ (ピクセル単位)。"
 
-#: src/components/keyboard-shortcuts-modal/index.tsx:242
+#: src/components/keyboard-shortcuts-modal/index.tsx:257
 msgid "Block shortcuts"
 msgstr "ブロックショートカット"
 
-#: src/components/dirty-confirm-dialog/index.tsx:77
+#: src/components/dirty-confirm-dialog/index.tsx:58
 msgid "Cancel"
 msgstr "キャンセル"
 
 #: src/components/preferences-modal/general-panel.tsx:125
-#: src/components/about-modal/index.tsx:95
+#: src/components/about-modal/index.tsx:121
 msgid "Check for updates"
 msgstr "アップデートを確認"
 
@@ -66,16 +66,19 @@ msgid "Check updates automatically"
 msgstr "自動的にアップデートを確認"
 
 #: src/components/preferences-modal/general-panel.tsx:121
-#: src/components/about-modal/index.tsx:91
+#: src/components/about-modal/index.tsx:114
 msgid "Checking…"
 msgstr "確認しています ..."
 
 #: src/components/tabbar/index.tsx:177
+#: src/components/preferences-modal/index.tsx:148
+#: src/components/keyboard-shortcuts-modal/index.tsx:230
+#: src/components/about-modal/index.tsx:81
 msgid "Close"
 msgstr "閉じる"
 
 # %s: tab title.
-#: src/components/tabbar/index.tsx:276
+#: src/components/tabbar/index.tsx:279
 msgid "Close %s"
 msgstr "%s を閉じる"
 
@@ -87,7 +90,7 @@ msgstr "他のタブを閉じる"
 msgid "Close the active tab."
 msgstr "アクティブなタブを閉じる。"
 
-#: src/components/preferences-modal/index.tsx:156
+#: src/components/preferences-modal/index.tsx:171
 #: src/components/header-actions/index.tsx:72
 #: src/components/header-actions/index.tsx:189
 msgid "Code editor"
@@ -115,11 +118,11 @@ msgstr "新しいファイルを作成。"
 msgid "Dark"
 msgstr "ダーク"
 
-#: src/components/dirty-confirm-dialog/index.tsx:87
+#: src/components/dirty-confirm-dialog/index.tsx:62
 msgid "Discard"
 msgstr "破棄"
 
-#: src/components/dirty-confirm-dialog/index.tsx:86
+#: src/components/dirty-confirm-dialog/index.tsx:61
 msgid "Discard changes"
 msgstr "変更を破棄"
 
@@ -135,7 +138,7 @@ msgstr "エディタースタイル"
 msgid "File associations"
 msgstr "ファイルの関連付け"
 
-#: src/components/keyboard-shortcuts-modal/index.tsx:230
+#: src/components/keyboard-shortcuts-modal/index.tsx:245
 msgid "File shortcuts"
 msgstr "ファイルショートカット"
 
@@ -156,11 +159,11 @@ msgstr "フォントファミリー"
 msgid "Font size"
 msgstr "フォントサイズ"
 
-#: src/components/preferences-modal/index.tsx:150
+#: src/components/preferences-modal/index.tsx:165
 msgid "General"
 msgstr "一般"
 
-#: src/components/keyboard-shortcuts-modal/index.tsx:234
+#: src/components/keyboard-shortcuts-modal/index.tsx:249
 msgid "Global shortcuts"
 msgstr "グローバルショートカット"
 
@@ -180,7 +183,7 @@ msgstr "ハイコントラスト (ライト)"
 msgid "Highlight misspelled words while editing."
 msgstr "編集中にスペルミスのある単語を強調表示します。"
 
-#: src/components/keyboard-shortcuts-modal/index.tsx:213
+#: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:218
 msgid "Keyboard shortcuts"
 msgstr "キーボードショートカット"
@@ -194,7 +197,7 @@ msgstr "言語"
 msgid "Light"
 msgstr "ライト"
 
-#: src/components/keyboard-shortcuts-modal/index.tsx:250
+#: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
 msgstr "リストビューのショートカット"
 
@@ -257,12 +260,12 @@ msgstr "開く…"
 msgid "Options"
 msgstr "オプション"
 
-#: src/components/preferences-modal/index.tsx:131
+#: src/components/preferences-modal/index.tsx:146
 #: src/components/header-actions/index.tsx:236
 msgid "Preferences"
 msgstr "設定"
 
-#: src/components/about-modal/index.tsx:105
+#: src/components/about-modal/index.tsx:131
 msgid "Report an issue"
 msgstr "問題を報告"
 
@@ -270,7 +273,7 @@ msgstr "問題を報告"
 msgid "Restart the app to apply the new language."
 msgstr "新しい言語を適用するにはアプリを再起動してください。"
 
-#: src/components/preferences-modal/code-editor-panel.tsx:96
+#: src/components/preferences-modal/code-editor-panel.tsx:95
 msgid "Restore default settings"
 msgstr "デフォルト設定に戻す"
 
@@ -281,7 +284,6 @@ msgstr "サンセリフ"
 #: src/components/tabbar/index.tsx:197
 #: src/components/header-actions/index.tsx:91
 #: src/components/header-actions/index.tsx:133
-#: src/components/dirty-confirm-dialog/index.tsx:90
 msgid "Save"
 msgstr "保存"
 
@@ -301,7 +303,7 @@ msgstr "アクティブなファイルを新しい名前で保存。"
 msgid "Save the active file."
 msgstr "アクティブなファイルを保存。"
 
-#: src/components/keyboard-shortcuts-modal/index.tsx:238
+#: src/components/keyboard-shortcuts-modal/index.tsx:253
 msgid "Selection shortcuts"
 msgstr "選択ショートカット"
 
@@ -346,7 +348,7 @@ msgstr "システムのデフォルト"
 msgid "Tab size"
 msgstr "タブ幅"
 
-#: src/components/keyboard-shortcuts-modal/index.tsx:246
+#: src/components/keyboard-shortcuts-modal/index.tsx:261
 msgid "Text formatting"
 msgstr "書式設定"
 
@@ -373,8 +375,8 @@ msgid "Typeface used for the content area."
 msgstr "コンテンツ領域で使用する書体。"
 
 #: src/hooks/use-auto-updater.ts:74
-#: src/components/tabbar/index.tsx:263
-#: src/components/dirty-confirm-dialog/index.tsx:54
+#: src/components/tabbar/index.tsx:266
+#: src/components/dirty-confirm-dialog/index.tsx:49
 msgid "Unsaved changes"
 msgstr "保存されていない変更"
 
@@ -397,7 +399,7 @@ msgstr "アップデートの確認に失敗しました: %s"
 msgid "View"
 msgstr "表示"
 
-#: src/components/preferences-modal/index.tsx:153
+#: src/components/preferences-modal/index.tsx:168
 #: src/components/header-actions/index.tsx:178
 msgid "Visual editor"
 msgstr "ビジュアルエディター"

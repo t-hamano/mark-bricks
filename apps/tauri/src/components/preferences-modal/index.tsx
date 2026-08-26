@@ -7,13 +7,12 @@ import { getLocale, type CodeEditorSettings } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import { Modal } from '@wordpress/components';
 import { useViewportMatch } from '@wordpress/compose';
 import { dispatch, useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as preferencesStore } from '@wordpress/preferences';
-import { Stack, Tabs } from '@wordpress/ui';
+import { Dialog, getWpCompatOverlaySlot, Stack, Tabs } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -127,67 +126,84 @@ export default function PreferencesModal() {
 	};
 
 	return (
-		<Modal
-			title={ __( 'Preferences', 'mark-bricks' ) }
-			onRequestClose={ () => closeModal() }
-			className="preferences-modal"
-			size="large"
+		<Dialog.Root
+			open
+			onOpenChange={ ( open ) => {
+				if ( ! open ) {
+					closeModal();
+				}
+			} }
 		>
-			<Tabs.Root
-				defaultValue="general"
-				orientation="vertical"
-				render={ ( props ) => (
-					<Stack
-						{ ...props }
-						direction={ isLargeViewport ? 'row' : 'column' }
-						gap="lg"
-					/>
-				) }
+			<Dialog.Popup
+				className="preferences-modal"
+				size="large"
+				portal={
+					<Dialog.Portal container={ getWpCompatOverlaySlot() } />
+				}
 			>
-				<div className="preferences-modal__tabs">
-					<Tabs.List className="">
-						<Tabs.Tab value="general">
-							{ __( 'General', 'mark-bricks' ) }
-						</Tabs.Tab>
-						<Tabs.Tab value="visual-editor">
-							{ __( 'Visual editor', 'mark-bricks' ) }
-						</Tabs.Tab>
-						<Tabs.Tab value="code-editor">
-							{ __( 'Code editor', 'mark-bricks' ) }
-						</Tabs.Tab>
-					</Tabs.List>
-				</div>
-
-				<div className="preferences-modal__panels">
-					<GeneralPanel
-						settings={ { locale, checkUpdatesAuto } }
-						onChange={ handleGeneralChange }
-					/>
-					<VisualEditorPanel
-						settings={ {
-							spellCheck,
-							showListViewByDefault,
-							contentWidth:
-								editorStyles.contentWidth ??
-								DEFAULT_PREFERENCES[ 'mark-bricks' ]
-									.editorStyles.contentWidth,
-							fontSize:
-								editorStyles.fontSize ??
-								DEFAULT_PREFERENCES[ 'mark-bricks' ]
-									.editorStyles.fontSize,
-							fontFamily:
-								editorStyles.fontFamily ??
-								DEFAULT_PREFERENCES[ 'mark-bricks' ]
-									.editorStyles.fontFamily,
-						} }
-						onChange={ handleVisualEditorChange }
-					/>
-					<CodeEditorPanel
-						settings={ codeEditor }
-						onChange={ handleCodeEditorChange }
-					/>
-				</div>
-			</Tabs.Root>
-		</Modal>
+				<Dialog.Header>
+					<Dialog.Title>
+						{ __( 'Preferences', 'mark-bricks' ) }
+					</Dialog.Title>
+					<Dialog.CloseIcon label={ __( 'Close', 'mark-bricks' ) } />
+				</Dialog.Header>
+				<Dialog.Content>
+					<Tabs.Root
+						defaultValue="general"
+						orientation="vertical"
+						render={ ( props ) => (
+							<Stack
+								{ ...props }
+								direction={ isLargeViewport ? 'row' : 'column' }
+								gap="xl"
+							/>
+						) }
+					>
+						<div className="preferences-modal__tabs">
+							<Tabs.List className="">
+								<Tabs.Tab value="general">
+									{ __( 'General', 'mark-bricks' ) }
+								</Tabs.Tab>
+								<Tabs.Tab value="visual-editor">
+									{ __( 'Visual editor', 'mark-bricks' ) }
+								</Tabs.Tab>
+								<Tabs.Tab value="code-editor">
+									{ __( 'Code editor', 'mark-bricks' ) }
+								</Tabs.Tab>
+							</Tabs.List>
+						</div>
+						<div className="preferences-modal__panels">
+							<GeneralPanel
+								settings={ { locale, checkUpdatesAuto } }
+								onChange={ handleGeneralChange }
+							/>
+							<VisualEditorPanel
+								settings={ {
+									spellCheck,
+									showListViewByDefault,
+									contentWidth:
+										editorStyles.contentWidth ??
+										DEFAULT_PREFERENCES[ 'mark-bricks' ]
+											.editorStyles.contentWidth,
+									fontSize:
+										editorStyles.fontSize ??
+										DEFAULT_PREFERENCES[ 'mark-bricks' ]
+											.editorStyles.fontSize,
+									fontFamily:
+										editorStyles.fontFamily ??
+										DEFAULT_PREFERENCES[ 'mark-bricks' ]
+											.editorStyles.fontFamily,
+								} }
+								onChange={ handleVisualEditorChange }
+							/>
+							<CodeEditorPanel
+								settings={ codeEditor }
+								onChange={ handleCodeEditorChange }
+							/>
+						</div>
+					</Tabs.Root>
+				</Dialog.Content>
+			</Dialog.Popup>
+		</Dialog.Root>
 	);
 }

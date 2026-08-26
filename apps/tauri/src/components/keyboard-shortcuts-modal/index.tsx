@@ -11,13 +11,12 @@ import {
 /**
  * WordPress dependencies
  */
-import { Modal } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as keyboardShortcutsStore } from '@wordpress/keyboard-shortcuts';
 import { displayShortcutList, shortcutAriaLabel } from '@wordpress/keycodes';
-import { Stack } from '@wordpress/ui';
+import { Dialog, getWpCompatOverlaySlot, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -209,48 +208,66 @@ export default function KeyboardShortcutsModal() {
 	}
 
 	return (
-		<Modal
-			title={ __( 'Keyboard shortcuts', 'mark-bricks' ) }
-			onRequestClose={ () => closeModal() }
-			className="keyboard-shortcuts-modal"
-			size="medium"
+		<Dialog.Root
+			open
+			onOpenChange={ ( open ) => {
+				if ( ! open ) {
+					closeModal();
+				}
+			} }
 		>
-			<Stack direction="column" gap="xl">
-				<ul className="keyboard-shortcuts-modal__main-shortcuts keyboard-shortcuts-modal__shortcut-list">
-					<Stack
-						render={ <li /> }
-						className="keyboard-shortcuts-modal__shortcut"
-						justify="space-between"
-						gap="md"
-					>
-						<DynamicShortcut name="mark-bricks/keyboard-shortcuts" />
+			<Dialog.Popup
+				className="keyboard-shortcuts-modal"
+				size="medium"
+				portal={
+					<Dialog.Portal container={ getWpCompatOverlaySlot() } />
+				}
+			>
+				<Dialog.Header>
+					<Dialog.Title>
+						{ __( 'Keyboard shortcuts', 'mark-bricks' ) }
+					</Dialog.Title>
+					<Dialog.CloseIcon label={ __( 'Close', 'mark-bricks' ) } />
+				</Dialog.Header>
+				<Dialog.Content>
+					<Stack direction="column" gap="xl">
+						<ul className="keyboard-shortcuts-modal__main-shortcuts keyboard-shortcuts-modal__shortcut-list">
+							<Stack
+								render={ <li /> }
+								className="keyboard-shortcuts-modal__shortcut"
+								justify="space-between"
+								gap="md"
+							>
+								<DynamicShortcut name="mark-bricks/keyboard-shortcuts" />
+							</Stack>
+						</ul>
+						<ShortcutSection
+							title={ __( 'File shortcuts', 'mark-bricks' ) }
+							shortcuts={ FILE_SHORTCUTS }
+						/>
+						<ShortcutSection
+							title={ __( 'Global shortcuts', 'mark-bricks' ) }
+							shortcuts={ globalShortcuts }
+						/>
+						<ShortcutSection
+							title={ __( 'Selection shortcuts', 'mark-bricks' ) }
+							shortcuts={ selectionShortcuts }
+						/>
+						<ShortcutSection
+							title={ __( 'Block shortcuts', 'mark-bricks' ) }
+							shortcuts={ blockShortcuts }
+						/>
+						<ShortcutSection
+							title={ __( 'Text formatting', 'mark-bricks' ) }
+							shortcuts={ textFormattingShortcuts }
+						/>
+						<ShortcutSection
+							title={ __( 'List View shortcuts', 'mark-bricks' ) }
+							shortcuts={ listViewShortcuts }
+						/>
 					</Stack>
-				</ul>
-				<ShortcutSection
-					title={ __( 'File shortcuts', 'mark-bricks' ) }
-					shortcuts={ FILE_SHORTCUTS }
-				/>
-				<ShortcutSection
-					title={ __( 'Global shortcuts', 'mark-bricks' ) }
-					shortcuts={ globalShortcuts }
-				/>
-				<ShortcutSection
-					title={ __( 'Selection shortcuts', 'mark-bricks' ) }
-					shortcuts={ selectionShortcuts }
-				/>
-				<ShortcutSection
-					title={ __( 'Block shortcuts', 'mark-bricks' ) }
-					shortcuts={ blockShortcuts }
-				/>
-				<ShortcutSection
-					title={ __( 'Text formatting', 'mark-bricks' ) }
-					shortcuts={ textFormattingShortcuts }
-				/>
-				<ShortcutSection
-					title={ __( 'List View shortcuts', 'mark-bricks' ) }
-					shortcuts={ listViewShortcuts }
-				/>
-			</Stack>
-		</Modal>
+				</Dialog.Content>
+			</Dialog.Popup>
+		</Dialog.Root>
 	);
 }
