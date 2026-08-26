@@ -12,12 +12,11 @@ import {
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import { Dropdown, ToolbarButton } from '@wordpress/components';
-import { useInstanceId } from '@wordpress/compose';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { RichTextData } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 import { language as languageIcon } from '@wordpress/icons';
-import { InputControl } from '@wordpress/ui';
+import { Autocomplete, Field, Input } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -80,11 +79,6 @@ export default function Edit( {
 		'data-language': language || undefined,
 	} );
 
-	const languageListId = useInstanceId(
-		Edit,
-		'wp-block-code__language-list'
-	);
-
 	return (
 		<>
 			<BlockControls group="block">
@@ -106,32 +100,56 @@ export default function Edit( {
 								onClose();
 							} }
 						>
-							<InputControl
-								label={ __( 'Language', 'mark-bricks' ) }
-								hideLabelFromVision
-								maxLength={ 50 }
-								placeholder={ __(
-									'Choose language…',
-									'mark-bricks'
-								) }
-								value={ language }
-								list={ languageListId }
-								onValueChange={ ( nextValue ) =>
-									setAttributes( {
-										markdownData: {
-											...markdownData,
-											language: nextValue,
-										},
-									} )
-								}
-								size="compact"
-								style={ { width: '280px' } }
-							/>
-							<datalist id={ languageListId }>
-								{ LANGUAGE_SUGGESTIONS.map( ( name ) => (
-									<option key={ name } value={ name } />
-								) ) }
-							</datalist>
+							<Field.Root>
+								<Field.Label>
+									{ __( 'Language', 'mark-bricks' ) }
+								</Field.Label>
+								<Autocomplete.Root
+									items={ LANGUAGE_SUGGESTIONS }
+									value={ language }
+									onValueChange={ ( nextValue ) =>
+										setAttributes( {
+											markdownData: {
+												...markdownData,
+												language: nextValue,
+											},
+										} )
+									}
+									openOnInputClick
+								>
+									<Autocomplete.Input
+										maxLength={ 50 }
+										placeholder={ __(
+											'Choose language…',
+											'mark-bricks'
+										) }
+										render={ <Input size="compact" /> }
+										style={ { width: '200px' } }
+									/>
+									<Autocomplete.Popup>
+										<Autocomplete.Empty>
+											{ __(
+												'No matching language.',
+												'mark-bricks'
+											) }
+										</Autocomplete.Empty>
+										<Autocomplete.List>
+											<Autocomplete.ListBody>
+												<Autocomplete.Collection>
+													{ ( name: string ) => (
+														<Autocomplete.Item
+															key={ name }
+															value={ name }
+														>
+															{ name }
+														</Autocomplete.Item>
+													) }
+												</Autocomplete.Collection>
+											</Autocomplete.ListBody>
+										</Autocomplete.List>
+									</Autocomplete.Popup>
+								</Autocomplete.Root>
+							</Field.Root>
 						</form>
 					) }
 				/>
