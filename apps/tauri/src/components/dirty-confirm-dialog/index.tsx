@@ -1,9 +1,10 @@
 /**
  * WordPress dependencies
  */
+import { Modal } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
-import { Button, Dialog } from '@wordpress/ui';
+import { Button, Stack, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -30,7 +31,7 @@ export default function DirtyConfirmDialog() {
 
 	const cancel = () => setPendingCloseId( null );
 
-	const discard = () => {
+	const dontSave = () => {
 		const id = pendingTab.id;
 		setPendingCloseId( null );
 		closeTab( id );
@@ -49,34 +50,24 @@ export default function DirtyConfirmDialog() {
 	};
 
 	return (
-		<Dialog.Root
-			open
-			disablePointerDismissal
-			onOpenChange={ ( nextOpen ) => {
-				if ( ! nextOpen ) {
-					cancel();
-				}
-			} }
+		<Modal
+			title={ __( 'Unsaved changes', 'mark-bricks' ) }
+			onRequestClose={ cancel }
+			className="dirty-confirm-dialog"
+			size="small"
 		>
-			<Dialog.Popup size="small">
-				<Dialog.Header>
-					<Dialog.Title>
-						{ __( 'Unsaved changes', 'mark-bricks' ) }
-					</Dialog.Title>
-				</Dialog.Header>
-				<Dialog.Content>
-					<Dialog.Description>
-						{ sprintf(
-							/* translators: %s: tab title. */
-							__(
-								'"%s" has unsaved changes. Do you want to save before closing?',
-								'mark-bricks'
-							),
-							pendingTab.title
-						) }
-					</Dialog.Description>
-				</Dialog.Content>
-				<Dialog.Footer>
+			<Stack direction="column" gap="md">
+				<Text>
+					{ sprintf(
+						/* translators: %s: tab title. */
+						__(
+							'"%s" has unsaved changes. Do you want to save before closing?',
+							'mark-bricks'
+						),
+						pendingTab.title
+					) }
+				</Text>
+				<Stack gap="sm" justify="flex-end">
 					<Button
 						variant="minimal"
 						tone="neutral"
@@ -89,7 +80,7 @@ export default function DirtyConfirmDialog() {
 						className="dirty-confirm-dialog__discard"
 						variant="minimal"
 						size="compact"
-						onClick={ discard }
+						onClick={ dontSave }
 					>
 						{ pendingTab.filePath
 							? __( 'Discard changes', 'mark-bricks' )
@@ -98,8 +89,8 @@ export default function DirtyConfirmDialog() {
 					<Button size="compact" onClick={ save }>
 						{ __( 'Save', 'mark-bricks' ) }
 					</Button>
-				</Dialog.Footer>
-			</Dialog.Popup>
-		</Dialog.Root>
+				</Stack>
+			</Stack>
+		</Modal>
 	);
 }

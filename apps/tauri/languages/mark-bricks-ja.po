@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T03:57:44.833Z\n"
-"PO-Revision-Date: 2026-08-26T03:57:45.153Z\n"
+"POT-Creation-Date: 2026-08-26T05:23:11.425Z\n"
+"PO-Revision-Date: 2026-08-26T05:23:12.033Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/components/dirty-confirm-dialog/index.tsx:80
+#: src/components/dirty-confirm-dialog/index.tsx:63
 msgid "\"%s\" has unsaved changes. Do you want to save before closing?"
 msgstr "「%s」に保存されていない変更があります。閉じる前に保存しますか？"
 
@@ -52,11 +52,11 @@ msgstr "コンテンツ領域の基本フォントサイズ (ピクセル単位)
 msgid "Block shortcuts"
 msgstr "ブロックショートカット"
 
-#: src/components/dirty-confirm-dialog/index.tsx:95
+#: src/components/dirty-confirm-dialog/index.tsx:77
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/components/preferences-modal/general-panel.tsx:126
+#: src/components/preferences-modal/general-panel.tsx:125
 #: src/components/about-modal/index.tsx:95
 msgid "Check for updates"
 msgstr "アップデートを確認"
@@ -65,7 +65,7 @@ msgstr "アップデートを確認"
 msgid "Check updates automatically"
 msgstr "自動的にアップデートを確認"
 
-#: src/components/preferences-modal/general-panel.tsx:122
+#: src/components/preferences-modal/general-panel.tsx:121
 #: src/components/about-modal/index.tsx:91
 msgid "Checking…"
 msgstr "確認しています ..."
@@ -115,11 +115,11 @@ msgstr "新しいファイルを作成。"
 msgid "Dark"
 msgstr "ダーク"
 
-#: src/components/dirty-confirm-dialog/index.tsx:105
+#: src/components/dirty-confirm-dialog/index.tsx:87
 msgid "Discard"
 msgstr "破棄"
 
-#: src/components/dirty-confirm-dialog/index.tsx:104
+#: src/components/dirty-confirm-dialog/index.tsx:86
 msgid "Discard changes"
 msgstr "変更を破棄"
 
@@ -131,7 +131,7 @@ msgstr "エディター"
 msgid "Editor styles"
 msgstr "エディタースタイル"
 
-#: src/components/preferences-modal/general-panel.tsx:131
+#: src/components/preferences-modal/general-panel.tsx:130
 msgid "File associations"
 msgstr "ファイルの関連付け"
 
@@ -203,7 +203,7 @@ msgstr "リストビューのショートカット"
 msgid "MarkBricks %s is available. Install now?"
 msgstr "MarkBricks %s が利用可能です。今すぐインストールしますか？"
 
-#: src/components/preferences-modal/general-panel.tsx:150
+#: src/components/preferences-modal/general-panel.tsx:148
 msgid "MarkBricks is now the default app for Markdown files."
 msgstr "MarkBricks が Markdown ファイルの既定のアプリになりました。"
 
@@ -270,7 +270,7 @@ msgstr "問題を報告"
 msgid "Restart the app to apply the new language."
 msgstr "新しい言語を適用するにはアプリを再起動してください。"
 
-#: src/components/preferences-modal/code-editor-panel.tsx:97
+#: src/components/preferences-modal/code-editor-panel.tsx:96
 msgid "Restore default settings"
 msgstr "デフォルト設定に戻す"
 
@@ -281,7 +281,7 @@ msgstr "サンセリフ"
 #: src/components/tabbar/index.tsx:197
 #: src/components/header-actions/index.tsx:103
 #: src/components/header-actions/index.tsx:145
-#: src/components/dirty-confirm-dialog/index.tsx:112
+#: src/components/dirty-confirm-dialog/index.tsx:90
 msgid "Save"
 msgstr "保存"
 
@@ -309,7 +309,7 @@ msgstr "選択ショートカット"
 msgid "Serif"
 msgstr "セリフ"
 
-#: src/components/preferences-modal/general-panel.tsx:142
+#: src/components/preferences-modal/general-panel.tsx:140
 msgid "Set as default for Markdown files"
 msgstr "Markdown ファイルの既定のアプリにする"
 
@@ -354,7 +354,7 @@ msgstr "書式設定"
 msgid "Theme"
 msgstr "テーマ"
 
-#: src/components/preferences-modal/general-panel.tsx:160
+#: src/components/preferences-modal/general-panel.tsx:158
 msgid ""
 "This platform does not support setting the default app from inside "
 "MarkBricks. Please configure it from your system file manager."
@@ -374,7 +374,7 @@ msgstr "コンテンツ領域で使用する書体。"
 
 #: src/hooks/use-auto-updater.ts:74
 #: src/components/tabbar/index.tsx:263
-#: src/components/dirty-confirm-dialog/index.tsx:73
+#: src/components/dirty-confirm-dialog/index.tsx:54
 msgid "Unsaved changes"
 msgstr "保存されていない変更"
 
@@ -402,7 +402,7 @@ msgstr "表示"
 msgid "Visual editor"
 msgstr "ビジュアルエディター"
 
-#: src/components/preferences-modal/general-panel.tsx:138
+#: src/components/preferences-modal/general-panel.tsx:136
 msgid "Working…"
 msgstr "処理しています ..."
 
