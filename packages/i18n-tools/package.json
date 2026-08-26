@@ -14,6 +14,6 @@
 	},
 	"dependencies": {
 		"@wp-blocks/make-pot": "^1.6.6",
-		"gettext-parser": "^9.0.2"
+		"gettext-parser": "^9.1.1"
 	}
 }

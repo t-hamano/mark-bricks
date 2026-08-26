@@ -14,16 +14,16 @@
 		"@mark-bricks/fixtures": "workspace:*"
 	},
 	"devDependencies": {
-		"@storybook/addon-docs": "^10.4.0",
-		"@storybook/react-vite": "^10.2.9",
-		"@types/react": "^18.3.12",
-		"@types/react-dom": "^18.3.1",
-		"@vitejs/plugin-react": "^4.6.0",
+		"@storybook/addon-docs": "^10.5.10",
+		"@storybook/react-vite": "^10.5.10",
+		"@types/react": "^18.3.31",
+		"@types/react-dom": "^18.3.7",
+		"@vitejs/plugin-react": "^4.7.0",
 		"@wordpress/components": "^39.0.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
-		"sass": "^1.99.0",
-		"storybook": "^10.2.9",
-		"vite": "^7.0.4"
+		"sass": "^1.103.1",
+		"storybook": "^10.5.10",
+		"vite": "^7.3.6"
 	}
 }
