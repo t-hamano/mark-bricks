@@ -6,12 +6,12 @@ import { useCallback, type RefObject } from 'react';
 /**
  * WordPress dependencies
  */
-import { __unstableMotion as motion, TabPanel } from '@wordpress/components';
+import { __unstableMotion as motion } from '@wordpress/components';
 import { useReducedMotion, useViewportMatch } from '@wordpress/compose';
 import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { closeSmall } from '@wordpress/icons';
-import { IconButton, Stack, Tooltip } from '@wordpress/ui';
+import { IconButton, Tabs, Tooltip } from '@wordpress/ui';
 /**
  * Internal dependencies
  */
@@ -68,35 +68,33 @@ export function ListViewSidebar( { toggleRef }: Props ) {
 					positioner={ <Tooltip.Positioner side="bottom" /> }
 					onClick={ closeListViewSidebar }
 				/>
-				<TabPanel
-					className="list-view-sidebar__tab-panel"
-					tabs={ [
-						{
-							name: 'list-view',
-							title: __( 'List View', 'mark-bricks' ),
-							className: 'list-view-sidebar__tabs-item',
-						},
-						{
-							name: 'outline',
-							title: __( 'Outline', 'mark-bricks' ),
-							className: 'list-view-sidebar__tabs-item',
-						},
-					] }
-					initialTabName="list-view"
+				<Tabs.Root
+					className="list-view-sidebar__tabs"
+					defaultValue="list-view"
 				>
-					{ ( tab ) => (
-						<Stack
-							className="list-view-sidebar__tab-panel-container"
-							direction="column"
-						>
-							{ tab.name === 'list-view' ? (
-								<ListView />
-							) : (
-								<ListViewOutline />
-							) }
-						</Stack>
-					) }
-				</TabPanel>
+					<Tabs.List className="list-view-sidebar__tabs-list">
+						<Tabs.Tab value="list-view">
+							{ __( 'List View', 'mark-bricks' ) }
+						</Tabs.Tab>
+						<Tabs.Tab value="outline">
+							{ __( 'Outline', 'mark-bricks' ) }
+						</Tabs.Tab>
+					</Tabs.List>
+					<Tabs.Panel
+						className="list-view-sidebar__tab-panel"
+						value="list-view"
+						tabIndex={ -1 }
+					>
+						<ListView />
+					</Tabs.Panel>
+					<Tabs.Panel
+						className="list-view-sidebar__tab-panel"
+						value="outline"
+						tabIndex={ -1 }
+					>
+						<ListViewOutline />
+					</Tabs.Panel>
+				</Tabs.Root>
 			</motion.div>
 		</motion.aside>
 	);

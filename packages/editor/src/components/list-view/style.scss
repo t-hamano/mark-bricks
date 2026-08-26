@@ -1,0 +1,9 @@
+.list-view {
+	padding: var(--wpds-dimension-padding-sm);
+
+	// Markdown blocks never nest, so the expander only has to provide a small
+	// leading gutter instead of reserving room for a chevron.
+	.block-editor-list-view__expander {
+		width: var(--wpds-dimension-padding-sm);
+	}
+}

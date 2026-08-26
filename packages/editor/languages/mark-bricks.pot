@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T03:57:44.655Z\n"
+"POT-Creation-Date: 2026-08-26T08:59:53.335Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -44,34 +44,34 @@ msgid "URL"
 msgstr ""
 
 #: src/format-library/link.tsx:112
-#: src/block-library/image/edit.tsx:147
-#: src/block-library/image/edit.tsx:151
+#: src/block-library/image/edit.tsx:146
+#: src/block-library/image/edit.tsx:150
 msgid "Paste or type URL"
 msgstr ""
 
-#: src/format-library/link.tsx:115
-#: src/block-library/image/edit.tsx:228
+#: src/format-library/link.tsx:116
+#: src/block-library/image/edit.tsx:225
 msgid "Title"
 msgstr ""
 
-#: src/format-library/link.tsx:118
-#: src/block-library/image/edit.tsx:233
+#: src/format-library/link.tsx:119
+#: src/block-library/image/edit.tsx:228
 msgid "Enter title…"
 msgstr ""
 
-#: src/format-library/link.tsx:119
-#: src/block-library/image/edit.tsx:237
+#: src/format-library/link.tsx:120
+#: src/block-library/image/edit.tsx:232
 msgid "Shown as a tooltip on hover."
 msgstr ""
 
-#: src/format-library/link.tsx:129
+#: src/format-library/link.tsx:134
 msgid "Remove"
 msgstr ""
 
-#: src/format-library/link.tsx:137
-#: src/block-library/image/edit.tsx:162
-#: src/block-library/image/edit.tsx:244
-#: src/block-library/image/edit.tsx:311
+#: src/format-library/link.tsx:142
+#: src/block-library/image/edit.tsx:160
+#: src/block-library/image/edit.tsx:240
+#: src/block-library/image/edit.tsx:306
 msgid "Apply"
 msgstr ""
 
@@ -97,11 +97,11 @@ msgid "Document Overview"
 msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:160
+#: src/components/inserter-sidebar/index.tsx:176
 msgid "Close"
 msgstr ""
 
-#: src/components/list-view-sidebar/index.tsx:75
+#: src/components/list-view-sidebar/index.tsx:77
 msgid "List View"
 msgstr ""
 
@@ -188,12 +188,16 @@ msgstr ""
 msgid "Make the selected text inline code."
 msgstr ""
 
-#: src/components/inserter-sidebar/index.tsx:152
+#: src/components/inserter-sidebar/index.tsx:168
 msgid "Search for blocks"
 msgstr ""
 
-#: src/components/inserter-sidebar/index.tsx:153
+#: src/components/inserter-sidebar/index.tsx:169
 msgid "Search"
+msgstr ""
+
+#: src/components/inserter-sidebar/index.tsx:188
+msgid "Blocks"
 msgstr ""
 
 #: src/components/editor-header/index.tsx:81
@@ -216,59 +220,59 @@ msgstr ""
 msgid "Hide Document Overview"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:236
+#: src/block-library/table/edit.tsx:235
 msgid "Table"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:237
+#: src/block-library/table/edit.tsx:236
 msgid "Insert a table for sharing data."
 msgstr ""
 
-#: src/block-library/table/edit.tsx:252
+#: src/block-library/table/edit.tsx:250
 msgid "Column count"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:262
+#: src/block-library/table/edit.tsx:258
 msgid "Row count"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:270
+#: src/block-library/table/edit.tsx:265
 msgid "Create Table"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:311
+#: src/block-library/table/edit.tsx:306
 msgid "Header label"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:312
+#: src/block-library/table/edit.tsx:307
 msgid "Cell content"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:342
+#: src/block-library/table/edit.tsx:337
 msgid "Edit table"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:346
+#: src/block-library/table/edit.tsx:341
 msgid "Insert row before"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:354
+#: src/block-library/table/edit.tsx:349
 msgid "Insert row after"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:362
+#: src/block-library/table/edit.tsx:357
 msgid "Delete row"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:371
+#: src/block-library/table/edit.tsx:366
 msgid "Insert column before"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:380
+#: src/block-library/table/edit.tsx:375
 msgid "Insert column after"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:389
+#: src/block-library/table/edit.tsx:384
 msgid "Delete column"
 msgstr ""
 
@@ -340,61 +344,77 @@ msgstr ""
 msgid "Ordered"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:84
+#: src/block-library/image/edit.tsx:83
 msgid "Image"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:85
+#: src/block-library/image/edit.tsx:84
 msgid "Upload an image from your device or insert from a URL."
 msgstr ""
 
-#: src/block-library/image/edit.tsx:101
-#: src/block-library/image/edit.tsx:325
+#: src/block-library/image/edit.tsx:100
+#: src/block-library/image/edit.tsx:320
 msgid "Browse local file"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:115
+#: src/block-library/image/edit.tsx:114
 msgid "Enter URL or file path"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:186
+#: src/block-library/image/edit.tsx:184
 msgid "Edit alt and title"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:213
+#: src/block-library/image/edit.tsx:211
 msgid "Alt text"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:218
+#: src/block-library/image/edit.tsx:214
 msgid "Enter alt text…"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:222
+#: src/block-library/image/edit.tsx:218
 msgid "Describes the image for screen readers."
 msgstr ""
 
-#: src/block-library/image/edit.tsx:265
+#: src/block-library/image/edit.tsx:261
 msgid "Replace image"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:296
+#: src/block-library/image/edit.tsx:292
 msgid "URL or file path"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:300
+#: src/block-library/image/edit.tsx:296
 msgid "Paste or type URL or file path"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:337
+#: src/block-library/image/edit.tsx:332
 msgid "Reset"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:348
+#: src/block-library/image/edit.tsx:343
 msgid "Failed to load image."
 msgstr ""
 
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
+msgstr ""
+
+#: src/block-library/code/edit.tsx:65
+msgid "Write code…"
+msgstr ""
+
+#: src/block-library/code/edit.tsx:96
+msgid "Change language"
+msgstr ""
+
+#: src/block-library/code/edit.tsx:110
+msgid "Language"
+msgstr ""
+
+#: src/block-library/code/edit.tsx:113
+msgid "Choose language…"
 msgstr ""
 
 # %d: heading level e.g: "1", "2", "3"
@@ -404,20 +424,4 @@ msgstr ""
 
 #: src/block-library/heading/edit.tsx:53
 msgid "Heading"
-msgstr ""
-
-#: src/block-library/code/edit.tsx:68
-msgid "Write code…"
-msgstr ""
-
-#: src/block-library/code/edit.tsx:99
-msgid "Change language"
-msgstr ""
-
-#: src/block-library/code/edit.tsx:113
-msgid "Language"
-msgstr ""
-
-#: src/block-library/code/edit.tsx:116
-msgid "Choose language…"
 msgstr ""
