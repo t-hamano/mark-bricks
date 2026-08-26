@@ -9,15 +9,10 @@ import { useState, type FormEvent } from 'react';
 import {
 	AlignmentControl,
 	BlockControls,
-	BlockIcon,
 	RichText,
 	useBlockProps,
 } from '@wordpress/block-editor';
-import {
-	Placeholder,
-	ToolbarDropdownMenu,
-	ToolbarGroup,
-} from '@wordpress/components';
+import { ToolbarDropdownMenu, ToolbarGroup } from '@wordpress/components';
 import { Button, InputControl, Stack } from '@wordpress/ui';
 import { __ } from '@wordpress/i18n';
 import {
@@ -35,6 +30,7 @@ import {
  */
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes, Cell, Row } from './types';
+import { BlockPlaceholder } from '../../components/block-placeholder';
 
 type Alignment = 'left' | 'center' | 'right' | undefined;
 type Section = 'head' | 'body' | 'foot';
@@ -230,8 +226,8 @@ export default function Edit( props: BlockEditProps ) {
 	if ( isEmpty ) {
 		return (
 			<div { ...blockProps }>
-				<Placeholder
-					icon={ <BlockIcon icon={ tableIcon } showColors /> }
+				<BlockPlaceholder
+					icon={ tableIcon }
 					label={ __( 'Table', 'mark-bricks' ) }
 					instructions={ __(
 						'Insert a table for sharing data.',
@@ -265,7 +261,7 @@ export default function Edit( props: BlockEditProps ) {
 							{ __( 'Create Table', 'mark-bricks' ) }
 						</Button>
 					</Stack>
-				</Placeholder>
+				</BlockPlaceholder>
 			</div>
 		);
 	}

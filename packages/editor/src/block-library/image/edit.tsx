@@ -6,16 +6,11 @@ import { useEffect, useState } from 'react';
 /**
  * WordPress dependencies
  */
-import {
-	BlockControls,
-	BlockIcon,
-	useBlockProps,
-} from '@wordpress/block-editor';
+import { BlockControls, useBlockProps } from '@wordpress/block-editor';
 import {
 	Dropdown,
 	MenuItem,
 	NavigableMenu,
-	Placeholder,
 	Popover,
 	ToolbarButton,
 } from '@wordpress/components';
@@ -28,6 +23,7 @@ import { image as imageIcon, pencil } from '@wordpress/icons';
  */
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes } from './types';
+import { BlockPlaceholder } from '../../components/block-placeholder';
 import { usePlatform } from '../../platform';
 
 export default function Edit( props: BlockEditProps ) {
@@ -78,41 +74,43 @@ export default function Edit( props: BlockEditProps ) {
 	if ( ! url ) {
 		return (
 			<div { ...blockProps }>
-				<Placeholder
-					icon={ <BlockIcon icon={ imageIcon } showColors /> }
+				<BlockPlaceholder
+					icon={ imageIcon }
 					label={ __( 'Image', 'mark-bricks' ) }
 					instructions={ __(
 						'Upload an image from your device or insert from a URL.',
 						'mark-bricks'
 					) }
 				>
-					{ pickImageFile && (
+					<Stack direction="row" gap="sm">
+						{ pickImageFile && (
+							<Button
+								size="compact"
+								variant="outline"
+								onClick={ async () => {
+									const path = await pickImageFile();
+									if ( path ) {
+										setAttributes( { url: path } );
+									}
+								} }
+							>
+								{ __( 'Browse local file', 'mark-bricks' ) }
+							</Button>
+						) }
 						<Button
 							size="compact"
 							variant="outline"
-							onClick={ async () => {
-								const path = await pickImageFile();
-								if ( path ) {
-									setAttributes( { url: path } );
-								}
+							onClick={ () => {
+								setUrlInput( url || '' );
+								setIsUrlPopoverOpen( true );
 							} }
+							aria-expanded={ isUrlPopoverOpen }
+							aria-haspopup="dialog"
+							ref={ setUrlPopoverAnchor }
 						>
-							{ __( 'Browse local file', 'mark-bricks' ) }
+							{ __( 'Enter URL or file path', 'mark-bricks' ) }
 						</Button>
-					) }
-					<Button
-						size="compact"
-						variant="outline"
-						onClick={ () => {
-							setUrlInput( url || '' );
-							setIsUrlPopoverOpen( true );
-						} }
-						aria-expanded={ isUrlPopoverOpen }
-						aria-haspopup="dialog"
-						ref={ setUrlPopoverAnchor }
-					>
-						{ __( 'Enter URL or file path', 'mark-bricks' ) }
-					</Button>
+					</Stack>
 					{ isUrlPopoverOpen && (
 						<Popover
 							anchor={ urlPopoverAnchor }
@@ -162,7 +160,7 @@ export default function Edit( props: BlockEditProps ) {
 							</Stack>
 						</Popover>
 					) }
-				</Placeholder>
+				</BlockPlaceholder>
 			</div>
 		);
 	}

@@ -1,5 +1,6 @@
 @use "@wordpress/base-styles/mixins";
-@use "../../block-library/style";
+@use "../../block-library/style" as block-library;
+@use "../block-placeholder/style" as block-placeholder;
 
 :root {
 
