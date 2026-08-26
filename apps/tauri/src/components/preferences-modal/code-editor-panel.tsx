@@ -6,13 +6,9 @@ import type { CodeEditorSettings } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import {
-	RangeControl,
-	SelectControl,
-	ToggleControl,
-} from '@wordpress/components';
+import { RangeControl, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Button, Stack, Tabs, Text } from '@wordpress/ui';
+import { Button, SelectControl, Stack, Tabs, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -31,6 +27,8 @@ type Props = {
 };
 
 export function CodeEditorPanel( { settings, onChange }: Props ) {
+	const themeItems = getThemeOptions();
+
 	return (
 		<Tabs.Panel value="code-editor" tabIndex={ -1 }>
 			<Stack direction="column" gap="3xl" align="flex-start">
@@ -41,13 +39,20 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 					<SelectControl
 						size="compact"
 						label={ __( 'Theme', 'mark-bricks' ) }
-						value={ settings.theme }
-						options={ getThemeOptions() }
-						onChange={ ( value ) =>
-							onChange( {
-								theme: value as CodeEditorSettings[ 'theme' ],
-							} )
+						items={ themeItems }
+						value={
+							themeItems.find(
+								( item ) => item.value === settings.theme
+							) ?? null
 						}
+						isItemEqualToValue={ ( a, b ) => a.value === b.value }
+						onValueChange={ ( item ) => {
+							if ( item ) {
+								onChange( {
+									theme: item.value as CodeEditorSettings[ 'theme' ],
+								} );
+							}
+						} }
 					/>
 					<RangeControl
 						label={ __( 'Font size', 'mark-bricks' ) }

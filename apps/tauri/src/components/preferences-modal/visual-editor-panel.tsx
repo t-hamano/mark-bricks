@@ -1,13 +1,9 @@
 /**
  * WordPress dependencies
  */
-import {
-	RangeControl,
-	SelectControl,
-	ToggleControl,
-} from '@wordpress/components';
+import { RangeControl, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Stack, Tabs, Text } from '@wordpress/ui';
+import { SelectControl, Stack, Tabs, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -33,6 +29,8 @@ type Props = {
 };
 
 export function VisualEditorPanel( { settings, onChange }: Props ) {
+	const fontFamilyItems = getFontFamilyOptions();
+
 	return (
 		<Tabs.Panel value="visual-editor" tabIndex={ -1 }>
 			<Stack direction="column" gap="xl">
@@ -108,12 +106,19 @@ export function VisualEditorPanel( { settings, onChange }: Props ) {
 					<SelectControl
 						size="compact"
 						label={ __( 'Font family', 'mark-bricks' ) }
-						value={ settings.fontFamily }
-						options={ getFontFamilyOptions() }
-						onChange={ ( value ) =>
-							onChange( { fontFamily: value } )
+						items={ fontFamilyItems }
+						value={
+							fontFamilyItems.find(
+								( item ) => item.value === settings.fontFamily
+							) ?? null
 						}
-						help={ __(
+						isItemEqualToValue={ ( a, b ) => a.value === b.value }
+						onValueChange={ ( item ) => {
+							if ( item && item.value !== null ) {
+								onChange( { fontFamily: item.value } );
+							}
+						} }
+						description={ __(
 							'Typeface used for the content area.',
 							'mark-bricks'
 						) }

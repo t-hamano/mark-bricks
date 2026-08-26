@@ -8,14 +8,26 @@ import { LOCALES, type Locale } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import { SelectControl, ToggleControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Button, Notice, Stack, Tabs, Text } from '@wordpress/ui';
+import {
+	Button,
+	Notice,
+	SelectControl,
+	Stack,
+	Tabs,
+	Text,
+} from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
 import { checkForUpdates } from '../../hooks/use-auto-updater';
+
+const LOCALE_ITEMS = LOCALES.map( ( locale ) => ( {
+	value: locale.code,
+	label: locale.name,
+} ) );
 
 export type GeneralSettings = {
 	locale: Locale;
@@ -86,15 +98,19 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 						hideLabelFromVision
 						size="compact"
 						label={ __( 'Language', 'mark-bricks' ) }
-						value={ settings.locale }
-						options={ LOCALES.map( ( l ) => ( {
-							value: l.code,
-							label: l.name,
-						} ) ) }
-						onChange={ ( value ) =>
-							onChange( { locale: value as Locale } )
+						items={ LOCALE_ITEMS }
+						value={
+							LOCALE_ITEMS.find(
+								( item ) => item.value === settings.locale
+							) ?? null
 						}
-						help={ __(
+						isItemEqualToValue={ ( a, b ) => a.value === b.value }
+						onValueChange={ ( item ) => {
+							if ( item ) {
+								onChange( { locale: item.value as Locale } );
+							}
+						} }
+						description={ __(
 							'Restart the app to apply the new language.',
 							'mark-bricks'
 						) }
