@@ -111,6 +111,29 @@ describe( 'core/list', () => {
 			} );
 		} );
 
+		it.each( [ '-', '*', '+' ] )(
+			'detects the marker spacing of a %s bullet',
+			( marker ) => {
+				const blocks = markdownToBlocks(
+					markdown( `${ marker }  one` )
+				);
+				expect( blocks[ 0 ].name ).toBe( 'core/list' );
+				expect( blocks[ 0 ].attributes ).toEqual( {
+					ordered: false,
+					markdownData: { marker, spread: false, spacing: 2 },
+				} );
+			}
+		);
+
+		it( 'detects the marker spacing of a paren-delimited list', () => {
+			const blocks = markdownToBlocks( markdown( '1)   one' ) );
+			expect( blocks[ 0 ].name ).toBe( 'core/list' );
+			expect( blocks[ 0 ].attributes ).toEqual( {
+				ordered: true,
+				markdownData: { marker: ')', spread: false, spacing: 3 },
+			} );
+		} );
+
 		it( 'detects the marker spacing of a nested list separately', () => {
 			const blocks = markdownToBlocks(
 				markdown( '-   one', '    -  nested' )
@@ -294,6 +317,27 @@ describe( 'core/list', () => {
 			).toBe( markdown( '1.  one', '2.  two' ) );
 		} );
 
+		it.each( [ '-', '*', '+' ] as const )(
+			'emits a %s bullet with the stored marker spacing',
+			( marker ) => {
+				expect(
+					blocksToMarkdown( [
+						list(
+							{
+								ordered: false,
+								markdownData: {
+									marker,
+									spread: false,
+									spacing: 3,
+								},
+							},
+							[ listItem( 'one' ), listItem( 'two' ) ]
+						),
+					] )
+				).toBe( markdown( `${ marker }   one`, `${ marker }   two` ) );
+			}
+		);
+
 		it( 'indents a nested list to the wider content column', () => {
 			expect(
 				blocksToMarkdown( [
@@ -416,6 +460,11 @@ describe( 'core/list', () => {
 			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
 		} );
 
+		it( 'preserves a plus bullet', () => {
+			const md = markdown( '+ one', '+ two' );
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+
 		it( 'preserves an ordered list with a paren delimiter', () => {
 			const md = markdown( '1) one', '2) two' );
 			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
@@ -450,8 +499,21 @@ describe( 'core/list', () => {
 			}
 		);
 
+		it.each( [ '*', '+' ] )(
+			'preserves a %s bullet followed by wider spacing',
+			( marker ) => {
+				const md = markdown( `${ marker }   one`, `${ marker }   two` );
+				expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+			}
+		);
+
 		it( 'preserves the marker spacing of an ordered list', () => {
 			const md = markdown( '1.  one', '2.  two' );
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+
+		it( 'preserves the marker spacing of a paren-delimited list', () => {
+			const md = markdown( '1)   one', '2)   two' );
 			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
 		} );
 
