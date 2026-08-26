@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useState } from 'react';
+import type { KeyboardEvent } from 'react';
 
 /**
  * WordPress dependencies
@@ -33,9 +33,9 @@ export default function Edit( {
 	attributes,
 	setAttributes,
 	clientId,
+	isSelected,
 }: BlockEditProps< BlockAttributes > ) {
 	const { summary, showContent } = attributes;
-	const [ isOpen, setIsOpen ] = useState( !! showContent );
 
 	const hasSelectedInnerBlock = useSelect(
 		( select ) =>
@@ -52,11 +52,6 @@ export default function Edit( {
 		template: TEMPLATE,
 	} );
 
-	const toggleShowContent = () => {
-		setAttributes( { showContent: ! showContent } );
-		setIsOpen( ! showContent );
-	};
-
 	return (
 		<>
 			<BlockControls group="block">
@@ -64,30 +59,26 @@ export default function Edit( {
 					icon={ seen }
 					title={ __( 'Open by default', 'mark-bricks' ) }
 					isPressed={ !! showContent }
-					onClick={ toggleShowContent }
+					onClick={ () =>
+						setAttributes( { showContent: ! showContent } )
+					}
 				/>
 			</BlockControls>
 			<details
 				{ ...innerBlocksProps }
-				open={ isOpen || hasSelectedInnerBlock }
-				onToggle={ ( event ) =>
-					setIsOpen( ( event.target as HTMLDetailsElement ).open )
-				}
+				open={ isSelected || hasSelectedInnerBlock || !! showContent }
 			>
 				<summary
 					onKeyDown={ withIgnoreIMEEvents(
-						( event: React.KeyboardEvent ) => {
+						( event: KeyboardEvent ) => {
 							if ( event.key === 'Enter' && ! event.shiftKey ) {
-								setIsOpen( ( wasOpen ) => ! wasOpen );
 								event.preventDefault();
 							}
 						}
 					) }
-					onKeyUp={ ( event ) => {
-						if ( event.key === ' ' ) {
-							event.preventDefault();
-						}
-					} }
+					// The open state is derived, so the summary must not
+					// toggle the element on its own.
+					onClick={ ( event ) => event.preventDefault() }
 				>
 					<RichText
 						identifier="summary"
