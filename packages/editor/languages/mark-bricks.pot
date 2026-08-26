@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T11:34:00.459Z\n"
+"POT-Creation-Date: 2026-08-26T14:07:41.285Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -312,6 +312,14 @@ msgstr ""
 msgid "Type / to choose a block"
 msgstr ""
 
+#: src/block-library/list/edit.tsx:48
+msgid "Unordered"
+msgstr ""
+
+#: src/block-library/list/edit.tsx:54
+msgid "Ordered"
+msgstr ""
+
 #: src/block-library/list-item/edit.tsx:63
 msgid "Outdent"
 msgstr ""
@@ -338,18 +346,6 @@ msgstr ""
 
 #: src/block-library/list-item/edit.tsx:133
 msgid "Turn into a task item"
-msgstr ""
-
-#: src/block-library/list/edit.tsx:48
-msgid "Unordered"
-msgstr ""
-
-#: src/block-library/list/edit.tsx:54
-msgid "Ordered"
-msgstr ""
-
-#: src/block-library/html/edit.tsx:43
-msgid "Write HTML…"
 msgstr ""
 
 #: src/block-library/image/edit.tsx:79
@@ -405,6 +401,10 @@ msgstr ""
 msgid "Failed to load image."
 msgstr ""
 
+#: src/block-library/html/edit.tsx:43
+msgid "Write HTML…"
+msgstr ""
+
 # %d: heading level e.g: "1", "2", "3"
 #: src/block-library/heading/index.ts:51
 msgid "Heading %d"
@@ -414,15 +414,11 @@ msgstr ""
 msgid "Heading"
 msgstr ""
 
-#: src/block-library/details/edit.tsx:71
+#: src/block-library/details/edit.tsx:60
 msgid "Open by default"
 msgstr ""
 
-#: src/block-library/details/edit.tsx:104
-msgid "Write summary. Press Enter to expand or collapse the details."
-msgstr ""
-
-#: src/block-library/details/edit.tsx:108
+#: src/block-library/details/edit.tsx:86
 msgid "Write summary…"
 msgstr ""
 

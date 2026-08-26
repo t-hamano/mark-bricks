@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T11:34:00.459Z\n"
-"PO-Revision-Date: 2026-08-26T11:34:28.802Z\n"
+"POT-Creation-Date: 2026-08-26T14:07:41.285Z\n"
+"PO-Revision-Date: 2026-08-26T14:08:08.286Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -277,7 +277,7 @@ msgstr "一致する言語がありません。"
 msgid "Note"
 msgstr "ノート"
 
-#: src/block-library/details/edit.tsx:71
+#: src/block-library/details/edit.tsx:60
 msgid "Open by default"
 msgstr "デフォルトで開く"
 
@@ -438,10 +438,6 @@ msgstr "HTML を入力…"
 msgid "Write code…"
 msgstr "コードを入力..."
 
-#: src/block-library/details/edit.tsx:104
-msgid "Write summary. Press Enter to expand or collapse the details."
-msgstr "要約を入力してください。Enter キーで詳細の開閉を切り替えます。"
-
-#: src/block-library/details/edit.tsx:108
+#: src/block-library/details/edit.tsx:86
 msgid "Write summary…"
 msgstr "要約を入力…"
