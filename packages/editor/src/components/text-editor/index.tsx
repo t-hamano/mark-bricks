@@ -2,7 +2,7 @@
  * External dependencies
  */
 import * as monaco from 'monaco-editor';
-import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+import EditorWorker from 'monaco-editor/editor/editor.worker?worker';
 import { useEffect, useRef } from 'react';
 
 /**
