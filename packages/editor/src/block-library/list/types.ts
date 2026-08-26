@@ -21,5 +21,6 @@ export type BlockAttributes = Block[ 'attributes' ] & {
 	markdownData: {
 		marker: ListMarker;
 		spread: boolean;
+		spacing: number;
 	};
 };
