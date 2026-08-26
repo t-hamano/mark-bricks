@@ -1,3 +1,21 @@
+# [0.10.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.9.1...tauri-v0.10.0) (2026-08-26)
+
+### Bug Fixes
+
+-   **editor:** show sidebar close button tooltips below the button ([3b29f61](https://github.com/t-hamano/mark-bricks/commit/3b29f611ec170b2f2bac2df8c6dd099d55a9dd21))
+-   **tauri:** dedupe duplicated [@wordpress](https://github.com/wordpress) packages to register stores once ([b9b5411](https://github.com/t-hamano/mark-bricks/commit/b9b541191bcc0804ef5a9e2368169f0ca0129b81))
+-   **tauri:** make preferences tab panels non-focusable ([d1d53bd](https://github.com/t-hamano/mark-bricks/commit/d1d53bd94fc02a2092729cac97e7608cd0925d74))
+-   **tauri:** make preferences tab panels non-focusable ([dd9c503](https://github.com/t-hamano/mark-bricks/commit/dd9c503ee112636c676ed12e71b0881ef19689ac))
+-   **tauri:** stretch preferences modal panels to a fixed max width ([206293e](https://github.com/t-hamano/mark-bricks/commit/206293e82ece489c6237caa06e4a1067a0a050c7))
+
+### Features
+
+-   **editor:** make the inserter block list arrow key navigable ([a16babf](https://github.com/t-hamano/mark-bricks/commit/a16babf5bbea4bc1a804e24e7ea1e868e174ed2e))
+
+### Reverts
+
+-   **tauri:** make preferences tab panels non-focusable ([a615cb2](https://github.com/t-hamano/mark-bricks/commit/a615cb286d020f31d34d6ca205117be289ca8e2b))
+
 ## [0.9.1](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.9.0...tauri-v0.9.1) (2026-07-04)
 
 ### Bug Fixes
