@@ -33,7 +33,7 @@ type Props = {
 export function CodeEditorPanel( { settings, onChange }: Props ) {
 	return (
 		<Tabs.Panel value="code-editor">
-			<Stack direction="column" gap="3xl">
+			<Stack direction="column" gap="3xl" align="flex-start">
 				<Stack direction="column" gap="md">
 					<Text variant="heading-xl" render={ <h2 /> }>
 						{ __( 'Settings', 'mark-bricks' ) }
@@ -84,7 +84,6 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 					/>
 				</Stack>
 				<Button
-					className="preferences-modal__action"
 					variant="outline"
 					tone="neutral"
 					size="small"

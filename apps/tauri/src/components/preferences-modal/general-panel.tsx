@@ -100,7 +100,7 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 						) }
 					/>
 				</Stack>
-				<Stack direction="column" gap="md">
+				<Stack direction="column" gap="md" align="flex-start">
 					<Text variant="heading-xl" render={ <h2 /> }>
 						{ __( 'Update', 'mark-bricks' ) }
 					</Text>
@@ -115,7 +115,6 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 						}
 					/>
 					<Button
-						className="preferences-modal__action"
 						variant="outline"
 						size="compact"
 						loading={ isChecking }
@@ -126,12 +125,11 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 						{ __( 'Check for updates', 'mark-bricks' ) }
 					</Button>
 				</Stack>
-				<Stack direction="column" gap="md">
+				<Stack direction="column" gap="md" align="flex-start">
 					<Text variant="heading-xl" render={ <h2 /> }>
 						{ __( 'File associations', 'mark-bricks' ) }
 					</Text>
 					<Button
-						className="preferences-modal__action"
 						variant="outline"
 						size="compact"
 						loading={ associateStatus.kind === 'busy' }
