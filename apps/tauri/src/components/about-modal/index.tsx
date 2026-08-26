@@ -7,11 +7,11 @@ import { openUrl } from '@tauri-apps/plugin-opener';
 /**
  * WordPress dependencies
  */
-import { Button, Modal } from '@wordpress/components';
+import { Modal } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
-import { Badge, Link, Stack, Text } from '@wordpress/ui';
+import { Badge, Button, Link, Stack, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -85,16 +85,14 @@ export default function AboutModal( { name, version }: Props ) {
 					gap="sm"
 				>
 					<Button
-						variant="secondary"
+						variant="outline"
 						size="small"
-						isBusy={ isChecking }
+						loading={ isChecking }
+						loadingAnnouncement={ __( 'Checking…', 'mark-bricks' ) }
 						disabled={ isChecking }
 						onClick={ onCheckClick }
-						accessibleWhenDisabled
 					>
-						{ isChecking
-							? __( 'Checking…', 'mark-bricks' )
-							: __( 'Check for updates', 'mark-bricks' ) }
+						{ __( 'Check for updates', 'mark-bricks' ) }
 					</Button>
 					<Link
 						href={ REPORT_ISSUE_URL }

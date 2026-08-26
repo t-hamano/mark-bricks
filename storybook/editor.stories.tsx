@@ -10,7 +10,7 @@ import * as fixtures from '@mark-bricks/fixtures';
 /**
  * WordPress dependencies
  */
-import { Button } from '@wordpress/components';
+import { Button } from '@wordpress/ui';
 
 const meta: Meta< typeof Editor > = {
 	component: Editor,
@@ -54,11 +54,7 @@ export const Default: Story = {};
 
 export const WithHeaderActions: Story = {
 	args: {
-		headerActions: (
-			<Button variant="primary" size="small">
-				Header Action Button
-			</Button>
-		),
+		headerActions: <Button size="small">Header Action Button</Button>,
 	},
 };
 

@@ -7,13 +7,12 @@ import type { CodeEditorSettings } from '@mark-bricks/editor';
  * WordPress dependencies
  */
 import {
-	Button,
 	RangeControl,
 	SelectControl,
 	ToggleControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Stack, Tabs, Text } from '@wordpress/ui';
+import { Button, Stack, Tabs, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -85,9 +84,10 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 					/>
 				</Stack>
 				<Button
-					variant="secondary"
+					className="preferences-modal__action"
+					variant="outline"
+					tone="neutral"
 					size="small"
-					isDestructive
 					onClick={ () =>
 						onChange(
 							DEFAULT_PREFERENCES[ 'mark-bricks' ].codeEditor

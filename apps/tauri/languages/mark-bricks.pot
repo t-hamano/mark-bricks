@@ -2,13 +2,13 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.4.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.9.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-05-22T13:28:34.478Z\n"
+"POT-Creation-Date: 2026-08-26T03:42:05.713Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -122,8 +122,8 @@ msgid "You have unsaved changes. Please save them before updating."
 msgstr ""
 
 #: src/hooks/use-auto-updater.ts:74
-#: src/components/tabbar/index.tsx:264
-#: src/components/dirty-confirm-dialog/index.tsx:53
+#: src/components/tabbar/index.tsx:263
+#: src/components/dirty-confirm-dialog/index.tsx:73
 msgid "Unsaved changes"
 msgstr ""
 
@@ -132,36 +132,36 @@ msgstr ""
 msgid "Update check failed: %s"
 msgstr ""
 
-#: src/components/tabbar/index.tsx:124
+#: src/components/tabbar/index.tsx:123
 msgid "New…"
 msgstr ""
 
-#: src/components/tabbar/index.tsx:141
-#: src/components/editor-placeholder/index.tsx:38
+#: src/components/tabbar/index.tsx:140
+#: src/components/editor-placeholder/index.tsx:33
 msgid "New file"
 msgstr ""
 
-#: src/components/tabbar/index.tsx:150
-#: src/components/editor-placeholder/index.tsx:47
+#: src/components/tabbar/index.tsx:149
+#: src/components/editor-placeholder/index.tsx:42
 msgid "Open file…"
 msgstr ""
 
-#: src/components/tabbar/index.tsx:178
+#: src/components/tabbar/index.tsx:177
 msgid "Close"
 msgstr ""
 
-#: src/components/tabbar/index.tsx:187
+#: src/components/tabbar/index.tsx:186
 msgid "Close other tabs"
 msgstr ""
 
-#: src/components/tabbar/index.tsx:198
-#: src/components/header-actions/index.tsx:102
-#: src/components/header-actions/index.tsx:144
-#: src/components/dirty-confirm-dialog/index.tsx:88
+#: src/components/tabbar/index.tsx:197
+#: src/components/header-actions/index.tsx:103
+#: src/components/header-actions/index.tsx:145
+#: src/components/dirty-confirm-dialog/index.tsx:82
 msgid "Save"
 msgstr ""
 
-#: src/components/tabbar/index.tsx:209
+#: src/components/tabbar/index.tsx:208
 msgid "Save as…"
 msgstr ""
 
@@ -171,7 +171,7 @@ msgid "Close %s"
 msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:41
-#: src/components/preferences-modal/code-editor-panel.tsx:40
+#: src/components/preferences-modal/code-editor-panel.tsx:39
 msgid "Settings"
 msgstr ""
 
@@ -204,7 +204,7 @@ msgid "Maximum width of the content area, in pixels."
 msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:91
-#: src/components/preferences-modal/code-editor-panel.tsx:54
+#: src/components/preferences-modal/code-editor-panel.tsx:53
 msgid "Font size"
 msgstr ""
 
@@ -221,7 +221,7 @@ msgid "Typeface used for the content area."
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:131
-#: src/components/header-actions/index.tsx:245
+#: src/components/header-actions/index.tsx:246
 msgid "Preferences"
 msgstr ""
 
@@ -230,13 +230,13 @@ msgid "General"
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:153
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:190
 msgid "Visual editor"
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:156
-#: src/components/header-actions/index.tsx:81
-#: src/components/header-actions/index.tsx:200
+#: src/components/header-actions/index.tsx:84
+#: src/components/header-actions/index.tsx:201
 msgid "Code editor"
 msgstr ""
 
@@ -253,18 +253,22 @@ msgstr ""
 msgid "Check updates automatically"
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:126
-#: src/components/about-modal/index.tsx:81
+#: src/components/preferences-modal/general-panel.tsx:122
+#: src/components/about-modal/index.tsx:91
 msgid "Checking…"
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:127
-#: src/components/about-modal/index.tsx:82
+#: src/components/preferences-modal/general-panel.tsx:126
+#: src/components/about-modal/index.tsx:95
 msgid "Check for updates"
 msgstr ""
 
-#: src/components/preferences-modal/general-panel.tsx:132
+#: src/components/preferences-modal/general-panel.tsx:131
 msgid "File associations"
+msgstr ""
+
+#: src/components/preferences-modal/general-panel.tsx:138
+msgid "Working…"
 msgstr ""
 
 #: src/components/preferences-modal/general-panel.tsx:142
@@ -281,15 +285,15 @@ msgid ""
 "MarkBricks. Please configure it from your system file manager."
 msgstr ""
 
-#: src/components/preferences-modal/code-editor-panel.tsx:44
+#: src/components/preferences-modal/code-editor-panel.tsx:43
 msgid "Theme"
 msgstr ""
 
-#: src/components/preferences-modal/code-editor-panel.tsx:67
+#: src/components/preferences-modal/code-editor-panel.tsx:66
 msgid "Tab size"
 msgstr ""
 
-#: src/components/preferences-modal/code-editor-panel.tsx:80
+#: src/components/preferences-modal/code-editor-panel.tsx:79
 msgid "Show line numbers"
 msgstr ""
 
@@ -298,7 +302,7 @@ msgid "Restore default settings"
 msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:213
-#: src/components/header-actions/index.tsx:227
+#: src/components/header-actions/index.tsx:228
 msgid "Keyboard shortcuts"
 msgstr ""
 
@@ -326,92 +330,88 @@ msgstr ""
 msgid "List View shortcuts"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:106
+#: src/components/header-actions/index.tsx:107
 msgid "Options"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:118
+#: src/components/header-actions/index.tsx:119
 msgid "Files"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:126
+#: src/components/header-actions/index.tsx:127
 msgid "New"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:135
+#: src/components/header-actions/index.tsx:136
 msgid "Open…"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:153
+#: src/components/header-actions/index.tsx:154
 msgid "Save As…"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:156
+#: src/components/header-actions/index.tsx:157
 msgid "View"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:160
+#: src/components/header-actions/index.tsx:161
 msgid "Top toolbar"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:161
+#: src/components/header-actions/index.tsx:162
 msgid "Access all block and document tools in a single place"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:169
+#: src/components/header-actions/index.tsx:170
 msgid "Spotlight mode"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:170
+#: src/components/header-actions/index.tsx:171
 msgid "Focus on one block at a time"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:174
+#: src/components/header-actions/index.tsx:175
 msgid "Spotlight mode activated."
 msgstr ""
 
-#: src/components/header-actions/index.tsx:178
+#: src/components/header-actions/index.tsx:179
 msgid "Spotlight mode deactivated."
 msgstr ""
 
-#: src/components/header-actions/index.tsx:184
+#: src/components/header-actions/index.tsx:185
 msgid "Editor"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:219
+#: src/components/header-actions/index.tsx:220
 msgid "Tools"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:235
-#: src/components/about-modal/index.tsx:55
+#: src/components/header-actions/index.tsx:236
+#: src/components/about-modal/index.tsx:57
 msgid "About"
 msgstr ""
 
-#: src/components/editor-placeholder/index.tsx:24
+#: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr ""
 
-#: src/components/editor-placeholder/index.tsx:27
+#: src/components/editor-placeholder/index.tsx:26
 msgid "Create a new Markdown file or open an existing one to start editing."
 msgstr ""
 
 # %s: tab title.
-#: src/components/dirty-confirm-dialog/index.tsx:62
+#: src/components/dirty-confirm-dialog/index.tsx:76
 msgid "\"%s\" has unsaved changes. Do you want to save before closing?"
 msgstr ""
 
-#: src/components/dirty-confirm-dialog/index.tsx:75
-msgid "Cancel"
-msgstr ""
-
-#: src/components/dirty-confirm-dialog/index.tsx:84
+#: src/components/dirty-confirm-dialog/index.tsx:85
 msgid "Discard changes"
 msgstr ""
 
-#: src/components/dirty-confirm-dialog/index.tsx:85
+#: src/components/dirty-confirm-dialog/index.tsx:86
 msgid "Discard"
 msgstr ""
 
-#: src/components/about-modal/index.tsx:85
+#: src/components/about-modal/index.tsx:105
 msgid "Report an issue"
 msgstr ""

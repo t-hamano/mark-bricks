@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-05-22T13:28:33.985Z\n"
-"PO-Revision-Date: 2026-05-22T13:28:39.140Z\n"
+"POT-Creation-Date: 2026-08-26T03:42:05.390Z\n"
+"PO-Revision-Date: 2026-08-26T03:42:26.087Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -38,18 +38,18 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/block-library/image/edit.tsx:218
+#: src/block-library/image/edit.tsx:213
 msgid "Alt text"
 msgstr "代替テキスト"
 
-#: src/format-library/link.tsx:143
-#: src/block-library/image/edit.tsx:167
-#: src/block-library/image/edit.tsx:253
-#: src/block-library/image/edit.tsx:325
+#: src/format-library/link.tsx:137
+#: src/block-library/image/edit.tsx:162
+#: src/block-library/image/edit.tsx:244
+#: src/block-library/image/edit.tsx:311
 msgid "Apply"
 msgstr "適用"
 
-#: src/components/editor-header/index.tsx:87
+#: src/components/editor-header/index.tsx:82
 msgid "Block Inserter"
 msgstr "ブロックインサーター"
 
@@ -57,8 +57,8 @@ msgstr "ブロックインサーター"
 msgid "Bold"
 msgstr "太字"
 
-#: src/block-library/image/edit.tsx:102
-#: src/block-library/image/edit.tsx:339
+#: src/block-library/image/edit.tsx:101
+#: src/block-library/image/edit.tsx:325
 msgid "Browse local file"
 msgstr "ローカルファイルを参照"
 
@@ -66,7 +66,7 @@ msgstr "ローカルファイルを参照"
 msgid "Caution"
 msgstr "注意"
 
-#: src/block-library/table/edit.tsx:317
+#: src/block-library/table/edit.tsx:312
 msgid "Cell content"
 msgstr "セルの内容"
 
@@ -74,7 +74,7 @@ msgstr "セルの内容"
 msgid "Change language"
 msgstr "言語を変更"
 
-#: src/components/keyboard-shortcuts/hooks.ts:78
+#: src/components/keyboard-shortcuts/hooks.ts:92
 msgid "Change the block type after adding a new paragraph."
 msgstr "新規段落の追加後、ブロックタイプを変更します。"
 
@@ -86,24 +86,24 @@ msgstr "言語を選択…"
 msgid "Clear formatting"
 msgstr "書式をクリア"
 
-#: src/components/list-view-sidebar/index.tsx:68
-#: src/components/inserter-sidebar/index.tsx:161
+#: src/components/list-view-sidebar/index.tsx:64
+#: src/components/inserter-sidebar/index.tsx:160
 msgid "Close"
 msgstr "閉じる"
 
-#: src/components/editor-header/index.tsx:86
+#: src/components/editor-header/index.tsx:81
 msgid "Close Block Inserter"
 msgstr "ブロックインサーターを閉じる"
 
-#: src/block-library/table/edit.tsx:253
+#: src/block-library/table/edit.tsx:252
 msgid "Column count"
 msgstr "カラム数"
 
-#: src/components/keyboard-shortcuts/hooks.ts:106
+#: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
 msgstr "選択したテキストをリンクに変換する。"
 
-#: src/block-library/table/edit.tsx:275
+#: src/block-library/table/edit.tsx:270
 msgid "Create Table"
 msgstr "表を作成"
 
@@ -111,15 +111,15 @@ msgstr "表を作成"
 msgid "Default"
 msgstr "デフォルト"
 
-#: src/block-library/table/edit.tsx:394
+#: src/block-library/table/edit.tsx:389
 msgid "Delete column"
 msgstr "列を削除"
 
-#: src/block-library/table/edit.tsx:367
+#: src/block-library/table/edit.tsx:362
 msgid "Delete row"
 msgstr "行を削除"
 
-#: src/block-library/image/edit.tsx:227
+#: src/block-library/image/edit.tsx:222
 msgid "Describes the image for screen readers."
 msgstr "スクリーンリーダー用に画像を説明します。"
 
@@ -127,37 +127,37 @@ msgstr "スクリーンリーダー用に画像を説明します。"
 msgid "Display these keyboard shortcuts."
 msgstr "これらのキーボードショートカットを表示する。"
 
-#: src/components/list-view-sidebar/index.tsx:47
-#: src/components/editor-header/index.tsx:122
+#: src/components/list-view-sidebar/index.tsx:43
+#: src/components/editor-header/index.tsx:115
 msgid "Document Overview"
 msgstr "ドキュメント概観"
 
-#: src/block-library/image/edit.tsx:191
+#: src/block-library/image/edit.tsx:186
 msgid "Edit alt and title"
 msgstr "代替テキストとタイトルを編集"
 
-#: src/block-library/table/edit.tsx:347
+#: src/block-library/table/edit.tsx:342
 msgid "Edit table"
 msgstr "表を編集"
 
-#: src/block-library/image/edit.tsx:116
+#: src/block-library/image/edit.tsx:115
 msgid "Enter URL or file path"
 msgstr "URL またはファイルパスを入力"
 
-#: src/block-library/image/edit.tsx:223
+#: src/block-library/image/edit.tsx:218
 msgid "Enter alt text…"
 msgstr "代替テキストを入力…"
 
-#: src/format-library/link.tsx:123
-#: src/block-library/image/edit.tsx:238
+#: src/format-library/link.tsx:118
+#: src/block-library/image/edit.tsx:233
 msgid "Enter title…"
 msgstr "タイトルを入力…"
 
-#: src/block-library/image/edit.tsx:362
+#: src/block-library/image/edit.tsx:348
 msgid "Failed to load image."
 msgstr "画像の読み込みに失敗しました。"
 
-#: src/components/keyboard-shortcuts/hooks.ts:82
+#: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "前方スラッシュ"
 
@@ -170,7 +170,7 @@ msgstr "GitHub アラートタイプ"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/block-library/table/edit.tsx:316
+#: src/block-library/table/edit.tsx:311
 msgid "Header label"
 msgstr "ヘッダーラベル"
 
@@ -178,11 +178,16 @@ msgstr "ヘッダーラベル"
 msgid "Heading"
 msgstr "見出し"
 
-#: src/components/editor-header/index.tsx:121
+# %d: heading level e.g: "1", "2", "3"
+#: src/block-library/heading/index.ts:51
+msgid "Heading %d"
+msgstr "見出し %d"
+
+#: src/components/editor-header/index.tsx:114
 msgid "Hide Document Overview"
 msgstr "ドキュメント概観を非表示"
 
-#: src/block-library/image/edit.tsx:85
+#: src/block-library/image/edit.tsx:84
 msgid "Image"
 msgstr "画像"
 
@@ -198,23 +203,23 @@ msgstr "インデント"
 msgid "Inline code"
 msgstr "インラインコード"
 
-#: src/block-library/table/edit.tsx:238
+#: src/block-library/table/edit.tsx:237
 msgid "Insert a table for sharing data."
 msgstr "表形式のデータを挿入します。"
 
-#: src/block-library/table/edit.tsx:385
+#: src/block-library/table/edit.tsx:380
 msgid "Insert column after"
 msgstr "列を右に挿入"
 
-#: src/block-library/table/edit.tsx:376
+#: src/block-library/table/edit.tsx:371
 msgid "Insert column before"
 msgstr "列を左に挿入"
 
-#: src/block-library/table/edit.tsx:359
+#: src/block-library/table/edit.tsx:354
 msgid "Insert row after"
 msgstr "行を下に挿入"
 
-#: src/block-library/table/edit.tsx:351
+#: src/block-library/table/edit.tsx:346
 msgid "Insert row before"
 msgstr "行を上に挿入"
 
@@ -226,7 +231,7 @@ msgstr "イタリック"
 msgid "Language"
 msgstr "言語"
 
-#: src/format-library/link.tsx:33
+#: src/format-library/link.tsx:28
 msgid "Link"
 msgstr "リンク"
 
@@ -234,7 +239,7 @@ msgstr "リンク"
 msgid "List"
 msgstr "リスト"
 
-#: src/components/list-view-sidebar/index.tsx:78
+#: src/components/list-view-sidebar/index.tsx:75
 msgid "List View"
 msgstr "リスト表示"
 
@@ -242,15 +247,15 @@ msgstr "リスト表示"
 msgid "List text"
 msgstr "リストのテキスト"
 
-#: src/components/keyboard-shortcuts/hooks.ts:92
+#: src/components/keyboard-shortcuts/hooks.ts:106
 msgid "Make the selected text bold."
 msgstr "選択したテキストを太字にする。"
 
-#: src/components/keyboard-shortcuts/hooks.ts:134
+#: src/components/keyboard-shortcuts/hooks.ts:148
 msgid "Make the selected text inline code."
 msgstr "選択したテキストをインラインコードにする。"
 
-#: src/components/keyboard-shortcuts/hooks.ts:99
+#: src/components/keyboard-shortcuts/hooks.ts:113
 msgid "Make the selected text italic."
 msgstr "選択したテキストを斜体にする。"
 
@@ -272,21 +277,21 @@ msgstr "順序付きリスト"
 msgid "Outdent"
 msgstr "インデント解除"
 
-#: src/components/list-view-sidebar/index.tsx:83
+#: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "アウトライン"
 
-#: src/format-library/link.tsx:117
-#: src/block-library/image/edit.tsx:148
-#: src/block-library/image/edit.tsx:152
+#: src/format-library/link.tsx:112
+#: src/block-library/image/edit.tsx:147
+#: src/block-library/image/edit.tsx:151
 msgid "Paste or type URL"
 msgstr "URL を入力または貼り付け"
 
-#: src/block-library/image/edit.tsx:309
+#: src/block-library/image/edit.tsx:300
 msgid "Paste or type URL or file path"
 msgstr "URL またはファイルパスを入力または貼り付け"
 
-#: src/components/editor-header/index.tsx:109
+#: src/components/editor-header/index.tsx:102
 msgid "Redo"
 msgstr "やり直す"
 
@@ -294,31 +299,31 @@ msgstr "やり直す"
 msgid "Redo your last undo."
 msgstr "前回の取り消しをやり直す。"
 
-#: src/format-library/link.tsx:134
+#: src/format-library/link.tsx:129
 msgid "Remove"
 msgstr "削除"
 
-#: src/components/keyboard-shortcuts/hooks.ts:113
+#: src/components/keyboard-shortcuts/hooks.ts:127
 msgid "Remove a link."
 msgstr "リンクを削除する。"
 
-#: src/block-library/image/edit.tsx:274
+#: src/block-library/image/edit.tsx:265
 msgid "Replace image"
 msgstr "画像の置き換え"
 
-#: src/block-library/image/edit.tsx:351
+#: src/block-library/image/edit.tsx:337
 msgid "Reset"
 msgstr "リセット"
 
-#: src/block-library/table/edit.tsx:263
+#: src/block-library/table/edit.tsx:262
 msgid "Row count"
 msgstr "行数"
 
-#: src/components/inserter-sidebar/index.tsx:154
+#: src/components/inserter-sidebar/index.tsx:153
 msgid "Search"
 msgstr "検索"
 
-#: src/components/inserter-sidebar/index.tsx:153
+#: src/components/inserter-sidebar/index.tsx:152
 msgid "Search for blocks"
 msgstr "ブロックを検索"
 
@@ -326,8 +331,8 @@ msgstr "ブロックを検索"
 msgid "Show or hide the List View."
 msgstr "リストビューの表示、非表示。"
 
-#: src/format-library/link.tsx:124
-#: src/block-library/image/edit.tsx:242
+#: src/format-library/link.tsx:119
+#: src/block-library/image/edit.tsx:237
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
 
@@ -335,7 +340,7 @@ msgstr "ホバー時にツールチップとして表示されます。"
 msgid "Strikethrough"
 msgstr "打ち消し線"
 
-#: src/components/keyboard-shortcuts/hooks.ts:127
+#: src/components/keyboard-shortcuts/hooks.ts:141
 msgid "Strikethrough the selected text."
 msgstr "選択したテキストに取り消し線を追加する。"
 
@@ -343,7 +348,7 @@ msgstr "選択したテキストに取り消し線を追加する。"
 msgid "Switch between the visual editor and the code editor."
 msgstr "ビジュアルエディターとコードエディターを切り替える。"
 
-#: src/block-library/table/edit.tsx:237
+#: src/block-library/table/edit.tsx:236
 msgid "Table"
 msgstr "テーブル"
 
@@ -351,8 +356,8 @@ msgstr "テーブル"
 msgid "Tip"
 msgstr "ヒント"
 
-#: src/format-library/link.tsx:120
-#: src/block-library/image/edit.tsx:233
+#: src/format-library/link.tsx:115
+#: src/block-library/image/edit.tsx:228
 msgid "Title"
 msgstr "タイトル"
 
@@ -372,19 +377,19 @@ msgstr "タスク項目に変換"
 msgid "Type / to choose a block"
 msgstr "ブロックを選択するには「/」を入力"
 
-#: src/format-library/link.tsx:114
+#: src/format-library/link.tsx:109
 msgid "URL"
 msgstr "URL"
 
-#: src/block-library/image/edit.tsx:305
+#: src/block-library/image/edit.tsx:296
 msgid "URL or file path"
 msgstr "URL またはファイルパス"
 
-#: src/components/keyboard-shortcuts/hooks.ts:120
+#: src/components/keyboard-shortcuts/hooks.ts:134
 msgid "Underline the selected text."
 msgstr "選択したテキストに下線を付ける。"
 
-#: src/components/editor-header/index.tsx:100
+#: src/components/editor-header/index.tsx:93
 msgid "Undo"
 msgstr "元に戻す"
 
@@ -396,7 +401,7 @@ msgstr "直前の変更を取り消す。"
 msgid "Unordered"
 msgstr "順序なしリスト"
 
-#: src/block-library/image/edit.tsx:86
+#: src/block-library/image/edit.tsx:85
 msgid "Upload an image from your device or insert from a URL."
 msgstr "デバイスから画像をアップロードするか、URL から挿入します。"
 

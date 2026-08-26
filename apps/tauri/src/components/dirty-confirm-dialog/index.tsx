@@ -1,10 +1,9 @@
 /**
  * WordPress dependencies
  */
-import { Button, Modal } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
-import { Stack, Text } from '@wordpress/ui';
+import { AlertDialog } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -30,7 +29,7 @@ export default function DirtyConfirmDialog() {
 
 	const cancel = () => setPendingCloseId( null );
 
-	const dontSave = () => {
+	const discard = () => {
 		const id = pendingTab.id;
 		setPendingCloseId( null );
 		closeTab( id );
@@ -49,46 +48,38 @@ export default function DirtyConfirmDialog() {
 	};
 
 	return (
-		<Modal
-			title={ __( 'Unsaved changes', 'mark-bricks' ) }
-			onRequestClose={ cancel }
-			className="dirty-confirm-dialog"
-			size="small"
+		<AlertDialog.Root
+			open
+			onConfirm={ discard }
+			onOpenChange={ ( nextOpen, eventDetails ) => {
+				if ( nextOpen ) {
+					return;
+				}
+				if ( eventDetails.reason === 'close-press' ) {
+					save();
+					return;
+				}
+				cancel();
+			} }
 		>
-			<Stack direction="column" gap="md">
-				<Text>
-					{ sprintf(
-						/* translators: %s: tab title. */
-						__(
-							'"%s" has unsaved changes. Do you want to save before closing?',
-							'mark-bricks'
-						),
-						pendingTab.title
-					) }
-				</Text>
-				<Stack gap="sm" justify="flex-end">
-					<Button
-						variant="tertiary"
-						size="compact"
-						onClick={ cancel }
-					>
-						{ __( 'Cancel', 'mark-bricks' ) }
-					</Button>
-					<Button
-						variant="tertiary"
-						size="compact"
-						isDestructive
-						onClick={ dontSave }
-					>
-						{ pendingTab.filePath
-							? __( 'Discard changes', 'mark-bricks' )
-							: __( 'Discard', 'mark-bricks' ) }
-					</Button>
-					<Button variant="primary" size="compact" onClick={ save }>
-						{ __( 'Save', 'mark-bricks' ) }
-					</Button>
-				</Stack>
-			</Stack>
-		</Modal>
+			<AlertDialog.Popup
+				intent="irreversible"
+				title={ __( 'Unsaved changes', 'mark-bricks' ) }
+				description={ sprintf(
+					/* translators: %s: tab title. */
+					__(
+						'"%s" has unsaved changes. Do you want to save before closing?',
+						'mark-bricks'
+					),
+					pendingTab.title
+				) }
+				cancelButtonText={ __( 'Save', 'mark-bricks' ) }
+				confirmButtonText={
+					pendingTab.filePath
+						? __( 'Discard changes', 'mark-bricks' )
+						: __( 'Discard', 'mark-bricks' )
+				}
+			/>
+		</AlertDialog.Root>
 	);
 }

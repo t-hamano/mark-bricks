@@ -16,6 +16,7 @@ export type { CodeEditorSettings } from './components/text-editor';
 export type { Platform } from './platform';
 export {
 	useEditorShortcuts,
+	useKeyboardShortcut,
 	type ShortcutKeyCombinationData,
 	type ShortcutEntry,
 } from './components/keyboard-shortcuts/hooks';

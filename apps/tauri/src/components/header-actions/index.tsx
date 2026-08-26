@@ -2,12 +2,12 @@
  * External dependencies
  */
 import { useEffect, useState } from 'react';
+import { useKeyboardShortcut } from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies
  */
 import {
-	Button,
 	DropdownMenu,
 	MenuGroup,
 	MenuItem,
@@ -20,7 +20,7 @@ import { store as keyboardShortcutsStore } from '@wordpress/keyboard-shortcuts';
 import { displayShortcut } from '@wordpress/keycodes';
 import { PreferenceToggleMenuItem } from '@wordpress/preferences';
 import { code, moreVertical } from '@wordpress/icons';
-import { Stack } from '@wordpress/ui';
+import { Button, IconButton, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -66,6 +66,9 @@ export default function HeaderActions( {
 			isPreferencesOpened: isModalActive( PREFERENCES_MODAL_NAME ),
 		};
 	}, [] );
+	const toggleModeKeyboardShortcut = useKeyboardShortcut(
+		'mark-bricks/toggle-mode'
+	);
 	const { openModal } = useDispatch( interfaceStore );
 	const [ isOptionsMenuOpen, setIsOptionsMenuOpen ] = useState( false );
 	useEffect( () => {
@@ -76,13 +79,13 @@ export default function HeaderActions( {
 
 	return (
 		<Stack direction="row" align="center" gap="sm">
-			<Button
+			<IconButton
 				icon={ code }
 				label={ __( 'Code editor', 'mark-bricks' ) }
-				shortcut={ toggleModeShortcut }
-				iconSize={ 20 }
+				shortcut={ toggleModeKeyboardShortcut }
+				variant="minimal"
+				tone="neutral"
 				size="small"
-				isPressed={ editorMode === 'text' }
 				onClick={ () =>
 					onEditorModeChange(
 						editorMode === 'text' ? 'visual' : 'text'
@@ -91,13 +94,11 @@ export default function HeaderActions( {
 				aria-pressed={ editorMode === 'text' }
 			/>
 			<Button
-				variant="primary"
 				size="small"
 				onClick={ () => {
 					saveActiveFile();
 				} }
 				disabled={ ! isActiveTabDirty }
-				accessibleWhenDisabled
 			>
 				{ __( 'Save', 'mark-bricks' ) }
 			</Button>
