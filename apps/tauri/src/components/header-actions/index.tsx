@@ -16,7 +16,6 @@ import {
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
-import { store as keyboardShortcutsStore } from '@wordpress/keyboard-shortcuts';
 import { displayShortcut } from '@wordpress/keycodes';
 import { PreferenceToggleMenuItem } from '@wordpress/preferences';
 import { code, moreVertical } from '@wordpress/icons';
@@ -45,29 +44,18 @@ export default function HeaderActions( {
 	editorMode,
 	onEditorModeChange,
 }: Props ) {
-	const {
-		isActiveTabDirty,
-		toggleModeShortcut,
-		keyboardShortcutsShortcut,
-		isPreferencesOpened,
-	} = useSelect( ( select ) => {
+	const { isActiveTabDirty, isPreferencesOpened } = useSelect( ( select ) => {
 		const { getTabs, getActiveTabId } = select( tabsStore );
-		const { getShortcutRepresentation } = select( keyboardShortcutsStore );
 		const { isModalActive } = select( interfaceStore );
 		const activeTab = getTabs().find( ( t ) => t.id === getActiveTabId() );
 		return {
 			isActiveTabDirty: !! activeTab?.isDirty,
-			toggleModeShortcut:
-				getShortcutRepresentation( 'mark-bricks/toggle-mode' ) ??
-				undefined,
-			keyboardShortcutsShortcut:
-				getShortcutRepresentation( 'mark-bricks/keyboard-shortcuts' ) ??
-				undefined,
 			isPreferencesOpened: isModalActive( PREFERENCES_MODAL_NAME ),
 		};
 	}, [] );
-	const toggleModeKeyboardShortcut = useKeyboardShortcut(
-		'mark-bricks/toggle-mode'
+	const toggleModeShortcut = useKeyboardShortcut( 'mark-bricks/toggle-mode' );
+	const keyboardShortcutsShortcut = useKeyboardShortcut(
+		'mark-bricks/keyboard-shortcuts'
 	);
 	const { openModal } = useDispatch( interfaceStore );
 	const [ isOptionsMenuOpen, setIsOptionsMenuOpen ] = useState( false );
@@ -82,7 +70,7 @@ export default function HeaderActions( {
 			<IconButton
 				icon={ code }
 				label={ __( 'Code editor', 'mark-bricks' ) }
-				shortcut={ toggleModeKeyboardShortcut }
+				shortcut={ toggleModeShortcut }
 				variant="minimal"
 				tone="neutral"
 				size="small"
@@ -193,7 +181,7 @@ export default function HeaderActions( {
 										),
 										shortcut:
 											editorMode !== 'visual'
-												? toggleModeShortcut
+												? toggleModeShortcut?.displayShortcut
 												: undefined,
 									},
 									{
@@ -204,7 +192,7 @@ export default function HeaderActions( {
 										),
 										shortcut:
 											editorMode !== 'text'
-												? toggleModeShortcut
+												? toggleModeShortcut?.displayShortcut
 												: undefined,
 									},
 								] }
@@ -219,7 +207,9 @@ export default function HeaderActions( {
 						</MenuGroup>
 						<MenuGroup label={ __( 'Tools', 'mark-bricks' ) }>
 							<MenuItem
-								shortcut={ keyboardShortcutsShortcut }
+								shortcut={
+									keyboardShortcutsShortcut?.displayShortcut
+								}
 								onClick={ () => {
 									openModal( KEYBOARD_SHORTCUTS_MODAL_NAME );
 									setIsOptionsMenuOpen( false );
