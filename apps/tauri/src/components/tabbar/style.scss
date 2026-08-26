@@ -42,8 +42,7 @@
 	border-top-color: var(--wpds-color-stroke-surface-neutral-weak);
 	border-right-color: var(--wpds-color-stroke-surface-neutral-weak);
 	padding-left: var(--wpds-dimension-size-4xs);
-	padding-right: var(--wpds-dimension-size-md);
-	overflow: hidden;
+	padding-right: var(--wpds-dimension-size-lg);
 	cursor: pointer;
 
 	&.is-active {
@@ -82,7 +81,7 @@
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	right: 28px;
+	right: var(--wpds-dimension-size-md);
 	width: var(--wpds-dimension-size-5xs);
 	height: var(--wpds-dimension-size-5xs);
 	border-radius: 50%;
