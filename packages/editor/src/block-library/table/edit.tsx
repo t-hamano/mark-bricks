@@ -15,11 +15,10 @@ import {
 } from '@wordpress/block-editor';
 import {
 	Placeholder,
-	TextControl,
 	ToolbarDropdownMenu,
 	ToolbarGroup,
 } from '@wordpress/components';
-import { Button, Stack } from '@wordpress/ui';
+import { Button, InputControl, Stack } from '@wordpress/ui';
 import { __ } from '@wordpress/i18n';
 import {
 	table as tableIcon,
@@ -246,27 +245,23 @@ export default function Edit( props: BlockEditProps ) {
 						align="flex-end"
 						gap="sm"
 					>
-						<TextControl
-							__next40pxDefaultSize
+						<InputControl
 							type="number"
 							label={ __( 'Column count', 'mark-bricks' ) }
 							value={ initialColumnCount }
-							onChange={ ( value ) =>
-								setInitialColumnCount( value ?? '' )
-							}
+							onValueChange={ setInitialColumnCount }
 							min="1"
+							size="compact"
 						/>
-						<TextControl
-							__next40pxDefaultSize
+						<InputControl
 							type="number"
 							label={ __( 'Row count', 'mark-bricks' ) }
 							value={ initialRowCount }
-							onChange={ ( value ) =>
-								setInitialRowCount( value ?? '' )
-							}
+							onValueChange={ setInitialRowCount }
 							min="1"
+							size="compact"
 						/>
-						<Button type="submit">
+						<Button size="compact" type="submit">
 							{ __( 'Create Table', 'mark-bricks' ) }
 						</Button>
 					</Stack>

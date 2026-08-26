@@ -7,9 +7,9 @@ import { useState } from 'react';
  * WordPress dependencies
  */
 import { BlockControls, RichTextShortcut } from '@wordpress/block-editor';
-import { Popover, TextControl, ToolbarButton } from '@wordpress/components';
+import { Popover, ToolbarButton } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Button, Stack } from '@wordpress/ui';
+import { Button, InputControl, Stack } from '@wordpress/ui';
 import { link as linkIcon } from '@wordpress/icons';
 import { displayShortcut } from '@wordpress/keycodes';
 import {
@@ -105,18 +105,23 @@ function InlineLinkUI( {
 					padding: 'var(--wpds-dimension-padding-sm)',
 				} }
 			>
-				<TextControl
+				<InputControl
 					label={ __( 'URL', 'mark-bricks' ) }
 					value={ urlInput }
-					onChange={ ( next ) => setUrlInput( next ?? '' ) }
+					onValueChange={ setUrlInput }
 					placeholder={ __( 'Paste or type URL', 'mark-bricks' ) }
+					size="compact"
 				/>
-				<TextControl
+				<InputControl
 					label={ __( 'Title', 'mark-bricks' ) }
 					value={ titleInput }
-					onChange={ ( next ) => setTitleInput( next ?? '' ) }
+					onValueChange={ setTitleInput }
 					placeholder={ __( 'Enter title…', 'mark-bricks' ) }
-					help={ __( 'Shown as a tooltip on hover.', 'mark-bricks' ) }
+					description={ __(
+						'Shown as a tooltip on hover.',
+						'mark-bricks'
+					) }
+					size="compact"
 				/>
 				<Stack justify="flex-end" gap="sm">
 					{ isActive && (

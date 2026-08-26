@@ -11,16 +11,13 @@ import {
 	useBlockProps,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
-import {
-	Dropdown,
-	ToolbarButton,
-	__experimentalInputControl as InputControl,
-} from '@wordpress/components';
+import { Dropdown, ToolbarButton } from '@wordpress/components';
 import { useInstanceId } from '@wordpress/compose';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { RichTextData } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 import { language as languageIcon } from '@wordpress/icons';
+import { InputControl } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -119,14 +116,15 @@ export default function Edit( {
 								) }
 								value={ language }
 								list={ languageListId }
-								onChange={ ( nextValue ) =>
+								onValueChange={ ( nextValue ) =>
 									setAttributes( {
 										markdownData: {
 											...markdownData,
-											language: nextValue ?? '',
+											language: nextValue,
 										},
 									} )
 								}
+								size="compact"
 								style={ { width: '280px' } }
 							/>
 							<datalist id={ languageListId }>

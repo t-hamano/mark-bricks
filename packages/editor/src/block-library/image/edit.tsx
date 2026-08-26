@@ -17,11 +17,10 @@ import {
 	NavigableMenu,
 	Placeholder,
 	Popover,
-	TextControl,
 	ToolbarButton,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Button, Notice, Stack } from '@wordpress/ui';
+import { Button, InputControl, Notice, Stack } from '@wordpress/ui';
 import { image as imageIcon, pencil } from '@wordpress/icons';
 
 /**
@@ -142,7 +141,7 @@ export default function Edit( props: BlockEditProps ) {
 								} }
 							>
 								<div style={ { flex: 1 } }>
-									<TextControl
+									<InputControl
 										hideLabelFromVision
 										label={ __(
 											'Paste or type URL',
@@ -153,9 +152,8 @@ export default function Edit( props: BlockEditProps ) {
 											'mark-bricks'
 										) }
 										value={ urlInput }
-										onChange={ ( value ) =>
-											setUrlInput( value ?? '' )
-										}
+										onValueChange={ setUrlInput }
+										size="compact"
 									/>
 								</div>
 								<Button size="compact" type="submit">
@@ -209,35 +207,33 @@ export default function Edit( props: BlockEditProps ) {
 								width: '280px',
 							} }
 						>
-							<TextControl
+							<InputControl
 								label={ __( 'Alt text', 'mark-bricks' ) }
 								value={ altInput }
-								onChange={ ( value ) =>
-									setAltInput( value ?? '' )
-								}
+								onValueChange={ setAltInput }
 								placeholder={ __(
 									'Enter alt text…',
 									'mark-bricks'
 								) }
-								help={ __(
+								description={ __(
 									'Describes the image for screen readers.',
 									'mark-bricks'
 								) }
+								size="compact"
 							/>
-							<TextControl
+							<InputControl
 								label={ __( 'Title', 'mark-bricks' ) }
 								value={ titleInput }
-								onChange={ ( value ) =>
-									setTitleInput( value ?? '' )
-								}
+								onValueChange={ setTitleInput }
 								placeholder={ __(
 									'Enter title…',
 									'mark-bricks'
 								) }
-								help={ __(
+								description={ __(
 									'Shown as a tooltip on hover.',
 									'mark-bricks'
 								) }
+								size="compact"
 							/>
 							<Stack justify="flex-end">
 								<Button size="compact" type="submit">
@@ -292,7 +288,7 @@ export default function Edit( props: BlockEditProps ) {
 								} }
 							>
 								<div style={ { flex: 1 } }>
-									<TextControl
+									<InputControl
 										label={ __(
 											'URL or file path',
 											'mark-bricks'
@@ -302,9 +298,8 @@ export default function Edit( props: BlockEditProps ) {
 											'mark-bricks'
 										) }
 										value={ urlInput }
-										onChange={ ( value ) =>
-											setUrlInput( value ?? '' )
-										}
+										onValueChange={ setUrlInput }
+										size="compact"
 									/>
 								</div>
 								<Button size="compact" type="submit">
