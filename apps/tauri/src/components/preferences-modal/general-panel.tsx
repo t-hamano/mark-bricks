@@ -10,14 +10,7 @@ import { LOCALES, type Locale } from '@mark-bricks/editor';
  */
 import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import {
-	Button,
-	Notice,
-	SelectControl,
-	Stack,
-	Tabs,
-	Text,
-} from '@wordpress/ui';
+import { Button, Notice, SelectControl, Stack, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -88,105 +81,97 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 	};
 
 	return (
-		<Tabs.Panel value="general" tabIndex={ -1 }>
-			<Stack direction="column" gap="xl">
-				<Stack direction="column" gap="md">
-					<Text variant="heading-xl" render={ <h2 /> }>
-						{ __( 'Language', 'mark-bricks' ) }
-					</Text>
-					<SelectControl
-						hideLabelFromVision
-						size="compact"
-						label={ __( 'Language', 'mark-bricks' ) }
-						items={ LOCALE_ITEMS }
-						value={
-							LOCALE_ITEMS.find(
-								( item ) => item.value === settings.locale
-							) ?? null
+		<Stack direction="column" gap="xl">
+			<Stack direction="column" gap="md">
+				<Text variant="heading-xl" render={ <h2 /> }>
+					{ __( 'Language', 'mark-bricks' ) }
+				</Text>
+				<SelectControl
+					hideLabelFromVision
+					size="compact"
+					label={ __( 'Language', 'mark-bricks' ) }
+					items={ LOCALE_ITEMS }
+					value={
+						LOCALE_ITEMS.find(
+							( item ) => item.value === settings.locale
+						) ?? null
+					}
+					isItemEqualToValue={ ( a, b ) => a.value === b.value }
+					onValueChange={ ( item ) => {
+						if ( item ) {
+							onChange( { locale: item.value as Locale } );
 						}
-						isItemEqualToValue={ ( a, b ) => a.value === b.value }
-						onValueChange={ ( item ) => {
-							if ( item ) {
-								onChange( { locale: item.value as Locale } );
-							}
-						} }
-						description={ __(
-							'Restart the app to apply the new language.',
-							'mark-bricks'
-						) }
-					/>
-				</Stack>
-				<Stack direction="column" gap="md" align="flex-start">
-					<Text variant="heading-xl" render={ <h2 /> }>
-						{ __( 'Update', 'mark-bricks' ) }
-					</Text>
-					<ToggleControl
-						label={ __(
-							'Check updates automatically',
-							'mark-bricks'
-						) }
-						checked={ settings.checkUpdatesAuto }
-						onChange={ ( value ) =>
-							onChange( { checkUpdatesAuto: value } )
-						}
-					/>
-					<Button
-						variant="outline"
-						size="compact"
-						loading={ isChecking }
-						loadingAnnouncement={ __( 'Checking…', 'mark-bricks' ) }
-						disabled={ isChecking }
-						onClick={ onCheckClick }
-					>
-						{ __( 'Check for updates', 'mark-bricks' ) }
-					</Button>
-				</Stack>
-				<Stack direction="column" gap="md" align="flex-start">
-					<Text variant="heading-xl" render={ <h2 /> }>
-						{ __( 'File associations', 'mark-bricks' ) }
-					</Text>
-					<Button
-						variant="outline"
-						size="compact"
-						loading={ associateStatus.kind === 'busy' }
-						loadingAnnouncement={ __( 'Working…', 'mark-bricks' ) }
-						disabled={ associateStatus.kind === 'busy' }
-						onClick={ onAssociateClick }
-					>
-						{ __(
-							'Set as default for Markdown files',
-							'mark-bricks'
-						) }
-					</Button>
-					{ associateStatus.kind === 'set' && (
-						<Notice.Root intent="success">
-							<Notice.Description>
-								{ __(
-									'MarkBricks is now the default app for Markdown files.',
-									'mark-bricks'
-								) }
-							</Notice.Description>
-						</Notice.Root>
+					} }
+					description={ __(
+						'Restart the app to apply the new language.',
+						'mark-bricks'
 					) }
-					{ associateStatus.kind === 'unsupported' && (
-						<Notice.Root intent="warning">
-							<Notice.Description>
-								{ __(
-									'This platform does not support setting the default app from inside MarkBricks. Please configure it from your system file manager.',
-									'mark-bricks'
-								) }
-							</Notice.Description>
-						</Notice.Root>
-					) }
-					{ associateStatus.kind === 'error' && (
-						<Notice.Root intent="error">
-							<Notice.Description>
-								{ associateStatus.message }
-							</Notice.Description>
-						</Notice.Root>
-					) }
-				</Stack>
+				/>
 			</Stack>
-		</Tabs.Panel>
+			<Stack direction="column" gap="md" align="flex-start">
+				<Text variant="heading-xl" render={ <h2 /> }>
+					{ __( 'Update', 'mark-bricks' ) }
+				</Text>
+				<ToggleControl
+					label={ __( 'Check updates automatically', 'mark-bricks' ) }
+					checked={ settings.checkUpdatesAuto }
+					onChange={ ( value ) =>
+						onChange( { checkUpdatesAuto: value } )
+					}
+				/>
+				<Button
+					variant="outline"
+					size="compact"
+					loading={ isChecking }
+					loadingAnnouncement={ __( 'Checking…', 'mark-bricks' ) }
+					disabled={ isChecking }
+					onClick={ onCheckClick }
+				>
+					{ __( 'Check for updates', 'mark-bricks' ) }
+				</Button>
+			</Stack>
+			<Stack direction="column" gap="md" align="flex-start">
+				<Text variant="heading-xl" render={ <h2 /> }>
+					{ __( 'File associations', 'mark-bricks' ) }
+				</Text>
+				<Button
+					variant="outline"
+					size="compact"
+					loading={ associateStatus.kind === 'busy' }
+					loadingAnnouncement={ __( 'Working…', 'mark-bricks' ) }
+					disabled={ associateStatus.kind === 'busy' }
+					onClick={ onAssociateClick }
+				>
+					{ __( 'Set as default for Markdown files', 'mark-bricks' ) }
+				</Button>
+				{ associateStatus.kind === 'set' && (
+					<Notice.Root intent="success">
+						<Notice.Description>
+							{ __(
+								'MarkBricks is now the default app for Markdown files.',
+								'mark-bricks'
+							) }
+						</Notice.Description>
+					</Notice.Root>
+				) }
+				{ associateStatus.kind === 'unsupported' && (
+					<Notice.Root intent="warning">
+						<Notice.Description>
+							{ __(
+								'This platform does not support setting the default app from inside MarkBricks. Please configure it from your system file manager.',
+								'mark-bricks'
+							) }
+						</Notice.Description>
+					</Notice.Root>
+				) }
+				{ associateStatus.kind === 'error' && (
+					<Notice.Root intent="error">
+						<Notice.Description>
+							{ associateStatus.message }
+						</Notice.Description>
+					</Notice.Root>
+				) }
+			</Stack>
+		</Stack>
 	);
 }

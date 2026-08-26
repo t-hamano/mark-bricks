@@ -3,7 +3,7 @@
  */
 import { RangeControl, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { SelectControl, Stack, Tabs, Text } from '@wordpress/ui';
+import { SelectControl, Stack, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -32,99 +32,93 @@ export function VisualEditorPanel( { settings, onChange }: Props ) {
 	const fontFamilyItems = getFontFamilyOptions();
 
 	return (
-		<Tabs.Panel value="visual-editor" tabIndex={ -1 }>
-			<Stack direction="column" gap="xl">
-				<Stack direction="column" gap="md">
-					<Text variant="heading-xl" render={ <h2 /> }>
-						{ __( 'Settings', 'mark-bricks' ) }
-					</Text>
-					<ToggleControl
-						label={ __( 'Spell check', 'mark-bricks' ) }
-						checked={ settings.spellCheck }
-						onChange={ ( value ) =>
-							onChange( { spellCheck: value } )
-						}
-						help={ __(
-							'Highlight misspelled words while editing.',
-							'mark-bricks'
-						) }
-					/>
-					<ToggleControl
-						label={ __( 'Always open List View', 'mark-bricks' ) }
-						checked={ settings.showListViewByDefault }
-						onChange={ ( value ) =>
-							onChange( { showListViewByDefault: value } )
-						}
-						help={ __(
-							'Opens the List View panel by default.',
-							'mark-bricks'
-						) }
-					/>
-				</Stack>
-				<Stack direction="column" gap="md">
-					<Text variant="heading-xl" render={ <h2 /> }>
-						{ __( 'Editor styles', 'mark-bricks' ) }
-					</Text>
-					<RangeControl
-						label={ __( 'Content width', 'mark-bricks' ) }
-						value={ settings.contentWidth }
-						min={ 400 }
-						max={ 1600 }
-						step={ 10 }
-						allowReset
-						resetFallbackValue={
-							DEFAULT_EDITOR_STYLES.contentWidth
-						}
-						onChange={ ( value ) => {
-							if ( value !== undefined ) {
-								onChange( { contentWidth: value } );
-							}
-						} }
-						help={ __(
-							'Maximum width of the content area, in pixels.',
-							'mark-bricks'
-						) }
-					/>
-					<RangeControl
-						label={ __( 'Font size', 'mark-bricks' ) }
-						value={ settings.fontSize }
-						min={ 10 }
-						max={ 24 }
-						step={ 1 }
-						allowReset
-						resetFallbackValue={ DEFAULT_EDITOR_STYLES.fontSize }
-						onChange={ ( value ) => {
-							if ( value !== undefined ) {
-								onChange( { fontSize: value } );
-							}
-						} }
-						help={ __(
-							'Base font size of the content area, in pixels.',
-							'mark-bricks'
-						) }
-					/>
-					<SelectControl
-						size="compact"
-						label={ __( 'Font family', 'mark-bricks' ) }
-						items={ fontFamilyItems }
-						value={
-							fontFamilyItems.find(
-								( item ) => item.value === settings.fontFamily
-							) ?? null
-						}
-						isItemEqualToValue={ ( a, b ) => a.value === b.value }
-						onValueChange={ ( item ) => {
-							if ( item && item.value !== null ) {
-								onChange( { fontFamily: item.value } );
-							}
-						} }
-						description={ __(
-							'Typeface used for the content area.',
-							'mark-bricks'
-						) }
-					/>
-				</Stack>
+		<Stack direction="column" gap="xl">
+			<Stack direction="column" gap="md">
+				<Text variant="heading-xl" render={ <h2 /> }>
+					{ __( 'Settings', 'mark-bricks' ) }
+				</Text>
+				<ToggleControl
+					label={ __( 'Spell check', 'mark-bricks' ) }
+					checked={ settings.spellCheck }
+					onChange={ ( value ) => onChange( { spellCheck: value } ) }
+					help={ __(
+						'Highlight misspelled words while editing.',
+						'mark-bricks'
+					) }
+				/>
+				<ToggleControl
+					label={ __( 'Always open List View', 'mark-bricks' ) }
+					checked={ settings.showListViewByDefault }
+					onChange={ ( value ) =>
+						onChange( { showListViewByDefault: value } )
+					}
+					help={ __(
+						'Opens the List View panel by default.',
+						'mark-bricks'
+					) }
+				/>
 			</Stack>
-		</Tabs.Panel>
+			<Stack direction="column" gap="md">
+				<Text variant="heading-xl" render={ <h2 /> }>
+					{ __( 'Editor styles', 'mark-bricks' ) }
+				</Text>
+				<RangeControl
+					label={ __( 'Content width', 'mark-bricks' ) }
+					value={ settings.contentWidth }
+					min={ 400 }
+					max={ 1600 }
+					step={ 10 }
+					allowReset
+					resetFallbackValue={ DEFAULT_EDITOR_STYLES.contentWidth }
+					onChange={ ( value ) => {
+						if ( value !== undefined ) {
+							onChange( { contentWidth: value } );
+						}
+					} }
+					help={ __(
+						'Maximum width of the content area, in pixels.',
+						'mark-bricks'
+					) }
+				/>
+				<RangeControl
+					label={ __( 'Font size', 'mark-bricks' ) }
+					value={ settings.fontSize }
+					min={ 10 }
+					max={ 24 }
+					step={ 1 }
+					allowReset
+					resetFallbackValue={ DEFAULT_EDITOR_STYLES.fontSize }
+					onChange={ ( value ) => {
+						if ( value !== undefined ) {
+							onChange( { fontSize: value } );
+						}
+					} }
+					help={ __(
+						'Base font size of the content area, in pixels.',
+						'mark-bricks'
+					) }
+				/>
+				<SelectControl
+					size="compact"
+					label={ __( 'Font family', 'mark-bricks' ) }
+					items={ fontFamilyItems }
+					value={
+						fontFamilyItems.find(
+							( item ) => item.value === settings.fontFamily
+						) ?? null
+					}
+					isItemEqualToValue={ ( a, b ) => a.value === b.value }
+					onValueChange={ ( item ) => {
+						if ( item && item.value !== null ) {
+							onChange( { fontFamily: item.value } );
+						}
+					} }
+					description={ __(
+						'Typeface used for the content area.',
+						'mark-bricks'
+					) }
+				/>
+			</Stack>
+		</Stack>
 	);
 }

@@ -156,27 +156,39 @@ export default function PreferencesModal() {
 								{ ...props }
 								direction={ isLargeViewport ? 'row' : 'column' }
 								gap="xl"
+								align={ isLargeViewport ? 'start' : undefined }
 							/>
 						) }
 					>
-						<div className="preferences-modal__tabs">
-							<Tabs.List className="">
-								<Tabs.Tab value="general">
-									{ __( 'General', 'mark-bricks' ) }
-								</Tabs.Tab>
-								<Tabs.Tab value="visual-editor">
-									{ __( 'Visual editor', 'mark-bricks' ) }
-								</Tabs.Tab>
-								<Tabs.Tab value="code-editor">
-									{ __( 'Code editor', 'mark-bricks' ) }
-								</Tabs.Tab>
-							</Tabs.List>
-						</div>
-						<div className="preferences-modal__panels">
+						<Tabs.List className="preferences-modal__tabs">
+							<Tabs.Tab value="general">
+								{ __( 'General', 'mark-bricks' ) }
+							</Tabs.Tab>
+							<Tabs.Tab value="visual-editor">
+								{ __( 'Visual editor', 'mark-bricks' ) }
+							</Tabs.Tab>
+							<Tabs.Tab value="code-editor">
+								{ __( 'Code editor', 'mark-bricks' ) }
+							</Tabs.Tab>
+						</Tabs.List>
+						<Tabs.Panel
+							value="general"
+							className="preferences-modal__panel"
+							tabIndex={ -1 }
+						>
 							<GeneralPanel
-								settings={ { locale, checkUpdatesAuto } }
+								settings={ {
+									locale,
+									checkUpdatesAuto,
+								} }
 								onChange={ handleGeneralChange }
 							/>
+						</Tabs.Panel>
+						<Tabs.Panel
+							value="visual-editor"
+							className="preferences-modal__panel"
+							tabIndex={ -1 }
+						>
 							<VisualEditorPanel
 								settings={ {
 									spellCheck,
@@ -196,11 +208,17 @@ export default function PreferencesModal() {
 								} }
 								onChange={ handleVisualEditorChange }
 							/>
+						</Tabs.Panel>
+						<Tabs.Panel
+							value="code-editor"
+							className="preferences-modal__panel"
+							tabIndex={ -1 }
+						>
 							<CodeEditorPanel
 								settings={ codeEditor }
 								onChange={ handleCodeEditorChange }
 							/>
-						</div>
+						</Tabs.Panel>
 					</Tabs.Root>
 				</Dialog.Content>
 			</Dialog.Popup>

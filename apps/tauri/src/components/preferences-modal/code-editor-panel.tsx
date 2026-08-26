@@ -8,7 +8,7 @@ import type { CodeEditorSettings } from '@mark-bricks/editor';
  */
 import { RangeControl, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Button, SelectControl, Stack, Tabs, Text } from '@wordpress/ui';
+import { Button, SelectControl, Stack, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -30,64 +30,60 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 	const themeItems = getThemeOptions();
 
 	return (
-		<Tabs.Panel value="code-editor" tabIndex={ -1 }>
-			<Stack direction="column" gap="3xl" align="flex-start">
-				<Stack direction="column" gap="md">
-					<Text variant="heading-xl" render={ <h2 /> }>
-						{ __( 'Settings', 'mark-bricks' ) }
-					</Text>
-					<SelectControl
-						size="compact"
-						label={ __( 'Theme', 'mark-bricks' ) }
-						items={ themeItems }
-						value={
-							themeItems.find(
-								( item ) => item.value === settings.theme
-							) ?? null
+		<Stack direction="column" gap="3xl">
+			<Stack direction="column" gap="md">
+				<Text variant="heading-xl" render={ <h2 /> }>
+					{ __( 'Settings', 'mark-bricks' ) }
+				</Text>
+				<SelectControl
+					size="compact"
+					label={ __( 'Theme', 'mark-bricks' ) }
+					items={ themeItems }
+					value={
+						themeItems.find(
+							( item ) => item.value === settings.theme
+						) ?? null
+					}
+					isItemEqualToValue={ ( a, b ) => a.value === b.value }
+					onValueChange={ ( item ) => {
+						if ( item ) {
+							onChange( {
+								theme: item.value as CodeEditorSettings[ 'theme' ],
+							} );
 						}
-						isItemEqualToValue={ ( a, b ) => a.value === b.value }
-						onValueChange={ ( item ) => {
-							if ( item ) {
-								onChange( {
-									theme: item.value as CodeEditorSettings[ 'theme' ],
-								} );
-							}
-						} }
-					/>
-					<RangeControl
-						label={ __( 'Font size', 'mark-bricks' ) }
-						min={ 8 }
-						max={ 48 }
-						value={ settings.fontSize }
-						onChange={ ( value ) =>
-							onChange( { fontSize: Number( value ) } )
-						}
-						resetFallbackValue={
-							DEFAULT_CODE_EDITOR_STYLES.fontSize
-						}
-						allowReset
-					/>
-					<RangeControl
-						label={ __( 'Tab size', 'mark-bricks' ) }
-						min={ 1 }
-						max={ 8 }
-						value={ settings.tabSize }
-						onChange={ ( value ) =>
-							onChange( { tabSize: Number( value ) } )
-						}
-						resetFallbackValue={
-							DEFAULT_CODE_EDITOR_STYLES.tabSize
-						}
-						allowReset
-					/>
-					<ToggleControl
-						label={ __( 'Show line numbers', 'mark-bricks' ) }
-						checked={ settings.showLineNumbers }
-						onChange={ ( showLineNumbers ) =>
-							onChange( { showLineNumbers } )
-						}
-					/>
-				</Stack>
+					} }
+				/>
+				<RangeControl
+					label={ __( 'Font size', 'mark-bricks' ) }
+					min={ 8 }
+					max={ 48 }
+					value={ settings.fontSize }
+					onChange={ ( value ) =>
+						onChange( { fontSize: Number( value ) } )
+					}
+					resetFallbackValue={ DEFAULT_CODE_EDITOR_STYLES.fontSize }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( 'Tab size', 'mark-bricks' ) }
+					min={ 1 }
+					max={ 8 }
+					value={ settings.tabSize }
+					onChange={ ( value ) =>
+						onChange( { tabSize: Number( value ) } )
+					}
+					resetFallbackValue={ DEFAULT_CODE_EDITOR_STYLES.tabSize }
+					allowReset
+				/>
+				<ToggleControl
+					label={ __( 'Show line numbers', 'mark-bricks' ) }
+					checked={ settings.showLineNumbers }
+					onChange={ ( showLineNumbers ) =>
+						onChange( { showLineNumbers } )
+					}
+				/>
+			</Stack>
+			<Stack direction="column" align="flex-start">
 				<Button
 					variant="outline"
 					size="compact"
@@ -100,6 +96,6 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 					{ __( 'Restore default settings', 'mark-bricks' ) }
 				</Button>
 			</Stack>
-		</Tabs.Panel>
+		</Stack>
 	);
 }

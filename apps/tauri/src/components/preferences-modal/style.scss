@@ -25,19 +25,17 @@ $sidebar-width: 200px;
 	}
 }
 
-.preferences-modal__panels {
+.preferences-modal__panel {
+	max-width: var(--wpds-dimension-surface-width-sm);
 	padding: var(--wpds-dimension-padding-lg);
 
 	@include mixins.break-medium() {
 		flex: 1;
+		min-width: 0;
 		padding: 0;
 	}
 
 	.components-input-control__label {
 		white-space: nowrap;
-	}
-
-	.components-base-control {
-		max-width: var(--wpds-dimension-surface-width-sm);
 	}
 }
