@@ -32,7 +32,7 @@ type Props = {
 
 export function CodeEditorPanel( { settings, onChange }: Props ) {
 	return (
-		<Tabs.Panel value="code-editor" tabIndex={ -1 }>
+		<Tabs.Panel value="code-editor">
 			<Stack direction="column" gap="3xl" align="flex-start">
 				<Stack direction="column" gap="md">
 					<Text variant="heading-xl" render={ <h2 /> }>
