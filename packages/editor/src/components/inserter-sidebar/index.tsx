@@ -24,12 +24,13 @@ import {
 import { createBlock } from '@wordpress/blocks';
 import {
 	__unstableMotion as motion,
+	Composite,
 	SearchControl,
 } from '@wordpress/components';
 import { useReducedMotion, useViewportMatch } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import { closeSmall } from '@wordpress/icons';
-import { IconButton, Stack, Text, Tooltip } from '@wordpress/ui';
+import { Button, IconButton, Stack, Text, Tooltip } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -37,6 +38,16 @@ import { IconButton, Stack, Text, Tooltip } from '@wordpress/ui';
 import { store as editorStore } from '../../store';
 import { SIDEBAR_WIDTH, SIDEBAR_TRANSITION } from '../constants';
 import './style.scss';
+
+const BLOCKS_PER_ROW = 2;
+
+function chunk< T >( items: T[], size: number ) {
+	const rows: T[][] = [];
+	for ( let i = 0; i < items.length; i += size ) {
+		rows.push( items.slice( i, i + size ) );
+	}
+	return rows;
+}
 
 type Props = {
 	toggleRef: RefObject< HTMLButtonElement | null >;
@@ -52,7 +63,7 @@ export function InserterSidebar( { toggleRef }: Props ) {
 	const [ search, setSearch ] = useState( '' );
 	const [ isScrolled, setIsScrolled ] = useState( false );
 	const searchRef = useRef< HTMLInputElement >( null );
-	const blockListRef = useRef< HTMLUListElement >( null );
+	const blockListRef = useRef< HTMLDivElement >( null );
 	const disableMotion = useReducedMotion();
 	const transition = disableMotion ? undefined : SIDEBAR_TRANSITION;
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
@@ -84,6 +95,11 @@ export function InserterSidebar( { toggleRef }: Props ) {
 				item.keywords.some( ( k ) => k.toLowerCase().includes( q ) )
 		);
 	}, [ items, search ] );
+
+	const rows = useMemo(
+		() => chunk( filtered, BLOCKS_PER_ROW ),
+		[ filtered ]
+	);
 
 	const closeInserterSidebar = useCallback( () => {
 		setIsInserterOpened( false );
@@ -165,34 +181,43 @@ export function InserterSidebar( { toggleRef }: Props ) {
 						onClick={ closeInserterSidebar }
 					/>
 				</Stack>
-				<ul
+				<Composite
 					ref={ blockListRef }
 					className="inserter-sidebar__block-list"
+					role="listbox"
+					aria-label={ __( 'Blocks', 'mark-bricks' ) }
+					focusLoop
+					focusShift
+					focusWrap
 				>
-					{ filtered.map( ( item ) => (
-						<li
-							key={ item.id }
-							className="inserter-sidebar__block-list-item"
+					{ rows.map( ( row, rowIndex ) => (
+						<Composite.Row
+							key={ rowIndex }
+							role="presentation"
+							className="inserter-sidebar__block-list-row"
 						>
-							<Stack
-								render={
-									<button
-										type="button"
-										onClick={ () => onSelectItem( item ) }
-									/>
-								}
-								className="inserter-sidebar__block-list-button"
-								direction="column"
-								align="center"
-								justify="center"
-								gap="xs"
-							>
-								<BlockIcon icon={ item.icon as never } />
-								<Text variant="body-sm">{ item.title }</Text>
-							</Stack>
-						</li>
+							{ row.map( ( item ) => (
+								<Composite.Item
+									key={ item.id }
+									role="option"
+									className="inserter-sidebar__block-list-item"
+									onClick={ () => onSelectItem( item ) }
+									render={
+										<Button
+											variant="minimal"
+											tone="neutral"
+										/>
+									}
+								>
+									<BlockIcon icon={ item.icon as never } />
+									<Text variant="body-sm">
+										{ item.title }
+									</Text>
+								</Composite.Item>
+							) ) }
+						</Composite.Row>
 					) ) }
-				</ul>
+				</Composite>
 			</Stack>
 		</Stack>
 	);
