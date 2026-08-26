@@ -29,7 +29,7 @@ import {
 import { useReducedMotion, useViewportMatch } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import { closeSmall } from '@wordpress/icons';
-import { IconButton, Stack, Text } from '@wordpress/ui';
+import { IconButton, Stack, Text, Tooltip } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -161,6 +161,7 @@ export function InserterSidebar( { toggleRef }: Props ) {
 						variant="minimal"
 						tone="neutral"
 						size="compact"
+						positioner={ <Tooltip.Positioner side="bottom" /> }
 						onClick={ closeInserterSidebar }
 					/>
 				</Stack>

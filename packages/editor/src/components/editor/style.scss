@@ -1,6 +1,12 @@
 @use "@wordpress/base-styles/mixins";
 @use "@wordpress/base-styles/breakpoints";
 
+// Tooltips are portaled to the document body, so they need to outrank the
+// positioned editor chrome.
+:root {
+	--wp-ui-tooltip-z-index: 1000000;
+}
+
 .editor {
 
 	@include mixins.reset;

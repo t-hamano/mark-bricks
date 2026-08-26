@@ -11,7 +11,7 @@ import { useReducedMotion, useViewportMatch } from '@wordpress/compose';
 import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { closeSmall } from '@wordpress/icons';
-import { IconButton, Stack } from '@wordpress/ui';
+import { IconButton, Stack, Tooltip } from '@wordpress/ui';
 /**
  * Internal dependencies
  */
@@ -65,6 +65,7 @@ export function ListViewSidebar( { toggleRef }: Props ) {
 					variant="minimal"
 					tone="neutral"
 					size="compact"
+					positioner={ <Tooltip.Positioner side="bottom" /> }
 					onClick={ closeListViewSidebar }
 				/>
 				<TabPanel
