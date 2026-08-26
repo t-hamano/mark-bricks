@@ -22,15 +22,20 @@ import {
 	type EditorInserterItem,
 } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
-import {
-	__unstableMotion as motion,
-	Composite,
-	SearchControl,
-} from '@wordpress/components';
+import { __unstableMotion as motion, Composite } from '@wordpress/components';
 import { useReducedMotion, useViewportMatch } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
-import { closeSmall } from '@wordpress/icons';
-import { Button, IconButton, Stack, Text, Tooltip } from '@wordpress/ui';
+import { closeSmall, search as searchIcon } from '@wordpress/icons';
+import {
+	Button,
+	Icon,
+	IconButton,
+	InputControl,
+	InputLayout,
+	Stack,
+	Text,
+	Tooltip,
+} from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -116,6 +121,11 @@ export function InserterSidebar( { toggleRef }: Props ) {
 		[ closeInserterSidebar ]
 	);
 
+	const clearSearch = useCallback( () => {
+		setSearch( '' );
+		searchRef.current?.focus();
+	}, [] );
+
 	const onSelectItem = useCallback(
 		( item: EditorInserterItem ) => {
 			insertBlock( createBlock( item.name, item.initialAttributes ) );
@@ -162,14 +172,38 @@ export function InserterSidebar( { toggleRef }: Props ) {
 					align="center"
 					gap="sm"
 				>
-					<SearchControl
+					<InputControl
 						ref={ searchRef }
 						className="inserter-sidebar__search-control"
 						label={ __( 'Search for blocks', 'mark-bricks' ) }
+						hideLabelFromVision
+						type="search"
+						size="compact"
 						placeholder={ __( 'Search', 'mark-bricks' ) }
 						value={ search }
-						onChange={ setSearch }
-						size="compact"
+						onValueChange={ setSearch }
+						prefix={
+							<InputLayout.Slot>
+								<Icon icon={ searchIcon } />
+							</InputLayout.Slot>
+						}
+						suffix={
+							search ? (
+								<InputLayout.Slot padding="minimal">
+									<IconButton
+										icon={ closeSmall }
+										label={ __(
+											'Reset search',
+											'mark-bricks'
+										) }
+										variant="minimal"
+										tone="neutral"
+										size="small"
+										onClick={ clearSearch }
+									/>
+								</InputLayout.Slot>
+							) : undefined
+						}
 					/>
 					<IconButton
 						icon={ closeSmall }

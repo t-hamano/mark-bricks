@@ -23,6 +23,11 @@
 
 .inserter-sidebar__search-control {
 	flex: 1 1 auto;
+
+	// The reset button is rendered as an input suffix instead.
+	input[type="search"]::-webkit-search-cancel-button {
+		appearance: none;
+	}
 }
 
 .inserter-sidebar__block-list {

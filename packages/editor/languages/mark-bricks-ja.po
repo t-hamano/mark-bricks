@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T08:59:53.335Z\n"
-"PO-Revision-Date: 2026-08-26T08:59:53.919Z\n"
+"POT-Creation-Date: 2026-08-26T09:10:23.975Z\n"
+"PO-Revision-Date: 2026-08-26T09:10:24.581Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -53,7 +53,7 @@ msgstr "適用"
 msgid "Block Inserter"
 msgstr "ブロックインサーター"
 
-#: src/components/inserter-sidebar/index.tsx:188
+#: src/components/inserter-sidebar/index.tsx:222
 msgid "Blocks"
 msgstr "ブロック"
 
@@ -91,7 +91,7 @@ msgid "Clear formatting"
 msgstr "書式をクリア"
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:176
+#: src/components/inserter-sidebar/index.tsx:210
 msgid "Close"
 msgstr "閉じる"
 
@@ -319,15 +319,19 @@ msgstr "画像の置き換え"
 msgid "Reset"
 msgstr "リセット"
 
+#: src/components/inserter-sidebar/index.tsx:195
+msgid "Reset search"
+msgstr "検索をリセット"
+
 #: src/block-library/table/edit.tsx:258
 msgid "Row count"
 msgstr "行数"
 
-#: src/components/inserter-sidebar/index.tsx:169
+#: src/components/inserter-sidebar/index.tsx:182
 msgid "Search"
 msgstr "検索"
 
-#: src/components/inserter-sidebar/index.tsx:168
+#: src/components/inserter-sidebar/index.tsx:178
 msgid "Search for blocks"
 msgstr "ブロックを検索"
 
