@@ -18,6 +18,7 @@ import * as code from './code';
 import * as image from './image';
 import * as table from './table';
 import * as quote from './quote';
+import * as details from './details';
 import * as separator from './separator';
 import * as html from './html';
 
@@ -30,6 +31,7 @@ const blocks = [
 	image,
 	table,
 	quote,
+	details,
 	separator,
 	html,
 ];

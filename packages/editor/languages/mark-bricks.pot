@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T09:39:29.215Z\n"
+"POT-Creation-Date: 2026-08-26T14:07:41.285Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Inline code"
 msgstr ""
 
-#: src/format-library/clear-formatting.tsx:21
+#: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
 msgstr ""
 
@@ -188,6 +188,22 @@ msgstr ""
 msgid "Make the selected text inline code."
 msgstr ""
 
+#: src/components/inserter-sidebar/index.tsx:178
+msgid "Search for blocks"
+msgstr ""
+
+#: src/components/inserter-sidebar/index.tsx:182
+msgid "Search"
+msgstr ""
+
+#: src/components/inserter-sidebar/index.tsx:195
+msgid "Reset search"
+msgstr ""
+
+#: src/components/inserter-sidebar/index.tsx:222
+msgid "Blocks"
+msgstr ""
+
 #: src/components/editor-header/index.tsx:81
 msgid "Close Block Inserter"
 msgstr ""
@@ -206,22 +222,6 @@ msgstr ""
 
 #: src/components/editor-header/index.tsx:114
 msgid "Hide Document Overview"
-msgstr ""
-
-#: src/components/inserter-sidebar/index.tsx:178
-msgid "Search for blocks"
-msgstr ""
-
-#: src/components/inserter-sidebar/index.tsx:182
-msgid "Search"
-msgstr ""
-
-#: src/components/inserter-sidebar/index.tsx:195
-msgid "Reset search"
-msgstr ""
-
-#: src/components/inserter-sidebar/index.tsx:222
-msgid "Blocks"
 msgstr ""
 
 #: src/block-library/table/edit.tsx:231
@@ -312,6 +312,14 @@ msgstr ""
 msgid "Type / to choose a block"
 msgstr ""
 
+#: src/block-library/list/edit.tsx:48
+msgid "Unordered"
+msgstr ""
+
+#: src/block-library/list/edit.tsx:54
+msgid "Ordered"
+msgstr ""
+
 #: src/block-library/list-item/edit.tsx:63
 msgid "Outdent"
 msgstr ""
@@ -338,14 +346,6 @@ msgstr ""
 
 #: src/block-library/list-item/edit.tsx:133
 msgid "Turn into a task item"
-msgstr ""
-
-#: src/block-library/list/edit.tsx:48
-msgid "Unordered"
-msgstr ""
-
-#: src/block-library/list/edit.tsx:54
-msgid "Ordered"
 msgstr ""
 
 #: src/block-library/image/edit.tsx:79
@@ -405,6 +405,23 @@ msgstr ""
 msgid "Write HTML…"
 msgstr ""
 
+# %d: heading level e.g: "1", "2", "3"
+#: src/block-library/heading/index.ts:51
+msgid "Heading %d"
+msgstr ""
+
+#: src/block-library/heading/edit.tsx:53
+msgid "Heading"
+msgstr ""
+
+#: src/block-library/details/edit.tsx:60
+msgid "Open by default"
+msgstr ""
+
+#: src/block-library/details/edit.tsx:86
+msgid "Write summary…"
+msgstr ""
+
 #: src/block-library/code/edit.tsx:64
 msgid "Write code…"
 msgstr ""
@@ -423,13 +440,4 @@ msgstr ""
 
 #: src/block-library/code/edit.tsx:131
 msgid "No matching language."
-msgstr ""
-
-# %d: heading level e.g: "1", "2", "3"
-#: src/block-library/heading/index.ts:51
-msgid "Heading %d"
-msgstr ""
-
-#: src/block-library/heading/edit.tsx:53
-msgid "Heading"
 msgstr ""

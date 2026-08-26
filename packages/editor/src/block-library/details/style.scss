@@ -1,0 +1,7 @@
+.wp-block-details {
+
+	> :not(summary) {
+		margin-block-start: 1.2rem;
+		margin-block-end: 0;
+	}
+}

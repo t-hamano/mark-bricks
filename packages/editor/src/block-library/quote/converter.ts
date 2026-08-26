@@ -13,7 +13,7 @@ import type { Block } from '@wordpress/blocks';
  * Internal dependencies
  */
 import { createBlock } from '../utils';
-import { nodeToBlocks } from '../../converter/markdown-to-blocks';
+import { nodesToBlocks } from '../../converter/markdown-to-blocks';
 import { blockToNode } from '../../converter/blocks-to-markdown';
 import type { NodeResult } from '../types';
 import type { AlertType, BlockAttributes } from './types';
@@ -77,8 +77,8 @@ function detectAlert(
  *
  * A CommonMark block quote is a container: every line is prefixed with `>`,
  * and its content is itself a sequence of block-level nodes (paragraphs,
- * lists, headings, even nested block quotes). Each child node is converted
- * recursively via {@link nodeToBlocks} and stored as an inner block, so
+ * lists, headings, even nested block quotes). Its children are converted
+ * recursively via {@link nodesToBlocks} and stored as inner blocks, so
  * `core/quote` mirrors the mdast tree shape.
  *
  * ```md
@@ -107,9 +107,7 @@ function detectAlert(
 export function toBlock( node: Blockquote, source: string ): Block {
 	const alert = detectAlert( node );
 	const children = alert ? alert.children : node.children;
-	const innerBlocks = children.flatMap( ( child ) =>
-		nodeToBlocks( child, source )
-	);
+	const innerBlocks = nodesToBlocks( children, source );
 	const attributes: BlockAttributes = alert
 		? { markdownData: { alertType: alert.type } }
 		: {};
