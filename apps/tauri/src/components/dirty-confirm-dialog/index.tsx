@@ -1,16 +1,17 @@
 /**
  * WordPress dependencies
  */
-import { Button, Modal } from '@wordpress/components';
+import { Modal } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
-import { Stack, Text } from '@wordpress/ui';
+import { Button, Stack, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
 import { saveTab } from '../../actions';
 import tabsStore from '../../store';
+import './style.scss';
 
 export default function DirtyConfirmDialog() {
 	const { pendingTab } = useSelect( ( select ) => {
@@ -68,23 +69,24 @@ export default function DirtyConfirmDialog() {
 				</Text>
 				<Stack gap="sm" justify="flex-end">
 					<Button
-						variant="tertiary"
+						variant="minimal"
+						tone="neutral"
 						size="compact"
 						onClick={ cancel }
 					>
 						{ __( 'Cancel', 'mark-bricks' ) }
 					</Button>
 					<Button
-						variant="tertiary"
+						className="dirty-confirm-dialog__discard"
+						variant="minimal"
 						size="compact"
-						isDestructive
 						onClick={ dontSave }
 					>
 						{ pendingTab.filePath
 							? __( 'Discard changes', 'mark-bricks' )
 							: __( 'Discard', 'mark-bricks' ) }
 					</Button>
-					<Button variant="primary" size="compact" onClick={ save }>
+					<Button size="compact" onClick={ save }>
 						{ __( 'Save', 'mark-bricks' ) }
 					</Button>
 				</Stack>

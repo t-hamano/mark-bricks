@@ -12,7 +12,6 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 import {
-	Button,
 	Dropdown,
 	MenuItem,
 	NavigableMenu,
@@ -22,7 +21,7 @@ import {
 	ToolbarButton,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Notice, Stack } from '@wordpress/ui';
+import { Button, Notice, Stack } from '@wordpress/ui';
 import { image as imageIcon, pencil } from '@wordpress/icons';
 
 /**
@@ -91,7 +90,7 @@ export default function Edit( props: BlockEditProps ) {
 					{ pickImageFile && (
 						<Button
 							size="compact"
-							variant="secondary"
+							variant="outline"
 							onClick={ async () => {
 								const path = await pickImageFile();
 								if ( path ) {
@@ -104,12 +103,12 @@ export default function Edit( props: BlockEditProps ) {
 					) }
 					<Button
 						size="compact"
-						variant="secondary"
+						variant="outline"
 						onClick={ () => {
 							setUrlInput( url || '' );
 							setIsUrlPopoverOpen( true );
 						} }
-						isPressed={ isUrlPopoverOpen }
+						aria-expanded={ isUrlPopoverOpen }
 						aria-haspopup="dialog"
 						ref={ setUrlPopoverAnchor }
 					>
@@ -159,11 +158,7 @@ export default function Edit( props: BlockEditProps ) {
 										}
 									/>
 								</div>
-								<Button
-									size="compact"
-									variant="primary"
-									type="submit"
-								>
+								<Button size="compact" type="submit">
 									{ __( 'Apply', 'mark-bricks' ) }
 								</Button>
 							</Stack>
@@ -245,11 +240,7 @@ export default function Edit( props: BlockEditProps ) {
 								) }
 							/>
 							<Stack justify="flex-end">
-								<Button
-									size="compact"
-									variant="primary"
-									type="submit"
-								>
+								<Button size="compact" type="submit">
 									{ __( 'Apply', 'mark-bricks' ) }
 								</Button>
 							</Stack>
@@ -316,12 +307,7 @@ export default function Edit( props: BlockEditProps ) {
 										}
 									/>
 								</div>
-								<Button
-									size="compact"
-									__next40pxDefaultSize
-									variant="primary"
-									type="submit"
-								>
+								<Button size="compact" type="submit">
 									{ __( 'Apply', 'mark-bricks' ) }
 								</Button>
 							</Stack>

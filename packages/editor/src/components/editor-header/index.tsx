@@ -7,17 +7,17 @@ import type { ReactNode, RefObject } from 'react';
  * WordPress dependencies
  */
 import { BlockToolbar } from '@wordpress/block-editor';
-import { Button, Popover } from '@wordpress/components';
+import { Popover } from '@wordpress/components';
 import { useViewportMatch } from '@wordpress/compose';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { store as keyboardShortcutsStore } from '@wordpress/keyboard-shortcuts';
 import { plus, undo, redo, listView } from '@wordpress/icons';
-import { Stack } from '@wordpress/ui';
+import { IconButton, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
+import { useKeyboardShortcut } from '../keyboard-shortcuts/hooks';
 import { store as editorStore } from '../../store';
 import './style.scss';
 
@@ -26,8 +26,8 @@ type Props = {
 	canRedo: boolean;
 	onUndo: () => void;
 	onRedo: () => void;
-	inserterToggleRef: RefObject< HTMLButtonElement | null >;
-	listViewToggleRef: RefObject< HTMLButtonElement | null >;
+	inserterToggleRef: RefObject< HTMLButtonElement >;
+	listViewToggleRef: RefObject< HTMLButtonElement >;
 	editorMode: 'visual' | 'text';
 	fixedToolbar: boolean;
 	headerActions?: ReactNode;
@@ -44,25 +44,20 @@ export function EditorHeader( {
 	fixedToolbar,
 	headerActions,
 }: Props ) {
-	const { isListViewOpened, isInserterOpened, toggleListViewShortcut } =
-		useSelect( ( select ) => {
-			const {
-				isListViewOpened: _isListViewOpened,
-				isInserterOpened: _isInserterOpened,
-			} = select( editorStore );
-			const { getShortcutRepresentation } = select(
-				keyboardShortcutsStore
-			);
+	const { isListViewOpened, isInserterOpened } = useSelect( ( select ) => {
+		const {
+			isListViewOpened: _isListViewOpened,
+			isInserterOpened: _isInserterOpened,
+		} = select( editorStore );
 
-			return {
-				isListViewOpened: _isListViewOpened(),
-				isInserterOpened: _isInserterOpened(),
-				toggleListViewShortcut:
-					getShortcutRepresentation(
-						'mark-bricks/toggle-list-view'
-					) ?? undefined,
-			};
-		}, [] );
+		return {
+			isListViewOpened: _isListViewOpened(),
+			isInserterOpened: _isInserterOpened(),
+		};
+	}, [] );
+	const toggleListViewShortcut = useKeyboardShortcut(
+		'mark-bricks/toggle-list-view'
+	);
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
 	const showFixedToolbar =
 		fixedToolbar && editorMode === 'visual' && ! isMobileViewport;
@@ -78,7 +73,7 @@ export function EditorHeader( {
 			gap="sm"
 		>
 			<Stack direction="row" align="center" gap="sm">
-				<Button
+				<IconButton
 					ref={ inserterToggleRef }
 					icon={ plus }
 					label={
@@ -86,34 +81,32 @@ export function EditorHeader( {
 							? __( 'Close Block Inserter', 'mark-bricks' )
 							: __( 'Block Inserter', 'mark-bricks' )
 					}
-					iconSize={ 20 }
 					size="small"
-					variant="primary"
-					isPressed={ isInserterOpened }
 					onClick={ () => setIsInserterOpened( ! isInserterOpened ) }
 					aria-expanded={ isInserterOpened }
+					aria-pressed={ isInserterOpened }
 					disabled={ editorMode === 'text' }
 					className="editor-header__inserter-toggle"
 				/>
-				<Button
+				<IconButton
 					icon={ undo }
 					label={ __( 'Undo', 'mark-bricks' ) }
-					iconSize={ 20 }
+					variant="minimal"
+					tone="neutral"
 					size="small"
 					onClick={ onUndo }
 					disabled={ ! canUndo }
-					accessibleWhenDisabled
 				/>
-				<Button
+				<IconButton
 					icon={ redo }
 					label={ __( 'Redo', 'mark-bricks' ) }
-					iconSize={ 20 }
+					variant="minimal"
+					tone="neutral"
 					size="small"
 					onClick={ onRedo }
 					disabled={ ! canRedo }
-					accessibleWhenDisabled
 				/>
-				<Button
+				<IconButton
 					ref={ listViewToggleRef }
 					icon={ listView }
 					label={
@@ -122,13 +115,13 @@ export function EditorHeader( {
 							: __( 'Document Overview', 'mark-bricks' )
 					}
 					shortcut={ toggleListViewShortcut }
-					iconSize={ 20 }
+					variant="minimal"
+					tone="neutral"
 					size="small"
-					isPressed={ isListViewOpened }
 					onClick={ () => setIsListViewOpened( ! isListViewOpened ) }
 					aria-expanded={ isListViewOpened }
+					aria-pressed={ isListViewOpened }
 					disabled={ editorMode === 'text' }
-					accessibleWhenDisabled
 				/>
 			</Stack>
 			{ showFixedToolbar && (

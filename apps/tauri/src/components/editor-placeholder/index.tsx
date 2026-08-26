@@ -1,9 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Stack, Text } from '@wordpress/ui';
+import { Button, Stack, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -30,15 +29,11 @@ export default function EditorPlaceholder() {
 				) }
 			</Text>
 			<Stack direction="row" gap="sm">
-				<Button
-					variant="primary"
-					onClick={ () => newFile() }
-					size="compact"
-				>
+				<Button onClick={ () => newFile() } size="compact">
 					{ __( 'New file', 'mark-bricks' ) }
 				</Button>
 				<Button
-					variant="secondary"
+					variant="outline"
 					onClick={ () => {
 						openFile();
 					} }

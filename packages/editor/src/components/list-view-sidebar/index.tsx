@@ -6,16 +6,12 @@ import { useCallback, type RefObject } from 'react';
 /**
  * WordPress dependencies
  */
-import {
-	__unstableMotion as motion,
-	TabPanel,
-	Button,
-} from '@wordpress/components';
+import { __unstableMotion as motion, TabPanel } from '@wordpress/components';
 import { useReducedMotion, useViewportMatch } from '@wordpress/compose';
 import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { closeSmall } from '@wordpress/icons';
-import { Stack } from '@wordpress/ui';
+import { IconButton, Stack } from '@wordpress/ui';
 /**
  * Internal dependencies
  */
@@ -62,13 +58,14 @@ export function ListViewSidebar( { toggleRef }: Props ) {
 				} }
 				transition={ transition }
 			>
-				<Button
+				<IconButton
 					className="list-view-sidebar__close-button"
 					icon={ closeSmall }
 					label={ __( 'Close', 'mark-bricks' ) }
+					variant="minimal"
+					tone="neutral"
 					size="small"
 					onClick={ closeListViewSidebar }
-					accessibleWhenDisabled
 				/>
 				<TabPanel
 					className="list-view-sidebar__tab-panel"

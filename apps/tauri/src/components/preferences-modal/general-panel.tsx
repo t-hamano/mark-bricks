@@ -8,9 +8,9 @@ import { LOCALES, type Locale } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import { Button, SelectControl, ToggleControl } from '@wordpress/components';
+import { SelectControl, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Notice, Stack, Tabs, Text } from '@wordpress/ui';
+import { Button, Notice, Stack, Tabs, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -100,7 +100,7 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 						) }
 					/>
 				</Stack>
-				<Stack direction="column" gap="md">
+				<Stack direction="column" gap="md" align="flex-start">
 					<Text variant="heading-xl" render={ <h2 /> }>
 						{ __( 'Update', 'mark-bricks' ) }
 					</Text>
@@ -115,29 +115,27 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 						}
 					/>
 					<Button
-						variant="secondary"
+						variant="outline"
 						size="compact"
-						isBusy={ isChecking }
+						loading={ isChecking }
+						loadingAnnouncement={ __( 'Checking…', 'mark-bricks' ) }
 						disabled={ isChecking }
 						onClick={ onCheckClick }
-						accessibleWhenDisabled
 					>
-						{ isChecking
-							? __( 'Checking…', 'mark-bricks' )
-							: __( 'Check for updates', 'mark-bricks' ) }
+						{ __( 'Check for updates', 'mark-bricks' ) }
 					</Button>
 				</Stack>
-				<Stack direction="column" gap="md">
+				<Stack direction="column" gap="md" align="flex-start">
 					<Text variant="heading-xl" render={ <h2 /> }>
 						{ __( 'File associations', 'mark-bricks' ) }
 					</Text>
 					<Button
-						variant="secondary"
+						variant="outline"
 						size="compact"
-						isBusy={ associateStatus.kind === 'busy' }
+						loading={ associateStatus.kind === 'busy' }
+						loadingAnnouncement={ __( 'Working…', 'mark-bricks' ) }
 						disabled={ associateStatus.kind === 'busy' }
 						onClick={ onAssociateClick }
-						accessibleWhenDisabled
 					>
 						{ __(
 							'Set as default for Markdown files',

@@ -1,10 +1,24 @@
 /**
+ * External dependencies
+ */
+import { useMemo, type ComponentProps } from 'react';
+
+/**
  * WordPress dependencies
  */
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as keyboardShortcutsStore } from '@wordpress/keyboard-shortcuts';
-import type { WPKeycodeModifier } from '@wordpress/keycodes';
+import { ariaKeyShortcut, type WPKeycodeModifier } from '@wordpress/keycodes';
+import type { IconButton } from '@wordpress/ui';
+
+/**
+ * The shape `@wordpress/ui` expects for the `shortcut` prop. The package does
+ * not export the type itself, so it is derived from `IconButton`.
+ */
+type KeyboardShortcut = NonNullable<
+	ComponentProps< typeof IconButton >[ 'shortcut' ]
+>;
 
 export type ShortcutKeyCombinationData = {
 	character: string;
@@ -140,4 +154,46 @@ export function useEditorShortcuts(): EditorShortcuts {
 			] satisfies StaticShortcutEntry[],
 		};
 	}, [] );
+}
+
+/**
+ * Builds the `shortcut` prop for `@wordpress/ui`'s `IconButton` from a shortcut
+ * registered in the keyboard-shortcuts store.
+ *
+ * @param name Registered shortcut name.
+ * @return The shortcut descriptor, or `undefined` when the shortcut is not registered.
+ */
+export function useKeyboardShortcut(
+	name: string
+): KeyboardShortcut | undefined {
+	const { displayShortcut, label, keyCombination } = useSelect(
+		( select ) => {
+			const { getShortcutRepresentation, getShortcutKeyCombination } =
+				select( keyboardShortcutsStore );
+
+			return {
+				displayShortcut: getShortcutRepresentation( name ) ?? undefined,
+				label:
+					getShortcutRepresentation( name, 'ariaLabel' ) ?? undefined,
+				keyCombination: getShortcutKeyCombination( name ),
+			};
+		},
+		[ name ]
+	);
+
+	return useMemo( () => {
+		if ( ! displayShortcut || ! label || ! keyCombination?.character ) {
+			return undefined;
+		}
+
+		const { modifier, character } = keyCombination;
+
+		return {
+			displayShortcut,
+			ariaKeyShortcut: modifier
+				? ariaKeyShortcut[ modifier ]( character )
+				: character,
+			label,
+		};
+	}, [ displayShortcut, label, keyCombination ] );
 }

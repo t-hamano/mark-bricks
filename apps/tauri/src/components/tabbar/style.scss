@@ -16,14 +16,18 @@
 }
 
 .tabbar__close {
+	--wp-ui-button-height: var(--wpds-dimension-size-xs);
 	opacity: 0;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	right: var(--wpds-dimension-size-5xs);
 	color: var(--wpds-color-foreground-content-neutral-weak);
-	min-width: var(--wpds-dimension-size-xs) !important;
-	height: var(--wpds-dimension-size-xs) !important;
+
+	svg {
+		width: var(--wpds-dimension-size-2xs);
+		height: var(--wpds-dimension-size-2xs);
+	}
 
 	&:focus,
 	&:hover {

@@ -7,14 +7,9 @@ import { useState } from 'react';
  * WordPress dependencies
  */
 import { BlockControls, RichTextShortcut } from '@wordpress/block-editor';
-import {
-	Button,
-	Popover,
-	TextControl,
-	ToolbarButton,
-} from '@wordpress/components';
+import { Popover, TextControl, ToolbarButton } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Stack } from '@wordpress/ui';
+import { Button, Stack } from '@wordpress/ui';
 import { link as linkIcon } from '@wordpress/icons';
 import { displayShortcut } from '@wordpress/keycodes';
 import {
@@ -127,8 +122,8 @@ function InlineLinkUI( {
 					{ isActive && (
 						<Button
 							size="compact"
-							variant="tertiary"
-							isDestructive
+							variant="minimal"
+							tone="neutral"
 							onClick={ onRemoveLink }
 						>
 							{ __( 'Remove', 'mark-bricks' ) }
@@ -136,7 +131,6 @@ function InlineLinkUI( {
 					) }
 					<Button
 						size="compact"
-						variant="primary"
 						type="submit"
 						disabled={ ! urlInput.trim() }
 					>

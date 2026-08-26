@@ -25,12 +25,11 @@ import { createBlock } from '@wordpress/blocks';
 import {
 	__unstableMotion as motion,
 	SearchControl,
-	Button,
 } from '@wordpress/components';
 import { useReducedMotion, useViewportMatch } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import { closeSmall } from '@wordpress/icons';
-import { Stack, Text } from '@wordpress/ui';
+import { IconButton, Stack, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -156,9 +155,11 @@ export function InserterSidebar( { toggleRef }: Props ) {
 						onChange={ setSearch }
 						size="compact"
 					/>
-					<Button
+					<IconButton
 						icon={ closeSmall }
 						label={ __( 'Close', 'mark-bricks' ) }
+						variant="minimal"
+						tone="neutral"
 						size="small"
 						onClick={ closeInserterSidebar }
 					/>

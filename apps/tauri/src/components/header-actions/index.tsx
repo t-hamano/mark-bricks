@@ -2,12 +2,12 @@
  * External dependencies
  */
 import { useEffect, useState } from 'react';
+import { useKeyboardShortcut } from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies
  */
 import {
-	Button,
 	DropdownMenu,
 	MenuGroup,
 	MenuItem,
@@ -16,11 +16,10 @@ import {
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
-import { store as keyboardShortcutsStore } from '@wordpress/keyboard-shortcuts';
 import { displayShortcut } from '@wordpress/keycodes';
 import { PreferenceToggleMenuItem } from '@wordpress/preferences';
 import { code, moreVertical } from '@wordpress/icons';
-import { Stack } from '@wordpress/ui';
+import { Button, IconButton, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -45,27 +44,19 @@ export default function HeaderActions( {
 	editorMode,
 	onEditorModeChange,
 }: Props ) {
-	const {
-		isActiveTabDirty,
-		toggleModeShortcut,
-		keyboardShortcutsShortcut,
-		isPreferencesOpened,
-	} = useSelect( ( select ) => {
+	const { isActiveTabDirty, isPreferencesOpened } = useSelect( ( select ) => {
 		const { getTabs, getActiveTabId } = select( tabsStore );
-		const { getShortcutRepresentation } = select( keyboardShortcutsStore );
 		const { isModalActive } = select( interfaceStore );
 		const activeTab = getTabs().find( ( t ) => t.id === getActiveTabId() );
 		return {
 			isActiveTabDirty: !! activeTab?.isDirty,
-			toggleModeShortcut:
-				getShortcutRepresentation( 'mark-bricks/toggle-mode' ) ??
-				undefined,
-			keyboardShortcutsShortcut:
-				getShortcutRepresentation( 'mark-bricks/keyboard-shortcuts' ) ??
-				undefined,
 			isPreferencesOpened: isModalActive( PREFERENCES_MODAL_NAME ),
 		};
 	}, [] );
+	const toggleModeShortcut = useKeyboardShortcut( 'mark-bricks/toggle-mode' );
+	const keyboardShortcutsShortcut = useKeyboardShortcut(
+		'mark-bricks/keyboard-shortcuts'
+	);
 	const { openModal } = useDispatch( interfaceStore );
 	const [ isOptionsMenuOpen, setIsOptionsMenuOpen ] = useState( false );
 	useEffect( () => {
@@ -76,13 +67,13 @@ export default function HeaderActions( {
 
 	return (
 		<Stack direction="row" align="center" gap="sm">
-			<Button
+			<IconButton
 				icon={ code }
 				label={ __( 'Code editor', 'mark-bricks' ) }
 				shortcut={ toggleModeShortcut }
-				iconSize={ 20 }
+				variant="minimal"
+				tone="neutral"
 				size="small"
-				isPressed={ editorMode === 'text' }
 				onClick={ () =>
 					onEditorModeChange(
 						editorMode === 'text' ? 'visual' : 'text'
@@ -91,13 +82,11 @@ export default function HeaderActions( {
 				aria-pressed={ editorMode === 'text' }
 			/>
 			<Button
-				variant="primary"
 				size="small"
 				onClick={ () => {
 					saveActiveFile();
 				} }
 				disabled={ ! isActiveTabDirty }
-				accessibleWhenDisabled
 			>
 				{ __( 'Save', 'mark-bricks' ) }
 			</Button>
@@ -192,7 +181,7 @@ export default function HeaderActions( {
 										),
 										shortcut:
 											editorMode !== 'visual'
-												? toggleModeShortcut
+												? toggleModeShortcut?.displayShortcut
 												: undefined,
 									},
 									{
@@ -203,7 +192,7 @@ export default function HeaderActions( {
 										),
 										shortcut:
 											editorMode !== 'text'
-												? toggleModeShortcut
+												? toggleModeShortcut?.displayShortcut
 												: undefined,
 									},
 								] }
@@ -218,7 +207,9 @@ export default function HeaderActions( {
 						</MenuGroup>
 						<MenuGroup label={ __( 'Tools', 'mark-bricks' ) }>
 							<MenuItem
-								shortcut={ keyboardShortcutsShortcut }
+								shortcut={
+									keyboardShortcutsShortcut?.displayShortcut
+								}
 								onClick={ () => {
 									openModal( KEYBOARD_SHORTCUTS_MODAL_NAME );
 									setIsOptionsMenuOpen( false );

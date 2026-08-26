@@ -7,13 +7,12 @@ import type { CodeEditorSettings } from '@mark-bricks/editor';
  * WordPress dependencies
  */
 import {
-	Button,
 	RangeControl,
 	SelectControl,
 	ToggleControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Stack, Tabs, Text } from '@wordpress/ui';
+import { Button, Stack, Tabs, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -34,7 +33,7 @@ type Props = {
 export function CodeEditorPanel( { settings, onChange }: Props ) {
 	return (
 		<Tabs.Panel value="code-editor">
-			<Stack direction="column" gap="3xl">
+			<Stack direction="column" gap="3xl" align="flex-start">
 				<Stack direction="column" gap="md">
 					<Text variant="heading-xl" render={ <h2 /> }>
 						{ __( 'Settings', 'mark-bricks' ) }
@@ -85,9 +84,9 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 					/>
 				</Stack>
 				<Button
-					variant="secondary"
+					variant="outline"
+					tone="neutral"
 					size="small"
-					isDestructive
 					onClick={ () =>
 						onChange(
 							DEFAULT_PREFERENCES[ 'mark-bricks' ].codeEditor

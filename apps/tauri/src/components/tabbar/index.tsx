@@ -8,7 +8,6 @@ import { useRef, useState, type MouseEvent } from 'react';
  * WordPress dependencies
  */
 import {
-	Button,
 	Dropdown,
 	DropdownMenu,
 	MenuGroup,
@@ -18,7 +17,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 import { closeSmall, plus } from '@wordpress/icons';
 import { displayShortcut } from '@wordpress/keycodes';
-import { Stack } from '@wordpress/ui';
+import { IconButton, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -267,9 +266,10 @@ function TabItem( {
 					aria-hidden={ ! tab.isDirty }
 				></span>
 			</button>
-			<Button
+			<IconButton
 				icon={ closeSmall }
-				iconSize={ 16 }
+				variant="minimal"
+				tone="neutral"
 				size="small"
 				label={ sprintf(
 					/* translators: %s: tab title. */

@@ -14,13 +14,12 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 import {
-	Button,
 	Placeholder,
 	TextControl,
 	ToolbarDropdownMenu,
 	ToolbarGroup,
 } from '@wordpress/components';
-import { Stack } from '@wordpress/ui';
+import { Button, Stack } from '@wordpress/ui';
 import { __ } from '@wordpress/i18n';
 import {
 	table as tableIcon,
@@ -267,11 +266,7 @@ export default function Edit( props: BlockEditProps ) {
 							}
 							min="1"
 						/>
-						<Button
-							__next40pxDefaultSize
-							variant="primary"
-							type="submit"
-						>
+						<Button type="submit">
 							{ __( 'Create Table', 'mark-bricks' ) }
 						</Button>
 					</Stack>
