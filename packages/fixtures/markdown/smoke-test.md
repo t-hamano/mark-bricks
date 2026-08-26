@@ -19,6 +19,11 @@ A sample document that showcases every block and text format you can use.
 This paragraph has *emphasis*, **strong**, `inline code`, ~~strikethrough~~
 and a [link](https://example.com).
 
+The underscore spellings: _emphasis_ and __strong__.
+
+Both spellings in one line: *asterisk* and _underscore_, **asterisk** and
+__underscore__.
+
 A link [with a title](https://example.com "Example title") too.
 
 Strong wrapping emphasis: **bold with *italic* inside**.

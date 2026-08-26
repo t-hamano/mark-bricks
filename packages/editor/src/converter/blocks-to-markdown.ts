@@ -25,6 +25,7 @@ import * as quoteConverter from '../block-library/quote/converter';
 import * as htmlConverter from '../block-library/html/converter';
 import * as detailsConverter from '../block-library/details/converter';
 import type { NodeResult } from '../block-library/types';
+import { inlineMarkerHandlers } from './inline-marker';
 
 /**
  * Maps a single block to its corresponding mdast node.
@@ -90,7 +91,13 @@ export function blocksToMarkdown( blocks: Block[] ): string {
 				children: [ result.node ],
 			};
 			return unified()
-				.use( remarkStringify, result.options ?? {} )
+				.use( remarkStringify, {
+					...result.options,
+					handlers: {
+						...inlineMarkerHandlers,
+						...result.options?.handlers,
+					},
+				} )
 				.use( remarkGfm )
 				.stringify( tree );
 		} )
