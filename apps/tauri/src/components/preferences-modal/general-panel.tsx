@@ -76,7 +76,7 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 	};
 
 	return (
-		<Tabs.Panel value="general">
+		<Tabs.Panel value="general" tabIndex={ -1 }>
 			<Stack direction="column" gap="xl">
 				<Stack direction="column" gap="md">
 					<Text variant="heading-xl" render={ <h2 /> }>

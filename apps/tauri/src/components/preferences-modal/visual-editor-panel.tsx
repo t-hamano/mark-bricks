@@ -34,7 +34,7 @@ type Props = {
 
 export function VisualEditorPanel( { settings, onChange }: Props ) {
 	return (
-		<Tabs.Panel value="visual-editor">
+		<Tabs.Panel value="visual-editor" tabIndex={ -1 }>
 			<Stack direction="column" gap="xl">
 				<Stack direction="column" gap="md">
 					<Text variant="heading-xl" render={ <h2 /> }>
