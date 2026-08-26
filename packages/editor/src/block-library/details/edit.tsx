@@ -35,14 +35,8 @@ export default function Edit( {
 	clientId,
 }: BlockEditProps< BlockAttributes > ) {
 	const { summary, showContent } = attributes;
-
-	// Whether the disclosure is expanded in the editor. It starts from
-	// `showContent` but is local state, so folding a section while writing
-	// does not change what the Markdown says.
 	const [ isOpen, setIsOpen ] = useState( !! showContent );
 
-	// Keep the section expanded while its content is being edited, otherwise
-	// selecting an inner block would hide it.
 	const hasSelectedInnerBlock = useSelect(
 		( select ) =>
 			select( blockEditorStore ).hasSelectedInnerBlock( clientId, true ),
@@ -81,8 +75,6 @@ export default function Edit( {
 				}
 			>
 				<summary
-					// Enter toggles the disclosure rather than splitting the
-					// summary, which has no block of its own.
 					onKeyDown={ withIgnoreIMEEvents(
 						( event: React.KeyboardEvent ) => {
 							if ( event.key === 'Enter' && ! event.shiftKey ) {
@@ -91,8 +83,6 @@ export default function Edit( {
 							}
 						}
 					) }
-					// Space is the summary's native toggle key; suppress it so
-					// that it types a space instead.
 					onKeyUp={ ( event ) => {
 						if ( event.key === ' ' ) {
 							event.preventDefault();

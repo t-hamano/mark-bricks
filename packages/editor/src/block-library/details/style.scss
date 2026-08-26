@@ -3,15 +3,11 @@
 	> summary {
 		cursor: pointer;
 
-		// The summary text is edited through a RichText, which renders a
-		// block-level element; keep it on the disclosure marker's line.
 		div {
 			display: inline;
 		}
 	}
 
-	// The summary is the disclosure control, so only the content below it
-	// takes part in the vertical rhythm.
 	> :not(summary) {
 		margin-block-start: 1.2rem;
 		margin-block-end: 0;

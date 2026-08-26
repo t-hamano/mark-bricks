@@ -22,18 +22,11 @@ import type { BlockAttributes } from './types';
 
 /**
  * Matches the `<details>` tag that opens the element, at the start of a node.
- *
- * Only a bare tag and the boolean `open` attribute are recognized. A tag
- * carrying any other attribute is left to the `core/html` block, so that its
- * markup survives the round trip untouched.
  */
 const OPEN_TAG_PATTERN = /^<details(\s+open)?\s*>/i;
 
 /**
  * Matches a `<summary>` element at the start of the element's content.
- *
- * As with the opening tag, a `<summary>` carrying attributes is not matched
- * and stays part of the content as raw HTML.
  */
 const SUMMARY_PATTERN = /^\s*<summary\s*>([\s\S]*?)<\/summary\s*>/i;
 
@@ -47,7 +40,6 @@ const DETAILS_TAG_PATTERN = /<(\/?)details(?:\s[^>]*)?>/gi;
  */
 type BlockResult = {
 	block: Block;
-	/** Index of the last node the block consumed. */
 	endIndex: number;
 };
 
@@ -55,9 +47,7 @@ type BlockResult = {
  * Where the `</details>` tag closing the element was found in an Html value.
  */
 type CloseTag = {
-	/** Offset of the `<` of the closing tag. */
 	start: number;
-	/** Offset just past the `>` of the closing tag. */
 	end: number;
 };
 
@@ -147,9 +137,6 @@ export function toBlock(
 		return null;
 	}
 
-	// Find the node that closes the element. Only Html nodes can hold the
-	// tag: inline HTML lives inside a paragraph and never closes a block-level
-	// element.
 	let depth = 0;
 	let endIndex = -1;
 	let endNode: Html | null = null;
@@ -161,8 +148,6 @@ export function toBlock(
 		}
 		const scan = scanDetailsTags( node.value, depth );
 		if ( scan.closeTag ) {
-			// Markup after the closing tag would have to be split out of the
-			// node; leave the whole run to `core/html` instead.
 			if ( node.value.slice( scan.closeTag.end ).trim() !== '' ) {
 				return null;
 			}
@@ -177,8 +162,6 @@ export function toBlock(
 		return null;
 	}
 
-	// Markup between the opening tag and either the closing tag, when the
-	// element fits in a single node, or the end of the opening node.
 	const opening =
 		endNode === startNode
 			? startNode.value.slice( openTag[ 0 ].length, closeTag.start )
@@ -193,7 +176,6 @@ export function toBlock(
 	if ( endNode !== startNode ) {
 		innerBlocks.push(
 			...nodesToBlocks( nodes.slice( startIndex + 1, endIndex ), source ),
-			// Markup between the last body node and the closing tag.
 			...markdownToBlocks( endNode.value.slice( 0, closeTag.start ) )
 		);
 	}
@@ -236,8 +218,6 @@ export function toNode( block: Block ): NodeResult< Html > {
 		lines.push( `<summary>${ summaryContent }</summary>` );
 	}
 
-	// Inner blocks are stringified as their own document, since a block's
-	// serialization options apply to the tree it is stringified in.
 	const content = blocksToMarkdown( block.innerBlocks ).replace( /\n+$/, '' );
 	if ( content ) {
 		lines.push( '', content, '' );
