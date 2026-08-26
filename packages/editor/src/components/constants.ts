@@ -1,4 +1,4 @@
-export const SIDEBAR_WIDTH = 220;
+export const SIDEBAR_WIDTH = 260;
 export const SIDEBAR_TRANSITION = {
 	type: 'tween' as const,
 	duration: 0.25,
