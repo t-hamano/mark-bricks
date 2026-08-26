@@ -17,7 +17,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 import { closeSmall, plus } from '@wordpress/icons';
 import { displayShortcut } from '@wordpress/keycodes';
-import { IconButton, Stack } from '@wordpress/ui';
+import { Button, IconButton, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -242,12 +242,15 @@ function TabItem( {
 
 	return (
 		<div className="tabbar__tab">
-			<button
+			<Button
 				ref={ buttonRef }
 				className={ clsx( 'tabbar__activate', {
 					'is-active': isActive,
 					'is-dirty': tab.isDirty,
 				} ) }
+				variant="minimal"
+				tone="neutral"
+				size="compact"
 				aria-current={ isActive ? 'page' : undefined }
 				onClick={ onActivate }
 				onAuxClick={ handleAuxClick }
@@ -265,7 +268,7 @@ function TabItem( {
 					}
 					aria-hidden={ ! tab.isDirty }
 				></span>
-			</button>
+			</Button>
 			<IconButton
 				icon={ closeSmall }
 				variant="minimal"

@@ -64,7 +64,7 @@ export function ListViewSidebar( { toggleRef }: Props ) {
 					label={ __( 'Close', 'mark-bricks' ) }
 					variant="minimal"
 					tone="neutral"
-					size="small"
+					size="compact"
 					onClick={ closeListViewSidebar }
 				/>
 				<TabPanel

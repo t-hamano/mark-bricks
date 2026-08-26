@@ -81,7 +81,7 @@ export function EditorHeader( {
 							? __( 'Close Block Inserter', 'mark-bricks' )
 							: __( 'Block Inserter', 'mark-bricks' )
 					}
-					size="small"
+					size="compact"
 					onClick={ () => setIsInserterOpened( ! isInserterOpened ) }
 					aria-expanded={ isInserterOpened }
 					aria-pressed={ isInserterOpened }
@@ -93,7 +93,7 @@ export function EditorHeader( {
 					label={ __( 'Undo', 'mark-bricks' ) }
 					variant="minimal"
 					tone="neutral"
-					size="small"
+					size="compact"
 					onClick={ onUndo }
 					disabled={ ! canUndo }
 				/>
@@ -102,7 +102,7 @@ export function EditorHeader( {
 					label={ __( 'Redo', 'mark-bricks' ) }
 					variant="minimal"
 					tone="neutral"
-					size="small"
+					size="compact"
 					onClick={ onRedo }
 					disabled={ ! canRedo }
 				/>
@@ -117,7 +117,7 @@ export function EditorHeader( {
 					shortcut={ toggleListViewShortcut }
 					variant="minimal"
 					tone="neutral"
-					size="small"
+					size="compact"
 					onClick={ () => setIsListViewOpened( ! isListViewOpened ) }
 					aria-expanded={ isListViewOpened }
 					aria-pressed={ isListViewOpened }
