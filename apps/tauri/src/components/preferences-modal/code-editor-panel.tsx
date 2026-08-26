@@ -85,8 +85,7 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 				</Stack>
 				<Button
 					variant="outline"
-					tone="neutral"
-					size="small"
+					size="compact"
 					onClick={ () =>
 						onChange(
 							DEFAULT_PREFERENCES[ 'mark-bricks' ].codeEditor
