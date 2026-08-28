@@ -9,15 +9,8 @@
 	border-left: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
 	border-right: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
 
-	.block-editor-block-contextual-toolbar {
-
-		&.is-unstyled {
-			box-shadow: none;
-		}
-
-		.block-editor-block-toolbar {
-			overflow: visible;
-		}
+	.block-editor-block-contextual-toolbar.is-unstyled {
+		box-shadow: none;
 	}
 }
 
