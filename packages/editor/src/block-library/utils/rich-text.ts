@@ -16,12 +16,21 @@ import { RichTextData } from '@wordpress/rich-text';
  */
 export type InlineMarker = '*' | '_';
 
+/**
+ * The syntaxes a link can be written in, minus the resource link
+ * (`[text](url)`) which is the form every link falls back to.
+ */
+export type LinkSyntax = 'literal' | 'autolink';
+
 declare module 'mdast' {
 	interface EmphasisData {
 		marker?: InlineMarker;
 	}
 	interface StrongData {
 		marker?: InlineMarker;
+	}
+	interface LinkData {
+		syntax?: LinkSyntax;
 	}
 }
 
@@ -55,6 +64,39 @@ function readMarker( node: Element ): InlineMarker | undefined {
  */
 function writeMarker( marker: InlineMarker | undefined ): string {
 	return marker === '_' ? ` ${ MARKER_ATTRIBUTE }="_"` : '';
+}
+
+/**
+ * The attribute that carries a link's syntax through a block's inline content.
+ * The resource link is the default and is therefore never written out.
+ */
+const LINK_SYNTAX_ATTRIBUTE = 'data-markdown-link';
+
+/**
+ * The `hast` property name `hast-util-from-html` derives from
+ * {@link LINK_SYNTAX_ATTRIBUTE}.
+ */
+const LINK_SYNTAX_PROPERTY = 'dataMarkdownLink';
+
+/**
+ * Reads the link syntax an element carries, if any.
+ *
+ * @param node hast element.
+ * @return The syntax, or `undefined` when the element carries none.
+ */
+function readLinkSyntax( node: Element ): LinkSyntax | undefined {
+	const syntax = node.properties?.[ LINK_SYNTAX_PROPERTY ];
+	return syntax === 'literal' || syntax === 'autolink' ? syntax : undefined;
+}
+
+/**
+ * Renders the syntax attribute for a link that was not a resource link.
+ *
+ * @param syntax The link's syntax, if any.
+ * @return The attribute to insert into the opening tag, or an empty string.
+ */
+function writeLinkSyntax( syntax: LinkSyntax | undefined ): string {
+	return syntax ? ` ${ LINK_SYNTAX_ATTRIBUTE }="${ syntax }"` : '';
 }
 
 /**
@@ -150,12 +192,14 @@ function hastToPhrasing( nodes: RootContent[] ): PhrasingContent[] {
 				if ( children.length > 0 ) {
 					const href = node.properties?.href;
 					const title = node.properties?.title;
+					const syntax = readLinkSyntax( node );
 					result.push( {
 						type: 'link',
 						url: typeof href === 'string' ? href : '',
 						title:
 							typeof title === 'string' && title ? title : null,
 						children,
+						...( syntax ? { data: { syntax } } : {} ),
 					} );
 				}
 				break;
@@ -210,7 +254,8 @@ export function inlineToContent( children: PhrasingContent[] ): string {
 					const title = node.title
 						? ` title="${ escapeAttribute( node.title ) }"`
 						: '';
-					return `<a href="${ href }"${ title }>${ inlineToContent(
+					const syntax = writeLinkSyntax( node.data?.syntax );
+					return `<a href="${ href }"${ title }${ syntax }>${ inlineToContent(
 						node.children
 					) }</a>`;
 				}

@@ -25,8 +25,8 @@ import * as quoteConverter from '../block-library/quote/converter';
 import * as htmlConverter from '../block-library/html/converter';
 import * as detailsConverter from '../block-library/details/converter';
 import type { NodeResult } from '../block-library/types';
-import { linkHandler } from './autolink-literal';
 import { inlineMarkerHandlers } from './inline-marker';
+import { linkHandler } from './link-syntax';
 
 /**
  * Maps a single block to its corresponding mdast node.

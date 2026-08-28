@@ -28,6 +28,9 @@ A link [with a title](https://example.com "Example title") too.
 
 Bare URLs are linked automatically: https://example.com and user@example.com.
 
+Explicit links keep their syntax: [https://example.com](https://example.com)
+and <https://example.com>.
+
 Strong wrapping emphasis: **bold with *italic* inside**.
 
 A link wrapping formatting: [**bold** and *italic* link](https://example.com).
