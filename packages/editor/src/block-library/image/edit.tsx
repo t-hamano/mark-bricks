@@ -85,7 +85,6 @@ export default function Edit( props: BlockEditProps ) {
 					<Stack direction="row" gap="sm">
 						{ pickImageFile && (
 							<Button
-								size="compact"
 								variant="outline"
 								onClick={ async () => {
 									const path = await pickImageFile();
@@ -98,7 +97,6 @@ export default function Edit( props: BlockEditProps ) {
 							</Button>
 						) }
 						<Button
-							size="compact"
 							variant="outline"
 							onClick={ () => {
 								setUrlInput( url || '' );
@@ -134,7 +132,7 @@ export default function Edit( props: BlockEditProps ) {
 								gap="sm"
 								align="flex-end"
 								style={ {
-									width: '280px',
+									width: '400px',
 									padding: 'var(--wpds-dimension-padding-sm)',
 								} }
 							>
@@ -151,10 +149,9 @@ export default function Edit( props: BlockEditProps ) {
 										) }
 										value={ urlInput }
 										onValueChange={ setUrlInput }
-										size="compact"
 									/>
 								</div>
-								<Button size="compact" type="submit">
+								<Button type="submit">
 									{ __( 'Apply', 'mark-bricks' ) }
 								</Button>
 							</Stack>
@@ -202,7 +199,7 @@ export default function Edit( props: BlockEditProps ) {
 							direction="column"
 							gap="sm"
 							style={ {
-								width: '280px',
+								width: '400px',
 							} }
 						>
 							<InputControl
@@ -217,7 +214,6 @@ export default function Edit( props: BlockEditProps ) {
 									'Describes the image for screen readers.',
 									'mark-bricks'
 								) }
-								size="compact"
 							/>
 							<InputControl
 								label={ __( 'Title', 'mark-bricks' ) }
@@ -231,10 +227,9 @@ export default function Edit( props: BlockEditProps ) {
 									'Shown as a tooltip on hover.',
 									'mark-bricks'
 								) }
-								size="compact"
 							/>
 							<Stack justify="flex-end">
-								<Button size="compact" type="submit">
+								<Button type="submit">
 									{ __( 'Apply', 'mark-bricks' ) }
 								</Button>
 							</Stack>
@@ -277,7 +272,7 @@ export default function Edit( props: BlockEditProps ) {
 								gap="sm"
 								align="flex-end"
 								style={ {
-									width: '280px',
+									width: '400px',
 									padding:
 										'0 var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-sm)',
 									margin: '0 calc( -1 * var(--wpds-dimension-padding-sm) ) var(--wpds-dimension-padding-sm)',
@@ -297,10 +292,9 @@ export default function Edit( props: BlockEditProps ) {
 										) }
 										value={ urlInput }
 										onValueChange={ setUrlInput }
-										size="compact"
 									/>
 								</div>
-								<Button size="compact" type="submit">
+								<Button type="submit">
 									{ __( 'Apply', 'mark-bricks' ) }
 								</Button>
 							</Stack>

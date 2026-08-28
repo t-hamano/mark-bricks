@@ -247,7 +247,6 @@ export default function Edit( props: BlockEditProps ) {
 							value={ initialColumnCount }
 							onValueChange={ setInitialColumnCount }
 							min="1"
-							size="compact"
 						/>
 						<InputControl
 							type="number"
@@ -255,9 +254,8 @@ export default function Edit( props: BlockEditProps ) {
 							value={ initialRowCount }
 							onValueChange={ setInitialRowCount }
 							min="1"
-							size="compact"
 						/>
-						<Button size="compact" type="submit">
+						<Button type="submit">
 							{ __( 'Create Table', 'mark-bricks' ) }
 						</Button>
 					</Stack>

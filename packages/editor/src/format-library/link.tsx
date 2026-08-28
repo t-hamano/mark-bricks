@@ -101,7 +101,7 @@ function InlineLinkUI( {
 				direction="column"
 				gap="sm"
 				style={ {
-					width: '320px',
+					width: '400px',
 					padding: 'var(--wpds-dimension-padding-sm)',
 				} }
 			>
@@ -110,7 +110,6 @@ function InlineLinkUI( {
 					value={ urlInput }
 					onValueChange={ setUrlInput }
 					placeholder={ __( 'Paste or type URL', 'mark-bricks' ) }
-					size="compact"
 				/>
 				<InputControl
 					label={ __( 'Title', 'mark-bricks' ) }
@@ -121,12 +120,10 @@ function InlineLinkUI( {
 						'Shown as a tooltip on hover.',
 						'mark-bricks'
 					) }
-					size="compact"
 				/>
 				<Stack justify="flex-end" gap="sm">
 					{ isActive && (
 						<Button
-							size="compact"
 							variant="minimal"
 							tone="neutral"
 							onClick={ onRemoveLink }
@@ -134,11 +131,7 @@ function InlineLinkUI( {
 							{ __( 'Remove', 'mark-bricks' ) }
 						</Button>
 					) }
-					<Button
-						size="compact"
-						type="submit"
-						disabled={ ! urlInput.trim() }
-					>
+					<Button type="submit" disabled={ ! urlInput.trim() }>
 						{ __( 'Apply', 'mark-bricks' ) }
 					</Button>
 				</Stack>
