@@ -119,8 +119,6 @@ function toLiteral(
 		return null;
 	}
 	const literal = child.value;
-	// The `www.` and the email form gain a protocol when parsed, so the URL
-	// is not always the literal itself.
 	if (
 		node.url !== literal &&
 		node.url !== `http://${ literal }` &&

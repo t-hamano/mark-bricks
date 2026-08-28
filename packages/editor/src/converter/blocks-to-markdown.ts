@@ -91,9 +91,6 @@ export function blocksToMarkdown( blocks: Block[] ): string {
 				type: 'root',
 				children: [ result.node ],
 			};
-			// Inline markers and links are serialized the same way for
-			// every block, so the handlers are installed here rather than in
-			// each converter.
 			const { handlers, ...options } = result.options ?? {};
 			return unified()
 				.use( remarkStringify, {
