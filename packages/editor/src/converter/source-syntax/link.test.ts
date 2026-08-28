@@ -11,7 +11,7 @@ import type { Block } from '@wordpress/blocks';
 /**
  * Internal dependencies
  */
-import { markdownToBlocks, blocksToMarkdown } from '.';
+import { markdownToBlocks, blocksToMarkdown } from '..';
 
 function paragraphBlock( content: string ): Block {
 	return {

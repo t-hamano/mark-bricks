@@ -11,7 +11,8 @@ import type { Link, Nodes, Parents, PhrasingContent, Root } from 'mdast';
 /**
  * Internal dependencies
  */
-import type { LinkSyntax } from '../block-library/utils';
+import type { LinkSyntax } from '../../block-library/utils';
+import { withOption } from './with-option';
 
 /**
  * Parser the candidate literals are verified against.
@@ -57,33 +58,25 @@ function detectSyntax( node: Link, source: string ): LinkSyntax | undefined {
 }
 
 /**
- * Records on the parsed tree which syntax each link was written with.
+ * Records the syntax a Link node was written with.
  *
  * The three forms render identically and therefore parse to the same Link
  * node, so by the time the tree is serialized again `https://example.com` is
  * indistinguishable from the `[https://example.com](https://example.com)` it
  * may have been written as. The form is detected from `source` and stored on
- * `node.data` before the tree is converted to blocks. From there
- * `inlineToContent` carries it into the block's inline content, and
- * {@link linkHandler} restores it on the way out.
+ * `node.data`, from where {@link linkHandler} restores it. Any other node is
+ * left untouched.
  *
- * The tree is annotated in place, since the converters walk the very same
- * nodes.
- *
- * @param tree   mdast tree from remark-parse.
+ * @param node   mdast node from remark-parse.
  * @param source The original markdown source.
  */
-export function annotateLinkSyntax( tree: Nodes, source: string ): void {
-	if ( tree.type === 'link' ) {
-		const syntax = detectSyntax( tree, source );
-		if ( syntax ) {
-			tree.data = { ...tree.data, syntax };
-		}
+export function annotateLinkSyntax( node: Nodes, source: string ): void {
+	if ( node.type !== 'link' ) {
+		return;
 	}
-	if ( 'children' in tree ) {
-		for ( const child of tree.children ) {
-			annotateLinkSyntax( child as Nodes, source );
-		}
+	const syntax = detectSyntax( node, source );
+	if ( syntax ) {
+		node.data = { ...node.data, syntax };
 	}
 }
 
@@ -224,32 +217,8 @@ function toLiteral(
 		: null;
 }
 
-/**
- * Runs the default handler with the autolink form disabled, so that a link
- * whose text is its own URL still comes out as `[text](url)`.
- *
- * `options.resourceLink` is document-wide, so a per-node choice cannot be
- * expressed through it. The default handler reads the option from
- * `state.options` at the top of each call, so it is swapped for the duration
- * of that call and restored afterwards.
- *
- * @param node   mdast Link node.
- * @param parent Parent of the node.
- * @param state  Serialization state.
- * @param info   Serialization info.
- * @return The link written as a resource link.
- */
-const asResource: Handle = ( node, parent, state, info ) => {
-	const previous = state.options.resourceLink;
-	state.options.resourceLink = true;
-	try {
-		return defaultHandlers.link( node, parent, state, info );
-	} finally {
-		state.options.resourceLink = previous;
-	}
-};
-
-const link: Handle = ( node, parent, state, info ) => {
+const link: Handle = ( ...args ) => {
+	const [ node, parent, state ] = args;
 	const syntax = nodeSyntax( node );
 	if ( syntax === 'literal' ) {
 		const literal = toLiteral( node, parent, state );
@@ -260,8 +229,8 @@ const link: Handle = ( node, parent, state, info ) => {
 	// A literal GFM would no longer detect falls back to the default handler,
 	// which writes the autolink — the shortest form that survives.
 	return syntax
-		? defaultHandlers.link( node, parent, state, info )
-		: asResource( node, parent, state, info );
+		? defaultHandlers.link( ...args )
+		: withOption( 'resourceLink', true, defaultHandlers.link, ...args );
 };
 
 const peek: Handle = ( node, parent, state ) => {
