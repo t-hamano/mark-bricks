@@ -39,30 +39,6 @@ type Setting = {
 	title: string;
 };
 
-/**
- * The one setting a Markdown link has, shown in the Advanced drawer.
- */
-const SETTINGS = [
-	{
-		id: 'linkTitle',
-		title: __( 'Title', 'mark-bricks' ),
-		render: (
-			setting: Setting,
-			value: ControlValue,
-			onChange: ( next: ControlValue ) => void
-		) => (
-			<InputControl
-				label={ setting.title }
-				value={ value.linkTitle ?? '' }
-				onChange={ ( linkTitle?: string ) =>
-					onChange( { ...value, linkTitle: linkTitle ?? '' } )
-				}
-				help={ __( 'Shown as a tooltip on hover.', 'mark-bricks' ) }
-			/>
-		),
-	},
-];
-
 type Props = {
 	link: LinkValue;
 	isActive: boolean;
@@ -118,6 +94,30 @@ export function InlineLinkUI( {
 		[ link.url, link.text, link.title ]
 	);
 
+	const settings = [
+		{
+			id: 'linkTitle',
+			title: __( 'Title', 'mark-bricks' ),
+			render: (
+				setting: Setting,
+				controlValue: ControlValue,
+				onControlChange: ( next: ControlValue ) => void
+			) => (
+				<InputControl
+					label={ setting.title }
+					value={ controlValue.linkTitle ?? '' }
+					onChange={ ( linkTitle?: string ) =>
+						onControlChange( {
+							...controlValue,
+							linkTitle: linkTitle ?? '',
+						} )
+					}
+					help={ __( 'Shown as a tooltip on hover.', 'mark-bricks' ) }
+				/>
+			),
+		},
+	];
+
 	return (
 		<Popover
 			anchor={ popoverAnchor }
@@ -131,7 +131,7 @@ export function InlineLinkUI( {
 		>
 			<LinkControl
 				value={ value }
-				settings={ SETTINGS }
+				settings={ settings }
 				hasTextControl
 				showSuggestions={ false }
 				// @ts-expect-error searchInputPlaceholder is missing from the type definitions
