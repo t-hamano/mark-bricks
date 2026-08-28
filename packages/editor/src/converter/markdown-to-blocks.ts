@@ -24,7 +24,7 @@ import * as imageConverter from '../block-library/image/converter';
 import * as quoteConverter from '../block-library/quote/converter';
 import * as htmlConverter from '../block-library/html/converter';
 import * as detailsConverter from '../block-library/details/converter';
-import { annotateInlineMarkers } from './inline-marker';
+import { annotateSourceSyntax } from './source-syntax';
 
 /**
  * Maps a single mdast node to its corresponding blocks.
@@ -117,8 +117,9 @@ export function markdownToBlocks( markdown: string ): Block[] {
 		.use( remarkParse )
 		.use( remarkGfm )
 		.parse( markdown ) as Root;
-	// Inline markers are only recoverable from the source, so they are
-	// recorded on the tree before it is taken apart into blocks.
-	annotateInlineMarkers( tree, markdown );
+	// The spelling of a construct Markdown lets be written in more than one
+	// way is only recoverable from the source, so it is recorded on the tree
+	// before it is taken apart into blocks.
+	annotateSourceSyntax( tree, markdown );
 	return nodesToBlocks( tree.children, markdown );
 }

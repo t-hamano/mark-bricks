@@ -8,7 +8,8 @@ import type { Emphasis, Nodes, Strong } from 'mdast';
 /**
  * Internal dependencies
  */
-import type { InlineMarker } from '../block-library/utils';
+import type { InlineMarker } from '../../block-library/utils';
+import { withOption } from './with-option';
 
 /**
  * The mdast node types whose marker character can vary.
@@ -42,7 +43,7 @@ function detectMarker(
 }
 
 /**
- * Records the original emphasis and strong markers on the parsed tree.
+ * Records the marker an Emphasis or Strong node was written with.
  *
  * CommonMark accepts two interchangeable markers for each of these formats:
  *
@@ -61,32 +62,24 @@ function detectMarker(
  * ```
  *
  * Both spellings parse to the same node, so the marker is detected from
- * `source` and stored on `node.data` before the tree is converted to blocks.
- * From there `inlineToContent` carries it into the block's inline content, and
- * {@link inlineMarkerHandlers} restores it on the way out.
+ * `source` and stored on `node.data`, from where {@link inlineMarkerHandlers}
+ * restores it. Any other node is left untouched.
  *
- * The tree is annotated in place, since the converters walk the very same
- * nodes.
- *
- * @param tree   mdast tree from remark-parse.
+ * @param node   mdast node from remark-parse.
  * @param source The original markdown source.
  */
-export function annotateInlineMarkers( tree: Nodes, source: string ): void {
-	if ( tree.type === 'emphasis' || tree.type === 'strong' ) {
-		const marker = detectMarker( tree, source );
-		if ( marker ) {
-			tree.data = { ...tree.data, marker };
-		}
+export function annotateInlineMarker( node: Nodes, source: string ): void {
+	if ( node.type !== 'emphasis' && node.type !== 'strong' ) {
+		return;
 	}
-	if ( 'children' in tree ) {
-		for ( const child of tree.children ) {
-			annotateInlineMarkers( child as Nodes, source );
-		}
+	const marker = detectMarker( node, source );
+	if ( marker ) {
+		node.data = { ...node.data, marker };
 	}
 }
 
 /**
- * Reads the marker stored on a node by {@link annotateInlineMarkers}.
+ * Reads the marker stored on a node by {@link annotateInlineMarker}.
  *
  * @param node mdast node being serialized.
  * @return The marker, or `undefined` when the node carries none.
@@ -99,30 +92,16 @@ function nodeMarker( node: unknown ): InlineMarker | undefined {
 /**
  * Wraps a default handler so it emits the marker stored on the node.
  *
- * `options.emphasis` and `options.strong` are document-wide, so a per-node
- * marker cannot be expressed through them. The default handler reads the
- * marker from `state.options` at the top of each call, so the option is
- * swapped for the duration of that call and restored afterwards — including
- * for nested nodes, which re-enter this wrapper and restore their own outer
- * value.
- *
  * @param type The node type to handle.
  * @return The wrapped handler.
  */
 function createHandler( type: MarkedType ): Handle {
 	const defaultHandler = defaultHandlers[ type ];
-	const handle: Handle = ( node, parent, state, info ) => {
-		const marker = nodeMarker( node );
-		if ( ! marker ) {
-			return defaultHandler( node, parent, state, info );
-		}
-		const previous = state.options[ type ];
-		state.options[ type ] = marker;
-		try {
-			return defaultHandler( node, parent, state, info );
-		} finally {
-			state.options[ type ] = previous;
-		}
+	const handle: Handle = ( ...args ) => {
+		const marker = nodeMarker( args[ 0 ] );
+		return marker
+			? withOption( type, marker, defaultHandler, ...args )
+			: defaultHandler( ...args );
 	};
 	// `containerPhrasing` peeks at the first character of the next sibling to
 	// decide how to escape the current one. Without a `peek` the whole handler
@@ -134,7 +113,7 @@ function createHandler( type: MarkedType ): Handle {
 
 /**
  * remark-stringify handlers that restore the original emphasis and strong
- * markers recorded by {@link annotateInlineMarkers}.
+ * markers recorded by {@link annotateInlineMarker}.
  *
  * Nodes without a recorded marker fall back to the default, so text formatted
  * in the editor is written with `*` and `**`.
