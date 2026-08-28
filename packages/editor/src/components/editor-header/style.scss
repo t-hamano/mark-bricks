@@ -12,6 +12,12 @@
 	.block-editor-block-contextual-toolbar.is-unstyled {
 		box-shadow: none;
 	}
+
+	// The toolbar is as tall as the header, so the default `overflow: auto`
+	// would add a scrollbar that does not fit.
+	.block-editor-block-toolbar {
+		overflow: visible;
+	}
 }
 
 .editor-header__inserter-toggle {
