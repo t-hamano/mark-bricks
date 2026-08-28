@@ -123,7 +123,7 @@ export default function Edit( {
 											'Choose language…',
 											'mark-bricks'
 										) }
-										render={ <Input size="compact" /> }
+										render={ <Input /> }
 										style={ { width: '200px' } }
 									/>
 									<Autocomplete.Popup>
