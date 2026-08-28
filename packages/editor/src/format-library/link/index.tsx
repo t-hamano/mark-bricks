@@ -45,9 +45,6 @@ function Edit( {
 }: FormatEditProps ) {
 	const [ isPopoverVisible, setIsPopoverVisible ] = useState( false );
 	const [ focusOnMount, setFocusOnMount ] = useState< FocusOnMount >( false );
-	// Whether the popover has been dismissed on the link the caret sits in.
-	// Held in a ref, since suppressing the reopen below must not itself be a
-	// change the effect doing the reopening reacts to.
 	const isDismissed = useRef( false );
 
 	const showPopover = useCallback( ( takesFocus: boolean ) => {
