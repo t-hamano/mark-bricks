@@ -22,20 +22,11 @@ import type { FormatEditProps } from '../types';
 
 /**
  * Where the focus lands when the popover mounts.
- *
- * A popover the caret opened by itself has to leave the focus in the text the
- * user is writing in, while one opened from the toolbar or the keyboard has to
- * take it, since the click or the shortcut was a request to fill it in.
  */
 export type FocusOnMount = 'firstElement' | false;
 
 /**
  * The value `LinkControl` edits.
- *
- * `title` is the text the link reads as — that is what `LinkControl` calls it —
- * which leaves `linkTitle` for the tooltip Markdown writes as
- * `[text](url "title")`. That one rides along as a setting, `LinkControl`
- * having fields of its own only for the text and the URL.
  */
 type ControlValue = {
 	url: string;
@@ -115,8 +106,6 @@ export function InlineLinkUI( {
 }: Props ) {
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
-		// `isActive` anchors the popover to the `<a>` element the caret is in
-		// rather than to the selection, so that it spans the whole link.
 		settings: {
 			tagName: LINK_TAG_NAME,
 			className: null,
@@ -144,9 +133,6 @@ export function InlineLinkUI( {
 				value={ value }
 				settings={ SETTINGS }
 				hasTextControl
-				// The suggestions search the site's posts and pages, which a
-				// Markdown document has none of. The placeholder follows,
-				// there being nothing left to search.
 				showSuggestions={ false }
 				// @ts-expect-error searchInputPlaceholder is missing from the type definitions
 				searchInputPlaceholder={ __(

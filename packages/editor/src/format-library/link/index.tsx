@@ -56,15 +56,11 @@ function Edit( {
 		setIsPopoverVisible( true );
 	}, [] );
 
-	// Hides the popover for as long as the caret stays on the current link.
 	const hidePopover = useCallback( () => {
 		isDismissed.current = true;
 		setIsPopoverVisible( false );
 	}, [] );
 
-	// The caret enters and leaves links as the user moves through the text,
-	// and the popover follows it: shown on the link the caret lands in, hidden
-	// once it leaves, and left hidden for a link already dismissed.
 	useEffect( () => {
 		if ( isActive ) {
 			if ( ! isDismissed.current ) {
@@ -76,9 +72,6 @@ function Edit( {
 		setIsPopoverVisible( false );
 	}, [ isActive, showPopover ] );
 
-	// Clicking brings a dismissed popover back. It also catches the click that
-	// lands on the very edge of a link, where the caret ends up outside it and
-	// the effect above therefore never runs.
 	useLayoutEffect( () => {
 		const editableContentElement = contentRef.current;
 		if ( ! editableContentElement ) {
@@ -86,12 +79,8 @@ function Edit( {
 		}
 
 		function handleClick( { target }: MouseEvent ) {
-			// The block canvas is an iframe, so the clicked node comes from
-			// another realm and `instanceof Element` would answer no to every
-			// one of them. Asking the node itself is what works across the two.
 			const element = target as Element | null;
 			if (
-				// Other formats may be nested within the link.
 				! element?.closest?.(
 					`[contenteditable] ${ LINK_TAG_NAME }`
 				) ||
@@ -109,8 +98,6 @@ function Edit( {
 		};
 	}, [ contentRef, isActive, showPopover ] );
 
-	// A popover that took no focus leaves the caret in the text, which is
-	// where the Escape dismissing it has to be caught.
 	useEffect( () => {
 		const editableContentElement = contentRef.current;
 		if ( ! editableContentElement || ! isPopoverVisible || focusOnMount ) {
@@ -121,8 +108,6 @@ function Edit( {
 			if ( event.keyCode !== ESCAPE ) {
 				return;
 			}
-			// Escape would otherwise travel on to the block editor, which
-			// reads it as a request to select the block.
 			event.stopPropagation();
 			hidePopover();
 		}
@@ -139,8 +124,6 @@ function Edit( {
 
 	const applyLink = ( edited: LinkValue ) => {
 		onChange( setLink( value, isActive, edited ) );
-		// The caret lands inside the link just written, which the effect above
-		// would otherwise take as a link to open the popover on.
 		hidePopover();
 		onFocus();
 	};
@@ -158,9 +141,6 @@ function Edit( {
 
 	const attributes = activeAttributes ?? {};
 	const linkValue = getLinkValue( value, attributes, isActive );
-	// A link the source wrote as a bare URL or an autolink cannot be unlinked:
-	// dropping the format leaves the URL standing as plain text, which GFM
-	// reads straight back as the same link.
 	const canRemove = ! attributes.syntax;
 
 	return (
@@ -186,9 +166,6 @@ function Edit( {
 			</BlockControls>
 			{ isPopoverVisible && (
 				<InlineLinkUI
-					// The caret can cross straight from one link into the next
-					// without the popover unmounting in between, which would
-					// leave the fields holding the link it came from.
 					key={ linkValue.url }
 					link={ linkValue }
 					isActive={ isActive }
@@ -213,9 +190,6 @@ export const link = {
 	attributes: {
 		url: 'href',
 		title: 'title',
-		// Registered so the popover can tell a link the source wrote as a bare
-		// URL from one written as `[text](url)`. Nothing writes it back: the
-		// converter puts it there, and editing a link drops it.
 		syntax: LINK_SYNTAX_ATTRIBUTE,
 	},
 	interactive: true,

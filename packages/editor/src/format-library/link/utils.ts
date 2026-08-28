@@ -26,9 +26,6 @@ export const LINK_TAG_NAME = 'a';
 
 /**
  * A link as the popover edits it.
- *
- * `text` is what the link reads as, `url` where it points, and `title` the
- * tooltip Markdown writes as `[text](url "title")`.
  */
 export type LinkValue = {
 	text: string;
@@ -143,18 +140,12 @@ export function setLink(
 ): RichTextValue {
 	const { start, end } = ( isActive && getFormatBoundary( value ) ) || value;
 	const format = createLinkFormat( link );
-	// A link given no text of its own reads as the URL it points to.
 	const text = link.text || link.url;
 
-	// Laying the format over the text as it stands keeps whatever formatting
-	// sits inside the link, which rewriting the text cannot.
 	if ( text === getTextContent( slice( value, start, end ) ) ) {
 		return applyFormat( value, format, start, end );
 	}
 
-	// `insert` drops whatever lies between the two indices, so the one call
-	// covers writing over a selection, over the text of an existing link, and
-	// into a bare caret alike.
 	return applyFormat(
 		insert( value, text, start, end ),
 		format,
