@@ -70,7 +70,7 @@ function writeMarker( marker: InlineMarker | undefined ): string {
  * The attribute that carries a link's syntax through a block's inline content.
  * The resource link is the default and is therefore never written out.
  */
-const LINK_SYNTAX_ATTRIBUTE = 'data-markdown-link';
+export const LINK_SYNTAX_ATTRIBUTE = 'data-markdown-link';
 
 /**
  * The `hast` property name `hast-util-from-html` derives from
