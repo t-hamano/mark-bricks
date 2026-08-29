@@ -4,6 +4,7 @@
 //
 // Pass `--watch` to rebuild both on change.
 
+import { rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as esbuild from 'esbuild';
@@ -11,6 +12,12 @@ import { build as viteBuild } from 'vite';
 
 const appRoot = fileURLToPath( new URL( '..', import.meta.url ) );
 const watch = process.argv.includes( '--watch' );
+
+// Vite empties `dist/webview` on its own, but the extension bundle would
+// otherwise keep a source map from an earlier watch build around.
+if ( ! watch ) {
+	await rm( resolve( appRoot, 'dist' ), { recursive: true, force: true } );
+}
 
 const context = await esbuild.context( {
 	entryPoints: [ resolve( appRoot, 'src/extension/index.ts' ) ],

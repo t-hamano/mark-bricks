@@ -43,6 +43,25 @@
 				"title": "Open with Text Editor"
 			}
 		],
+		"keybindings": [
+			{
+				"command": "markBricks.suppressUndo",
+				"key": "ctrl+z",
+				"mac": "cmd+z",
+				"when": "activeCustomEditorId == 'markBricks.visualEditor'"
+			},
+			{
+				"command": "markBricks.suppressRedo",
+				"key": "ctrl+shift+z",
+				"mac": "shift+cmd+z",
+				"when": "activeCustomEditorId == 'markBricks.visualEditor'"
+			},
+			{
+				"command": "markBricks.suppressRedo",
+				"key": "ctrl+y",
+				"when": "activeCustomEditorId == 'markBricks.visualEditor' && !isMac"
+			}
+		],
 		"configuration": {
 			"title": "MarkBricks",
 			"properties": {}
