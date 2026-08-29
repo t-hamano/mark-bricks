@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T14:07:41.285Z\n"
-"PO-Revision-Date: 2026-08-26T14:08:08.286Z\n"
+"POT-Creation-Date: 2026-08-29T02:08:13.453Z\n"
+"PO-Revision-Date: 2026-08-29T02:08:14.393Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -38,14 +38,13 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/block-library/image/edit.tsx:209
+#: src/block-library/image/edit.tsx:206
 msgid "Alt text"
 msgstr "代替テキスト"
 
-#: src/format-library/link.tsx:142
-#: src/block-library/image/edit.tsx:158
-#: src/block-library/image/edit.tsx:238
-#: src/block-library/image/edit.tsx:304
+#: src/block-library/image/edit.tsx:155
+#: src/block-library/image/edit.tsx:233
+#: src/block-library/image/edit.tsx:298
 msgid "Apply"
 msgstr "適用"
 
@@ -61,8 +60,8 @@ msgstr "ブロック"
 msgid "Bold"
 msgstr "太字"
 
-#: src/block-library/image/edit.tsx:97
-#: src/block-library/image/edit.tsx:318
+#: src/block-library/image/edit.tsx:96
+#: src/block-library/image/edit.tsx:312
 msgid "Browse local file"
 msgstr "ローカルファイルを参照"
 
@@ -70,11 +69,11 @@ msgstr "ローカルファイルを参照"
 msgid "Caution"
 msgstr "注意"
 
-#: src/block-library/table/edit.tsx:303
+#: src/block-library/table/edit.tsx:301
 msgid "Cell content"
 msgstr "セルの内容"
 
-#: src/block-library/code/edit.tsx:90
+#: src/block-library/code/edit.tsx:89
 msgid "Change language"
 msgstr "言語を変更"
 
@@ -82,7 +81,7 @@ msgstr "言語を変更"
 msgid "Change the block type after adding a new paragraph."
 msgstr "新規段落の追加後、ブロックタイプを変更します。"
 
-#: src/block-library/code/edit.tsx:122
+#: src/block-library/code/edit.tsx:121
 msgid "Choose language…"
 msgstr "言語を選択…"
 
@@ -107,7 +106,7 @@ msgstr "カラム数"
 msgid "Convert the selected text into a link."
 msgstr "選択したテキストをリンクに変換する。"
 
-#: src/block-library/table/edit.tsx:261
+#: src/block-library/table/edit.tsx:259
 msgid "Create Table"
 msgstr "表を作成"
 
@@ -115,15 +114,15 @@ msgstr "表を作成"
 msgid "Default"
 msgstr "デフォルト"
 
-#: src/block-library/table/edit.tsx:380
+#: src/block-library/table/edit.tsx:378
 msgid "Delete column"
 msgstr "列を削除"
 
-#: src/block-library/table/edit.tsx:353
+#: src/block-library/table/edit.tsx:351
 msgid "Delete row"
 msgstr "行を削除"
 
-#: src/block-library/image/edit.tsx:216
+#: src/block-library/image/edit.tsx:213
 msgid "Describes the image for screen readers."
 msgstr "スクリーンリーダー用に画像を説明します。"
 
@@ -136,28 +135,27 @@ msgstr "これらのキーボードショートカットを表示する。"
 msgid "Document Overview"
 msgstr "ドキュメント概観"
 
-#: src/block-library/image/edit.tsx:182
+#: src/block-library/image/edit.tsx:179
 msgid "Edit alt and title"
 msgstr "代替テキストとタイトルを編集"
 
-#: src/block-library/table/edit.tsx:333
+#: src/block-library/table/edit.tsx:331
 msgid "Edit table"
 msgstr "表を編集"
 
-#: src/block-library/image/edit.tsx:111
+#: src/block-library/image/edit.tsx:109
 msgid "Enter URL or file path"
 msgstr "URL またはファイルパスを入力"
 
-#: src/block-library/image/edit.tsx:212
+#: src/block-library/image/edit.tsx:209
 msgid "Enter alt text…"
 msgstr "代替テキストを入力…"
 
-#: src/format-library/link.tsx:119
-#: src/block-library/image/edit.tsx:226
+#: src/block-library/image/edit.tsx:222
 msgid "Enter title…"
 msgstr "タイトルを入力…"
 
-#: src/block-library/image/edit.tsx:341
+#: src/block-library/image/edit.tsx:335
 msgid "Failed to load image."
 msgstr "画像の読み込みに失敗しました。"
 
@@ -174,7 +172,7 @@ msgstr "GitHub アラートタイプ"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/block-library/table/edit.tsx:302
+#: src/block-library/table/edit.tsx:300
 msgid "Header label"
 msgstr "ヘッダーラベル"
 
@@ -211,19 +209,19 @@ msgstr "インラインコード"
 msgid "Insert a table for sharing data."
 msgstr "表形式のデータを挿入します。"
 
-#: src/block-library/table/edit.tsx:371
+#: src/block-library/table/edit.tsx:369
 msgid "Insert column after"
 msgstr "列を右に挿入"
 
-#: src/block-library/table/edit.tsx:362
+#: src/block-library/table/edit.tsx:360
 msgid "Insert column before"
 msgstr "列を左に挿入"
 
-#: src/block-library/table/edit.tsx:345
+#: src/block-library/table/edit.tsx:343
 msgid "Insert row after"
 msgstr "行を下に挿入"
 
-#: src/block-library/table/edit.tsx:337
+#: src/block-library/table/edit.tsx:335
 msgid "Insert row before"
 msgstr "行を上に挿入"
 
@@ -231,11 +229,11 @@ msgstr "行を上に挿入"
 msgid "Italic"
 msgstr "イタリック"
 
-#: src/block-library/code/edit.tsx:105
+#: src/block-library/code/edit.tsx:104
 msgid "Language"
 msgstr "言語"
 
-#: src/format-library/link.tsx:28
+#: src/format-library/link/index.tsx:36
 msgid "Link"
 msgstr "リンク"
 
@@ -269,7 +267,7 @@ msgid ""
 "incorrect heading levels."
 msgstr "ドキュメントの構造を調べ、空白や不正確な見出しレベルなどの問題に対処します。"
 
-#: src/block-library/code/edit.tsx:131
+#: src/block-library/code/edit.tsx:130
 msgid "No matching language."
 msgstr "一致する言語がありません。"
 
@@ -293,13 +291,13 @@ msgstr "インデント解除"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: src/format-library/link.tsx:112
-#: src/block-library/image/edit.tsx:144
-#: src/block-library/image/edit.tsx:148
+#: src/format-library/link/inline.tsx:138
+#: src/block-library/image/edit.tsx:142
+#: src/block-library/image/edit.tsx:146
 msgid "Paste or type URL"
 msgstr "URL を入力または貼り付け"
 
-#: src/block-library/image/edit.tsx:294
+#: src/block-library/image/edit.tsx:289
 msgid "Paste or type URL or file path"
 msgstr "URL またはファイルパスを入力または貼り付け"
 
@@ -311,19 +309,15 @@ msgstr "やり直す"
 msgid "Redo your last undo."
 msgstr "前回の取り消しをやり直す。"
 
-#: src/format-library/link.tsx:134
-msgid "Remove"
-msgstr "削除"
-
 #: src/components/keyboard-shortcuts/hooks.ts:127
 msgid "Remove a link."
 msgstr "リンクを削除する。"
 
-#: src/block-library/image/edit.tsx:259
+#: src/block-library/image/edit.tsx:254
 msgid "Replace image"
 msgstr "画像の置き換え"
 
-#: src/block-library/image/edit.tsx:330
+#: src/block-library/image/edit.tsx:324
 msgid "Reset"
 msgstr "リセット"
 
@@ -331,7 +325,7 @@ msgstr "リセット"
 msgid "Reset search"
 msgstr "検索をリセット"
 
-#: src/block-library/table/edit.tsx:254
+#: src/block-library/table/edit.tsx:253
 msgid "Row count"
 msgstr "行数"
 
@@ -347,8 +341,8 @@ msgstr "ブロックを検索"
 msgid "Show or hide the List View."
 msgstr "リストビューの表示、非表示。"
 
-#: src/format-library/link.tsx:120
-#: src/block-library/image/edit.tsx:230
+#: src/format-library/link/inline.tsx:115
+#: src/block-library/image/edit.tsx:226
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
 
@@ -368,12 +362,16 @@ msgstr "ビジュアルエディターとコードエディターを切り替え
 msgid "Table"
 msgstr "テーブル"
 
+#: src/block-library/code/mermaid-preview.tsx:135
+msgid "The diagram could not be rendered."
+msgstr "図を描画できませんでした。"
+
 #: src/block-library/quote/edit.tsx:52
 msgid "Tip"
 msgstr "ヒント"
 
-#: src/format-library/link.tsx:116
-#: src/block-library/image/edit.tsx:223
+#: src/format-library/link/inline.tsx:100
+#: src/block-library/image/edit.tsx:219
 msgid "Title"
 msgstr "タイトル"
 
@@ -393,11 +391,7 @@ msgstr "タスク項目に変換"
 msgid "Type / to choose a block"
 msgstr "ブロックを選択するには「/」を入力"
 
-#: src/format-library/link.tsx:109
-msgid "URL"
-msgstr "URL"
-
-#: src/block-library/image/edit.tsx:290
+#: src/block-library/image/edit.tsx:285
 msgid "URL or file path"
 msgstr "URL またはファイルパス"
 

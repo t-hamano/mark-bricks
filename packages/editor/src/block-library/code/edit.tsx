@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { languages } from '@codemirror/language-data';
-
-/**
  * WordPress dependencies
  */
 import {
@@ -23,13 +18,15 @@ import { Autocomplete, Field, Input } from '@wordpress/ui';
  */
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes } from './types';
+import { CODE_LANGUAGES, MERMAID_LANGUAGE } from '../hooks/code-languages';
 import { useCodeMirror } from '../hooks/use-code-mirror';
+import { MermaidPreview } from './mermaid-preview';
 
 const LANGUAGE_SUGGESTIONS = Array.from(
 	new Set(
-		languages
-			.flatMap( ( lang ) => [ lang.name, ...lang.alias ] )
-			.map( ( name ) => name.toLowerCase() )
+		CODE_LANGUAGES.flatMap( ( lang ) => [ lang.name, ...lang.alias ] ).map(
+			( name ) => name.toLowerCase()
+		)
 	)
 ).sort( ( a, b ) => a.localeCompare( b ) );
 
@@ -38,11 +35,14 @@ export default function Edit( {
 	setAttributes,
 	clientId,
 	insertBlocksAfter,
+	isSelected,
 }: BlockEditProps< BlockAttributes > ) {
 	const { content, markdownData } = attributes;
 	const { language = '' } = markdownData ?? {};
 	const text =
 		content instanceof RichTextData ? content.toPlainText() : content ?? '';
+	const isMermaid = language.trim().toLowerCase() === MERMAID_LANGUAGE;
+	const showEditor = ! isMermaid || isSelected;
 
 	const { previousBlockClientId, nextBlockClientId } = useSelect(
 		( select ) => {
@@ -75,7 +75,6 @@ export default function Edit( {
 	} );
 
 	const blockProps = useBlockProps( {
-		ref: containerRef,
 		'data-language': language || undefined,
 	} );
 
@@ -154,7 +153,12 @@ export default function Edit( {
 					) }
 				/>
 			</BlockControls>
-			<div { ...blockProps } />
+			<div { ...blockProps }>
+				{ showEditor && <div ref={ containerRef } /> }
+				{ isMermaid && (
+					<MermaidPreview code={ text } clientId={ clientId } />
+				) }
+			</div>
 		</>
 	);
 }

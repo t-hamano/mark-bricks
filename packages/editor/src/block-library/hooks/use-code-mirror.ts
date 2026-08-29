@@ -12,10 +12,9 @@ import {
 	LanguageDescription,
 	syntaxHighlighting,
 } from '@codemirror/language';
-import { languages } from '@codemirror/language-data';
 import { Compartment, EditorState } from '@codemirror/state';
 import { EditorView, keymap, placeholder } from '@codemirror/view';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * WordPress dependencies
@@ -26,6 +25,7 @@ import { createBlock, getDefaultBlockName } from '@wordpress/blocks';
  * Internal dependencies
  */
 import type { BlockEditProps } from '../types';
+import { CODE_LANGUAGES } from './code-languages';
 
 type Props = {
 	text: string;
@@ -50,7 +50,7 @@ type Props = {
  * @param props.language    The language name to highlight.
  * @param props.placeholder The text shown while the document is empty.
  * @param props.handlers    Editor callbacks read fresh on each keypress.
- * @return The ref to attach to the editor container element.
+ * @return The ref callback to attach to the editor container element.
  */
 export function useCodeMirror( {
 	text,
@@ -58,7 +58,9 @@ export function useCodeMirror( {
 	placeholder: placeholderText,
 	handlers,
 }: Props ) {
-	const containerRef = useRef< HTMLDivElement | null >( null );
+	const [ container, setContainer ] = useState< HTMLDivElement | null >(
+		null
+	);
 	const viewRef = useRef< EditorView | null >( null );
 	const languageConf = useRef( new Compartment() );
 
@@ -68,7 +70,7 @@ export function useCodeMirror( {
 	handlersRef.current = handlers;
 
 	useEffect( () => {
-		const parent = containerRef.current;
+		const parent = container;
 		if ( ! parent ) {
 			return;
 		}
@@ -164,10 +166,10 @@ export function useCodeMirror( {
 			view.destroy();
 			viewRef.current = null;
 		};
-		// `text` seeds the initial document only; later changes are synced
-		// by the effect below.
+		// `text` seeds the document each time the editor is created; later
+		// changes are synced by the effect below.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [] );
+	}, [ container ] );
 
 	// Sync content changed outside the editor (undo/redo, markdown re-import).
 	useEffect( () => {
@@ -190,7 +192,7 @@ export function useCodeMirror( {
 			return;
 		}
 		const description = LanguageDescription.matchLanguageName(
-			languages,
+			CODE_LANGUAGES,
 			language,
 			true
 		);
@@ -211,7 +213,7 @@ export function useCodeMirror( {
 		return () => {
 			cancelled = true;
 		};
-	}, [ language ] );
+	}, [ language, container ] );
 
-	return containerRef;
+	return setContainer;
 }
