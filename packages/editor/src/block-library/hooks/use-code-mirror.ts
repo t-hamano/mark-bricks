@@ -58,8 +58,6 @@ export function useCodeMirror( {
 	placeholder: placeholderText,
 	handlers,
 }: Props ) {
-	// A state-backed ref so the editor is recreated when the container is
-	// remounted, which happens when a block swaps the editor for a preview.
 	const [ container, setContainer ] = useState< HTMLDivElement | null >(
 		null
 	);
@@ -215,7 +213,6 @@ export function useCodeMirror( {
 		return () => {
 			cancelled = true;
 		};
-		// `container` re-applies the language when the editor is recreated.
 	}, [ language, container ] );
 
 	return setContainer;

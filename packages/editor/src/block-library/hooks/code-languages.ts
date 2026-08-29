@@ -9,12 +9,8 @@ import {
 } from '@codemirror/language';
 import { languages } from '@codemirror/language-data';
 
-// Info string of a code block holding a diagram, matching the one GitHub and
-// the other markdown renderers understand.
 export const MERMAID_LANGUAGE = 'mermaid';
 
-// The palette of `defaultHighlightStyle`, so diagrams are highlighted in the
-// same colors as every other language.
 const KEYWORD = '#708';
 const NAME = '#219';
 const NUMBER = '#164';

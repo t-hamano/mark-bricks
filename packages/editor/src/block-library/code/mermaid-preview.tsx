@@ -17,16 +17,6 @@ type Props = {
 
 type Mermaid = Awaited< ReturnType< typeof importMermaid > >;
 
-// Mermaid measures label text in the top-level document, while the diagram is
-// injected into the editor canvas iframe. Pinning the font keeps the measured
-// and the painted text in sync across the two documents.
-const FONT_FAMILY =
-	'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif';
-
-// The diagram is rendered next to the editor while the code is typed, so the
-// half-written states in between are skipped.
-const RENDER_DELAY = 300;
-
 function importMermaid() {
 	return import( 'mermaid' ).then( ( { default: mermaid } ) => mermaid );
 }
@@ -36,22 +26,14 @@ let mermaidPromise: Promise< Mermaid > | null = null;
 /**
  * Loads mermaid on first use and configures it once.
  *
- * The library is a few hundred kilobytes, so it is imported dynamically and
- * only ends up in the bundle of documents that actually contain a diagram.
- *
  * @return The configured mermaid instance.
  */
 function loadMermaid(): Promise< Mermaid > {
 	if ( ! mermaidPromise ) {
 		mermaidPromise = importMermaid().then( ( mermaid ) => {
 			mermaid.initialize( {
-				// Diagrams are rendered on demand, never by scanning the page.
 				startOnLoad: false,
-				// Sanitizes the labels of the document being edited.
 				securityLevel: 'strict',
-				fontFamily: FONT_FAMILY,
-				// Failures are reported by this component; mermaid must not
-				// inject its own error diagram into the canvas.
 				suppressErrorRendering: true,
 			} );
 			return mermaid;
@@ -108,7 +90,7 @@ export function MermaidPreview( { code, clientId }: Props ) {
 				}
 			}
 		};
-		const timer = setTimeout( render, RENDER_DELAY );
+		const timer = setTimeout( render, 300 );
 
 		return () => {
 			cancelled = true;
@@ -116,8 +98,6 @@ export function MermaidPreview( { code, clientId }: Props ) {
 		};
 	}, [ code, clientId ] );
 
-	// Nothing has been rendered yet, and nothing has failed either. The block
-	// shows only its editor rather than an empty surface.
 	if ( ! svg && ! error ) {
 		return null;
 	}
