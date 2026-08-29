@@ -116,13 +116,14 @@ export function VisualEditorPanel( { settings, onChange }: Props ) {
 					items={ fontFamilyItems }
 					value={
 						fontFamilyItems.find(
-							( item ) => item.value === settings.fontFamily
+							( item ) =>
+								( item.value ?? '' ) === settings.fontFamily
 						) ?? null
 					}
 					isItemEqualToValue={ ( a, b ) => a.value === b.value }
 					onValueChange={ ( item ) => {
-						if ( item && item.value !== null ) {
-							onChange( { fontFamily: item.value } );
+						if ( item ) {
+							onChange( { fontFamily: item.value ?? '' } );
 						}
 					} }
 					description={ __(

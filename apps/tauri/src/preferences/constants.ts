@@ -54,8 +54,11 @@ export const getThemeOptions = (): { value: string; label: string }[] => [
 	},
 ];
 
-export const getFontFamilyOptions = (): { value: string; label: string }[] => [
-	{ value: '', label: __( 'System Default', 'mark-bricks' ) },
+export const getFontFamilyOptions = (): {
+	value: string | null;
+	label: string;
+}[] => [
+	{ value: null, label: __( 'System Default', 'mark-bricks' ) },
 	{
 		value: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif",
 		label: __( 'Sans-serif', 'mark-bricks' ),
