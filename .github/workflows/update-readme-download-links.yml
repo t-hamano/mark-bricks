@@ -1,8 +1,10 @@
 name: Update README Download Links
 
 on:
-    release:
-        types: [published]
+    # Wait for every platform build to upload its bundle before reading the assets.
+    workflow_run:
+        workflows: ['Release Desktop']
+        types: [completed]
     workflow_dispatch:
         inputs:
             tag:
@@ -12,7 +14,7 @@ on:
 
 # Avoid overlapping runs racing on the same branch.
 concurrency:
-    group: ${{ github.workflow }}-${{ github.event.release.tag_name || inputs.tag }}
+    group: ${{ github.workflow }}-${{ github.event.workflow_run.head_branch || inputs.tag }}
     cancel-in-progress: false
 
 permissions:
@@ -22,11 +24,12 @@ permissions:
 jobs:
     update-download-links:
         name: Update README download links
-        # Only desktop releases carry the bundled installers we link to.
-        if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'tauri-v') }}
+        # `head_branch` carries the tag name for tag-triggered runs; only desktop
+        # releases carry the bundled installers we link to.
+        if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_branch, 'tauri-v')) }}
         runs-on: ubuntu-latest
         env:
-            TAG: ${{ github.event.release.tag_name || inputs.tag }}
+            TAG: ${{ github.event.workflow_run.head_branch || inputs.tag }}
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         steps:
             - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
