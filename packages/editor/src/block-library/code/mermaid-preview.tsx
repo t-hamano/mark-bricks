@@ -127,7 +127,6 @@ export function MermaidPreview( { code, clientId }: Props ) {
 			{ !! svg && (
 				<div
 					className={ clsx( 'wp-block-code__mermaid-diagram', {
-						// The diagram no longer matches the code being written.
 						'is-stale': !! error,
 					} ) }
 					dangerouslySetInnerHTML={ { __html: svg } }
@@ -144,10 +143,7 @@ export function MermaidPreview( { code, clientId }: Props ) {
 							'mark-bricks'
 						) }
 					</Notice.Title>
-					<Notice.Description
-						className="wp-block-code__mermaid-error-detail"
-						render={ <pre /> }
-					>
+					<Notice.Description className="wp-block-code__mermaid-error-detail">
 						{ error }
 					</Notice.Description>
 				</Notice.Root>

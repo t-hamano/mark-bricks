@@ -43,15 +43,16 @@
 		text-align: center;
 		margin-top: 1em;
 		padding: 1em;
-	}
 
-	.wp-block-code__mermaid-diagram.is-stale {
-		opacity: 0.5;
+		&.is-stale {
+			opacity: 0.5;
+		}
 	}
 
 	.wp-block-code__mermaid-error-detail {
 		margin: 0;
 		font-family: var(--wpds-typography-font-family-mono);
 		white-space: pre-wrap;
+		font-size: 90%;
 	}
 }
