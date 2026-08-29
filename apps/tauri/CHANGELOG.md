@@ -1,3 +1,20 @@
+# [0.12.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.11.0...tauri-v0.12.0) (2026-08-29)
+
+### Bug Fixes
+
+-   **editor:** do not write markdown back over an external content change ([39df035](https://github.com/t-hamano/mark-bricks/commit/39df035e45c02edf3911b676831b9b1730fd9a98))
+-   **editor:** flush debounced markdown before saves and close checks ([8df9e1f](https://github.com/t-hamano/mark-bricks/commit/8df9e1f8babb23e4e1f1bcd9547d6a4d1a409a86))
+-   **editor:** register the canvas iframe with the wp style runtime ([d220dd9](https://github.com/t-hamano/mark-bricks/commit/d220dd9024bd314c09a4c8aea20daa508805fe2f))
+
+### Features
+
+-   **editor:** add a setting to hide the undo and redo buttons ([d70ef9b](https://github.com/t-hamano/mark-bricks/commit/d70ef9b2896f09960f7f938b7c66fa97c3b53dfb))
+-   **editor:** move the code editor toggle into the header behind a setting ([7678097](https://github.com/t-hamano/mark-bricks/commit/7678097c5021aa641a61dd02242cc6d934849a86))
+
+### Performance Improvements
+
+-   **editor:** load the text editor lazily to keep monaco out of the entry chunk ([6089884](https://github.com/t-hamano/mark-bricks/commit/6089884da04ad3ef36e52ce3e6be87dfa7589618))
+
 # [0.11.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.10.0...tauri-v0.11.0) (2026-08-29)
 
 ### Bug Fixes
