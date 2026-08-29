@@ -1,3 +1,21 @@
+# [0.11.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.10.0...tauri-v0.11.0) (2026-08-29)
+
+### Bug Fixes
+
+-   **editor:** center the parent selector dot in the taller header toolbar ([eb111b0](https://github.com/t-hamano/mark-bricks/commit/eb111b0d256f29f52c5e7bf768479ca5fa741d4a))
+-   **editor:** restore the list view expander width so nested blocks stay indented ([1798376](https://github.com/t-hamano/mark-bricks/commit/1798376d623c12708dd96cce2711faabf56d50ce))
+-   **tauri:** keep the system default label on the font family trigger ([5419cd6](https://github.com/t-hamano/mark-bricks/commit/5419cd69ad4f6f77ce5c9bc234ae095d2baf8a15))
+
+### Features
+
+-   **editor:** add a block breadcrumb bar so nested selections are navigable ([d048338](https://github.com/t-hamano/mark-bricks/commit/d048338a0782763fcd44453646b11b4e2d09f18c))
+-   **editor:** map details elements to the core details block ([#50](https://github.com/t-hamano/mark-bricks/issues/50)) ([51932e3](https://github.com/t-hamano/mark-bricks/commit/51932e329065b1e465ada9b9bf5afeb4d412b6e4))
+-   **editor:** preserve emphasis and strong marker variations ([#52](https://github.com/t-hamano/mark-bricks/issues/52)) ([37ae2d5](https://github.com/t-hamano/mark-bricks/commit/37ae2d52a76c77fa85a9399cef47783a3ecfd275))
+-   **editor:** preserve the spaces after a list marker ([#51](https://github.com/t-hamano/mark-bricks/issues/51)) ([a87ac66](https://github.com/t-hamano/mark-bricks/commit/a87ac66a8c73ea34f1763ab49ad5edee78459985))
+-   **editor:** preserve the syntax each link was written in ([#53](https://github.com/t-hamano/mark-bricks/issues/53)) ([66ad139](https://github.com/t-hamano/mark-bricks/commit/66ad13919e63398a7b2cedea95b74b2278baf246))
+-   **editor:** render mermaid code blocks as diagrams ([#58](https://github.com/t-hamano/mark-bricks/issues/58)) ([c7ff279](https://github.com/t-hamano/mark-bricks/commit/c7ff279d8edc95a9efe241daf403f7d4570f7828))
+-   **editor:** rework the link popover around the shared link control ([#57](https://github.com/t-hamano/mark-bricks/issues/57)) ([b6c2d14](https://github.com/t-hamano/mark-bricks/commit/b6c2d14b0df6a11bfb800d7752b6c8895069dcc4))
+
 # [0.10.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.9.1...tauri-v0.10.0) (2026-08-26)
 
 ### Bug Fixes
