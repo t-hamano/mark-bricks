@@ -18,6 +18,12 @@
 	.block-editor-block-toolbar {
 		overflow: visible;
 	}
+
+	// The separator dot is positioned for the default 32px toolbar, so it sits
+	// too high once the toolbar stretches to the 48px header.
+	.block-editor-block-contextual-toolbar .block-editor-block-parent-selector::after {
+		top: 23px;
+	}
 }
 
 .editor-header__inserter-toggle {
