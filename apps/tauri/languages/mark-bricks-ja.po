@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.10.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-29T00:41:58.535Z\n"
-"PO-Revision-Date: 2026-08-29T00:42:15.430Z\n"
+"POT-Creation-Date: 2026-08-29T06:01:00.813Z\n"
+"PO-Revision-Date: 2026-08-29T06:01:16.113Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,12 +26,12 @@ msgstr "「%s」に保存されていない変更があります。変更を破�
 msgid "(Untitled)"
 msgstr "(無題)"
 
-#: src/components/header-actions/index.tsx:226
+#: src/components/header-actions/index.tsx:212
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "MarkBricks について"
 
-#: src/components/header-actions/index.tsx:150
+#: src/components/header-actions/index.tsx:136
 msgid "Access all block and document tools in a single place"
 msgstr "ブロック・文書ツールを同じ場所にまとめる"
 
@@ -91,8 +91,7 @@ msgid "Close the active tab."
 msgstr "アクティブなタブを閉じる。"
 
 #: src/components/preferences-modal/index.tsx:180
-#: src/components/header-actions/index.tsx:72
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:175
 msgid "Code editor"
 msgstr "コードエディター"
 
@@ -130,7 +129,7 @@ msgstr "変更を破棄"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "エディターの最下段にブロックのパンくずリストを表示します。"
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:159
 msgid "Editor"
 msgstr "エディター"
 
@@ -146,11 +145,11 @@ msgstr "ファイルの関連付け"
 msgid "File shortcuts"
 msgstr "ファイルショートカット"
 
-#: src/components/header-actions/index.tsx:107
+#: src/components/header-actions/index.tsx:93
 msgid "Files"
 msgstr "ファイル"
 
-#: src/components/header-actions/index.tsx:159
+#: src/components/header-actions/index.tsx:145
 msgid "Focus on one block at a time"
 msgstr "ひとつのブロックに集中"
 
@@ -171,7 +170,7 @@ msgstr "一般"
 msgid "Global shortcuts"
 msgstr "グローバルショートカット"
 
-#: src/preferences/constants.ts:73
+#: src/preferences/constants.ts:76
 msgid "Handwriting"
 msgstr "手書き"
 
@@ -188,7 +187,7 @@ msgid "Highlight misspelled words while editing."
 msgstr "編集中にスペルミスのある単語を強調表示します。"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:218
+#: src/components/header-actions/index.tsx:204
 msgid "Keyboard shortcuts"
 msgstr "キーボードショートカット"
 
@@ -218,11 +217,11 @@ msgstr "MarkBricks が Markdown ファイルの既定のアプリになりまし
 msgid "Maximum width of the content area, in pixels."
 msgstr "コンテンツ領域の最大幅 (ピクセル単位)。"
 
-#: src/preferences/constants.ts:69
+#: src/preferences/constants.ts:72
 msgid "Monospace"
 msgstr "等幅"
 
-#: src/components/header-actions/index.tsx:115
+#: src/components/header-actions/index.tsx:101
 msgid "New"
 msgstr "新規"
 
@@ -256,16 +255,16 @@ msgstr "ファイルを開く…"
 msgid "Opens the List View panel by default."
 msgstr "デフォルトでリストビューパネルを開きます。"
 
-#: src/components/header-actions/index.tsx:124
+#: src/components/header-actions/index.tsx:110
 msgid "Open…"
 msgstr "開く…"
 
-#: src/components/header-actions/index.tsx:95
+#: src/components/header-actions/index.tsx:81
 msgid "Options"
 msgstr "オプション"
 
 #: src/components/preferences-modal/index.tsx:155
-#: src/components/header-actions/index.tsx:236
+#: src/components/header-actions/index.tsx:222
 msgid "Preferences"
 msgstr "設定"
 
@@ -281,17 +280,17 @@ msgstr "新しい言語を適用するにはアプリを再起動してくださ
 msgid "Restore default settings"
 msgstr "デフォルト設定に戻す"
 
-#: src/preferences/constants.ts:61
+#: src/preferences/constants.ts:64
 msgid "Sans-serif"
 msgstr "サンセリフ"
 
 #: src/components/tabbar/index.tsx:197
-#: src/components/header-actions/index.tsx:91
-#: src/components/header-actions/index.tsx:133
+#: src/components/header-actions/index.tsx:77
+#: src/components/header-actions/index.tsx:119
 msgid "Save"
 msgstr "保存"
 
-#: src/components/header-actions/index.tsx:142
+#: src/components/header-actions/index.tsx:128
 msgid "Save As…"
 msgstr "名前を付けて保存…"
 
@@ -311,7 +310,7 @@ msgstr "アクティブなファイルを保存。"
 msgid "Selection shortcuts"
 msgstr "選択ショートカット"
 
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:68
 msgid "Serif"
 msgstr "セリフ"
 
@@ -336,19 +335,19 @@ msgstr "行番号を表示"
 msgid "Spell check"
 msgstr "スペルチェック"
 
-#: src/components/header-actions/index.tsx:158
+#: src/components/header-actions/index.tsx:144
 msgid "Spotlight mode"
 msgstr "スポットライトモード"
 
-#: src/components/header-actions/index.tsx:163
+#: src/components/header-actions/index.tsx:149
 msgid "Spotlight mode activated."
 msgstr "スポットライトモードを有効化しました。"
 
-#: src/components/header-actions/index.tsx:167
+#: src/components/header-actions/index.tsx:153
 msgid "Spotlight mode deactivated."
 msgstr "スポットライトモードを停止しました。"
 
-#: src/preferences/constants.ts:58
+#: src/preferences/constants.ts:61
 msgid "System Default"
 msgstr "システムのデフォルト"
 
@@ -370,15 +369,15 @@ msgid ""
 "MarkBricks. Please configure it from your system file manager."
 msgstr "このプラットフォームでは MarkBricks 内から既定のアプリを設定できません。システムのファイルマネージャーから設定してください。"
 
-#: src/components/header-actions/index.tsx:208
+#: src/components/header-actions/index.tsx:194
 msgid "Tools"
 msgstr "ツール"
 
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:135
 msgid "Top toolbar"
 msgstr "トップツールバー"
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:128
+#: src/components/preferences-modal/visual-editor-panel.tsx:129
 msgid "Typeface used for the content area."
 msgstr "コンテンツ領域で使用する書体。"
 
@@ -403,12 +402,12 @@ msgstr "アップデートが利用可能"
 msgid "Update check failed: %s"
 msgstr "アップデートの確認に失敗しました: %s"
 
-#: src/components/header-actions/index.tsx:145
+#: src/components/header-actions/index.tsx:131
 msgid "View"
 msgstr "表示"
 
 #: src/components/preferences-modal/index.tsx:177
-#: src/components/header-actions/index.tsx:178
+#: src/components/header-actions/index.tsx:164
 msgid "Visual editor"
 msgstr "ビジュアルエディター"
 

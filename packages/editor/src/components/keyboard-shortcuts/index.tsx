@@ -26,6 +26,7 @@ type Props = {
 	onRedo: () => void;
 	editorMode: 'visual' | 'text';
 	onEditorModeChange?: Dispatch< SetStateAction< 'visual' | 'text' > >;
+	enableCodeEditor: boolean;
 };
 
 export function KeyboardShortcuts( {
@@ -35,6 +36,7 @@ export function KeyboardShortcuts( {
 	onRedo,
 	editorMode,
 	onEditorModeChange,
+	enableCodeEditor,
 }: Props ) {
 	const isListViewOpened = useSelect(
 		( select ) => select( editorStore ).isListViewOpened(),
@@ -70,18 +72,20 @@ export function KeyboardShortcuts( {
 				: [ { modifier: 'primary', character: 'y' } ],
 		} );
 
-		registerShortcut( {
-			name: 'mark-bricks/toggle-mode',
-			category: 'global',
-			description: __(
-				'Switch between the visual editor and the code editor.',
-				'mark-bricks'
-			),
-			keyCombination: {
-				modifier: 'secondary',
-				character: 'm',
-			},
-		} );
+		if ( enableCodeEditor ) {
+			registerShortcut( {
+				name: 'mark-bricks/toggle-mode',
+				category: 'global',
+				description: __(
+					'Switch between the visual editor and the code editor.',
+					'mark-bricks'
+				),
+				keyCombination: {
+					modifier: 'secondary',
+					character: 'm',
+				},
+			} );
+		}
 
 		registerShortcut( {
 			name: 'mark-bricks/toggle-list-view',
@@ -113,7 +117,7 @@ export function KeyboardShortcuts( {
 			unregisterShortcut( 'mark-bricks/toggle-list-view' );
 			unregisterShortcut( 'mark-bricks/keyboard-shortcuts' );
 		};
-	}, [ registerShortcut, unregisterShortcut ] );
+	}, [ registerShortcut, unregisterShortcut, enableCodeEditor ] );
 
 	useShortcut(
 		'mark-bricks/undo',
@@ -133,12 +137,16 @@ export function KeyboardShortcuts( {
 		{ isDisabled: ! canRedo }
 	);
 
-	useShortcut( 'mark-bricks/toggle-mode', ( event ) => {
-		event.preventDefault();
-		onEditorModeChange?.( ( mode ) =>
-			mode === 'visual' ? 'text' : 'visual'
-		);
-	} );
+	useShortcut(
+		'mark-bricks/toggle-mode',
+		( event ) => {
+			event.preventDefault();
+			onEditorModeChange?.( ( mode ) =>
+				mode === 'visual' ? 'text' : 'visual'
+			);
+		},
+		{ isDisabled: ! enableCodeEditor }
+	);
 
 	useShortcut(
 		'mark-bricks/toggle-list-view',

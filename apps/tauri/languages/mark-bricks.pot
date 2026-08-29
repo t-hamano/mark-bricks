@@ -2,13 +2,13 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.10.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-29T00:41:58.535Z\n"
+"POT-Creation-Date: 2026-08-29T06:01:00.813Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -47,23 +47,23 @@ msgstr ""
 msgid "High Contrast Dark"
 msgstr ""
 
-#: src/preferences/constants.ts:58
+#: src/preferences/constants.ts:61
 msgid "System Default"
 msgstr ""
 
-#: src/preferences/constants.ts:61
+#: src/preferences/constants.ts:64
 msgid "Sans-serif"
 msgstr ""
 
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:68
 msgid "Serif"
 msgstr ""
 
-#: src/preferences/constants.ts:69
+#: src/preferences/constants.ts:72
 msgid "Monospace"
 msgstr ""
 
-#: src/preferences/constants.ts:73
+#: src/preferences/constants.ts:76
 msgid "Handwriting"
 msgstr ""
 
@@ -158,8 +158,8 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:197
-#: src/components/header-actions/index.tsx:91
-#: src/components/header-actions/index.tsx:133
+#: src/components/header-actions/index.tsx:77
+#: src/components/header-actions/index.tsx:119
 msgid "Save"
 msgstr ""
 
@@ -226,12 +226,12 @@ msgstr ""
 msgid "Font family"
 msgstr ""
 
-#: src/components/preferences-modal/visual-editor-panel.tsx:128
+#: src/components/preferences-modal/visual-editor-panel.tsx:129
 msgid "Typeface used for the content area."
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:155
-#: src/components/header-actions/index.tsx:236
+#: src/components/header-actions/index.tsx:222
 msgid "Preferences"
 msgstr ""
 
@@ -240,13 +240,12 @@ msgid "General"
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:177
-#: src/components/header-actions/index.tsx:178
+#: src/components/header-actions/index.tsx:164
 msgid "Visual editor"
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:180
-#: src/components/header-actions/index.tsx:72
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:175
 msgid "Code editor"
 msgstr ""
 
@@ -312,7 +311,7 @@ msgid "Restore default settings"
 msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:218
+#: src/components/header-actions/index.tsx:204
 msgid "Keyboard shortcuts"
 msgstr ""
 
@@ -340,63 +339,63 @@ msgstr ""
 msgid "List View shortcuts"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:95
+#: src/components/header-actions/index.tsx:81
 msgid "Options"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:107
+#: src/components/header-actions/index.tsx:93
 msgid "Files"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:115
+#: src/components/header-actions/index.tsx:101
 msgid "New"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:124
+#: src/components/header-actions/index.tsx:110
 msgid "Open…"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:142
+#: src/components/header-actions/index.tsx:128
 msgid "Save As…"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:145
+#: src/components/header-actions/index.tsx:131
 msgid "View"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:135
 msgid "Top toolbar"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:150
+#: src/components/header-actions/index.tsx:136
 msgid "Access all block and document tools in a single place"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:158
+#: src/components/header-actions/index.tsx:144
 msgid "Spotlight mode"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:159
+#: src/components/header-actions/index.tsx:145
 msgid "Focus on one block at a time"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:163
+#: src/components/header-actions/index.tsx:149
 msgid "Spotlight mode activated."
 msgstr ""
 
-#: src/components/header-actions/index.tsx:167
+#: src/components/header-actions/index.tsx:153
 msgid "Spotlight mode deactivated."
 msgstr ""
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:159
 msgid "Editor"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:208
+#: src/components/header-actions/index.tsx:194
 msgid "Tools"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:226
+#: src/components/header-actions/index.tsx:212
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr ""

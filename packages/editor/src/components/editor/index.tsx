@@ -79,6 +79,7 @@ type Props = {
 		fixedToolbar?: boolean;
 		focusMode?: boolean;
 		spellCheck?: boolean;
+		enableCodeEditor?: boolean;
 		codeEditor?: Partial< CodeEditorSettings >;
 	};
 	headerActions?: ReactNode;
@@ -104,6 +105,8 @@ export function Editor( {
 	const fontSize = editorStyles?.fontSize;
 	const fontFamily = editorStyles?.fontFamily;
 	const customStyles = editorStyles?.css;
+
+	const enableCodeEditor = settings?.enableCodeEditor ?? true;
 
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
 	const isVisualMode = editorMode === 'visual';
@@ -185,6 +188,7 @@ export function Editor( {
 						onRedo={ redo }
 						editorMode={ editorMode }
 						onEditorModeChange={ onEditorModeChange }
+						enableCodeEditor={ enableCodeEditor }
 					/>
 					<EditorHeader
 						canUndo={ canUndo }
@@ -195,6 +199,8 @@ export function Editor( {
 						inserterToggleRef={ inserterToggleRef }
 						listViewToggleRef={ listViewToggleRef }
 						editorMode={ editorMode }
+						onEditorModeChange={ onEditorModeChange }
+						enableCodeEditor={ enableCodeEditor }
 						fixedToolbar={ hasFixedToolbar }
 						headerActions={ headerActions }
 					/>

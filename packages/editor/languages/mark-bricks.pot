@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-29T02:08:13.453Z\n"
+"POT-Creation-Date: 2026-08-29T06:01:00.298Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -72,7 +72,7 @@ msgid "Link"
 msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:43
-#: src/components/editor-header/index.tsx:115
+#: src/components/editor-header/index.tsx:126
 msgid "Document Overview"
 msgstr ""
 
@@ -112,23 +112,23 @@ msgstr ""
 msgid "(Multiple H1 headings are not recommended)"
 msgstr ""
 
-#: src/components/keyboard-shortcuts/index.tsx:52
+#: src/components/keyboard-shortcuts/index.tsx:54
 msgid "Undo your last changes."
 msgstr ""
 
-#: src/components/keyboard-shortcuts/index.tsx:62
+#: src/components/keyboard-shortcuts/index.tsx:64
 msgid "Redo your last undo."
 msgstr ""
 
-#: src/components/keyboard-shortcuts/index.tsx:76
+#: src/components/keyboard-shortcuts/index.tsx:79
 msgid "Switch between the visual editor and the code editor."
 msgstr ""
 
-#: src/components/keyboard-shortcuts/index.tsx:89
+#: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr ""
 
-#: src/components/keyboard-shortcuts/index.tsx:99
+#: src/components/keyboard-shortcuts/index.tsx:103
 msgid "Display these keyboard shortcuts."
 msgstr ""
 
@@ -184,24 +184,28 @@ msgstr ""
 msgid "Blocks"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:81
+#: src/components/editor-header/index.tsx:88
 msgid "Close Block Inserter"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:82
+#: src/components/editor-header/index.tsx:89
 msgid "Block Inserter"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:93
+#: src/components/editor-header/index.tsx:102
 msgid "Undo"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:102
+#: src/components/editor-header/index.tsx:111
 msgid "Redo"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:114
+#: src/components/editor-header/index.tsx:125
 msgid "Hide Document Overview"
+msgstr ""
+
+#: src/components/editor-header/index.tsx:151
+msgid "Code editor"
 msgstr ""
 
 #: src/block-library/table/edit.tsx:231
@@ -292,14 +296,6 @@ msgstr ""
 msgid "Type / to choose a block"
 msgstr ""
 
-#: src/block-library/list/edit.tsx:48
-msgid "Unordered"
-msgstr ""
-
-#: src/block-library/list/edit.tsx:54
-msgid "Ordered"
-msgstr ""
-
 #: src/block-library/list-item/edit.tsx:63
 msgid "Outdent"
 msgstr ""
@@ -326,6 +322,14 @@ msgstr ""
 
 #: src/block-library/list-item/edit.tsx:133
 msgid "Turn into a task item"
+msgstr ""
+
+#: src/block-library/list/edit.tsx:48
+msgid "Unordered"
+msgstr ""
+
+#: src/block-library/list/edit.tsx:54
+msgid "Ordered"
 msgstr ""
 
 #: src/block-library/image/edit.tsx:79
@@ -412,7 +416,7 @@ msgstr ""
 msgid "Write summary…"
 msgstr ""
 
-#: src/block-library/code/mermaid-preview.tsx:135
+#: src/block-library/code/mermaid-preview.tsx:121
 msgid "The diagram could not be rendered."
 msgstr ""
 

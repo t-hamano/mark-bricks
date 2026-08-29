@@ -18,8 +18,8 @@ import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { displayShortcut } from '@wordpress/keycodes';
 import { PreferenceToggleMenuItem } from '@wordpress/preferences';
-import { code, moreVertical } from '@wordpress/icons';
-import { Button, IconButton, Stack } from '@wordpress/ui';
+import { moreVertical } from '@wordpress/icons';
+import { Button, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -67,20 +67,6 @@ export default function HeaderActions( {
 
 	return (
 		<Stack direction="row" align="center" gap="sm">
-			<IconButton
-				icon={ code }
-				label={ __( 'Code editor', 'mark-bricks' ) }
-				shortcut={ toggleModeShortcut }
-				variant="minimal"
-				tone="neutral"
-				size="compact"
-				onClick={ () =>
-					onEditorModeChange(
-						editorMode === 'text' ? 'visual' : 'text'
-					)
-				}
-				aria-pressed={ editorMode === 'text' }
-			/>
 			<Button
 				size="compact"
 				onClick={ () => {
