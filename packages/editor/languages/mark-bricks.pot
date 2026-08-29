@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-26T14:07:41.285Z\n"
+"POT-Creation-Date: 2026-08-29T02:08:13.453Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -35,46 +35,6 @@ msgstr ""
 msgid "Strikethrough"
 msgstr ""
 
-#: src/format-library/link.tsx:28
-msgid "Link"
-msgstr ""
-
-#: src/format-library/link.tsx:109
-msgid "URL"
-msgstr ""
-
-#: src/format-library/link.tsx:112
-#: src/block-library/image/edit.tsx:144
-#: src/block-library/image/edit.tsx:148
-msgid "Paste or type URL"
-msgstr ""
-
-#: src/format-library/link.tsx:116
-#: src/block-library/image/edit.tsx:223
-msgid "Title"
-msgstr ""
-
-#: src/format-library/link.tsx:119
-#: src/block-library/image/edit.tsx:226
-msgid "Enter title…"
-msgstr ""
-
-#: src/format-library/link.tsx:120
-#: src/block-library/image/edit.tsx:230
-msgid "Shown as a tooltip on hover."
-msgstr ""
-
-#: src/format-library/link.tsx:134
-msgid "Remove"
-msgstr ""
-
-#: src/format-library/link.tsx:142
-#: src/block-library/image/edit.tsx:158
-#: src/block-library/image/edit.tsx:238
-#: src/block-library/image/edit.tsx:304
-msgid "Apply"
-msgstr ""
-
 #: src/format-library/italic.tsx:17
 msgid "Italic"
 msgstr ""
@@ -89,6 +49,26 @@ msgstr ""
 
 #: src/format-library/bold.tsx:17
 msgid "Bold"
+msgstr ""
+
+#: src/format-library/link/inline.tsx:100
+#: src/block-library/image/edit.tsx:219
+msgid "Title"
+msgstr ""
+
+#: src/format-library/link/inline.tsx:115
+#: src/block-library/image/edit.tsx:226
+msgid "Shown as a tooltip on hover."
+msgstr ""
+
+#: src/format-library/link/inline.tsx:138
+#: src/block-library/image/edit.tsx:142
+#: src/block-library/image/edit.tsx:146
+msgid "Paste or type URL"
+msgstr ""
+
+#: src/format-library/link/index.tsx:36
+msgid "Link"
 msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:43
@@ -236,47 +216,47 @@ msgstr ""
 msgid "Column count"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:254
+#: src/block-library/table/edit.tsx:253
 msgid "Row count"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:261
+#: src/block-library/table/edit.tsx:259
 msgid "Create Table"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:302
+#: src/block-library/table/edit.tsx:300
 msgid "Header label"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:303
+#: src/block-library/table/edit.tsx:301
 msgid "Cell content"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:333
+#: src/block-library/table/edit.tsx:331
 msgid "Edit table"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:337
+#: src/block-library/table/edit.tsx:335
 msgid "Insert row before"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:345
+#: src/block-library/table/edit.tsx:343
 msgid "Insert row after"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:353
+#: src/block-library/table/edit.tsx:351
 msgid "Delete row"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:362
+#: src/block-library/table/edit.tsx:360
 msgid "Insert column before"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:371
+#: src/block-library/table/edit.tsx:369
 msgid "Insert column after"
 msgstr ""
 
-#: src/block-library/table/edit.tsx:380
+#: src/block-library/table/edit.tsx:378
 msgid "Delete column"
 msgstr ""
 
@@ -356,48 +336,58 @@ msgstr ""
 msgid "Upload an image from your device or insert from a URL."
 msgstr ""
 
-#: src/block-library/image/edit.tsx:97
-#: src/block-library/image/edit.tsx:318
+#: src/block-library/image/edit.tsx:96
+#: src/block-library/image/edit.tsx:312
 msgid "Browse local file"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:111
+#: src/block-library/image/edit.tsx:109
 msgid "Enter URL or file path"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:182
+#: src/block-library/image/edit.tsx:155
+#: src/block-library/image/edit.tsx:233
+#: src/block-library/image/edit.tsx:298
+msgid "Apply"
+msgstr ""
+
+#: src/block-library/image/edit.tsx:179
 msgid "Edit alt and title"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:209
+#: src/block-library/image/edit.tsx:206
 msgid "Alt text"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:212
+#: src/block-library/image/edit.tsx:209
 msgid "Enter alt text…"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:216
+#: src/block-library/image/edit.tsx:213
 msgid "Describes the image for screen readers."
 msgstr ""
 
-#: src/block-library/image/edit.tsx:259
+#: src/block-library/image/edit.tsx:222
+msgid "Enter title…"
+msgstr ""
+
+#: src/block-library/image/edit.tsx:254
 msgid "Replace image"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:290
+#: src/block-library/image/edit.tsx:285
 msgid "URL or file path"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:294
+#: src/block-library/image/edit.tsx:289
 msgid "Paste or type URL or file path"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:330
+#: src/block-library/image/edit.tsx:324
 msgid "Reset"
 msgstr ""
 
-#: src/block-library/image/edit.tsx:341
+#: src/block-library/image/edit.tsx:335
 msgid "Failed to load image."
 msgstr ""
 
@@ -422,22 +412,26 @@ msgstr ""
 msgid "Write summary…"
 msgstr ""
 
+#: src/block-library/code/mermaid-preview.tsx:135
+msgid "The diagram could not be rendered."
+msgstr ""
+
 #: src/block-library/code/edit.tsx:64
 msgid "Write code…"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:90
+#: src/block-library/code/edit.tsx:89
 msgid "Change language"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:105
+#: src/block-library/code/edit.tsx:104
 msgid "Language"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:122
+#: src/block-library/code/edit.tsx:121
 msgid "Choose language…"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:131
+#: src/block-library/code/edit.tsx:130
 msgid "No matching language."
 msgstr ""

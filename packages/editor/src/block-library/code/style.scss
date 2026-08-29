@@ -28,4 +28,30 @@
 		z-index: 1;
 		border-bottom-right-radius: 3px;
 	}
+
+	&:not(.is-selected):has(.wp-block-code__mermaid) {
+		background: #fff;
+	}
+
+	&.is-selected .wp-block-code__mermaid {
+		margin-top: 1em;
+	}
+
+	.wp-block-code__mermaid-diagram {
+		background: #fff;
+		overflow-x: auto;
+		text-align: center;
+		margin-top: 1em;
+		padding: 1em;
+	}
+
+	.wp-block-code__mermaid-diagram.is-stale {
+		opacity: 0.5;
+	}
+
+	.wp-block-code__mermaid-error-detail {
+		margin: 0;
+		font-family: var(--wpds-typography-font-family-mono);
+		white-space: pre-wrap;
+	}
 }

@@ -123,6 +123,13 @@ def fibonacci(limit):
 plain code block without a language
 ```
 
+```mermaid
+flowchart LR
+    A[Markdown] --> B{Parse}
+    B --> C[Blocks]
+    C --> A
+```
+
 ## Image
 
 ![A mountain landscape](https://picsum.photos/id/1018/800/400 'Lorem Picsum')
