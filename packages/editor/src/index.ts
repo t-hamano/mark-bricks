@@ -11,7 +11,7 @@ export { LOCALES, applyLocale, getLocale, type Locale } from './i18n';
 export { registerBlocks } from './block-library';
 export { registerFormats } from './format-library';
 export { Editor } from './components/editor';
-export type { EditorStyles } from './components/editor';
+export type { EditorHandle, EditorStyles } from './components/editor';
 export type { CodeEditorSettings } from './components/text-editor';
 export type { Platform } from './platform';
 export {

@@ -13,7 +13,7 @@ import { dispatch, select } from '@wordpress/data';
  * Internal dependencies
  */
 import tabsStore from '../store';
-import { openFilePath, saveTab } from '.';
+import { openFilePath, saveTab, setEditorFlush } from '.';
 
 afterEach( () => {
 	clearMocks();
@@ -148,5 +148,36 @@ describe( 'saveTab', () => {
 			{ path: '/docs/save.md', contents: 'edited body' },
 		] );
 		expect( requireTab( '/docs/save.md' ).isDirty ).toBe( false );
+	} );
+
+	it( 'flushes the pending editor change before reading the content', async () => {
+		const writes: unknown[] = [];
+		mockIPC( ( cmd, payload ) => {
+			if ( cmd === 'read_text_file' ) {
+				return 'original';
+			}
+			if ( cmd === 'write_text_file' ) {
+				writes.push( payload );
+				return null;
+			}
+		} );
+
+		await openFilePath( '/docs/save-flush.md' );
+		const id = requireTab( '/docs/save-flush.md' ).id;
+
+		setEditorFlush( () => {
+			dispatch( tabsStore ).setTabContent( id, 'debounced body' );
+			dispatch( tabsStore ).setTabDirty( id, true );
+		} );
+
+		try {
+			await saveTab( id );
+		} finally {
+			setEditorFlush( null );
+		}
+
+		expect( writes ).toEqual( [
+			{ path: '/docs/save-flush.md', contents: 'debounced body' },
+		] );
 	} );
 } );

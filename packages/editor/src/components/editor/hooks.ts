@@ -51,6 +51,7 @@ type MarkdownDocument = {
 	redo: () => void;
 	canUndo: boolean;
 	canRedo: boolean;
+	flush: () => void;
 };
 
 /**
@@ -189,6 +190,13 @@ export function useMarkdownDocument( {
 		} );
 	}, [] );
 
+	// Drains the debounce so a caller that is about to read the markdown
+	// (a save, a dirty check) sees the latest keystrokes instead of the
+	// value from up to the debounce window ago.
+	const flush = useCallback( () => {
+		debouncedEmitMarkdown.flush();
+	}, [ debouncedEmitMarkdown ] );
+
 	return {
 		blocks: history.present,
 		onBlocksChange,
@@ -197,6 +205,7 @@ export function useMarkdownDocument( {
 		redo,
 		canUndo: history.past.length > 0,
 		canRedo: history.future.length > 0,
+		flush,
 	};
 }
 

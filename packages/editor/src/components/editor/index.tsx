@@ -2,12 +2,15 @@
  * External dependencies
  */
 import {
+	forwardRef,
 	lazy,
 	Suspense,
+	useImperativeHandle,
 	useMemo,
 	useRef,
 	type CSSProperties,
 	type Dispatch,
+	type ForwardedRef,
 	type ReactNode,
 	type SetStateAction,
 } from 'react';
@@ -60,6 +63,10 @@ const baseContentStyles = [
 	{ css: canvasStyles },
 ];
 
+export type EditorHandle = {
+	flush: () => void;
+};
+
 export type EditorStyles = {
 	contentWidth?: number;
 	fontSize?: number;
@@ -88,17 +95,20 @@ type Props = {
 	platform?: Partial< Platform >;
 };
 
-export function Editor( {
-	content,
-	onChange,
-	editorMode = 'visual',
-	onEditorModeChange,
-	settings,
-	headerActions,
-	editorStyles,
-	style,
-	platform,
-}: Props ) {
+function UnforwardedEditor(
+	{
+		content,
+		onChange,
+		editorMode = 'visual',
+		onEditorModeChange,
+		settings,
+		headerActions,
+		editorStyles,
+		style,
+		platform,
+	}: Props,
+	ref: ForwardedRef< EditorHandle >
+) {
 	const hasFixedToolbar = !! settings?.fixedToolbar;
 	const focusMode = !! settings?.focusMode;
 	const contentWidth = editorStyles?.contentWidth;
@@ -119,8 +129,18 @@ export function Editor( {
 	const inserterToggleRef = useRef< HTMLButtonElement >( null );
 	const listViewToggleRef = useRef< HTMLButtonElement >( null );
 
-	const { blocks, onBlocksChange, onInput, undo, redo, canUndo, canRedo } =
-		useMarkdownDocument( { content, onChange, isVisualMode } );
+	const {
+		blocks,
+		onBlocksChange,
+		onInput,
+		undo,
+		redo,
+		canUndo,
+		canRedo,
+		flush,
+	} = useMarkdownDocument( { content, onChange, isVisualMode } );
+
+	useImperativeHandle( ref, () => ( { flush } ), [ flush ] );
 
 	useInitialListView( !! settings?.showListViewByDefault );
 
@@ -241,3 +261,5 @@ export function Editor( {
 		</PlatformProvider>
 	);
 }
+
+export const Editor = forwardRef( UnforwardedEditor );

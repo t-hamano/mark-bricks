@@ -1,11 +1,12 @@
 /**
  * External dependencies
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getName, getVersion } from '@tauri-apps/api/app';
 import {
 	Editor,
 	type CodeEditorSettings,
+	type EditorHandle,
 	type EditorStyles,
 } from '@mark-bricks/editor';
 
@@ -28,6 +29,7 @@ import PreferencesModal from '../preferences-modal';
 import Tabbar from '../tabbar';
 import useAppCloseGuard from '../../hooks/use-app-close-guard';
 import useAutoUpdater from '../../hooks/use-auto-updater';
+import useEditorFlush from '../../hooks/use-editor-flush';
 import useFileOpenEvents from '../../hooks/use-file-open-events';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
@@ -49,6 +51,10 @@ export function App() {
 	const [ editorMode, setEditorMode ] = useState< 'visual' | 'text' >(
 		'visual'
 	);
+
+	const editorRef = useRef< EditorHandle >( null );
+
+	useEditorFlush( editorRef );
 
 	useEffect( () => {
 		getName().then( setAppName );
@@ -103,6 +109,7 @@ export function App() {
 			) : (
 				<Editor
 					key={ activeTab.id }
+					ref={ editorRef }
 					content={ activeTab.content }
 					onChange={ ( content ) => {
 						setTabContent( activeTab.id, content );

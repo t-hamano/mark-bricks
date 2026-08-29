@@ -19,6 +19,24 @@ import tabsStore from '../store';
 
 const MARKDOWN_EXTENSIONS = [ 'md', 'markdown' ];
 
+let flushEditor: ( () => void ) | null = null;
+
+/**
+ * Registers the mounted editor's flush callback.
+ *
+ * @param fn Flush callback, or `null` when the editor unmounts.
+ */
+export function setEditorFlush( fn: ( () => void ) | null ) {
+	flushEditor = fn;
+}
+
+/**
+ * Pushes the editor's debounced change into the store.
+ */
+export function flushPendingEdits() {
+	flushEditor?.();
+}
+
 export function newFile() {
 	dispatch( tabsStore ).openTab();
 }
@@ -84,6 +102,8 @@ export async function saveActiveFileAs() {
 }
 
 export async function saveTab( id: string ) {
+	flushPendingEdits();
+
 	const tab = select( tabsStore )
 		.getTabs()
 		.find( ( t ) => t.id === id );
@@ -105,6 +125,8 @@ export async function saveTab( id: string ) {
 }
 
 export async function saveTabAs( id: string ) {
+	flushPendingEdits();
+
 	const tab = select( tabsStore )
 		.getTabs()
 		.find( ( t ) => t.id === id );
@@ -139,6 +161,8 @@ export function requestCloseActiveTab() {
 }
 
 export function requestCloseTab( id: string ) {
+	flushPendingEdits();
+
 	const tab = select( tabsStore )
 		.getTabs()
 		.find( ( t ) => t.id === id );

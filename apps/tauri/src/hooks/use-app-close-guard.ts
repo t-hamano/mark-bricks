@@ -7,11 +7,12 @@ import { getCurrentWindow } from '@tauri-apps/api/window';
 /**
  * WordPress dependencies
  */
-import { useDispatch } from '@wordpress/data';
+import { select, useDispatch } from '@wordpress/data';
 
 /**
  * Internal dependencies
  */
+import { flushPendingEdits } from '../actions';
 import tabsStore, { type Tab } from '../store';
 
 type Props = {
@@ -22,11 +23,6 @@ type Props = {
 export default function useAppCloseGuard( { tabs, pendingCloseId }: Props ) {
 	const { setPendingCloseId } = useDispatch( tabsStore );
 
-	const tabsRef = useRef< Tab[] >( tabs );
-	useEffect( () => {
-		tabsRef.current = tabs;
-	}, [ tabs ] );
-
 	const isClosingAppRef = useRef( false );
 	const prevPendingRef = useRef< string | null >( pendingCloseId );
 
@@ -34,7 +30,10 @@ export default function useAppCloseGuard( { tabs, pendingCloseId }: Props ) {
 		let unlisten: ( () => void ) | undefined;
 		getCurrentWindow()
 			.onCloseRequested( ( event ) => {
-				const dirty = tabsRef.current.find( ( t ) => t.isDirty );
+				flushPendingEdits();
+				const dirty = select( tabsStore )
+					.getTabs()
+					.find( ( t ) => t.isDirty );
 				if ( ! dirty ) {
 					return;
 				}
