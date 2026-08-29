@@ -26,6 +26,7 @@ type Props = {
 	canRedo: boolean;
 	onUndo: () => void;
 	onRedo: () => void;
+	showUndoRedo: boolean;
 	inserterToggleRef: RefObject< HTMLButtonElement >;
 	listViewToggleRef: RefObject< HTMLButtonElement >;
 	editorMode: 'visual' | 'text';
@@ -38,6 +39,7 @@ export function EditorHeader( {
 	canRedo,
 	onUndo,
 	onRedo,
+	showUndoRedo,
 	inserterToggleRef,
 	listViewToggleRef,
 	editorMode,
@@ -88,24 +90,28 @@ export function EditorHeader( {
 					disabled={ editorMode === 'text' }
 					className="editor-header__inserter-toggle"
 				/>
-				<IconButton
-					icon={ undo }
-					label={ __( 'Undo', 'mark-bricks' ) }
-					variant="minimal"
-					tone="neutral"
-					size="compact"
-					onClick={ onUndo }
-					disabled={ ! canUndo }
-				/>
-				<IconButton
-					icon={ redo }
-					label={ __( 'Redo', 'mark-bricks' ) }
-					variant="minimal"
-					tone="neutral"
-					size="compact"
-					onClick={ onRedo }
-					disabled={ ! canRedo }
-				/>
+				{ showUndoRedo && (
+					<>
+						<IconButton
+							icon={ undo }
+							label={ __( 'Undo', 'mark-bricks' ) }
+							variant="minimal"
+							tone="neutral"
+							size="compact"
+							onClick={ onUndo }
+							disabled={ ! canUndo }
+						/>
+						<IconButton
+							icon={ redo }
+							label={ __( 'Redo', 'mark-bricks' ) }
+							variant="minimal"
+							tone="neutral"
+							size="compact"
+							onClick={ onRedo }
+							disabled={ ! canRedo }
+						/>
+					</>
+				) }
 				<IconButton
 					ref={ listViewToggleRef }
 					icon={ listView }

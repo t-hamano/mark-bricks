@@ -69,6 +69,7 @@ type Props = {
 	settings?: {
 		showListViewByDefault?: boolean;
 		showBlockBreadcrumbs?: boolean;
+		showUndoRedo?: boolean;
 		fixedToolbar?: boolean;
 		focusMode?: boolean;
 		spellCheck?: boolean;
@@ -184,6 +185,7 @@ export function Editor( {
 						canRedo={ canRedo }
 						onUndo={ undo }
 						onRedo={ redo }
+						showUndoRedo={ settings?.showUndoRedo ?? true }
 						inserterToggleRef={ inserterToggleRef }
 						listViewToggleRef={ listViewToggleRef }
 						editorMode={ editorMode }
