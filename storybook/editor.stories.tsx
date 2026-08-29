@@ -2,7 +2,7 @@
  * External dependencies
  */
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'storybook/preview-api';
+import { useArgs, useState } from 'storybook/preview-api';
 import { fn } from 'storybook/test';
 import { Editor } from '@mark-bricks/editor';
 import * as fixtures from '@mark-bricks/fixtures';
@@ -31,6 +31,10 @@ const meta: Meta< typeof Editor > = {
 	},
 	render: function Render( args ) {
 		const [ content, setContent ] = useState( args.content ?? '' );
+		// Writing the mode back into args keeps the editor's own Code editor
+		// button and the Controls radio driving the same value.
+		const [ , updateArgs ] = useArgs();
+		const editorMode = args.editorMode ?? 'visual';
 		return (
 			<div style={ { height: '100vh' } }>
 				<Editor
@@ -40,6 +44,14 @@ const meta: Meta< typeof Editor > = {
 						setContent( next );
 						args.onChange( next );
 					} }
+					onEditorModeChange={ ( value ) =>
+						updateArgs( {
+							editorMode:
+								typeof value === 'function'
+									? value( editorMode )
+									: value,
+						} )
+					}
 				/>
 			</div>
 		);
