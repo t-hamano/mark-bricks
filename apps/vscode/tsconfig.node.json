@@ -1,0 +1,10 @@
+// Build tooling that runs in Node: the Vite config and the build scripts.
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"lib": [ "ES2023" ],
+		"allowSyntheticDefaultImports": true,
+		"types": [ "node" ]
+	},
+	"include": [ "vite.config.ts" ]
+}

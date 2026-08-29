@@ -24,7 +24,7 @@
 		"i18n:make-pot": "pnpm -r --if-present i18n:make-pot",
 		"i18n:make-po": "pnpm -r --if-present i18n:make-po",
 		"i18n:make-json": "pnpm -r --if-present i18n:make-json",
-		"type-check": "tsc -p packages/editor/tsconfig.json --noEmit && tsc -p apps/tauri/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.json --noEmit",
+		"type-check": "tsc -p packages/editor/tsconfig.json --noEmit && tsc -p apps/tauri/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.webview.json --noEmit && tsc -p apps/vscode/tsconfig.node.json --noEmit",
 		"test": "pnpm -r --if-present test",
 		"format": "prettier --write .",
 		"prepare": "husky",

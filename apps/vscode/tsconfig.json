@@ -1,12 +1,12 @@
+// The extension host: Node, CommonJS, no DOM. Bundled by esbuild, so this
+// config only type-checks. The webview has its own config.
 {
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"module": "CommonJS",
 		"moduleResolution": "Node",
 		"lib": [ "ES2020" ],
-		"rootDir": "src",
-		"outDir": "dist",
-		"noEmit": false
+		"types": [ "node" ]
 	},
-	"include": [ "src" ]
+	"include": [ "src/extension" ]
 }

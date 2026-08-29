@@ -49,16 +49,28 @@
 		}
 	},
 	"scripts": {
-		"build": "echo \"TODO: bundle extension host and webview\" && exit 0",
-		"package": "vsce package",
+		"build": "node scripts/build.mjs",
+		"dev": "node scripts/build.mjs --watch",
+		"package": "pnpm run build && vsce package --no-dependencies",
 		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor && node scripts/bump-version.mjs",
 		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor"
 	},
 	"dependencies": {
-		"@mark-bricks/editor": "workspace:*"
+		"@mark-bricks/editor": "workspace:*",
+		"@wordpress/base-styles": "^13.0.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
 	},
 	"devDependencies": {
+		"@types/node": "^26.3.0",
+		"@types/react": "^18.3.31",
+		"@types/react-dom": "^18.3.7",
 		"@types/vscode": "^1.85.0",
-		"@vscode/vsce": "^3"
+		"@vitejs/plugin-react": "^6.1.0",
+		"@vscode/vsce": "^3",
+		"esbuild": "^0.28.2",
+		"sass": "^1.103.1",
+		"typescript": "~5.8.3",
+		"vite": "^8.2.2"
 	}
 }

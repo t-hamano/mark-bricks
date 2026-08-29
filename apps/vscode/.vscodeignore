@@ -1,8 +1,13 @@
+# Everything the extension needs at runtime is bundled into dist/ by
+# scripts/build.mjs, so only that and the package metadata ship.
+.vscode/**
+.vscode-test/**
 src/**
+scripts/**
 node_modules/**
 tsconfig*.json
-.eslintrc*
-.gitignore
+vite.config.ts
+.npmrc
 **/*.map
 **/*.ts
-!dist/**/*.d.ts
+**/*.tsx
