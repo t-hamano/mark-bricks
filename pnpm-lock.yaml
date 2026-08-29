@@ -225,6 +225,9 @@ importers:
       '@wordpress/rich-text':
         specifier: ^7.54.0
         version: 7.54.0(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@wordpress/style-runtime':
+        specifier: ^0.10.0
+        version: 0.10.0
       '@wordpress/theme':
         specifier: ^2.0.0
         version: 2.0.0(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(esbuild@0.27.7)(postcss@8.5.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@16.26.1(typescript@5.8.3))(vite@8.2.2(@types/node@26.3.0)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.103.1)(yaml@2.9.0))

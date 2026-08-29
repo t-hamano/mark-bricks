@@ -49,17 +49,14 @@ const TextEditor = lazy( async () => ( {
 	default: ( await import( '../text-editor' ) ).TextEditor,
 } ) );
 
-const wpUiStyles = Array.from(
-	document.head.querySelectorAll( 'style[data-wp-hash]' )
-)
-	.map( ( el ) => el.textContent ?? '' )
-	.join( '\n' );
-
+// `@wordpress/ui` styles are not listed here: the canvas registers its
+// document with the shared style runtime instead, which also covers
+// styles registered after this module is evaluated. See
+// `useCanvasStyleRuntime`.
 const baseContentStyles = [
 	{ css: designTokensStyles },
 	{ css: componentsStyles },
 	{ css: blockEditorContentStyles },
-	{ css: wpUiStyles },
 	{ css: canvasStyles },
 ];
 

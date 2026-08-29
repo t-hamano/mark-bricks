@@ -11,7 +11,11 @@ import { useMergeRefs } from '@wordpress/compose';
 /**
  * Internal dependencies
  */
-import { useCanvasSpellCheck, usePaddingAppender } from '../editor/hooks';
+import {
+	useCanvasSpellCheck,
+	useCanvasStyleRuntime,
+	usePaddingAppender,
+} from '../editor/hooks';
 import { unlock } from '../../lock-unlock';
 
 const { ExperimentalBlockCanvas } = unlock( blockEditorPrivateApis );
@@ -25,6 +29,7 @@ export function EditorCanvas( { styles, spellCheck }: Props ) {
 	const contentRef = useMergeRefs( [
 		usePaddingAppender( true ),
 		useCanvasSpellCheck( spellCheck ),
+		useCanvasStyleRuntime(),
 	] );
 	return (
 		<ExperimentalBlockCanvas

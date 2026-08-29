@@ -14,6 +14,7 @@ import {
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import { useDebounce, useRefEffect } from '@wordpress/compose';
 import { useDispatch, useRegistry } from '@wordpress/data';
+import { registerDocument } from '@wordpress/style-runtime';
 
 /**
  * Internal dependencies
@@ -217,6 +218,22 @@ export function useMarkdownDocument( {
 		canRedo: history.future.length > 0,
 		flush,
 	};
+}
+
+/**
+ * Registers the block canvas iframe with the shared style runtime.
+ *
+ * `@wordpress/ui` components register their CSS modules against the root
+ * document, so blocks rendered inside the iframe would come out unstyled.
+ * Registering the iframe document replays every style collected so far and
+ * forwards the ones registered afterwards, which a snapshot of
+ * `document.head` taken at load time cannot do.
+ */
+export function useCanvasStyleRuntime() {
+	return useRefEffect< HTMLElement >(
+		( node ) => registerDocument( node.ownerDocument ),
+		[]
+	);
 }
 
 /**
