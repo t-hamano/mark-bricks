@@ -105,6 +105,10 @@ export function useMarkdownDocument( {
 	const initialPresentRef = useRef( history.present );
 	const hasUserEditedRef = useRef( false );
 
+	// Set when the tree below was rebuilt from an external `content` change,
+	// and cleared by the emit effect that follows it.
+	const isExternalUpdateRef = useRef( false );
+
 	// Convert block edits back into markdown and report them upstream.
 	// Runs for any block change (typing, structural edits, undo/redo)
 	// because they all flow through history.present.
@@ -120,6 +124,10 @@ export function useMarkdownDocument( {
 		if ( ! isVisualMode ) {
 			return;
 		}
+		if ( isExternalUpdateRef.current ) {
+			isExternalUpdateRef.current = false;
+			return;
+		}
 		debouncedEmitMarkdown( history.present );
 	}, [ history.present, isVisualMode, debouncedEmitMarkdown ] );
 
@@ -129,6 +137,8 @@ export function useMarkdownDocument( {
 		if ( content === lastEmittedRef.current ) {
 			return;
 		}
+		debouncedEmitMarkdown.cancel();
+		isExternalUpdateRef.current = true;
 		const blocks = markdownToBlocks( content );
 		setHistory( ( h ) => ( {
 			past: [ ...h.past, h.present ],
@@ -138,7 +148,7 @@ export function useMarkdownDocument( {
 					: [ createBlock( 'core/paragraph' ) ],
 			future: [],
 		} ) );
-	}, [ content ] );
+	}, [ content, debouncedEmitMarkdown ] );
 
 	const onBlocksChange = useCallback( ( next: Block[] ) => {
 		setHistory( ( h ) => {
