@@ -30,6 +30,7 @@ export const DEFAULT_PREFERENCES = {
 		fixedToolbar: false,
 		focusMode: false,
 		showListViewByDefault: false,
+		showBlockBreadcrumbs: true,
 	},
 	'mark-bricks': {
 		language: '',

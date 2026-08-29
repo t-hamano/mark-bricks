@@ -1,0 +1,13 @@
+.editor-footer {
+	flex: 0 0 auto;
+	height: 32px;
+	padding: 0 var(--wpds-dimension-padding-sm);
+	border-top: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	overflow-x: auto;
+	scrollbar-width: none;
+
+	.block-editor-block-breadcrumb {
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+}

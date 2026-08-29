@@ -70,6 +70,12 @@ export const WithFocusMode: Story = {
 	},
 };
 
+export const WithoutBlockBreadcrumbs: Story = {
+	args: {
+		settings: { showBlockBreadcrumbs: false },
+	},
+};
+
 export const WithCustomEditorStyles: Story = {
 	args: {
 		editorStyles: {

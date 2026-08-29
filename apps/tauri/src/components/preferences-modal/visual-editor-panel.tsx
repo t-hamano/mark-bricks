@@ -18,6 +18,7 @@ const DEFAULT_EDITOR_STYLES = DEFAULT_PREFERENCES[ 'mark-bricks' ].editorStyles;
 export type VisualEditorSettings = {
 	spellCheck: boolean;
 	showListViewByDefault: boolean;
+	showBlockBreadcrumbs: boolean;
 	contentWidth: number;
 	fontSize: number;
 	fontFamily: string;
@@ -54,6 +55,17 @@ export function VisualEditorPanel( { settings, onChange }: Props ) {
 					}
 					help={ __(
 						'Opens the List View panel by default.',
+						'mark-bricks'
+					) }
+				/>
+				<ToggleControl
+					label={ __( 'Show block breadcrumbs', 'mark-bricks' ) }
+					checked={ settings.showBlockBreadcrumbs }
+					onChange={ ( value ) =>
+						onChange( { showBlockBreadcrumbs: value } )
+					}
+					help={ __(
+						'Displays the block hierarchy trail at the bottom of the editor.',
 						'mark-bricks'
 					) }
 				/>

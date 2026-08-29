@@ -60,6 +60,7 @@ export function App() {
 		tabs,
 		pendingCloseId,
 		showListViewByDefault,
+		showBlockBreadcrumbs,
 		fixedToolbar,
 		focusMode,
 		spellCheck,
@@ -76,6 +77,7 @@ export function App() {
 			tabs: all,
 			pendingCloseId: getPendingCloseId(),
 			showListViewByDefault: !! get( 'core', 'showListViewByDefault' ),
+			showBlockBreadcrumbs: !! get( 'core', 'showBlockBreadcrumbs' ),
 			fixedToolbar: !! get( 'core', 'fixedToolbar' ),
 			focusMode: !! get( 'core', 'focusMode' ),
 			spellCheck: !! get( 'mark-bricks', 'spellCheck' ),
@@ -110,6 +112,7 @@ export function App() {
 					onEditorModeChange={ setEditorMode }
 					settings={ {
 						showListViewByDefault,
+						showBlockBreadcrumbs,
 						fixedToolbar,
 						focusMode,
 						spellCheck,

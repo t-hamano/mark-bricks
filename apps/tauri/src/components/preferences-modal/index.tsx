@@ -41,6 +41,7 @@ export default function PreferencesModal() {
 		checkUpdatesAuto,
 		spellCheck,
 		showListViewByDefault,
+		showBlockBreadcrumbs,
 		editorStyles,
 	} = useSelect( ( select ) => {
 		const { get } = select( preferencesStore );
@@ -54,6 +55,7 @@ export default function PreferencesModal() {
 			checkUpdatesAuto: !! get( 'mark-bricks', 'checkUpdatesAuto' ),
 			spellCheck: !! get( 'mark-bricks', 'spellCheck' ),
 			showListViewByDefault: !! get( 'core', 'showListViewByDefault' ),
+			showBlockBreadcrumbs: !! get( 'core', 'showBlockBreadcrumbs' ),
 			editorStyles:
 				get( 'mark-bricks', 'editorStyles' ) ??
 				DEFAULT_PREFERENCES[ 'mark-bricks' ].editorStyles,
@@ -96,6 +98,13 @@ export default function PreferencesModal() {
 				'core',
 				'showListViewByDefault',
 				edits.showListViewByDefault
+			);
+		}
+		if ( edits.showBlockBreadcrumbs !== undefined ) {
+			setPreference(
+				'core',
+				'showBlockBreadcrumbs',
+				edits.showBlockBreadcrumbs
 			);
 		}
 		if (
@@ -193,6 +202,7 @@ export default function PreferencesModal() {
 								settings={ {
 									spellCheck,
 									showListViewByDefault,
+									showBlockBreadcrumbs,
 									contentWidth:
 										editorStyles.contentWidth ??
 										DEFAULT_PREFERENCES[ 'mark-bricks' ]

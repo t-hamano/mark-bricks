@@ -29,6 +29,7 @@ import blockEditorContentStyles from '@wordpress/block-editor/build-style/conten
 import canvasStyles from './canvas.scss?inline';
 import { useInitialListView, useMarkdownDocument } from './hooks';
 import { EditorCanvas } from '../editor-canvas';
+import { EditorFooter } from '../editor-footer';
 import { EditorHeader } from '../editor-header';
 import { InserterSidebar } from '../inserter-sidebar';
 import { KeyboardShortcuts } from '../keyboard-shortcuts';
@@ -67,6 +68,7 @@ type Props = {
 	onEditorModeChange?: Dispatch< SetStateAction< 'visual' | 'text' > >;
 	settings?: {
 		showListViewByDefault?: boolean;
+		showBlockBreadcrumbs?: boolean;
 		fixedToolbar?: boolean;
 		focusMode?: boolean;
 		spellCheck?: boolean;
@@ -99,6 +101,10 @@ export function Editor( {
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
 	const isVisualMode = editorMode === 'visual';
 	const showMobileToolbar = isVisualMode && isMobileViewport;
+	const showBreadcrumbs =
+		( settings?.showBlockBreadcrumbs ?? true ) &&
+		isVisualMode &&
+		! isMobileViewport;
 
 	const inserterToggleRef = useRef< HTMLButtonElement >( null );
 	const listViewToggleRef = useRef< HTMLButtonElement >( null );
@@ -213,6 +219,7 @@ export function Editor( {
 							) }
 						</main>
 					</Stack>
+					{ showBreadcrumbs && <EditorFooter /> }
 				</BlockEditorProvider>
 			</Stack>
 		</PlatformProvider>
