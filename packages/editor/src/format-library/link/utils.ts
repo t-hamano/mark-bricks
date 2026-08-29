@@ -104,28 +104,6 @@ export function getLinkValue(
 }
 
 /**
- * Builds the format a link is written with.
- *
- * The format carries only what the popover edits, so applying it drops the
- * syntax the source recorded for a link written as a bare URL or an autolink.
- * That is what turns `https://example.com` into `[text](https://example.com)`
- * the moment the link is first edited: neither of the shorter forms can hold a
- * text or a title that differs from the URL.
- *
- * @param link       The link being written.
- * @param link.url   Where the link points.
- * @param link.title The tooltip the link carries, if any.
- * @return The format to apply.
- */
-function createLinkFormat( { url, title }: LinkValue ): AppliedFormat {
-	const attributes: Record< string, string > = { url };
-	if ( title ) {
-		attributes.title = title;
-	}
-	return { type: LINK_FORMAT, attributes } as unknown as AppliedFormat;
-}
-
-/**
  * Writes a link back into a RichText value.
  *
  * @param value    RichText value carrying the selection.
@@ -139,7 +117,14 @@ export function setLink(
 	link: LinkValue
 ): RichTextValue {
 	const { start, end } = ( isActive && getFormatBoundary( value ) ) || value;
-	const format = createLinkFormat( link );
+	const attributes: Record< string, string > = { url: link.url };
+	if ( link.title ) {
+		attributes.title = link.title;
+	}
+	const format = {
+		type: LINK_FORMAT,
+		attributes,
+	} as unknown as AppliedFormat;
 	const text = link.text || link.url;
 
 	if ( text === getTextContent( slice( value, start, end ) ) ) {
