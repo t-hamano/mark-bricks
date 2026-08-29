@@ -2,6 +2,8 @@
  * External dependencies
  */
 import {
+	lazy,
+	Suspense,
 	useMemo,
 	useRef,
 	type CSSProperties,
@@ -35,10 +37,14 @@ import { InserterSidebar } from '../inserter-sidebar';
 import { KeyboardShortcuts } from '../keyboard-shortcuts';
 import { ListViewSidebar } from '../list-view-sidebar';
 import { MobileBlockToolbar } from '../mobile-block-toolbar';
-import { TextEditor, type CodeEditorSettings } from '../text-editor';
+import type { CodeEditorSettings } from '../text-editor';
 import { PlatformProvider, type Platform } from '../../platform';
 import { store as editorStore } from '../../store';
 import './style.scss';
+
+const TextEditor = lazy( async () => ( {
+	default: ( await import( '../text-editor' ) ).TextEditor,
+} ) );
 
 const wpUiStyles = Array.from(
 	document.head.querySelectorAll( 'style[data-wp-hash]' )
@@ -208,11 +214,13 @@ export function Editor( {
 						</AnimatePresence>
 						<main className="editor__content">
 							{ editorMode === 'text' ? (
-								<TextEditor
-									content={ content }
-									onChange={ onChange }
-									settings={ settings?.codeEditor }
-								/>
+								<Suspense fallback={ null }>
+									<TextEditor
+										content={ content }
+										onChange={ onChange }
+										settings={ settings?.codeEditor }
+									/>
+								</Suspense>
 							) : (
 								<EditorCanvas
 									styles={ contentStyles }
