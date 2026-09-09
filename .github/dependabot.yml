@@ -1,0 +1,36 @@
+version: 2
+updates:
+    # Rust dependencies.
+    - package-ecosystem: cargo
+      directory: /apps/tauri/src-tauri
+      schedule:
+          interval: weekly
+      groups:
+          cargo-minor-patch:
+              update-types:
+                  - minor
+                  - patch
+
+    # Frontend/build dependencies.
+    - package-ecosystem: npm
+      directory: /
+      schedule:
+          interval: weekly
+      groups:
+          npm-minor-patch:
+              update-types:
+                  - minor
+                  - patch
+      ignore:
+          # @wordpress/* packages are updated manually.
+          - dependency-name: '@wordpress/*'
+
+    # GitHub Actions dependencies.
+    - package-ecosystem: github-actions
+      directory: /
+      schedule:
+          interval: weekly
+      groups:
+          actions:
+              patterns:
+                  - '*'
