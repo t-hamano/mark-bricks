@@ -4,6 +4,11 @@
 
 # MarkBricks
 
+[![Type Check](https://github.com/t-hamano/mark-bricks/actions/workflows/type-check.yml/badge.svg?branch=main&event=push)](https://github.com/t-hamano/mark-bricks/actions/workflows/type-check.yml)
+[![JS Unit Test](https://github.com/t-hamano/mark-bricks/actions/workflows/js-unit-test.yml/badge.svg?branch=main&event=push)](https://github.com/t-hamano/mark-bricks/actions/workflows/js-unit-test.yml)
+[![Rust Unit Test](https://github.com/t-hamano/mark-bricks/actions/workflows/rust-unit-test.yml/badge.svg?branch=main&event=push)](https://github.com/t-hamano/mark-bricks/actions/workflows/rust-unit-test.yml)
+[![Tauri Smoke Test](https://github.com/t-hamano/mark-bricks/actions/workflows/tauri-smoke-test.yml/badge.svg?branch=main&event=push)](https://github.com/t-hamano/mark-bricks/actions/workflows/tauri-smoke-test.yml)
+
 A visual Markdown editor that minimizes and specializes the WordPress block editor for Markdown editing.
 
 ## Products
@@ -17,8 +22,8 @@ MarkBricks is delivered as the following applications.
 
 Download **MarkBricks Desktop** for your platform. Older versions and release notes are on the [Releases page](https://github.com/t-hamano/mark-bricks/releases).
 
-| Platform | Download                                                                                                                                                                       |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Platform | Download                                                                                                                                                                         |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Windows  | <!-- download:windows -->[Installer (`.exe`)](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_0.12.0_x64-setup.exe)<!-- /download:windows --> |
 | macOS    | <!-- download:macos -->[Disk image (`.dmg`)](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_0.12.0_universal.dmg)<!-- /download:macos -->    |
 | Linux    | <!-- download:linux -->[AppImage](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_0.12.0_amd64.AppImage)<!-- /download:linux -->              |
