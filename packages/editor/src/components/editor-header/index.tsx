@@ -27,8 +27,8 @@ type Props = {
 	onUndo: () => void;
 	onRedo: () => void;
 	showUndoRedo: boolean;
-	inserterToggleRef: RefObject< HTMLButtonElement >;
-	listViewToggleRef: RefObject< HTMLButtonElement >;
+	inserterToggleRef: RefObject< HTMLButtonElement | null >;
+	listViewToggleRef: RefObject< HTMLButtonElement | null >;
 	editorMode: 'visual' | 'text';
 	onEditorModeChange?: Dispatch< SetStateAction< 'visual' | 'text' > >;
 	enableCodeEditor: boolean;
