@@ -63,7 +63,7 @@
 	}
 
 	&:focus {
-		outline: var(--wpds-border-width-focus) solid var(--wpds-color-stroke-focus);
+		outline: var(--wp-admin-border-width-focus) solid var(--wp-admin-theme-color);
 		outline-offset: calc(-1 * var(--wpds-border-width-focus) - var(--wpds-border-width-xs));
 	}
 }
