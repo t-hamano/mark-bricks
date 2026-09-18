@@ -13,6 +13,7 @@ import {
  */
 import {
 	EditorShell,
+	useContentStyles,
 	type EditorHandle,
 	type EditorStyles,
 } from '../editor-shell';
@@ -50,6 +51,8 @@ function UnforwardedBlockEditor(
 	}: Props,
 	ref: ForwardedRef< EditorHandle >
 ) {
+	const contentStyles = useContentStyles( editorStyles );
+
 	return (
 		<EditorShell
 			ref={ ref }
@@ -59,16 +62,14 @@ function UnforwardedBlockEditor(
 			enableCodeEditor={ false }
 			settings={ settings }
 			headerActions={ headerActions }
-			editorStyles={ editorStyles }
 			style={ style }
 			platform={ platform }
-			renderMain={ ( contentStyles ) => (
-				<EditorCanvas
-					styles={ contentStyles }
-					spellCheck={ !! settings?.spellCheck }
-				/>
-			) }
-		/>
+		>
+			<EditorCanvas
+				styles={ contentStyles }
+				spellCheck={ !! settings?.spellCheck }
+			/>
+		</EditorShell>
 	);
 }
 

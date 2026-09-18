@@ -52,16 +52,15 @@ function UnforwardedCodeEditor(
 			headerActions={ headerActions }
 			style={ style }
 			platform={ platform }
-			renderMain={ () => (
-				<Suspense fallback={ null }>
-					<TextEditor
-						content={ content }
-						onChange={ onChange }
-						settings={ settings?.codeEditor }
-					/>
-				</Suspense>
-			) }
-		/>
+		>
+			<Suspense fallback={ null }>
+				<TextEditor
+					content={ content }
+					onChange={ onChange }
+					settings={ settings?.codeEditor }
+				/>
+			</Suspense>
+		</EditorShell>
 	);
 }
 

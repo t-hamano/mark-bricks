@@ -22,14 +22,10 @@ import { useViewportMatch } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { ShortcutProvider } from '@wordpress/keyboard-shortcuts';
 import { Stack } from '@wordpress/ui';
-import designTokensStyles from '@wordpress/theme/design-tokens.css?raw';
-import componentsStyles from '@wordpress/components/build-style/style.css?raw';
-import blockEditorContentStyles from '@wordpress/block-editor/build-style/content.css?raw';
 
 /**
  * Internal dependencies
  */
-import canvasStyles from './canvas.scss?inline';
 import { useInitialListView, useMarkdownDocument } from './hooks';
 import { EditorFooter } from '../editor-footer';
 import { EditorHeader } from '../editor-header';
@@ -41,26 +37,11 @@ import { PlatformProvider, type Platform } from '../../platform';
 import { store as editorStore } from '../../store';
 import './style.scss';
 
-// `@wordpress/ui` styles are not listed here: the canvas registers its
-// document with the shared style runtime instead, which also covers
-// styles registered after this module is evaluated. See
-// `useCanvasStyleRuntime`.
-const baseContentStyles = [
-	{ css: designTokensStyles },
-	{ css: componentsStyles },
-	{ css: blockEditorContentStyles },
-	{ css: canvasStyles },
-];
+export { useContentStyles } from './hooks';
+export type { EditorStyles } from './hooks';
 
 export type EditorHandle = {
 	flush: () => void;
-};
-
-export type EditorStyles = {
-	contentWidth?: number;
-	fontSize?: number;
-	fontFamily?: string;
-	css?: string;
 };
 
 export type EditorShellProps = {
@@ -77,15 +58,14 @@ export type EditorShellProps = {
 		focusMode?: boolean;
 	};
 	headerActions?: ReactNode;
-	editorStyles?: EditorStyles;
 	style?: CSSProperties;
 	platform?: Partial< Platform >;
-	renderMain: ( contentStyles: Array< { css: string } > ) => ReactNode;
+	children: ReactNode;
 };
 
 // The chrome shared by every editor composition: header, footer, sidebars,
 // keyboard shortcuts, and the block state they act on. `Editor`,
-// `BlockEditor` and `CodeEditor` each supply their own `renderMain` for the
+// `BlockEditor` and `CodeEditor` each supply their own `children` for the
 // content area and their own `editorMode`/`enableCodeEditor`.
 function UnforwardedEditorShell(
 	{
@@ -96,19 +76,14 @@ function UnforwardedEditorShell(
 		enableCodeEditor,
 		settings,
 		headerActions,
-		editorStyles,
 		style,
 		platform,
-		renderMain,
+		children,
 	}: EditorShellProps,
 	ref: ForwardedRef< EditorHandle >
 ) {
 	const hasFixedToolbar = !! settings?.fixedToolbar;
 	const focusMode = !! settings?.focusMode;
-	const contentWidth = editorStyles?.contentWidth;
-	const fontSize = editorStyles?.fontSize;
-	const fontFamily = editorStyles?.fontFamily;
-	const customStyles = editorStyles?.css;
 
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
 	const isVisualMode = editorMode === 'visual';
@@ -155,29 +130,6 @@ function UnforwardedEditorShell(
 		} ),
 		[ hasFixedToolbar, focusMode, isMobileViewport ]
 	);
-
-	const contentStyles = useMemo( () => {
-		const styles = [ ...baseContentStyles ];
-		if ( contentWidth ) {
-			styles.push( {
-				css: `:root{--mb-content-width:${ contentWidth }px}`,
-			} );
-		}
-		if ( fontSize ) {
-			styles.push( {
-				css: `:root{--mb-font-size:${ fontSize }px}`,
-			} );
-		}
-		if ( fontFamily ) {
-			styles.push( {
-				css: `:root{--mb-font-family:${ fontFamily }}`,
-			} );
-		}
-		if ( customStyles ) {
-			styles.push( { css: customStyles } );
-		}
-		return styles;
-	}, [ contentWidth, fontSize, fontFamily, customStyles ] );
 
 	return (
 		<PlatformProvider platform={ platform }>
@@ -231,7 +183,7 @@ function UnforwardedEditorShell(
 							) }
 						</AnimatePresence>
 						<main className="editor-shell__content">
-							{ renderMain( contentStyles ) }
+							{ children }
 						</main>
 					</Stack>
 					{ showBreadcrumbs && <EditorFooter /> }
