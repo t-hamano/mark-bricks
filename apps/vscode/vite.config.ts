@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
-import { defineConfig, type Plugin } from 'vite';
+import { defineConfig } from 'vite';
 
 const appRoot = fileURLToPath( new URL( '.', import.meta.url ) );
 
@@ -28,36 +28,11 @@ const dedupe = [
 	'@wordpress/upload-media',
 ];
 
-const TEXT_EDITOR_MODULE =
-	'packages/editor/src/components/text-editor/index.tsx';
-
-// The webview only ever mounts `BlockEditor`, but `@mark-bricks/editor`'s
-// barrel also re-exports `Editor`/`CodeEditor`, which reach `text-editor`
-// (Monaco) via a lazy import. The bundler still chunks that dynamic import
-// even though it's unreachable at runtime, so redirect it to a stub here. A
-// path alias can't help either, since the import is relative and only
-// resolves to this file after Vite resolves the specifier.
-function stubTextEditor(): Plugin {
-	const stub = resolve( appRoot, 'src/webview/text-editor-stub.tsx' );
-	return {
-		name: 'mark-bricks:stub-text-editor',
-		enforce: 'pre',
-		async resolveId( source, importer, options ) {
-			const resolved = await this.resolve( source, importer, options );
-			if ( ! resolved || resolved.id === stub ) {
-				return null;
-			}
-			const path = resolved.id.split( '?' )[ 0 ].replace( /\\/g, '/' );
-			return path.endsWith( TEXT_EDITOR_MODULE ) ? stub : null;
-		},
-	};
-}
-
 export default defineConfig( {
 	root: resolve( appRoot, 'src/webview' ),
 	// Assets load from a `vscode-webview://` URI known only at runtime.
 	base: './',
-	plugins: [ stubTextEditor(), react() ],
+	plugins: [ react() ],
 	resolve: { dedupe },
 	build: {
 		outDir: resolve( appRoot, 'dist/webview' ),
