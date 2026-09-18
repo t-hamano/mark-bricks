@@ -24,7 +24,7 @@ function post( message: WebviewMessage ): void {
 }
 
 function App() {
-	// `null` until the host answers `ready`, so the editor is never mounted
+	// `null` until the host answers `ready`, so the editor never mounts
 	// against a document it would then have to reparse.
 	const [ content, setContent ] = useState< string | null >( null );
 	const editorRef = useRef< EditorHandle >( null );
@@ -39,9 +39,7 @@ function App() {
 					break;
 
 				case 'flush':
-					// Drains the editor's debounce, which emits synchronously.
-					// The `change` that produces is posted before the reply, so
-					// the host has the text by the time the reply lands.
+					// Emits synchronously, posting `change` before this reply.
 					editorRef.current?.flush();
 					post( {
 						type: 'flush:done',
@@ -67,19 +65,14 @@ function App() {
 			onChange={ ( text ) => post( { type: 'change', text } ) }
 			editorMode="visual"
 			settings={ {
-				// Raw markdown is edited in VSCode's own text editor, so the
-				// bundled source editor is neither shown nor built.
 				enableCodeEditor: false,
-				// Undo runs off the editor's internal history, which the
-				// VSCode UI has no buttons for.
 				showUndoRedo: false,
 			} }
 		/>
 	);
 }
 
-// The registries and the locale have to be in place before the editor renders
-// a single translated label. Same order as `apps/tauri/src/main.tsx`.
+// Same order as `apps/tauri/src/main.tsx`.
 applyLocale( undefined );
 registerBlocks();
 registerFormats();

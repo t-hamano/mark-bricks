@@ -1,7 +1,5 @@
-// Builds the two bundles the extension ships: the extension host (Node,
-// CommonJS, via esbuild) and the webview (browser, ESM, via Vite — the editor
-// package uses Vite-only imports such as `?raw`, `?inline` and `.scss`).
-//
+// Builds the extension host (Node, CommonJS, via esbuild) and the webview
+// (browser, ESM, via Vite, needed for the editor's `?raw`/`.scss` imports).
 // Pass `--watch` to rebuild both on change.
 
 import { rm } from 'node:fs/promises';
@@ -13,8 +11,8 @@ import { build as viteBuild } from 'vite';
 const appRoot = fileURLToPath( new URL( '..', import.meta.url ) );
 const watch = process.argv.includes( '--watch' );
 
-// Vite empties `dist/webview` on its own, but the extension bundle would
-// otherwise keep a source map from an earlier watch build around.
+// Vite empties `dist/webview` on its own; this clears the extension bundle's
+// leftovers from an earlier watch build.
 if ( ! watch ) {
 	await rm( resolve( appRoot, 'dist' ), { recursive: true, force: true } );
 }
@@ -25,10 +23,8 @@ const context = await esbuild.context( {
 	bundle: true,
 	platform: 'node',
 	format: 'cjs',
-	// The oldest Node runtime among the VSCode versions in `engines`.
 	target: 'node18',
-	// Injected by the extension host at runtime; bundling it would break it.
-	external: [ 'vscode' ],
+	external: [ 'vscode' ], // Injected by the host at runtime.
 	sourcemap: watch,
 	minify: ! watch,
 	logLevel: 'info',

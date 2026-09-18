@@ -1,5 +1,3 @@
-// The extension host: Node, CommonJS, no DOM. Bundled by esbuild, so this
-// config only type-checks. The webview has its own config.
 {
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {

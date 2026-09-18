@@ -8,21 +8,11 @@ import * as vscode from 'vscode';
  */
 import { MarkBricksEditorProvider } from './editor-provider';
 
-/**
- * Commands that exist only to swallow a keystroke.
- *
- * Undo has to stay with the editor's own history. Letting VSCode handle it
- * would rewind the TextDocument, and the resulting external update reparses
- * the markdown into a fresh block tree, throwing the selection away; the two
- * histories would also fire together and rewind twice.
- *
- * The webview cannot stop this itself. Its keydown handler re-dispatches a
- * synthesized event on the workbench window whether or not the webview called
- * `preventDefault()`, and VSCode has no webview-specific `undo` to override.
- * So `contributes.keybindings` binds the shortcuts to these no-ops instead —
- * the same approach VSCode's own built-in Markdown visual editor takes. By the
- * time they run, the editor's `useShortcut` has already handled the DOM event.
- */
+// No-ops bound to Ctrl+Z/Y via `contributes.keybindings`. Undo must stay with
+// the editor's own history: letting VSCode's `undo` rewind the TextDocument
+// would reparse the markdown and throw the selection away. The webview can't
+// prevent the keydown from reaching the workbench, so this shadows it instead
+// — the same approach VSCode's built-in Markdown visual editor takes.
 const SHADOWED_COMMANDS = [
 	'markBricks.suppressUndo',
 	'markBricks.suppressRedo',
