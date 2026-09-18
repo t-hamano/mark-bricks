@@ -13,10 +13,15 @@
 		box-shadow: none;
 	}
 
-	// The toolbar is as tall as the header, so the default `overflow: auto`
-	// would add a scrollbar that does not fit.
 	.block-editor-block-toolbar {
+		// The toolbar is as tall as the header, so the default `overflow: auto`
+		// would add a scrollbar that does not fit.
 		overflow: visible;
+
+		.components-toolbar-group,
+		.components-toolbar {
+			border-color: var(--wpds-color-stroke-surface-neutral-weak);
+		}
 	}
 
 	// The separator dot is positioned for the default 32px toolbar, so it sits
