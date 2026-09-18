@@ -15,7 +15,7 @@ import {
 	EditorShell,
 	type EditorHandle,
 	type EditorStyles,
-} from '../editor/shell';
+} from '../editor-shell';
 import { EditorCanvas } from '../editor-canvas';
 import type { Platform } from '../../platform';
 

@@ -13,7 +13,7 @@ import {
 /**
  * Internal dependencies
  */
-import { EditorShell, type EditorHandle } from '../editor/shell';
+import { EditorShell, type EditorHandle } from '../editor-shell';
 import type { CodeEditorSettings } from '../text-editor';
 import type { Platform } from '../../platform';
 

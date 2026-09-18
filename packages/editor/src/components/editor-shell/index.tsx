@@ -183,7 +183,7 @@ function UnforwardedEditorShell(
 		<PlatformProvider platform={ platform }>
 			<Stack
 				render={ <ShortcutProvider /> }
-				className="editor"
+				className="editor-shell"
 				direction="column"
 				style={ style }
 			>
@@ -217,7 +217,7 @@ function UnforwardedEditorShell(
 						headerActions={ headerActions }
 					/>
 					{ showMobileToolbar && <MobileBlockToolbar /> }
-					<Stack className="editor__body">
+					<Stack className="editor-shell__body">
 						<AnimatePresence initial={ false }>
 							{ isVisualMode && isInserterOpened && (
 								<InserterSidebar
@@ -230,7 +230,7 @@ function UnforwardedEditorShell(
 								/>
 							) }
 						</AnimatePresence>
-						<main className="editor__content">
+						<main className="editor-shell__content">
 							{ renderMain( contentStyles ) }
 						</main>
 					</Stack>

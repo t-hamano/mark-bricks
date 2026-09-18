@@ -15,7 +15,7 @@ import {
 	useCanvasSpellCheck,
 	useCanvasStyleRuntime,
 	usePaddingAppender,
-} from '../editor/hooks';
+} from '../editor-shell/hooks';
 import { unlock } from '../../lock-unlock';
 
 const { ExperimentalBlockCanvas } = unlock( blockEditorPrivateApis );

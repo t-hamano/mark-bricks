@@ -6,7 +6,7 @@
 	--wp-ui-tooltip-z-index: 1000000;
 }
 
-.editor {
+.editor-shell {
 
 	@include mixins.reset;
 	height: 100%;
@@ -14,13 +14,13 @@
 	overflow: hidden;
 }
 
-.editor__body {
+.editor-shell__body {
 	position: relative;
 	flex: 1;
 	min-height: 0;
 }
 
-.editor__content {
+.editor-shell__content {
 	flex: 1 1 auto;
 	min-width: 0;
 }

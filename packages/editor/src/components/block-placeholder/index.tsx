@@ -9,7 +9,7 @@ import type { ComponentProps, ReactNode } from 'react';
 import { EmptyState } from '@wordpress/ui';
 
 // `style.scss` is not imported here: this only renders inside the block canvas
-// iframe, which is styled by `../editor/canvas.scss`.
+// iframe, which is styled by `../editor-shell/canvas.scss`.
 
 type Props = {
 	icon: ComponentProps< typeof EmptyState.Icon >[ 'icon' ];

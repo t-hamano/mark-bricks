@@ -15,7 +15,11 @@ import {
 /**
  * Internal dependencies
  */
-import { EditorShell, type EditorHandle, type EditorStyles } from './shell';
+import {
+	EditorShell,
+	type EditorHandle,
+	type EditorStyles,
+} from '../editor-shell';
 import { EditorCanvas } from '../editor-canvas';
 import type { CodeEditorSettings } from '../text-editor';
 import type { Platform } from '../../platform';
