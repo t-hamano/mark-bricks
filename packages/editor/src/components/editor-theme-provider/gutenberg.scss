@@ -3,6 +3,50 @@
 // other theme-aware values.
 :root {
 
+	.components-button.is-tertiary:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-busy) {
+		color: var(--wpds-color-foreground-interactive-brand);
+	}
+
+	.components-button.is-primary:hover:not(:disabled, [aria-disabled="true"], .is-destructive, .is-busy) {
+		color: var(--wpds-color-foreground-interactive-brand-strong-active);
+	}
+
+	.components-button.is-secondary:hover:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-busy),
+	.components-button.is-tertiary:hover:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-busy) {
+		color: var(--wpds-color-foreground-interactive-brand-active);
+	}
+
+	.components-button:is(:disabled, [aria-disabled="true"]):not(.is-busy),
+	.components-button.is-destructive:not(.is-primary):not(.is-secondary):not(.is-tertiary):not(.is-link):is(:disabled, [aria-disabled="true"]):not(.is-busy) {
+		color: var(--wpds-color-foreground-interactive-neutral-disabled);
+	}
+
+	.components-button.is-primary:is(:disabled, [aria-disabled="true"]):not(.is-busy) {
+		color: var(--wpds-color-foreground-interactive-brand-strong-disabled);
+		background-color: var(--wpds-color-background-interactive-brand-strong-disabled);
+		border-color: var(--wpds-color-background-interactive-brand-strong-disabled);
+	}
+
+	.components-button.is-secondary:is(:disabled, [aria-disabled="true"]):not(.is-busy),
+	.components-button.is-tertiary:is(:disabled, [aria-disabled="true"]):not(.is-busy),
+	.components-button.is-link:is(:disabled, [aria-disabled="true"]):not(.is-busy) {
+		color: var(--wpds-color-foreground-interactive-brand-disabled);
+	}
+
+	.components-button.is-secondary:is(:disabled, [aria-disabled="true"]):not(.is-busy),
+	.components-button.is-tertiary:is(:disabled, [aria-disabled="true"]):not(.is-busy) {
+		background-color: var(--wpds-color-background-interactive-brand-weak-disabled);
+	}
+
+	.components-button.is-secondary:is(:disabled, [aria-disabled="true"]):not(.is-busy) {
+		border-color: var(--wpds-color-stroke-interactive-brand-disabled);
+	}
+
+	.components-button.is-pressed:not(.is-primary):not(.is-secondary):not(.is-tertiary):is(:disabled, [aria-disabled="true"]):not(.is-busy) {
+		color: var(--wpds-color-foreground-interactive-neutral-strong-disabled);
+		background-color: var(--wpds-color-background-interactive-neutral-strong-disabled);
+	}
+
 	.components-accessible-toolbar .components-button[aria-expanded="true"]:not(:disabled, [aria-disabled="true"], .is-pressed),
 	.components-toolbar .components-button[aria-expanded="true"]:not(:disabled, [aria-disabled="true"], .is-pressed) {
 		color: var(--wpds-color-foreground-interactive-neutral-active);
