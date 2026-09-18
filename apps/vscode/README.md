@@ -2,6 +2,16 @@
 
 VSCode extension for MarkBricks. It registers a custom editor for `.md` files that embeds the WordPress block editor exposed by `@mark-bricks/editor`, so you can edit Markdown visually without leaving VSCode. Open a Markdown file and run **Open with MarkBricks** (or **Reopen Editor With...**) to switch to the visual editor; **Open with Text Editor** switches back.
 
+## Install
+
+Not yet published to the VSCode Marketplace. Download the `.vsix` from a `vscode-v*` tag on the [Releases page](https://github.com/t-hamano/mark-bricks/releases), then install it:
+
+```sh
+code --install-extension mark-bricks-vscode-*.vsix
+```
+
+A `.vsix` install doesn't auto-update; repeat this step for each new release.
+
 ## Development
 
 Run from this directory:
