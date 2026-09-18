@@ -10,7 +10,7 @@
 
 	.components-accessible-toolbar .components-button:hover:not(:disabled, [aria-disabled="true"], .is-pressed),
 	.components-toolbar .components-button:hover:not(:disabled, [aria-disabled="true"], .is-pressed) {
-		color: var(--wpds-color-foreground-interactive-brand-active);
+		color: var(--wpds-color-foreground-interactive-brand);
 	}
 
 	.components-accessible-toolbar .components-button:focus::before,
@@ -40,16 +40,9 @@
 		border-color: var(--wpds-color-stroke-surface-neutral);
 	}
 
-	.components-popover .components-menu-item__button:focus,
-	.components-popover .components-dropdown-menu__menu-item:focus {
-		position: relative;
-		z-index: 1;
-	}
-
 	.components-popover .components-menu-item__button:hover:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-primary),
 	.components-popover .components-dropdown-menu__menu-item:hover:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-primary) {
-		background-color: var(--wpds-color-background-interactive-brand-weak-active);
-		color: var(--wpds-color-foreground-interactive-neutral);
+		color: var(--wpds-color-foreground-interactive-brand);
 	}
 
 	.components-popover__header,
@@ -75,8 +68,7 @@
 	}
 
 	.block-editor-list-view-leaf:not(:where(.is-selected, .is-disabled, .is-synced)) .block-editor-list-view-block-select-button:hover {
-		background-color: var(--wpds-color-background-interactive-brand-weak-active);
-		color: var(--wpds-color-foreground-interactive-neutral);
+		color: var(--wpds-color-foreground-interactive-brand);
 	}
 
 	.block-editor-inserter__quick-inserter .block-editor-inserter__search {
