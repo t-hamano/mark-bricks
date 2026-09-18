@@ -1,4 +1,3 @@
-// The webview: browser, ESM, React. Bundled by Vite.
 {
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {

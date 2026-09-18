@@ -5,11 +5,9 @@ import { defineConfig, type Plugin } from 'vite';
 
 const appRoot = fileURLToPath( new URL( '.', import.meta.url ) );
 
-// pnpm installs several physical copies of the same `@wordpress/*` version, one
-// per peer-dependency resolution. They share a single `@wordpress/data`
-// registry, so loading two copies of a store package registers its store twice
-// (`Store "core/preferences" is already registered.`). Resolving them from the
-// app root collapses each package to a single instance.
+// Collapses pnpm's several physical copies of each `@wordpress/*` package to
+// one instance, since loading two copies of a store package registers its
+// `@wordpress/data` store twice.
 const dedupe = [
 	'react',
 	'react-dom',
@@ -33,20 +31,11 @@ const dedupe = [
 const TEXT_EDITOR_MODULE =
 	'packages/editor/src/components/text-editor/index.tsx';
 
-/**
- * Redirects the editor's Monaco-based source editor to a stub.
- *
- * The module is only reached through a dynamic `import()`, which Rollup cannot
- * drop even when `enableCodeEditor` is `false`: lazy loading moves Monaco out
- * of the entry chunk, but its ~4 MB of chunks are still emitted and would ship
- * inside the `.vsix`. Swapping the module out at resolve time removes it.
- *
- * A path alias cannot do this. Aliases match the raw specifier, and the import
- * is written relative (`../text-editor`), so the redirect has to happen after
- * the specifier is resolved to a file.
- *
- * @return The Vite plugin.
- */
+// Redirects the editor's Monaco-based source editor to a stub. Rollup can't
+// drop the module via `enableCodeEditor: false` alone — it's lazy-loaded, but
+// still emitted as a ~4 MB chunk shipped in the `.vsix`. A path alias can't
+// help either, since the import is relative and only resolves to this file
+// after Vite resolves the specifier.
 function stubTextEditor(): Plugin {
 	const stub = resolve( appRoot, 'src/webview/text-editor-stub.tsx' );
 	return {
@@ -65,21 +54,16 @@ function stubTextEditor(): Plugin {
 
 export default defineConfig( {
 	root: resolve( appRoot, 'src/webview' ),
-	// Assets are loaded from a `vscode-webview://` URI whose path is not known
-	// until the extension host rewrites it, so they must be referenced
-	// relative to the entry module.
+	// Assets load from a `vscode-webview://` URI known only at runtime.
 	base: './',
 	plugins: [ stubTextEditor(), react() ],
 	resolve: { dedupe },
 	build: {
 		outDir: resolve( appRoot, 'dist/webview' ),
 		emptyOutDir: true,
-		// One stylesheet keeps the generated webview HTML to a single <link>.
 		cssCodeSplit: false,
-		// The extension host builds its own HTML (nonce, CSP, `asWebviewUri`),
-		// so the bundle is entered from the script rather than an index.html.
-		// The entry and the stylesheet are named without a hash for the host to
-		// reference directly; a webview loads them from disk, so there is no
+		// The entry and stylesheet are named without a hash so `webview-html.ts`
+		// can reference them directly; a webview loads from disk, so there's no
 		// cache to bust. Lazily imported chunks keep theirs.
 		rollupOptions: {
 			input: resolve( appRoot, 'src/webview/main.tsx' ),

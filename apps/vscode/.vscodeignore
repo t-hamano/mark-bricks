@@ -1,5 +1,3 @@
-# Everything the extension needs at runtime is bundled into dist/ by
-# scripts/build.mjs, so only that and the package metadata ship.
 .vscode/**
 .vscode-test/**
 src/**

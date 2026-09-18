@@ -4,38 +4,17 @@
 import * as crypto from 'node:crypto';
 import * as vscode from 'vscode';
 
-/**
- * SHA-256 of the one inline script the block canvas document carries:
- *
- *     document.currentScript.parentElement.remove()
- *
- * `@wordpress/block-editor`'s Iframe component seeds the canvas with a
- * throwaway `<body>` holding this script, which deletes that body so React 18
- * can mount its own (`components/iframe/index.mjs`, guarded on the React major
- * version). A blob-URL document inherits the embedder's CSP, so without this
- * hash the script is blocked, the placeholder survives, and the canvas ends up
- * with two `<body>` elements — the blocks render inside the second one while
- * `document.body` still points at the empty first.
- *
- * A nonce cannot cover it: the markup comes from inside the library. If a
- * Gutenberg upgrade rewrites that line, the symptom is the duplicate body, and
- * this constant is what needs updating.
- */
+// SHA-256 of the inline `document.currentScript.parentElement.remove()`
+// script that `@wordpress/block-editor`'s Iframe component seeds the canvas
+// with. A blob-URL document inherits our CSP, so without this hash the script
+// is blocked and the canvas ends up with two `<body>` elements. If a
+// Gutenberg upgrade changes that script, this is what needs updating.
 const CANVAS_BOOTSTRAP_HASH =
 	'sha256-ehBD9wGNfnN0flaZIjbVClW1//FJFsATigcdVB4VdMQ=';
 
-/**
- * Builds the webview document.
- *
- * The bundle is not entered through Vite's own `index.html`: asset URIs are
- * only knowable here (`asWebviewUri`), and the CSP nonce changes per panel.
- * `vite.config.ts` therefore emits the entry and the stylesheet under fixed
- * names, which is what lets this stay a template.
- *
- * @param webview The panel's webview.
- * @param root    The `dist/webview` directory.
- * @return The HTML to assign to `webview.html`.
- */
+// Not entered through Vite's own index.html: asset URIs need `asWebviewUri`
+// and the CSP nonce changes per panel, so `vite.config.ts` emits the entry
+// and stylesheet under fixed names for this template to reference.
 export function getHtmlForWebview(
 	webview: vscode.Webview,
 	root: vscode.Uri
@@ -48,15 +27,10 @@ export function getHtmlForWebview(
 	);
 	const nonce = crypto.randomBytes( 16 ).toString( 'base64' );
 
-	// `script-src` has to list the webview origin as well as the nonce: a
-	// nonce does not carry over to `import()`, and the entry pulls in its
-	// lazily loaded chunks that way.
-	//
-	// `style-src` needs `unsafe-inline` because `@wordpress/components`
-	// injects inline styles by the hundred.
-	//
-	// `frame-src` has to allow `blob:` for the block canvas, whose document is
-	// a Blob URL built by `@wordpress/block-editor`'s Iframe component.
+	// `script-src` lists the webview origin too, since a nonce doesn't carry
+	// over to the entry's lazily imported chunks. `style-src` needs
+	// `unsafe-inline` for `@wordpress/components`'s inline styles. `frame-src`
+	// allows `blob:` for the block canvas, which is a Blob URL document.
 	const csp = [
 		`default-src 'none'`,
 		`script-src 'nonce-${ nonce }' '${ CANVAS_BOOTSTRAP_HASH }' ${ webview.cspSource }`,

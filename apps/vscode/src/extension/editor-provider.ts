@@ -9,12 +9,9 @@ import * as vscode from 'vscode';
 import type { HostMessage, WebviewMessage } from '../shared/messages';
 import { getHtmlForWebview } from './webview-html';
 
-// Coalesces edits that arrive together. The editor debounces its own onChange
-// by 500ms already, so this only has to be long enough to merge a burst; every
-// write past it costs an undo entry on the document.
+// Merges a burst of edits into a single document write.
 const CHANGE_DEBOUNCE_MS = 200;
 
-// A save must not hang on a webview that stopped answering.
 const FLUSH_TIMEOUT_MS = 1000;
 
 export class MarkBricksEditorProvider
@@ -30,8 +27,7 @@ export class MarkBricksEditorProvider
 			new MarkBricksEditorProvider( context ),
 			{
 				webviewOptions: {
-					// Booting the block editor is expensive, so keep it alive
-					// while the tab sits in the background.
+					// Booting the block editor is expensive; keep it alive off-screen.
 					retainContextWhenHidden: true,
 				},
 				supportsMultipleEditorsPerDocument: false,
@@ -45,29 +41,20 @@ export class MarkBricksEditorProvider
 		document: vscode.TextDocument,
 		panel: vscode.WebviewPanel
 	): void {
-		// The session owns everything from here and tears itself down with
-		// the panel.
 		void new EditorSession( this.context, document, panel );
 	}
 }
 
-/**
- * One open visual editor: the webview, the document it edits, and the
- * synchronisation between them.
- */
+/** One open visual editor: the webview, its document, and the sync between them. */
 class EditorSession {
 	private readonly disposables: vscode.Disposable[] = [];
 	private readonly pendingFlushes = new Map< number, () => void >();
 
-	/** Text the webview has reported that is not written to the document yet. */
 	private pendingText: string | null = null;
 	private changeTimer: ReturnType< typeof setTimeout > | undefined;
 
-	/**
-	 * Text of the last edit this session applied. The document change event it
-	 * triggers comes back here and is dropped instead of being echoed to the
-	 * webview, which would reparse the markdown and lose the selection.
-	 */
+	// Dropped instead of echoed to the webview, which would reparse the
+	// markdown and lose the selection.
 	private lastAppliedText: string | null = null;
 
 	private flushSeq = 0;
@@ -142,12 +129,10 @@ class EditorSession {
 
 		const text = event.document.getText();
 		if ( text === this.lastAppliedText ) {
-			// This session's own edit coming back around.
 			return;
 		}
 
-		// The document moved under the webview, so whatever it was about to
-		// write is based on a tree that no longer matches.
+		// Whatever the webview was about to write is now based on a stale tree.
 		this.cancelChangeTimer();
 		this.pendingText = null;
 		this.post( { type: 'update', text } );
@@ -157,10 +142,8 @@ class EditorSession {
 		if ( ! this.isOwnDocument( event.document ) ) {
 			return;
 		}
-		// Without this a Ctrl+S within the editor's debounce window writes the
-		// document as it stood before the last keystrokes, silently losing
-		// them. The webview cannot intercept Ctrl+S itself: it is forwarded to
-		// the workbench before the webview sees it.
+		// The webview can't intercept Ctrl+S itself, so without this a save
+		// within the debounce window would silently drop the last keystrokes.
 		event.waitUntil( this.collectPendingEdits() );
 	}
 
@@ -172,8 +155,6 @@ class EditorSession {
 			return [];
 		}
 
-		// Handing the edit back to `waitUntil` makes it part of the save,
-		// rather than a separate edit racing it.
 		this.lastAppliedText = text;
 		return [ vscode.TextEdit.replace( this.fullRange(), text ) ];
 	}
@@ -207,12 +188,7 @@ class EditorSession {
 		await vscode.workspace.applyEdit( edit );
 	}
 
-	/**
-	 * Claims the text waiting to be written, or `null` when there is nothing
-	 * left to do.
-	 *
-	 * @return The text to write.
-	 */
+	/** Claims the text waiting to be written, or `null` when there is none. */
 	private takePending(): string | null {
 		this.cancelChangeTimer();
 		const text = this.pendingText;
@@ -248,7 +224,6 @@ class EditorSession {
 
 	private dispose(): void {
 		this.cancelChangeTimer();
-		// Release a save that is waiting on a webview that is going away.
 		for ( const resolve of this.pendingFlushes.values() ) {
 			resolve();
 		}
