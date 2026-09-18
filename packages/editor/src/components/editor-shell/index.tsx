@@ -62,13 +62,6 @@ export type EditorShellProps = {
 	children: ReactNode;
 };
 
-// The chrome shared by every editor composition: header, footer, sidebars,
-// keyboard shortcuts, and the block state they act on. `Editor`,
-// `BlockEditor` and `CodeEditor` each supply their own `children` for the
-// content area and their own `editorMode`. Only `Editor` passes
-// `onEditorModeChange`, which is what enables the mode-toggle shortcut and
-// is the caller's own responsibility to expose as a button, e.g. via
-// `headerActions`.
 function UnforwardedEditorShell(
 	{
 		content,

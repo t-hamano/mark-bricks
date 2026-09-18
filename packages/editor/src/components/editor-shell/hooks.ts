@@ -50,7 +50,6 @@ export type EditorStyles = {
 	css?: string;
 };
 
-// Content styles for the block canvas iframe, layered on top of the base styles.
 export function useContentStyles(
 	editorStyles?: EditorStyles
 ): Array< { css: string } > {

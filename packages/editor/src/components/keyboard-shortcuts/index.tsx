@@ -36,8 +36,6 @@ export function KeyboardShortcuts( {
 	editorMode,
 	onEditorModeChange,
 }: Props ) {
-	// Only compositions that can actually switch modes (`Editor`) get the
-	// shortcut; `BlockEditor`/`CodeEditor` never pass a handler.
 	const canToggleMode = !! onEditorModeChange;
 
 	const isListViewOpened = useSelect(
