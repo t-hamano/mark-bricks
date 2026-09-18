@@ -10,6 +10,7 @@
 
 	@include mixins.reset;
 	height: 100%;
+	color: var(--wpds-color-foreground-content-neutral);
 	background: var(--wpds-color-background-surface-neutral-strong);
 	overflow: hidden;
 }

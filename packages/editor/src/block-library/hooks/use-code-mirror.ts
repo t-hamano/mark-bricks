@@ -13,6 +13,7 @@ import {
 	syntaxHighlighting,
 } from '@codemirror/language';
 import { Compartment, EditorState } from '@codemirror/state';
+import { oneDark } from '@codemirror/theme-one-dark';
 import { EditorView, keymap, placeholder } from '@codemirror/view';
 import { useEffect, useRef, useState } from 'react';
 
@@ -26,6 +27,11 @@ import { createBlock, getDefaultBlockName } from '@wordpress/blocks';
  */
 import type { BlockEditProps } from '../types';
 import { CODE_LANGUAGES } from './code-languages';
+import { useEditorTheme } from '../../components/editor-theme-provider';
+
+const lightTheme = syntaxHighlighting( defaultHighlightStyle, {
+	fallback: true,
+} );
 
 type Props = {
 	text: string;
@@ -63,6 +69,9 @@ export function useCodeMirror( {
 	);
 	const viewRef = useRef< EditorView | null >( null );
 	const languageConf = useRef( new Compartment() );
+	const themeConf = useRef( new Compartment() );
+	const theme = useEditorTheme();
+	const initialTheme = useRef( theme );
 
 	// The CodeMirror keymap and update listener are created once on mount,
 	// so values they need are read fresh through a ref.
@@ -139,9 +148,9 @@ export function useCodeMirror( {
 					...( placeholderText
 						? [ placeholder( placeholderText ) ]
 						: [] ),
-					syntaxHighlighting( defaultHighlightStyle, {
-						fallback: true,
-					} ),
+					themeConf.current.of(
+						initialTheme.current === 'dark' ? oneDark : lightTheme
+					),
 					languageConf.current.of( [] ),
 					keymap.of( [
 						{ key: 'ArrowUp', run: exitBlock( false ) },
@@ -170,6 +179,15 @@ export function useCodeMirror( {
 		// changes are synced by the effect below.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ container ] );
+
+	// Reconfigure appearance without recreating the document, selection, or history.
+	useEffect( () => {
+		viewRef.current?.dispatch( {
+			effects: themeConf.current.reconfigure(
+				theme === 'dark' ? oneDark : lightTheme
+			),
+		} );
+	}, [ theme, container ] );
 
 	// Sync content changed outside the editor (undo/redo, markdown re-import).
 	useEffect( () => {

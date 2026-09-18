@@ -1,0 +1,169 @@
+// Some Gutenberg components hard-code colors and cannot adapt to dark mode
+// on their own. Override colors that look out of place with WPDS tokens and
+// other theme-aware values.
+:root {
+
+	.components-accessible-toolbar .components-button[aria-expanded="true"]:not(:disabled, [aria-disabled="true"], .is-pressed),
+	.components-toolbar .components-button[aria-expanded="true"]:not(:disabled, [aria-disabled="true"], .is-pressed) {
+		color: var(--wpds-color-foreground-interactive-neutral-active);
+	}
+
+	.components-accessible-toolbar .components-button:hover:not(:disabled, [aria-disabled="true"], .is-pressed),
+	.components-toolbar .components-button:hover:not(:disabled, [aria-disabled="true"], .is-pressed) {
+		color: var(--wpds-color-foreground-interactive-brand-active);
+	}
+
+	.components-accessible-toolbar .components-button:focus::before,
+	.components-toolbar .components-button:focus::before {
+		box-shadow:
+			inset 0 0 0 1px transparent,
+			0 0 0 var(--wpds-border-width-focus) var(--wpds-color-stroke-focus);
+	}
+
+	.components-popover:not(.is-unstyled) > .components-popover__content {
+		background: var(--wpds-color-background-surface-neutral-strong);
+		color: var(--wpds-color-foreground-content-neutral);
+		box-shadow:
+			0 0 0 1px var(--wpds-color-stroke-surface-neutral),
+			0 4px 12px rgb(0 0 0 / 25%);
+	}
+
+	.components-popover.is-expanded:not(.is-unstyled) > .components-popover__content {
+		box-shadow: 0 -1px 0 var(--wpds-color-stroke-surface-neutral);
+	}
+
+	.components-popover .components-popover__triangle-border {
+		stroke: var(--wpds-color-stroke-surface-neutral);
+	}
+
+	.components-popover .components-menu-group + .components-menu-group {
+		border-color: var(--wpds-color-stroke-surface-neutral);
+	}
+
+	.components-popover .components-menu-item__button:focus,
+	.components-popover .components-dropdown-menu__menu-item:focus {
+		position: relative;
+		z-index: 1;
+	}
+
+	.components-popover .components-menu-item__button:hover:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-primary),
+	.components-popover .components-dropdown-menu__menu-item:hover:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-primary) {
+		background-color: var(--wpds-color-background-interactive-brand-weak-active);
+		color: var(--wpds-color-foreground-interactive-neutral);
+	}
+
+	.components-popover__header,
+	.components-popover__arrow::before {
+		background-color: var(--wpds-color-background-surface-neutral-strong);
+		color: var(--wpds-color-foreground-content-neutral);
+	}
+
+	.components-popover__triangle-bg {
+		fill: var(--wpds-color-background-surface-neutral-strong);
+	}
+
+	.components-dropdown__content.is-alternate .components-menu-group + .components-menu-group {
+		border-color: var(--wpds-color-stroke-surface-neutral);
+	}
+
+	.components-menu-group__label {
+		color: var(--wpds-color-foreground-content-neutral-weak);
+	}
+
+	.block-editor-link-control__tools .block-editor-link-control__drawer-toggle.components-button[aria-expanded="true"] {
+		color: var(--wpds-color-foreground-content-neutral);
+	}
+
+	.block-editor-list-view-leaf:not(:where(.is-selected, .is-disabled, .is-synced)) .block-editor-list-view-block-select-button:hover {
+		background-color: var(--wpds-color-background-interactive-brand-weak-active);
+		color: var(--wpds-color-foreground-interactive-neutral);
+	}
+
+	.block-editor-inserter__quick-inserter .block-editor-inserter__search {
+		background-color: var(--wpds-color-background-surface-neutral-strong);
+	}
+
+	.block-editor-inserter__quick-inserter .block-editor-block-types-list__item.components-button {
+		color: var(--wpds-color-foreground-interactive-neutral);
+	}
+
+	.block-editor-inserter__quick-inserter .block-editor-block-types-list__item-icon {
+		color: inherit;
+	}
+
+	.block-editor-inserter__quick-inserter .block-editor-block-types-list__item.components-button:hover:not(:disabled, [aria-disabled="true"]) {
+		background-color: var(--wpds-color-background-interactive-brand-weak-active);
+	}
+
+	// Gutenberg also marks the hovered label and icon colors as important.
+	.block-editor-inserter__quick-inserter .block-editor-block-types-list__item.components-button:hover:not(:disabled, [aria-disabled="true"]) .block-editor-block-types-list__item-title,
+	.block-editor-inserter__quick-inserter .block-editor-block-types-list__item.components-button:hover:not(:disabled, [aria-disabled="true"]) svg {
+		color: var(--wpds-color-foreground-interactive-neutral) !important;
+		filter: none;
+	}
+
+	.block-editor-inserter__quick-inserter .block-editor-block-types-list__item.components-button:hover:not(:disabled, [aria-disabled="true"])::after {
+		background: none;
+	}
+
+	.block-editor-default-block-appender .block-editor-inserter__toggle.components-button {
+		border: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-interactive-neutral);
+	}
+
+	.block-editor-default-block-appender .block-editor-inserter__toggle.components-button:hover {
+		border-color: var(--wpds-color-stroke-interactive-neutral-active);
+	}
+
+	.block-editor-button-block-appender {
+		color: var(--wpds-color-foreground-interactive-neutral);
+		border: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-interactive-neutral);
+	}
+
+	.block-editor-button-block-appender:hover {
+		color: var(--wpds-color-foreground-interactive-brand);
+		border-color: var(--wpds-color-stroke-interactive-neutral-active);
+	}
+
+	.block-editor-button-block-appender:active {
+		color: var(--wpds-color-foreground-interactive-neutral-active);
+	}
+
+	.block-editor-block-contextual-toolbar {
+		background-color: var(--wpds-color-background-surface-neutral-strong);
+		color: var(--wpds-color-foreground-content-neutral);
+	}
+
+	.block-editor-block-list__empty-block-inserter .block-editor-inserter__toggle.components-button.has-icon {
+		border: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-interactive-neutral);
+	}
+
+	.block-editor-block-list__empty-block-inserter .block-editor-inserter__toggle.components-button.has-icon:hover {
+		border-color: var(--wpds-color-stroke-interactive-neutral-active);
+	}
+
+	.block-editor-block-list__layout .block-editor-block-list__block.is-highlighted:not(:where(.is-multi-selected, .is-reusable, .wp-block-template-part))::after,
+	.block-editor-block-list__layout .block-editor-block-list__block:not([contenteditable="true"]):not(:where(.is-reusable, .wp-block-template-part)):focus::after,
+	.is-outline-mode .block-editor-block-list__block:not(.remove-outline):not(.rich-text):not([contenteditable="true"]):not(:where(.is-reusable, .wp-block-template-part)).is-selected::after {
+		outline-color: var(--wpds-color-stroke-interactive-brand);
+	}
+
+	.block-editor-block-toolbar .components-toolbar-group,
+	.block-editor-block-toolbar .components-toolbar {
+		border-color: light-dark(var(--wpds-color-foreground-content-neutral), var(--wpds-color-stroke-surface-neutral));
+	}
+
+	.block-editor-block-list__block-popover.components-popover .block-editor-block-contextual-toolbar {
+		border-color: light-dark(var(--wpds-color-foreground-content-neutral), var(--wpds-color-stroke-surface-neutral));
+	}
+
+	.block-editor-block-list__block-popover.components-popover .block-editor-block-toolbar .components-toolbar-group,
+	.block-editor-block-list__block-popover.components-popover .block-editor-block-toolbar .components-toolbar {
+		border-color: light-dark(var(--wpds-color-foreground-content-neutral), var(--wpds-color-stroke-surface-neutral));
+	}
+
+	.block-editor-block-list__block-popover.components-popover .block-editor-block-parent-selector .block-editor-block-parent-selector__button,
+	.block-editor-block-list__block-popover.components-popover .block-editor-block-parent-selector:has(.block-editor-block-parent-selector__inserter) {
+		background-color: var(--wpds-color-background-surface-neutral-strong);
+		border-color: light-dark(var(--wpds-color-foreground-content-neutral), var(--wpds-color-stroke-surface-neutral));
+	}
+}

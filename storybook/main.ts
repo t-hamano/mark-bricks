@@ -9,7 +9,7 @@ const config: StorybookConfig = {
 	typescript: {
 		reactDocgen: 'react-docgen-typescript',
 	},
-	addons: [ '@storybook/addon-docs' ],
+	addons: [ '@storybook/addon-docs', '@storybook/addon-themes' ],
 };
 
 export default config;

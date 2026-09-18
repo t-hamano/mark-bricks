@@ -29,14 +29,18 @@ type Alert = {
 	slug: AlertType;
 	label: string;
 	color: string;
+	borderColor: string;
 	icon: ReactElement;
 };
 
+// Match GitHub's default light/dark fgColor and borderColor-*-emphasis values.
+// https://github.com/orgs/community/discussions/16925
 const ALERTS: Alert[] = [
 	{
 		slug: 'note',
 		label: __( 'Note', 'mark-bricks' ),
-		color: '#0969da',
+		color: 'light-dark(#0969da, #4493f8)',
+		borderColor: 'light-dark(#0969da, #1f6feb)',
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -50,7 +54,8 @@ const ALERTS: Alert[] = [
 	{
 		slug: 'tip',
 		label: __( 'Tip', 'mark-bricks' ),
-		color: '#1a7f37',
+		color: 'light-dark(#1a7f37, #3fb950)',
+		borderColor: 'light-dark(#1a7f37, #238636)',
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -64,7 +69,8 @@ const ALERTS: Alert[] = [
 	{
 		slug: 'important',
 		label: __( 'Important', 'mark-bricks' ),
-		color: '#8250df',
+		color: 'light-dark(#8250df, #ab7df8)',
+		borderColor: 'light-dark(#8250df, #8957e5)',
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -78,7 +84,8 @@ const ALERTS: Alert[] = [
 	{
 		slug: 'warning',
 		label: __( 'Warning', 'mark-bricks' ),
-		color: '#9a6700',
+		color: 'light-dark(#9a6700, #d29922)',
+		borderColor: 'light-dark(#9a6700, #9e6a03)',
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -92,7 +99,8 @@ const ALERTS: Alert[] = [
 	{
 		slug: 'caution',
 		label: __( 'Caution', 'mark-bricks' ),
-		color: '#d1242f',
+		color: 'light-dark(#d1242f, #f85149)',
+		borderColor: 'light-dark(#cf222e, #da3633)',
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -116,7 +124,9 @@ export default function Edit( {
 		: undefined;
 
 	const blockProps = useBlockProps( {
-		style: activeAlert ? { borderLeftColor: activeAlert.color } : undefined,
+		style: activeAlert
+			? { borderLeftColor: activeAlert.borderColor }
+			: undefined,
 	} );
 	const { children, ...innerBlocksProps } = useInnerBlocksProps( blockProps, {
 		defaultBlock: DEFAULT_BLOCK,

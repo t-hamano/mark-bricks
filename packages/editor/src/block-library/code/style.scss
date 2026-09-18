@@ -1,15 +1,14 @@
 .wp-block-code {
 	position: relative;
-	padding: 1.5rem 1rem;
-	color: #1f2328;
-	border-radius: 6px;
+	padding: 0;
+	color: var(--wpds-color-foreground-content-neutral);
 	line-height: 1.45;
-	background: #f6f8fa;
-	border: 1px solid #d1d9e0;
+	background: var(--wpds-color-background-surface-neutral-weak);
+	border: 1px solid var(--wpds-color-stroke-surface-neutral);
 
-	.cm-editor {
-		color: inherit;
-		background: inherit;
+	.cm-editor,
+	.wp-block-code__mermaid {
+		padding: 1.5rem 1rem;
 	}
 
 	.cm-focused {
@@ -23,14 +22,14 @@
 		left: 0;
 		padding: 0 0.5rem;
 		pointer-events: none;
-		border-right: 1px solid #d1d9e0;
-		border-bottom: 1px solid #d1d9e0;
+		border-right: 1px solid var(--wpds-color-stroke-surface-neutral);
+		border-bottom: 1px solid var(--wpds-color-stroke-surface-neutral);
 		z-index: 1;
 		border-bottom-right-radius: 3px;
 	}
 
 	&:not(.is-selected):has(.wp-block-code__mermaid) {
-		background: #fff;
+		background: var(--wpds-color-background-surface-neutral);
 	}
 
 	&.is-selected .wp-block-code__mermaid {
@@ -38,7 +37,7 @@
 	}
 
 	.wp-block-code__mermaid-diagram {
-		background: #fff;
+		background: var(--wpds-color-background-surface-neutral);
 		overflow-x: auto;
 		text-align: center;
 		margin-top: 1em;

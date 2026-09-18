@@ -84,6 +84,7 @@ export function EditorHeader( {
 								? __( 'Close Block Inserter', 'mark-bricks' )
 								: __( 'Block Inserter', 'mark-bricks' )
 						}
+						tone="neutral"
 						size="compact"
 						onClick={ () =>
 							setIsInserterOpened( ! isInserterOpened )

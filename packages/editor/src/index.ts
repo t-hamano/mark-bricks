@@ -17,6 +17,11 @@ export type { EditorHandle, EditorStyles } from './components/editor';
 export type { CodeEditorSettings } from './components/text-editor';
 export type { Platform } from './platform';
 export {
+	EditorThemeProvider,
+	useEditorTheme,
+	type EditorTheme,
+} from './components/editor-theme-provider';
+export {
 	useEditorShortcuts,
 	useKeyboardShortcut,
 	type ShortcutKeyCombinationData,

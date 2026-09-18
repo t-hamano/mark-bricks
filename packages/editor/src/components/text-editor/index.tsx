@@ -18,6 +18,7 @@ import {
 	deleteMarkupBackward,
 } from './markdown-commands';
 import { BUILTIN_THEMES, type CodeEditorTheme } from './themes';
+import { useEditorTheme } from '../editor-theme-provider';
 import './style.scss';
 
 // Monaco offloads heavy work to a web worker. Tell it to use the Vite-bundled
@@ -45,7 +46,10 @@ type Props = {
 };
 
 export function TextEditor( { content, onChange, settings }: Props ) {
-	const { theme, fontSize, tabSize, showLineNumbers } = {
+	const editorTheme = useEditorTheme();
+	const theme =
+		settings?.theme ?? ( editorTheme === 'dark' ? 'vs-dark' : 'vs' );
+	const { fontSize, tabSize, showLineNumbers } = {
 		...DEFAULT_CODE_EDITOR_SETTINGS,
 		...settings,
 	};
