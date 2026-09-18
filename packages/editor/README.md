@@ -5,12 +5,18 @@
 
 The host-agnostic React component package at the heart of MarkBricks. It minimizes and specializes the WordPress block editor for Markdown editing, and ships the matching blocks, formats, a Monaco-based source editor and i18n.
 
-Hosts (the Tauri app, the VSCode extension, ...) consume this package and render the `<Editor />` component, passing in only the host-specific configuration (content, settings, header actions) via props.
+Hosts (the Tauri app, the VSCode extension, ...) consume this package and render one of its editor components, passing in only the host-specific configuration (content, settings, header actions) via props.
 
 This package provides two main features:
 
 -   **Block editor** — the basic blocks and inline formats needed to author Markdown, plus the surrounding editing UI (block inserter, list view, document outline, keyboard shortcuts).
 -   **Source code editor** — a [Monaco Editor](https://microsoft.github.io/monaco-editor/)-based source editor for editing raw Markdown, configured by the host with Markdown-aware key bindings wired in on top.
+
+They're exposed as three components, sharing the same header/footer/sidebars and undo history:
+
+-   **`<Editor />`** — both editors, switchable at runtime via `editorMode`. For hosts that let the user toggle between visual and source editing (the Tauri app).
+-   **`<BlockEditor />`** — the block editor only, with no switch to source editing. Its module never references the source editor, so hosts that only need visual editing (the VSCode extension) don't bundle Monaco.
+-   **`<CodeEditor />`** — the source editor only, with no switch to block editing.
 
 ## Localization
 

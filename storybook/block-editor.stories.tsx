@@ -2,9 +2,9 @@
  * External dependencies
  */
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useArgs, useState } from 'storybook/preview-api';
+import { useState } from 'storybook/preview-api';
 import { fn } from 'storybook/test';
-import { Editor } from '@mark-bricks/editor';
+import { BlockEditor } from '@mark-bricks/editor';
 import * as fixtures from '@mark-bricks/fixtures';
 
 /**
@@ -12,46 +12,29 @@ import * as fixtures from '@mark-bricks/fixtures';
  */
 import { Button } from '@wordpress/ui';
 
-const meta: Meta< typeof Editor > = {
-	component: Editor,
-	title: 'Editor',
+const meta: Meta< typeof BlockEditor > = {
+	component: BlockEditor,
+	title: 'BlockEditor',
 	tags: [ 'autodocs' ],
 	argTypes: {
-		editorMode: {
-			control: 'radio',
-			options: [ 'visual', 'text' ],
-		},
 		content: { control: false },
 		headerActions: { control: false },
 	},
 	args: {
-		editorMode: 'visual',
 		content: fixtures.smokeTest,
 		onChange: fn(),
 	},
 	render: function Render( args ) {
 		const [ content, setContent ] = useState( args.content ?? '' );
-		// Writing the mode back into args keeps the editor's own Code editor
-		// button and the Controls radio driving the same value.
-		const [ , updateArgs ] = useArgs();
-		const editorMode = args.editorMode ?? 'visual';
 		return (
 			<div style={ { height: '100vh' } }>
-				<Editor
+				<BlockEditor
 					{ ...args }
 					content={ content }
 					onChange={ ( next ) => {
 						setContent( next );
 						args.onChange( next );
 					} }
-					onEditorModeChange={ ( value ) =>
-						updateArgs( {
-							editorMode:
-								typeof value === 'function'
-									? value( editorMode )
-									: value,
-						} )
-					}
 				/>
 			</div>
 		);
@@ -60,7 +43,7 @@ const meta: Meta< typeof Editor > = {
 
 export default meta;
 
-type Story = StoryObj< typeof Editor >;
+type Story = StoryObj< typeof BlockEditor >;
 
 export const Default: Story = {};
 

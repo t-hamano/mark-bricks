@@ -26,7 +26,6 @@ type Props = {
 	onRedo: () => void;
 	editorMode: 'visual' | 'text';
 	onEditorModeChange?: Dispatch< SetStateAction< 'visual' | 'text' > >;
-	enableCodeEditor: boolean;
 };
 
 export function KeyboardShortcuts( {
@@ -36,8 +35,9 @@ export function KeyboardShortcuts( {
 	onRedo,
 	editorMode,
 	onEditorModeChange,
-	enableCodeEditor,
 }: Props ) {
+	const canToggleMode = !! onEditorModeChange;
+
 	const isListViewOpened = useSelect(
 		( select ) => select( editorStore ).isListViewOpened(),
 		[]
@@ -72,7 +72,7 @@ export function KeyboardShortcuts( {
 				: [ { modifier: 'primary', character: 'y' } ],
 		} );
 
-		if ( enableCodeEditor ) {
+		if ( canToggleMode ) {
 			registerShortcut( {
 				name: 'mark-bricks/toggle-mode',
 				category: 'global',
@@ -117,7 +117,7 @@ export function KeyboardShortcuts( {
 			unregisterShortcut( 'mark-bricks/toggle-list-view' );
 			unregisterShortcut( 'mark-bricks/keyboard-shortcuts' );
 		};
-	}, [ registerShortcut, unregisterShortcut, enableCodeEditor ] );
+	}, [ registerShortcut, unregisterShortcut, canToggleMode ] );
 
 	useShortcut(
 		'mark-bricks/undo',
@@ -145,7 +145,7 @@ export function KeyboardShortcuts( {
 				mode === 'visual' ? 'text' : 'visual'
 			);
 		},
-		{ isDisabled: ! enableCodeEditor }
+		{ isDisabled: ! canToggleMode }
 	);
 
 	useShortcut(

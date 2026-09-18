@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { Dispatch, ReactNode, RefObject, SetStateAction } from 'react';
+import type { ReactNode, RefObject } from 'react';
 
 /**
  * WordPress dependencies
@@ -11,7 +11,7 @@ import { Popover } from '@wordpress/components';
 import { useViewportMatch } from '@wordpress/compose';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { plus, undo, redo, listView, code } from '@wordpress/icons';
+import { plus, undo, redo, listView } from '@wordpress/icons';
 import { IconButton, Stack } from '@wordpress/ui';
 
 /**
@@ -30,8 +30,6 @@ type Props = {
 	inserterToggleRef: RefObject< HTMLButtonElement | null >;
 	listViewToggleRef: RefObject< HTMLButtonElement | null >;
 	editorMode: 'visual' | 'text';
-	onEditorModeChange?: Dispatch< SetStateAction< 'visual' | 'text' > >;
-	enableCodeEditor: boolean;
 	fixedToolbar: boolean;
 	headerActions?: ReactNode;
 };
@@ -45,8 +43,6 @@ export function EditorHeader( {
 	inserterToggleRef,
 	listViewToggleRef,
 	editorMode,
-	onEditorModeChange,
-	enableCodeEditor,
 	fixedToolbar,
 	headerActions,
 }: Props ) {
@@ -64,7 +60,6 @@ export function EditorHeader( {
 	const toggleListViewShortcut = useKeyboardShortcut(
 		'mark-bricks/toggle-list-view'
 	);
-	const toggleModeShortcut = useKeyboardShortcut( 'mark-bricks/toggle-mode' );
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
 	const showFixedToolbar =
 		fixedToolbar && editorMode === 'visual' && ! isMobileViewport;
@@ -80,21 +75,24 @@ export function EditorHeader( {
 			gap="sm"
 		>
 			<Stack direction="row" align="center" gap="sm">
-				<IconButton
-					ref={ inserterToggleRef }
-					icon={ plus }
-					label={
-						isInserterOpened
-							? __( 'Close Block Inserter', 'mark-bricks' )
-							: __( 'Block Inserter', 'mark-bricks' )
-					}
-					size="compact"
-					onClick={ () => setIsInserterOpened( ! isInserterOpened ) }
-					aria-expanded={ isInserterOpened }
-					aria-pressed={ isInserterOpened }
-					disabled={ editorMode === 'text' }
-					className="editor-header__inserter-toggle"
-				/>
+				{ editorMode === 'visual' && (
+					<IconButton
+						ref={ inserterToggleRef }
+						icon={ plus }
+						label={
+							isInserterOpened
+								? __( 'Close Block Inserter', 'mark-bricks' )
+								: __( 'Block Inserter', 'mark-bricks' )
+						}
+						size="compact"
+						onClick={ () =>
+							setIsInserterOpened( ! isInserterOpened )
+						}
+						aria-expanded={ isInserterOpened }
+						aria-pressed={ isInserterOpened }
+						className="editor-header__inserter-toggle"
+					/>
+				) }
 				{ showUndoRedo && (
 					<>
 						<IconButton
@@ -117,23 +115,26 @@ export function EditorHeader( {
 						/>
 					</>
 				) }
-				<IconButton
-					ref={ listViewToggleRef }
-					icon={ listView }
-					label={
-						isListViewOpened
-							? __( 'Hide Document Overview', 'mark-bricks' )
-							: __( 'Document Overview', 'mark-bricks' )
-					}
-					shortcut={ toggleListViewShortcut }
-					variant="minimal"
-					tone="neutral"
-					size="compact"
-					onClick={ () => setIsListViewOpened( ! isListViewOpened ) }
-					aria-expanded={ isListViewOpened }
-					aria-pressed={ isListViewOpened }
-					disabled={ editorMode === 'text' }
-				/>
+				{ editorMode === 'visual' && (
+					<IconButton
+						ref={ listViewToggleRef }
+						icon={ listView }
+						label={
+							isListViewOpened
+								? __( 'Hide Document Overview', 'mark-bricks' )
+								: __( 'Document Overview', 'mark-bricks' )
+						}
+						shortcut={ toggleListViewShortcut }
+						variant="minimal"
+						tone="neutral"
+						size="compact"
+						onClick={ () =>
+							setIsListViewOpened( ! isListViewOpened )
+						}
+						aria-expanded={ isListViewOpened }
+						aria-pressed={ isListViewOpened }
+					/>
+				) }
 			</Stack>
 			{ showFixedToolbar && (
 				<Stack className="editor-header__block-toolbar" align="center">
@@ -145,22 +146,6 @@ export function EditorHeader( {
 				</Stack>
 			) }
 			<Stack direction="row" align="center" gap="sm">
-				{ enableCodeEditor && (
-					<IconButton
-						icon={ code }
-						label={ __( 'Code editor', 'mark-bricks' ) }
-						shortcut={ toggleModeShortcut }
-						variant="minimal"
-						tone="neutral"
-						size="compact"
-						onClick={ () =>
-							onEditorModeChange?.( ( mode ) =>
-								mode === 'text' ? 'visual' : 'text'
-							)
-						}
-						aria-pressed={ editorMode === 'text' }
-					/>
-				) }
 				{ headerActions }
 			</Stack>
 		</Stack>
