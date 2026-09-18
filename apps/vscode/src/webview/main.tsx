@@ -3,11 +3,11 @@
  */
 import {
 	BlockEditor,
-	applyLocale,
-	registerBlocks,
-	registerFormats,
 	type EditorHandle,
-} from '@mark-bricks/editor';
+} from '@mark-bricks/editor/block-editor';
+import { applyLocale } from '@mark-bricks/editor/i18n';
+import { registerBlocks } from '@mark-bricks/editor/block-library';
+import { registerFormats } from '@mark-bricks/editor/format-library';
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
