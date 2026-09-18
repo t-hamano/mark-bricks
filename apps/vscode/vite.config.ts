@@ -31,11 +31,12 @@ const dedupe = [
 const TEXT_EDITOR_MODULE =
 	'packages/editor/src/components/text-editor/index.tsx';
 
-// Redirects the editor's Monaco-based source editor to a stub. Rollup can't
-// drop the module via `enableCodeEditor: false` alone — it's lazy-loaded, but
-// still emitted as a ~4 MB chunk shipped in the `.vsix`. A path alias can't
-// help either, since the import is relative and only resolves to this file
-// after Vite resolves the specifier.
+// The webview only ever mounts `BlockEditor`, but `@mark-bricks/editor`'s
+// barrel also re-exports `Editor`/`CodeEditor`, which reach `text-editor`
+// (Monaco) via a lazy import. The bundler still chunks that dynamic import
+// even though it's unreachable at runtime, so redirect it to a stub here. A
+// path alias can't help either, since the import is relative and only
+// resolves to this file after Vite resolves the specifier.
 function stubTextEditor(): Plugin {
 	const stub = resolve( appRoot, 'src/webview/text-editor-stub.tsx' );
 	return {
