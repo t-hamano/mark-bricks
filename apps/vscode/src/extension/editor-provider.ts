@@ -9,9 +9,7 @@ import * as vscode from 'vscode';
 import type { HostMessage, WebviewMessage } from '../shared/messages';
 import { getHtmlForWebview } from './webview-html';
 
-// Merges a burst of edits into a single document write.
 const CHANGE_DEBOUNCE_MS = 200;
-
 const FLUSH_TIMEOUT_MS = 1000;
 
 export class MarkBricksEditorProvider
@@ -27,7 +25,6 @@ export class MarkBricksEditorProvider
 			new MarkBricksEditorProvider( context ),
 			{
 				webviewOptions: {
-					// Booting the block editor is expensive; keep it alive off-screen.
 					retainContextWhenHidden: true,
 				},
 				supportsMultipleEditorsPerDocument: false,
@@ -45,7 +42,6 @@ export class MarkBricksEditorProvider
 	}
 }
 
-/** One open visual editor: the webview, its document, and the sync between them. */
 class EditorSession {
 	private readonly disposables: vscode.Disposable[] = [];
 	private readonly pendingFlushes = new Map< number, () => void >();
@@ -53,8 +49,6 @@ class EditorSession {
 	private pendingText: string | null = null;
 	private changeTimer: ReturnType< typeof setTimeout > | undefined;
 
-	// Dropped instead of echoed to the webview, which would reparse the
-	// markdown and lose the selection.
 	private lastAppliedText: string | null = null;
 
 	private flushSeq = 0;
@@ -132,7 +126,6 @@ class EditorSession {
 			return;
 		}
 
-		// Whatever the webview was about to write is now based on a stale tree.
 		this.cancelChangeTimer();
 		this.pendingText = null;
 		this.post( { type: 'update', text } );
@@ -142,8 +135,6 @@ class EditorSession {
 		if ( ! this.isOwnDocument( event.document ) ) {
 			return;
 		}
-		// The webview can't intercept Ctrl+S itself, so without this a save
-		// within the debounce window would silently drop the last keystrokes.
 		event.waitUntil( this.collectPendingEdits() );
 	}
 
@@ -188,7 +179,6 @@ class EditorSession {
 		await vscode.workspace.applyEdit( edit );
 	}
 
-	/** Claims the text waiting to be written, or `null` when there is none. */
 	private takePending(): string | null {
 		this.cancelChangeTimer();
 		const text = this.pendingText;
