@@ -9,5 +9,10 @@
 	.block-editor-block-breadcrumb {
 		overflow-x: auto;
 		white-space: nowrap;
+
+		.block-editor-block-breadcrumb__button,
+		.block-editor-block-breadcrumb__current {
+			color: inherit;
+		}
 	}
 }
