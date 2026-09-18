@@ -2,7 +2,7 @@
  * External dependencies
  */
 import {
-	Editor,
+	BlockEditor,
 	applyLocale,
 	registerBlocks,
 	registerFormats,
@@ -59,15 +59,11 @@ function App() {
 	}
 
 	return (
-		<Editor
+		<BlockEditor
 			ref={ editorRef }
 			content={ content }
 			onChange={ ( text ) => post( { type: 'change', text } ) }
-			editorMode="visual"
-			settings={ {
-				enableCodeEditor: false,
-				showUndoRedo: false,
-			} }
+			settings={ { showUndoRedo: false } }
 		/>
 	);
 }
