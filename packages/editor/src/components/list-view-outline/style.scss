@@ -60,7 +60,7 @@
 	border-radius: var(--wpds-border-radius-sm);
 
 	&:focus {
-		box-shadow: 0 0 0 var(--wpds-border-width-focus) var(--wp-admin-theme-color);
+		box-shadow: 0 0 0 var(--wpds-border-width-focus) var(--wpds-color-stroke-focus);
 		outline: 2px solid transparent;
 	}
 }
@@ -73,7 +73,8 @@
 	margin-right: var(--wpds-dimension-padding-xs);
 
 	.is-invalid & {
-		background: #f0b849;
+		background: var(--wpds-color-background-surface-warning);
+		color: var(--wpds-color-foreground-content-warning);
 	}
 }
 

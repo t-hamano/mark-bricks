@@ -18,6 +18,12 @@ They're exposed as three components, sharing the same header/footer/sidebars and
 -   **`<BlockEditor />`** — the block editor only, with no switch to source editing. Its module never references the source editor, so hosts that only need visual editing (the VSCode extension) don't bundle Monaco.
 -   **`<CodeEditor />`** — the source editor only, with no switch to block editing.
 
+## Appearance
+
+The editor supports light and dark modes through `EditorThemeProvider`. It uses `ThemeProvider` from `@wordpress/theme` to update WPDS design tokens for the selected theme.
+
+Some Gutenberg components hard-code colors. These styles are overridden with WPDS design tokens to support dark mode.
+
 ## Localization
 
 Localization is built on `@wordpress/i18n`. Dictionaries from `languages/mark-bricks-{locale}.json` are bundled at build time.

@@ -1,12 +1,19 @@
 /**
+ * External dependencies
+ */
+import { useMemo } from 'react';
+
+/**
  * WordPress dependencies
  */
 
 import {
+	BlockList,
 	// @ts-expect-error -- `privateApis` is not declared in the type definitions.
 	privateApis as blockEditorPrivateApis,
 } from '@wordpress/block-editor';
 import { useMergeRefs } from '@wordpress/compose';
+import { ThemeProvider } from '@wordpress/theme';
 
 /**
  * Internal dependencies
@@ -17,6 +24,7 @@ import {
 	usePaddingAppender,
 } from '../editor-shell/hooks';
 import { unlock } from '../../lock-unlock';
+import { useEditorTheme } from '../editor-theme-provider';
 
 const { ExperimentalBlockCanvas } = unlock( blockEditorPrivateApis );
 
@@ -26,6 +34,11 @@ type Props = {
 };
 
 export function EditorCanvas( { styles, spellCheck }: Props ) {
+	const theme = useEditorTheme();
+	const canvasStyles = useMemo(
+		() => [ ...styles, { css: `:root { color-scheme: ${ theme }; }` } ],
+		[ styles, theme ]
+	);
 	const contentRef = useMergeRefs( [
 		usePaddingAppender( true ),
 		useCanvasSpellCheck( spellCheck ),
@@ -34,8 +47,12 @@ export function EditorCanvas( { styles, spellCheck }: Props ) {
 	return (
 		<ExperimentalBlockCanvas
 			height="100%"
-			styles={ styles }
+			styles={ canvasStyles }
 			contentRef={ contentRef }
-		/>
+		>
+			<ThemeProvider isRoot>
+				<BlockList />
+			</ThemeProvider>
+		</ExperimentalBlockCanvas>
 	);
 }

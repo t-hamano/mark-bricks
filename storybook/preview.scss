@@ -10,8 +10,15 @@
 }
 
 body {
-	color: #1f2328;
+	color: var(--wpds-color-foreground-content-neutral);
+	background: var(--wpds-color-background-surface-neutral-strong);
 	font-family: var(--wpds-typography-font-family-body);
 	font-size: var(--wpds-typography-font-size-md);
 	line-height: 1.5;
+}
+
+// Remove the inline iframe's baseline gap, which overflows the fixed-height
+// Docs preview and adds a scrollbar outside the editor.
+.sbdocs-preview .docs-story iframe[id^="iframe--"] {
+	display: block;
 }

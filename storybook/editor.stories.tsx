@@ -66,7 +66,11 @@ export const Default: Story = {};
 
 export const WithHeaderActions: Story = {
 	args: {
-		headerActions: <Button size="compact">Header Action Button</Button>,
+		headerActions: (
+			<Button tone="neutral" size="compact">
+				Header Action Button
+			</Button>
+		),
 	},
 };
 

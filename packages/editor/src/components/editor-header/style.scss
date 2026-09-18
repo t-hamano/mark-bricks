@@ -1,22 +1,27 @@
 .editor-header {
 	height: 48px;
 	padding: 0 var(--wpds-dimension-padding-sm);
-	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
 }
 
 .editor-header__block-toolbar {
 	margin-right: auto;
-	border-left: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
-	border-right: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	border-left: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
+	border-right: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
 
 	.block-editor-block-contextual-toolbar.is-unstyled {
 		box-shadow: none;
 	}
 
-	// The toolbar is as tall as the header, so the default `overflow: auto`
-	// would add a scrollbar that does not fit.
 	.block-editor-block-toolbar {
+		// The toolbar is as tall as the header, so the default `overflow: auto`
+		// would add a scrollbar that does not fit.
 		overflow: visible;
+
+		.components-toolbar-group,
+		.components-toolbar {
+			border-color: var(--wpds-color-stroke-surface-neutral);
+		}
 	}
 
 	// The separator dot is positioned for the default 32px toolbar, so it sits

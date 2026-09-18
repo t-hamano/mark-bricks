@@ -1,6 +1,7 @@
 @use "@wordpress/base-styles/mixins";
 @use "../../block-library/style" as block-library;
 @use "../block-placeholder/style" as block-placeholder;
+@use "../editor-theme-provider/gutenberg";
 
 :root {
 
@@ -10,7 +11,8 @@
 body {
 	min-height: 100vh;
 	margin: 0;
-	color: #1f2328;
+	color: var(--wpds-color-foreground-content-neutral);
+	background: var(--wpds-color-background-surface-neutral);
 	font-family: var(--mb-font-family, var(--wpds-typography-font-family-body));
 	font-size: var(--mb-font-size, var(--wpds-typography-font-size-md));
 	line-height: 1.5;
@@ -46,7 +48,21 @@ code,
 code[data-rich-text-format-boundary] {
 	font-family: var(--wpds-typography-font-family-mono);
 	padding: 0.1rem 0.4rem;
-	background: #f6f8fa;
+	background: var(--wpds-color-background-surface-neutral-weak);
 	border-radius: 3px;
-	border: 1px solid #d1d9e0;
+	border: 1px solid var(--wpds-color-stroke-surface-neutral);
+}
+
+a {
+	color: var(--wpds-color-foreground-interactive-brand);
+}
+
+// These legacy Gutenberg rules still contain fixed light colors.
+.block-editor-warning {
+	background-color: var(--wpds-color-background-surface-neutral-weak);
+	border-color: var(--wpds-color-stroke-surface-neutral);
+
+	.block-editor-warning__message {
+		color: var(--wpds-color-foreground-content-neutral);
+	}
 }
