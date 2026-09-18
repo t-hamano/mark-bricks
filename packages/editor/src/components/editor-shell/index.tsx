@@ -22,6 +22,11 @@ import { useViewportMatch } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { ShortcutProvider } from '@wordpress/keyboard-shortcuts';
 import { Stack } from '@wordpress/ui';
+// Outer document UI styles. Iframe (BlockCanvas) styles are handled
+// separately via `?raw` imports in `editor-canvas`.
+import '@wordpress/theme/design-tokens.css';
+import '@wordpress/components/build-style/style.css';
+import '@wordpress/block-editor/build-style/style.css';
 
 /**
  * Internal dependencies
