@@ -56,32 +56,6 @@ Requires Node.js and [pnpm](https://pnpm.io/). Run any of the root scripts with 
 pnpm install
 ```
 
-### Desktop app
-
-```sh
-# Start the desktop app in development (Vite + Tauri)
-pnpm dev:tauri
-# Build the frontend and bundle the desktop app
-pnpm build:tauri
-# Run the Tauri CLI in the desktop app
-pnpm tauri
-# Bump the desktop app version (npm version)
-pnpm version:tauri
-# Preview the next desktop app version
-pnpm version:tauri:preview
-```
-
-### VSCode extension
-
-```sh
-# Bump the VSCode extension version (npm version)
-pnpm version:vscode
-# Preview the next VSCode extension version
-pnpm version:vscode:preview
-```
-
-Building, watching, and packaging the extension itself run from `apps/vscode` — see its [README](apps/vscode/README.md).
-
 ### Storybook
 
 ```sh
@@ -107,7 +81,7 @@ pnpm i18n:make-json
 pnpm test
 ```
 
-See each package's own README for details.
+For running, building, and versioning a specific app, see its own README ([`apps/tauri`](apps/tauri/README.md), [`apps/vscode`](apps/vscode/README.md)).
 
 ## License
 
