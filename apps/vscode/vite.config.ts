@@ -30,7 +30,6 @@ const dedupe = [
 
 export default defineConfig( {
 	root: resolve( appRoot, 'src/webview' ),
-	// Assets load from a `vscode-webview://` URI known only at runtime.
 	base: './',
 	plugins: [ react() ],
 	resolve: { dedupe },
@@ -38,9 +37,6 @@ export default defineConfig( {
 		outDir: resolve( appRoot, 'dist/webview' ),
 		emptyOutDir: true,
 		cssCodeSplit: false,
-		// The entry and stylesheet are named without a hash so `webview-html.ts`
-		// can reference them directly; a webview loads from disk, so there's no
-		// cache to bust. Lazily imported chunks keep theirs.
 		rollupOptions: {
 			input: resolve( appRoot, 'src/webview/main.tsx' ),
 			output: {

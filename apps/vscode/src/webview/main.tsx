@@ -24,8 +24,6 @@ function post( message: WebviewMessage ): void {
 }
 
 function App() {
-	// `null` until the host answers `ready`, so the editor never mounts
-	// against a document it would then have to reparse.
 	const [ content, setContent ] = useState< string | null >( null );
 	const editorRef = useRef< EditorHandle >( null );
 
@@ -37,9 +35,7 @@ function App() {
 				case 'update':
 					setContent( message.text );
 					break;
-
 				case 'flush':
-					// Emits synchronously, posting `change` before this reply.
 					editorRef.current?.flush();
 					post( {
 						type: 'flush:done',
@@ -68,7 +64,6 @@ function App() {
 	);
 }
 
-// Same order as `apps/tauri/src/main.tsx`.
 applyLocale( undefined );
 registerBlocks();
 registerFormats();
