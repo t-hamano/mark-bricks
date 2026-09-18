@@ -15,7 +15,6 @@ import {
  */
 import { EditorShell, type EditorHandle } from '../editor-shell';
 import type { CodeEditorSettings } from '../text-editor';
-import type { Platform } from '../../platform';
 
 export type { EditorHandle, CodeEditorSettings };
 
@@ -34,11 +33,10 @@ type Props = {
 	};
 	headerActions?: ReactNode;
 	style?: CSSProperties;
-	platform?: Partial< Platform >;
 };
 
 function UnforwardedCodeEditor(
-	{ content, onChange, settings, headerActions, style, platform }: Props,
+	{ content, onChange, settings, headerActions, style }: Props,
 	ref: ForwardedRef< EditorHandle >
 ) {
 	return (
@@ -50,7 +48,6 @@ function UnforwardedCodeEditor(
 			settings={ settings }
 			headerActions={ headerActions }
 			style={ style }
-			platform={ platform }
 		>
 			<Suspense fallback={ null }>
 				<TextEditor
