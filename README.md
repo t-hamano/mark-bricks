@@ -20,7 +20,7 @@ MarkBricks is delivered as the following applications.
 
 ## Download
 
-Download **MarkBricks Desktop** for your platform. Older versions and release notes are on the [Releases page](https://github.com/t-hamano/mark-bricks/releases).
+Download **MarkBricks Desktop** for your platform. Older versions and release notes are on the [Releases page](https://github.com/t-hamano/mark-bricks/releases). Installers are currently unsigned; Windows builds are planned to be signed via the [SignPath Foundation](https://signpath.org), and macOS builds via the Apple Developer Program — see the [code signing policy](CODE_SIGNING_POLICY.md) for details.
 
 | Platform | Download                                                                                                                                                                         |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
