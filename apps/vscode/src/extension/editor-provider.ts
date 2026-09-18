@@ -122,7 +122,9 @@ class EditorSession {
 		}
 
 		const text = event.document.getText();
-		if ( text === this.lastAppliedText ) {
+		const expected = this.lastAppliedText;
+		this.lastAppliedText = null;
+		if ( text === expected ) {
 			return;
 		}
 
@@ -175,8 +177,13 @@ class EditorSession {
 
 		const edit = new vscode.WorkspaceEdit();
 		edit.replace( this.document.uri, this.fullRange(), text );
-		this.lastAppliedText = text;
-		await vscode.workspace.applyEdit( edit );
+		const applied = await vscode.workspace.applyEdit( edit );
+		if ( applied ) {
+			this.lastAppliedText = text;
+		} else {
+			this.pendingText = text;
+			this.restartChangeTimer();
+		}
 	}
 
 	private takePending(): string | null {
@@ -213,7 +220,12 @@ class EditorSession {
 	}
 
 	private dispose(): void {
+		const hasPendingWrite = this.pendingText !== null;
 		this.cancelChangeTimer();
+		if ( hasPendingWrite ) {
+			void this.writePending();
+		}
+
 		for ( const resolve of this.pendingFlushes.values() ) {
 			resolve();
 		}

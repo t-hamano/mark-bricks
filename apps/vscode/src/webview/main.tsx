@@ -6,8 +6,6 @@ import {
 	type EditorHandle,
 } from '@mark-bricks/editor/block-editor';
 import { applyLocale } from '@mark-bricks/editor/i18n';
-import { registerBlocks } from '@mark-bricks/editor/block-library';
-import { registerFormats } from '@mark-bricks/editor/format-library';
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -58,22 +56,34 @@ function App() {
 		<BlockEditor
 			ref={ editorRef }
 			content={ content }
-			onChange={ ( text ) => post( { type: 'change', text } ) }
+			onChange={ ( text ) => {
+				setContent( text );
+				post( { type: 'change', text } );
+			} }
 			settings={ { showUndoRedo: false } }
 		/>
 	);
 }
 
-applyLocale( undefined );
-registerBlocks();
-registerFormats();
+async function bootstrap() {
+	applyLocale( undefined );
 
-const container = document.getElementById( 'root' );
+	const [ { registerBlocks }, { registerFormats } ] = await Promise.all( [
+		import( '@mark-bricks/editor/block-library' ),
+		import( '@mark-bricks/editor/format-library' ),
+	] );
+	registerBlocks();
+	registerFormats();
 
-if ( container ) {
-	createRoot( container ).render(
-		<StrictMode>
-			<App />
-		</StrictMode>
-	);
+	const container = document.getElementById( 'root' );
+
+	if ( container ) {
+		createRoot( container ).render(
+			<StrictMode>
+				<App />
+			</StrictMode>
+		);
+	}
 }
+
+void bootstrap();
