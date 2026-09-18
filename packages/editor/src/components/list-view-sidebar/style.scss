@@ -33,4 +33,10 @@
 .list-view-sidebar__tab-panel {
 	overflow: auto;
 	border-top: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
+	scrollbar-width: thin;
+	scrollbar-color: var(--wpds-color-stroke-surface-neutral-strong) transparent;
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
 }
