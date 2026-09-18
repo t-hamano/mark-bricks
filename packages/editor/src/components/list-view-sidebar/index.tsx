@@ -30,7 +30,7 @@ export function ListViewSidebar( { toggleRef }: Props ) {
 	const disableMotion = useReducedMotion();
 	const transition = disableMotion ? undefined : SIDEBAR_TRANSITION;
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
-	const openWidth = isMobileViewport ? '100vw' : SIDEBAR_WIDTH;
+	const openWidth = isMobileViewport ? '100%' : SIDEBAR_WIDTH;
 
 	const closeListViewSidebar = useCallback( () => {
 		setIsListViewOpened( false );
