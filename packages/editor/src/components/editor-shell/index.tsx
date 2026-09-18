@@ -49,7 +49,6 @@ export type EditorShellProps = {
 	onChange: ( content: string ) => void;
 	editorMode: 'visual' | 'text';
 	onEditorModeChange?: Dispatch< SetStateAction< 'visual' | 'text' > >;
-	enableCodeEditor: boolean;
 	settings?: {
 		showListViewByDefault?: boolean;
 		showBlockBreadcrumbs?: boolean;
@@ -66,14 +65,16 @@ export type EditorShellProps = {
 // The chrome shared by every editor composition: header, footer, sidebars,
 // keyboard shortcuts, and the block state they act on. `Editor`,
 // `BlockEditor` and `CodeEditor` each supply their own `children` for the
-// content area and their own `editorMode`/`enableCodeEditor`.
+// content area and their own `editorMode`. Only `Editor` passes
+// `onEditorModeChange`, which is what enables the mode-toggle shortcut and
+// is the caller's own responsibility to expose as a button, e.g. via
+// `headerActions`.
 function UnforwardedEditorShell(
 	{
 		content,
 		onChange,
 		editorMode,
 		onEditorModeChange,
-		enableCodeEditor,
 		settings,
 		headerActions,
 		style,
@@ -152,7 +153,6 @@ function UnforwardedEditorShell(
 						onRedo={ redo }
 						editorMode={ editorMode }
 						onEditorModeChange={ onEditorModeChange }
-						enableCodeEditor={ enableCodeEditor }
 					/>
 					<EditorHeader
 						canUndo={ canUndo }
@@ -163,8 +163,6 @@ function UnforwardedEditorShell(
 						inserterToggleRef={ inserterToggleRef }
 						listViewToggleRef={ listViewToggleRef }
 						editorMode={ editorMode }
-						onEditorModeChange={ onEditorModeChange }
-						enableCodeEditor={ enableCodeEditor }
 						fixedToolbar={ hasFixedToolbar }
 						headerActions={ headerActions }
 					/>

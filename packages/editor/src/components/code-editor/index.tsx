@@ -47,7 +47,6 @@ function UnforwardedCodeEditor(
 			content={ content }
 			onChange={ onChange }
 			editorMode="text"
-			enableCodeEditor={ false }
 			settings={ settings }
 			headerActions={ headerActions }
 			style={ style }

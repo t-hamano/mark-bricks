@@ -59,7 +59,6 @@ function UnforwardedBlockEditor(
 			content={ content }
 			onChange={ onChange }
 			editorMode="visual"
-			enableCodeEditor={ false }
 			settings={ settings }
 			headerActions={ headerActions }
 			style={ style }

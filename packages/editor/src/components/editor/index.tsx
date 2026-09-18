@@ -13,6 +13,13 @@ import {
 } from 'react';
 
 /**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+import { code } from '@wordpress/icons';
+import { IconButton, Stack } from '@wordpress/ui';
+
+/**
  * Internal dependencies
  */
 import {
@@ -22,6 +29,7 @@ import {
 	type EditorStyles,
 } from '../editor-shell';
 import { EditorCanvas } from '../editor-canvas';
+import { useKeyboardShortcut } from '../keyboard-shortcuts/hooks';
 import type { CodeEditorSettings } from '../text-editor';
 import type { Platform } from '../../platform';
 
@@ -43,7 +51,6 @@ type Props = {
 		fixedToolbar?: boolean;
 		focusMode?: boolean;
 		spellCheck?: boolean;
-		enableCodeEditor?: boolean;
 		codeEditor?: Partial< CodeEditorSettings >;
 	};
 	headerActions?: ReactNode;
@@ -71,6 +78,7 @@ function UnforwardedEditor(
 	ref: ForwardedRef< EditorHandle >
 ) {
 	const contentStyles = useContentStyles( editorStyles );
+	const toggleModeShortcut = useKeyboardShortcut( 'mark-bricks/toggle-mode' );
 
 	return (
 		<EditorShell
@@ -79,11 +87,28 @@ function UnforwardedEditor(
 			onChange={ onChange }
 			editorMode={ editorMode }
 			onEditorModeChange={ onEditorModeChange }
-			enableCodeEditor={ settings?.enableCodeEditor ?? true }
 			settings={ settings }
-			headerActions={ headerActions }
 			style={ style }
 			platform={ platform }
+			headerActions={
+				<Stack direction="row" align="center" gap="sm">
+					<IconButton
+						icon={ code }
+						label={ __( 'Code editor', 'mark-bricks' ) }
+						shortcut={ toggleModeShortcut }
+						variant="minimal"
+						tone="neutral"
+						size="compact"
+						onClick={ () =>
+							onEditorModeChange?.( ( mode ) =>
+								mode === 'text' ? 'visual' : 'text'
+							)
+						}
+						aria-pressed={ editorMode === 'text' }
+					/>
+					{ headerActions }
+				</Stack>
+			}
 		>
 			{ editorMode === 'text' ? (
 				<Suspense fallback={ null }>
