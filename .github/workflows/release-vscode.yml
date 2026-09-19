@@ -1,0 +1,43 @@
+name: Release VSCode Extension
+
+on:
+    push:
+        tags:
+            - 'vscode-v[0-9]+.[0-9]+.[0-9]+'
+            - 'vscode-v[0-9]+.[0-9]+.[0-9]+-*'
+
+permissions:
+    contents: write
+
+jobs:
+    release:
+        name: Build and release
+        runs-on: ubuntu-latest
+        env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  persist-credentials: false
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+            - name: Setup Node.js
+              uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+              with:
+                  node-version-file: .nvmrc
+                  cache: pnpm
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Package the extension
+              run: pnpm --filter mark-bricks-vscode run package
+
+            - name: Create release and upload the .vsix
+              run: |
+                  gh release create "$GITHUB_REF_NAME" apps/vscode/*.vsix \
+                    --title "$GITHUB_REF_NAME" \
+                    --notes "See the assets below to download and install this version. Not yet published to the VSCode Marketplace: install with \`code --install-extension\`." \
+                    --draft

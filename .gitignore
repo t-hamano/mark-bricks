@@ -16,6 +16,7 @@ dist
 dist-ssr
 storybook-static
 *.local
+*.vsix
 
 # Generated Jed dictionaries
 **/languages/mark-bricks-*.json

@@ -159,13 +159,46 @@ importers:
       '@mark-bricks/editor':
         specifier: workspace:*
         version: link:../../packages/editor
+      '@wordpress/base-styles':
+        specifier: ^13.0.0
+        version: 13.0.0
+      react:
+        specifier: ^19.3.0
+        version: 19.3.0
+      react-dom:
+        specifier: ^19.2.8
+        version: 19.3.0(react@19.3.0)
     devDependencies:
+      '@types/node':
+        specifier: ^26.3.0
+        version: 26.5.1
+      '@types/react':
+        specifier: ^19.3.0
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: ^19.2.8
+        version: 19.3.0(@types/react@19.3.0)
       '@types/vscode':
         specifier: ^1.137.0
         version: 1.137.0
+      '@vitejs/plugin-react':
+        specifier: ^6.1.0
+        version: 6.1.1(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.6.1)(sass@1.104.1)(yaml@2.9.1))
       '@vscode/vsce':
         specifier: ^3
         version: 3.9.2
+      esbuild:
+        specifier: ^0.28.2
+        version: 0.28.2
+      sass:
+        specifier: ^1.103.1
+        version: 1.104.1
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.2.2
+        version: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.6.1)(sass@1.104.1)(yaml@2.9.1)
 
   packages/editor:
     dependencies:
