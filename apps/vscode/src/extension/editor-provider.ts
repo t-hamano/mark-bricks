@@ -53,6 +53,7 @@ class EditorSession {
 
 	private flushSeq = 0;
 	private isReady = false;
+	private isDisposed = false;
 
 	public constructor(
 		context: vscode.ExtensionContext,
@@ -180,10 +181,20 @@ class EditorSession {
 		const applied = await vscode.workspace.applyEdit( edit );
 		if ( applied ) {
 			this.lastAppliedText = text;
-		} else {
-			this.pendingText = text;
-			this.restartChangeTimer();
+			return;
 		}
+
+		// A rejected edit (e.g. a read-only document) would just be rejected
+		// again, so keep the text for the next change or save rather than
+		// retrying on a timer that could also outlive a disposed session.
+		if ( ! this.isDisposed && this.pendingText === null ) {
+			this.pendingText = text;
+		}
+		void vscode.window.showErrorMessage(
+			`MarkBricks could not apply edits to ${ vscode.workspace.asRelativePath(
+				this.document.uri
+			) }.`
+		);
 	}
 
 	private takePending(): string | null {
@@ -220,6 +231,7 @@ class EditorSession {
 	}
 
 	private dispose(): void {
+		this.isDisposed = true;
 		const hasPendingWrite = this.pendingText !== null;
 		this.cancelChangeTimer();
 		if ( hasPendingWrite ) {
