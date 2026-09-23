@@ -90,14 +90,10 @@ export function toNode( block: Block ): NodeResult< Table > {
 		}
 		return {
 			type: 'tableRow',
-			children: filled.map(
-				( cell ): TableCell => ( {
-					type: 'tableCell',
-					children: contentToInline(
-						richTextToString( cell.content )
-					),
-				} )
-			),
+			children: filled.map( ( cell ): TableCell => ( {
+				type: 'tableCell',
+				children: contentToInline( richTextToString( cell.content ) ),
+			} ) ),
 		};
 	};
 

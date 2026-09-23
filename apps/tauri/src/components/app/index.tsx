@@ -88,11 +88,9 @@ export function App() {
 			focusMode: !! get( 'core', 'focusMode' ),
 			spellCheck: !! get( 'mark-bricks', 'spellCheck' ),
 			editorStyles: get( 'mark-bricks', 'editorStyles' ) as
-				| EditorStyles
-				| undefined,
+				EditorStyles | undefined,
 			codeEditor: get( 'mark-bricks', 'codeEditor' ) as
-				| CodeEditorSettings
-				| undefined,
+				CodeEditorSettings | undefined,
 		};
 	}, [] );
 

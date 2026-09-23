@@ -40,7 +40,9 @@ export default function Edit( {
 	const { content, markdownData } = attributes;
 	const { language = '' } = markdownData ?? {};
 	const text =
-		content instanceof RichTextData ? content.toPlainText() : content ?? '';
+		content instanceof RichTextData
+			? content.toPlainText()
+			: ( content ?? '' );
 	const isMermaid = language.trim().toLowerCase() === MERMAID_LANGUAGE;
 	const showEditor = ! isMermaid || isSelected;
 

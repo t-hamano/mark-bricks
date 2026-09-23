@@ -98,7 +98,9 @@ export function toNode( block: Block ): NodeResult< Code > {
 	const { attributes } = block;
 	const { content, markdownData } = attributes as BlockAttributes;
 	const value =
-		content instanceof RichTextData ? content.toPlainText() : content ?? '';
+		content instanceof RichTextData
+			? content.toPlainText()
+			: ( content ?? '' );
 	return {
 		node: {
 			type: 'code',

@@ -66,7 +66,7 @@ function detectAlert(
 			? [
 					{ ...firstBlock, children: inlineChildren },
 					...node.children.slice( 1 ),
-			  ]
+				]
 			: node.children.slice( 1 );
 
 	return { type, children };
