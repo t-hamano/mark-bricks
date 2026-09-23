@@ -4,7 +4,6 @@
 $sidebar-width: 200px;
 
 .preferences-modal {
-
 	@include mixins.break-medium() {
 		height: 70%;
 	}

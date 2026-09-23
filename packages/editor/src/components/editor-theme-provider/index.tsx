@@ -11,14 +11,17 @@ import { ThemeProvider } from '@wordpress/theme';
 /**
  * Internal dependencies
  */
+import { useSystemDark } from './use-system-dark';
 import './gutenberg.scss';
 
 export type EditorTheme = 'light' | 'dark';
 
+export type EditorThemePreference = 'system' | EditorTheme;
+
 const ThemeContext = createContext< EditorTheme >( 'light' );
 
 type Props = {
-	theme: EditorTheme;
+	theme: EditorThemePreference;
 	children: ReactNode;
 };
 
@@ -28,16 +31,20 @@ type Props = {
  * Hosts own theme selection; mount at most one provider per document.
  *
  * @param props          Provider properties.
- * @param props.theme    Resolved editor appearance.
+ * @param props.theme    Editor appearance; 'system' follows the OS.
  * @param props.children The editor and host UI.
  */
-export function EditorThemeProvider( { theme, children }: Props ) {
+export function EditorThemeProvider( { theme: preference, children }: Props ) {
+	const systemDark = useSystemDark();
+	const isDark = preference === 'system' ? systemDark : preference === 'dark';
+	const theme: EditorTheme = isDark ? 'dark' : 'light';
+
 	return (
 		<ThemeContext.Provider value={ theme }>
 			<ThemeProvider
 				isRoot
 				color={ {
-					background: theme === 'dark' ? '#1e1e1e' : '#fcfcfc',
+					background: isDark ? '#1e1e1e' : '#fcfcfc',
 				} }
 			>
 				{ /* The canvas injects its own color-scheme through its styles prop. */ }

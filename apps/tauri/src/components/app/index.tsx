@@ -5,9 +5,11 @@ import { useEffect, useRef, useState } from 'react';
 import { getName, getVersion } from '@tauri-apps/api/app';
 import {
 	Editor,
+	EditorThemeProvider,
 	type CodeEditorSettings,
 	type EditorHandle,
 	type EditorStyles,
+	type EditorThemePreference,
 } from '@mark-bricks/editor';
 
 /**
@@ -70,6 +72,7 @@ export function App() {
 		fixedToolbar,
 		focusMode,
 		spellCheck,
+		editorTheme,
 		editorStyles,
 		codeEditor,
 	} = useSelect( ( select ) => {
@@ -87,6 +90,8 @@ export function App() {
 			fixedToolbar: !! get( 'core', 'fixedToolbar' ),
 			focusMode: !! get( 'core', 'focusMode' ),
 			spellCheck: !! get( 'mark-bricks', 'spellCheck' ),
+			editorTheme: get( 'mark-bricks', 'editorTheme' ) as
+				EditorThemePreference | undefined,
 			editorStyles: get( 'mark-bricks', 'editorStyles' ) as
 				EditorStyles | undefined,
 			codeEditor: get( 'mark-bricks', 'codeEditor' ) as
@@ -100,43 +105,45 @@ export function App() {
 	useAppCloseGuard( { tabs, pendingCloseId } );
 
 	return (
-		<Stack className="app" direction="column">
-			{ tabs.length > 0 && <Tabbar /> }
-			{ tabs.length === 0 || ! activeTab ? (
-				<EditorPlaceholder />
-			) : (
-				<Editor
-					key={ activeTab.id }
-					ref={ editorRef }
-					content={ activeTab.content }
-					onChange={ ( content ) => {
-						setTabContent( activeTab.id, content );
-						setTabDirty( activeTab.id, true );
-					} }
-					editorMode={ editorMode }
-					onEditorModeChange={ setEditorMode }
-					settings={ {
-						showListViewByDefault,
-						showBlockBreadcrumbs,
-						fixedToolbar,
-						focusMode,
-						spellCheck,
-						codeEditor,
-					} }
-					editorStyles={ editorStyles }
-					platform={ platform }
-					headerActions={
-						<HeaderActions
-							editorMode={ editorMode }
-							onEditorModeChange={ setEditorMode }
-						/>
-					}
-				/>
-			) }
-			<DirtyConfirmDialog />
-			<PreferencesModal />
-			<AboutModal name={ appName } version={ appVersion } />
-			<KeyboardShortcutsModal />
-		</Stack>
+		<EditorThemeProvider theme={ editorTheme ?? 'system' }>
+			<Stack className="app" direction="column">
+				{ tabs.length > 0 && <Tabbar /> }
+				{ tabs.length === 0 || ! activeTab ? (
+					<EditorPlaceholder />
+				) : (
+					<Editor
+						key={ activeTab.id }
+						ref={ editorRef }
+						content={ activeTab.content }
+						onChange={ ( content ) => {
+							setTabContent( activeTab.id, content );
+							setTabDirty( activeTab.id, true );
+						} }
+						editorMode={ editorMode }
+						onEditorModeChange={ setEditorMode }
+						settings={ {
+							showListViewByDefault,
+							showBlockBreadcrumbs,
+							fixedToolbar,
+							focusMode,
+							spellCheck,
+							codeEditor,
+						} }
+						editorStyles={ editorStyles }
+						platform={ platform }
+						headerActions={
+							<HeaderActions
+								editorMode={ editorMode }
+								onEditorModeChange={ setEditorMode }
+							/>
+						}
+					/>
+				) }
+				<DirtyConfirmDialog />
+				<PreferencesModal />
+				<AboutModal name={ appName } version={ appVersion } />
+				<KeyboardShortcutsModal />
+			</Stack>
+		</EditorThemeProvider>
 	);
 }
