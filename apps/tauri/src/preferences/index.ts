@@ -18,17 +18,11 @@ import {
 	STORE_FILE,
 	STORE_KEY,
 } from './constants';
+import { migrate, type Scopes } from './migration';
 
-type Scopes = Record< string, Record< string, unknown > >;
 type PersistedShape = { version: number } & Scopes;
 
 const tauriStore = new LazyStore( STORE_FILE );
-
-function migrate( version: number | undefined, scopes: Scopes ): Scopes {
-	// Future migrations dispatch on `version` and rewrite `scopes`.
-	void version;
-	return scopes;
-}
 
 export async function getInitialLanguage(): Promise< unknown > {
 	const raw = await tauriStore.get< PersistedShape >( STORE_KEY );
