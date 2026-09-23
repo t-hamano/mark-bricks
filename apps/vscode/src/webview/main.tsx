@@ -48,6 +48,41 @@ function App() {
 		return () => window.removeEventListener( 'message', onMessage );
 	}, [] );
 
+	// The editor debounces onChange, and the host can't ask for a flush once
+	// the panel is being disposed. Drain it whenever the webview loses focus
+	// or is hidden, which precedes closing the tab or reopening it with
+	// another editor, and on shortcuts such as Ctrl+W that close it while
+	// focused.
+	useEffect( () => {
+		function flush() {
+			editorRef.current?.flush();
+		}
+		function onVisibilityChange() {
+			if ( document.visibilityState === 'hidden' ) {
+				flush();
+			}
+		}
+		function onKeyDown( event: KeyboardEvent ) {
+			if ( event.ctrlKey || event.metaKey ) {
+				flush();
+			}
+		}
+
+		window.addEventListener( 'blur', flush );
+		window.addEventListener( 'pagehide', flush );
+		window.addEventListener( 'keydown', onKeyDown, true );
+		document.addEventListener( 'visibilitychange', onVisibilityChange );
+		return () => {
+			window.removeEventListener( 'blur', flush );
+			window.removeEventListener( 'pagehide', flush );
+			window.removeEventListener( 'keydown', onKeyDown, true );
+			document.removeEventListener(
+				'visibilitychange',
+				onVisibilityChange
+			);
+		};
+	}, [] );
+
 	if ( content === null ) {
 		return null;
 	}
