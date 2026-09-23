@@ -4,7 +4,6 @@
 @use "../editor-theme-provider/gutenberg";
 
 :root {
-
 	@include mixins.admin-scheme(#3858e9);
 }
 
@@ -25,7 +24,6 @@ body {
 
 // Default layout styles.
 .block-editor-block-list__layout.is-root-container {
-
 	> * {
 		max-width: var(--mb-content-width, 700px);
 		margin-block-start: 1.2rem;

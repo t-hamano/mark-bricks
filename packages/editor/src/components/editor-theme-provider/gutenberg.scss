@@ -2,7 +2,6 @@
 // on their own. Override colors that look out of place with WPDS tokens and
 // other theme-aware values.
 :root {
-
 	.components-button.is-tertiary:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-busy) {
 		color: var(--wpds-color-foreground-interactive-brand);
 	}
