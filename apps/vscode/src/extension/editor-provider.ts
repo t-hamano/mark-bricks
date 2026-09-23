@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import * as path from 'node:path';
 import * as vscode from 'vscode';
 
 /**
@@ -66,9 +67,17 @@ class EditorSession {
 			'webview'
 		);
 
+		// Beyond the bundle, allow the folders local images are resolved
+		// against (see `resolveImageSrc`).
 		panel.webview.options = {
 			enableScripts: true,
-			localResourceRoots: [ webviewRoot ],
+			localResourceRoots: [
+				webviewRoot,
+				vscode.Uri.joinPath( document.uri, '..' ),
+				...( vscode.workspace.workspaceFolders ?? [] ).map(
+					( folder ) => folder.uri
+				),
+			],
 		};
 		panel.webview.html = getHtmlForWebview( panel.webview, webviewRoot );
 
@@ -103,6 +112,14 @@ class EditorSession {
 				this.restartChangeTimer();
 				break;
 
+			case 'resolveImage':
+				this.post( {
+					type: 'resolveImage:done',
+					requestId: message.requestId,
+					src: this.resolveImageSrc( message.path ),
+				} );
+				break;
+
 			case 'flush:done': {
 				const resolve = this.pendingFlushes.get( message.requestId );
 				if ( resolve ) {
@@ -112,6 +129,36 @@ class EditorSession {
 				break;
 			}
 		}
+	}
+
+	// Maps an image path from the markdown to a URL the webview can load:
+	// relative paths against the document, `/`-rooted ones against its
+	// workspace folder (as the built-in markdown preview does), and absolute
+	// file system paths as is.
+	private resolveImageSrc( src: string ): string {
+		if ( /^(https?:|data:|blob:)/i.test( src ) ) {
+			return src;
+		}
+
+		let target = src.replace( /[?#].*$/, '' );
+		try {
+			target = decodeURI( target );
+		} catch {
+			// Not percent-encoded; use it verbatim.
+		}
+
+		let uri: vscode.Uri;
+		const folder = vscode.workspace.getWorkspaceFolder( this.document.uri );
+		if ( /^file:/i.test( target ) ) {
+			uri = vscode.Uri.parse( target );
+		} else if ( target.startsWith( '/' ) && folder ) {
+			uri = vscode.Uri.joinPath( folder.uri, target );
+		} else if ( path.isAbsolute( target ) ) {
+			uri = vscode.Uri.file( target );
+		} else {
+			uri = vscode.Uri.joinPath( this.document.uri, '..', target );
+		}
+		return this.panel.webview.asWebviewUri( uri ).toString();
 	}
 
 	private onDocumentChanged( event: vscode.TextDocumentChangeEvent ): void {

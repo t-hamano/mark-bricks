@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import type { Platform } from '@mark-bricks/editor';
 import {
 	BlockEditor,
 	type EditorHandle,
@@ -21,6 +22,21 @@ function post( message: WebviewMessage ): void {
 	host.postMessage( message );
 }
 
+const pendingImageRequests = new Map< number, ( src: string ) => void >();
+let imageRequestSeq = 0;
+
+// Local image paths only make sense to the extension host, which knows the
+// document location and can turn them into webview resource URIs.
+const platform: Partial< Platform > = {
+	resolveImageSrc( path ) {
+		const requestId = ++imageRequestSeq;
+		return new Promise( ( resolve ) => {
+			pendingImageRequests.set( requestId, resolve );
+			post( { type: 'resolveImage', requestId, path } );
+		} );
+	},
+};
+
 function App() {
 	const [ content, setContent ] = useState< string | null >( null );
 	const editorRef = useRef< EditorHandle >( null );
@@ -39,6 +55,12 @@ function App() {
 						type: 'flush:done',
 						requestId: message.requestId,
 					} );
+					break;
+				case 'resolveImage:done':
+					pendingImageRequests.get( message.requestId )?.(
+						message.src
+					);
+					pendingImageRequests.delete( message.requestId );
 					break;
 			}
 		}
@@ -96,6 +118,7 @@ function App() {
 				post( { type: 'change', text } );
 			} }
 			settings={ { showUndoRedo: false } }
+			platform={ platform }
 		/>
 	);
 }

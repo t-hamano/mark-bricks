@@ -10,6 +10,11 @@ export type HostMessage =
 	| {
 			type: 'flush';
 			requestId: number;
+	  }
+	| {
+			type: 'resolveImage:done';
+			requestId: number;
+			src: string;
 	  };
 
 export type WebviewMessage =
@@ -23,4 +28,9 @@ export type WebviewMessage =
 	| {
 			type: 'flush:done';
 			requestId: number;
+	  }
+	| {
+			type: 'resolveImage';
+			requestId: number;
+			path: string;
 	  };
