@@ -36,6 +36,9 @@ export default defineConfig( {
 	build: {
 		outDir: resolve( appRoot, 'dist/webview' ),
 		emptyOutDir: true,
+		// Keeps `light-dark()` intact, since its fallback ignores the runtime
+		// `color-scheme` set by the theme provider.
+		cssTarget: 'chrome123',
 		cssCodeSplit: false,
 		rollupOptions: {
 			input: resolve( appRoot, 'src/webview/main.tsx' ),
