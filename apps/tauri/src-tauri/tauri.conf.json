@@ -77,7 +77,10 @@
 				"role": "Editor",
 				"mimeType": "text/markdown"
 			}
-		]
+		],
+		"macOS": {
+			"minimumSystemVersion": "15.0"
+		}
 	},
 	"plugins": {
 		"updater": {
