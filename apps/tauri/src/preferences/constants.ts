@@ -1,7 +1,11 @@
 /**
  * External dependencies
  */
-import type { CodeEditorSettings, EditorStyles } from '@mark-bricks/editor';
+import type {
+	CodeEditorSettings,
+	EditorStyles,
+	EditorThemePreference,
+} from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies
@@ -36,6 +40,7 @@ export const DEFAULT_PREFERENCES = {
 		language: '',
 		checkUpdatesAuto: true,
 		spellCheck: false,
+		editorTheme: 'system' as EditorThemePreference,
 		editorStyles: DEFAULT_EDITOR_STYLES,
 		codeEditor: DEFAULT_CODE_EDITOR,
 	},

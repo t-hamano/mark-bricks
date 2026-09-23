@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import type { EditorThemePreference } from '@mark-bricks/editor';
+
+/**
  * WordPress dependencies
  */
 import { RangeControl, ToggleControl } from '@wordpress/components';
@@ -11,11 +16,13 @@ import { SelectControl, Stack, Text } from '@wordpress/ui';
 import {
 	DEFAULT_PREFERENCES,
 	getFontFamilyOptions,
+	getThemeOptions,
 } from '../../preferences/constants';
 
 const DEFAULT_EDITOR_STYLES = DEFAULT_PREFERENCES[ 'mark-bricks' ].editorStyles;
 
 export type VisualEditorSettings = {
+	theme: EditorThemePreference;
 	spellCheck: boolean;
 	showListViewByDefault: boolean;
 	showBlockBreadcrumbs: boolean;
@@ -30,6 +37,7 @@ type Props = {
 };
 
 export function VisualEditorPanel( { settings, onChange }: Props ) {
+	const themeItems = getThemeOptions();
 	const fontFamilyItems = getFontFamilyOptions();
 
 	return (
@@ -38,6 +46,24 @@ export function VisualEditorPanel( { settings, onChange }: Props ) {
 				<Text variant="heading-xl" render={ <h2 /> }>
 					{ __( 'Settings', 'mark-bricks' ) }
 				</Text>
+				<SelectControl
+					size="compact"
+					label={ __( 'Theme', 'mark-bricks' ) }
+					items={ themeItems }
+					value={
+						themeItems.find(
+							( item ) => item.value === settings.theme
+						) ?? null
+					}
+					isItemEqualToValue={ ( a, b ) => a.value === b.value }
+					onValueChange={ ( item ) => {
+						if ( item ) {
+							onChange( {
+								theme: item.value as EditorThemePreference,
+							} );
+						}
+					} }
+				/>
 				<ToggleControl
 					label={ __( 'Spell check', 'mark-bricks' ) }
 					checked={ settings.spellCheck }
