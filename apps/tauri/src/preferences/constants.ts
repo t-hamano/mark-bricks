@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 
 export const STORE_FILE = 'preferences.json';
 export const STORE_KEY = 'root';
-export const PREFERENCES_VERSION = 1;
+export const PREFERENCES_VERSION = 2;
 
 const DEFAULT_EDITOR_STYLES = {
 	contentWidth: 700,
@@ -19,7 +19,7 @@ const DEFAULT_EDITOR_STYLES = {
 } satisfies EditorStyles;
 
 const DEFAULT_CODE_EDITOR: CodeEditorSettings = {
-	theme: 'vs',
+	theme: 'system',
 	fontSize: 14,
 	tabSize: 4,
 	showLineNumbers: true,
@@ -42,16 +42,9 @@ export const DEFAULT_PREFERENCES = {
 };
 
 export const getThemeOptions = (): { value: string; label: string }[] => [
-	{ value: 'vs', label: __( 'Light', 'mark-bricks' ) },
-	{ value: 'vs-dark', label: __( 'Dark', 'mark-bricks' ) },
-	{
-		value: 'hc-light',
-		label: __( 'High Contrast Light', 'mark-bricks' ),
-	},
-	{
-		value: 'hc-black',
-		label: __( 'High Contrast Dark', 'mark-bricks' ),
-	},
+	{ value: 'system', label: __( 'System Default', 'mark-bricks' ) },
+	{ value: 'light', label: __( 'Light', 'mark-bricks' ) },
+	{ value: 'dark', label: __( 'Dark', 'mark-bricks' ) },
 ];
 
 export const getFontFamilyOptions = (): {

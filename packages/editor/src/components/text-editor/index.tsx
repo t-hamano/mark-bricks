@@ -17,8 +17,8 @@ import {
 	insertNewlineContinueMarkup,
 	deleteMarkupBackward,
 } from './markdown-commands';
-import { BUILTIN_THEMES, type CodeEditorTheme } from './themes';
-import { useEditorTheme } from '../editor-theme-provider';
+import type { CodeEditorThemePreference } from './themes';
+import { useCodeEditorTheme } from './use-code-editor-theme';
 import './style.scss';
 
 // Monaco offloads heavy work to a web worker. Tell it to use the Vite-bundled
@@ -26,14 +26,14 @@ import './style.scss';
 self.MonacoEnvironment = { getWorker: () => new EditorWorker() };
 
 export type CodeEditorSettings = {
-	theme: CodeEditorTheme;
+	theme: CodeEditorThemePreference;
 	fontSize: number;
 	tabSize: number;
 	showLineNumbers: boolean;
 };
 
 const DEFAULT_CODE_EDITOR_SETTINGS: CodeEditorSettings = {
-	theme: 'vs',
+	theme: 'system',
 	fontSize: 14,
 	tabSize: 4,
 	showLineNumbers: true,
@@ -46,13 +46,16 @@ type Props = {
 };
 
 export function TextEditor( { content, onChange, settings }: Props ) {
-	const editorTheme = useEditorTheme();
-	const theme =
-		settings?.theme ?? ( editorTheme === 'dark' ? 'vs-dark' : 'vs' );
-	const { fontSize, tabSize, showLineNumbers } = {
+	const {
+		theme: themePreference,
+		fontSize,
+		tabSize,
+		showLineNumbers,
+	} = {
 		...DEFAULT_CODE_EDITOR_SETTINGS,
 		...settings,
 	};
+	const derivedTheme = useCodeEditorTheme( themePreference );
 
 	const containerRef = useRef< HTMLDivElement >( null );
 	const editorRef = useRef< monaco.editor.IStandaloneCodeEditor | null >(
@@ -66,7 +69,7 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 	onChangeRef.current = onChange;
 
 	const initialSettingsRef = useRef( {
-		theme,
+		theme: derivedTheme,
 		fontSize,
 		tabSize,
 		showLineNumbers,
@@ -84,10 +87,7 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 		const editor = monaco.editor.create( container, {
 			value: contentRef.current,
 			language: 'markdown',
-			theme:
-				initialSettings.theme in BUILTIN_THEMES
-					? initialSettings.theme
-					: DEFAULT_CODE_EDITOR_SETTINGS.theme,
+			theme: initialSettings.theme,
 			fontSize: initialSettings.fontSize,
 			lineNumbers: initialSettings.showLineNumbers ? 'on' : 'off',
 			wordWrap: 'on',
@@ -150,10 +150,8 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 
 	// Apply theme changes.
 	useEffect( () => {
-		monaco.editor.setTheme(
-			theme in BUILTIN_THEMES ? theme : DEFAULT_CODE_EDITOR_SETTINGS.theme
-		);
-	}, [ theme ] );
+		monaco.editor.setTheme( derivedTheme );
+	}, [ derivedTheme ] );
 
 	// Sync editor-level options that can change after mount.
 	useEffect( () => {
