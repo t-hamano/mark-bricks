@@ -20,6 +20,7 @@ export {
 	EditorThemeProvider,
 	useEditorTheme,
 	type EditorTheme,
+	type EditorThemePreference,
 } from './components/editor-theme-provider';
 export {
 	useEditorShortcuts,

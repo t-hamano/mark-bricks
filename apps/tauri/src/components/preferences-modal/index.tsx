@@ -2,7 +2,11 @@
  * External dependencies
  */
 import { useState } from 'react';
-import { getLocale, type CodeEditorSettings } from '@mark-bricks/editor';
+import {
+	getLocale,
+	type CodeEditorSettings,
+	type EditorThemePreference,
+} from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies
@@ -40,6 +44,7 @@ export default function PreferencesModal() {
 		codeEditor,
 		checkUpdatesAuto,
 		spellCheck,
+		editorTheme,
 		showListViewByDefault,
 		showBlockBreadcrumbs,
 		editorStyles,
@@ -54,6 +59,9 @@ export default function PreferencesModal() {
 				DEFAULT_PREFERENCES[ 'mark-bricks' ].codeEditor,
 			checkUpdatesAuto: !! get( 'mark-bricks', 'checkUpdatesAuto' ),
 			spellCheck: !! get( 'mark-bricks', 'spellCheck' ),
+			editorTheme: ( get( 'mark-bricks', 'editorTheme' ) ??
+				DEFAULT_PREFERENCES[ 'mark-bricks' ]
+					.editorTheme ) as EditorThemePreference,
 			showListViewByDefault: !! get( 'core', 'showListViewByDefault' ),
 			showBlockBreadcrumbs: !! get( 'core', 'showBlockBreadcrumbs' ),
 			editorStyles:
@@ -90,6 +98,9 @@ export default function PreferencesModal() {
 	const handleVisualEditorChange = (
 		edits: Partial< VisualEditorSettings >
 	) => {
+		if ( edits.theme !== undefined ) {
+			setPreference( 'mark-bricks', 'editorTheme', edits.theme );
+		}
 		if ( edits.spellCheck !== undefined ) {
 			setPreference( 'mark-bricks', 'spellCheck', edits.spellCheck );
 		}
@@ -200,6 +211,7 @@ export default function PreferencesModal() {
 						>
 							<VisualEditorPanel
 								settings={ {
+									theme: editorTheme,
 									spellCheck,
 									showListViewByDefault,
 									showBlockBreadcrumbs,
