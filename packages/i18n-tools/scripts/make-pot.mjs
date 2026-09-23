@@ -10,13 +10,13 @@ function resolveMakePotBin() {
 	const pkgPath = require.resolve( '@wp-blocks/make-pot/package.json' );
 	const { bin } = require( pkgPath );
 	const rel =
-		typeof bin === 'string' ? bin : bin[ 'make-pot' ] ?? bin.default;
+		typeof bin === 'string' ? bin : ( bin[ 'make-pot' ] ?? bin.default );
 	return path.join( path.dirname( pkgPath ), rel );
 }
 
 /**
  * Extract translatable strings into `languages/<slug>.pot` by running the
- * make-pot CLI (from @wp-blocks/make-pot). Wraps the binary so consumers
+ * make-pot CLI (from `@wp-blocks/make-pot`). Wraps the binary so consumers
  * depend only on `@mark-bricks/i18n-tools`.
  *
  * @param {Object} options

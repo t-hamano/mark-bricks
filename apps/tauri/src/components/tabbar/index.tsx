@@ -91,14 +91,14 @@ export default function Tabbar() {
 	const closeContextMenu = () => setContextMenu( null );
 
 	const contextTab = contextMenu
-		? tabs.find( ( t ) => t.id === contextMenu.id ) ?? null
+		? ( tabs.find( ( t ) => t.id === contextMenu.id ) ?? null )
 		: null;
 
 	const contextAnchor = contextMenu
 		? {
 				getBoundingClientRect: () =>
 					new DOMRect( contextMenu.x, contextMenu.y, 0, 0 ),
-		  }
+			}
 		: null;
 
 	return (

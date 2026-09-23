@@ -15,8 +15,8 @@ A visual Markdown editor that minimizes and specializes the WordPress block edit
 
 MarkBricks is delivered as the following applications.
 
--   **MarkBricks Desktop** — A standalone desktop app for Windows, macOS, and Linux. Built on Tauri 2 + React, it edits local Markdown files with the WordPress block editor. Grab it from the [latest release](https://github.com/t-hamano/mark-bricks/releases/latest).
--   **MarkBricks VSCode extension** — A VSCode extension that embeds the editor as a custom editor for `.md` files, so you can edit Markdown visually without leaving your editor. Not yet on the VSCode Marketplace; see [`apps/vscode`](apps/vscode) to install it from a release or build it from source.
+- **MarkBricks Desktop** — A standalone desktop app for Windows, macOS, and Linux. Built on Tauri 2 + React, it edits local Markdown files with the WordPress block editor. Grab it from the [latest release](https://github.com/t-hamano/mark-bricks/releases/latest).
+- **MarkBricks VSCode extension** — A VSCode extension that embeds the editor as a custom editor for `.md` files, so you can edit Markdown visually without leaving your editor. Not yet on the VSCode Marketplace; see [`apps/vscode`](apps/vscode) to install it from a release or build it from source.
 
 ## Download
 
@@ -32,12 +32,12 @@ Download **MarkBricks Desktop** for your platform. Older versions and release no
 
 This is a pnpm monorepo. The editor itself lives in a host-agnostic package that each host application consumes.
 
--   **[`apps/tauri`](apps/tauri)** — Desktop application. Built on Tauri 2 + React, it hosts `@mark-bricks/editor` for editing local Markdown files.
--   **[`apps/vscode`](apps/vscode)** — VSCode extension. Embeds the editor as a custom editor for `.md` files.
--   **[`packages/editor`](packages/editor)** — `@mark-bricks/editor`. The host-agnostic React component at the heart of MarkBricks. Ships the blocks, inline formats, a Monaco-based source editor, and i18n.
--   **[`packages/i18n-tools`](packages/i18n-tools)** — `@mark-bricks/i18n-tools`. Shared i18n build tooling. Provides the `mb-i18n` CLI that runs the gettext PO/JSON pipeline.
--   **[`packages/fixtures`](packages/fixtures)** — `@mark-bricks/fixtures`. Shared Markdown fixtures consumed by Storybook, the round-trip tests, and manual smoke tests.
--   **[`storybook`](storybook)** — Storybook workspace for previewing the editor.
+- **[`apps/tauri`](apps/tauri)** — Desktop application. Built on Tauri 2 + React, it hosts `@mark-bricks/editor` for editing local Markdown files.
+- **[`apps/vscode`](apps/vscode)** — VSCode extension. Embeds the editor as a custom editor for `.md` files.
+- **[`packages/editor`](packages/editor)** — `@mark-bricks/editor`. The host-agnostic React component at the heart of MarkBricks. Ships the blocks, inline formats, a Monaco-based source editor, and i18n.
+- **[`packages/i18n-tools`](packages/i18n-tools)** — `@mark-bricks/i18n-tools`. Shared i18n build tooling. Provides the `mb-i18n` CLI that runs the gettext PO/JSON pipeline.
+- **[`packages/fixtures`](packages/fixtures)** — `@mark-bricks/fixtures`. Shared Markdown fixtures consumed by Storybook, the round-trip tests, and manual smoke tests.
+- **[`storybook`](storybook)** — Storybook workspace for previewing the editor.
 
 ## Storybook
 

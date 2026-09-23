@@ -22,12 +22,12 @@ Unsigned, no committed timeline.
 
 ## Team roles (single-maintainer project)
 
--   Authors / Reviewers / Approvers: https://github.com/t-hamano
--   All external pull requests are reviewed, and each signing request is approved, by the maintainer.
+- Authors / Reviewers / Approvers: https://github.com/t-hamano
+- All external pull requests are reviewed, and each signing request is approved, by the maintainer.
 
 ## Distribution
 
--   https://github.com/t-hamano/mark-bricks/releases
+- https://github.com/t-hamano/mark-bricks/releases
 
 ## Privacy
 
