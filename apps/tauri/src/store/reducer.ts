@@ -122,7 +122,7 @@ export function reducer( state: State = DEFAULT_STATE, action: Action ) {
 								...t,
 								filePath: action.filePath,
 								title: basename( action.filePath ),
-						  }
+							}
 						: t
 				),
 			};

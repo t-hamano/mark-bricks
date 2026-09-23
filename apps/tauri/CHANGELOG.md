@@ -2,105 +2,105 @@
 
 ### Bug Fixes
 
--   **editor:** do not write markdown back over an external content change ([39df035](https://github.com/t-hamano/mark-bricks/commit/39df035e45c02edf3911b676831b9b1730fd9a98))
--   **editor:** flush debounced markdown before saves and close checks ([8df9e1f](https://github.com/t-hamano/mark-bricks/commit/8df9e1f8babb23e4e1f1bcd9547d6a4d1a409a86))
--   **editor:** register the canvas iframe with the wp style runtime ([d220dd9](https://github.com/t-hamano/mark-bricks/commit/d220dd9024bd314c09a4c8aea20daa508805fe2f))
+- **editor:** do not write markdown back over an external content change ([39df035](https://github.com/t-hamano/mark-bricks/commit/39df035e45c02edf3911b676831b9b1730fd9a98))
+- **editor:** flush debounced markdown before saves and close checks ([8df9e1f](https://github.com/t-hamano/mark-bricks/commit/8df9e1f8babb23e4e1f1bcd9547d6a4d1a409a86))
+- **editor:** register the canvas iframe with the wp style runtime ([d220dd9](https://github.com/t-hamano/mark-bricks/commit/d220dd9024bd314c09a4c8aea20daa508805fe2f))
 
 ### Features
 
--   **editor:** add a setting to hide the undo and redo buttons ([d70ef9b](https://github.com/t-hamano/mark-bricks/commit/d70ef9b2896f09960f7f938b7c66fa97c3b53dfb))
--   **editor:** move the code editor toggle into the header behind a setting ([7678097](https://github.com/t-hamano/mark-bricks/commit/7678097c5021aa641a61dd02242cc6d934849a86))
+- **editor:** add a setting to hide the undo and redo buttons ([d70ef9b](https://github.com/t-hamano/mark-bricks/commit/d70ef9b2896f09960f7f938b7c66fa97c3b53dfb))
+- **editor:** move the code editor toggle into the header behind a setting ([7678097](https://github.com/t-hamano/mark-bricks/commit/7678097c5021aa641a61dd02242cc6d934849a86))
 
 ### Performance Improvements
 
--   **editor:** load the text editor lazily to keep monaco out of the entry chunk ([6089884](https://github.com/t-hamano/mark-bricks/commit/6089884da04ad3ef36e52ce3e6be87dfa7589618))
+- **editor:** load the text editor lazily to keep monaco out of the entry chunk ([6089884](https://github.com/t-hamano/mark-bricks/commit/6089884da04ad3ef36e52ce3e6be87dfa7589618))
 
 # [0.11.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.10.0...tauri-v0.11.0) (2026-08-29)
 
 ### Bug Fixes
 
--   **editor:** center the parent selector dot in the taller header toolbar ([eb111b0](https://github.com/t-hamano/mark-bricks/commit/eb111b0d256f29f52c5e7bf768479ca5fa741d4a))
--   **editor:** restore the list view expander width so nested blocks stay indented ([1798376](https://github.com/t-hamano/mark-bricks/commit/1798376d623c12708dd96cce2711faabf56d50ce))
--   **tauri:** keep the system default label on the font family trigger ([5419cd6](https://github.com/t-hamano/mark-bricks/commit/5419cd69ad4f6f77ce5c9bc234ae095d2baf8a15))
+- **editor:** center the parent selector dot in the taller header toolbar ([eb111b0](https://github.com/t-hamano/mark-bricks/commit/eb111b0d256f29f52c5e7bf768479ca5fa741d4a))
+- **editor:** restore the list view expander width so nested blocks stay indented ([1798376](https://github.com/t-hamano/mark-bricks/commit/1798376d623c12708dd96cce2711faabf56d50ce))
+- **tauri:** keep the system default label on the font family trigger ([5419cd6](https://github.com/t-hamano/mark-bricks/commit/5419cd69ad4f6f77ce5c9bc234ae095d2baf8a15))
 
 ### Features
 
--   **editor:** add a block breadcrumb bar so nested selections are navigable ([d048338](https://github.com/t-hamano/mark-bricks/commit/d048338a0782763fcd44453646b11b4e2d09f18c))
--   **editor:** map details elements to the core details block ([#50](https://github.com/t-hamano/mark-bricks/issues/50)) ([51932e3](https://github.com/t-hamano/mark-bricks/commit/51932e329065b1e465ada9b9bf5afeb4d412b6e4))
--   **editor:** preserve emphasis and strong marker variations ([#52](https://github.com/t-hamano/mark-bricks/issues/52)) ([37ae2d5](https://github.com/t-hamano/mark-bricks/commit/37ae2d52a76c77fa85a9399cef47783a3ecfd275))
--   **editor:** preserve the spaces after a list marker ([#51](https://github.com/t-hamano/mark-bricks/issues/51)) ([a87ac66](https://github.com/t-hamano/mark-bricks/commit/a87ac66a8c73ea34f1763ab49ad5edee78459985))
--   **editor:** preserve the syntax each link was written in ([#53](https://github.com/t-hamano/mark-bricks/issues/53)) ([66ad139](https://github.com/t-hamano/mark-bricks/commit/66ad13919e63398a7b2cedea95b74b2278baf246))
--   **editor:** render mermaid code blocks as diagrams ([#58](https://github.com/t-hamano/mark-bricks/issues/58)) ([c7ff279](https://github.com/t-hamano/mark-bricks/commit/c7ff279d8edc95a9efe241daf403f7d4570f7828))
--   **editor:** rework the link popover around the shared link control ([#57](https://github.com/t-hamano/mark-bricks/issues/57)) ([b6c2d14](https://github.com/t-hamano/mark-bricks/commit/b6c2d14b0df6a11bfb800d7752b6c8895069dcc4))
+- **editor:** add a block breadcrumb bar so nested selections are navigable ([d048338](https://github.com/t-hamano/mark-bricks/commit/d048338a0782763fcd44453646b11b4e2d09f18c))
+- **editor:** map details elements to the core details block ([#50](https://github.com/t-hamano/mark-bricks/issues/50)) ([51932e3](https://github.com/t-hamano/mark-bricks/commit/51932e329065b1e465ada9b9bf5afeb4d412b6e4))
+- **editor:** preserve emphasis and strong marker variations ([#52](https://github.com/t-hamano/mark-bricks/issues/52)) ([37ae2d5](https://github.com/t-hamano/mark-bricks/commit/37ae2d52a76c77fa85a9399cef47783a3ecfd275))
+- **editor:** preserve the spaces after a list marker ([#51](https://github.com/t-hamano/mark-bricks/issues/51)) ([a87ac66](https://github.com/t-hamano/mark-bricks/commit/a87ac66a8c73ea34f1763ab49ad5edee78459985))
+- **editor:** preserve the syntax each link was written in ([#53](https://github.com/t-hamano/mark-bricks/issues/53)) ([66ad139](https://github.com/t-hamano/mark-bricks/commit/66ad13919e63398a7b2cedea95b74b2278baf246))
+- **editor:** render mermaid code blocks as diagrams ([#58](https://github.com/t-hamano/mark-bricks/issues/58)) ([c7ff279](https://github.com/t-hamano/mark-bricks/commit/c7ff279d8edc95a9efe241daf403f7d4570f7828))
+- **editor:** rework the link popover around the shared link control ([#57](https://github.com/t-hamano/mark-bricks/issues/57)) ([b6c2d14](https://github.com/t-hamano/mark-bricks/commit/b6c2d14b0df6a11bfb800d7752b6c8895069dcc4))
 
 # [0.10.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.9.1...tauri-v0.10.0) (2026-08-26)
 
 ### Bug Fixes
 
--   **editor:** show sidebar close button tooltips below the button ([3b29f61](https://github.com/t-hamano/mark-bricks/commit/3b29f611ec170b2f2bac2df8c6dd099d55a9dd21))
--   **tauri:** dedupe duplicated [@wordpress](https://github.com/wordpress) packages to register stores once ([b9b5411](https://github.com/t-hamano/mark-bricks/commit/b9b541191bcc0804ef5a9e2368169f0ca0129b81))
--   **tauri:** make preferences tab panels non-focusable ([d1d53bd](https://github.com/t-hamano/mark-bricks/commit/d1d53bd94fc02a2092729cac97e7608cd0925d74))
--   **tauri:** make preferences tab panels non-focusable ([dd9c503](https://github.com/t-hamano/mark-bricks/commit/dd9c503ee112636c676ed12e71b0881ef19689ac))
--   **tauri:** stretch preferences modal panels to a fixed max width ([206293e](https://github.com/t-hamano/mark-bricks/commit/206293e82ece489c6237caa06e4a1067a0a050c7))
+- **editor:** show sidebar close button tooltips below the button ([3b29f61](https://github.com/t-hamano/mark-bricks/commit/3b29f611ec170b2f2bac2df8c6dd099d55a9dd21))
+- **tauri:** dedupe duplicated [@wordpress](https://github.com/wordpress) packages to register stores once ([b9b5411](https://github.com/t-hamano/mark-bricks/commit/b9b541191bcc0804ef5a9e2368169f0ca0129b81))
+- **tauri:** make preferences tab panels non-focusable ([d1d53bd](https://github.com/t-hamano/mark-bricks/commit/d1d53bd94fc02a2092729cac97e7608cd0925d74))
+- **tauri:** make preferences tab panels non-focusable ([dd9c503](https://github.com/t-hamano/mark-bricks/commit/dd9c503ee112636c676ed12e71b0881ef19689ac))
+- **tauri:** stretch preferences modal panels to a fixed max width ([206293e](https://github.com/t-hamano/mark-bricks/commit/206293e82ece489c6237caa06e4a1067a0a050c7))
 
 ### Features
 
--   **editor:** make the inserter block list arrow key navigable ([a16babf](https://github.com/t-hamano/mark-bricks/commit/a16babf5bbea4bc1a804e24e7ea1e868e174ed2e))
+- **editor:** make the inserter block list arrow key navigable ([a16babf](https://github.com/t-hamano/mark-bricks/commit/a16babf5bbea4bc1a804e24e7ea1e868e174ed2e))
 
 ### Reverts
 
--   **tauri:** make preferences tab panels non-focusable ([a615cb2](https://github.com/t-hamano/mark-bricks/commit/a615cb286d020f31d34d6ca205117be289ca8e2b))
+- **tauri:** make preferences tab panels non-focusable ([a615cb2](https://github.com/t-hamano/mark-bricks/commit/a615cb286d020f31d34d6ca205117be289ca8e2b))
 
 ## [0.9.1](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.9.0...tauri-v0.9.1) (2026-07-04)
 
 ### Bug Fixes
 
--   **tauri:** allow blob editor iframe under csp on webkit ([cda7367](https://github.com/t-hamano/mark-bricks/commit/cda73671091c2c79886a12d836558eeee9b5b3f9))
--   **tauri:** drop redundant node_modules stylesheet links ([368f120](https://github.com/t-hamano/mark-bricks/commit/368f1203c4140362fd2882b0a8317bfc1f769365))
--   **tauri:** open report-issue link in the system browser ([2d648c0](https://github.com/t-hamano/mark-bricks/commit/2d648c0ecd568c6b42280fe6b8cb0dfa4ea5596f))
+- **tauri:** allow blob editor iframe under csp on webkit ([cda7367](https://github.com/t-hamano/mark-bricks/commit/cda73671091c2c79886a12d836558eeee9b5b3f9))
+- **tauri:** drop redundant node_modules stylesheet links ([368f120](https://github.com/t-hamano/mark-bricks/commit/368f1203c4140362fd2882b0a8317bfc1f769365))
+- **tauri:** open report-issue link in the system browser ([2d648c0](https://github.com/t-hamano/mark-bricks/commit/2d648c0ecd568c6b42280fe6b8cb0dfa4ea5596f))
 
 # [0.9.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.8.0...tauri-v0.9.0) (2026-05-23)
 
 ### Features
 
--   **editor:** style inline code in the canvas ([8472aed](https://github.com/t-hamano/mark-bricks/commit/8472aed7c0561db7f359ac604ac5821f2d8c4c5f))
+- **editor:** style inline code in the canvas ([8472aed](https://github.com/t-hamano/mark-bricks/commit/8472aed7c0561db7f359ac604ac5821f2d8c4c5f))
 
 # [0.8.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.7.0...tauri-v0.8.0) (2026-05-23)
 
 ### Features
 
--   **tauri:** replace lone blank tab when opening a file ([9908753](https://github.com/t-hamano/mark-bricks/commit/990875321e90189344ff01c5ccb9b4dc2d1bd317))
+- **tauri:** replace lone blank tab when opening a file ([9908753](https://github.com/t-hamano/mark-bricks/commit/990875321e90189344ff01c5ccb9b4dc2d1bd317))
 
 # [0.7.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.6.0...tauri-v0.7.0) (2026-05-23)
 
 ### Bug Fixes
 
--   **editor:** localize heading block variations ([85e9b3a](https://github.com/t-hamano/mark-bricks/commit/85e9b3af91887d3de56f5e127db5702903e6f3d0))
--   **tauri:** allow blob: in frame-src so the editor iframe loads ([34d4d2e](https://github.com/t-hamano/mark-bricks/commit/34d4d2ec33535c3eb6d80adbd0f4fa2597b1e4be))
--   **tauri:** open os-associated markdown files by hardcoding extensions ([3528055](https://github.com/t-hamano/mark-bricks/commit/3528055f34e97a2d436a1115ad4ea73c0361e489))
--   **tauri:** relax script-src csp so editor iframe bootstraps correctly ([23fc8ec](https://github.com/t-hamano/mark-bricks/commit/23fc8ec276329188581d142b4bdf0fb8483b6ba4))
+- **editor:** localize heading block variations ([85e9b3a](https://github.com/t-hamano/mark-bricks/commit/85e9b3af91887d3de56f5e127db5702903e6f3d0))
+- **tauri:** allow blob: in frame-src so the editor iframe loads ([34d4d2e](https://github.com/t-hamano/mark-bricks/commit/34d4d2ec33535c3eb6d80adbd0f4fa2597b1e4be))
+- **tauri:** open os-associated markdown files by hardcoding extensions ([3528055](https://github.com/t-hamano/mark-bricks/commit/3528055f34e97a2d436a1115ad4ea73c0361e489))
+- **tauri:** relax script-src csp so editor iframe bootstraps correctly ([23fc8ec](https://github.com/t-hamano/mark-bricks/commit/23fc8ec276329188581d142b4bdf0fb8483b6ba4))
 
 ### Features
 
--   **editor:** drop block style variations ([8ccf2f9](https://github.com/t-hamano/mark-bricks/commit/8ccf2f9af7792d383d8af29b9e6182a29f7392ae))
+- **editor:** drop block style variations ([8ccf2f9](https://github.com/t-hamano/mark-bricks/commit/8ccf2f9af7792d383d8af29b9e6182a29f7392ae))
 
 ## [0.6.1](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.6.0...tauri-v0.6.1) (2026-05-23)
 
 ### Bug Fixes
 
--   **tauri:** allow blob: in frame-src so the editor iframe loads ([34d4d2e](https://github.com/t-hamano/mark-bricks/commit/34d4d2ec33535c3eb6d80adbd0f4fa2597b1e4be))
--   **tauri:** open os-associated markdown files by hardcoding extensions ([3528055](https://github.com/t-hamano/mark-bricks/commit/3528055f34e97a2d436a1115ad4ea73c0361e489))
+- **tauri:** allow blob: in frame-src so the editor iframe loads ([34d4d2e](https://github.com/t-hamano/mark-bricks/commit/34d4d2ec33535c3eb6d80adbd0f4fa2597b1e4be))
+- **tauri:** open os-associated markdown files by hardcoding extensions ([3528055](https://github.com/t-hamano/mark-bricks/commit/3528055f34e97a2d436a1115ad4ea73c0361e489))
 
 # [0.6.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.5.1...tauri-v0.6.0) (2026-05-23)
 
 ### Bug Fixes
 
--   **tauri:** restrict asset protocol scope to image files ([#28](https://github.com/t-hamano/mark-bricks/issues/28)) ([1e0757e](https://github.com/t-hamano/mark-bricks/commit/1e0757e2096e6a62c8970068d434051b9ba91cec))
+- **tauri:** restrict asset protocol scope to image files ([#28](https://github.com/t-hamano/mark-bricks/issues/28)) ([1e0757e](https://github.com/t-hamano/mark-bricks/commit/1e0757e2096e6a62c8970068d434051b9ba91cec))
 
 ### Features
 
--   **tauri:** adopt new cube app icon ([#27](https://github.com/t-hamano/mark-bricks/issues/27)) ([ef2ba6f](https://github.com/t-hamano/mark-bricks/commit/ef2ba6fdd26d13939ba3cbd5b005b4b19e58c4b7))
--   **tauri:** enable strict content security policy ([ea5f00f](https://github.com/t-hamano/mark-bricks/commit/ea5f00f6a03a5f445f56ad1e0a0f910b1f2c29d6))
+- **tauri:** adopt new cube app icon ([#27](https://github.com/t-hamano/mark-bricks/issues/27)) ([ef2ba6f](https://github.com/t-hamano/mark-bricks/commit/ef2ba6fdd26d13939ba3cbd5b005b4b19e58c4b7))
+- **tauri:** enable strict content security policy ([ea5f00f](https://github.com/t-hamano/mark-bricks/commit/ea5f00f6a03a5f445f56ad1e0a0f910b1f2c29d6))
 
 ## [0.5.1](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.5.0...tauri-v0.5.1) (2026-05-22)
 
@@ -108,45 +108,45 @@
 
 ### Bug Fixes
 
--   **repo:** align ja translations with gutenberg wording ([#19](https://github.com/t-hamano/mark-bricks/issues/19)) ([47cd076](https://github.com/t-hamano/mark-bricks/commit/47cd0764a601fece7729760ec3be1786b65a8eb1))
--   **tauri:** localize preference selects and unify ja shortcut tone ([#22](https://github.com/t-hamano/mark-bricks/issues/22)) ([144196e](https://github.com/t-hamano/mark-bricks/commit/144196e08d294f89c974a3bbb0594308039e86b9))
--   **tauri:** remove window file drop to restore editor block dragging ([abe74ca](https://github.com/t-hamano/mark-bricks/commit/abe74cadffef3140e89a045709b3967358879285))
--   **tauri:** source report-issue link from package.json bugs url ([#17](https://github.com/t-hamano/mark-bricks/issues/17)) ([f13297e](https://github.com/t-hamano/mark-bricks/commit/f13297e609a0565dd8a734679f600a3c7127867b))
+- **repo:** align ja translations with gutenberg wording ([#19](https://github.com/t-hamano/mark-bricks/issues/19)) ([47cd076](https://github.com/t-hamano/mark-bricks/commit/47cd0764a601fece7729760ec3be1786b65a8eb1))
+- **tauri:** localize preference selects and unify ja shortcut tone ([#22](https://github.com/t-hamano/mark-bricks/issues/22)) ([144196e](https://github.com/t-hamano/mark-bricks/commit/144196e08d294f89c974a3bbb0594308039e86b9))
+- **tauri:** remove window file drop to restore editor block dragging ([abe74ca](https://github.com/t-hamano/mark-bricks/commit/abe74cadffef3140e89a045709b3967358879285))
+- **tauri:** source report-issue link from package.json bugs url ([#17](https://github.com/t-hamano/mark-bricks/issues/17)) ([f13297e](https://github.com/t-hamano/mark-bricks/commit/f13297e609a0565dd8a734679f600a3c7127867b))
 
 ### Features
 
--   **repo:** gitignore built i18n dictionaries and cache gutenberg translations ([#23](https://github.com/t-hamano/mark-bricks/issues/23)) ([1b6ce50](https://github.com/t-hamano/mark-bricks/commit/1b6ce500331674bb12d62c0b19db3a2a1c2c150d))
--   **repo:** localize the tauri app and add shared i18n tooling ([#16](https://github.com/t-hamano/mark-bricks/issues/16)) ([62b66f1](https://github.com/t-hamano/mark-bricks/commit/62b66f1335884c82c3babe2c8671b923adf57d44))
--   **tauri:** add check-for-updates button to about modal ([#20](https://github.com/t-hamano/mark-bricks/issues/20)) ([ff202ec](https://github.com/t-hamano/mark-bricks/commit/ff202ec843b5234ea33597f2c090084a1f67d886))
--   **tauri:** group preferences panels into labeled sections ([#21](https://github.com/t-hamano/mark-bricks/issues/21)) ([51ad252](https://github.com/t-hamano/mark-bricks/commit/51ad252461460bb3b078a9159548ec2834c7a90c))
--   **tauri:** show current version in up-to-date dialog ([#18](https://github.com/t-hamano/mark-bricks/issues/18)) ([adac979](https://github.com/t-hamano/mark-bricks/commit/adac979d41c452e29ff645bde6a13b6e1c0ea4bb))
+- **repo:** gitignore built i18n dictionaries and cache gutenberg translations ([#23](https://github.com/t-hamano/mark-bricks/issues/23)) ([1b6ce50](https://github.com/t-hamano/mark-bricks/commit/1b6ce500331674bb12d62c0b19db3a2a1c2c150d))
+- **repo:** localize the tauri app and add shared i18n tooling ([#16](https://github.com/t-hamano/mark-bricks/issues/16)) ([62b66f1](https://github.com/t-hamano/mark-bricks/commit/62b66f1335884c82c3babe2c8671b923adf57d44))
+- **tauri:** add check-for-updates button to about modal ([#20](https://github.com/t-hamano/mark-bricks/issues/20)) ([ff202ec](https://github.com/t-hamano/mark-bricks/commit/ff202ec843b5234ea33597f2c090084a1f67d886))
+- **tauri:** group preferences panels into labeled sections ([#21](https://github.com/t-hamano/mark-bricks/issues/21)) ([51ad252](https://github.com/t-hamano/mark-bricks/commit/51ad252461460bb3b078a9159548ec2834c7a90c))
+- **tauri:** show current version in up-to-date dialog ([#18](https://github.com/t-hamano/mark-bricks/issues/18)) ([adac979](https://github.com/t-hamano/mark-bricks/commit/adac979d41c452e29ff645bde6a13b6e1c0ea4bb))
 
 # [0.4.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.3.0...tauri-v0.4.0) (2026-05-22)
 
 ### Bug Fixes
 
--   **editor:** keep freshly opened file from being marked dirty ([73154ea](https://github.com/t-hamano/mark-bricks/commit/73154ea14009241704c443f6165b01c355863873))
--   **tauri:** use compact button size for update check in preferences ([361cd7d](https://github.com/t-hamano/mark-bricks/commit/361cd7dcca0fdc6b263c76e4b595aa4e8091039d))
+- **editor:** keep freshly opened file from being marked dirty ([73154ea](https://github.com/t-hamano/mark-bricks/commit/73154ea14009241704c443f6165b01c355863873))
+- **tauri:** use compact button size for update check in preferences ([361cd7d](https://github.com/t-hamano/mark-bricks/commit/361cd7dcca0fdc6b263c76e4b595aa4e8091039d))
 
 ### Features
 
--   **tauri:** associate markdown files with the app ([#6](https://github.com/t-hamano/mark-bricks/issues/6)) ([4eac9f9](https://github.com/t-hamano/mark-bricks/commit/4eac9f9876c41fcc2c2294a422f874793881bfa2))
--   **tauri:** open dropped markdown files via drop zone ([#9](https://github.com/t-hamano/mark-bricks/issues/9)) ([9965344](https://github.com/t-hamano/mark-bricks/commit/99653443ce8982259d90c867de6d4a492ee40987))
+- **tauri:** associate markdown files with the app ([#6](https://github.com/t-hamano/mark-bricks/issues/6)) ([4eac9f9](https://github.com/t-hamano/mark-bricks/commit/4eac9f9876c41fcc2c2294a422f874793881bfa2))
+- **tauri:** open dropped markdown files via drop zone ([#9](https://github.com/t-hamano/mark-bricks/issues/9)) ([9965344](https://github.com/t-hamano/mark-bricks/commit/99653443ce8982259d90c867de6d4a492ee40987))
 
 # [0.3.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.2.0...tauri-v0.3.0) (2026-05-20)
 
 ### Features
 
--   **tauri:** add github-based auto updater ([3daed7e](https://github.com/t-hamano/mark-bricks/commit/3daed7e430feec9b0f6c1b5d942fe25c9432917d))
+- **tauri:** add github-based auto updater ([3daed7e](https://github.com/t-hamano/mark-bricks/commit/3daed7e430feec9b0f6c1b5d942fe25c9432917d))
 
 # [0.2.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.1.0...tauri-v0.2.0) (2026-05-20)
 
 ### Bug Fixes
 
--   **repo:** handle release commit and tag in app bump scripts ([ae712b7](https://github.com/t-hamano/mark-bricks/commit/ae712b79d80c410dc462b30d413f25473a86c0d8))
+- **repo:** handle release commit and tag in app bump scripts ([ae712b7](https://github.com/t-hamano/mark-bricks/commit/ae712b79d80c410dc462b30d413f25473a86c0d8))
 
 # 0.1.0 (2026-05-20)
 
 ### Bug Fixes
 
--   **tauri:** read crate name from cargo.toml and tolerate already-synced files in bump-version script ([18ba639](https://github.com/t-hamano/mark-bricks/commit/18ba639c4946f27794ab58c8387c2ed46df66750))
+- **tauri:** read crate name from cargo.toml and tolerate already-synced files in bump-version script ([18ba639](https://github.com/t-hamano/mark-bricks/commit/18ba639c4946f27794ab58c8387c2ed46df66750))

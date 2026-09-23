@@ -16,7 +16,9 @@ export default function DirtyConfirmDialog() {
 		const id = getPendingCloseId();
 		const tabs = getTabs();
 		return {
-			pendingTab: id ? tabs.find( ( t ) => t.id === id ) ?? null : null,
+			pendingTab: id
+				? ( tabs.find( ( t ) => t.id === id ) ?? null )
+				: null,
 		};
 	}, [] );
 
