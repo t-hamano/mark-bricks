@@ -6,6 +6,7 @@ import {
 	BlockEditor,
 	type EditorHandle,
 } from '@mark-bricks/editor/block-editor';
+import { EditorThemeProvider } from '@mark-bricks/editor/editor-theme-provider';
 import { applyLocale } from '@mark-bricks/editor/i18n';
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -14,6 +15,7 @@ import { createRoot } from 'react-dom/client';
  * Internal dependencies
  */
 import type { HostMessage, WebviewMessage } from '../shared/messages';
+import { useVsCodeTheme } from './use-vscode-theme';
 import './style.scss';
 
 const host = acquireVsCodeApi();
@@ -40,6 +42,7 @@ const platform: Partial< Platform > = {
 function App() {
 	const [ content, setContent ] = useState< string | null >( null );
 	const editorRef = useRef< EditorHandle >( null );
+	const theme = useVsCodeTheme();
 
 	useEffect( () => {
 		function onMessage( event: MessageEvent< HostMessage > ) {
@@ -110,16 +113,18 @@ function App() {
 	}
 
 	return (
-		<BlockEditor
-			ref={ editorRef }
-			content={ content }
-			onChange={ ( text ) => {
-				setContent( text );
-				post( { type: 'change', text } );
-			} }
-			settings={ { showUndoRedo: false } }
-			platform={ platform }
-		/>
+		<EditorThemeProvider theme={ theme }>
+			<BlockEditor
+				ref={ editorRef }
+				content={ content }
+				onChange={ ( text ) => {
+					setContent( text );
+					post( { type: 'change', text } );
+				} }
+				settings={ { showUndoRedo: false } }
+				platform={ platform }
+			/>
+		</EditorThemeProvider>
 	);
 }
 

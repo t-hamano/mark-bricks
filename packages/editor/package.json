@@ -28,6 +28,10 @@
 		"./format-library": {
 			"types": "./src/format-library/index.ts",
 			"default": "./src/format-library/index.ts"
+		},
+		"./editor-theme-provider": {
+			"types": "./src/components/editor-theme-provider/index.tsx",
+			"default": "./src/components/editor-theme-provider/index.tsx"
 		}
 	},
 	"scripts": {
