@@ -37,7 +37,6 @@ type Props = {
 	text: string;
 	language: string;
 	placeholder?: string;
-	ariaLabel?: string;
 	handlers: {
 		previousBlockClientId: string | null;
 		nextBlockClientId: string | null;
@@ -56,7 +55,6 @@ type Props = {
  * @param props.text        The plain-text document content.
  * @param props.language    The language name to highlight.
  * @param props.placeholder The text shown while the document is empty.
- * @param props.ariaLabel   The accessible name of the editable content.
  * @param props.handlers    Editor callbacks read fresh on each keypress.
  * @return The ref callback to attach to the editor container element.
  */
@@ -64,7 +62,6 @@ export function useCodeMirror( {
 	text,
 	language,
 	placeholder: placeholderText,
-	ariaLabel,
 	handlers,
 }: Props ) {
 	const [ container, setContainer ] = useState< HTMLDivElement | null >(
@@ -150,13 +147,6 @@ export function useCodeMirror( {
 					EditorView.lineWrapping,
 					...( placeholderText
 						? [ placeholder( placeholderText ) ]
-						: [] ),
-					...( ariaLabel
-						? [
-								EditorView.contentAttributes.of( {
-									'aria-label': ariaLabel,
-								} ),
-							]
 						: [] ),
 					themeConf.current.of(
 						initialTheme.current === 'dark' ? oneDark : lightTheme
