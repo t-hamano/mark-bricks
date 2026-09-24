@@ -4,13 +4,13 @@ VSCode extension for MarkBricks. It registers a custom editor for `.md` files th
 
 ## Install
 
-Not yet published to the VSCode Marketplace. Download the `.vsix` from a `vscode-v*` tag on the [Releases page](https://github.com/t-hamano/mark-bricks/releases), then install it:
+Install [MarkBricks](https://marketplace.visualstudio.com/items?itemName=aki-hamano.mark-bricks-vscode) from the VSCode Marketplace, or run:
 
 ```sh
-code --install-extension mark-bricks-vscode-*.vsix
+code --install-extension aki-hamano.mark-bricks-vscode
 ```
 
-A `.vsix` install doesn't auto-update; repeat this step for each new release.
+Each `vscode-v*` tag on the [Releases page](https://github.com/t-hamano/mark-bricks/releases) also carries the `.vsix`, for editors that can't reach the Marketplace. A `.vsix` install doesn't auto-update.
 
 ## Development
 

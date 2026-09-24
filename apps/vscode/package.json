@@ -7,6 +7,8 @@
 	"publisher": "aki-hamano",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
+	"icon": "icon.png",
+	"preview": true,
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/t-hamano/mark-bricks.git",

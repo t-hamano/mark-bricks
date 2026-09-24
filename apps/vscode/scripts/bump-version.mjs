@@ -11,7 +11,9 @@ const pkg = JSON.parse(
 );
 const version = pkg.version;
 
-if ( ! /^\d+\.\d+\.\d+(?:[-+][\w.-]+)?$/.test( version ) ) {
+// The Marketplace rejects semver pre-release/build suffixes, so only plain
+// major.minor.patch versions can be released.
+if ( ! /^\d+\.\d+\.\d+$/.test( version ) ) {
 	throw new Error( `Invalid version in package.json: ${ version }` );
 }
 
