@@ -77,6 +77,7 @@ export default function HeaderActions( {
 	const [ isOptionsMenuOpen, setIsOptionsMenuOpen ] = useState( false );
 	const { frontMatter, setFrontMatter } = useFrontMatter();
 	const hasFrontMatter = frontMatter !== null;
+	const isFrontMatterEmpty = frontMatter?.trim() === '';
 	const [ isRemoveFrontMatterOpen, setIsRemoveFrontMatterOpen ] =
 		useState( false );
 	useEffect( () => {
@@ -240,23 +241,32 @@ export default function HeaderActions( {
 						<Menu.Item
 							disabled={ editorMode !== 'visual' }
 							onClick={ () => {
-								if ( hasFrontMatter ) {
-									setIsRemoveFrontMatterOpen( true );
-								} else {
+								if ( ! hasFrontMatter ) {
 									setFrontMatter( '' );
+								} else if ( isFrontMatterEmpty ) {
+									setFrontMatter( null );
+								} else {
+									setIsRemoveFrontMatterOpen( true );
 								}
 							} }
 						>
 							<Menu.ItemLabel>
-								{ hasFrontMatter
-									? __(
-											'Remove YAML front matter',
-											'mark-bricks'
-										)
-									: __(
-											'Add YAML front matter',
-											'mark-bricks'
-										) }
+								{ ! hasFrontMatter &&
+									__(
+										'Add YAML front matter',
+										'mark-bricks'
+									) }
+								{ isFrontMatterEmpty &&
+									__(
+										'Hide YAML front matter',
+										'mark-bricks'
+									) }
+								{ hasFrontMatter &&
+									! isFrontMatterEmpty &&
+									__(
+										'Remove YAML front matter',
+										'mark-bricks'
+									) }
 							</Menu.ItemLabel>
 						</Menu.Item>
 						<Menu.Item
