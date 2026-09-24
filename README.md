@@ -16,7 +16,7 @@ A visual Markdown editor that minimizes and specializes the WordPress block edit
 MarkBricks is delivered as the following applications.
 
 - **MarkBricks Desktop** — A standalone desktop app for Windows, macOS, and Linux. Built on Tauri 2 + React, it edits local Markdown files with the WordPress block editor. Grab it from the [latest release](https://github.com/t-hamano/mark-bricks/releases/latest).
-- **MarkBricks VSCode extension** — A VSCode extension that embeds the editor as a custom editor for `.md` files, so you can edit Markdown visually without leaving your editor. **Not yet implemented.**
+- **MarkBricks VSCode extension** — A VSCode extension that embeds the editor as a custom editor for `.md` files, so you can edit Markdown visually without leaving your editor. Not yet on the VSCode Marketplace; see [`apps/vscode`](apps/vscode) to install it from a release or build it from source.
 
 ## Download
 
@@ -33,7 +33,7 @@ Download **MarkBricks Desktop** for your platform. Older versions and release no
 This is a pnpm monorepo. The editor itself lives in a host-agnostic package that each host application consumes.
 
 - **[`apps/tauri`](apps/tauri)** — Desktop application. Built on Tauri 2 + React, it hosts `@mark-bricks/editor` for editing local Markdown files.
-- **[`apps/vscode`](apps/vscode)** — VSCode extension. Embeds the editor as a custom editor for `.md` files. **Not yet implemented.**
+- **[`apps/vscode`](apps/vscode)** — VSCode extension. Embeds the editor as a custom editor for `.md` files.
 - **[`packages/editor`](packages/editor)** — `@mark-bricks/editor`. The host-agnostic React component at the heart of MarkBricks. Ships the blocks, inline formats, a Monaco-based source editor, and i18n.
 - **[`packages/i18n-tools`](packages/i18n-tools)** — `@mark-bricks/i18n-tools`. Shared i18n build tooling. Provides the `mb-i18n` CLI that runs the gettext PO/JSON pipeline.
 - **[`packages/fixtures`](packages/fixtures)** — `@mark-bricks/fixtures`. Shared Markdown fixtures consumed by Storybook, the round-trip tests, and manual smoke tests.
@@ -54,30 +54,6 @@ Requires Node.js and [pnpm](https://pnpm.io/). Run any of the root scripts with 
 ```sh
 # Install dependencies
 pnpm install
-```
-
-### Desktop app
-
-```sh
-# Start the desktop app in development (Vite + Tauri)
-pnpm dev:tauri
-# Build the frontend and bundle the desktop app
-pnpm build:tauri
-# Run the Tauri CLI in the desktop app
-pnpm tauri
-# Bump the desktop app version (npm version)
-pnpm version:tauri
-# Preview the next desktop app version
-pnpm version:tauri:preview
-```
-
-### VSCode extension
-
-```sh
-# Bump the VSCode extension version (npm version)
-pnpm version:vscode
-# Preview the next VSCode extension version
-pnpm version:vscode:preview
 ```
 
 ### Storybook
@@ -105,7 +81,7 @@ pnpm i18n:make-json
 pnpm test
 ```
 
-See each package's own README for details.
+For running, building, and versioning a specific app, see its own README ([`apps/tauri`](apps/tauri/README.md), [`apps/vscode`](apps/vscode/README.md)).
 
 ## License
 

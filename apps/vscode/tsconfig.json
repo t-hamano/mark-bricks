@@ -4,9 +4,7 @@
 		"module": "CommonJS",
 		"moduleResolution": "bundler",
 		"lib": [ "ES2020" ],
-		"rootDir": "src",
-		"outDir": "dist",
-		"noEmit": false
+		"types": [ "node" ]
 	},
-	"include": [ "src" ]
+	"include": [ "src/extension", "src/shared" ]
 }

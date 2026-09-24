@@ -7,8 +7,13 @@
 	"publisher": "akihamano",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/t-hamano/mark-bricks.git",
+		"directory": "apps/vscode"
+	},
 	"engines": {
-		"vscode": "^1.85.0"
+		"vscode": "^1.137.0"
 	},
 	"categories": [
 		"Other"
@@ -43,22 +48,53 @@
 				"title": "Open with Text Editor"
 			}
 		],
+		"keybindings": [
+			{
+				"command": "markBricks.suppressUndo",
+				"key": "ctrl+z",
+				"mac": "cmd+z",
+				"when": "activeCustomEditorId == 'markBricks.visualEditor'"
+			},
+			{
+				"command": "markBricks.suppressRedo",
+				"key": "ctrl+shift+z",
+				"mac": "shift+cmd+z",
+				"when": "activeCustomEditorId == 'markBricks.visualEditor'"
+			},
+			{
+				"command": "markBricks.suppressRedo",
+				"key": "ctrl+y",
+				"when": "activeCustomEditorId == 'markBricks.visualEditor' && !isMac"
+			}
+		],
 		"configuration": {
 			"title": "MarkBricks",
 			"properties": {}
 		}
 	},
 	"scripts": {
-		"build": "echo \"TODO: bundle extension host and webview\" && exit 0",
-		"package": "vsce package",
+		"build": "node scripts/build.mjs",
+		"dev": "node scripts/build.mjs --watch",
+		"package": "pnpm run build && vsce package --no-dependencies",
 		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor && node scripts/bump-version.mjs",
 		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor"
 	},
 	"dependencies": {
-		"@mark-bricks/editor": "workspace:*"
+		"@mark-bricks/editor": "workspace:*",
+		"@wordpress/base-styles": "^13.0.0",
+		"react": "^19.3.0",
+		"react-dom": "^19.2.8"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.138.0",
-		"@vscode/vsce": "^4"
+		"@types/node": "^26.3.0",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.2.4",
+		"@types/vscode": "^1.137.0",
+		"@vitejs/plugin-react": "^6.1.0",
+		"@vscode/vsce": "^4",
+		"esbuild": "^0.28.2",
+		"sass": "^1.103.1",
+		"typescript": "~6.0.3",
+		"vite": "^8.2.2"
 	}
 }

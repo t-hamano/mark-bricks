@@ -18,4 +18,7 @@ pnpm tauri
 
 # Bump the version (updates package.json / Cargo.toml / Cargo.lock / tauri.conf.json in one shot)
 pnpm version:tauri <patch|minor|major>
+
+# Preview the next version without bumping anything
+pnpm version:tauri:preview
 ```

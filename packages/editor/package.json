@@ -12,6 +12,26 @@
 		".": {
 			"types": "./src/index.ts",
 			"default": "./src/index.ts"
+		},
+		"./block-editor": {
+			"types": "./src/components/block-editor/index.tsx",
+			"default": "./src/components/block-editor/index.tsx"
+		},
+		"./i18n": {
+			"types": "./src/i18n.ts",
+			"default": "./src/i18n.ts"
+		},
+		"./block-library": {
+			"types": "./src/block-library/index.ts",
+			"default": "./src/block-library/index.ts"
+		},
+		"./format-library": {
+			"types": "./src/format-library/index.ts",
+			"default": "./src/format-library/index.ts"
+		},
+		"./editor-theme-provider": {
+			"types": "./src/components/editor-theme-provider/index.tsx",
+			"default": "./src/components/editor-theme-provider/index.tsx"
 		}
 	},
 	"scripts": {

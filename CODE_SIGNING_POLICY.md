@@ -10,7 +10,7 @@ Planned statement (required by the program, once approved):
 
 > Free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org)
 
-Only artifacts built by this repository's CI ([`release.yml`](.github/workflows/release.yml)) will be submitted for signing.
+Only artifacts built by this repository's CI ([`release-desktop.yml`](.github/workflows/release-desktop.yml)) will be submitted for signing.
 
 ## macOS
 
