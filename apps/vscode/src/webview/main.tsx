@@ -21,6 +21,7 @@ import { useEnableWpCompatOverlaySlot } from '@wordpress/ui';
  */
 import type { HostMessage, WebviewMessage } from '../shared/messages';
 import HeaderActions from './header-actions';
+import { applyVsCodeLocale } from './i18n';
 import { useVsCodeTheme } from './use-vscode-theme';
 import './style.scss';
 
@@ -140,7 +141,12 @@ function App() {
 }
 
 async function bootstrap() {
-	applyLocale( undefined );
+	// The extension host writes VS Code's display language into `<html lang>`.
+	// Write the resolved locale back so it matches the language the UI is
+	// actually rendered in (e.g. English for an unsupported display language).
+	const locale = applyLocale( document.documentElement.lang );
+	document.documentElement.lang = locale;
+	applyVsCodeLocale( locale );
 
 	const [ { registerBlocks }, { registerFormats } ] = await Promise.all( [
 		import( '@mark-bricks/editor/block-library' ),

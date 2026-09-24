@@ -1,0 +1,6 @@
+{
+	"description": "WordPress ブロックエディターを使ったビジュアル Markdown エディター。",
+	"customEditor.visualEditor.displayName": "ビジュアルエディター",
+	"command.openVisual.title": "MarkBricks で開く",
+	"command.openText.title": "テキストエディターで開く"
+}

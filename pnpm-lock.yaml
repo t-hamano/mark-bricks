@@ -178,6 +178,9 @@ importers:
         specifier: ^19.2.8
         version: 19.3.0(react@19.3.0)
     devDependencies:
+      '@mark-bricks/i18n-tools':
+        specifier: workspace:*
+        version: link:../../packages/i18n-tools
       '@types/node':
         specifier: ^26.3.0
         version: 26.6.2

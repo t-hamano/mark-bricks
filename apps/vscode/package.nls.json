@@ -1,0 +1,6 @@
+{
+	"description": "Visual markdown editor powered by the WordPress block editor.",
+	"customEditor.visualEditor.displayName": "Visual Editor",
+	"command.openVisual.title": "Open with MarkBricks",
+	"command.openText.title": "Open with Text Editor"
+}

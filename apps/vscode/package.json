@@ -1,7 +1,7 @@
 {
 	"name": "mark-bricks-vscode",
 	"displayName": "MarkBricks",
-	"description": "Visual markdown editor powered by the WordPress block editor.",
+	"description": "%description%",
 	"version": "0.1.0",
 	"private": true,
 	"publisher": "akihamano",
@@ -25,11 +25,12 @@
 		"wysiwyg"
 	],
 	"main": "./dist/extension.cjs",
+	"l10n": "./l10n",
 	"contributes": {
 		"customEditors": [
 			{
 				"viewType": "markBricks.visualEditor",
-				"displayName": "Visual Editor",
+				"displayName": "%customEditor.visualEditor.displayName%",
 				"selector": [
 					{
 						"filenamePattern": "*.md"
@@ -41,11 +42,11 @@
 		"commands": [
 			{
 				"command": "markBricks.openVisual",
-				"title": "Open with MarkBricks"
+				"title": "%command.openVisual.title%"
 			},
 			{
 				"command": "markBricks.openText",
-				"title": "Open with Text Editor"
+				"title": "%command.openText.title%"
 			}
 		],
 		"keybindings": [
@@ -76,6 +77,9 @@
 		"build": "node scripts/build.mjs",
 		"dev": "node scripts/build.mjs --watch",
 		"package": "pnpm run build && vsce package --no-dependencies",
+		"i18n:make-pot": "mb-i18n make-pot",
+		"i18n:make-po": "mb-i18n make-po",
+		"i18n:make-json": "mb-i18n make-json",
 		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor && node scripts/bump-version.mjs",
 		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor"
 	},
@@ -89,6 +93,7 @@
 		"react-dom": "^19.2.8"
 	},
 	"devDependencies": {
+		"@mark-bricks/i18n-tools": "workspace:*",
 		"@types/node": "^26.3.0",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.2.4",
