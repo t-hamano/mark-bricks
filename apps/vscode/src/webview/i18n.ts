@@ -3,11 +3,6 @@
  */
 import { setLocaleData, type LocaleData } from '@wordpress/i18n';
 
-/**
- * External dependencies
- */
-import { type Locale } from '@mark-bricks/editor';
-
 const TEXT_DOMAIN = 'mark-bricks';
 
 // VS Code display language IDs mapped to the WordPress locale slugs the editor
@@ -70,9 +65,9 @@ export function resolveVsCodeLocale( lang: string ): string {
  * without dropping the editor's keys. English needs no catalog (msgids are
  * English).
  *
- * @param locale Locale already resolved by the editor's `applyLocale`.
+ * @param locale Locale slug already applied by the editor's `applyLocale`.
  */
-export function applyVsCodeLocale( locale: Locale ) {
+export function applyVsCodeLocale( locale: string ) {
 	const dict = CATALOGS[ locale ]?.locale_data?.[ TEXT_DOMAIN ];
 	if ( dict ) {
 		setLocaleData( dict, TEXT_DOMAIN );

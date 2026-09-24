@@ -7,7 +7,7 @@ import {
 	type EditorHandle,
 } from '@mark-bricks/editor/block-editor';
 import { EditorThemeProvider } from '@mark-bricks/editor/editor-theme-provider';
-import { applyLocale } from '@mark-bricks/editor/i18n';
+import { applyLocale as applyEditorLocale } from '@mark-bricks/editor/i18n';
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -145,7 +145,7 @@ async function bootstrap() {
 	// Write the resolved locale back so it matches the language the UI is
 	// actually rendered in (e.g. English for an unsupported display language),
 	// as a BCP 47 tag (`pt_BR` → `pt-BR`).
-	const locale = applyLocale(
+	const locale = applyEditorLocale(
 		resolveVsCodeLocale( document.documentElement.lang )
 	);
 	document.documentElement.lang = locale.replace( '_', '-' );
