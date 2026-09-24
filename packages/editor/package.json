@@ -29,6 +29,10 @@
 			"types": "./src/format-library/index.ts",
 			"default": "./src/format-library/index.ts"
 		},
+		"./front-matter": {
+			"types": "./src/components/front-matter-editor/context.ts",
+			"default": "./src/components/front-matter-editor/context.ts"
+		},
 		"./editor-theme-provider": {
 			"types": "./src/components/editor-theme-provider/index.tsx",
 			"default": "./src/components/editor-theme-provider/index.tsx"
