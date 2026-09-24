@@ -43,11 +43,6 @@ jobs:
                   toolchain: stable
                   targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
 
-            - name: Rust cache
-              uses: swatinem/rust-cache@f0d9c3887740aee45f6153b24b3a6b815192ec16 # v2.9.1
-              with:
-                  workspaces: ./apps/tauri/src-tauri -> target
-
             - name: Install Linux dependencies
               if: matrix.platform == 'ubuntu-22.04'
               run: |
