@@ -4,7 +4,7 @@
 	"description": "%description%",
 	"version": "0.1.0",
 	"private": true,
-	"publisher": "akihamano",
+	"publisher": "aki-hamano",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
 	"repository": {
