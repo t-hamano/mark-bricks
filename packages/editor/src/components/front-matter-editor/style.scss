@@ -1,0 +1,35 @@
+.front-matter-editor {
+	position: relative;
+	max-width: var(--mb-content-width, 700px);
+	margin: 0 auto 1.2rem;
+	color: var(--wpds-color-foreground-content-neutral);
+	line-height: 1.45;
+	background: var(--wpds-color-background-surface-neutral-weak);
+	border: 1px solid var(--wpds-color-stroke-surface-neutral);
+
+	.cm-editor {
+		padding: 1.5rem 1rem 1rem;
+	}
+
+	.cm-focused {
+		outline: none;
+	}
+
+	&:focus-within {
+		outline: 2px solid var(--wp-admin-theme-color);
+		outline-offset: -1px;
+	}
+}
+
+.front-matter-editor__label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0 0.5rem;
+	font-size: 0.75em;
+	pointer-events: none;
+	border-right: 1px solid var(--wpds-color-stroke-surface-neutral);
+	border-bottom: 1px solid var(--wpds-color-stroke-surface-neutral);
+	border-bottom-right-radius: 3px;
+	z-index: 1;
+}

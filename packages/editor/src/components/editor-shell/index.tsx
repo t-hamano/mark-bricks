@@ -34,6 +34,7 @@ import '@wordpress/block-editor/build-style/style.css';
 import { useInitialListView, useMarkdownDocument } from './hooks';
 import { EditorFooter } from '../editor-footer';
 import { EditorHeader } from '../editor-header';
+import { FrontMatterContext } from '../front-matter-editor/context';
 import { InserterSidebar } from '../inserter-sidebar';
 import { KeyboardShortcuts } from '../keyboard-shortcuts';
 import { ListViewSidebar } from '../list-view-sidebar';
@@ -104,9 +105,16 @@ function UnforwardedEditorShell(
 		canUndo,
 		canRedo,
 		flush,
+		frontMatter,
+		setFrontMatter,
 	} = useMarkdownDocument( { content, onChange, isVisualMode } );
 
 	useImperativeHandle( ref, () => ( { flush } ), [ flush ] );
+
+	const frontMatterContext = useMemo(
+		() => ( { frontMatter, setFrontMatter } ),
+		[ frontMatter, setFrontMatter ]
+	);
 
 	useInitialListView( !! settings?.showListViewByDefault );
 
@@ -132,59 +140,61 @@ function UnforwardedEditorShell(
 
 	return (
 		<PlatformProvider platform={ platform }>
-			<Stack
-				render={ <ShortcutProvider /> }
-				className="editor-shell"
-				direction="column"
-				style={ style }
-			>
-				<BlockEditorProvider
-					value={ blocks }
-					onChange={ onBlocksChange }
-					onInput={ onInput }
-					settings={ blockEditorSettings }
+			<FrontMatterContext.Provider value={ frontMatterContext }>
+				<Stack
+					render={ <ShortcutProvider /> }
+					className="editor-shell"
+					direction="column"
+					style={ style }
 				>
-					<KeyboardShortcuts
-						canUndo={ canUndo }
-						canRedo={ canRedo }
-						onUndo={ undo }
-						onRedo={ redo }
-						editorMode={ editorMode }
-						onEditorModeChange={ onEditorModeChange }
-					/>
-					<EditorHeader
-						canUndo={ canUndo }
-						canRedo={ canRedo }
-						onUndo={ undo }
-						onRedo={ redo }
-						showUndoRedo={ settings?.showUndoRedo ?? true }
-						inserterToggleRef={ inserterToggleRef }
-						listViewToggleRef={ listViewToggleRef }
-						editorMode={ editorMode }
-						fixedToolbar={ hasFixedToolbar }
-						headerActions={ headerActions }
-					/>
-					{ showMobileToolbar && <MobileBlockToolbar /> }
-					<Stack className="editor-shell__body">
-						<AnimatePresence initial={ false }>
-							{ isVisualMode && isInserterOpened && (
-								<InserterSidebar
-									toggleRef={ inserterToggleRef }
-								/>
-							) }
-							{ isVisualMode && isListViewOpened && (
-								<ListViewSidebar
-									toggleRef={ listViewToggleRef }
-								/>
-							) }
-						</AnimatePresence>
-						<main className="editor-shell__content">
-							{ children }
-						</main>
-					</Stack>
-					{ showBreadcrumbs && <EditorFooter /> }
-				</BlockEditorProvider>
-			</Stack>
+					<BlockEditorProvider
+						value={ blocks }
+						onChange={ onBlocksChange }
+						onInput={ onInput }
+						settings={ blockEditorSettings }
+					>
+						<KeyboardShortcuts
+							canUndo={ canUndo }
+							canRedo={ canRedo }
+							onUndo={ undo }
+							onRedo={ redo }
+							editorMode={ editorMode }
+							onEditorModeChange={ onEditorModeChange }
+						/>
+						<EditorHeader
+							canUndo={ canUndo }
+							canRedo={ canRedo }
+							onUndo={ undo }
+							onRedo={ redo }
+							showUndoRedo={ settings?.showUndoRedo ?? true }
+							inserterToggleRef={ inserterToggleRef }
+							listViewToggleRef={ listViewToggleRef }
+							editorMode={ editorMode }
+							fixedToolbar={ hasFixedToolbar }
+							headerActions={ headerActions }
+						/>
+						{ showMobileToolbar && <MobileBlockToolbar /> }
+						<Stack className="editor-shell__body">
+							<AnimatePresence initial={ false }>
+								{ isVisualMode && isInserterOpened && (
+									<InserterSidebar
+										toggleRef={ inserterToggleRef }
+									/>
+								) }
+								{ isVisualMode && isListViewOpened && (
+									<ListViewSidebar
+										toggleRef={ listViewToggleRef }
+									/>
+								) }
+							</AnimatePresence>
+							<main className="editor-shell__content">
+								{ children }
+							</main>
+						</Stack>
+						{ showBreadcrumbs && <EditorFooter /> }
+					</BlockEditorProvider>
+				</Stack>
+			</FrontMatterContext.Provider>
 		</PlatformProvider>
 	);
 }

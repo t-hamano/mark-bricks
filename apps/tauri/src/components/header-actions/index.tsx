@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { useEffect, useState } from 'react';
-import { useKeyboardShortcut } from '@mark-bricks/editor';
+import { useFrontMatter, useKeyboardShortcut } from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies
@@ -12,7 +12,14 @@ import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as preferencesStore } from '@wordpress/preferences';
 import { moreVertical } from '@wordpress/icons';
-import { Button, IconButton, Menu, Stack } from '@wordpress/ui';
+import {
+	AlertDialog,
+	Button,
+	getWpCompatOverlaySlot,
+	IconButton,
+	Menu,
+	Stack,
+} from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -68,6 +75,10 @@ export default function HeaderActions( {
 	const { openModal } = useDispatch( interfaceStore );
 	const { set: setPreference } = useDispatch( preferencesStore );
 	const [ isOptionsMenuOpen, setIsOptionsMenuOpen ] = useState( false );
+	const { frontMatter, setFrontMatter } = useFrontMatter();
+	const hasFrontMatter = frontMatter !== null;
+	const [ isRemoveFrontMatterOpen, setIsRemoveFrontMatterOpen ] =
+		useState( false );
 	useEffect( () => {
 		if ( isPreferencesOpened ) {
 			setIsOptionsMenuOpen( false );
@@ -227,6 +238,28 @@ export default function HeaderActions( {
 							{ __( 'Tools', 'mark-bricks' ) }
 						</Menu.GroupLabel>
 						<Menu.Item
+							disabled={ editorMode !== 'visual' }
+							onClick={ () => {
+								if ( hasFrontMatter ) {
+									setIsRemoveFrontMatterOpen( true );
+								} else {
+									setFrontMatter( '' );
+								}
+							} }
+						>
+							<Menu.ItemLabel>
+								{ hasFrontMatter
+									? __(
+											'Remove YAML front matter',
+											'mark-bricks'
+										)
+									: __(
+											'Add YAML front matter',
+											'mark-bricks'
+										) }
+							</Menu.ItemLabel>
+						</Menu.Item>
+						<Menu.Item
 							shortcut={ keyboardShortcutsShortcut }
 							onClick={ () =>
 								openModal( KEYBOARD_SHORTCUTS_MODAL_NAME )
@@ -254,6 +287,30 @@ export default function HeaderActions( {
 					</Menu.Item>
 				</Menu.Popup>
 			</Menu.Root>
+			<AlertDialog.Root
+				open={ isRemoveFrontMatterOpen }
+				onOpenChange={ setIsRemoveFrontMatterOpen }
+				onConfirm={ () => {
+					setIsRemoveFrontMatterOpen( false );
+					setFrontMatter( null );
+				} }
+			>
+				<AlertDialog.Popup
+					intent="irreversible"
+					title={ __( 'Remove YAML front matter?', 'mark-bricks' ) }
+					description={ __(
+						'The YAML front matter and all of its content will be removed from the document.',
+						'mark-bricks'
+					) }
+					cancelButtonText={ __( 'Cancel', 'mark-bricks' ) }
+					confirmButtonText={ __( 'Remove', 'mark-bricks' ) }
+					portal={
+						<AlertDialog.Portal
+							container={ getWpCompatOverlaySlot() }
+						/>
+					}
+				/>
+			</AlertDialog.Root>
 		</Stack>
 	);
 }
