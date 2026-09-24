@@ -30,6 +30,8 @@ Localization is built on `@wordpress/i18n`. Dictionaries from `languages/mark-br
 
 Call `applyLocale()` once at startup, before the editor renders and before any module that calls `__()` at module load is imported. Switching locale afterward requires an app restart.
 
+`applyLocale()` takes a WordPress locale slug (e.g. `ja`, `pt_BR`) and applies it when a catalog for it exists, otherwise English. The editor keeps no list of languages: choosing the slug is up to each host.
+
 ## Localization pipeline
 
 The translation files in [`languages/`](./languages/) — the `mark-bricks.pot` template, the per-locale `mark-bricks-<locale>.po` sources, and the compiled `mark-bricks-<locale>.json` dictionaries — are built with the shared [`@mark-bricks/i18n-tools`](../i18n-tools/README.md) CLI, wired here as the `i18n:make-pot` / `i18n:make-po` / `i18n:make-json` scripts. See that package's README for the pipeline and the command reference.

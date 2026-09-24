@@ -88,21 +88,23 @@ The `gutenberg-<version>-<locale>.json` that `make-json` merges is produced out 
 
 ## Adding a new locale
 
-Locales are identified by their WordPress locale slug (e.g. `ja`, `pt_BR`, `de_DE`, `zh_CN` — see the [WordPress locale list](https://translate.wordpress.org/locale/)). Use the same slug everywhere below: it names the `.po`/`.json` files, selects the Gutenberg language pack, and is the `code` the editor resolves at runtime.
+Locales are identified by their WordPress locale slug (e.g. `ja`, `pt_BR`, `de_DE`, `zh_CN` — see the [WordPress locale list](https://translate.wordpress.org/locale/)). Use the same slug everywhere below: it names the `.po`/`.json` files, selects the Gutenberg language pack, and is what hosts pass to the editor's `applyLocale`. The editor keeps no list of languages; it applies any slug it has a catalog for, so it needs no code change.
 
 The steps below use `pt_BR` as an example.
 
-### 1. Register the locale in the editor
+### 1. Register the locale in the desktop app
 
-Add an entry to `LOCALES` in [`packages/editor/src/i18n.ts`](../editor/src/i18n.ts). `applyLocale` only accepts codes listed here, and the desktop app's language setting lists these entries as its options.
+Add an entry to `LOCALES` in [`apps/tauri/src/i18n.ts`](../../apps/tauri/src/i18n.ts), which the language setting lists as its options:
 
 ```ts
-{
-	code: 'pt_BR',
-	name: 'Português do Brasil',
-	matches: ( tag: string ) => tag.startsWith( 'pt-br' ),
-},
+export const LOCALES = [
+	// ...
+	{ code: 'pt_BR', name: 'Português do Brasil', tags: [ 'pt-br' ] },
+] as const;
 ```
+
+- `name` is shown in the language setting, so write it in the language itself.
+- `tags` lists the lower-cased OS language tags that pick this locale when no language has been chosen in the settings yet. A tag is looked up as is, then by its primary language subtag (`pt-br`, then `pt`).
 
 ### 2. Fetch the Gutenberg catalog
 
@@ -138,4 +140,4 @@ pnpm i18n:make-json
 
 `make-json` takes no locale: it compiles every `.po` it finds, including the new one, and each host picks up the resulting JSON automatically (`import.meta.glob` over `languages/mark-bricks-*.json`), so no loader code needs editing. The JSON is gitignored and rebuilt on `pnpm install`.
 
-Then run the host and switch to the new language (the desktop app's language setting, or the OS / browser language for automatic detection) to check the UI.
+Then run the desktop app and pick the new language in the language setting (or, with no language chosen yet, set the OS language to it) to check the UI.

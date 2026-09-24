@@ -3,7 +3,6 @@
  */
 import { useState } from 'react';
 import { invoke } from '@tauri-apps/api/core';
-import { LOCALES, type Locale } from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies
@@ -22,6 +21,7 @@ import {
  * Internal dependencies
  */
 import { checkForUpdates } from '../../hooks/use-auto-updater';
+import { LOCALES, type Locale } from '../../i18n';
 
 const LOCALE_ITEMS = LOCALES.map( ( locale ) => ( {
 	value: locale.code,
@@ -29,7 +29,7 @@ const LOCALE_ITEMS = LOCALES.map( ( locale ) => ( {
 } ) );
 
 export type GeneralSettings = {
-	locale: Locale;
+	locale: string;
 	checkUpdatesAuto: boolean;
 };
 

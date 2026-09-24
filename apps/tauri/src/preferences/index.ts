@@ -19,14 +19,18 @@ import {
 	STORE_KEY,
 } from './constants';
 import { migrate, type Scopes } from './migration';
+import { toWpLocale } from '../i18n';
 
 type PersistedShape = { version: number } & Scopes;
 
 const tauriStore = new LazyStore( STORE_FILE );
 
-export async function getInitialLanguage(): Promise< unknown > {
+export async function getInitialLanguage(): Promise< string > {
 	const raw = await tauriStore.get< PersistedShape >( STORE_KEY );
-	return raw?.[ 'mark-bricks' ]?.language;
+	const language = raw?.[ 'mark-bricks' ]?.language;
+	return typeof language === 'string' && language
+		? language
+		: ( toWpLocale( navigator.language ) ?? 'en' );
 }
 
 export async function setupPreferences() {
