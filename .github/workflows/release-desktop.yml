@@ -61,6 +61,11 @@ jobs:
             - name: Install frontend dependencies
               run: pnpm install --frozen-lockfile
 
+            - name: Extract release notes from the changelog
+              id: notes
+              shell: bash
+              run: node .github/scripts/extract-release-notes.mjs apps/tauri/CHANGELOG.md "${GITHUB_REF_NAME#tauri-v}"
+
             - name: Build and release
               uses: tauri-apps/tauri-action@1deb371b0cd8bd54025b384f1cd735e725c4060f # v1.0.0
               env:
@@ -71,7 +76,7 @@ jobs:
                   projectPath: apps/tauri
                   tagName: ${{ github.ref_name }}
                   releaseName: ${{ github.ref_name }}
-                  releaseBody: 'See the assets below to download and install this version.'
+                  releaseBody: ${{ steps.notes.outputs.notes }}
                   releaseDraft: true
                   prerelease: false
                   args: ${{ matrix.args }}

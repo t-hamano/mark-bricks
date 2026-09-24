@@ -35,10 +35,16 @@ jobs:
             - name: Package the extension
               run: pnpm --filter mark-bricks-vscode run package
 
+            - name: Extract release notes from the changelog
+              id: notes
+              run: node .github/scripts/extract-release-notes.mjs apps/vscode/CHANGELOG.md "${GITHUB_REF_NAME#vscode-v}"
+
             - name: Create release and upload the .vsix
+              env:
+                  NOTES: ${{ steps.notes.outputs.notes }}
               run: |
                   gh release create "$GITHUB_REF_NAME" apps/vscode/*.vsix \
                     --title "$GITHUB_REF_NAME" \
-                    --notes "See the assets below to download and install this version. Not yet published to the VSCode Marketplace: install with \`code --install-extension\`." \
+                    --notes "$NOTES"$'\n\n'"Not yet published to the VSCode Marketplace: install with \`code --install-extension\`." \
                     --draft \
                     --prerelease
