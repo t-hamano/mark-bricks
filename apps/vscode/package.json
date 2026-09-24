@@ -2,7 +2,7 @@
 	"name": "mark-bricks-vscode",
 	"displayName": "MarkBricks",
 	"description": "%description%",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"private": true,
 	"publisher": "aki-hamano",
 	"author": "Aki Hamano",
