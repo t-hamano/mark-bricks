@@ -23,13 +23,24 @@ import blockEditorContentStyles from '@wordpress/block-editor/build-style/conten
  * Internal dependencies
  */
 import canvasStyles from './canvas.scss?inline';
-import { blocksToMarkdown, markdownToBlocks } from '../../converter';
+import {
+	blocksToMarkdown,
+	joinFrontMatter,
+	markdownToBlocks,
+	splitFrontMatter,
+} from '../../converter';
 import { store as editorStore } from '../../store';
 
+type DocumentState = {
+	blocks: Block[];
+	frontMatter: string | null;
+};
+
 interface History {
-	past: Block[][];
-	present: Block[];
-	future: Block[][];
+	past: DocumentState[];
+	present: DocumentState;
+	future: DocumentState[];
+	isEditingFrontMatter: boolean;
 }
 
 // `@wordpress/ui` styles are not listed here: the canvas registers its
@@ -82,15 +93,28 @@ export function useContentStyles(
 	}, [ contentWidth, fontSize, fontFamily, customStyles ] );
 }
 
-const createInitialHistory = ( content: string ): History => {
-	const blocks = markdownToBlocks( content );
+const parseDocument = ( content: string ): DocumentState => {
+	const { frontMatter, body } = splitFrontMatter( content );
+	const blocks = markdownToBlocks( body );
 	return {
-		past: [],
-		present:
+		blocks:
 			blocks.length > 0 ? blocks : [ createBlock( 'core/paragraph' ) ],
-		future: [],
+		frontMatter,
 	};
 };
+
+// Milliseconds of inactivity that end a front matter undo step.
+const FRONT_MATTER_UNDO_GROUP_DELAY = 1000;
+
+const serializeDocument = ( doc: DocumentState ): string =>
+	joinFrontMatter( doc.frontMatter, blocksToMarkdown( doc.blocks ) );
+
+const createInitialHistory = ( content: string ): History => ( {
+	past: [],
+	present: parseDocument( content ),
+	future: [],
+	isEditingFrontMatter: false,
+} );
 
 type UseMarkdownDocumentArgs = {
 	content: string;
@@ -102,6 +126,8 @@ type MarkdownDocument = {
 	blocks: Block[];
 	onBlocksChange: ( next: Block[] ) => void;
 	onInput: ( next: Block[] ) => void;
+	frontMatter: string | null;
+	setFrontMatter: ( next: string | null ) => void;
 	undo: () => void;
 	redo: () => void;
 	canUndo: boolean;
@@ -141,8 +167,8 @@ export function useMarkdownDocument( {
 	// straight back into blocks, which would discard the selection.
 	const lastEmittedRef = useRef( content );
 
-	const emitMarkdown = useCallback( ( blocks: Block[] ) => {
-		const markdown = blocksToMarkdown( blocks );
+	const emitMarkdown = useCallback( ( doc: DocumentState ) => {
+		const markdown = serializeDocument( doc );
 		if ( markdown === contentRef.current ) {
 			return;
 		}
@@ -186,6 +212,15 @@ export function useMarkdownDocument( {
 		debouncedEmitMarkdown( history.present );
 	}, [ history.present, isVisualMode, debouncedEmitMarkdown ] );
 
+	// Emit pending visual edits when switching to text mode. Otherwise the
+	// text editor starts from stale content, and its first keystroke
+	// cancels the pending emission, discarding those edits.
+	useEffect( () => {
+		if ( ! isVisualMode ) {
+			debouncedEmitMarkdown.flush();
+		}
+	}, [ isVisualMode, debouncedEmitMarkdown ] );
+
 	// Apply external content changes (text mode edits, document loads)
 	// to the block tree.
 	useEffect( () => {
@@ -194,36 +229,67 @@ export function useMarkdownDocument( {
 		}
 		debouncedEmitMarkdown.cancel();
 		isExternalUpdateRef.current = true;
-		const blocks = markdownToBlocks( content );
+		const doc = parseDocument( content );
 		setHistory( ( h ) => ( {
 			past: [ ...h.past, h.present ],
-			present:
-				blocks.length > 0
-					? blocks
-					: [ createBlock( 'core/paragraph' ) ],
+			present: doc,
 			future: [],
+			isEditingFrontMatter: false,
 		} ) );
 	}, [ content, debouncedEmitMarkdown ] );
 
 	const onBlocksChange = useCallback( ( next: Block[] ) => {
 		setHistory( ( h ) => {
-			if ( next === h.present ) {
+			if ( next === h.present.blocks ) {
 				return h;
 			}
 			return {
 				past: [ ...h.past, h.present ],
-				present: next,
+				present: { ...h.present, blocks: next },
 				future: [],
+				isEditingFrontMatter: false,
 			};
 		} );
 	}, [] );
 
 	const onInput = useCallback( ( next: Block[] ) => {
 		setHistory( ( h ) => {
-			if ( next === h.present ) {
+			if ( next === h.present.blocks ) {
 				return h;
 			}
-			return { ...h, present: next };
+			return {
+				...h,
+				present: { ...h.present, blocks: next },
+				isEditingFrontMatter: false,
+			};
+		} );
+	}, [] );
+
+	const lastFrontMatterEditRef = useRef( 0 );
+
+	// `''` adds, `null` removes. Consecutive edits share one undo step
+	// until a pause longer than FRONT_MATTER_UNDO_GROUP_DELAY.
+	const setFrontMatter = useCallback( ( next: string | null ) => {
+		const now = Date.now();
+		const isContinuing =
+			now - lastFrontMatterEditRef.current <
+			FRONT_MATTER_UNDO_GROUP_DELAY;
+		lastFrontMatterEditRef.current = now;
+		setHistory( ( h ) => {
+			if ( next === h.present.frontMatter ) {
+				return h;
+			}
+			const isEdit = next !== null && h.present.frontMatter !== null;
+			const present = { ...h.present, frontMatter: next };
+			if ( isEdit && isContinuing && h.isEditingFrontMatter ) {
+				return { ...h, present };
+			}
+			return {
+				past: [ ...h.past, h.present ],
+				present,
+				future: [],
+				isEditingFrontMatter: isEdit,
+			};
 		} );
 	}, [] );
 
@@ -237,6 +303,7 @@ export function useMarkdownDocument( {
 				past: h.past.slice( 0, -1 ),
 				present: previous,
 				future: [ h.present, ...h.future ],
+				isEditingFrontMatter: false,
 			};
 		} );
 	}, [] );
@@ -251,6 +318,7 @@ export function useMarkdownDocument( {
 				past: [ ...h.past, h.present ],
 				present: next,
 				future: rest,
+				isEditingFrontMatter: false,
 			};
 		} );
 	}, [] );
@@ -263,9 +331,11 @@ export function useMarkdownDocument( {
 	}, [ debouncedEmitMarkdown ] );
 
 	return {
-		blocks: history.present,
+		blocks: history.present.blocks,
 		onBlocksChange,
 		onInput,
+		frontMatter: history.present.frontMatter,
+		setFrontMatter,
 		undo,
 		redo,
 		canUndo: history.past.length > 0,

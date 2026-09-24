@@ -23,6 +23,7 @@ import {
 	useCanvasStyleRuntime,
 	usePaddingAppender,
 } from '../editor-shell/hooks';
+import { FrontMatterEditor } from '../front-matter-editor';
 import { unlock } from '../../lock-unlock';
 import { useEditorTheme } from '../editor-theme-provider';
 
@@ -51,6 +52,7 @@ export function EditorCanvas( { styles, spellCheck }: Props ) {
 			contentRef={ contentRef }
 		>
 			<ThemeProvider isRoot>
+				<FrontMatterEditor />
 				<BlockList />
 			</ThemeProvider>
 		</ExperimentalBlockCanvas>

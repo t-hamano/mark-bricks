@@ -7,15 +7,25 @@ import * as fixtures from '@mark-bricks/fixtures';
 /**
  * Internal dependencies
  */
-import { markdownToBlocks, blocksToMarkdown } from '.';
+import {
+	blocksToMarkdown,
+	joinFrontMatter,
+	markdownToBlocks,
+	splitFrontMatter,
+} from '.';
 
 describe( 'converter round-trip', () => {
+	// Mirrors how the editor loads and saves a document.
 	it.each( Object.entries( fixtures ) )(
 		'round-trips the %s fixture without loss',
 		( _name, markdown ) => {
-			expect( blocksToMarkdown( markdownToBlocks( markdown ) ) ).toBe(
-				markdown
-			);
+			const { frontMatter, body } = splitFrontMatter( markdown );
+			expect(
+				joinFrontMatter(
+					frontMatter,
+					blocksToMarkdown( markdownToBlocks( body ) )
+				)
+			).toBe( markdown );
 		}
 	);
 } );

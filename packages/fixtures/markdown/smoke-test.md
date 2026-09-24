@@ -1,3 +1,14 @@
+---
+title: Markdown editor
+description: YAML front matter like this is editable in the visual editor, too.
+draft: false
+tags:
+  - markdown
+  - editor
+author:
+  name: Mark Bricks
+---
+
 # Markdown editor
 
 A sample document that showcases every block and text format you can use.

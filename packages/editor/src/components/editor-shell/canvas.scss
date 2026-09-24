@@ -1,6 +1,7 @@
 @use "@wordpress/base-styles/mixins";
 @use "../../block-library/style" as block-library;
 @use "../block-placeholder/style" as block-placeholder;
+@use "../front-matter-editor/style" as front-matter-editor;
 @use "../editor-theme-provider/gutenberg";
 
 :root {
