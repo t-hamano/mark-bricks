@@ -128,11 +128,24 @@ pnpm --filter @mark-bricks/editor i18n:make-po -- pt_BR
 # Desktop app (apps/tauri)
 pnpm --filter mark-bricks-desktop i18n:make-pot
 pnpm --filter mark-bricks-desktop i18n:make-po -- pt_BR
+
+# VS Code extension webview (apps/vscode)
+pnpm --filter mark-bricks-vscode i18n:make-pot
+pnpm --filter mark-bricks-vscode i18n:make-po -- pt_BR
 ```
 
 Fill in the `msgstr` fields of each package's `languages/mark-bricks-pt_BR.po` and commit them. Keep placeholders such as `%s` intact, and read the translator comment (the `#` line above an entry, e.g. `# %s: tab title.`) for what they stand for. Leaving an entry empty is allowed: it falls back to the English msgid.
 
-### 4. Build and check
+### 4. Translate the VS Code extension's own files
+
+Outside the webview, the VS Code extension uses VS Code's localization instead of `mb-i18n`. These files are named with the [VS Code language ID](https://code.visualstudio.com/docs/configure/locales#_available-locales) (lower case with a hyphen, e.g. `pt-br`), not the WordPress slug:
+
+- `apps/vscode/package.nls.pt-br.json` — copy `package.nls.json` and translate its values. These are the `%key%` strings in `package.json` (command titles, the editor name, the description).
+- `apps/vscode/l10n/bundle.l10n.pt-br.json` — translations of the `vscode.l10n.t()` strings in the extension host code, keyed by the English source string (see `bundle.l10n.ja.json`).
+
+The webview needs no extra step: `WP_LOCALES` in [`apps/vscode/src/webview/i18n.ts`](../../apps/vscode/src/webview/i18n.ts) already maps every VS Code display language ID to its WordPress slug (e.g. `pt-br` → `pt_BR`), and the editor applies the new slug once its catalog exists.
+
+### 5. Build and check
 
 ```sh
 pnpm i18n:make-json
@@ -140,4 +153,7 @@ pnpm i18n:make-json
 
 `make-json` takes no locale: it compiles every `.po` it finds, including the new one, and each host picks up the resulting JSON automatically (`import.meta.glob` over `languages/mark-bricks-*.json`), so no loader code needs editing. The JSON is gitignored and rebuilt on `pnpm install`.
 
-Then run the desktop app and pick the new language in the language setting (or, with no language chosen yet, set the OS language to it) to check the UI.
+Then run the host and switch to the new language to check the UI:
+
+- Desktop app: pick it in the language setting (or, with no language chosen yet, set the OS language to it).
+- VS Code extension: launch the Extension Development Host with `--locale=pt-br` added to the launch configuration's `args`. The matching VS Code language pack must be installed, or VS Code falls back to English.
