@@ -2,7 +2,7 @@
 	"name": "mark-bricks-vscode",
 	"displayName": "MarkBricks",
 	"description": "Visual markdown editor powered by the WordPress block editor.",
-	"version": "0.1.1",
+	"version": "0.1.0",
 	"private": true,
 	"publisher": "akihamano",
 	"author": "Aki Hamano",
