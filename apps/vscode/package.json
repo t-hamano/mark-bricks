@@ -81,7 +81,7 @@
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
-		"@wordpress/base-styles": "^13.0.0",
+		"@wordpress/base-styles": "^13.2.0",
 		"react": "^19.3.0",
 		"react-dom": "^19.2.8"
 	},
