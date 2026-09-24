@@ -4,6 +4,14 @@ on:
     push:
         branches:
             - main
+        paths:
+            - 'storybook/**'
+            - 'packages/**'
+            - 'package.json'
+            - 'pnpm-lock.yaml'
+            - 'pnpm-workspace.yaml'
+            - 'tsconfig.base.json'
+            - '.github/workflows/deploy-storybook.yml'
     workflow_dispatch:
 
 # Disable permissions for all scopes by default; grant per job below.
