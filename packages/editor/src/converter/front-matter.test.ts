@@ -54,6 +54,15 @@ describe( 'splitFrontMatter', () => {
 		} );
 	} );
 
+	it( 'recognizes front matter after a UTF-8 BOM', () => {
+		expect(
+			splitFrontMatter( '\uFEFF---\ntitle: Hello\n---\n# Hi\n' )
+		).toEqual( {
+			frontMatter: 'title: Hello',
+			body: '# Hi\n',
+		} );
+	} );
+
 	it( 'normalizes CRLF line endings in the front matter', () => {
 		expect(
 			splitFrontMatter( '---\r\ntitle: Hello\r\ndraft: true\r\n---\r\n' )

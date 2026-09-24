@@ -1,6 +1,7 @@
-// `---` fences at the start of the document. The content may be empty.
+// `---` fences at the start of the document, optionally after a UTF-8
+// BOM. The content may be empty.
 const FRONT_MATTER_PATTERN =
-	/^---[ \t]*\r?\n(?:([\s\S]*?)\r?\n)?---[ \t]*(?:\r?\n|$)/;
+	/^\uFEFF?---[ \t]*\r?\n(?:([\s\S]*?)\r?\n)?---[ \t]*(?:\r?\n|$)/;
 
 export type SplitFrontMatterResult = {
 	// `null` when the document has no front matter.
