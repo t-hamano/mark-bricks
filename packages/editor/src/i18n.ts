@@ -70,21 +70,22 @@ function getDictionaries( code: string ) {
 }
 
 /**
- * Resolves any value to a Locale: known LOCALES code as-is, else falls back
- * to `navigator.language` detection, then DEFAULT_LOCALE.
+ * Resolves any value to a Locale: known LOCALES code as-is, else a language
+ * tag matched against LOCALES, then DEFAULT_LOCALE.
  *
- * @param value Unverified input (persisted setting, user choice, etc.).
+ * @param value Unverified input (persisted setting, language tag, etc.).
  * @return Resolved Locale.
  */
 function resolveLocale( value: unknown ): Locale {
-	if ( typeof value === 'string' ) {
-		const match = LOCALES.find( ( l ) => l.code === value );
-		if ( match ) {
-			return match.code;
-		}
+	if ( typeof value !== 'string' ) {
+		return DEFAULT_LOCALE;
 	}
-	const tag = navigator.language.toLowerCase();
-	return LOCALES.find( ( l ) => l.matches( tag ) )?.code ?? DEFAULT_LOCALE;
+	const tag = value.toLowerCase();
+	return (
+		LOCALES.find( ( l ) => l.code === value )?.code ??
+		LOCALES.find( ( l ) => l.matches( tag ) )?.code ??
+		DEFAULT_LOCALE
+	);
 }
 
 /**
