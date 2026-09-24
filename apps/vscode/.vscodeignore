@@ -2,6 +2,7 @@
 .vscode-test/**
 src/**
 scripts/**
+languages/**
 node_modules/**
 tsconfig*.json
 vite.config.ts

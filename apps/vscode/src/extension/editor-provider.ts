@@ -238,9 +238,10 @@ class EditorSession {
 			this.pendingText = text;
 		}
 		void vscode.window.showErrorMessage(
-			`MarkBricks could not apply edits to ${ vscode.workspace.asRelativePath(
-				this.document.uri
-			) }.`
+			vscode.l10n.t(
+				'MarkBricks could not apply edits to {0}.',
+				vscode.workspace.asRelativePath( this.document.uri )
+			)
 		);
 	}
 

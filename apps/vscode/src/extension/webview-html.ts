@@ -41,8 +41,10 @@ export function getHtmlForWebview(
 		`connect-src ${ webview.cspSource }`,
 	].join( '; ' );
 
+	// The webview's `navigator.language` doesn't reliably follow the display
+	// language (e.g. on the web), so hand it over through `<html lang>`.
 	return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${ vscode.env.language }">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
