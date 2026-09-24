@@ -8,11 +8,6 @@ import { setLocaleData, type LocaleData } from '@wordpress/i18n';
  */
 import { type Locale } from '@mark-bricks/editor';
 
-/**
- * Internal dependencies
- */
-import jaCatalog from '../languages/mark-bricks-ja.json';
-
 const TEXT_DOMAIN = 'mark-bricks';
 
 type Catalog = {
@@ -21,10 +16,19 @@ type Catalog = {
 
 // Desktop-only strings, compiled by `pnpm i18n:make-json`. The editor package
 // ships its own `mark-bricks` (+ Gutenberg `default`) catalog, so these files
-// hold just the app's strings for the same `mark-bricks` domain.
-const CATALOGS: Partial< Record< Locale, Catalog > > = {
-	ja: jaCatalog as Catalog,
-};
+// hold just the app's strings for the same `mark-bricks` domain. Every locale
+// on disk is picked up, keyed by the code in its file name.
+const CATALOGS: Partial< Record< string, Catalog > > = Object.fromEntries(
+	Object.entries(
+		import.meta.glob< Catalog >( '../languages/mark-bricks-*.json', {
+			eager: true,
+			import: 'default',
+		} )
+	).map( ( [ path, catalog ] ) => [
+		path.replace( /^.*mark-bricks-(.+)\.json$/, '$1' ),
+		catalog,
+	] )
+);
 
 /**
  * Merges the desktop app's own translations into the `mark-bricks` domain.

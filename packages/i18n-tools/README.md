@@ -88,11 +88,54 @@ The `gutenberg-<version>-<locale>.json` that `make-json` merges is produced out 
 
 ## Adding a new locale
 
-Pass a WordPress locale slug (e.g. `ja`, `pt_BR`, `de_DE`, `zh_CN` — see the [WordPress locale list](https://translate.wordpress.org/locale/)) as the positional argument to `make-po`; it defaults to `ja`. `make-json` takes no locale — it builds every `.po` it finds, including the new one.
+Locales are identified by their WordPress locale slug (e.g. `ja`, `pt_BR`, `de_DE`, `zh_CN` — see the [WordPress locale list](https://translate.wordpress.org/locale/)). Use the same slug everywhere below: it names the `.po`/`.json` files, selects the Gutenberg language pack, and is the `code` the editor resolves at runtime.
+
+The steps below use `pt_BR` as an example.
+
+### 1. Register the locale in the editor
+
+Add an entry to `LOCALES` in [`packages/editor/src/i18n.ts`](../editor/src/i18n.ts). `applyLocale` only accepts codes listed here, and the desktop app's language setting lists these entries as its options.
+
+```ts
+{
+	code: 'pt_BR',
+	name: 'Português do Brasil',
+	matches: ( tag: string ) => tag.startsWith( 'pt-br' ),
+},
+```
+
+### 2. Fetch the Gutenberg catalog
+
+The editor ships the block editor, so it also needs the `default` domain strings for the new locale:
 
 ```sh
-# 1. create an empty .po → translate <slug>-<locale>.po
-pnpm --filter <package> i18n:make-po -- <locale>
-# 2. build all locales' dictionaries
-pnpm --filter <package> i18n:make-json
+pnpm --filter @mark-bricks/editor i18n:fetch-gutenberg -- pt_BR --version=<version>
 ```
+
+Pin the same Gutenberg version as the existing `gutenberg-<version>-*.json` files. Omitting `--version` fetches the latest version with a translation set for that locale. Commit the resulting `gutenberg-<version>-pt_BR.json`.
+
+### 3. Create and translate the `.po` in each host
+
+Run this in every package that has its own `languages/` directory. Make sure the `.pot` is current, then create an empty `.po` from it:
+
+```sh
+# Editor (packages/editor)
+pnpm --filter @mark-bricks/editor i18n:make-pot
+pnpm --filter @mark-bricks/editor i18n:make-po -- pt_BR
+
+# Desktop app (apps/tauri)
+pnpm --filter mark-bricks-desktop i18n:make-pot
+pnpm --filter mark-bricks-desktop i18n:make-po -- pt_BR
+```
+
+Fill in the `msgstr` fields of each package's `languages/mark-bricks-pt_BR.po` and commit them. Keep placeholders such as `%s` intact, and read the translator comment (the `#` line above an entry, e.g. `# %s: tab title.`) for what they stand for. Leaving an entry empty is allowed: it falls back to the English msgid.
+
+### 4. Build and check
+
+```sh
+pnpm i18n:make-json
+```
+
+`make-json` takes no locale: it compiles every `.po` it finds, including the new one, and each host picks up the resulting JSON automatically (`import.meta.glob` over `languages/mark-bricks-*.json`), so no loader code needs editing. The JSON is gitignored and rebuilt on `pnpm install`.
+
+Then run the host and switch to the new language (the desktop app's language setting, or the OS / browser language for automatic detection) to check the UI.

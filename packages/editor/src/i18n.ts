@@ -3,11 +3,6 @@
  */
 import { getLocaleData, setLocaleData, type LocaleData } from '@wordpress/i18n';
 
-/**
- * Internal dependencies
- */
-import jaDict from '../languages/mark-bricks-ja.json';
-
 const TEXT_DOMAIN = 'mark-bricks';
 
 export const LOCALES = [
@@ -31,9 +26,12 @@ type LocaleJson = { locale_data: Dictionaries };
 
 const DEFAULT_LOCALE: Locale = LOCALES[ 0 ].code;
 
-const localeFiles: Partial< Record< string, LocaleJson > > = {
-	'../languages/mark-bricks-ja.json': jaDict as LocaleJson,
-};
+// Every compiled catalog (and committed override) on disk, keyed by path, so a
+// new locale's JSON is picked up without listing it here.
+const localeFiles: Partial< Record< string, LocaleJson > > = import.meta.glob(
+	'../languages/mark-bricks-*.json',
+	{ eager: true, import: 'default' }
+);
 
 const ALL_DOMAINS: ReadonlySet< TextDomain > = new Set(
 	LOCALES.flatMap(
