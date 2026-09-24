@@ -209,6 +209,15 @@ export function useMarkdownDocument( {
 		debouncedEmitMarkdown( history.present );
 	}, [ history.present, isVisualMode, debouncedEmitMarkdown ] );
 
+	// Emit pending visual edits when switching to text mode. Otherwise the
+	// text editor starts from stale content, and its first keystroke
+	// cancels the pending emission, discarding those edits.
+	useEffect( () => {
+		if ( ! isVisualMode ) {
+			debouncedEmitMarkdown.flush();
+		}
+	}, [ isVisualMode, debouncedEmitMarkdown ] );
+
 	// Apply external content changes (text mode edits, document loads)
 	// to the block tree.
 	useEffect( () => {
