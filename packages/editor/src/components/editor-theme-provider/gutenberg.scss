@@ -114,12 +114,6 @@
 		color: var(--wpds-color-foreground-interactive-brand);
 	}
 
-	.block-editor-list-view-leaf.is-selected .block-editor-list-view-block-contents:focus::after {
-		box-shadow:
-			inset 0 0 0 1px var(--wpds-color-background-surface-neutral-strong),
-			0 0 0 var(--wpds-border-width-focus) var(--wpds-color-stroke-focus);
-	}
-
 	.block-editor-inserter__quick-inserter .block-editor-inserter__search {
 		background-color: var(--wpds-color-background-surface-neutral-strong);
 	}
