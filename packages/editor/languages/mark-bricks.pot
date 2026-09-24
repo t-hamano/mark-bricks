@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-29T06:01:00.298Z\n"
+"POT-Creation-Date: 2026-09-24T08:01:20.933Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -184,19 +184,27 @@ msgstr ""
 msgid "Blocks"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:88
+#: src/components/front-matter-editor/index.tsx:38
+msgid "Write YAML front matter…"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:55
+msgid "YAML front matter"
+msgstr ""
+
+#: src/components/editor-header/index.tsx:84
 msgid "Close Block Inserter"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:89
+#: src/components/editor-header/index.tsx:85
 msgid "Block Inserter"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:102
+#: src/components/editor-header/index.tsx:101
 msgid "Undo"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:111
+#: src/components/editor-header/index.tsx:110
 msgid "Redo"
 msgstr ""
 
@@ -204,7 +212,7 @@ msgstr ""
 msgid "Hide Document Overview"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:151
+#: src/components/editor/index.tsx:97
 msgid "Code editor"
 msgstr ""
 
@@ -264,31 +272,31 @@ msgstr ""
 msgid "Delete column"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:38
+#: src/block-library/quote/edit.tsx:41
 msgid "Note"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:52
+#: src/block-library/quote/edit.tsx:56
 msgid "Tip"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:66
+#: src/block-library/quote/edit.tsx:71
 msgid "Important"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:80
+#: src/block-library/quote/edit.tsx:86
 msgid "Warning"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:94
+#: src/block-library/quote/edit.tsx:101
 msgid "Caution"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:141
+#: src/block-library/quote/edit.tsx:151
 msgid "GitHub alert type"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:144
+#: src/block-library/quote/edit.tsx:154
 msgid "Default"
 msgstr ""
 
@@ -416,26 +424,26 @@ msgstr ""
 msgid "Write summary…"
 msgstr ""
 
-#: src/block-library/code/mermaid-preview.tsx:121
+#: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr ""
 
-#: src/block-library/code/edit.tsx:64
+#: src/block-library/code/edit.tsx:66
 msgid "Write code…"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:89
+#: src/block-library/code/edit.tsx:91
 msgid "Change language"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:104
+#: src/block-library/code/edit.tsx:106
 msgid "Language"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:121
+#: src/block-library/code/edit.tsx:123
 msgid "Choose language…"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:132
 msgid "No matching language."
 msgstr ""

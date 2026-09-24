@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-08-29T06:01:00.298Z\n"
-"PO-Revision-Date: 2026-08-29T06:01:16.030Z\n"
+"POT-Creation-Date: 2026-09-24T08:01:20.933Z\n"
+"PO-Revision-Date: 2026-09-24T08:01:21.665Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -48,7 +48,7 @@ msgstr "代替テキスト"
 msgid "Apply"
 msgstr "適用"
 
-#: src/components/editor-header/index.tsx:89
+#: src/components/editor-header/index.tsx:85
 msgid "Block Inserter"
 msgstr "ブロックインサーター"
 
@@ -65,7 +65,7 @@ msgstr "太字"
 msgid "Browse local file"
 msgstr "ローカルファイルを参照"
 
-#: src/block-library/quote/edit.tsx:94
+#: src/block-library/quote/edit.tsx:101
 msgid "Caution"
 msgstr "注意"
 
@@ -73,7 +73,7 @@ msgstr "注意"
 msgid "Cell content"
 msgstr "セルの内容"
 
-#: src/block-library/code/edit.tsx:89
+#: src/block-library/code/edit.tsx:91
 msgid "Change language"
 msgstr "言語を変更"
 
@@ -81,7 +81,7 @@ msgstr "言語を変更"
 msgid "Change the block type after adding a new paragraph."
 msgstr "新規段落の追加後、ブロックタイプを変更します。"
 
-#: src/block-library/code/edit.tsx:121
+#: src/block-library/code/edit.tsx:123
 msgid "Choose language…"
 msgstr "言語を選択…"
 
@@ -94,11 +94,11 @@ msgstr "書式をクリア"
 msgid "Close"
 msgstr "閉じる"
 
-#: src/components/editor-header/index.tsx:88
+#: src/components/editor-header/index.tsx:84
 msgid "Close Block Inserter"
 msgstr "ブロックインサーターを閉じる"
 
-#: src/components/editor-header/index.tsx:151
+#: src/components/editor/index.tsx:97
 msgid "Code editor"
 msgstr "コードエディター"
 
@@ -114,7 +114,7 @@ msgstr "選択したテキストをリンクに変換する。"
 msgid "Create Table"
 msgstr "表を作成"
 
-#: src/block-library/quote/edit.tsx:144
+#: src/block-library/quote/edit.tsx:154
 msgid "Default"
 msgstr "デフォルト"
 
@@ -167,7 +167,7 @@ msgstr "画像の読み込みに失敗しました。"
 msgid "Forward-slash"
 msgstr "前方スラッシュ"
 
-#: src/block-library/quote/edit.tsx:141
+#: src/block-library/quote/edit.tsx:151
 msgid "GitHub alert type"
 msgstr "GitHub アラートタイプ"
 
@@ -197,7 +197,7 @@ msgstr "ドキュメント概観を非表示"
 msgid "Image"
 msgstr "画像"
 
-#: src/block-library/quote/edit.tsx:66
+#: src/block-library/quote/edit.tsx:71
 msgid "Important"
 msgstr "重要"
 
@@ -233,7 +233,7 @@ msgstr "行を上に挿入"
 msgid "Italic"
 msgstr "イタリック"
 
-#: src/block-library/code/edit.tsx:104
+#: src/block-library/code/edit.tsx:106
 msgid "Language"
 msgstr "言語"
 
@@ -271,11 +271,11 @@ msgid ""
 "incorrect heading levels."
 msgstr "ドキュメントの構造を調べ、空白や不正確な見出しレベルなどの問題に対処します。"
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:132
 msgid "No matching language."
 msgstr "一致する言語がありません。"
 
-#: src/block-library/quote/edit.tsx:38
+#: src/block-library/quote/edit.tsx:41
 msgid "Note"
 msgstr "ノート"
 
@@ -305,7 +305,7 @@ msgstr "URL を入力または貼り付け"
 msgid "Paste or type URL or file path"
 msgstr "URL またはファイルパスを入力または貼り付け"
 
-#: src/components/editor-header/index.tsx:111
+#: src/components/editor-header/index.tsx:110
 msgid "Redo"
 msgstr "やり直す"
 
@@ -366,11 +366,11 @@ msgstr "ビジュアルエディターとコードエディターを切り替え
 msgid "Table"
 msgstr "テーブル"
 
-#: src/block-library/code/mermaid-preview.tsx:121
+#: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "図を描画できませんでした。"
 
-#: src/block-library/quote/edit.tsx:52
+#: src/block-library/quote/edit.tsx:56
 msgid "Tip"
 msgstr "ヒント"
 
@@ -403,7 +403,7 @@ msgstr "URL またはファイルパス"
 msgid "Underline the selected text."
 msgstr "選択したテキストに下線を付ける。"
 
-#: src/components/editor-header/index.tsx:102
+#: src/components/editor-header/index.tsx:101
 msgid "Undo"
 msgstr "元に戻す"
 
@@ -424,7 +424,7 @@ msgstr "デバイスから画像をアップロードするか、URL から挿�
 msgid "Visual markdown block editor."
 msgstr "ビジュアルマークダウンブロックエディター。"
 
-#: src/block-library/quote/edit.tsx:80
+#: src/block-library/quote/edit.tsx:86
 msgid "Warning"
 msgstr "警告"
 
@@ -432,10 +432,18 @@ msgstr "警告"
 msgid "Write HTML…"
 msgstr "HTML を入力…"
 
-#: src/block-library/code/edit.tsx:64
+#: src/components/front-matter-editor/index.tsx:38
+msgid "Write YAML front matter…"
+msgstr "YAML フロントマターを入力…"
+
+#: src/block-library/code/edit.tsx:66
 msgid "Write code…"
 msgstr "コードを入力..."
 
 #: src/block-library/details/edit.tsx:86
 msgid "Write summary…"
 msgstr "要約を入力…"
+
+#: src/components/front-matter-editor/index.tsx:55
+msgid "YAML front matter"
+msgstr "YAML フロントマター"
