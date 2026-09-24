@@ -86,7 +86,7 @@
 		"updater": {
 			"pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEQ1RkQzRkNBNjhBMUI5NjgKUldSb3VhRm95ai85MWNoWXNkVVdpTTBmTjRmMURMSy9GbGJ1emx5QXplWTZFMnJDYVRSLzRrd2YK",
 			"endpoints": [
-				"https://github.com/t-hamano/mark-bricks/releases/latest/download/latest.json"
+				"https://raw.githubusercontent.com/t-hamano/mark-bricks/main/apps/tauri/latest.json"
 			]
 		}
 	}

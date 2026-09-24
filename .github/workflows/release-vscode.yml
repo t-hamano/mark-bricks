@@ -35,9 +35,6 @@ jobs:
             - name: Package the extension
               run: pnpm --filter mark-bricks-vscode run package
 
-            # Marked as a prerelease so it never becomes the repository's latest
-            # release: the desktop updater and the root README resolve
-            # `releases/latest`, which must keep pointing at a desktop release.
             - name: Create release and upload the .vsix
               run: |
                   gh release create "$GITHUB_REF_NAME" apps/vscode/*.vsix \

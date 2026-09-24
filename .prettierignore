@@ -11,3 +11,6 @@ pnpm-lock.yaml
 # Golden fixtures committed in the converter's canonical serialization form.
 # Prettier reformats Markdown differently, which would break round-trip tests.
 packages/fixtures/markdown
+
+# Updater manifest copied verbatim from the desktop release assets.
+apps/tauri/latest.json

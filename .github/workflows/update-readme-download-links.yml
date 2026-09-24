@@ -1,10 +1,10 @@
-name: Update README Download Links
+name: Update Desktop Release Links
 
 on:
-    # Wait for every platform build to upload its bundle before reading the assets.
-    workflow_run:
-        workflows: ['Release Desktop']
-        types: [completed]
+    # Run on publish, not on build completion, so the PR never points the
+    # updater at a draft. Publish only after every platform build has finished.
+    release:
+        types: [published]
     workflow_dispatch:
         inputs:
             tag:
@@ -14,7 +14,7 @@ on:
 
 # Avoid overlapping runs racing on the same branch.
 concurrency:
-    group: ${{ github.workflow }}-${{ github.event.workflow_run.head_branch || inputs.tag }}
+    group: ${{ github.workflow }}-${{ github.event.release.tag_name || inputs.tag }}
     cancel-in-progress: false
 
 permissions:
@@ -23,13 +23,12 @@ permissions:
 
 jobs:
     update-download-links:
-        name: Update README download links
-        # `head_branch` carries the tag name for tag-triggered runs; only desktop
-        # releases carry the bundled installers we link to.
-        if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_branch, 'tauri-v')) }}
+        name: Update README download links and updater manifest
+        # Only desktop releases carry the bundled installers we link to.
+        if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'tauri-v') }}
         runs-on: ubuntu-latest
         env:
-            TAG: ${{ github.event.workflow_run.head_branch || inputs.tag }}
+            TAG: ${{ github.event.release.tag_name || inputs.tag }}
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         steps:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -44,25 +43,41 @@ jobs:
             - name: Rewrite README download links
               run: node .github/scripts/update-download-links.mjs "$TAG"
 
+            # The desktop updater reads this file from main, so merging the PR is
+            # what ships the update.
+            - name: Copy the updater manifest
+              run: gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern latest.json --output apps/tauri/latest.json --clobber
+
+            # tauri-action appends each platform to latest.json after uploading its
+            # installer, so the installers can all be present while latest.json is
+            # still missing the last platform.
+            - name: Verify the updater manifest covers every platform
+              run: |
+                  missing=$(jq -r '["windows-x86_64", "darwin-aarch64", "darwin-x86_64", "linux-x86_64"] - (.platforms | keys) | join(", ")' apps/tauri/latest.json)
+                  if [ -n "$missing" ]; then
+                    echo "::error::latest.json in $TAG is missing platforms: $missing"
+                    exit 1
+                  fi
+
             - name: Open pull request with the update
               run: |
-                  if git diff --quiet -- README.md; then
-                    echo "Download links already current for $TAG; nothing to do."
+                  if git diff --quiet -- README.md apps/tauri/latest.json; then
+                    echo "Release links already current for $TAG; nothing to do."
                     exit 0
                   fi
-                  branch="docs/download-links-$TAG"
+                  branch="chore/release-links-$TAG"
                   git config user.name "github-actions[bot]"
                   git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
                   git switch -c "$branch"
-                  git add README.md
-                  git commit -m "docs(repo): update download links for $TAG"
+                  git add README.md apps/tauri/latest.json
+                  git commit -m "chore(tauri): point download links and updater to $TAG"
                   git push --force origin "$branch"
                   if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
                     gh pr create \
                       --base main \
                       --head "$branch" \
-                      --title "docs(repo): update download links for $TAG" \
-                      --body "Automated update of the README download links to the \`$TAG\` release assets."
+                      --title "chore(tauri): point download links and updater to $TAG" \
+                      --body "Automated update of the README download links and \`apps/tauri/latest.json\` to the \`$TAG\` release assets. Merging ships the update: the desktop updater reads \`latest.json\` from \`main\`."
                   else
                     echo "An open PR already exists for $branch; updated its branch."
                   fi

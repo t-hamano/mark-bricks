@@ -1,0 +1,51 @@
+{
+  "version": "0.12.0",
+  "notes": "See the assets below to download and install this version.",
+  "pub_date": "2026-08-29T07:02:09.272Z",
+  "platforms": {
+    "linux-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVVUQWRuY1FKNG9CM090ZzlyckZnejhyY1RwcXZXRmExUnZuUFFsM1pBS0l1MUwwZUw5SGdKNUFzMHlPS1ZaSmV4Nm5Gb256NE9GejJSM2VIem0zOUFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2NjU3CWZpbGU6TWFya0JyaWNrc18wLjEyLjBfYW1kNjQuQXBwSW1hZ2UKOSsvYXZGYzlaQkFaK1I0Q3c3dEFIVk9WV0JRNjNTbk9MYnc1WXFTR1d4RzJCSE5LcHA5MnRIOHlqOHkrc05zakpZZ2lSQXQ2NUZZcFArK1BCZXVhQlE9PQo=",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_0.12.0_amd64.AppImage"
+    },
+    "linux-x86_64-appimage": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVVUQWRuY1FKNG9CM090ZzlyckZnejhyY1RwcXZXRmExUnZuUFFsM1pBS0l1MUwwZUw5SGdKNUFzMHlPS1ZaSmV4Nm5Gb256NE9GejJSM2VIem0zOUFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2NjU3CWZpbGU6TWFya0JyaWNrc18wLjEyLjBfYW1kNjQuQXBwSW1hZ2UKOSsvYXZGYzlaQkFaK1I0Q3c3dEFIVk9WV0JRNjNTbk9MYnc1WXFTR1d4RzJCSE5LcHA5MnRIOHlqOHkrc05zakpZZ2lSQXQ2NUZZcFArK1BCZXVhQlE9PQo=",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_0.12.0_amd64.AppImage"
+    },
+    "linux-x86_64-deb": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWJYckRwQjRJbDZFQktNc2MvYnRuaGV3VWhpVzBVeVBtZkgxTmZiUXRHOSs0RGcvOUc4aEc5QXhjblZBb3ErS0g4SlA2VXFTK1V5UThiRU0yVzVtVFFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2NjU3CWZpbGU6TWFya0JyaWNrc18wLjEyLjBfYW1kNjQuZGViCndvU3hpQkVsdHZybjdSK0VWWmZCbjY2Z0UzN3NYbFAwbFJDVzFjdklBNjBlYmtKaHJqSVZydmtCVGdYS1phWUFGbEpORSttMDVqa0hlSGhzdDlGckRnPT0K",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_0.12.0_amd64.deb"
+    },
+    "linux-x86_64-rpm": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWJkMVBNb05DZ0EzQ2ttcGdoeDVHSm0reDQxS0JDam53OFgxbXk0SlBxdGNyYmV6Z2N1VjVDaExxVVpYaHhiajkvTUh1WVY0M0Y2YTdPd2VDdnhWZndRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2NjU3CWZpbGU6TWFya0JyaWNrcy0wLjEyLjAtMS54ODZfNjQucnBtCktQWWJRbGplRDZYTG5OZnZPcHByem5IY3UxUWFHR0VESGF3Z0VsbG5adDdmZWE2T2dxbzBjUlFlU2RWWGFpaTloV25GL29VQ0IxU0xidjVDRjZCSkRRPT0K",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks-0.12.0-1.x86_64.rpm"
+    },
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVc0dncrbldiVkordGRtQlhEZkdjZGdXb1JwL2p6UndQSHVSRUtGeUhkUTRWK2RyYjVRNlZRbEJ5MGxJTXVyN3RDVkxYUTBtNkpBWS9nQXp2TExLMmdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2ODc0CWZpbGU6TWFya0JyaWNrc18wLjEyLjBfeDY0X2VuLVVTLm1zaQpYRE56azFWOFBiYlR0QitpZkJnVnpna3k1Tk12aWpQQldpTElub0NNZi9KTm9NbGxUNTVmcGt3V0xteVZxQ2dObGRpMnE3My9Md3BQeFBaTkZnSU9Cdz09Cg==",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_0.12.0_x64_en-US.msi"
+    },
+    "windows-x86_64-msi": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVc0dncrbldiVkordGRtQlhEZkdjZGdXb1JwL2p6UndQSHVSRUtGeUhkUTRWK2RyYjVRNlZRbEJ5MGxJTXVyN3RDVkxYUTBtNkpBWS9nQXp2TExLMmdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2ODc0CWZpbGU6TWFya0JyaWNrc18wLjEyLjBfeDY0X2VuLVVTLm1zaQpYRE56azFWOFBiYlR0QitpZkJnVnpna3k1Tk12aWpQQldpTElub0NNZi9KTm9NbGxUNTVmcGt3V0xteVZxQ2dObGRpMnE3My9Md3BQeFBaTkZnSU9Cdz09Cg==",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_0.12.0_x64_en-US.msi"
+    },
+    "windows-x86_64-nsis": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWF0M3JXbnFzUXoramVDTkdmR3Q5cTVsamNFV2I5U1RpbDkvL2pNSWZUODZSSk9kRUg3WHRCeFB0ZUZyRWQzejR3TjdscGRzVVpvUFlNcEYvbjNsdlE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2ODc0CWZpbGU6TWFya0JyaWNrc18wLjEyLjBfeDY0LXNldHVwLmV4ZQoybVluV1F6NGFBTDBDY1BwcS9veHd0UnExTmpVTVV1SGFnTmpsSkJrb0J4UUQxT0dmLzZxajY0RWdSb25qQXdtdlJySXZsUlYycmdodVlTMnMxY2VEZz09Cg==",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_0.12.0_x64-setup.exe"
+    },
+    "darwin-aarch64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVdnVzBDUkpJWDFSS1UwekNPQ0tWZDJleWxqNXBIdVUzclY1cVYzOVhybTF4RXJhb3NQUzJkRm1xTzA5N1BEb3dPQStKbyszcW1MYUx4bGU4d2RGYVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2OTI0CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CjZHZGRhazF0dW91VVBYSGM2Um5NKzExanpQTElmbmpFdmZmaUtLQXlWTTFwcmxjWm5SNWtFaER1NzIySUJBNEhxU0lRNmo0dEZnYk5kSUhqd3RXekRBPT0K",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_universal.app.tar.gz"
+    },
+    "darwin-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVdnVzBDUkpJWDFSS1UwekNPQ0tWZDJleWxqNXBIdVUzclY1cVYzOVhybTF4RXJhb3NQUzJkRm1xTzA5N1BEb3dPQStKbyszcW1MYUx4bGU4d2RGYVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2OTI0CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CjZHZGRhazF0dW91VVBYSGM2Um5NKzExanpQTElmbmpFdmZmaUtLQXlWTTFwcmxjWm5SNWtFaER1NzIySUJBNEhxU0lRNmo0dEZnYk5kSUhqd3RXekRBPT0K",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_universal.app.tar.gz"
+    },
+    "darwin-aarch64-app": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVdnVzBDUkpJWDFSS1UwekNPQ0tWZDJleWxqNXBIdVUzclY1cVYzOVhybTF4RXJhb3NQUzJkRm1xTzA5N1BEb3dPQStKbyszcW1MYUx4bGU4d2RGYVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2OTI0CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CjZHZGRhazF0dW91VVBYSGM2Um5NKzExanpQTElmbmpFdmZmaUtLQXlWTTFwcmxjWm5SNWtFaER1NzIySUJBNEhxU0lRNmo0dEZnYk5kSUhqd3RXekRBPT0K",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_universal.app.tar.gz"
+    },
+    "darwin-x86_64-app": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVdnVzBDUkpJWDFSS1UwekNPQ0tWZDJleWxqNXBIdVUzclY1cVYzOVhybTF4RXJhb3NQUzJkRm1xTzA5N1BEb3dPQStKbyszcW1MYUx4bGU4d2RGYVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg3OTg2OTI0CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CjZHZGRhazF0dW91VVBYSGM2Um5NKzExanpQTElmbmpFdmZmaUtLQXlWTTFwcmxjWm5SNWtFaER1NzIySUJBNEhxU0lRNmo0dEZnYk5kSUhqd3RXekRBPT0K",
+      "url": "https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.12.0/MarkBricks_universal.app.tar.gz"
+    }
+  }
+}

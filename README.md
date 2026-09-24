@@ -15,7 +15,7 @@ A visual Markdown editor that minimizes and specializes the WordPress block edit
 
 MarkBricks is delivered as the following applications.
 
-- **MarkBricks Desktop** — A standalone desktop app for Windows, macOS, and Linux. Built on Tauri 2 + React, it edits local Markdown files with the WordPress block editor. Grab it from the [latest release](https://github.com/t-hamano/mark-bricks/releases/latest).
+- **MarkBricks Desktop** — A standalone desktop app for Windows, macOS, and Linux. Built on Tauri 2 + React, it edits local Markdown files with the WordPress block editor. Grab it from the [Download](#download) section below.
 - **MarkBricks VSCode extension** — A VSCode extension that embeds the editor as a custom editor for `.md` files, so you can edit Markdown visually without leaving your editor. Not yet on the VSCode Marketplace; see [`apps/vscode`](apps/vscode) to install it from a release or build it from source.
 
 ## Download
