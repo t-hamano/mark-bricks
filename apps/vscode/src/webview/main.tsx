@@ -12,9 +12,15 @@ import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 /**
+ * WordPress dependencies
+ */
+import { useEnableWpCompatOverlaySlot } from '@wordpress/ui';
+
+/**
  * Internal dependencies
  */
 import type { HostMessage, WebviewMessage } from '../shared/messages';
+import HeaderActions from './header-actions';
 import { useVsCodeTheme } from './use-vscode-theme';
 import './style.scss';
 
@@ -40,6 +46,10 @@ const platform: Partial< Platform > = {
 };
 
 function App() {
+	// Portals @wordpress/ui overlays into a body-level slot that stacks above
+	// @wordpress/components overlays. Required while both libraries coexist.
+	useEnableWpCompatOverlaySlot();
+
 	const [ content, setContent ] = useState< string | null >( null );
 	const editorRef = useRef< EditorHandle >( null );
 	const theme = useVsCodeTheme();
@@ -122,6 +132,7 @@ function App() {
 					post( { type: 'change', text } );
 				} }
 				settings={ { showUndoRedo: false } }
+				headerActions={ <HeaderActions /> }
 				platform={ platform }
 			/>
 		</EditorThemeProvider>
