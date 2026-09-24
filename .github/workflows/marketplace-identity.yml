@@ -1,0 +1,26 @@
+# Temporary: prints the ID to add to the Marketplace publisher's members for
+# the managed identity that release-vscode.yml signs in as. Delete this
+# workflow once the identity has been added.
+name: Show Marketplace Identity
+
+on:
+    workflow_dispatch:
+
+permissions:
+    id-token: write
+
+jobs:
+    show-identity:
+        name: Show the managed identity's Marketplace ID
+        runs-on: ubuntu-latest
+        environment: marketplace
+        steps:
+            - name: Sign in to Azure as the publishing identity
+              uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0
+              with:
+                  client-id: ${{ vars.AZURE_CLIENT_ID }}
+                  tenant-id: ${{ vars.AZURE_TENANT_ID }}
+                  allow-no-subscriptions: true
+
+            - name: Print the profile ID
+              run: az rest -u https://app.vssps.visualstudio.com/_apis/profile/profiles/me --resource 499b84ac-1321-427f-aa17-267ca6975798 --query id -o tsv

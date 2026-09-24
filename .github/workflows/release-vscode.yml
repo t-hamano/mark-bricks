@@ -7,11 +7,16 @@ on:
 
 permissions:
     contents: write
+    # Lets azure/login exchange a GitHub OIDC token for the managed identity
+    # that is a member of the Marketplace publisher.
+    id-token: write
 
 jobs:
     release:
         name: Build and release
         runs-on: ubuntu-latest
+        # The managed identity's federated credential trusts only this environment.
+        environment: marketplace
         env:
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         steps:
@@ -38,11 +43,16 @@ jobs:
               id: notes
               run: node .github/scripts/extract-release-notes.mjs apps/vscode/CHANGELOG.md "${GITHUB_REF_NAME#vscode-v}"
 
+            - name: Sign in to Azure as the publishing identity
+              uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0
+              with:
+                  client-id: ${{ vars.AZURE_CLIENT_ID }}
+                  tenant-id: ${{ vars.AZURE_TENANT_ID }}
+                  allow-no-subscriptions: true
+
             - name: Publish to the VSCode Marketplace
               working-directory: apps/vscode
-              env:
-                  VSCE_PAT: ${{ secrets.VSCE_PAT }}
-              run: pnpm exec vsce publish --packagePath *.vsix
+              run: pnpm exec vsce publish --azure-credential --packagePath *.vsix
 
             - name: Create release and upload the .vsix
               env:
