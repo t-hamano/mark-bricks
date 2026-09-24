@@ -1,3 +1,27 @@
+# [0.13.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.12.0...tauri-v0.13.0) (2026-09-24)
+
+### Bug Fixes
+
+- **editor:** use surface background for list view focus ring gap ([7ac9658](https://github.com/t-hamano/mark-bricks/commit/7ac9658f608ae5e9b5d03e70acec25664aed1148))
+- **tauri:** keep light-dark() unlowered in production css ([448302a](https://github.com/t-hamano/mark-bricks/commit/448302a496e24b88b867aeb953ae475b5312ef14))
+- **tauri:** remove blanket focus outline suppression ([4dcdb1f](https://github.com/t-hamano/mark-bricks/commit/4dcdb1ff1ea922cfd7710b25d1baa2a4e7144d64))
+
+### Features
+
+- **editor:** derive code editor theme from system preference ([#81](https://github.com/t-hamano/mark-bricks/issues/81)) ([abd10e9](https://github.com/t-hamano/mark-bricks/commit/abd10e9972bfc9d4334d2da203ef6f95aed3d3ae))
+- **editor:** support dark mode ([#80](https://github.com/t-hamano/mark-bricks/issues/80)) ([a349657](https://github.com/t-hamano/mark-bricks/commit/a34965708120138828b25ae2a15709c62cf5abcf))
+- **tauri:** add color theme setting to visual editor preferences ([#88](https://github.com/t-hamano/mark-bricks/issues/88)) ([4aaf8db](https://github.com/t-hamano/mark-bricks/commit/4aaf8db98426c057bd8358243ebd1751b4934b4d))
+- **tauri:** serve the updater manifest from the main branch ([a0ff3e1](https://github.com/t-hamano/mark-bricks/commit/a0ff3e12dc948c737bf6ce3fb20dfcb03a40cf57))
+- **vscode:** add initial vscode extension ([#78](https://github.com/t-hamano/mark-bricks/issues/78)) ([f51cbf3](https://github.com/t-hamano/mark-bricks/commit/f51cbf39a2e4ebd5f3165a157b345fd286aedd44))
+
+### BREAKING CHANGES
+
+- **tauri:** the updater endpoint moved from
+  releases/latest/download/latest.json to
+  raw.githubusercontent.com/t-hamano/mark-bricks/main/apps/tauri/latest.json.
+  Versions up to 0.12.0 still read releases/latest and stop finding
+  updates once it points at a non-desktop release.
+
 # [0.12.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.11.0...tauri-v0.12.0) (2026-08-29)
 
 ### Bug Fixes
