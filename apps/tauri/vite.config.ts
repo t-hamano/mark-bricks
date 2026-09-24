@@ -32,6 +32,11 @@ export default defineConfig( async () => ( {
 	plugins: [ react() ],
 	clearScreen: false,
 	resolve: { dedupe },
+	build: {
+		// Keeps `light-dark()` intact, since its fallback ignores the runtime
+		// `color-scheme` set by the theme provider.
+		cssTarget: [ 'chrome123', 'safari17.5' ],
+	},
 	server: {
 		port: 1420,
 		strictPort: true,
