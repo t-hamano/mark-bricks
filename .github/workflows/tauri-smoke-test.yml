@@ -72,8 +72,9 @@ jobs:
             - name: Install frontend dependencies
               run: pnpm install --frozen-lockfile
 
-            - name: Build Tauri debug binary
-              run: pnpm --filter mark-bricks-desktop build:debug
+            - name: Build Tauri debug binary and bundles
+              shell: bash
+              run: pnpm --filter mark-bricks-desktop exec tauri build --debug --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
             - name: Smoke launch
               run: pnpm --filter mark-bricks-desktop e2e:smoke
