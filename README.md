@@ -11,6 +11,11 @@
 
 A visual Markdown editor that minimizes and specializes the WordPress block editor for Markdown editing.
 
+| Light                                                            | Dark                                                           |
+| ---------------------------------------------------------------- | -------------------------------------------------------------- |
+| ![Visual editor (light)](.github/assets/visual-editor-light.png) | ![Visual editor (dark)](.github/assets/visual-editor-dark.png) |
+| ![Text editor (light)](.github/assets/code-editor-light.png)     | ![Text editor (dark)](.github/assets/code-editor-dark.png)     |
+
 ## Products
 
 MarkBricks is delivered as the following applications.
