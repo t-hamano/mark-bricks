@@ -3,21 +3,15 @@
  */
 import clsx from 'clsx';
 import { useRef, useState, type MouseEvent } from 'react';
+import { useKeyboardShortcut } from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies
  */
-import {
-	Dropdown,
-	DropdownMenu,
-	MenuGroup,
-	MenuItem,
-} from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 import { closeSmall, plus } from '@wordpress/icons';
-import { displayShortcut } from '@wordpress/keycodes';
-import { Button, IconButton, Stack } from '@wordpress/ui';
+import { Button, IconButton, Menu, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -43,6 +37,14 @@ export default function Tabbar() {
 	}, [] );
 
 	const { setActiveTab } = useDispatch( tabsStore );
+
+	const newFileShortcut = useKeyboardShortcut( 'mark-bricks/new-file' );
+	const openFileShortcut = useKeyboardShortcut( 'mark-bricks/open-file' );
+	const closeTabShortcut = useKeyboardShortcut( 'mark-bricks/close-tab' );
+	const saveFileShortcut = useKeyboardShortcut( 'mark-bricks/save-file' );
+	const saveFileAsShortcut = useKeyboardShortcut(
+		'mark-bricks/save-file-as'
+	);
 
 	const buttonRefs = useRef< Map< string, HTMLButtonElement > >( new Map() );
 
@@ -118,99 +120,91 @@ export default function Tabbar() {
 					/>
 				) ) }
 			</Stack>
-			<DropdownMenu
-				icon={ plus }
-				label={ __( 'New…', 'mark-bricks' ) }
-				popoverProps={ { placement: 'bottom-end' } }
-				toggleProps={ {
-					size: 'small',
-					iconSize: 16,
-					className: 'tabbar__new',
-				} }
-			>
-				{ ( { onClose } ) => (
-					<>
-						<MenuItem
-							shortcut={ displayShortcut.primary( 'n' ) }
-							onClick={ () => {
-								newFile();
-								onClose();
-							} }
-						>
+			<Menu.Root>
+				<Menu.Trigger
+					render={
+						<IconButton
+							icon={ plus }
+							label={ __( 'New…', 'mark-bricks' ) }
+							variant="minimal"
+							tone="neutral"
+							size="small"
+							className="tabbar__new"
+						/>
+					}
+				/>
+				<Menu.Popup positioner={ <Menu.Positioner align="end" /> }>
+					<Menu.Item
+						shortcut={ newFileShortcut }
+						onClick={ () => newFile() }
+					>
+						<Menu.ItemLabel>
 							{ __( 'New file', 'mark-bricks' ) }
-						</MenuItem>
-						<MenuItem
-							shortcut={ displayShortcut.primary( 'o' ) }
-							onClick={ () => {
-								openFile();
-								onClose();
-							} }
-						>
+						</Menu.ItemLabel>
+					</Menu.Item>
+					<Menu.Item
+						shortcut={ openFileShortcut }
+						onClick={ () => openFile() }
+					>
+						<Menu.ItemLabel>
 							{ __( 'Open file…', 'mark-bricks' ) }
-						</MenuItem>
-					</>
-				) }
-			</DropdownMenu>
+						</Menu.ItemLabel>
+					</Menu.Item>
+				</Menu.Popup>
+			</Menu.Root>
 			{ contextMenu && contextTab && (
-				<Dropdown
+				<Menu.Root
 					open
-					onToggle={ ( willOpen ) => {
-						if ( ! willOpen ) {
+					onOpenChange={ ( open ) => {
+						if ( ! open ) {
 							closeContextMenu();
 						}
 					} }
-					popoverProps={ {
-						anchor: contextAnchor,
-						placement: 'bottom-start',
-					} }
-					renderToggle={ () => null }
-					renderContent={ () => (
-						<>
-							<MenuGroup>
-								<MenuItem
-									shortcut={ displayShortcut.primary( 'w' ) }
-									onClick={ () => {
-										handleClose( contextMenu.id );
-										closeContextMenu();
-									} }
-								>
-									{ __( 'Close', 'mark-bricks' ) }
-								</MenuItem>
-								<MenuItem
-									disabled={ tabs.length <= 1 }
-									onClick={ () => {
-										closeOtherTabs( contextMenu.id );
-										closeContextMenu();
-									} }
-								>
-									{ __( 'Close other tabs', 'mark-bricks' ) }
-								</MenuItem>
-							</MenuGroup>
-							<MenuGroup>
-								<MenuItem
-									shortcut={ displayShortcut.primary( 's' ) }
-									onClick={ () => {
-										saveTab( contextMenu.id );
-										closeContextMenu();
-									} }
-								>
-									{ __( 'Save', 'mark-bricks' ) }
-								</MenuItem>
-								<MenuItem
-									shortcut={ displayShortcut.primaryShift(
-										's'
-									) }
-									onClick={ () => {
-										saveTabAs( contextMenu.id );
-										closeContextMenu();
-									} }
-								>
-									{ __( 'Save as…', 'mark-bricks' ) }
-								</MenuItem>
-							</MenuGroup>
-						</>
-					) }
-				/>
+				>
+					<Menu.Popup
+						positioner={
+							<Menu.Positioner
+								anchor={ contextAnchor }
+								side="bottom"
+								align="start"
+							/>
+						}
+					>
+						<Menu.Item
+							shortcut={ closeTabShortcut }
+							onClick={ () => handleClose( contextMenu.id ) }
+						>
+							<Menu.ItemLabel>
+								{ __( 'Close', 'mark-bricks' ) }
+							</Menu.ItemLabel>
+						</Menu.Item>
+						<Menu.Item
+							disabled={ tabs.length <= 1 }
+							onClick={ () => closeOtherTabs( contextMenu.id ) }
+						>
+							<Menu.ItemLabel>
+								{ __( 'Close other tabs', 'mark-bricks' ) }
+							</Menu.ItemLabel>
+						</Menu.Item>
+						<Menu.Separator />
+						<Menu.Item
+							shortcut={ saveFileShortcut }
+							onClick={ () => saveTab( contextMenu.id ) }
+						>
+							<Menu.ItemLabel>
+								{ __( 'Save', 'mark-bricks' ) }
+							</Menu.ItemLabel>
+						</Menu.Item>
+						<Menu.Item
+							shortcut={ saveFileAsShortcut }
+							onClick={ () => saveTabAs( contextMenu.id ) }
+						>
+							<Menu.ItemLabel>
+								{ __( 'Save as…', 'mark-bricks' ) }
+							</Menu.ItemLabel>
+						</Menu.Item>
+					</Menu.Popup>
+				</Menu.Root>
 			) }
 		</Stack>
 	);
