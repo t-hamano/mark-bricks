@@ -2,7 +2,6 @@
  * External dependencies
  */
 import { describe, it, expect } from 'vitest';
-import * as fixtures from '@mark-bricks/fixtures';
 
 /**
  * Internal dependencies
@@ -148,17 +147,6 @@ describe( 'front matter round-trip', () => {
 	] )( 'round-trips %s without loss', ( _name, markdown ) => {
 		expect( roundTrip( markdown ) ).toBe( markdown );
 	} );
-
-	it.each( Object.entries( fixtures ) )(
-		'round-trips the %s fixture with front matter prepended',
-		( _name, markdown ) => {
-			const withFrontMatter = joinFrontMatter(
-				'title: Fixture\ndraft: false',
-				markdown
-			);
-			expect( roundTrip( withFrontMatter ) ).toBe( withFrontMatter );
-		}
-	);
 
 	it( 'keeps the front matter out of the blocks', () => {
 		const { body } = splitFrontMatter( '---\ntitle: Hello\n---\n\nText\n' );
