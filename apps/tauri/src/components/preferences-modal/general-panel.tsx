@@ -8,9 +8,15 @@ import { LOCALES, type Locale } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Button, Notice, SelectControl, Stack, Text } from '@wordpress/ui';
+import {
+	Button,
+	Notice,
+	SelectControl,
+	Stack,
+	SwitchControl,
+	Text,
+} from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -112,10 +118,10 @@ export function GeneralPanel( { settings, onChange }: Props ) {
 				<Text variant="heading-xl" render={ <h2 /> }>
 					{ __( 'Update', 'mark-bricks' ) }
 				</Text>
-				<ToggleControl
+				<SwitchControl
 					label={ __( 'Check updates automatically', 'mark-bricks' ) }
 					checked={ settings.checkUpdatesAuto }
-					onChange={ ( value ) =>
+					onCheckedChange={ ( value ) =>
 						onChange( { checkUpdatesAuto: value } )
 					}
 				/>

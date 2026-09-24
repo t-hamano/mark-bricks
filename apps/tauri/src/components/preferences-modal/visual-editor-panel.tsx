@@ -6,9 +6,9 @@ import type { EditorThemePreference } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import { RangeControl, ToggleControl } from '@wordpress/components';
+import { RangeControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { SelectControl, Stack, Text } from '@wordpress/ui';
+import { SelectControl, Stack, SwitchControl, Text } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -64,33 +64,35 @@ export function VisualEditorPanel( { settings, onChange }: Props ) {
 						}
 					} }
 				/>
-				<ToggleControl
+				<SwitchControl
 					label={ __( 'Spell check', 'mark-bricks' ) }
 					checked={ settings.spellCheck }
-					onChange={ ( value ) => onChange( { spellCheck: value } ) }
-					help={ __(
+					onCheckedChange={ ( value ) =>
+						onChange( { spellCheck: value } )
+					}
+					description={ __(
 						'Highlight misspelled words while editing.',
 						'mark-bricks'
 					) }
 				/>
-				<ToggleControl
+				<SwitchControl
 					label={ __( 'Always open List View', 'mark-bricks' ) }
 					checked={ settings.showListViewByDefault }
-					onChange={ ( value ) =>
+					onCheckedChange={ ( value ) =>
 						onChange( { showListViewByDefault: value } )
 					}
-					help={ __(
+					description={ __(
 						'Opens the List View panel by default.',
 						'mark-bricks'
 					) }
 				/>
-				<ToggleControl
+				<SwitchControl
 					label={ __( 'Show block breadcrumbs', 'mark-bricks' ) }
 					checked={ settings.showBlockBreadcrumbs }
-					onChange={ ( value ) =>
+					onCheckedChange={ ( value ) =>
 						onChange( { showBlockBreadcrumbs: value } )
 					}
-					help={ __(
+					description={ __(
 						'Displays the block hierarchy trail at the bottom of the editor.',
 						'mark-bricks'
 					) }

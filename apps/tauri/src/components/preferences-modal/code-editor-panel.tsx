@@ -6,9 +6,15 @@ import type { CodeEditorSettings } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import { RangeControl, ToggleControl } from '@wordpress/components';
+import { RangeControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { Button, SelectControl, Stack, Text } from '@wordpress/ui';
+import {
+	Button,
+	SelectControl,
+	Stack,
+	SwitchControl,
+	Text,
+} from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -75,10 +81,10 @@ export function CodeEditorPanel( { settings, onChange }: Props ) {
 					resetFallbackValue={ DEFAULT_CODE_EDITOR_STYLES.tabSize }
 					allowReset
 				/>
-				<ToggleControl
+				<SwitchControl
 					label={ __( 'Show line numbers', 'mark-bricks' ) }
 					checked={ settings.showLineNumbers }
-					onChange={ ( showLineNumbers ) =>
+					onCheckedChange={ ( showLineNumbers ) =>
 						onChange( { showLineNumbers } )
 					}
 				/>
