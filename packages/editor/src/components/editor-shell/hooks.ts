@@ -103,6 +103,9 @@ const parseDocument = ( content: string ): DocumentState => {
 	};
 };
 
+// Milliseconds of inactivity that end a front matter undo step.
+const FRONT_MATTER_UNDO_GROUP_DELAY = 1000;
+
 const serializeDocument = ( doc: DocumentState ): string =>
 	joinFrontMatter( doc.frontMatter, blocksToMarkdown( doc.blocks ) );
 
@@ -262,15 +265,23 @@ export function useMarkdownDocument( {
 		} );
 	}, [] );
 
-	// `''` adds, `null` removes. Consecutive edits share one undo step.
+	const lastFrontMatterEditRef = useRef( 0 );
+
+	// `''` adds, `null` removes. Consecutive edits share one undo step
+	// until a pause longer than FRONT_MATTER_UNDO_GROUP_DELAY.
 	const setFrontMatter = useCallback( ( next: string | null ) => {
+		const now = Date.now();
+		const isContinuing =
+			now - lastFrontMatterEditRef.current <
+			FRONT_MATTER_UNDO_GROUP_DELAY;
+		lastFrontMatterEditRef.current = now;
 		setHistory( ( h ) => {
 			if ( next === h.present.frontMatter ) {
 				return h;
 			}
 			const isEdit = next !== null && h.present.frontMatter !== null;
 			const present = { ...h.present, frontMatter: next };
-			if ( isEdit && h.isEditingFrontMatter ) {
+			if ( isEdit && isContinuing && h.isEditingFrontMatter ) {
 				return { ...h, present };
 			}
 			return {
