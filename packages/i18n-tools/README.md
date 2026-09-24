@@ -82,17 +82,36 @@ Compiles every `languages/<slug>-<locale>.po` into its Jed-format `languages/<sl
 
 Any sibling `gutenberg*-<locale>.json` is merged in, layering its `default` Gutenberg domain on top: a host shipping the block editor commits one to translate its dependency strings, while an app-only host has none and gets just the app domain.
 
-### Gutenberg dependency catalog
-
-The `gutenberg-<version>-<locale>.json` that `make-json` merges is produced out of band by a host script (the editor's `i18n:fetch-gutenberg`): it downloads a pinned Gutenberg language pack from WordPress.org and unions its `.po` (PHP strings) with the per-handle JSON shards (block-editor JS strings) into the `default` domain. Re-run it only when bumping the bundled Gutenberg version; everyday `make-json` just merges the committed cache.
-
 ## Adding a new locale
 
-Locales are identified by their WordPress locale slug (e.g. `ja`, `pt_BR`, `de_DE`, `zh_CN` — see the [WordPress locale list](https://translate.wordpress.org/locale/)). Use the same slug everywhere below: it names the `.po`/`.json` files, selects the Gutenberg language pack, and is what hosts pass to the editor's `applyLocale`. The editor keeps no list of languages; it applies any slug it has a catalog for, so it needs no code change.
+Locales are identified by their WordPress locale slug (e.g. `ja`, `pt_BR`, `de_DE`, `zh_CN` — see the [WordPress locale list](https://translate.wordpress.org/locale/)). Use the same slug everywhere below: it names the `.po`/`.json` files, selects the Gutenberg language pack, and is what hosts pass to the editor's `applyLocale`.
 
 The steps below use `pt_BR` as an example.
 
-### 1. Register the locale in the desktop app
+### 1. Translate the editor
+
+The editor keeps no list of languages: `applyLocale` applies any slug it has a catalog for, so adding a locale needs no code change here, only the catalog.
+
+It ships the block editor, so it needs the Gutenberg (`default` domain) strings as well as its own. Fetch the Gutenberg catalog:
+
+```sh
+pnpm --filter @mark-bricks/editor i18n:fetch-gutenberg -- pt_BR --version=<version>
+```
+
+The script downloads the Gutenberg language pack from WordPress.org and unions its `.po` with the per-handle JSON shards into the `default` domain, writing `languages/gutenberg-<version>-pt_BR.json`. Commit that file: `make-json` merges it into the editor's catalog, so builds never hit the network.
+
+Pin the same Gutenberg version as the existing `gutenberg-<version>-*.json` files. Omitting `--version` fetches the latest version with a translation set for that locale. Re-run the script for every locale only when bumping the bundled Gutenberg version.
+
+Then make sure the `.pot` is current and create an empty `.po` from it:
+
+```sh
+pnpm --filter @mark-bricks/editor i18n:make-pot
+pnpm --filter @mark-bricks/editor i18n:make-po -- pt_BR
+```
+
+Fill in the `msgstr` fields of `packages/editor/languages/mark-bricks-pt_BR.po` and commit it. Keep placeholders such as `%s` intact, and read the translator comment (the `#` line above an entry, e.g. `# %s: tab title.`) for what they stand for.
+
+### 2. Translate the desktop app
 
 Add an entry to `LOCALES` in [`apps/tauri/src/i18n.ts`](../../apps/tauri/src/i18n.ts), which the language setting lists as its options:
 
@@ -103,57 +122,40 @@ export const LOCALES = [
 ] as const;
 ```
 
+- `code` is the WordPress locale slug. It is saved as the language setting and passed to the editor's `applyLocale`.
 - `name` is shown in the language setting, so write it in the language itself.
 - `tags` lists the lower-cased OS language tags that pick this locale when no language has been chosen in the settings yet. A tag is looked up as is, then by its primary language subtag (`pt-br`, then `pt`).
 
-### 2. Fetch the Gutenberg catalog
-
-The editor ships the block editor, so it also needs the `default` domain strings for the new locale:
+Then create the app's `.po` and translate `apps/tauri/languages/mark-bricks-pt_BR.po` as in step 1:
 
 ```sh
-pnpm --filter @mark-bricks/editor i18n:fetch-gutenberg -- pt_BR --version=<version>
-```
-
-Pin the same Gutenberg version as the existing `gutenberg-<version>-*.json` files. Omitting `--version` fetches the latest version with a translation set for that locale. Commit the resulting `gutenberg-<version>-pt_BR.json`.
-
-### 3. Create and translate the `.po` in each host
-
-Run this in every package that has its own `languages/` directory. Make sure the `.pot` is current, then create an empty `.po` from it:
-
-```sh
-# Editor (packages/editor)
-pnpm --filter @mark-bricks/editor i18n:make-pot
-pnpm --filter @mark-bricks/editor i18n:make-po -- pt_BR
-
-# Desktop app (apps/tauri)
 pnpm --filter mark-bricks-desktop i18n:make-pot
 pnpm --filter mark-bricks-desktop i18n:make-po -- pt_BR
+```
 
-# VS Code extension webview (apps/vscode)
+### 3. Translate the VS Code extension
+
+Create the webview's `.po` and translate `apps/vscode/languages/mark-bricks-pt_BR.po` as in step 1:
+
+```sh
 pnpm --filter mark-bricks-vscode i18n:make-pot
 pnpm --filter mark-bricks-vscode i18n:make-po -- pt_BR
 ```
 
-Fill in the `msgstr` fields of each package's `languages/mark-bricks-pt_BR.po` and commit them. Keep placeholders such as `%s` intact, and read the translator comment (the `#` line above an entry, e.g. `# %s: tab title.`) for what they stand for. Leaving an entry empty is allowed: it falls back to the English msgid.
-
-### 4. Translate the VS Code extension's own files
-
-Outside the webview, the VS Code extension uses VS Code's localization instead of `mb-i18n`. These files are named with the [VS Code language ID](https://code.visualstudio.com/docs/configure/locales#_available-locales) (lower case with a hyphen, e.g. `pt-br`), not the WordPress slug:
+Outside the webview, the extension uses VS Code's localization instead of `mb-i18n`. These files are named with the [VS Code language ID](https://code.visualstudio.com/docs/configure/locales#_available-locales), not the WordPress slug:
 
 - `apps/vscode/package.nls.pt-br.json` — copy `package.nls.json` and translate its values. These are the `%key%` strings in `package.json` (command titles, the editor name, the description).
 - `apps/vscode/l10n/bundle.l10n.pt-br.json` — translations of the `vscode.l10n.t()` strings in the extension host code, keyed by the English source string (see `bundle.l10n.ja.json`).
 
-The webview needs no extra step: `WP_LOCALES` in [`apps/vscode/src/webview/i18n.ts`](../../apps/vscode/src/webview/i18n.ts) already maps every VS Code display language ID to its WordPress slug (e.g. `pt-br` → `pt_BR`), and the editor applies the new slug once its catalog exists.
-
-### 5. Build and check
+### 4. Build and check
 
 ```sh
 pnpm i18n:make-json
 ```
 
-`make-json` takes no locale: it compiles every `.po` it finds, including the new one, and each host picks up the resulting JSON automatically (`import.meta.glob` over `languages/mark-bricks-*.json`), so no loader code needs editing. The JSON is gitignored and rebuilt on `pnpm install`.
+Run from the repository root, this builds the catalogs of all three packages. `make-json` takes no locale: it compiles every `.po` it finds, including the new one, and each host picks up the resulting JSON automatically (`import.meta.glob` over `languages/mark-bricks-*.json`), so no loader code needs editing. The JSON is gitignored and rebuilt on `pnpm install`.
 
 Then run the host and switch to the new language to check the UI:
 
-- Desktop app: pick it in the language setting (or, with no language chosen yet, set the OS language to it).
+- Desktop app: pick it in the language setting.
 - VS Code extension: launch the Extension Development Host with `--locale=pt-br` added to the launch configuration's `args`. The matching VS Code language pack must be installed, or VS Code falls back to English.
