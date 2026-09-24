@@ -74,7 +74,11 @@ jobs:
 
             - name: Build Tauri debug binary and bundles
               shell: bash
-              run: pnpm --filter mark-bricks-desktop exec tauri build --debug --config '{"bundle":{"createUpdaterArtifacts":false}}'
+              run: |
+                  # Skip rpm on Linux: compressing the unoptimized debug binary takes ~20 minutes.
+                  bundles=()
+                  if [ "$RUNNER_OS" = "Linux" ]; then bundles=(--bundles deb,appimage); fi
+                  pnpm --filter mark-bricks-desktop exec tauri build --debug "${bundles[@]}" --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
             - name: Smoke launch
               run: pnpm --filter mark-bricks-desktop e2e:smoke
