@@ -29,7 +29,7 @@
 		"customEditors": [
 			{
 				"viewType": "markBricks.visualEditor",
-				"displayName": "MarkBricks (Visual)",
+				"displayName": "Visual Editor",
 				"selector": [
 					{
 						"filenamePattern": "*.md"
