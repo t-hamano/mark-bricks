@@ -1,4 +1,4 @@
-export { LOCALES, applyLocale, getLocale, type Locale } from './i18n';
+export { applyLocale, getLocale } from './i18n';
 export { registerBlocks } from './block-library';
 export { registerFormats } from './format-library';
 export { Editor } from './components/editor';

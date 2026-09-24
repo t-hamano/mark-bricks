@@ -5,26 +5,12 @@ import { getLocaleData, setLocaleData, type LocaleData } from '@wordpress/i18n';
 
 const TEXT_DOMAIN = 'mark-bricks';
 
-export const LOCALES = [
-	{
-		code: 'en',
-		name: 'English',
-		matches: ( tag: string ) => tag.startsWith( 'en' ),
-	},
-	{
-		code: 'ja',
-		name: '日本語',
-		matches: ( tag: string ) => tag.startsWith( 'ja' ),
-	},
-] as const;
-
-export type Locale = ( typeof LOCALES )[ number ][ 'code' ];
 type TextDomain = typeof TEXT_DOMAIN | 'default';
 type Dictionary = LocaleData< TextDomain >;
 type Dictionaries = Partial< Record< TextDomain, Dictionary > >;
 type LocaleJson = { locale_data: Dictionaries };
 
-const DEFAULT_LOCALE: Locale = LOCALES[ 0 ].code;
+const DEFAULT_LOCALE = 'en';
 
 // Every compiled catalog (and committed override) on disk, keyed by path, so a
 // new locale's JSON is picked up without listing it here.
@@ -33,9 +19,19 @@ const localeFiles: Partial< Record< string, LocaleJson > > = import.meta.glob(
 	{ eager: true, import: 'default' }
 );
 
+// WordPress locale slugs that have a catalog. Hosts map their own language
+// settings to these slugs.
+const AVAILABLE_LOCALES: ReadonlySet< string > = new Set( [
+	DEFAULT_LOCALE,
+	...Object.keys( localeFiles ).flatMap( ( path ) => {
+		const match = path.match( /\/mark-bricks-(?!override-)(.+)\.json$/ );
+		return match ? [ match[ 1 ] ] : [];
+	} ),
+] );
+
 const ALL_DOMAINS: ReadonlySet< TextDomain > = new Set(
-	LOCALES.flatMap(
-		( l ) => Object.keys( getDictionaries( l.code ) ) as TextDomain[]
+	[ ...AVAILABLE_LOCALES ].flatMap(
+		( code ) => Object.keys( getDictionaries( code ) ) as TextDomain[]
 	)
 );
 
@@ -70,33 +66,27 @@ function getDictionaries( code: string ) {
 }
 
 /**
- * Resolves any value to a Locale: known LOCALES code as-is, else a language
- * tag matched against LOCALES, then DEFAULT_LOCALE.
+ * Resolves any value to a WordPress locale slug: a slug with a catalog as-is,
+ * else DEFAULT_LOCALE.
  *
- * @param value Unverified input (persisted setting, language tag, etc.).
- * @return Resolved Locale.
+ * @param value Unverified input (a WordPress locale slug such as `ja`).
+ * @return Resolved locale slug.
  */
-function resolveLocale( value: unknown ): Locale {
-	if ( typeof value !== 'string' ) {
-		return DEFAULT_LOCALE;
-	}
-	const tag = value.toLowerCase();
-	return (
-		LOCALES.find( ( l ) => l.code === value )?.code ??
-		LOCALES.find( ( l ) => l.matches( tag ) )?.code ??
-		DEFAULT_LOCALE
-	);
+function resolveLocale( value: unknown ): string {
+	return typeof value === 'string' && AVAILABLE_LOCALES.has( value )
+		? value
+		: DEFAULT_LOCALE;
 }
 
 /**
- * Resolves any value to a Locale and applies its dictionaries to
- * `@wordpress/i18n`. Returns the resolved Locale so callers can use it
- * for further state (e.g. persist to settings, render in UI).
+ * Applies the dictionaries for a WordPress locale slug to `@wordpress/i18n`,
+ * falling back to English when the editor has no catalog for it. Returns the
+ * applied slug so callers can use it for further state (e.g. render in UI).
  *
- * @param value Unverified input (persisted setting, user choice, etc.).
- * @return Resolved and applied Locale.
+ * @param value WordPress locale slug chosen by the host (e.g. `ja`, `pt_BR`).
+ * @return Applied locale slug.
  */
-export function applyLocale( value: unknown ): Locale {
+export function applyLocale( value: unknown ): string {
 	const lang = resolveLocale( value );
 	const dicts = getDictionaries( lang );
 	for ( const domain of ALL_DOMAINS ) {
@@ -112,9 +102,9 @@ export function applyLocale( value: unknown ): Locale {
  * Reads the locale currently applied to `@wordpress/i18n`. The locale is set
  * once at startup by `applyLocale`, so this value is stable for the session.
  *
- * @return Currently active Locale.
+ * @return Currently active locale slug.
  */
-export function getLocale(): Locale {
+export function getLocale(): string {
 	const meta = getLocaleData( TEXT_DOMAIN )?.[ '' ];
 	const lang = meta && ! Array.isArray( meta ) ? meta.lang : undefined;
 	return resolveLocale( lang );
