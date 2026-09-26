@@ -9,11 +9,20 @@ import { registerFormatType } from '@wordpress/rich-text';
 import { bold } from './bold';
 import { clearFormatting } from './clear-formatting';
 import { code } from './code';
+import { image } from './image';
 import { italic } from './italic';
 import { link } from './link';
 import { strikethrough } from './strikethrough';
 
-const formats = [ bold, italic, code, strikethrough, link, clearFormatting ];
+const formats = [
+	bold,
+	italic,
+	code,
+	strikethrough,
+	link,
+	image,
+	clearFormatting,
+];
 
 export function registerFormats() {
 	formats.forEach( ( { name, title, ...settings } ) =>

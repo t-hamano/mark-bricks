@@ -12,7 +12,7 @@ import {
 /**
  * Internal dependencies
  */
-export { LINK_SYNTAX_ATTRIBUTE } from '../../block-library/utils';
+export { LINK_SYNTAX_ATTRIBUTE } from '../../converter/source-syntax/link';
 
 /**
  * The name the link format is registered under.
@@ -125,12 +125,15 @@ export function setLink(
 		type: LINK_FORMAT,
 		attributes,
 	} as unknown as AppliedFormat;
-	const text = link.text || link.url;
+	const currentText = getTextContent( slice( value, start, end ) );
 
-	if ( text === getTextContent( slice( value, start, end ) ) ) {
+	// A range of only objects, such as a linked image, reads as empty text, so
+	// an untouched text keeps them rather than replacing them with the URL.
+	if ( start < end && link.text === currentText ) {
 		return applyFormat( value, format, start, end );
 	}
 
+	const text = link.text || link.url;
 	return applyFormat(
 		insert( value, text, start, end ),
 		format,

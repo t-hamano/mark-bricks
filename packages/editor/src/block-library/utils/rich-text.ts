@@ -12,33 +12,20 @@ import { escapeAttribute, escapeHTML } from '@wordpress/escape-html';
 import { RichTextData } from '@wordpress/rich-text';
 
 /**
- * The marker characters CommonMark accepts for emphasis and strong emphasis.
+ * Internal dependencies
  */
-export type InlineMarker = '*' | '_';
-
-/**
- * The syntaxes a link can be written in, minus the resource link
- * (`[text](url)`) which is the form every link falls back to.
- */
-export type LinkSyntax = 'literal' | 'autolink';
-
-declare module 'mdast' {
-	interface EmphasisData {
-		marker?: InlineMarker;
-	}
-	interface StrongData {
-		marker?: InlineMarker;
-	}
-	interface LinkData {
-		syntax?: LinkSyntax;
-	}
-}
-
-/**
- * The attribute that carries a non-default marker through a block's inline
- * content. `*` is the default and is therefore never written out.
- */
-const MARKER_ATTRIBUTE = 'data-markdown-marker';
+import {
+	IMAGE_TITLE_QUOTE_ATTRIBUTE,
+	type TitleQuote,
+} from '../../converter/source-syntax/image-title-quote';
+import {
+	MARKER_ATTRIBUTE,
+	type InlineMarker,
+} from '../../converter/source-syntax/inline-marker';
+import {
+	LINK_SYNTAX_ATTRIBUTE,
+	type LinkSyntax,
+} from '../../converter/source-syntax/link';
 
 /**
  * The `hast` property name `hast-util-from-html` derives from
@@ -67,12 +54,6 @@ function writeMarker( marker: InlineMarker | undefined ): string {
 }
 
 /**
- * The attribute that carries a link's syntax through a block's inline content.
- * The resource link is the default and is therefore never written out.
- */
-export const LINK_SYNTAX_ATTRIBUTE = 'data-markdown-link';
-
-/**
  * The `hast` property name `hast-util-from-html` derives from
  * {@link LINK_SYNTAX_ATTRIBUTE}.
  */
@@ -97,6 +78,35 @@ function readLinkSyntax( node: Element ): LinkSyntax | undefined {
  */
 function writeLinkSyntax( syntax: LinkSyntax | undefined ): string {
 	return syntax ? ` ${ LINK_SYNTAX_ATTRIBUTE }="${ syntax }"` : '';
+}
+
+/**
+ * The `hast` property name `hast-util-from-html` derives from
+ * {@link IMAGE_TITLE_QUOTE_ATTRIBUTE}.
+ */
+const IMAGE_TITLE_QUOTE_PROPERTY = 'dataMarkdownTitleQuote';
+
+/**
+ * Reads the title delimiter an image element carries, if any.
+ *
+ * @param node hast element.
+ * @return The delimiter, or `undefined` when the element carries none.
+ */
+function readTitleQuote( node: Element ): TitleQuote | undefined {
+	return node.properties?.[ IMAGE_TITLE_QUOTE_PROPERTY ] === "'"
+		? "'"
+		: undefined;
+}
+
+/**
+ * Renders the title delimiter attribute for an image whose title is not
+ * double-quoted.
+ *
+ * @param quote The image's title delimiter, if any.
+ * @return The attribute to insert into the tag, or an empty string.
+ */
+function writeTitleQuote( quote: TitleQuote | undefined ): string {
+	return quote === "'" ? ` ${ IMAGE_TITLE_QUOTE_ATTRIBUTE }="'"` : '';
 }
 
 /**
@@ -152,6 +162,20 @@ function hastToPhrasing( nodes: RootContent[] ): PhrasingContent[] {
 			case 'br':
 				result.push( { type: 'break' } );
 				break;
+			case 'img': {
+				const src = node.properties?.src;
+				const alt = node.properties?.alt;
+				const title = node.properties?.title;
+				const titleQuote = title ? readTitleQuote( node ) : undefined;
+				result.push( {
+					type: 'image',
+					url: typeof src === 'string' ? src : '',
+					alt: typeof alt === 'string' ? alt : '',
+					title: typeof title === 'string' && title ? title : null,
+					...( titleQuote ? { data: { titleQuote } } : {} ),
+				} );
+				break;
+			}
 			case 'em':
 			case 'i':
 				if ( children.length > 0 ) {
@@ -222,6 +246,7 @@ function hastToPhrasing( nodes: RootContent[] ): PhrasingContent[] {
  * - `delete`      → `<s>`
  * - `link`        → `<a href>`
  * - `inlineCode`  → `<code>`
+ * - `image`       → `<img>`
  *
  * Any other node type is dropped, since blocks only store these formats.
  *
@@ -259,9 +284,19 @@ export function inlineToContent( children: PhrasingContent[] ): string {
 						node.children
 					) }</a>`;
 				}
+				case 'image': {
+					const src = escapeAttribute( node.url );
+					const alt = escapeAttribute( node.alt ?? '' );
+					const title = node.title
+						? ` title="${ escapeAttribute( node.title ) }"${ writeTitleQuote(
+								node.data?.titleQuote
+							) }`
+						: '';
+					return `<img src="${ src }" alt="${ alt }"${ title }>`;
+				}
 				default:
 					// Phrasing types with no block representation (e.g.
-					// `image`, inline `html`, reference links) are dropped.
+					// inline `html`, reference links) are dropped.
 					return '';
 			}
 		} )

@@ -7,6 +7,7 @@ import type { Nodes } from 'mdast';
 /**
  * Internal dependencies
  */
+import { annotateImageTitleQuote, imageHandler } from './image-title-quote';
 import { annotateInlineMarker, inlineMarkerHandlers } from './inline-marker';
 import { annotateLinkSyntax, linkHandler } from './link';
 
@@ -14,7 +15,11 @@ import { annotateLinkSyntax, linkHandler } from './link';
  * The per-node annotators every node is offered to. Each one recognizes the
  * node types it records a syntax for and ignores the rest.
  */
-const annotators = [ annotateInlineMarker, annotateLinkSyntax ];
+const annotators = [
+	annotateInlineMarker,
+	annotateLinkSyntax,
+	annotateImageTitleQuote,
+];
 
 /**
  * Records on the parsed tree which of the interchangeable Markdown spellings
@@ -57,4 +62,5 @@ export function annotateSourceSyntax( tree: Nodes, source: string ): void {
 export const sourceSyntaxHandlers: Partial< Handlers > = {
 	...inlineMarkerHandlers,
 	link: linkHandler,
+	image: imageHandler,
 };

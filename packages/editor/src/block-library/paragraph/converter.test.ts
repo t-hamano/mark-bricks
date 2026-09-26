@@ -94,6 +94,35 @@ describe( 'core/paragraph', () => {
 				content: 'a &lt; b &amp; c',
 			} );
 		} );
+
+		it( 'converts an inline image to <img>', () => {
+			const blocks = markdownToBlocks( 'Text ![Alt](image.png)' );
+			expect( blocks[ 0 ].name ).toBe( 'core/paragraph' );
+			expect( blocks[ 0 ].attributes ).toEqual( {
+				content: 'Text <img src="image.png" alt="Alt">',
+			} );
+		} );
+
+		it( 'records a single-quoted image title on the <img>', () => {
+			const blocks = markdownToBlocks(
+				"Text ![Alt](image.png 'A title')"
+			);
+			expect( blocks[ 0 ].attributes ).toEqual( {
+				content:
+					'Text <img src="image.png" alt="Alt" title="A title" data-markdown-title-quote="\'">',
+			} );
+		} );
+
+		it( 'converts a linked image to <img> inside <a>', () => {
+			const blocks = markdownToBlocks(
+				'[![Badge](badge.svg)](https://example.com)\n[![Badge](badge.svg)](https://example.com)'
+			);
+			expect( blocks[ 0 ].name ).toBe( 'core/paragraph' );
+			expect( blocks[ 0 ].attributes ).toEqual( {
+				content:
+					'<a href="https://example.com"><img src="badge.svg" alt="Badge"></a>\n<a href="https://example.com"><img src="badge.svg" alt="Badge"></a>',
+			} );
+		} );
 	} );
 
 	describe( 'blocks-to-markdown', () => {
@@ -211,6 +240,17 @@ describe( 'core/paragraph', () => {
 				] )
 			).toBe( 'a b c\n' );
 		} );
+
+		it( 'converts <img> in content to an inline image', () => {
+			expect(
+				blocksToMarkdown( [
+					paragraphBlock( {
+						content:
+							'Text <img src="image.png" alt="Alt" title="A title">',
+					} ),
+				] )
+			).toBe( 'Text ![Alt](image.png "A title")\n' );
+		} );
 	} );
 
 	describe( 'roundtrip', () => {
@@ -229,6 +269,24 @@ describe( 'core/paragraph', () => {
 			[
 				'formatting inside a link',
 				'[**bold** text](https://example.com)',
+			],
+			[ 'inline image', 'Text ![Alt](image.png) text' ],
+			[ 'inline image without alt', 'Text ![](image.png)' ],
+			[
+				'inline images with mixed title quotes',
+				'![a](a.png "double") and ![b](b.png \'single\')',
+			],
+			[
+				'inline image with a destination in angle brackets',
+				'Text ![Alt](<my image.png>)',
+			],
+			[
+				'linked images on consecutive lines',
+				'[![Type Check](https://example.com/a.svg?branch=main)](https://example.com/a)\n[![Unit Test](https://example.com/b.svg)](https://example.com/b)',
+			],
+			[
+				'linked image among text',
+				'See [![Alt](image.png)](https://example.com) here',
 			],
 		] )( 'preserves %s', ( _label, markdown ) => {
 			expect( blocksToMarkdown( markdownToBlocks( markdown ) ) ).toBe(

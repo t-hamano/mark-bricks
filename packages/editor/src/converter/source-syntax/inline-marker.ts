@@ -8,8 +8,27 @@ import type { Emphasis, Nodes, Strong } from 'mdast';
 /**
  * Internal dependencies
  */
-import type { InlineMarker } from '../../block-library/utils';
 import { withOption } from './with-option';
+
+/**
+ * The marker characters CommonMark accepts for emphasis and strong emphasis.
+ */
+export type InlineMarker = '*' | '_';
+
+declare module 'mdast' {
+	interface EmphasisData {
+		marker?: InlineMarker;
+	}
+	interface StrongData {
+		marker?: InlineMarker;
+	}
+}
+
+/**
+ * The attribute that carries a non-default marker through a block's inline
+ * content. `*` is the default and is therefore never written out.
+ */
+export const MARKER_ATTRIBUTE = 'data-markdown-marker';
 
 /**
  * The mdast node types whose marker character can vary.
