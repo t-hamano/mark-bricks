@@ -18,7 +18,7 @@ import { image as imageIcon, pencil } from '@wordpress/icons';
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes } from './types';
 import { BlockPlaceholder } from '../../components/block-placeholder';
-import { usePlatform } from '../../platform';
+import { useImageNotice, usePlatform } from '../../platform';
 
 export default function Edit( props: BlockEditProps ) {
 	const { attributes, setAttributes } =
@@ -29,6 +29,7 @@ export default function Edit( props: BlockEditProps ) {
 	const [ urlInput, setUrlInput ] = useState( () => url || '' );
 	const [ altInput, setAltInput ] = useState( () => alt || '' );
 	const [ titleInput, setTitleInput ] = useState( () => title || '' );
+	const imageNotice = useImageNotice( urlInput );
 	const [ resolvedSrc, setResolvedSrc ] = useState( '' );
 	const [ hasLoadError, setHasLoadError ] = useState( false );
 
@@ -119,6 +120,19 @@ export default function Edit( props: BlockEditProps ) {
 						<Button type="submit">
 							{ __( 'Apply', 'mark-bricks' ) }
 						</Button>
+						{ imageNotice && (
+							<Notice.Root
+								intent="warning"
+								style={ {
+									flexBasis: '100%',
+									textAlign: 'start',
+								} }
+							>
+								<Notice.Description>
+									{ imageNotice }
+								</Notice.Description>
+							</Notice.Root>
+						) }
 					</Stack>
 				</BlockPlaceholder>
 			</div>
@@ -203,6 +217,13 @@ export default function Edit( props: BlockEditProps ) {
 									</Button>
 								) }
 							</Stack>
+							{ imageNotice && (
+								<Notice.Root intent="warning">
+									<Notice.Description>
+										{ imageNotice }
+									</Notice.Description>
+								</Notice.Root>
+							) }
 							<InputControl
 								label={ __( 'Alt text', 'mark-bricks' ) }
 								value={ altInput }

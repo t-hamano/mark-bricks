@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 
 /**
@@ -21,6 +21,11 @@ export type Platform = {
 	 * round-trip to the extension process to resolve it.
 	 */
 	resolveImageSrc: ( path: string ) => Promise< string >;
+	/**
+	 * Resolves with a notice when the host cannot display the image at
+	 * this path, or `null` when it can. Omitted when any path works.
+	 */
+	getImageNotice?: ( path: string ) => Promise< string | null >;
 };
 
 const defaultPlatform: Platform = {
@@ -48,4 +53,34 @@ export function PlatformProvider( { platform, children }: Props ) {
 
 export function usePlatform() {
 	return useContext( PlatformContext );
+}
+
+/**
+ * Returns the host's notice for an image path it cannot display, or `null`.
+ *
+ * @param path Image path or URL as entered.
+ */
+export function useImageNotice( path: string ): string | null {
+	const { getImageNotice } = usePlatform();
+	const [ notice, setNotice ] = useState< string | null >( null );
+
+	useEffect( () => {
+		const target = path.trim();
+		if ( ! getImageNotice || ! target ) {
+			setNotice( null );
+			return;
+		}
+
+		let cancelled = false;
+		getImageNotice( target ).then( ( nextNotice ) => {
+			if ( ! cancelled ) {
+				setNotice( nextNotice );
+			}
+		} );
+		return () => {
+			cancelled = true;
+		};
+	}, [ path, getImageNotice ] );
+
+	return notice;
 }
