@@ -43,6 +43,12 @@ const pendingPickImageRequests = new Map<
 >();
 let pickImageRequestSeq = 0;
 
+const pendingCheckImageRequests = new Map<
+	number,
+	( isDisplayable: boolean ) => void
+>();
+let checkImageRequestSeq = 0;
+
 // Local image paths only make sense to the extension host, which knows the
 // document location and can turn them into webview resource URIs.
 const platform: Partial< Platform > = {
@@ -61,13 +67,23 @@ const platform: Partial< Platform > = {
 			post( { type: 'resolveImage', requestId, path } );
 		} );
 	},
-	// Mirrors the webview's `localResourceRoots`. A getter, so the string is
-	// translated once the locale is applied, not when this module loads.
-	get imagePathHelp() {
-		return __(
-			'Only images in the folder of the document or in a workspace folder can be displayed.',
-			'mark-bricks'
-		);
+	// The webview can only load local images inside its
+	// `localResourceRoots`, which the host checks the path against.
+	getImageNotice( path ) {
+		const requestId = ++checkImageRequestSeq;
+		return new Promise( ( resolve ) => {
+			pendingCheckImageRequests.set( requestId, ( isDisplayable ) =>
+				resolve(
+					isDisplayable
+						? null
+						: __(
+								'Only images in the folder of the document or in a workspace folder can be displayed.',
+								'mark-bricks'
+							)
+				)
+			);
+			post( { type: 'checkImage', requestId, path } );
+		} );
 	},
 };
 
@@ -113,6 +129,12 @@ function App() {
 						message.path
 					);
 					pendingPickImageRequests.delete( message.requestId );
+					break;
+				case 'checkImage:done':
+					pendingCheckImageRequests.get( message.requestId )?.(
+						message.isDisplayable
+					);
+					pendingCheckImageRequests.delete( message.requestId );
 					break;
 			}
 		}

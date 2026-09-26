@@ -30,6 +30,11 @@ export type HostMessage =
 			type: 'pickImage:done';
 			requestId: number;
 			path: string | null;
+	  }
+	| {
+			type: 'checkImage:done';
+			requestId: number;
+			isDisplayable: boolean;
 	  };
 
 export type WebviewMessage =
@@ -60,4 +65,9 @@ export type WebviewMessage =
 	| {
 			type: 'pickImage';
 			requestId: number;
+	  }
+	| {
+			type: 'checkImage';
+			requestId: number;
+			path: string;
 	  };

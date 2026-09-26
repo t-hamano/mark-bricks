@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-26T08:50:43.317Z\n"
+"POT-Creation-Date: 2026-09-26T09:06:58.598Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr ""
 
-#: src/webview/main.tsx:67
+#: src/webview/main.tsx:79
 msgid ""
 "Only images in the folder of the document or in a workspace folder can be "
 "displayed."
