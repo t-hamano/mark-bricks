@@ -20,6 +20,8 @@ import { useEnableWpCompatOverlaySlot } from '@wordpress/ui';
  * Internal dependencies
  */
 import type { HostMessage, WebviewMessage } from '../shared/messages';
+import type { Settings } from '../shared/settings';
+import { toEditorStyles } from './editor-styles';
 import HeaderActions from './header-actions';
 import { applyVsCodeLocale, resolveVsCodeLocale } from './i18n';
 import { useVsCodeTheme } from './use-vscode-theme';
@@ -52,6 +54,7 @@ function App() {
 	useEnableWpCompatOverlaySlot();
 
 	const [ content, setContent ] = useState< string | null >( null );
+	const [ settings, setSettings ] = useState< Settings | null >( null );
 	const editorRef = useRef< EditorHandle >( null );
 	const theme = useVsCodeTheme();
 
@@ -60,8 +63,14 @@ function App() {
 			const message = event.data;
 			switch ( message.type ) {
 				case 'init':
+					setSettings( message.settings );
+					setContent( message.text );
+					break;
 				case 'update':
 					setContent( message.text );
+					break;
+				case 'settings':
+					setSettings( message.settings );
 					break;
 				case 'flush':
 					editorRef.current?.flush();
@@ -119,7 +128,7 @@ function App() {
 		};
 	}, [] );
 
-	if ( content === null ) {
+	if ( content === null || settings === null ) {
 		return null;
 	}
 
@@ -132,8 +141,26 @@ function App() {
 					setContent( text );
 					post( { type: 'change', text } );
 				} }
-				settings={ { showUndoRedo: false } }
-				headerActions={ <HeaderActions /> }
+				settings={ {
+					showUndoRedo: false,
+					showListViewByDefault: settings.showListViewByDefault,
+					showBlockBreadcrumbs: settings.showBlockBreadcrumbs,
+					fixedToolbar: settings.topToolbar,
+					focusMode: settings.spotlightMode,
+				} }
+				editorStyles={ toEditorStyles( settings ) }
+				headerActions={
+					<HeaderActions
+						settings={ settings }
+						onSettingChange={ ( key, value ) => {
+							setSettings( { ...settings, [ key ]: value } );
+							post( { type: 'updateSetting', key, value } );
+						} }
+						onOpenSettings={ () =>
+							post( { type: 'openSettings' } )
+						}
+					/>
+				}
 				platform={ platform }
 			/>
 		</EditorThemeProvider>
