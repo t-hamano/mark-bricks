@@ -179,36 +179,21 @@ class EditorSession {
 		}
 	}
 
-	// Opens a file picker for an image and returns its path relative to the
-	// document, with `/` separators, as the markdown should store it. Falls
-	// back to the absolute path where no relative one exists: an untitled
-	// document, or an image on another drive.
+	// Opens a file picker for an image and returns its absolute path, as the
+	// Tauri app does.
 	private async pickImageFile(): Promise< string | null > {
-		const isFile = this.document.uri.scheme === 'file';
 		const [ picked ] =
 			( await vscode.window.showOpenDialog( {
 				canSelectMany: false,
-				defaultUri: isFile
-					? vscode.Uri.joinPath( this.document.uri, '..' )
-					: undefined,
+				defaultUri:
+					this.document.uri.scheme === 'file'
+						? vscode.Uri.joinPath( this.document.uri, '..' )
+						: undefined,
 				filters: {
 					[ vscode.l10n.t( 'Images' ) ]: IMAGE_EXTENSIONS,
 				},
 			} ) ) ?? [];
-		if ( ! picked ) {
-			return null;
-		}
-		if ( ! isFile || picked.scheme !== 'file' ) {
-			return picked.fsPath;
-		}
-
-		const relative = path.relative(
-			path.dirname( this.document.uri.fsPath ),
-			picked.fsPath
-		);
-		return path.isAbsolute( relative )
-			? picked.fsPath
-			: relative.split( path.sep ).join( '/' );
+		return picked ? picked.fsPath : null;
 	}
 
 	// Maps an image path from the markdown to a URL the webview can load:
