@@ -1,12 +1,7 @@
-export const FONT_FAMILIES = [
-	'system',
-	'sans-serif',
-	'serif',
-	'monospace',
-	'handwriting',
-] as const;
-
-export type FontFamily = ( typeof FONT_FAMILIES )[ number ];
+/**
+ * External dependencies
+ */
+import type { FontFamily } from '@mark-bricks/editor/font-families';
 
 /**
  * The `markBricks.*` configuration, keyed without the section prefix. Mirrors

@@ -11,6 +11,7 @@ export { CodeEditor } from './components/code-editor';
 export type { EditorHandle, EditorStyles } from './components/editor';
 export type { CodeEditorSettings } from './components/text-editor';
 export type { Platform } from './platform';
+export { FONT_FAMILY_STACKS, type FontFamily } from './font-families';
 export {
 	EditorThemeProvider,
 	useEditorTheme,

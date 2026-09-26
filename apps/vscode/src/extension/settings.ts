@@ -1,6 +1,10 @@
 /**
  * External dependencies
  */
+import {
+	FONT_FAMILY_STACKS,
+	type FontFamily,
+} from '@mark-bricks/editor/font-families';
 import * as vscode from 'vscode';
 
 /**
@@ -8,8 +12,6 @@ import * as vscode from 'vscode';
  */
 import {
 	DEFAULT_SETTINGS,
-	FONT_FAMILIES,
-	type FontFamily,
 	type Settings,
 	type WritableSettingKey,
 } from '../shared/settings';
@@ -69,9 +71,14 @@ export function readSettings( scope: vscode.Uri ): Settings {
 			24,
 			DEFAULT_SETTINGS.fontSize
 		),
-		fontFamily: FONT_FAMILIES.includes( fontFamily as FontFamily )
-			? ( fontFamily as FontFamily )
-			: DEFAULT_SETTINGS.fontFamily,
+		fontFamily:
+			typeof fontFamily === 'string' &&
+			Object.prototype.hasOwnProperty.call(
+				FONT_FAMILY_STACKS,
+				fontFamily
+			)
+				? ( fontFamily as FontFamily )
+				: DEFAULT_SETTINGS.fontFamily,
 	};
 }
 
