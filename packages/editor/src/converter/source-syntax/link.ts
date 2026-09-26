@@ -11,7 +11,7 @@ import type { Link, Nodes, Parents, PhrasingContent, Root } from 'mdast';
 /**
  * Internal dependencies
  */
-import type { LinkSyntax } from '../../block-library/utils';
+import type { LinkSyntax } from './types';
 import { withOption } from './with-option';
 
 /**

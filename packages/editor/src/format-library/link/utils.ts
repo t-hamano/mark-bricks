@@ -12,7 +12,7 @@ import {
 /**
  * Internal dependencies
  */
-export { LINK_SYNTAX_ATTRIBUTE } from '../../block-library/utils';
+export { LINK_SYNTAX_ATTRIBUTE } from '../../converter/source-syntax/attributes';
 
 /**
  * The name the link format is registered under.

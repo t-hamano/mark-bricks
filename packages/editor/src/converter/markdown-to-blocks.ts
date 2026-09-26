@@ -51,7 +51,7 @@ export function nodeToBlocks( node: RootContent, source: string ): Block[] {
 			const image = imageConverter.imageOnlyChild( node );
 			return [
 				image
-					? imageConverter.toBlock( image, source )
+					? imageConverter.toBlock( image )
 					: paragraphConverter.toBlock( node ),
 			];
 		}

@@ -8,7 +8,7 @@ import type { Emphasis, Nodes, Strong } from 'mdast';
 /**
  * Internal dependencies
  */
-import type { InlineMarker } from '../../block-library/utils';
+import type { InlineMarker } from './types';
 import { withOption } from './with-option';
 
 /**

@@ -13,7 +13,7 @@ import type { Block } from '@wordpress/blocks';
  */
 import { createBlock } from '../utils';
 import type { NodeResult } from '../types';
-import type { BlockAttributes, TitleQuote } from './types';
+import type { BlockAttributes } from './types';
 
 /**
  * Returns the sole Image child of a Paragraph, when there is one.
@@ -38,35 +38,6 @@ export function imageOnlyChild( node: Paragraph ): Image | null {
 }
 
 /**
- * Detects the delimiter used for an image title in the Markdown source.
- *
- * The mdast Image node carries the title text but not its delimiter, so the
- * original syntax is sliced out via `node.position` and inspected. The image
- * destination always closes with `)`, so the title delimiter is the last
- * non-whitespace character before it.
- *
- * A single quote maps to `'`. A double quote and the parenthesised form
- * `(…)` both map to `"`, because remark-stringify cannot emit a
- * parenthesised title.
- *
- * @param node   mdast Image node from remark-parse.
- * @param source The original Markdown source.
- * @return The detected title delimiter.
- */
-function detectTitleQuote( node: Image, source: string ): TitleQuote {
-	if ( ! node.position ) {
-		return '"';
-	}
-	const start = node.position.start.offset ?? 0;
-	const end = node.position.end.offset ?? start;
-	const closer = source
-		.slice( start, end - 1 )
-		.trimEnd()
-		.slice( -1 );
-	return closer === "'" ? "'" : '"';
-}
-
-/**
  * Converts an mdast Image node into a `core/image` block.
  *
  * CommonMark inline images carry a URL, alt text, and an optional title:
@@ -76,15 +47,14 @@ function detectTitleQuote( node: Image, source: string ): TitleQuote {
  * ```
  *
  * `url`/`alt`/`title` map to the native `core/image` attributes. The title
- * delimiter has no native attribute, so it is detected from `source` and
- * stored on `markdownData.titleQuote` for round-tripping.
+ * delimiter has no native attribute, so the one `annotateSourceSyntax`
+ * recorded on the node is stored on `markdownData.titleQuote` for
+ * round-tripping.
  *
- * @param node   mdast Image node from remark-parse.
- * @param source The original Markdown source, required to detect the title
- *               delimiter via `node.position`.
+ * @param node mdast Image node from remark-parse.
  * @return `core/image` block.
  */
-export function toBlock( node: Image, source: string ): Block {
+export function toBlock( node: Image ): Block {
 	const attributes: BlockAttributes = {
 		url: node.url,
 		alt: node.alt ?? '',
@@ -92,7 +62,7 @@ export function toBlock( node: Image, source: string ): Block {
 	if ( node.title ) {
 		attributes.title = node.title;
 		attributes.markdownData = {
-			titleQuote: detectTitleQuote( node, source ),
+			titleQuote: node.data?.titleQuote ?? '"',
 		};
 	}
 	return createBlock( 'core/image', attributes );
@@ -104,7 +74,7 @@ export function toBlock( node: Image, source: string ): Block {
  * An Image is inline content and cannot sit at the document root, so it is
  * wrapped in a Paragraph. remark-stringify renders the Paragraph as a single
  * image line. The title delimiter is restored from `markdownData.titleQuote`
- * via the remark-stringify `quote` option.
+ * by the Image handler in `sourceSyntaxHandlers`.
  *
  * @param block `core/image` block.
  * @return mdast Paragraph node together with serialization options.
@@ -117,12 +87,14 @@ export function toNode( block: Block ): NodeResult< Paragraph > {
 		url: url ?? '',
 		alt: alt ?? '',
 		title: title || null,
+		...( markdownData?.titleQuote
+			? { data: { titleQuote: markdownData.titleQuote } }
+			: {} ),
 	};
 	return {
 		node: {
 			type: 'paragraph',
 			children: [ image ],
 		},
-		options: { quote: markdownData?.titleQuote ?? '"' },
 	};
 }
