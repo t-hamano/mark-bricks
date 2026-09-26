@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-26T07:49:27.885Z\n"
-"PO-Revision-Date: 2026-09-26T07:49:28.498Z\n"
+"POT-Creation-Date: 2026-09-26T07:53:21.502Z\n"
+"PO-Revision-Date: 2026-09-26T07:53:22.276Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -38,10 +38,12 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
+#: src/format-library/image/inline.tsx:140
 #: src/block-library/image/edit.tsx:207
 msgid "Alt text"
 msgstr "代替テキスト"
 
+#: src/format-library/image/inline.tsx:162
 #: src/block-library/image/edit.tsx:120
 #: src/block-library/image/edit.tsx:247
 msgid "Apply"
@@ -59,6 +61,7 @@ msgstr "ブロック"
 msgid "Bold"
 msgstr "太字"
 
+#: src/format-library/image/inline.tsx:135
 #: src/block-library/image/edit.tsx:116
 #: src/block-library/image/edit.tsx:199
 msgid "Browse local file"
@@ -125,6 +128,7 @@ msgstr "列を削除"
 msgid "Delete row"
 msgstr "行を削除"
 
+#: src/format-library/image/inline.tsx:144
 #: src/block-library/image/edit.tsx:214
 msgid "Describes the image for screen readers."
 msgstr "スクリーンリーダー用に画像を説明します。"
@@ -146,10 +150,12 @@ msgstr "画像を編集"
 msgid "Edit table"
 msgstr "表を編集"
 
+#: src/format-library/image/inline.tsx:143
 #: src/block-library/image/edit.tsx:210
 msgid "Enter alt text…"
 msgstr "代替テキストを入力…"
 
+#: src/format-library/image/inline.tsx:153
 #: src/block-library/image/edit.tsx:223
 msgid "Enter title…"
 msgstr "タイトルを入力…"
@@ -204,9 +210,13 @@ msgstr "インデント"
 msgid "Inline code"
 msgstr "インラインコード"
 
-#: src/format-library/image.tsx:12
+#: src/format-library/image/index.tsx:22
 msgid "Inline image"
-msgstr ""
+msgstr "インライン画像"
+
+#: src/format-library/image/inline.tsx:163
+msgid "Insert"
+msgstr "挿入"
 
 #: src/block-library/table/edit.tsx:232
 msgid "Insert a table for sharing data."
@@ -295,6 +305,7 @@ msgid "Outline"
 msgstr "アウトライン"
 
 #: src/format-library/link/inline.tsx:138
+#: src/format-library/image/inline.tsx:117
 msgid "Paste or type URL"
 msgstr "URL を入力または貼り付け"
 
@@ -340,6 +351,7 @@ msgid "Show or hide the List View."
 msgstr "リストビューの表示、非表示。"
 
 #: src/format-library/link/inline.tsx:115
+#: src/format-library/image/inline.tsx:154
 #: src/block-library/image/edit.tsx:227
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
@@ -369,6 +381,7 @@ msgid "Tip"
 msgstr "ヒント"
 
 #: src/format-library/link/inline.tsx:100
+#: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:220
 msgid "Title"
 msgstr "タイトル"
@@ -389,6 +402,7 @@ msgstr "タスク項目に変換"
 msgid "Type / to choose a block"
 msgstr "ブロックを選択するには「/」を入力"
 
+#: src/format-library/image/inline.tsx:116
 #: src/block-library/image/edit.tsx:94
 #: src/block-library/image/edit.tsx:177
 msgid "URL or file path"
