@@ -24,6 +24,7 @@ import {
 	usePaddingAppender,
 } from '../editor-shell/hooks';
 import { FrontMatterEditor } from '../front-matter-editor';
+import { useInlineImageSources } from '../../format-library/image/use-inline-image-sources';
 import { unlock } from '../../lock-unlock';
 import { useEditorTheme } from '../editor-theme-provider';
 
@@ -44,6 +45,7 @@ export function EditorCanvas( { styles, spellCheck }: Props ) {
 		usePaddingAppender( true ),
 		useCanvasSpellCheck( spellCheck ),
 		useCanvasStyleRuntime(),
+		useInlineImageSources(),
 	] );
 	return (
 		<ExperimentalBlockCanvas
