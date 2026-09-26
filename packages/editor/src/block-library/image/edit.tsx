@@ -7,13 +7,7 @@ import { useEffect, useState } from 'react';
  * WordPress dependencies
  */
 import { BlockControls, useBlockProps } from '@wordpress/block-editor';
-import {
-	Dropdown,
-	MenuItem,
-	NavigableMenu,
-	Popover,
-	ToolbarButton,
-} from '@wordpress/components';
+import { Dropdown, ToolbarButton } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Button, InputControl, Notice, Stack } from '@wordpress/ui';
 import { image as imageIcon, pencil } from '@wordpress/icons';
@@ -32,12 +26,9 @@ export default function Edit( props: BlockEditProps ) {
 	const { url, alt, title } = attributes;
 	const { pickImageFile, resolveImageSrc } = usePlatform();
 
-	const [ isUrlPopoverOpen, setIsUrlPopoverOpen ] = useState( false );
 	const [ urlInput, setUrlInput ] = useState( () => url || '' );
 	const [ altInput, setAltInput ] = useState( () => alt || '' );
 	const [ titleInput, setTitleInput ] = useState( () => title || '' );
-	const [ urlPopoverAnchor, setUrlPopoverAnchor ] =
-		useState< HTMLButtonElement | null >( null );
 	const [ resolvedSrc, setResolvedSrc ] = useState( '' );
 	const [ hasLoadError, setHasLoadError ] = useState( false );
 
@@ -82,81 +73,53 @@ export default function Edit( props: BlockEditProps ) {
 						'mark-bricks'
 					) }
 				>
-					<Stack direction="row" gap="sm">
+					<Stack
+						render={
+							<form
+								onSubmit={ ( event ) => {
+									event.preventDefault();
+									applyUrl();
+								} }
+							/>
+						}
+						direction="row"
+						gap="sm"
+						align="center"
+						wrap="wrap"
+						style={ { width: '100%' } }
+					>
+						<div style={ { flex: '1 1 240px' } }>
+							<InputControl
+								hideLabelFromVision
+								label={ __(
+									'URL or file path',
+									'mark-bricks'
+								) }
+								placeholder={ __(
+									'Paste or type URL or file path',
+									'mark-bricks'
+								) }
+								value={ urlInput }
+								onValueChange={ setUrlInput }
+							/>
+						</div>
 						{ pickImageFile && (
 							<Button
 								variant="outline"
 								onClick={ async () => {
 									const path = await pickImageFile();
 									if ( path ) {
-										setAttributes( { url: path } );
+										setUrlInput( path );
 									}
 								} }
 							>
 								{ __( 'Browse local file', 'mark-bricks' ) }
 							</Button>
 						) }
-						<Button
-							variant="outline"
-							onClick={ () => {
-								setUrlInput( url || '' );
-								setIsUrlPopoverOpen( true );
-							} }
-							aria-expanded={ isUrlPopoverOpen }
-							aria-haspopup="dialog"
-							ref={ setUrlPopoverAnchor }
-						>
-							{ __( 'Enter URL or file path', 'mark-bricks' ) }
+						<Button type="submit">
+							{ __( 'Apply', 'mark-bricks' ) }
 						</Button>
 					</Stack>
-					{ isUrlPopoverOpen && (
-						<Popover
-							anchor={ urlPopoverAnchor }
-							onClose={ () => setIsUrlPopoverOpen( false ) }
-							placement="bottom"
-							variant="toolbar"
-							offset={ 4 }
-						>
-							<Stack
-								render={
-									<form
-										onSubmit={ ( event ) => {
-											event.preventDefault();
-											if ( applyUrl() ) {
-												setIsUrlPopoverOpen( false );
-											}
-										} }
-									/>
-								}
-								direction="row"
-								gap="sm"
-								align="flex-end"
-								style={ {
-									width: '400px',
-									padding: 'var(--wpds-dimension-padding-sm)',
-								} }
-							>
-								<div style={ { flex: 1 } }>
-									<InputControl
-										hideLabelFromVision
-										label={ __(
-											'Paste or type URL',
-											'mark-bricks'
-										) }
-										placeholder={ __(
-											'Paste or type URL',
-											'mark-bricks'
-										) }
-										value={ urlInput }
-										onValueChange={ setUrlInput }
-									/>
-								</div>
-								<Button type="submit">
-									{ __( 'Apply', 'mark-bricks' ) }
-								</Button>
-							</Stack>
-						</Popover>
-					) }
 				</BlockPlaceholder>
 			</div>
 		);
@@ -169,6 +132,7 @@ export default function Edit( props: BlockEditProps ) {
 					popoverProps={ { placement: 'bottom-start' } }
 					onToggle={ ( willOpen ) => {
 						if ( willOpen ) {
+							setUrlInput( url || '' );
 							setAltInput( alt || '' );
 							setTitleInput( title || '' );
 						}
@@ -176,7 +140,7 @@ export default function Edit( props: BlockEditProps ) {
 					renderToggle={ ( { isOpen, onToggle } ) => (
 						<ToolbarButton
 							icon={ pencil }
-							title={ __( 'Edit alt and title', 'mark-bricks' ) }
+							title={ __( 'Edit image', 'mark-bricks' ) }
 							onClick={ onToggle }
 							aria-expanded={ isOpen }
 							aria-haspopup="true"
@@ -188,7 +152,12 @@ export default function Edit( props: BlockEditProps ) {
 								<form
 									onSubmit={ ( event ) => {
 										event.preventDefault();
+										const nextUrl = urlInput.trim();
+										if ( ! nextUrl ) {
+											return;
+										}
 										setAttributes( {
+											url: nextUrl,
 											alt: altInput,
 											title: titleInput,
 										} );
@@ -202,6 +171,38 @@ export default function Edit( props: BlockEditProps ) {
 								width: '400px',
 							} }
 						>
+							<Stack direction="row" gap="sm" align="flex-end">
+								<div style={ { flex: 1 } }>
+									<InputControl
+										label={ __(
+											'URL or file path',
+											'mark-bricks'
+										) }
+										placeholder={ __(
+											'Paste or type URL or file path',
+											'mark-bricks'
+										) }
+										value={ urlInput }
+										onValueChange={ setUrlInput }
+									/>
+								</div>
+								{ pickImageFile && (
+									<Button
+										variant="outline"
+										onClick={ async () => {
+											const path = await pickImageFile();
+											if ( path ) {
+												setUrlInput( path );
+											}
+										} }
+									>
+										{ __(
+											'Browse local file',
+											'mark-bricks'
+										) }
+									</Button>
+								) }
+							</Stack>
 							<InputControl
 								label={ __( 'Alt text', 'mark-bricks' ) }
 								value={ altInput }
@@ -228,103 +229,25 @@ export default function Edit( props: BlockEditProps ) {
 									'mark-bricks'
 								) }
 							/>
-							<Stack justify="flex-end">
-								<Button type="submit">
-									{ __( 'Apply', 'mark-bricks' ) }
-								</Button>
-							</Stack>
-						</Stack>
-					) }
-				/>
-			</BlockControls>
-			<BlockControls group="other">
-				<Dropdown
-					popoverProps={ { placement: 'bottom-start' } }
-					onToggle={ ( willOpen ) => {
-						if ( willOpen ) {
-							setUrlInput( url || '' );
-						}
-					} }
-					renderToggle={ ( { isOpen, onToggle } ) => (
-						<ToolbarButton
-							onClick={ onToggle }
-							aria-expanded={ isOpen }
-							aria-haspopup="true"
-						>
-							{ __( 'Replace image', 'mark-bricks' ) }
-						</ToolbarButton>
-					) }
-					renderContent={ ( { onClose } ) => (
-						<>
-							<Stack
-								className="wp-block-image__url"
-								render={
-									<form
-										onSubmit={ ( event ) => {
-											event.preventDefault();
-											if ( applyUrl() ) {
-												onClose();
-											}
-										} }
-									/>
-								}
-								direction="row"
-								gap="sm"
-								align="flex-end"
-								style={ {
-									width: '400px',
-									padding:
-										'0 var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-sm)',
-									margin: '0 calc( -1 * var(--wpds-dimension-padding-sm) ) var(--wpds-dimension-padding-sm)',
-									borderBottom:
-										'var(--wpds-border-width-xs) solid var(--wpds-color-background-interactive-neutral-strong-active)',
-								} }
-							>
-								<div style={ { flex: 1 } }>
-									<InputControl
-										label={ __(
-											'URL or file path',
-											'mark-bricks'
-										) }
-										placeholder={ __(
-											'Paste or type URL or file path',
-											'mark-bricks'
-										) }
-										value={ urlInput }
-										onValueChange={ setUrlInput }
-									/>
-								</div>
-								<Button type="submit">
-									{ __( 'Apply', 'mark-bricks' ) }
-								</Button>
-							</Stack>
-							<NavigableMenu>
-								{ pickImageFile && (
-									<MenuItem
-										onClick={ async () => {
-											onClose();
-											const path = await pickImageFile();
-											if ( path ) {
-												setAttributes( { url: path } );
-											}
-										} }
-									>
-										{ __(
-											'Browse local file',
-											'mark-bricks'
-										) }
-									</MenuItem>
-								) }
-								<MenuItem
+							<Stack justify="space-between">
+								<Button
+									variant="minimal"
 									onClick={ () => {
 										setAttributes( { url: '' } );
+										setUrlInput( '' );
 										onClose();
 									} }
 								>
 									{ __( 'Reset', 'mark-bricks' ) }
-								</MenuItem>
-							</NavigableMenu>
-						</>
+								</Button>
+								<Button
+									type="submit"
+									disabled={ ! urlInput.trim() }
+								>
+									{ __( 'Apply', 'mark-bricks' ) }
+								</Button>
+							</Stack>
+						</Stack>
 					) }
 				/>
 			</BlockControls>

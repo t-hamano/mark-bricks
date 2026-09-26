@@ -30,7 +30,9 @@ export function BlockPlaceholder( {
 			<EmptyState.Title render={ <div /> }>{ label }</EmptyState.Title>
 			<EmptyState.Description>{ instructions }</EmptyState.Description>
 			{ children && (
-				<EmptyState.Actions>{ children }</EmptyState.Actions>
+				<EmptyState.Actions style={ { alignSelf: 'stretch' } }>
+					{ children }
+				</EmptyState.Actions>
 			) }
 		</EmptyState.Root>
 	);
