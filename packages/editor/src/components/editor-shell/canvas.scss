@@ -56,6 +56,10 @@ a {
 	color: var(--wpds-color-foreground-interactive-brand);
 }
 
+.rich-text img {
+	max-width: 100%;
+}
+
 // These legacy Gutenberg rules still contain fixed light colors.
 .block-editor-warning {
 	background-color: var(--wpds-color-background-surface-neutral-weak);

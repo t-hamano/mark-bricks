@@ -91,6 +91,7 @@ export function InlineImageUI( {
 			placement="bottom"
 			offset={ 8 }
 			shift
+			resize={ false }
 		>
 			<Stack
 				render={
