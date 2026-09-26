@@ -10,3 +10,5 @@ vite.config.ts
 **/*.map
 **/*.ts
 **/*.tsx
+screenshots/**
+README.md

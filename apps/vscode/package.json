@@ -18,6 +18,7 @@
 		"vscode": "^1.137.0"
 	},
 	"categories": [
+		"Visualization",
 		"Other"
 	],
 	"keywords": [
@@ -146,7 +147,7 @@
 	"scripts": {
 		"build": "node scripts/build.mjs",
 		"dev": "node scripts/build.mjs --watch",
-		"package": "pnpm run build && vsce package --no-dependencies",
+		"package": "pnpm run build && vsce package --no-dependencies --readme-path MARKETPLACE.md --baseContentUrl https://github.com/t-hamano/mark-bricks/blob/HEAD/apps/vscode --baseImagesUrl https://github.com/t-hamano/mark-bricks/raw/HEAD/apps/vscode",
 		"i18n:make-pot": "mb-i18n make-pot",
 		"i18n:make-po": "mb-i18n make-po",
 		"i18n:make-json": "mb-i18n make-json",
