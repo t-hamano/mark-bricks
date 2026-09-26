@@ -36,9 +36,23 @@ function post( message: WebviewMessage ): void {
 const pendingImageRequests = new Map< number, ( src: string ) => void >();
 let imageRequestSeq = 0;
 
+const pendingPickImageRequests = new Map<
+	number,
+	( path: string | null ) => void
+>();
+let pickImageRequestSeq = 0;
+
 // Local image paths only make sense to the extension host, which knows the
 // document location and can turn them into webview resource URIs.
 const platform: Partial< Platform > = {
+	// The webview has no native file dialog, so the host opens one.
+	pickImageFile() {
+		const requestId = ++pickImageRequestSeq;
+		return new Promise( ( resolve ) => {
+			pendingPickImageRequests.set( requestId, resolve );
+			post( { type: 'pickImage', requestId } );
+		} );
+	},
 	resolveImageSrc( path ) {
 		const requestId = ++imageRequestSeq;
 		return new Promise( ( resolve ) => {
@@ -84,6 +98,12 @@ function App() {
 						message.src
 					);
 					pendingImageRequests.delete( message.requestId );
+					break;
+				case 'pickImage:done':
+					pendingPickImageRequests.get( message.requestId )?.(
+						message.path
+					);
+					pendingPickImageRequests.delete( message.requestId );
 					break;
 			}
 		}

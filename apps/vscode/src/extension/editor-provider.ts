@@ -14,6 +14,17 @@ import { getHtmlForWebview } from './webview-html';
 const CHANGE_DEBOUNCE_MS = 200;
 const FLUSH_TIMEOUT_MS = 1000;
 
+const IMAGE_EXTENSIONS = [
+	'png',
+	'jpg',
+	'jpeg',
+	'gif',
+	'webp',
+	'svg',
+	'avif',
+	'bmp',
+];
+
 export class MarkBricksEditorProvider
 	implements vscode.CustomTextEditorProvider
 {
@@ -147,6 +158,16 @@ class EditorSession {
 				} );
 				break;
 
+			case 'pickImage':
+				void this.pickImageFile().then( ( pickedPath ) =>
+					this.post( {
+						type: 'pickImage:done',
+						requestId: message.requestId,
+						path: pickedPath,
+					} )
+				);
+				break;
+
 			case 'flush:done': {
 				const resolve = this.pendingFlushes.get( message.requestId );
 				if ( resolve ) {
@@ -156,6 +177,38 @@ class EditorSession {
 				break;
 			}
 		}
+	}
+
+	// Opens a file picker for an image and returns its path relative to the
+	// document, with `/` separators, as the markdown should store it. Falls
+	// back to the absolute path where no relative one exists: an untitled
+	// document, or an image on another drive.
+	private async pickImageFile(): Promise< string | null > {
+		const isFile = this.document.uri.scheme === 'file';
+		const [ picked ] =
+			( await vscode.window.showOpenDialog( {
+				canSelectMany: false,
+				defaultUri: isFile
+					? vscode.Uri.joinPath( this.document.uri, '..' )
+					: undefined,
+				filters: {
+					[ vscode.l10n.t( 'Images' ) ]: IMAGE_EXTENSIONS,
+				},
+			} ) ) ?? [];
+		if ( ! picked ) {
+			return null;
+		}
+		if ( ! isFile || picked.scheme !== 'file' ) {
+			return picked.fsPath;
+		}
+
+		const relative = path.relative(
+			path.dirname( this.document.uri.fsPath ),
+			picked.fsPath
+		);
+		return path.isAbsolute( relative )
+			? picked.fsPath
+			: relative.split( path.sep ).join( '/' );
 	}
 
 	// Maps an image path from the markdown to a URL the webview can load:

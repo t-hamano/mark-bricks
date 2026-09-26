@@ -25,6 +25,11 @@ export type HostMessage =
 			type: 'resolveImage:done';
 			requestId: number;
 			src: string;
+	  }
+	| {
+			type: 'pickImage:done';
+			requestId: number;
+			path: string | null;
 	  };
 
 export type WebviewMessage =
@@ -51,4 +56,8 @@ export type WebviewMessage =
 			type: 'resolveImage';
 			requestId: number;
 			path: string;
+	  }
+	| {
+			type: 'pickImage';
+			requestId: number;
 	  };
