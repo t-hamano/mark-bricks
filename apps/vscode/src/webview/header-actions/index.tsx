@@ -19,9 +19,14 @@ import './style.scss';
 type Props = {
 	settings: Settings;
 	onSettingChange: ( key: WritableSettingKey, value: boolean ) => void;
+	onOpenSettings: () => void;
 };
 
-export default function HeaderActions( { settings, onSettingChange }: Props ) {
+export default function HeaderActions( {
+	settings,
+	onSettingChange,
+	onOpenSettings,
+}: Props ) {
 	const { frontMatter, setFrontMatter } = useFrontMatter();
 	const hasFrontMatter = frontMatter !== null;
 	const isFrontMatterEmpty = frontMatter?.trim() === '';
@@ -48,9 +53,9 @@ export default function HeaderActions( { settings, onSettingChange }: Props ) {
 						{ __( 'View', 'mark-bricks' ) }
 					</Menu.GroupLabel>
 					<Menu.CheckboxItem
-						checked={ settings.fixedToolbar }
+						checked={ settings.topToolbar }
 						onCheckedChange={ ( checked ) =>
-							onSettingChange( 'fixedToolbar', checked )
+							onSettingChange( 'topToolbar', checked )
 						}
 					>
 						<Menu.ItemLabel>
@@ -64,9 +69,9 @@ export default function HeaderActions( { settings, onSettingChange }: Props ) {
 						</Menu.ItemDescription>
 					</Menu.CheckboxItem>
 					<Menu.CheckboxItem
-						checked={ settings.focusMode }
+						checked={ settings.spotlightMode }
 						onCheckedChange={ ( checked ) =>
-							onSettingChange( 'focusMode', checked )
+							onSettingChange( 'spotlightMode', checked )
 						}
 					>
 						<Menu.ItemLabel>
@@ -81,19 +86,33 @@ export default function HeaderActions( { settings, onSettingChange }: Props ) {
 					</Menu.CheckboxItem>
 				</Menu.Group>
 				<Menu.Separator />
-				<Menu.Item
-					onClick={ () =>
-						setFrontMatter( hasFrontMatter ? null : '' )
-					}
-				>
+				<Menu.Group>
+					<Menu.GroupLabel>
+						{ __( 'Tools', 'mark-bricks' ) }
+					</Menu.GroupLabel>
+					<Menu.Item
+						onClick={ () =>
+							setFrontMatter( hasFrontMatter ? null : '' )
+						}
+					>
+						<Menu.ItemLabel>
+							{ ! hasFrontMatter &&
+								__( 'Add YAML front matter', 'mark-bricks' ) }
+							{ isFrontMatterEmpty &&
+								__( 'Hide YAML front matter', 'mark-bricks' ) }
+							{ hasFrontMatter &&
+								! isFrontMatterEmpty &&
+								__(
+									'Remove YAML front matter',
+									'mark-bricks'
+								) }
+						</Menu.ItemLabel>
+					</Menu.Item>
+				</Menu.Group>
+				<Menu.Separator />
+				<Menu.Item onClick={ onOpenSettings }>
 					<Menu.ItemLabel>
-						{ ! hasFrontMatter &&
-							__( 'Add YAML front matter', 'mark-bricks' ) }
-						{ isFrontMatterEmpty &&
-							__( 'Hide YAML front matter', 'mark-bricks' ) }
-						{ hasFrontMatter &&
-							! isFrontMatterEmpty &&
-							__( 'Remove YAML front matter', 'mark-bricks' ) }
+						{ __( 'Settings', 'mark-bricks' ) }
 					</Menu.ItemLabel>
 				</Menu.Item>
 			</Menu.Popup>

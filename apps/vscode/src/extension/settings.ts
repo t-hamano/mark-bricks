@@ -49,13 +49,13 @@ export function readSettings( scope: vscode.Uri ): Settings {
 			config.get( 'showBlockBreadcrumbs' ),
 			DEFAULT_SETTINGS.showBlockBreadcrumbs
 		),
-		fixedToolbar: toBoolean(
-			config.get( 'fixedToolbar' ),
-			DEFAULT_SETTINGS.fixedToolbar
+		topToolbar: toBoolean(
+			config.get( 'topToolbar' ),
+			DEFAULT_SETTINGS.topToolbar
 		),
-		focusMode: toBoolean(
-			config.get( 'focusMode' ),
-			DEFAULT_SETTINGS.focusMode
+		spotlightMode: toBoolean(
+			config.get( 'spotlightMode' ),
+			DEFAULT_SETTINGS.spotlightMode
 		),
 		contentWidth: clamp(
 			config.get( 'contentWidth' ),

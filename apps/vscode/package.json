@@ -85,17 +85,17 @@
 					"order": 1,
 					"description": "%config.showBlockBreadcrumbs.description%"
 				},
-				"markBricks.fixedToolbar": {
+				"markBricks.topToolbar": {
 					"type": "boolean",
 					"default": false,
 					"order": 2,
-					"description": "%config.fixedToolbar.description%"
+					"description": "%config.topToolbar.description%"
 				},
-				"markBricks.focusMode": {
+				"markBricks.spotlightMode": {
 					"type": "boolean",
 					"default": false,
 					"order": 3,
-					"description": "%config.focusMode.description%"
+					"description": "%config.spotlightMode.description%"
 				},
 				"markBricks.contentWidth": {
 					"type": "integer",

@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-26T05:42:03.747Z\n"
+"POT-Creation-Date: 2026-09-26T05:59:31.317Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -31,38 +31,46 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:35
+#: src/webview/header-actions/index.tsx:40
 msgid "Options"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:48
+#: src/webview/header-actions/index.tsx:53
 msgid "View"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:57
+#: src/webview/header-actions/index.tsx:62
 msgid "Top toolbar"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:60
+#: src/webview/header-actions/index.tsx:65
 msgid "Access all block and document tools in a single place"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:73
+#: src/webview/header-actions/index.tsx:78
 msgid "Spotlight mode"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:76
+#: src/webview/header-actions/index.tsx:81
 msgid "Focus on one block at a time"
 msgstr ""
 
 #: src/webview/header-actions/index.tsx:91
+msgid "Tools"
+msgstr ""
+
+#: src/webview/header-actions/index.tsx:100
 msgid "Add YAML front matter"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:93
+#: src/webview/header-actions/index.tsx:102
 msgid "Hide YAML front matter"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:96
+#: src/webview/header-actions/index.tsx:105
 msgid "Remove YAML front matter"
+msgstr ""
+
+#: src/webview/header-actions/index.tsx:115
+msgid "Settings"
 msgstr ""

@@ -53,6 +53,8 @@ class EditorSession {
 
 	private lastAppliedText: string | null = null;
 
+	private readonly extensionId: string;
+
 	private flushSeq = 0;
 	private isReady = false;
 	private isDisposed = false;
@@ -62,6 +64,8 @@ class EditorSession {
 		private readonly document: vscode.TextDocument,
 		private readonly panel: vscode.WebviewPanel
 	) {
+		this.extensionId = context.extension.id;
+
 		const webviewRoot = vscode.Uri.joinPath(
 			context.extensionUri,
 			'dist',
@@ -118,6 +122,13 @@ class EditorSession {
 			case 'change':
 				this.pendingText = message.text;
 				this.restartChangeTimer();
+				break;
+
+			case 'openSettings':
+				void vscode.commands.executeCommand(
+					'workbench.action.openSettings',
+					`@ext:${ this.extensionId }`
+				);
 				break;
 
 			case 'updateSetting':

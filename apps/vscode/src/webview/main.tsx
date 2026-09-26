@@ -145,8 +145,8 @@ function App() {
 					showUndoRedo: false,
 					showListViewByDefault: settings.showListViewByDefault,
 					showBlockBreadcrumbs: settings.showBlockBreadcrumbs,
-					fixedToolbar: settings.fixedToolbar,
-					focusMode: settings.focusMode,
+					fixedToolbar: settings.topToolbar,
+					focusMode: settings.spotlightMode,
 				} }
 				editorStyles={ toEditorStyles( settings ) }
 				headerActions={
@@ -156,6 +156,9 @@ function App() {
 							setSettings( { ...settings, [ key ]: value } );
 							post( { type: 'updateSetting', key, value } );
 						} }
+						onOpenSettings={ () =>
+							post( { type: 'openSettings' } )
+						}
 					/>
 				}
 				platform={ platform }

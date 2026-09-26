@@ -15,8 +15,8 @@ export type FontFamily = ( typeof FONT_FAMILIES )[ number ];
 export type Settings = {
 	showListViewByDefault: boolean;
 	showBlockBreadcrumbs: boolean;
-	fixedToolbar: boolean;
-	focusMode: boolean;
+	topToolbar: boolean;
+	spotlightMode: boolean;
 	contentWidth: number;
 	fontSize: number;
 	fontFamily: FontFamily;
@@ -25,8 +25,8 @@ export type Settings = {
 export const DEFAULT_SETTINGS: Settings = {
 	showListViewByDefault: false,
 	showBlockBreadcrumbs: true,
-	fixedToolbar: false,
-	focusMode: false,
+	topToolbar: false,
+	spotlightMode: false,
 	contentWidth: 700,
 	fontSize: 13,
 	fontFamily: 'system',
@@ -35,4 +35,4 @@ export const DEFAULT_SETTINGS: Settings = {
 /**
  * Settings the webview can change itself, from its header menu.
  */
-export type WritableSettingKey = 'fixedToolbar' | 'focusMode';
+export type WritableSettingKey = 'topToolbar' | 'spotlightMode';

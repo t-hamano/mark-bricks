@@ -36,6 +36,9 @@ export type WebviewMessage =
 			text: string;
 	  }
 	| {
+			type: 'openSettings';
+	  }
+	| {
 			type: 'updateSetting';
 			key: WritableSettingKey;
 			value: boolean;
