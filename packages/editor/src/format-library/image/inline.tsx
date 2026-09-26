@@ -9,12 +9,12 @@ import { useState } from 'react';
 import { Popover } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useAnchor } from '@wordpress/rich-text';
-import { Button, InputControl, Stack } from '@wordpress/ui';
+import { Button, InputControl, Notice, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
-import { usePlatform } from '../../platform';
+import { useImageNotice, usePlatform } from '../../platform';
 import type { FormatEditProps } from '../types';
 
 /**
@@ -68,6 +68,7 @@ export function InlineImageUI( {
 }: Props ) {
 	const { pickImageFile } = usePlatform();
 	const [ url, setUrl ] = useState( image.url );
+	const imageNotice = useImageNotice( url );
 	const [ alt, setAlt ] = useState( image.alt );
 	const [ title, setTitle ] = useState( image.title );
 
@@ -137,6 +138,11 @@ export function InlineImageUI( {
 						</Button>
 					) }
 				</Stack>
+				{ imageNotice && (
+					<Notice.Root intent="warning">
+						<Notice.Description>{ imageNotice }</Notice.Description>
+					</Notice.Root>
+				) }
 				<InputControl
 					label={ __( 'Alt text', 'mark-bricks' ) }
 					value={ alt }
