@@ -1,11 +1,21 @@
+/**
+ * Internal dependencies
+ */
+import type { Settings, WritableSettingKey } from './settings';
+
 export type HostMessage =
 	| {
 			type: 'init';
 			text: string;
+			settings: Settings;
 	  }
 	| {
 			type: 'update';
 			text: string;
+	  }
+	| {
+			type: 'settings';
+			settings: Settings;
 	  }
 	| {
 			type: 'flush';
@@ -24,6 +34,14 @@ export type WebviewMessage =
 	| {
 			type: 'change';
 			text: string;
+	  }
+	| {
+			type: 'openSettings';
+	  }
+	| {
+			type: 'updateSetting';
+			key: WritableSettingKey;
+			value: boolean;
 	  }
 	| {
 			type: 'flush:done';

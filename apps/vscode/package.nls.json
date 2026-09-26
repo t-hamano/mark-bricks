@@ -2,5 +2,17 @@
 	"description": "Visual markdown editor powered by the WordPress block editor.",
 	"customEditor.visualEditor.displayName": "Visual Editor",
 	"command.openVisual.title": "Open with MarkBricks",
-	"command.openText.title": "Open with Text Editor"
+	"command.openText.title": "Open with Text Editor",
+	"config.showListViewByDefault.description": "Open the List View panel by default.",
+	"config.showBlockBreadcrumbs.description": "Display the block hierarchy trail at the bottom of the editor.",
+	"config.topToolbar.description": "Access all block and document tools in a single place.",
+	"config.spotlightMode.description": "Focus on one block at a time.",
+	"config.contentWidth.description": "Maximum width of the content area, in pixels.",
+	"config.fontSize.description": "Base font size of the content area, in pixels.",
+	"config.fontFamily.description": "Typeface used for the content area.",
+	"config.fontFamily.system": "System Default",
+	"config.fontFamily.sansSerif": "Sans-serif",
+	"config.fontFamily.serif": "Serif",
+	"config.fontFamily.monospace": "Monospace",
+	"config.fontFamily.handwriting": "Handwriting"
 }

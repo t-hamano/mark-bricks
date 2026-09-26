@@ -13,9 +13,20 @@ import { IconButton, Menu } from '@wordpress/ui';
 /**
  * Internal dependencies
  */
+import type { Settings, WritableSettingKey } from '../../shared/settings';
 import './style.scss';
 
-export default function HeaderActions() {
+type Props = {
+	settings: Settings;
+	onSettingChange: ( key: WritableSettingKey, value: boolean ) => void;
+	onOpenSettings: () => void;
+};
+
+export default function HeaderActions( {
+	settings,
+	onSettingChange,
+	onOpenSettings,
+}: Props ) {
 	const { frontMatter, setFrontMatter } = useFrontMatter();
 	const hasFrontMatter = frontMatter !== null;
 	const isFrontMatterEmpty = frontMatter?.trim() === '';
@@ -37,19 +48,71 @@ export default function HeaderActions() {
 				className="header-actions__menu"
 				positioner={ <Menu.Positioner align="end" /> }
 			>
-				<Menu.Item
-					onClick={ () =>
-						setFrontMatter( hasFrontMatter ? null : '' )
-					}
-				>
+				<Menu.Group>
+					<Menu.GroupLabel>
+						{ __( 'View', 'mark-bricks' ) }
+					</Menu.GroupLabel>
+					<Menu.CheckboxItem
+						checked={ settings.topToolbar }
+						onCheckedChange={ ( checked ) =>
+							onSettingChange( 'topToolbar', checked )
+						}
+					>
+						<Menu.ItemLabel>
+							{ __( 'Top toolbar', 'mark-bricks' ) }
+						</Menu.ItemLabel>
+						<Menu.ItemDescription>
+							{ __(
+								'Access all block and document tools in a single place',
+								'mark-bricks'
+							) }
+						</Menu.ItemDescription>
+					</Menu.CheckboxItem>
+					<Menu.CheckboxItem
+						checked={ settings.spotlightMode }
+						onCheckedChange={ ( checked ) =>
+							onSettingChange( 'spotlightMode', checked )
+						}
+					>
+						<Menu.ItemLabel>
+							{ __( 'Spotlight mode', 'mark-bricks' ) }
+						</Menu.ItemLabel>
+						<Menu.ItemDescription>
+							{ __(
+								'Focus on one block at a time',
+								'mark-bricks'
+							) }
+						</Menu.ItemDescription>
+					</Menu.CheckboxItem>
+				</Menu.Group>
+				<Menu.Separator />
+				<Menu.Group>
+					<Menu.GroupLabel>
+						{ __( 'Tools', 'mark-bricks' ) }
+					</Menu.GroupLabel>
+					<Menu.Item
+						onClick={ () =>
+							setFrontMatter( hasFrontMatter ? null : '' )
+						}
+					>
+						<Menu.ItemLabel>
+							{ ! hasFrontMatter &&
+								__( 'Add YAML front matter', 'mark-bricks' ) }
+							{ isFrontMatterEmpty &&
+								__( 'Hide YAML front matter', 'mark-bricks' ) }
+							{ hasFrontMatter &&
+								! isFrontMatterEmpty &&
+								__(
+									'Remove YAML front matter',
+									'mark-bricks'
+								) }
+						</Menu.ItemLabel>
+					</Menu.Item>
+				</Menu.Group>
+				<Menu.Separator />
+				<Menu.Item onClick={ onOpenSettings }>
 					<Menu.ItemLabel>
-						{ ! hasFrontMatter &&
-							__( 'Add YAML front matter', 'mark-bricks' ) }
-						{ isFrontMatterEmpty &&
-							__( 'Hide YAML front matter', 'mark-bricks' ) }
-						{ hasFrontMatter &&
-							! isFrontMatterEmpty &&
-							__( 'Remove YAML front matter', 'mark-bricks' ) }
+						{ __( 'Settings', 'mark-bricks' ) }
 					</Menu.ItemLabel>
 				</Menu.Item>
 			</Menu.Popup>
