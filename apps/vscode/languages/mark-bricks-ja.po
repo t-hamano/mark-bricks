@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-26T05:59:31.317Z\n"
-"PO-Revision-Date: 2026-09-26T05:59:31.727Z\n"
+"POT-Creation-Date: 2026-09-26T09:06:58.598Z\n"
+"PO-Revision-Date: 2026-09-26T09:06:59.041Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -41,6 +41,12 @@ msgstr "ひとつのブロックに集中"
 #: src/webview/header-actions/index.tsx:102
 msgid "Hide YAML front matter"
 msgstr "YAML フロントマターを非表示"
+
+#: src/webview/main.tsx:79
+msgid ""
+"Only images in the folder of the document or in a workspace folder can be "
+"displayed."
+msgstr "表示できるのは、文書のあるフォルダとワークスペースフォルダ内の画像のみです。"
 
 #: src/webview/header-actions/index.tsx:40
 msgid "Options"

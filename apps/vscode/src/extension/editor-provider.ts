@@ -14,6 +14,17 @@ import { getHtmlForWebview } from './webview-html';
 const CHANGE_DEBOUNCE_MS = 200;
 const FLUSH_TIMEOUT_MS = 1000;
 
+const IMAGE_EXTENSIONS = [
+	'png',
+	'jpg',
+	'jpeg',
+	'gif',
+	'webp',
+	'svg',
+	'avif',
+	'bmp',
+];
+
 export class MarkBricksEditorProvider
 	implements vscode.CustomTextEditorProvider
 {
@@ -55,6 +66,9 @@ class EditorSession {
 
 	private readonly extensionId: string;
 
+	// Folders the webview may load local images from.
+	private readonly imageRoots: vscode.Uri[];
+
 	private flushSeq = 0;
 	private isReady = false;
 	private isDisposed = false;
@@ -74,15 +88,15 @@ class EditorSession {
 
 		// Beyond the bundle, allow the folders local images are resolved
 		// against (see `resolveImageSrc`).
+		this.imageRoots = [
+			vscode.Uri.joinPath( document.uri, '..' ),
+			...( vscode.workspace.workspaceFolders ?? [] ).map(
+				( folder ) => folder.uri
+			),
+		];
 		panel.webview.options = {
 			enableScripts: true,
-			localResourceRoots: [
-				webviewRoot,
-				vscode.Uri.joinPath( document.uri, '..' ),
-				...( vscode.workspace.workspaceFolders ?? [] ).map(
-					( folder ) => folder.uri
-				),
-			],
+			localResourceRoots: [ webviewRoot, ...this.imageRoots ],
 		};
 		panel.webview.html = getHtmlForWebview( panel.webview, webviewRoot );
 
@@ -147,6 +161,24 @@ class EditorSession {
 				} );
 				break;
 
+			case 'checkImage':
+				this.post( {
+					type: 'checkImage:done',
+					requestId: message.requestId,
+					isDisplayable: this.isDisplayableImage( message.path ),
+				} );
+				break;
+
+			case 'pickImage':
+				void this.pickImageFile().then( ( pickedPath ) =>
+					this.post( {
+						type: 'pickImage:done',
+						requestId: message.requestId,
+						path: pickedPath,
+					} )
+				);
+				break;
+
 			case 'flush:done': {
 				const resolve = this.pendingFlushes.get( message.requestId );
 				if ( resolve ) {
@@ -158,13 +190,55 @@ class EditorSession {
 		}
 	}
 
-	// Maps an image path from the markdown to a URL the webview can load:
+	// Opens a file picker for an image and returns its absolute path, as the
+	// Tauri app does.
+	private async pickImageFile(): Promise< string | null > {
+		const [ picked ] =
+			( await vscode.window.showOpenDialog( {
+				canSelectMany: false,
+				defaultUri:
+					this.document.uri.scheme === 'file'
+						? vscode.Uri.joinPath( this.document.uri, '..' )
+						: undefined,
+				filters: {
+					[ vscode.l10n.t( 'Images' ) ]: IMAGE_EXTENSIONS,
+				},
+			} ) ) ?? [];
+		return picked ? picked.fsPath : null;
+	}
+
+	// Maps an image path from the markdown to a URL the webview can load.
+	private resolveImageSrc( src: string ): string {
+		const uri = this.resolveImageUri( src );
+		return uri ? this.panel.webview.asWebviewUri( uri ).toString() : src;
+	}
+
+	// Whether the webview can load the image, i.e. it is remote or inside one
+	// of `imageRoots`.
+	private isDisplayableImage( src: string ): boolean {
+		const uri = this.resolveImageUri( src );
+		if ( ! uri ) {
+			return true;
+		}
+		return this.imageRoots.some( ( root ) => {
+			if ( root.scheme !== uri.scheme ) {
+				return false;
+			}
+			const relative = path.relative( root.fsPath, uri.fsPath );
+			return (
+				! relative.startsWith( '..' ) && ! path.isAbsolute( relative )
+			);
+		} );
+	}
+
+	// Resolves an image path from the markdown to the file it points to:
 	// relative paths against the document, `/`-rooted ones against its
 	// workspace folder (as the built-in markdown preview does), and absolute
-	// file system paths as is.
-	private resolveImageSrc( src: string ): string {
+	// file system paths as is. Returns `null` for URLs the webview loads
+	// directly.
+	private resolveImageUri( src: string ): vscode.Uri | null {
 		if ( /^(https?:|data:|blob:)/i.test( src ) ) {
-			return src;
+			return null;
 		}
 
 		let target = src.replace( /[?#].*$/, '' );
@@ -174,18 +248,17 @@ class EditorSession {
 			// Not percent-encoded; use it verbatim.
 		}
 
-		let uri: vscode.Uri;
-		const folder = vscode.workspace.getWorkspaceFolder( this.document.uri );
 		if ( /^file:/i.test( target ) ) {
-			uri = vscode.Uri.parse( target );
-		} else if ( target.startsWith( '/' ) && folder ) {
-			uri = vscode.Uri.joinPath( folder.uri, target );
-		} else if ( path.isAbsolute( target ) ) {
-			uri = vscode.Uri.file( target );
-		} else {
-			uri = vscode.Uri.joinPath( this.document.uri, '..', target );
+			return vscode.Uri.parse( target );
 		}
-		return this.panel.webview.asWebviewUri( uri ).toString();
+		const folder = vscode.workspace.getWorkspaceFolder( this.document.uri );
+		if ( target.startsWith( '/' ) && folder ) {
+			return vscode.Uri.joinPath( folder.uri, target );
+		}
+		if ( path.isAbsolute( target ) ) {
+			return vscode.Uri.file( target );
+		}
+		return vscode.Uri.joinPath( this.document.uri, '..', target );
 	}
 
 	private onDocumentChanged( event: vscode.TextDocumentChangeEvent ): void {
