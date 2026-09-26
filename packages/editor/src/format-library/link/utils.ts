@@ -125,12 +125,15 @@ export function setLink(
 		type: LINK_FORMAT,
 		attributes,
 	} as unknown as AppliedFormat;
-	const text = link.text || link.url;
+	const currentText = getTextContent( slice( value, start, end ) );
 
-	if ( text === getTextContent( slice( value, start, end ) ) ) {
+	// A range of only objects, such as a linked image, reads as empty text, so
+	// an untouched text keeps them rather than replacing them with the URL.
+	if ( start < end && link.text === currentText ) {
 		return applyFormat( value, format, start, end );
 	}
 
+	const text = link.text || link.url;
 	return applyFormat(
 		insert( value, text, start, end ),
 		format,
