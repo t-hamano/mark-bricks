@@ -8,6 +8,7 @@ import * as vscode from 'vscode';
  * Internal dependencies
  */
 import type { HostMessage, WebviewMessage } from '../shared/messages';
+import { CONFIGURATION_SECTION, readSettings, writeSetting } from './settings';
 import { getHtmlForWebview } from './webview-html';
 
 const CHANGE_DEBOUNCE_MS = 200;
@@ -90,6 +91,9 @@ class EditorSession {
 			),
 			vscode.workspace.onWillSaveTextDocument( ( event ) =>
 				this.onWillSave( event )
+			),
+			vscode.workspace.onDidChangeConfiguration( ( event ) =>
+				this.onConfigurationChanged( event )
 			)
 		);
 
@@ -104,12 +108,24 @@ class EditorSession {
 		switch ( message.type ) {
 			case 'ready':
 				this.isReady = true;
-				this.post( { type: 'init', text: this.document.getText() } );
+				this.post( {
+					type: 'init',
+					text: this.document.getText(),
+					settings: readSettings( this.document.uri ),
+				} );
 				break;
 
 			case 'change':
 				this.pendingText = message.text;
 				this.restartChangeTimer();
+				break;
+
+			case 'updateSetting':
+				void writeSetting(
+					this.document.uri,
+					message.key,
+					message.value
+				);
 				break;
 
 			case 'resolveImage':
@@ -179,6 +195,24 @@ class EditorSession {
 		this.cancelChangeTimer();
 		this.pendingText = null;
 		this.post( { type: 'update', text } );
+	}
+
+	private onConfigurationChanged(
+		event: vscode.ConfigurationChangeEvent
+	): void {
+		if (
+			! this.isReady ||
+			! event.affectsConfiguration(
+				CONFIGURATION_SECTION,
+				this.document.uri
+			)
+		) {
+			return;
+		}
+		this.post( {
+			type: 'settings',
+			settings: readSettings( this.document.uri ),
+		} );
 	}
 
 	private onWillSave( event: vscode.TextDocumentWillSaveEvent ): void {

@@ -72,7 +72,74 @@
 		],
 		"configuration": {
 			"title": "MarkBricks",
-			"properties": {}
+			"properties": {
+				"markBricks.spellCheck": {
+					"type": "boolean",
+					"default": false,
+					"order": 0,
+					"description": "%config.spellCheck.description%"
+				},
+				"markBricks.showListViewByDefault": {
+					"type": "boolean",
+					"default": false,
+					"order": 1,
+					"description": "%config.showListViewByDefault.description%"
+				},
+				"markBricks.showBlockBreadcrumbs": {
+					"type": "boolean",
+					"default": true,
+					"order": 2,
+					"description": "%config.showBlockBreadcrumbs.description%"
+				},
+				"markBricks.fixedToolbar": {
+					"type": "boolean",
+					"default": false,
+					"order": 3,
+					"description": "%config.fixedToolbar.description%"
+				},
+				"markBricks.focusMode": {
+					"type": "boolean",
+					"default": false,
+					"order": 4,
+					"description": "%config.focusMode.description%"
+				},
+				"markBricks.contentWidth": {
+					"type": "integer",
+					"default": 700,
+					"minimum": 400,
+					"maximum": 1600,
+					"order": 5,
+					"description": "%config.contentWidth.description%"
+				},
+				"markBricks.fontSize": {
+					"type": "integer",
+					"default": 13,
+					"minimum": 10,
+					"maximum": 24,
+					"order": 6,
+					"description": "%config.fontSize.description%"
+				},
+				"markBricks.fontFamily": {
+					"type": "string",
+					"enum": [
+						"system",
+						"sans-serif",
+						"serif",
+						"monospace",
+						"handwriting"
+					],
+					"enumItemLabels": [
+						"%config.fontFamily.system%",
+						"%config.fontFamily.sansSerif%",
+						"%config.fontFamily.serif%",
+						"%config.fontFamily.monospace%",
+						"%config.fontFamily.handwriting%"
+					],
+					"default": "system",
+					"order": 7,
+					"description": "%config.fontFamily.description%"
+				}
+			}
 		}
 	},
 	"scripts": {

@@ -13,9 +13,15 @@ import { IconButton, Menu } from '@wordpress/ui';
 /**
  * Internal dependencies
  */
+import type { Settings, WritableSettingKey } from '../../shared/settings';
 import './style.scss';
 
-export default function HeaderActions() {
+type Props = {
+	settings: Settings;
+	onSettingChange: ( key: WritableSettingKey, value: boolean ) => void;
+};
+
+export default function HeaderActions( { settings, onSettingChange }: Props ) {
 	const { frontMatter, setFrontMatter } = useFrontMatter();
 	const hasFrontMatter = frontMatter !== null;
 	const isFrontMatterEmpty = frontMatter?.trim() === '';
@@ -37,6 +43,44 @@ export default function HeaderActions() {
 				className="header-actions__menu"
 				positioner={ <Menu.Positioner align="end" /> }
 			>
+				<Menu.Group>
+					<Menu.GroupLabel>
+						{ __( 'View', 'mark-bricks' ) }
+					</Menu.GroupLabel>
+					<Menu.CheckboxItem
+						checked={ settings.fixedToolbar }
+						onCheckedChange={ ( checked ) =>
+							onSettingChange( 'fixedToolbar', checked )
+						}
+					>
+						<Menu.ItemLabel>
+							{ __( 'Top toolbar', 'mark-bricks' ) }
+						</Menu.ItemLabel>
+						<Menu.ItemDescription>
+							{ __(
+								'Access all block and document tools in a single place',
+								'mark-bricks'
+							) }
+						</Menu.ItemDescription>
+					</Menu.CheckboxItem>
+					<Menu.CheckboxItem
+						checked={ settings.focusMode }
+						onCheckedChange={ ( checked ) =>
+							onSettingChange( 'focusMode', checked )
+						}
+					>
+						<Menu.ItemLabel>
+							{ __( 'Spotlight mode', 'mark-bricks' ) }
+						</Menu.ItemLabel>
+						<Menu.ItemDescription>
+							{ __(
+								'Focus on one block at a time',
+								'mark-bricks'
+							) }
+						</Menu.ItemDescription>
+					</Menu.CheckboxItem>
+				</Menu.Group>
+				<Menu.Separator />
 				<Menu.Item
 					onClick={ () =>
 						setFrontMatter( hasFrontMatter ? null : '' )

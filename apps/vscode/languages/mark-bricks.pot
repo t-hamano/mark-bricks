@@ -2,13 +2,13 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-vscode 0.1.0\n"
+"Project-Id-Version: mark-bricks-vscode 0.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-24T08:05:48.060Z\n"
+"POT-Creation-Date: 2026-09-26T05:42:03.747Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -31,18 +31,38 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:29
+#: src/webview/header-actions/index.tsx:35
 msgid "Options"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:47
+#: src/webview/header-actions/index.tsx:48
+msgid "View"
+msgstr ""
+
+#: src/webview/header-actions/index.tsx:57
+msgid "Top toolbar"
+msgstr ""
+
+#: src/webview/header-actions/index.tsx:60
+msgid "Access all block and document tools in a single place"
+msgstr ""
+
+#: src/webview/header-actions/index.tsx:73
+msgid "Spotlight mode"
+msgstr ""
+
+#: src/webview/header-actions/index.tsx:76
+msgid "Focus on one block at a time"
+msgstr ""
+
+#: src/webview/header-actions/index.tsx:91
 msgid "Add YAML front matter"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:49
+#: src/webview/header-actions/index.tsx:93
 msgid "Hide YAML front matter"
 msgstr ""
 
-#: src/webview/header-actions/index.tsx:52
+#: src/webview/header-actions/index.tsx:96
 msgid "Remove YAML front matter"
 msgstr ""
