@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * WordPress dependencies
@@ -29,12 +29,16 @@ function Edit( {
 	activeObjectAttributes,
 	contentRef,
 }: FormatEditProps ) {
-	// RichText remounts this component whenever the selection moves onto or
-	// off an image, so the popover opens by itself on a selected image and
-	// closes as the selection leaves it.
-	const [ isPopoverVisible, setIsPopoverVisible ] =
-		useState( isObjectActive );
+	const [ isPopoverVisible, setIsPopoverVisible ] = useState( false );
 	const [ focusOnMount, setFocusOnMount ] = useState< FocusOnMount >( false );
+
+	// RichText keeps this component mounted while the selection moves within
+	// the field, so follow the selection: open the popover on a selected image
+	// and close it as the selection leaves.
+	useEffect( () => {
+		setFocusOnMount( false );
+		setIsPopoverVisible( isObjectActive );
+	}, [ isObjectActive ] );
 
 	const showPopover = () => {
 		setFocusOnMount( 'firstElement' );
