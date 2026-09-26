@@ -1,10 +1,11 @@
 /**
  * External dependencies
  */
-import type {
-	CodeEditorSettings,
-	EditorStyles,
-	EditorThemePreference,
+import {
+	FONT_FAMILY_STACKS,
+	type CodeEditorSettings,
+	type EditorStyles,
+	type EditorThemePreference,
 } from '@mark-bricks/editor';
 
 /**
@@ -58,19 +59,19 @@ export const getFontFamilyOptions = (): {
 }[] => [
 	{ value: null, label: __( 'System Default', 'mark-bricks' ) },
 	{
-		value: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif",
+		value: FONT_FAMILY_STACKS[ 'sans-serif' ],
 		label: __( 'Sans-serif', 'mark-bricks' ),
 	},
 	{
-		value: "Georgia, Cambria, 'Times New Roman', Times, serif",
+		value: FONT_FAMILY_STACKS.serif,
 		label: __( 'Serif', 'mark-bricks' ),
 	},
 	{
-		value: "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace",
+		value: FONT_FAMILY_STACKS.monospace,
 		label: __( 'Monospace', 'mark-bricks' ),
 	},
 	{
-		value: "'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Marker Felt', cursive",
+		value: FONT_FAMILY_STACKS.handwriting,
 		label: __( 'Handwriting', 'mark-bricks' ),
 	},
 ];

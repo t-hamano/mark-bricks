@@ -33,6 +33,10 @@
 			"types": "./src/components/front-matter-editor/context.ts",
 			"default": "./src/components/front-matter-editor/context.ts"
 		},
+		"./font-families": {
+			"types": "./src/font-families.ts",
+			"default": "./src/font-families.ts"
+		},
 		"./editor-theme-provider": {
 			"types": "./src/components/editor-theme-provider/index.tsx",
 			"default": "./src/components/editor-theme-provider/index.tsx"
