@@ -147,7 +147,6 @@ function App() {
 					showBlockBreadcrumbs: settings.showBlockBreadcrumbs,
 					fixedToolbar: settings.fixedToolbar,
 					focusMode: settings.focusMode,
-					spellCheck: settings.spellCheck,
 				} }
 				editorStyles={ toEditorStyles( settings ) }
 				headerActions={

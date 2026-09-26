@@ -3,7 +3,6 @@
 	"customEditor.visualEditor.displayName": "Visual Editor",
 	"command.openVisual.title": "Open with MarkBricks",
 	"command.openText.title": "Open with Text Editor",
-	"config.spellCheck.description": "Highlight misspelled words while editing.",
 	"config.showListViewByDefault.description": "Open the List View panel by default.",
 	"config.showBlockBreadcrumbs.description": "Display the block hierarchy trail at the bottom of the editor.",
 	"config.fixedToolbar.description": "Access all block and document tools in a single place.",

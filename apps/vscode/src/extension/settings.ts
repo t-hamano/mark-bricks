@@ -41,10 +41,6 @@ export function readSettings( scope: vscode.Uri ): Settings {
 	const fontFamily = config.get< unknown >( 'fontFamily' );
 
 	return {
-		spellCheck: toBoolean(
-			config.get( 'spellCheck' ),
-			DEFAULT_SETTINGS.spellCheck
-		),
 		showListViewByDefault: toBoolean(
 			config.get( 'showListViewByDefault' ),
 			DEFAULT_SETTINGS.showListViewByDefault

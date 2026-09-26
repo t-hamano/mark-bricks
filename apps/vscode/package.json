@@ -73,34 +73,28 @@
 		"configuration": {
 			"title": "MarkBricks",
 			"properties": {
-				"markBricks.spellCheck": {
-					"type": "boolean",
-					"default": false,
-					"order": 0,
-					"description": "%config.spellCheck.description%"
-				},
 				"markBricks.showListViewByDefault": {
 					"type": "boolean",
 					"default": false,
-					"order": 1,
+					"order": 0,
 					"description": "%config.showListViewByDefault.description%"
 				},
 				"markBricks.showBlockBreadcrumbs": {
 					"type": "boolean",
 					"default": true,
-					"order": 2,
+					"order": 1,
 					"description": "%config.showBlockBreadcrumbs.description%"
 				},
 				"markBricks.fixedToolbar": {
 					"type": "boolean",
 					"default": false,
-					"order": 3,
+					"order": 2,
 					"description": "%config.fixedToolbar.description%"
 				},
 				"markBricks.focusMode": {
 					"type": "boolean",
 					"default": false,
-					"order": 4,
+					"order": 3,
 					"description": "%config.focusMode.description%"
 				},
 				"markBricks.contentWidth": {
@@ -108,7 +102,7 @@
 					"default": 700,
 					"minimum": 400,
 					"maximum": 1600,
-					"order": 5,
+					"order": 4,
 					"description": "%config.contentWidth.description%"
 				},
 				"markBricks.fontSize": {
@@ -116,7 +110,7 @@
 					"default": 13,
 					"minimum": 10,
 					"maximum": 24,
-					"order": 6,
+					"order": 5,
 					"description": "%config.fontSize.description%"
 				},
 				"markBricks.fontFamily": {
@@ -136,7 +130,7 @@
 						"%config.fontFamily.handwriting%"
 					],
 					"default": "system",
-					"order": 7,
+					"order": 6,
 					"description": "%config.fontFamily.description%"
 				}
 			}

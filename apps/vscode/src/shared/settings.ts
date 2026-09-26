@@ -13,7 +13,6 @@ export type FontFamily = ( typeof FONT_FAMILIES )[ number ];
  * `contributes.configuration` in `package.json`, including its defaults.
  */
 export type Settings = {
-	spellCheck: boolean;
 	showListViewByDefault: boolean;
 	showBlockBreadcrumbs: boolean;
 	fixedToolbar: boolean;
@@ -24,7 +23,6 @@ export type Settings = {
 };
 
 export const DEFAULT_SETTINGS: Settings = {
-	spellCheck: false,
 	showListViewByDefault: false,
 	showBlockBreadcrumbs: true,
 	fixedToolbar: false,
