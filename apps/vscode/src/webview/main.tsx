@@ -14,6 +14,7 @@ import { createRoot } from 'react-dom/client';
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { useEnableWpCompatOverlaySlot } from '@wordpress/ui';
 
 /**
@@ -59,6 +60,14 @@ const platform: Partial< Platform > = {
 			pendingImageRequests.set( requestId, resolve );
 			post( { type: 'resolveImage', requestId, path } );
 		} );
+	},
+	// Mirrors the webview's `localResourceRoots`. A getter, so the string is
+	// translated once the locale is applied, not when this module loads.
+	get imagePathHelp() {
+		return __(
+			'Only images in the folder of the document or in a workspace folder can be displayed.',
+			'mark-bricks'
+		);
 	},
 };
 
