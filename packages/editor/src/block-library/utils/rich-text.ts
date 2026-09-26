@@ -16,14 +16,16 @@ import { RichTextData } from '@wordpress/rich-text';
  */
 import {
 	IMAGE_TITLE_QUOTE_ATTRIBUTE,
-	LINK_SYNTAX_ATTRIBUTE,
+	type TitleQuote,
+} from '../../converter/source-syntax/image-title-quote';
+import {
 	MARKER_ATTRIBUTE,
-} from '../../converter/source-syntax/attributes';
-import type {
-	InlineMarker,
-	LinkSyntax,
-	TitleQuote,
-} from '../../converter/source-syntax/types';
+	type InlineMarker,
+} from '../../converter/source-syntax/inline-marker';
+import {
+	LINK_SYNTAX_ATTRIBUTE,
+	type LinkSyntax,
+} from '../../converter/source-syntax/link';
 
 /**
  * The `hast` property name `hast-util-from-html` derives from

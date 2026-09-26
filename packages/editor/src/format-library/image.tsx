@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { IMAGE_TITLE_QUOTE_ATTRIBUTE } from '../converter/source-syntax/attributes';
+import { IMAGE_TITLE_QUOTE_ATTRIBUTE } from '../converter/source-syntax/image-title-quote';
 
 const name = 'core/image';
 const title = () => __( 'Inline image', 'mark-bricks' );

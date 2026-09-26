@@ -11,8 +11,25 @@ import type { Link, Nodes, Parents, PhrasingContent, Root } from 'mdast';
 /**
  * Internal dependencies
  */
-import type { LinkSyntax } from './types';
 import { withOption } from './with-option';
+
+/**
+ * The syntaxes a link can be written in, minus the resource link
+ * (`[text](url)`) which is the form every link falls back to.
+ */
+export type LinkSyntax = 'literal' | 'autolink';
+
+declare module 'mdast' {
+	interface LinkData {
+		syntax?: LinkSyntax;
+	}
+}
+
+/**
+ * The attribute that carries a link's syntax through a block's inline content.
+ * The resource link is the default and is therefore never written out.
+ */
+export const LINK_SYNTAX_ATTRIBUTE = 'data-markdown-link';
 
 /**
  * Parser the candidate literals are verified against.

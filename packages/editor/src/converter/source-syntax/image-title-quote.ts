@@ -8,8 +8,27 @@ import type { Image, Nodes } from 'mdast';
 /**
  * Internal dependencies
  */
-import type { TitleQuote } from './types';
 import { withOption } from './with-option';
+
+/**
+ * The delimiter used for an image title in the Markdown source.
+ *
+ * CommonMark allows `"…"`, `'…'`, and `(…)`. remark-stringify can only emit
+ * the first two, so the parenthesised form is degraded to a double quote.
+ */
+export type TitleQuote = '"' | "'";
+
+declare module 'mdast' {
+	interface ImageData {
+		titleQuote?: TitleQuote;
+	}
+}
+
+/**
+ * The attribute that carries an image title's delimiter through a block's
+ * inline content. `"` is the default and is therefore never written out.
+ */
+export const IMAGE_TITLE_QUOTE_ATTRIBUTE = 'data-markdown-title-quote';
 
 /**
  * Detects the delimiter used for an image title in the Markdown source.
