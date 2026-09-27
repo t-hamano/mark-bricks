@@ -35,6 +35,9 @@ export class MarkBricksEditorProvider
 {
 	public static readonly viewType = 'markBricks.visualEditor';
 
+	// URIs of the open documents whose webview has posted `rendered`.
+	private static readonly renderedDocuments = new Set< string >();
+
 	// Registers the provider for the `viewType` custom editor.
 	public static register(
 		context: vscode.ExtensionContext
@@ -51,6 +54,11 @@ export class MarkBricksEditorProvider
 		);
 	}
 
+	// Whether the document's webview shows its blocks in the editor canvas.
+	public static isEditorRendered( uri: vscode.Uri ): boolean {
+		return MarkBricksEditorProvider.renderedDocuments.has( uri.toString() );
+	}
+
 	private constructor( private readonly context: vscode.ExtensionContext ) {}
 
 	// Starts an editor session for each opened document.
@@ -58,7 +66,19 @@ export class MarkBricksEditorProvider
 		document: vscode.TextDocument,
 		panel: vscode.WebviewPanel
 	): void {
-		void new EditorSession( this.context, document, panel );
+		const key = document.uri.toString();
+		void new EditorSession(
+			this.context,
+			document,
+			panel,
+			( isRendered ) => {
+				if ( isRendered ) {
+					MarkBricksEditorProvider.renderedDocuments.add( key );
+				} else {
+					MarkBricksEditorProvider.renderedDocuments.delete( key );
+				}
+			}
+		);
 	}
 }
 
@@ -85,7 +105,8 @@ class EditorSession {
 	public constructor(
 		context: vscode.ExtensionContext,
 		private readonly document: vscode.TextDocument,
-		private readonly panel: vscode.WebviewPanel
+		private readonly panel: vscode.WebviewPanel,
+		private readonly onRenderedChange: ( isRendered: boolean ) => void
 	) {
 		this.extensionId = context.extension.id;
 
@@ -142,6 +163,10 @@ class EditorSession {
 					text: this.document.getText(),
 					settings: readSettings( this.document.uri ),
 				} );
+				break;
+
+			case 'rendered':
+				this.onRenderedChange( true );
 				break;
 
 			case 'change':
@@ -433,6 +458,7 @@ class EditorSession {
 	// Writes any pending text and releases the session's resources.
 	private dispose(): void {
 		this.isDisposed = true;
+		this.onRenderedChange( false );
 		const hasPendingWrite = this.pendingText !== null;
 		this.cancelChangeTimer();
 		if ( hasPendingWrite ) {

@@ -195,7 +195,32 @@ function App() {
 		};
 	}, [] );
 
-	if ( content === null || settings === null ) {
+	const isInitialized = content !== null && settings !== null;
+
+	// Tells the host once the block canvas shows the document's blocks, so the
+	// smoke test in `e2e/` knows the editor rendered. The canvas is an iframe
+	// that loads on its own, so poll for it.
+	useEffect( () => {
+		if ( ! isInitialized ) {
+			return;
+		}
+		const timer = setInterval( () => {
+			const canvas = document.querySelector< HTMLIFrameElement >(
+				'iframe[name="editor-canvas"]'
+			);
+			if (
+				canvas?.contentDocument?.querySelector(
+					'.block-editor-block-list__block'
+				)
+			) {
+				clearInterval( timer );
+				post( { type: 'rendered' } );
+			}
+		}, 100 );
+		return () => clearInterval( timer );
+	}, [ isInitialized ] );
+
+	if ( ! isInitialized ) {
 		return null;
 	}
 

@@ -25,7 +25,13 @@ function resolveActiveResource(): vscode.Uri | undefined {
 	return vscode.window.activeTextEditor?.document.uri;
 }
 
-export function activate( context: vscode.ExtensionContext ): void {
+// Returned from `activate` for the smoke test in `e2e/`, which cannot see the
+// messages between the host and the webview.
+export type ExtensionApi = {
+	isEditorRendered: ( uri: vscode.Uri ) => boolean;
+};
+
+export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 	context.subscriptions.push( MarkBricksEditorProvider.register( context ) );
 
 	for ( const command of SHADOWED_COMMANDS ) {
@@ -56,6 +62,11 @@ export function activate( context: vscode.ExtensionContext ): void {
 			}
 		} )
 	);
+
+	return {
+		isEditorRendered: ( uri ) =>
+			MarkBricksEditorProvider.isEditorRendered( uri ),
+	};
 }
 
 export function deactivate(): void {}

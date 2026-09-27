@@ -45,6 +45,9 @@ export type WebviewMessage =
 			type: 'ready';
 	  }
 	| {
+			type: 'rendered';
+	  }
+	| {
 			type: 'change';
 			text: string;
 	  }
