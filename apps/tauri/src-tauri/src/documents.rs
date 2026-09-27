@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::fs::{File, OpenOptions};
 use std::io::{Read, Seek, SeekFrom, Write};
 use std::path::{Path, PathBuf};
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 
 use serde::Serialize;
 use tauri::{AppHandle, Manager, State};
@@ -60,6 +60,7 @@ struct Document {
     path: PathBuf,
     canonical_path: PathBuf,
     file: File,
+    writable: bool,
 }
 
 impl Document {
@@ -77,10 +78,10 @@ impl Document {
             }
             Err(error) => return Err(error.to_string()),
         };
-        let file = if create {
+        let (file, writable) = if create {
             // Save targets need write access only; their contents are never read.
             // Never truncate before the selected file has been validated.
-            match OpenOptions::new().write(true).open(&canonical_path) {
+            let file = match OpenOptions::new().write(true).open(&canonical_path) {
                 Ok(file) => file,
                 Err(error) if error.kind() == std::io::ErrorKind::NotFound => OpenOptions::new()
                     .write(true)
@@ -88,15 +89,21 @@ impl Document {
                     .open(&canonical_path)
                     .map_err(|e| e.to_string())?,
                 Err(error) => return Err(error.to_string()),
-            }
+            };
+            (file, true)
         } else {
             // Read-only documents can still be opened and saved under a new name.
-            OpenOptions::new()
+            match OpenOptions::new()
                 .read(true)
                 .write(true)
                 .open(&canonical_path)
-                .or_else(|_| File::open(&canonical_path))
-                .map_err(|e| e.to_string())?
+            {
+                Ok(file) => (file, true),
+                Err(_) => (
+                    File::open(&canonical_path).map_err(|e| e.to_string())?,
+                    false,
+                ),
+            }
         };
         if !file.metadata().map_err(|e| e.to_string())?.is_file() {
             return Err("The selected path is not a regular file".into());
@@ -105,6 +112,7 @@ impl Document {
             path: path.to_path_buf(),
             canonical_path,
             file,
+            writable,
         };
         document.validate_identity()?;
         Ok(document)
@@ -168,6 +176,26 @@ impl Document {
 
     fn write(&mut self, contents: &str) -> Result<(), WriteError> {
         self.validate_identity()?;
+        if !self.writable {
+            // Permissions or sharing locks may have changed since opening.
+            // Do not truncate or create anything before checking the new handle.
+            let file = OpenOptions::new()
+                .write(true)
+                .open(&self.canonical_path)
+                .map_err(WriteError::from_path_error)?;
+            let selected =
+                same_file::Handle::from_file(self.file.try_clone().map_err(|e| e.to_string())?)
+                    .map_err(|e| e.to_string())?;
+            let current =
+                same_file::Handle::from_file(file.try_clone().map_err(|e| e.to_string())?)
+                    .map_err(|e| e.to_string())?;
+            if selected != current {
+                return Err(WriteError::SaveAsRequired);
+            }
+            self.validate_identity()?;
+            self.file = file;
+            self.writable = true;
+        }
         self.file
             .seek(SeekFrom::Start(0))
             .map_err(|e| e.to_string())?;
@@ -227,7 +255,24 @@ impl DocumentRegistry {
     }
 }
 
-pub type Documents = Mutex<DocumentRegistry>;
+pub type Documents = Arc<Mutex<DocumentRegistry>>;
+
+/// Keep file I/O and registry lock waits off the event and async executor threads.
+pub async fn with_documents<T, E>(
+    documents: Documents,
+    operation: impl FnOnce(&mut DocumentRegistry) -> Result<T, E> + Send + 'static,
+) -> Result<T, E>
+where
+    T: Send + 'static,
+    E: From<String> + Send + 'static,
+{
+    tauri::async_runtime::spawn_blocking(move || {
+        let mut registry = documents.lock().map_err(|e| E::from(e.to_string()))?;
+        operation(&mut registry)
+    })
+    .await
+    .map_err(|e| E::from(e.to_string()))?
+}
 
 #[tauri::command]
 pub async fn open_document(app: AppHandle) -> Result<Option<OpenedDocument>, String> {
@@ -283,21 +328,27 @@ pub async fn save_document_as(
 }
 
 #[tauri::command]
-pub fn write_document(
+pub async fn write_document(
     state: State<'_, Documents>,
     document_id: String,
     contents: String,
 ) -> Result<(), WriteError> {
-    state
-        .lock()
-        .map_err(|e| e.to_string())?
-        .write(&document_id, &contents)
+    with_documents(state.inner().clone(), move |registry| {
+        registry.write(&document_id, &contents)
+    })
+    .await
 }
 
 #[tauri::command]
-pub fn close_document(state: State<'_, Documents>, document_id: String) -> Result<(), String> {
-    state.lock().map_err(|e| e.to_string())?.close(&document_id);
-    Ok(())
+pub async fn close_document(
+    state: State<'_, Documents>,
+    document_id: String,
+) -> Result<(), String> {
+    with_documents(state.inner().clone(), move |registry| {
+        registry.close(&document_id);
+        Ok(())
+    })
+    .await
 }
 
 #[cfg(test)]
@@ -332,6 +383,104 @@ mod tests {
             assert_eq!(self.0.parent(), Some(std::env::temp_dir().as_path()));
             let _ = std::fs::remove_dir_all(&self.0);
         }
+    }
+
+    fn make_read_only(path: &Path) -> std::fs::Permissions {
+        let original = std::fs::metadata(path).unwrap().permissions();
+        #[cfg(unix)]
+        {
+            use std::os::unix::fs::PermissionsExt;
+            std::fs::set_permissions(path, std::fs::Permissions::from_mode(0o400)).unwrap();
+        }
+        #[cfg(not(unix))]
+        {
+            let mut permissions = original.clone();
+            permissions.set_readonly(true);
+            std::fs::set_permissions(path, permissions).unwrap();
+        }
+        assert!(
+            OpenOptions::new().write(true).open(path).is_err(),
+            "This test requires read-only permissions to be enforced"
+        );
+        original
+    }
+
+    #[test]
+    fn read_only_documents_can_be_saved_after_permissions_change() {
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let permissions = make_read_only(&path);
+        let mut registry = DocumentRegistry::default();
+        let opened = registry.open_selected(&path).unwrap();
+        assert!(!registry.documents[&opened.info.document_id].writable);
+        assert!(matches!(
+            registry.write(&opened.info.document_id, "denied"),
+            Err(WriteError::Other(_))
+        ));
+        assert_eq!(std::fs::read_to_string(&path).unwrap(), "original");
+
+        std::fs::set_permissions(&path, permissions).unwrap();
+        registry.write(&opened.info.document_id, "edited").unwrap();
+        registry.write(&opened.info.document_id, "short").unwrap();
+        assert_eq!(std::fs::read_to_string(path).unwrap(), "short");
+    }
+
+    #[test]
+    fn upgrading_read_only_access_rejects_replaced_files() {
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let other = dir.file("private.md", "private");
+        let permissions = make_read_only(&path);
+        let mut registry = DocumentRegistry::default();
+        let opened = registry.open_selected(&path).unwrap();
+        std::fs::set_permissions(&path, permissions).unwrap();
+        let moved = dir.0.join("moved.md");
+        std::fs::rename(&path, &moved).unwrap();
+        std::fs::hard_link(&other, &path).unwrap();
+        assert_eq!(
+            registry.write(&opened.info.document_id, "attacker"),
+            Err(WriteError::SaveAsRequired)
+        );
+        assert_eq!(std::fs::read_to_string(other).unwrap(), "private");
+        assert_eq!(std::fs::read_to_string(moved).unwrap(), "original");
+    }
+
+    #[test]
+    fn registry_lock_wait_and_file_io_do_not_block_the_caller() {
+        use std::future::Future;
+        use std::sync::mpsc;
+        use std::task::{Context, Poll, Waker};
+        use std::time::Duration;
+
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let task_path = path.clone();
+        let documents = Documents::default();
+        let locked = documents.lock().unwrap();
+        let worker_documents = documents.clone();
+        let (sender, receiver) = mpsc::channel();
+        let caller = std::thread::spawn(move || {
+            let caller_id = std::thread::current().id();
+            let mut task = Box::pin(with_documents::<_, String>(
+                worker_documents,
+                move |registry| {
+                    assert_ne!(std::thread::current().id(), caller_id);
+                    registry.save_selected(&task_path, "saved")?;
+                    Ok(())
+                },
+            ));
+            let poll = task.as_mut().poll(&mut Context::from_waker(Waker::noop()));
+            sender.send(matches!(poll, Poll::Pending)).unwrap();
+            if poll.is_pending() {
+                tauri::async_runtime::block_on(task).unwrap();
+            }
+        });
+        // A synchronous lock wait would prevent the first poll from returning.
+        let yielded = receiver.recv_timeout(Duration::from_secs(5));
+        drop(locked);
+        caller.join().unwrap();
+        assert!(yielded.unwrap());
+        assert_eq!(std::fs::read_to_string(path).unwrap(), "saved");
     }
 
     #[test]

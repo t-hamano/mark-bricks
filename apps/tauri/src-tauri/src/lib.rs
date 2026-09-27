@@ -5,7 +5,8 @@ use tauri::{Emitter, Manager};
 
 mod documents;
 use documents::{
-    close_document, open_document, save_document_as, write_document, Documents, OpenedDocument,
+    close_document, open_document, save_document_as, with_documents, write_document, Documents,
+    OpenedDocument,
 };
 
 /// Markdown files the OS asked us to open before the app window was ready to
@@ -27,18 +28,20 @@ struct OpenRequestResult {
 /// Only OS-supplied paths enter this queue. IPC callers cannot add paths or
 /// turn a forged frontend event into permission to read another file.
 #[tauri::command]
-fn take_pending_documents(
+async fn take_pending_documents(
     state: tauri::State<'_, Documents>,
 ) -> Result<Vec<OpenRequestResult>, String> {
-    let paths = std::mem::take(&mut *pending_open_files().lock().map_err(|e| e.to_string())?);
-    let mut documents = state.lock().map_err(|e| e.to_string())?;
-    Ok(paths
-        .into_iter()
-        .map(|path| {
-            let document = documents.open_selected(Path::new(&path)).ok();
-            OpenRequestResult { path, document }
-        })
-        .collect())
+    with_documents(state.inner().clone(), |documents| {
+        let paths = std::mem::take(&mut *pending_open_files().lock().map_err(|e| e.to_string())?);
+        Ok(paths
+            .into_iter()
+            .map(|path| {
+                let document = documents.open_selected(Path::new(&path)).ok();
+                OpenRequestResult { path, document }
+            })
+            .collect())
+    })
+    .await
 }
 
 /// Prints that `path` rendered, for the smoke test (`MARK_BRICKS_SMOKE_TEST`).
