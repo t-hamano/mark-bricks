@@ -78,8 +78,7 @@
 			}
 		],
 		"macOS": {
-			"minimumSystemVersion": "15.0",
-			"hardenedRuntime": true
+			"minimumSystemVersion": "15.0"
 		}
 	},
 	"plugins": {

@@ -1,6 +1,6 @@
 # Code signing policy
 
-macOS release builds are signed and notarized. Windows and Linux installers are currently unsigned.
+Release installers are currently unsigned on all platforms (Windows, macOS, Linux).
 
 ## Windows — SignPath Foundation (planned)
 
@@ -14,9 +14,7 @@ Only artifacts built by this repository's CI ([`release-desktop.yml`](.github/wo
 
 ## macOS
 
-Signed with a Developer ID Application certificate through the Apple Developer Program and notarized by Apple, with the hardened runtime enabled.
-
-Only artifacts built by this repository's CI ([`release-desktop.yml`](.github/workflows/release-desktop.yml)) are signed and notarized.
+Planning to enroll in the Apple Developer Program (Developer ID + notarization).
 
 ## Linux
 
@@ -24,12 +22,12 @@ Unsigned, no committed timeline.
 
 ## Team roles (single-maintainer project)
 
-- Authors / Reviewers / Approvers: https://github.com/t-hamano
-- All external pull requests are reviewed, and each signing request is approved, by the maintainer.
+-   Authors / Reviewers / Approvers: https://github.com/t-hamano
+-   All external pull requests are reviewed, and each signing request is approved, by the maintainer.
 
 ## Distribution
 
-- https://github.com/t-hamano/mark-bricks/releases
+-   https://github.com/t-hamano/mark-bricks/releases
 
 ## Privacy
 
