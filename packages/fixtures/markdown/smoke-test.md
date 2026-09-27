@@ -161,7 +161,7 @@ An inline image ![A small landscape](https://picsum.photos/id/1018/80/40 "Lorem 
 ## Details
 
 <details>
-<summary>A collapsed section</summary>
+<summary>A <strong>collapsed</strong> section with <em>formatted</em> text</summary>
 
 Hidden content is written as Markdown, so it can hold **any** block.
 
@@ -171,7 +171,7 @@ Hidden content is written as Markdown, so it can hold **any** block.
 </details>
 
 <details open>
-<summary>A section that starts open</summary>
+<summary>A section that starts <code>open</code></summary>
 
 The `open` attribute expands the section by default.
 

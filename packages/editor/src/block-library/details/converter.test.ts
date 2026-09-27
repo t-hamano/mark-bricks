@@ -135,6 +135,39 @@ describe( 'core/details', () => {
 			);
 		} );
 
+		it.each( [
+			[
+				'<span class="custom"><strong onclick="alert(1)">Bold <em>and italic</em></strong></span><iframe srcdoc="&lt;script&gt;alert(1)&lt;/script&gt;"></iframe>',
+				'<strong>Bold <em>and italic</em></strong>',
+			],
+			[
+				'<script>alert(1)</script><img src="image.png" alt="Image" onerror="alert(1)">',
+				'alert(1)<img src="image.png" alt="Image">',
+			],
+			[
+				'<code>&lt;img src=x onerror=alert(1)&gt;</code>',
+				'<code>&lt;img src=x onerror=alert(1)></code>',
+			],
+		] )( 'normalizes summary HTML: %s', ( summary, expected ) => {
+			const blocks = markdownToBlocks(
+				markdown(
+					'<details>',
+					`<summary>${ summary }</summary>`,
+					'</details>'
+				)
+			);
+			expect( blocks[ 0 ].attributes.summary ).toBe( expected );
+			const normalized = markdown(
+				'<details>',
+				`<summary>${ expected }</summary>`,
+				'</details>'
+			);
+			expect( blocksToMarkdown( blocks ) ).toBe( normalized );
+			expect( blocksToMarkdown( markdownToBlocks( normalized ) ) ).toBe(
+				normalized
+			);
+		} );
+
 		it( 'parses the body as markdown', () => {
 			const blocks = markdownToBlocks(
 				markdown(
