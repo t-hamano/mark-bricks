@@ -3,6 +3,7 @@
  */
 import { useEffect, useRef, useState } from 'react';
 import { getName, getVersion } from '@tauri-apps/api/app';
+import { invoke } from '@tauri-apps/api/core';
 import {
 	Editor,
 	EditorThemeProvider,
@@ -137,6 +138,13 @@ export function App() {
 								onEditorModeChange={ setEditorMode }
 							/>
 						}
+						onRendered={ () => {
+							if ( activeTab.filePath ) {
+								void invoke( 'report_rendered', {
+									path: activeTab.filePath,
+								} );
+							}
+						} }
 					/>
 				) }
 				<DirtyConfirmDialog />

@@ -120,6 +120,9 @@ importers:
         specifier: ^19.3.0
         version: 19.3.0(react@19.3.0)
     devDependencies:
+      '@mark-bricks/fixtures':
+        specifier: workspace:*
+        version: link:../../packages/fixtures
       '@mark-bricks/i18n-tools':
         specifier: workspace:*
         version: link:../../packages/i18n-tools

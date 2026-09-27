@@ -5,6 +5,7 @@ on:
         paths:
             - 'apps/tauri/**'
             - 'packages/editor/**'
+            - 'packages/fixtures/**'
             - 'pnpm-lock.yaml'
             - '.github/workflows/tauri-smoke-test.yml'
     push:
@@ -13,6 +14,7 @@ on:
         paths:
             - 'apps/tauri/**'
             - 'packages/editor/**'
+            - 'packages/fixtures/**'
             - 'pnpm-lock.yaml'
             - '.github/workflows/tauri-smoke-test.yml'
     workflow_dispatch:
