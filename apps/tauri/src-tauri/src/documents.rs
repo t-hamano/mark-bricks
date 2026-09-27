@@ -22,6 +22,40 @@ pub struct OpenedDocument {
     pub contents: String,
 }
 
+#[derive(Debug, PartialEq, Serialize)]
+#[serde(tag = "code", content = "message", rename_all = "snake_case")]
+pub enum WriteError {
+    SaveAsRequired,
+    Other(String),
+}
+
+impl WriteError {
+    fn from_path_error(error: std::io::Error) -> Self {
+        if error.kind() == std::io::ErrorKind::NotFound {
+            Self::SaveAsRequired
+        } else {
+            Self::Other(error.to_string())
+        }
+    }
+}
+
+impl From<String> for WriteError {
+    fn from(message: String) -> Self {
+        Self::Other(message)
+    }
+}
+
+impl From<WriteError> for String {
+    fn from(error: WriteError) -> Self {
+        match error {
+            WriteError::SaveAsRequired => {
+                "The file is missing or has been replaced. Use Save As.".into()
+            }
+            WriteError::Other(message) => message,
+        }
+    }
+}
+
 struct Document {
     path: PathBuf,
     canonical_path: PathBuf,
@@ -76,8 +110,12 @@ impl Document {
         Ok(document)
     }
 
-    fn validate_identity(&self) -> Result<(), String> {
-        let current_path = self.path.canonicalize().map_err(|e| e.to_string())?;
+    fn validate_identity(&self) -> Result<(), WriteError> {
+        // Report a stable code so the frontend never depends on OS error text.
+        let current_path = self
+            .path
+            .canonicalize()
+            .map_err(WriteError::from_path_error)?;
         #[cfg(unix)]
         let same_file = {
             use std::os::unix::fs::MetadataExt;
@@ -86,7 +124,7 @@ impl Document {
             // metadata instead so write-only targets can still be validated.
             // The retained handle keeps the selected inode alive during comparison.
             let selected = self.file.metadata().map_err(|e| e.to_string())?;
-            let current = std::fs::metadata(&current_path).map_err(|e| e.to_string())?;
+            let current = std::fs::metadata(&current_path).map_err(WriteError::from_path_error)?;
             (selected.dev(), selected.ino()) == (current.dev(), current.ino())
         };
         #[cfg(not(unix))]
@@ -105,13 +143,15 @@ impl Document {
             #[cfg(not(windows))]
             options.read(true);
             let current = same_file::Handle::from_file(
-                options.open(&current_path).map_err(|e| e.to_string())?,
+                options
+                    .open(&current_path)
+                    .map_err(WriteError::from_path_error)?,
             )
             .map_err(|e| e.to_string())?;
             selected == current
         };
         if current_path != self.canonical_path || !same_file {
-            return Err("The file has been replaced. Reopen it or use Save As.".into());
+            return Err(WriteError::SaveAsRequired);
         }
         Ok(())
     }
@@ -126,7 +166,7 @@ impl Document {
         Ok(contents)
     }
 
-    fn write(&mut self, contents: &str) -> Result<(), String> {
+    fn write(&mut self, contents: &str) -> Result<(), WriteError> {
         self.validate_identity()?;
         self.file
             .seek(SeekFrom::Start(0))
@@ -137,7 +177,8 @@ impl Document {
         self.file
             .set_len(contents.len() as u64)
             .map_err(|e| e.to_string())?;
-        self.file.sync_data().map_err(|e| e.to_string())
+        self.file.sync_data().map_err(|e| e.to_string())?;
+        Ok(())
     }
 }
 
@@ -174,10 +215,10 @@ impl DocumentRegistry {
         Ok(self.register(document))
     }
 
-    fn write(&mut self, id: &str, contents: &str) -> Result<(), String> {
+    fn write(&mut self, id: &str, contents: &str) -> Result<(), WriteError> {
         self.documents
             .get_mut(id)
-            .ok_or("Unknown or closed document")?
+            .ok_or_else(|| "Unknown or closed document".to_string())?
             .write(contents)
     }
 
@@ -246,7 +287,7 @@ pub fn write_document(
     state: State<'_, Documents>,
     document_id: String,
     contents: String,
-) -> Result<(), String> {
+) -> Result<(), WriteError> {
     state
         .lock()
         .map_err(|e| e.to_string())?
@@ -404,6 +445,42 @@ mod tests {
     }
 
     #[test]
+    fn missing_paths_require_save_as_without_writing_the_old_handle() {
+        for remove in [false, true] {
+            let dir = TestDirectory::new();
+            let path = dir.file("selected.md", "original");
+            let mut registry = DocumentRegistry::default();
+            let opened = registry.open_selected(&path).unwrap();
+            let moved = dir.0.join("moved.md");
+            if remove {
+                std::fs::remove_file(&path).unwrap();
+            } else {
+                std::fs::rename(&path, &moved).unwrap();
+            }
+            assert_eq!(
+                registry.write(&opened.info.document_id, "unsaved edits"),
+                Err(WriteError::SaveAsRequired)
+            );
+            assert!(!path.exists());
+            if !remove {
+                assert_eq!(std::fs::read_to_string(moved).unwrap(), "original");
+            }
+        }
+    }
+
+    #[test]
+    fn save_as_errors_have_a_stable_ipc_code() {
+        assert_eq!(
+            serde_json::to_value(WriteError::SaveAsRequired).unwrap(),
+            serde_json::json!({ "code": "save_as_required" })
+        );
+        assert!(matches!(
+            WriteError::from_path_error(std::io::ErrorKind::PermissionDenied.into()),
+            WriteError::Other(_)
+        ));
+    }
+
+    #[test]
     fn replacing_a_path_cannot_redirect_a_save() {
         let dir = TestDirectory::new();
         let path = dir.file("selected.md", "original");
@@ -413,9 +490,10 @@ mod tests {
         let moved = dir.0.join("moved.md");
         std::fs::rename(&path, &moved).unwrap();
         std::fs::hard_link(&other, &path).unwrap();
-        assert!(registry
-            .write(&opened.info.document_id, "attacker")
-            .is_err());
+        assert_eq!(
+            registry.write(&opened.info.document_id, "attacker"),
+            Err(WriteError::SaveAsRequired)
+        );
         assert_eq!(std::fs::read_to_string(&other).unwrap(), "private");
         assert_eq!(std::fs::read_to_string(&moved).unwrap(), "original");
     }
@@ -432,9 +510,10 @@ mod tests {
         let opened = registry.open_selected(&link).unwrap();
         std::fs::remove_file(&link).unwrap();
         std::os::unix::fs::symlink(&other, &link).unwrap();
-        assert!(registry
-            .write(&opened.info.document_id, "attacker")
-            .is_err());
+        assert_eq!(
+            registry.write(&opened.info.document_id, "attacker"),
+            Err(WriteError::SaveAsRequired)
+        );
         assert_eq!(std::fs::read_to_string(other).unwrap(), "private");
     }
 }

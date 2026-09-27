@@ -109,10 +109,29 @@ export async function saveTab( id: string ) {
 	}
 
 	if ( tab.documentId ) {
-		await invoke( 'write_document', {
-			documentId: tab.documentId,
-			contents: tab.content,
-		} );
+		try {
+			await invoke( 'write_document', {
+				documentId: tab.documentId,
+				contents: tab.content,
+			} );
+		} catch ( error ) {
+			if (
+				typeof error === 'object' &&
+				error !== null &&
+				'code' in error &&
+				error.code === 'save_as_required'
+			) {
+				const current = select( tabsStore )
+					.getTabs()
+					.find( ( t ) => t.id === id );
+				if ( current?.documentId !== tab.documentId ) {
+					return false;
+				}
+				// Keep the edits and let the user choose where to save them.
+				return saveTabAs( id );
+			}
+			throw error;
+		}
 		if (
 			select( tabsStore )
 				.getTabs()

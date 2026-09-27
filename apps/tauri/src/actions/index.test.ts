@@ -153,13 +153,86 @@ describe( 'saveTab', () => {
 		await openDocument( selected );
 		const id = activeTab().id;
 		dispatch( tabsStore ).setTabDirty( id, true );
-		mockIPC( () => {
-			throw new Error( 'Unknown or closed document' );
+		const error = { code: 'other', message: 'Unknown or closed document' };
+		const calls: string[] = [];
+		mockIPC( ( cmd ) => {
+			calls.push( cmd );
+			throw error;
 		} );
-		await expect( saveTab( id ) ).rejects.toThrow(
-			'Unknown or closed document'
-		);
+		await expect( saveTab( id ) ).rejects.toEqual( error );
+		expect( calls ).toEqual( [ 'write_document' ] );
 		expect( activeTab().isDirty ).toBe( true );
+	} );
+
+	it( 'opens Save As directly when the original file is missing or replaced', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		dispatch( tabsStore ).setTabContent( id, 'unsaved edits' );
+		dispatch( tabsStore ).setTabDirty( id, true );
+		const calls: unknown[] = [];
+		mockIPC( ( cmd, payload ) => {
+			calls.push( { cmd, payload } );
+			if ( cmd === 'write_document' ) {
+				throw { code: 'save_as_required' };
+			}
+			if ( cmd === 'save_document_as' ) {
+				return { documentId: 'approved-2', path: '/docs/recovered.md' };
+			}
+		} );
+		expect( await saveTab( id ) ).toBe( true );
+		expect( calls ).toEqual( [
+			{
+				cmd: 'write_document',
+				payload: {
+					documentId: 'approved-1',
+					contents: 'unsaved edits',
+				},
+			},
+			{ cmd: 'save_document_as', payload: { contents: 'unsaved edits' } },
+			{ cmd: 'close_document', payload: { documentId: 'approved-1' } },
+		] );
+		expect( activeTab() ).toMatchObject( {
+			content: 'unsaved edits',
+			documentId: 'approved-2',
+			filePath: '/docs/recovered.md',
+			isDirty: false,
+		} );
+	} );
+
+	it( 'preserves the edits and original grant when recovery is cancelled', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		dispatch( tabsStore ).setTabContent( id, 'unsaved edits' );
+		dispatch( tabsStore ).setTabDirty( id, true );
+		const calls: string[] = [];
+		mockIPC( ( cmd ) => {
+			calls.push( cmd );
+			if ( cmd === 'write_document' ) {
+				throw { code: 'save_as_required' };
+			}
+			return null;
+		} );
+		expect( await saveTab( id ) ).toBe( false );
+		expect( calls ).toEqual( [ 'write_document', 'save_document_as' ] );
+		expect( activeTab() ).toMatchObject( {
+			content: 'unsaved edits',
+			documentId: selected.documentId,
+			filePath: selected.path,
+			isDirty: true,
+		} );
+	} );
+
+	it( 'does not open recovery after the tab is closed', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		const calls: string[] = [];
+		mockIPC( ( cmd ) => {
+			calls.push( cmd );
+			dispatch( tabsStore ).closeTab( id );
+			throw { code: 'save_as_required' };
+		} );
+		expect( await saveTab( id ) ).toBe( false );
+		expect( calls ).toEqual( [ 'write_document' ] );
 	} );
 } );
 
