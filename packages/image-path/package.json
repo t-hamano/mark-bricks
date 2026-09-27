@@ -1,0 +1,24 @@
+{
+	"name": "@mark-bricks/image-path",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Parses image paths from Markdown for the hosts to resolve against the document.",
+	"author": "Aki Hamano",
+	"license": "GPL-2.0-or-later",
+	"type": "module",
+	"main": "./index.ts",
+	"types": "./index.ts",
+	"exports": {
+		".": {
+			"types": "./index.ts",
+			"default": "./index.ts"
+		}
+	},
+	"scripts": {
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"devDependencies": {
+		"vitest": "^5.0.1"
+	}
+}

@@ -370,9 +370,20 @@ describe( 'image paths', () => {
 		[ '/assets/a.png', 'webview:file:///workspace/assets/a.png' ],
 		[ 'file:///tmp/a.png', 'webview:file:///tmp/a.png' ],
 		[
-			'images/my%20photo.png?v=1#top',
+			'images/my%20photo.png',
 			'webview:file:///workspace/docs/images/my%20photo.png',
 		],
+		// `?` and `#` are part of a file name, not a query or hash.
+		[
+			'images/chart#final.png',
+			'webview:file:///workspace/docs/images/chart%23final.png',
+		],
+		[
+			'images/chart%23final.png',
+			'webview:file:///workspace/docs/images/chart%23final.png',
+		],
+		[ 'a%3Fb.png', 'webview:file:///workspace/docs/a%3Fb.png' ],
+		[ 'file:///tmp/a.png?v=1#top', 'webview:file:///tmp/a.png' ],
 		[
 			'bad%E0%A4%A.png',
 			'webview:file:///workspace/docs/bad%25E0%25A4%25A.png',
@@ -400,6 +411,24 @@ describe( 'image paths', () => {
 				type: 'resolveImage:done',
 				requestId: 1,
 				src: 'webview:file:///tmp/a.png',
+			},
+		] );
+	} );
+
+	it( 'keeps # in the file name of a picked absolute path', () => {
+		const { send, posted } = openEditor();
+
+		send( {
+			type: 'resolveImage',
+			requestId: 1,
+			path: '/tmp/chart#final.png',
+		} );
+
+		expect( posted ).toEqual( [
+			{
+				type: 'resolveImage:done',
+				requestId: 1,
+				src: 'webview:file:///tmp/chart%23final.png',
 			},
 		] );
 	} );

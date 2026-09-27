@@ -59,6 +59,9 @@ importers:
       '@mark-bricks/editor':
         specifier: workspace:*
         version: link:../../packages/editor
+      '@mark-bricks/image-path':
+        specifier: workspace:*
+        version: link:../../packages/image-path
       '@tauri-apps/api':
         specifier: ^2
         version: 2.11.1
@@ -162,6 +165,9 @@ importers:
       '@mark-bricks/editor':
         specifier: workspace:*
         version: link:../../packages/editor
+      '@mark-bricks/image-path':
+        specifier: workspace:*
+        version: link:../../packages/image-path
       '@wordpress/base-styles':
         specifier: ^13.2.0
         version: 13.2.0
@@ -388,6 +394,12 @@ importers:
       gettext-parser:
         specifier: ^9.1.1
         version: 9.1.1
+
+  packages/image-path:
+    devDependencies:
+      vitest:
+        specifier: ^5.0.1
+        version: 5.0.1(@types/node@26.6.2)(jsdom@30.1.0)(vite@8.3.0(@types/node@26.6.2)(esbuild@0.28.2)(jiti@2.6.1)(sass@1.104.1)(yaml@2.9.1))
 
   storybook:
     dependencies:

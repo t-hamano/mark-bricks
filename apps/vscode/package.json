@@ -159,6 +159,7 @@
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
+		"@mark-bricks/image-path": "workspace:*",
 		"@wordpress/base-styles": "^13.2.0",
 		"@wordpress/i18n": "^6.29.0",
 		"@wordpress/icons": "^17.0.0",

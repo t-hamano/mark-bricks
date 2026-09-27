@@ -48,62 +48,29 @@ describe( 'resolveImagePath', () => {
 		).toBe( '\\\\host\\share\\a.png' );
 	} );
 
-	it( 'decodes percent-encoding', () => {
+	// Parsing edge cases are covered by `@mark-bricks/image-path`.
+	it( 'joins the decoded path onto the document folder', () => {
 		expect(
 			resolveImagePath( 'my%20chart%23final.png', '/docs/note.md' )
 		).toBe( '/docs/my chart#final.png' );
-		// A literal `%` that is not an escape is kept as is.
-		expect( resolveImagePath( '100%.png', '/docs/note.md' ) ).toBe(
-			'/docs/100%.png'
-		);
 	} );
 
-	it( 'keeps `?` and `#` in file names', () => {
-		expect( resolveImagePath( '/tmp/chart#final.png' ) ).toBe(
-			'/tmp/chart#final.png'
-		);
-		expect( resolveImagePath( 'a?b.png', '/docs/note.md' ) ).toBe(
-			'/docs/a?b.png'
-		);
-	} );
-
-	it( 'drops the query and hash of file URLs', () => {
-		expect( resolveImagePath( 'file:///abs/a.png?v=1#top' ) ).toBe(
-			'/abs/a.png'
-		);
-	} );
-
-	it( 'keeps absolute paths as is', () => {
+	it( 'keeps absolute, rooted and file URL paths as is', () => {
 		expect( resolveImagePath( '/abs/a.png', '/docs/note.md' ) ).toBe(
 			'/abs/a.png'
 		);
 		expect(
 			resolveImagePath( 'D:\\abs\\a.png', 'C:\\docs\\note.md' )
 		).toBe( 'D:\\abs\\a.png' );
-		expect( resolveImagePath( 'D:/abs/a.png', 'C:\\docs\\note.md' ) ).toBe(
-			'D:/abs/a.png'
-		);
-	} );
-
-	it( 'converts file URLs to paths', () => {
-		expect( resolveImagePath( 'file:///abs/a.png', '/docs/note.md' ) ).toBe(
-			'/abs/a.png'
-		);
-		expect( resolveImagePath( 'file:///C:/abs/my%20a.png' ) ).toBe(
-			'C:/abs/my a.png'
-		);
-		expect( resolveImagePath( 'file://localhost/abs/a.png' ) ).toBe(
-			'/abs/a.png'
-		);
-	} );
-
-	it( 'keeps the host of UNC file URLs', () => {
 		expect(
-			resolveImagePath(
-				'file://server/share/my%20a.png',
-				'/docs/note.md'
-			)
-		).toBe( '\\\\server\\share\\my a.png' );
+			resolveImagePath( 'file://server/share/a.png', '/docs/note.md' )
+		).toBe( '\\\\server\\share\\a.png' );
+	} );
+
+	it( 'returns null for URLs the webview loads directly', () => {
+		expect(
+			resolveImagePath( 'https://example.com/a.png', '/docs/note.md' )
+		).toBeNull();
 	} );
 
 	it( 'keeps relative paths when the document is unsaved', () => {

@@ -4,6 +4,7 @@
 import { convertFileSrc } from '@tauri-apps/api/core';
 import { open as openDialog } from '@tauri-apps/plugin-dialog';
 import type { Platform } from '@mark-bricks/editor';
+import { parseImageSrc } from '@mark-bricks/image-path';
 
 /**
  * WordPress dependencies
@@ -21,62 +22,23 @@ const IMAGE_EXTENSIONS = [
 	'bmp',
 ];
 
-// URLs the webview can load directly, without the asset protocol.
-const WEB_URL = /^(https?:|data:|blob:)/i;
-
-// POSIX (`/foo`), Windows drive (`C:\foo`, `C:/foo`) and UNC (`\\host`).
-const ABSOLUTE_PATH = /^([/\\]|[a-z]:[/\\])/i;
-
-/**
- * Whether an image path from the markdown is relative to the document.
- *
- * @param src Image path or URL as written in the markdown.
- */
-export function isRelativeImagePath( src: string ) {
-	return (
-		! WEB_URL.test( src ) &&
-		! /^file:/i.test( src ) &&
-		! ABSOLUTE_PATH.test( src )
-	);
-}
-
-/**
- * Converts a `file:` URL to a still percent-encoded file system path:
- * - `file:///C:/foo` -> `C:/foo`
- * - `file:///foo` -> `/foo`
- * - `file://server/share/foo` -> `\\server\share\foo` (UNC)
- *
- * @param url `file:` URL.
- */
-function fileUrlToPath( url: string ) {
-	const { hostname, pathname } = new URL( url );
-	if ( hostname && hostname !== 'localhost' ) {
-		return `\\\\${ hostname }${ pathname.replace( /\//g, '\\' ) }`;
-	}
-	return pathname.replace( /^\/(?=[a-z]:)/i, '' );
-}
-
 /**
  * Resolves an image path from the markdown to an absolute file system path:
- * relative paths against the folder of the document, and absolute paths and
- * `file:` URLs as is. Relative paths stay unresolved when the document has
- * not been saved yet.
+ * relative paths against the folder of the document, and absolute paths,
+ * `/`-rooted paths and `file:` URLs as is. Relative paths stay unresolved
+ * when the document has not been saved yet. Returns `null` for URLs the
+ * webview loads directly, without the asset protocol.
  *
- * @param src          Image path as written in the markdown.
+ * @param src          Image path or URL as written in the markdown.
  * @param documentPath Path of the markdown file, if it has one.
  */
 export function resolveImagePath( src: string, documentPath?: string ) {
-	// Only `file:` URLs have a query or hash to drop; in plain paths, `?` and
-	// `#` are part of the file name (e.g. `chart#final.png` from the picker).
-	let target = /^file:/i.test( src ) ? fileUrlToPath( src ) : src;
-	try {
-		// Unlike `decodeURI`, this also decodes `%23` (`#`) and `%3F` (`?`).
-		target = decodeURIComponent( target );
-	} catch {
-		// Not percent-encoded; use it verbatim.
+	const parsedImage = parseImageSrc( src );
+	if ( parsedImage.type === 'url' ) {
+		return null;
 	}
-	if ( ABSOLUTE_PATH.test( target ) || ! documentPath ) {
-		return target;
+	if ( parsedImage.type !== 'relative' || ! documentPath ) {
+		return parsedImage.path;
 	}
 
 	const separator = documentPath.includes( '\\' ) ? '\\' : '/';
@@ -84,7 +46,7 @@ export function resolveImagePath( src: string, documentPath?: string ) {
 	// Never climb above the root: `''` for `/`, the drive for `C:\`, or
 	// `'', '', host, share` for a UNC path (`\\host\share`).
 	const rootLength = /^[/\\]{2}/.test( documentPath ) ? 4 : 1;
-	for ( const segment of target.split( /[/\\]/ ) ) {
+	for ( const segment of parsedImage.path.split( /[/\\]/ ) ) {
 		if ( segment === '..' ) {
 			if ( segments.length > rootLength ) {
 				segments.pop();
@@ -111,10 +73,8 @@ export function createPlatform( documentPath?: string ): Platform {
 			return typeof path === 'string' ? path : null;
 		},
 		async resolveImageSrc( path ) {
-			if ( WEB_URL.test( path ) ) {
-				return path;
-			}
-			return convertFileSrc( resolveImagePath( path, documentPath ) );
+			const resolved = resolveImagePath( path, documentPath );
+			return resolved === null ? path : convertFileSrc( resolved );
 		},
 		async getImageNotice( path ) {
 			// The CSP (`img-src` in `tauri.conf.json`) blocks `http:` URLs.
@@ -126,7 +86,7 @@ export function createPlatform( documentPath?: string ): Platform {
 			}
 			// An unsaved document has no folder to resolve relative paths
 			// against.
-			if ( ! documentPath && isRelativeImagePath( path ) ) {
+			if ( ! documentPath && parseImageSrc( path ).type === 'relative' ) {
 				return __(
 					'Images with relative paths are displayed once the document is saved.',
 					'mark-bricks'
