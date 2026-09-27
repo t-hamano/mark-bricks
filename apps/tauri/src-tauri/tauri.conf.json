@@ -23,7 +23,7 @@
 		"security": {
 			"csp": {
 				"default-src": "'self'",
-				"script-src": "'self' 'unsafe-inline'",
+				"script-src": "'self' 'sha256-ehBD9wGNfnN0flaZIjbVClW1//FJFsATigcdVB4VdMQ='",
 				"style-src": "'self' 'unsafe-inline'",
 				"img-src": "'self' asset: http://asset.localhost data: https:",
 				"font-src": "'self'",
@@ -55,8 +55,7 @@
 					"**/*.bmp",
 					"**/*.BMP"
 				]
-			},
-			"dangerousDisableAssetCspModification": [ "script-src" ]
+			}
 		}
 	},
 	"bundle": {
