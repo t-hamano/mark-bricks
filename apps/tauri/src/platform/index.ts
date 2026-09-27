@@ -41,6 +41,22 @@ export function isRelativeImagePath( src: string ) {
 }
 
 /**
+ * Converts a `file:` URL to a still percent-encoded file system path:
+ * - `file:///C:/foo` -> `C:/foo`
+ * - `file:///foo` -> `/foo`
+ * - `file://server/share/foo` -> `\\server\share\foo` (UNC)
+ *
+ * @param url `file:` URL.
+ */
+function fileUrlToPath( url: string ) {
+	const { hostname, pathname } = new URL( url );
+	if ( hostname && hostname !== 'localhost' ) {
+		return `\\\\${ hostname }${ pathname.replace( /\//g, '\\' ) }`;
+	}
+	return pathname.replace( /^\/(?=[a-z]:)/i, '' );
+}
+
+/**
  * Resolves an image path from the markdown to an absolute file system path:
  * relative paths against the folder of the document, and absolute paths and
  * `file:` URLs as is. Relative paths stay unresolved when the document has
@@ -52,10 +68,7 @@ export function isRelativeImagePath( src: string ) {
 export function resolveImagePath( src: string, documentPath?: string ) {
 	// Only `file:` URLs have a query or hash to drop; in plain paths, `?` and
 	// `#` are part of the file name (e.g. `chart#final.png` from the picker).
-	// `file:///C:/foo` -> `/C:/foo` -> `C:/foo`, `file:///foo` -> `/foo`.
-	let target = /^file:/i.test( src )
-		? new URL( src ).pathname.replace( /^\/(?=[a-z]:)/i, '' )
-		: src;
+	let target = /^file:/i.test( src ) ? fileUrlToPath( src ) : src;
 	try {
 		// Unlike `decodeURI`, this also decodes `%23` (`#`) and `%3F` (`?`).
 		target = decodeURIComponent( target );

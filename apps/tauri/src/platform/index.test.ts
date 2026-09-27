@@ -92,6 +92,18 @@ describe( 'resolveImagePath', () => {
 		expect( resolveImagePath( 'file:///C:/abs/my%20a.png' ) ).toBe(
 			'C:/abs/my a.png'
 		);
+		expect( resolveImagePath( 'file://localhost/abs/a.png' ) ).toBe(
+			'/abs/a.png'
+		);
+	} );
+
+	it( 'keeps the host of UNC file URLs', () => {
+		expect(
+			resolveImagePath(
+				'file://server/share/my%20a.png',
+				'/docs/note.md'
+			)
+		).toBe( '\\\\server\\share\\my a.png' );
 	} );
 
 	it( 'keeps relative paths when the document is unsaved', () => {
