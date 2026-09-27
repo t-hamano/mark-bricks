@@ -37,6 +37,7 @@ type Props = {
 	editorStyles?: EditorStyles;
 	style?: CSSProperties;
 	platform?: Partial< Platform >;
+	onRendered?: () => void;
 };
 
 function UnforwardedBlockEditor(
@@ -48,6 +49,7 @@ function UnforwardedBlockEditor(
 		editorStyles,
 		style,
 		platform,
+		onRendered,
 	}: Props,
 	ref: ForwardedRef< EditorHandle >
 ) {
@@ -67,6 +69,7 @@ function UnforwardedBlockEditor(
 			<EditorCanvas
 				styles={ contentStyles }
 				spellCheck={ !! settings?.spellCheck }
+				onRendered={ onRendered }
 			/>
 		</EditorShell>
 	);
