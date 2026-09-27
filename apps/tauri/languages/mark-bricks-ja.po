@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-27T06:39:37.833Z\n"
-"PO-Revision-Date: 2026-09-27T06:39:38.383Z\n"
+"POT-Creation-Date: 2026-09-27T06:52:13.656Z\n"
+"PO-Revision-Date: 2026-09-27T06:52:14.213Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -187,11 +187,11 @@ msgstr "YAML フロントマターを非表示"
 msgid "Highlight misspelled words while editing."
 msgstr "編集中にスペルミスのある単語を強調表示します。"
 
-#: src/platform/index.ts:105
+#: src/platform/index.ts:107
 msgid "Images from HTTP URLs cannot be displayed. Use an HTTPS URL instead."
 msgstr "HTTP の URL の画像は表示できません。HTTPS の URL を使用してください。"
 
-#: src/platform/index.ts:113
+#: src/platform/index.ts:115
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "相対パスの画像は、文書を保存すると表示されます。"
 

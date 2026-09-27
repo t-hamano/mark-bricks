@@ -50,13 +50,15 @@ export function isRelativeImagePath( src: string ) {
  * @param documentPath Path of the markdown file, if it has one.
  */
 export function resolveImagePath( src: string, documentPath?: string ) {
-	let target = src.replace( /[?#].*$/, '' );
-	if ( /^file:/i.test( target ) ) {
-		// `file:///C:/foo` -> `/C:/foo`, `file:///foo` -> `/foo`.
-		target = new URL( target ).pathname.replace( /^\/(?=[a-z]:)/i, '' );
-	}
+	// Only `file:` URLs have a query or hash to drop; in plain paths, `?` and
+	// `#` are part of the file name (e.g. `chart#final.png` from the picker).
+	// `file:///C:/foo` -> `/C:/foo` -> `C:/foo`, `file:///foo` -> `/foo`.
+	let target = /^file:/i.test( src )
+		? new URL( src ).pathname.replace( /^\/(?=[a-z]:)/i, '' )
+		: src;
 	try {
-		target = decodeURI( target );
+		// Unlike `decodeURI`, this also decodes `%23` (`#`) and `%3F` (`?`).
+		target = decodeURIComponent( target );
 	} catch {
 		// Not percent-encoded; use it verbatim.
 	}

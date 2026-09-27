@@ -39,10 +39,29 @@ describe( 'resolveImagePath', () => {
 		);
 	} );
 
-	it( 'decodes percent-encoding and drops query and hash', () => {
+	it( 'decodes percent-encoding', () => {
 		expect(
-			resolveImagePath( 'my%20image.png?v=1#top', '/docs/note.md' )
-		).toBe( '/docs/my image.png' );
+			resolveImagePath( 'my%20chart%23final.png', '/docs/note.md' )
+		).toBe( '/docs/my chart#final.png' );
+		// A literal `%` that is not an escape is kept as is.
+		expect( resolveImagePath( '100%.png', '/docs/note.md' ) ).toBe(
+			'/docs/100%.png'
+		);
+	} );
+
+	it( 'keeps `?` and `#` in file names', () => {
+		expect( resolveImagePath( '/tmp/chart#final.png' ) ).toBe(
+			'/tmp/chart#final.png'
+		);
+		expect( resolveImagePath( 'a?b.png', '/docs/note.md' ) ).toBe(
+			'/docs/a?b.png'
+		);
+	} );
+
+	it( 'drops the query and hash of file URLs', () => {
+		expect( resolveImagePath( 'file:///abs/a.png?v=1#top' ) ).toBe(
+			'/abs/a.png'
+		);
 	} );
 
 	it( 'keeps absolute paths as is', () => {
