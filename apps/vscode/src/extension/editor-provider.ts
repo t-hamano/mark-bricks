@@ -29,11 +29,13 @@ const IMAGE_EXTENSIONS = [
 	'bmp',
 ];
 
+// Opens markdown documents in the MarkBricks block editor.
 export class MarkBricksEditorProvider
 	implements vscode.CustomTextEditorProvider
 {
 	public static readonly viewType = 'markBricks.visualEditor';
 
+	// Registers the provider for the `viewType` custom editor.
 	public static register(
 		context: vscode.ExtensionContext
 	): vscode.Disposable {
@@ -51,6 +53,7 @@ export class MarkBricksEditorProvider
 
 	private constructor( private readonly context: vscode.ExtensionContext ) {}
 
+	// Starts an editor session for each opened document.
 	public resolveCustomTextEditor(
 		document: vscode.TextDocument,
 		panel: vscode.WebviewPanel
@@ -59,6 +62,8 @@ export class MarkBricksEditorProvider
 	}
 }
 
+// Connects one document to its webview: syncs the text both ways, sends the
+// settings, and resolves images for the webview.
 class EditorSession {
 	private readonly disposables: vscode.Disposable[] = [];
 	private readonly pendingFlushes = new Map< number, () => void >();
@@ -122,10 +127,12 @@ class EditorSession {
 		panel.onDidDispose( () => this.dispose() );
 	}
 
+	// Sends a message to the webview.
 	private post( message: HostMessage ): void {
 		void this.panel.webview.postMessage( message );
 	}
 
+	// Handles a message from the webview.
 	private onWebviewMessage( message: WebviewMessage ): void {
 		switch ( message.type ) {
 			case 'ready':
@@ -276,6 +283,8 @@ class EditorSession {
 		return vscode.Uri.joinPath( this.document.uri, '..', target );
 	}
 
+	// Sends changes made outside the webview, e.g. in a text editor, to the
+	// webview. Changes applied from the webview itself are skipped.
 	private onDocumentChanged( event: vscode.TextDocumentChangeEvent ): void {
 		if ( ! this.isOwnDocument( event.document ) ) {
 			return;
@@ -296,6 +305,7 @@ class EditorSession {
 		this.post( { type: 'update', text } );
 	}
 
+	// Sends the settings to the webview when they change.
 	private onConfigurationChanged(
 		event: vscode.ConfigurationChangeEvent
 	): void {
@@ -314,6 +324,7 @@ class EditorSession {
 		} );
 	}
 
+	// Adds the edits the webview has not written yet to the save.
 	private onWillSave( event: vscode.TextDocumentWillSaveEvent ): void {
 		if ( ! this.isOwnDocument( event.document ) ) {
 			return;
@@ -321,6 +332,7 @@ class EditorSession {
 		event.waitUntil( this.collectPendingEdits() );
 	}
 
+	// Flushes the webview and returns its unwritten text as an edit.
 	private async collectPendingEdits(): Promise< vscode.TextEdit[] > {
 		await this.requestFlush();
 
@@ -333,6 +345,7 @@ class EditorSession {
 		return [ vscode.TextEdit.replace( this.fullRange(), text ) ];
 	}
 
+	// Asks the webview to send its latest text, giving up after a timeout.
 	private requestFlush(): Promise< void > {
 		if ( ! this.isReady ) {
 			return Promise.resolve();
@@ -350,6 +363,7 @@ class EditorSession {
 		} );
 	}
 
+	// Writes the pending text from the webview to the document.
 	private async writePending(): Promise< void > {
 		const text = this.takePending();
 		if ( text === null ) {
@@ -378,6 +392,7 @@ class EditorSession {
 		);
 	}
 
+	// Takes the pending text, or `null` if it matches the document.
 	private takePending(): string | null {
 		this.cancelChangeTimer();
 		const text = this.pendingText;
@@ -385,6 +400,7 @@ class EditorSession {
 		return text === null || text === this.document.getText() ? null : text;
 	}
 
+	// Debounces writing the pending text to the document.
 	private restartChangeTimer(): void {
 		this.cancelChangeTimer();
 		this.changeTimer = setTimeout( () => {
@@ -393,6 +409,7 @@ class EditorSession {
 		}, CHANGE_DEBOUNCE_MS );
 	}
 
+	// Stops a scheduled write of the pending text.
 	private cancelChangeTimer(): void {
 		if ( this.changeTimer !== undefined ) {
 			clearTimeout( this.changeTimer );
@@ -400,10 +417,12 @@ class EditorSession {
 		}
 	}
 
+	// Whether the document is the one this session edits.
 	private isOwnDocument( document: vscode.TextDocument ): boolean {
 		return document.uri.toString() === this.document.uri.toString();
 	}
 
+	// The range covering the whole document.
 	private fullRange(): vscode.Range {
 		return new vscode.Range(
 			this.document.positionAt( 0 ),
@@ -411,6 +430,7 @@ class EditorSession {
 		);
 	}
 
+	// Writes any pending text and releases the session's resources.
 	private dispose(): void {
 		this.isDisposed = true;
 		const hasPendingWrite = this.pendingText !== null;
