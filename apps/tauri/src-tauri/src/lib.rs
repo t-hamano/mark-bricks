@@ -3,17 +3,10 @@ use std::sync::{Mutex, OnceLock};
 
 use tauri::{Emitter, Manager};
 
-/// Writes the given text to a file, replacing any existing contents.
-#[tauri::command]
-fn write_text_file(path: String, contents: String) -> Result<(), String> {
-    std::fs::write(&path, contents).map_err(|e| e.to_string())
-}
-
-/// Reads a file and returns its text contents.
-#[tauri::command]
-fn read_text_file(path: String) -> Result<String, String> {
-    std::fs::read_to_string(&path).map_err(|e| e.to_string())
-}
+mod documents;
+use documents::{
+    close_document, open_document, save_document_as, write_document, Documents, OpenedDocument,
+};
 
 /// Markdown files the OS asked us to open before the app window was ready to
 /// receive them — for example when opening a file starts the app, or a second
@@ -25,10 +18,27 @@ fn pending_open_files() -> &'static Mutex<Vec<String>> {
     PENDING.get_or_init(|| Mutex::new(Vec::new()))
 }
 
-/// Returns the files waiting to be opened, clearing them so they are taken only once.
+#[derive(serde::Serialize)]
+struct OpenRequestResult {
+    path: String,
+    document: Option<OpenedDocument>,
+}
+
+/// Only OS-supplied paths enter this queue. IPC callers cannot add paths or
+/// turn a forged frontend event into permission to read another file.
 #[tauri::command]
-fn take_pending_open_files() -> Vec<String> {
-    std::mem::take(&mut *pending_open_files().lock().unwrap())
+fn take_pending_documents(
+    state: tauri::State<'_, Documents>,
+) -> Result<Vec<OpenRequestResult>, String> {
+    let paths = std::mem::take(&mut *pending_open_files().lock().map_err(|e| e.to_string())?);
+    let mut documents = state.lock().map_err(|e| e.to_string())?;
+    Ok(paths
+        .into_iter()
+        .map(|path| {
+            let document = documents.open_selected(Path::new(&path)).ok();
+            OpenRequestResult { path, document }
+        })
+        .collect())
 }
 
 /// Prints that `path` rendered, for the smoke test (`MARK_BRICKS_SMOKE_TEST`).
@@ -221,23 +231,26 @@ pub fn run() {
             // Buffer *before* emitting: a still-cold-starting frontend
             // hasn't attached its `open-files` listener yet, so a bare
             // emit would be dropped. The buffer lets it drain these via
-            // `take_pending_open_files`. `openFilePath` dedupes by path,
-            // so a file delivered through both routes opens only one tab.
-            pending_open_files().lock().unwrap().extend(paths.clone());
-            let _ = app.emit("open-files", paths);
+            // `take_pending_documents`. Events only signal that the native
+            // queue has new requests; their payload cannot authorize paths.
+            pending_open_files().lock().unwrap().extend(paths);
+            let _ = app.emit("open-files", ());
         }
     }));
 
     builder
+        .manage(Documents::default())
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_process::init())
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
-            write_text_file,
-            read_text_file,
-            take_pending_open_files,
+            open_document,
+            save_document_as,
+            write_document,
+            close_document,
+            take_pending_documents,
             report_rendered,
             set_as_default_markdown_handler
         ])
@@ -254,8 +267,8 @@ pub fn run() {
                 if paths.is_empty() {
                     return;
                 }
-                pending_open_files().lock().unwrap().extend(paths.clone());
-                let _ = app.emit("open-files", paths);
+                pending_open_files().lock().unwrap().extend(paths);
+                let _ = app.emit("open-files", ());
             }
 
             #[cfg(not(target_os = "macos"))]

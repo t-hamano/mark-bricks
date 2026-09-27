@@ -9,6 +9,7 @@ import { AlertDialog, getWpCompatOverlaySlot } from '@wordpress/ui';
  * Internal dependencies
  */
 import tabsStore from '../../store';
+import { closeTab } from '../../actions';
 
 export default function DirtyConfirmDialog() {
 	const { pendingTab } = useSelect( ( select ) => {
@@ -22,7 +23,7 @@ export default function DirtyConfirmDialog() {
 		};
 	}, [] );
 
-	const { closeTab, setPendingCloseId } = useDispatch( tabsStore );
+	const { setPendingCloseId } = useDispatch( tabsStore );
 
 	if ( ! pendingTab ) {
 		return null;
@@ -30,10 +31,10 @@ export default function DirtyConfirmDialog() {
 
 	const cancel = () => setPendingCloseId( null );
 
-	const discard = () => {
+	const discard = async () => {
 		const id = pendingTab.id;
+		await closeTab( id );
 		setPendingCloseId( null );
-		closeTab( id );
 	};
 
 	return (

@@ -2,10 +2,6 @@
  * External dependencies
  */
 import { invoke } from '@tauri-apps/api/core';
-import {
-	open as openDialog,
-	save as saveDialog,
-} from '@tauri-apps/plugin-dialog';
 
 /**
  * WordPress dependencies
@@ -17,7 +13,8 @@ import { dispatch, select } from '@wordpress/data';
  */
 import tabsStore from '../store';
 
-const MARKDOWN_EXTENSIONS = [ 'md', 'markdown' ];
+export type DocumentInfo = { documentId: string; path: string };
+export type OpenedDocument = DocumentInfo & { contents: string };
 
 let flushEditor: ( () => void ) | null = null;
 
@@ -42,29 +39,28 @@ export function newFile() {
 }
 
 export async function openFile() {
-	const path = await openDialog( {
-		filters: [ { name: 'Markdown', extensions: MARKDOWN_EXTENSIONS } ],
-		multiple: false,
-	} );
-
-	if ( typeof path !== 'string' ) {
-		return;
+	const document = await invoke< OpenedDocument | null >( 'open_document' );
+	if ( document ) {
+		await openDocument( document );
 	}
-
-	await openFilePath( path );
 }
 
-export async function openFilePath( path: string ) {
+export async function openDocument( {
+	documentId,
+	path,
+	contents,
+}: OpenedDocument ) {
 	const existing = select( tabsStore )
 		.getTabs()
 		.find( ( t ) => t.filePath === path );
 
 	if ( existing ) {
+		if ( existing.documentId !== documentId ) {
+			await invoke( 'close_document', { documentId } );
+		}
 		dispatch( tabsStore ).setActiveTab( existing.id );
 		return;
 	}
-
-	const contents = await invoke< string >( 'read_text_file', { path } );
 
 	// When the only open tab is an untouched Untitled tab, replace it with the
 	// opened file rather than leaving an empty tab behind.
@@ -74,7 +70,7 @@ export async function openFilePath( path: string ) {
 			? tabs[ 0 ]
 			: null;
 
-	dispatch( tabsStore ).openFileTab( path, contents );
+	dispatch( tabsStore ).openFileTab( path, contents, documentId );
 
 	if ( blankTab ) {
 		dispatch( tabsStore ).closeTab( blankTab.id );
@@ -112,12 +108,18 @@ export async function saveTab( id: string ) {
 		return false;
 	}
 
-	if ( tab.filePath ) {
-		await invoke( 'write_text_file', {
-			path: tab.filePath,
+	if ( tab.documentId ) {
+		await invoke( 'write_document', {
+			documentId: tab.documentId,
 			contents: tab.content,
 		} );
-		dispatch( tabsStore ).setTabDirty( id, false );
+		if (
+			select( tabsStore )
+				.getTabs()
+				.find( ( t ) => t.id === id )?.content === tab.content
+		) {
+			dispatch( tabsStore ).setTabDirty( id, false );
+		}
 		return true;
 	}
 
@@ -135,17 +137,28 @@ export async function saveTabAs( id: string ) {
 		return false;
 	}
 
-	const path = await saveDialog( {
-		filters: [ { name: 'Markdown', extensions: MARKDOWN_EXTENSIONS } ],
+	const document = await invoke< DocumentInfo | null >( 'save_document_as', {
+		contents: tab.content,
 	} );
 
-	if ( typeof path !== 'string' ) {
+	if ( ! document ) {
 		return false;
 	}
 
-	await invoke( 'write_text_file', { path, contents: tab.content } );
-	dispatch( tabsStore ).setTabFile( id, path );
-	dispatch( tabsStore ).setTabDirty( id, false );
+	const current = select( tabsStore )
+		.getTabs()
+		.find( ( t ) => t.id === id );
+	if ( ! current || current.documentId !== tab.documentId ) {
+		await invoke( 'close_document', { documentId: document.documentId } );
+		return false;
+	}
+	dispatch( tabsStore ).setTabFile( id, document.path, document.documentId );
+	if ( current.content === tab.content ) {
+		dispatch( tabsStore ).setTabDirty( id, false );
+	}
+	if ( tab.documentId ) {
+		await invoke( 'close_document', { documentId: tab.documentId } );
+	}
 
 	return true;
 }
@@ -158,6 +171,18 @@ export function requestCloseActiveTab() {
 	}
 
 	requestCloseTab( id );
+}
+
+export async function closeTab( id: string ) {
+	const tab = select( tabsStore )
+		.getTabs()
+		.find( ( t ) => t.id === id );
+	// Remove the tab before awaiting IPC so a pending Save As cannot attach
+	// a new document grant to a tab that is already closing.
+	dispatch( tabsStore ).closeTab( id );
+	if ( tab?.documentId ) {
+		await invoke( 'close_document', { documentId: tab.documentId } );
+	}
 }
 
 export function requestCloseTab( id: string ) {
@@ -176,10 +201,10 @@ export function requestCloseTab( id: string ) {
 		return;
 	}
 
-	dispatch( tabsStore ).closeTab( id );
+	void closeTab( id );
 }
 
-export function closeOtherTabs( keepId: string ) {
+export async function closeOtherTabs( keepId: string ) {
 	const others = select( tabsStore )
 		.getTabs()
 		.filter( ( t ) => t.id !== keepId );
@@ -188,7 +213,7 @@ export function closeOtherTabs( keepId: string ) {
 
 	for ( const tab of others ) {
 		if ( ! tab.isDirty ) {
-			dispatch( tabsStore ).closeTab( tab.id );
+			await closeTab( tab.id );
 		}
 	}
 

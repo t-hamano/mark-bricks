@@ -2,8 +2,13 @@ export const actions = {
 	openTab() {
 		return { type: 'OPEN_TAB' as const };
 	},
-	openFileTab( filePath: string, content: string ) {
-		return { type: 'OPEN_FILE_TAB' as const, filePath, content };
+	openFileTab( filePath: string, content: string, documentId: string ) {
+		return {
+			type: 'OPEN_FILE_TAB' as const,
+			filePath,
+			content,
+			documentId,
+		};
 	},
 	closeTab( id: string ) {
 		return { type: 'CLOSE_TAB' as const, id };
@@ -14,8 +19,8 @@ export const actions = {
 	setTabDirty( id: string, isDirty: boolean ) {
 		return { type: 'SET_TAB_DIRTY' as const, id, isDirty };
 	},
-	setTabFile( id: string, filePath: string ) {
-		return { type: 'SET_TAB_FILE' as const, id, filePath };
+	setTabFile( id: string, filePath: string, documentId: string ) {
+		return { type: 'SET_TAB_FILE' as const, id, filePath, documentId };
 	},
 	setTabContent( id: string, content: string ) {
 		return { type: 'SET_TAB_CONTENT' as const, id, content };
