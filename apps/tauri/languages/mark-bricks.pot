@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-27T06:57:40.876Z\n"
+"POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -60,11 +60,11 @@ msgstr ""
 msgid "Handwriting"
 msgstr ""
 
-#: src/platform/index.ts:122
+#: src/platform/index.ts:82
 msgid "Images from HTTP URLs cannot be displayed. Use an HTTPS URL instead."
 msgstr ""
 
-#: src/platform/index.ts:130
+#: src/platform/index.ts:90
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr ""
 

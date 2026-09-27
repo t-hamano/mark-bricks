@@ -21,8 +21,8 @@ if ( branch !== 'main' ) {
 
 // preversion guard. `npm version` bumps the version unconditionally, so a
 // release can be cut even when nothing user-facing changed (e.g. only
-// ci/chore commits, or changes outside the tauri/editor paths). Reuse
-// `version:preview` — the same conventional-changelog invocation and
+// ci/chore commits, or changes outside the tauri/editor/image-path paths).
+// Reuse `version:preview` — the same conventional-changelog invocation and
 // --commit-path filters as the real CHANGELOG — and abort the bump when it
 // produces no releasable section.
 const preview = execSync( 'pnpm --silent run version:preview', {
@@ -38,8 +38,8 @@ if ( ! /^### /m.test( preview ) ) {
 	console.error(
 		'\nNo releasable changes for the tauri app since the last release.\n' +
 			'Aborting the version bump to avoid an empty release.\n' +
-			'Only feat/fix/perf/BREAKING commits touching apps/tauri or ' +
-			'packages/editor count.\n'
+			'Only feat/fix/perf/BREAKING commits touching apps/tauri, ' +
+			'packages/editor or packages/image-path count.\n'
 	);
 	process.exit( 1 );
 }

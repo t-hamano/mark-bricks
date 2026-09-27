@@ -151,14 +151,15 @@
 		"i18n:make-pot": "mb-i18n make-pot",
 		"i18n:make-po": "mb-i18n make-po",
 		"i18n:make-json": "mb-i18n make-json",
-		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor && node scripts/bump-version.mjs",
-		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor",
+		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path && node scripts/bump-version.mjs",
+		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path",
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"e2e:smoke": "vscode-test"
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
+		"@mark-bricks/image-path": "workspace:*",
 		"@wordpress/base-styles": "^13.2.0",
 		"@wordpress/i18n": "^6.29.0",
 		"@wordpress/icons": "^17.0.0",
