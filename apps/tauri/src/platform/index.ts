@@ -68,10 +68,12 @@ export function resolveImagePath( src: string, documentPath?: string ) {
 
 	const separator = documentPath.includes( '\\' ) ? '\\' : '/';
 	const segments = documentPath.split( /[/\\]/ ).slice( 0, -1 );
+	// Never climb above the root: `''` for `/`, the drive for `C:\`, or
+	// `'', '', host, share` for a UNC path (`\\host\share`).
+	const rootLength = /^[/\\]{2}/.test( documentPath ) ? 4 : 1;
 	for ( const segment of target.split( /[/\\]/ ) ) {
 		if ( segment === '..' ) {
-			// Never climb above the root (`''` for `/`, or the drive).
-			if ( segments.length > 1 ) {
+			if ( segments.length > rootLength ) {
 				segments.pop();
 			}
 		} else if ( segment !== '.' && segment !== '' ) {

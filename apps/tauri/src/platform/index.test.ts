@@ -37,6 +37,15 @@ describe( 'resolveImagePath', () => {
 		expect( resolveImagePath( '../../a.png', 'C:\\note.md' ) ).toBe(
 			'C:\\a.png'
 		);
+		expect(
+			resolveImagePath( '../../a.png', '\\\\host\\share\\note.md' )
+		).toBe( '\\\\host\\share\\a.png' );
+	} );
+
+	it( 'resolves relative paths below a UNC share', () => {
+		expect(
+			resolveImagePath( '../a.png', '\\\\host\\share\\docs\\note.md' )
+		).toBe( '\\\\host\\share\\a.png' );
 	} );
 
 	it( 'decodes percent-encoding', () => {
