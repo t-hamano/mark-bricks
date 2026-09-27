@@ -44,15 +44,11 @@ impl Document {
             Err(error) => return Err(error.to_string()),
         };
         let file = if create {
+            // Save targets need write access only; their contents are never read.
             // Never truncate before the selected file has been validated.
-            match OpenOptions::new()
-                .read(true)
-                .write(true)
-                .open(&canonical_path)
-            {
+            match OpenOptions::new().write(true).open(&canonical_path) {
                 Ok(file) => file,
                 Err(error) if error.kind() == std::io::ErrorKind::NotFound => OpenOptions::new()
-                    .read(true)
                     .write(true)
                     .create_new(true)
                     .open(&canonical_path)
@@ -82,11 +78,39 @@ impl Document {
 
     fn validate_identity(&self) -> Result<(), String> {
         let current_path = self.path.canonicalize().map_err(|e| e.to_string())?;
-        let selected =
-            same_file::Handle::from_file(self.file.try_clone().map_err(|e| e.to_string())?)
-                .map_err(|e| e.to_string())?;
-        let current = same_file::Handle::from_path(&current_path).map_err(|e| e.to_string())?;
-        if current_path != self.canonical_path || selected != current {
+        #[cfg(unix)]
+        let same_file = {
+            use std::os::unix::fs::MetadataExt;
+
+            // same_file::Handle::from_path opens for reading on Unix. Compare
+            // metadata instead so write-only targets can still be validated.
+            // The retained handle keeps the selected inode alive during comparison.
+            let selected = self.file.metadata().map_err(|e| e.to_string())?;
+            let current = std::fs::metadata(&current_path).map_err(|e| e.to_string())?;
+            (selected.dev(), selected.ino()) == (current.dev(), current.ino())
+        };
+        #[cfg(not(unix))]
+        let same_file = {
+            let selected =
+                same_file::Handle::from_file(self.file.try_clone().map_err(|e| e.to_string())?)
+                    .map_err(|e| e.to_string())?;
+            let mut options = OpenOptions::new();
+            #[cfg(windows)]
+            {
+                use std::os::windows::fs::OpenOptionsExt;
+
+                // Query identity without requesting permission to read file data.
+                options.access_mode(0);
+            }
+            #[cfg(not(windows))]
+            options.read(true);
+            let current = same_file::Handle::from_file(
+                options.open(&current_path).map_err(|e| e.to_string())?,
+            )
+            .map_err(|e| e.to_string())?;
+            selected == current
+        };
+        if current_path != self.canonical_path || !same_file {
             return Err("The file has been replaced. Reopen it or use Save As.".into());
         }
         Ok(())
@@ -320,6 +344,63 @@ mod tests {
         std::fs::write(&binary, [0xff, 0xfe]).unwrap();
         assert!(registry.open_selected(&binary).is_err());
         assert!(registry.documents.is_empty());
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn save_as_and_later_saves_accept_write_only_files() {
+        use std::os::unix::fs::PermissionsExt;
+
+        let dir = TestDirectory::new();
+        let path = dir.file("write-only.md", "original contents");
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o200)).unwrap();
+        // Check the precondition so a privileged test run cannot hide a regression.
+        assert_eq!(
+            File::open(&path)
+                .expect_err("This test requires an unprivileged user")
+                .kind(),
+            std::io::ErrorKind::PermissionDenied
+        );
+
+        let mut registry = DocumentRegistry::default();
+        let saved = registry.save_selected(&path, "saved").unwrap();
+        registry.write(&saved.document_id, "short").unwrap();
+        assert_eq!(
+            std::fs::metadata(&path).unwrap().permissions().mode() & 0o777,
+            0o200
+        );
+
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o600)).unwrap();
+        assert_eq!(std::fs::read_to_string(&path).unwrap(), "short");
+    }
+
+    #[cfg(windows)]
+    #[test]
+    fn save_as_and_later_saves_accept_write_only_acl() {
+        let dir = TestDirectory::new();
+        let path = dir.file("write-only.md", "original contents");
+        let set_acl = |args: &[&str]| {
+            let output = std::process::Command::new("icacls")
+                .arg(&path)
+                .args(args)
+                .output()
+                .unwrap();
+            assert!(output.status.success(), "icacls failed: {output:?}");
+        };
+        // Deny data reads on this temporary file, preserving metadata and writes.
+        set_acl(&["/deny", "*S-1-1-0:(RD)"]);
+        assert_eq!(
+            File::open(&path).unwrap_err().kind(),
+            std::io::ErrorKind::PermissionDenied
+        );
+
+        let mut registry = DocumentRegistry::default();
+        let saved = registry.save_selected(&path, "saved").unwrap();
+        registry.write(&saved.document_id, "short").unwrap();
+        assert!(File::open(&path).is_err());
+
+        set_acl(&["/remove:d", "*S-1-1-0"]);
+        assert_eq!(std::fs::read_to_string(&path).unwrap(), "short");
     }
 
     #[test]
