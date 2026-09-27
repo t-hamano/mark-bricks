@@ -214,7 +214,11 @@ class EditorSession {
 	}
 
 	// Whether the webview can load the image, i.e. it is remote or inside one
-	// of `imageRoots`.
+	// of `imageRoots`. Image path -> relative path from root `/project`:
+	// - `/` -> `..` (outside)
+	// - `/other/image.png` -> `../other/image.png` (outside)
+	// - `D:\image.png` (root `C:\project`) -> `D:\image.png` (outside)
+	// - `/project/..assets/image.png` -> `..assets/image.png` (inside)
 	private isDisplayableImage( src: string ): boolean {
 		const uri = this.resolveImageUri( src );
 		if ( ! uri ) {
@@ -226,7 +230,9 @@ class EditorSession {
 			}
 			const relative = path.relative( root.fsPath, uri.fsPath );
 			return (
-				! relative.startsWith( '..' ) && ! path.isAbsolute( relative )
+				relative !== '..' &&
+				! relative.startsWith( `..${ path.sep }` ) &&
+				! path.isAbsolute( relative )
 			);
 		} );
 	}
