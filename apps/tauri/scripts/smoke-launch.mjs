@@ -1,16 +1,8 @@
 #!/usr/bin/env node
 /**
- * Cross-platform smoke test: does the Tauri app open a Markdown file and
- * render its blocks?
- *
- * Spawns the prebuilt debug binary with a copy of
- * `@mark-bricks/fixtures/smoke-test.md`, then waits for the app to print that
- * the editor canvas shows the file's blocks (see `report_rendered` in
- * `src-tauri/src/lib.rs`), and kills it.
- * - Fails if the binary exits, or does not report the render within the
- *   timeout.
- * - Wraps with `xvfb-run -a` on Linux when no DISPLAY is set, so the test can
- *   run in headless CI without a window server.
+ * Smoke test: opens a copy of `@mark-bricks/fixtures/smoke-test.md` in the
+ * debug binary and waits for `report_rendered` to print that its blocks
+ * rendered. Uses `xvfb-run` on headless Linux.
  */
 import { spawn, spawnSync } from 'node:child_process';
 import { copyFile, mkdtemp, rm } from 'node:fs/promises';
@@ -46,7 +38,6 @@ if ( ! existsSync( binaryPath ) ) {
 	process.exit( 1 );
 }
 
-// The editor may rewrite the markdown it loads, so open a copy of the fixture.
 const tempDir = await mkdtemp( path.join( os.tmpdir(), 'mark-bricks-' ) );
 const documentPath = path.join( tempDir, 'smoke-test.md' );
 await copyFile( fixturePath, documentPath );

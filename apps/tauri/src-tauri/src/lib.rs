@@ -31,9 +31,7 @@ fn take_pending_open_files() -> Vec<String> {
     std::mem::take(&mut *pending_open_files().lock().unwrap())
 }
 
-/// Tells `scripts/smoke-launch.mjs` that the editor canvas shows the blocks of
-/// the file at `path`. Prints only when the smoke test sets
-/// `MARK_BRICKS_SMOKE_TEST`, since nothing else reads it.
+/// Prints that `path` rendered, for the smoke test (`MARK_BRICKS_SMOKE_TEST`).
 #[tauri::command]
 fn report_rendered(path: String) {
     if std::env::var_os("MARK_BRICKS_SMOKE_TEST").is_some() {
