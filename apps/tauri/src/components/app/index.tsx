@@ -3,6 +3,7 @@
  */
 import { useEffect, useRef, useState } from 'react';
 import { getName, getVersion } from '@tauri-apps/api/app';
+import { invoke } from '@tauri-apps/api/core';
 import {
 	Editor,
 	EditorThemeProvider,
@@ -33,7 +34,6 @@ import useAppCloseGuard from '../../hooks/use-app-close-guard';
 import useAutoUpdater from '../../hooks/use-auto-updater';
 import useEditorFlush from '../../hooks/use-editor-flush';
 import useFileOpenEvents from '../../hooks/use-file-open-events';
-import useRenderedReport from '../../hooks/use-rendered-report';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
 import platform from '../../platform';
@@ -103,7 +103,6 @@ export function App() {
 	const { setTabContent, setTabDirty } = useDispatch( tabsStore );
 
 	useWindowTitle( activeTab );
-	useRenderedReport( activeTab?.filePath );
 	useAppCloseGuard( { tabs, pendingCloseId } );
 
 	return (
@@ -139,6 +138,13 @@ export function App() {
 								onEditorModeChange={ setEditorMode }
 							/>
 						}
+						onRendered={ () => {
+							if ( activeTab.filePath ) {
+								void invoke( 'report_rendered', {
+									path: activeTab.filePath,
+								} );
+							}
+						} }
 					/>
 				) }
 				<DirtyConfirmDialog />
