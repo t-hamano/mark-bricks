@@ -15,6 +15,7 @@ import { dispatch, select } from '@wordpress/data';
 import tabsStore from '../store';
 import {
 	closeTab,
+	closeOtherTabs,
 	openDocument,
 	openFile,
 	saveTab,
@@ -51,6 +52,69 @@ function activeTab() {
 }
 
 describe( 'openDocument', () => {
+	it( 'focuses a duplicate without reading and releases only its extra reference', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		dispatch( tabsStore ).setTabContent( id, 'unsaved' );
+		dispatch( tabsStore ).setTabDirty( id, true );
+		dispatch( tabsStore ).openTab();
+		const calls: unknown[] = [];
+		mockIPC( ( cmd, payload ) => calls.push( { cmd, payload } ) );
+		await openDocument( { ...selected, contents: null } );
+		expect( activeTab() ).toMatchObject( {
+			id,
+			content: 'unsaved',
+			isDirty: true,
+		} );
+		expect( calls ).toEqual( [
+			{
+				cmd: 'close_document',
+				payload: { documentId: selected.documentId },
+			},
+		] );
+	} );
+
+	it( 'reads a retained duplicate grant if its previous tab has closed', async () => {
+		const calls: unknown[] = [];
+		mockIPC( ( cmd, payload ) => {
+			calls.push( { cmd, payload } );
+			return 'loaded';
+		} );
+		await openDocument( { ...selected, contents: null } );
+		expect( calls ).toEqual( [
+			{
+				cmd: 'read_document',
+				payload: { documentId: selected.documentId },
+			},
+		] );
+		expect( activeTab().content ).toBe( 'loaded' );
+	} );
+
+	it( 'rechecks tabs after a deferred read and releases a failed read grant', async () => {
+		const released: unknown[] = [];
+		mockIPC( async ( cmd, payload ) => {
+			if ( cmd === 'read_document' ) {
+				await openDocument( selected );
+				return 'stale';
+			}
+			released.push( payload );
+		} );
+		await openDocument( { ...selected, contents: null } );
+		expect( select( tabsStore ).getTabs() ).toHaveLength( 1 );
+		expect( activeTab().content ).toBe( 'original' );
+		await closeTab( activeTab().id );
+		mockIPC( ( cmd, payload ) => {
+			if ( cmd === 'read_document' ) {
+				throw 'read failed';
+			}
+			released.push( payload );
+		} );
+		await expect(
+			openDocument( { ...selected, contents: null } )
+		).rejects.toBe( 'read failed' );
+		expect( released ).toHaveLength( 3 );
+		expect( select( tabsStore ).getTabs() ).toHaveLength( 0 );
+	} );
 	it( 'opens the document returned by the native picker without sending a path', async () => {
 		const calls: unknown[] = [];
 		mockIPC( ( cmd, payload ) => {
@@ -109,6 +173,106 @@ describe( 'openDocument', () => {
 } );
 
 describe( 'saveTab', () => {
+	it( 'serializes saves so the last edit reaches disk last', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		const writes: string[] = [];
+		const complete: ( () => void )[] = [];
+		let disk = selected.contents;
+		mockIPC( ( cmd, payload ) => {
+			if ( cmd === 'write_document' ) {
+				const { contents } = payload as { contents: string };
+				writes.push( contents );
+				return new Promise( ( resolve ) =>
+					complete.push( () => {
+						disk = contents;
+						resolve( null );
+					} )
+				);
+			}
+		} );
+		dispatch( tabsStore ).setTabContent( id, 'A' );
+		dispatch( tabsStore ).setTabDirty( id, true );
+		const first = saveTab( id );
+		dispatch( tabsStore ).setTabContent( id, 'B' );
+		const second = saveTab( id );
+		expect( writes ).toEqual( [ 'A' ] );
+		complete[ 0 ]();
+		await first;
+		expect( activeTab().isDirty ).toBe( true );
+		expect( writes ).toEqual( [ 'A', 'B' ] );
+		complete[ 1 ]();
+		await second;
+		expect( disk ).toBe( 'B' );
+		expect( activeTab().isDirty ).toBe( false );
+	} );
+
+	it( 'continues a save queue after failure without blocking other tabs', async () => {
+		await openDocument( selected );
+		const firstId = activeTab().id;
+		await openDocument( {
+			...selected,
+			path: '/docs/other.md',
+			documentId: 'other',
+		} );
+		const secondId = activeTab().id;
+		let fail!: () => void;
+		let attempts = 0;
+		mockIPC( ( cmd, payload ) => {
+			if (
+				cmd === 'write_document' &&
+				( payload as { documentId: string } ).documentId ===
+					selected.documentId
+			) {
+				if ( attempts++ === 0 ) {
+					return new Promise( ( _, reject ) => {
+						fail = () => reject( 'failed' );
+					} );
+				}
+			}
+		} );
+		const first = saveTab( firstId );
+		const failed = expect( first ).rejects.toBe( 'failed' );
+		const retry = saveTab( firstId );
+		expect( await saveTab( secondId ) ).toBe( true );
+		expect( attempts ).toBe( 1 );
+		fail();
+		await failed;
+		expect( await retry ).toBe( true );
+		expect( attempts ).toBe( 2 );
+	} );
+
+	it( 'queues Save As and resolves subsequent saves against the new grant', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		let finish!: () => void;
+		const calls: unknown[] = [];
+		mockIPC( ( cmd, payload ) => {
+			calls.push( { cmd, payload } );
+			if ( cmd === 'save_document_as' ) {
+				return new Promise( ( resolve ) => {
+					finish = () =>
+						resolve( { documentId: 'new', path: '/docs/new.md' } );
+				} );
+			}
+		} );
+		const saveAs = saveTabAs( id );
+		dispatch( tabsStore ).setTabContent( id, 'edited' );
+		dispatch( tabsStore ).setTabDirty( id, true );
+		const save = saveTab( id );
+		expect( calls ).toHaveLength( 1 );
+		finish();
+		await Promise.all( [ saveAs, save ] );
+		expect( calls ).toEqual( [
+			{ cmd: 'save_document_as', payload: { contents: 'original' } },
+			{ cmd: 'close_document', payload: { documentId: 'approved-1' } },
+			{
+				cmd: 'write_document',
+				payload: { documentId: 'new', contents: 'edited' },
+			},
+		] );
+		expect( activeTab().isDirty ).toBe( false );
+	} );
 	it( 'saves using only the native ID even if the frontend path is changed', async () => {
 		await openDocument( selected );
 		const id = activeTab().id;
@@ -234,6 +398,48 @@ describe( 'saveTab', () => {
 		expect( await saveTab( id ) ).toBe( false );
 		expect( calls ).toEqual( [ 'write_document' ] );
 	} );
+} );
+
+it( 'flushes and rechecks later tabs after waiting for another tab to close', async () => {
+	await openDocument( selected );
+	const keepId = activeTab().id;
+	await openDocument( {
+		...selected,
+		path: '/docs/first.md',
+		documentId: 'first',
+	} );
+	await openDocument( {
+		...selected,
+		path: '/docs/later.md',
+		documentId: 'later',
+	} );
+	const laterId = activeTab().id;
+	let finish!: () => void;
+	mockIPC( ( cmd, payload ) => {
+		if (
+			cmd === 'close_document' &&
+			( payload as { documentId: string } ).documentId === 'first'
+		) {
+			return new Promise( ( resolve ) => {
+				finish = () => resolve( null );
+			} );
+		}
+	} );
+	const closing = closeOtherTabs( keepId );
+	dispatch( tabsStore ).setActiveTab( laterId );
+	setEditorFlush( () => {
+		dispatch( tabsStore ).setTabContent( laterId, 'new edits' );
+		dispatch( tabsStore ).setTabDirty( laterId, true );
+	} );
+	finish();
+	await closing;
+	expect( select( tabsStore ).getPendingCloseId() ).toBe( laterId );
+	expect( activeTab() ).toMatchObject( {
+		id: laterId,
+		content: 'new edits',
+		isDirty: true,
+	} );
+	expect( select( tabsStore ).getTabs() ).toHaveLength( 2 );
 } );
 
 describe( 'saveTabAs', () => {

@@ -19,7 +19,7 @@ pub struct DocumentInfo {
 pub struct OpenedDocument {
     #[serde(flatten)]
     pub info: DocumentInfo,
-    pub contents: String,
+    pub contents: Option<String>,
 }
 
 #[derive(Debug, PartialEq, Serialize)]
@@ -61,6 +61,10 @@ struct Document {
     canonical_path: PathBuf,
     file: File,
     writable: bool,
+    readable: bool,
+    references: usize,
+    #[cfg(test)]
+    after_sync: Option<Box<dyn FnOnce() + Send>>,
 }
 
 impl Document {
@@ -113,6 +117,10 @@ impl Document {
             canonical_path,
             file,
             writable,
+            readable: !create,
+            references: 1,
+            #[cfg(test)]
+            after_sync: None,
         };
         document.validate_identity()?;
         Ok(document)
@@ -166,11 +174,28 @@ impl Document {
 
     fn read(&mut self) -> Result<String, String> {
         self.validate_identity()?;
-        self.file.rewind().map_err(|e| e.to_string())?;
+        // Save As retains a write-only handle. If its tab closed during a
+        // duplicate open, acquire read access without redirecting the grant.
+        let mut file = if self.readable {
+            self.file.try_clone().map_err(|e| e.to_string())?
+        } else {
+            let file = File::open(&self.canonical_path).map_err(|e| e.to_string())?;
+            let selected =
+                same_file::Handle::from_file(self.file.try_clone().map_err(|e| e.to_string())?)
+                    .map_err(|e| e.to_string())?;
+            let current =
+                same_file::Handle::from_file(file.try_clone().map_err(|e| e.to_string())?)
+                    .map_err(|e| e.to_string())?;
+            if selected != current {
+                return Err(WriteError::SaveAsRequired.into());
+            }
+            file
+        };
+        file.rewind().map_err(|e| e.to_string())?;
         let mut contents = String::new();
-        self.file
-            .read_to_string(&mut contents)
+        file.read_to_string(&mut contents)
             .map_err(|e| e.to_string())?;
+        self.validate_identity()?;
         Ok(contents)
     }
 
@@ -195,6 +220,7 @@ impl Document {
             self.validate_identity()?;
             self.file = file;
             self.writable = true;
+            self.readable = false;
         }
         self.file
             .seek(SeekFrom::Start(0))
@@ -206,7 +232,13 @@ impl Document {
             .set_len(contents.len() as u64)
             .map_err(|e| e.to_string())?;
         self.file.sync_data().map_err(|e| e.to_string())?;
-        Ok(())
+        #[cfg(test)]
+        if let Some(after_sync) = self.after_sync.take() {
+            after_sync();
+        }
+        // Another application may replace the path while the retained handle is
+        // being written. Only report success if that path still names our file.
+        self.validate_identity()
     }
 }
 
@@ -229,12 +261,31 @@ impl DocumentRegistry {
     }
 
     pub fn open_selected(&mut self, path: &Path) -> Result<OpenedDocument, String> {
+        // Focus an existing tab without reopening or rereading its file. Retain
+        // a reference so an in-flight tab close cannot revoke this open request.
+        if let Some((id, document)) = self.documents.iter_mut().find(|(_, d)| d.path == path) {
+            document.references += 1;
+            return Ok(OpenedDocument {
+                info: DocumentInfo {
+                    document_id: id.clone(),
+                    path: document.path.to_string_lossy().into_owned(),
+                },
+                contents: None,
+            });
+        }
         let mut document = Document::open(path, false)?;
         let contents = document.read()?;
         Ok(OpenedDocument {
             info: self.register(document),
-            contents,
+            contents: Some(contents),
         })
+    }
+
+    fn read(&mut self, id: &str) -> Result<String, String> {
+        self.documents
+            .get_mut(id)
+            .ok_or_else(|| "Unknown or closed document".to_string())?
+            .read()
     }
 
     fn save_selected(&mut self, path: &Path, contents: &str) -> Result<DocumentInfo, String> {
@@ -251,11 +302,27 @@ impl DocumentRegistry {
     }
 
     fn close(&mut self, id: &str) {
-        self.documents.remove(id);
+        if let Some(document) = self.documents.get_mut(id) {
+            document.references -= 1;
+            if document.references == 0 {
+                self.documents.remove(id);
+            }
+        }
     }
 }
 
 pub type Documents = Arc<Mutex<DocumentRegistry>>;
+
+#[tauri::command]
+pub async fn read_document(
+    state: State<'_, Documents>,
+    document_id: String,
+) -> Result<String, String> {
+    with_documents(state.inner().clone(), move |registry| {
+        registry.read(&document_id)
+    })
+    .await
+}
 
 /// Keep file I/O and registry lock waits off the event and async executor threads.
 pub async fn with_documents<T, E>(
@@ -406,6 +473,97 @@ mod tests {
     }
 
     #[test]
+    fn replacement_during_a_save_requires_save_as() {
+        for replace in [false, true] {
+            let dir = TestDirectory::new();
+            let path = dir.file("selected.md", "original");
+            let replacement = dir.file("replacement.md", "external contents");
+            let moved = dir.0.join("moved.md");
+            let mut document = Document::open(&path, false).unwrap();
+            let selected = path.clone();
+            let old = moved.clone();
+            // Deterministically simulate an external rename/replacement during
+            // the write, after data reaches the handle but before success.
+            document.after_sync = Some(Box::new(move || {
+                std::fs::rename(&selected, &old).unwrap();
+                if replace {
+                    std::fs::rename(&replacement, &selected).unwrap();
+                }
+            }));
+            assert_eq!(document.write("edited"), Err(WriteError::SaveAsRequired));
+            assert_eq!(std::fs::read_to_string(moved).unwrap(), "edited");
+            if replace {
+                assert_eq!(std::fs::read_to_string(path).unwrap(), "external contents");
+            } else {
+                assert!(!path.exists());
+            }
+        }
+    }
+
+    #[test]
+    fn duplicate_opens_do_not_touch_the_path_and_keep_independent_references() {
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let moved = dir.0.join("moved.md");
+        let mut registry = DocumentRegistry::default();
+        let first = registry.open_selected(&path).unwrap();
+        std::fs::rename(&path, &moved).unwrap();
+        let duplicate = registry.open_selected(&path).unwrap();
+        assert_eq!(first.info.document_id, duplicate.info.document_id);
+        assert!(duplicate.contents.is_none());
+        registry.close(&first.info.document_id);
+        std::fs::rename(&moved, &path).unwrap();
+        assert_eq!(
+            registry.read(&duplicate.info.document_id).unwrap(),
+            "original"
+        );
+        registry
+            .write(&duplicate.info.document_id, "edited")
+            .unwrap();
+        registry.close(&duplicate.info.document_id);
+        assert!(registry.read(&duplicate.info.document_id).is_err());
+        assert!(registry
+            .write(&duplicate.info.document_id, "denied")
+            .is_err());
+        assert!(registry.read(path.to_str().unwrap()).is_err());
+        assert_eq!(std::fs::read_to_string(path).unwrap(), "edited");
+    }
+
+    #[test]
+    fn duplicate_open_can_read_after_a_save_as_tab_closes() {
+        let dir = TestDirectory::new();
+        let path = dir.0.join("saved.md");
+        let mut registry = DocumentRegistry::default();
+        let saved = registry.save_selected(&path, "saved contents").unwrap();
+        let duplicate = registry.open_selected(&path).unwrap();
+        assert!(duplicate.contents.is_none());
+        registry.close(&saved.document_id);
+        assert_eq!(
+            registry.read(&duplicate.info.document_id).unwrap(),
+            "saved contents"
+        );
+        registry.close(&duplicate.info.document_id);
+        assert!(registry.read(&duplicate.info.document_id).is_err());
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn duplicate_open_does_not_require_read_permission() {
+        use std::os::unix::fs::PermissionsExt;
+
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let mut registry = DocumentRegistry::default();
+        let first = registry.open_selected(&path).unwrap();
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o000)).unwrap();
+        assert!(File::open(&path).is_err(), "Run as an unprivileged user");
+        let duplicate = registry.open_selected(&path).unwrap();
+        assert_eq!(first.info.document_id, duplicate.info.document_id);
+        assert!(duplicate.contents.is_none());
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o600)).unwrap();
+    }
+
+    #[test]
     fn read_only_documents_can_be_saved_after_permissions_change() {
         let dir = TestDirectory::new();
         let path = dir.file("selected.md", "original");
@@ -492,7 +650,7 @@ mod tests {
         assert!(registry.write(other.to_str().unwrap(), "attacker").is_err());
         assert!(registry.write("document-1", "attacker").is_err());
         let opened = registry.open_selected(&path).unwrap();
-        assert_eq!(opened.contents, "original contents");
+        assert_eq!(opened.contents.as_deref(), Some("original contents"));
         registry.write(&opened.info.document_id, "short").unwrap();
         assert_eq!(std::fs::read_to_string(&path).unwrap(), "short");
         assert_eq!(std::fs::read_to_string(other).unwrap(), "private");

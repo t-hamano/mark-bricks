@@ -14,9 +14,27 @@ import { dispatch, select } from '@wordpress/data';
 import tabsStore from '../store';
 
 export type DocumentInfo = { documentId: string; path: string };
-export type OpenedDocument = DocumentInfo & { contents: string };
+export type OpenedDocument = DocumentInfo & { contents: string | null };
 
 let flushEditor: ( () => void ) | null = null;
+const saves = new Map< string, Promise< boolean > >();
+
+// A tab's Save and Save As operations must reach native I/O in request order.
+function enqueueSave( id: string, operation: () => Promise< boolean > ) {
+	flushPendingEdits();
+	const previous = saves.get( id );
+	const saving = previous
+		? previous.then( operation, operation )
+		: operation();
+	saves.set( id, saving );
+	const cleanup = () => {
+		if ( saves.get( id ) === saving ) {
+			saves.delete( id );
+		}
+	};
+	void saving.then( cleanup, cleanup );
+	return saving;
+}
 
 /**
  * Registers the mounted editor's flush callback.
@@ -49,17 +67,28 @@ export async function openDocument( {
 	documentId,
 	path,
 	contents,
-}: OpenedDocument ) {
+}: OpenedDocument ): Promise< void > {
 	const existing = select( tabsStore )
 		.getTabs()
 		.find( ( t ) => t.filePath === path );
 
 	if ( existing ) {
-		if ( existing.documentId !== documentId ) {
-			await invoke( 'close_document', { documentId } );
-		}
 		dispatch( tabsStore ).setActiveTab( existing.id );
+		// Each native open owns a reference, even when it reuses the same ID.
+		await invoke( 'close_document', { documentId } );
 		return;
+	}
+	if ( contents === null ) {
+		// The previous tab may have closed while the native result was in flight.
+		// Read through its retained grant and recheck for concurrent tab opens.
+		let loaded: string;
+		try {
+			loaded = await invoke< string >( 'read_document', { documentId } );
+		} catch ( error ) {
+			await invoke( 'close_document', { documentId } );
+			throw error;
+		}
+		return openDocument( { documentId, path, contents: loaded } );
 	}
 
 	// When the only open tab is an untouched Untitled tab, replace it with the
@@ -97,7 +126,11 @@ export async function saveActiveFileAs() {
 	return saveTabAs( id );
 }
 
-export async function saveTab( id: string ) {
+export function saveTab( id: string ) {
+	return enqueueSave( id, () => saveTabNow( id ) );
+}
+
+async function saveTabNow( id: string ) {
 	flushPendingEdits();
 
 	const tab = select( tabsStore )
@@ -128,7 +161,7 @@ export async function saveTab( id: string ) {
 					return false;
 				}
 				// Keep the edits and let the user choose where to save them.
-				return saveTabAs( id );
+				return saveTabAsNow( id );
 			}
 			throw error;
 		}
@@ -142,10 +175,14 @@ export async function saveTab( id: string ) {
 		return true;
 	}
 
-	return saveTabAs( id );
+	return saveTabAsNow( id );
 }
 
-export async function saveTabAs( id: string ) {
+export function saveTabAs( id: string ) {
+	return enqueueSave( id, () => saveTabAsNow( id ) );
+}
+
+async function saveTabAsNow( id: string ) {
 	flushPendingEdits();
 
 	const tab = select( tabsStore )
@@ -231,12 +268,21 @@ export async function closeOtherTabs( keepId: string ) {
 	dispatch( tabsStore ).setActiveTab( keepId );
 
 	for ( const tab of others ) {
-		if ( ! tab.isDirty ) {
-			await closeTab( tab.id );
+		flushPendingEdits();
+		const current = select( tabsStore )
+			.getTabs()
+			.find( ( t ) => t.id === tab.id );
+		if ( current && ! current.isDirty ) {
+			await closeTab( current.id );
 		}
 	}
 
-	const firstDirty = others.find( ( t ) => t.isDirty );
+	flushPendingEdits();
+	const firstDirty = select( tabsStore )
+		.getTabs()
+		.find(
+			( t ) => t.isDirty && others.some( ( other ) => other.id === t.id )
+		);
 
 	if ( firstDirty ) {
 		dispatch( tabsStore ).setPendingCloseId( firstDirty.id );

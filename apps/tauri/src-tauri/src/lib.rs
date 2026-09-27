@@ -5,8 +5,8 @@ use tauri::{Emitter, Manager};
 
 mod documents;
 use documents::{
-    close_document, open_document, save_document_as, with_documents, write_document, Documents,
-    OpenedDocument,
+    close_document, open_document, read_document, save_document_as, with_documents, write_document,
+    Documents, OpenedDocument,
 };
 
 /// Markdown files the OS asked us to open before the app window was ready to
@@ -249,6 +249,7 @@ pub fn run() {
         .plugin(tauri_plugin_process::init())
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
+            read_document,
             open_document,
             save_document_as,
             write_document,
