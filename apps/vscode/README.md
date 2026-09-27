@@ -25,6 +25,10 @@ pnpm dev
 
 # Package a .vsix (requires the build above)
 pnpm package
+
+# Open a markdown file in a downloaded VS Code with the built extension
+# (requires the build above; wrap with `xvfb-run -a` on headless Linux)
+pnpm e2e:smoke
 ```
 
 To try changes without packaging, run `pnpm dev` and open an Extension Development Host via a `launch.json` with `"type": "extensionHost"` and `"args": ["--extensionDevelopmentPath=${workspaceFolder}/apps/vscode"]`, or `code --extensionDevelopmentPath=apps/vscode`.

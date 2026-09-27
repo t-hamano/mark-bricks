@@ -8,6 +8,7 @@
 [![JS Unit Test](https://github.com/t-hamano/mark-bricks/actions/workflows/js-unit-test.yml/badge.svg?branch=main&event=push)](https://github.com/t-hamano/mark-bricks/actions/workflows/js-unit-test.yml)
 [![Rust Unit Test](https://github.com/t-hamano/mark-bricks/actions/workflows/rust-unit-test.yml/badge.svg?branch=main&event=push)](https://github.com/t-hamano/mark-bricks/actions/workflows/rust-unit-test.yml)
 [![Tauri Smoke Test](https://github.com/t-hamano/mark-bricks/actions/workflows/tauri-smoke-test.yml/badge.svg?branch=main&event=push)](https://github.com/t-hamano/mark-bricks/actions/workflows/tauri-smoke-test.yml)
+[![VS Code Smoke Test](https://github.com/t-hamano/mark-bricks/actions/workflows/vscode-smoke-test.yml/badge.svg?branch=main&event=push)](https://github.com/t-hamano/mark-bricks/actions/workflows/vscode-smoke-test.yml)
 
 A visual Markdown editor that minimizes and specializes the WordPress block editor for Markdown editing.
 

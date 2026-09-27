@@ -154,7 +154,8 @@
 		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor && node scripts/bump-version.mjs",
 		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor",
 		"test": "vitest run",
-		"test:watch": "vitest"
+		"test:watch": "vitest",
+		"e2e:smoke": "vscode-test"
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
@@ -166,12 +167,15 @@
 		"react-dom": "^19.2.8"
 	},
 	"devDependencies": {
+		"@mark-bricks/fixtures": "workspace:*",
 		"@mark-bricks/i18n-tools": "workspace:*",
 		"@types/node": "^26.3.0",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.2.4",
 		"@types/vscode": "^1.137.0",
 		"@vitejs/plugin-react": "^6.1.0",
+		"@vscode/test-cli": "^0.0.15",
+		"@vscode/test-electron": "^3.1.0",
 		"@vscode/vsce": "^4",
 		"esbuild": "^0.28.2",
 		"sass": "^1.103.1",
