@@ -152,7 +152,9 @@
 		"i18n:make-po": "mb-i18n make-po",
 		"i18n:make-json": "mb-i18n make-json",
 		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor && node scripts/bump-version.mjs",
-		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor"
+		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor",
+		"test": "vitest run",
+		"test:watch": "vitest"
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
@@ -174,6 +176,7 @@
 		"esbuild": "^0.28.2",
 		"sass": "^1.103.1",
 		"typescript": "~6.0.3",
-		"vite": "^8.2.2"
+		"vite": "^8.2.2",
+		"vitest": "^5.0.1"
 	}
 }
