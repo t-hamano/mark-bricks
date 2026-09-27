@@ -2053,6 +2053,7 @@ name = "mark-bricks"
 version = "0.13.0"
 dependencies = [
  "core-foundation 0.10.1",
+ "same-file",
  "serde",
  "serde_json",
  "tauri",

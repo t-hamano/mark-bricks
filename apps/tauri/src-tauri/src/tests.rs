@@ -81,29 +81,3 @@ fn collect_markdown_paths_makes_paths_absolute() {
         "relative paths join the launch directory, absolute ones stay"
     );
 }
-
-/// Builds a unique temp path per call site so parallel tests don't collide.
-fn temp_path(tag: &str) -> String {
-    let mut path = std::env::temp_dir();
-    path.push(format!("mark-bricks-{}-{}.md", tag, std::process::id()));
-    path.to_string_lossy().to_string()
-}
-
-#[test]
-fn write_then_read_round_trips_contents() {
-    let path = temp_path("roundtrip");
-    let contents = "# Title\n\nbody text\n";
-
-    write_text_file(path.clone(), contents.to_string()).unwrap();
-    let read_back = read_text_file(path.clone()).unwrap();
-    assert_eq!(read_back, contents);
-
-    let _ = std::fs::remove_file(&path);
-}
-
-#[test]
-fn read_text_file_errors_on_missing_file() {
-    let path = temp_path("missing");
-    let _ = std::fs::remove_file(&path);
-    assert!(read_text_file(path).is_err());
-}

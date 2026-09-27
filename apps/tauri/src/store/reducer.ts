@@ -14,11 +14,13 @@ export type Tab = {
 	title: string;
 	isDirty: boolean;
 	filePath?: string;
+	documentId?: string;
 	content: string;
 };
 
 export interface State {
 	tabs: Tab[];
+	nextTabSeq: number;
 	activeTabId: string | null;
 	pendingCloseId: string | null;
 }
@@ -28,19 +30,11 @@ function basename( path: string ) {
 	return m ? m[ 0 ] : path;
 }
 
-function nextTabSeq( tabs: Tab[] ) {
-	return (
-		tabs.reduce( ( max, t ) => {
-			const m = t.id.match( /^tab-(\d+)$/ );
-			return m ? Math.max( max, Number( m[ 1 ] ) ) : max;
-		}, 0 ) + 1
-	);
-}
-
 export function reducer( state: State = DEFAULT_STATE, action: Action ) {
 	switch ( action.type ) {
 		case 'OPEN_TAB': {
-			const seq = nextTabSeq( state.tabs );
+			// Never reuse IDs while a native file dialog can still be pending.
+			const seq = state.nextTabSeq;
 			const newTab: Tab = {
 				id: `tab-${ seq }`,
 				title: __( '(Untitled)', 'mark-bricks' ),
@@ -50,21 +44,24 @@ export function reducer( state: State = DEFAULT_STATE, action: Action ) {
 			return {
 				...state,
 				tabs: [ ...state.tabs, newTab ],
+				nextTabSeq: seq + 1,
 				activeTabId: newTab.id,
 			};
 		}
 		case 'OPEN_FILE_TAB': {
-			const seq = nextTabSeq( state.tabs );
+			const seq = state.nextTabSeq;
 			const newTab: Tab = {
 				id: `tab-${ seq }`,
 				title: basename( action.filePath ),
 				isDirty: false,
 				filePath: action.filePath,
+				documentId: action.documentId,
 				content: action.content,
 			};
 			return {
 				...state,
 				tabs: [ ...state.tabs, newTab ],
+				nextTabSeq: seq + 1,
 				activeTabId: newTab.id,
 			};
 		}
@@ -121,6 +118,7 @@ export function reducer( state: State = DEFAULT_STATE, action: Action ) {
 						? {
 								...t,
 								filePath: action.filePath,
+								documentId: action.documentId,
 								title: basename( action.filePath ),
 							}
 						: t

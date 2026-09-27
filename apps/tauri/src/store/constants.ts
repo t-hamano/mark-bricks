@@ -17,6 +17,7 @@ const INITIAL_TAB: Tab = {
 
 export const DEFAULT_STATE: State = {
 	tabs: [ INITIAL_TAB ],
+	nextTabSeq: 2,
 	activeTabId: INITIAL_TAB.id,
 	pendingCloseId: null,
 };

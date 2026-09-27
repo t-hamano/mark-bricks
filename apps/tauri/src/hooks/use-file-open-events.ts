@@ -14,14 +14,23 @@ import { __, _n } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { openFilePath } from '../actions';
+import { openDocument, type OpenedDocument } from '../actions';
 
-async function openPaths( paths: string[] ) {
+type OpenRequestResult = { path: string; document: OpenedDocument | null };
+
+async function openPendingDocuments() {
+	const requests = await invoke< OpenRequestResult[] >(
+		'take_pending_documents'
+	);
 	const failed: string[] = [];
 
-	for ( const path of paths ) {
+	for ( const { path, document } of requests ) {
+		if ( ! document ) {
+			failed.push( path );
+			continue;
+		}
 		try {
-			await openFilePath( path );
+			await openDocument( document );
 		} catch {
 			failed.push( path );
 		}
@@ -44,7 +53,8 @@ async function openPaths( paths: string[] ) {
 /**
  * Opens Markdown files the OS hands to the app. It listens for the `open-files`
  * event the Rust backend emits while the app is running, then drains
- * `take_pending_open_files` for paths delivered before the listener existed.
+ * `take_pending_documents` for requests delivered before the listener existed.
+ * Event payloads never supply file paths; only the native queue can grant access.
  */
 export default function useFileOpenEvents() {
 	useEffect( () => {
@@ -52,8 +62,8 @@ export default function useFileOpenEvents() {
 		let cancelled = false;
 
 		( async () => {
-			unlisten = await listen< string[] >( 'open-files', ( event ) => {
-				void openPaths( event.payload );
+			unlisten = await listen( 'open-files', () => {
+				void openPendingDocuments();
 			} );
 
 			if ( cancelled ) {
@@ -63,12 +73,7 @@ export default function useFileOpenEvents() {
 
 			// Drain any file paths the OS handed us before the listener
 			// was attached.
-			const pending = await invoke< string[] >(
-				'take_pending_open_files'
-			);
-			if ( pending.length > 0 ) {
-				void openPaths( pending );
-			}
+			await openPendingDocuments();
 		} )();
 
 		return () => {

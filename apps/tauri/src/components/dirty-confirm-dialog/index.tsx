@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { useDispatch, useSelect } from '@wordpress/data';
+import { select, useDispatch, useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 import { AlertDialog, getWpCompatOverlaySlot } from '@wordpress/ui';
 
@@ -9,10 +9,11 @@ import { AlertDialog, getWpCompatOverlaySlot } from '@wordpress/ui';
  * Internal dependencies
  */
 import tabsStore from '../../store';
+import { closeTab } from '../../actions';
 
 export default function DirtyConfirmDialog() {
-	const { pendingTab } = useSelect( ( select ) => {
-		const { getPendingCloseId, getTabs } = select( tabsStore );
+	const { pendingTab } = useSelect( ( storeSelect ) => {
+		const { getPendingCloseId, getTabs } = storeSelect( tabsStore );
 		const id = getPendingCloseId();
 		const tabs = getTabs();
 		return {
@@ -22,18 +23,21 @@ export default function DirtyConfirmDialog() {
 		};
 	}, [] );
 
-	const { closeTab, setPendingCloseId } = useDispatch( tabsStore );
+	const { setPendingCloseId } = useDispatch( tabsStore );
 
 	if ( ! pendingTab ) {
 		return null;
 	}
 
-	const cancel = () => setPendingCloseId( null );
+	const cancel = () => {
+		if ( select( tabsStore ).getPendingCloseId() === pendingTab.id ) {
+			setPendingCloseId( null );
+		}
+	};
 
-	const discard = () => {
+	const discard = async () => {
 		const id = pendingTab.id;
-		setPendingCloseId( null );
-		closeTab( id );
+		await closeTab( id );
 	};
 
 	return (
