@@ -13,6 +13,7 @@ import {
 	EventEmitter,
 	TextEdit,
 	Uri,
+	type WorkspaceEdit,
 	addWorkspaceFolder,
 	commands,
 	configurationUpdate,
@@ -150,6 +151,34 @@ describe( 'webview edits', () => {
 		await vi.advanceTimersByTimeAsync( 200 );
 
 		expect( workspace.applyEdit ).not.toHaveBeenCalled();
+	} );
+
+	it( 'does not echo its own edits back to the webview', async () => {
+		const { send, posted } = openEditor();
+
+		send( { type: 'change', text: 'edited' } );
+		await vi.advanceTimersByTimeAsync( 200 );
+
+		expect( workspace.applyEdit ).toHaveBeenCalledTimes( 1 );
+		expect( posted ).toEqual( [] );
+	} );
+
+	it( 'keeps an edit made while the previous one is applied', async () => {
+		const { send, document, posted } = openEditor();
+		workspace.applyEdit.mockImplementationOnce(
+			async ( edit: WorkspaceEdit ) => {
+				// The webview emits a newer change during the round trip.
+				send( { type: 'change', text: 'newer' } );
+				document.setText( edit.edits[ 0 ].newText );
+				return true;
+			}
+		);
+
+		send( { type: 'change', text: 'older' } );
+		await vi.advanceTimersByTimeAsync( 400 );
+
+		expect( posted ).toEqual( [] );
+		expect( document.getText() ).toBe( 'newer' );
 	} );
 
 	it( 'keeps a rejected edit for the next save and reports it', async () => {
