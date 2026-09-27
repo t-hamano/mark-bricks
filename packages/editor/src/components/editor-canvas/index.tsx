@@ -19,6 +19,7 @@ import { ThemeProvider } from '@wordpress/theme';
  * Internal dependencies
  */
 import {
+	useCanvasRendered,
 	useCanvasSpellCheck,
 	useCanvasStyleRuntime,
 	usePaddingAppender,
@@ -33,9 +34,10 @@ const { ExperimentalBlockCanvas } = unlock( blockEditorPrivateApis );
 type Props = {
 	styles: Array< { css: string } >;
 	spellCheck: boolean;
+	onRendered?: () => void;
 };
 
-export function EditorCanvas( { styles, spellCheck }: Props ) {
+export function EditorCanvas( { styles, spellCheck, onRendered }: Props ) {
 	const theme = useEditorTheme();
 	const canvasStyles = useMemo(
 		() => [ ...styles, { css: `:root { color-scheme: ${ theme }; }` } ],
@@ -46,6 +48,7 @@ export function EditorCanvas( { styles, spellCheck }: Props ) {
 		useCanvasSpellCheck( spellCheck ),
 		useCanvasStyleRuntime(),
 		useInlineImageSources(),
+		useCanvasRendered( onRendered ),
 	] );
 	return (
 		<ExperimentalBlockCanvas

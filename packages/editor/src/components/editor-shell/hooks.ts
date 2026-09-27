@@ -361,6 +361,35 @@ export function useCanvasStyleRuntime() {
 }
 
 /**
+ * Calls `onRendered` once the block canvas shows a block.
+ *
+ * @param onRendered
+ */
+export function useCanvasRendered( onRendered?: () => void ) {
+	const onRenderedRef = useRef( onRendered );
+	onRenderedRef.current = onRendered;
+
+	return useRefEffect< HTMLElement >( ( node ) => {
+		const hasBlock = () =>
+			!! node.querySelector( '.block-editor-block-list__block' );
+
+		if ( hasBlock() ) {
+			onRenderedRef.current?.();
+			return;
+		}
+
+		const observer = new MutationObserver( () => {
+			if ( hasBlock() ) {
+				observer.disconnect();
+				onRenderedRef.current?.();
+			}
+		} );
+		observer.observe( node, { childList: true, subtree: true } );
+		return () => observer.disconnect();
+	}, [] );
+}
+
+/**
  * Keeps the block canvas iframe body `spellcheck` attribute in sync.
  * The `spellcheck` HTML attribute is inherited, so applying it to the
  * iframe body propagates to all contenteditable descendants.
