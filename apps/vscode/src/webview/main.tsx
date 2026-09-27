@@ -14,12 +14,17 @@ import { createRoot } from 'react-dom/client';
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { useEnableWpCompatOverlaySlot } from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
-import type { HostMessage, WebviewMessage } from '../shared/messages';
+import type {
+	HostMessage,
+	ImageError,
+	WebviewMessage,
+} from '../shared/messages';
 import type { Settings } from '../shared/settings';
 import { toEditorStyles } from './editor-styles';
 import HeaderActions from './header-actions';
@@ -36,14 +41,64 @@ function post( message: WebviewMessage ): void {
 const pendingImageRequests = new Map< number, ( src: string ) => void >();
 let imageRequestSeq = 0;
 
+const pendingPickImageRequests = new Map<
+	number,
+	( path: string | null ) => void
+>();
+let pickImageRequestSeq = 0;
+
+const pendingCheckImageRequests = new Map<
+	number,
+	( error: ImageError | null ) => void
+>();
+let checkImageRequestSeq = 0;
+
 // Local image paths only make sense to the extension host, which knows the
 // document location and can turn them into webview resource URIs.
 const platform: Partial< Platform > = {
+	// The webview has no native file dialog, so the host opens one.
+	pickImageFile() {
+		const requestId = ++pickImageRequestSeq;
+		return new Promise( ( resolve ) => {
+			pendingPickImageRequests.set( requestId, resolve );
+			post( { type: 'pickImage', requestId } );
+		} );
+	},
 	resolveImageSrc( path ) {
 		const requestId = ++imageRequestSeq;
 		return new Promise( ( resolve ) => {
 			pendingImageRequests.set( requestId, resolve );
 			post( { type: 'resolveImage', requestId, path } );
+		} );
+	},
+	// The webview blocks `http:` URLs and can only load local images inside
+	// its `localResourceRoots`, which the host checks the path against.
+	getImageNotice( path ) {
+		const requestId = ++checkImageRequestSeq;
+		return new Promise( ( resolve ) => {
+			pendingCheckImageRequests.set( requestId, ( error ) => {
+				switch ( error ) {
+					case 'insecureUrl':
+						resolve(
+							__(
+								'Images from HTTP URLs cannot be displayed. Use an HTTPS URL instead.',
+								'mark-bricks'
+							)
+						);
+						break;
+					case 'outsideRoots':
+						resolve(
+							__(
+								'Only images in the folder of the document or in a workspace folder can be displayed.',
+								'mark-bricks'
+							)
+						);
+						break;
+					default:
+						resolve( null );
+				}
+			} );
+			post( { type: 'checkImage', requestId, path } );
 		} );
 	},
 };
@@ -84,6 +139,18 @@ function App() {
 						message.src
 					);
 					pendingImageRequests.delete( message.requestId );
+					break;
+				case 'pickImage:done':
+					pendingPickImageRequests.get( message.requestId )?.(
+						message.path
+					);
+					pendingPickImageRequests.delete( message.requestId );
+					break;
+				case 'checkImage:done':
+					pendingCheckImageRequests.get( message.requestId )?.(
+						message.error
+					);
+					pendingCheckImageRequests.delete( message.requestId );
 					break;
 			}
 		}
