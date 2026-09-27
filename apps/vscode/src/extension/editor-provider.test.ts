@@ -342,9 +342,12 @@ describe( 'image paths', () => {
 		[ 'file:///tmp/a.png', 'webview:file:///tmp/a.png' ],
 		[
 			'images/my%20photo.png?v=1#top',
-			'webview:file:///workspace/docs/images/my photo.png',
+			'webview:file:///workspace/docs/images/my%20photo.png',
 		],
-		[ 'bad%E0%A4%A.png', 'webview:file:///workspace/docs/bad%E0%A4%A.png' ],
+		[
+			'bad%E0%A4%A.png',
+			'webview:file:///workspace/docs/bad%25E0%25A4%25A.png',
+		],
 		[ 'https://example.com/a.png', 'https://example.com/a.png' ],
 		[ 'data:image/png;base64,AAAA', 'data:image/png;base64,AAAA' ],
 	] )( 'resolves %s', ( path, src ) => {
@@ -392,9 +395,8 @@ describe( 'image paths', () => {
 	} );
 
 	it( 'picks an image file next to the document', async () => {
-		window.showOpenDialog.mockResolvedValueOnce( [
-			Uri.file( '/workspace/docs/images/a.png' ),
-		] );
+		const picked = Uri.file( '/workspace/docs/images/a.png' );
+		window.showOpenDialog.mockResolvedValueOnce( [ picked ] );
 		const { send, posted } = openEditor();
 
 		send( { type: 'pickImage', requestId: 5 } );
@@ -411,7 +413,7 @@ describe( 'image paths', () => {
 			{
 				type: 'pickImage:done',
 				requestId: 5,
-				path: '/workspace/docs/images/a.png',
+				path: picked.fsPath,
 			},
 		] );
 	} );

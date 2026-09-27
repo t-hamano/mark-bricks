@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import { posix } from 'node:path';
 import { vi } from 'vitest';
+import { URI, Utils } from 'vscode-uri';
 
 /**
  * A minimal stand-in for the `vscode` module, which only exists inside the
@@ -38,37 +38,13 @@ export class EventEmitter< T > {
 	}
 }
 
-// Paths are POSIX-style regardless of the host OS, as in VS Code's own `Uri`.
-export class Uri {
-	private constructor(
-		public readonly scheme: string,
-		public readonly path: string
-	) {}
-
-	public static file( fsPath: string ): Uri {
-		return new Uri( 'file', fsPath.replace( /\\/g, '/' ) );
-	}
-
-	public static parse( value: string ): Uri {
-		const match = /^([a-z][\w+.-]*):(?:\/\/[^/]*)?(.*)$/i.exec( value );
-		if ( ! match ) {
-			throw new Error( `Invalid URI: ${ value }` );
-		}
-		return new Uri( match[ 1 ].toLowerCase(), match[ 2 ] );
-	}
-
-	public static joinPath( base: Uri, ...segments: string[] ): Uri {
-		return new Uri( base.scheme, posix.join( base.path, ...segments ) );
-	}
-
-	public get fsPath(): string {
-		return this.path;
-	}
-
-	public toString(): string {
-		return `${ this.scheme }://${ this.path }`;
-	}
-}
+// The implementation VS Code itself uses.
+export type Uri = URI;
+export const Uri = {
+	file: URI.file,
+	parse: URI.parse,
+	joinPath: Utils.joinPath,
+};
 
 export class Range {
 	public constructor(
