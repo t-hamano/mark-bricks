@@ -49,6 +49,7 @@
 		"react-dom": "^19.3.0"
 	},
 	"devDependencies": {
+		"@mark-bricks/fixtures": "workspace:*",
 		"@mark-bricks/i18n-tools": "workspace:*",
 		"@tauri-apps/cli": "^2",
 		"@types/node": "^26.6.2",

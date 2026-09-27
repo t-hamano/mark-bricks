@@ -33,6 +33,7 @@ import useAppCloseGuard from '../../hooks/use-app-close-guard';
 import useAutoUpdater from '../../hooks/use-auto-updater';
 import useEditorFlush from '../../hooks/use-editor-flush';
 import useFileOpenEvents from '../../hooks/use-file-open-events';
+import useRenderedReport from '../../hooks/use-rendered-report';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
 import platform from '../../platform';
@@ -102,6 +103,7 @@ export function App() {
 	const { setTabContent, setTabDirty } = useDispatch( tabsStore );
 
 	useWindowTitle( activeTab );
+	useRenderedReport( activeTab?.filePath );
 	useAppCloseGuard( { tabs, pendingCloseId } );
 
 	return (

@@ -31,6 +31,16 @@ fn take_pending_open_files() -> Vec<String> {
     std::mem::take(&mut *pending_open_files().lock().unwrap())
 }
 
+/// Tells `scripts/smoke-launch.mjs` that the editor canvas shows the blocks of
+/// the file at `path`. Prints only when the smoke test sets
+/// `MARK_BRICKS_SMOKE_TEST`, since nothing else reads it.
+#[tauri::command]
+fn report_rendered(path: String) {
+    if std::env::var_os("MARK_BRICKS_SMOKE_TEST").is_some() {
+        println!("[smoke] rendered: {path}");
+    }
+}
+
 /// Result variants for `set_as_default_markdown_handler`.
 /// - `"set"`: we changed the default handler directly.
 /// - `"declined"`: the user dismissed the macOS confirmation.
@@ -207,6 +217,7 @@ pub fn run() {
             write_text_file,
             read_text_file,
             take_pending_open_files,
+            report_rendered,
             set_as_default_markdown_handler
         ])
         .build(ctx)
