@@ -3,6 +3,9 @@
  */
 import type { Settings, WritableSettingKey } from './settings';
 
+// Why the webview cannot display an image.
+export type ImageError = 'insecureUrl' | 'outsideRoots';
+
 export type HostMessage =
 	| {
 			type: 'init';
@@ -34,7 +37,7 @@ export type HostMessage =
 	| {
 			type: 'checkImage:done';
 			requestId: number;
-			isDisplayable: boolean;
+			error: ImageError | null;
 	  };
 
 export type WebviewMessage =

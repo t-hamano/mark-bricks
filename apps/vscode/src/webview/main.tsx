@@ -20,7 +20,11 @@ import { useEnableWpCompatOverlaySlot } from '@wordpress/ui';
 /**
  * Internal dependencies
  */
-import type { HostMessage, WebviewMessage } from '../shared/messages';
+import type {
+	HostMessage,
+	ImageError,
+	WebviewMessage,
+} from '../shared/messages';
 import type { Settings } from '../shared/settings';
 import { toEditorStyles } from './editor-styles';
 import HeaderActions from './header-actions';
@@ -45,7 +49,7 @@ let pickImageRequestSeq = 0;
 
 const pendingCheckImageRequests = new Map<
 	number,
-	( isDisplayable: boolean ) => void
+	( error: ImageError | null ) => void
 >();
 let checkImageRequestSeq = 0;
 
@@ -67,21 +71,33 @@ const platform: Partial< Platform > = {
 			post( { type: 'resolveImage', requestId, path } );
 		} );
 	},
-	// The webview can only load local images inside its
-	// `localResourceRoots`, which the host checks the path against.
+	// The webview blocks `http:` URLs and can only load local images inside
+	// its `localResourceRoots`, which the host checks the path against.
 	getImageNotice( path ) {
 		const requestId = ++checkImageRequestSeq;
 		return new Promise( ( resolve ) => {
-			pendingCheckImageRequests.set( requestId, ( isDisplayable ) =>
-				resolve(
-					isDisplayable
-						? null
-						: __(
+			pendingCheckImageRequests.set( requestId, ( error ) => {
+				switch ( error ) {
+					case 'insecureUrl':
+						resolve(
+							__(
+								'Images from HTTP URLs cannot be displayed. Use an HTTPS URL instead.',
+								'mark-bricks'
+							)
+						);
+						break;
+					case 'outsideRoots':
+						resolve(
+							__(
 								'Only images in the folder of the document or in a workspace folder can be displayed.',
 								'mark-bricks'
 							)
-				)
-			);
+						);
+						break;
+					default:
+						resolve( null );
+				}
+			} );
 			post( { type: 'checkImage', requestId, path } );
 		} );
 	},
@@ -132,7 +148,7 @@ function App() {
 					break;
 				case 'checkImage:done':
 					pendingCheckImageRequests.get( message.requestId )?.(
-						message.isDisplayable
+						message.error
 					);
 					pendingCheckImageRequests.delete( message.requestId );
 					break;

@@ -7,7 +7,11 @@ import * as vscode from 'vscode';
 /**
  * Internal dependencies
  */
-import type { HostMessage, WebviewMessage } from '../shared/messages';
+import type {
+	HostMessage,
+	ImageError,
+	WebviewMessage,
+} from '../shared/messages';
 import { CONFIGURATION_SECTION, readSettings, writeSetting } from './settings';
 import { getHtmlForWebview } from './webview-html';
 
@@ -165,7 +169,7 @@ class EditorSession {
 				this.post( {
 					type: 'checkImage:done',
 					requestId: message.requestId,
-					isDisplayable: this.isDisplayableImage( message.path ),
+					error: this.getImageError( message.path ),
 				} );
 				break;
 
@@ -213,18 +217,22 @@ class EditorSession {
 		return uri ? this.panel.webview.asWebviewUri( uri ).toString() : src;
 	}
 
-	// Whether the webview can load the image, i.e. it is remote or inside one
-	// of `imageRoots`. Image path -> relative path from root `/project`:
+	// Why the webview cannot load the image, or `null` if it can. The CSP
+	// blocks `http:` URLs, and local images must be inside one of
+	// `imageRoots`. Image path -> relative path from root `/project`:
 	// - `/` -> `..` (outside)
 	// - `/other/image.png` -> `../other/image.png` (outside)
 	// - `D:\image.png` (root `C:\project`) -> `D:\image.png` (outside)
 	// - `/project/..assets/image.png` -> `..assets/image.png` (inside)
-	private isDisplayableImage( src: string ): boolean {
+	private getImageError( src: string ): ImageError | null {
+		if ( /^http:/i.test( src ) ) {
+			return 'insecureUrl';
+		}
 		const uri = this.resolveImageUri( src );
 		if ( ! uri ) {
-			return true;
+			return null;
 		}
-		return this.imageRoots.some( ( root ) => {
+		const isInsideRoots = this.imageRoots.some( ( root ) => {
 			if ( root.scheme !== uri.scheme ) {
 				return false;
 			}
@@ -235,6 +243,7 @@ class EditorSession {
 				! path.isAbsolute( relative )
 			);
 		} );
+		return isInsideRoots ? null : 'outsideRoots';
 	}
 
 	// Resolves an image path from the markdown to the file it points to:
