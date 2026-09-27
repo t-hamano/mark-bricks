@@ -1,6 +1,6 @@
 # Code signing policy
 
-Release installers are currently unsigned on all platforms (Windows, macOS, Linux).
+macOS release builds are signed and notarized. Windows and Linux installers are currently unsigned.
 
 ## Windows — SignPath Foundation (planned)
 
@@ -14,7 +14,9 @@ Only artifacts built by this repository's CI ([`release-desktop.yml`](.github/wo
 
 ## macOS
 
-Planning to enroll in the Apple Developer Program (Developer ID + notarization).
+Signed with a Developer ID Application certificate through the Apple Developer Program and notarized by Apple, with the hardened runtime enabled.
+
+Only artifacts built by this repository's CI ([`release-desktop.yml`](.github/workflows/release-desktop.yml)) are signed and notarized.
 
 ## Linux
 
