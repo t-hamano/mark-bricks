@@ -371,4 +371,60 @@ describe( 'image paths', () => {
 			},
 		] );
 	} );
+
+	it.each( [
+		[ 'images/a.png', null ],
+		[ '/assets/a.png', null ],
+		[ '..assets/a.png', null ],
+		[ '../../a.png', 'outsideRoots' ],
+		[ 'file:///tmp/a.png', 'outsideRoots' ],
+		[ 'https://example.com/a.png', null ],
+		[ 'http://example.com/a.png', 'insecureUrl' ],
+	] )( 'checks whether %s can be displayed', ( path, error ) => {
+		addWorkspaceFolder( '/workspace' );
+		const { send, posted } = openEditor();
+
+		send( { type: 'checkImage', requestId: 3, path } );
+
+		expect( posted ).toEqual( [
+			{ type: 'checkImage:done', requestId: 3, error },
+		] );
+	} );
+
+	it( 'picks an image file next to the document', async () => {
+		window.showOpenDialog.mockResolvedValueOnce( [
+			Uri.file( '/workspace/docs/images/a.png' ),
+		] );
+		const { send, posted } = openEditor();
+
+		send( { type: 'pickImage', requestId: 5 } );
+		await vi.advanceTimersByTimeAsync( 0 );
+
+		expect( window.showOpenDialog ).toHaveBeenCalledWith(
+			expect.objectContaining( {
+				canSelectMany: false,
+				defaultUri: Uri.file( '/workspace/docs' ),
+				filters: { Images: expect.arrayContaining( [ 'png' ] ) },
+			} )
+		);
+		expect( posted ).toEqual( [
+			{
+				type: 'pickImage:done',
+				requestId: 5,
+				path: '/workspace/docs/images/a.png',
+			},
+		] );
+	} );
+
+	it( 'answers null when the image picker is canceled', async () => {
+		window.showOpenDialog.mockResolvedValueOnce( undefined );
+		const { send, posted } = openEditor();
+
+		send( { type: 'pickImage', requestId: 5 } );
+		await vi.advanceTimersByTimeAsync( 0 );
+
+		expect( posted ).toEqual( [
+			{ type: 'pickImage:done', requestId: 5, path: null },
+		] );
+	} );
 } );

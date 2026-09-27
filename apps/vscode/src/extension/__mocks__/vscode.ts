@@ -196,6 +196,7 @@ export const workspace = {
 export const window = {
 	registerCustomEditorProvider: vi.fn(),
 	showErrorMessage: vi.fn(),
+	showOpenDialog: vi.fn(),
 };
 
 export const commands = {
