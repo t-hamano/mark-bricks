@@ -372,10 +372,17 @@ class EditorSession {
 
 		const edit = new vscode.WorkspaceEdit();
 		edit.replace( this.document.uri, this.fullRange(), text );
+		// VS Code fires the change event before `applyEdit` resolves, so the
+		// text to skip must be set beforehand.
+		this.lastAppliedText = text;
 		const applied = await vscode.workspace.applyEdit( edit );
 		if ( applied ) {
-			this.lastAppliedText = text;
 			return;
+		}
+
+		// A rejected edit fires no change event to consume it.
+		if ( this.lastAppliedText === text ) {
+			this.lastAppliedText = null;
 		}
 
 		// A rejected edit (e.g. a read-only document) would just be rejected
