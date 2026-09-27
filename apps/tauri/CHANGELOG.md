@@ -1,3 +1,25 @@
+# [0.14.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.13.0...tauri-v0.14.0) (2026-09-27)
+
+### Bug Fixes
+
+- **editor:** display inline images with local paths ([#101](https://github.com/t-hamano/mark-bricks/issues/101)) ([d0fe235](https://github.com/t-hamano/mark-bricks/commit/d0fe2358fd623d823d40eeadc5c36296ced7944f))
+- **editor:** restrict summary html to supported inline formats ([#116](https://github.com/t-hamano/mark-bricks/issues/116)) ([1c3b254](https://github.com/t-hamano/mark-bricks/commit/1c3b254b0d3c658d91db2c15247791ad38e88b0b))
+- **repo:** update dependencies to address security advisories ([c635414](https://github.com/t-hamano/mark-bricks/commit/c6354144dd5f79257aa8035bebdb57dde22bfdb2))
+- share image path parsing between the vs code and tauri apps ([#114](https://github.com/t-hamano/mark-bricks/issues/114)) ([896e0ee](https://github.com/t-hamano/mark-bricks/commit/896e0ee319d2ffaf66c17b2415ddf4de25b256c8))
+- **tauri:** block untrusted inline scripts with csp ([d0884fd](https://github.com/t-hamano/mark-bricks/commit/d0884fd24788a762e23073c961303e4c99c6f815))
+- **tauri:** resolve relative image paths against the document folder ([#112](https://github.com/t-hamano/mark-bricks/issues/112)) ([f9f0b73](https://github.com/t-hamano/mark-bricks/commit/f9f0b73025f4026c1126fe6c9970f7c8be36a9d0))
+- **tauri:** restrict document access to native file selections ([#117](https://github.com/t-hamano/mark-bricks/issues/117)) ([3c09171](https://github.com/t-hamano/mark-bricks/commit/3c09171ae8ad883a25beaafc11d81be1da499661))
+
+### Features
+
+- **editor:** add a callback prop that fires once the canvas shows a block ([#110](https://github.com/t-hamano/mark-bricks/issues/110)) ([01dc4c6](https://github.com/t-hamano/mark-bricks/commit/01dc4c68d6d5ae9773abd2ddcb6d54152fc410ea))
+- **editor:** add a toolbar button to insert and edit inline images ([#100](https://github.com/t-hamano/mark-bricks/issues/100)) ([9dd7a67](https://github.com/t-hamano/mark-bricks/commit/9dd7a67908bac41e5097c7da2c33b3ebe8bade73))
+- **editor:** add yaml front matter editor ([#91](https://github.com/t-hamano/mark-bricks/issues/91)) ([25d6836](https://github.com/t-hamano/mark-bricks/commit/25d6836b18514078ddcc99c41ebb88e77e386d79))
+- **editor:** let the host warn about image paths it cannot display ([#103](https://github.com/t-hamano/mark-bricks/issues/103)) ([729effa](https://github.com/t-hamano/mark-bricks/commit/729effaebdfe3ba3c7051f2ff24198c6207f69fd))
+- **editor:** streamline the image block placeholder and toolbar ([30bde78](https://github.com/t-hamano/mark-bricks/commit/30bde78ae1a9b72f9e78191229df2b72ac7a483e))
+- **editor:** support inline and linked images ([#96](https://github.com/t-hamano/mark-bricks/issues/96)) ([6560e2e](https://github.com/t-hamano/mark-bricks/commit/6560e2eac82025f282576018012bc8c6b7de8304))
+- **vscode:** add options menu with yaml front matter toggle ([#92](https://github.com/t-hamano/mark-bricks/issues/92)) ([a03a261](https://github.com/t-hamano/mark-bricks/commit/a03a2610344e8affb4150bb769096dfbbc4a7caa))
+
 # [0.13.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.12.0...tauri-v0.13.0) (2026-09-24)
 
 ### Bug Fixes
