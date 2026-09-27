@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { getName, getVersion } from '@tauri-apps/api/app';
 import { invoke } from '@tauri-apps/api/core';
 import {
@@ -36,7 +36,7 @@ import useEditorFlush from '../../hooks/use-editor-flush';
 import useFileOpenEvents from '../../hooks/use-file-open-events';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
-import platform from '../../platform';
+import { createPlatform } from '../../platform';
 import tabsStore from '../../store';
 import './style.scss';
 
@@ -101,6 +101,11 @@ export function App() {
 	}, [] );
 
 	const { setTabContent, setTabDirty } = useDispatch( tabsStore );
+
+	// Relative image paths resolve against the active document's folder, so
+	// the platform changes with it (e.g. when an untitled tab is saved).
+	const filePath = activeTab?.filePath;
+	const platform = useMemo( () => createPlatform( filePath ), [ filePath ] );
 
 	useWindowTitle( activeTab );
 	useAppCloseGuard( { tabs, pendingCloseId } );
