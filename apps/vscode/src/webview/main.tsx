@@ -229,7 +229,6 @@ function App() {
 					/>
 				}
 				platform={ platform }
-				// Tells the smoke test in `e2e/` that the editor rendered.
 				onRendered={ () => post( { type: 'rendered' } ) }
 			/>
 		</EditorThemeProvider>
