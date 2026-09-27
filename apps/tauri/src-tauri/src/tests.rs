@@ -52,11 +52,34 @@ fn collect_markdown_paths_selects_files_from_args() {
         ),
         (&["mark-bricks"], &[], "no files yields an empty list"),
     ];
+    let cwd = std::env::temp_dir();
     for (argv, expected, desc) in cases {
-        let got = collect_markdown_paths(argv.iter().copied());
-        let expected: Vec<String> = expected.iter().map(|s| s.to_string()).collect();
+        let got = collect_markdown_paths(argv.iter().copied(), &cwd);
+        let expected: Vec<String> = expected
+            .iter()
+            .map(|s| cwd.join(s).to_string_lossy().to_string())
+            .collect();
         assert_eq!(got, expected, "{desc}: argv={argv:?}");
     }
+}
+
+#[test]
+fn collect_markdown_paths_makes_paths_absolute() {
+    let cwd = std::env::temp_dir().join("launch");
+    let other = std::env::temp_dir().join("other").join("c.md");
+    let other = other.to_string_lossy().to_string();
+    let argv = ["mark-bricks", "./docs/a.md", "../b.md", other.as_str()];
+    let got = collect_markdown_paths(argv.iter().copied(), &cwd);
+    let expected = [
+        cwd.join("docs").join("a.md"),
+        std::env::temp_dir().join("b.md"),
+    ]
+    .map(|p| p.to_string_lossy().to_string());
+    assert_eq!(
+        got,
+        [expected[0].clone(), expected[1].clone(), other.clone()],
+        "relative paths join the launch directory, absolute ones stay"
+    );
 }
 
 /// Builds a unique temp path per call site so parallel tests don't collide.
