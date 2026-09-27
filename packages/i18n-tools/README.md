@@ -9,20 +9,18 @@ Shared i18n build tooling for MarkBricks packages. It provides the `mb-i18n` CLI
 
 Translatable strings flow from source to bundled dictionary:
 
+```mermaid
+flowchart TD
+	src["__() calls in src/**"] -- make-pot --> pot["&lt;slug&gt;.pot"]
+	pot -- make-po --> po["&lt;slug&gt;-&lt;locale&gt;.po"]
+	translators(["translate msgstr by hand"]) -.-> po
+	wporg(["WordPress.org Gutenberg language pack"]) -- "i18n:fetch-gutenberg (editor only)" --> gb["gutenberg-&lt;ver&gt;-&lt;locale&gt;.json"]
+	po -- make-json --> json["&lt;slug&gt;-&lt;locale&gt;.json"]
+	gb -. "make-json (merged if present)" .-> json
+	json -- "import.meta.glob + applyLocale" --> runtime(["@wordpress/i18n setLocaleData"])
 ```
-__() calls in source  ──make-pot──▶  <slug>.pot
-                                          │
-                                       make-po
-                                          ▼
-                              <slug>-<locale>.po  ◀── translators fill in msgstr
-                                          │
-                  gutenberg-<ver>-<locale>.json   (optional dependency catalog)
-                                          │   \
-                                          ▼    ▼
-                                      make-json (merges both)
-                                          ▼
-                            <slug>-<locale>.json  ──▶ loaded by @wordpress/i18n
-```
+
+`make-json` also runs on `pnpm install` (root `postinstall`), so the gitignored JSON is rebuilt without a manual step.
 
 All files live in the consuming package's `languages/` directory:
 
