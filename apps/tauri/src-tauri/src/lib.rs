@@ -1,4 +1,4 @@
-use std::path::Path;
+use std::path::{Component, Path, PathBuf};
 use std::sync::{Mutex, OnceLock};
 
 use tauri::{Emitter, Manager};
@@ -161,9 +161,28 @@ fn is_markdown_path(s: &str) -> bool {
     MARKDOWN_EXTENSIONS.contains(&ext.as_str())
 }
 
+/// Joins `path` onto `cwd` unless it is already absolute, and drops `.` and
+/// `..` segments without touching the file system. The frontend resolves
+/// relative image paths against the document's folder, so it needs an
+/// absolute document path.
+fn absolutize(path: &str, cwd: &Path) -> String {
+    let mut out = PathBuf::new();
+    for component in cwd.join(path).components() {
+        match component {
+            Component::CurDir => {}
+            Component::ParentDir => {
+                out.pop();
+            }
+            other => out.push(other),
+        }
+    }
+    out.to_string_lossy().to_string()
+}
+
 /// Picks the Markdown file paths out of the process arguments, skipping the
-/// first entry (the program's own path).
-fn collect_markdown_paths<I, S>(args: I) -> Vec<String>
+/// first entry (the program's own path), and makes them absolute against
+/// `cwd`, the directory the arguments were given in.
+fn collect_markdown_paths<I, S>(args: I, cwd: &Path) -> Vec<String>
 where
     I: IntoIterator<Item = S>,
     S: AsRef<str>,
@@ -172,7 +191,7 @@ where
         .skip(1)
         .filter_map(|s| {
             let s = s.as_ref();
-            is_markdown_path(s).then(|| s.to_string())
+            is_markdown_path(s).then(|| absolutize(s, cwd))
         })
         .collect()
 }
@@ -185,15 +204,19 @@ pub fn run() {
     pending_open_files()
         .lock()
         .unwrap()
-        .extend(collect_markdown_paths(std::env::args()));
+        .extend(collect_markdown_paths(
+            std::env::args(),
+            &std::env::current_dir().unwrap_or_default(),
+        ));
 
     let mut builder = tauri::Builder::default();
 
-    builder = builder.plugin(tauri_plugin_single_instance::init(|app, argv, _cwd| {
+    builder = builder.plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
         if let Some(window) = app.get_webview_window("main") {
             let _ = window.set_focus();
         }
-        let paths = collect_markdown_paths(argv);
+        // Relative to the second launch's directory, not this instance's.
+        let paths = collect_markdown_paths(argv, Path::new(&cwd));
         if !paths.is_empty() {
             // Buffer *before* emitting: a still-cold-starting frontend
             // hasn't attached its `open-files` listener yet, so a bare
