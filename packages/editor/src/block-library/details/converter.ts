@@ -11,7 +11,12 @@ import type { Block } from '@wordpress/blocks';
 /**
  * Internal dependencies
  */
-import { createBlock, richTextToString } from '../utils';
+import {
+	contentToInline,
+	createBlock,
+	inlineToContent,
+	richTextToString,
+} from '../utils';
 import {
 	markdownToBlocks,
 	nodesToBlocks,
@@ -182,7 +187,11 @@ export function toBlock(
 
 	const attributes: BlockAttributes = {};
 	if ( summaryMatch ) {
-		attributes.summary = summaryMatch[ 1 ];
+		// Normalize raw summary HTML to the supported inline formats before
+		// passing it to RichText, dropping unsupported tags and attributes.
+		attributes.summary = inlineToContent(
+			contentToInline( summaryMatch[ 1 ] )
+		);
 	}
 	if ( openTag[ 1 ] ) {
 		attributes.showContent = true;
