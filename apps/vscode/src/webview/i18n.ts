@@ -23,7 +23,6 @@ const WP_LOCALES: Partial< Record< string, string > > = {
 	tr: 'tr_TR',
 	pl: 'pl_PL',
 	cs: 'cs_CZ',
-	hu: 'hu_HU',
 };
 
 type Catalog = {
