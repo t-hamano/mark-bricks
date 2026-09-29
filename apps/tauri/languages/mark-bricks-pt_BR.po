@@ -1,0 +1,453 @@
+# Copyright (C) 2026 mark-bricks-desktop
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: mark-bricks-desktop 0.13.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
+"PO-Revision-Date: 2026-09-29T01:30:33.122Z\n"
+"Last-Translator: Aki Hamano <->\n"
+"Language-Team: Aki Hamano <->\n"
+"X-Generator: @wp-blocks/make-pot 1.6.6\n"
+"Language: pt_BR\n"
+"X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/components/dirty-confirm-dialog/index.tsx:54
+msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
+msgstr "“%s” tem alterações não salvas. Deseja descartá-las e fechar?"
+
+#: src/store/reducer.ts:46
+#: src/store/constants.ts:13
+msgid "(Untitled)"
+msgstr "(Sem título)"
+
+#: src/components/header-actions/index.tsx:286
+#: src/components/about-modal/index.tsx:80
+msgid "About"
+msgstr "Sobre o MarkBricks"
+
+#: src/components/header-actions/index.tsx:176
+msgid "Access all block and document tools in a single place"
+msgstr "Acesse todas as ferramentas de bloco e documento em um só lugar"
+
+#: src/components/header-actions/index.tsx:255
+msgid "Add YAML front matter"
+msgstr "Adicionar front matter YAML"
+
+#: style.css
+#. Author of the generic
+msgid "Aki Hamano"
+msgstr ""
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:79
+msgid "Always open List View"
+msgstr "Sempre abrir a visualização em lista"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:136
+msgid "Base font size of the content area, in pixels."
+msgstr "Tamanho da fonte base da área de conteúdo, em pixels."
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:257
+msgid "Block shortcuts"
+msgstr "Atalhos de bloco"
+
+#: src/components/header-actions/index.tsx:315
+#: src/components/dirty-confirm-dialog/index.tsx:60
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/components/preferences-modal/general-panel.tsx:136
+#: src/components/about-modal/index.tsx:122
+msgid "Check for updates"
+msgstr "Verificar atualizações"
+
+#: src/components/preferences-modal/general-panel.tsx:122
+msgid "Check updates automatically"
+msgstr "Verificar atualizações automaticamente"
+
+#: src/components/preferences-modal/general-panel.tsx:132
+#: src/components/about-modal/index.tsx:115
+msgid "Checking…"
+msgstr "Verificando…"
+
+#: src/components/tabbar/index.tsx:178
+#: src/components/preferences-modal/index.tsx:168
+#: src/components/keyboard-shortcuts-modal/index.tsx:230
+#: src/components/about-modal/index.tsx:82
+msgid "Close"
+msgstr "Fechar"
+
+# %s: tab title.
+#: src/components/tabbar/index.tsx:273
+msgid "Close %s"
+msgstr "Fechar %s"
+
+#: src/components/tabbar/index.tsx:186
+msgid "Close other tabs"
+msgstr "Fechar outras abas"
+
+#: src/hooks/use-shortcuts.ts:77
+msgid "Close the active tab."
+msgstr "Fechar a aba ativa."
+
+#: src/components/preferences-modal/index.tsx:191
+#: src/components/header-actions/index.tsx:231
+msgid "Code editor"
+msgstr "Editor de código"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:106
+msgid "Content width"
+msgstr "Largura do conteúdo"
+
+#: src/hooks/use-file-open-events.ts:31
+msgid "Could not open the following file:"
+msgid_plural "Could not open the following files:"
+msgstr[0] "Não foi possível abrir o seguinte arquivo:"
+msgstr[1] "Não foi possível abrir os seguintes arquivos:"
+
+#: src/components/editor-placeholder/index.tsx:26
+msgid "Create a new Markdown file or open an existing one to start editing."
+msgstr "Crie um novo arquivo Markdown ou abra um existente para começar a editar."
+
+#: src/hooks/use-shortcuts.ts:41
+msgid "Create a new file."
+msgstr "Criar um novo arquivo."
+
+#: src/preferences/constants.ts:53
+msgid "Dark"
+msgstr "Escuro"
+
+#: src/components/dirty-confirm-dialog/index.tsx:64
+msgid "Discard"
+msgstr "Descartar"
+
+#: src/components/dirty-confirm-dialog/index.tsx:63
+msgid "Discard changes"
+msgstr "Descartar alterações"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:95
+msgid "Displays the block hierarchy trail at the bottom of the editor."
+msgstr "Exibir a hierarquia de blocos na parte inferior do editor."
+
+#: src/components/header-actions/index.tsx:202
+msgid "Editor"
+msgstr "Editor"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:103
+msgid "Editor styles"
+msgstr "Estilos do editor"
+
+#: src/components/preferences-modal/general-panel.tsx:141
+msgid "File associations"
+msgstr "Associações de arquivos"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:245
+msgid "File shortcuts"
+msgstr "Atalhos de arquivo"
+
+#: src/components/header-actions/index.tsx:126
+msgid "Files"
+msgstr "Arquivos"
+
+#: src/components/header-actions/index.tsx:192
+msgid "Focus on one block at a time"
+msgstr "Foque em um bloco de cada vez"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:143
+msgid "Font family"
+msgstr "Família da fonte"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:124
+#: src/components/preferences-modal/code-editor-panel.tsx:63
+msgid "Font size"
+msgstr "Tamanho da fonte"
+
+#: src/components/preferences-modal/index.tsx:185
+msgid "General"
+msgstr "Geral"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:249
+msgid "Global shortcuts"
+msgstr "Atalhos globais"
+
+#: src/preferences/constants.ts:75
+msgid "Handwriting"
+msgstr "Manuscrita"
+
+#: src/components/header-actions/index.tsx:260
+msgid "Hide YAML front matter"
+msgstr "Ocultar front matter YAML"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:73
+msgid "Highlight misspelled words while editing."
+msgstr "Destacar palavras com erros ortográficos durante a edição."
+
+#: src/platform/index.ts:82
+msgid "Images from HTTP URLs cannot be displayed. Use an HTTPS URL instead."
+msgstr "Imagens de URLs HTTP não podem ser exibidas. Use uma URL HTTPS."
+
+#: src/platform/index.ts:90
+msgid "Images with relative paths are displayed once the document is saved."
+msgstr "Imagens com caminhos relativos são exibidas depois que o documento é salvo."
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:228
+#: src/components/header-actions/index.tsx:279
+msgid "Keyboard shortcuts"
+msgstr "Atalhos de teclado"
+
+#: src/components/preferences-modal/general-panel.tsx:93
+#: src/components/preferences-modal/general-panel.tsx:98
+msgid "Language"
+msgstr "Idioma"
+
+#: src/preferences/constants.ts:52
+msgid "Light"
+msgstr "Claro"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:265
+msgid "List View shortcuts"
+msgstr "Atalhos da visualização em lista"
+
+# %s: new version number
+#: src/hooks/use-auto-updater.ts:53
+msgid "MarkBricks %s is available. Install now?"
+msgstr "O MarkBricks %s está disponível. Instalar agora?"
+
+#: src/components/preferences-modal/general-panel.tsx:156
+msgid "MarkBricks is now the default app for Markdown files."
+msgstr "O MarkBricks agora é o aplicativo padrão para arquivos Markdown."
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:118
+msgid "Maximum width of the content area, in pixels."
+msgstr "Largura máxima da área de conteúdo, em pixels."
+
+#: src/preferences/constants.ts:71
+msgid "Monospace"
+msgstr "Monoespaçada"
+
+#: src/components/header-actions/index.tsx:133
+msgid "New"
+msgstr "Novo"
+
+#: src/components/tabbar/index.tsx:142
+#: src/components/editor-placeholder/index.tsx:33
+msgid "New file"
+msgstr "Novo arquivo"
+
+#: src/components/tabbar/index.tsx:128
+msgid "New…"
+msgstr "Novo…"
+
+#: src/components/editor-placeholder/index.tsx:23
+msgid "No file open"
+msgstr "Nenhum arquivo aberto"
+
+#: src/hooks/use-shortcuts.ts:49
+msgid "Open a file."
+msgstr "Abrir um arquivo."
+
+#: src/hooks/use-file-open-events.ts:38
+msgid "Open file"
+msgstr "Abrir arquivo"
+
+#: src/components/tabbar/index.tsx:150
+#: src/components/editor-placeholder/index.tsx:42
+msgid "Open file…"
+msgstr "Abrir arquivo…"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:84
+msgid "Opens the List View panel by default."
+msgstr "Abrir o painel Visualização em lista por padrão."
+
+#: src/components/header-actions/index.tsx:141
+msgid "Open…"
+msgstr "Abrir…"
+
+#: src/components/header-actions/index.tsx:113
+msgid "Options"
+msgstr "Opções"
+
+#: src/components/preferences-modal/index.tsx:166
+#: src/components/header-actions/index.tsx:295
+msgid "Preferences"
+msgstr "Preferências"
+
+#: src/components/header-actions/index.tsx:316
+msgid "Remove"
+msgstr "Remover"
+
+#: src/components/header-actions/index.tsx:266
+msgid "Remove YAML front matter"
+msgstr "Remover front matter YAML"
+
+#: src/components/header-actions/index.tsx:310
+msgid "Remove YAML front matter?"
+msgstr "Remover o front matter YAML?"
+
+#: src/components/about-modal/index.tsx:132
+msgid "Report an issue"
+msgstr "Relatar um problema"
+
+#: src/components/preferences-modal/general-panel.tsx:111
+msgid "Restart the app to apply the new language."
+msgstr "Reinicie o aplicativo para aplicar o novo idioma."
+
+#: src/components/preferences-modal/code-editor-panel.tsx:102
+msgid "Restore default settings"
+msgstr "Restaurar configurações padrão"
+
+#: src/preferences/constants.ts:63
+msgid "Sans-serif"
+msgstr "Sem serifa"
+
+#: src/components/tabbar/index.tsx:195
+#: src/components/header-actions/index.tsx:103
+#: src/components/header-actions/index.tsx:149
+msgid "Save"
+msgstr "Salvar"
+
+#: src/components/header-actions/index.tsx:157
+msgid "Save As…"
+msgstr "Salvar como…"
+
+#: src/components/tabbar/index.tsx:203
+msgid "Save as…"
+msgstr "Salvar como…"
+
+#: src/hooks/use-shortcuts.ts:65
+msgid "Save the active file under a new name."
+msgstr "Salvar o arquivo ativo com um novo nome."
+
+#: src/hooks/use-shortcuts.ts:57
+msgid "Save the active file."
+msgstr "Salvar o arquivo ativo."
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:253
+msgid "Selection shortcuts"
+msgstr "Atalhos de seleção"
+
+#: src/preferences/constants.ts:67
+msgid "Serif"
+msgstr "Serifa"
+
+#: src/components/preferences-modal/general-panel.tsx:151
+msgid "Set as default for Markdown files"
+msgstr "Definir como padrão para arquivos Markdown"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:47
+#: src/components/preferences-modal/code-editor-panel.tsx:42
+msgid "Settings"
+msgstr "Configurações"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:90
+msgid "Show block breadcrumbs"
+msgstr "Mostrar o caminho dos blocos"
+
+#: src/components/preferences-modal/code-editor-panel.tsx:85
+msgid "Show line numbers"
+msgstr "Mostrar números de linha"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:68
+msgid "Spell check"
+msgstr "Verificação ortográfica"
+
+#: src/components/header-actions/index.tsx:189
+msgid "Spotlight mode"
+msgstr "Modo de destaque"
+
+#: src/preferences/constants.ts:51
+#: src/preferences/constants.ts:60
+msgid "System Default"
+msgstr "Padrão do sistema"
+
+#: src/components/preferences-modal/code-editor-panel.tsx:74
+msgid "Tab size"
+msgstr "Tamanho da tabulação"
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:261
+msgid "Text formatting"
+msgstr "Formatação de texto"
+
+#: src/components/header-actions/index.tsx:311
+msgid ""
+"The YAML front matter and all of its content will be removed from the "
+"document."
+msgstr "O front matter YAML e todo o seu conteúdo serão removidos do documento."
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:51
+#: src/components/preferences-modal/code-editor-panel.tsx:46
+msgid "Theme"
+msgstr "Tema"
+
+#: src/components/preferences-modal/general-panel.tsx:166
+msgid ""
+"This platform does not support setting the default app from inside "
+"MarkBricks. Please configure it from your system file manager."
+msgstr ""
+"Esta plataforma não permite definir o aplicativo padrão dentro do "
+"MarkBricks. Configure-o no gerenciador de arquivos do sistema."
+
+#: src/components/header-actions/index.tsx:239
+msgid "Tools"
+msgstr "Ferramentas"
+
+#: src/components/header-actions/index.tsx:173
+msgid "Top toolbar"
+msgstr "Barra de ferramentas superior"
+
+#: src/components/preferences-modal/visual-editor-panel.tsx:157
+msgid "Typeface used for the content area."
+msgstr "Fonte usada na área de conteúdo."
+
+#: src/hooks/use-auto-updater.ts:74
+#: src/components/tabbar/index.tsx:260
+#: src/components/dirty-confirm-dialog/index.tsx:51
+msgid "Unsaved changes"
+msgstr "Alterações não salvas"
+
+#: src/hooks/use-auto-updater.ts:43
+#: src/hooks/use-auto-updater.ts:93
+#: src/components/preferences-modal/general-panel.tsx:119
+msgid "Update"
+msgstr "Atualização"
+
+#: src/hooks/use-auto-updater.ts:57
+msgid "Update available"
+msgstr "Atualização disponível"
+
+# %s: error message
+#: src/hooks/use-auto-updater.ts:89
+msgid "Update check failed: %s"
+msgstr "Falha ao verificar atualizações: %s"
+
+#: src/components/header-actions/index.tsx:164
+msgid "View"
+msgstr "Visualizar"
+
+#: src/components/preferences-modal/index.tsx:188
+#: src/components/header-actions/index.tsx:219
+msgid "Visual editor"
+msgstr "Editor visual"
+
+#: src/components/preferences-modal/general-panel.tsx:147
+msgid "Working…"
+msgstr "Processando…"
+
+# %s: current version number
+#: src/hooks/use-auto-updater.ts:36
+msgid "You are using the latest version (%s)."
+msgstr "Você está usando a versão mais recente (%s)."
+
+#: src/hooks/use-auto-updater.ts:69
+msgid "You have unsaved changes. Please save them before updating."
+msgstr "Você tem alterações não salvas. Salve-as antes de atualizar."
+
+#: style.css
+#. Name of the generic
+msgid "mark-bricks-desktop"
+msgstr ""
