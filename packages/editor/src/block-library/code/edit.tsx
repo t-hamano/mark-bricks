@@ -18,8 +18,13 @@ import { Autocomplete, Field, Input } from '@wordpress/ui';
  */
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes } from './types';
-import { CODE_LANGUAGES, MERMAID_LANGUAGE } from '../hooks/code-languages';
+import {
+	CODE_LANGUAGES,
+	MATH_LANGUAGE,
+	MERMAID_LANGUAGE,
+} from '../hooks/code-languages';
 import { useCodeMirror } from '../hooks/use-code-mirror';
+import { MathPreview } from './math-preview';
 import { MermaidPreview } from './mermaid-preview';
 
 const LANGUAGE_SUGGESTIONS = Array.from(
@@ -43,8 +48,10 @@ export default function Edit( {
 		content instanceof RichTextData
 			? content.toPlainText()
 			: ( content ?? '' );
-	const isMermaid = language.trim().toLowerCase() === MERMAID_LANGUAGE;
-	const showEditor = ! isMermaid || isSelected;
+	const normalizedLanguage = language.trim().toLowerCase();
+	const isMermaid = normalizedLanguage === MERMAID_LANGUAGE;
+	const isMath = normalizedLanguage === MATH_LANGUAGE;
+	const showEditor = ( ! isMermaid && ! isMath ) || isSelected;
 
 	const { previousBlockClientId, nextBlockClientId } = useSelect(
 		( select ) => {
@@ -160,6 +167,7 @@ export default function Edit( {
 				{ isMermaid && (
 					<MermaidPreview code={ text } clientId={ clientId } />
 				) }
+				{ isMath && <MathPreview code={ text } /> }
 			</div>
 		</>
 	);

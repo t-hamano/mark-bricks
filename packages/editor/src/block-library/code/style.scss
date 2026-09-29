@@ -7,7 +7,8 @@
 	border: 1px solid var(--wpds-color-stroke-surface-neutral);
 
 	.cm-editor,
-	.wp-block-code__mermaid {
+	.wp-block-code__mermaid,
+	.wp-block-code__math {
 		padding: 1.5rem 1rem;
 	}
 
@@ -28,11 +29,12 @@
 		border-bottom-right-radius: 3px;
 	}
 
-	&:not(.is-selected):has(.wp-block-code__mermaid) {
+	&:not(.is-selected):has(.wp-block-code__mermaid, .wp-block-code__math) {
 		background: var(--wpds-color-background-surface-neutral);
 	}
 
-	.wp-block-code__mermaid-diagram {
+	.wp-block-code__mermaid-diagram,
+	.wp-block-code__math-formula {
 		background: var(--wpds-color-background-surface-neutral);
 		overflow-x: auto;
 		text-align: center;
@@ -44,7 +46,13 @@
 		}
 	}
 
-	.wp-block-code__mermaid-error-detail {
+	// Match the size KaTeX gives a formula in its own HTML output.
+	.wp-block-code__math-formula math {
+		font-size: 1.21em;
+	}
+
+	.wp-block-code__mermaid-error-detail,
+	.wp-block-code__math-error-detail {
 		margin: 0;
 		font-family: var(--wpds-typography-font-family-mono);
 		white-space: pre-wrap;
