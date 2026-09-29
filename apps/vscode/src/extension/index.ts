@@ -6,6 +6,7 @@ import * as vscode from 'vscode';
 /**
  * Internal dependencies
  */
+import type { CodePreviewReport } from '../shared/messages';
 import { MarkBricksEditorProvider } from './editor-provider';
 
 const SHADOWED_COMMANDS = [
@@ -29,6 +30,7 @@ function resolveActiveResource(): vscode.Uri | undefined {
 // messages between the host and the webview.
 export type ExtensionApi = {
 	isEditorRendered: ( uri: vscode.Uri ) => boolean;
+	getCodePreviews: ( uri: vscode.Uri ) => CodePreviewReport | null;
 };
 
 export function activate( context: vscode.ExtensionContext ): ExtensionApi {
@@ -66,6 +68,8 @@ export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 	return {
 		isEditorRendered: ( uri ) =>
 			MarkBricksEditorProvider.isEditorRendered( uri ),
+		getCodePreviews: ( uri ) =>
+			MarkBricksEditorProvider.getCodePreviews( uri ),
 	};
 }
 

@@ -40,6 +40,10 @@
 		"./editor-theme-provider": {
 			"types": "./src/components/editor-theme-provider/index.tsx",
 			"default": "./src/components/editor-theme-provider/index.tsx"
+		},
+		"./code-previews": {
+			"types": "./src/block-library/code/inspect-previews.ts",
+			"default": "./src/block-library/code/inspect-previews.ts"
 		}
 	},
 	"scripts": {

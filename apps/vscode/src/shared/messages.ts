@@ -3,6 +3,13 @@
  */
 import type { Settings, WritableSettingKey } from './settings';
 
+// What `inspectCodePreviews` from `@mark-bricks/editor` reports. Repeated
+// here because the extension is built without the DOM types it uses.
+export type CodePreviewReport = {
+	previews: Array< { language: string; status: string } >;
+	katexFonts: Array< { family: string; status: string } >;
+};
+
 // Why the webview cannot display an image.
 export type ImageError = 'insecureUrl' | 'outsideRoots';
 
@@ -46,6 +53,10 @@ export type WebviewMessage =
 	  }
 	| {
 			type: 'rendered';
+	  }
+	| {
+			type: 'codePreviews';
+			report: CodePreviewReport;
 	  }
 	| {
 			type: 'change';

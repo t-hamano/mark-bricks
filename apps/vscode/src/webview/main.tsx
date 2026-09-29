@@ -6,6 +6,7 @@ import {
 	BlockEditor,
 	type EditorHandle,
 } from '@mark-bricks/editor/block-editor';
+import { inspectCodePreviews } from '@mark-bricks/editor/code-previews';
 import { EditorThemeProvider } from '@mark-bricks/editor/editor-theme-provider';
 import { applyLocale as applyEditorLocale } from '@mark-bricks/editor/i18n';
 import { StrictMode, useEffect, useRef, useState } from 'react';
@@ -261,7 +262,12 @@ function App() {
 					/>
 				}
 				platform={ platform }
-				onRendered={ () => post( { type: 'rendered' } ) }
+				onRendered={ ( canvas ) => {
+					post( { type: 'rendered' } );
+					void inspectCodePreviews( canvas ).then( ( report ) =>
+						post( { type: 'codePreviews', report } )
+					);
+				} }
 			/>
 		</EditorThemeProvider>
 	);
