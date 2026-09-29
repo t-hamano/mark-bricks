@@ -12,6 +12,35 @@ const TEXT_DOMAIN = 'mark-bricks';
 export const LOCALES = [
 	{ code: 'en', name: 'English', tags: [ 'en' ] },
 	{ code: 'ja', name: '日本語', tags: [ 'ja' ] },
+	{
+		code: 'zh_CN',
+		name: '简体中文',
+		tags: [ 'zh', 'zh-cn', 'zh-sg', 'zh-hans', 'zh-hans-cn', 'zh-hans-sg' ],
+	},
+	{
+		code: 'zh_TW',
+		name: '繁體中文',
+		tags: [
+			'zh-tw',
+			'zh-hk',
+			'zh-mo',
+			'zh-hant',
+			'zh-hant-tw',
+			'zh-hant-hk',
+			'zh-hant-mo',
+		],
+	},
+	{ code: 'fr_FR', name: 'Français', tags: [ 'fr' ] },
+	{ code: 'de_DE', name: 'Deutsch', tags: [ 'de' ] },
+	{ code: 'it_IT', name: 'Italiano', tags: [ 'it' ] },
+	{ code: 'es_ES', name: 'Español', tags: [ 'es' ] },
+	{ code: 'ko_KR', name: '한국어', tags: [ 'ko' ] },
+	{ code: 'ru_RU', name: 'Русский', tags: [ 'ru' ] },
+	{ code: 'pt_BR', name: 'Português do Brasil', tags: [ 'pt' ] },
+	{ code: 'tr_TR', name: 'Türkçe', tags: [ 'tr' ] },
+	{ code: 'pl_PL', name: 'Polski', tags: [ 'pl' ] },
+	{ code: 'cs_CZ', name: 'Čeština', tags: [ 'cs' ] },
+	{ code: 'hu_HU', name: 'Magyar', tags: [ 'hu' ] },
 ] as const;
 
 export type Locale = ( typeof LOCALES )[ number ][ 'code' ];
