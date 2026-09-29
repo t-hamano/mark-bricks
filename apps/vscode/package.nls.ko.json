@@ -1,0 +1,22 @@
+{
+	"description": "WordPress 블록 편집기 기반의 시각적 Markdown 편집기입니다.",
+	"customEditor.visualEditor.displayName": "시각적 편집기",
+	"command.openVisual.title": "MarkBricks로 열기",
+	"command.openText.title": "텍스트 편집기로 열기",
+	"config.showListViewByDefault.description": "기본적으로 목록 보기 패널을 엽니다.",
+	"config.showBlockBreadcrumbs.description": "편집기 하단에 블록 계층 경로를 표시합니다.",
+	"config.topToolbar.description": "모든 블록 및 문서 도구를 한 곳에서 사용합니다.",
+	"config.spotlightMode.description": "한 번에 하나의 블록에 집중합니다.",
+	"config.contentWidth.description": "콘텐츠 영역의 최대 너비(픽셀)입니다.",
+	"config.fontSize.description": "콘텐츠 영역의 기본 글꼴 크기(픽셀)입니다.",
+	"config.fontFamily.description": "콘텐츠 영역에 사용할 서체입니다.",
+	"config.fontFamily.system": "시스템 기본값",
+	"config.fontFamily.sansSerif": "산세리프",
+	"config.fontFamily.serif": "세리프",
+	"config.fontFamily.monospace": "고정폭",
+	"config.fontFamily.handwriting": "손글씨",
+	"config.theme.description": "시각적 편집기의 모양입니다. 기본적으로 VS Code 색 테마를 따릅니다.",
+	"config.theme.auto": "색 테마에 맞춤",
+	"config.theme.light": "밝게",
+	"config.theme.dark": "어둡게"
+}

@@ -1,0 +1,90 @@
+# Copyright (C) 2026 mark-bricks-vscode
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: mark-bricks-vscode 0.1.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"POT-Creation-Date: 2026-09-27T04:06:33.250Z\n"
+"PO-Revision-Date: 2026-09-29T01:21:32.379Z\n"
+"Last-Translator: Aki Hamano <->\n"
+"Language-Team: Aki Hamano <->\n"
+"X-Generator: @wp-blocks/make-pot 1.6.6\n"
+"Language: cs_CZ\n"
+"X-Domain: mark-bricks\n"
+
+#: style.css
+#. Description of the generic
+msgid "%description%"
+msgstr ""
+
+#: src/webview/header-actions/index.tsx:65
+msgid "Access all block and document tools in a single place"
+msgstr "Přístup ke všem nástrojům bloků a dokumentu na jednom místě"
+
+#: src/webview/header-actions/index.tsx:100
+msgid "Add YAML front matter"
+msgstr "Přidat YAML front matter"
+
+#: style.css
+#. Author of the generic
+msgid "Aki Hamano"
+msgstr ""
+
+#: src/webview/header-actions/index.tsx:81
+msgid "Focus on one block at a time"
+msgstr "Soustředit se vždy na jeden blok"
+
+#: src/webview/header-actions/index.tsx:102
+msgid "Hide YAML front matter"
+msgstr "Skrýt YAML front matter"
+
+#: src/webview/main.tsx:83
+msgid "Images from HTTP URLs cannot be displayed. Use an HTTPS URL instead."
+msgstr ""
+"Obrázky z adres URL HTTP nelze zobrazit. Použijte místo toho adresu URL "
+"HTTPS."
+
+#: src/webview/main.tsx:91
+msgid ""
+"Only images in the folder of the document or in a workspace folder can be "
+"displayed."
+msgstr ""
+"Zobrazit lze pouze obrázky ve složce dokumentu nebo ve složce pracovního "
+"prostoru."
+
+#: src/webview/header-actions/index.tsx:40
+msgid "Options"
+msgstr "Možnosti"
+
+#: src/webview/header-actions/index.tsx:105
+msgid "Remove YAML front matter"
+msgstr "Odebrat YAML front matter"
+
+#: src/webview/header-actions/index.tsx:115
+msgid "Settings"
+msgstr "Nastavení"
+
+#: src/webview/header-actions/index.tsx:78
+msgid "Spotlight mode"
+msgstr "Režim zvýraznění"
+
+#: src/webview/header-actions/index.tsx:91
+msgid "Tools"
+msgstr "Nástroje"
+
+#: src/webview/header-actions/index.tsx:62
+msgid "Top toolbar"
+msgstr "Horní panel nástrojů"
+
+#: src/webview/header-actions/index.tsx:53
+msgid "View"
+msgstr "Zobrazení"
+
+#: style.css
+#. Name of the generic
+msgid "mark-bricks-vscode"
+msgstr ""

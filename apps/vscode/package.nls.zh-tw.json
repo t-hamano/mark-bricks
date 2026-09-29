@@ -1,0 +1,22 @@
+{
+	"description": "採用 WordPress 區塊編輯器的視覺化 Markdown 編輯器。",
+	"customEditor.visualEditor.displayName": "視覺化編輯器",
+	"command.openVisual.title": "以 MarkBricks 開啟",
+	"command.openText.title": "以文字編輯器開啟",
+	"config.showListViewByDefault.description": "預設開啟清單檢視面板。",
+	"config.showBlockBreadcrumbs.description": "在編輯器底部顯示區塊階層路徑。",
+	"config.topToolbar.description": "在同一處存取所有區塊和文件工具。",
+	"config.spotlightMode.description": "一次專注於一個區塊。",
+	"config.contentWidth.description": "內容區域的最大寬度 (像素)。",
+	"config.fontSize.description": "內容區域的基本字型大小 (像素)。",
+	"config.fontFamily.description": "內容區域使用的字體。",
+	"config.fontFamily.system": "系統預設",
+	"config.fontFamily.sansSerif": "無襯線",
+	"config.fontFamily.serif": "襯線",
+	"config.fontFamily.monospace": "等寬",
+	"config.fontFamily.handwriting": "手寫",
+	"config.theme.description": "視覺化編輯器的外觀。預設會跟隨 VS Code 色彩佈景主題。",
+	"config.theme.auto": "符合色彩佈景主題",
+	"config.theme.light": "淺色",
+	"config.theme.dark": "深色"
+}

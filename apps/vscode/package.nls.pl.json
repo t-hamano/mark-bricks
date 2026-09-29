@@ -1,0 +1,22 @@
+{
+	"description": "Wizualny edytor Markdown oparty na edytorze blokowym WordPress.",
+	"customEditor.visualEditor.displayName": "Edytor wizualny",
+	"command.openVisual.title": "Otwórz w MarkBricks",
+	"command.openText.title": "Otwórz w edytorze tekstu",
+	"config.showListViewByDefault.description": "Domyślnie otwieraj panel Widok listy.",
+	"config.showBlockBreadcrumbs.description": "Wyświetlaj hierarchię bloków na dole edytora.",
+	"config.topToolbar.description": "Dostęp do wszystkich narzędzi bloków i dokumentu w jednym miejscu.",
+	"config.spotlightMode.description": "Skup się na jednym bloku naraz.",
+	"config.contentWidth.description": "Maksymalna szerokość obszaru treści w pikselach.",
+	"config.fontSize.description": "Bazowy rozmiar czcionki obszaru treści w pikselach.",
+	"config.fontFamily.description": "Krój pisma używany w obszarze treści.",
+	"config.fontFamily.system": "Domyślna systemowa",
+	"config.fontFamily.sansSerif": "Bezszeryfowa",
+	"config.fontFamily.serif": "Szeryfowa",
+	"config.fontFamily.monospace": "O stałej szerokości",
+	"config.fontFamily.handwriting": "Odręczna",
+	"config.theme.description": "Wygląd edytora wizualnego. Domyślnie zgodny z motywem kolorów VS Code.",
+	"config.theme.auto": "Zgodnie z motywem kolorów",
+	"config.theme.light": "Jasny",
+	"config.theme.dark": "Ciemny"
+}

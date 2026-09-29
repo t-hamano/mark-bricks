@@ -1,0 +1,22 @@
+{
+	"description": "Vizuální editor Markdownu založený na blokovém editoru WordPress.",
+	"customEditor.visualEditor.displayName": "Vizuální editor",
+	"command.openVisual.title": "Otevřít v MarkBricks",
+	"command.openText.title": "Otevřít v textovém editoru",
+	"config.showListViewByDefault.description": "Ve výchozím nastavení otevřít panel Zobrazení seznamu.",
+	"config.showBlockBreadcrumbs.description": "Zobrazit hierarchii bloků v dolní části editoru.",
+	"config.topToolbar.description": "Přístup ke všem nástrojům bloků a dokumentu na jednom místě.",
+	"config.spotlightMode.description": "Soustředit se vždy na jeden blok.",
+	"config.contentWidth.description": "Maximální šířka oblasti obsahu v pixelech.",
+	"config.fontSize.description": "Základní velikost písma oblasti obsahu v pixelech.",
+	"config.fontFamily.description": "Písmo použité v oblasti obsahu.",
+	"config.fontFamily.system": "Výchozí systémové",
+	"config.fontFamily.sansSerif": "Bezpatkové",
+	"config.fontFamily.serif": "Patkové",
+	"config.fontFamily.monospace": "Neproporcionální",
+	"config.fontFamily.handwriting": "Ručně psané",
+	"config.theme.description": "Vzhled vizuálního editoru. Ve výchozím nastavení se řídí barevným motivem VS Code.",
+	"config.theme.auto": "Podle barevného motivu",
+	"config.theme.light": "Světlý",
+	"config.theme.dark": "Tmavý"
+}

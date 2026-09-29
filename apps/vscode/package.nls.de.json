@@ -1,0 +1,22 @@
+{
+	"description": "Visueller Markdown-Editor auf Basis des WordPress-Blockeditors.",
+	"customEditor.visualEditor.displayName": "Visueller Editor",
+	"command.openVisual.title": "Mit MarkBricks öffnen",
+	"command.openText.title": "Mit Text-Editor öffnen",
+	"config.showListViewByDefault.description": "Das Listenansicht-Panel standardmäßig öffnen.",
+	"config.showBlockBreadcrumbs.description": "Die Blockhierarchie am unteren Rand des Editors anzeigen.",
+	"config.topToolbar.description": "Alle Block- und Dokumentwerkzeuge an einem Ort aufrufen.",
+	"config.spotlightMode.description": "Auf jeweils einen Block konzentrieren.",
+	"config.contentWidth.description": "Maximale Breite des Inhaltsbereichs in Pixeln.",
+	"config.fontSize.description": "Basis-Schriftgröße des Inhaltsbereichs in Pixeln.",
+	"config.fontFamily.description": "Schriftart des Inhaltsbereichs.",
+	"config.fontFamily.system": "Systemstandard",
+	"config.fontFamily.sansSerif": "Serifenlos",
+	"config.fontFamily.serif": "Serif",
+	"config.fontFamily.monospace": "Monospace",
+	"config.fontFamily.handwriting": "Handschrift",
+	"config.theme.description": "Darstellung des visuellen Editors. Folgt standardmäßig dem VS Code-Farbdesign.",
+	"config.theme.auto": "An Farbdesign anpassen",
+	"config.theme.light": "Hell",
+	"config.theme.dark": "Dunkel"
+}
