@@ -1,0 +1,22 @@
+{
+	"description": "Визуальный редактор Markdown на основе редактора блоков WordPress.",
+	"customEditor.visualEditor.displayName": "Визуальный редактор",
+	"command.openVisual.title": "Открыть в MarkBricks",
+	"command.openText.title": "Открыть в текстовом редакторе",
+	"config.showListViewByDefault.description": "Открывать панель «Обзор списком» по умолчанию.",
+	"config.showBlockBreadcrumbs.description": "Показывать иерархию блоков в нижней части редактора.",
+	"config.topToolbar.description": "Доступ ко всем инструментам блоков и документа в одном месте.",
+	"config.spotlightMode.description": "Фокусировка на одном блоке.",
+	"config.contentWidth.description": "Максимальная ширина области содержимого в пикселях.",
+	"config.fontSize.description": "Базовый размер шрифта области содержимого в пикселях.",
+	"config.fontFamily.description": "Шрифт области содержимого.",
+	"config.fontFamily.system": "Системный по умолчанию",
+	"config.fontFamily.sansSerif": "Без засечек",
+	"config.fontFamily.serif": "С засечками",
+	"config.fontFamily.monospace": "Моноширинный",
+	"config.fontFamily.handwriting": "Рукописный",
+	"config.theme.description": "Оформление визуального редактора. По умолчанию следует цветовой теме VS Code.",
+	"config.theme.auto": "Как в цветовой теме",
+	"config.theme.light": "Светлая",
+	"config.theme.dark": "Темная"
+}
