@@ -48,10 +48,12 @@ async fn take_pending_documents(
     .await
 }
 
-/// Prints that `path` rendered, for the smoke test (`MARK_BRICKS_SMOKE_TEST`).
+/// Prints that `path` rendered, and how its code block previews rendered, for
+/// the smoke test (`MARK_BRICKS_SMOKE_TEST`).
 #[tauri::command]
-fn report_rendered(path: String) {
+fn report_rendered(path: String, previews: serde_json::Value) {
     if std::env::var_os("MARK_BRICKS_SMOKE_TEST").is_some() {
+        println!("[smoke] previews: {previews}");
         println!("[smoke] rendered: {path}");
     }
 }

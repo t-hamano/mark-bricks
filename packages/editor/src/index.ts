@@ -24,3 +24,8 @@ export {
 	type ShortcutKeyCombinationData,
 	type ShortcutEntry,
 } from './components/keyboard-shortcuts/hooks';
+export {
+	inspectCodePreviews,
+	type CodePreviewReport,
+	type CodePreviewStatus,
+} from './block-library/code/inspect-previews';

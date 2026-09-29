@@ -2,7 +2,9 @@
 /**
  * Smoke test: opens a copy of `@mark-bricks/fixtures/smoke-test.md` in the
  * debug binary and waits for `report_rendered` to print that its blocks
- * rendered. Uses `xvfb-run` on headless Linux.
+ * rendered. Also checks that its `math` and `mermaid` previews rendered and
+ * that the KaTeX fonts loaded, which the app's CSP could block. Uses
+ * `xvfb-run` on headless Linux.
  */
 import { spawn, spawnSync } from 'node:child_process';
 import { copyFile, mkdtemp, rm } from 'node:fs/promises';
@@ -58,6 +60,8 @@ const child = spawn( cmd, args, {
 } );
 
 const expectedLine = `[smoke] rendered: ${ documentPath }`;
+const PREVIEWS_PREFIX = '[smoke] previews: ';
+let previews = null;
 
 const failure = await new Promise( ( resolve ) => {
 	const timer = setTimeout(
@@ -74,8 +78,11 @@ const failure = await new Promise( ( resolve ) => {
 
 	createInterface( { input: child.stdout } ).on( 'line', ( line ) => {
 		console.log( line );
+		if ( line.startsWith( PREVIEWS_PREFIX ) ) {
+			previews = JSON.parse( line.slice( PREVIEWS_PREFIX.length ) );
+		}
 		if ( line.trim() === expectedLine ) {
-			finish( null );
+			finish( checkPreviews( previews ) );
 		}
 	} );
 	child.on( 'exit', ( code, signal ) =>
@@ -105,6 +112,36 @@ if ( failure ) {
 
 console.log( '[smoke] OK' );
 process.exit( 0 );
+
+/**
+ * Checks the report of `inspectCodePreviews` from `@mark-bricks/editor`.
+ *
+ * @param {import('@mark-bricks/editor').CodePreviewReport | null} report
+ * @return {string | null} What went wrong, or null.
+ */
+function checkPreviews( report ) {
+	if ( ! report ) {
+		return 'the app did not report the code block previews';
+	}
+	for ( const language of [ 'math', 'mermaid' ] ) {
+		const preview = report.previews.find(
+			( item ) => item.language === language
+		);
+		if ( preview?.status !== 'rendered' ) {
+			return `the ${ language } preview is ${ preview?.status ?? 'missing' }`;
+		}
+	}
+	if ( report.katexFonts.length === 0 ) {
+		return 'no KaTeX font was loaded';
+	}
+	const failed = report.katexFonts.filter(
+		( font ) => font.status !== 'loaded'
+	);
+	if ( failed.length > 0 ) {
+		return `KaTeX fonts did not load: ${ JSON.stringify( failed ) }`;
+	}
+	return null;
+}
 
 function sleep( ms ) {
 	return new Promise( ( resolve ) => setTimeout( resolve, ms ) );
