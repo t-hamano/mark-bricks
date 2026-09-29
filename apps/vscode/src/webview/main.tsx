@@ -56,12 +56,9 @@ let checkImageRequestSeq = 0;
 // Blob URLs by webview resource URI, so each file is fetched once.
 const blobUrls = new Map< string, Promise< string > >();
 
-// Turns a webview resource URI into a Blob URL. The block canvas is a Blob
-// URL document, and VS Code's service worker finds the webview a resource
-// request belongs to by the `id` query of the requesting document's URL,
-// which a Blob URL does not have. So resource URIs fail to load in the
-// canvas; this document fetches them instead and hands over a Blob URL,
-// which the canvas can load since it shares this document's origin.
+// The block canvas is a Blob URL document, which lacks the `id` query VS
+// Code's service worker needs to serve webview resources. So fetch them here
+// and hand over a same-origin Blob URL instead.
 function toBlobUrl( uri: string ): Promise< string > {
 	let blobUrl = blobUrls.get( uri );
 	if ( ! blobUrl ) {
@@ -74,8 +71,6 @@ function toBlobUrl( uri: string ): Promise< string > {
 			} )
 			.then( ( blob ) => URL.createObjectURL( blob ) )
 			.catch( () => {
-				// Leave it to the image to show as broken, and retry the
-				// next time.
 				blobUrls.delete( uri );
 				return uri;
 			} );
@@ -101,8 +96,7 @@ const platform: Partial< Platform > = {
 			pendingImageRequests.set( requestId, resolve );
 			post( { type: 'resolveImage', requestId, path } );
 		} );
-		// The host returns URLs as is and local files as webview resource
-		// URIs.
+		// Only local files come back as webview resource URIs.
 		return src === path ? src : toBlobUrl( src );
 	},
 	// The webview blocks `http:` URLs and can only load local images inside
