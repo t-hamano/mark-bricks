@@ -14,5 +14,9 @@
 	"config.fontFamily.sansSerif": "サンセリフ",
 	"config.fontFamily.serif": "セリフ",
 	"config.fontFamily.monospace": "等幅",
-	"config.fontFamily.handwriting": "手書き"
+	"config.fontFamily.handwriting": "手書き",
+	"config.theme.description": "ビジュアルエディターの外観。デフォルトでは VS Code のカラーテーマに従います。",
+	"config.theme.auto": "カラーテーマに合わせる",
+	"config.theme.light": "ライト",
+	"config.theme.dark": "ダーク"
 }

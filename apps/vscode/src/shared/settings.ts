@@ -4,6 +4,17 @@
 import type { FontFamily } from '@mark-bricks/editor/font-families';
 
 /**
+ * Visual editor appearance. `auto` follows the VS Code color theme.
+ */
+export type ThemeSetting = 'auto' | 'light' | 'dark';
+
+export const THEME_SETTINGS: readonly ThemeSetting[] = [
+	'auto',
+	'light',
+	'dark',
+];
+
+/**
  * The `markBricks.*` configuration, keyed without the section prefix. Mirrors
  * `contributes.configuration` in `package.json`, including its defaults.
  */
@@ -15,6 +26,7 @@ export type Settings = {
 	contentWidth: number;
 	fontSize: number;
 	fontFamily: FontFamily;
+	theme: ThemeSetting;
 };
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -25,6 +37,7 @@ export const DEFAULT_SETTINGS: Settings = {
 	contentWidth: 700,
 	fontSize: 13,
 	fontFamily: 'system',
+	theme: 'auto',
 };
 
 /**

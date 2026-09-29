@@ -74,32 +74,49 @@
 		"configuration": {
 			"title": "MarkBricks",
 			"properties": {
+				"markBricks.theme": {
+					"type": "string",
+					"scope": "resource",
+					"enum": [
+						"auto",
+						"light",
+						"dark"
+					],
+					"enumItemLabels": [
+						"%config.theme.auto%",
+						"%config.theme.light%",
+						"%config.theme.dark%"
+					],
+					"default": "auto",
+					"order": 0,
+					"description": "%config.theme.description%"
+				},
 				"markBricks.showListViewByDefault": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": false,
-					"order": 0,
+					"order": 1,
 					"description": "%config.showListViewByDefault.description%"
 				},
 				"markBricks.showBlockBreadcrumbs": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": true,
-					"order": 1,
+					"order": 2,
 					"description": "%config.showBlockBreadcrumbs.description%"
 				},
 				"markBricks.topToolbar": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": false,
-					"order": 2,
+					"order": 3,
 					"description": "%config.topToolbar.description%"
 				},
 				"markBricks.spotlightMode": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": false,
-					"order": 3,
+					"order": 4,
 					"description": "%config.spotlightMode.description%"
 				},
 				"markBricks.contentWidth": {
@@ -108,7 +125,7 @@
 					"default": 700,
 					"minimum": 400,
 					"maximum": 1600,
-					"order": 4,
+					"order": 5,
 					"description": "%config.contentWidth.description%"
 				},
 				"markBricks.fontSize": {
@@ -117,7 +134,7 @@
 					"default": 13,
 					"minimum": 10,
 					"maximum": 24,
-					"order": 5,
+					"order": 6,
 					"description": "%config.fontSize.description%"
 				},
 				"markBricks.fontFamily": {
@@ -138,7 +155,7 @@
 						"%config.fontFamily.handwriting%"
 					],
 					"default": "system",
-					"order": 6,
+					"order": 7,
 					"description": "%config.fontFamily.description%"
 				}
 			}

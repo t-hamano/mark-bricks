@@ -14,5 +14,9 @@
 	"config.fontFamily.sansSerif": "Sans-serif",
 	"config.fontFamily.serif": "Serif",
 	"config.fontFamily.monospace": "Monospace",
-	"config.fontFamily.handwriting": "Handwriting"
+	"config.fontFamily.handwriting": "Handwriting",
+	"config.theme.description": "Appearance of the visual editor. Follows the VS Code color theme by default.",
+	"config.theme.auto": "Match Color Theme",
+	"config.theme.light": "Light",
+	"config.theme.dark": "Dark"
 }
