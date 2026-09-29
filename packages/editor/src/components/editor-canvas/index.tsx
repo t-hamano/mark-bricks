@@ -28,6 +28,7 @@ import { FrontMatterEditor } from '../front-matter-editor';
 import { useInlineImageSources } from '../../format-library/image/use-inline-image-sources';
 import { unlock } from '../../lock-unlock';
 import { useEditorTheme } from '../editor-theme-provider';
+import { useKatexStyles } from '../../katex';
 
 const { ExperimentalBlockCanvas } = unlock( blockEditorPrivateApis );
 
@@ -39,9 +40,15 @@ type Props = {
 
 export function EditorCanvas( { styles, spellCheck, onRendered }: Props ) {
 	const theme = useEditorTheme();
+	const katexStyles = useKatexStyles();
 	const canvasStyles = useMemo(
-		() => [ ...styles, { css: `:root { color-scheme: ${ theme }; }` } ],
-		[ styles, theme ]
+		() => [
+			// First, so that the other styles can override KaTeX's.
+			...( katexStyles ? [ { css: katexStyles } ] : [] ),
+			...styles,
+			{ css: `:root { color-scheme: ${ theme }; }` },
+		],
+		[ katexStyles, styles, theme ]
 	);
 	const contentRef = useMergeRefs( [
 		usePaddingAppender( true ),

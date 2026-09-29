@@ -26,6 +26,12 @@ export type Platform = {
 	 * this path, or `null` when it can. Omitted when any path works.
 	 */
 	getImageNotice?: ( path: string ) => Promise< string | null >;
+	/**
+	 * Converts the URL of an asset bundled with the editor, such as a KaTeX
+	 * font, into one the block canvas can load. Omitted when the canvas can
+	 * load the bundled URLs.
+	 */
+	resolveAssetUrl?: ( url: string ) => Promise< string >;
 };
 
 const defaultPlatform: Platform = {

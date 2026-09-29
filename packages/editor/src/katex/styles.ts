@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import { useEffect, useState } from 'react';
 import katexCss from 'katex/dist/katex.min.css?raw';
 import AMSRegular from 'katex/dist/fonts/KaTeX_AMS-Regular.woff2?url&no-inline';
 import CaligraphicBold from 'katex/dist/fonts/KaTeX_Caligraphic-Bold.woff2?url&no-inline';
@@ -22,6 +23,11 @@ import Size2Regular from 'katex/dist/fonts/KaTeX_Size2-Regular.woff2?url&no-inli
 import Size3Regular from 'katex/dist/fonts/KaTeX_Size3-Regular.woff2?url&no-inline';
 import Size4Regular from 'katex/dist/fonts/KaTeX_Size4-Regular.woff2?url&no-inline';
 import TypewriterRegular from 'katex/dist/fonts/KaTeX_Typewriter-Regular.woff2?url&no-inline';
+
+/**
+ * Internal dependencies
+ */
+import { usePlatform } from '../platform';
 
 /**
  * The WOFF2 file of each KaTeX font, as a URL the bundler resolves for the
@@ -65,15 +71,17 @@ const FONT_SRC_PATTERN = /src:url\(fonts\/(KaTeX_[\w-]+)\.woff2\)[^;}]*/g;
  * the bundler, which makes them resolve from the block canvas as well: the
  * canvas document has a `<base>` of the editor page.
  *
- * @param css KaTeX's stylesheet.
+ * @param css  KaTeX's stylesheet.
+ * @param urls The URL of each font, by name.
  * @return The stylesheet with the rewritten font sources. A font missing from
- *         {@link KATEX_FONT_URLS} keeps its original sources.
+ *         `urls` keeps its original sources.
  */
-export function rewriteFontSources( css: string ): string {
+export function rewriteFontSources(
+	css: string,
+	urls: Record< string, string > = KATEX_FONT_URLS
+): string {
 	return css.replace( FONT_SRC_PATTERN, ( match, name: string ) =>
-		name in KATEX_FONT_URLS
-			? `src:url(${ KATEX_FONT_URLS[ name ] }) format("woff2")`
-			: match
+		name in urls ? `src:url(${ urls[ name ] }) format("woff2")` : match
 	);
 }
 
@@ -81,3 +89,43 @@ export function rewriteFontSources( css: string ): string {
  * KaTeX's stylesheet for the block canvas.
  */
 export const katexStyles = rewriteFontSources( katexCss );
+
+/**
+ * Returns KaTeX's stylesheet with each font at the URL the platform resolves
+ * it to, or null while the URLs resolve.
+ */
+export function useKatexStyles(): string | null {
+	const { resolveAssetUrl } = usePlatform();
+	const [ styles, setStyles ] = useState< string | null >( () =>
+		resolveAssetUrl ? null : katexStyles
+	);
+
+	useEffect( () => {
+		if ( ! resolveAssetUrl ) {
+			setStyles( katexStyles );
+			return;
+		}
+
+		let cancelled = false;
+		Promise.all(
+			Object.entries( KATEX_FONT_URLS ).map( async ( [ name, url ] ) => [
+				name,
+				await resolveAssetUrl( url ),
+			] )
+		).then( ( entries ) => {
+			if ( ! cancelled ) {
+				setStyles(
+					rewriteFontSources(
+						katexCss,
+						Object.fromEntries( entries )
+					)
+				);
+			}
+		} );
+		return () => {
+			cancelled = true;
+		};
+	}, [ resolveAssetUrl ] );
+
+	return styles;
+}
