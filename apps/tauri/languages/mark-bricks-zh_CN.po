@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:29.691Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:36.660Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -24,7 +24,7 @@ msgstr "“%s”有未保存的更改。要放弃更改并关闭吗？"
 #: src/store/reducer.ts:46
 #: src/store/constants.ts:13
 msgid "(Untitled)"
-msgstr "(无标题)"
+msgstr "(未命名)"
 
 #: src/components/header-actions/index.tsx:286
 #: src/components/about-modal/index.tsx:80
@@ -33,7 +33,7 @@ msgstr "关于 MarkBricks"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "在一个位置访问所有区块和文档工具"
+msgstr "在一个位置访问所有的区块和文档工具"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -156,7 +156,7 @@ msgstr "文件"
 
 #: src/components/header-actions/index.tsx:192
 msgid "Focus on one block at a time"
-msgstr "一次专注于一个区块"
+msgstr "集中注意力在一个区块上"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
@@ -262,7 +262,7 @@ msgstr "打开文件…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "默认打开列表视图面板。"
+msgstr "默认情况下打开列表视图的侧边栏。"
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -329,7 +329,7 @@ msgstr "保存当前文件。"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:253
 msgid "Selection shortcuts"
-msgstr "选择快捷键"
+msgstr "选定快捷键"
 
 #: src/preferences/constants.ts:67
 msgid "Serif"
@@ -346,7 +346,7 @@ msgstr "设置"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
-msgstr "显示区块路径"
+msgstr "显示区块面包屑"
 
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
@@ -358,7 +358,7 @@ msgstr "拼写检查"
 
 #: src/components/header-actions/index.tsx:189
 msgid "Spotlight mode"
-msgstr "聚焦模式"
+msgstr "焦点模式"
 
 #: src/preferences/constants.ts:51
 #: src/preferences/constants.ts:60
@@ -371,7 +371,7 @@ msgstr "制表符宽度"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:261
 msgid "Text formatting"
-msgstr "文本格式"
+msgstr "文字内容格式化"
 
 #: src/components/header-actions/index.tsx:311
 msgid ""

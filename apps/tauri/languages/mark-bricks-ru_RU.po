@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:32.671Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:42.672Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,7 +33,7 @@ msgstr "О MarkBricks"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "Доступ ко всем инструментам блоков и документа в одном месте"
+msgstr "Доступ ко всем блокам и инструментам в одном месте"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -46,7 +46,7 @@ msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
-msgstr "Всегда открывать обзор списком"
+msgstr "Всегда открывать список"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -54,7 +54,7 @@ msgstr "Базовый размер шрифта области содержим
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:257
 msgid "Block shortcuts"
-msgstr "Сочетания клавиш для блоков"
+msgstr "Горячие клавиши (блоки)"
 
 #: src/components/header-actions/index.tsx:315
 #: src/components/dirty-confirm-dialog/index.tsx:60
@@ -158,7 +158,7 @@ msgstr "Файлы"
 
 #: src/components/header-actions/index.tsx:192
 msgid "Focus on one block at a time"
-msgstr "Фокусировка на одном блоке"
+msgstr "Сосредоточьтесь на одном блоке"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
@@ -175,7 +175,7 @@ msgstr "Общие"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:249
 msgid "Global shortcuts"
-msgstr "Глобальные сочетания клавиш"
+msgstr "Горячие клавиши (общие)"
 
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
@@ -200,7 +200,7 @@ msgstr "Изображения с относительными путями от
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:279
 msgid "Keyboard shortcuts"
-msgstr "Сочетания клавиш"
+msgstr "Горячие клавиши"
 
 #: src/components/preferences-modal/general-panel.tsx:93
 #: src/components/preferences-modal/general-panel.tsx:98
@@ -264,7 +264,7 @@ msgstr "Открыть файл…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "Открывать панель «Обзор списком» по умолчанию."
+msgstr "По умолчанию открывает панель List View."
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -277,7 +277,7 @@ msgstr "Параметры"
 #: src/components/preferences-modal/index.tsx:166
 #: src/components/header-actions/index.tsx:295
 msgid "Preferences"
-msgstr "Настройки"
+msgstr "Предпочтения"
 
 #: src/components/header-actions/index.tsx:316
 msgid "Remove"
@@ -331,7 +331,7 @@ msgstr "Сохранить активный файл."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:253
 msgid "Selection shortcuts"
-msgstr "Сочетания клавиш для выделения"
+msgstr "Горячие клавиши (выбор)"
 
 #: src/preferences/constants.ts:67
 msgid "Serif"
@@ -348,7 +348,7 @@ msgstr "Настройки"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
-msgstr "Показывать цепочку блоков"
+msgstr "Показать блок \"хлебных крошек\""
 
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
@@ -360,7 +360,7 @@ msgstr "Проверка орфографии"
 
 #: src/components/header-actions/index.tsx:189
 msgid "Spotlight mode"
-msgstr "Режим фокусировки"
+msgstr "Режим подсветки"
 
 #: src/preferences/constants.ts:51
 #: src/preferences/constants.ts:60

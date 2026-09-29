@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:34.082Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:45.232Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -24,7 +24,7 @@ msgstr "„%s” zawiera niezapisane zmiany. Czy odrzucić je i zamknąć?"
 #: src/store/reducer.ts:46
 #: src/store/constants.ts:13
 msgid "(Untitled)"
-msgstr "(Bez tytułu)"
+msgstr "(Bez nazwy)"
 
 #: src/components/header-actions/index.tsx:286
 #: src/components/about-modal/index.tsx:80
@@ -33,7 +33,9 @@ msgstr "O MarkBricks"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "Dostęp do wszystkich narzędzi bloków i dokumentu w jednym miejscu"
+msgstr ""
+"Uzyskaj dostęp do wszystkich narzędzi blokowych i dokumentowych w jednym "
+"miejscu"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -156,11 +158,11 @@ msgstr "Pliki"
 
 #: src/components/header-actions/index.tsx:192
 msgid "Focus on one block at a time"
-msgstr "Skup się na jednym bloku naraz"
+msgstr "Skup się na jednym bloku na raz"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
-msgstr "Rodzina czcionek"
+msgstr "Rodzina kroju pisma"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:124
 #: src/components/preferences-modal/code-editor-panel.tsx:63
@@ -173,7 +175,7 @@ msgstr "Ogólne"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:249
 msgid "Global shortcuts"
-msgstr "Skróty globalne"
+msgstr "Globalne skróty"
 
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
@@ -198,7 +200,7 @@ msgstr "Obrazy ze ścieżkami względnymi są wyświetlane po zapisaniu dokument
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:279
 msgid "Keyboard shortcuts"
-msgstr "Skróty klawiszowe"
+msgstr "Skróty klawiaturowe"
 
 #: src/components/preferences-modal/general-panel.tsx:93
 #: src/components/preferences-modal/general-panel.tsx:98
@@ -262,7 +264,7 @@ msgstr "Otwórz plik…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "Domyślnie otwieraj panel Widok listy."
+msgstr "Domyślnie otwiera panel widoku listy."
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -346,7 +348,7 @@ msgstr "Ustawienia"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
-msgstr "Pokaż ścieżkę bloków"
+msgstr "Pokaż blok okruszków"
 
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
@@ -358,7 +360,7 @@ msgstr "Sprawdzanie pisowni"
 
 #: src/components/header-actions/index.tsx:189
 msgid "Spotlight mode"
-msgstr "Tryb skupienia"
+msgstr "Tryb podświetlania"
 
 #: src/preferences/constants.ts:51
 #: src/preferences/constants.ts:60

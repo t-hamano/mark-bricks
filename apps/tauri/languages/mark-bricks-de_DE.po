@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:30.927Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:39.300Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/store/reducer.ts:46
 #: src/store/constants.ts:13
 msgid "(Untitled)"
-msgstr "(Unbenannt)"
+msgstr "(Ohne Titel)"
 
 #: src/components/header-actions/index.tsx:286
 #: src/components/about-modal/index.tsx:80
@@ -35,7 +35,7 @@ msgstr "Über MarkBricks"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "Alle Block- und Dokumentwerkzeuge an einem Ort aufrufen"
+msgstr "Zentraler Zugriff auf alle Block- und Dokument-Werkzeuge"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
-msgstr "Listenansicht immer öffnen"
+msgstr "Immer die Listenansicht öffnen"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -56,7 +56,7 @@ msgstr "Basis-Schriftgröße des Inhaltsbereichs in Pixeln."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:257
 msgid "Block shortcuts"
-msgstr "Block-Tastaturkürzel"
+msgstr "Block-Tastaturbefehle"
 
 #: src/components/header-actions/index.tsx:315
 #: src/components/dirty-confirm-dialog/index.tsx:60
@@ -75,7 +75,7 @@ msgstr "Automatisch nach Updates suchen"
 #: src/components/preferences-modal/general-panel.tsx:132
 #: src/components/about-modal/index.tsx:115
 msgid "Checking…"
-msgstr "Wird geprüft…"
+msgstr "Wird überprüft …"
 
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
@@ -160,7 +160,7 @@ msgstr "Dateien"
 
 #: src/components/header-actions/index.tsx:192
 msgid "Focus on one block at a time"
-msgstr "Auf jeweils einen Block konzentrieren"
+msgstr "Fokussierung auf einen Block nach dem anderen"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
@@ -177,7 +177,7 @@ msgstr "Allgemein"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:249
 msgid "Global shortcuts"
-msgstr "Globale Tastaturkürzel"
+msgstr "Globale Tastaturbefehle"
 
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
@@ -206,7 +206,7 @@ msgstr ""
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:279
 msgid "Keyboard shortcuts"
-msgstr "Tastaturkürzel"
+msgstr "Tastaturbefehle"
 
 #: src/components/preferences-modal/general-panel.tsx:93
 #: src/components/preferences-modal/general-panel.tsx:98
@@ -219,7 +219,7 @@ msgstr "Hell"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
-msgstr "Tastaturkürzel der Listenansicht"
+msgstr "Tastaturbefehle der Listenansicht"
 
 # %s: new version number
 #: src/hooks/use-auto-updater.ts:53
@@ -270,7 +270,7 @@ msgstr "Datei öffnen…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "Das Listenansicht-Panel standardmäßig öffnen."
+msgstr "Öffnet standardmäßig das Listenansicht-Bedienfeld."
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -283,7 +283,7 @@ msgstr "Optionen"
 #: src/components/preferences-modal/index.tsx:166
 #: src/components/header-actions/index.tsx:295
 msgid "Preferences"
-msgstr "Einstellungen"
+msgstr "Voreinstellungen"
 
 #: src/components/header-actions/index.tsx:316
 msgid "Remove"
@@ -337,7 +337,7 @@ msgstr "Aktive Datei speichern."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:253
 msgid "Selection shortcuts"
-msgstr "Tastaturkürzel für die Auswahl"
+msgstr "Auswahl-Tastaturbefehle"
 
 #: src/preferences/constants.ts:67
 msgid "Serif"
@@ -392,7 +392,7 @@ msgstr ""
 #: src/components/preferences-modal/visual-editor-panel.tsx:51
 #: src/components/preferences-modal/code-editor-panel.tsx:46
 msgid "Theme"
-msgstr "Design"
+msgstr "Theme"
 
 #: src/components/preferences-modal/general-panel.tsx:166
 msgid ""

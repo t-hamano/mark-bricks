@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:30.104Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:37.494Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,7 +33,7 @@ msgstr "關於 MarkBricks"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "在同一處存取所有區塊和文件工具"
+msgstr "可在同一位置使用全部區塊及內容工具"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -46,7 +46,7 @@ msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
-msgstr "一律開啟清單檢視"
+msgstr "永遠開啟 [清單檢視]"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -156,7 +156,7 @@ msgstr "檔案"
 
 #: src/components/header-actions/index.tsx:192
 msgid "Focus on one block at a time"
-msgstr "一次專注於一個區塊"
+msgstr "畫面僅會聚焦於正在編輯的區塊"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
@@ -211,7 +211,7 @@ msgstr "淺色"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
-msgstr "清單檢視快速鍵"
+msgstr "[清單檢視] 快速鍵"
 
 # %s: new version number
 #: src/hooks/use-auto-updater.ts:53
@@ -262,7 +262,7 @@ msgstr "開啟檔案…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "預設開啟清單檢視面板。"
+msgstr "預設開啟 [清單檢視] 面板。"
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -329,7 +329,7 @@ msgstr "儲存目前的檔案。"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:253
 msgid "Selection shortcuts"
-msgstr "選取快速鍵"
+msgstr "內容選取快速鍵"
 
 #: src/preferences/constants.ts:67
 msgid "Serif"
@@ -346,7 +346,7 @@ msgstr "設定"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
-msgstr "顯示區塊路徑"
+msgstr "顯示區塊導覽標記"
 
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
@@ -371,7 +371,7 @@ msgstr "定位點大小"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:261
 msgid "Text formatting"
-msgstr "文字格式"
+msgstr "內容格式化"
 
 #: src/components/header-actions/index.tsx:311
 msgid ""

@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:32.205Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:41.856Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,7 +33,7 @@ msgstr "MarkBricks 정보"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "모든 블록 및 문서 도구를 한 곳에서 사용"
+msgstr "한 곳에서 모든 블록과 문서 도구에 접근합니다"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -156,7 +156,7 @@ msgstr "파일"
 
 #: src/components/header-actions/index.tsx:192
 msgid "Focus on one block at a time"
-msgstr "한 번에 하나의 블록에 집중"
+msgstr "한 번에 한 블록씩 집중"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
@@ -165,7 +165,7 @@ msgstr "글꼴 모음"
 #: src/components/preferences-modal/visual-editor-panel.tsx:124
 #: src/components/preferences-modal/code-editor-panel.tsx:63
 msgid "Font size"
-msgstr "글꼴 크기"
+msgstr "글꼴 사이즈"
 
 #: src/components/preferences-modal/index.tsx:185
 msgid "General"
@@ -211,7 +211,7 @@ msgstr "밝게"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
-msgstr "목록 보기 단축키"
+msgstr "목록 보기 바로 가기"
 
 # %s: new version number
 #: src/hooks/use-auto-updater.ts:53
@@ -262,7 +262,7 @@ msgstr "파일 열기…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "기본적으로 목록 보기 패널을 엽니다."
+msgstr "기본적으로 목록 보기 사이드바를 엽니다."
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -346,7 +346,7 @@ msgstr "설정"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
-msgstr "블록 경로 표시"
+msgstr "블록 이동 경로 표시"
 
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
@@ -371,7 +371,7 @@ msgstr "탭 크기"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:261
 msgid "Text formatting"
-msgstr "텍스트 서식"
+msgstr "텍스트 서식 지정"
 
 #: src/components/header-actions/index.tsx:311
 msgid ""
@@ -430,7 +430,7 @@ msgstr "보기"
 #: src/components/preferences-modal/index.tsx:188
 #: src/components/header-actions/index.tsx:219
 msgid "Visual editor"
-msgstr "시각적 편집기"
+msgstr "비주얼 편집기"
 
 #: src/components/preferences-modal/general-panel.tsx:147
 msgid "Working…"

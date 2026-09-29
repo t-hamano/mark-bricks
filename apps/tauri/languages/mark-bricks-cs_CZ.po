@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:34.505Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:46.019Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,7 +33,7 @@ msgstr "O aplikaci MarkBricks"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "Přístup ke všem nástrojům bloků a dokumentu na jednom místě"
+msgstr "Mějte veškeré nástroje dokumentu a aktivního bloku na jednom místě"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -46,7 +46,7 @@ msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
-msgstr "Vždy otevřít zobrazení seznamu"
+msgstr "Vždy otevřít Zobrazení seznamu"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -54,7 +54,7 @@ msgstr "Základní velikost písma oblasti obsahu v pixelech."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:257
 msgid "Block shortcuts"
-msgstr "Klávesové zkratky bloků"
+msgstr "Práce s bloky"
 
 #: src/components/header-actions/index.tsx:315
 #: src/components/dirty-confirm-dialog/index.tsx:60
@@ -73,7 +73,7 @@ msgstr "Automaticky kontrolovat aktualizace"
 #: src/components/preferences-modal/general-panel.tsx:132
 #: src/components/about-modal/index.tsx:115
 msgid "Checking…"
-msgstr "Probíhá kontrola…"
+msgstr "Kontrola…"
 
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
@@ -156,11 +156,11 @@ msgstr "Soubory"
 
 #: src/components/header-actions/index.tsx:192
 msgid "Focus on one block at a time"
-msgstr "Soustředit se vždy na jeden blok"
+msgstr "Zaměřte se vždy jen na jeden blok"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
-msgstr "Rodina písma"
+msgstr "Rodina písem"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:124
 #: src/components/preferences-modal/code-editor-panel.tsx:63
@@ -173,7 +173,7 @@ msgstr "Obecné"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:249
 msgid "Global shortcuts"
-msgstr "Globální klávesové zkratky"
+msgstr "Obecné zkratky"
 
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
@@ -213,7 +213,7 @@ msgstr "Světlý"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
-msgstr "Klávesové zkratky zobrazení seznamu"
+msgstr "Klávesové zkratky Zobrazení seznamu"
 
 # %s: new version number
 #: src/hooks/use-auto-updater.ts:53
@@ -264,7 +264,7 @@ msgstr "Otevřít soubor…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "Ve výchozím nastavení otevřít panel Zobrazení seznamu."
+msgstr "Ve výchozím nastavení otevře panel Zobrazení seznamu."
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -281,7 +281,7 @@ msgstr "Předvolby"
 
 #: src/components/header-actions/index.tsx:316
 msgid "Remove"
-msgstr "Odebrat"
+msgstr "Odstranit"
 
 #: src/components/header-actions/index.tsx:266
 msgid "Remove YAML front matter"
@@ -331,7 +331,7 @@ msgstr "Uložit aktivní soubor."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:253
 msgid "Selection shortcuts"
-msgstr "Klávesové zkratky výběru"
+msgstr "Zkratky výběru textu"
 
 #: src/preferences/constants.ts:67
 msgid "Serif"
@@ -348,7 +348,7 @@ msgstr "Nastavení"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
-msgstr "Zobrazit drobečkovou navigaci bloků"
+msgstr "Zobrazit navigační lištu"
 
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
@@ -360,7 +360,7 @@ msgstr "Kontrola pravopisu"
 
 #: src/components/header-actions/index.tsx:189
 msgid "Spotlight mode"
-msgstr "Režim zvýraznění"
+msgstr "Režim nevyrušovaného psaní"
 
 #: src/preferences/constants.ts:51
 #: src/preferences/constants.ts:60

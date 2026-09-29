@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:31.339Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:40.231Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -24,7 +24,7 @@ msgstr "“%s” contiene modifiche non salvate. Vuoi scartarle e chiudere?"
 #: src/store/reducer.ts:46
 #: src/store/constants.ts:13
 msgid "(Untitled)"
-msgstr "(Senza titolo)"
+msgstr "(senza titolo)"
 
 #: src/components/header-actions/index.tsx:286
 #: src/components/about-modal/index.tsx:80
@@ -33,7 +33,7 @@ msgstr "Informazioni su MarkBricks"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "Accedi a tutti gli strumenti dei blocchi e del documento in un unico posto"
+msgstr "Accedi a tutti gli strumenti di blocco e documento in un unico posto"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -54,7 +54,7 @@ msgstr "Dimensione del carattere di base dell’area del contenuto, in pixel."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:257
 msgid "Block shortcuts"
-msgstr "Scorciatoie dei blocchi"
+msgstr "Scorciatoie per il blocco"
 
 #: src/components/header-actions/index.tsx:315
 #: src/components/dirty-confirm-dialog/index.tsx:60
@@ -73,7 +73,7 @@ msgstr "Verifica automaticamente gli aggiornamenti"
 #: src/components/preferences-modal/general-panel.tsx:132
 #: src/components/about-modal/index.tsx:115
 msgid "Checking…"
-msgstr "Verifica in corso…"
+msgstr "Verifica in corso..."
 
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
@@ -98,7 +98,7 @@ msgstr "Chiudi la scheda attiva."
 #: src/components/preferences-modal/index.tsx:191
 #: src/components/header-actions/index.tsx:231
 msgid "Code editor"
-msgstr "Editor di codice"
+msgstr "Editor del codice"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:106
 msgid "Content width"
@@ -142,7 +142,7 @@ msgstr "Editor"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:103
 msgid "Editor styles"
-msgstr "Stili dell’editor"
+msgstr "Stili dell'editor"
 
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
@@ -162,12 +162,12 @@ msgstr "Concentrati su un blocco alla volta"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
-msgstr "Famiglia di caratteri"
+msgstr "Famiglia di font"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:124
 #: src/components/preferences-modal/code-editor-panel.tsx:63
 msgid "Font size"
-msgstr "Dimensione del carattere"
+msgstr "Dimensione del font"
 
 #: src/components/preferences-modal/index.tsx:185
 msgid "General"
@@ -217,7 +217,7 @@ msgstr "Chiaro"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
-msgstr "Scorciatoie della vista elenco"
+msgstr "Scorciatoia per la vista elenco"
 
 # %s: new version number
 #: src/hooks/use-auto-updater.ts:53
@@ -268,7 +268,7 @@ msgstr "Apri file…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "Apri il pannello Vista elenco per impostazione predefinita."
+msgstr "Apre il pannello Vista elenco per impostazione predefinita."
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -335,7 +335,7 @@ msgstr "Salva il file attivo."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:253
 msgid "Selection shortcuts"
-msgstr "Scorciatoie di selezione"
+msgstr "Scorciatoie per la selezione"
 
 #: src/preferences/constants.ts:67
 msgid "Serif"
@@ -352,7 +352,7 @@ msgstr "Impostazioni"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
-msgstr "Mostra il percorso dei blocchi"
+msgstr "Mostra i breadcrumb del blocco"
 
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
@@ -364,7 +364,7 @@ msgstr "Controllo ortografico"
 
 #: src/components/header-actions/index.tsx:189
 msgid "Spotlight mode"
-msgstr "Modalità riflettore"
+msgstr "Modalità in risalto"
 
 #: src/preferences/constants.ts:51
 #: src/preferences/constants.ts:60
@@ -406,7 +406,7 @@ msgstr "Strumenti"
 
 #: src/components/header-actions/index.tsx:173
 msgid "Top toolbar"
-msgstr "Barra degli strumenti superiore"
+msgstr "Barra degli strumenti in alto"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:157
 msgid "Typeface used for the content area."

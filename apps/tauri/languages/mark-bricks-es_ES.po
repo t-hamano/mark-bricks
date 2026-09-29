@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:31.757Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:41.052Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,7 +33,7 @@ msgstr "Acerca de MarkBricks"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "Accede a todas las herramientas de bloques y documentos en un solo lugar"
+msgstr "Accede a todas las herramientas de bloques y documentos desde un solo lugar"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -156,20 +156,20 @@ msgstr "Archivos"
 
 #: src/components/header-actions/index.tsx:192
 msgid "Focus on one block at a time"
-msgstr "Céntrate en un bloque cada vez"
+msgstr "Concéntrate en un bloque cada vez"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
-msgstr "Familia tipográfica"
+msgstr "Familia de fuentes"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:124
 #: src/components/preferences-modal/code-editor-panel.tsx:63
 msgid "Font size"
-msgstr "Tamaño de fuente"
+msgstr "Tamaño de la fuente"
 
 #: src/components/preferences-modal/index.tsx:185
 msgid "General"
-msgstr "General"
+msgstr "Generales"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:249
 msgid "Global shortcuts"
@@ -198,7 +198,7 @@ msgstr "Las imágenes con rutas relativas se muestran una vez guardado el docume
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:279
 msgid "Keyboard shortcuts"
-msgstr "Atajos de teclado"
+msgstr "Atajos del teclado"
 
 #: src/components/preferences-modal/general-panel.tsx:93
 #: src/components/preferences-modal/general-panel.tsx:98
@@ -262,7 +262,7 @@ msgstr "Abrir archivo…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "Abrir el panel Vista de lista de forma predeterminada."
+msgstr "Abre por defecto el panel de vista en modo lista."
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -342,11 +342,11 @@ msgstr "Establecer como predeterminada para archivos Markdown"
 #: src/components/preferences-modal/visual-editor-panel.tsx:47
 #: src/components/preferences-modal/code-editor-panel.tsx:42
 msgid "Settings"
-msgstr "Configuración"
+msgstr "Ajustes"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
-msgstr "Mostrar la ruta de bloques"
+msgstr "Mostrar las migas de pan del bloque"
 
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
@@ -358,7 +358,7 @@ msgstr "Corrector ortográfico"
 
 #: src/components/header-actions/index.tsx:189
 msgid "Spotlight mode"
-msgstr "Modo foco"
+msgstr "Modo de enfoque"
 
 #: src/preferences/constants.ts:51
 #: src/preferences/constants.ts:60
@@ -371,7 +371,7 @@ msgstr "Tamaño de tabulación"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:261
 msgid "Text formatting"
-msgstr "Formato de texto"
+msgstr "Formatos de texto"
 
 #: src/components/header-actions/index.tsx:311
 msgid ""
@@ -382,7 +382,7 @@ msgstr "El front matter YAML y todo su contenido se eliminarán del documento."
 #: src/components/preferences-modal/visual-editor-panel.tsx:51
 #: src/components/preferences-modal/code-editor-panel.tsx:46
 msgid "Theme"
-msgstr "Tema"
+msgstr "Temas"
 
 #: src/components/preferences-modal/general-panel.tsx:166
 msgid ""

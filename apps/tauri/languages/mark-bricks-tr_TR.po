@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:33.588Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:44.367Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/store/reducer.ts:46
 #: src/store/constants.ts:13
 msgid "(Untitled)"
-msgstr "(Adsız)"
+msgstr "(Başlıksız)"
 
 #: src/components/header-actions/index.tsx:286
 #: src/components/about-modal/index.tsx:80
@@ -48,7 +48,7 @@ msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
-msgstr "Liste görünümünü her zaman aç"
+msgstr "Her zaman liste görünümünü aç"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -61,7 +61,7 @@ msgstr "Blok kısayolları"
 #: src/components/header-actions/index.tsx:315
 #: src/components/dirty-confirm-dialog/index.tsx:60
 msgid "Cancel"
-msgstr "İptal"
+msgstr "Vazgeç"
 
 #: src/components/preferences-modal/general-panel.tsx:136
 #: src/components/about-modal/index.tsx:122
@@ -160,7 +160,7 @@ msgstr "Dosyalar"
 
 #: src/components/header-actions/index.tsx:192
 msgid "Focus on one block at a time"
-msgstr "Tek seferde bir bloğa odaklanın"
+msgstr "Her seferinde bir bloğa odaklanın"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:143
 msgid "Font family"
@@ -169,7 +169,7 @@ msgstr "Yazı tipi ailesi"
 #: src/components/preferences-modal/visual-editor-panel.tsx:124
 #: src/components/preferences-modal/code-editor-panel.tsx:63
 msgid "Font size"
-msgstr "Yazı tipi boyutu"
+msgstr "Yazı boyutu"
 
 #: src/components/preferences-modal/index.tsx:185
 msgid "General"
@@ -268,7 +268,7 @@ msgstr "Dosya aç…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "Liste görünümü panelini varsayılan olarak aç."
+msgstr "Varsayılan olarak liste görünümü panelini açar."
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -352,7 +352,7 @@ msgstr "Ayarlar"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
-msgstr "Blok içerik haritasını göster"
+msgstr "Blok sayfa yollarını görüntüle"
 
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
@@ -364,7 +364,7 @@ msgstr "Yazım denetimi"
 
 #: src/components/header-actions/index.tsx:189
 msgid "Spotlight mode"
-msgstr "Spot ışığı modu"
+msgstr "Sahne ışığı kipi"
 
 #: src/preferences/constants.ts:51
 #: src/preferences/constants.ts:60

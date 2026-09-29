@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:30:30.490Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:38.394Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -35,7 +35,7 @@ msgstr "À propos de MarkBricks"
 
 #: src/components/header-actions/index.tsx:176
 msgid "Access all block and document tools in a single place"
-msgstr "Accédez à tous les outils de bloc et de document en un seul endroit"
+msgstr "Accéder à tous les blocs et au document à partir d’un endroit unique"
 
 #: src/components/header-actions/index.tsx:255
 msgid "Add YAML front matter"
@@ -56,7 +56,7 @@ msgstr "Taille de police de base de la zone de contenu, en pixels."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:257
 msgid "Block shortcuts"
-msgstr "Raccourcis de bloc"
+msgstr "Raccourcis pour les blocs"
 
 #: src/components/header-actions/index.tsx:315
 #: src/components/dirty-confirm-dialog/index.tsx:60
@@ -177,7 +177,7 @@ msgstr "Général"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:249
 msgid "Global shortcuts"
-msgstr "Raccourcis globaux"
+msgstr "Raccourcis généraux"
 
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
@@ -272,7 +272,7 @@ msgstr "Ouvrir un fichier…"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:84
 msgid "Opens the List View panel by default."
-msgstr "Ouvrir le panneau Vue en liste par défaut."
+msgstr "Ouvre la colonne latérale de la vue en liste par défaut."
 
 #: src/components/header-actions/index.tsx:141
 msgid "Open…"
@@ -289,7 +289,7 @@ msgstr "Préférences"
 
 #: src/components/header-actions/index.tsx:316
 msgid "Remove"
-msgstr "Supprimer"
+msgstr "Retirer"
 
 #: src/components/header-actions/index.tsx:266
 msgid "Remove YAML front matter"
@@ -352,7 +352,7 @@ msgstr "Définir par défaut pour les fichiers Markdown"
 #: src/components/preferences-modal/visual-editor-panel.tsx:47
 #: src/components/preferences-modal/code-editor-panel.tsx:42
 msgid "Settings"
-msgstr "Paramètres"
+msgstr "Réglages"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:90
 msgid "Show block breadcrumbs"
@@ -368,7 +368,7 @@ msgstr "Vérification orthographique"
 
 #: src/components/header-actions/index.tsx:189
 msgid "Spotlight mode"
-msgstr "Mode projecteur"
+msgstr "Mode « Mise en lumière »"
 
 #: src/preferences/constants.ts:51
 #: src/preferences/constants.ts:60
