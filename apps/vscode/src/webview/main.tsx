@@ -82,6 +82,8 @@ function toBlobUrl( uri: string ): Promise< string > {
 // Local image paths only make sense to the extension host, which knows the
 // document location and can turn them into webview resource URIs.
 const platform: Partial< Platform > = {
+	// Fonts such as KaTeX's are webview resources too.
+	resolveAssetUrl: toBlobUrl,
 	// The webview has no native file dialog, so the host opens one.
 	pickImageFile() {
 		const requestId = ++pickImageRequestSeq;

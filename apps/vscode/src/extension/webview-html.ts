@@ -30,13 +30,14 @@ export function getHtmlForWebview(
 	// `script-src` lists the webview origin too, since a nonce doesn't carry
 	// over to the entry's lazily imported chunks. `style-src` needs
 	// `unsafe-inline` for `@wordpress/components`'s inline styles. `frame-src`
-	// allows `blob:` for the block canvas, which is a Blob URL document.
+	// allows `blob:` for the block canvas, which is a Blob URL document, and
+	// `font-src` for the fonts the canvas loads from Blob URLs.
 	const csp = [
 		`default-src 'none'`,
 		`script-src 'nonce-${ nonce }' '${ CANVAS_BOOTSTRAP_HASH }' ${ webview.cspSource }`,
 		`style-src ${ webview.cspSource } 'unsafe-inline'`,
 		`img-src ${ webview.cspSource } https: data: blob:`,
-		`font-src ${ webview.cspSource } data:`,
+		`font-src ${ webview.cspSource } data: blob:`,
 		`frame-src 'self' data: blob:`,
 		`connect-src ${ webview.cspSource }`,
 	].join( '; ' );

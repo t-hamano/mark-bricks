@@ -23,7 +23,6 @@ import blockEditorContentStyles from '@wordpress/block-editor/build-style/conten
  * Internal dependencies
  */
 import canvasStyles from './canvas.scss?inline';
-import { katexStyles } from '../../katex';
 import {
 	blocksToMarkdown,
 	joinFrontMatter,
@@ -52,7 +51,6 @@ const baseContentStyles = [
 	{ css: designTokensStyles },
 	{ css: componentsStyles },
 	{ css: blockEditorContentStyles },
-	{ css: katexStyles },
 	{ css: canvasStyles },
 ];
 
