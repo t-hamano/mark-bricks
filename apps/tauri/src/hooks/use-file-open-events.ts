@@ -35,15 +35,18 @@ async function openPendingDocuments() {
 			failed.push( path );
 		}
 	}
+	// A path can be requested twice, e.g. the active document is reopened
+	// last after an update, so each failure is listed once.
+	const failedPaths = [ ...new Set( failed ) ];
 
-	if ( failed.length > 0 ) {
+	if ( failedPaths.length > 0 ) {
 		const intro = _n(
 			'Could not open the following file:',
 			'Could not open the following files:',
-			failed.length,
+			failedPaths.length,
 			'mark-bricks'
 		);
-		await message( `${ intro }\n${ failed.join( '\n' ) }`, {
+		await message( `${ intro }\n${ failedPaths.join( '\n' ) }`, {
 			title: __( 'Open file', 'mark-bricks' ),
 			kind: 'error',
 		} );

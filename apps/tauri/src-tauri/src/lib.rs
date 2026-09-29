@@ -1,7 +1,8 @@
+use std::ffi::OsString;
 use std::path::{Component, Path, PathBuf};
 use std::sync::{Mutex, OnceLock};
 
-use tauri::{Emitter, Manager};
+use tauri::{Emitter, Env, Manager};
 
 mod documents;
 use documents::{
@@ -14,8 +15,8 @@ use documents::{
 /// launch passes its file to the first. We hold them in a simple shared place
 /// because they can arrive before startup finishes, when the usual storage is
 /// not ready yet and they would otherwise be lost.
-fn pending_open_files() -> &'static Mutex<Vec<String>> {
-    static PENDING: OnceLock<Mutex<Vec<String>>> = OnceLock::new();
+fn pending_open_files() -> &'static Mutex<Vec<PathBuf>> {
+    static PENDING: OnceLock<Mutex<Vec<PathBuf>>> = OnceLock::new();
     PENDING.get_or_init(|| Mutex::new(Vec::new()))
 }
 
@@ -36,8 +37,11 @@ async fn take_pending_documents(
         Ok(paths
             .into_iter()
             .map(|path| {
-                let document = documents.open_selected(Path::new(&path)).ok();
-                OpenRequestResult { path, document }
+                let document = documents.open_selected(&path).ok();
+                OpenRequestResult {
+                    path: path.to_string_lossy().into_owned(),
+                    document,
+                }
             })
             .collect())
     })
@@ -209,18 +213,133 @@ where
         .collect()
 }
 
+/// The arguments to relaunch this process with, e.g. after an update: the
+/// launch arguments without their Markdown paths.
+///
+/// On Windows the updater hands them to the NSIS installer, which mangles
+/// paths on the way (a path with a space splits into pieces that then resolve
+/// against the install directory), and on macOS files opened from Finder never
+/// appear in them at all. The open documents come back through
+/// [`RELAUNCH_DOCUMENTS_FILE`] instead.
+fn relaunch_args(args: Vec<OsString>) -> Vec<OsString> {
+    let mut args = args.into_iter();
+    args.next()
+        .into_iter()
+        .chain(args.filter(|arg| !arg.to_str().is_some_and(is_markdown_path)))
+        .collect()
+}
+
+/// File in the app's local data directory that carries the open documents'
+/// paths across a relaunch after an update.
+const RELAUNCH_DOCUMENTS_FILE: &str = "relaunch-documents.json";
+
+/// A path in the OS's own encoding, so a Unix file name that is not valid
+/// UTF-8 survives the relaunch unchanged.
+#[cfg(unix)]
+type NativePath = Vec<u8>;
+#[cfg(windows)]
+type NativePath = Vec<u16>;
+
+#[cfg(unix)]
+fn encode_path(path: &Path) -> NativePath {
+    use std::os::unix::ffi::OsStrExt;
+    path.as_os_str().as_bytes().to_vec()
+}
+
+#[cfg(windows)]
+fn encode_path(path: &Path) -> NativePath {
+    use std::os::windows::ffi::OsStrExt;
+    path.as_os_str().encode_wide().collect()
+}
+
+#[cfg(unix)]
+fn decode_path(path: NativePath) -> PathBuf {
+    use std::os::unix::ffi::OsStringExt;
+    PathBuf::from(OsString::from_vec(path))
+}
+
+#[cfg(windows)]
+fn decode_path(path: NativePath) -> PathBuf {
+    use std::os::windows::ffi::OsStringExt;
+    PathBuf::from(OsString::from_wide(&path))
+}
+
+fn write_relaunch_documents(file: &Path, paths: &[PathBuf]) -> Result<(), String> {
+    if paths.is_empty() {
+        return match std::fs::remove_file(file) {
+            Err(e) if e.kind() != std::io::ErrorKind::NotFound => Err(e.to_string()),
+            _ => Ok(()),
+        };
+    }
+    if let Some(dir) = file.parent() {
+        std::fs::create_dir_all(dir).map_err(|e| e.to_string())?;
+    }
+    let native: Vec<NativePath> = paths.iter().map(|path| encode_path(path)).collect();
+    let json = serde_json::to_string(&native).map_err(|e| e.to_string())?;
+    std::fs::write(file, json).map_err(|e| e.to_string())
+}
+
+/// Reads and removes the paths saved by [`write_relaunch_documents`], so they
+/// are restored on the next launch only. When the file cannot be removed,
+/// nothing is restored, since the same paths would otherwise reopen on every
+/// later launch.
+fn take_relaunch_documents(file: &Path) -> Vec<PathBuf> {
+    take_relaunch_documents_with(file, |file| std::fs::remove_file(file))
+}
+
+/// [`take_relaunch_documents`] with the removal passed in, so a test can make
+/// it fail regardless of the user's file permissions.
+fn take_relaunch_documents_with(
+    file: &Path,
+    remove: impl FnOnce(&Path) -> std::io::Result<()>,
+) -> Vec<PathBuf> {
+    let Ok(json) = std::fs::read_to_string(file) else {
+        return Vec::new();
+    };
+    if remove(file).is_err() {
+        return Vec::new();
+    }
+    serde_json::from_str::<Vec<NativePath>>(&json)
+        .map(|paths| paths.into_iter().map(decode_path).collect())
+        .unwrap_or_default()
+}
+
+fn relaunch_documents_file(app: &tauri::AppHandle) -> Result<PathBuf, String> {
+    app.path()
+        .app_local_data_dir()
+        .map(|dir| dir.join(RELAUNCH_DOCUMENTS_FILE))
+        .map_err(|e| e.to_string())
+}
+
+/// Saves the paths of the given open documents, in order, to reopen after the
+/// relaunch that follows an update. Only documents the user already opened
+/// can be saved; an empty list clears any saved paths.
+#[tauri::command]
+async fn remember_documents_for_relaunch(
+    app: tauri::AppHandle,
+    state: tauri::State<'_, Documents>,
+    document_ids: Vec<String>,
+) -> Result<(), String> {
+    let file = relaunch_documents_file(&app)?;
+    with_documents(state.inner().clone(), move |documents| {
+        write_relaunch_documents(&file, &documents.paths(&document_ids))
+    })
+    .await
+}
+
 pub fn run() {
     let ctx = tauri::generate_context!();
 
     // Seed this instance's own argv-provided files before the event loop;
     // the single-instance callback may fire before `setup` would have run.
-    pending_open_files()
-        .lock()
-        .unwrap()
-        .extend(collect_markdown_paths(
+    pending_open_files().lock().unwrap().extend(
+        collect_markdown_paths(
             std::env::args(),
             &std::env::current_dir().unwrap_or_default(),
-        ));
+        )
+        .into_iter()
+        .map(PathBuf::from),
+    );
 
     let mut builder = tauri::Builder::default();
 
@@ -236,12 +355,34 @@ pub fn run() {
             // emit would be dropped. The buffer lets it drain these via
             // `take_pending_documents`. Events only signal that the native
             // queue has new requests; their payload cannot authorize paths.
-            pending_open_files().lock().unwrap().extend(paths);
+            pending_open_files()
+                .lock()
+                .unwrap()
+                .extend(paths.into_iter().map(PathBuf::from));
             let _ = app.emit("open-files", ());
         }
     }));
 
     builder
+        .setup(|app| {
+            // Documents open before an update come first, ahead of any files
+            // this launch was given.
+            if let Ok(file) = relaunch_documents_file(app.handle()) {
+                pending_open_files()
+                    .lock()
+                    .unwrap()
+                    .splice(0..0, take_relaunch_documents(&file));
+            }
+            // The updater and `relaunch()` restart the app with `Env`'s
+            // arguments. Nothing borrows `Env` yet during setup, so replacing
+            // it cannot leave a dangling reference.
+            let mut env = app.env();
+            env.args_os = relaunch_args(env.args_os);
+            #[allow(deprecated)]
+            app.unmanage::<Env>();
+            app.manage(env);
+            Ok(())
+        })
         .manage(Documents::default())
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(tauri_plugin_dialog::init())
@@ -256,6 +397,7 @@ pub fn run() {
             close_document,
             take_pending_documents,
             report_rendered,
+            remember_documents_for_relaunch,
             set_as_default_markdown_handler
         ])
         .build(ctx)
@@ -263,11 +405,8 @@ pub fn run() {
         .run(|app, event| {
             #[cfg(target_os = "macos")]
             if let tauri::RunEvent::Opened { urls } = event {
-                let paths: Vec<String> = urls
-                    .iter()
-                    .filter_map(|u| u.to_file_path().ok())
-                    .map(|p| p.to_string_lossy().to_string())
-                    .collect();
+                let paths: Vec<PathBuf> =
+                    urls.iter().filter_map(|u| u.to_file_path().ok()).collect();
                 if paths.is_empty() {
                     return;
                 }

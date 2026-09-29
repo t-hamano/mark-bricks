@@ -81,3 +81,76 @@ fn collect_markdown_paths_makes_paths_absolute() {
         "relative paths join the launch directory, absolute ones stay"
     );
 }
+
+#[test]
+fn relaunch_args_drop_markdown_paths() {
+    let args: Vec<OsString> = [
+        "mark-bricks",
+        "--flag",
+        r"C:\Test Directory\a.md",
+        "image.png",
+    ]
+    .map(OsString::from)
+    .into();
+    assert_eq!(
+        relaunch_args(args),
+        ["mark-bricks", "--flag", "image.png"].map(OsString::from),
+        "Markdown paths go through the relaunch file instead"
+    );
+}
+
+fn relaunch_documents_file_for(test: &str) -> PathBuf {
+    std::env::temp_dir()
+        .join(format!("mark-bricks-{test}-{}", std::process::id()))
+        .join(RELAUNCH_DOCUMENTS_FILE)
+}
+
+#[test]
+fn relaunch_documents_are_restored_once() {
+    let file = relaunch_documents_file_for("relaunch");
+    let paths = [r"C:\Test Directory\a.md", "/Users/me/運用手順 b.md"].map(PathBuf::from);
+    write_relaunch_documents(&file, &paths).unwrap();
+    assert_eq!(take_relaunch_documents(&file), paths);
+    assert!(take_relaunch_documents(&file).is_empty(), "taken only once");
+
+    write_relaunch_documents(&file, &paths).unwrap();
+    write_relaunch_documents(&file, &[]).unwrap();
+    assert!(!file.exists(), "an empty list clears saved paths");
+    write_relaunch_documents(&file, &[]).unwrap();
+
+    std::fs::remove_dir(file.parent().unwrap()).unwrap();
+}
+
+#[cfg(unix)]
+#[test]
+fn relaunch_documents_keep_non_utf8_paths() {
+    use std::os::unix::ffi::OsStringExt;
+
+    let file = relaunch_documents_file_for("relaunch-non-utf8");
+    let paths = [PathBuf::from(OsString::from_vec(
+        b"/tmp/caf\xe9.md".to_vec(),
+    ))];
+    write_relaunch_documents(&file, &paths).unwrap();
+    assert_eq!(
+        take_relaunch_documents(&file),
+        paths,
+        "a file name that is not valid UTF-8 comes back byte for byte"
+    );
+
+    std::fs::remove_dir(file.parent().unwrap()).unwrap();
+}
+
+#[test]
+fn relaunch_documents_are_not_restored_when_they_cannot_be_removed() {
+    let file = relaunch_documents_file_for("relaunch-locked");
+    write_relaunch_documents(&file, &[PathBuf::from("/tmp/a.md")]).unwrap();
+    let taken = take_relaunch_documents_with(&file, |_| {
+        Err(std::io::Error::from(std::io::ErrorKind::PermissionDenied))
+    });
+    assert!(
+        taken.is_empty(),
+        "paths that would reopen on every launch are not restored"
+    );
+
+    std::fs::remove_dir_all(file.parent().unwrap()).unwrap();
+}
