@@ -102,7 +102,13 @@ suite( 'MarkBricks smoke test', () => {
 				`The ${ language } preview did not render`
 			);
 		}
-		assert.ok( katexFonts.length > 0, 'No KaTeX font was loaded' );
+		// The KaTeX fonts the formula in the fixture uses.
+		for ( const family of [ 'KaTeX_Main', 'KaTeX_Math', 'KaTeX_Size2' ] ) {
+			assert.ok(
+				katexFonts.some( ( font ) => font.family === family ),
+				`${ family } was not loaded`
+			);
+		}
 		assert.deepStrictEqual(
 			katexFonts.filter( ( font ) => font.status !== 'loaded' ),
 			[],
