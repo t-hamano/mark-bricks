@@ -7,13 +7,16 @@
 	"type": "module",
 	"scripts": {
 		"storybook": "storybook dev -p 6006 -c .",
-		"build-storybook": "storybook build -c ."
+		"build-storybook": "storybook build -c .",
+		"test:visual": "playwright test",
+		"test:visual:docker": "node scripts/test-visual-docker.mjs"
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
 		"@mark-bricks/fixtures": "workspace:*"
 	},
 	"devDependencies": {
+		"@playwright/test": "^1.63.0",
 		"@storybook/addon-docs": "^10.6.0",
 		"@storybook/addon-themes": "^10.6.0",
 		"@storybook/react-vite": "^10.6.0",
