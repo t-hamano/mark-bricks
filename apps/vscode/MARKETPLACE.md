@@ -14,7 +14,7 @@ Edit Markdown visually in VSCode with the WordPress block editor. MarkBricks ope
 - **Code blocks with previews**: Syntax highlighting for fenced code, plus a live preview for Mermaid diagrams.
 - **GitHub-style alerts and YAML front matter**: Edit both in the visual editor too.
 - **Plain Markdown in, plain Markdown out**: Your files stay ordinary `.md` files that any other tool can read.
-- **Follows your VSCode theme**: Works in light and dark themes.
+- **Follows your VSCode theme**: Works in light and dark themes, or pin the editor to either one with the `markBricks.theme` setting.
 
 ## Usage
 

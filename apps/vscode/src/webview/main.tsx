@@ -111,7 +111,7 @@ function App() {
 	const [ content, setContent ] = useState< string | null >( null );
 	const [ settings, setSettings ] = useState< Settings | null >( null );
 	const editorRef = useRef< EditorHandle >( null );
-	const theme = useVsCodeTheme();
+	const vsCodeTheme = useVsCodeTheme();
 
 	useEffect( () => {
 		function onMessage( event: MessageEvent< HostMessage > ) {
@@ -200,7 +200,9 @@ function App() {
 	}
 
 	return (
-		<EditorThemeProvider theme={ theme }>
+		<EditorThemeProvider
+			theme={ settings.theme === 'auto' ? vsCodeTheme : settings.theme }
+		>
 			<BlockEditor
 				ref={ editorRef }
 				content={ content }

@@ -32,11 +32,13 @@ describe( 'readSettings', () => {
 		setConfiguration( 'markBricks.topToolbar', { globalValue: true } );
 		setConfiguration( 'markBricks.contentWidth', { globalValue: 900 } );
 		setConfiguration( 'markBricks.fontFamily', { globalValue: 'serif' } );
+		setConfiguration( 'markBricks.theme', { globalValue: 'dark' } );
 
 		expect( readSettings( scope ) ).toMatchObject( {
 			topToolbar: true,
 			contentWidth: 900,
 			fontFamily: 'serif',
+			theme: 'dark',
 		} );
 	} );
 
@@ -59,11 +61,13 @@ describe( 'readSettings', () => {
 		setConfiguration( 'markBricks.fontFamily', {
 			globalValue: 'Comic Sans',
 		} );
+		setConfiguration( 'markBricks.theme', { globalValue: 'system' } );
 
 		expect( readSettings( scope ) ).toMatchObject( {
 			spotlightMode: DEFAULT_SETTINGS.spotlightMode,
 			fontSize: DEFAULT_SETTINGS.fontSize,
 			fontFamily: DEFAULT_SETTINGS.fontFamily,
+			theme: DEFAULT_SETTINGS.theme,
 		} );
 	} );
 

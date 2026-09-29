@@ -12,7 +12,9 @@ import * as vscode from 'vscode';
  */
 import {
 	DEFAULT_SETTINGS,
+	THEME_SETTINGS,
 	type Settings,
+	type ThemeSetting,
 	type WritableSettingKey,
 } from '../shared/settings';
 
@@ -41,6 +43,7 @@ export function readSettings( scope: vscode.Uri ): Settings {
 		scope
 	);
 	const fontFamily = config.get< unknown >( 'fontFamily' );
+	const theme = config.get< unknown >( 'theme' );
 
 	return {
 		showListViewByDefault: toBoolean(
@@ -79,6 +82,9 @@ export function readSettings( scope: vscode.Uri ): Settings {
 			)
 				? ( fontFamily as FontFamily )
 				: DEFAULT_SETTINGS.fontFamily,
+		theme: THEME_SETTINGS.includes( theme as ThemeSetting )
+			? ( theme as ThemeSetting )
+			: DEFAULT_SETTINGS.theme,
 	};
 }
 
