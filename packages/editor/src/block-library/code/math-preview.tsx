@@ -92,10 +92,10 @@ export function MathPreview( { code }: Props ) {
 	}
 
 	return (
-		<Stack className="wp-block-code__math" direction="column" gap="lg">
+		<Stack className="wp-block-code__preview" direction="column" gap="lg">
 			{ !! html && (
 				<div
-					className={ clsx( 'wp-block-code__math-formula', {
+					className={ clsx( 'wp-block-code__preview-content', {
 						'is-stale': !! error,
 					} ) }
 					dangerouslySetInnerHTML={ { __html: html } }
@@ -103,7 +103,7 @@ export function MathPreview( { code }: Props ) {
 			) }
 			{ !! error && (
 				<Notice.Root
-					className="wp-block-code__math-error"
+					className="wp-block-code__preview-error"
 					intent="error"
 				>
 					<Notice.Title>
@@ -112,7 +112,7 @@ export function MathPreview( { code }: Props ) {
 							'mark-bricks'
 						) }
 					</Notice.Title>
-					<Notice.Description className="wp-block-code__math-error-detail">
+					<Notice.Description className="wp-block-code__preview-error-detail">
 						{ error }
 					</Notice.Description>
 				</Notice.Root>

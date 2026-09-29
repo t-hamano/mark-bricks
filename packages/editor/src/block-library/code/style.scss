@@ -7,8 +7,7 @@
 	border: 1px solid var(--wpds-color-stroke-surface-neutral);
 
 	.cm-editor,
-	.wp-block-code__mermaid,
-	.wp-block-code__math {
+	.wp-block-code__preview {
 		padding: 1.5rem 1rem;
 	}
 
@@ -29,12 +28,11 @@
 		border-bottom-right-radius: 3px;
 	}
 
-	&:not(.is-selected):has(.wp-block-code__mermaid, .wp-block-code__math) {
+	&:not(.is-selected):has(.wp-block-code__preview) {
 		background: var(--wpds-color-background-surface-neutral);
 	}
 
-	.wp-block-code__mermaid-diagram,
-	.wp-block-code__math-formula {
+	.wp-block-code__preview-content {
 		background: var(--wpds-color-background-surface-neutral);
 		overflow-x: auto;
 		text-align: center;
@@ -46,8 +44,7 @@
 		}
 	}
 
-	.wp-block-code__mermaid-error-detail,
-	.wp-block-code__math-error-detail {
+	.wp-block-code__preview-error-detail {
 		margin: 0;
 		font-family: var(--wpds-typography-font-family-mono);
 		white-space: pre-wrap;
