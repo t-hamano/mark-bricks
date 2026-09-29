@@ -1,3 +1,19 @@
+# [0.3.0](https://github.com/t-hamano/mark-bricks/compare/vscode-v0.2.0...vscode-v0.3.0) (2026-09-29)
+
+### Bug Fixes
+
+- **vscode:** display local images in the block canvas ([#129](https://github.com/t-hamano/mark-bricks/issues/129)) ([b0ba5a3](https://github.com/t-hamano/mark-bricks/commit/b0ba5a3b711c46784543d152289d84372cc95cae))
+- **vscode:** load the katex fonts in the block canvas ([#136](https://github.com/t-hamano/mark-bricks/issues/136)) ([7687c94](https://github.com/t-hamano/mark-bricks/commit/7687c945d76d468438ab4603d18bc9b0be44e2a9))
+- **vscode:** prefer gutenberg translations for strings shared with the editor ([ea6c00d](https://github.com/t-hamano/mark-bricks/commit/ea6c00d59e74dd906c51a066600bdd9db99968fe))
+
+### Features
+
+- **editor:** add translations for the vscode display languages ([#126](https://github.com/t-hamano/mark-bricks/issues/126)) ([a9f3b92](https://github.com/t-hamano/mark-bricks/commit/a9f3b9212b90f7f58177a9e936b962ca6c684acc))
+- **editor:** preview math code blocks ([#131](https://github.com/t-hamano/mark-bricks/issues/131)) ([56eaa90](https://github.com/t-hamano/mark-bricks/commit/56eaa90ba5d3d77f0dfee3cdf96054b2bb326d2d))
+- **repo:** drop hungarian support, which has no gutenberg language pack ([e305724](https://github.com/t-hamano/mark-bricks/commit/e305724d6f2c5f2ecc01c89ed27338a063461b3d))
+- **vscode:** add theme setting to override the vscode color theme ([#122](https://github.com/t-hamano/mark-bricks/issues/122)) ([2717131](https://github.com/t-hamano/mark-bricks/commit/2717131728d64f28d87468941b2d9b405d8591a0))
+- **vscode:** add translations for all vscode display languages ([#123](https://github.com/t-hamano/mark-bricks/issues/123)) ([35b1e6c](https://github.com/t-hamano/mark-bricks/commit/35b1e6c4329143d13b2972bfa159b2e78ba78214))
+
 # [0.2.0](https://github.com/t-hamano/mark-bricks/compare/vscode-v0.1.1...vscode-v0.2.0) (2026-09-27)
 
 ### Bug Fixes
