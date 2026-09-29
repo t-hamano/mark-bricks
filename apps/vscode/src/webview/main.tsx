@@ -53,6 +53,37 @@ const pendingCheckImageRequests = new Map<
 >();
 let checkImageRequestSeq = 0;
 
+// Blob URLs by webview resource URI, so each file is fetched once.
+const blobUrls = new Map< string, Promise< string > >();
+
+// Turns a webview resource URI into a Blob URL. The block canvas is a Blob
+// URL document, and VS Code's service worker finds the webview a resource
+// request belongs to by the `id` query of the requesting document's URL,
+// which a Blob URL does not have. So resource URIs fail to load in the
+// canvas; this document fetches them instead and hands over a Blob URL,
+// which the canvas can load since it shares this document's origin.
+function toBlobUrl( uri: string ): Promise< string > {
+	let blobUrl = blobUrls.get( uri );
+	if ( ! blobUrl ) {
+		blobUrl = fetch( uri )
+			.then( ( response ) => {
+				if ( ! response.ok ) {
+					throw new Error( response.statusText );
+				}
+				return response.blob();
+			} )
+			.then( ( blob ) => URL.createObjectURL( blob ) )
+			.catch( () => {
+				// Leave it to the image to show as broken, and retry the
+				// next time.
+				blobUrls.delete( uri );
+				return uri;
+			} );
+		blobUrls.set( uri, blobUrl );
+	}
+	return blobUrl;
+}
+
 // Local image paths only make sense to the extension host, which knows the
 // document location and can turn them into webview resource URIs.
 const platform: Partial< Platform > = {
@@ -64,12 +95,15 @@ const platform: Partial< Platform > = {
 			post( { type: 'pickImage', requestId } );
 		} );
 	},
-	resolveImageSrc( path ) {
+	async resolveImageSrc( path ) {
 		const requestId = ++imageRequestSeq;
-		return new Promise( ( resolve ) => {
+		const src = await new Promise< string >( ( resolve ) => {
 			pendingImageRequests.set( requestId, resolve );
 			post( { type: 'resolveImage', requestId, path } );
 		} );
+		// The host returns URLs as is and local files as webview resource
+		// URIs.
+		return src === path ? src : toBlobUrl( src );
 	},
 	// The webview blocks `http:` URLs and can only load local images inside
 	// its `localResourceRoots`, which the host checks the path against.
