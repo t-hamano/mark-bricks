@@ -46,11 +46,6 @@
 		}
 	}
 
-	// Match the size KaTeX gives a formula in its own HTML output.
-	.wp-block-code__math-formula math {
-		font-size: 1.21em;
-	}
-
 	.wp-block-code__mermaid-error-detail,
 	.wp-block-code__math-error-detail {
 		margin: 0;

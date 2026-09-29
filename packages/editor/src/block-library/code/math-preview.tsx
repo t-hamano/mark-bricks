@@ -15,21 +15,20 @@ const loadKatex = () =>
 let katexPromise: ReturnType< typeof loadKatex > | undefined;
 
 /**
- * Renders TeX to MathML.
+ * Renders TeX to HTML, with MathML alongside for screen readers.
  *
- * MathML is drawn by the browser itself, so no KaTeX stylesheet or fonts have
- * to reach the block canvas, which is a separate document the apps only pass
- * inline styles to. `trust` stays off, so commands such as `\href` cannot
- * inject links or other HTML.
+ * The HTML is styled by KaTeX's stylesheet and fonts, which the block canvas
+ * loads (see `katex-styles.ts`). `trust` stays off, so commands such as
+ * `\href` cannot inject links or other HTML.
  *
  * @param code TeX source of the whole block, rendered as one display formula.
- * @return The MathML markup.
+ * @return The formula markup.
  */
 async function renderMath( code: string ) {
 	const katex = await ( katexPromise ??= loadKatex() );
 	return katex.renderToString( code, {
 		displayMode: true,
-		output: 'mathml',
+		output: 'htmlAndMathml',
 		throwOnError: true,
 		trust: false,
 		strict: false,
