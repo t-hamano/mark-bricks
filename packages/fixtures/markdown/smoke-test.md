@@ -90,6 +90,8 @@ Inline code containing HTML: `<div class="x">`.
 
 ## List items with blocks
 
+- An item whose text wraps
+  onto the next line without a blank line.
 - An item followed by a code block:
   ```js
   const answer = 42;
