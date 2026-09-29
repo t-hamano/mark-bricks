@@ -1,0 +1,460 @@
+# Copyright (C) 2026 @mark-bricks/editor
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: @mark-bricks/editor 0.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"POT-Creation-Date: 2026-09-26T07:53:21.502Z\n"
+"PO-Revision-Date: 2026-09-29T01:43:00.320Z\n"
+"Last-Translator: Aki Hamano <->\n"
+"Language-Team: Aki Hamano <->\n"
+"X-Generator: @wp-blocks/make-pot 1.6.6\n"
+"Language: de_DE\n"
+"X-Domain: mark-bricks\n"
+
+#: src/components/list-view-outline/index.tsx:159
+msgid "(Empty heading)"
+msgstr "(Leere Überschrift)"
+
+#: src/components/list-view-outline/index.tsx:175
+msgid "(Incorrect heading level)"
+msgstr "(Falsche Überschriftsebene)"
+
+#: src/components/list-view-outline/index.tsx:187
+msgid "(Multiple H1 headings are not recommended)"
+msgstr "(Mehrere H1-Überschriften werden nicht empfohlen)"
+
+#: style.css
+#. Name of the generic
+msgid "@mark-bricks/editor"
+msgstr ""
+
+#: style.css
+#. Author of the generic
+msgid "Aki Hamano"
+msgstr "Aki Hamano"
+
+#: src/format-library/image/inline.tsx:140
+#: src/block-library/image/edit.tsx:207
+msgid "Alt text"
+msgstr "Alternativtext"
+
+#: src/format-library/image/inline.tsx:162
+#: src/block-library/image/edit.tsx:120
+#: src/block-library/image/edit.tsx:247
+msgid "Apply"
+msgstr "Anwenden"
+
+#: src/components/editor-header/index.tsx:85
+msgid "Block Inserter"
+msgstr "Block-Inserter"
+
+#: src/components/inserter-sidebar/index.tsx:222
+msgid "Blocks"
+msgstr "Blöcke"
+
+#: src/format-library/bold.tsx:17
+msgid "Bold"
+msgstr "Fett"
+
+#: src/format-library/image/inline.tsx:135
+#: src/block-library/image/edit.tsx:116
+#: src/block-library/image/edit.tsx:199
+msgid "Browse local file"
+msgstr "Lokale Datei durchsuchen"
+
+#: src/block-library/quote/edit.tsx:101
+msgid "Caution"
+msgstr "Vorsicht"
+
+#: src/block-library/table/edit.tsx:301
+msgid "Cell content"
+msgstr "Zelleninhalt"
+
+#: src/block-library/code/edit.tsx:91
+msgid "Change language"
+msgstr "Sprache ändern"
+
+#: src/components/keyboard-shortcuts/hooks.ts:92
+msgid "Change the block type after adding a new paragraph."
+msgstr "Den Blocktyp nach Hinzufügen eines neuen Absatzes ändern."
+
+#: src/block-library/code/edit.tsx:123
+msgid "Choose language…"
+msgstr "Sprache auswählen …"
+
+#: src/format-library/clear-formatting.tsx:20
+msgid "Clear formatting"
+msgstr "Formatierung entfernen"
+
+#: src/components/list-view-sidebar/index.tsx:64
+#: src/components/inserter-sidebar/index.tsx:210
+msgid "Close"
+msgstr "Schließen"
+
+#: src/components/editor-header/index.tsx:84
+msgid "Close Block Inserter"
+msgstr "Block-Inserter schließen"
+
+#: src/components/editor/index.tsx:97
+msgid "Code editor"
+msgstr "Code-Editor"
+
+#: src/block-library/table/edit.tsx:246
+msgid "Column count"
+msgstr "Anzahl der Spalten"
+
+#: src/components/keyboard-shortcuts/hooks.ts:120
+msgid "Convert the selected text into a link."
+msgstr "Ausgewählten Text in einen Link umwandeln."
+
+#: src/block-library/table/edit.tsx:259
+msgid "Create Table"
+msgstr "Tabelle erstellen"
+
+#: src/block-library/quote/edit.tsx:154
+msgid "Default"
+msgstr "Standard"
+
+#: src/block-library/table/edit.tsx:378
+msgid "Delete column"
+msgstr "Spalte löschen"
+
+#: src/block-library/table/edit.tsx:351
+msgid "Delete row"
+msgstr "Zeile löschen"
+
+#: src/format-library/image/inline.tsx:144
+#: src/block-library/image/edit.tsx:214
+msgid "Describes the image for screen readers."
+msgstr "Beschreibt das Bild für Screenreader."
+
+#: src/components/keyboard-shortcuts/index.tsx:103
+msgid "Display these keyboard shortcuts."
+msgstr "Diese Tastaturbefehle anzeigen."
+
+#: src/components/list-view-sidebar/index.tsx:43
+#: src/components/editor-header/index.tsx:126
+msgid "Document Overview"
+msgstr "Dokumentenübersicht"
+
+#: src/block-library/image/edit.tsx:143
+msgid "Edit image"
+msgstr "Bild bearbeiten"
+
+#: src/block-library/table/edit.tsx:331
+msgid "Edit table"
+msgstr "Tabelle bearbeiten"
+
+#: src/format-library/image/inline.tsx:143
+#: src/block-library/image/edit.tsx:210
+msgid "Enter alt text…"
+msgstr "Alternativtext eingeben …"
+
+#: src/format-library/image/inline.tsx:153
+#: src/block-library/image/edit.tsx:223
+msgid "Enter title…"
+msgstr "Titel eingeben …"
+
+#: src/block-library/image/edit.tsx:258
+msgid "Failed to load image."
+msgstr "Das Bild konnte nicht geladen werden."
+
+#: src/components/keyboard-shortcuts/hooks.ts:96
+msgid "Forward-slash"
+msgstr "Schrägstrich"
+
+#: src/block-library/quote/edit.tsx:151
+msgid "GitHub alert type"
+msgstr "GitHub-Alert-Typ"
+
+# %d: heading level (1-6)
+#: src/components/list-view-outline/index.tsx:109
+msgid "H%d"
+msgstr "H%d"
+
+#: src/block-library/table/edit.tsx:300
+msgid "Header label"
+msgstr "Kopfzeilenbeschriftung"
+
+#: src/block-library/heading/edit.tsx:53
+msgid "Heading"
+msgstr "Überschrift"
+
+# %d: heading level e.g: "1", "2", "3"
+#: src/block-library/heading/index.ts:51
+msgid "Heading %d"
+msgstr "Überschrift %d"
+
+#: src/components/editor-header/index.tsx:125
+msgid "Hide Document Overview"
+msgstr "Dokumentenübersicht ausblenden"
+
+#: src/block-library/image/edit.tsx:70
+msgid "Image"
+msgstr "Bild"
+
+#: src/block-library/quote/edit.tsx:71
+msgid "Important"
+msgstr "Wichtig"
+
+#: src/block-library/list-item/edit.tsx:70
+msgid "Indent"
+msgstr "Einzug vergrößern"
+
+#: src/format-library/code.tsx:17
+msgid "Inline code"
+msgstr "Inline-Code"
+
+#: src/format-library/image/index.tsx:22
+msgid "Inline image"
+msgstr "Inline-Bild"
+
+#: src/format-library/image/inline.tsx:163
+msgid "Insert"
+msgstr "Einfügen"
+
+#: src/block-library/table/edit.tsx:232
+msgid "Insert a table for sharing data."
+msgstr "Füge eine Tabelle ein, um Daten zu teilen."
+
+#: src/block-library/table/edit.tsx:369
+msgid "Insert column after"
+msgstr "Spalte rechts einfügen"
+
+#: src/block-library/table/edit.tsx:360
+msgid "Insert column before"
+msgstr "Spalte links einfügen"
+
+#: src/block-library/table/edit.tsx:343
+msgid "Insert row after"
+msgstr "Zeile darunter einfügen"
+
+#: src/block-library/table/edit.tsx:335
+msgid "Insert row before"
+msgstr "Zeile darüber einfügen"
+
+#: src/format-library/italic.tsx:17
+msgid "Italic"
+msgstr "Kursiv"
+
+#: src/block-library/code/edit.tsx:106
+msgid "Language"
+msgstr "Sprache"
+
+#: src/format-library/link/index.tsx:36
+msgid "Link"
+msgstr "Link"
+
+#: src/block-library/list-item/edit.tsx:121
+msgid "List"
+msgstr "Liste"
+
+#: src/components/list-view-sidebar/index.tsx:77
+msgid "List View"
+msgstr "Listenansicht"
+
+#: src/block-library/list-item/edit.tsx:120
+msgid "List text"
+msgstr "Listentext"
+
+#: src/components/keyboard-shortcuts/hooks.ts:106
+msgid "Make the selected text bold."
+msgstr "Ausgewählten Text fett formatieren."
+
+#: src/components/keyboard-shortcuts/hooks.ts:148
+msgid "Make the selected text inline code."
+msgstr "Ausgewählten Text als Inline-Code formatieren."
+
+#: src/components/keyboard-shortcuts/hooks.ts:113
+msgid "Make the selected text italic."
+msgstr "Ausgewählten Text kursiv formatieren."
+
+#: src/components/list-view-outline/index.tsx:97
+msgid ""
+"Navigate the structure of your document and address issues like empty or "
+"incorrect heading levels."
+msgstr ""
+"Navigiere durch die Struktur deines Dokuments und behebe Probleme wie leere "
+"oder falsche Überschriftenebenen."
+
+#: src/block-library/code/edit.tsx:132
+msgid "No matching language."
+msgstr "Keine passende Sprache."
+
+#: src/block-library/quote/edit.tsx:41
+msgid "Note"
+msgstr "Hinweis"
+
+#: src/block-library/details/edit.tsx:60
+msgid "Open by default"
+msgstr "Standardmäßig offen"
+
+#: src/block-library/list/edit.tsx:54
+msgid "Ordered"
+msgstr "Nummeriert"
+
+#: src/block-library/list-item/edit.tsx:63
+msgid "Outdent"
+msgstr "Einzug verringern"
+
+#: src/components/list-view-sidebar/index.tsx:80
+msgid "Outline"
+msgstr "Gliederung"
+
+#: src/format-library/link/inline.tsx:138
+#: src/format-library/image/inline.tsx:117
+msgid "Paste or type URL"
+msgstr "URL einfügen oder eingeben"
+
+#: src/block-library/image/edit.tsx:98
+#: src/block-library/image/edit.tsx:181
+msgid "Paste or type URL or file path"
+msgstr "URL oder Dateipfad einfügen oder eingeben"
+
+#: src/components/editor-header/index.tsx:110
+msgid "Redo"
+msgstr "Wiederherstellen"
+
+#: src/components/keyboard-shortcuts/index.tsx:64
+msgid "Redo your last undo."
+msgstr "Dein letztes Rückgängigmachen wiederherstellen."
+
+#: src/components/keyboard-shortcuts/hooks.ts:127
+msgid "Remove a link."
+msgstr "Einen Link entfernen."
+
+#: src/block-library/image/edit.tsx:241
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: src/components/inserter-sidebar/index.tsx:195
+msgid "Reset search"
+msgstr "Suche zurücksetzen"
+
+#: src/block-library/table/edit.tsx:253
+msgid "Row count"
+msgstr "Anzahl der Zeilen"
+
+#: src/components/inserter-sidebar/index.tsx:182
+msgid "Search"
+msgstr "Suchen"
+
+#: src/components/inserter-sidebar/index.tsx:178
+msgid "Search for blocks"
+msgstr "Nach Blöcken suchen"
+
+#: src/components/keyboard-shortcuts/index.tsx:93
+msgid "Show or hide the List View."
+msgstr "Die Listenansicht ein- oder ausblenden."
+
+#: src/format-library/link/inline.tsx:115
+#: src/format-library/image/inline.tsx:154
+#: src/block-library/image/edit.tsx:227
+msgid "Shown as a tooltip on hover."
+msgstr "Wird beim Überfahren mit der Maus als Tooltip angezeigt."
+
+#: src/format-library/strikethrough.tsx:17
+msgid "Strikethrough"
+msgstr "Durchstreichen"
+
+#: src/components/keyboard-shortcuts/hooks.ts:141
+msgid "Strikethrough the selected text."
+msgstr "Den ausgewählten Text durchstreichen."
+
+#: src/components/keyboard-shortcuts/index.tsx:79
+msgid "Switch between the visual editor and the code editor."
+msgstr "Zwischen visuellem Editor und Code-Editor wechseln."
+
+#: src/block-library/table/edit.tsx:231
+msgid "Table"
+msgstr "Tabelle"
+
+#: src/block-library/code/mermaid-preview.tsx:135
+msgid "The diagram could not be rendered."
+msgstr "Das Diagramm konnte nicht dargestellt werden."
+
+#: src/block-library/quote/edit.tsx:56
+msgid "Tip"
+msgstr "Tipp"
+
+#: src/format-library/link/inline.tsx:100
+#: src/format-library/image/inline.tsx:150
+#: src/block-library/image/edit.tsx:220
+msgid "Title"
+msgstr "Titel"
+
+#: src/block-library/list-item/edit.tsx:107
+msgid "Toggle task"
+msgstr "Aufgabe umschalten"
+
+#: src/block-library/list-item/edit.tsx:132
+msgid "Turn into a regular item"
+msgstr "In normales Element umwandeln"
+
+#: src/block-library/list-item/edit.tsx:133
+msgid "Turn into a task item"
+msgstr "In Aufgabenelement umwandeln"
+
+#: src/block-library/paragraph/edit.tsx:39
+msgid "Type / to choose a block"
+msgstr "Tippe „/“, um einen Block auszuwählen"
+
+#: src/format-library/image/inline.tsx:116
+#: src/block-library/image/edit.tsx:94
+#: src/block-library/image/edit.tsx:177
+msgid "URL or file path"
+msgstr "URL oder Dateipfad"
+
+#: src/components/keyboard-shortcuts/hooks.ts:134
+msgid "Underline the selected text."
+msgstr "Den ausgewählten Text unterstreichen."
+
+#: src/components/editor-header/index.tsx:101
+msgid "Undo"
+msgstr "Rückgängig machen"
+
+#: src/components/keyboard-shortcuts/index.tsx:54
+msgid "Undo your last changes."
+msgstr "Deine letzten Änderungen rückgängig machen."
+
+#: src/block-library/list/edit.tsx:48
+msgid "Unordered"
+msgstr "Unnummeriert"
+
+#: src/block-library/image/edit.tsx:71
+msgid "Upload an image from your device or insert from a URL."
+msgstr "Lade ein Bild von deinem Gerät hoch oder füge es über eine URL ein."
+
+#: style.css
+#. Description of the generic
+msgid "Visual markdown block editor."
+msgstr "Visueller Markdown-Blockeditor."
+
+#: src/block-library/quote/edit.tsx:86
+msgid "Warning"
+msgstr "Warnung"
+
+#: src/block-library/html/edit.tsx:43
+msgid "Write HTML…"
+msgstr "Schreibe etwas in HTML …"
+
+#: src/components/front-matter-editor/index.tsx:38
+msgid "Write YAML front matter…"
+msgstr "YAML-Front-Matter schreiben …"
+
+#: src/block-library/code/edit.tsx:66
+msgid "Write code…"
+msgstr "Schreibe etwas Code …"
+
+#: src/block-library/details/edit.tsx:86
+msgid "Write summary…"
+msgstr "Eine Zusammenfassung schreiben …"
+
+#: src/components/front-matter-editor/index.tsx:55
+msgid "YAML front matter"
+msgstr "YAML-Front-Matter"
