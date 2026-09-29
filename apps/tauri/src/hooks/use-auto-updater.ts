@@ -3,7 +3,7 @@
  */
 import { useEffect } from 'react';
 import { invoke } from '@tauri-apps/api/core';
-import { check } from '@tauri-apps/plugin-updater';
+import { check, type Update } from '@tauri-apps/plugin-updater';
 import { relaunch } from '@tauri-apps/plugin-process';
 import { ask, message } from '@tauri-apps/plugin-dialog';
 import { getVersion } from '@tauri-apps/api/app';
@@ -78,6 +78,55 @@ function documentIdsForRelaunch(): string[] {
 	return documentIds;
 }
 
+/**
+ * Asks to install the update, then downloads and installs it and relaunches
+ * the app.
+ *
+ * @param update The available update.
+ */
+async function installUpdate( update: Update ) {
+	const accepted = await ask(
+		sprintf(
+			/* translators: %s: new version number */
+			__( 'MarkBricks %s is available. Install now?', 'mark-bricks' ),
+			update.version
+		),
+		{
+			title: __( 'Update available', 'mark-bricks' ),
+			kind: 'info',
+		}
+	);
+	if ( ! accepted ) {
+		return;
+	}
+	if ( await stopForUnsavedChanges() ) {
+		return;
+	}
+	await update.download();
+	// The app stays usable during the download, so tabs may have been
+	// edited, opened, or closed meanwhile.
+	if ( await stopForUnsavedChanges() ) {
+		return;
+	}
+	// Reopen the current files after the relaunch. Launch arguments cannot
+	// carry them: the Windows installer mangles paths, and files opened
+	// from the macOS Finder are not arguments at all.
+	await invoke( 'remember_documents_for_relaunch', {
+		documentIds: documentIdsForRelaunch(),
+	} );
+	try {
+		await update.install();
+		await relaunch();
+	} catch ( error ) {
+		// The app keeps running, so a later ordinary launch must not
+		// reopen these files.
+		await invoke( 'remember_documents_for_relaunch', {
+			documentIds: [],
+		} );
+		throw error;
+	}
+}
+
 export async function checkForUpdates( { silent = false }: CheckOptions = {} ) {
 	try {
 		const update = await check();
@@ -100,45 +149,12 @@ export async function checkForUpdates( { silent = false }: CheckOptions = {} ) {
 			}
 			return;
 		}
-		const accepted = await ask(
-			sprintf(
-				/* translators: %s: new version number */
-				__( 'MarkBricks %s is available. Install now?', 'mark-bricks' ),
-				update.version
-			),
-			{
-				title: __( 'Update available', 'mark-bricks' ),
-				kind: 'info',
-			}
-		);
-		if ( ! accepted ) {
-			return;
-		}
-		if ( await stopForUnsavedChanges() ) {
-			return;
-		}
-		await update.download();
-		// The app stays usable during the download, so tabs may have been
-		// edited, opened, or closed meanwhile.
-		if ( await stopForUnsavedChanges() ) {
-			return;
-		}
-		// Reopen the current files after the relaunch. Launch arguments cannot
-		// carry them: the Windows installer mangles paths, and files opened
-		// from the macOS Finder are not arguments at all.
-		await invoke( 'remember_documents_for_relaunch', {
-			documentIds: documentIdsForRelaunch(),
-		} );
 		try {
-			await update.install();
-			await relaunch();
-		} catch ( error ) {
-			// The app keeps running, so a later ordinary launch must not
-			// reopen these files.
-			await invoke( 'remember_documents_for_relaunch', {
-				documentIds: [],
-			} );
-			throw error;
+			await installUpdate( update );
+		} finally {
+			// Releases the downloaded package, which is otherwise kept until
+			// the app exits when the update stops before installing.
+			await update.close();
 		}
 	} catch ( error ) {
 		if ( silent ) {

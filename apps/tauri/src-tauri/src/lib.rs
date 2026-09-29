@@ -284,10 +284,19 @@ fn write_relaunch_documents(file: &Path, paths: &[PathBuf]) -> Result<(), String
 /// nothing is restored, since the same paths would otherwise reopen on every
 /// later launch.
 fn take_relaunch_documents(file: &Path) -> Vec<PathBuf> {
+    take_relaunch_documents_with(file, |file| std::fs::remove_file(file))
+}
+
+/// [`take_relaunch_documents`] with the removal passed in, so a test can make
+/// it fail regardless of the user's file permissions.
+fn take_relaunch_documents_with(
+    file: &Path,
+    remove: impl FnOnce(&Path) -> std::io::Result<()>,
+) -> Vec<PathBuf> {
     let Ok(json) = std::fs::read_to_string(file) else {
         return Vec::new();
     };
-    if std::fs::remove_file(file).is_err() {
+    if remove(file).is_err() {
         return Vec::new();
     }
     serde_json::from_str::<Vec<NativePath>>(&json)

@@ -140,22 +140,17 @@ fn relaunch_documents_keep_non_utf8_paths() {
     std::fs::remove_dir(file.parent().unwrap()).unwrap();
 }
 
-#[cfg(unix)]
 #[test]
 fn relaunch_documents_are_not_restored_when_they_cannot_be_removed() {
-    use std::os::unix::fs::PermissionsExt;
-
     let file = relaunch_documents_file_for("relaunch-locked");
-    let dir = file.parent().unwrap();
     write_relaunch_documents(&file, &[PathBuf::from("/tmp/a.md")]).unwrap();
-    // A read-only directory keeps the file from being removed.
-    std::fs::set_permissions(dir, std::fs::Permissions::from_mode(0o555)).unwrap();
-    let taken = take_relaunch_documents(&file);
-    std::fs::set_permissions(dir, std::fs::Permissions::from_mode(0o755)).unwrap();
+    let taken = take_relaunch_documents_with(&file, |_| {
+        Err(std::io::Error::from(std::io::ErrorKind::PermissionDenied))
+    });
     assert!(
         taken.is_empty(),
         "paths that would reopen on every launch are not restored"
     );
 
-    std::fs::remove_dir_all(dir).unwrap();
+    std::fs::remove_dir_all(file.parent().unwrap()).unwrap();
 }
