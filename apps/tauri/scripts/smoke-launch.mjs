@@ -131,8 +131,10 @@ function checkPreviews( report ) {
 			return `the ${ language } preview is ${ preview?.status ?? 'missing' }`;
 		}
 	}
-	if ( report.katexFonts.length === 0 ) {
-		return 'no KaTeX font was loaded';
+	for ( const family of [ 'KaTeX_Main', 'KaTeX_Math', 'KaTeX_Size2' ] ) {
+		if ( ! report.katexFonts.some( ( font ) => font.family === family ) ) {
+			return `${ family } was not loaded`;
+		}
 	}
 	const failed = report.katexFonts.filter(
 		( font ) => font.status !== 'loaded'
