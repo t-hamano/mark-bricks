@@ -363,11 +363,13 @@ export function useCanvasStyleRuntime() {
 }
 
 /**
- * Calls `onRendered` once the block canvas shows a block.
+ * Calls `onRendered` with the block canvas once it shows a block.
  *
  * @param onRendered
  */
-export function useCanvasRendered( onRendered?: () => void ) {
+export function useCanvasRendered(
+	onRendered?: ( canvas: HTMLElement ) => void
+) {
 	const onRenderedRef = useRef( onRendered );
 	onRenderedRef.current = onRendered;
 
@@ -376,14 +378,14 @@ export function useCanvasRendered( onRendered?: () => void ) {
 			!! node.querySelector( '.block-editor-block-list__block' );
 
 		if ( hasBlock() ) {
-			onRenderedRef.current?.();
+			onRenderedRef.current?.( node );
 			return;
 		}
 
 		const observer = new MutationObserver( () => {
 			if ( hasBlock() ) {
 				observer.disconnect();
-				onRenderedRef.current?.();
+				onRenderedRef.current?.( node );
 			}
 		} );
 		observer.observe( node, { childList: true, subtree: true } );

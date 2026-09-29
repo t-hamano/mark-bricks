@@ -37,7 +37,7 @@ type Props = {
 	editorStyles?: EditorStyles;
 	style?: CSSProperties;
 	platform?: Partial< Platform >;
-	onRendered?: () => void;
+	onRendered?: ( canvas: HTMLElement ) => void;
 };
 
 function UnforwardedBlockEditor(

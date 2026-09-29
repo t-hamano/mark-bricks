@@ -57,7 +57,7 @@ type Props = {
 	editorStyles?: EditorStyles;
 	style?: CSSProperties;
 	platform?: Partial< Platform >;
-	onRendered?: () => void;
+	onRendered?: ( canvas: HTMLElement ) => void;
 };
 
 // The full authoring experience: block editor and code editor, switchable

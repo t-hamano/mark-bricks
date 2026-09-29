@@ -34,7 +34,7 @@ const { ExperimentalBlockCanvas } = unlock( blockEditorPrivateApis );
 type Props = {
 	styles: Array< { css: string } >;
 	spellCheck: boolean;
-	onRendered?: () => void;
+	onRendered?: ( canvas: HTMLElement ) => void;
 };
 
 export function EditorCanvas( { styles, spellCheck, onRendered }: Props ) {

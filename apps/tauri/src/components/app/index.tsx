@@ -7,6 +7,7 @@ import { invoke } from '@tauri-apps/api/core';
 import {
 	Editor,
 	EditorThemeProvider,
+	inspectCodePreviews,
 	type CodeEditorSettings,
 	type EditorHandle,
 	type EditorStyles,
@@ -143,11 +144,16 @@ export function App() {
 								onEditorModeChange={ setEditorMode }
 							/>
 						}
-						onRendered={ () => {
-							if ( activeTab.filePath ) {
-								void invoke( 'report_rendered', {
-									path: activeTab.filePath,
-								} );
+						onRendered={ ( canvas ) => {
+							const path = activeTab.filePath;
+							if ( path ) {
+								void inspectCodePreviews( canvas ).then(
+									( previews ) =>
+										invoke( 'report_rendered', {
+											path,
+											previews,
+										} )
+								);
 							}
 						} }
 					/>
