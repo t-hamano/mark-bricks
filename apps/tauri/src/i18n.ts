@@ -40,7 +40,6 @@ export const LOCALES = [
 	{ code: 'tr_TR', name: 'Türkçe', tags: [ 'tr' ] },
 	{ code: 'pl_PL', name: 'Polski', tags: [ 'pl' ] },
 	{ code: 'cs_CZ', name: 'Čeština', tags: [ 'cs' ] },
-	{ code: 'hu_HU', name: 'Magyar', tags: [ 'hu' ] },
 ] as const;
 
 export type Locale = ( typeof LOCALES )[ number ][ 'code' ];

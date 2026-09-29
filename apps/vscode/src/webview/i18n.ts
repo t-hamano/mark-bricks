@@ -8,6 +8,8 @@ const TEXT_DOMAIN = 'mark-bricks';
 // VS Code display language IDs mapped to the WordPress locale slugs the editor
 // uses as locale codes.
 // See https://code.visualstudio.com/docs/configure/locales#_available-locales
+// Hungarian (`hu`) is left out: WordPress.org publishes no Gutenberg language
+// pack for `hu_HU`, so most of the editor UI would stay in English.
 const WP_LOCALES: Partial< Record< string, string > > = {
 	en: 'en',
 	'zh-cn': 'zh_CN',
@@ -23,7 +25,6 @@ const WP_LOCALES: Partial< Record< string, string > > = {
 	tr: 'tr_TR',
 	pl: 'pl_PL',
 	cs: 'cs_CZ',
-	hu: 'hu_HU',
 };
 
 type Catalog = {
