@@ -88,6 +88,33 @@ Inline code containing HTML: `<div class="x">`.
 - [ ] Pending task with a [link](https://example.com)
 - [ ] Pending task with **bold**
 
+## List items with blocks
+
+- An item followed by a code block:
+  ```js
+  const answer = 42;
+  ```
+- An item followed by a quote:
+  > A quote inside a list item.
+
+1. An item with two paragraphs.
+
+   The second paragraph belongs to the same item.
+
+2. An item with an image.
+
+   ![A small landscape](https://picsum.photos/id/1018/80/40 'Lorem Picsum')
+
+3. An item with a nested list.
+
+   - Nested item
+
+   A paragraph after the nested list.
+
+4. ```sh
+   npm install
+   ```
+
 ## Blockquote
 
 > A plain quote with *emphasis*, **strong** and a
