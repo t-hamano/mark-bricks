@@ -1,7 +1,14 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-	stories: [ './**/*.stories.@(ts|tsx)' ],
+	stories: [
+		'./*.stories.@(ts|tsx)',
+		// The visual regression tests' stories stay out of the published
+		// Storybook.
+		...( process.env.STORYBOOK_VISUAL_TESTS
+			? [ './visual/*.stories.@(ts|tsx)' ]
+			: [] ),
+	],
 	framework: {
 		name: '@storybook/react-vite',
 		options: {},

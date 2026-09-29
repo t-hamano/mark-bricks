@@ -6,8 +6,9 @@ import { fn } from 'storybook/test';
 import { BlockEditor } from '@mark-bricks/editor';
 
 /**
- * Previews of `math` and `mermaid` code blocks. The visual regression tests in
- * `./visual` take screenshots of these stories.
+ * Previews of `math` and `mermaid` code blocks for the visual regression
+ * tests. Only built with `STORYBOOK_VISUAL_TESTS`, so they stay out of the
+ * published Storybook.
  */
 const meta: Meta< typeof BlockEditor > = {
 	component: BlockEditor,

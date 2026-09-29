@@ -21,7 +21,7 @@ export const test = base.extend( {
 	context: async ( { context }, provide ) => {
 		if ( ! existsSync( STATIC_DIR ) ) {
 			throw new Error(
-				'storybook-static is missing. Run `pnpm build-storybook` first.'
+				'storybook-static is missing. Build it with STORYBOOK_VISUAL_TESTS=1.'
 			);
 		}
 		await context.route( `${ ORIGIN }/**`, ( route ) => {

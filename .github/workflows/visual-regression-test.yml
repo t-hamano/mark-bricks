@@ -62,6 +62,8 @@ jobs:
 
             - name: Build Storybook
               run: pnpm build-storybook
+              env:
+                  STORYBOOK_VISUAL_TESTS: '1'
 
             - name: Run visual regression tests
               run: pnpm --filter @mark-bricks/storybook test:visual

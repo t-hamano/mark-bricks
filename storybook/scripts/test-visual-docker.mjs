@@ -1,10 +1,11 @@
 /**
- * Runs the visual regression tests in the Playwright Docker image, where the
- * CI takes its screenshots, and copies the screenshots back. Arguments are
- * passed to `playwright test`, for example `--update-snapshots`.
+ * Builds Storybook with the visual regression tests' stories, runs the tests
+ * in the Playwright Docker image, where the CI takes its screenshots, and
+ * copies the screenshots back. Arguments are passed to `playwright test`, for
+ * example `--update-snapshots`.
  *
- * Only the static Storybook build and the tests go into the container: the
- * host's node_modules may be built for another OS.
+ * Storybook is built on the host, and only the build and the tests go into
+ * the container: the host's node_modules may be built for another OS.
  */
 
 /**
@@ -20,6 +21,16 @@ const { version } = createRequire( import.meta.url )(
 	'@playwright/test/package.json'
 );
 const args = process.argv.slice( 2 ).map( ( arg ) => `'${ arg }'` );
+
+const build = spawnSync( 'pnpm', [ 'build-storybook' ], {
+	cwd: root,
+	env: { ...process.env, STORYBOOK_VISUAL_TESTS: '1' },
+	shell: true,
+	stdio: 'inherit',
+} );
+if ( build.status !== 0 ) {
+	process.exit( build.status ?? 1 );
+}
 
 const script = [
 	'set -e',

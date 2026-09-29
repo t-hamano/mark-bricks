@@ -69,8 +69,7 @@ pnpm install
 # Start Storybook
 pnpm storybook
 
-# Run the visual regression tests in the Playwright Docker image, as CI does
-pnpm build-storybook
+# Build Storybook and run the visual regression tests in the Playwright Docker image, as CI does
 pnpm --filter @mark-bricks/storybook test:visual:docker
 
 # Update the baseline screenshots
