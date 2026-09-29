@@ -36,3 +36,6 @@ storybook-static
 # Tool caches
 .playwright-mcp/
 .vscode-test/
+
+# Playwright output
+test-results/

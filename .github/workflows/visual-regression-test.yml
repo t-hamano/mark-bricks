@@ -1,0 +1,76 @@
+name: Visual Regression Test
+
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+
+# Cancel previous runs for the same branch / PR.
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+    cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+    # The container image must match the installed @playwright/test, which
+    # Dependabot updates.
+    playwright-version:
+        name: Playwright Version
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        outputs:
+            version: ${{ steps.version.outputs.version }}
+
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+            - name: Read the locked version
+              id: version
+              run: |
+                  version=$(grep -m1 -oP "^  '@playwright/test@\K[0-9.]+" pnpm-lock.yaml)
+                  echo "version=$version" >> "$GITHUB_OUTPUT"
+
+    test:
+        name: Storybook
+        needs: playwright-version
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        # Screenshots depend on the OS fonts, so take them in the same image
+        # as `pnpm test:visual:docker`.
+        container:
+            image: mcr.microsoft.com/playwright:v${{ needs.playwright-version.outputs.version }}-noble
+            options: --ipc=host
+
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+            - name: Setup Node.js
+              uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+              with:
+                  node-version-file: .nvmrc
+                  cache: pnpm
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Build Storybook
+              run: pnpm build-storybook
+              env:
+                  STORYBOOK_VISUAL_TESTS: '1'
+
+            - name: Run visual regression tests
+              run: pnpm --filter @mark-bricks/storybook test:visual
+
+            - name: Upload the diffs
+              if: failure()
+              uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+              with:
+                  name: visual-regression-diffs
+                  path: storybook/test-results

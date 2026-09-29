@@ -1,2 +1,2 @@
 export { renderMath } from './render';
-export { katexStyles } from './styles';
+export { useKatexStyles } from './styles';
