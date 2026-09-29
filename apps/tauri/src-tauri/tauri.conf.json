@@ -37,27 +37,24 @@
 			},
 			"assetProtocol": {
 				"enable": true,
-				"scope": {
-					"allow": [
-						"**/*.png",
-						"**/*.PNG",
-						"**/*.jpg",
-						"**/*.JPG",
-						"**/*.jpeg",
-						"**/*.JPEG",
-						"**/*.gif",
-						"**/*.GIF",
-						"**/*.webp",
-						"**/*.WEBP",
-						"**/*.svg",
-						"**/*.SVG",
-						"**/*.avif",
-						"**/*.AVIF",
-						"**/*.bmp",
-						"**/*.BMP"
-					],
-					"requireLiteralLeadingDot": false
-				}
+				"scope": [
+					"**/*.png",
+					"**/*.PNG",
+					"**/*.jpg",
+					"**/*.JPG",
+					"**/*.jpeg",
+					"**/*.JPEG",
+					"**/*.gif",
+					"**/*.GIF",
+					"**/*.webp",
+					"**/*.WEBP",
+					"**/*.svg",
+					"**/*.SVG",
+					"**/*.avif",
+					"**/*.AVIF",
+					"**/*.bmp",
+					"**/*.BMP"
+				]
 			}
 		}
 	},
