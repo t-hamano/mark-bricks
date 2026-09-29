@@ -1,0 +1,458 @@
+# Copyright (C) 2026 @mark-bricks/editor
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: @mark-bricks/editor 0.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"POT-Creation-Date: 2026-09-26T07:53:21.502Z\n"
+"PO-Revision-Date: 2026-09-29T01:42:58.975Z\n"
+"Last-Translator: Aki Hamano <->\n"
+"Language-Team: Aki Hamano <->\n"
+"X-Generator: @wp-blocks/make-pot 1.6.6\n"
+"Language: zh_CN\n"
+"X-Domain: mark-bricks\n"
+
+#: src/components/list-view-outline/index.tsx:159
+msgid "(Empty heading)"
+msgstr "（空标题）"
+
+#: src/components/list-view-outline/index.tsx:175
+msgid "(Incorrect heading level)"
+msgstr "（错误的标题级别）"
+
+#: src/components/list-view-outline/index.tsx:187
+msgid "(Multiple H1 headings are not recommended)"
+msgstr "（不推荐使用多个 H1 标题）"
+
+#: style.css
+#. Name of the generic
+msgid "@mark-bricks/editor"
+msgstr ""
+
+#: style.css
+#. Author of the generic
+msgid "Aki Hamano"
+msgstr "Aki Hamano"
+
+#: src/format-library/image/inline.tsx:140
+#: src/block-library/image/edit.tsx:207
+msgid "Alt text"
+msgstr "替代文字"
+
+#: src/format-library/image/inline.tsx:162
+#: src/block-library/image/edit.tsx:120
+#: src/block-library/image/edit.tsx:247
+msgid "Apply"
+msgstr "应用"
+
+#: src/components/editor-header/index.tsx:85
+msgid "Block Inserter"
+msgstr "区块插入器"
+
+#: src/components/inserter-sidebar/index.tsx:222
+msgid "Blocks"
+msgstr "区块"
+
+#: src/format-library/bold.tsx:17
+msgid "Bold"
+msgstr "粗体"
+
+#: src/format-library/image/inline.tsx:135
+#: src/block-library/image/edit.tsx:116
+#: src/block-library/image/edit.tsx:199
+msgid "Browse local file"
+msgstr "浏览本地文件"
+
+#: src/block-library/quote/edit.tsx:101
+msgid "Caution"
+msgstr "注意"
+
+#: src/block-library/table/edit.tsx:301
+msgid "Cell content"
+msgstr "单元格内容"
+
+#: src/block-library/code/edit.tsx:91
+msgid "Change language"
+msgstr "更改语言"
+
+#: src/components/keyboard-shortcuts/hooks.ts:92
+msgid "Change the block type after adding a new paragraph."
+msgstr "在新增段落后修改区块类型。"
+
+#: src/block-library/code/edit.tsx:123
+msgid "Choose language…"
+msgstr "选择语言…"
+
+#: src/format-library/clear-formatting.tsx:20
+msgid "Clear formatting"
+msgstr "清除格式"
+
+#: src/components/list-view-sidebar/index.tsx:64
+#: src/components/inserter-sidebar/index.tsx:210
+msgid "Close"
+msgstr "关闭"
+
+#: src/components/editor-header/index.tsx:84
+msgid "Close Block Inserter"
+msgstr "关闭区块插入器"
+
+#: src/components/editor/index.tsx:97
+msgid "Code editor"
+msgstr "代码编辑器"
+
+#: src/block-library/table/edit.tsx:246
+msgid "Column count"
+msgstr "栏目数"
+
+#: src/components/keyboard-shortcuts/hooks.ts:120
+msgid "Convert the selected text into a link."
+msgstr "将选中的文字转换为链接。"
+
+#: src/block-library/table/edit.tsx:259
+msgid "Create Table"
+msgstr "创建表格"
+
+#: src/block-library/quote/edit.tsx:154
+msgid "Default"
+msgstr "默认"
+
+#: src/block-library/table/edit.tsx:378
+msgid "Delete column"
+msgstr "删除列"
+
+#: src/block-library/table/edit.tsx:351
+msgid "Delete row"
+msgstr "删除行"
+
+#: src/format-library/image/inline.tsx:144
+#: src/block-library/image/edit.tsx:214
+msgid "Describes the image for screen readers."
+msgstr "为屏幕阅读器描述图片。"
+
+#: src/components/keyboard-shortcuts/index.tsx:103
+msgid "Display these keyboard shortcuts."
+msgstr "显示这些键盘快捷键。"
+
+#: src/components/list-view-sidebar/index.tsx:43
+#: src/components/editor-header/index.tsx:126
+msgid "Document Overview"
+msgstr "文档概览"
+
+#: src/block-library/image/edit.tsx:143
+msgid "Edit image"
+msgstr "编辑图片"
+
+#: src/block-library/table/edit.tsx:331
+msgid "Edit table"
+msgstr "编辑表格"
+
+#: src/format-library/image/inline.tsx:143
+#: src/block-library/image/edit.tsx:210
+msgid "Enter alt text…"
+msgstr "输入替代文字…"
+
+#: src/format-library/image/inline.tsx:153
+#: src/block-library/image/edit.tsx:223
+msgid "Enter title…"
+msgstr "输入标题…"
+
+#: src/block-library/image/edit.tsx:258
+msgid "Failed to load image."
+msgstr "图片加载失败。"
+
+#: src/components/keyboard-shortcuts/hooks.ts:96
+msgid "Forward-slash"
+msgstr "正斜杠"
+
+#: src/block-library/quote/edit.tsx:151
+msgid "GitHub alert type"
+msgstr "GitHub 警示类型"
+
+# %d: heading level (1-6)
+#: src/components/list-view-outline/index.tsx:109
+msgid "H%d"
+msgstr "H%d"
+
+#: src/block-library/table/edit.tsx:300
+msgid "Header label"
+msgstr "表头标签"
+
+#: src/block-library/heading/edit.tsx:53
+msgid "Heading"
+msgstr "标题"
+
+# %d: heading level e.g: "1", "2", "3"
+#: src/block-library/heading/index.ts:51
+msgid "Heading %d"
+msgstr "标题 %d"
+
+#: src/components/editor-header/index.tsx:125
+msgid "Hide Document Overview"
+msgstr "隐藏文档概览"
+
+#: src/block-library/image/edit.tsx:70
+msgid "Image"
+msgstr "图片"
+
+#: src/block-library/quote/edit.tsx:71
+msgid "Important"
+msgstr "重要"
+
+#: src/block-library/list-item/edit.tsx:70
+msgid "Indent"
+msgstr "增加缩进量"
+
+#: src/format-library/code.tsx:17
+msgid "Inline code"
+msgstr "内联代码"
+
+#: src/format-library/image/index.tsx:22
+msgid "Inline image"
+msgstr "内联图片"
+
+#: src/format-library/image/inline.tsx:163
+msgid "Insert"
+msgstr "插入"
+
+#: src/block-library/table/edit.tsx:232
+msgid "Insert a table for sharing data."
+msgstr "插入表格来共享数据。"
+
+#: src/block-library/table/edit.tsx:369
+msgid "Insert column after"
+msgstr "在后方插入列"
+
+#: src/block-library/table/edit.tsx:360
+msgid "Insert column before"
+msgstr "在前方插入列"
+
+#: src/block-library/table/edit.tsx:343
+msgid "Insert row after"
+msgstr "在下方插入行"
+
+#: src/block-library/table/edit.tsx:335
+msgid "Insert row before"
+msgstr "在上方插入行"
+
+#: src/format-library/italic.tsx:17
+msgid "Italic"
+msgstr "斜体"
+
+#: src/block-library/code/edit.tsx:106
+msgid "Language"
+msgstr "语言"
+
+#: src/format-library/link/index.tsx:36
+msgid "Link"
+msgstr "链接"
+
+#: src/block-library/list-item/edit.tsx:121
+msgid "List"
+msgstr "列表"
+
+#: src/components/list-view-sidebar/index.tsx:77
+msgid "List View"
+msgstr "列表视图"
+
+#: src/block-library/list-item/edit.tsx:120
+msgid "List text"
+msgstr "列表文字"
+
+#: src/components/keyboard-shortcuts/hooks.ts:106
+msgid "Make the selected text bold."
+msgstr "将选中的文字加粗。"
+
+#: src/components/keyboard-shortcuts/hooks.ts:148
+msgid "Make the selected text inline code."
+msgstr "将选定的文本设为内联代码。"
+
+#: src/components/keyboard-shortcuts/hooks.ts:113
+msgid "Make the selected text italic."
+msgstr "将选中的文字设为斜体。"
+
+#: src/components/list-view-outline/index.tsx:97
+msgid ""
+"Navigate the structure of your document and address issues like empty or "
+"incorrect heading levels."
+msgstr "浏览文档结构并解决标题级别为空或不正确等问题。"
+
+#: src/block-library/code/edit.tsx:132
+msgid "No matching language."
+msgstr "没有匹配的语言。"
+
+#: src/block-library/quote/edit.tsx:41
+msgid "Note"
+msgstr "说明"
+
+#: src/block-library/details/edit.tsx:60
+msgid "Open by default"
+msgstr "默认打开"
+
+#: src/block-library/list/edit.tsx:54
+msgid "Ordered"
+msgstr "有序"
+
+#: src/block-library/list-item/edit.tsx:63
+msgid "Outdent"
+msgstr "减少缩进量"
+
+#: src/components/list-view-sidebar/index.tsx:80
+msgid "Outline"
+msgstr "大纲"
+
+#: src/format-library/link/inline.tsx:138
+#: src/format-library/image/inline.tsx:117
+msgid "Paste or type URL"
+msgstr "粘贴或键入 URL"
+
+#: src/block-library/image/edit.tsx:98
+#: src/block-library/image/edit.tsx:181
+msgid "Paste or type URL or file path"
+msgstr "粘贴或键入 URL 或文件路径"
+
+#: src/components/editor-header/index.tsx:110
+msgid "Redo"
+msgstr "重做"
+
+#: src/components/keyboard-shortcuts/index.tsx:64
+msgid "Redo your last undo."
+msgstr "重做您撤销的操作。"
+
+#: src/components/keyboard-shortcuts/hooks.ts:127
+msgid "Remove a link."
+msgstr "移除链接。"
+
+#: src/block-library/image/edit.tsx:241
+msgid "Reset"
+msgstr "重置"
+
+#: src/components/inserter-sidebar/index.tsx:195
+msgid "Reset search"
+msgstr "重置搜索"
+
+#: src/block-library/table/edit.tsx:253
+msgid "Row count"
+msgstr "行数"
+
+#: src/components/inserter-sidebar/index.tsx:182
+msgid "Search"
+msgstr "搜索"
+
+#: src/components/inserter-sidebar/index.tsx:178
+msgid "Search for blocks"
+msgstr "搜索区块"
+
+#: src/components/keyboard-shortcuts/index.tsx:93
+msgid "Show or hide the List View."
+msgstr "显示或隐藏列表视图。"
+
+#: src/format-library/link/inline.tsx:115
+#: src/format-library/image/inline.tsx:154
+#: src/block-library/image/edit.tsx:227
+msgid "Shown as a tooltip on hover."
+msgstr "悬停时显示为工具提示。"
+
+#: src/format-library/strikethrough.tsx:17
+msgid "Strikethrough"
+msgstr "删除线"
+
+#: src/components/keyboard-shortcuts/hooks.ts:141
+msgid "Strikethrough the selected text."
+msgstr "为所选文本添加删除线。"
+
+#: src/components/keyboard-shortcuts/index.tsx:79
+msgid "Switch between the visual editor and the code editor."
+msgstr "在可视化编辑器和代码编辑器之间切换。"
+
+#: src/block-library/table/edit.tsx:231
+msgid "Table"
+msgstr "表格"
+
+#: src/block-library/code/mermaid-preview.tsx:135
+msgid "The diagram could not be rendered."
+msgstr "无法渲染图表。"
+
+#: src/block-library/quote/edit.tsx:56
+msgid "Tip"
+msgstr "提示"
+
+#: src/format-library/link/inline.tsx:100
+#: src/format-library/image/inline.tsx:150
+#: src/block-library/image/edit.tsx:220
+msgid "Title"
+msgstr "标题"
+
+#: src/block-library/list-item/edit.tsx:107
+msgid "Toggle task"
+msgstr "切换任务"
+
+#: src/block-library/list-item/edit.tsx:132
+msgid "Turn into a regular item"
+msgstr "转换为普通项目"
+
+#: src/block-library/list-item/edit.tsx:133
+msgid "Turn into a task item"
+msgstr "转换为任务项目"
+
+#: src/block-library/paragraph/edit.tsx:39
+msgid "Type / to choose a block"
+msgstr "输入 / 来选择一个区块"
+
+#: src/format-library/image/inline.tsx:116
+#: src/block-library/image/edit.tsx:94
+#: src/block-library/image/edit.tsx:177
+msgid "URL or file path"
+msgstr "URL 或文件路径"
+
+#: src/components/keyboard-shortcuts/hooks.ts:134
+msgid "Underline the selected text."
+msgstr "给选中的文字加下划线。"
+
+#: src/components/editor-header/index.tsx:101
+msgid "Undo"
+msgstr "撤销"
+
+#: src/components/keyboard-shortcuts/index.tsx:54
+msgid "Undo your last changes."
+msgstr "撤销您的上一个更改。"
+
+#: src/block-library/list/edit.tsx:48
+msgid "Unordered"
+msgstr "无序"
+
+#: src/block-library/image/edit.tsx:71
+msgid "Upload an image from your device or insert from a URL."
+msgstr "从设备上传图片或通过 URL 插入。"
+
+#: style.css
+#. Description of the generic
+msgid "Visual markdown block editor."
+msgstr "可视化 Markdown 区块编辑器。"
+
+#: src/block-library/quote/edit.tsx:86
+msgid "Warning"
+msgstr "警告"
+
+#: src/block-library/html/edit.tsx:43
+msgid "Write HTML…"
+msgstr "编写 HTML…"
+
+#: src/components/front-matter-editor/index.tsx:38
+msgid "Write YAML front matter…"
+msgstr "编写 YAML 前置元数据…"
+
+#: src/block-library/code/edit.tsx:66
+msgid "Write code…"
+msgstr "编写代码…"
+
+#: src/block-library/details/edit.tsx:86
+msgid "Write summary…"
+msgstr "编写摘要…"
+
+#: src/components/front-matter-editor/index.tsx:55
+msgid "YAML front matter"
+msgstr "YAML 前置元数据"
