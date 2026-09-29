@@ -1,59 +1,59 @@
 {
-  "version": "0.14.1",
-  "notes": "### Features\n\n-   **tauri:** add macos code signing and notarization ([ebbb269](https://github.com/t-hamano/mark-bricks/commit/ebbb2696f50ba9c020d2272040db11e807606557))",
-  "pub_date": "2026-09-27T14:41:01.668Z",
+  "version": "0.15.0",
+  "notes": "### Bug Fixes\n\n- **tauri:** prefer gutenberg translations for strings shared with the editor ([b4305d2](https://github.com/t-hamano/mark-bricks/commit/b4305d299e35e92df929b82058304f9a8048888a))\n- **tauri:** reopen the open files after an update ([#128](https://github.com/t-hamano/mark-bricks/issues/128)) ([d4fa208](https://github.com/t-hamano/mark-bricks/commit/d4fa208aca3f4488bae2ed0d7de7aee4815f9b8e))\n- **vscode:** load the katex fonts in the block canvas ([#136](https://github.com/t-hamano/mark-bricks/issues/136)) ([7687c94](https://github.com/t-hamano/mark-bricks/commit/7687c945d76d468438ab4603d18bc9b0be44e2a9))\n\n### Features\n\n- **editor:** add translations for the vscode display languages ([#126](https://github.com/t-hamano/mark-bricks/issues/126)) ([a9f3b92](https://github.com/t-hamano/mark-bricks/commit/a9f3b9212b90f7f58177a9e936b962ca6c684acc))\n- **editor:** preview math code blocks ([#131](https://github.com/t-hamano/mark-bricks/issues/131)) ([56eaa90](https://github.com/t-hamano/mark-bricks/commit/56eaa90ba5d3d77f0dfee3cdf96054b2bb326d2d))\n- **repo:** drop hungarian support, which has no gutenberg language pack ([e305724](https://github.com/t-hamano/mark-bricks/commit/e305724d6f2c5f2ecc01c89ed27338a063461b3d))\n- **tauri:** add translations for the vscode display languages ([#124](https://github.com/t-hamano/mark-bricks/issues/124)) ([20a0257](https://github.com/t-hamano/mark-bricks/commit/20a0257e92ec7615251c0360e9e2fc2176f05ae2))",
+  "pub_date": "2026-09-29T07:22:21.245Z",
   "platforms": {
     "linux-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWZoeEJZMTJNK3o2WDNaMFpqRTVlVURMK056NnhZR2h2dGVCekZNTlAyWFB0VWhXRk9aR1VWOFhpbjZIUHZHMDAyS2U4Z0RRUWEwaVB4dVcxalBlZndNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTE5OTg3CWZpbGU6TWFya0JyaWNrc18wLjE0LjFfYW1kNjQuQXBwSW1hZ2UJdmVyc2lvbjowLjE0LjEKS3pvMjRSS255L1VzNTRGeExybmQ3cEpzYmttL3I1TWY1NWYvd2ZUTkt3WXY0WlE2VFc0Y0Z0UUF1TVdWNzJWVXRMOFhsV29xaGhYVVpaU3V6UHpuQUE9PQo=",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593110620"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVRvTFJKU0xxS1RhMnN1Y09ZZjlYRTAyZHRmWXZhaGlVRWN2VG1scTlmZkJpVy9KaEpwNEE0STVEUml1aWlTenljUVhNaEVWT0NkbnBhOVlydFU2VVEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NDYyCWZpbGU6TWFya0JyaWNrc18wLjE1LjBfYW1kNjQuQXBwSW1hZ2UJdmVyc2lvbjowLjE1LjAKeTdWSHY3a0dHOU91Mm1mRW9BUVJZa1cvdVhJU0x2Nm5qaGdKc2Nqb3FJZ3F4OWR1enFiamsxaDY3TG84VVhHKzN4NU1FZ3M2UFBxUk0vU0pQNlU3Q0E9PQo=",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597560637"
     },
     "linux-x86_64-appimage": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWZoeEJZMTJNK3o2WDNaMFpqRTVlVURMK056NnhZR2h2dGVCekZNTlAyWFB0VWhXRk9aR1VWOFhpbjZIUHZHMDAyS2U4Z0RRUWEwaVB4dVcxalBlZndNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTE5OTg3CWZpbGU6TWFya0JyaWNrc18wLjE0LjFfYW1kNjQuQXBwSW1hZ2UJdmVyc2lvbjowLjE0LjEKS3pvMjRSS255L1VzNTRGeExybmQ3cEpzYmttL3I1TWY1NWYvd2ZUTkt3WXY0WlE2VFc0Y0Z0UUF1TVdWNzJWVXRMOFhsV29xaGhYVVpaU3V6UHpuQUE9PQo=",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593110620"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVRvTFJKU0xxS1RhMnN1Y09ZZjlYRTAyZHRmWXZhaGlVRWN2VG1scTlmZkJpVy9KaEpwNEE0STVEUml1aWlTenljUVhNaEVWT0NkbnBhOVlydFU2VVEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NDYyCWZpbGU6TWFya0JyaWNrc18wLjE1LjBfYW1kNjQuQXBwSW1hZ2UJdmVyc2lvbjowLjE1LjAKeTdWSHY3a0dHOU91Mm1mRW9BUVJZa1cvdVhJU0x2Nm5qaGdKc2Nqb3FJZ3F4OWR1enFiamsxaDY3TG84VVhHKzN4NU1FZ3M2UFBxUk0vU0pQNlU3Q0E9PQo=",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597560637"
     },
     "linux-x86_64-deb": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVdpY2MvUVoxVmtJMW4za01kdHpLbnpyRjY3akZWTXVJRW5FS1FuaE9HTmJEeGxrU2pSZEg2ZFJkc0gyTk0vNzBlQ2I2VkdaQmk5YnV2UkVGcUp3M0FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTE5OTg3CWZpbGU6TWFya0JyaWNrc18wLjE0LjFfYW1kNjQuZGViCXZlcnNpb246MC4xNC4xCi8wa29wNlpEbVlJc1UwczlKOUU5WlFCQ0NKQ2FqdThZTlZKc1FJbjZnZUV5YVJaOEZURUJoRTN3cVlMd1h5dXRTYjFXc3JTN2JOR0NtbG4wdWI2a0RBPT0K",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593110542"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVFhemRTMko5bkQvVkhmSFpHdHhzOTBtVk5Vb0o1T2xiZTU2eHBhM2dMaG5JWS9EUmMzNUl1MjVUQit0aVQ1U1h2ZHI5UHNOcHhTM0doL0c1WW5qRFFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NDYyCWZpbGU6TWFya0JyaWNrc18wLjE1LjBfYW1kNjQuZGViCXZlcnNpb246MC4xNS4wCjdhZzdiWDNaSmpVREdkbDNGOXBwZURWekNjZTRIMXZzcFVENEtOSlpCeTNZYTMyeXNCZVdNYncycDZqSFkwWWFpUFdzdkFCaXE1dGthVEtoK0pFSUJ3PT0K",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597560579"
     },
     "linux-x86_64-rpm": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVExWjBwanpoY2NubmY3TTVPYWc2T29mZ1lvVm5ubDZMTmtiQ0xlNXlpYjRSUTd1OU50dXp0YjZJeEQ1TkErMDU1YW5FaC82aExVWDF5NEFFM2I2a2dBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTE5OTg3CWZpbGU6TWFya0JyaWNrcy0wLjE0LjEtMS54ODZfNjQucnBtCXZlcnNpb246MC4xNC4xCmJDdEZ0MmtZd2Y1V2ZYTWV0RU84MDVtT1FPa0NOTjFMRlJCd0srSUlHaDl3bU1iRDlraTFMZGFnMzVyLzdNdVZSYmFCbTBqK1N2MXNwZUxOczh2aEFnPT0K",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593110596"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVhYT283VDJKUVQrdmdWcDhNcjdlVG41VHk2ZGowZjg5Z24zUDMva1RLaFlPYkltanRlT1RveXk3MCtwK2pHd2NwSmRZTURGWElqa3ZBSjFZOW5lNVFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NDYyCWZpbGU6TWFya0JyaWNrcy0wLjE1LjAtMS54ODZfNjQucnBtCXZlcnNpb246MC4xNS4wCkFneFNaTWxzQkhia1NGTVRrS294dGh5TEFJZHNzaE4xZHlxRXVmVEFGWTdqNHhnMnlWUGJyT3pSVjEvSFlONGxScDJVWEl2TXlTQjYzUitjVXBqYkJ3PT0K",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597560615"
     },
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVhhejVWZWtTUUtZUmJlTy9Lamd0V3NUOGhoMWlUWStVeUlnNVowY1hNcmVEZDcwYmdTVXpad2gxWDJBY1VERG95WnFuM3hsSVZSYkdVbXh1T2xsVFFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTIwMDE1CWZpbGU6TWFya0JyaWNrc18wLjE0LjFfeDY0X2VuLVVTLm1zaQl2ZXJzaW9uOjAuMTQuMQpETzNzLzU4WVFseWNPeGVhR2VlZ1kzZUZpcXArL0lHM1lDOTJCNSs0YjdvSHpQQVAyQytpUW9palhzSWJpa0FQVXFoOE10NGFPNkVBUGQvVjRRbExDdz09Cg==",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593111267"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWErNEpxQlhHeWIvTU9pTjJhcHFNWStUOVFCR0lqK0JJa1lJT0k3eFVURmZzbnBqS0M2UFBxZ3Nqb2d5Y1grcWJpOEZkTngwbVpQYnB1dnprOWVXNkFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NDk5CWZpbGU6TWFya0JyaWNrc18wLjE1LjBfeDY0X2VuLVVTLm1zaQl2ZXJzaW9uOjAuMTUuMApqU1VvVXZud1RUWCtSby9kUU5TV24waU5pKzZpcC9ZRCtFYUR1ZGdqcDJzMEJ4R3htOVJ5eDRiNzRCc2l0bmwrbWRKM3gwUHVGUXFSc0hvZkxwMmVDUT09Cg==",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597561485"
     },
     "windows-x86_64-msi": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVhhejVWZWtTUUtZUmJlTy9Lamd0V3NUOGhoMWlUWStVeUlnNVowY1hNcmVEZDcwYmdTVXpad2gxWDJBY1VERG95WnFuM3hsSVZSYkdVbXh1T2xsVFFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTIwMDE1CWZpbGU6TWFya0JyaWNrc18wLjE0LjFfeDY0X2VuLVVTLm1zaQl2ZXJzaW9uOjAuMTQuMQpETzNzLzU4WVFseWNPeGVhR2VlZ1kzZUZpcXArL0lHM1lDOTJCNSs0YjdvSHpQQVAyQytpUW9palhzSWJpa0FQVXFoOE10NGFPNkVBUGQvVjRRbExDdz09Cg==",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593111267"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWErNEpxQlhHeWIvTU9pTjJhcHFNWStUOVFCR0lqK0JJa1lJT0k3eFVURmZzbnBqS0M2UFBxZ3Nqb2d5Y1grcWJpOEZkTngwbVpQYnB1dnprOWVXNkFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NDk5CWZpbGU6TWFya0JyaWNrc18wLjE1LjBfeDY0X2VuLVVTLm1zaQl2ZXJzaW9uOjAuMTUuMApqU1VvVXZud1RUWCtSby9kUU5TV24waU5pKzZpcC9ZRCtFYUR1ZGdqcDJzMEJ4R3htOVJ5eDRiNzRCc2l0bmwrbWRKM3gwUHVGUXFSc0hvZkxwMmVDUT09Cg==",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597561485"
     },
     "windows-x86_64-nsis": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVlTeGR4bnRWcStWTExGVS9YbklJOUpKbXZZck4wbGNtOFdWaUJOT3Y3SDR3UkNIZm53SERHNmwzbm90NlkvQVRhQW5MRVhkZGg1TlVUWXZkRGtta0FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTIwMDE1CWZpbGU6TWFya0JyaWNrc18wLjE0LjFfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMTQuMQpRUlRYMkxsRStvemRFbFl4T2xXandIemJBWE1SNUFIWkVNWEtJTzV2VDUrMGVTdDFEUzJlYUtKZVg1TUVGMnpoSWEveG9wVGMzd21rVTJ5VCs3c1VDUT09Cg==",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593111294"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVlYV1VaSTBqOEhZTTZCWkM4Z2xHYmk0dzVQZlZodDBGMkFkK1R6YXlRaTI3ajlLUUp2OThJNnlJMisxK2JZY0xFYXZkRUhDckY3SHlVWlF6b0NHOEFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NDk5CWZpbGU6TWFya0JyaWNrc18wLjE1LjBfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMTUuMAp1QXNBTkdya0NDMVQwWXNhd05iUDBMVXZMdldlMlZJN0NUemdQQkxsUHExK0lwNCt1OEM5VHBMMTFJejZUZVVlOVpxZDFlRERTVFlTNElCNTRhUWlDUT09Cg==",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597561542"
     },
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVpSU0Q0M1JLUUwva3dYd2ZjQUhpZ1JhUEYvZ1RqdVoyYTBJTVVMS1VoZ0FsYXY0cWJqQUl2dlE3cldGbUluTlNKWFVLckk5M1ZWTE1KNE9qcVdPVlFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTIwMDU3CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNC4xCnlUQUdYck5DaWhWaFMvRnJaSUNuSDVnSlpwa1RGNUFBSEcvQ2NsSVpqVUJwSnh4ZDUxZUp3dEdyQlUrbURvVi9zQVRzUG83NU5ZUTJrMnlzWmhKK0JRPT0K",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593112379"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWV1TjNrdXNYc2JlNkdqRjg1aHFrajhsV252TUlwY1NLeGdDejlqZkJ1M0EzTFAreU03RXV0S1R3QWJmTjBMU0VQa0FEQ2FiWmFVaTJtYm04UUpiWXdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NTM1CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNS4wCjd3VG1hdkIwakh3Tm5ENHI5NG15aUJTS1dNMXBLbFQvSm4wTTI1b0FXRVJ1RWlpODk1YW50MEdib3pYWVlmM1NoUXFrYktLaVQ5K2JCb0o5UExkcURRPT0K",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597562523"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVpSU0Q0M1JLUUwva3dYd2ZjQUhpZ1JhUEYvZ1RqdVoyYTBJTVVMS1VoZ0FsYXY0cWJqQUl2dlE3cldGbUluTlNKWFVLckk5M1ZWTE1KNE9qcVdPVlFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTIwMDU3CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNC4xCnlUQUdYck5DaWhWaFMvRnJaSUNuSDVnSlpwa1RGNUFBSEcvQ2NsSVpqVUJwSnh4ZDUxZUp3dEdyQlUrbURvVi9zQVRzUG83NU5ZUTJrMnlzWmhKK0JRPT0K",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593112379"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWV1TjNrdXNYc2JlNkdqRjg1aHFrajhsV252TUlwY1NLeGdDejlqZkJ1M0EzTFAreU03RXV0S1R3QWJmTjBMU0VQa0FEQ2FiWmFVaTJtYm04UUpiWXdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NTM1CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNS4wCjd3VG1hdkIwakh3Tm5ENHI5NG15aUJTS1dNMXBLbFQvSm4wTTI1b0FXRVJ1RWlpODk1YW50MEdib3pYWVlmM1NoUXFrYktLaVQ5K2JCb0o5UExkcURRPT0K",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597562523"
     },
     "darwin-universal": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVpSU0Q0M1JLUUwva3dYd2ZjQUhpZ1JhUEYvZ1RqdVoyYTBJTVVMS1VoZ0FsYXY0cWJqQUl2dlE3cldGbUluTlNKWFVLckk5M1ZWTE1KNE9qcVdPVlFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTIwMDU3CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNC4xCnlUQUdYck5DaWhWaFMvRnJaSUNuSDVnSlpwa1RGNUFBSEcvQ2NsSVpqVUJwSnh4ZDUxZUp3dEdyQlUrbURvVi9zQVRzUG83NU5ZUTJrMnlzWmhKK0JRPT0K",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593112379"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWV1TjNrdXNYc2JlNkdqRjg1aHFrajhsV252TUlwY1NLeGdDejlqZkJ1M0EzTFAreU03RXV0S1R3QWJmTjBMU0VQa0FEQ2FiWmFVaTJtYm04UUpiWXdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NTM1CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNS4wCjd3VG1hdkIwakh3Tm5ENHI5NG15aUJTS1dNMXBLbFQvSm4wTTI1b0FXRVJ1RWlpODk1YW50MEdib3pYWVlmM1NoUXFrYktLaVQ5K2JCb0o5UExkcURRPT0K",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597562523"
     },
     "darwin-aarch64-app": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVpSU0Q0M1JLUUwva3dYd2ZjQUhpZ1JhUEYvZ1RqdVoyYTBJTVVMS1VoZ0FsYXY0cWJqQUl2dlE3cldGbUluTlNKWFVLckk5M1ZWTE1KNE9qcVdPVlFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTIwMDU3CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNC4xCnlUQUdYck5DaWhWaFMvRnJaSUNuSDVnSlpwa1RGNUFBSEcvQ2NsSVpqVUJwSnh4ZDUxZUp3dEdyQlUrbURvVi9zQVRzUG83NU5ZUTJrMnlzWmhKK0JRPT0K",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593112379"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWV1TjNrdXNYc2JlNkdqRjg1aHFrajhsV252TUlwY1NLeGdDejlqZkJ1M0EzTFAreU03RXV0S1R3QWJmTjBMU0VQa0FEQ2FiWmFVaTJtYm04UUpiWXdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NTM1CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNS4wCjd3VG1hdkIwakh3Tm5ENHI5NG15aUJTS1dNMXBLbFQvSm4wTTI1b0FXRVJ1RWlpODk1YW50MEdib3pYWVlmM1NoUXFrYktLaVQ5K2JCb0o5UExkcURRPT0K",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597562523"
     },
     "darwin-x86_64-app": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVpSU0Q0M1JLUUwva3dYd2ZjQUhpZ1JhUEYvZ1RqdVoyYTBJTVVMS1VoZ0FsYXY0cWJqQUl2dlE3cldGbUluTlNKWFVLckk5M1ZWTE1KNE9qcVdPVlFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTIwMDU3CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNC4xCnlUQUdYck5DaWhWaFMvRnJaSUNuSDVnSlpwa1RGNUFBSEcvQ2NsSVpqVUJwSnh4ZDUxZUp3dEdyQlUrbURvVi9zQVRzUG83NU5ZUTJrMnlzWmhKK0JRPT0K",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593112379"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWV1TjNrdXNYc2JlNkdqRjg1aHFrajhsV252TUlwY1NLeGdDejlqZkJ1M0EzTFAreU03RXV0S1R3QWJmTjBMU0VQa0FEQ2FiWmFVaTJtYm04UUpiWXdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NTM1CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNS4wCjd3VG1hdkIwakh3Tm5ENHI5NG15aUJTS1dNMXBLbFQvSm4wTTI1b0FXRVJ1RWlpODk1YW50MEdib3pYWVlmM1NoUXFrYktLaVQ5K2JCb0o5UExkcURRPT0K",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597562523"
     },
     "darwin-universal-app": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MVpSU0Q0M1JLUUwva3dYd2ZjQUhpZ1JhUEYvZ1RqdVoyYTBJTVVMS1VoZ0FsYXY0cWJqQUl2dlE3cldGbUluTlNKWFVLckk5M1ZWTE1KNE9qcVdPVlFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNTIwMDU3CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNC4xCnlUQUdYck5DaWhWaFMvRnJaSUNuSDVnSlpwa1RGNUFBSEcvQ2NsSVpqVUJwSnh4ZDUxZUp3dEdyQlUrbURvVi9zQVRzUG83NU5ZUTJrMnlzWmhKK0JRPT0K",
-      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/593112379"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSb3VhRm95ai85MWV1TjNrdXNYc2JlNkdqRjg1aHFrajhsV252TUlwY1NLeGdDejlqZkJ1M0EzTFAreU03RXV0S1R3QWJmTjBMU0VQa0FEQ2FiWmFVaTJtYm04UUpiWXdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwNjY2NTM1CWZpbGU6TWFya0JyaWNrcy5hcHAudGFyLmd6CXZlcnNpb246MC4xNS4wCjd3VG1hdkIwakh3Tm5ENHI5NG15aUJTS1dNMXBLbFQvSm4wTTI1b0FXRVJ1RWlpODk1YW50MEdib3pYWVlmM1NoUXFrYktLaVQ5K2JCb0o5UExkcURRPT0K",
+      "url": "https://api.github.com/repos/t-hamano/mark-bricks/releases/assets/597562523"
     }
   }
 }
