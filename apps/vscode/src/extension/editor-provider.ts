@@ -9,6 +9,7 @@ import { parseImageSrc } from '@mark-bricks/image-path';
  * Internal dependencies
  */
 import type {
+	CodePreviewReport,
 	HostMessage,
 	ImageError,
 	WebviewMessage,
@@ -36,8 +37,12 @@ export class MarkBricksEditorProvider
 {
 	public static readonly viewType = 'markBricks.visualEditor';
 
-	// URIs of the open documents whose webview has posted `rendered`.
-	private static readonly renderedDocuments = new Set< string >();
+	// URIs of the open documents whose webview has posted `rendered`, with
+	// the `codePreviews` report once it has posted one.
+	private static readonly renderedDocuments = new Map<
+		string,
+		CodePreviewReport | null
+	>();
 
 	// Registers the provider for the `viewType` custom editor.
 	public static register(
@@ -60,6 +65,14 @@ export class MarkBricksEditorProvider
 		return MarkBricksEditorProvider.renderedDocuments.has( uri.toString() );
 	}
 
+	// How the code block previews in the document's webview rendered.
+	public static getCodePreviews( uri: vscode.Uri ): CodePreviewReport | null {
+		return (
+			MarkBricksEditorProvider.renderedDocuments.get( uri.toString() ) ??
+			null
+		);
+	}
+
 	private constructor( private readonly context: vscode.ExtensionContext ) {}
 
 	// Starts an editor session for each opened document.
@@ -68,18 +81,16 @@ export class MarkBricksEditorProvider
 		panel: vscode.WebviewPanel
 	): void {
 		const key = document.uri.toString();
-		void new EditorSession(
-			this.context,
-			document,
-			panel,
-			( isRendered ) => {
-				if ( isRendered ) {
-					MarkBricksEditorProvider.renderedDocuments.add( key );
-				} else {
-					MarkBricksEditorProvider.renderedDocuments.delete( key );
-				}
+		void new EditorSession( this.context, document, panel, ( state ) => {
+			if ( state ) {
+				MarkBricksEditorProvider.renderedDocuments.set(
+					key,
+					state.codePreviews
+				);
+			} else {
+				MarkBricksEditorProvider.renderedDocuments.delete( key );
 			}
-		);
+		} );
 	}
 }
 
@@ -107,7 +118,10 @@ class EditorSession {
 		context: vscode.ExtensionContext,
 		private readonly document: vscode.TextDocument,
 		private readonly panel: vscode.WebviewPanel,
-		private readonly onRenderedChange: ( isRendered: boolean ) => void
+		// Called with null when the webview is gone.
+		private readonly onRenderedChange: (
+			state: { codePreviews: CodePreviewReport | null } | null
+		) => void
 	) {
 		this.extensionId = context.extension.id;
 
@@ -167,7 +181,11 @@ class EditorSession {
 				break;
 
 			case 'rendered':
-				this.onRenderedChange( true );
+				this.onRenderedChange( { codePreviews: null } );
+				break;
+
+			case 'codePreviews':
+				this.onRenderedChange( { codePreviews: message.report } );
 				break;
 
 			case 'change':
@@ -465,7 +483,7 @@ class EditorSession {
 	// Writes any pending text and releases the session's resources.
 	private dispose(): void {
 		this.isDisposed = true;
-		this.onRenderedChange( false );
+		this.onRenderedChange( null );
 		const hasPendingWrite = this.pendingText !== null;
 		this.cancelChangeTimer();
 		if ( hasPendingWrite ) {

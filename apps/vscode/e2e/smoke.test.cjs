@@ -79,4 +79,34 @@ suite( 'MarkBricks smoke test', () => {
 			'The editor canvas did not show the blocks'
 		);
 	} );
+
+	// Font URLs and the webview's CSP differ from Storybook's, so check that
+	// the KaTeX fonts load here too.
+	test( 'renders the math and mermaid previews', async () => {
+		const api = vscode.extensions.getExtension( EXTENSION_ID ).exports;
+
+		await waitFor(
+			() => api.getCodePreviews( documentUri ) !== null,
+			60000,
+			'The webview did not report the code block previews'
+		);
+		const { previews, katexFonts } = api.getCodePreviews( documentUri );
+
+		for ( const language of [ 'math', 'mermaid' ] ) {
+			const preview = previews.find(
+				( item ) => item.language === language
+			);
+			assert.strictEqual(
+				preview?.status,
+				'rendered',
+				`The ${ language } preview did not render`
+			);
+		}
+		assert.ok( katexFonts.length > 0, 'No KaTeX font was loaded' );
+		assert.deepStrictEqual(
+			katexFonts.filter( ( font ) => font.status !== 'loaded' ),
+			[],
+			'KaTeX fonts did not load'
+		);
+	} );
 } );
