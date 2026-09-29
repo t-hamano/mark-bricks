@@ -90,6 +90,9 @@ The steps below use `pt_BR` as an example.
 
 The editor keeps no list of languages: `applyLocale` applies any slug it has a catalog for, so adding a locale needs no code change here, only the catalog.
 
+> [!IMPORTANT]
+> Translate the editor first. `applyLocale` falls back to English for a slug the editor has no catalog for, and each host layers its own `.po` strings onto the locale it returns. Without the editor catalog, the desktop app and the VS Code webview stay in English even when their own `.po` is translated. The VS Code `package.nls.*.json` and `bundle.l10n.*.json` files (step 3) are loaded by VS Code itself and do not depend on it.
+
 It ships the block editor, so it needs the Gutenberg (`default` domain) strings as well as its own. Fetch the Gutenberg catalog:
 
 ```sh
