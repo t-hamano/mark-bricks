@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { useEffect } from 'react';
+import { invoke } from '@tauri-apps/api/core';
 import { check } from '@tauri-apps/plugin-updater';
 import { relaunch } from '@tauri-apps/plugin-process';
 import { ask, message } from '@tauri-apps/plugin-dialog';
@@ -77,7 +78,21 @@ export async function checkForUpdates( { silent = false }: CheckOptions = {} ) {
 			);
 			return;
 		}
-		await update.downloadAndInstall();
+		// Reopen the current files after the relaunch. Launch arguments cannot
+		// carry them: the Windows installer mangles paths, and files opened
+		// from the macOS Finder are not arguments at all.
+		const documentIds = select( tabsStore )
+			.getTabs()
+			.flatMap( ( tab ) => ( tab.documentId ? [ tab.documentId ] : [] ) );
+		await invoke( 'remember_documents_for_relaunch', { documentIds } );
+		try {
+			await update.downloadAndInstall();
+		} catch ( error ) {
+			await invoke( 'remember_documents_for_relaunch', {
+				documentIds: [],
+			} );
+			throw error;
+		}
 		await relaunch();
 	} catch ( error ) {
 		if ( silent ) {
