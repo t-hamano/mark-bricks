@@ -81,3 +81,61 @@ fn collect_markdown_paths_makes_paths_absolute() {
         "relative paths join the launch directory, absolute ones stay"
     );
 }
+
+#[test]
+fn encoded_path_arg_round_trips() {
+    let path = r"C:\Users\O'Brien\My Docs\運用手順 `v2`.md";
+    let arg = encode_path_arg(path);
+    assert!(
+        !arg.contains([' ', '"', '\'', '`', '/', '\\']),
+        "no characters NSIS splits or unquotes on: {arg}"
+    );
+    assert_eq!(decode_path_arg(&arg).as_deref(), Some(path));
+    assert_eq!(decode_path_arg("--open-hex=6"), None, "odd length");
+    assert_eq!(decode_path_arg("--open-hex=zz"), None, "not hex");
+    assert_eq!(decode_path_arg("notes.md"), None, "no prefix");
+}
+
+#[test]
+fn relaunch_args_encode_markdown_paths_absolute() {
+    let cwd = std::env::temp_dir().join("launch");
+    let absolute = cwd.join("my notes.md").to_string_lossy().to_string();
+    let args: Vec<OsString> = ["mark-bricks", "--flag", "a.md", "image.png"]
+        .map(OsString::from)
+        .into();
+    let got = relaunch_args(args, &cwd);
+    assert_eq!(
+        got,
+        [
+            OsString::from("mark-bricks"),
+            OsString::from("--flag"),
+            OsString::from(encode_path_arg(&cwd.join("a.md").to_string_lossy())),
+            OsString::from("image.png"),
+        ],
+        "only Markdown paths are rewritten"
+    );
+
+    // The relaunched process opens the same file, whatever its directory,
+    // and re-encodes it unchanged for the next relaunch.
+    let relaunched = [
+        OsString::from("mark-bricks"),
+        encode_path_arg(&absolute).into(),
+    ];
+    let elsewhere = std::env::temp_dir().join("install");
+    assert_eq!(
+        collect_markdown_paths(relaunched.iter().map(|a| a.to_str().unwrap()), &elsewhere),
+        [absolute]
+    );
+    assert_eq!(relaunch_args(relaunched.to_vec(), &elsewhere), relaunched);
+}
+
+#[test]
+fn collect_markdown_paths_rejects_bad_encoded_paths() {
+    let cwd = std::env::temp_dir();
+    let argv = [
+        "mark-bricks".to_string(),
+        encode_path_arg("relative.md"),
+        encode_path_arg(&cwd.join("image.png").to_string_lossy()),
+    ];
+    assert!(collect_markdown_paths(argv.iter(), &cwd).is_empty());
+}

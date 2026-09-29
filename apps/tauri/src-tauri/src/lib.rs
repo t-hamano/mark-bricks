@@ -1,7 +1,8 @@
+use std::ffi::OsString;
 use std::path::{Component, Path, PathBuf};
 use std::sync::{Mutex, OnceLock};
 
-use tauri::{Emitter, Manager};
+use tauri::{Emitter, Env, Manager};
 
 mod documents;
 use documents::{
@@ -192,6 +193,36 @@ fn absolutize(path: &str, cwd: &Path) -> String {
     out.to_string_lossy().to_string()
 }
 
+/// Prefix of the argument that carries an absolute Markdown path, hex-encoded
+/// as UTF-8, across a relaunch. See [`relaunch_args`].
+const ENCODED_PATH_ARG: &str = "--open-hex=";
+
+fn encode_path_arg(path: &str) -> String {
+    let hex: String = path.bytes().map(|b| format!("{b:02x}")).collect();
+    format!("{ENCODED_PATH_ARG}{hex}")
+}
+
+fn decode_path_arg(arg: &str) -> Option<String> {
+    let hex = arg.strip_prefix(ENCODED_PATH_ARG)?;
+    if hex.len() % 2 != 0 {
+        return None;
+    }
+    let bytes = (0..hex.len())
+        .step_by(2)
+        .map(|i| u8::from_str_radix(hex.get(i..i + 2)?, 16).ok())
+        .collect::<Option<Vec<u8>>>()?;
+    String::from_utf8(bytes).ok()
+}
+
+/// The absolute Markdown path an argument names, if any: either a plain path
+/// (made absolute against `cwd`) or one encoded by [`encode_path_arg`].
+fn markdown_path_from_arg(arg: &str, cwd: &Path) -> Option<String> {
+    if let Some(path) = decode_path_arg(arg) {
+        return (is_markdown_path(&path) && Path::new(&path).is_absolute()).then_some(path);
+    }
+    is_markdown_path(arg).then(|| absolutize(arg, cwd))
+}
+
 /// Picks the Markdown file paths out of the process arguments, skipping the
 /// first entry (the program's own path), and makes them absolute against
 /// `cwd`, the directory the arguments were given in.
@@ -202,10 +233,27 @@ where
 {
     args.into_iter()
         .skip(1)
-        .filter_map(|s| {
-            let s = s.as_ref();
-            is_markdown_path(s).then(|| absolutize(s, cwd))
-        })
+        .filter_map(|s| markdown_path_from_arg(s.as_ref(), cwd))
+        .collect()
+}
+
+/// The arguments to relaunch this process with, e.g. after an update.
+///
+/// On Windows the updater hands them to the NSIS installer, which starts the
+/// new version from the install directory and mangles paths on the way: it
+/// strips surrounding quotes, so a path with a space splits into pieces, and it
+/// treats `'` and `` ` `` as quotes too. Each Markdown path is therefore passed
+/// absolute and hex-encoded, a form with none of those characters.
+fn relaunch_args(args: Vec<OsString>, cwd: &Path) -> Vec<OsString> {
+    let mut args = args.into_iter();
+    args.next()
+        .into_iter()
+        .chain(args.map(
+            |arg| match arg.to_str().and_then(|s| markdown_path_from_arg(s, cwd)) {
+                Some(path) => encode_path_arg(&path).into(),
+                None => arg,
+            },
+        ))
         .collect()
 }
 
@@ -242,6 +290,18 @@ pub fn run() {
     }));
 
     builder
+        .setup(|app| {
+            // The updater and `relaunch()` restart the app with `Env`'s
+            // arguments, so hand them the relaunch-safe form. Nothing borrows
+            // `Env` yet during setup, so replacing it cannot leave a dangling
+            // reference.
+            let mut env = app.env();
+            env.args_os = relaunch_args(env.args_os, &std::env::current_dir().unwrap_or_default());
+            #[allow(deprecated)]
+            app.unmanage::<Env>();
+            app.manage(env);
+            Ok(())
+        })
         .manage(Documents::default())
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(tauri_plugin_dialog::init())
