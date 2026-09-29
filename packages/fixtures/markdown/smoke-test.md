@@ -141,6 +141,10 @@ flowchart LR
     C --> A
 ```
 
+```math
+\sum_{k=1}^{n} k = \frac{n(n+1)}{2}
+```
+
 ## Image
 
 External URL:
