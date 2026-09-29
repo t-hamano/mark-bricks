@@ -10,30 +10,10 @@ import { useEffect, useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { Notice, Stack } from '@wordpress/ui';
 
-const loadKatex = () =>
-	import( 'katex' ).then( ( { default: katex } ) => katex );
-let katexPromise: ReturnType< typeof loadKatex > | undefined;
-
 /**
- * Renders TeX to HTML, with MathML alongside for screen readers.
- *
- * The HTML is styled by KaTeX's stylesheet and fonts, which the block canvas
- * loads (see `katex-styles.ts`). `trust` stays off, so commands such as
- * `\href` cannot inject links or other HTML.
- *
- * @param code TeX source of the whole block, rendered as one display formula.
- * @return The formula markup.
+ * Internal dependencies
  */
-async function renderMath( code: string ) {
-	const katex = await ( katexPromise ??= loadKatex() );
-	return katex.renderToString( code, {
-		displayMode: true,
-		output: 'htmlAndMathml',
-		throwOnError: true,
-		trust: false,
-		strict: false,
-	} );
-}
+import { renderMath } from '../../katex';
 
 type Props = {
 	code: string;
@@ -64,7 +44,8 @@ export function MathPreview( { code }: Props ) {
 
 		let cancelled = false;
 
-		renderMath( code ).then(
+		// The whole block is one display formula, as on GitHub.
+		renderMath( code, { displayMode: true } ).then(
 			( nextHtml ) => {
 				if ( ! cancelled ) {
 					setHtml( nextHtml );
