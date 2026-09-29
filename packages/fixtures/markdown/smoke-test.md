@@ -143,7 +143,13 @@ flowchart LR
 
 ## Image
 
+External URL:
+
 ![A mountain landscape](https://picsum.photos/id/1018/800/400 'Lorem Picsum')
+
+Relative URL:
+
+![A river valley](./image.jpg 'Lorem Picsum')
 
 An inline image ![A small landscape](https://picsum.photos/id/1018/80/40 "Lorem Picsum") sits within text.
 
