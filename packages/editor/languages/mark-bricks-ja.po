@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T02:45:39.529Z\n"
-"PO-Revision-Date: 2026-09-29T02:45:40.322Z\n"
+"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
+"PO-Revision-Date: 2026-09-29T06:06:07.461Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -376,7 +376,7 @@ msgstr "テーブル"
 msgid "The diagram could not be rendered."
 msgstr "図を描画できませんでした。"
 
-#: src/block-library/code/math-preview.tsx:111
+#: src/block-library/code/math-preview.tsx:91
 msgid "The formula could not be rendered."
 msgstr "数式を描画できませんでした。"
 

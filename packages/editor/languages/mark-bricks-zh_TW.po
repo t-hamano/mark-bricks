@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-26T07:53:21.502Z\n"
-"PO-Revision-Date: 2026-09-29T01:42:59.395Z\n"
+"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
+"PO-Revision-Date: 2026-09-29T06:06:31.537Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -38,14 +38,14 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/format-library/image/inline.tsx:140
-#: src/block-library/image/edit.tsx:207
+#: src/format-library/image/inline.tsx:147
+#: src/block-library/image/edit.tsx:228
 msgid "Alt text"
 msgstr "替代文字"
 
-#: src/format-library/image/inline.tsx:162
-#: src/block-library/image/edit.tsx:120
-#: src/block-library/image/edit.tsx:247
+#: src/format-library/image/inline.tsx:169
+#: src/block-library/image/edit.tsx:121
+#: src/block-library/image/edit.tsx:268
 msgid "Apply"
 msgstr "套用"
 
@@ -61,9 +61,9 @@ msgstr "區塊"
 msgid "Bold"
 msgstr "粗體"
 
-#: src/format-library/image/inline.tsx:135
-#: src/block-library/image/edit.tsx:116
-#: src/block-library/image/edit.tsx:199
+#: src/format-library/image/inline.tsx:137
+#: src/block-library/image/edit.tsx:117
+#: src/block-library/image/edit.tsx:213
 msgid "Browse local file"
 msgstr "瀏覽本機檔案"
 
@@ -75,7 +75,7 @@ msgstr "注意"
 msgid "Cell content"
 msgstr "儲存格內容"
 
-#: src/block-library/code/edit.tsx:91
+#: src/block-library/code/edit.tsx:98
 msgid "Change language"
 msgstr "變更語言"
 
@@ -83,7 +83,7 @@ msgstr "變更語言"
 msgid "Change the block type after adding a new paragraph."
 msgstr "新增段落後，藉以變更區塊類型"
 
-#: src/block-library/code/edit.tsx:123
+#: src/block-library/code/edit.tsx:130
 msgid "Choose language…"
 msgstr "選擇語言…"
 
@@ -100,7 +100,7 @@ msgstr "關閉"
 msgid "Close Block Inserter"
 msgstr "關閉區塊插入器"
 
-#: src/components/editor/index.tsx:97
+#: src/components/editor/index.tsx:99
 msgid "Code editor"
 msgstr "程式碼編輯器"
 
@@ -128,8 +128,8 @@ msgstr "刪除資料行"
 msgid "Delete row"
 msgstr "刪除資料列"
 
-#: src/format-library/image/inline.tsx:144
-#: src/block-library/image/edit.tsx:214
+#: src/format-library/image/inline.tsx:151
+#: src/block-library/image/edit.tsx:235
 msgid "Describes the image for screen readers."
 msgstr "為螢幕閱讀器描述圖片。"
 
@@ -142,7 +142,7 @@ msgstr "顯示鍵盤快速鍵清單"
 msgid "Document Overview"
 msgstr "內容總覽"
 
-#: src/block-library/image/edit.tsx:143
+#: src/block-library/image/edit.tsx:157
 msgid "Edit image"
 msgstr "編輯圖片"
 
@@ -150,17 +150,17 @@ msgstr "編輯圖片"
 msgid "Edit table"
 msgstr "編輯表格"
 
-#: src/format-library/image/inline.tsx:143
-#: src/block-library/image/edit.tsx:210
+#: src/format-library/image/inline.tsx:150
+#: src/block-library/image/edit.tsx:231
 msgid "Enter alt text…"
 msgstr "輸入替代文字…"
 
-#: src/format-library/image/inline.tsx:153
-#: src/block-library/image/edit.tsx:223
+#: src/format-library/image/inline.tsx:160
+#: src/block-library/image/edit.tsx:244
 msgid "Enter title…"
 msgstr "輸入標題…"
 
-#: src/block-library/image/edit.tsx:258
+#: src/block-library/image/edit.tsx:279
 msgid "Failed to load image."
 msgstr "圖片載入失敗。"
 
@@ -194,7 +194,7 @@ msgstr "標題 %d"
 msgid "Hide Document Overview"
 msgstr "隱藏內容總覽"
 
-#: src/block-library/image/edit.tsx:70
+#: src/block-library/image/edit.tsx:71
 msgid "Image"
 msgstr "圖片"
 
@@ -214,7 +214,7 @@ msgstr "內嵌程式碼"
 msgid "Inline image"
 msgstr "內嵌圖片"
 
-#: src/format-library/image/inline.tsx:163
+#: src/format-library/image/inline.tsx:170
 msgid "Insert"
 msgstr "插入"
 
@@ -242,7 +242,7 @@ msgstr "在目前位置上方插入資料列"
 msgid "Italic"
 msgstr "斜體"
 
-#: src/block-library/code/edit.tsx:106
+#: src/block-library/code/edit.tsx:113
 msgid "Language"
 msgstr "語言"
 
@@ -280,7 +280,7 @@ msgid ""
 "incorrect heading levels."
 msgstr "瀏覽這篇內容的結構並解決標題層級為空或不正確等問題。"
 
-#: src/block-library/code/edit.tsx:132
+#: src/block-library/code/edit.tsx:139
 msgid "No matching language."
 msgstr "沒有符合的語言。"
 
@@ -305,12 +305,12 @@ msgid "Outline"
 msgstr "大綱"
 
 #: src/format-library/link/inline.tsx:138
-#: src/format-library/image/inline.tsx:117
+#: src/format-library/image/inline.tsx:119
 msgid "Paste or type URL"
 msgstr "貼上或輸入網址"
 
-#: src/block-library/image/edit.tsx:98
-#: src/block-library/image/edit.tsx:181
+#: src/block-library/image/edit.tsx:99
+#: src/block-library/image/edit.tsx:195
 msgid "Paste or type URL or file path"
 msgstr "貼上或輸入網址或檔案路徑"
 
@@ -326,7 +326,7 @@ msgstr "取消復原變更"
 msgid "Remove a link."
 msgstr "移除連結"
 
-#: src/block-library/image/edit.tsx:241
+#: src/block-library/image/edit.tsx:262
 msgid "Reset"
 msgstr "重設"
 
@@ -351,8 +351,8 @@ msgid "Show or hide the List View."
 msgstr "顯示或隱藏清單檢視"
 
 #: src/format-library/link/inline.tsx:115
-#: src/format-library/image/inline.tsx:154
-#: src/block-library/image/edit.tsx:227
+#: src/format-library/image/inline.tsx:161
+#: src/block-library/image/edit.tsx:248
 msgid "Shown as a tooltip on hover."
 msgstr "滑鼠懸停時會顯示為工具提示。"
 
@@ -376,13 +376,17 @@ msgstr "表格"
 msgid "The diagram could not be rendered."
 msgstr "無法轉譯圖表。"
 
+#: src/block-library/code/math-preview.tsx:91
+msgid "The formula could not be rendered."
+msgstr "無法轉譯公式。"
+
 #: src/block-library/quote/edit.tsx:56
 msgid "Tip"
 msgstr "提示"
 
 #: src/format-library/link/inline.tsx:100
-#: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:220
+#: src/format-library/image/inline.tsx:157
+#: src/block-library/image/edit.tsx:241
 msgid "Title"
 msgstr "標題"
 
@@ -402,9 +406,9 @@ msgstr "轉換為任務項目"
 msgid "Type / to choose a block"
 msgstr "輸入斜線 (/) 以選取區塊"
 
-#: src/format-library/image/inline.tsx:116
-#: src/block-library/image/edit.tsx:94
-#: src/block-library/image/edit.tsx:177
+#: src/format-library/image/inline.tsx:118
+#: src/block-library/image/edit.tsx:95
+#: src/block-library/image/edit.tsx:191
 msgid "URL or file path"
 msgstr "網址或檔案路徑"
 
@@ -424,7 +428,7 @@ msgstr "復原變更"
 msgid "Unordered"
 msgstr "無序"
 
-#: src/block-library/image/edit.tsx:71
+#: src/block-library/image/edit.tsx:72
 msgid "Upload an image from your device or insert from a URL."
 msgstr "從裝置上傳圖片或透過網址插入。"
 
@@ -445,7 +449,7 @@ msgstr "撰寫 HTML 程式碼..."
 msgid "Write YAML front matter…"
 msgstr "撰寫 YAML 前置資料…"
 
-#: src/block-library/code/edit.tsx:66
+#: src/block-library/code/edit.tsx:73
 msgid "Write code…"
 msgstr "撰寫程式碼..."
 

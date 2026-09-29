@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T02:45:39.529Z\n"
+"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -437,7 +437,7 @@ msgstr ""
 msgid "The diagram could not be rendered."
 msgstr ""
 
-#: src/block-library/code/math-preview.tsx:111
+#: src/block-library/code/math-preview.tsx:91
 msgid "The formula could not be rendered."
 msgstr ""
 

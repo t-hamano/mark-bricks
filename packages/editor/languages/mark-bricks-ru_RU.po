@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-26T07:53:21.502Z\n"
-"PO-Revision-Date: 2026-09-29T01:43:02.139Z\n"
+"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
+"PO-Revision-Date: 2026-09-29T06:06:30.196Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -38,14 +38,14 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/format-library/image/inline.tsx:140
-#: src/block-library/image/edit.tsx:207
+#: src/format-library/image/inline.tsx:147
+#: src/block-library/image/edit.tsx:228
 msgid "Alt text"
 msgstr "Альтернативный текст"
 
-#: src/format-library/image/inline.tsx:162
-#: src/block-library/image/edit.tsx:120
-#: src/block-library/image/edit.tsx:247
+#: src/format-library/image/inline.tsx:169
+#: src/block-library/image/edit.tsx:121
+#: src/block-library/image/edit.tsx:268
 msgid "Apply"
 msgstr "Применить"
 
@@ -61,9 +61,9 @@ msgstr "Блоки"
 msgid "Bold"
 msgstr "Жирный"
 
-#: src/format-library/image/inline.tsx:135
-#: src/block-library/image/edit.tsx:116
-#: src/block-library/image/edit.tsx:199
+#: src/format-library/image/inline.tsx:137
+#: src/block-library/image/edit.tsx:117
+#: src/block-library/image/edit.tsx:213
 msgid "Browse local file"
 msgstr "Выбрать локальный файл"
 
@@ -75,7 +75,7 @@ msgstr "Осторожно"
 msgid "Cell content"
 msgstr "Содержимое ячейки"
 
-#: src/block-library/code/edit.tsx:91
+#: src/block-library/code/edit.tsx:98
 msgid "Change language"
 msgstr "Изменить язык"
 
@@ -83,7 +83,7 @@ msgstr "Изменить язык"
 msgid "Change the block type after adding a new paragraph."
 msgstr "Изменить тип блока после добавления нового параграфа."
 
-#: src/block-library/code/edit.tsx:123
+#: src/block-library/code/edit.tsx:130
 msgid "Choose language…"
 msgstr "Выберите язык…"
 
@@ -100,7 +100,7 @@ msgstr "Закрыть"
 msgid "Close Block Inserter"
 msgstr "Закрыть инструмент вставки блоков"
 
-#: src/components/editor/index.tsx:97
+#: src/components/editor/index.tsx:99
 msgid "Code editor"
 msgstr "Редактор кода"
 
@@ -128,8 +128,8 @@ msgstr "Удалить столбец"
 msgid "Delete row"
 msgstr "Удалить строку"
 
-#: src/format-library/image/inline.tsx:144
-#: src/block-library/image/edit.tsx:214
+#: src/format-library/image/inline.tsx:151
+#: src/block-library/image/edit.tsx:235
 msgid "Describes the image for screen readers."
 msgstr "Описывает изображение для программ чтения с экрана."
 
@@ -142,7 +142,7 @@ msgstr "Показывать эти горячие клавиши."
 msgid "Document Overview"
 msgstr "Обзор документа"
 
-#: src/block-library/image/edit.tsx:143
+#: src/block-library/image/edit.tsx:157
 msgid "Edit image"
 msgstr "Редактировать изображение"
 
@@ -150,17 +150,17 @@ msgstr "Редактировать изображение"
 msgid "Edit table"
 msgstr "Редактировать таблицу"
 
-#: src/format-library/image/inline.tsx:143
-#: src/block-library/image/edit.tsx:210
+#: src/format-library/image/inline.tsx:150
+#: src/block-library/image/edit.tsx:231
 msgid "Enter alt text…"
 msgstr "Введите альтернативный текст…"
 
-#: src/format-library/image/inline.tsx:153
-#: src/block-library/image/edit.tsx:223
+#: src/format-library/image/inline.tsx:160
+#: src/block-library/image/edit.tsx:244
 msgid "Enter title…"
 msgstr "Введите заголовок…"
 
-#: src/block-library/image/edit.tsx:258
+#: src/block-library/image/edit.tsx:279
 msgid "Failed to load image."
 msgstr "Не удалось загрузить изображение."
 
@@ -194,7 +194,7 @@ msgstr "Заголовок %d"
 msgid "Hide Document Overview"
 msgstr "Скрыть обзор документа"
 
-#: src/block-library/image/edit.tsx:70
+#: src/block-library/image/edit.tsx:71
 msgid "Image"
 msgstr "Изображение"
 
@@ -214,7 +214,7 @@ msgstr "Встроенный код"
 msgid "Inline image"
 msgstr "Встроенное изображение"
 
-#: src/format-library/image/inline.tsx:163
+#: src/format-library/image/inline.tsx:170
 msgid "Insert"
 msgstr "Вставить"
 
@@ -242,7 +242,7 @@ msgstr "Вставить строку до"
 msgid "Italic"
 msgstr "Курсив"
 
-#: src/block-library/code/edit.tsx:106
+#: src/block-library/code/edit.tsx:113
 msgid "Language"
 msgstr "Язык"
 
@@ -282,7 +282,7 @@ msgstr ""
 "Навигация по структуре документа и устранение таких проблем, как пустые или "
 "неправильные уровни заголовков."
 
-#: src/block-library/code/edit.tsx:132
+#: src/block-library/code/edit.tsx:139
 msgid "No matching language."
 msgstr "Нет подходящего языка."
 
@@ -307,12 +307,12 @@ msgid "Outline"
 msgstr "Структура"
 
 #: src/format-library/link/inline.tsx:138
-#: src/format-library/image/inline.tsx:117
+#: src/format-library/image/inline.tsx:119
 msgid "Paste or type URL"
 msgstr "Вставить или ввести URL-адрес"
 
-#: src/block-library/image/edit.tsx:98
-#: src/block-library/image/edit.tsx:181
+#: src/block-library/image/edit.tsx:99
+#: src/block-library/image/edit.tsx:195
 msgid "Paste or type URL or file path"
 msgstr "Вставьте или введите URL-адрес или путь к файлу"
 
@@ -328,7 +328,7 @@ msgstr "Повторить последнюю отмену."
 msgid "Remove a link."
 msgstr "Удалить ссылку."
 
-#: src/block-library/image/edit.tsx:241
+#: src/block-library/image/edit.tsx:262
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -353,8 +353,8 @@ msgid "Show or hide the List View."
 msgstr "Показать или скрыть представление в виде списка."
 
 #: src/format-library/link/inline.tsx:115
-#: src/format-library/image/inline.tsx:154
-#: src/block-library/image/edit.tsx:227
+#: src/format-library/image/inline.tsx:161
+#: src/block-library/image/edit.tsx:248
 msgid "Shown as a tooltip on hover."
 msgstr "Показывается как всплывающая подсказка при наведении."
 
@@ -378,13 +378,17 @@ msgstr "Таблица"
 msgid "The diagram could not be rendered."
 msgstr "Не удалось отобразить диаграмму."
 
+#: src/block-library/code/math-preview.tsx:91
+msgid "The formula could not be rendered."
+msgstr "Не удалось отобразить формулу."
+
 #: src/block-library/quote/edit.tsx:56
 msgid "Tip"
 msgstr "Совет"
 
 #: src/format-library/link/inline.tsx:100
-#: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:220
+#: src/format-library/image/inline.tsx:157
+#: src/block-library/image/edit.tsx:241
 msgid "Title"
 msgstr "Заголовок"
 
@@ -404,9 +408,9 @@ msgstr "Преобразовать в задачу"
 msgid "Type / to choose a block"
 msgstr "Введите /, чтобы выбрать блок"
 
-#: src/format-library/image/inline.tsx:116
-#: src/block-library/image/edit.tsx:94
-#: src/block-library/image/edit.tsx:177
+#: src/format-library/image/inline.tsx:118
+#: src/block-library/image/edit.tsx:95
+#: src/block-library/image/edit.tsx:191
 msgid "URL or file path"
 msgstr "URL-адрес или путь к файлу"
 
@@ -426,7 +430,7 @@ msgstr "Отменить свои последние изменения."
 msgid "Unordered"
 msgstr "Маркированный"
 
-#: src/block-library/image/edit.tsx:71
+#: src/block-library/image/edit.tsx:72
 msgid "Upload an image from your device or insert from a URL."
 msgstr "Загрузите изображение с устройства или вставьте по URL-адресу."
 
@@ -447,7 +451,7 @@ msgstr "Напишите HTML…"
 msgid "Write YAML front matter…"
 msgstr "Введите YAML front matter…"
 
-#: src/block-library/code/edit.tsx:66
+#: src/block-library/code/edit.tsx:73
 msgid "Write code…"
 msgstr "Введите код…"
 
