@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T04:06:33.250Z\n"
-"PO-Revision-Date: 2026-09-29T01:21:31.515Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:44.799Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: src/webview/header-actions/index.tsx:81
 msgid "Focus on one block at a time"
-msgstr "Tek seferde bir bloğa odaklanın"
+msgstr "Her seferinde bir bloğa odaklanın"
 
 #: src/webview/header-actions/index.tsx:102
 msgid "Hide YAML front matter"
@@ -70,7 +70,7 @@ msgstr "Ayarlar"
 
 #: src/webview/header-actions/index.tsx:78
 msgid "Spotlight mode"
-msgstr "Spot ışığı modu"
+msgstr "Sahne ışığı kipi"
 
 #: src/webview/header-actions/index.tsx:91
 msgid "Tools"

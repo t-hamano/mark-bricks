@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T04:06:33.250Z\n"
-"PO-Revision-Date: 2026-09-29T01:21:32.379Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:46.420Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: src/webview/header-actions/index.tsx:65
 msgid "Access all block and document tools in a single place"
-msgstr "Přístup ke všem nástrojům bloků a dokumentu na jednom místě"
+msgstr "Mějte veškeré nástroje dokumentu a aktivního bloku na jednom místě"
 
 #: src/webview/header-actions/index.tsx:100
 msgid "Add YAML front matter"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: src/webview/header-actions/index.tsx:81
 msgid "Focus on one block at a time"
-msgstr "Soustředit se vždy na jeden blok"
+msgstr "Zaměřte se vždy jen na jeden blok"
 
 #: src/webview/header-actions/index.tsx:102
 msgid "Hide YAML front matter"
@@ -70,7 +70,7 @@ msgstr "Nastavení"
 
 #: src/webview/header-actions/index.tsx:78
 msgid "Spotlight mode"
-msgstr "Režim zvýraznění"
+msgstr "Režim nevyrušovaného psaní"
 
 #: src/webview/header-actions/index.tsx:91
 msgid "Tools"

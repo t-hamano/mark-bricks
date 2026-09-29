@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "POT-Creation-Date: 2026-09-27T04:06:33.250Z\n"
-"PO-Revision-Date: 2026-09-29T01:21:29.961Z\n"
+"PO-Revision-Date: 2026-09-29T01:52:41.463Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: src/webview/header-actions/index.tsx:65
 msgid "Access all block and document tools in a single place"
-msgstr "Accede a todas las herramientas de bloques y documentos en un solo lugar"
+msgstr "Accede a todas las herramientas de bloques y documentos desde un solo lugar"
 
 #: src/webview/header-actions/index.tsx:100
 msgid "Add YAML front matter"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: src/webview/header-actions/index.tsx:81
 msgid "Focus on one block at a time"
-msgstr "Céntrate en un bloque cada vez"
+msgstr "Concéntrate en un bloque cada vez"
 
 #: src/webview/header-actions/index.tsx:102
 msgid "Hide YAML front matter"
@@ -64,11 +64,11 @@ msgstr "Eliminar front matter YAML"
 
 #: src/webview/header-actions/index.tsx:115
 msgid "Settings"
-msgstr "Configuración"
+msgstr "Ajustes"
 
 #: src/webview/header-actions/index.tsx:78
 msgid "Spotlight mode"
-msgstr "Modo foco"
+msgstr "Modo de enfoque"
 
 #: src/webview/header-actions/index.tsx:91
 msgid "Tools"
