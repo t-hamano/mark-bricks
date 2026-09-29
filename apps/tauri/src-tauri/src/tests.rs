@@ -99,12 +99,16 @@ fn relaunch_args_drop_markdown_paths() {
     );
 }
 
+fn relaunch_documents_file_for(test: &str) -> PathBuf {
+    std::env::temp_dir()
+        .join(format!("mark-bricks-{test}-{}", std::process::id()))
+        .join(RELAUNCH_DOCUMENTS_FILE)
+}
+
 #[test]
 fn relaunch_documents_are_restored_once() {
-    let file = std::env::temp_dir()
-        .join(format!("mark-bricks-relaunch-{}", std::process::id()))
-        .join(RELAUNCH_DOCUMENTS_FILE);
-    let paths = [r"C:\Test Directory\a.md", "/Users/me/運用手順 b.md"].map(String::from);
+    let file = relaunch_documents_file_for("relaunch");
+    let paths = [r"C:\Test Directory\a.md", "/Users/me/運用手順 b.md"].map(PathBuf::from);
     write_relaunch_documents(&file, &paths).unwrap();
     assert_eq!(take_relaunch_documents(&file), paths);
     assert!(take_relaunch_documents(&file).is_empty(), "taken only once");
@@ -115,4 +119,43 @@ fn relaunch_documents_are_restored_once() {
     write_relaunch_documents(&file, &[]).unwrap();
 
     std::fs::remove_dir(file.parent().unwrap()).unwrap();
+}
+
+#[cfg(unix)]
+#[test]
+fn relaunch_documents_keep_non_utf8_paths() {
+    use std::os::unix::ffi::OsStringExt;
+
+    let file = relaunch_documents_file_for("relaunch-non-utf8");
+    let paths = [PathBuf::from(OsString::from_vec(
+        b"/tmp/caf\xe9.md".to_vec(),
+    ))];
+    write_relaunch_documents(&file, &paths).unwrap();
+    assert_eq!(
+        take_relaunch_documents(&file),
+        paths,
+        "a file name that is not valid UTF-8 comes back byte for byte"
+    );
+
+    std::fs::remove_dir(file.parent().unwrap()).unwrap();
+}
+
+#[cfg(unix)]
+#[test]
+fn relaunch_documents_are_not_restored_when_they_cannot_be_removed() {
+    use std::os::unix::fs::PermissionsExt;
+
+    let file = relaunch_documents_file_for("relaunch-locked");
+    let dir = file.parent().unwrap();
+    write_relaunch_documents(&file, &[PathBuf::from("/tmp/a.md")]).unwrap();
+    // A read-only directory keeps the file from being removed.
+    std::fs::set_permissions(dir, std::fs::Permissions::from_mode(0o555)).unwrap();
+    let taken = take_relaunch_documents(&file);
+    std::fs::set_permissions(dir, std::fs::Permissions::from_mode(0o755)).unwrap();
+    assert!(
+        taken.is_empty(),
+        "paths that would reopen on every launch are not restored"
+    );
+
+    std::fs::remove_dir_all(dir).unwrap();
 }

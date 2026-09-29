@@ -282,10 +282,10 @@ impl DocumentRegistry {
     }
 
     /// The paths of the given open documents, in order, skipping unknown IDs.
-    pub fn paths(&self, ids: &[String]) -> Vec<String> {
+    pub fn paths(&self, ids: &[String]) -> Vec<PathBuf> {
         ids.iter()
             .filter_map(|id| self.documents.get(id))
-            .map(|document| document.path.to_string_lossy().into_owned())
+            .map(|document| document.path.clone())
             .collect()
     }
 
