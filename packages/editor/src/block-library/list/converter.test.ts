@@ -532,4 +532,139 @@ describe( 'core/list', () => {
 			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
 		} );
 	} );
+
+	describe( 'multiple blocks in an item', () => {
+		const tight: BlockAttributes = {
+			ordered: false,
+			markdownData: { marker: '-', spread: false, spacing: 1 },
+		};
+
+		function paragraph( content: string ): Block {
+			return {
+				name: 'core/paragraph',
+				clientId: 'test-id',
+				attributes: { content },
+				innerBlocks: [],
+				isValid: true,
+			};
+		}
+
+		it( 'keeps the blocks after the leading paragraph in order', () => {
+			const blocks = markdownToBlocks(
+				markdown(
+					'- one',
+					'',
+					'  second',
+					'',
+					'  - nested',
+					'',
+					'  > quote',
+					'',
+					'  ```js',
+					'  code',
+					'  ```',
+					'',
+					'  ![alt](image.png)'
+				)
+			);
+			const [ item ] = blocks[ 0 ].innerBlocks;
+			expect( item.attributes.content ).toBe( 'one' );
+			expect( item.innerBlocks.map( ( block ) => block.name ) ).toEqual( [
+				'core/paragraph',
+				'core/list',
+				'core/quote',
+				'core/code',
+				'core/image',
+			] );
+			expect( item.innerBlocks[ 0 ].attributes.content ).toBe( 'second' );
+		} );
+
+		it( 'leaves the item text empty when the item opens with another block', () => {
+			const blocks = markdownToBlocks(
+				markdown( '- ```js', '  code', '  ```' )
+			);
+			const [ item ] = blocks[ 0 ].innerBlocks;
+			expect( item.attributes ).toEqual( { content: '' } );
+			expect( item.innerBlocks.map( ( block ) => block.name ) ).toEqual( [
+				'core/code',
+			] );
+		} );
+
+		it( 'stores the spread of a loose item in a tight list', () => {
+			const blocks = markdownToBlocks(
+				markdown( '- one', '', '  second', '- two' )
+			);
+			const [ loose, plain ] = blocks[ 0 ].innerBlocks;
+			expect(
+				( blocks[ 0 ].attributes as BlockAttributes ).markdownData
+					.spread
+			).toBe( false );
+			expect( loose.attributes.markdownData ).toEqual( {
+				spread: true,
+			} );
+			expect( plain.attributes ).toEqual( { content: 'two' } );
+		} );
+
+		it( 'separates two paragraphs with a blank line in a tight list', () => {
+			expect(
+				blocksToMarkdown( [
+					list( tight, [
+						listItem( 'one', [ paragraph( 'second' ) ] ),
+						listItem( 'two' ),
+					] ),
+				] )
+			).toBe( markdown( '- one', '', '  second', '- two' ) );
+		} );
+
+		it.each( [
+			[
+				'multiple paragraphs',
+				markdown( '- one', '', '  second', '- two' ),
+			],
+			[
+				'a paragraph and a code block',
+				markdown( '- one', '  ```js', '  code', '  ```', '- two' ),
+			],
+			[
+				'a paragraph and a tilde code block',
+				markdown( '- one', '  ~~~', '  code', '  ~~~', '- two' ),
+			],
+			[ 'a paragraph and a quote', markdown( '- one', '  > quote' ) ],
+			[
+				'a paragraph and an image',
+				markdown( '- one', '', '  ![alt](image.png)' ),
+			],
+			[
+				'a nested list followed by a paragraph',
+				markdown( '- one', '', '  - nested', '', '  after' ),
+			],
+			[
+				'an item opening with a code block',
+				markdown( '- ```js', '  code', '  ```' ),
+			],
+			[ 'an item opening with a quote', markdown( '- > quote' ) ],
+			[
+				'multiple blocks in a loose list',
+				markdown( '- one', '', '  second', '', '- two' ),
+			],
+			[
+				'multiple blocks in an ordered list',
+				markdown( '1. one', '', '   second', '2. two' ),
+			],
+			[
+				'multiple blocks after a wider marker spacing',
+				markdown( '-   one', '', '    second', '-   two' ),
+			],
+			[
+				'multiple blocks in a task item',
+				markdown( '- [ ] one', '', '  second' ),
+			],
+			[
+				'multiple blocks in a nested item',
+				markdown( '- one', '  - nested', '', '    second' ),
+			],
+		] )( 'preserves %s', ( _, md ) => {
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+	} );
 } );

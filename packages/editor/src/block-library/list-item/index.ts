@@ -20,5 +20,19 @@ export const settings: Partial< BlockConfiguration > = {
 			default: {},
 		},
 	},
+	// A Markdown list item may hold any block its content can be converted
+	// to, not only a nested list.
+	allowedBlocks: [
+		'core/list',
+		'core/paragraph',
+		'core/heading',
+		'core/code',
+		'core/separator',
+		'core/table',
+		'core/image',
+		'core/quote',
+		'core/html',
+		'core/details',
+	],
 	edit: Edit as BlockConfiguration[ 'edit' ],
 };
