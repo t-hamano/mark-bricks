@@ -153,6 +153,8 @@ Relative URL:
 
 An inline image ![A small landscape](https://picsum.photos/id/1018/80/40 "Lorem Picsum") sits within text.
 
+An inline image with a relative path ![A small river valley](./image-small.jpg 'Lorem Picsum') sits within text.
+
 [![License](https://img.shields.io/badge/license-GPL--2.0-blue)](https://example.com/license)
 [![Build](https://img.shields.io/badge/build-passing-brightgreen 'Build status')](https://example.com/build)
 
