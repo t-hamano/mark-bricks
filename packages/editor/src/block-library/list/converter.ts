@@ -113,7 +113,7 @@ export function toBlock( node: List, source: string ): Block {
 		attributes.start = node.start;
 	}
 	const innerBlocks = node.children.map( ( item ) =>
-		listItemConverter.toBlock( item, source )
+		listItemConverter.toBlock( item, source, !! node.spread )
 	);
 	return createBlock( 'core/list', attributes, innerBlocks );
 }
@@ -122,24 +122,30 @@ export function toBlock( node: List, source: string ): Block {
  * Builds an mdast List node from a `core/list` block.
  *
  * Exposed separately from {@link toNode} so the `core/list-item` converter can
- * embed a nested list without re-deriving serialization options (the options
- * are only meaningful for the top-level `stringify` call).
+ * embed a nested list without re-deriving the marker options, which
+ * {@link deriveOptions} already collects from the whole tree.
  *
  * @param block `core/list` block.
  * @return mdast List node, with `listItem` children built recursively and a
- *         non-default marker spacing attached as `data.spacing`.
+ *         non-default marker spacing attached as `data.spacing`, together
+ *         with the serialization options of the blocks inside its items.
  */
-export function buildListNode( block: Block ): List {
+export function buildListNode( block: Block ): NodeResult< List > {
 	const { ordered, start, markdownData } =
 		block.attributes as BlockAttributes;
 	const spread = !! markdownData?.spread;
+	let options: Options = {};
 	const node: List = {
 		type: 'list',
 		ordered: !! ordered,
 		spread,
-		children: block.innerBlocks.map( ( item ) =>
-			listItemConverter.toNode( item, spread )
-		),
+		children: block.innerBlocks.map( ( item ) => {
+			const result = listItemConverter.toNode( item, spread );
+			if ( result.options ) {
+				options = { ...result.options, ...options };
+			}
+			return result.node;
+		} ),
 	};
 	if ( ordered ) {
 		node.start = start ?? 1;
@@ -148,7 +154,7 @@ export function buildListNode( block: Block ): List {
 	if ( spacing !== DEFAULT_SPACING ) {
 		node.data = { spacing };
 	}
-	return node;
+	return { node, options };
 }
 
 /**
@@ -201,14 +207,16 @@ function deriveOptions( block: Block ): Options {
  * `bullet` / `bulletOrdered` options, the loose/tight spacing from
  * `markdownData.spread` via the `spread` flag on the List and `listItem`
  * nodes, and the marker spacing from `markdownData.spacing` via a custom
- * `listItem` handler.
+ * `listItem` handler. The options of the blocks inside the items are merged
+ * in, with the list's own options taking precedence.
  *
  * @param block `core/list` block.
  * @return mdast List node together with serialization options.
  */
 export function toNode( block: Block ): NodeResult< List > {
+	const { node, options } = buildListNode( block );
 	return {
-		node: buildListNode( block ),
-		options: deriveOptions( block ),
+		node,
+		options: { ...options, ...deriveOptions( block ) },
 	};
 }

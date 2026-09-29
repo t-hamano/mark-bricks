@@ -11,5 +11,9 @@ export type BlockAttributes = Block[ 'attributes' ] & {
 		// - `false`     — a task item, unchecked (`- [ ]`).
 		// - `true`      — a task item, checked (`- [x]`).
 		checked?: boolean;
+		// Whether the item's own blocks are separated by blank lines. Only
+		// stored when it differs from the parent list's `spread`, so an
+		// absent value means the item follows the list.
+		spread?: boolean;
 	};
 };

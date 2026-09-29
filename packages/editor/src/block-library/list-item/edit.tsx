@@ -28,13 +28,12 @@ import {
 } from './hooks';
 import taskItemIcon from './icon';
 import type { BlockEditProps } from '../types';
+import type { BlockAttributes as ListItemAttributes } from './types';
 
 type ListItemBlockAttributes = Block[ 'attributes' ] & {
 	content: string;
 	placeholder?: string;
-	markdownData?: {
-		checked?: boolean;
-	};
+	markdownData?: ListItemAttributes[ 'markdownData' ];
 };
 
 function IndentUI( { clientId }: { clientId: string } ) {
@@ -100,6 +99,7 @@ export default function Edit( props: BlockEditProps ) {
 						onChange={ ( event ) =>
 							setAttributes( {
 								markdownData: {
+									...markdownData,
 									checked: event.target.checked,
 								},
 							} )
@@ -135,7 +135,10 @@ export default function Edit( props: BlockEditProps ) {
 					isPressed={ isTaskItem }
 					onClick={ () =>
 						setAttributes( {
-							markdownData: isTaskItem ? {} : { checked: false },
+							markdownData: {
+								...markdownData,
+								checked: isTaskItem ? undefined : false,
+							},
 						} )
 					}
 				/>
