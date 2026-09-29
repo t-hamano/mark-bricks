@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-26T07:53:21.502Z\n"
-"PO-Revision-Date: 2026-09-29T01:43:03.107Z\n"
+"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
+"PO-Revision-Date: 2026-09-29T06:06:30.584Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -38,14 +38,14 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/format-library/image/inline.tsx:140
-#: src/block-library/image/edit.tsx:207
+#: src/format-library/image/inline.tsx:147
+#: src/block-library/image/edit.tsx:228
 msgid "Alt text"
 msgstr "Alternatif metin"
 
-#: src/format-library/image/inline.tsx:162
-#: src/block-library/image/edit.tsx:120
-#: src/block-library/image/edit.tsx:247
+#: src/format-library/image/inline.tsx:169
+#: src/block-library/image/edit.tsx:121
+#: src/block-library/image/edit.tsx:268
 msgid "Apply"
 msgstr "Uygula"
 
@@ -61,9 +61,9 @@ msgstr "Bloklar"
 msgid "Bold"
 msgstr "Kalın"
 
-#: src/format-library/image/inline.tsx:135
-#: src/block-library/image/edit.tsx:116
-#: src/block-library/image/edit.tsx:199
+#: src/format-library/image/inline.tsx:137
+#: src/block-library/image/edit.tsx:117
+#: src/block-library/image/edit.tsx:213
 msgid "Browse local file"
 msgstr "Yerel dosyaya göz at"
 
@@ -75,7 +75,7 @@ msgstr "Dikkat"
 msgid "Cell content"
 msgstr "Hücre içeriği"
 
-#: src/block-library/code/edit.tsx:91
+#: src/block-library/code/edit.tsx:98
 msgid "Change language"
 msgstr "Dili değiştir"
 
@@ -83,7 +83,7 @@ msgstr "Dili değiştir"
 msgid "Change the block type after adding a new paragraph."
 msgstr "Yeni paragraf ekledikten sonra blok türünü değiştirin."
 
-#: src/block-library/code/edit.tsx:123
+#: src/block-library/code/edit.tsx:130
 msgid "Choose language…"
 msgstr "Dil seçin…"
 
@@ -100,7 +100,7 @@ msgstr "Kapat"
 msgid "Close Block Inserter"
 msgstr "Blok yerleştiriciyi kapat"
 
-#: src/components/editor/index.tsx:97
+#: src/components/editor/index.tsx:99
 msgid "Code editor"
 msgstr "Kod düzenleyici"
 
@@ -128,8 +128,8 @@ msgstr "Sütun sil"
 msgid "Delete row"
 msgstr "Satırı sil"
 
-#: src/format-library/image/inline.tsx:144
-#: src/block-library/image/edit.tsx:214
+#: src/format-library/image/inline.tsx:151
+#: src/block-library/image/edit.tsx:235
 msgid "Describes the image for screen readers."
 msgstr "Görseli ekran okuyucular için açıklar."
 
@@ -142,7 +142,7 @@ msgstr "Bu klavye kısayollarını görüntüler."
 msgid "Document Overview"
 msgstr "Belge özeti"
 
-#: src/block-library/image/edit.tsx:143
+#: src/block-library/image/edit.tsx:157
 msgid "Edit image"
 msgstr "Görseli düzenle"
 
@@ -150,17 +150,17 @@ msgstr "Görseli düzenle"
 msgid "Edit table"
 msgstr "Tabloyu düzenle"
 
-#: src/format-library/image/inline.tsx:143
-#: src/block-library/image/edit.tsx:210
+#: src/format-library/image/inline.tsx:150
+#: src/block-library/image/edit.tsx:231
 msgid "Enter alt text…"
 msgstr "Alternatif metni girin…"
 
-#: src/format-library/image/inline.tsx:153
-#: src/block-library/image/edit.tsx:223
+#: src/format-library/image/inline.tsx:160
+#: src/block-library/image/edit.tsx:244
 msgid "Enter title…"
 msgstr "Başlığı girin…"
 
-#: src/block-library/image/edit.tsx:258
+#: src/block-library/image/edit.tsx:279
 msgid "Failed to load image."
 msgstr "Görsel yüklenemedi."
 
@@ -194,7 +194,7 @@ msgstr "Başlık %d"
 msgid "Hide Document Overview"
 msgstr "Belge özetini gizle"
 
-#: src/block-library/image/edit.tsx:70
+#: src/block-library/image/edit.tsx:71
 msgid "Image"
 msgstr "Görsel"
 
@@ -214,7 +214,7 @@ msgstr "Satır içi kod"
 msgid "Inline image"
 msgstr "Satır içi görsel"
 
-#: src/format-library/image/inline.tsx:163
+#: src/format-library/image/inline.tsx:170
 msgid "Insert"
 msgstr "Ekle"
 
@@ -242,7 +242,7 @@ msgstr "Önüne satır ekle"
 msgid "Italic"
 msgstr "Eğik"
 
-#: src/block-library/code/edit.tsx:106
+#: src/block-library/code/edit.tsx:113
 msgid "Language"
 msgstr "Dil"
 
@@ -282,7 +282,7 @@ msgstr ""
 "Belgenizin yapısında gezinin ve boş veya yanlış başlık düzeyleri gibi "
 "sorunları ele alın."
 
-#: src/block-library/code/edit.tsx:132
+#: src/block-library/code/edit.tsx:139
 msgid "No matching language."
 msgstr "Eşleşen dil yok."
 
@@ -307,12 +307,12 @@ msgid "Outline"
 msgstr "Anahat"
 
 #: src/format-library/link/inline.tsx:138
-#: src/format-library/image/inline.tsx:117
+#: src/format-library/image/inline.tsx:119
 msgid "Paste or type URL"
 msgstr "Bir adres yazın ya da yapıştırın"
 
-#: src/block-library/image/edit.tsx:98
-#: src/block-library/image/edit.tsx:181
+#: src/block-library/image/edit.tsx:99
+#: src/block-library/image/edit.tsx:195
 msgid "Paste or type URL or file path"
 msgstr "Bir adres ya da dosya yolu yazın veya yapıştırın"
 
@@ -328,7 +328,7 @@ msgstr "Son geri aldığınız şeyi yeniden yapın."
 msgid "Remove a link."
 msgstr "Bir bağlantıyı kaldırın."
 
-#: src/block-library/image/edit.tsx:241
+#: src/block-library/image/edit.tsx:262
 msgid "Reset"
 msgstr "Sıfırla"
 
@@ -353,8 +353,8 @@ msgid "Show or hide the List View."
 msgstr "Liste görünümünü gösterin veya gizleyin."
 
 #: src/format-library/link/inline.tsx:115
-#: src/format-library/image/inline.tsx:154
-#: src/block-library/image/edit.tsx:227
+#: src/format-library/image/inline.tsx:161
+#: src/block-library/image/edit.tsx:248
 msgid "Shown as a tooltip on hover."
 msgstr "Üzerine gelindiğinde araç ipucu olarak gösterilir."
 
@@ -378,13 +378,17 @@ msgstr "Tablo"
 msgid "The diagram could not be rendered."
 msgstr "Diyagram oluşturulamadı."
 
+#: src/block-library/code/math-preview.tsx:91
+msgid "The formula could not be rendered."
+msgstr "Formül oluşturulamadı."
+
 #: src/block-library/quote/edit.tsx:56
 msgid "Tip"
 msgstr "İpucu"
 
 #: src/format-library/link/inline.tsx:100
-#: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:220
+#: src/format-library/image/inline.tsx:157
+#: src/block-library/image/edit.tsx:241
 msgid "Title"
 msgstr "Başlık"
 
@@ -404,9 +408,9 @@ msgstr "Görev öğesine dönüştür"
 msgid "Type / to choose a block"
 msgstr "Bir blok seçmek için / yazın"
 
-#: src/format-library/image/inline.tsx:116
-#: src/block-library/image/edit.tsx:94
-#: src/block-library/image/edit.tsx:177
+#: src/format-library/image/inline.tsx:118
+#: src/block-library/image/edit.tsx:95
+#: src/block-library/image/edit.tsx:191
 msgid "URL or file path"
 msgstr "URL veya dosya yolu"
 
@@ -426,7 +430,7 @@ msgstr "Son değişikliklerinizi geri alın."
 msgid "Unordered"
 msgstr "Sırasız"
 
-#: src/block-library/image/edit.tsx:71
+#: src/block-library/image/edit.tsx:72
 msgid "Upload an image from your device or insert from a URL."
 msgstr "Cihazınızdan bir görsel yükleyin veya bir URL’den ekleyin."
 
@@ -447,7 +451,7 @@ msgstr "HTML yazın…"
 msgid "Write YAML front matter…"
 msgstr "YAML front matter yazın…"
 
-#: src/block-library/code/edit.tsx:66
+#: src/block-library/code/edit.tsx:73
 msgid "Write code…"
 msgstr "Kod yaz…"
 
