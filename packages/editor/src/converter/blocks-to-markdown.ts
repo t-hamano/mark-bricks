@@ -26,6 +26,7 @@ import * as htmlConverter from '../block-library/html/converter';
 import * as detailsConverter from '../block-library/details/converter';
 import type { NodeResult } from '../block-library/types';
 import { sourceSyntaxHandlers } from './source-syntax';
+import { remarkMathBlock } from './math-block';
 
 /**
  * Maps a single block to its corresponding mdast node.
@@ -97,6 +98,7 @@ export function blocksToMarkdown( blocks: Block[] ): string {
 					handlers: { ...sourceSyntaxHandlers, ...handlers },
 				} )
 				.use( remarkGfm )
+				.use( remarkMathBlock )
 				.stringify( tree );
 		} )
 		// Strip the trailing newline remark-stringify appends, since the

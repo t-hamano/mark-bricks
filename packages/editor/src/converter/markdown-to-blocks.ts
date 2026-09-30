@@ -25,6 +25,7 @@ import * as quoteConverter from '../block-library/quote/converter';
 import * as htmlConverter from '../block-library/html/converter';
 import * as detailsConverter from '../block-library/details/converter';
 import { annotateSourceSyntax } from './source-syntax';
+import { remarkMathBlock } from './math-block';
 
 /**
  * Maps a single mdast node to its corresponding blocks.
@@ -58,6 +59,7 @@ export function nodeToBlocks( node: RootContent, source: string ): Block[] {
 		case 'heading':
 			return [ headingConverter.toBlock( node ) ];
 		case 'code':
+		case 'math':
 			return [ codeConverter.toBlock( node, source ) ];
 		case 'thematicBreak':
 			return [ separatorConverter.toBlock( node, source ) ];
@@ -116,6 +118,7 @@ export function markdownToBlocks( markdown: string ): Block[] {
 	const tree = unified()
 		.use( remarkParse )
 		.use( remarkGfm )
+		.use( remarkMathBlock )
 		.parse( markdown ) as Root;
 	// The spelling of a construct Markdown lets be written in more than one
 	// way is only recoverable from the source, so it is recorded on the tree

@@ -18,6 +18,7 @@ import { Autocomplete, Field, Input } from '@wordpress/ui';
  */
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes } from './types';
+import { formatForLanguage } from './format';
 import {
 	CODE_LANGUAGES,
 	MATH_LANGUAGE,
@@ -120,6 +121,12 @@ export default function Edit( {
 											markdownData: {
 												...markdownData,
 												language: nextValue,
+												format: formatForLanguage(
+													markdownData?.format ??
+														'fenced-backtick',
+													language,
+													nextValue
+												),
 											},
 										} )
 									}

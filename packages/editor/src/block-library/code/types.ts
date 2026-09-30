@@ -10,7 +10,9 @@ export type CodeFormat =
 	// Tilde-fenced block: `~~~lang ... ~~~`
 	| 'fenced-tilde'
 	// Indented block: each line prefixed with 4 spaces (or 1 tab)
-	| 'indented';
+	| 'indented'
+	// Dollar-fenced math block: `$$ ... $$`
+	| 'dollar';
 
 export type BlockAttributes = Block[ 'attributes' ] & {
 	content?: string | RichTextData;

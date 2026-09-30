@@ -2,6 +2,7 @@
  * External dependencies
  */
 import type { Code } from 'mdast';
+import type { Math } from 'mdast-util-math';
 
 /**
  * WordPress dependencies
@@ -14,6 +15,8 @@ import { RichTextData } from '@wordpress/rich-text';
  */
 import { createBlock } from '../utils';
 import type { NodeResult } from '../types';
+import { MATH_LANGUAGE } from '../hooks/code-languages';
+import { isMathLanguage } from './format';
 import type { BlockAttributes, CodeFormat } from './types';
 
 function detectFormat( node: Code, source: string ): CodeFormat {
@@ -32,10 +35,12 @@ function detectFormat( node: Code, source: string ): CodeFormat {
 }
 
 /**
- * Converts an mdast Code node into a `core/code` block.
+ * Converts an mdast Code or Math node into a `core/code` block.
  *
  * CommonMark defines three code block syntaxes, all of which parse to the
- * same mdast Code node. The original syntax is kept for round-tripping.
+ * same mdast Code node. A `$$` math block parses to a Math node instead and
+ * becomes a block whose language is `math`. The original syntax is kept for
+ * round-tripping.
  *
  * ## Fenced (backtick)
  *
@@ -67,12 +72,28 @@ function detectFormat( node: Code, source: string ): CodeFormat {
  *     const x = 1;
  * ```
  *
- * @param node   mdast Code node from remark-parse.
+ * ## Math (dollar)
+ *
+ * TeX fenced by `$$`, as Marp, VS Code, and GitHub render it.
+ *
+ * ```md
+ * $$
+ * E = mc^2
+ * $$
+ * ```
+ *
+ * @param node   mdast Code or Math node from remark-parse.
  * @param source The original markdown source, required to detect the
  *               original fence style via `node.position.start.offset`.
  * @return `core/code` block.
  */
-export function toBlock( node: Code, source: string ): Block {
+export function toBlock( node: Code | Math, source: string ): Block {
+	if ( node.type === 'math' ) {
+		return createBlock( 'core/code', {
+			content: node.value,
+			markdownData: { format: 'dollar', language: MATH_LANGUAGE },
+		} );
+	}
 	const markdownData: { format: CodeFormat; language?: string } = {
 		format: detectFormat( node, source ),
 	};
@@ -86,21 +107,28 @@ export function toBlock( node: Code, source: string ): Block {
 }
 
 /**
- * Converts a `core/code` block back into an mdast Code node.
+ * Converts a `core/code` block back into an mdast Code or Math node.
  *
- * The syntax is restored from `markdownData.format`: `fenced-tilde` emits a
- * tilde fence, otherwise a backtick fence is used.
+ * The syntax is restored from `markdownData.format`: `dollar` emits a `$$`
+ * math block while the language is still `math`, `fenced-tilde` emits a tilde
+ * fence, otherwise a backtick fence is used.
  *
  * @param block `core/code` block.
- * @return mdast Code node together with serialization options.
+ * @return mdast Code or Math node together with serialization options.
  */
-export function toNode( block: Block ): NodeResult< Code > {
+export function toNode( block: Block ): NodeResult< Code | Math > {
 	const { attributes } = block;
 	const { content, markdownData } = attributes as BlockAttributes;
 	const value =
 		content instanceof RichTextData
 			? content.toPlainText()
 			: ( content ?? '' );
+	if (
+		markdownData?.format === 'dollar' &&
+		isMathLanguage( markdownData.language )
+	) {
+		return { node: { type: 'math', value, meta: null } };
+	}
 	return {
 		node: {
 			type: 'code',

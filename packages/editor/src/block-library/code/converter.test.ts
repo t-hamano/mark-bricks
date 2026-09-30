@@ -160,5 +160,70 @@ describe( 'core/code', () => {
 				blocksToMarkdown( markdownToBlocks( '    hello\n' ) )
 			).toBe( '```\nhello\n```\n' );
 		} );
+
+		it( 'preserves a dollar math block', () => {
+			const md = '$$\nx_1 * y_2 \\cdot z\n$$\n';
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+
+		it( 'preserves a backtick math block', () => {
+			const md = '```math\nE = mc^2\n```\n';
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+
+		it( 'preserves a dollar math block inside a quote and a list', () => {
+			const md = '> $$\n> a\n> $$\n\n- item\n  $$\n  b\n  $$\n';
+			expect( blocksToMarkdown( markdownToBlocks( md ) ) ).toBe( md );
+		} );
+	} );
+
+	describe( 'math', () => {
+		it( 'converts a dollar math block into a math code block', () => {
+			const blocks = markdownToBlocks( '$$\nE = mc^2\n$$' );
+			expect( blocks[ 0 ].name ).toBe( 'core/code' );
+			expect( blocks[ 0 ].attributes ).toEqual( {
+				content: 'E = mc^2',
+				markdownData: { format: 'dollar', language: 'math' },
+			} );
+		} );
+
+		it( 'lets a dollar math block interrupt a paragraph', () => {
+			const blocks = markdownToBlocks( 'text\n$$\na\n$$' );
+			expect( blocks.map( ( block ) => block.name ) ).toEqual( [
+				'core/paragraph',
+				'core/code',
+			] );
+		} );
+
+		it( 'leaves dollar signs inside a paragraph as text', () => {
+			const md = 'Price $5 and $$E=mc^2$$\n';
+			const blocks = markdownToBlocks( md );
+			expect( blocks.map( ( block ) => block.name ) ).toEqual( [
+				'core/paragraph',
+			] );
+			expect( blocksToMarkdown( blocks ) ).toBe( md );
+		} );
+
+		it( 'lengthens the fence when the math contains dollar signs', () => {
+			expect(
+				blocksToMarkdown( [
+					codeBlock( {
+						content: 'a\n$$\nb',
+						markdownData: { format: 'dollar', language: 'math' },
+					} ),
+				] )
+			).toBe( '$$$\na\n$$\nb\n$$$\n' );
+		} );
+
+		it( 'outputs a backtick fence when a dollar block is no longer math', () => {
+			expect(
+				blocksToMarkdown( [
+					codeBlock( {
+						content: 'const x = 1;',
+						markdownData: { format: 'dollar', language: 'js' },
+					} ),
+				] )
+			).toBe( '```js\nconst x = 1;\n```\n' );
+		} );
 	} );
 } );
