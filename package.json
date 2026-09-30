@@ -53,7 +53,7 @@
 		"conventional-changelog-cli": "^5.0.0",
 		"eslint": "^10.11.0",
 		"husky": "^9.1.7",
-		"lint-staged": "^17.5.1",
+		"lint-staged": "^17.6.0",
 		"prettier": "npm:wp-prettier@3.9.6",
 		"stylelint": "^17.15.0",
 		"stylelint-scss": "^7.3.0",
