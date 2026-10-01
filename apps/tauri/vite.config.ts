@@ -36,6 +36,10 @@ export default defineConfig( async () => ( {
 		// Keeps `light-dark()` intact, since its fallback ignores the runtime
 		// `color-scheme` set by the theme provider.
 		cssTarget: [ 'chrome123', 'safari17.5' ],
+		rolldownOptions: {
+			// The slide preview window loads a page of its own.
+			input: [ 'index.html', 'preview.html' ],
+		},
 	},
 	server: {
 		port: 1420,

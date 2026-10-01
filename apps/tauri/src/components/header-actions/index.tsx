@@ -27,9 +27,11 @@ import {
 import {
 	newFile,
 	openFile,
+	openPreview,
 	saveActiveFile,
 	saveActiveFileAs,
 } from '../../actions';
+import { isMarpDocument } from '../../marp';
 import tabsStore from '../../store';
 import { ABOUT_MODAL_NAME } from '../about-modal';
 import { KEYBOARD_SHORTCUTS_MODAL_NAME } from '../keyboard-shortcuts-modal';
@@ -47,6 +49,7 @@ export default function HeaderActions( {
 }: Props ) {
 	const {
 		isActiveTabDirty,
+		isActiveTabMarp,
 		isPreferencesOpened,
 		isFixedToolbar,
 		isFocusMode,
@@ -57,6 +60,7 @@ export default function HeaderActions( {
 		const activeTab = getTabs().find( ( t ) => t.id === getActiveTabId() );
 		return {
 			isActiveTabDirty: !! activeTab?.isDirty,
+			isActiveTabMarp: isMarpDocument( activeTab?.content ?? '' ),
 			isPreferencesOpened: isModalActive( PREFERENCES_MODAL_NAME ),
 			isFixedToolbar: !! get( 'core', 'fixedToolbar' ),
 			isFocusMode: !! get( 'core', 'focusMode' ),
@@ -93,6 +97,17 @@ export default function HeaderActions( {
 			align="center"
 			gap="sm"
 		>
+			{ isActiveTabMarp && (
+				<Button
+					size="compact"
+					variant="outline"
+					onClick={ () => {
+						void openPreview();
+					} }
+				>
+					{ __( 'Preview Slides', 'mark-bricks' ) }
+				</Button>
+			) }
 			<Button
 				size="compact"
 				onClick={ () => {

@@ -58,6 +58,31 @@ fn report_rendered(path: String, previews: serde_json::Value) {
     }
 }
 
+/// Label of the slide preview window.
+const PREVIEW_WINDOW: &str = "preview";
+
+/// Opens the slide preview window, or brings it to the front when it is
+/// already open. Async because creating a window from a synchronous command
+/// deadlocks on Windows.
+#[tauri::command]
+async fn open_preview(app: tauri::AppHandle, title: String) -> Result<(), String> {
+    if let Some(window) = app.get_webview_window(PREVIEW_WINDOW) {
+        let _ = window.unminimize();
+        return window.set_focus().map_err(|e| e.to_string());
+    }
+    tauri::WebviewWindowBuilder::new(
+        &app,
+        PREVIEW_WINDOW,
+        tauri::WebviewUrl::App("preview.html".into()),
+    )
+    .title(title)
+    .inner_size(960.0, 540.0)
+    .min_inner_size(320.0, 180.0)
+    .build()
+    .map(|_| ())
+    .map_err(|e| e.to_string())
+}
+
 /// Result variants for `set_as_default_markdown_handler`.
 /// - `"set"`: we changed the default handler directly.
 /// - `"declined"`: the user dismissed the macOS confirmation.
@@ -385,6 +410,16 @@ pub fn run() {
             app.manage(env);
             Ok(())
         })
+        .on_window_event(|window, event| {
+            // The preview belongs to the main window, so it closes with it.
+            // `Destroyed` fires only once the close guard has let the main
+            // window go.
+            if window.label() == "main" && matches!(event, tauri::WindowEvent::Destroyed) {
+                if let Some(preview) = window.app_handle().get_webview_window(PREVIEW_WINDOW) {
+                    let _ = preview.destroy();
+                }
+            }
+        })
         .manage(Documents::default())
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(tauri_plugin_dialog::init())
@@ -399,6 +434,7 @@ pub fn run() {
             close_document,
             take_pending_documents,
             report_rendered,
+            open_preview,
             remember_documents_for_relaunch,
             set_as_default_markdown_handler
         ])

@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.13.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.15.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:52:40.231Z\n"
+"POT-Creation-Date: 2026-10-01T03:36:56.071Z\n"
+"PO-Revision-Date: 2026-10-01T03:36:58.072Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,25 +17,25 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/components/dirty-confirm-dialog/index.tsx:54
+#: src/components/dirty-confirm-dialog/index.tsx:58
 msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "“%s” contiene modifiche non salvate. Vuoi scartarle e chiudere?"
 
-#: src/store/reducer.ts:46
+#: src/store/reducer.ts:40
 #: src/store/constants.ts:13
 msgid "(Untitled)"
 msgstr "(senza titolo)"
 
-#: src/components/header-actions/index.tsx:286
+#: src/components/header-actions/index.tsx:301
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "Informazioni su MarkBricks"
 
-#: src/components/header-actions/index.tsx:176
+#: src/components/header-actions/index.tsx:191
 msgid "Access all block and document tools in a single place"
 msgstr "Accedi a tutti gli strumenti di blocco e documento in un unico posto"
 
-#: src/components/header-actions/index.tsx:255
+#: src/components/header-actions/index.tsx:270
 msgid "Add YAML front matter"
 msgstr "Aggiungi front matter YAML"
 
@@ -56,8 +56,8 @@ msgstr "Dimensione del carattere di base dell’area del contenuto, in pixel."
 msgid "Block shortcuts"
 msgstr "Scorciatoie per il blocco"
 
-#: src/components/header-actions/index.tsx:315
-#: src/components/dirty-confirm-dialog/index.tsx:60
+#: src/components/header-actions/index.tsx:330
+#: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -96,7 +96,7 @@ msgid "Close the active tab."
 msgstr "Chiudi la scheda attiva."
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:231
+#: src/components/header-actions/index.tsx:246
 msgid "Code editor"
 msgstr "Editor del codice"
 
@@ -104,7 +104,7 @@ msgstr "Editor del codice"
 msgid "Content width"
 msgstr "Larghezza del contenuto"
 
-#: src/hooks/use-file-open-events.ts:31
+#: src/hooks/use-file-open-events.ts:43
 msgid "Could not open the following file:"
 msgid_plural "Could not open the following files:"
 msgstr[0] "Impossibile aprire il file seguente:"
@@ -124,11 +124,11 @@ msgstr "Crea un nuovo file."
 msgid "Dark"
 msgstr "Scuro"
 
-#: src/components/dirty-confirm-dialog/index.tsx:64
+#: src/components/dirty-confirm-dialog/index.tsx:68
 msgid "Discard"
 msgstr "Scarta"
 
-#: src/components/dirty-confirm-dialog/index.tsx:63
+#: src/components/dirty-confirm-dialog/index.tsx:67
 msgid "Discard changes"
 msgstr "Scarta le modifiche"
 
@@ -136,7 +136,7 @@ msgstr "Scarta le modifiche"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Mostra la gerarchia dei blocchi nella parte inferiore dell’editor."
 
-#: src/components/header-actions/index.tsx:202
+#: src/components/header-actions/index.tsx:217
 msgid "Editor"
 msgstr "Editor"
 
@@ -152,11 +152,11 @@ msgstr "Associazioni file"
 msgid "File shortcuts"
 msgstr "Scorciatoie dei file"
 
-#: src/components/header-actions/index.tsx:126
+#: src/components/header-actions/index.tsx:141
 msgid "Files"
 msgstr "File"
 
-#: src/components/header-actions/index.tsx:192
+#: src/components/header-actions/index.tsx:207
 msgid "Focus on one block at a time"
 msgstr "Concentrati su un blocco alla volta"
 
@@ -181,7 +181,7 @@ msgstr "Scorciatoie globali"
 msgid "Handwriting"
 msgstr "Scrittura a mano"
 
-#: src/components/header-actions/index.tsx:260
+#: src/components/header-actions/index.tsx:275
 msgid "Hide YAML front matter"
 msgstr "Nascondi front matter YAML"
 
@@ -202,7 +202,7 @@ msgstr ""
 "del documento."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:279
+#: src/components/header-actions/index.tsx:294
 msgid "Keyboard shortcuts"
 msgstr "Scorciatoie da tastiera"
 
@@ -220,7 +220,7 @@ msgid "List View shortcuts"
 msgstr "Scorciatoia per la vista elenco"
 
 # %s: new version number
-#: src/hooks/use-auto-updater.ts:53
+#: src/hooks/use-auto-updater.ts:91
 msgid "MarkBricks %s is available. Install now?"
 msgstr "MarkBricks %s è disponibile. Installarlo ora?"
 
@@ -236,7 +236,7 @@ msgstr "Larghezza massima dell’area del contenuto, in pixel."
 msgid "Monospace"
 msgstr "Monospazio"
 
-#: src/components/header-actions/index.tsx:133
+#: src/components/header-actions/index.tsx:148
 msgid "New"
 msgstr "Nuovo"
 
@@ -257,7 +257,7 @@ msgstr "Nessun file aperto"
 msgid "Open a file."
 msgstr "Apri un file."
 
-#: src/hooks/use-file-open-events.ts:38
+#: src/hooks/use-file-open-events.ts:50
 msgid "Open file"
 msgstr "Apri file"
 
@@ -270,28 +270,32 @@ msgstr "Apri file…"
 msgid "Opens the List View panel by default."
 msgstr "Apre il pannello Vista elenco per impostazione predefinita."
 
-#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:156
 msgid "Open…"
 msgstr "Apri…"
 
-#: src/components/header-actions/index.tsx:113
+#: src/components/header-actions/index.tsx:128
 msgid "Options"
 msgstr "Opzioni"
 
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:295
+#: src/components/header-actions/index.tsx:310
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/components/header-actions/index.tsx:316
+#: src/components/header-actions/index.tsx:108
+msgid "Preview Slides"
+msgstr "Visualizza anteprima diapositive"
+
+#: src/components/header-actions/index.tsx:331
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: src/components/header-actions/index.tsx:266
+#: src/components/header-actions/index.tsx:281
 msgid "Remove YAML front matter"
 msgstr "Rimuovi front matter YAML"
 
-#: src/components/header-actions/index.tsx:310
+#: src/components/header-actions/index.tsx:325
 msgid "Remove YAML front matter?"
 msgstr "Rimuovere il front matter YAML?"
 
@@ -312,12 +316,12 @@ msgid "Sans-serif"
 msgstr "Sans-serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:103
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:118
+#: src/components/header-actions/index.tsx:164
 msgid "Save"
 msgstr "Salva"
 
-#: src/components/header-actions/index.tsx:157
+#: src/components/header-actions/index.tsx:172
 msgid "Save As…"
 msgstr "Salva con nome…"
 
@@ -358,11 +362,15 @@ msgstr "Mostra i breadcrumb del blocco"
 msgid "Show line numbers"
 msgstr "Mostra i numeri di riga"
 
+#: src/actions/index.ts:299
+msgid "Slide Preview"
+msgstr "Anteprima diapositive"
+
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"
 msgstr "Controllo ortografico"
 
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:204
 msgid "Spotlight mode"
 msgstr "Modalità in risalto"
 
@@ -379,7 +387,7 @@ msgstr "Dimensione tabulazione"
 msgid "Text formatting"
 msgstr "Formattazione del testo"
 
-#: src/components/header-actions/index.tsx:311
+#: src/components/header-actions/index.tsx:326
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -400,11 +408,11 @@ msgstr ""
 "Questa piattaforma non consente di impostare l’app predefinita da "
 "MarkBricks. Configurala dal file manager del sistema."
 
-#: src/components/header-actions/index.tsx:239
+#: src/components/header-actions/index.tsx:254
 msgid "Tools"
 msgstr "Strumenti"
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:188
 msgid "Top toolbar"
 msgstr "Barra degli strumenti in alto"
 
@@ -412,33 +420,33 @@ msgstr "Barra degli strumenti in alto"
 msgid "Typeface used for the content area."
 msgstr "Carattere tipografico usato per l’area del contenuto."
 
-#: src/hooks/use-auto-updater.ts:74
+#: src/hooks/use-auto-updater.ts:46
 #: src/components/tabbar/index.tsx:260
-#: src/components/dirty-confirm-dialog/index.tsx:51
+#: src/components/dirty-confirm-dialog/index.tsx:55
 msgid "Unsaved changes"
 msgstr "Modifiche non salvate"
 
-#: src/hooks/use-auto-updater.ts:43
-#: src/hooks/use-auto-updater.ts:93
+#: src/hooks/use-auto-updater.ts:145
+#: src/hooks/use-auto-updater.ts:170
 #: src/components/preferences-modal/general-panel.tsx:119
 msgid "Update"
 msgstr "Aggiornamento"
 
-#: src/hooks/use-auto-updater.ts:57
+#: src/hooks/use-auto-updater.ts:95
 msgid "Update available"
 msgstr "Aggiornamento disponibile"
 
 # %s: error message
-#: src/hooks/use-auto-updater.ts:89
+#: src/hooks/use-auto-updater.ts:166
 msgid "Update check failed: %s"
 msgstr "Verifica degli aggiornamenti non riuscita: %s"
 
-#: src/components/header-actions/index.tsx:164
+#: src/components/header-actions/index.tsx:179
 msgid "View"
 msgstr "Visualizza"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:219
+#: src/components/header-actions/index.tsx:234
 msgid "Visual editor"
 msgstr "Editor visuale"
 
@@ -447,11 +455,11 @@ msgid "Working…"
 msgstr "Elaborazione…"
 
 # %s: current version number
-#: src/hooks/use-auto-updater.ts:36
+#: src/hooks/use-auto-updater.ts:138
 msgid "You are using the latest version (%s)."
 msgstr "Stai usando la versione più recente (%s)."
 
-#: src/hooks/use-auto-updater.ts:69
+#: src/hooks/use-auto-updater.ts:41
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "Ci sono modifiche non salvate. Salvale prima di aggiornare."
 
