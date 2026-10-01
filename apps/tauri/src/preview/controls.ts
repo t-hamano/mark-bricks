@@ -56,11 +56,9 @@ export function createFullscreenControls(
 		if ( ! labels ) {
 			return;
 		}
-		const label = fullscreen
+		button.textContent = fullscreen
 			? labels.exitFullscreen
 			: labels.enterFullscreen;
-		button.textContent = label;
-		button.title = `${ label } (F)`;
 	}
 
 	function hideHint() {
