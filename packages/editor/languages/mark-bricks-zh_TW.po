@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
-"PO-Revision-Date: 2026-10-01T02:50:48.412Z\n"
+"POT-Creation-Date: 2026-10-01T12:31:40.836Z\n"
+"PO-Revision-Date: 2026-10-01T12:31:46.912Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -39,17 +39,17 @@ msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
 #: src/format-library/image/inline.tsx:147
-#: src/block-library/image/edit.tsx:228
+#: src/block-library/image/edit.tsx:233
 msgid "Alt text"
 msgstr "替代文字"
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/edit.tsx:121
-#: src/block-library/image/edit.tsx:268
+#: src/block-library/image/edit.tsx:126
+#: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "套用"
 
-#: src/components/editor-header/index.tsx:85
+#: src/components/editor-header/index.tsx:101
 msgid "Block Inserter"
 msgstr "區塊插入器"
 
@@ -62,8 +62,8 @@ msgid "Bold"
 msgstr "粗體"
 
 #: src/format-library/image/inline.tsx:137
-#: src/block-library/image/edit.tsx:117
-#: src/block-library/image/edit.tsx:213
+#: src/block-library/image/edit.tsx:122
+#: src/block-library/image/edit.tsx:218
 msgid "Browse local file"
 msgstr "瀏覽本機檔案"
 
@@ -96,7 +96,7 @@ msgstr "清除格式"
 msgid "Close"
 msgstr "關閉"
 
-#: src/components/editor-header/index.tsx:84
+#: src/components/editor-header/index.tsx:100
 msgid "Close Block Inserter"
 msgstr "關閉區塊插入器"
 
@@ -129,7 +129,7 @@ msgid "Delete row"
 msgstr "刪除資料列"
 
 #: src/format-library/image/inline.tsx:151
-#: src/block-library/image/edit.tsx:235
+#: src/block-library/image/edit.tsx:246
 msgid "Describes the image for screen readers."
 msgstr "為螢幕閱讀器描述圖片。"
 
@@ -138,11 +138,11 @@ msgid "Display these keyboard shortcuts."
 msgstr "顯示鍵盤快速鍵清單"
 
 #: src/components/list-view-sidebar/index.tsx:43
-#: src/components/editor-header/index.tsx:126
+#: src/components/editor-header/index.tsx:142
 msgid "Document Overview"
 msgstr "內容總覽"
 
-#: src/block-library/image/edit.tsx:157
+#: src/block-library/image/edit.tsx:162
 msgid "Edit image"
 msgstr "編輯圖片"
 
@@ -151,16 +151,16 @@ msgid "Edit table"
 msgstr "編輯表格"
 
 #: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:231
+#: src/block-library/image/edit.tsx:236
 msgid "Enter alt text…"
 msgstr "輸入替代文字…"
 
 #: src/format-library/image/inline.tsx:160
-#: src/block-library/image/edit.tsx:244
+#: src/block-library/image/edit.tsx:256
 msgid "Enter title…"
 msgstr "輸入標題…"
 
-#: src/block-library/image/edit.tsx:279
+#: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "圖片載入失敗。"
 
@@ -190,11 +190,11 @@ msgstr "標題"
 msgid "Heading %d"
 msgstr "標題 %d"
 
-#: src/components/editor-header/index.tsx:125
+#: src/components/editor-header/index.tsx:141
 msgid "Hide Document Overview"
 msgstr "隱藏內容總覽"
 
-#: src/block-library/image/edit.tsx:71
+#: src/block-library/image/edit.tsx:76
 msgid "Image"
 msgstr "圖片"
 
@@ -274,6 +274,12 @@ msgstr "將選取內容變更為內嵌程式碼"
 msgid "Make the selected text italic."
 msgstr "將選取內容變更為斜體"
 
+#: src/block-library/image/edit.tsx:242
+msgid ""
+"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
+"other words describe the image for screen readers."
+msgstr "bg、w:200px、sepia 等 Marp 關鍵字用於設定版面配置與尺寸。其餘文字為螢幕閱讀器描述圖片。"
+
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
@@ -309,12 +315,12 @@ msgstr "大綱"
 msgid "Paste or type URL"
 msgstr "貼上或輸入網址"
 
-#: src/block-library/image/edit.tsx:99
-#: src/block-library/image/edit.tsx:195
+#: src/block-library/image/edit.tsx:104
+#: src/block-library/image/edit.tsx:200
 msgid "Paste or type URL or file path"
 msgstr "貼上或輸入網址或檔案路徑"
 
-#: src/components/editor-header/index.tsx:110
+#: src/components/editor-header/index.tsx:126
 msgid "Redo"
 msgstr "取消復原"
 
@@ -326,7 +332,7 @@ msgstr "取消復原變更"
 msgid "Remove a link."
 msgstr "移除連結"
 
-#: src/block-library/image/edit.tsx:262
+#: src/block-library/image/edit.tsx:274
 msgid "Reset"
 msgstr "重設"
 
@@ -352,7 +358,7 @@ msgstr "顯示或隱藏清單檢視"
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
-#: src/block-library/image/edit.tsx:248
+#: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "滑鼠懸停時會顯示為工具提示。"
 
@@ -386,7 +392,7 @@ msgstr "提示"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
-#: src/block-library/image/edit.tsx:241
+#: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "標題"
 
@@ -407,8 +413,8 @@ msgid "Type / to choose a block"
 msgstr "輸入斜線 (/) 以選取區塊"
 
 #: src/format-library/image/inline.tsx:118
-#: src/block-library/image/edit.tsx:95
-#: src/block-library/image/edit.tsx:191
+#: src/block-library/image/edit.tsx:100
+#: src/block-library/image/edit.tsx:196
 msgid "URL or file path"
 msgstr "網址或檔案路徑"
 
@@ -416,7 +422,7 @@ msgstr "網址或檔案路徑"
 msgid "Underline the selected text."
 msgstr "為選取內容加上底線"
 
-#: src/components/editor-header/index.tsx:101
+#: src/components/editor-header/index.tsx:117
 msgid "Undo"
 msgstr "復原"
 
@@ -428,7 +434,7 @@ msgstr "復原變更"
 msgid "Unordered"
 msgstr "無序"
 
-#: src/block-library/image/edit.tsx:72
+#: src/block-library/image/edit.tsx:77
 msgid "Upload an image from your device or insert from a URL."
 msgstr "從裝置上傳圖片或透過網址插入。"
 

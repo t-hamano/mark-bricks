@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
-"PO-Revision-Date: 2026-10-01T02:50:46.126Z\n"
+"POT-Creation-Date: 2026-10-01T12:31:40.836Z\n"
+"PO-Revision-Date: 2026-10-01T12:31:43.879Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -39,17 +39,17 @@ msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
 #: src/format-library/image/inline.tsx:147
-#: src/block-library/image/edit.tsx:228
+#: src/block-library/image/edit.tsx:233
 msgid "Alt text"
 msgstr "Testo alternativo"
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/edit.tsx:121
-#: src/block-library/image/edit.tsx:268
+#: src/block-library/image/edit.tsx:126
+#: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "Applica"
 
-#: src/components/editor-header/index.tsx:85
+#: src/components/editor-header/index.tsx:101
 msgid "Block Inserter"
 msgstr "Inseritore di blocchi"
 
@@ -62,8 +62,8 @@ msgid "Bold"
 msgstr "Grassetto"
 
 #: src/format-library/image/inline.tsx:137
-#: src/block-library/image/edit.tsx:117
-#: src/block-library/image/edit.tsx:213
+#: src/block-library/image/edit.tsx:122
+#: src/block-library/image/edit.tsx:218
 msgid "Browse local file"
 msgstr "Sfoglia file locale"
 
@@ -96,7 +96,7 @@ msgstr "Cancella formattazione"
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/components/editor-header/index.tsx:84
+#: src/components/editor-header/index.tsx:100
 msgid "Close Block Inserter"
 msgstr "Chiudi il pannello di inserimento"
 
@@ -129,7 +129,7 @@ msgid "Delete row"
 msgstr "Elimina riga"
 
 #: src/format-library/image/inline.tsx:151
-#: src/block-library/image/edit.tsx:235
+#: src/block-library/image/edit.tsx:246
 msgid "Describes the image for screen readers."
 msgstr "Descrive l’immagine per gli screen reader."
 
@@ -138,11 +138,11 @@ msgid "Display these keyboard shortcuts."
 msgstr "Visualizza queste scorciatoie da tastiera."
 
 #: src/components/list-view-sidebar/index.tsx:43
-#: src/components/editor-header/index.tsx:126
+#: src/components/editor-header/index.tsx:142
 msgid "Document Overview"
 msgstr "Riepilogo del documento"
 
-#: src/block-library/image/edit.tsx:157
+#: src/block-library/image/edit.tsx:162
 msgid "Edit image"
 msgstr "Modifica immagine"
 
@@ -151,16 +151,16 @@ msgid "Edit table"
 msgstr "Modifica tabella"
 
 #: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:231
+#: src/block-library/image/edit.tsx:236
 msgid "Enter alt text…"
 msgstr "Inserisci il testo alternativo…"
 
 #: src/format-library/image/inline.tsx:160
-#: src/block-library/image/edit.tsx:244
+#: src/block-library/image/edit.tsx:256
 msgid "Enter title…"
 msgstr "Inserisci il titolo…"
 
-#: src/block-library/image/edit.tsx:279
+#: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "Impossibile caricare l’immagine."
 
@@ -190,11 +190,11 @@ msgstr "Titolo"
 msgid "Heading %d"
 msgstr "Titolo %d"
 
-#: src/components/editor-header/index.tsx:125
+#: src/components/editor-header/index.tsx:141
 msgid "Hide Document Overview"
 msgstr "Nascondi riepilogo del documento"
 
-#: src/block-library/image/edit.tsx:71
+#: src/block-library/image/edit.tsx:76
 msgid "Image"
 msgstr "Immagine"
 
@@ -274,6 +274,14 @@ msgstr "Rende codice in linea il testo selezionato."
 msgid "Make the selected text italic."
 msgstr "Rende il testo selezionato in corsivo."
 
+#: src/block-library/image/edit.tsx:242
+msgid ""
+"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
+"other words describe the image for screen readers."
+msgstr ""
+"Le parole chiave di Marp come bg, w:200px o sepia impostano layout e "
+"dimensioni. Le altre parole descrivono l’immagine per gli screen reader."
+
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
@@ -311,12 +319,12 @@ msgstr "Struttura"
 msgid "Paste or type URL"
 msgstr "Incolla o digita l'URL"
 
-#: src/block-library/image/edit.tsx:99
-#: src/block-library/image/edit.tsx:195
+#: src/block-library/image/edit.tsx:104
+#: src/block-library/image/edit.tsx:200
 msgid "Paste or type URL or file path"
 msgstr "Incolla o digita un URL o un percorso di file"
 
-#: src/components/editor-header/index.tsx:110
+#: src/components/editor-header/index.tsx:126
 msgid "Redo"
 msgstr "Ripeti"
 
@@ -328,7 +336,7 @@ msgstr "Ripristina la modifica annullata."
 msgid "Remove a link."
 msgstr "Rimuove un link."
 
-#: src/block-library/image/edit.tsx:262
+#: src/block-library/image/edit.tsx:274
 msgid "Reset"
 msgstr "Reimposta"
 
@@ -354,7 +362,7 @@ msgstr "Mostra o nascondi la vista elenco."
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
-#: src/block-library/image/edit.tsx:248
+#: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Mostrato come tooltip al passaggio del mouse."
 
@@ -388,7 +396,7 @@ msgstr "Suggerimento"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
-#: src/block-library/image/edit.tsx:241
+#: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "Titolo"
 
@@ -409,8 +417,8 @@ msgid "Type / to choose a block"
 msgstr "Digita / per scegliere un blocco"
 
 #: src/format-library/image/inline.tsx:118
-#: src/block-library/image/edit.tsx:95
-#: src/block-library/image/edit.tsx:191
+#: src/block-library/image/edit.tsx:100
+#: src/block-library/image/edit.tsx:196
 msgid "URL or file path"
 msgstr "URL o percorso del file"
 
@@ -418,7 +426,7 @@ msgstr "URL o percorso del file"
 msgid "Underline the selected text."
 msgstr "Sottolinea il testo selezionato."
 
-#: src/components/editor-header/index.tsx:101
+#: src/components/editor-header/index.tsx:117
 msgid "Undo"
 msgstr "Annulla"
 
@@ -430,7 +438,7 @@ msgstr "Annulla l'ultima modifica."
 msgid "Unordered"
 msgstr "Non ordinato"
 
-#: src/block-library/image/edit.tsx:72
+#: src/block-library/image/edit.tsx:77
 msgid "Upload an image from your device or insert from a URL."
 msgstr "Carica un’immagine dal tuo dispositivo o inseriscila da un URL."
 

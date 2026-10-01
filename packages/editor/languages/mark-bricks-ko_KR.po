@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
-"PO-Revision-Date: 2026-10-01T02:50:46.461Z\n"
+"POT-Creation-Date: 2026-10-01T12:31:40.836Z\n"
+"PO-Revision-Date: 2026-10-01T12:31:44.320Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -39,17 +39,17 @@ msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
 #: src/format-library/image/inline.tsx:147
-#: src/block-library/image/edit.tsx:228
+#: src/block-library/image/edit.tsx:233
 msgid "Alt text"
 msgstr "대체 텍스트"
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/edit.tsx:121
-#: src/block-library/image/edit.tsx:268
+#: src/block-library/image/edit.tsx:126
+#: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "적용"
 
-#: src/components/editor-header/index.tsx:85
+#: src/components/editor-header/index.tsx:101
 msgid "Block Inserter"
 msgstr "블록 삽입기"
 
@@ -62,8 +62,8 @@ msgid "Bold"
 msgstr "굵게"
 
 #: src/format-library/image/inline.tsx:137
-#: src/block-library/image/edit.tsx:117
-#: src/block-library/image/edit.tsx:213
+#: src/block-library/image/edit.tsx:122
+#: src/block-library/image/edit.tsx:218
 msgid "Browse local file"
 msgstr "로컬 파일 찾아보기"
 
@@ -96,7 +96,7 @@ msgstr "서식 지우기"
 msgid "Close"
 msgstr "닫기"
 
-#: src/components/editor-header/index.tsx:84
+#: src/components/editor-header/index.tsx:100
 msgid "Close Block Inserter"
 msgstr "블록 삽입기 닫기"
 
@@ -129,7 +129,7 @@ msgid "Delete row"
 msgstr "행 삭제"
 
 #: src/format-library/image/inline.tsx:151
-#: src/block-library/image/edit.tsx:235
+#: src/block-library/image/edit.tsx:246
 msgid "Describes the image for screen readers."
 msgstr "스크린 리더를 위해 이미지를 설명합니다."
 
@@ -138,11 +138,11 @@ msgid "Display these keyboard shortcuts."
 msgstr "이 키보드 단축키 표시."
 
 #: src/components/list-view-sidebar/index.tsx:43
-#: src/components/editor-header/index.tsx:126
+#: src/components/editor-header/index.tsx:142
 msgid "Document Overview"
 msgstr "문서 개요"
 
-#: src/block-library/image/edit.tsx:157
+#: src/block-library/image/edit.tsx:162
 msgid "Edit image"
 msgstr "이미지 편집"
 
@@ -151,16 +151,16 @@ msgid "Edit table"
 msgstr "테이블 편집"
 
 #: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:231
+#: src/block-library/image/edit.tsx:236
 msgid "Enter alt text…"
 msgstr "대체 텍스트 입력…"
 
 #: src/format-library/image/inline.tsx:160
-#: src/block-library/image/edit.tsx:244
+#: src/block-library/image/edit.tsx:256
 msgid "Enter title…"
 msgstr "제목 입력…"
 
-#: src/block-library/image/edit.tsx:279
+#: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "이미지를 불러오지 못했습니다."
 
@@ -190,11 +190,11 @@ msgstr "헤딩요소"
 msgid "Heading %d"
 msgstr "제목 %d"
 
-#: src/components/editor-header/index.tsx:125
+#: src/components/editor-header/index.tsx:141
 msgid "Hide Document Overview"
 msgstr "문서 개요 숨기기"
 
-#: src/block-library/image/edit.tsx:71
+#: src/block-library/image/edit.tsx:76
 msgid "Image"
 msgstr "이미지"
 
@@ -274,6 +274,14 @@ msgstr "선택한 텍스트를 인라인 코드로 만듭니다."
 msgid "Make the selected text italic."
 msgstr "선택한 텍스트에 이탤릭체로 적용."
 
+#: src/block-library/image/edit.tsx:242
+msgid ""
+"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
+"other words describe the image for screen readers."
+msgstr ""
+"bg, w:200px, sepia 같은 Marp 키워드로 레이아웃과 크기를 지정합니다. 나머지 단어는 스크린 리더를 위해 이미지를 "
+"설명합니다."
+
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
@@ -309,12 +317,12 @@ msgstr "아웃라인"
 msgid "Paste or type URL"
 msgstr "URL 붙여넣기 또는 입력"
 
-#: src/block-library/image/edit.tsx:99
-#: src/block-library/image/edit.tsx:195
+#: src/block-library/image/edit.tsx:104
+#: src/block-library/image/edit.tsx:200
 msgid "Paste or type URL or file path"
 msgstr "URL 또는 파일 경로 붙여넣기 또는 입력"
 
-#: src/components/editor-header/index.tsx:110
+#: src/components/editor-header/index.tsx:126
 msgid "Redo"
 msgstr "다시하기"
 
@@ -326,7 +334,7 @@ msgstr "마지막 실행 취소를 다시 실행."
 msgid "Remove a link."
 msgstr "링크 제거."
 
-#: src/block-library/image/edit.tsx:262
+#: src/block-library/image/edit.tsx:274
 msgid "Reset"
 msgstr "초기화"
 
@@ -352,7 +360,7 @@ msgstr "목록 보기를 표시하거나 숨깁니다."
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
-#: src/block-library/image/edit.tsx:248
+#: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "마우스를 올리면 툴팁으로 표시됩니다."
 
@@ -386,7 +394,7 @@ msgstr "팁"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
-#: src/block-library/image/edit.tsx:241
+#: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "제목"
 
@@ -407,8 +415,8 @@ msgid "Type / to choose a block"
 msgstr "입력 / 블록 선택"
 
 #: src/format-library/image/inline.tsx:118
-#: src/block-library/image/edit.tsx:95
-#: src/block-library/image/edit.tsx:191
+#: src/block-library/image/edit.tsx:100
+#: src/block-library/image/edit.tsx:196
 msgid "URL or file path"
 msgstr "URL 또는 파일 경로"
 
@@ -416,7 +424,7 @@ msgstr "URL 또는 파일 경로"
 msgid "Underline the selected text."
 msgstr "선택한 텍스트에 밑줄."
 
-#: src/components/editor-header/index.tsx:101
+#: src/components/editor-header/index.tsx:117
 msgid "Undo"
 msgstr "되돌리기"
 
@@ -428,7 +436,7 @@ msgstr "마지막 변경사항을 취소."
 msgid "Unordered"
 msgstr "순서 없음"
 
-#: src/block-library/image/edit.tsx:72
+#: src/block-library/image/edit.tsx:77
 msgid "Upload an image from your device or insert from a URL."
 msgstr "기기에서 이미지를 업로드하거나 URL로 삽입하세요."
 
