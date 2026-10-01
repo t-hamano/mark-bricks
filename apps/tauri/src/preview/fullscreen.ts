@@ -28,8 +28,9 @@ function findMostVisibleSlide( slides: Element[] ): number {
 }
 
 /**
- * Lets the `F` key toggle full screen, which presents the slides one at a
- * time, starting from the one most visible in the scrolling view.
+ * Lets the `F` and F11 keys toggle full screen, and Escape leave it. Full
+ * screen presents the slides one at a time, starting from the one most
+ * visible in the scrolling view.
  *
  * @param container Element the slides are rendered into.
  * @return A function to call after the slides are rendered again, to keep
@@ -90,8 +91,7 @@ export function setupFullscreen( container: HTMLElement ): () => void {
 		update( await appWindow.isFullscreen() );
 	}
 
-	function toggle() {
-		const value = ! fullscreen;
+	function setFullscreen( value: boolean ) {
 		// Switches the view right away, rather than once the window resizes.
 		update( value );
 		appWindow.setFullscreen( value ).catch( syncWithWindow );
@@ -109,17 +109,16 @@ export function setupFullscreen( container: HTMLElement ): () => void {
 	window.addEventListener( 'resize', scrollToAnchor );
 
 	window.addEventListener( 'keydown', ( event ) => {
-		if (
-			event.key.toLowerCase() !== 'f' ||
-			event.repeat ||
-			event.ctrlKey ||
-			event.metaKey ||
-			event.altKey
-		) {
+		if ( event.repeat || event.ctrlKey || event.metaKey || event.altKey ) {
 			return;
 		}
-		event.preventDefault();
-		toggle();
+		if ( event.key.toLowerCase() === 'f' || event.key === 'F11' ) {
+			event.preventDefault();
+			setFullscreen( ! fullscreen );
+		} else if ( event.key === 'Escape' && fullscreen ) {
+			event.preventDefault();
+			setFullscreen( false );
+		}
 	} );
 
 	// Full screen can also end without the `F` key, such as with the green
