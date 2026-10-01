@@ -43,6 +43,74 @@ body {
 	max-height: none;
 }
 
+.preview-toolbar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	height: 56px;
+	padding: 0 16px;
+	background: rgb(0 0 0 / 50%);
+	backdrop-filter: blur(8px);
+	opacity: 0;
+
+	@media not (prefers-reduced-motion) {
+		transition: opacity 0.2s;
+	}
+}
+
+.preview-toolbar:hover,
+.preview-toolbar:focus-within {
+	opacity: 1;
+}
+
+.preview-toolbar button {
+	height: 40px;
+	padding: 0 16px;
+	border: 1px solid;
+	border-radius: 4px;
+	background: transparent;
+	color: #fff;
+	font: 13px system-ui, sans-serif;
+	cursor: pointer;
+}
+
+.preview-toolbar button:hover {
+	background: rgb(255 255 255 / 15%);
+}
+
+.preview-toolbar button:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+}
+
+.preview-hint {
+	position: fixed;
+	top: 24px;
+	left: 50%;
+	z-index: 2;
+	padding: 8px 16px;
+	border-radius: 4px;
+	background: rgb(0 0 0 / 70%);
+	color: #fff;
+	font: 14px system-ui, sans-serif;
+	pointer-events: none;
+	opacity: 0;
+	transform: translateX(-50%);
+
+	@media not (prefers-reduced-motion) {
+		transition: opacity 0.3s;
+	}
+}
+
+.preview-hint.is-visible {
+	opacity: 1;
+}
+
 .preview-notice {
 	display: grid;
 	place-items: center;

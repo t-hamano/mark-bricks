@@ -33,10 +33,14 @@ function findMostVisibleSlide( slides: Element[] ): number {
  * visible in the scrolling view.
  *
  * @param container Element the slides are rendered into.
- * @return A function to call after the slides are rendered again, to keep
- *         the current slide shown.
+ * @param onChange  Called when full screen starts or ends.
+ * @return `showCurrentSlide` to call after the slides are rendered again, to
+ *         keep the current slide shown, and `toggle` to toggle full screen.
  */
-export function setupFullscreen( container: HTMLElement ): () => void {
+export function setupFullscreen(
+	container: HTMLElement,
+	onChange: ( fullscreen: boolean ) => void
+): { showCurrentSlide: () => void; toggle: () => void } {
 	const appWindow = getCurrentWebviewWindow();
 	let fullscreen = false;
 	let current = 0;
@@ -85,6 +89,7 @@ export function setupFullscreen( container: HTMLElement ): () => void {
 			anchor = current;
 			scrollToAnchor();
 		}
+		onChange( value );
 	}
 
 	async function syncWithWindow() {
@@ -95,6 +100,10 @@ export function setupFullscreen( container: HTMLElement ): () => void {
 		// Switches the view right away, rather than once the window resizes.
 		update( value );
 		appWindow.setFullscreen( value ).catch( syncWithWindow );
+	}
+
+	function toggle() {
+		setFullscreen( ! fullscreen );
 	}
 
 	for ( const type of [ 'wheel', 'pointerdown', 'keydown' ] as const ) {
@@ -114,7 +123,7 @@ export function setupFullscreen( container: HTMLElement ): () => void {
 		}
 		if ( event.key.toLowerCase() === 'f' || event.key === 'F11' ) {
 			event.preventDefault();
-			setFullscreen( ! fullscreen );
+			toggle();
 		} else if ( event.key === 'Escape' && fullscreen ) {
 			event.preventDefault();
 			setFullscreen( false );
@@ -125,5 +134,5 @@ export function setupFullscreen( container: HTMLElement ): () => void {
 	// button on macOS.
 	void appWindow.onResized( () => void syncWithWindow() );
 
-	return showCurrentSlide;
+	return { showCurrentSlide, toggle };
 }
