@@ -1,7 +1,10 @@
 /**
  * Internal dependencies
  */
-import { MATH_LANGUAGE, MERMAID_LANGUAGE } from '../hooks/code-languages';
+import {
+	MATH_LANGUAGE,
+	MERMAID_LANGUAGE,
+} from './block-library/hooks/code-languages';
 
 const PREVIEW_LANGUAGES = [ MATH_LANGUAGE, MERMAID_LANGUAGE ];
 
