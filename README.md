@@ -46,6 +46,8 @@ YAML front matter and GitHub-style alerts (`> [!NOTE]`) can be edited in the vis
 
 MarkBricks Desktop previews [Marp](https://marp.app/) slide decks. When a document's front matter contains `marp: true`, the header shows **Marp Mode** and a **Preview Slides** button, which opens the slides in a separate window.
 
+For an example deck that uses directives, split backgrounds, image filters, tables and math, see [`marp.md`](packages/fixtures/markdown/marp.md).
+
 ### Light and dark themes, in your language
 
 Both apps work in light and dark themes, and the interface is translated into 13 languages.

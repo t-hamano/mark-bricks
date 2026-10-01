@@ -46,7 +46,7 @@ describe( 'renderSlides', () => {
 		const { html } = renderSlides( fixtures.marp );
 		// One SVG per slide. A slide with background images holds extra
 		// sections for them.
-		expect( html.match( /<svg data-marpit-svg/g ) ).toHaveLength( 4 );
+		expect( html.match( /<svg data-marpit-svg/g ) ).toHaveLength( 10 );
 	} );
 
 	it( 'leaves out the web fonts a theme imports', () => {
