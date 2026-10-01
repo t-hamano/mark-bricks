@@ -1,3 +1,14 @@
+# [0.4.0](https://github.com/t-hamano/mark-bricks/compare/vscode-v0.3.0...vscode-v0.4.0) (2026-10-01)
+
+### Bug Fixes
+
+- **editor:** support attention serialization of mdast-util-to-markdown 2.1.3 ([#153](https://github.com/t-hamano/mark-bricks/issues/153)) ([54d3070](https://github.com/t-hamano/mark-bricks/commit/54d3070ab31eda25e205b6c001ca06d96f8b79e1))
+
+### Features
+
+- **editor:** add a math block that reads and writes $$ and ```math ([#144](https://github.com/t-hamano/mark-bricks/issues/144)) ([28e9101](https://github.com/t-hamano/mark-bricks/commit/28e91017ef436176af1168a66d9314e34f72b12d))
+- **editor:** keep every block inside a list item ([#130](https://github.com/t-hamano/mark-bricks/issues/130)) ([889f162](https://github.com/t-hamano/mark-bricks/commit/889f162506442f5346b2f212d773bf2407073e6d))
+
 # [0.3.0](https://github.com/t-hamano/mark-bricks/compare/vscode-v0.2.0...vscode-v0.3.0) (2026-09-29)
 
 ### Bug Fixes
