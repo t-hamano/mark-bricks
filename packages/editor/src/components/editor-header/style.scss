@@ -1,10 +1,20 @@
+// The header is 48px tall and grows only when the block toolbar overflows and
+// shows its horizontal scrollbar.
 .editor-header {
-	height: 48px;
+	min-height: 48px;
 	padding: 0 var(--wpds-dimension-padding-sm);
 	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
 }
 
+.editor-header__start,
+.editor-header__end {
+	flex-shrink: 0;
+	height: calc(48px - var(--wpds-border-width-xs));
+}
+
 .editor-header__block-toolbar {
+	align-self: stretch;
+	min-width: 0;
 	margin-right: auto;
 	border-left: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
 	border-right: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
@@ -14,9 +24,8 @@
 	}
 
 	.block-editor-block-toolbar {
-		// The toolbar is as tall as the header, so the default `overflow: auto`
-		// would add a scrollbar that does not fit.
-		overflow: visible;
+		overflow-x: auto;
+		overflow-y: hidden;
 
 		.components-toolbar-group,
 		.components-toolbar {
