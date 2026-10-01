@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T03:49:51.920Z\n"
+"POT-Creation-Date: 2026-10-01T05:32:37.941Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -86,6 +86,10 @@ msgstr ""
 
 #: src/hooks/use-shortcuts.ts:77
 msgid "Close the active tab."
+msgstr ""
+
+#: src/hooks/use-preview-sync.ts:41
+msgid "Not a Marp document"
 msgstr ""
 
 #: src/hooks/use-file-open-events.ts:43

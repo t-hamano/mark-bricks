@@ -13,43 +13,67 @@ import '@fontsource/roboto-mono/700.css';
 /**
  * Internal dependencies
  */
-import { PREVIEW_MARKDOWN_EVENT, PREVIEW_READY_EVENT } from './constants';
+import {
+	PREVIEW_DOCUMENT_EVENT,
+	PREVIEW_READY_EVENT,
+	type PreviewPayload,
+} from './constants';
 import { renderSlides } from './render';
 import './style.css';
 
 const style = document.createElement( 'style' );
 const slides = document.createElement( 'div' );
+const notice = document.createElement( 'p' );
+notice.className = 'preview-notice';
+notice.hidden = true;
 document.head.append( style );
-document.body.append( slides );
+document.body.append( slides, notice );
 
 // Scales auto-scaling elements, and lays out the slides in WebKit, which
 // cannot render HTML inside an SVG on its own.
 const marpBrowser = browser( slides );
 
-let pending: string | null = null;
+function render( payload: PreviewPayload ) {
+	if ( 'notice' in payload ) {
+		style.textContent = '';
+		slides.innerHTML = '';
+		notice.textContent = payload.notice;
+		notice.hidden = false;
+		return;
+	}
+	notice.hidden = true;
+	const { html, css } = renderSlides(
+		payload.markdown,
+		payload.documentPath
+	);
+	style.textContent = css;
+	slides.innerHTML = html;
+	// WebKit has no customized built-in elements, so Marp swaps in its
+	// auto-scaling elements itself, but only for the slides present.
+	marpBrowser.update();
+}
 
-// Renders the latest Markdown once per frame, however often it arrives.
-function scheduleRender( markdown: string ) {
+let pending: PreviewPayload | null = null;
+
+// Renders the latest document once per frame, however often it arrives.
+function scheduleRender( payload: PreviewPayload ) {
 	if ( pending === null ) {
 		requestAnimationFrame( () => {
 			// Taken before rendering, so a deck that fails to render does not
 			// stop later edits from being scheduled.
-			const latest = pending ?? '';
+			const latest = pending;
 			pending = null;
-			const { html, css } = renderSlides( latest );
-			style.textContent = css;
-			slides.innerHTML = html;
-			// WebKit has no customized built-in elements, so Marp swaps in its
-			// auto-scaling elements itself, but only for the slides present.
-			marpBrowser.update();
+			if ( latest ) {
+				render( latest );
+			}
 		} );
 	}
-	pending = markdown;
+	pending = payload;
 }
 
 async function main() {
-	await getCurrentWebviewWindow().listen< string >(
-		PREVIEW_MARKDOWN_EVENT,
+	await getCurrentWebviewWindow().listen< PreviewPayload >(
+		PREVIEW_DOCUMENT_EVENT,
 		( { payload } ) => scheduleRender( payload )
 	);
 	await emitTo( 'main', PREVIEW_READY_EVENT );

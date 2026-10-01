@@ -11,3 +11,17 @@ body {
 	gap: 16px;
 	padding: 16px;
 }
+
+.preview-notice {
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	margin: 0;
+	color: #ccc;
+	font-family: system-ui, sans-serif;
+	font-size: 16px;
+}
+
+.preview-notice[hidden] {
+	display: none;
+}

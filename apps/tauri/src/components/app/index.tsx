@@ -111,7 +111,7 @@ export function App() {
 
 	useWindowTitle( activeTab );
 	useAppCloseGuard( { tabs, pendingCloseId } );
-	usePreviewSync( activeTab?.content ?? '' );
+	usePreviewSync( activeTab );
 
 	return (
 		<EditorThemeProvider theme={ editorTheme ?? 'system' }>

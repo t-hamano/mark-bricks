@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T03:49:51.920Z\n"
-"PO-Revision-Date: 2026-10-01T03:49:53.847Z\n"
+"POT-Creation-Date: 2026-10-01T05:32:37.941Z\n"
+"PO-Revision-Date: 2026-10-01T05:32:39.813Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -256,6 +256,10 @@ msgstr "Nuovo…"
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "Nessun file aperto"
+
+#: src/hooks/use-preview-sync.ts:41
+msgid "Not a Marp document"
+msgstr "Non è un documento Marp"
 
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
