@@ -11,6 +11,11 @@ import '@fontsource/roboto-mono/400.css';
 import '@fontsource/roboto-mono/700.css';
 
 /**
+ * WordPress dependencies
+ */
+import '@wordpress/theme/design-tokens.css';
+
+/**
  * Internal dependencies
  */
 import {

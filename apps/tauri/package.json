@@ -47,6 +47,7 @@
 		"@wordpress/keyboard-shortcuts": "^5.56.0",
 		"@wordpress/keycodes": "^4.56.0",
 		"@wordpress/preferences": "^4.56.0",
+		"@wordpress/theme": "^2.2.0",
 		"@wordpress/ui": "^0.23.0",
 		"clsx": "^2.1.1",
 		"react": "^19.3.0",
