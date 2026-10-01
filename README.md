@@ -65,9 +65,9 @@ Download **MarkBricks Desktop** for your platform. Older versions and release no
 
 | Platform | Download                                                                                                                                                                         |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Windows  | <!-- download:windows -->[Installer (`.exe`)](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.15.0/MarkBricks_0.15.0_x64-setup.exe)<!-- /download:windows --> |
-| macOS    | <!-- download:macos -->[Disk image (`.dmg`)](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.15.0/MarkBricks_0.15.0_universal.dmg)<!-- /download:macos -->    |
-| Linux    | <!-- download:linux -->[AppImage](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.15.0/MarkBricks_0.15.0_amd64.AppImage)<!-- /download:linux -->              |
+| Windows  | <!-- download:windows -->[Installer (`.exe`)](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.16.0/MarkBricks_0.16.0_x64-setup.exe)<!-- /download:windows --> |
+| macOS    | <!-- download:macos -->[Disk image (`.dmg`)](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.16.0/MarkBricks_0.16.0_universal.dmg)<!-- /download:macos -->    |
+| Linux    | <!-- download:linux -->[AppImage](https://github.com/t-hamano/mark-bricks/releases/download/tauri-v0.16.0/MarkBricks_0.16.0_amd64.AppImage)<!-- /download:linux -->              |
 
 ## Structure
 
