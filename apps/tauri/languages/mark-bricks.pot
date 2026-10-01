@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T05:32:37.941Z\n"
+"POT-Creation-Date: 2026-10-01T07:02:56.046Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -88,7 +88,19 @@ msgstr ""
 msgid "Close the active tab."
 msgstr ""
 
+#: src/hooks/use-preview-sync.ts:39
+msgid "Enter full screen"
+msgstr ""
+
+#: src/hooks/use-preview-sync.ts:40
+msgid "Exit full screen"
+msgstr ""
+
 #: src/hooks/use-preview-sync.ts:41
+msgid "Press Escape to exit full screen"
+msgstr ""
+
+#: src/hooks/use-preview-sync.ts:48
 msgid "Not a Marp document"
 msgstr ""
 
@@ -156,8 +168,8 @@ msgid "Open file…"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:168
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
+#: src/components/preferences-modal/index.tsx:168
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
 msgstr ""
@@ -179,6 +191,35 @@ msgstr ""
 # %s: tab title.
 #: src/components/tabbar/index.tsx:273
 msgid "Close %s"
+msgstr ""
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:228
+#: src/components/header-actions/index.tsx:301
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:245
+msgid "File shortcuts"
+msgstr ""
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:249
+msgid "Global shortcuts"
+msgstr ""
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:253
+msgid "Selection shortcuts"
+msgstr ""
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:257
+msgid "Block shortcuts"
+msgstr ""
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:261
+msgid "Text formatting"
+msgstr ""
+
+#: src/components/keyboard-shortcuts-modal/index.tsx:265
+msgid "List View shortcuts"
 msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:47
@@ -318,35 +359,6 @@ msgstr ""
 
 #: src/components/preferences-modal/code-editor-panel.tsx:102
 msgid "Restore default settings"
-msgstr ""
-
-#: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:301
-msgid "Keyboard shortcuts"
-msgstr ""
-
-#: src/components/keyboard-shortcuts-modal/index.tsx:245
-msgid "File shortcuts"
-msgstr ""
-
-#: src/components/keyboard-shortcuts-modal/index.tsx:249
-msgid "Global shortcuts"
-msgstr ""
-
-#: src/components/keyboard-shortcuts-modal/index.tsx:253
-msgid "Selection shortcuts"
-msgstr ""
-
-#: src/components/keyboard-shortcuts-modal/index.tsx:257
-msgid "Block shortcuts"
-msgstr ""
-
-#: src/components/keyboard-shortcuts-modal/index.tsx:261
-msgid "Text formatting"
-msgstr ""
-
-#: src/components/keyboard-shortcuts-modal/index.tsx:265
-msgid "List View shortcuts"
 msgstr ""
 
 #: src/components/header-actions/index.tsx:104

@@ -34,13 +34,19 @@ function sendToPreview( payload: PreviewPayload ) {
 export default function usePreviewSync( activeTab: Tab | undefined ) {
 	const markdown = activeTab?.content ?? '';
 	const documentPath = activeTab?.filePath;
-	const payload = useMemo< PreviewPayload >(
-		() =>
-			isMarpDocument( markdown )
-				? { markdown, documentPath }
-				: { notice: __( 'Not a Marp document', 'mark-bricks' ) },
-		[ markdown, documentPath ]
-	);
+	const payload = useMemo< PreviewPayload >( () => {
+		const labels = {
+			enterFullscreen: __( 'Enter full screen', 'mark-bricks' ),
+			exitFullscreen: __( 'Exit full screen', 'mark-bricks' ),
+			exitFullscreenHint: __(
+				'Press Escape to exit full screen',
+				'mark-bricks'
+			),
+		};
+		return isMarpDocument( markdown )
+			? { labels, markdown, documentPath }
+			: { labels, notice: __( 'Not a Marp document', 'mark-bricks' ) };
+	}, [ markdown, documentPath ] );
 
 	const payloadRef = useRef( payload );
 	payloadRef.current = payload;

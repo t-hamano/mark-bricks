@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T05:32:37.941Z\n"
-"PO-Revision-Date: 2026-10-01T05:32:41.470Z\n"
+"POT-Creation-Date: 2026-10-01T07:02:56.046Z\n"
+"PO-Revision-Date: 2026-10-01T07:03:14.215Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -76,8 +76,8 @@ msgid "Checking…"
 msgstr "Проверка…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:168
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
+#: src/components/preferences-modal/index.tsx:168
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
 msgstr "Закрыть"
@@ -143,6 +143,14 @@ msgstr "Редактор"
 #: src/components/preferences-modal/visual-editor-panel.tsx:103
 msgid "Editor styles"
 msgstr "Стили редактора"
+
+#: src/hooks/use-preview-sync.ts:39
+msgid "Enter full screen"
+msgstr "Полноэкранный режим"
+
+#: src/hooks/use-preview-sync.ts:40
+msgid "Exit full screen"
+msgstr "Выйти из полноэкранного режима"
 
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
@@ -253,7 +261,7 @@ msgstr "Создать…"
 msgid "No file open"
 msgstr "Нет открытых файлов"
 
-#: src/hooks/use-preview-sync.ts:41
+#: src/hooks/use-preview-sync.ts:48
 msgid "Not a Marp document"
 msgstr "Это не документ Marp"
 
@@ -286,6 +294,10 @@ msgstr "Параметры"
 #: src/components/header-actions/index.tsx:317
 msgid "Preferences"
 msgstr "Предпочтения"
+
+#: src/hooks/use-preview-sync.ts:41
+msgid "Press Escape to exit full screen"
+msgstr "Нажмите Esc, чтобы выйти из полноэкранного режима"
 
 #: src/components/header-actions/index.tsx:108
 msgid "Preview Slides"
