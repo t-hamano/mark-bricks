@@ -1,5 +1,6 @@
 {
 	"MarkBricks could not apply edits to {0}.": "MarkBricks nemohl použít úpravy na {0}.",
 	"Images": "Obrázky",
-	"Not a Marp document": "Nejedná se o dokument Marp"
+	"Not a Marp document": "Nejedná se o dokument Marp",
+	"Slide Preview: {0}": "Náhled snímků: {0}"
 }

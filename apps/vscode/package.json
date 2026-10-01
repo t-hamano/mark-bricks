@@ -30,23 +30,14 @@
 	"main": "./dist/extension.cjs",
 	"l10n": "./l10n",
 	"activationEvents": [
-		"onLanguage:markdown"
+		"onLanguage:markdown",
+		"onWebviewPanel:markBricks.marpPreview"
 	],
 	"contributes": {
 		"customEditors": [
 			{
 				"viewType": "markBricks.visualEditor",
 				"displayName": "%customEditor.visualEditor.displayName%",
-				"selector": [
-					{
-						"filenamePattern": "*.md"
-					}
-				],
-				"priority": "option"
-			},
-			{
-				"viewType": "markBricks.marpPreview",
-				"displayName": "%customEditor.marpPreview.displayName%",
 				"selector": [
 					{
 						"filenamePattern": "*.md"

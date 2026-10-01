@@ -3,7 +3,6 @@
 	"customEditor.visualEditor.displayName": "Visual Editor",
 	"command.openVisual.title": "Open with MarkBricks",
 	"command.openText.title": "Open with Text Editor",
-	"customEditor.marpPreview.displayName": "Slide Preview",
 	"command.openMarpPreview.title": "Preview Slides",
 	"config.showListViewByDefault.description": "Open the List View panel by default.",
 	"config.showBlockBreadcrumbs.description": "Display the block hierarchy trail at the bottom of the editor.",

@@ -3,7 +3,6 @@
 	"customEditor.visualEditor.displayName": "ビジュアルエディター",
 	"command.openVisual.title": "MarkBricks で開く",
 	"command.openText.title": "テキストエディターで開く",
-	"customEditor.marpPreview.displayName": "スライドプレビュー",
 	"command.openMarpPreview.title": "スライドをプレビュー",
 	"config.showListViewByDefault.description": "デフォルトでリストビューパネルを開きます。",
 	"config.showBlockBreadcrumbs.description": "エディターの最下段にブロックのパンくずリストを表示します。",

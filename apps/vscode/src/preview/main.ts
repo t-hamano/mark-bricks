@@ -14,9 +14,13 @@ import '@fontsource/roboto-mono/700.css';
  */
 import type {
 	PreviewHostMessage,
+	PreviewState,
 	PreviewWebviewMessage,
 } from '../shared/messages';
 import './style.css';
+
+// The messages that change what the preview shows.
+type RenderMessage = Exclude< PreviewHostMessage, { type: 'document' } >;
 
 const host = acquireVsCodeApi();
 
@@ -36,7 +40,7 @@ document.body.append( slides, notice );
 // cannot render HTML inside an SVG on its own.
 const marpBrowser = browser( slides );
 
-function render( message: PreviewHostMessage ) {
+function render( message: RenderMessage ) {
 	if ( message.type === 'notice' ) {
 		style.textContent = '';
 		slides.innerHTML = '';
@@ -55,10 +59,10 @@ function render( message: PreviewHostMessage ) {
 	} );
 }
 
-let pending: PreviewHostMessage | null = null;
+let pending: RenderMessage | null = null;
 
 // Renders the latest slides once per frame, however often they arrive.
-function scheduleRender( message: PreviewHostMessage ) {
+function scheduleRender( message: RenderMessage ) {
 	if ( pending === null ) {
 		requestAnimationFrame( () => {
 			const latest = pending;
@@ -71,7 +75,12 @@ function scheduleRender( message: PreviewHostMessage ) {
 	pending = message;
 }
 
-window.addEventListener( 'message', ( event: MessageEvent ) =>
-	scheduleRender( event.data as PreviewHostMessage )
-);
+window.addEventListener( 'message', ( event: MessageEvent ) => {
+	const message = event.data as PreviewHostMessage;
+	if ( message.type === 'document' ) {
+		host.setState< PreviewState >( { uri: message.uri } );
+	} else {
+		scheduleRender( message );
+	}
+} );
 post( { type: 'ready' } );

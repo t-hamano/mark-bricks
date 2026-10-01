@@ -153,6 +153,47 @@ export class FakeTextDocument {
 	}
 }
 
+/**
+ * A webview panel as `createWebviewPanel` returns it, recording what the
+ * host posts and letting tests play the webview's side.
+ */
+export class FakeWebviewPanel {
+	public title = '';
+	public readonly posted: unknown[] = [];
+	public readonly reveal = vi.fn();
+	private readonly messages = new EventEmitter< unknown >();
+	private readonly disposed = new EventEmitter< void >();
+	public readonly onDidDispose = this.disposed.event;
+	public readonly webview = {
+		options: {} as { localResourceRoots?: Uri[] },
+		html: '',
+		cspSource: 'vscode-webview:',
+		onDidReceiveMessage: this.messages.event,
+		postMessage: async ( message: unknown ) => {
+			this.posted.push( message );
+			return true;
+		},
+		asWebviewUri: ( uri: Uri ) => ( {
+			toString: () => `webview:${ uri.toString() }`,
+		} ),
+	};
+
+	public constructor(
+		public readonly viewType: string,
+		public readonly showOptions?: unknown,
+		public readonly options?: unknown
+	) {}
+
+	// Sends a message from the webview to the host.
+	public send( message: unknown ): void {
+		this.messages.fire( message );
+	}
+
+	public dispose(): void {
+		this.disposed.fire();
+	}
+}
+
 type ConfigValue = {
 	globalValue?: unknown;
 	workspaceValue?: unknown;
@@ -169,6 +210,8 @@ function createState() {
 		onDidChangeTabs: new EventEmitter< void >(),
 		onDidChangeTabGroups: new EventEmitter< void >(),
 		activeTabInput: undefined as unknown,
+		webviewPanels: [] as FakeWebviewPanel[],
+		webviewPanelSerializers: new Map< string, unknown >(),
 		documents: [] as FakeTextDocument[],
 		workspaceFolders: [] as { uri: Uri }[],
 		config: new Map< string, ConfigValue >(),
@@ -192,6 +235,7 @@ export const workspace = {
 	get textDocuments() {
 		return state.documents;
 	},
+	openTextDocument: vi.fn(),
 	asRelativePath( uri: Uri ) {
 		return uri.path;
 	},
@@ -214,6 +258,8 @@ export const window = {
 	registerCustomEditorProvider: vi.fn(),
 	showErrorMessage: vi.fn(),
 	showOpenDialog: vi.fn(),
+	createWebviewPanel: vi.fn(),
+	registerWebviewPanelSerializer: vi.fn(),
 	tabGroups: {
 		get activeTabGroup() {
 			return {
@@ -283,6 +329,32 @@ export function resetVscode(): void {
 	vi.clearAllMocks();
 	workspace.getConfiguration.mockImplementation( getConfiguration );
 	workspace.applyEdit.mockImplementation( applyEdit );
+	workspace.openTextDocument.mockImplementation( async ( uri: Uri ) => {
+		const document = state.documents.find(
+			( item ) => item.uri.toString() === uri.toString()
+		);
+		if ( ! document ) {
+			throw new Error( `cannot open ${ uri.toString() }` );
+		}
+		return document;
+	} );
+	window.createWebviewPanel.mockImplementation(
+		( viewType: string, _title: string, showOptions, options ) => {
+			const panel = new FakeWebviewPanel(
+				viewType,
+				showOptions,
+				options
+			);
+			state.webviewPanels.push( panel );
+			return panel;
+		}
+	);
+	window.registerWebviewPanelSerializer.mockImplementation(
+		( viewType: string, serializer: unknown ) => {
+			state.webviewPanelSerializers.set( viewType, serializer );
+			return { dispose: () => {} };
+		}
+	);
 	window.registerCustomEditorProvider.mockImplementation(
 		( viewType: string, provider: unknown ) => {
 			state.customEditorProviders.set( viewType, provider );
@@ -330,6 +402,14 @@ export function setConfiguration( key: string, value: ConfigValue ): void {
 	state.config.set( key, value );
 }
 
+export function getWebviewPanels(): FakeWebviewPanel[] {
+	return state.webviewPanels;
+}
+
+export function getWebviewPanelSerializer( viewType: string ): unknown {
+	return state.webviewPanelSerializers.get( viewType );
+}
+
 export function getCustomEditorProvider( viewType: string ): unknown {
 	return state.customEditorProviders.get( viewType );
 }
@@ -349,10 +429,15 @@ export function fireConfigurationChange( sections: string[] ): void {
 	} );
 }
 
+export function fireOpenDocument( document: FakeTextDocument ): void {
+	state.onDidOpenTextDocument.fire( document );
+}
+
 export function getListenerCount(): number {
 	return (
 		state.onDidChangeTextDocument.listenerCount +
 		state.onWillSaveTextDocument.listenerCount +
-		state.onDidChangeConfiguration.listenerCount
+		state.onDidChangeConfiguration.listenerCount +
+		state.onDidOpenTextDocument.listenerCount
 	);
 }

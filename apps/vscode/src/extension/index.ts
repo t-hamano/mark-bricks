@@ -9,7 +9,7 @@ import * as vscode from 'vscode';
 import type { CodePreviewReport } from '../shared/messages';
 import { MarkBricksEditorProvider } from './editor-provider';
 import { trackMarpContext } from './marp-context';
-import { MarpPreviewProvider } from './marp-preview-provider';
+import { MarpPreview } from './marp-preview';
 
 const SHADOWED_COMMANDS = [
 	'markBricks.suppressUndo',
@@ -39,7 +39,7 @@ export type ExtensionApi = {
 export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 	context.subscriptions.push(
 		MarkBricksEditorProvider.register( context ),
-		MarpPreviewProvider.register( context ),
+		MarpPreview.register( context ),
 		trackMarpContext()
 	);
 
@@ -75,15 +75,7 @@ export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 			async () => {
 				const uri = resolveActiveResource();
 				if ( uri ) {
-					await vscode.commands.executeCommand(
-						'vscode.openWith',
-						uri,
-						MarpPreviewProvider.viewType,
-						{
-							viewColumn: vscode.ViewColumn.Beside,
-							preserveFocus: true,
-						}
-					);
+					await MarpPreview.show( uri );
 				}
 			}
 		)
@@ -94,7 +86,7 @@ export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 			MarkBricksEditorProvider.isEditorRendered( uri ),
 		getCodePreviews: ( uri ) =>
 			MarkBricksEditorProvider.getCodePreviews( uri ),
-		getSlideCount: ( uri ) => MarpPreviewProvider.getSlideCount( uri ),
+		getSlideCount: ( uri ) => MarpPreview.getSlideCount( uri ),
 	};
 }
 
