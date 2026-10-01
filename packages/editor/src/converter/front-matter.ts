@@ -3,6 +3,9 @@
 const FRONT_MATTER_PATTERN =
 	/^\uFEFF?---[ \t]*\r?\n(?:([\s\S]*?)\r?\n)?---[ \t]*(?:\r?\n|$)/;
 
+// A top-level `marp: true`, optionally followed by a YAML comment.
+const MARP_DIRECTIVE_PATTERN = /^marp[ \t]*:[ \t]+true[ \t]*(?:#.*)?$/m;
+
 export type SplitFrontMatterResult = {
 	// `null` when the document has no front matter.
 	frontMatter: string | null;
@@ -45,4 +48,15 @@ export function joinFrontMatter(
 	const block =
 		frontMatter === '' ? '---\n---\n' : `---\n${ frontMatter }\n---\n`;
 	return body === '' ? block : `${ block }\n${ body }`;
+}
+
+/**
+ * Whether front matter makes the document a Marp slide deck, which it does
+ * when it contains `marp: true`.
+ *
+ * @param frontMatter Front matter content, or `null` when there is none.
+ * @return Whether the document is a Marp slide deck.
+ */
+export function isMarpFrontMatter( frontMatter: string | null ): boolean {
+	return frontMatter !== null && MARP_DIRECTIVE_PATTERN.test( frontMatter );
 }

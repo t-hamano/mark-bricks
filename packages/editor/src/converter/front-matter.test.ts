@@ -8,6 +8,7 @@ import { describe, it, expect } from 'vitest';
  */
 import {
 	blocksToMarkdown,
+	isMarpFrontMatter,
 	joinFrontMatter,
 	markdownToBlocks,
 	splitFrontMatter,
@@ -154,5 +155,25 @@ describe( 'front matter round-trip', () => {
 		expect( blocks.map( ( block ) => block.name ) ).toEqual( [
 			'core/paragraph',
 		] );
+	} );
+} );
+
+describe( 'isMarpFrontMatter', () => {
+	it.each( [
+		[ 'is the only key', 'marp: true' ],
+		[ 'is among other keys', 'theme: gaia\nmarp: true\npaginate: true' ],
+		[ 'has a comment', 'marp: true # slides' ],
+	] )( 'detects `marp: true` that %s', ( _name, frontMatter ) => {
+		expect( isMarpFrontMatter( frontMatter ) ).toBe( true );
+	} );
+
+	it.each( [
+		[ 'is missing', null ],
+		[ 'is empty', '' ],
+		[ 'sets marp to false', 'marp: false' ],
+		[ 'nests marp under another key', 'slides:\n  marp: true' ],
+		[ 'has no space after the colon', 'marp:true' ],
+	] )( 'does not detect front matter that %s', ( _name, frontMatter ) => {
+		expect( isMarpFrontMatter( frontMatter ) ).toBe( false );
 	} );
 } );

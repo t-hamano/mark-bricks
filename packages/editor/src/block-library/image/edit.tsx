@@ -18,6 +18,8 @@ import { image as imageIcon, pencil } from '@wordpress/icons';
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes } from './types';
 import { BlockPlaceholder } from '../../components/block-placeholder';
+import { useFrontMatter } from '../../components/front-matter-editor/context';
+import { isMarpFrontMatter } from '../../converter/front-matter';
 import { useImageNotice, usePlatform } from '../../platform';
 
 export default function Edit( props: BlockEditProps ) {
@@ -25,6 +27,9 @@ export default function Edit( props: BlockEditProps ) {
 		props as BlockEditProps< BlockAttributes >;
 	const { url, alt, title } = attributes;
 	const { pickImageFile, resolveImageSrc } = usePlatform();
+	// Marp reads layout and size keywords such as `bg` from the alt text.
+	const { frontMatter } = useFrontMatter();
+	const isMarp = isMarpFrontMatter( frontMatter );
 
 	const [ urlInput, setUrlInput ] = useState( () => url || '' );
 	const [ altInput, setAltInput ] = useState( () => alt || '' );
@@ -232,10 +237,17 @@ export default function Edit( props: BlockEditProps ) {
 									'Enter alt text…',
 									'mark-bricks'
 								) }
-								description={ __(
-									'Describes the image for screen readers.',
-									'mark-bricks'
-								) }
+								description={
+									isMarp
+										? __(
+												'Marp keywords such as bg, w:200px or sepia set the layout and size. The other words become the alt text, or the caption of a background image.',
+												'mark-bricks'
+											)
+										: __(
+												'Describes the image for screen readers.',
+												'mark-bricks'
+											)
+								}
 							/>
 							<InputControl
 								label={ __( 'Title', 'mark-bricks' ) }
