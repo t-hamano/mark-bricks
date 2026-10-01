@@ -12,8 +12,6 @@ import transforms from './transforms';
 
 export const { name, metadata } = math;
 
-// The core block's attributes and save output are kept, so that a math block
-// copied into WordPress pastes as a math block, and the other way round.
 export const settings: Partial< BlockConfiguration > = {
 	...math.settings,
 	attributes: {
