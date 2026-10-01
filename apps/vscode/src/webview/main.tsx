@@ -9,6 +9,7 @@ import {
 import { inspectCodePreviews } from '@mark-bricks/editor/code-previews';
 import { EditorThemeProvider } from '@mark-bricks/editor/editor-theme-provider';
 import { applyLocale as applyEditorLocale } from '@mark-bricks/editor/i18n';
+import { isMarpDocument } from '@mark-bricks/editor/marp';
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -251,6 +252,10 @@ function App() {
 				editorStyles={ toEditorStyles( settings ) }
 				headerActions={
 					<HeaderActions
+						isMarp={ isMarpDocument( content ) }
+						onOpenMarpPreview={ () =>
+							post( { type: 'openMarpPreview' } )
+						}
 						settings={ settings }
 						onSettingChange={ ( key, value ) => {
 							setSettings( { ...settings, [ key ]: value } );

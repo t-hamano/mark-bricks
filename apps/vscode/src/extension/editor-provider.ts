@@ -14,6 +14,7 @@ import type {
 	WebviewMessage,
 } from '../shared/messages';
 import { getImageRoots, resolveImageUri } from './images';
+import { MarpPreview } from './marp-preview';
 import { CONFIGURATION_SECTION, readSettings, writeSetting } from './settings';
 import { getHtmlForWebview } from './webview-html';
 
@@ -193,6 +194,10 @@ class EditorSession {
 					'workbench.action.openSettings',
 					`@ext:${ this.extensionId }`
 				);
+				break;
+
+			case 'openMarpPreview':
+				void MarpPreview.show( this.document.uri );
 				break;
 
 			case 'updateSetting':

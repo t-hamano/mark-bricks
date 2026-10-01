@@ -24,7 +24,7 @@ YAML front matter and GitHub-style alerts (`> [!NOTE]`) can be edited in the vis
 
 ### Marp slide preview
 
-When a document's front matter contains `marp: true`, the visual editor's header shows **Marp Mode**, and the **Preview Slides** button in the editor title bar opens the [Marp](https://marp.app/) slides beside the editor. The preview updates as you type, in the text editor and the visual editor alike.
+When a document's front matter contains `marp: true`, the visual editor's header shows **Marp Mode** and a **Preview Slides** button, which opens the [Marp](https://marp.app/) slides beside the editor. In the text editor, the button is in the editor title bar. The preview updates as you type, in the text editor and the visual editor alike.
 
 ### Light and dark themes, in your language
 

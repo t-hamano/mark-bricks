@@ -7,7 +7,7 @@ import { useFrontMatter } from '@mark-bricks/editor/front-matter';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { moreVertical } from '@wordpress/icons';
+import { external, moreVertical } from '@wordpress/icons';
 import { IconButton, Menu } from '@wordpress/ui';
 
 /**
@@ -17,12 +17,17 @@ import type { Settings, WritableSettingKey } from '../../shared/settings';
 import './style.scss';
 
 type Props = {
+	// Whether the document is a Marp slide deck, to offer its preview.
+	isMarp: boolean;
+	onOpenMarpPreview: () => void;
 	settings: Settings;
 	onSettingChange: ( key: WritableSettingKey, value: boolean ) => void;
 	onOpenSettings: () => void;
 };
 
 export default function HeaderActions( {
+	isMarp,
+	onOpenMarpPreview,
 	settings,
 	onSettingChange,
 	onOpenSettings,
@@ -32,90 +37,108 @@ export default function HeaderActions( {
 	const isFrontMatterEmpty = frontMatter?.trim() === '';
 
 	return (
-		<Menu.Root>
-			<Menu.Trigger
-				render={
-					<IconButton
-						icon={ moreVertical }
-						label={ __( 'Options', 'mark-bricks' ) }
-						variant="minimal"
-						tone="neutral"
-						size="compact"
-					/>
-				}
-			/>
-			<Menu.Popup
-				className="header-actions__menu"
-				positioner={ <Menu.Positioner align="end" /> }
-			>
-				<Menu.Group>
-					<Menu.GroupLabel>
-						{ __( 'View', 'mark-bricks' ) }
-					</Menu.GroupLabel>
-					<Menu.CheckboxItem
-						checked={ settings.topToolbar }
-						onCheckedChange={ ( checked ) =>
-							onSettingChange( 'topToolbar', checked )
-						}
-					>
-						<Menu.ItemLabel>
-							{ __( 'Top toolbar', 'mark-bricks' ) }
-						</Menu.ItemLabel>
-						<Menu.ItemDescription>
-							{ __(
-								'Access all block and document tools in a single place',
-								'mark-bricks'
-							) }
-						</Menu.ItemDescription>
-					</Menu.CheckboxItem>
-					<Menu.CheckboxItem
-						checked={ settings.spotlightMode }
-						onCheckedChange={ ( checked ) =>
-							onSettingChange( 'spotlightMode', checked )
-						}
-					>
-						<Menu.ItemLabel>
-							{ __( 'Spotlight mode', 'mark-bricks' ) }
-						</Menu.ItemLabel>
-						<Menu.ItemDescription>
-							{ __(
-								'Focus on one block at a time',
-								'mark-bricks'
-							) }
-						</Menu.ItemDescription>
-					</Menu.CheckboxItem>
-				</Menu.Group>
-				<Menu.Separator />
-				<Menu.Group>
-					<Menu.GroupLabel>
-						{ __( 'Tools', 'mark-bricks' ) }
-					</Menu.GroupLabel>
-					<Menu.Item
-						onClick={ () =>
-							setFrontMatter( hasFrontMatter ? null : '' )
-						}
-					>
-						<Menu.ItemLabel>
-							{ ! hasFrontMatter &&
-								__( 'Add YAML front matter', 'mark-bricks' ) }
-							{ isFrontMatterEmpty &&
-								__( 'Hide YAML front matter', 'mark-bricks' ) }
-							{ hasFrontMatter &&
-								! isFrontMatterEmpty &&
-								__(
-									'Remove YAML front matter',
+		<>
+			{ isMarp && (
+				<IconButton
+					icon={ external }
+					label={ __( 'Preview Slides', 'mark-bricks' ) }
+					variant="minimal"
+					tone="neutral"
+					size="compact"
+					onClick={ onOpenMarpPreview }
+				/>
+			) }
+			<Menu.Root>
+				<Menu.Trigger
+					render={
+						<IconButton
+							icon={ moreVertical }
+							label={ __( 'Options', 'mark-bricks' ) }
+							variant="minimal"
+							tone="neutral"
+							size="compact"
+						/>
+					}
+				/>
+				<Menu.Popup
+					className="header-actions__menu"
+					positioner={ <Menu.Positioner align="end" /> }
+				>
+					<Menu.Group>
+						<Menu.GroupLabel>
+							{ __( 'View', 'mark-bricks' ) }
+						</Menu.GroupLabel>
+						<Menu.CheckboxItem
+							checked={ settings.topToolbar }
+							onCheckedChange={ ( checked ) =>
+								onSettingChange( 'topToolbar', checked )
+							}
+						>
+							<Menu.ItemLabel>
+								{ __( 'Top toolbar', 'mark-bricks' ) }
+							</Menu.ItemLabel>
+							<Menu.ItemDescription>
+								{ __(
+									'Access all block and document tools in a single place',
 									'mark-bricks'
 								) }
+							</Menu.ItemDescription>
+						</Menu.CheckboxItem>
+						<Menu.CheckboxItem
+							checked={ settings.spotlightMode }
+							onCheckedChange={ ( checked ) =>
+								onSettingChange( 'spotlightMode', checked )
+							}
+						>
+							<Menu.ItemLabel>
+								{ __( 'Spotlight mode', 'mark-bricks' ) }
+							</Menu.ItemLabel>
+							<Menu.ItemDescription>
+								{ __(
+									'Focus on one block at a time',
+									'mark-bricks'
+								) }
+							</Menu.ItemDescription>
+						</Menu.CheckboxItem>
+					</Menu.Group>
+					<Menu.Separator />
+					<Menu.Group>
+						<Menu.GroupLabel>
+							{ __( 'Tools', 'mark-bricks' ) }
+						</Menu.GroupLabel>
+						<Menu.Item
+							onClick={ () =>
+								setFrontMatter( hasFrontMatter ? null : '' )
+							}
+						>
+							<Menu.ItemLabel>
+								{ ! hasFrontMatter &&
+									__(
+										'Add YAML front matter',
+										'mark-bricks'
+									) }
+								{ isFrontMatterEmpty &&
+									__(
+										'Hide YAML front matter',
+										'mark-bricks'
+									) }
+								{ hasFrontMatter &&
+									! isFrontMatterEmpty &&
+									__(
+										'Remove YAML front matter',
+										'mark-bricks'
+									) }
+							</Menu.ItemLabel>
+						</Menu.Item>
+					</Menu.Group>
+					<Menu.Separator />
+					<Menu.Item onClick={ onOpenSettings }>
+						<Menu.ItemLabel>
+							{ __( 'Settings', 'mark-bricks' ) }
 						</Menu.ItemLabel>
 					</Menu.Item>
-				</Menu.Group>
-				<Menu.Separator />
-				<Menu.Item onClick={ onOpenSettings }>
-					<Menu.ItemLabel>
-						{ __( 'Settings', 'mark-bricks' ) }
-					</Menu.ItemLabel>
-				</Menu.Item>
-			</Menu.Popup>
-		</Menu.Root>
+				</Menu.Popup>
+			</Menu.Root>
+		</>
 	);
 }

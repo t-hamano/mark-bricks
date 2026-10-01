@@ -22,11 +22,13 @@ import {
 	fireWillSave,
 	getCustomEditorProvider,
 	getListenerCount,
+	getWebviewPanels,
 	resetVscode,
 	window,
 	workspace,
 } from './__mocks__/vscode';
 import { MarkBricksEditorProvider } from './editor-provider';
+import { MarpPreview } from './marp-preview';
 
 const EXTENSION_ID = 'aki-hamano.mark-bricks-vscode';
 const DOCUMENT_PATH = '/workspace/docs/note.md';
@@ -114,6 +116,23 @@ describe( 'webview messages', () => {
 			'workbench.action.openSettings',
 			`@ext:${ EXTENSION_ID }`
 		);
+	} );
+
+	it( 'opens the slide preview of the document', async () => {
+		const context = { extensionUri: Uri.file( '/extension' ) };
+		MarpPreview.register( context as unknown as vscode.ExtensionContext );
+		const { send } = openEditor();
+
+		send( { type: 'openMarpPreview' } );
+
+		await vi.waitFor( () =>
+			expect( getWebviewPanels() ).toHaveLength( 1 )
+		);
+		expect( getWebviewPanels()[ 0 ].viewType ).toBe( MarpPreview.viewType );
+		expect( getWebviewPanels()[ 0 ].title ).toBe(
+			'Slide Preview: note.md'
+		);
+		getWebviewPanels()[ 0 ].dispose();
 	} );
 
 	it( 'writes settings changed from the webview', () => {

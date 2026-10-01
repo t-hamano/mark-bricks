@@ -66,6 +66,9 @@ export type WebviewMessage =
 			type: 'openSettings';
 	  }
 	| {
+			type: 'openMarpPreview';
+	  }
+	| {
 			type: 'updateSetting';
 			key: WritableSettingKey;
 			value: boolean;

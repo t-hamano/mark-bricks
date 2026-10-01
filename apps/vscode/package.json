@@ -65,7 +65,7 @@
 			"editor/title": [
 				{
 					"command": "markBricks.openMarpPreview",
-					"when": "markBricks.isMarp",
+					"when": "markBricks.isMarp && activeCustomEditorId != 'markBricks.visualEditor'",
 					"group": "navigation"
 				}
 			],
