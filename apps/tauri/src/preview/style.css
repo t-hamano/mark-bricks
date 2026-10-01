@@ -1,0 +1,13 @@
+html,
+body {
+	margin: 0;
+	background: #3c3c3c;
+}
+
+/* Marp wraps every slide in an SVG that scales it to the window's width. */
+.marpit {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 16px;
+}

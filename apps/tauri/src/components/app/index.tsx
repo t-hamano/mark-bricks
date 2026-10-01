@@ -35,6 +35,7 @@ import useAppCloseGuard from '../../hooks/use-app-close-guard';
 import useAutoUpdater from '../../hooks/use-auto-updater';
 import useEditorFlush from '../../hooks/use-editor-flush';
 import useFileOpenEvents from '../../hooks/use-file-open-events';
+import usePreviewSync from '../../hooks/use-preview-sync';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
 import { createPlatform } from '../../platform';
@@ -110,6 +111,7 @@ export function App() {
 
 	useWindowTitle( activeTab );
 	useAppCloseGuard( { tabs, pendingCloseId } );
+	usePreviewSync( activeTab?.content ?? '' );
 
 	return (
 		<EditorThemeProvider theme={ editorTheme ?? 'system' }>
