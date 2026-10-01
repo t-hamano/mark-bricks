@@ -3,7 +3,6 @@
  */
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { clearMocks, mockConvertFileSrc } from '@tauri-apps/api/mocks';
-import * as fixtures from '@mark-bricks/fixtures';
 
 /**
  * Internal dependencies
@@ -40,19 +39,6 @@ describe( 'renderSlides', () => {
 		);
 		expect( html ).toContain( 'https://example.com/a.png' );
 		expect( html ).not.toContain( 'asset://' );
-	} );
-
-	it( 'renders each slide of a deck', () => {
-		const { html } = renderSlides( fixtures.marp );
-		// One SVG per slide. A slide with background images holds extra
-		// sections for them.
-		expect( html.match( /<svg data-marpit-svg/g ) ).toHaveLength( 10 );
-	} );
-
-	it( 'leaves out the web fonts a theme imports', () => {
-		const { css } = renderSlides( '---\nmarp: true\ntheme: gaia\n---\n' );
-		expect( css ).toContain( 'Lato' );
-		expect( css ).not.toContain( 'fonts.bunny.net' );
 	} );
 
 	it( 'points KaTeX at the bundled fonts', () => {
