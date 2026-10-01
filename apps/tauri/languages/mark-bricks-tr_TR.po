@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.15.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.16.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T08:40:20.908Z\n"
-"PO-Revision-Date: 2026-10-01T08:40:48.274Z\n"
+"POT-Creation-Date: 2026-10-01T13:44:38.495Z\n"
+"PO-Revision-Date: 2026-10-01T13:44:43.277Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -28,16 +28,16 @@ msgstr ""
 msgid "(Untitled)"
 msgstr "(Başlıksız)"
 
-#: src/components/header-actions/index.tsx:308
+#: src/components/header-actions/index.tsx:302
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "MarkBricks Hakkında"
 
-#: src/components/header-actions/index.tsx:198
+#: src/components/header-actions/index.tsx:192
 msgid "Access all block and document tools in a single place"
 msgstr "Tüm blok ve belge araçlarına tek bir yerden erişin"
 
-#: src/components/header-actions/index.tsx:277
+#: src/components/header-actions/index.tsx:271
 msgid "Add YAML front matter"
 msgstr "YAML front matter ekle"
 
@@ -58,7 +58,7 @@ msgstr "İçerik alanının piksel cinsinden temel yazı tipi boyutu."
 msgid "Block shortcuts"
 msgstr "Blok kısayolları"
 
-#: src/components/header-actions/index.tsx:337
+#: src/components/header-actions/index.tsx:331
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Vazgeç"
@@ -98,7 +98,7 @@ msgid "Close the active tab."
 msgstr "Etkin sekmeyi kapat."
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:253
+#: src/components/header-actions/index.tsx:247
 msgid "Code editor"
 msgstr "Kod düzenleyici"
 
@@ -138,7 +138,7 @@ msgstr "Değişiklikleri at"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Blok hiyerarşisini düzenleyicinin altında göster."
 
-#: src/components/header-actions/index.tsx:224
+#: src/components/header-actions/index.tsx:218
 msgid "Editor"
 msgstr "Düzenleyici"
 
@@ -162,11 +162,11 @@ msgstr "Dosya ilişkilendirmeleri"
 msgid "File shortcuts"
 msgstr "Dosya kısayolları"
 
-#: src/components/header-actions/index.tsx:148
+#: src/components/header-actions/index.tsx:142
 msgid "Files"
 msgstr "Dosyalar"
 
-#: src/components/header-actions/index.tsx:214
+#: src/components/header-actions/index.tsx:208
 msgid "Focus on one block at a time"
 msgstr "Her seferinde bir bloğa odaklanın"
 
@@ -191,7 +191,7 @@ msgstr "Genel kısayollar"
 msgid "Handwriting"
 msgstr "El yazısı"
 
-#: src/components/header-actions/index.tsx:282
+#: src/components/header-actions/index.tsx:276
 msgid "Hide YAML front matter"
 msgstr "YAML front matter’ı gizle"
 
@@ -210,7 +210,7 @@ msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Göreli yollara sahip görseller, belge kaydedildikten sonra görüntülenir."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:301
+#: src/components/header-actions/index.tsx:295
 msgid "Keyboard shortcuts"
 msgstr "Klavye kısayolları"
 
@@ -236,10 +236,6 @@ msgstr "MarkBricks %s kullanılabilir. Şimdi yüklensin mi?"
 msgid "MarkBricks is now the default app for Markdown files."
 msgstr "MarkBricks artık Markdown dosyaları için varsayılan uygulama."
 
-#: src/components/header-actions/index.tsx:104
-msgid "Marp Mode"
-msgstr "Marp modu"
-
 #: src/components/preferences-modal/visual-editor-panel.tsx:118
 msgid "Maximum width of the content area, in pixels."
 msgstr "İçerik alanının piksel cinsinden en büyük genişliği."
@@ -248,7 +244,7 @@ msgstr "İçerik alanının piksel cinsinden en büyük genişliği."
 msgid "Monospace"
 msgstr "Eş aralıklı"
 
-#: src/components/header-actions/index.tsx:155
+#: src/components/header-actions/index.tsx:149
 msgid "New"
 msgstr "Yeni"
 
@@ -290,16 +286,16 @@ msgstr "Dosya aç…"
 msgid "Opens the List View panel by default."
 msgstr "Varsayılan olarak liste görünümü panelini açar."
 
-#: src/components/header-actions/index.tsx:163
+#: src/components/header-actions/index.tsx:157
 msgid "Open…"
 msgstr "Aç…"
 
-#: src/components/header-actions/index.tsx:135
+#: src/components/header-actions/index.tsx:129
 msgid "Options"
 msgstr "Seçenekler"
 
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:317
+#: src/components/header-actions/index.tsx:311
 msgid "Preferences"
 msgstr "Tercihler"
 
@@ -307,7 +303,7 @@ msgstr "Tercihler"
 msgid "Press F or Escape to exit full screen"
 msgstr "Tam ekrandan çıkmak için F veya Esc tuşuna basın"
 
-#: src/components/header-actions/index.tsx:108
+#: src/components/header-actions/index.tsx:103
 msgid "Preview Slides"
 msgstr "Slaytları önizle"
 
@@ -315,15 +311,15 @@ msgstr "Slaytları önizle"
 msgid "Previous slide"
 msgstr "Önceki slayt"
 
-#: src/components/header-actions/index.tsx:338
+#: src/components/header-actions/index.tsx:332
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/components/header-actions/index.tsx:288
+#: src/components/header-actions/index.tsx:282
 msgid "Remove YAML front matter"
 msgstr "YAML front matter’ı kaldır"
 
-#: src/components/header-actions/index.tsx:332
+#: src/components/header-actions/index.tsx:326
 msgid "Remove YAML front matter?"
 msgstr "YAML front matter’ı kaldırmak istiyor musunuz?"
 
@@ -344,12 +340,12 @@ msgid "Sans-serif"
 msgstr "Sans-serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:125
-#: src/components/header-actions/index.tsx:171
+#: src/components/header-actions/index.tsx:119
+#: src/components/header-actions/index.tsx:165
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/components/header-actions/index.tsx:179
+#: src/components/header-actions/index.tsx:173
 msgid "Save As…"
 msgstr "Farklı kaydet…"
 
@@ -402,7 +398,7 @@ msgstr "Slayt numarası"
 msgid "Spell check"
 msgstr "Yazım denetimi"
 
-#: src/components/header-actions/index.tsx:211
+#: src/components/header-actions/index.tsx:205
 msgid "Spotlight mode"
 msgstr "Sahne ışığı kipi"
 
@@ -419,7 +415,7 @@ msgstr "Sekme boyutu"
 msgid "Text formatting"
 msgstr "Metin biçimlendirme"
 
-#: src/components/header-actions/index.tsx:333
+#: src/components/header-actions/index.tsx:327
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -438,11 +434,11 @@ msgstr ""
 "Bu platform, varsayılan uygulamanın MarkBricks içinden ayarlanmasını "
 "desteklemiyor. Lütfen sisteminizin dosya yöneticisinden yapılandırın."
 
-#: src/components/header-actions/index.tsx:261
+#: src/components/header-actions/index.tsx:255
 msgid "Tools"
 msgstr "Araçlar"
 
-#: src/components/header-actions/index.tsx:195
+#: src/components/header-actions/index.tsx:189
 msgid "Top toolbar"
 msgstr "Üst araç çubuğu"
 
@@ -471,12 +467,12 @@ msgstr "Güncelleme mevcut"
 msgid "Update check failed: %s"
 msgstr "Güncelleme denetimi başarısız oldu: %s"
 
-#: src/components/header-actions/index.tsx:186
+#: src/components/header-actions/index.tsx:180
 msgid "View"
 msgstr "Görünüm"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:241
+#: src/components/header-actions/index.tsx:235
 msgid "Visual editor"
 msgstr "Görsel düzenleyici"
 

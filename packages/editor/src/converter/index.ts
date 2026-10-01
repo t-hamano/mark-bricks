@@ -8,4 +8,5 @@ export {
 	splitFrontMatter,
 	joinFrontMatter,
 	isMarpFrontMatter,
+	isMarpDocument,
 } from './front-matter';

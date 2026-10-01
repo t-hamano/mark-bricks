@@ -3,6 +3,7 @@
  */
 import { useEffect, useState } from 'react';
 import { useFrontMatter, useKeyboardShortcut } from '@mark-bricks/editor';
+import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
  * WordPress dependencies
@@ -14,7 +15,6 @@ import { store as preferencesStore } from '@wordpress/preferences';
 import { external, moreVertical } from '@wordpress/icons';
 import {
 	AlertDialog,
-	Badge,
 	Button,
 	getWpCompatOverlaySlot,
 	IconButton,
@@ -32,7 +32,6 @@ import {
 	saveActiveFile,
 	saveActiveFileAs,
 } from '../../actions';
-import { isMarpDocument } from '../../marp';
 import tabsStore from '../../store';
 import { ABOUT_MODAL_NAME } from '../about-modal';
 import { KEYBOARD_SHORTCUTS_MODAL_NAME } from '../keyboard-shortcuts-modal';
@@ -99,21 +98,16 @@ export default function HeaderActions( {
 			gap="sm"
 		>
 			{ isActiveTabMarp && (
-				<>
-					<Badge intent="high">
-						{ __( 'Marp Mode', 'mark-bricks' ) }
-					</Badge>
-					<IconButton
-						icon={ external }
-						label={ __( 'Preview Slides', 'mark-bricks' ) }
-						variant="minimal"
-						tone="neutral"
-						size="compact"
-						onClick={ () => {
-							void openPreview();
-						} }
-					/>
-				</>
+				<IconButton
+					icon={ external }
+					label={ __( 'Preview Slides', 'mark-bricks' ) }
+					variant="minimal"
+					tone="neutral"
+					size="compact"
+					onClick={ () => {
+						void openPreview();
+					} }
+				/>
 			) }
 			<Button
 				size="compact"

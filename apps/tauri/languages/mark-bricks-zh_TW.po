@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.15.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.16.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T08:40:20.908Z\n"
-"PO-Revision-Date: 2026-10-01T08:40:49.001Z\n"
+"POT-Creation-Date: 2026-10-01T13:44:38.495Z\n"
+"PO-Revision-Date: 2026-10-01T13:44:44.087Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,16 +26,16 @@ msgstr "「%s」有未儲存的變更。要捨棄變更並關閉嗎？"
 msgid "(Untitled)"
 msgstr "(未命名)"
 
-#: src/components/header-actions/index.tsx:308
+#: src/components/header-actions/index.tsx:302
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "關於 MarkBricks"
 
-#: src/components/header-actions/index.tsx:198
+#: src/components/header-actions/index.tsx:192
 msgid "Access all block and document tools in a single place"
 msgstr "可在同一位置使用全部區塊及內容工具"
 
-#: src/components/header-actions/index.tsx:277
+#: src/components/header-actions/index.tsx:271
 msgid "Add YAML front matter"
 msgstr "新增 YAML 前置資料"
 
@@ -56,7 +56,7 @@ msgstr "內容區域的基本字型大小 (像素)。"
 msgid "Block shortcuts"
 msgstr "區塊快速鍵"
 
-#: src/components/header-actions/index.tsx:337
+#: src/components/header-actions/index.tsx:331
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "取消"
@@ -96,7 +96,7 @@ msgid "Close the active tab."
 msgstr "關閉目前的分頁。"
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:253
+#: src/components/header-actions/index.tsx:247
 msgid "Code editor"
 msgstr "程式碼編輯器"
 
@@ -134,7 +134,7 @@ msgstr "捨棄變更"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "在編輯器底部顯示區塊階層路徑。"
 
-#: src/components/header-actions/index.tsx:224
+#: src/components/header-actions/index.tsx:218
 msgid "Editor"
 msgstr "編輯器"
 
@@ -158,11 +158,11 @@ msgstr "檔案關聯"
 msgid "File shortcuts"
 msgstr "檔案快速鍵"
 
-#: src/components/header-actions/index.tsx:148
+#: src/components/header-actions/index.tsx:142
 msgid "Files"
 msgstr "檔案"
 
-#: src/components/header-actions/index.tsx:214
+#: src/components/header-actions/index.tsx:208
 msgid "Focus on one block at a time"
 msgstr "畫面僅會聚焦於正在編輯的區塊"
 
@@ -187,7 +187,7 @@ msgstr "全域快速鍵"
 msgid "Handwriting"
 msgstr "手寫"
 
-#: src/components/header-actions/index.tsx:282
+#: src/components/header-actions/index.tsx:276
 msgid "Hide YAML front matter"
 msgstr "隱藏 YAML 前置資料"
 
@@ -204,7 +204,7 @@ msgid "Images with relative paths are displayed once the document is saved."
 msgstr "使用相對路徑的圖片會在文件儲存後顯示。"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:301
+#: src/components/header-actions/index.tsx:295
 msgid "Keyboard shortcuts"
 msgstr "鍵盤快速鍵"
 
@@ -230,10 +230,6 @@ msgstr "MarkBricks %s 已推出。要立即安裝嗎？"
 msgid "MarkBricks is now the default app for Markdown files."
 msgstr "MarkBricks 現在是 Markdown 檔案的預設應用程式。"
 
-#: src/components/header-actions/index.tsx:104
-msgid "Marp Mode"
-msgstr "Marp 模式"
-
 #: src/components/preferences-modal/visual-editor-panel.tsx:118
 msgid "Maximum width of the content area, in pixels."
 msgstr "內容區域的最大寬度 (像素)。"
@@ -242,7 +238,7 @@ msgstr "內容區域的最大寬度 (像素)。"
 msgid "Monospace"
 msgstr "等寬"
 
-#: src/components/header-actions/index.tsx:155
+#: src/components/header-actions/index.tsx:149
 msgid "New"
 msgstr "新增"
 
@@ -284,16 +280,16 @@ msgstr "開啟檔案…"
 msgid "Opens the List View panel by default."
 msgstr "預設開啟 [清單檢視] 面板。"
 
-#: src/components/header-actions/index.tsx:163
+#: src/components/header-actions/index.tsx:157
 msgid "Open…"
 msgstr "開啟…"
 
-#: src/components/header-actions/index.tsx:135
+#: src/components/header-actions/index.tsx:129
 msgid "Options"
 msgstr "選項"
 
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:317
+#: src/components/header-actions/index.tsx:311
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -301,7 +297,7 @@ msgstr "偏好設定"
 msgid "Press F or Escape to exit full screen"
 msgstr "按 F 或 Esc 鍵結束全螢幕"
 
-#: src/components/header-actions/index.tsx:108
+#: src/components/header-actions/index.tsx:103
 msgid "Preview Slides"
 msgstr "預覽投影片"
 
@@ -309,15 +305,15 @@ msgstr "預覽投影片"
 msgid "Previous slide"
 msgstr "上一張投影片"
 
-#: src/components/header-actions/index.tsx:338
+#: src/components/header-actions/index.tsx:332
 msgid "Remove"
 msgstr "移除"
 
-#: src/components/header-actions/index.tsx:288
+#: src/components/header-actions/index.tsx:282
 msgid "Remove YAML front matter"
 msgstr "移除 YAML 前置資料"
 
-#: src/components/header-actions/index.tsx:332
+#: src/components/header-actions/index.tsx:326
 msgid "Remove YAML front matter?"
 msgstr "要移除 YAML 前置資料嗎？"
 
@@ -338,12 +334,12 @@ msgid "Sans-serif"
 msgstr "無襯線"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:125
-#: src/components/header-actions/index.tsx:171
+#: src/components/header-actions/index.tsx:119
+#: src/components/header-actions/index.tsx:165
 msgid "Save"
 msgstr "儲存"
 
-#: src/components/header-actions/index.tsx:179
+#: src/components/header-actions/index.tsx:173
 msgid "Save As…"
 msgstr "另存新檔…"
 
@@ -396,7 +392,7 @@ msgstr "投影片編號"
 msgid "Spell check"
 msgstr "拼字檢查"
 
-#: src/components/header-actions/index.tsx:211
+#: src/components/header-actions/index.tsx:205
 msgid "Spotlight mode"
 msgstr "焦點模式"
 
@@ -413,7 +409,7 @@ msgstr "定位點大小"
 msgid "Text formatting"
 msgstr "內容格式化"
 
-#: src/components/header-actions/index.tsx:333
+#: src/components/header-actions/index.tsx:327
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -430,11 +426,11 @@ msgid ""
 "MarkBricks. Please configure it from your system file manager."
 msgstr "此平台不支援從 MarkBricks 內設定預設應用程式。請從系統的檔案管理員進行設定。"
 
-#: src/components/header-actions/index.tsx:261
+#: src/components/header-actions/index.tsx:255
 msgid "Tools"
 msgstr "工具"
 
-#: src/components/header-actions/index.tsx:195
+#: src/components/header-actions/index.tsx:189
 msgid "Top toolbar"
 msgstr "頂端工具列"
 
@@ -463,12 +459,12 @@ msgstr "有可用的更新"
 msgid "Update check failed: %s"
 msgstr "檢查更新失敗：%s"
 
-#: src/components/header-actions/index.tsx:186
+#: src/components/header-actions/index.tsx:180
 msgid "View"
 msgstr "檢視"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:241
+#: src/components/header-actions/index.tsx:235
 msgid "Visual editor"
 msgstr "視覺化編輯器"
 

@@ -15,11 +15,13 @@ import { useViewportMatch } from '@wordpress/compose';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { plus, undo, redo, listView } from '@wordpress/icons';
-import { IconButton, Stack } from '@wordpress/ui';
+import { Badge, IconButton, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
+import { isMarpFrontMatter } from '../../converter/front-matter';
+import { useFrontMatter } from '../front-matter-editor/context';
 import { useKeyboardShortcut } from '../keyboard-shortcuts/hooks';
 import { store as editorStore } from '../../store';
 import './style.scss';
@@ -68,6 +70,7 @@ export function EditorHeader( {
 	const toggleListViewShortcut = useKeyboardShortcut(
 		'mark-bricks/toggle-list-view'
 	);
+	const { frontMatter } = useFrontMatter();
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
 	const showFixedToolbar =
 		fixedToolbar &&
@@ -168,6 +171,11 @@ export function EditorHeader( {
 				align="center"
 				gap="sm"
 			>
+				{ isMarpFrontMatter( frontMatter ) && (
+					<Badge intent="high">
+						{ __( 'Marp Mode', 'mark-bricks' ) }
+					</Badge>
+				) }
 				{ headerActions }
 			</Stack>
 		</Stack>

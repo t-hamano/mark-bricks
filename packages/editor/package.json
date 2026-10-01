@@ -48,6 +48,10 @@
 		"./katex-fonts": {
 			"types": "./src/katex/fonts.ts",
 			"default": "./src/katex/fonts.ts"
+		},
+		"./marp": {
+			"types": "./src/marp.ts",
+			"default": "./src/marp.ts"
 		}
 	},
 	"scripts": {
