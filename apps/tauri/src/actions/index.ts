@@ -7,6 +7,7 @@ import { invoke } from '@tauri-apps/api/core';
  * WordPress dependencies
  */
 import { dispatch, select } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -287,4 +288,14 @@ export async function closeOtherTabs( keepId: string ) {
 	if ( firstDirty ) {
 		dispatch( tabsStore ).setPendingCloseId( firstDirty.id );
 	}
+}
+
+/**
+ * Opens the slide preview window, or brings it to the front when it is
+ * already open.
+ */
+export async function openPreview() {
+	await invoke( 'open_preview', {
+		title: __( 'Slide Preview', 'mark-bricks' ),
+	} );
 }

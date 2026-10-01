@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.13.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.15.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:52:43.570Z\n"
+"POT-Creation-Date: 2026-10-01T03:49:51.920Z\n"
+"PO-Revision-Date: 2026-10-01T03:49:55.123Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,25 +17,25 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/components/dirty-confirm-dialog/index.tsx:54
+#: src/components/dirty-confirm-dialog/index.tsx:58
 msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "“%s” tem alterações não salvas. Deseja descartá-las e fechar?"
 
-#: src/store/reducer.ts:46
+#: src/store/reducer.ts:40
 #: src/store/constants.ts:13
 msgid "(Untitled)"
 msgstr "(Sem título)"
 
-#: src/components/header-actions/index.tsx:286
+#: src/components/header-actions/index.tsx:308
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "Sobre o MarkBricks"
 
-#: src/components/header-actions/index.tsx:176
+#: src/components/header-actions/index.tsx:198
 msgid "Access all block and document tools in a single place"
 msgstr "Acesse todas as ferramentas de blocos e documento em um só lugar."
 
-#: src/components/header-actions/index.tsx:255
+#: src/components/header-actions/index.tsx:277
 msgid "Add YAML front matter"
 msgstr "Adicionar front matter YAML"
 
@@ -56,8 +56,8 @@ msgstr "Tamanho da fonte base da área de conteúdo, em pixels."
 msgid "Block shortcuts"
 msgstr "Atalhos de teclado dos blocos"
 
-#: src/components/header-actions/index.tsx:315
-#: src/components/dirty-confirm-dialog/index.tsx:60
+#: src/components/header-actions/index.tsx:337
+#: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -96,7 +96,7 @@ msgid "Close the active tab."
 msgstr "Fechar a aba ativa."
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:231
+#: src/components/header-actions/index.tsx:253
 msgid "Code editor"
 msgstr "Editor de código"
 
@@ -104,7 +104,7 @@ msgstr "Editor de código"
 msgid "Content width"
 msgstr "Largura do conteúdo"
 
-#: src/hooks/use-file-open-events.ts:31
+#: src/hooks/use-file-open-events.ts:43
 msgid "Could not open the following file:"
 msgid_plural "Could not open the following files:"
 msgstr[0] "Não foi possível abrir o seguinte arquivo:"
@@ -122,11 +122,11 @@ msgstr "Criar um novo arquivo."
 msgid "Dark"
 msgstr "Escuro"
 
-#: src/components/dirty-confirm-dialog/index.tsx:64
+#: src/components/dirty-confirm-dialog/index.tsx:68
 msgid "Discard"
 msgstr "Descartar"
 
-#: src/components/dirty-confirm-dialog/index.tsx:63
+#: src/components/dirty-confirm-dialog/index.tsx:67
 msgid "Discard changes"
 msgstr "Descartar alterações"
 
@@ -134,7 +134,7 @@ msgstr "Descartar alterações"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Exibir a hierarquia de blocos na parte inferior do editor."
 
-#: src/components/header-actions/index.tsx:202
+#: src/components/header-actions/index.tsx:224
 msgid "Editor"
 msgstr "Editor"
 
@@ -150,11 +150,11 @@ msgstr "Associações de arquivos"
 msgid "File shortcuts"
 msgstr "Atalhos de arquivo"
 
-#: src/components/header-actions/index.tsx:126
+#: src/components/header-actions/index.tsx:148
 msgid "Files"
 msgstr "Arquivos"
 
-#: src/components/header-actions/index.tsx:192
+#: src/components/header-actions/index.tsx:214
 msgid "Focus on one block at a time"
 msgstr "Concentre-se em um bloco de cada vez"
 
@@ -179,7 +179,7 @@ msgstr "Atalhos globais"
 msgid "Handwriting"
 msgstr "Manuscrita"
 
-#: src/components/header-actions/index.tsx:260
+#: src/components/header-actions/index.tsx:282
 msgid "Hide YAML front matter"
 msgstr "Ocultar front matter YAML"
 
@@ -196,7 +196,7 @@ msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Imagens com caminhos relativos são exibidas depois que o documento é salvo."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:279
+#: src/components/header-actions/index.tsx:301
 msgid "Keyboard shortcuts"
 msgstr "Atalhos do teclado"
 
@@ -214,13 +214,17 @@ msgid "List View shortcuts"
 msgstr "Atalhos da visualização em lista"
 
 # %s: new version number
-#: src/hooks/use-auto-updater.ts:53
+#: src/hooks/use-auto-updater.ts:91
 msgid "MarkBricks %s is available. Install now?"
 msgstr "O MarkBricks %s está disponível. Instalar agora?"
 
 #: src/components/preferences-modal/general-panel.tsx:156
 msgid "MarkBricks is now the default app for Markdown files."
 msgstr "O MarkBricks agora é o aplicativo padrão para arquivos Markdown."
+
+#: src/components/header-actions/index.tsx:104
+msgid "Marp Mode"
+msgstr "Modo Marp"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:118
 msgid "Maximum width of the content area, in pixels."
@@ -230,7 +234,7 @@ msgstr "Largura máxima da área de conteúdo, em pixels."
 msgid "Monospace"
 msgstr "Monoespaçada"
 
-#: src/components/header-actions/index.tsx:133
+#: src/components/header-actions/index.tsx:155
 msgid "New"
 msgstr "Novo"
 
@@ -251,7 +255,7 @@ msgstr "Nenhum arquivo aberto"
 msgid "Open a file."
 msgstr "Abrir um arquivo."
 
-#: src/hooks/use-file-open-events.ts:38
+#: src/hooks/use-file-open-events.ts:50
 msgid "Open file"
 msgstr "Abrir arquivo"
 
@@ -264,28 +268,32 @@ msgstr "Abrir arquivo…"
 msgid "Opens the List View panel by default."
 msgstr "Abre a visualização em lista por padrão."
 
-#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:163
 msgid "Open…"
 msgstr "Abrir…"
 
-#: src/components/header-actions/index.tsx:113
+#: src/components/header-actions/index.tsx:135
 msgid "Options"
 msgstr "Opções"
 
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:295
+#: src/components/header-actions/index.tsx:317
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/components/header-actions/index.tsx:316
+#: src/components/header-actions/index.tsx:108
+msgid "Preview Slides"
+msgstr "Visualizar slides"
+
+#: src/components/header-actions/index.tsx:338
 msgid "Remove"
 msgstr "Remover"
 
-#: src/components/header-actions/index.tsx:266
+#: src/components/header-actions/index.tsx:288
 msgid "Remove YAML front matter"
 msgstr "Remover front matter YAML"
 
-#: src/components/header-actions/index.tsx:310
+#: src/components/header-actions/index.tsx:332
 msgid "Remove YAML front matter?"
 msgstr "Remover o front matter YAML?"
 
@@ -306,12 +314,12 @@ msgid "Sans-serif"
 msgstr "Sem serifa"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:103
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:125
+#: src/components/header-actions/index.tsx:171
 msgid "Save"
 msgstr "Salvar"
 
-#: src/components/header-actions/index.tsx:157
+#: src/components/header-actions/index.tsx:179
 msgid "Save As…"
 msgstr "Salvar como…"
 
@@ -352,11 +360,15 @@ msgstr "Mostrar bloco de caminho de navegação"
 msgid "Show line numbers"
 msgstr "Mostrar números de linha"
 
+#: src/actions/index.ts:299
+msgid "Slide Preview"
+msgstr "Visualização de slides"
+
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"
 msgstr "Verificação ortográfica"
 
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:211
 msgid "Spotlight mode"
 msgstr "Modo sem distrações"
 
@@ -373,7 +385,7 @@ msgstr "Tamanho da tabulação"
 msgid "Text formatting"
 msgstr "Formatação de texto"
 
-#: src/components/header-actions/index.tsx:311
+#: src/components/header-actions/index.tsx:333
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -392,11 +404,11 @@ msgstr ""
 "Esta plataforma não permite definir o aplicativo padrão dentro do "
 "MarkBricks. Configure-o no gerenciador de arquivos do sistema."
 
-#: src/components/header-actions/index.tsx:239
+#: src/components/header-actions/index.tsx:261
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:195
 msgid "Top toolbar"
 msgstr "Barra de ferramentas do topo"
 
@@ -404,33 +416,33 @@ msgstr "Barra de ferramentas do topo"
 msgid "Typeface used for the content area."
 msgstr "Fonte usada na área de conteúdo."
 
-#: src/hooks/use-auto-updater.ts:74
+#: src/hooks/use-auto-updater.ts:46
 #: src/components/tabbar/index.tsx:260
-#: src/components/dirty-confirm-dialog/index.tsx:51
+#: src/components/dirty-confirm-dialog/index.tsx:55
 msgid "Unsaved changes"
 msgstr "Alterações não salvas"
 
-#: src/hooks/use-auto-updater.ts:43
-#: src/hooks/use-auto-updater.ts:93
+#: src/hooks/use-auto-updater.ts:145
+#: src/hooks/use-auto-updater.ts:170
 #: src/components/preferences-modal/general-panel.tsx:119
 msgid "Update"
 msgstr "Atualização"
 
-#: src/hooks/use-auto-updater.ts:57
+#: src/hooks/use-auto-updater.ts:95
 msgid "Update available"
 msgstr "Atualização disponível"
 
 # %s: error message
-#: src/hooks/use-auto-updater.ts:89
+#: src/hooks/use-auto-updater.ts:166
 msgid "Update check failed: %s"
 msgstr "Falha ao verificar atualizações: %s"
 
-#: src/components/header-actions/index.tsx:164
+#: src/components/header-actions/index.tsx:186
 msgid "View"
 msgstr "Visualizar"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:219
+#: src/components/header-actions/index.tsx:241
 msgid "Visual editor"
 msgstr "Editor visual"
 
@@ -439,11 +451,11 @@ msgid "Working…"
 msgstr "Processando…"
 
 # %s: current version number
-#: src/hooks/use-auto-updater.ts:36
+#: src/hooks/use-auto-updater.ts:138
 msgid "You are using the latest version (%s)."
 msgstr "Você está usando a versão mais recente (%s)."
 
-#: src/hooks/use-auto-updater.ts:69
+#: src/hooks/use-auto-updater.ts:41
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "Você tem alterações não salvas. Salve-as antes de atualizar."
 

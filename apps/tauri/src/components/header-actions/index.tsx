@@ -11,9 +11,10 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as preferencesStore } from '@wordpress/preferences';
-import { moreVertical } from '@wordpress/icons';
+import { external, moreVertical } from '@wordpress/icons';
 import {
 	AlertDialog,
+	Badge,
 	Button,
 	getWpCompatOverlaySlot,
 	IconButton,
@@ -27,9 +28,11 @@ import {
 import {
 	newFile,
 	openFile,
+	openPreview,
 	saveActiveFile,
 	saveActiveFileAs,
 } from '../../actions';
+import { isMarpDocument } from '../../marp';
 import tabsStore from '../../store';
 import { ABOUT_MODAL_NAME } from '../about-modal';
 import { KEYBOARD_SHORTCUTS_MODAL_NAME } from '../keyboard-shortcuts-modal';
@@ -47,6 +50,7 @@ export default function HeaderActions( {
 }: Props ) {
 	const {
 		isActiveTabDirty,
+		isActiveTabMarp,
 		isPreferencesOpened,
 		isFixedToolbar,
 		isFocusMode,
@@ -57,6 +61,7 @@ export default function HeaderActions( {
 		const activeTab = getTabs().find( ( t ) => t.id === getActiveTabId() );
 		return {
 			isActiveTabDirty: !! activeTab?.isDirty,
+			isActiveTabMarp: isMarpDocument( activeTab?.content ?? '' ),
 			isPreferencesOpened: isModalActive( PREFERENCES_MODAL_NAME ),
 			isFixedToolbar: !! get( 'core', 'fixedToolbar' ),
 			isFocusMode: !! get( 'core', 'focusMode' ),
@@ -93,6 +98,23 @@ export default function HeaderActions( {
 			align="center"
 			gap="sm"
 		>
+			{ isActiveTabMarp && (
+				<>
+					<Badge intent="high">
+						{ __( 'Marp Mode', 'mark-bricks' ) }
+					</Badge>
+					<IconButton
+						icon={ external }
+						label={ __( 'Preview Slides', 'mark-bricks' ) }
+						variant="minimal"
+						tone="neutral"
+						size="compact"
+						onClick={ () => {
+							void openPreview();
+						} }
+					/>
+				</>
+			) }
 			<Button
 				size="compact"
 				onClick={ () => {

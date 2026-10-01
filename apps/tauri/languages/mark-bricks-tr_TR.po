@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.13.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.15.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-27T07:12:01.084Z\n"
-"PO-Revision-Date: 2026-09-29T01:52:44.367Z\n"
+"POT-Creation-Date: 2026-10-01T03:49:51.920Z\n"
+"PO-Revision-Date: 2026-10-01T03:49:55.822Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,27 +17,27 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/components/dirty-confirm-dialog/index.tsx:54
+#: src/components/dirty-confirm-dialog/index.tsx:58
 msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr ""
 "\"%s\" kaydedilmemiş değişiklikler içeriyor. Değişiklikleri atıp kapatmak "
 "istiyor musunuz?"
 
-#: src/store/reducer.ts:46
+#: src/store/reducer.ts:40
 #: src/store/constants.ts:13
 msgid "(Untitled)"
 msgstr "(Başlıksız)"
 
-#: src/components/header-actions/index.tsx:286
+#: src/components/header-actions/index.tsx:308
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "MarkBricks Hakkında"
 
-#: src/components/header-actions/index.tsx:176
+#: src/components/header-actions/index.tsx:198
 msgid "Access all block and document tools in a single place"
 msgstr "Tüm blok ve belge araçlarına tek bir yerden erişin"
 
-#: src/components/header-actions/index.tsx:255
+#: src/components/header-actions/index.tsx:277
 msgid "Add YAML front matter"
 msgstr "YAML front matter ekle"
 
@@ -58,8 +58,8 @@ msgstr "İçerik alanının piksel cinsinden temel yazı tipi boyutu."
 msgid "Block shortcuts"
 msgstr "Blok kısayolları"
 
-#: src/components/header-actions/index.tsx:315
-#: src/components/dirty-confirm-dialog/index.tsx:60
+#: src/components/header-actions/index.tsx:337
+#: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Vazgeç"
 
@@ -98,7 +98,7 @@ msgid "Close the active tab."
 msgstr "Etkin sekmeyi kapat."
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:231
+#: src/components/header-actions/index.tsx:253
 msgid "Code editor"
 msgstr "Kod düzenleyici"
 
@@ -106,7 +106,7 @@ msgstr "Kod düzenleyici"
 msgid "Content width"
 msgstr "İçerik genişliği"
 
-#: src/hooks/use-file-open-events.ts:31
+#: src/hooks/use-file-open-events.ts:43
 msgid "Could not open the following file:"
 msgid_plural "Could not open the following files:"
 msgstr[0] "Aşağıdaki dosya açılamadı:"
@@ -126,11 +126,11 @@ msgstr "Yeni bir dosya oluştur."
 msgid "Dark"
 msgstr "Koyu"
 
-#: src/components/dirty-confirm-dialog/index.tsx:64
+#: src/components/dirty-confirm-dialog/index.tsx:68
 msgid "Discard"
 msgstr "At"
 
-#: src/components/dirty-confirm-dialog/index.tsx:63
+#: src/components/dirty-confirm-dialog/index.tsx:67
 msgid "Discard changes"
 msgstr "Değişiklikleri at"
 
@@ -138,7 +138,7 @@ msgstr "Değişiklikleri at"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Blok hiyerarşisini düzenleyicinin altında göster."
 
-#: src/components/header-actions/index.tsx:202
+#: src/components/header-actions/index.tsx:224
 msgid "Editor"
 msgstr "Düzenleyici"
 
@@ -154,11 +154,11 @@ msgstr "Dosya ilişkilendirmeleri"
 msgid "File shortcuts"
 msgstr "Dosya kısayolları"
 
-#: src/components/header-actions/index.tsx:126
+#: src/components/header-actions/index.tsx:148
 msgid "Files"
 msgstr "Dosyalar"
 
-#: src/components/header-actions/index.tsx:192
+#: src/components/header-actions/index.tsx:214
 msgid "Focus on one block at a time"
 msgstr "Her seferinde bir bloğa odaklanın"
 
@@ -183,7 +183,7 @@ msgstr "Genel kısayollar"
 msgid "Handwriting"
 msgstr "El yazısı"
 
-#: src/components/header-actions/index.tsx:260
+#: src/components/header-actions/index.tsx:282
 msgid "Hide YAML front matter"
 msgstr "YAML front matter’ı gizle"
 
@@ -202,7 +202,7 @@ msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Göreli yollara sahip görseller, belge kaydedildikten sonra görüntülenir."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:279
+#: src/components/header-actions/index.tsx:301
 msgid "Keyboard shortcuts"
 msgstr "Klavye kısayolları"
 
@@ -220,13 +220,17 @@ msgid "List View shortcuts"
 msgstr "Liste görünümü kısayolları"
 
 # %s: new version number
-#: src/hooks/use-auto-updater.ts:53
+#: src/hooks/use-auto-updater.ts:91
 msgid "MarkBricks %s is available. Install now?"
 msgstr "MarkBricks %s kullanılabilir. Şimdi yüklensin mi?"
 
 #: src/components/preferences-modal/general-panel.tsx:156
 msgid "MarkBricks is now the default app for Markdown files."
 msgstr "MarkBricks artık Markdown dosyaları için varsayılan uygulama."
+
+#: src/components/header-actions/index.tsx:104
+msgid "Marp Mode"
+msgstr "Marp modu"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:118
 msgid "Maximum width of the content area, in pixels."
@@ -236,7 +240,7 @@ msgstr "İçerik alanının piksel cinsinden en büyük genişliği."
 msgid "Monospace"
 msgstr "Eş aralıklı"
 
-#: src/components/header-actions/index.tsx:133
+#: src/components/header-actions/index.tsx:155
 msgid "New"
 msgstr "Yeni"
 
@@ -257,7 +261,7 @@ msgstr "Açık dosya yok"
 msgid "Open a file."
 msgstr "Bir dosya aç."
 
-#: src/hooks/use-file-open-events.ts:38
+#: src/hooks/use-file-open-events.ts:50
 msgid "Open file"
 msgstr "Dosyayı aç"
 
@@ -270,28 +274,32 @@ msgstr "Dosya aç…"
 msgid "Opens the List View panel by default."
 msgstr "Varsayılan olarak liste görünümü panelini açar."
 
-#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:163
 msgid "Open…"
 msgstr "Aç…"
 
-#: src/components/header-actions/index.tsx:113
+#: src/components/header-actions/index.tsx:135
 msgid "Options"
 msgstr "Seçenekler"
 
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:295
+#: src/components/header-actions/index.tsx:317
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: src/components/header-actions/index.tsx:316
+#: src/components/header-actions/index.tsx:108
+msgid "Preview Slides"
+msgstr "Slaytları önizle"
+
+#: src/components/header-actions/index.tsx:338
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/components/header-actions/index.tsx:266
+#: src/components/header-actions/index.tsx:288
 msgid "Remove YAML front matter"
 msgstr "YAML front matter’ı kaldır"
 
-#: src/components/header-actions/index.tsx:310
+#: src/components/header-actions/index.tsx:332
 msgid "Remove YAML front matter?"
 msgstr "YAML front matter’ı kaldırmak istiyor musunuz?"
 
@@ -312,12 +320,12 @@ msgid "Sans-serif"
 msgstr "Sans-serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:103
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:125
+#: src/components/header-actions/index.tsx:171
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/components/header-actions/index.tsx:157
+#: src/components/header-actions/index.tsx:179
 msgid "Save As…"
 msgstr "Farklı kaydet…"
 
@@ -358,11 +366,15 @@ msgstr "Blok sayfa yollarını görüntüle"
 msgid "Show line numbers"
 msgstr "Satır numaralarını göster"
 
+#: src/actions/index.ts:299
+msgid "Slide Preview"
+msgstr "Slayt önizlemesi"
+
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"
 msgstr "Yazım denetimi"
 
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:211
 msgid "Spotlight mode"
 msgstr "Sahne ışığı kipi"
 
@@ -379,7 +391,7 @@ msgstr "Sekme boyutu"
 msgid "Text formatting"
 msgstr "Metin biçimlendirme"
 
-#: src/components/header-actions/index.tsx:311
+#: src/components/header-actions/index.tsx:333
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -398,11 +410,11 @@ msgstr ""
 "Bu platform, varsayılan uygulamanın MarkBricks içinden ayarlanmasını "
 "desteklemiyor. Lütfen sisteminizin dosya yöneticisinden yapılandırın."
 
-#: src/components/header-actions/index.tsx:239
+#: src/components/header-actions/index.tsx:261
 msgid "Tools"
 msgstr "Araçlar"
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:195
 msgid "Top toolbar"
 msgstr "Üst araç çubuğu"
 
@@ -410,33 +422,33 @@ msgstr "Üst araç çubuğu"
 msgid "Typeface used for the content area."
 msgstr "İçerik alanında kullanılan yazı tipi."
 
-#: src/hooks/use-auto-updater.ts:74
+#: src/hooks/use-auto-updater.ts:46
 #: src/components/tabbar/index.tsx:260
-#: src/components/dirty-confirm-dialog/index.tsx:51
+#: src/components/dirty-confirm-dialog/index.tsx:55
 msgid "Unsaved changes"
 msgstr "Kaydedilmemiş değişiklikler"
 
-#: src/hooks/use-auto-updater.ts:43
-#: src/hooks/use-auto-updater.ts:93
+#: src/hooks/use-auto-updater.ts:145
+#: src/hooks/use-auto-updater.ts:170
 #: src/components/preferences-modal/general-panel.tsx:119
 msgid "Update"
 msgstr "Güncelleme"
 
-#: src/hooks/use-auto-updater.ts:57
+#: src/hooks/use-auto-updater.ts:95
 msgid "Update available"
 msgstr "Güncelleme mevcut"
 
 # %s: error message
-#: src/hooks/use-auto-updater.ts:89
+#: src/hooks/use-auto-updater.ts:166
 msgid "Update check failed: %s"
 msgstr "Güncelleme denetimi başarısız oldu: %s"
 
-#: src/components/header-actions/index.tsx:164
+#: src/components/header-actions/index.tsx:186
 msgid "View"
 msgstr "Görünüm"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:219
+#: src/components/header-actions/index.tsx:241
 msgid "Visual editor"
 msgstr "Görsel düzenleyici"
 
@@ -445,11 +457,11 @@ msgid "Working…"
 msgstr "İşleniyor…"
 
 # %s: current version number
-#: src/hooks/use-auto-updater.ts:36
+#: src/hooks/use-auto-updater.ts:138
 msgid "You are using the latest version (%s)."
 msgstr "En son sürümü (%s) kullanıyorsunuz."
 
-#: src/hooks/use-auto-updater.ts:69
+#: src/hooks/use-auto-updater.ts:41
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "Kaydedilmemiş değişiklikleriniz var. Lütfen güncellemeden önce kaydedin."
 
