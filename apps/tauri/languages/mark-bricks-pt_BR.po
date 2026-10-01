@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T03:36:56.071Z\n"
-"PO-Revision-Date: 2026-10-01T03:36:59.705Z\n"
+"POT-Creation-Date: 2026-10-01T03:49:51.920Z\n"
+"PO-Revision-Date: 2026-10-01T03:49:55.123Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,16 +26,16 @@ msgstr "“%s” tem alterações não salvas. Deseja descartá-las e fechar?"
 msgid "(Untitled)"
 msgstr "(Sem título)"
 
-#: src/components/header-actions/index.tsx:301
+#: src/components/header-actions/index.tsx:308
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "Sobre o MarkBricks"
 
-#: src/components/header-actions/index.tsx:191
+#: src/components/header-actions/index.tsx:198
 msgid "Access all block and document tools in a single place"
 msgstr "Acesse todas as ferramentas de blocos e documento em um só lugar."
 
-#: src/components/header-actions/index.tsx:270
+#: src/components/header-actions/index.tsx:277
 msgid "Add YAML front matter"
 msgstr "Adicionar front matter YAML"
 
@@ -56,7 +56,7 @@ msgstr "Tamanho da fonte base da área de conteúdo, em pixels."
 msgid "Block shortcuts"
 msgstr "Atalhos de teclado dos blocos"
 
-#: src/components/header-actions/index.tsx:330
+#: src/components/header-actions/index.tsx:337
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Cancelar"
@@ -96,7 +96,7 @@ msgid "Close the active tab."
 msgstr "Fechar a aba ativa."
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:246
+#: src/components/header-actions/index.tsx:253
 msgid "Code editor"
 msgstr "Editor de código"
 
@@ -134,7 +134,7 @@ msgstr "Descartar alterações"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Exibir a hierarquia de blocos na parte inferior do editor."
 
-#: src/components/header-actions/index.tsx:217
+#: src/components/header-actions/index.tsx:224
 msgid "Editor"
 msgstr "Editor"
 
@@ -150,11 +150,11 @@ msgstr "Associações de arquivos"
 msgid "File shortcuts"
 msgstr "Atalhos de arquivo"
 
-#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:148
 msgid "Files"
 msgstr "Arquivos"
 
-#: src/components/header-actions/index.tsx:207
+#: src/components/header-actions/index.tsx:214
 msgid "Focus on one block at a time"
 msgstr "Concentre-se em um bloco de cada vez"
 
@@ -179,7 +179,7 @@ msgstr "Atalhos globais"
 msgid "Handwriting"
 msgstr "Manuscrita"
 
-#: src/components/header-actions/index.tsx:275
+#: src/components/header-actions/index.tsx:282
 msgid "Hide YAML front matter"
 msgstr "Ocultar front matter YAML"
 
@@ -196,7 +196,7 @@ msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Imagens com caminhos relativos são exibidas depois que o documento é salvo."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:294
+#: src/components/header-actions/index.tsx:301
 msgid "Keyboard shortcuts"
 msgstr "Atalhos do teclado"
 
@@ -222,6 +222,10 @@ msgstr "O MarkBricks %s está disponível. Instalar agora?"
 msgid "MarkBricks is now the default app for Markdown files."
 msgstr "O MarkBricks agora é o aplicativo padrão para arquivos Markdown."
 
+#: src/components/header-actions/index.tsx:104
+msgid "Marp Mode"
+msgstr "Modo Marp"
+
 #: src/components/preferences-modal/visual-editor-panel.tsx:118
 msgid "Maximum width of the content area, in pixels."
 msgstr "Largura máxima da área de conteúdo, em pixels."
@@ -230,7 +234,7 @@ msgstr "Largura máxima da área de conteúdo, em pixels."
 msgid "Monospace"
 msgstr "Monoespaçada"
 
-#: src/components/header-actions/index.tsx:148
+#: src/components/header-actions/index.tsx:155
 msgid "New"
 msgstr "Novo"
 
@@ -264,16 +268,16 @@ msgstr "Abrir arquivo…"
 msgid "Opens the List View panel by default."
 msgstr "Abre a visualização em lista por padrão."
 
-#: src/components/header-actions/index.tsx:156
+#: src/components/header-actions/index.tsx:163
 msgid "Open…"
 msgstr "Abrir…"
 
-#: src/components/header-actions/index.tsx:128
+#: src/components/header-actions/index.tsx:135
 msgid "Options"
 msgstr "Opções"
 
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:310
+#: src/components/header-actions/index.tsx:317
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -281,15 +285,15 @@ msgstr "Preferências"
 msgid "Preview Slides"
 msgstr "Visualizar slides"
 
-#: src/components/header-actions/index.tsx:331
+#: src/components/header-actions/index.tsx:338
 msgid "Remove"
 msgstr "Remover"
 
-#: src/components/header-actions/index.tsx:281
+#: src/components/header-actions/index.tsx:288
 msgid "Remove YAML front matter"
 msgstr "Remover front matter YAML"
 
-#: src/components/header-actions/index.tsx:325
+#: src/components/header-actions/index.tsx:332
 msgid "Remove YAML front matter?"
 msgstr "Remover o front matter YAML?"
 
@@ -310,12 +314,12 @@ msgid "Sans-serif"
 msgstr "Sem serifa"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:118
-#: src/components/header-actions/index.tsx:164
+#: src/components/header-actions/index.tsx:125
+#: src/components/header-actions/index.tsx:171
 msgid "Save"
 msgstr "Salvar"
 
-#: src/components/header-actions/index.tsx:172
+#: src/components/header-actions/index.tsx:179
 msgid "Save As…"
 msgstr "Salvar como…"
 
@@ -364,7 +368,7 @@ msgstr "Visualização de slides"
 msgid "Spell check"
 msgstr "Verificação ortográfica"
 
-#: src/components/header-actions/index.tsx:204
+#: src/components/header-actions/index.tsx:211
 msgid "Spotlight mode"
 msgstr "Modo sem distrações"
 
@@ -381,7 +385,7 @@ msgstr "Tamanho da tabulação"
 msgid "Text formatting"
 msgstr "Formatação de texto"
 
-#: src/components/header-actions/index.tsx:326
+#: src/components/header-actions/index.tsx:333
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -400,11 +404,11 @@ msgstr ""
 "Esta plataforma não permite definir o aplicativo padrão dentro do "
 "MarkBricks. Configure-o no gerenciador de arquivos do sistema."
 
-#: src/components/header-actions/index.tsx:254
+#: src/components/header-actions/index.tsx:261
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: src/components/header-actions/index.tsx:188
+#: src/components/header-actions/index.tsx:195
 msgid "Top toolbar"
 msgstr "Barra de ferramentas do topo"
 
@@ -433,12 +437,12 @@ msgstr "Atualização disponível"
 msgid "Update check failed: %s"
 msgstr "Falha ao verificar atualizações: %s"
 
-#: src/components/header-actions/index.tsx:179
+#: src/components/header-actions/index.tsx:186
 msgid "View"
 msgstr "Visualizar"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:234
+#: src/components/header-actions/index.tsx:241
 msgid "Visual editor"
 msgstr "Editor visual"
 

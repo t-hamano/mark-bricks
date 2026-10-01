@@ -11,9 +11,10 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as preferencesStore } from '@wordpress/preferences';
-import { moreVertical } from '@wordpress/icons';
+import { external, moreVertical } from '@wordpress/icons';
 import {
 	AlertDialog,
+	Badge,
 	Button,
 	getWpCompatOverlaySlot,
 	IconButton,
@@ -98,15 +99,21 @@ export default function HeaderActions( {
 			gap="sm"
 		>
 			{ isActiveTabMarp && (
-				<Button
-					size="compact"
-					variant="outline"
-					onClick={ () => {
-						void openPreview();
-					} }
-				>
-					{ __( 'Preview Slides', 'mark-bricks' ) }
-				</Button>
+				<>
+					<Badge intent="high">
+						{ __( 'Marp Mode', 'mark-bricks' ) }
+					</Badge>
+					<IconButton
+						icon={ external }
+						label={ __( 'Preview Slides', 'mark-bricks' ) }
+						variant="minimal"
+						tone="neutral"
+						size="compact"
+						onClick={ () => {
+							void openPreview();
+						} }
+					/>
+				</>
 			) }
 			<Button
 				size="compact"
