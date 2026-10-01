@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
-"PO-Revision-Date: 2026-09-29T06:06:31.058Z\n"
+"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
+"PO-Revision-Date: 2026-10-01T02:50:48.089Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,7 @@ msgstr "注意"
 msgid "Cell content"
 msgstr "单元格内容"
 
-#: src/block-library/code/edit.tsx:98
+#: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "更改语言"
 
@@ -83,7 +83,7 @@ msgstr "更改语言"
 msgid "Change the block type after adding a new paragraph."
 msgstr "在新增段落后修改区块类型。"
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "选择语言…"
 
@@ -202,7 +202,7 @@ msgstr "图片"
 msgid "Important"
 msgstr "重要"
 
-#: src/block-library/list-item/edit.tsx:70
+#: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "增加缩进量"
 
@@ -242,7 +242,7 @@ msgstr "在上方插入行"
 msgid "Italic"
 msgstr "斜体"
 
-#: src/block-library/code/edit.tsx:113
+#: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr "语言"
 
@@ -280,7 +280,7 @@ msgid ""
 "incorrect heading levels."
 msgstr "浏览文档结构并解决标题级别为空或不正确等问题。"
 
-#: src/block-library/code/edit.tsx:139
+#: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "没有匹配的语言。"
 
@@ -296,7 +296,7 @@ msgstr "默认打开"
 msgid "Ordered"
 msgstr "有序"
 
-#: src/block-library/list-item/edit.tsx:63
+#: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
 msgstr "减少缩进量"
 
@@ -376,7 +376,7 @@ msgstr "表格"
 msgid "The diagram could not be rendered."
 msgstr "无法渲染图表。"
 
-#: src/block-library/code/math-preview.tsx:91
+#: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "无法渲染公式。"
 
@@ -445,11 +445,15 @@ msgstr "警告"
 msgid "Write HTML…"
 msgstr "编写 HTML…"
 
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr "编写 TeX…"
+
 #: src/components/front-matter-editor/index.tsx:38
 msgid "Write YAML front matter…"
 msgstr "编写 YAML 前置元数据…"
 
-#: src/block-library/code/edit.tsx:73
+#: src/block-library/code/edit.tsx:74
 msgid "Write code…"
 msgstr "编写代码…"
 

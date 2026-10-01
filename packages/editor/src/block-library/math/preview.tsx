@@ -20,8 +20,7 @@ type Props = {
 };
 
 /**
- * Renders a formula from the code of a `math` code block, the fenced form
- * GitHub renders as a display formula.
+ * Renders the TeX source of a math block as a display formula.
  *
  * While the code does not parse, the last formula that did is kept on screen
  * so that typing does not collapse the block on every keystroke.
@@ -44,7 +43,6 @@ export function MathPreview( { code }: Props ) {
 
 		let cancelled = false;
 
-		// The whole block is one display formula, as on GitHub.
 		renderMath( code, { displayMode: true } ).then(
 			( nextHtml ) => {
 				if ( ! cancelled ) {
@@ -73,10 +71,10 @@ export function MathPreview( { code }: Props ) {
 	}
 
 	return (
-		<Stack className="wp-block-code__preview" direction="column" gap="lg">
+		<Stack className="wp-block-math__preview" direction="column" gap="lg">
 			{ !! html && (
 				<div
-					className={ clsx( 'wp-block-code__preview-content', {
+					className={ clsx( 'wp-block-math__preview-content', {
 						'is-stale': !! error,
 					} ) }
 					dangerouslySetInnerHTML={ { __html: html } }
@@ -84,7 +82,7 @@ export function MathPreview( { code }: Props ) {
 			) }
 			{ !! error && (
 				<Notice.Root
-					className="wp-block-code__preview-error"
+					className="wp-block-math__preview-error"
 					intent="error"
 				>
 					<Notice.Title>
@@ -93,7 +91,7 @@ export function MathPreview( { code }: Props ) {
 							'mark-bricks'
 						) }
 					</Notice.Title>
-					<Notice.Description className="wp-block-code__preview-error-detail">
+					<Notice.Description className="wp-block-math__preview-error-detail">
 						{ error }
 					</Notice.Description>
 				</Notice.Root>

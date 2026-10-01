@@ -24,7 +24,6 @@ import {
 	MERMAID_LANGUAGE,
 } from '../hooks/code-languages';
 import { useCodeMirror } from '../hooks/use-code-mirror';
-import { MathPreview } from './math-preview';
 import { MermaidPreview } from './mermaid-preview';
 
 const LANGUAGE_SUGGESTIONS = Array.from(
@@ -33,7 +32,10 @@ const LANGUAGE_SUGGESTIONS = Array.from(
 			( name ) => name.toLowerCase()
 		)
 	)
-).sort( ( a, b ) => a.localeCompare( b ) );
+)
+	// Math has a block of its own, so it is not offered as a code language.
+	.filter( ( name ) => name !== MATH_LANGUAGE )
+	.sort( ( a, b ) => a.localeCompare( b ) );
 
 export default function Edit( {
 	attributes,
@@ -50,8 +52,7 @@ export default function Edit( {
 			: ( content ?? '' );
 	const normalizedLanguage = language.trim().toLowerCase();
 	const isMermaid = normalizedLanguage === MERMAID_LANGUAGE;
-	const isMath = normalizedLanguage === MATH_LANGUAGE;
-	const showEditor = ( ! isMermaid && ! isMath ) || isSelected;
+	const showEditor = ! isMermaid || isSelected;
 
 	const { previousBlockClientId, nextBlockClientId } = useSelect(
 		( select ) => {
@@ -167,7 +168,6 @@ export default function Edit( {
 				{ isMermaid && (
 					<MermaidPreview code={ text } clientId={ clientId } />
 				) }
-				{ isMath && <MathPreview code={ text } /> }
 			</div>
 		</>
 	);

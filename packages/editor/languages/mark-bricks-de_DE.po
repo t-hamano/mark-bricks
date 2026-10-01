@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
-"PO-Revision-Date: 2026-09-29T06:06:27.422Z\n"
+"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
+"PO-Revision-Date: 2026-10-01T02:50:45.051Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,7 @@ msgstr "Vorsicht"
 msgid "Cell content"
 msgstr "Zelleninhalt"
 
-#: src/block-library/code/edit.tsx:98
+#: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "Sprache ändern"
 
@@ -83,7 +83,7 @@ msgstr "Sprache ändern"
 msgid "Change the block type after adding a new paragraph."
 msgstr "Den Blocktyp nach Hinzufügen eines neuen Absatzes ändern."
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Sprache auswählen …"
 
@@ -202,7 +202,7 @@ msgstr "Bild"
 msgid "Important"
 msgstr "Wichtig"
 
-#: src/block-library/list-item/edit.tsx:70
+#: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "Einzug vergrößern"
 
@@ -242,7 +242,7 @@ msgstr "Zeile darüber einfügen"
 msgid "Italic"
 msgstr "Kursiv"
 
-#: src/block-library/code/edit.tsx:113
+#: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr "Sprache"
 
@@ -282,7 +282,7 @@ msgstr ""
 "Navigiere durch die Struktur deines Dokuments und behebe Probleme wie leere "
 "oder falsche Überschriftenebenen."
 
-#: src/block-library/code/edit.tsx:139
+#: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "Keine passende Sprache."
 
@@ -298,7 +298,7 @@ msgstr "Standardmäßig offen"
 msgid "Ordered"
 msgstr "Nummeriert"
 
-#: src/block-library/list-item/edit.tsx:63
+#: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
 msgstr "Einzug verringern"
 
@@ -378,7 +378,7 @@ msgstr "Tabelle"
 msgid "The diagram could not be rendered."
 msgstr "Das Diagramm konnte nicht dargestellt werden."
 
-#: src/block-library/code/math-preview.tsx:91
+#: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Die Formel konnte nicht dargestellt werden."
 
@@ -447,11 +447,15 @@ msgstr "Warnung"
 msgid "Write HTML…"
 msgstr "Schreibe etwas in HTML …"
 
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr "Schreibe etwas in TeX …"
+
 #: src/components/front-matter-editor/index.tsx:38
 msgid "Write YAML front matter…"
 msgstr "YAML-Front-Matter schreiben …"
 
-#: src/block-library/code/edit.tsx:73
+#: src/block-library/code/edit.tsx:74
 msgid "Write code…"
 msgstr "Schreibe etwas Code …"
 

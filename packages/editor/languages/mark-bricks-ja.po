@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
-"PO-Revision-Date: 2026-09-29T06:06:07.461Z\n"
+"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
+"PO-Revision-Date: 2026-10-01T02:50:31.660Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,7 @@ msgstr "注意"
 msgid "Cell content"
 msgstr "セルの内容"
 
-#: src/block-library/code/edit.tsx:98
+#: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "言語を変更"
 
@@ -83,7 +83,7 @@ msgstr "言語を変更"
 msgid "Change the block type after adding a new paragraph."
 msgstr "新規段落の追加後、ブロックタイプを変更します。"
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "言語を選択…"
 
@@ -202,7 +202,7 @@ msgstr "画像"
 msgid "Important"
 msgstr "重要"
 
-#: src/block-library/list-item/edit.tsx:70
+#: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "インデント"
 
@@ -242,7 +242,7 @@ msgstr "行を上に挿入"
 msgid "Italic"
 msgstr "イタリック"
 
-#: src/block-library/code/edit.tsx:113
+#: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr "言語"
 
@@ -280,7 +280,7 @@ msgid ""
 "incorrect heading levels."
 msgstr "ドキュメントの構造を調べ、空白や不正確な見出しレベルなどの問題に対処します。"
 
-#: src/block-library/code/edit.tsx:139
+#: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "一致する言語がありません。"
 
@@ -296,7 +296,7 @@ msgstr "デフォルトで開く"
 msgid "Ordered"
 msgstr "順序付きリスト"
 
-#: src/block-library/list-item/edit.tsx:63
+#: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
 msgstr "インデント解除"
 
@@ -376,7 +376,7 @@ msgstr "テーブル"
 msgid "The diagram could not be rendered."
 msgstr "図を描画できませんでした。"
 
-#: src/block-library/code/math-preview.tsx:91
+#: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "数式を描画できませんでした。"
 
@@ -445,11 +445,15 @@ msgstr "警告"
 msgid "Write HTML…"
 msgstr "HTML を入力…"
 
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr "TeX を入力…"
+
 #: src/components/front-matter-editor/index.tsx:38
 msgid "Write YAML front matter…"
 msgstr "YAML フロントマターを入力…"
 
-#: src/block-library/code/edit.tsx:73
+#: src/block-library/code/edit.tsx:74
 msgid "Write code…"
 msgstr "コードを入力..."
 

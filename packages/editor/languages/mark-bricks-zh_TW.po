@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
-"PO-Revision-Date: 2026-09-29T06:06:31.537Z\n"
+"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
+"PO-Revision-Date: 2026-10-01T02:50:48.412Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,7 @@ msgstr "注意"
 msgid "Cell content"
 msgstr "儲存格內容"
 
-#: src/block-library/code/edit.tsx:98
+#: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "變更語言"
 
@@ -83,7 +83,7 @@ msgstr "變更語言"
 msgid "Change the block type after adding a new paragraph."
 msgstr "新增段落後，藉以變更區塊類型"
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "選擇語言…"
 
@@ -202,7 +202,7 @@ msgstr "圖片"
 msgid "Important"
 msgstr "重要"
 
-#: src/block-library/list-item/edit.tsx:70
+#: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "增加縮排"
 
@@ -242,7 +242,7 @@ msgstr "在目前位置上方插入資料列"
 msgid "Italic"
 msgstr "斜體"
 
-#: src/block-library/code/edit.tsx:113
+#: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr "語言"
 
@@ -280,7 +280,7 @@ msgid ""
 "incorrect heading levels."
 msgstr "瀏覽這篇內容的結構並解決標題層級為空或不正確等問題。"
 
-#: src/block-library/code/edit.tsx:139
+#: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "沒有符合的語言。"
 
@@ -296,7 +296,7 @@ msgstr "預設開啟"
 msgid "Ordered"
 msgstr "有序"
 
-#: src/block-library/list-item/edit.tsx:63
+#: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
 msgstr "減少縮排"
 
@@ -376,7 +376,7 @@ msgstr "表格"
 msgid "The diagram could not be rendered."
 msgstr "無法轉譯圖表。"
 
-#: src/block-library/code/math-preview.tsx:91
+#: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "無法轉譯公式。"
 
@@ -445,11 +445,15 @@ msgstr "警告"
 msgid "Write HTML…"
 msgstr "撰寫 HTML 程式碼..."
 
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr "撰寫 TeX..."
+
 #: src/components/front-matter-editor/index.tsx:38
 msgid "Write YAML front matter…"
 msgstr "撰寫 YAML 前置資料…"
 
-#: src/block-library/code/edit.tsx:73
+#: src/block-library/code/edit.tsx:74
 msgid "Write code…"
 msgstr "撰寫程式碼..."
 

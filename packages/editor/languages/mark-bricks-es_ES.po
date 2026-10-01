@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
-"PO-Revision-Date: 2026-09-29T06:06:27.828Z\n"
+"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
+"PO-Revision-Date: 2026-10-01T02:50:45.422Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,7 @@ msgstr "Precaución"
 msgid "Cell content"
 msgstr "Contenido de la celda"
 
-#: src/block-library/code/edit.tsx:98
+#: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "Cambiar lenguaje"
 
@@ -83,7 +83,7 @@ msgstr "Cambiar lenguaje"
 msgid "Change the block type after adding a new paragraph."
 msgstr "Cambia el tipo de bloque después de añadir un nuevo párrafo."
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Elegir lenguaje…"
 
@@ -202,7 +202,7 @@ msgstr "Imagen"
 msgid "Important"
 msgstr "Importante"
 
-#: src/block-library/list-item/edit.tsx:70
+#: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "Aumentar margen"
 
@@ -242,7 +242,7 @@ msgstr "Insertar una fila encima"
 msgid "Italic"
 msgstr "Cursiva"
 
-#: src/block-library/code/edit.tsx:113
+#: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr "Lenguaje"
 
@@ -282,7 +282,7 @@ msgstr ""
 "Navega por la estructura de tu documento y soluciona problemas como niveles "
 "de encabezado vacíos o incorrectos."
 
-#: src/block-library/code/edit.tsx:139
+#: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "No hay ningún lenguaje coincidente."
 
@@ -298,7 +298,7 @@ msgstr "Abierto por defecto"
 msgid "Ordered"
 msgstr "Ordenada"
 
-#: src/block-library/list-item/edit.tsx:63
+#: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
 msgstr "Disminuir margen"
 
@@ -378,7 +378,7 @@ msgstr "Tabla"
 msgid "The diagram could not be rendered."
 msgstr "No se pudo renderizar el diagrama."
 
-#: src/block-library/code/math-preview.tsx:91
+#: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "No se pudo renderizar la fórmula."
 
@@ -447,11 +447,15 @@ msgstr "Advertencia"
 msgid "Write HTML…"
 msgstr "Escribe HTML..."
 
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr "Escribe TeX..."
+
 #: src/components/front-matter-editor/index.tsx:38
 msgid "Write YAML front matter…"
 msgstr "Escribe el front matter YAML…"
 
-#: src/block-library/code/edit.tsx:73
+#: src/block-library/code/edit.tsx:74
 msgid "Write code…"
 msgstr "Escribe el código…"
 

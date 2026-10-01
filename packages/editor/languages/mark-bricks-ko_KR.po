@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
-"PO-Revision-Date: 2026-09-29T06:06:29.002Z\n"
+"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
+"PO-Revision-Date: 2026-10-01T02:50:46.461Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,7 @@ msgstr "주의"
 msgid "Cell content"
 msgstr "셀 내용"
 
-#: src/block-library/code/edit.tsx:98
+#: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "언어 변경"
 
@@ -83,7 +83,7 @@ msgstr "언어 변경"
 msgid "Change the block type after adding a new paragraph."
 msgstr "새 단락을 추가한 후 블록 유형을 변경."
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "언어 선택…"
 
@@ -202,7 +202,7 @@ msgstr "이미지"
 msgid "Important"
 msgstr "중요"
 
-#: src/block-library/list-item/edit.tsx:70
+#: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "들여쓰기"
 
@@ -242,7 +242,7 @@ msgstr "앞에 행 삽입"
 msgid "Italic"
 msgstr "이탤릭"
 
-#: src/block-library/code/edit.tsx:113
+#: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr "언어"
 
@@ -280,7 +280,7 @@ msgid ""
 "incorrect heading levels."
 msgstr "문서의 구조를 탐색하고 비어 있거나 잘못된 제목 수준과 같은 문제를 해결하세요."
 
-#: src/block-library/code/edit.tsx:139
+#: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "일치하는 언어가 없습니다."
 
@@ -296,7 +296,7 @@ msgstr "기본적으로 열기"
 msgid "Ordered"
 msgstr "순서 있음"
 
-#: src/block-library/list-item/edit.tsx:63
+#: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
 msgstr "내어쓰기"
 
@@ -376,7 +376,7 @@ msgstr "테이블"
 msgid "The diagram could not be rendered."
 msgstr "다이어그램을 렌더링할 수 없습니다."
 
-#: src/block-library/code/math-preview.tsx:91
+#: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "수식을 렌더링할 수 없습니다."
 
@@ -445,11 +445,15 @@ msgstr "경고"
 msgid "Write HTML…"
 msgstr "HTML 작성…"
 
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr "TeX 작성…"
+
 #: src/components/front-matter-editor/index.tsx:38
 msgid "Write YAML front matter…"
 msgstr "YAML 프런트 매터 작성…"
 
-#: src/block-library/code/edit.tsx:73
+#: src/block-library/code/edit.tsx:74
 msgid "Write code…"
 msgstr "코드 쓰기…"
 

@@ -1,0 +1,39 @@
+.wp-block-math {
+	padding: 0;
+	color: var(--wpds-color-foreground-content-neutral);
+	line-height: 1.45;
+	background: var(--wpds-color-background-surface-neutral-weak);
+	border: 1px solid var(--wpds-color-stroke-surface-neutral);
+
+	.cm-editor,
+	.wp-block-math__preview {
+		padding: 1.5rem 1rem;
+	}
+
+	.cm-focused {
+		outline: none;
+	}
+
+	&:not(.is-selected):has(.wp-block-math__preview) {
+		background: var(--wpds-color-background-surface-neutral);
+	}
+
+	.wp-block-math__preview-content {
+		background: var(--wpds-color-background-surface-neutral);
+		overflow-x: auto;
+		text-align: center;
+		margin-top: 1em;
+		padding: 1em;
+
+		&.is-stale {
+			opacity: 0.5;
+		}
+	}
+
+	.wp-block-math__preview-error-detail {
+		margin: 0;
+		font-family: var(--wpds-typography-font-family-mono);
+		white-space: pre-wrap;
+		font-size: 90%;
+	}
+}

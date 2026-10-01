@@ -17,6 +17,7 @@ import type { Block } from '@wordpress/blocks';
 import * as paragraphConverter from '../block-library/paragraph/converter';
 import * as headingConverter from '../block-library/heading/converter';
 import * as codeConverter from '../block-library/code/converter';
+import * as mathConverter from '../block-library/math/converter';
 import * as separatorConverter from '../block-library/separator/converter';
 import * as tableConverter from '../block-library/table/converter';
 import * as listConverter from '../block-library/list/converter';
@@ -25,6 +26,7 @@ import * as quoteConverter from '../block-library/quote/converter';
 import * as htmlConverter from '../block-library/html/converter';
 import * as detailsConverter from '../block-library/details/converter';
 import { annotateSourceSyntax } from './source-syntax';
+import { remarkMathBlock } from './math-block';
 
 /**
  * Maps a single mdast node to its corresponding blocks.
@@ -58,7 +60,13 @@ export function nodeToBlocks( node: RootContent, source: string ): Block[] {
 		case 'heading':
 			return [ headingConverter.toBlock( node ) ];
 		case 'code':
-			return [ codeConverter.toBlock( node, source ) ];
+			return [
+				mathConverter.isMathCode( node )
+					? mathConverter.toBlock( node, source )
+					: codeConverter.toBlock( node, source ),
+			];
+		case 'math':
+			return [ mathConverter.toBlock( node, source ) ];
 		case 'thematicBreak':
 			return [ separatorConverter.toBlock( node, source ) ];
 		case 'table':
@@ -116,6 +124,7 @@ export function markdownToBlocks( markdown: string ): Block[] {
 	const tree = unified()
 		.use( remarkParse )
 		.use( remarkGfm )
+		.use( remarkMathBlock )
 		.parse( markdown ) as Root;
 	// The spelling of a construct Markdown lets be written in more than one
 	// way is only recoverable from the source, so it is recorded on the tree
