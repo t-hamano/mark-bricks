@@ -3,6 +3,11 @@
  */
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 
+/**
+ * Internal dependencies
+ */
+import { clampSlideIndex, getSlideIndexForKey } from './navigation';
+
 const FULLSCREEN_CLASS = 'is-fullscreen';
 const CURRENT_SLIDE_CLASS = 'is-current';
 
@@ -30,7 +35,8 @@ function findMostVisibleSlide( slides: Element[] ): number {
 /**
  * Lets the `F` and F11 keys toggle full screen, and Escape leave it. Full
  * screen presents the slides one at a time, starting from the one most
- * visible in the scrolling view.
+ * visible in the scrolling view, and the arrow, Page Up, Page Down, Home and
+ * End keys move between them.
  *
  * @param container Element the slides are rendered into.
  * @param onChange  Called when full screen starts or ends.
@@ -59,7 +65,7 @@ export function setupFullscreen(
 	function showCurrentSlide() {
 		const slides = getSlides();
 		// An edit can remove slides while one of them is shown.
-		current = Math.min( current, Math.max( slides.length - 1, 0 ) );
+		current = clampSlideIndex( current, slides.length );
 		slides.forEach( ( slide, index ) =>
 			slide.classList.toggle(
 				CURRENT_SLIDE_CLASS,
@@ -118,7 +124,24 @@ export function setupFullscreen(
 	window.addEventListener( 'resize', scrollToAnchor );
 
 	window.addEventListener( 'keydown', ( event ) => {
-		if ( event.repeat || event.ctrlKey || event.metaKey || event.altKey ) {
+		if ( event.ctrlKey || event.metaKey || event.altKey ) {
+			return;
+		}
+		if ( fullscreen ) {
+			// Holding a key keeps moving through the slides.
+			const index = getSlideIndexForKey(
+				event.key,
+				current,
+				getSlides().length
+			);
+			if ( index !== null ) {
+				event.preventDefault();
+				current = index;
+				showCurrentSlide();
+				return;
+			}
+		}
+		if ( event.repeat ) {
 			return;
 		}
 		if ( event.key.toLowerCase() === 'f' || event.key === 'F11' ) {
