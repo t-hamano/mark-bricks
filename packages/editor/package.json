@@ -44,6 +44,10 @@
 		"./code-previews": {
 			"types": "./src/inspect-previews.ts",
 			"default": "./src/inspect-previews.ts"
+		},
+		"./katex-fonts": {
+			"types": "./src/katex/fonts.ts",
+			"default": "./src/katex/fonts.ts"
 		}
 	},
 	"scripts": {
