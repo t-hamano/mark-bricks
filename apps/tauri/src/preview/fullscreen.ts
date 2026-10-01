@@ -6,7 +6,11 @@ import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 /**
  * Internal dependencies
  */
-import { clampSlideIndex, getSlideIndexForKey } from './navigation';
+import {
+	clampSlideIndex,
+	createWheelTracker,
+	getSlideIndexForKey,
+} from './navigation';
 
 const FULLSCREEN_CLASS = 'is-fullscreen';
 const CURRENT_SLIDE_CLASS = 'is-current';
@@ -36,8 +40,8 @@ function findMostVisibleSlide( slides: Element[] ): number {
  * Lets the `F` and F11 keys toggle full screen, and Escape leave it. Full
  * screen presents the slides one at a time, starting from the one most
  * visible in the scrolling view, and the arrow, Page Up, Page Down, Home and
- * End keys move between them. Outside full screen, the current slide is the
- * one most visible in the scrolling view.
+ * End keys and the wheel move between them. Outside full screen, the current
+ * slide is the one most visible in the scrolling view.
  *
  * @param container     Element the slides are rendered into.
  * @param onChange      Called when full screen starts or ends.
@@ -160,6 +164,22 @@ export function setupFullscreen(
 		showCurrentSlide();
 	} );
 	window.addEventListener( 'scroll', showCurrentSlide, { passive: true } );
+
+	const trackWheel = createWheelTracker();
+	window.addEventListener(
+		'wheel',
+		( event ) => {
+			if ( ! fullscreen || event.ctrlKey ) {
+				return;
+			}
+			const step = trackWheel( event );
+			if ( step !== 0 ) {
+				current = clampSlideIndex( current + step, getSlides().length );
+				showCurrentSlide();
+			}
+		},
+		{ passive: true }
+	);
 
 	window.addEventListener( 'keydown', ( event ) => {
 		if ( event.ctrlKey || event.metaKey || event.altKey ) {
