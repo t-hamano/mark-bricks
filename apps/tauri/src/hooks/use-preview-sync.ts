@@ -39,7 +39,7 @@ export default function usePreviewSync( activeTab: Tab | undefined ) {
 			enterFullscreen: __( 'Enter full screen', 'mark-bricks' ),
 			exitFullscreen: __( 'Exit full screen', 'mark-bricks' ),
 			exitFullscreenHint: __(
-				'Press Escape to exit full screen',
+				'Press F or Escape to exit full screen',
 				'mark-bricks'
 			),
 		};

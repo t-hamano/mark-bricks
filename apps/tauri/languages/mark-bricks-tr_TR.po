@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T07:02:56.046Z\n"
-"PO-Revision-Date: 2026-10-01T07:03:14.757Z\n"
+"POT-Creation-Date: 2026-10-01T07:15:24.847Z\n"
+"PO-Revision-Date: 2026-10-01T07:15:32.125Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -78,8 +78,8 @@ msgid "Checking…"
 msgstr "Denetleniyor…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/preferences-modal/index.tsx:168
+#: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
 msgstr "Kapat"
@@ -300,8 +300,8 @@ msgid "Preferences"
 msgstr "Tercihler"
 
 #: src/hooks/use-preview-sync.ts:41
-msgid "Press Escape to exit full screen"
-msgstr "Tam ekrandan çıkmak için Esc tuşuna basın"
+msgid "Press F or Escape to exit full screen"
+msgstr "Tam ekrandan çıkmak için F veya Esc tuşuna basın"
 
 #: src/components/header-actions/index.tsx:108
 msgid "Preview Slides"

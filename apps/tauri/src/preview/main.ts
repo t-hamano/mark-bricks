@@ -18,6 +18,7 @@ import {
 	PREVIEW_READY_EVENT,
 	type PreviewPayload,
 } from './constants';
+import { createFullscreenControls } from './controls';
 import { setupFullscreen } from './fullscreen';
 import { renderSlides } from './render';
 import './style.css';
@@ -33,9 +34,11 @@ document.body.append( slides, notice );
 // Scales auto-scaling elements, and lays out the slides in WebKit, which
 // cannot render HTML inside an SVG on its own.
 const marpBrowser = browser( slides );
-const showCurrentSlide = setupFullscreen( slides );
+const controls = createFullscreenControls( () => fullscreen.toggle() );
+const fullscreen = setupFullscreen( slides, controls.setFullscreen );
 
 function render( payload: PreviewPayload ) {
+	controls.setLabels( payload.labels );
 	if ( 'notice' in payload ) {
 		style.textContent = '';
 		slides.innerHTML = '';
@@ -53,7 +56,7 @@ function render( payload: PreviewPayload ) {
 	// WebKit has no customized built-in elements, so Marp swaps in its
 	// auto-scaling elements itself, but only for the slides present.
 	marpBrowser.update();
-	showCurrentSlide();
+	fullscreen.showCurrentSlide();
 }
 
 let pending: PreviewPayload | null = null;
