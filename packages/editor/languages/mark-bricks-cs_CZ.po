@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:39:15.995Z\n"
-"PO-Revision-Date: 2026-10-01T13:39:22.143Z\n"
+"POT-Creation-Date: 2026-10-01T13:44:31.640Z\n"
+"PO-Revision-Date: 2026-10-01T13:44:32.360Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -49,7 +49,7 @@ msgstr "Alternativní text"
 msgid "Apply"
 msgstr "Použít"
 
-#: src/components/editor-header/index.tsx:101
+#: src/components/editor-header/index.tsx:104
 msgid "Block Inserter"
 msgstr "Vkladač bloků"
 
@@ -96,7 +96,7 @@ msgstr "Vymazat formátování"
 msgid "Close"
 msgstr "Zavřít"
 
-#: src/components/editor-header/index.tsx:100
+#: src/components/editor-header/index.tsx:103
 msgid "Close Block Inserter"
 msgstr "Zavřít vkládání bloku"
 
@@ -138,7 +138,7 @@ msgid "Display these keyboard shortcuts."
 msgstr "Zobrazit tyto klávesové zkratky."
 
 #: src/components/list-view-sidebar/index.tsx:43
-#: src/components/editor-header/index.tsx:142
+#: src/components/editor-header/index.tsx:145
 msgid "Document Overview"
 msgstr "Přehled dokumentu"
 
@@ -190,7 +190,7 @@ msgstr "Nadpis"
 msgid "Heading %d"
 msgstr "Nadpis %d"
 
-#: src/components/editor-header/index.tsx:141
+#: src/components/editor-header/index.tsx:144
 msgid "Hide Document Overview"
 msgstr "Skrýt přehled dokumentu"
 
@@ -274,7 +274,7 @@ msgstr "Změnit vybraný text na vložený kód."
 msgid "Make the selected text italic."
 msgstr "Kurzíva"
 
-#: src/components/marp-mode-badge/index.tsx:12
+#: src/components/editor-header/index.tsx:176
 msgid "Marp Mode"
 msgstr "Režim Marp"
 
@@ -329,7 +329,7 @@ msgstr "Vložte nebo napište adresu URL"
 msgid "Paste or type URL or file path"
 msgstr "Vložte nebo napište adresu URL nebo cestu k souboru"
 
-#: src/components/editor-header/index.tsx:126
+#: src/components/editor-header/index.tsx:129
 msgid "Redo"
 msgstr "Znovu"
 
@@ -431,7 +431,7 @@ msgstr "Adresa URL nebo cesta k souboru"
 msgid "Underline the selected text."
 msgstr "Podtržení"
 
-#: src/components/editor-header/index.tsx:117
+#: src/components/editor-header/index.tsx:120
 msgid "Undo"
 msgstr "Zpět"
 

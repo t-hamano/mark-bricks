@@ -7,7 +7,6 @@ export {
 	type FrontMatterContextValue,
 } from './components/front-matter-editor/context';
 export { BlockEditor } from './components/block-editor';
-export { MarpModeBadge } from './components/marp-mode-badge';
 export { CodeEditor } from './components/code-editor';
 export type { EditorHandle, EditorStyles } from './components/editor';
 export type { CodeEditorSettings } from './components/text-editor';

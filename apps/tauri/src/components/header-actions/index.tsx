@@ -2,11 +2,7 @@
  * External dependencies
  */
 import { useEffect, useState } from 'react';
-import {
-	MarpModeBadge,
-	useFrontMatter,
-	useKeyboardShortcut,
-} from '@mark-bricks/editor';
+import { useFrontMatter, useKeyboardShortcut } from '@mark-bricks/editor';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
@@ -102,19 +98,16 @@ export default function HeaderActions( {
 			gap="sm"
 		>
 			{ isActiveTabMarp && (
-				<>
-					<MarpModeBadge />
-					<IconButton
-						icon={ external }
-						label={ __( 'Preview Slides', 'mark-bricks' ) }
-						variant="minimal"
-						tone="neutral"
-						size="compact"
-						onClick={ () => {
-							void openPreview();
-						} }
-					/>
-				</>
+				<IconButton
+					icon={ external }
+					label={ __( 'Preview Slides', 'mark-bricks' ) }
+					variant="minimal"
+					tone="neutral"
+					size="compact"
+					onClick={ () => {
+						void openPreview();
+					} }
+				/>
 			) }
 			<Button
 				size="compact"

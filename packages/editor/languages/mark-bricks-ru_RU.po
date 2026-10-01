@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:39:15.995Z\n"
-"PO-Revision-Date: 2026-10-01T13:39:26.006Z\n"
+"POT-Creation-Date: 2026-10-01T13:44:31.640Z\n"
+"PO-Revision-Date: 2026-10-01T13:44:36.192Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -49,7 +49,7 @@ msgstr "Альтернативный текст"
 msgid "Apply"
 msgstr "Применить"
 
-#: src/components/editor-header/index.tsx:101
+#: src/components/editor-header/index.tsx:104
 msgid "Block Inserter"
 msgstr "Вставка блоков"
 
@@ -96,7 +96,7 @@ msgstr "Очистить форматирование"
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/components/editor-header/index.tsx:100
+#: src/components/editor-header/index.tsx:103
 msgid "Close Block Inserter"
 msgstr "Закрыть инструмент вставки блоков"
 
@@ -138,7 +138,7 @@ msgid "Display these keyboard shortcuts."
 msgstr "Показывать эти горячие клавиши."
 
 #: src/components/list-view-sidebar/index.tsx:43
-#: src/components/editor-header/index.tsx:142
+#: src/components/editor-header/index.tsx:145
 msgid "Document Overview"
 msgstr "Обзор документа"
 
@@ -190,7 +190,7 @@ msgstr "Заголовок"
 msgid "Heading %d"
 msgstr "Заголовок %d"
 
-#: src/components/editor-header/index.tsx:141
+#: src/components/editor-header/index.tsx:144
 msgid "Hide Document Overview"
 msgstr "Скрыть обзор документа"
 
@@ -274,7 +274,7 @@ msgstr "Сделать выделенный текст встроенным ко
 msgid "Make the selected text italic."
 msgstr "Сделать выделенный текст курсивом."
 
-#: src/components/marp-mode-badge/index.tsx:12
+#: src/components/editor-header/index.tsx:176
 msgid "Marp Mode"
 msgstr "Режим Marp"
 
@@ -329,7 +329,7 @@ msgstr "Вставить или ввести URL-адрес"
 msgid "Paste or type URL or file path"
 msgstr "Вставьте или введите URL-адрес или путь к файлу"
 
-#: src/components/editor-header/index.tsx:126
+#: src/components/editor-header/index.tsx:129
 msgid "Redo"
 msgstr "Повторить"
 
@@ -431,7 +431,7 @@ msgstr "URL-адрес или путь к файлу"
 msgid "Underline the selected text."
 msgstr "Подчеркнуть выделенный текст."
 
-#: src/components/editor-header/index.tsx:117
+#: src/components/editor-header/index.tsx:120
 msgid "Undo"
 msgstr "Отменить"
 

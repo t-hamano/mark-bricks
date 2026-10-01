@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:39:49.741Z\n"
-"PO-Revision-Date: 2026-10-01T13:39:50.310Z\n"
+"POT-Creation-Date: 2026-10-01T13:44:38.495Z\n"
+"PO-Revision-Date: 2026-10-01T13:44:39.070Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,16 +26,16 @@ msgstr "„%s“ obsahuje neuložené změny. Chcete je zahodit a zavřít?"
 msgid "(Untitled)"
 msgstr "(Bez názvu)"
 
-#: src/components/header-actions/index.tsx:309
+#: src/components/header-actions/index.tsx:302
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "O aplikaci MarkBricks"
 
-#: src/components/header-actions/index.tsx:199
+#: src/components/header-actions/index.tsx:192
 msgid "Access all block and document tools in a single place"
 msgstr "Mějte veškeré nástroje dokumentu a aktivního bloku na jednom místě"
 
-#: src/components/header-actions/index.tsx:278
+#: src/components/header-actions/index.tsx:271
 msgid "Add YAML front matter"
 msgstr "Přidat YAML front matter"
 
@@ -56,7 +56,7 @@ msgstr "Základní velikost písma oblasti obsahu v pixelech."
 msgid "Block shortcuts"
 msgstr "Práce s bloky"
 
-#: src/components/header-actions/index.tsx:338
+#: src/components/header-actions/index.tsx:331
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Zrušit"
@@ -96,7 +96,7 @@ msgid "Close the active tab."
 msgstr "Zavřít aktivní kartu."
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:254
+#: src/components/header-actions/index.tsx:247
 msgid "Code editor"
 msgstr "Editor kódu"
 
@@ -134,7 +134,7 @@ msgstr "Zahodit změny"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Zobrazit hierarchii bloků v dolní části editoru."
 
-#: src/components/header-actions/index.tsx:225
+#: src/components/header-actions/index.tsx:218
 msgid "Editor"
 msgstr "Editor"
 
@@ -158,11 +158,11 @@ msgstr "Přidružení souborů"
 msgid "File shortcuts"
 msgstr "Klávesové zkratky souborů"
 
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:142
 msgid "Files"
 msgstr "Soubory"
 
-#: src/components/header-actions/index.tsx:215
+#: src/components/header-actions/index.tsx:208
 msgid "Focus on one block at a time"
 msgstr "Zaměřte se vždy jen na jeden blok"
 
@@ -187,7 +187,7 @@ msgstr "Obecné zkratky"
 msgid "Handwriting"
 msgstr "Ručně psané"
 
-#: src/components/header-actions/index.tsx:283
+#: src/components/header-actions/index.tsx:276
 msgid "Hide YAML front matter"
 msgstr "Skrýt YAML front matter"
 
@@ -206,7 +206,7 @@ msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Obrázky s relativními cestami se zobrazí po uložení dokumentu."
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:302
+#: src/components/header-actions/index.tsx:295
 msgid "Keyboard shortcuts"
 msgstr "Klávesové zkratky"
 
@@ -240,7 +240,7 @@ msgstr "Maximální šířka oblasti obsahu v pixelech."
 msgid "Monospace"
 msgstr "Neproporcionální"
 
-#: src/components/header-actions/index.tsx:156
+#: src/components/header-actions/index.tsx:149
 msgid "New"
 msgstr "Nový"
 
@@ -282,16 +282,16 @@ msgstr "Otevřít soubor…"
 msgid "Opens the List View panel by default."
 msgstr "Ve výchozím nastavení otevře panel Zobrazení seznamu."
 
-#: src/components/header-actions/index.tsx:164
+#: src/components/header-actions/index.tsx:157
 msgid "Open…"
 msgstr "Otevřít…"
 
-#: src/components/header-actions/index.tsx:136
+#: src/components/header-actions/index.tsx:129
 msgid "Options"
 msgstr "Možnosti"
 
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:318
+#: src/components/header-actions/index.tsx:311
 msgid "Preferences"
 msgstr "Předvolby"
 
@@ -299,7 +299,7 @@ msgstr "Předvolby"
 msgid "Press F or Escape to exit full screen"
 msgstr "Celou obrazovku ukončíte klávesou F nebo Esc"
 
-#: src/components/header-actions/index.tsx:109
+#: src/components/header-actions/index.tsx:103
 msgid "Preview Slides"
 msgstr "Zobrazit náhled snímků"
 
@@ -307,15 +307,15 @@ msgstr "Zobrazit náhled snímků"
 msgid "Previous slide"
 msgstr "Předchozí snímek"
 
-#: src/components/header-actions/index.tsx:339
+#: src/components/header-actions/index.tsx:332
 msgid "Remove"
 msgstr "Odstranit"
 
-#: src/components/header-actions/index.tsx:289
+#: src/components/header-actions/index.tsx:282
 msgid "Remove YAML front matter"
 msgstr "Odebrat YAML front matter"
 
-#: src/components/header-actions/index.tsx:333
+#: src/components/header-actions/index.tsx:326
 msgid "Remove YAML front matter?"
 msgstr "Odebrat YAML front matter?"
 
@@ -336,12 +336,12 @@ msgid "Sans-serif"
 msgstr "Bezpatkové"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:126
-#: src/components/header-actions/index.tsx:172
+#: src/components/header-actions/index.tsx:119
+#: src/components/header-actions/index.tsx:165
 msgid "Save"
 msgstr "Uložit"
 
-#: src/components/header-actions/index.tsx:180
+#: src/components/header-actions/index.tsx:173
 msgid "Save As…"
 msgstr "Uložit jako…"
 
@@ -394,7 +394,7 @@ msgstr "Číslo snímku"
 msgid "Spell check"
 msgstr "Kontrola pravopisu"
 
-#: src/components/header-actions/index.tsx:212
+#: src/components/header-actions/index.tsx:205
 msgid "Spotlight mode"
 msgstr "Režim nevyrušovaného psaní"
 
@@ -411,7 +411,7 @@ msgstr "Velikost tabulátoru"
 msgid "Text formatting"
 msgstr "Formátování textu"
 
-#: src/components/header-actions/index.tsx:334
+#: src/components/header-actions/index.tsx:327
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -430,11 +430,11 @@ msgstr ""
 "Tato platforma nepodporuje nastavení výchozí aplikace přímo v MarkBricks. "
 "Nastavte ji ve správci souborů systému."
 
-#: src/components/header-actions/index.tsx:262
+#: src/components/header-actions/index.tsx:255
 msgid "Tools"
 msgstr "Nástroje"
 
-#: src/components/header-actions/index.tsx:196
+#: src/components/header-actions/index.tsx:189
 msgid "Top toolbar"
 msgstr "Horní panel nástrojů"
 
@@ -463,12 +463,12 @@ msgstr "K dispozici je aktualizace"
 msgid "Update check failed: %s"
 msgstr "Kontrola aktualizací selhala: %s"
 
-#: src/components/header-actions/index.tsx:187
+#: src/components/header-actions/index.tsx:180
 msgid "View"
 msgstr "Zobrazení"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:242
+#: src/components/header-actions/index.tsx:235
 msgid "Visual editor"
 msgstr "Vizuální editor"
 
