@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
+"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -351,11 +351,19 @@ msgstr ""
 msgid "Type / to choose a block"
 msgstr ""
 
-#: src/block-library/list-item/edit.tsx:63
+#: src/block-library/math/preview.tsx:89
+msgid "The formula could not be rendered."
+msgstr ""
+
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
 msgstr ""
 
-#: src/block-library/list-item/edit.tsx:70
+#: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr ""
 
@@ -437,26 +445,22 @@ msgstr ""
 msgid "The diagram could not be rendered."
 msgstr ""
 
-#: src/block-library/code/math-preview.tsx:91
-msgid "The formula could not be rendered."
-msgstr ""
-
-#: src/block-library/code/edit.tsx:73
+#: src/block-library/code/edit.tsx:74
 msgid "Write code…"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:98
+#: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:113
+#: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr ""
 
-#: src/block-library/code/edit.tsx:139
+#: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr ""

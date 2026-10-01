@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-09-29T06:06:06.783Z\n"
-"PO-Revision-Date: 2026-09-29T06:06:27.028Z\n"
+"POT-Creation-Date: 2026-10-01T02:50:31.040Z\n"
+"PO-Revision-Date: 2026-10-01T02:50:44.615Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,7 @@ msgstr "Upozornění"
 msgid "Cell content"
 msgstr "Obsah buňky"
 
-#: src/block-library/code/edit.tsx:98
+#: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "Změnit jazyk"
 
@@ -83,7 +83,7 @@ msgstr "Změnit jazyk"
 msgid "Change the block type after adding a new paragraph."
 msgstr "Změnit typ bloku po přidání nového odstavce."
 
-#: src/block-library/code/edit.tsx:130
+#: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Vyberte jazyk…"
 
@@ -202,7 +202,7 @@ msgstr "Obrázek"
 msgid "Important"
 msgstr "Důležité"
 
-#: src/block-library/list-item/edit.tsx:70
+#: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "Zvětšit odsazení"
 
@@ -242,7 +242,7 @@ msgstr "Vložit nový řádek nahoru"
 msgid "Italic"
 msgstr "Kurzíva"
 
-#: src/block-library/code/edit.tsx:113
+#: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr "Jazyk"
 
@@ -282,7 +282,7 @@ msgstr ""
 "Projděte si strukturu dokumentu a vyřešte problémy, jako jsou prázdné nebo "
 "nesprávné úrovně nadpisů."
 
-#: src/block-library/code/edit.tsx:139
+#: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "Žádný odpovídající jazyk."
 
@@ -298,7 +298,7 @@ msgstr "Ve výchozím nastavení otevřeno"
 msgid "Ordered"
 msgstr "Číslovaný"
 
-#: src/block-library/list-item/edit.tsx:63
+#: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
 msgstr "Zmenšit odsazení"
 
@@ -378,7 +378,7 @@ msgstr "Tabulka"
 msgid "The diagram could not be rendered."
 msgstr "Diagram se nepodařilo vykreslit."
 
-#: src/block-library/code/math-preview.tsx:91
+#: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Vzorec se nepodařilo vykreslit."
 
@@ -447,11 +447,15 @@ msgstr "Varování"
 msgid "Write HTML…"
 msgstr "Začněte psát HTML…"
 
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr "Začněte psát TeX…"
+
 #: src/components/front-matter-editor/index.tsx:38
 msgid "Write YAML front matter…"
 msgstr "Napište YAML front matter…"
 
-#: src/block-library/code/edit.tsx:73
+#: src/block-library/code/edit.tsx:74
 msgid "Write code…"
 msgstr "Napište kód"
 
