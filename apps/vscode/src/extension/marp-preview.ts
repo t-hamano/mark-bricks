@@ -62,14 +62,21 @@ export class MarpPreview {
 						panel.dispose();
 						return;
 					}
+					let document: vscode.TextDocument;
 					try {
-						const document =
+						document =
 							await vscode.workspace.openTextDocument( uri );
-						MarpPreview.start( document, panel );
 					} catch {
 						// The document is gone.
 						panel.dispose();
+						return;
 					}
+					// Another panel may have restored it in the meantime.
+					if ( MarpPreview.sessions.has( uri.toString() ) ) {
+						panel.dispose();
+						return;
+					}
+					MarpPreview.start( document, panel );
 				},
 			}
 		);
@@ -78,12 +85,15 @@ export class MarpPreview {
 	// Opens the document's preview beside the active editor, keeping the
 	// focus there, or reveals the preview if it is already open.
 	public static async show( uri: vscode.Uri ): Promise< void > {
-		const session = MarpPreview.sessions.get( uri.toString() );
-		if ( session ) {
-			session.reveal();
+		if ( MarpPreview.revealOpen( uri ) ) {
 			return;
 		}
 		const document = await vscode.workspace.openTextDocument( uri );
+		// A call made while the document was opening may have opened the
+		// preview already.
+		if ( MarpPreview.revealOpen( uri ) ) {
+			return;
+		}
 		const panel = vscode.window.createWebviewPanel(
 			MarpPreview.viewType,
 			'',
@@ -99,17 +109,30 @@ export class MarpPreview {
 		return MarpPreview.sessions.get( uri.toString() )?.slideCount ?? null;
 	}
 
+	// Reveals the document's preview, returning whether it was open.
+	private static revealOpen( uri: vscode.Uri ): boolean {
+		const session = MarpPreview.sessions.get( uri.toString() );
+		session?.reveal();
+		return session !== undefined;
+	}
+
 	private static start(
 		document: vscode.TextDocument,
 		panel: vscode.WebviewPanel
 	): void {
 		const key = document.uri.toString();
-		MarpPreview.sessions.set(
-			key,
-			new PreviewSession( MarpPreview.extensionUri, document, panel, () =>
-				MarpPreview.sessions.delete( key )
-			)
+		const session = new PreviewSession(
+			MarpPreview.extensionUri,
+			document,
+			panel,
+			() => {
+				// Only forget the preview if it is still this one.
+				if ( MarpPreview.sessions.get( key ) === session ) {
+					MarpPreview.sessions.delete( key );
+				}
+			}
 		);
+		MarpPreview.sessions.set( key, session );
 	}
 }
 
@@ -122,6 +145,10 @@ class PreviewSession {
 
 	private isReady = false;
 	private isDisposed = false;
+
+	// Counts the renders, so one that waited for Marp can tell a newer one
+	// started meanwhile.
+	private renderCount = 0;
 
 	// How many slides the webview shows, once it has rendered.
 	public slideCount: number | null = null;
@@ -210,6 +237,7 @@ class PreviewSession {
 	// Sends the document's slides to the webview, or a notice when the
 	// document is not a Marp slide deck.
 	private async render(): Promise< void > {
+		const renderId = ++this.renderCount;
 		const markdown = this.document.getText();
 		if ( ! isMarpDocument( markdown ) ) {
 			this.post( {
@@ -219,7 +247,7 @@ class PreviewSession {
 			return;
 		}
 		const { renderSlides } = await loadMarpPreview();
-		if ( this.isDisposed ) {
+		if ( this.isDisposed || renderId !== this.renderCount ) {
 			return;
 		}
 		const { html, css } = renderSlides( markdown, {

@@ -92,6 +92,22 @@ describe( 'opening the slide preview', () => {
 		expect( panel.reveal ).toHaveBeenCalledWith( undefined, true );
 	} );
 
+	it( 'opens one panel when asked again while the document opens', async () => {
+		register();
+		const document = createDocument( DOCUMENT_PATH, DECK );
+
+		await Promise.all( [
+			MarpPreview.show( document.uri ),
+			MarpPreview.show( document.uri ),
+		] );
+
+		expect( getWebviewPanels() ).toHaveLength( 1 );
+		expect( getWebviewPanels()[ 0 ].reveal ).toHaveBeenCalledWith(
+			undefined,
+			true
+		);
+	} );
+
 	it( 'allows the webview to load from the bundle and the image folders', async () => {
 		addWorkspaceFolder( '/workspace' );
 		const { panel } = await openPreview();
@@ -183,6 +199,29 @@ describe( 'rendering', () => {
 		expect( countSlides( rendered( panel )[ 1 ] ) ).toBe( 3 );
 	} );
 
+	it( 'drops a render that a newer one replaced while waiting for Marp', async () => {
+		const { document, panel } = await openPreview();
+		panel.send( { type: 'ready' } );
+		await vi.waitFor(
+			() => expect( rendered( panel ) ).toHaveLength( 1 ),
+			WAIT
+		);
+
+		// Starts a render of slides, which waits for Marp, then removes
+		// `marp: true`, whose render posts the notice without waiting.
+		vi.useFakeTimers();
+		document.setText( `${ DECK }\n---\n\n# Three\n` );
+		vi.advanceTimersByTime( 100 );
+		document.setText( '# Notes\n' );
+		vi.advanceTimersByTime( 100 );
+		vi.useRealTimers();
+		await new Promise( ( resolve ) => setTimeout( resolve, 50 ) );
+
+		expect( rendered( panel ).slice( 1 ) ).toEqual( [
+			{ type: 'notice', text: 'Not a Marp document' },
+		] );
+	} );
+
 	it( 'ignores edits before the webview is ready', async () => {
 		const { document, panel } = await openPreview();
 
@@ -219,6 +258,32 @@ describe( 'restoring after a restart', () => {
 		panel.send( { type: 'ready' } );
 		await vi.waitFor( () => expect( rendered( panel ) ).toHaveLength( 1 ) );
 		expect( MarpPreview.getSlideCount( document.uri ) ).toBe( null );
+		panel.send( { type: 'rendered', slideCount: 2 } );
+		expect( MarpPreview.getSlideCount( document.uri ) ).toBe( 2 );
+		panel.dispose();
+	} );
+
+	it( 'closes a panel restored for a document another panel previews', async () => {
+		const document = createDocument( DOCUMENT_PATH, DECK );
+		const { serializer, panel } = restore();
+		const other = new FakeWebviewPanel( MarpPreview.viewType );
+		const onDispose = vi.fn();
+		other.onDidDispose( onDispose );
+		const state = { uri: document.uri.toString() };
+
+		await Promise.all( [
+			serializer.deserializeWebviewPanel(
+				panel as unknown as vscode.WebviewPanel,
+				state
+			),
+			serializer.deserializeWebviewPanel(
+				other as unknown as vscode.WebviewPanel,
+				state
+			),
+		] );
+
+		expect( onDispose ).toHaveBeenCalled();
+		// The preview stays open in the first panel.
 		panel.send( { type: 'rendered', slideCount: 2 } );
 		expect( MarpPreview.getSlideCount( document.uri ) ).toBe( 2 );
 		panel.dispose();
