@@ -24,7 +24,7 @@ document.body.append( slides );
 
 // Scales auto-scaling elements, and lays out the slides in WebKit, which
 // cannot render HTML inside an SVG on its own.
-browser( slides );
+const marpBrowser = browser( slides );
 
 let pending: string | null = null;
 
@@ -32,10 +32,16 @@ let pending: string | null = null;
 function scheduleRender( markdown: string ) {
 	if ( pending === null ) {
 		requestAnimationFrame( () => {
-			const { html, css } = renderSlides( pending ?? '' );
+			// Taken before rendering, so a deck that fails to render does not
+			// stop later edits from being scheduled.
+			const latest = pending ?? '';
 			pending = null;
+			const { html, css } = renderSlides( latest );
 			style.textContent = css;
 			slides.innerHTML = html;
+			// WebKit has no customized built-in elements, so Marp swaps in its
+			// auto-scaling elements itself, but only for the slides present.
+			marpBrowser.update();
 		} );
 	}
 	pending = markdown;
