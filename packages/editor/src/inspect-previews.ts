@@ -1,19 +1,18 @@
 /**
  * Internal dependencies
  */
-import { getMermaidPreviews } from './block-library/code/inspect-previews';
 import {
-	getKatexFonts,
-	getMathPreviews,
-} from './block-library/math/inspect-previews';
+	MATH_LANGUAGE,
+	MERMAID_LANGUAGE,
+} from './block-library/hooks/code-languages';
 
 export type CodePreviewStatus = 'rendered' | 'error' | 'pending';
 
 export type CodePreviewReport = {
 	/**
-	 * The preview of each math block and `mermaid` code block. A math block
-	 * is reported with the language `math`. `pending` means it had not
-	 * rendered when the wait timed out.
+	 * The preview of each math block and `mermaid` code block, in document
+	 * order. A math block is reported with the language `math`. `pending`
+	 * means it had not rendered when the wait timed out.
 	 */
 	previews: Array< { language: string; status: CodePreviewStatus } >;
 	/**
@@ -22,10 +21,6 @@ export type CodePreviewReport = {
 	 */
 	katexFonts: Array< { family: string; status: FontFaceLoadStatus } >;
 };
-
-function getPreviews( canvas: HTMLElement ) {
-	return [ ...getMathPreviews( canvas ), ...getMermaidPreviews( canvas ) ];
-}
 
 /**
  * Reports how the previews of the math and code blocks in the block canvas
@@ -49,10 +44,40 @@ export async function inspectCodePreviews(
 	void canvas.offsetHeight;
 	await canvas.ownerDocument.fonts.ready;
 
-	return {
-		previews: getPreviews( canvas ),
-		katexFonts: getKatexFonts( canvas ),
-	};
+	const katexFonts: CodePreviewReport[ 'katexFonts' ] = [];
+	canvas.ownerDocument.fonts.forEach( ( font ) => {
+		if ( font.family.includes( 'KaTeX_' ) && font.status !== 'unloaded' ) {
+			katexFonts.push( { family: font.family, status: font.status } );
+		}
+	} );
+
+	return { previews: getPreviews( canvas ), katexFonts };
+}
+
+function getPreviews( canvas: HTMLElement ) {
+	return Array.from(
+		canvas.querySelectorAll< HTMLElement >(
+			'.wp-block-code, .wp-block-math'
+		)
+	).flatMap( ( block ) => {
+		const isMath = block.classList.contains( 'wp-block-math' );
+		const language = isMath
+			? MATH_LANGUAGE
+			: ( block.dataset.language ?? '' ).trim().toLowerCase();
+		if ( ! isMath && language !== MERMAID_LANGUAGE ) {
+			return [];
+		}
+		const className = isMath ? 'wp-block-math' : 'wp-block-code';
+		let status: CodePreviewStatus = 'pending';
+		if ( block.querySelector( `.${ className }__preview-error` ) ) {
+			status = 'error';
+		} else if (
+			block.querySelector( `.${ className }__preview-content` )
+		) {
+			status = 'rendered';
+		}
+		return [ { language, status } ];
+	} );
 }
 
 function waitFor(
