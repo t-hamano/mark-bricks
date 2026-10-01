@@ -1,4 +1,15 @@
 /**
+ * External dependencies
+ */
+import { createRoot } from 'react-dom/client';
+
+/**
+ * WordPress dependencies
+ */
+import { ThemeProvider } from '@wordpress/theme';
+import { Button } from '@wordpress/ui';
+
+/**
  * Internal dependencies
  */
 import type { PreviewLabels } from './constants';
@@ -6,10 +17,43 @@ import type { PreviewLabels } from './constants';
 const HINT_DURATION = 3000;
 const VISIBLE_CLASS = 'is-visible';
 
+// Seeds the theme with the window's background, so that the controls and the
+// notice text stay legible on it.
+const BACKGROUND_COLOR = '#3c3c3c';
+
 export type FullscreenControls = {
 	setLabels: ( labels: PreviewLabels ) => void;
 	setFullscreen: ( fullscreen: boolean ) => void;
 };
+
+type Props = {
+	labels: PreviewLabels | null;
+	fullscreen: boolean;
+	onToggle: () => void;
+};
+
+function Toolbar( { labels, fullscreen, onToggle }: Props ) {
+	return (
+		<ThemeProvider isRoot color={ { background: BACKGROUND_COLOR } }>
+			{ labels && (
+				<div className="preview-toolbar">
+					<Button
+						variant="outline"
+						tone="neutral"
+						onClick={ ( event ) => {
+							onToggle();
+							event.currentTarget.blur();
+						} }
+					>
+						{ fullscreen
+							? labels.exitFullscreen
+							: labels.enterFullscreen }
+					</Button>
+				</div>
+			) }
+		</ThemeProvider>
+	);
+}
 
 /**
  * Adds a toolbar with a button that toggles full screen, shown while the
@@ -27,15 +71,7 @@ export function createFullscreenControls(
 	let hintTimer: number | undefined;
 
 	const toolbar = document.createElement( 'div' );
-	toolbar.className = 'preview-toolbar';
-	const button = document.createElement( 'button' );
-	button.type = 'button';
-	button.addEventListener( 'click', () => {
-		toggle();
-		// Keeps Enter and Space from pressing the button again.
-		button.blur();
-	} );
-	toolbar.append( button );
+	const root = createRoot( toolbar );
 
 	const hint = document.createElement( 'div' );
 	hint.className = 'preview-hint';
@@ -52,13 +88,14 @@ export function createFullscreenControls(
 	// order, as it does on screen.
 	document.body.prepend( hint, toolbar );
 
-	function updateButton() {
-		if ( ! labels ) {
-			return;
-		}
-		button.textContent = fullscreen
-			? labels.exitFullscreen
-			: labels.enterFullscreen;
+	function renderToolbar() {
+		root.render(
+			<Toolbar
+				labels={ labels }
+				fullscreen={ fullscreen }
+				onToggle={ toggle }
+			/>
+		);
 	}
 
 	function hideHint() {
@@ -83,11 +120,11 @@ export function createFullscreenControls(
 	return {
 		setLabels( value ) {
 			labels = value;
-			updateButton();
+			renderToolbar();
 		},
 		setFullscreen( value ) {
 			fullscreen = value;
-			updateButton();
+			renderToolbar();
 			hideHint();
 			if ( value ) {
 				showHint();

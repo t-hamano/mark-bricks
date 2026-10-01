@@ -4,12 +4,16 @@ body {
 	background: #3c3c3c;
 }
 
+body {
+	font-family: var(--wpds-typography-font-family-body);
+}
+
 /* Marp wraps every slide in an SVG that scales it to the window's width. */
 .marpit {
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
-	padding: 16px;
+	gap: var(--wpds-dimension-gap-lg);
+	padding: var(--wpds-dimension-padding-lg);
 }
 
 /*
@@ -17,7 +21,7 @@ body {
  * SVG letterboxes and centers the slide inside the shorter box on its own.
  */
 .marpit > svg {
-	max-height: calc(100vh - 32px);
+	max-height: calc(100vh - 2 * var(--wpds-dimension-padding-lg));
 }
 
 /* Full screen presents one slide at a time, letterboxed on black. */
@@ -53,13 +57,12 @@ body {
 	align-items: center;
 	justify-content: flex-end;
 	height: 56px;
-	padding: 0 16px;
-	background: rgb(0 0 0 / 50%);
-	backdrop-filter: blur(8px);
+	padding: 0 var(--wpds-dimension-padding-lg);
+	background: rgb(0 0 0 / 70%);
 	opacity: 0;
 
 	@media not (prefers-reduced-motion) {
-		transition: opacity 0.2s;
+		transition: opacity var(--wpds-motion-duration-md);
 	}
 }
 
@@ -68,42 +71,23 @@ body {
 	opacity: 1;
 }
 
-.preview-toolbar button {
-	height: 40px;
-	padding: 0 16px;
-	border: 1px solid;
-	border-radius: 4px;
-	background: transparent;
-	color: #fff;
-	font: 13px system-ui, sans-serif;
-	cursor: pointer;
-}
-
-.preview-toolbar button:hover {
-	background: rgb(255 255 255 / 15%);
-}
-
-.preview-toolbar button:focus-visible {
-	outline: 2px solid #fff;
-	outline-offset: 2px;
-}
-
 .preview-hint {
 	position: fixed;
-	top: 24px;
+	top: 50%;
 	left: 50%;
 	z-index: 2;
-	padding: 8px 16px;
-	border-radius: 4px;
+	padding: var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-lg);
+	border-radius: var(--wpds-border-radius-md);
 	background: rgb(0 0 0 / 70%);
 	color: #fff;
-	font: 14px system-ui, sans-serif;
+	font-size: var(--wpds-typography-font-size-lg);
+	line-height: var(--wpds-typography-line-height-sm);
 	pointer-events: none;
 	opacity: 0;
-	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
 
 	@media not (prefers-reduced-motion) {
-		transition: opacity 0.3s;
+		transition: opacity var(--wpds-motion-duration-lg);
 	}
 }
 
@@ -116,9 +100,8 @@ body {
 	place-items: center;
 	min-height: 100vh;
 	margin: 0;
-	color: #ccc;
-	font-family: system-ui, sans-serif;
-	font-size: 16px;
+	color: var(--wpds-color-foreground-content-neutral-weak);
+	font-size: var(--wpds-typography-font-size-lg);
 }
 
 .preview-notice[hidden] {
