@@ -26,7 +26,6 @@ import {
 import { useCodeMirror } from '../hooks/use-code-mirror';
 import { MermaidPreview } from './mermaid-preview';
 
-// Math has a block of its own, so it is not offered as a code language.
 const LANGUAGE_SUGGESTIONS = Array.from(
 	new Set(
 		CODE_LANGUAGES.flatMap( ( lang ) => [ lang.name, ...lang.alias ] ).map(
@@ -34,6 +33,7 @@ const LANGUAGE_SUGGESTIONS = Array.from(
 		)
 	)
 )
+	// Math has a block of its own, so it is not offered as a code language.
 	.filter( ( name ) => name !== MATH_LANGUAGE )
 	.sort( ( a, b ) => a.localeCompare( b ) );
 
