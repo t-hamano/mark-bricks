@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:01:22.788Z\n"
-"PO-Revision-Date: 2026-10-01T13:01:45.406Z\n"
+"POT-Creation-Date: 2026-10-01T13:39:15.995Z\n"
+"PO-Revision-Date: 2026-10-01T13:39:24.711Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -273,6 +273,10 @@ msgstr "선택한 텍스트를 인라인 코드로 만듭니다."
 #: src/components/keyboard-shortcuts/hooks.ts:113
 msgid "Make the selected text italic."
 msgstr "선택한 텍스트에 이탤릭체로 적용."
+
+#: src/components/marp-mode-badge/index.tsx:12
+msgid "Marp Mode"
+msgstr "Marp 모드"
 
 #: src/block-library/image/edit.tsx:242
 msgid ""

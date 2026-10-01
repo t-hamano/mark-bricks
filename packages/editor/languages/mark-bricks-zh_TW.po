@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:01:22.788Z\n"
-"PO-Revision-Date: 2026-10-01T13:01:48.319Z\n"
+"POT-Creation-Date: 2026-10-01T13:39:15.995Z\n"
+"PO-Revision-Date: 2026-10-01T13:39:27.269Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -273,6 +273,10 @@ msgstr "將選取內容變更為內嵌程式碼"
 #: src/components/keyboard-shortcuts/hooks.ts:113
 msgid "Make the selected text italic."
 msgstr "將選取內容變更為斜體"
+
+#: src/components/marp-mode-badge/index.tsx:12
+msgid "Marp Mode"
+msgstr "Marp 模式"
 
 #: src/block-library/image/edit.tsx:242
 msgid ""

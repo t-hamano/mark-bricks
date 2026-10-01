@@ -60,3 +60,14 @@ export function joinFrontMatter(
 export function isMarpFrontMatter( frontMatter: string | null ): boolean {
 	return frontMatter !== null && MARP_DIRECTIVE_PATTERN.test( frontMatter );
 }
+
+/**
+ * Whether a Markdown document is a Marp slide deck, which it is when its
+ * front matter contains `marp: true`.
+ *
+ * @param markdown Markdown document.
+ * @return Whether the document is a Marp slide deck.
+ */
+export function isMarpDocument( markdown: string ): boolean {
+	return isMarpFrontMatter( splitFrontMatter( markdown ).frontMatter );
+}

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:01:22.788Z\n"
-"PO-Revision-Date: 2026-10-01T13:01:46.474Z\n"
+"POT-Creation-Date: 2026-10-01T13:39:15.995Z\n"
+"PO-Revision-Date: 2026-10-01T13:39:25.564Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -273,6 +273,10 @@ msgstr "Tornar o texto selecionado um código embutido."
 #: src/components/keyboard-shortcuts/hooks.ts:113
 msgid "Make the selected text italic."
 msgstr "Tornar itálico o texto selecionado."
+
+#: src/components/marp-mode-badge/index.tsx:12
+msgid "Marp Mode"
+msgstr "Modo Marp"
 
 #: src/block-library/image/edit.tsx:242
 msgid ""

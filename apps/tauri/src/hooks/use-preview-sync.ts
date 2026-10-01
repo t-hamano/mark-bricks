@@ -3,6 +3,7 @@
  */
 import { useEffect, useMemo, useRef } from 'react';
 import { emitTo, listen } from '@tauri-apps/api/event';
+import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
  * WordPress dependencies
@@ -12,7 +13,6 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { isMarpDocument } from '../marp';
 import {
 	PREVIEW_DOCUMENT_EVENT,
 	PREVIEW_READY_EVENT,

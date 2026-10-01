@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:01:22.788Z\n"
+"POT-Creation-Date: 2026-10-01T13:39:15.995Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -116,6 +116,10 @@ msgstr ""
 
 #: src/format-library/image/index.tsx:22
 msgid "Inline image"
+msgstr ""
+
+#: src/components/marp-mode-badge/index.tsx:12
+msgid "Marp Mode"
 msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:43
