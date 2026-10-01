@@ -42,8 +42,8 @@
 			"default": "./src/components/editor-theme-provider/index.tsx"
 		},
 		"./code-previews": {
-			"types": "./src/block-library/code/inspect-previews.ts",
-			"default": "./src/block-library/code/inspect-previews.ts"
+			"types": "./src/inspect-previews.ts",
+			"default": "./src/inspect-previews.ts"
 		}
 	},
 	"scripts": {

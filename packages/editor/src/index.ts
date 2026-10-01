@@ -28,4 +28,4 @@ export {
 	inspectCodePreviews,
 	type CodePreviewReport,
 	type CodePreviewStatus,
-} from './block-library/code/inspect-previews';
+} from './inspect-previews';
