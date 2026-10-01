@@ -24,6 +24,32 @@ MarkBricks is delivered as the following applications.
 - **MarkBricks Desktop** — A standalone desktop app for Windows, macOS, and Linux. Built on Tauri 2 + React, it edits local Markdown files with the WordPress block editor. Grab it from the [Download](#download) section below.
 - **MarkBricks VSCode extension** — A VSCode extension that embeds the editor as a custom editor for `.md` files, so you can edit Markdown visually without leaving your editor. Install it from the [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=aki-hamano.mark-bricks-vscode); see [`apps/vscode`](apps/vscode) to build it from source.
 
+## Features
+
+### Block-based editing
+
+Paragraphs, headings, lists, quotes, code, math, images, tables, details, separators, and custom HTML are all blocks. Drag them, move them up and down, duplicate them, or turn one type into another. The List View and Outline show the document structure and jump to any block or heading.
+
+### Plain Markdown in, plain Markdown out
+
+Files stay ordinary `.md` files that any other tool can read. The editor writes back the syntax you chose, such as `*` or `_` for emphasis, `-` or `*` for list markers, and backtick or tilde code fences, so opening and saving a file does not rewrite it. Switch to the text editor at any time to edit the source directly.
+
+### Code, math, and diagrams
+
+Code blocks get syntax highlighting, and Mermaid diagrams render as a live preview. Math blocks render TeX with KaTeX and are saved as `$$`, the syntax GitHub, VS Code, Typora, and Marp all display.
+
+### Front matter and GitHub-style alerts
+
+YAML front matter and GitHub-style alerts (`> [!NOTE]`) can be edited in the visual editor too.
+
+### Marp slide preview (Desktop)
+
+MarkBricks Desktop previews [Marp](https://marp.app/) slide decks. When a document's front matter contains `marp: true`, the header shows **Marp Mode** and a **Preview Slides** button, which opens the slides in a separate window.
+
+### Light and dark themes, in your language
+
+Both apps work in light and dark themes, and the interface is translated into 13 languages.
+
 ## Download
 
 Download **MarkBricks Desktop** for your platform. Older versions and release notes are on the [Releases page](https://github.com/t-hamano/mark-bricks/releases). macOS builds are signed with a Developer ID and notarized by Apple. Windows and Linux installers are currently unsigned; Windows builds are planned to be signed via the [SignPath Foundation](https://signpath.org) — see the [code signing policy](CODE_SIGNING_POLICY.md) for details.
