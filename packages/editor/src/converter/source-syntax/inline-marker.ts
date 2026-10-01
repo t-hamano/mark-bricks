@@ -2,13 +2,13 @@
  * External dependencies
  */
 import { defaultHandlers } from 'mdast-util-to-markdown';
-import type { Handle, Handlers, State } from 'mdast-util-to-markdown';
+import type {
+	Attention,
+	Handle,
+	Handlers,
+	State,
+} from 'mdast-util-to-markdown';
 import type { Emphasis, Nodes, Strong } from 'mdast';
-
-/**
- * Internal dependencies
- */
-import { withOption } from './with-option';
 
 /**
  * The marker characters CommonMark accepts for emphasis and strong emphasis.
@@ -116,18 +116,30 @@ function nodeMarker( node: unknown ): InlineMarker | undefined {
  */
 function createHandler( type: MarkedType ): Handle {
 	const defaultHandler = defaultHandlers[ type ];
-	const handle: Handle = ( ...args ) => {
-		const marker = nodeMarker( args[ 0 ] );
+	const handle: Handle = ( ...args ) => defaultHandler( ...args );
+	// `containerPhrasing` writes the node itself from the `attention` info of
+	// its handler, so the recorded marker is put first among the markers it
+	// may choose from. It still falls back to another marker when the
+	// recorded one would not parse back as the same node.
+	const attention: Attention = ( node, state ) => {
+		const info = defaultHandler.attention( node, state );
+		const marker = nodeMarker( node );
 		return marker
-			? withOption( type, marker, defaultHandler, ...args )
-			: defaultHandler( ...args );
+			? {
+					...info,
+					markers: [
+						marker,
+						...info.markers.filter( ( m ) => m !== marker ),
+					],
+				}
+			: info;
 	};
 	// `containerPhrasing` peeks at the first character of the next sibling to
 	// decide how to escape the current one. Without a `peek` the whole handler
 	// would run for that lookahead, so the marker is reported directly.
 	const peek = ( node: unknown, _parent: unknown, state: State ): string =>
 		nodeMarker( node ) ?? state.options[ type ] ?? '*';
-	return Object.assign( handle, { peek } );
+	return Object.assign( handle, { attention, peek } );
 }
 
 /**

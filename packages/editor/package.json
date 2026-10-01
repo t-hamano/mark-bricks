@@ -88,7 +88,7 @@
 		"hast-util-from-html": "^2.0.3",
 		"katex": "^0.17.0",
 		"mdast-util-math": "^3.0.0",
-		"mdast-util-to-markdown": "^2.1.2",
+		"mdast-util-to-markdown": "^2.1.3",
 		"mermaid": "^12.0.0",
 		"micromark-extension-math": "^3.1.0",
 		"monaco-editor": "^0.57.0",
