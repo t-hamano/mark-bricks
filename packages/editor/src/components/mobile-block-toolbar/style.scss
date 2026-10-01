@@ -15,4 +15,11 @@
 			border-color: var(--wpds-color-stroke-surface-neutral);
 		}
 	}
+
+	// The block mover stretches every child to `width: 100%`, including its
+	// absolutely positioned screen reader descriptions. Keep them sized to the
+	// mover so they do not overflow the toolbar and add a scrollbar.
+	.block-editor-block-mover__move-button-container {
+		position: relative;
+	}
 }
