@@ -12,11 +12,6 @@
 
 A visual Markdown editor that minimizes and specializes the WordPress block editor for Markdown editing.
 
-| Light                                                            | Dark                                                           |
-| ---------------------------------------------------------------- | -------------------------------------------------------------- |
-| ![Visual editor (light)](.github/assets/visual-editor-light.png) | ![Visual editor (dark)](.github/assets/visual-editor-dark.png) |
-| ![Text editor (light)](.github/assets/code-editor-light.png)     | ![Text editor (dark)](.github/assets/code-editor-dark.png)     |
-
 ## Products
 
 MarkBricks is delivered as the following applications.
@@ -28,27 +23,39 @@ MarkBricks is delivered as the following applications.
 
 ### Block-based editing
 
-Paragraphs, headings, lists, quotes, code, math, images, tables, details, separators, and custom HTML are all blocks. Drag them, move them up and down, duplicate them, or turn one type into another. The List View and Outline show the document structure and jump to any block or heading.
+![Block-based editing](.github/assets/feature-block-based-editing.png)
 
-### Plain Markdown in, plain Markdown out
+Every Markdown element is a block you can drag, reorder, duplicate, or transform. The List View and Outline show the document structure. Files stay plain `.md`, and the editor keeps the syntax you chose (`*` or `_`, `-` or `*`, backtick or tilde fences), so saving never rewrites a file. Switch to the text editor at any time to edit the source.
 
-Files stay ordinary `.md` files that any other tool can read. The editor writes back the syntax you chose, such as `*` or `_` for emphasis, `-` or `*` for list markers, and backtick or tilde code fences, so opening and saving a file does not rewrite it. Switch to the text editor at any time to edit the source directly.
+### Text editor
 
-### Code, math, and diagrams
+![Text editor](.github/assets/feature-text-editor.png)
 
-Code blocks get syntax highlighting, and Mermaid diagrams render as a live preview. Math blocks render TeX with KaTeX and are saved as `$$`, the syntax GitHub, VS Code, Typora, and Marp all display.
+The text editor runs on Monaco, the editor behind VS Code. Pressing Enter continues lists, task lists, and quotes, and Backspace removes the whole marker at once. In MarkBricks Desktop, you can set the theme, font size, tab size, and line numbers.
+
+### Live preview for diagrams and math
+
+![Live preview for diagrams and math](.github/assets/feature-live-preview-for-diagrams-and-math.png)
+
+Mermaid diagrams and TeX math (rendered with KaTeX) preview right in the document and update as you type. Select the block to edit its source, and click away to see only the result. Math is saved as `$$`, which GitHub, VS Code, and Marp also display. Other code blocks get syntax highlighting.
 
 ### Front matter and GitHub-style alerts
+
+![Front matter and GitHub-style alerts](.github/assets/feature-front-matter-and-github-style-alerts.png)
 
 YAML front matter and GitHub-style alerts (`> [!NOTE]`) can be edited in the visual editor too.
 
 ### Marp slide preview (Desktop)
+
+![Marp slide preview](.github/assets/feature-marp-slide-preview.png)
 
 MarkBricks Desktop previews [Marp](https://marp.app/) slide decks. When a document's front matter contains `marp: true`, the header shows **Marp Mode** and a **Preview Slides** button, which opens the slides in a separate window.
 
 For an example deck that uses directives, split backgrounds, image filters, tables and math, see [`marp.md`](packages/fixtures/markdown/marp.md).
 
 ### Light and dark themes, in your language
+
+![Light and dark themes, in your language](.github/assets/feature-light-and-dark-themes-in-your-language.png)
 
 Both apps work in light and dark themes, and the interface is translated into 13 languages.
 
