@@ -27,6 +27,7 @@ export const settings: Partial< BlockConfiguration > = {
 		'core/paragraph',
 		'core/heading',
 		'core/code',
+		'core/math',
 		'core/separator',
 		'core/table',
 		'core/image',

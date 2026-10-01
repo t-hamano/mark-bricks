@@ -3,13 +3,12 @@
  */
 import { MATH_LANGUAGE, MERMAID_LANGUAGE } from '../hooks/code-languages';
 
-const PREVIEW_LANGUAGES = [ MATH_LANGUAGE, MERMAID_LANGUAGE ];
-
 export type CodePreviewStatus = 'rendered' | 'error' | 'pending';
 
 export type CodePreviewReport = {
 	/**
-	 * The preview of each `math` and `mermaid` code block, in document order.
+	 * The preview of each math block and `mermaid` code block, in document
+	 * order. A math block is reported with the language `math`.
 	 * `pending` means it had not rendered when the wait timed out.
 	 */
 	previews: Array< { language: string; status: CodePreviewStatus } >;
@@ -21,8 +20,8 @@ export type CodePreviewReport = {
 };
 
 /**
- * Reports how the previews of the code blocks in the block canvas rendered,
- * for the apps' smoke tests.
+ * Reports how the previews of the math and code blocks in the block canvas
+ * rendered, for the apps' smoke tests.
  *
  * @param canvas          The block canvas, as passed to `onRendered`.
  * @param options         Options.
@@ -54,16 +53,24 @@ export async function inspectCodePreviews(
 
 function getPreviews( canvas: HTMLElement ) {
 	return Array.from(
-		canvas.querySelectorAll< HTMLElement >( '.wp-block-code' )
+		canvas.querySelectorAll< HTMLElement >(
+			'.wp-block-code, .wp-block-math'
+		)
 	).flatMap( ( block ) => {
-		const language = ( block.dataset.language ?? '' ).trim().toLowerCase();
-		if ( ! PREVIEW_LANGUAGES.includes( language ) ) {
+		const isMath = block.classList.contains( 'wp-block-math' );
+		const language = isMath
+			? MATH_LANGUAGE
+			: ( block.dataset.language ?? '' ).trim().toLowerCase();
+		if ( ! isMath && language !== MERMAID_LANGUAGE ) {
 			return [];
 		}
+		const className = isMath ? 'wp-block-math' : 'wp-block-code';
 		let status: CodePreviewStatus = 'pending';
-		if ( block.querySelector( '.wp-block-code__preview-error' ) ) {
+		if ( block.querySelector( `.${ className }__preview-error` ) ) {
 			status = 'error';
-		} else if ( block.querySelector( '.wp-block-code__preview-content' ) ) {
+		} else if (
+			block.querySelector( `.${ className }__preview-content` )
+		) {
 			status = 'rendered';
 		}
 		return [ { language, status } ];
