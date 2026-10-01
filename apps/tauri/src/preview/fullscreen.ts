@@ -134,7 +134,7 @@ export function setupFullscreen(
 			if ( ! fullscreen || event.ctrlKey ) {
 				return;
 			}
-			const step = trackWheel( event.deltaY, event.timeStamp );
+			const step = trackWheel( event );
 			if ( step !== 0 ) {
 				current = clampSlideIndex( current + step, getSlides().length );
 				showCurrentSlide();

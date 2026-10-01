@@ -13,6 +13,9 @@ const WHEEL_THRESHOLD = 20;
 // the first.
 const WHEEL_REPEAT_DISTANCE = 100;
 
+// `WheelEvent.DOM_DELTA_PIXEL`, which the tests' environment does not define.
+const DOM_DELTA_PIXEL = 0;
+
 /**
  * Keeps a slide index within a deck.
  *
@@ -58,24 +61,32 @@ export function getSlideIndexForKey(
  * it scrolls a little, and then to one more slide each time it scrolls
  * further, however many wheel events it sends.
  *
- * @return Function that takes a wheel event's `deltaY` and `timeStamp`, and
- *         returns how many slides to move: 1, -1, or 0 to stay.
+ * A single event moves one slide at most, however far it scrolls: a mouse
+ * wheel set to scroll many lines at a time sends several hundred pixels per
+ * notch, which would otherwise skip slides.
+ *
+ * @return Function that takes a wheel event and returns how many slides to
+ *         move: 1, -1, or 0 to stay.
  */
 export function createWheelTracker(): (
-	deltaY: number,
-	timeStamp: number
+	event: Pick< WheelEvent, 'deltaY' | 'deltaMode' | 'timeStamp' >
 ) => number {
 	let lastTimeStamp = -Infinity;
 	let distance = 0;
 	let moved = false;
 
-	return ( deltaY, timeStamp ) => {
+	return ( { deltaY, deltaMode, timeStamp } ) => {
 		if ( timeStamp - lastTimeStamp > WHEEL_GESTURE_GAP ) {
 			distance = 0;
 			moved = false;
 		}
 		lastTimeStamp = timeStamp;
-		distance += deltaY;
+		// Takes an event that scrolls by lines or pages, such as with Windows
+		// set to scroll one screen at a time, as one notch of the wheel.
+		distance +=
+			deltaMode === DOM_DELTA_PIXEL
+				? deltaY
+				: Math.sign( deltaY ) * WHEEL_REPEAT_DISTANCE;
 		const threshold = moved ? WHEEL_REPEAT_DISTANCE : WHEEL_THRESHOLD;
 		if ( Math.abs( distance ) < threshold ) {
 			return 0;
