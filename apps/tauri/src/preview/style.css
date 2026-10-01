@@ -20,6 +20,29 @@ body {
 	max-height: calc(100vh - 32px);
 }
 
+/* Full screen presents one slide at a time, letterboxed on black. */
+.is-fullscreen,
+.is-fullscreen body {
+	overflow: hidden;
+	background: #000;
+}
+
+.is-fullscreen .marpit {
+	gap: 0;
+	padding: 0;
+}
+
+.is-fullscreen .marpit > svg {
+	display: none;
+}
+
+.is-fullscreen .marpit > svg.is-current {
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	max-height: none;
+}
+
 .preview-notice {
 	display: grid;
 	place-items: center;
