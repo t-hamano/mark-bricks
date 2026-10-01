@@ -240,7 +240,7 @@ export default function Edit( props: BlockEditProps ) {
 								description={
 									isMarp
 										? __(
-												'Marp keywords such as bg, w:200px or sepia set the layout and size. The other words describe the image for screen readers.',
+												'Marp keywords such as bg, w:200px or sepia set the layout and size. The other words become the alt text, or the caption of a background image.',
 												'mark-bricks'
 											)
 										: __(
