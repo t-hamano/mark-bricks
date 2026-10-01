@@ -8,6 +8,8 @@ import * as vscode from 'vscode';
  */
 import type { CodePreviewReport } from '../shared/messages';
 import { MarkBricksEditorProvider } from './editor-provider';
+import { trackMarpContext } from './marp-context';
+import { MarpPreviewProvider } from './marp-preview-provider';
 
 const SHADOWED_COMMANDS = [
 	'markBricks.suppressUndo',
@@ -31,10 +33,15 @@ function resolveActiveResource(): vscode.Uri | undefined {
 export type ExtensionApi = {
 	isEditorRendered: ( uri: vscode.Uri ) => boolean;
 	getCodePreviews: ( uri: vscode.Uri ) => CodePreviewReport | null;
+	getSlideCount: ( uri: vscode.Uri ) => number | null;
 };
 
 export function activate( context: vscode.ExtensionContext ): ExtensionApi {
-	context.subscriptions.push( MarkBricksEditorProvider.register( context ) );
+	context.subscriptions.push(
+		MarkBricksEditorProvider.register( context ),
+		MarpPreviewProvider.register( context ),
+		trackMarpContext()
+	);
 
 	for ( const command of SHADOWED_COMMANDS ) {
 		context.subscriptions.push(
@@ -62,7 +69,24 @@ export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 					'default'
 				);
 			}
-		} )
+		} ),
+		vscode.commands.registerCommand(
+			'markBricks.openMarpPreview',
+			async () => {
+				const uri = resolveActiveResource();
+				if ( uri ) {
+					await vscode.commands.executeCommand(
+						'vscode.openWith',
+						uri,
+						MarpPreviewProvider.viewType,
+						{
+							viewColumn: vscode.ViewColumn.Beside,
+							preserveFocus: true,
+						}
+					);
+				}
+			}
+		)
 	);
 
 	return {
@@ -70,6 +94,7 @@ export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 			MarkBricksEditorProvider.isEditorRendered( uri ),
 		getCodePreviews: ( uri ) =>
 			MarkBricksEditorProvider.getCodePreviews( uri ),
+		getSlideCount: ( uri ) => MarpPreviewProvider.getSlideCount( uri ),
 	};
 }
 

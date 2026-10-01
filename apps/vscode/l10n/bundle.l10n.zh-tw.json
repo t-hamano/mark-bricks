@@ -1,4 +1,5 @@
 {
 	"MarkBricks could not apply edits to {0}.": "MarkBricks 無法將編輯套用至 {0}。",
-	"Images": "圖片"
+	"Images": "圖片",
+	"Not a Marp document": "不是 Marp 文件"
 }

@@ -3,7 +3,6 @@
  */
 import * as path from 'node:path';
 import * as vscode from 'vscode';
-import { parseImageSrc } from '@mark-bricks/image-path';
 
 /**
  * Internal dependencies
@@ -14,6 +13,7 @@ import type {
 	ImageError,
 	WebviewMessage,
 } from '../shared/messages';
+import { getImageRoots, resolveImageUri } from './images';
 import { CONFIGURATION_SECTION, readSettings, writeSetting } from './settings';
 import { getHtmlForWebview } from './webview-html';
 
@@ -133,12 +133,7 @@ class EditorSession {
 
 		// Beyond the bundle, allow the folders local images are resolved
 		// against (see `resolveImageSrc`).
-		this.imageRoots = [
-			vscode.Uri.joinPath( document.uri, '..' ),
-			...( vscode.workspace.workspaceFolders ?? [] ).map(
-				( folder ) => folder.uri
-			),
-		];
+		this.imageRoots = getImageRoots( document.uri );
 		panel.webview.options = {
 			enableScripts: true,
 			localResourceRoots: [ webviewRoot, ...this.imageRoots ],
@@ -264,7 +259,7 @@ class EditorSession {
 
 	// Maps an image path from the markdown to a URL the webview can load.
 	private resolveImageSrc( src: string ): string {
-		const uri = this.resolveImageUri( src );
+		const uri = resolveImageUri( src, this.document.uri );
 		return uri ? this.panel.webview.asWebviewUri( uri ).toString() : src;
 	}
 
@@ -279,7 +274,7 @@ class EditorSession {
 		if ( /^http:/i.test( src ) ) {
 			return 'insecureUrl';
 		}
-		const uri = this.resolveImageUri( src );
+		const uri = resolveImageUri( src, this.document.uri );
 		if ( ! uri ) {
 			return null;
 		}
@@ -295,35 +290,6 @@ class EditorSession {
 			);
 		} );
 		return isInsideRoots ? null : 'outsideRoots';
-	}
-
-	// Resolves an image path from the markdown to the file it points to:
-	// relative paths against the document, `/`-rooted ones against its
-	// workspace folder (as the built-in markdown preview does), and absolute
-	// file system paths and `file:` URLs as is. Returns `null` for URLs the
-	// webview loads directly.
-	private resolveImageUri( src: string ): vscode.Uri | null {
-		const parsedImage = parseImageSrc( src );
-		switch ( parsedImage.type ) {
-			case 'url':
-				return null;
-			case 'absolute':
-				return vscode.Uri.file( parsedImage.path );
-			case 'rooted': {
-				const folder = vscode.workspace.getWorkspaceFolder(
-					this.document.uri
-				);
-				return folder
-					? vscode.Uri.joinPath( folder.uri, parsedImage.path )
-					: vscode.Uri.file( parsedImage.path );
-			}
-			case 'relative':
-				return vscode.Uri.joinPath(
-					this.document.uri,
-					'..',
-					parsedImage.path
-				);
-		}
 	}
 
 	// Sends changes made outside the webview, e.g. in a text editor, to the

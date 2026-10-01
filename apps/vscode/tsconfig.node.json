@@ -5,5 +5,9 @@
 		"allowSyntheticDefaultImports": true,
 		"types": [ "node" ]
 	},
-	"include": [ "vite.config.ts", "vitest.config.ts" ]
+	"include": [
+		"vite.config.ts",
+		"vite.preview.config.ts",
+		"vitest.config.ts"
+	]
 }

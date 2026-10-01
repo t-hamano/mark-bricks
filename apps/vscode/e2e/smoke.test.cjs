@@ -12,6 +12,8 @@ const vscode = require( 'vscode' );
 const EXTENSION_ID = 'aki-hamano.mark-bricks-vscode';
 const VIEW_TYPE = 'markBricks.visualEditor';
 const FIXTURE_PATH = require.resolve( '@mark-bricks/fixtures/smoke-test.md' );
+const MARP_FIXTURE_PATH = path.join( path.dirname( FIXTURE_PATH ), 'marp.md' );
+const PREVIEW_VIEW_TYPE = 'markBricks.marpPreview';
 
 /**
  * Resolves once `condition` returns true, or rejects after `timeout`.
@@ -41,6 +43,7 @@ suite( 'MarkBricks smoke test', () => {
 		const documentPath = path.join( tempDir, 'smoke-test.md' );
 		await fs.copyFile( FIXTURE_PATH, documentPath );
 		documentUri = vscode.Uri.file( documentPath );
+		await fs.copyFile( MARP_FIXTURE_PATH, path.join( tempDir, 'marp.md' ) );
 	} );
 
 	suiteTeardown( async () => {
@@ -112,6 +115,29 @@ suite( 'MarkBricks smoke test', () => {
 			katexFonts.filter( ( font ) => font.status !== 'loaded' ),
 			[],
 			'KaTeX fonts did not load'
+		);
+	} );
+
+	test( 'previews the slides of a Marp deck', async () => {
+		const api = vscode.extensions.getExtension( EXTENSION_ID ).exports;
+		const deckUri = vscode.Uri.file( path.join( tempDir, 'marp.md' ) );
+
+		await vscode.commands.executeCommand(
+			'vscode.openWith',
+			deckUri,
+			PREVIEW_VIEW_TYPE
+		);
+
+		// One per slide of the fixture.
+		await waitFor(
+			() => api.getSlideCount( deckUri ) === 10,
+			60000,
+			'The slide preview did not show the slides'
+		);
+
+		// Leaves the visual editor active for `suiteTeardown` to revert.
+		await vscode.commands.executeCommand(
+			'workbench.action.closeActiveEditor'
 		);
 	} );
 } );

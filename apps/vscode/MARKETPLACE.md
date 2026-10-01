@@ -22,6 +22,10 @@ Mermaid diagrams and TeX math (rendered with KaTeX) preview right in the documen
 
 YAML front matter and GitHub-style alerts (`> [!NOTE]`) can be edited in the visual editor too.
 
+### Marp slide preview
+
+When a document's front matter contains `marp: true`, the visual editor's header shows **Marp Mode**, and the **Preview Slides** button in the editor title bar opens the [Marp](https://marp.app/) slides beside the editor. The preview updates as you type, in the text editor and the visual editor alike.
+
 ### Light and dark themes, in your language
 
 ![Light and dark themes, in your language](https://github.com/t-hamano/mark-bricks/raw/HEAD/.github/assets/feature-light-and-dark-themes-in-your-language.png)

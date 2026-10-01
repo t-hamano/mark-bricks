@@ -1,4 +1,5 @@
 {
 	"MarkBricks could not apply edits to {0}.": "MarkBricks, düzenlemeleri {0} dosyasına uygulayamadı.",
-	"Images": "Görseller"
+	"Images": "Görseller",
+	"Not a Marp document": "Marp belgesi değil"
 }

@@ -1,4 +1,5 @@
 {
 	"MarkBricks could not apply edits to {0}.": "MarkBricks не удалось применить изменения к {0}.",
-	"Images": "Изображения"
+	"Images": "Изображения",
+	"Not a Marp document": "Это не документ Marp"
 }

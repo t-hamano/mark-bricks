@@ -6,6 +6,7 @@
 	},
 	"include": [
 		"src/webview",
+		"src/preview",
 		"src/shared",
 		"../../packages/editor/src/block-library/wp-block-library.d.ts"
 	]

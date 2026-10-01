@@ -72,6 +72,37 @@ export class WorkspaceEdit {
 	}
 }
 
+export class Disposable {
+	public constructor( private readonly callOnDispose: () => void ) {}
+
+	public static from( ...disposables: { dispose: () => void }[] ) {
+		return new Disposable( () => {
+			for ( const disposable of disposables ) {
+				disposable.dispose();
+			}
+		} );
+	}
+
+	public dispose(): void {
+		this.callOnDispose();
+	}
+}
+
+export enum ViewColumn {
+	Beside = -2,
+}
+
+export class TabInputText {
+	public constructor( public readonly uri: Uri ) {}
+}
+
+export class TabInputCustom {
+	public constructor(
+		public readonly uri: Uri,
+		public readonly viewType: string
+	) {}
+}
+
 export enum ConfigurationTarget {
 	Global = 1,
 	Workspace = 2,
@@ -95,7 +126,8 @@ export type ConfigurationChangeEvent = {
 export class FakeTextDocument {
 	public constructor(
 		public readonly uri: Uri,
-		private text: string
+		private text: string,
+		public readonly languageId = 'markdown'
 	) {}
 
 	public getText(): string {
@@ -133,6 +165,10 @@ function createState() {
 		onWillSaveTextDocument: new EventEmitter< TextDocumentWillSaveEvent >(),
 		onDidChangeConfiguration:
 			new EventEmitter< ConfigurationChangeEvent >(),
+		onDidOpenTextDocument: new EventEmitter< FakeTextDocument >(),
+		onDidChangeTabs: new EventEmitter< void >(),
+		onDidChangeTabGroups: new EventEmitter< void >(),
+		activeTabInput: undefined as unknown,
 		documents: [] as FakeTextDocument[],
 		workspaceFolders: [] as { uri: Uri }[],
 		config: new Map< string, ConfigValue >(),
@@ -153,6 +189,9 @@ export const workspace = {
 			uri.path.startsWith( `${ folder.uri.path }/` )
 		);
 	},
+	get textDocuments() {
+		return state.documents;
+	},
 	asRelativePath( uri: Uri ) {
 		return uri.path;
 	},
@@ -167,12 +206,28 @@ export const workspace = {
 	onDidChangeConfiguration: (
 		listener: Listener< ConfigurationChangeEvent >
 	) => state.onDidChangeConfiguration.event( listener ),
+	onDidOpenTextDocument: ( listener: Listener< FakeTextDocument > ) =>
+		state.onDidOpenTextDocument.event( listener ),
 };
 
 export const window = {
 	registerCustomEditorProvider: vi.fn(),
 	showErrorMessage: vi.fn(),
 	showOpenDialog: vi.fn(),
+	tabGroups: {
+		get activeTabGroup() {
+			return {
+				activeTab:
+					state.activeTabInput === undefined
+						? undefined
+						: { input: state.activeTabInput },
+			};
+		},
+		onDidChangeTabs: ( listener: Listener< void > ) =>
+			state.onDidChangeTabs.event( listener ),
+		onDidChangeTabGroups: ( listener: Listener< void > ) =>
+			state.onDidChangeTabGroups.event( listener ),
+	},
 };
 
 export const commands = {
@@ -236,10 +291,29 @@ export function resetVscode(): void {
 	);
 }
 
-export function createDocument( fsPath: string, text: string ) {
-	const document = new FakeTextDocument( Uri.file( fsPath ), text );
+export function createDocument(
+	fsPath: string,
+	text: string,
+	languageId?: string
+) {
+	const document = new FakeTextDocument(
+		Uri.file( fsPath ),
+		text,
+		languageId
+	);
 	state.documents.push( document );
 	return document;
+}
+
+/**
+ * Makes a tab with the given input the active one, notifying
+ * `onDidChangeTabs` listeners.
+ *
+ * @param input Input of the tab, or `undefined` for no active tab.
+ */
+export function setActiveTab( input: unknown ): void {
+	state.activeTabInput = input;
+	state.onDidChangeTabs.fire();
 }
 
 export function addWorkspaceFolder( fsPath: string ): void {

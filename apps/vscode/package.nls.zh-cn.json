@@ -3,6 +3,8 @@
 	"customEditor.visualEditor.displayName": "可视化编辑器",
 	"command.openVisual.title": "使用 MarkBricks 打开",
 	"command.openText.title": "使用文本编辑器打开",
+	"customEditor.marpPreview.displayName": "幻灯片预览",
+	"command.openMarpPreview.title": "预览幻灯片",
 	"config.showListViewByDefault.description": "默认打开列表视图面板。",
 	"config.showBlockBreadcrumbs.description": "在编辑器底部显示区块层级路径。",
 	"config.topToolbar.description": "在一个位置访问所有区块和文档工具。",

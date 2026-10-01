@@ -29,11 +29,24 @@
 	],
 	"main": "./dist/extension.cjs",
 	"l10n": "./l10n",
+	"activationEvents": [
+		"onLanguage:markdown"
+	],
 	"contributes": {
 		"customEditors": [
 			{
 				"viewType": "markBricks.visualEditor",
 				"displayName": "%customEditor.visualEditor.displayName%",
+				"selector": [
+					{
+						"filenamePattern": "*.md"
+					}
+				],
+				"priority": "option"
+			},
+			{
+				"viewType": "markBricks.marpPreview",
+				"displayName": "%customEditor.marpPreview.displayName%",
 				"selector": [
 					{
 						"filenamePattern": "*.md"
@@ -50,8 +63,28 @@
 			{
 				"command": "markBricks.openText",
 				"title": "%command.openText.title%"
+			},
+			{
+				"command": "markBricks.openMarpPreview",
+				"title": "%command.openMarpPreview.title%",
+				"icon": "$(open-preview)"
 			}
 		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "markBricks.openMarpPreview",
+					"when": "markBricks.isMarp",
+					"group": "navigation"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "markBricks.openMarpPreview",
+					"when": "markBricks.isMarp"
+				}
+			]
+		},
 		"keybindings": [
 			{
 				"command": "markBricks.suppressUndo",
@@ -175,8 +208,12 @@
 		"e2e:smoke": "vscode-test"
 	},
 	"dependencies": {
+		"@fontsource/lato": "^5.3.0",
+		"@fontsource/roboto-mono": "^5.3.0",
 		"@mark-bricks/editor": "workspace:*",
 		"@mark-bricks/image-path": "workspace:*",
+		"@mark-bricks/marp-preview": "workspace:*",
+		"@marp-team/marp-core": "^4.4.0",
 		"@wordpress/base-styles": "^13.2.0",
 		"@wordpress/i18n": "^6.29.0",
 		"@wordpress/icons": "^17.0.0",

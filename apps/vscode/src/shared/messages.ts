@@ -88,3 +88,26 @@ export type WebviewMessage =
 			requestId: number;
 			path: string;
 	  };
+
+// Sent to the slide preview: the document's slides, or a notice when the
+// document is not a Marp slide deck. The host translates the notice, since
+// the preview loads no translations.
+export type PreviewHostMessage =
+	| {
+			type: 'slides';
+			html: string;
+			css: string;
+	  }
+	| {
+			type: 'notice';
+			text: string;
+	  };
+
+export type PreviewWebviewMessage =
+	| {
+			type: 'ready';
+	  }
+	| {
+			type: 'rendered';
+			slideCount: number;
+	  };

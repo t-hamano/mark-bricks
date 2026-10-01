@@ -45,11 +45,14 @@ Mermaid diagrams and TeX math (rendered with KaTeX) preview right in the documen
 
 YAML front matter and GitHub-style alerts (`> [!NOTE]`) can be edited in the visual editor too.
 
-### Marp slide preview (Desktop)
+### Marp slide preview
 
 ![Marp slide preview](.github/assets/feature-marp-slide-preview.png)
 
-MarkBricks Desktop previews [Marp](https://marp.app/) slide decks. When a document's front matter contains `marp: true`, the header shows **Marp Mode** and a **Preview Slides** button, which opens the slides in a separate window.
+MarkBricks previews [Marp](https://marp.app/) slide decks. When a document's front matter contains `marp: true`, the editor header shows **Marp Mode**, and a **Preview Slides** button opens the slides:
+
+- **Desktop**: the button in the header opens them in a separate window.
+- **VSCode**: the button in the editor title bar opens them beside the editor, from both the text editor and the visual editor.
 
 For an example deck that uses directives, split backgrounds, image filters, tables and math, see [`marp.md`](packages/fixtures/markdown/marp.md).
 
