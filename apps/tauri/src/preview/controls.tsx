@@ -81,7 +81,15 @@ function Pager( { labels, current, count, onNavigate }: PagerProps ) {
 					 * that keyboard input does not open it again, and the
 					 * toolbar hides once the pointer leaves.
 					 */ }
-					<Select.Popup finalFocus={ false }>
+					<Select.Popup
+						finalFocus={ false }
+						// Opens the list below the trigger rather than over it,
+						// where it keeps within the window and scrolls a long
+						// deck.
+						positioner={
+							<Select.Positioner alignItemWithTrigger={ false } />
+						}
+					>
 						{ items.map( ( item ) => (
 							<Select.Item
 								key={ item.value }

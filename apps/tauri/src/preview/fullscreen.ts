@@ -169,7 +169,14 @@ export function setupFullscreen(
 	window.addEventListener(
 		'wheel',
 		( event ) => {
-			if ( ! fullscreen || event.ctrlKey ) {
+			if (
+				! fullscreen ||
+				event.ctrlKey ||
+				// Leaves the wheel to the slide list of the pager while it is
+				// open.
+				( event.target instanceof Element &&
+					event.target.closest( '[role="listbox"]' ) )
+			) {
 				return;
 			}
 			const step = trackWheel( event );
