@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T07:15:24.847Z\n"
-"PO-Revision-Date: 2026-10-01T07:15:33.427Z\n"
+"POT-Creation-Date: 2026-10-01T08:40:20.908Z\n"
+"PO-Revision-Date: 2026-10-01T08:40:49.001Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -255,11 +255,15 @@ msgstr "新增檔案"
 msgid "New…"
 msgstr "新增…"
 
+#: src/hooks/use-preview-sync.ts:46
+msgid "Next slide"
+msgstr "下一張投影片"
+
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "沒有開啟的檔案"
 
-#: src/hooks/use-preview-sync.ts:48
+#: src/hooks/use-preview-sync.ts:51
 msgid "Not a Marp document"
 msgstr "不是 Marp 文件"
 
@@ -300,6 +304,10 @@ msgstr "按 F 或 Esc 鍵結束全螢幕"
 #: src/components/header-actions/index.tsx:108
 msgid "Preview Slides"
 msgstr "預覽投影片"
+
+#: src/hooks/use-preview-sync.ts:45
+msgid "Previous slide"
+msgstr "上一張投影片"
 
 #: src/components/header-actions/index.tsx:338
 msgid "Remove"
@@ -379,6 +387,10 @@ msgstr "顯示行號"
 #: src/actions/index.ts:299
 msgid "Slide Preview"
 msgstr "投影片預覽"
+
+#: src/hooks/use-preview-sync.ts:47
+msgid "Slide number"
+msgstr "投影片編號"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"

@@ -12,6 +12,9 @@ export type PreviewLabels = {
 	enterFullscreen: string;
 	exitFullscreen: string;
 	exitFullscreenHint: string;
+	previousSlide: string;
+	nextSlide: string;
+	slideNumber: string;
 };
 
 // What the preview window shows: the active document's slides, or a notice

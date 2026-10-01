@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T07:15:24.847Z\n"
+"POT-Creation-Date: 2026-10-01T08:40:20.908Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -100,7 +100,19 @@ msgstr ""
 msgid "Press F or Escape to exit full screen"
 msgstr ""
 
-#: src/hooks/use-preview-sync.ts:48
+#: src/hooks/use-preview-sync.ts:45
+msgid "Previous slide"
+msgstr ""
+
+#: src/hooks/use-preview-sync.ts:46
+msgid "Next slide"
+msgstr ""
+
+#: src/hooks/use-preview-sync.ts:47
+msgid "Slide number"
+msgstr ""
+
+#: src/hooks/use-preview-sync.ts:51
 msgid "Not a Marp document"
 msgstr ""
 

@@ -36,23 +36,35 @@ function findMostVisibleSlide( slides: Element[] ): number {
  * Lets the `F` and F11 keys toggle full screen, and Escape leave it. Full
  * screen presents the slides one at a time, starting from the one most
  * visible in the scrolling view, and the arrow, Page Up, Page Down, Home and
- * End keys move between them.
+ * End keys move between them. Outside full screen, the current slide is the
+ * one most visible in the scrolling view.
  *
- * @param container Element the slides are rendered into.
- * @param onChange  Called when full screen starts or ends.
+ * @param container     Element the slides are rendered into.
+ * @param onChange      Called when full screen starts or ends.
+ * @param onSlideChange Called with the index of the current slide and the
+ *                      number of slides, when either changes.
  * @return `showCurrentSlide` to call after the slides are rendered again, to
- *         keep the current slide shown, and `toggle` to toggle full screen.
+ *         keep the current slide shown, `toggle` to toggle full screen, and
+ *         `goToSlide` to move to a slide.
  */
 export function setupFullscreen(
 	container: HTMLElement,
-	onChange: ( fullscreen: boolean ) => void
-): { showCurrentSlide: () => void; toggle: () => void } {
+	onChange: ( fullscreen: boolean ) => void,
+	onSlideChange: ( current: number, count: number ) => void
+): {
+	showCurrentSlide: () => void;
+	toggle: () => void;
+	goToSlide: ( index: number ) => void;
+} {
 	const appWindow = getCurrentWebviewWindow();
 	let fullscreen = false;
 	let current = 0;
 	// The slide to keep in view while the window shrinks back from full
-	// screen, until the user moves the view on their own.
+	// screen, or after moving to a slide outside full screen, until the user
+	// moves the view on their own.
 	let anchor: number | null = null;
+	// What `onSlideChange` was last called with.
+	let reported = { current: -1, count: -1 };
 
 	function getSlides() {
 		return Array.from(
@@ -64,6 +76,12 @@ export function setupFullscreen(
 
 	function showCurrentSlide() {
 		const slides = getSlides();
+		if ( anchor !== null ) {
+			anchor = clampSlideIndex( anchor, slides.length );
+		}
+		if ( ! fullscreen ) {
+			current = anchor ?? findMostVisibleSlide( slides );
+		}
 		// An edit can remove slides while one of them is shown.
 		current = clampSlideIndex( current, slides.length );
 		slides.forEach( ( slide, index ) =>
@@ -72,6 +90,13 @@ export function setupFullscreen(
 				fullscreen && index === current
 			)
 		);
+		if (
+			current !== reported.current ||
+			slides.length !== reported.count
+		) {
+			reported = { current, count: slides.length };
+			onSlideChange( current, slides.length );
+		}
 	}
 
 	function scrollToAnchor() {
@@ -85,16 +110,15 @@ export function setupFullscreen(
 			return;
 		}
 		if ( value ) {
-			current = findMostVisibleSlide( getSlides() );
+			current = anchor ?? findMostVisibleSlide( getSlides() );
 			anchor = null;
+		} else {
+			anchor = current;
 		}
 		fullscreen = value;
 		document.documentElement.classList.toggle( FULLSCREEN_CLASS, value );
 		showCurrentSlide();
-		if ( ! value ) {
-			anchor = current;
-			scrollToAnchor();
-		}
+		scrollToAnchor();
 		onChange( value );
 	}
 
@@ -112,6 +136,16 @@ export function setupFullscreen(
 		setFullscreen( ! fullscreen );
 	}
 
+	function goToSlide( index: number ) {
+		if ( fullscreen ) {
+			current = index;
+		} else {
+			anchor = clampSlideIndex( index, getSlides().length );
+			scrollToAnchor();
+		}
+		showCurrentSlide();
+	}
+
 	for ( const type of [ 'wheel', 'pointerdown', 'keydown' ] as const ) {
 		window.addEventListener(
 			type,
@@ -121,7 +155,11 @@ export function setupFullscreen(
 			{ passive: true }
 		);
 	}
-	window.addEventListener( 'resize', scrollToAnchor );
+	window.addEventListener( 'resize', () => {
+		scrollToAnchor();
+		showCurrentSlide();
+	} );
+	window.addEventListener( 'scroll', showCurrentSlide, { passive: true } );
 
 	window.addEventListener( 'keydown', ( event ) => {
 		if ( event.ctrlKey || event.metaKey || event.altKey ) {
@@ -157,5 +195,5 @@ export function setupFullscreen(
 	// button on macOS.
 	void appWindow.onResized( () => void syncWithWindow() );
 
-	return { showCurrentSlide, toggle };
+	return { showCurrentSlide, toggle, goToSlide };
 }

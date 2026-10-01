@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T07:15:24.847Z\n"
-"PO-Revision-Date: 2026-10-01T07:15:28.913Z\n"
+"POT-Creation-Date: 2026-10-01T08:40:20.908Z\n"
+"PO-Revision-Date: 2026-10-01T08:40:26.960Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -255,11 +255,15 @@ msgstr "新規ファイル"
 msgid "New…"
 msgstr "新規…"
 
+#: src/hooks/use-preview-sync.ts:46
+msgid "Next slide"
+msgstr "次のスライド"
+
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "開いているファイルがありません"
 
-#: src/hooks/use-preview-sync.ts:48
+#: src/hooks/use-preview-sync.ts:51
 msgid "Not a Marp document"
 msgstr "Marp 文書ではありません"
 
@@ -300,6 +304,10 @@ msgstr "F キーまたは Esc キーを押すと全画面表示を終了しま�
 #: src/components/header-actions/index.tsx:108
 msgid "Preview Slides"
 msgstr "スライドをプレビュー"
+
+#: src/hooks/use-preview-sync.ts:45
+msgid "Previous slide"
+msgstr "前のスライド"
 
 #: src/components/header-actions/index.tsx:338
 msgid "Remove"
@@ -379,6 +387,10 @@ msgstr "行番号を表示"
 #: src/actions/index.ts:299
 msgid "Slide Preview"
 msgstr "スライドプレビュー"
+
+#: src/hooks/use-preview-sync.ts:47
+msgid "Slide number"
+msgstr "スライド番号"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"
