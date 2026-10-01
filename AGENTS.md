@@ -16,10 +16,10 @@ Release commits are produced by `npm version` and formatted automatically as
 ## Changes spanning an app and shared packages
 
 Each app's changelog collects commits touching its own directory plus the
-shared packages (`packages/editor`, `packages/image-path`). A single commit that
-changes both an app (`apps/tauri` or `apps/vscode`) and a shared package
-therefore appears in the other app's changelog too, even when the change only
-matters to one app.
+shared packages (`packages/editor`, `packages/image-path`,
+`packages/marp-preview`). A single commit that changes both an app
+(`apps/tauri` or `apps/vscode`) and a shared package therefore appears in the
+other app's changelog too, even when the change only matters to one app.
 
 When a task for one app requires modifying a shared package:
 

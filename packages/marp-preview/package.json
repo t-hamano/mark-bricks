@@ -1,0 +1,28 @@
+{
+	"name": "@mark-bricks/marp-preview",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Renders Marp slide decks for the hosts' slide previews.",
+	"author": "Aki Hamano",
+	"license": "GPL-2.0-or-later",
+	"type": "module",
+	"main": "./index.ts",
+	"types": "./index.ts",
+	"exports": {
+		".": {
+			"types": "./index.ts",
+			"default": "./index.ts"
+		}
+	},
+	"scripts": {
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"@marp-team/marp-core": "^4.4.0"
+	},
+	"devDependencies": {
+		"@mark-bricks/fixtures": "workspace:*",
+		"vitest": "^5.0.2"
+	}
+}

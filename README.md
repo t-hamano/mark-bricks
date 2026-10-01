@@ -77,6 +77,7 @@ This is a pnpm monorepo. The editor itself lives in a host-agnostic package that
 - **[`apps/vscode`](apps/vscode)** — VSCode extension. Embeds the editor as a custom editor for `.md` files.
 - **[`packages/editor`](packages/editor)** — `@mark-bricks/editor`. The host-agnostic React component at the heart of MarkBricks. Ships the blocks, inline formats, a Monaco-based source editor, and i18n.
 - **[`packages/image-path`](packages/image-path)** — `@mark-bricks/image-path`. Shared, dependency-free parser for Markdown image paths and URLs, used by the Tauri and VSCode hosts to resolve images against the document.
+- **[`packages/marp-preview`](packages/marp-preview)** — `@mark-bricks/marp-preview`. Renders Marp slide decks for the hosts' slide previews, with images resolved by each host.
 - **[`packages/i18n-tools`](packages/i18n-tools)** — `@mark-bricks/i18n-tools`. Shared i18n build tooling. Provides the `mb-i18n` CLI that runs the gettext PO/JSON pipeline.
 - **[`packages/fixtures`](packages/fixtures)** — `@mark-bricks/fixtures`. Shared Markdown fixtures consumed by Storybook, the round-trip tests, and manual smoke tests.
 - **[`storybook`](storybook)** — Storybook workspace for previewing the editor.
