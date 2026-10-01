@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T07:15:24.847Z\n"
-"PO-Revision-Date: 2026-10-01T07:15:27.029Z\n"
+"POT-Creation-Date: 2026-10-01T08:40:20.908Z\n"
+"PO-Revision-Date: 2026-10-01T08:40:45.763Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -255,11 +255,15 @@ msgstr "Nuevo archivo"
 msgid "New…"
 msgstr "Nuevo…"
 
+#: src/hooks/use-preview-sync.ts:46
+msgid "Next slide"
+msgstr "Diapositiva siguiente"
+
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "No hay ningún archivo abierto"
 
-#: src/hooks/use-preview-sync.ts:48
+#: src/hooks/use-preview-sync.ts:51
 msgid "Not a Marp document"
 msgstr "No es un documento de Marp"
 
@@ -300,6 +304,10 @@ msgstr "Pulsa F o Esc para salir de la pantalla completa"
 #: src/components/header-actions/index.tsx:108
 msgid "Preview Slides"
 msgstr "Previsualizar diapositivas"
+
+#: src/hooks/use-preview-sync.ts:45
+msgid "Previous slide"
+msgstr "Diapositiva anterior"
 
 #: src/components/header-actions/index.tsx:338
 msgid "Remove"
@@ -379,6 +387,10 @@ msgstr "Mostrar números de línea"
 #: src/actions/index.ts:299
 msgid "Slide Preview"
 msgstr "Vista previa de diapositivas"
+
+#: src/hooks/use-preview-sync.ts:47
+msgid "Slide number"
+msgstr "Número de diapositiva"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"

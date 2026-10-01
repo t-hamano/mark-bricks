@@ -42,6 +42,9 @@ export default function usePreviewSync( activeTab: Tab | undefined ) {
 				'Press F or Escape to exit full screen',
 				'mark-bricks'
 			),
+			previousSlide: __( 'Previous slide', 'mark-bricks' ),
+			nextSlide: __( 'Next slide', 'mark-bricks' ),
+			slideNumber: __( 'Slide number', 'mark-bricks' ),
 		};
 		return isMarpDocument( markdown )
 			? { labels, markdown, documentPath }

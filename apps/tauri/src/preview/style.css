@@ -66,9 +66,18 @@ body {
 	}
 }
 
+/* The slide list opens outside the toolbar, so it does not keep it hovered. */
 .preview-toolbar:hover,
-.preview-toolbar:focus-within {
+.preview-toolbar:focus-within,
+.preview-toolbar:has([data-popup-open]) {
 	opacity: 1;
+}
+
+.preview-pager {
+	display: flex;
+	align-items: center;
+	gap: var(--wpds-dimension-gap-xs);
+	margin-inline-end: auto;
 }
 
 .preview-hint {
