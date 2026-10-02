@@ -2,5 +2,11 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks no pudo aplicar las modificaciones a {0}.",
 	"Images": "Imágenes",
 	"Not a Marp document": "No es un documento de Marp",
-	"Slide Preview: {0}": "Vista previa de diapositivas: {0}"
+	"Slide Preview: {0}": "Vista previa de diapositivas: {0}",
+	"Enter slide mode": "Modo diapositiva",
+	"Exit slide mode": "Salir del modo diapositiva",
+	"Press F or Escape to exit slide mode": "Pulsa F o Esc para salir del modo diapositiva",
+	"Previous slide": "Diapositiva anterior",
+	"Next slide": "Diapositiva siguiente",
+	"Slide number": "Número de diapositiva"
 }
