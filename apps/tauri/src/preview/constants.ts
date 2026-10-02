@@ -1,3 +1,8 @@
+/**
+ * External dependencies
+ */
+import type { PreviewLabels } from '@mark-bricks/marp-preview/controls';
+
 // Label of the slide preview window, as `open_preview` creates it.
 export const PREVIEW_WINDOW = 'preview';
 
@@ -6,16 +11,6 @@ export const PREVIEW_READY_EVENT = 'preview-ready';
 
 // Sent to the preview window with a `PreviewPayload` for the active document.
 export const PREVIEW_DOCUMENT_EVENT = 'preview-document';
-
-// Text of the preview window's own controls.
-export type PreviewLabels = {
-	enterFullscreen: string;
-	exitFullscreen: string;
-	exitFullscreenHint: string;
-	previousSlide: string;
-	nextSlide: string;
-	slideNumber: string;
-};
 
 // What the preview window shows: the active document's slides, or a notice
 // when it is not a Marp slide deck. The main window translates the notice and
