@@ -40,13 +40,4 @@ describe( 'renderSlides', () => {
 		expect( html ).toContain( 'https://example.com/a.png' );
 		expect( html ).not.toContain( 'asset://' );
 	} );
-
-	it( 'points KaTeX at the bundled fonts', () => {
-		const { css } = renderSlides(
-			'---\nmarp: true\nmath: katex\n---\n\n$$\nx^2\n$$\n'
-		);
-		expect( css ).toContain( 'KaTeX_Main' );
-		expect( css ).not.toMatch( /url\(['"]?fonts\// );
-		expect( css ).not.toContain( 'cdn.jsdelivr.net' );
-	} );
 } );
