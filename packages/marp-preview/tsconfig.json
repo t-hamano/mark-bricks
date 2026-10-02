@@ -1,7 +1,8 @@
 {
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
-		"lib": [ "ES2020", "DOM" ]
+		"jsx": "react-jsx",
+		"lib": [ "ES2020", "DOM", "DOM.Iterable" ]
 	},
-	"include": [ "*.ts", "browser", "../fixtures/raw.d.ts" ]
+	"include": [ "*.ts", "browser", "controls", "../fixtures/raw.d.ts" ]
 }
