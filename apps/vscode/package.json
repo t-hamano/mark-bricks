@@ -199,12 +199,9 @@
 		"e2e:smoke": "vscode-test"
 	},
 	"dependencies": {
-		"@fontsource/lato": "^5.3.0",
-		"@fontsource/roboto-mono": "^5.3.0",
 		"@mark-bricks/editor": "workspace:*",
 		"@mark-bricks/image-path": "workspace:*",
 		"@mark-bricks/marp-preview": "workspace:*",
-		"@marp-team/marp-core": "^4.4.0",
 		"@wordpress/base-styles": "^13.2.0",
 		"@wordpress/i18n": "^6.29.0",
 		"@wordpress/icons": "^17.0.0",
