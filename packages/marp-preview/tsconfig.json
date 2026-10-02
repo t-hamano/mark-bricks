@@ -3,5 +3,5 @@
 	"compilerOptions": {
 		"lib": [ "ES2020", "DOM" ]
 	},
-	"include": [ "*.ts", "../fixtures/raw.d.ts" ]
+	"include": [ "*.ts", "browser", "../fixtures/raw.d.ts" ]
 }
