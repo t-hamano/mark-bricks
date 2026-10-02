@@ -67,12 +67,16 @@ export function createSlidePreview(
 		if ( event.ctrlKey || event.metaKey || event.altKey || event.repeat ) {
 			return;
 		}
-		if ( keys.includes( event.key.toLowerCase() ) ) {
+		// Checked first, so that Escape only ever leaves the slide mode, even
+		// when it is one of the toggle keys.
+		if ( event.key === 'Escape' ) {
+			if ( slideMode.isEnabled() ) {
+				event.preventDefault();
+				requestSlideMode( false );
+			}
+		} else if ( keys.includes( event.key.toLowerCase() ) ) {
 			event.preventDefault();
 			requestSlideMode( ! slideMode.isEnabled() );
-		} else if ( event.key === 'Escape' && slideMode.isEnabled() ) {
-			event.preventDefault();
-			requestSlideMode( false );
 		}
 	} );
 

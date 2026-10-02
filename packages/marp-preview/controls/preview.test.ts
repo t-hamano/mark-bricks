@@ -132,6 +132,19 @@ describe( 'createSlidePreview', () => {
 		expect( other.isSlideMode() ).toBe( false );
 	} );
 
+	it( 'only leaves the slide mode with Escape, even as a toggle key', () => {
+		const preview = createSlidePreview( document.body, {
+			toggleKeys: [ 'f', 'Escape' ],
+		} );
+
+		press( 'Escape' );
+		expect( preview.isSlideMode() ).toBe( false );
+
+		press( 'f' );
+		press( 'Escape' );
+		expect( preview.isSlideMode() ).toBe( false );
+	} );
+
 	it( 'ignores the keys with modifiers or while held', () => {
 		const preview = createSlidePreview( document.body );
 
