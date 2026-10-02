@@ -1,0 +1,56 @@
+.preview-toolbar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	height: 56px;
+	padding: 0 var(--wpds-dimension-padding-lg);
+	background: rgb(0 0 0 / 70%);
+	opacity: 0;
+
+	@media not (prefers-reduced-motion) {
+		transition: opacity var(--wpds-motion-duration-md);
+	}
+}
+
+/* The slide list opens outside the toolbar, so it does not keep it hovered. */
+.preview-toolbar:hover,
+.preview-toolbar:focus-within,
+.preview-toolbar:has([data-popup-open]) {
+	opacity: 1;
+}
+
+.preview-pager {
+	display: flex;
+	align-items: center;
+	gap: var(--wpds-dimension-gap-xs);
+	margin-inline-end: auto;
+}
+
+.preview-hint {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	padding: var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-lg);
+	border-radius: var(--wpds-border-radius-md);
+	background: rgb(0 0 0 / 70%);
+	color: #fff;
+	font-size: var(--wpds-typography-font-size-lg);
+	line-height: var(--wpds-typography-line-height-sm);
+	pointer-events: none;
+	opacity: 0;
+	transform: translate(-50%, -50%);
+
+	@media not (prefers-reduced-motion) {
+		transition: opacity var(--wpds-motion-duration-lg);
+	}
+}
+
+.preview-hint.is-visible {
+	opacity: 1;
+}
