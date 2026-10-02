@@ -26,6 +26,8 @@ YAML front matter and GitHub-style alerts (`> [!NOTE]`) can be edited in the vis
 
 When a document's front matter contains `marp: true`, the visual editor's header shows **Marp Mode** and a **Preview Slides** button, which opens the [Marp](https://marp.app/) slides beside the editor. In the text editor, the button is in the editor title bar. The preview updates as you type, in the text editor and the visual editor alike.
 
+To present, **Enter slide mode** in the preview's toolbar, or press `F` in the preview, to show one slide at a time within the panel. Move between the slides with the arrow keys, Page Up, Page Down, Home, End or the wheel, and press `Escape` to leave. Maximize the panel or enter VS Code's full screen to fill the screen.
+
 ### Light and dark themes, in your language
 
 ![Light and dark themes, in your language](https://github.com/t-hamano/mark-bricks/raw/HEAD/.github/assets/feature-light-and-dark-themes-in-your-language.png)

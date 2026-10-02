@@ -51,8 +51,10 @@ YAML front matter and GitHub-style alerts (`> [!NOTE]`) can be edited in the vis
 
 MarkBricks previews [Marp](https://marp.app/) slide decks. When a document's front matter contains `marp: true`, the editor header shows **Marp Mode**, and a **Preview Slides** button opens the slides:
 
-- **Desktop**: the button in the header opens them in a separate window.
-- **VSCode**: the button opens them beside the editor. It sits next to **Marp Mode** in the visual editor, and in the editor title bar of the text editor.
+- **Desktop**: the button in the header opens them in a separate window. **Enter full screen** in its toolbar, or `F` or `F11`, presents the slides one at a time in full screen.
+- **VSCode**: the button opens them beside the editor. It sits next to **Marp Mode** in the visual editor, and in the editor title bar of the text editor. **Enter slide mode** in the preview's toolbar, or `F`, presents the slides one at a time within the panel.
+
+While presenting, move between the slides with the arrow keys, Page Up, Page Down, Home, End or the wheel, and press `Escape` to go back to the scrolling view.
 
 For an example deck that uses directives, split backgrounds, image filters, tables and math, see [`marp.md`](packages/fixtures/markdown/marp.md).
 

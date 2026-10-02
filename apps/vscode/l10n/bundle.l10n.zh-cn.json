@@ -2,5 +2,11 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks 无法将编辑应用到 {0}。",
 	"Images": "图片",
 	"Not a Marp document": "不是 Marp 文档",
-	"Slide Preview: {0}": "幻灯片预览: {0}"
+	"Slide Preview: {0}": "幻灯片预览: {0}",
+	"Enter slide mode": "幻灯片模式",
+	"Exit slide mode": "退出幻灯片模式",
+	"Press F or Escape to exit slide mode": "按 F 或 Esc 键退出幻灯片模式",
+	"Previous slide": "上一张幻灯片",
+	"Next slide": "下一张幻灯片",
+	"Slide number": "幻灯片编号"
 }

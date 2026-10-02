@@ -98,13 +98,27 @@ export type PreviewState = {
 	uri: string;
 };
 
-// Sent to the slide preview: the document it shows, then the document's
-// slides, or a notice when the document is not a Marp slide deck. The host
-// translates the notice, since the preview loads no translations.
+// Text of the slide preview's controls. Repeated from `PreviewLabels` in
+// `@mark-bricks/marp-preview/controls`, since the extension is built without
+// the DOM types it uses.
+export type PreviewLabels = {
+	enterSlideMode: string;
+	exitSlideMode: string;
+	exitSlideModeHint: string;
+	previousSlide: string;
+	nextSlide: string;
+	slideNumber: string;
+};
+
+// Sent to the slide preview: the document it shows with the text of its
+// controls, then the document's slides, or a notice when the document is not
+// a Marp slide deck. The host translates the text, since the preview loads no
+// translations.
 export type PreviewHostMessage =
 	| {
 			type: 'document';
 			uri: string;
+			labels: PreviewLabels;
 	  }
 	| {
 			type: 'slides';
