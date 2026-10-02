@@ -1,4 +1,3 @@
-export { createPreviewControls, type PreviewControls } from './controls';
 export {
 	createSlidePreview,
 	type SlidePreview,
