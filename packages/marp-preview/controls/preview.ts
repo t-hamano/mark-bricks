@@ -1,0 +1,85 @@
+/**
+ * Internal dependencies
+ */
+import type { PreviewLabels } from '..';
+import { createSlideMode, createSlideView, type SlideView } from '../browser';
+import { createPreviewControls } from './controls';
+
+export type SlidePreviewOptions = {
+	// Keys that toggle the slide mode, as `KeyboardEvent.key`, matched
+	// regardless of case. `Escape` always leaves it.
+	toggleKeys?: string[];
+	// Called when the user asks to turn the slide mode on or off, with the
+	// toolbar's button or the keys. Defaults to `setSlideMode`. A host that
+	// ties the slide mode to something else, such as the window's full
+	// screen, handles it there and calls `setSlideMode` once it follows.
+	onSlideModeRequest?: ( enabled: boolean ) => void;
+	// Called with the number of slides each time new content is shown.
+	onRender?: ( slideCount: number ) => void;
+};
+
+export type SlidePreview = {
+	render: SlideView[ 'render' ];
+	setLabels: ( labels: PreviewLabels ) => void;
+	isSlideMode: () => boolean;
+	setSlideMode: ( enabled: boolean ) => void;
+};
+
+/**
+ * Sets up a slide preview page: the slides with their controls and the slide
+ * mode, which the toolbar's button and the keys turn on and off.
+ *
+ * @param container Element to add the slides and the notice to.
+ * @param options   How the page toggles the slide mode, and what it does
+ *                  after each render.
+ * @return `render` to show content on the next frame, `setLabels` to set the
+ *         controls' text, and `isSlideMode` and `setSlideMode` to read and
+ *         turn the slide mode on or off.
+ */
+export function createSlidePreview(
+	container: HTMLElement,
+	options: SlidePreviewOptions = {}
+): SlidePreview {
+	const { toggleKeys = [ 'f' ], onSlideModeRequest, onRender } = options;
+	const view = createSlideView( container, () => {
+		slideMode.showCurrentSlide();
+		onRender?.( view.getSlides().length );
+	} );
+	const controls = createPreviewControls(
+		() => requestSlideMode( ! slideMode.isEnabled() ),
+		( index ) => slideMode.goToSlide( index )
+	);
+	const slideMode = createSlideMode( view, controls.setSlide );
+	const keys = toggleKeys.map( ( key ) => key.toLowerCase() );
+
+	function setSlideMode( enabled: boolean ) {
+		if ( enabled !== slideMode.isEnabled() ) {
+			slideMode.setEnabled( enabled );
+			controls.setSlideMode( enabled );
+		}
+	}
+
+	function requestSlideMode( enabled: boolean ) {
+		( onSlideModeRequest ?? setSlideMode )( enabled );
+	}
+
+	window.addEventListener( 'keydown', ( event ) => {
+		if ( event.ctrlKey || event.metaKey || event.altKey || event.repeat ) {
+			return;
+		}
+		if ( keys.includes( event.key.toLowerCase() ) ) {
+			event.preventDefault();
+			requestSlideMode( ! slideMode.isEnabled() );
+		} else if ( event.key === 'Escape' && slideMode.isEnabled() ) {
+			event.preventDefault();
+			requestSlideMode( false );
+		}
+	} );
+
+	return {
+		render: view.render,
+		setLabels: controls.setLabels,
+		isSlideMode: slideMode.isEnabled,
+		setSlideMode,
+	};
+}

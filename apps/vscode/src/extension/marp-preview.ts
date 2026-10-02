@@ -4,13 +4,13 @@
 import * as path from 'node:path';
 import * as vscode from 'vscode';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
+import type { PreviewLabels } from '@mark-bricks/marp-preview';
 
 /**
  * Internal dependencies
  */
 import type {
 	PreviewHostMessage,
-	PreviewLabels,
 	PreviewState,
 	PreviewWebviewMessage,
 } from '../shared/messages';

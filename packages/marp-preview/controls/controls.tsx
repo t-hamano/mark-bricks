@@ -15,6 +15,7 @@ import '@wordpress/theme/design-tokens.css';
 /**
  * Internal dependencies
  */
+import type { PreviewLabels } from '..';
 import './style.css';
 
 const HINT_DURATION = 3000;
@@ -24,17 +25,6 @@ const VISIBLE_CLASS = 'is-visible';
 // background, so that the controls and text in the theme's colors stay
 // legible on the toolbar's backdrop and a dark page.
 const BACKGROUND_COLOR = '#3c3c3c';
-
-// Text of the controls. The host translates it, since the preview pages load
-// no translations.
-export type PreviewLabels = {
-	enterSlideMode: string;
-	exitSlideMode: string;
-	exitSlideModeHint: string;
-	previousSlide: string;
-	nextSlide: string;
-	slideNumber: string;
-};
 
 export type PreviewControls = {
 	setLabels: ( labels: PreviewLabels ) => void;

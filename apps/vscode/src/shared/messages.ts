@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import type { PreviewLabels } from '@mark-bricks/marp-preview';
+
+/**
  * Internal dependencies
  */
 import type { Settings, WritableSettingKey } from './settings';
@@ -96,18 +101,6 @@ export type WebviewMessage =
 // restore its panel after a restart.
 export type PreviewState = {
 	uri: string;
-};
-
-// Text of the slide preview's controls. Repeated from `PreviewLabels` in
-// `@mark-bricks/marp-preview/controls`, since the extension is built without
-// the DOM types it uses.
-export type PreviewLabels = {
-	enterSlideMode: string;
-	exitSlideMode: string;
-	exitSlideModeHint: string;
-	previousSlide: string;
-	nextSlide: string;
-	slideNumber: string;
 };
 
 // Sent to the slide preview: the document it shows with the text of its

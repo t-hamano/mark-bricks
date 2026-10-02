@@ -18,8 +18,8 @@
 			"default": "./browser/index.ts"
 		},
 		"./controls": {
-			"types": "./controls/index.tsx",
-			"default": "./controls/index.tsx"
+			"types": "./controls/index.ts",
+			"default": "./controls/index.ts"
 		}
 	},
 	"scripts": {

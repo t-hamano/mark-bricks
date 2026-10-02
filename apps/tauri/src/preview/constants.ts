@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { PreviewLabels } from '@mark-bricks/marp-preview/controls';
+import type { PreviewLabels } from '@mark-bricks/marp-preview';
 
 // Label of the slide preview window, as `open_preview` creates it.
 export const PREVIEW_WINDOW = 'preview';

@@ -9,7 +9,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 /**
  * Internal dependencies
  */
-import { createPreviewControls, type PreviewLabels } from '.';
+import type { PreviewLabels } from '..';
+import { createPreviewControls } from './controls';
 
 const labels: PreviewLabels = {
 	enterSlideMode: 'Enter slide mode',
