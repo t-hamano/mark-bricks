@@ -3,11 +3,7 @@
  */
 import { emitTo } from '@tauri-apps/api/event';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
-import {
-	createSlideMode,
-	createSlideView,
-} from '@mark-bricks/marp-preview/browser';
-import { createPreviewControls } from '@mark-bricks/marp-preview/controls';
+import { createSlidePreview } from '@mark-bricks/marp-preview/controls';
 
 /**
  * WordPress dependencies
@@ -26,15 +22,12 @@ import { setupFullscreen } from './fullscreen';
 import { renderSlides } from './render';
 import './style.css';
 
-const view = createSlideView( document.body, () =>
-	slideMode.showCurrentSlide()
-);
-const controls = createPreviewControls(
-	() => fullscreen.toggle(),
-	( index ) => slideMode.goToSlide( index )
-);
-const slideMode = createSlideMode( view, controls.setSlide );
-const fullscreen = setupFullscreen( slideMode, controls.setSlideMode );
+// The slide mode comes with full screen, which `F` and F11 toggle.
+const preview = createSlidePreview( document.body, {
+	toggleKeys: [ 'f', 'F11' ],
+	onSlideModeRequest: ( enabled ) => fullscreen.setFullscreen( enabled ),
+} );
+const fullscreen = setupFullscreen( preview );
 
 async function main() {
 	await getCurrentWebviewWindow().listen< PreviewPayload >(
@@ -42,8 +35,8 @@ async function main() {
 		( { payload } ) =>
 			// Renders the deck on the next frame, once however often it
 			// arrives.
-			view.render( () => {
-				controls.setLabels( payload.labels );
+			preview.render( () => {
+				preview.setLabels( payload.labels );
 				return 'notice' in payload
 					? { notice: payload.notice }
 					: renderSlides( payload.markdown, payload.documentPath );

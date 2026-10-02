@@ -2,60 +2,33 @@
  * External dependencies
  */
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
-import type { SlideMode } from '@mark-bricks/marp-preview/browser';
+import type { SlidePreview } from '@mark-bricks/marp-preview/controls';
 
 /**
- * Lets the `F` and F11 keys toggle full screen, and Escape leave it. Full
- * screen presents the slides in the slide mode.
+ * Ties the slide mode to the window's full screen: the preview enters full
+ * screen with it, and leaves it when full screen ends.
  *
- * @param slideMode The slide mode of the preview.
- * @param onChange  Called when full screen starts or ends.
- * @return `toggle` to toggle full screen.
+ * @param preview The slide preview of the window.
+ * @return `setFullscreen` to enter or leave full screen with the slide mode.
  */
-export function setupFullscreen(
-	slideMode: SlideMode,
-	onChange: ( fullscreen: boolean ) => void
-): { toggle: () => void } {
+export function setupFullscreen( preview: SlidePreview ): {
+	setFullscreen: ( fullscreen: boolean ) => void;
+} {
 	const appWindow = getCurrentWebviewWindow();
 
-	function update( value: boolean ) {
-		if ( value === slideMode.isEnabled() ) {
-			return;
-		}
-		slideMode.setEnabled( value );
-		onChange( value );
-	}
-
 	async function syncWithWindow() {
-		update( await appWindow.isFullscreen() );
+		preview.setSlideMode( await appWindow.isFullscreen() );
 	}
 
 	function setFullscreen( value: boolean ) {
 		// Switches the view right away, rather than once the window resizes.
-		update( value );
+		preview.setSlideMode( value );
 		appWindow.setFullscreen( value ).catch( syncWithWindow );
 	}
-
-	function toggle() {
-		setFullscreen( ! slideMode.isEnabled() );
-	}
-
-	window.addEventListener( 'keydown', ( event ) => {
-		if ( event.ctrlKey || event.metaKey || event.altKey || event.repeat ) {
-			return;
-		}
-		if ( event.key.toLowerCase() === 'f' || event.key === 'F11' ) {
-			event.preventDefault();
-			toggle();
-		} else if ( event.key === 'Escape' && slideMode.isEnabled() ) {
-			event.preventDefault();
-			setFullscreen( false );
-		}
-	} );
 
 	// Full screen can also end without the `F` key, such as with the green
 	// button on macOS.
 	void appWindow.onResized( () => void syncWithWindow() );
 
-	return { toggle };
+	return { setFullscreen };
 }
