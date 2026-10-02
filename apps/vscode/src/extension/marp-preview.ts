@@ -4,7 +4,7 @@
 import * as path from 'node:path';
 import * as vscode from 'vscode';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
-import type { PreviewLabels } from '@mark-bricks/marp-preview';
+import type { PreviewLabels } from '@mark-bricks/marp-preview/render';
 
 /**
  * Internal dependencies
@@ -21,13 +21,13 @@ import { getHtmlForPreview } from './preview-html';
 const RENDER_DELAY_MS = 100;
 
 let marpPreview: Promise<
-	typeof import( '@mark-bricks/marp-preview' )
+	typeof import( '@mark-bricks/marp-preview/render' )
 > | null = null;
 
 // Loads Marp on the first render, since the extension activates for every
 // markdown file.
 function loadMarpPreview() {
-	marpPreview ??= import( '@mark-bricks/marp-preview' );
+	marpPreview ??= import( '@mark-bricks/marp-preview/render' );
 	return marpPreview;
 }
 

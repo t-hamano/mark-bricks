@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { PreviewLabels } from '@mark-bricks/marp-preview';
+import type { PreviewLabels } from '@mark-bricks/marp-preview/render';
 
 /**
  * Internal dependencies
