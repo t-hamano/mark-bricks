@@ -8,45 +8,6 @@ body {
 	font-family: var(--wpds-typography-font-family-body);
 }
 
-/* Marp wraps every slide in an SVG that scales it to the window's width. */
-.marpit {
-	display: flex;
-	flex-direction: column;
-	gap: var(--wpds-dimension-gap-lg);
-	padding: var(--wpds-dimension-padding-lg);
-}
-
-/*
- * Keeps each slide within the window's height minus the column's padding. The
- * SVG letterboxes and centers the slide inside the shorter box on its own.
- */
-.marpit > svg {
-	max-height: calc(100vh - 2 * var(--wpds-dimension-padding-lg));
-}
-
-/* Full screen presents one slide at a time, letterboxed on black. */
-.is-fullscreen,
-.is-fullscreen body {
-	overflow: hidden;
-	background: #000;
-}
-
-.is-fullscreen .marpit {
-	gap: 0;
-	padding: 0;
-}
-
-.is-fullscreen .marpit > svg {
-	display: none;
-}
-
-.is-fullscreen .marpit > svg.is-current {
-	display: block;
-	width: 100vw;
-	height: 100vh;
-	max-height: none;
-}
-
 .preview-toolbar {
 	position: fixed;
 	top: 0;
@@ -105,14 +66,6 @@ body {
 }
 
 .preview-notice {
-	display: grid;
-	place-items: center;
-	min-height: 100vh;
-	margin: 0;
 	color: var(--wpds-color-foreground-content-neutral-weak);
 	font-size: var(--wpds-typography-font-size-lg);
-}
-
-.preview-notice[hidden] {
-	display: none;
 }
