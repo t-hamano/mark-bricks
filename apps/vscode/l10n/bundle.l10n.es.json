@@ -1,4 +1,6 @@
 {
 	"MarkBricks could not apply edits to {0}.": "MarkBricks no pudo aplicar las modificaciones a {0}.",
-	"Images": "Imágenes"
+	"Images": "Imágenes",
+	"Not a Marp document": "No es un documento de Marp",
+	"Slide Preview: {0}": "Vista previa de diapositivas: {0}"
 }

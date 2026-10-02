@@ -3,6 +3,7 @@
 	"customEditor.visualEditor.displayName": "Görsel Düzenleyici",
 	"command.openVisual.title": "MarkBricks ile Aç",
 	"command.openText.title": "Metin Düzenleyicisi ile Aç",
+	"command.openMarpPreview.title": "Slaytları önizle",
 	"config.showListViewByDefault.description": "Liste görünümü panelini varsayılan olarak aç.",
 	"config.showBlockBreadcrumbs.description": "Blok hiyerarşisini düzenleyicinin altında göster.",
 	"config.topToolbar.description": "Tüm blok ve belge araçlarına tek bir yerden erişin.",

@@ -3,6 +3,7 @@
 	"customEditor.visualEditor.displayName": "ビジュアルエディター",
 	"command.openVisual.title": "MarkBricks で開く",
 	"command.openText.title": "テキストエディターで開く",
+	"command.openMarpPreview.title": "スライドをプレビュー",
 	"config.showListViewByDefault.description": "デフォルトでリストビューパネルを開きます。",
 	"config.showBlockBreadcrumbs.description": "エディターの最下段にブロックのパンくずリストを表示します。",
 	"config.topToolbar.description": "ブロック・文書ツールを同じ場所にまとめます。",

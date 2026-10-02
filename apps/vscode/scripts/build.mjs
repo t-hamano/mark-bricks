@@ -31,11 +31,13 @@ if ( watch ) {
 	await context.dispose();
 }
 
-await viteBuild( {
-	configFile: resolve( appRoot, 'vite.config.ts' ),
-	build: {
-		sourcemap: watch,
-		minify: ! watch,
-		watch: watch ? {} : null,
-	},
-} );
+for ( const configFile of [ 'vite.config.ts', 'vite.preview.config.ts' ] ) {
+	await viteBuild( {
+		configFile: resolve( appRoot, configFile ),
+		build: {
+			sourcemap: watch,
+			minify: ! watch,
+			watch: watch ? {} : null,
+		},
+	} );
+}

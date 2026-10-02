@@ -72,6 +72,37 @@ export class WorkspaceEdit {
 	}
 }
 
+export class Disposable {
+	public constructor( private readonly callOnDispose: () => void ) {}
+
+	public static from( ...disposables: { dispose: () => void }[] ) {
+		return new Disposable( () => {
+			for ( const disposable of disposables ) {
+				disposable.dispose();
+			}
+		} );
+	}
+
+	public dispose(): void {
+		this.callOnDispose();
+	}
+}
+
+export enum ViewColumn {
+	Beside = -2,
+}
+
+export class TabInputText {
+	public constructor( public readonly uri: Uri ) {}
+}
+
+export class TabInputCustom {
+	public constructor(
+		public readonly uri: Uri,
+		public readonly viewType: string
+	) {}
+}
+
 export enum ConfigurationTarget {
 	Global = 1,
 	Workspace = 2,
@@ -95,7 +126,8 @@ export type ConfigurationChangeEvent = {
 export class FakeTextDocument {
 	public constructor(
 		public readonly uri: Uri,
-		private text: string
+		private text: string,
+		public readonly languageId = 'markdown'
 	) {}
 
 	public getText(): string {
@@ -121,6 +153,47 @@ export class FakeTextDocument {
 	}
 }
 
+/**
+ * A webview panel as `createWebviewPanel` returns it, recording what the
+ * host posts and letting tests play the webview's side.
+ */
+export class FakeWebviewPanel {
+	public title = '';
+	public readonly posted: unknown[] = [];
+	public readonly reveal = vi.fn();
+	private readonly messages = new EventEmitter< unknown >();
+	private readonly disposed = new EventEmitter< void >();
+	public readonly onDidDispose = this.disposed.event;
+	public readonly webview = {
+		options: {} as { localResourceRoots?: Uri[] },
+		html: '',
+		cspSource: 'vscode-webview:',
+		onDidReceiveMessage: this.messages.event,
+		postMessage: async ( message: unknown ) => {
+			this.posted.push( message );
+			return true;
+		},
+		asWebviewUri: ( uri: Uri ) => ( {
+			toString: () => `webview:${ uri.toString() }`,
+		} ),
+	};
+
+	public constructor(
+		public readonly viewType: string,
+		public readonly showOptions?: unknown,
+		public readonly options?: unknown
+	) {}
+
+	// Sends a message from the webview to the host.
+	public send( message: unknown ): void {
+		this.messages.fire( message );
+	}
+
+	public dispose(): void {
+		this.disposed.fire();
+	}
+}
+
 type ConfigValue = {
 	globalValue?: unknown;
 	workspaceValue?: unknown;
@@ -133,6 +206,12 @@ function createState() {
 		onWillSaveTextDocument: new EventEmitter< TextDocumentWillSaveEvent >(),
 		onDidChangeConfiguration:
 			new EventEmitter< ConfigurationChangeEvent >(),
+		onDidOpenTextDocument: new EventEmitter< FakeTextDocument >(),
+		onDidChangeTabs: new EventEmitter< void >(),
+		onDidChangeTabGroups: new EventEmitter< void >(),
+		activeTabInput: undefined as unknown,
+		webviewPanels: [] as FakeWebviewPanel[],
+		webviewPanelSerializers: new Map< string, unknown >(),
 		documents: [] as FakeTextDocument[],
 		workspaceFolders: [] as { uri: Uri }[],
 		config: new Map< string, ConfigValue >(),
@@ -153,6 +232,10 @@ export const workspace = {
 			uri.path.startsWith( `${ folder.uri.path }/` )
 		);
 	},
+	get textDocuments() {
+		return state.documents;
+	},
+	openTextDocument: vi.fn(),
 	asRelativePath( uri: Uri ) {
 		return uri.path;
 	},
@@ -167,12 +250,30 @@ export const workspace = {
 	onDidChangeConfiguration: (
 		listener: Listener< ConfigurationChangeEvent >
 	) => state.onDidChangeConfiguration.event( listener ),
+	onDidOpenTextDocument: ( listener: Listener< FakeTextDocument > ) =>
+		state.onDidOpenTextDocument.event( listener ),
 };
 
 export const window = {
 	registerCustomEditorProvider: vi.fn(),
 	showErrorMessage: vi.fn(),
 	showOpenDialog: vi.fn(),
+	createWebviewPanel: vi.fn(),
+	registerWebviewPanelSerializer: vi.fn(),
+	tabGroups: {
+		get activeTabGroup() {
+			return {
+				activeTab:
+					state.activeTabInput === undefined
+						? undefined
+						: { input: state.activeTabInput },
+			};
+		},
+		onDidChangeTabs: ( listener: Listener< void > ) =>
+			state.onDidChangeTabs.event( listener ),
+		onDidChangeTabGroups: ( listener: Listener< void > ) =>
+			state.onDidChangeTabGroups.event( listener ),
+	},
 };
 
 export const commands = {
@@ -228,6 +329,32 @@ export function resetVscode(): void {
 	vi.clearAllMocks();
 	workspace.getConfiguration.mockImplementation( getConfiguration );
 	workspace.applyEdit.mockImplementation( applyEdit );
+	workspace.openTextDocument.mockImplementation( async ( uri: Uri ) => {
+		const document = state.documents.find(
+			( item ) => item.uri.toString() === uri.toString()
+		);
+		if ( ! document ) {
+			throw new Error( `cannot open ${ uri.toString() }` );
+		}
+		return document;
+	} );
+	window.createWebviewPanel.mockImplementation(
+		( viewType: string, _title: string, showOptions, options ) => {
+			const panel = new FakeWebviewPanel(
+				viewType,
+				showOptions,
+				options
+			);
+			state.webviewPanels.push( panel );
+			return panel;
+		}
+	);
+	window.registerWebviewPanelSerializer.mockImplementation(
+		( viewType: string, serializer: unknown ) => {
+			state.webviewPanelSerializers.set( viewType, serializer );
+			return { dispose: () => {} };
+		}
+	);
 	window.registerCustomEditorProvider.mockImplementation(
 		( viewType: string, provider: unknown ) => {
 			state.customEditorProviders.set( viewType, provider );
@@ -236,10 +363,29 @@ export function resetVscode(): void {
 	);
 }
 
-export function createDocument( fsPath: string, text: string ) {
-	const document = new FakeTextDocument( Uri.file( fsPath ), text );
+export function createDocument(
+	fsPath: string,
+	text: string,
+	languageId?: string
+) {
+	const document = new FakeTextDocument(
+		Uri.file( fsPath ),
+		text,
+		languageId
+	);
 	state.documents.push( document );
 	return document;
+}
+
+/**
+ * Makes a tab with the given input the active one, notifying
+ * `onDidChangeTabs` listeners.
+ *
+ * @param input Input of the tab, or `undefined` for no active tab.
+ */
+export function setActiveTab( input: unknown ): void {
+	state.activeTabInput = input;
+	state.onDidChangeTabs.fire();
 }
 
 export function addWorkspaceFolder( fsPath: string ): void {
@@ -254,6 +400,14 @@ export function addWorkspaceFolder( fsPath: string ): void {
  */
 export function setConfiguration( key: string, value: ConfigValue ): void {
 	state.config.set( key, value );
+}
+
+export function getWebviewPanels(): FakeWebviewPanel[] {
+	return state.webviewPanels;
+}
+
+export function getWebviewPanelSerializer( viewType: string ): unknown {
+	return state.webviewPanelSerializers.get( viewType );
 }
 
 export function getCustomEditorProvider( viewType: string ): unknown {
@@ -275,10 +429,15 @@ export function fireConfigurationChange( sections: string[] ): void {
 	} );
 }
 
+export function fireOpenDocument( document: FakeTextDocument ): void {
+	state.onDidOpenTextDocument.fire( document );
+}
+
 export function getListenerCount(): number {
 	return (
 		state.onDidChangeTextDocument.listenerCount +
 		state.onWillSaveTextDocument.listenerCount +
-		state.onDidChangeConfiguration.listenerCount
+		state.onDidChangeConfiguration.listenerCount +
+		state.onDidOpenTextDocument.listenerCount
 	);
 }

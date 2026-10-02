@@ -3,6 +3,7 @@
 	"customEditor.visualEditor.displayName": "Edytor wizualny",
 	"command.openVisual.title": "Otwórz w MarkBricks",
 	"command.openText.title": "Otwórz w edytorze tekstu",
+	"command.openMarpPreview.title": "Wyświetl podgląd slajdów",
 	"config.showListViewByDefault.description": "Domyślnie otwieraj panel Widok listy.",
 	"config.showBlockBreadcrumbs.description": "Wyświetlaj hierarchię bloków na dole edytora.",
 	"config.topToolbar.description": "Dostęp do wszystkich narzędzi bloków i dokumentu w jednym miejscu.",

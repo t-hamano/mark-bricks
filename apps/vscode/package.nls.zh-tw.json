@@ -3,6 +3,7 @@
 	"customEditor.visualEditor.displayName": "視覺化編輯器",
 	"command.openVisual.title": "以 MarkBricks 開啟",
 	"command.openText.title": "以文字編輯器開啟",
+	"command.openMarpPreview.title": "預覽投影片",
 	"config.showListViewByDefault.description": "預設開啟清單檢視面板。",
 	"config.showBlockBreadcrumbs.description": "在編輯器底部顯示區塊階層路徑。",
 	"config.topToolbar.description": "在同一處存取所有區塊和文件工具。",

@@ -3,6 +3,7 @@
 	"customEditor.visualEditor.displayName": "Vizuální editor",
 	"command.openVisual.title": "Otevřít v MarkBricks",
 	"command.openText.title": "Otevřít v textovém editoru",
+	"command.openMarpPreview.title": "Zobrazit náhled snímků",
 	"config.showListViewByDefault.description": "Ve výchozím nastavení otevřít panel Zobrazení seznamu.",
 	"config.showBlockBreadcrumbs.description": "Zobrazit hierarchii bloků v dolní části editoru.",
 	"config.topToolbar.description": "Přístup ke všem nástrojům bloků a dokumentu na jednom místě.",

@@ -66,6 +66,9 @@ export type WebviewMessage =
 			type: 'openSettings';
 	  }
 	| {
+			type: 'openMarpPreview';
+	  }
+	| {
 			type: 'updateSetting';
 			key: WritableSettingKey;
 			value: boolean;
@@ -87,4 +90,37 @@ export type WebviewMessage =
 			type: 'checkImage';
 			requestId: number;
 			path: string;
+	  };
+
+// What the slide preview's webview saves with `setState`, for the host to
+// restore its panel after a restart.
+export type PreviewState = {
+	uri: string;
+};
+
+// Sent to the slide preview: the document it shows, then the document's
+// slides, or a notice when the document is not a Marp slide deck. The host
+// translates the notice, since the preview loads no translations.
+export type PreviewHostMessage =
+	| {
+			type: 'document';
+			uri: string;
+	  }
+	| {
+			type: 'slides';
+			html: string;
+			css: string;
+	  }
+	| {
+			type: 'notice';
+			text: string;
+	  };
+
+export type PreviewWebviewMessage =
+	| {
+			type: 'ready';
+	  }
+	| {
+			type: 'rendered';
+			slideCount: number;
 	  };

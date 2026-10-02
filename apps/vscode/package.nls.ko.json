@@ -3,6 +3,7 @@
 	"customEditor.visualEditor.displayName": "시각적 편집기",
 	"command.openVisual.title": "MarkBricks로 열기",
 	"command.openText.title": "텍스트 편집기로 열기",
+	"command.openMarpPreview.title": "슬라이드 미리 보기",
 	"config.showListViewByDefault.description": "기본적으로 목록 보기 패널을 엽니다.",
 	"config.showBlockBreadcrumbs.description": "편집기 하단에 블록 계층 경로를 표시합니다.",
 	"config.topToolbar.description": "모든 블록 및 문서 도구를 한 곳에서 사용합니다.",
