@@ -9,31 +9,7 @@ body {
 	font-family: var(--vscode-font-family);
 }
 
-/* Marp wraps every slide in an SVG that scales it to the window's width. */
-.marpit {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-	padding: 16px;
-}
-
-/*
- * Keeps each slide within the window's height minus the column's padding. The
- * SVG letterboxes and centers the slide inside the shorter box on its own.
- */
-.marpit > svg {
-	max-height: calc(100vh - 32px);
-}
-
 .preview-notice {
-	display: grid;
-	place-items: center;
-	min-height: 100vh;
-	margin: 0;
 	color: var(--vscode-descriptionForeground);
 	font-size: 16px;
-}
-
-.preview-notice[hidden] {
-	display: none;
 }
