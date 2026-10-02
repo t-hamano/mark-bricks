@@ -2,7 +2,7 @@
 	"name": "@mark-bricks/marp-preview",
 	"version": "0.0.0",
 	"private": true,
-	"description": "Renders Marp slide decks for the hosts' slide previews.",
+	"description": "Renders and shows Marp slide decks in the hosts' slide previews.",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
 	"type": "module",
@@ -12,6 +12,10 @@
 		".": {
 			"types": "./index.ts",
 			"default": "./index.ts"
+		},
+		"./browser": {
+			"types": "./browser/index.ts",
+			"default": "./browser/index.ts"
 		}
 	},
 	"scripts": {
@@ -19,10 +23,15 @@
 		"test:watch": "vitest"
 	},
 	"dependencies": {
+		"@fontsource/lato": "^5.3.0",
+		"@fontsource/roboto-mono": "^5.3.0",
+		"@mark-bricks/editor": "workspace:*",
 		"@marp-team/marp-core": "^4.4.0"
 	},
 	"devDependencies": {
 		"@mark-bricks/fixtures": "workspace:*",
+		"jsdom": "^30.1.1",
+		"vite": "^8.3.1",
 		"vitest": "^5.0.2"
 	}
 }

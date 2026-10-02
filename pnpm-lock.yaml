@@ -439,6 +439,15 @@ importers:
 
   packages/marp-preview:
     dependencies:
+      '@fontsource/lato':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/roboto-mono':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@mark-bricks/editor':
+        specifier: workspace:*
+        version: link:../editor
       '@marp-team/marp-core':
         specifier: ^4.4.0
         version: 4.4.0
@@ -446,6 +455,12 @@ importers:
       '@mark-bricks/fixtures':
         specifier: workspace:*
         version: link:../fixtures
+      jsdom:
+        specifier: ^30.1.1
+        version: 30.1.1
+      vite:
+        specifier: ^8.3.1
+        version: 8.3.1(@types/node@26.6.3)(esbuild@0.28.2)(jiti@2.6.1)(sass@1.105.0)(yaml@2.9.1)
       vitest:
         specifier: ^5.0.2
         version: 5.0.2(@types/node@26.6.3)(jsdom@30.1.1)(vite@8.3.1(@types/node@26.6.3)(esbuild@0.28.2)(jiti@2.6.1)(sass@1.105.0)(yaml@2.9.1))
@@ -9623,6 +9638,11 @@ snapshots:
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.1)
       '@csstools/css-tokenizer': 4.0.1
 
+  '@csstools/media-query-list-parser@5.0.0(@csstools/css-parser-algorithms@4.0.1(@csstools/css-tokenizer@4.0.2))(@csstools/css-tokenizer@4.0.2)':
+    dependencies:
+      '@csstools/css-parser-algorithms': 4.0.1(@csstools/css-tokenizer@4.0.2)
+      '@csstools/css-tokenizer': 4.0.2
+
   '@csstools/postcss-is-pseudo-class@5.0.3(postcss@8.5.28)':
     dependencies:
       '@csstools/selector-specificity': 5.0.0(postcss-selector-parser@7.1.6)
@@ -10864,9 +10884,9 @@ snapshots:
 
   '@stylistic/stylelint-plugin@5.3.0(stylelint@17.15.0(typescript@6.0.3))':
     dependencies:
-      '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.1)
-      '@csstools/css-tokenizer': 4.0.1
-      '@csstools/media-query-list-parser': 5.0.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.1))(@csstools/css-tokenizer@4.0.1)
+      '@csstools/css-parser-algorithms': 4.0.1(@csstools/css-tokenizer@4.0.2)
+      '@csstools/css-tokenizer': 4.0.2
+      '@csstools/media-query-list-parser': 5.0.0(@csstools/css-parser-algorithms@4.0.1(@csstools/css-tokenizer@4.0.2))(@csstools/css-tokenizer@4.0.2)
       postcss: 8.5.28
       postcss-selector-parser: 7.1.6
       postcss-value-parser: 4.2.0
