@@ -36,9 +36,9 @@ export default function usePreviewSync( activeTab: Tab | undefined ) {
 	const documentPath = activeTab?.filePath;
 	const payload = useMemo< PreviewPayload >( () => {
 		const labels = {
-			enterFullscreen: __( 'Enter full screen', 'mark-bricks' ),
-			exitFullscreen: __( 'Exit full screen', 'mark-bricks' ),
-			exitFullscreenHint: __(
+			enterSlideMode: __( 'Enter full screen', 'mark-bricks' ),
+			exitSlideMode: __( 'Exit full screen', 'mark-bricks' ),
+			exitSlideModeHint: __(
 				'Press F or Escape to exit full screen',
 				'mark-bricks'
 			),

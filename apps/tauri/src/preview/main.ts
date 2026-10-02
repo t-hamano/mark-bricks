@@ -7,6 +7,7 @@ import {
 	createSlideMode,
 	createSlideView,
 } from '@mark-bricks/marp-preview/browser';
+import { createPreviewControls } from '@mark-bricks/marp-preview/controls';
 
 /**
  * WordPress dependencies
@@ -21,7 +22,6 @@ import {
 	PREVIEW_READY_EVENT,
 	type PreviewPayload,
 } from './constants';
-import { createPreviewControls } from './controls';
 import { setupFullscreen } from './fullscreen';
 import { renderSlides } from './render';
 import './style.css';
@@ -34,7 +34,7 @@ const controls = createPreviewControls(
 	( index ) => slideMode.goToSlide( index )
 );
 const slideMode = createSlideMode( view, controls.setSlide );
-const fullscreen = setupFullscreen( slideMode, controls.setFullscreen );
+const fullscreen = setupFullscreen( slideMode, controls.setSlideMode );
 
 async function main() {
 	await getCurrentWebviewWindow().listen< PreviewPayload >(
