@@ -1,0 +1,27 @@
+/*
+ * One slide per page, at the slide's own size, with nothing around it. The
+ * page sets the size, and the export prints with the same paper size and no
+ * margins.
+ */
+html,
+body {
+	background: none;
+}
+
+.marpit {
+	display: block;
+	gap: 0;
+	padding: 0;
+}
+
+.marpit > svg {
+	display: block;
+	width: var(--slide-width);
+	height: var(--slide-height);
+	max-height: none;
+}
+
+/* A break after the last slide would add a blank page. */
+.marpit > svg:not(:last-child) {
+	break-after: page;
+}

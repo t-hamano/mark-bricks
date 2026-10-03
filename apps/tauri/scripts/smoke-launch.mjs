@@ -3,8 +3,9 @@
  * Smoke test: opens a copy of `@mark-bricks/fixtures/smoke-test.md` in the
  * debug binary and waits for `report_rendered` to print that its blocks
  * rendered. Also checks that its `math` and `mermaid` previews rendered and
- * that the KaTeX fonts loaded, which the app's CSP could block. Uses
- * `xvfb-run` on headless Linux.
+ * that the KaTeX fonts loaded, which the app's CSP could block. Then has the
+ * app export a copy of `@mark-bricks/fixtures`'s Marp deck to PDF, and checks
+ * its pages, their size and its title. Uses `xvfb-run` on headless Linux.
  */
 import { spawn, spawnSync } from 'node:child_process';
 import { copyFile, mkdtemp, rm } from 'node:fs/promises';
@@ -30,6 +31,14 @@ const fixturePath = fileURLToPath(
 	import.meta.resolve( '@mark-bricks/fixtures/smoke-test.md' )
 );
 
+const deckFixturePath = path.join( path.dirname( fixturePath ), 'marp.md' );
+const deckImagePath = path.join( path.dirname( fixturePath ), 'image.jpg' );
+
+// The fixture deck: ten 16:9 slides, 1280 by 720 CSS pixels, so 960 by 540
+// points. Its title comes from its first heading.
+const EXPECTED_PDF =
+	'10 pages, media box [0 0 960 540], title "Markdown Slides for Engineering Teams"';
+
 const TIMEOUT_MS = Number( process.env.SMOKE_TIMEOUT_MS ?? 60000 );
 
 if ( ! existsSync( binaryPath ) ) {
@@ -43,6 +52,10 @@ if ( ! existsSync( binaryPath ) ) {
 const tempDir = await mkdtemp( path.join( os.tmpdir(), 'mark-bricks-' ) );
 const documentPath = path.join( tempDir, 'smoke-test.md' );
 await copyFile( fixturePath, documentPath );
+const deckPath = path.join( tempDir, 'marp.md' );
+await copyFile( deckFixturePath, deckPath );
+await copyFile( deckImagePath, path.join( tempDir, 'image.jpg' ) );
+const pdfPath = path.join( tempDir, 'marp.pdf' );
 
 const needsXvfb =
 	process.platform === 'linux' && ! process.env.DISPLAY && hasXvfbRun();
@@ -55,19 +68,28 @@ console.log( `[smoke] launching: ${ cmd } ${ args.join( ' ' ) }` );
 console.log( `[smoke] timeout: ${ TIMEOUT_MS }ms` );
 
 const child = spawn( cmd, args, {
-	env: { ...process.env, MARK_BRICKS_SMOKE_TEST: '1' },
+	env: {
+		...process.env,
+		MARK_BRICKS_SMOKE_TEST: '1',
+		MARK_BRICKS_SMOKE_EXPORT_DECK: deckPath,
+		MARK_BRICKS_SMOKE_EXPORT_PDF: pdfPath,
+	},
 	stdio: [ 'ignore', 'pipe', 'inherit' ],
 } );
 
 const expectedLine = `[smoke] rendered: ${ documentPath }`;
 const PREVIEWS_PREFIX = '[smoke] previews: ';
+const PDF_PREFIX = '[smoke] pdf';
 let previews = null;
+let rendered = false;
 
 const failure = await new Promise( ( resolve ) => {
 	const timer = setTimeout(
 		() =>
 			resolve(
-				`the editor did not render the blocks of ${ documentPath }`
+				rendered
+					? 'the app did not export the PDF'
+					: `the editor did not render the blocks of ${ documentPath }`
 			),
 		TIMEOUT_MS
 	);
@@ -82,7 +104,20 @@ const failure = await new Promise( ( resolve ) => {
 			previews = JSON.parse( line.slice( PREVIEWS_PREFIX.length ) );
 		}
 		if ( line.trim() === expectedLine ) {
-			finish( checkPreviews( previews ) );
+			rendered = true;
+			const error = checkPreviews( previews );
+			if ( error ) {
+				finish( error );
+			}
+		}
+		// The app exports the PDF once the editor has rendered.
+		if ( rendered && line.startsWith( PDF_PREFIX ) ) {
+			const result = line.slice( PDF_PREFIX.length ).replace( /^: /, '' );
+			finish(
+				result === EXPECTED_PDF
+					? null
+					: `the PDF export gave "${ result }", not "${ EXPECTED_PDF }"`
+			);
 		}
 	} );
 	child.on( 'exit', ( code, signal ) =>

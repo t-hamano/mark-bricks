@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T06:47:32.758Z\n"
+"POT-Creation-Date: 2026-10-03T07:25:56.354Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -137,25 +137,29 @@ msgstr ""
 msgid "Update check failed: %s"
 msgstr ""
 
-#: src/actions/index.ts:308
+#: src/actions/index.ts:313
 msgid "Export Slide Deck"
 msgstr ""
 
-#: src/actions/index.ts:316
+#: src/actions/index.ts:325
 msgid "HTML slide deck"
 msgstr ""
 
+#: src/actions/index.ts:326
+msgid "PDF slide deck"
+msgstr ""
+
 # %s: Error message.
-#: src/actions/index.ts:322
+#: src/actions/index.ts:332
 msgid "Could not export the slide deck: %s"
 msgstr ""
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:333
+#: src/actions/index.ts:345
 msgid "Exported the slide deck to %s."
 msgstr ""
 
-#: src/actions/index.ts:347
+#: src/actions/index.ts:359
 msgid "Slide Preview"
 msgstr ""
 
@@ -185,8 +189,8 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:120
-#: src/components/header-actions/index.tsx:166
+#: src/components/header-actions/index.tsx:135
+#: src/components/header-actions/index.tsx:181
 msgid "Save"
 msgstr ""
 
@@ -263,7 +267,7 @@ msgid "Typeface used for the content area."
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:322
+#: src/components/header-actions/index.tsx:349
 msgid "Preferences"
 msgstr ""
 
@@ -272,12 +276,12 @@ msgid "General"
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:246
+#: src/components/header-actions/index.tsx:273
 msgid "Visual editor"
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:258
+#: src/components/header-actions/index.tsx:285
 msgid "Code editor"
 msgstr ""
 
@@ -338,9 +342,105 @@ msgstr ""
 msgid "Restore default settings"
 msgstr ""
 
+#: src/components/header-actions/index.tsx:110
+msgid "Exporting the slide deck…"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:119
+msgid "Preview Slides"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:145
+msgid "Options"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:158
+msgid "Files"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:165
+msgid "New"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:173
+msgid "Open…"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:189
+msgid "Save As…"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:207
+msgid "Export Slide Deck…"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:218
+msgid "View"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:227
+msgid "Top toolbar"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:230
+msgid "Access all block and document tools in a single place"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:243
+msgid "Spotlight mode"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:246
+msgid "Focus on one block at a time"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:256
+msgid "Editor"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:293
+msgid "Tools"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:309
+msgid "Add YAML front matter"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:314
+msgid "Hide YAML front matter"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:320
+msgid "Remove YAML front matter"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:333
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:306
 msgid "Keyboard shortcuts"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:340
+#: src/components/about-modal/index.tsx:80
+msgid "About"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:364
+msgid "Remove YAML front matter?"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:365
+msgid ""
+"The YAML front matter and all of its content will be removed from the "
+"document."
+msgstr ""
+
+#: src/components/header-actions/index.tsx:369
+#: src/components/dirty-confirm-dialog/index.tsx:64
+msgid "Cancel"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:370
+msgid "Remove"
 msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
@@ -365,98 +465,6 @@ msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:104
-msgid "Preview Slides"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:130
-msgid "Options"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:143
-msgid "Files"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:150
-msgid "New"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:158
-msgid "Open…"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:174
-msgid "Save As…"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:180
-msgid "Export Slide Deck…"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:191
-msgid "View"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:200
-msgid "Top toolbar"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:203
-msgid "Access all block and document tools in a single place"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:216
-msgid "Spotlight mode"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:219
-msgid "Focus on one block at a time"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:229
-msgid "Editor"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:266
-msgid "Tools"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:282
-msgid "Add YAML front matter"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:287
-msgid "Hide YAML front matter"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:293
-msgid "Remove YAML front matter"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:313
-#: src/components/about-modal/index.tsx:80
-msgid "About"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:337
-msgid "Remove YAML front matter?"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:338
-msgid ""
-"The YAML front matter and all of its content will be removed from the "
-"document."
-msgstr ""
-
-#: src/components/header-actions/index.tsx:342
-#: src/components/dirty-confirm-dialog/index.tsx:64
-msgid "Cancel"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:343
-msgid "Remove"
 msgstr ""
 
 #: src/components/editor-placeholder/index.tsx:23

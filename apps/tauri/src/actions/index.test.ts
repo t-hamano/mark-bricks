@@ -1,7 +1,8 @@
 /**
  * External dependencies
  */
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { emit } from '@tauri-apps/api/event';
 import { clearMocks, mockIPC } from '@tauri-apps/api/mocks';
 
 /**
@@ -574,16 +575,22 @@ it( 'revokes the native grant when closing a tab', async () => {
 describe( 'exportSlideDeck', () => {
 	const DECK = '---\nmarp: true\ntitle: Deck\n---\n\n# One\n';
 
-	// Opens a deck from `/docs/deck.md` and records the IPC calls, answering
-	// the export with `exported`, the written file's name.
+	// Opens a deck from `/docs/deck.md` and records the IPC calls, except for
+	// the events, answering the export with `exported`, the written file's
+	// name. The export reports that it started printing when `printing` is
+	// true, as the native side does for a PDF.
 	async function exportDeck( {
 		content = DECK,
 		exported = 'deck.html' as string | null,
 		error,
+		printing = false,
+		onExporting,
 	}: {
 		content?: string;
 		exported?: string | null;
 		error?: string;
+		printing?: boolean;
+		onExporting?: () => void;
 	} = {} ) {
 		await openDocument( {
 			...selected,
@@ -591,29 +598,51 @@ describe( 'exportSlideDeck', () => {
 			contents: content,
 		} );
 		const calls: { cmd: string; payload: unknown }[] = [];
-		mockIPC( ( cmd, payload ) => {
-			calls.push( { cmd, payload } );
-			if ( cmd === 'export_slide_deck' ) {
-				if ( error ) {
-					throw error;
+		mockIPC(
+			async ( cmd, payload ) => {
+				if ( ! cmd.startsWith( 'plugin:event|' ) ) {
+					calls.push( { cmd, payload } );
 				}
-				return exported;
-			}
-			return null;
-		} );
-		await exportSlideDeck();
+				if ( cmd === 'export_slide_deck' ) {
+					if ( printing ) {
+						await emit( 'slide-deck-exporting' );
+					}
+					if ( error ) {
+						throw error;
+					}
+					return exported;
+				}
+				return null;
+			},
+			{ shouldMockEvents: true }
+		);
+		await exportSlideDeck( onExporting );
 		return calls;
 	}
 
-	it( 'sends the rendered HTML and the document path', async () => {
+	it( 'sends the rendered HTML, the Markdown and the document path', async () => {
 		const calls = await exportDeck();
 		const payload = calls.find( ( c ) => c.cmd === 'export_slide_deck' )
 			?.payload as Record< string, string >;
 
 		expect( payload.html ).toMatch( /^<!DOCTYPE html>/ );
 		expect( payload.html ).toContain( '<title>Deck</title>' );
+		expect( payload.markdown ).toBe( DECK );
 		expect( payload.documentPath ).toBe( '/docs/deck.md' );
-		expect( payload.filterName ).toBe( 'HTML slide deck' );
+		expect( payload.htmlFilter ).toBe( 'HTML slide deck' );
+		expect( payload.pdfFilter ).toBe( 'PDF slide deck' );
+	} );
+
+	it( 'reports when a PDF starts printing', async () => {
+		const onExporting = vi.fn();
+		await exportDeck( { printing: true, onExporting } );
+		expect( onExporting ).toHaveBeenCalledTimes( 1 );
+	} );
+
+	it( 'reports nothing for an HTML export', async () => {
+		const onExporting = vi.fn();
+		await exportDeck( { onExporting } );
+		expect( onExporting ).not.toHaveBeenCalled();
 	} );
 
 	it( 'exports unsaved edits', async () => {

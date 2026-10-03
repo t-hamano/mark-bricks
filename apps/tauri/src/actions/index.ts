@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { invoke } from '@tauri-apps/api/core';
+import { listen } from '@tauri-apps/api/event';
 import { message } from '@tauri-apps/plugin-dialog';
 import { getLocale } from '@mark-bricks/editor/i18n';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
@@ -294,9 +295,13 @@ export async function closeOtherTabs( keepId: string ) {
 }
 
 /**
- * Exports the active tab's Marp slide deck to HTML, including unsaved edits.
+ * Exports the active tab's Marp slide deck to HTML or PDF, as the user picks
+ * in the save dialog, including unsaved edits.
+ *
+ * @param onExporting Called when a PDF export starts, after the dialog, since
+ *                    printing it takes a few seconds.
  */
-export async function exportSlideDeck() {
+export async function exportSlideDeck( onExporting?: () => void ) {
 	flushPendingEdits();
 	const tab = select( tabsStore )
 		.getTabs()
@@ -307,13 +312,18 @@ export async function exportSlideDeck() {
 
 	const title = __( 'Export Slide Deck', 'mark-bricks' );
 	let fileName: string | null;
+	const unlisten = await listen( 'slide-deck-exporting', () =>
+		onExporting?.()
+	);
 	try {
 		const { renderHtmlDocument } =
 			await import( '@mark-bricks/marp-preview/export' );
 		fileName = await invoke< string | null >( 'export_slide_deck', {
 			html: renderHtmlDocument( tab.content ),
+			markdown: tab.content,
 			documentPath: tab.filePath ?? null,
-			filterName: __( 'HTML slide deck', 'mark-bricks' ),
+			htmlFilter: __( 'HTML slide deck', 'mark-bricks' ),
+			pdfFilter: __( 'PDF slide deck', 'mark-bricks' ),
 		} );
 	} catch ( error ) {
 		await message(
@@ -325,6 +335,8 @@ export async function exportSlideDeck() {
 			{ title, kind: 'error' }
 		);
 		return;
+	} finally {
+		unlisten();
 	}
 	if ( fileName ) {
 		await message(

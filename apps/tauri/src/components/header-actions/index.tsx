@@ -19,6 +19,7 @@ import {
 	getWpCompatOverlaySlot,
 	IconButton,
 	Menu,
+	Spinner,
 	Stack,
 } from '@wordpress/ui';
 
@@ -85,6 +86,11 @@ export default function HeaderActions( {
 	const isFrontMatterEmpty = frontMatter?.trim() === '';
 	const [ isRemoveFrontMatterOpen, setIsRemoveFrontMatterOpen ] =
 		useState( false );
+	// From the menu item until the export ends, and `printing` while a PDF
+	// prints, after the dialog.
+	const [ exportStatus, setExportStatus ] = useState<
+		'idle' | 'busy' | 'printing'
+	>( 'idle' );
 	useEffect( () => {
 		if ( isPreferencesOpened ) {
 			setIsOptionsMenuOpen( false );
@@ -98,6 +104,15 @@ export default function HeaderActions( {
 			align="center"
 			gap="sm"
 		>
+			{ exportStatus === 'printing' && (
+				<Spinner
+					role="status"
+					aria-label={ __(
+						'Exporting the slide deck…',
+						'mark-bricks'
+					) }
+				/>
+			) }
 			{ isActiveTabMarp && (
 				<IconButton
 					icon={ external }
@@ -175,7 +190,19 @@ export default function HeaderActions( {
 							</Menu.ItemLabel>
 						</Menu.Item>
 						{ isActiveTabMarp && (
-							<Menu.Item onClick={ () => exportSlideDeck() }>
+							<Menu.Item
+								disabled={ exportStatus !== 'idle' }
+								onClick={ async () => {
+									setExportStatus( 'busy' );
+									try {
+										await exportSlideDeck( () =>
+											setExportStatus( 'printing' )
+										);
+									} finally {
+										setExportStatus( 'idle' );
+									}
+								} }
+							>
 								<Menu.ItemLabel>
 									{ __(
 										'Export Slide Deck…',

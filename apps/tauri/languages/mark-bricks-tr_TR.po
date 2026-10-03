@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T06:47:32.758Z\n"
-"PO-Revision-Date: 2026-10-03T06:47:37.201Z\n"
+"POT-Creation-Date: 2026-10-03T07:25:56.354Z\n"
+"PO-Revision-Date: 2026-10-03T07:26:00.616Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -28,16 +28,16 @@ msgstr ""
 msgid "(Untitled)"
 msgstr "(Başlıksız)"
 
-#: src/components/header-actions/index.tsx:313
+#: src/components/header-actions/index.tsx:340
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "MarkBricks Hakkında"
 
-#: src/components/header-actions/index.tsx:203
+#: src/components/header-actions/index.tsx:230
 msgid "Access all block and document tools in a single place"
 msgstr "Tüm blok ve belge araçlarına tek bir yerden erişin"
 
-#: src/components/header-actions/index.tsx:282
+#: src/components/header-actions/index.tsx:309
 msgid "Add YAML front matter"
 msgstr "YAML front matter ekle"
 
@@ -58,7 +58,7 @@ msgstr "İçerik alanının piksel cinsinden temel yazı tipi boyutu."
 msgid "Block shortcuts"
 msgstr "Blok kısayolları"
 
-#: src/components/header-actions/index.tsx:342
+#: src/components/header-actions/index.tsx:369
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Vazgeç"
@@ -98,7 +98,7 @@ msgid "Close the active tab."
 msgstr "Etkin sekmeyi kapat."
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:258
+#: src/components/header-actions/index.tsx:285
 msgid "Code editor"
 msgstr "Kod düzenleyici"
 
@@ -107,7 +107,7 @@ msgid "Content width"
 msgstr "İçerik genişliği"
 
 # %s: Error message.
-#: src/actions/index.ts:322
+#: src/actions/index.ts:332
 msgid "Could not export the slide deck: %s"
 msgstr "Slayt destesi dışa aktarılamadı: %s"
 
@@ -143,7 +143,7 @@ msgstr "Değişiklikleri at"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Blok hiyerarşisini düzenleyicinin altında göster."
 
-#: src/components/header-actions/index.tsx:229
+#: src/components/header-actions/index.tsx:256
 msgid "Editor"
 msgstr "Düzenleyici"
 
@@ -151,18 +151,22 @@ msgstr "Düzenleyici"
 msgid "Editor styles"
 msgstr "Düzenleyici stilleri"
 
-#: src/actions/index.ts:308
+#: src/actions/index.ts:313
 msgid "Export Slide Deck"
 msgstr "Slayt destesini dışa aktar"
 
-#: src/components/header-actions/index.tsx:180
+#: src/components/header-actions/index.tsx:207
 msgid "Export Slide Deck…"
 msgstr "Slayt destesini dışa aktar…"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:333
+#: src/actions/index.ts:345
 msgid "Exported the slide deck to %s."
 msgstr "Slayt destesi %s olarak dışa aktarıldı."
+
+#: src/components/header-actions/index.tsx:110
+msgid "Exporting the slide deck…"
+msgstr "Slayt destesi dışa aktarılıyor…"
 
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
@@ -172,11 +176,11 @@ msgstr "Dosya ilişkilendirmeleri"
 msgid "File shortcuts"
 msgstr "Dosya kısayolları"
 
-#: src/components/header-actions/index.tsx:143
+#: src/components/header-actions/index.tsx:158
 msgid "Files"
 msgstr "Dosyalar"
 
-#: src/components/header-actions/index.tsx:219
+#: src/components/header-actions/index.tsx:246
 msgid "Focus on one block at a time"
 msgstr "Her seferinde bir bloğa odaklanın"
 
@@ -197,7 +201,7 @@ msgstr "Genel"
 msgid "Global shortcuts"
 msgstr "Genel kısayollar"
 
-#: src/actions/index.ts:316
+#: src/actions/index.ts:325
 msgid "HTML slide deck"
 msgstr "HTML slayt destesi"
 
@@ -205,7 +209,7 @@ msgstr "HTML slayt destesi"
 msgid "Handwriting"
 msgstr "El yazısı"
 
-#: src/components/header-actions/index.tsx:287
+#: src/components/header-actions/index.tsx:314
 msgid "Hide YAML front matter"
 msgstr "YAML front matter’ı gizle"
 
@@ -223,8 +227,8 @@ msgstr ""
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Göreli yollara sahip görseller, belge kaydedildikten sonra görüntülenir."
 
+#: src/components/header-actions/index.tsx:333
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:306
 msgid "Keyboard shortcuts"
 msgstr "Klavye kısayolları"
 
@@ -258,7 +262,7 @@ msgstr "İçerik alanının piksel cinsinden en büyük genişliği."
 msgid "Monospace"
 msgstr "Eş aralıklı"
 
-#: src/components/header-actions/index.tsx:150
+#: src/components/header-actions/index.tsx:165
 msgid "New"
 msgstr "Yeni"
 
@@ -296,32 +300,36 @@ msgstr "Dosya aç…"
 msgid "Opens the List View panel by default."
 msgstr "Varsayılan olarak liste görünümü panelini açar."
 
-#: src/components/header-actions/index.tsx:158
+#: src/components/header-actions/index.tsx:173
 msgid "Open…"
 msgstr "Aç…"
 
-#: src/components/header-actions/index.tsx:130
+#: src/components/header-actions/index.tsx:145
 msgid "Options"
 msgstr "Seçenekler"
 
+#: src/actions/index.ts:326
+msgid "PDF slide deck"
+msgstr "PDF slayt destesi"
+
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:322
+#: src/components/header-actions/index.tsx:349
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: src/components/header-actions/index.tsx:104
+#: src/components/header-actions/index.tsx:119
 msgid "Preview Slides"
 msgstr "Slaytları önizle"
 
-#: src/components/header-actions/index.tsx:343
+#: src/components/header-actions/index.tsx:370
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/components/header-actions/index.tsx:293
+#: src/components/header-actions/index.tsx:320
 msgid "Remove YAML front matter"
 msgstr "YAML front matter’ı kaldır"
 
-#: src/components/header-actions/index.tsx:337
+#: src/components/header-actions/index.tsx:364
 msgid "Remove YAML front matter?"
 msgstr "YAML front matter’ı kaldırmak istiyor musunuz?"
 
@@ -342,12 +350,12 @@ msgid "Sans-serif"
 msgstr "Sans-serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:120
-#: src/components/header-actions/index.tsx:166
+#: src/components/header-actions/index.tsx:135
+#: src/components/header-actions/index.tsx:181
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/components/header-actions/index.tsx:174
+#: src/components/header-actions/index.tsx:189
 msgid "Save As…"
 msgstr "Farklı kaydet…"
 
@@ -388,7 +396,7 @@ msgstr "Blok sayfa yollarını görüntüle"
 msgid "Show line numbers"
 msgstr "Satır numaralarını göster"
 
-#: src/actions/index.ts:347
+#: src/actions/index.ts:359
 msgid "Slide Preview"
 msgstr "Slayt önizlemesi"
 
@@ -396,7 +404,7 @@ msgstr "Slayt önizlemesi"
 msgid "Spell check"
 msgstr "Yazım denetimi"
 
-#: src/components/header-actions/index.tsx:216
+#: src/components/header-actions/index.tsx:243
 msgid "Spotlight mode"
 msgstr "Sahne ışığı kipi"
 
@@ -413,7 +421,7 @@ msgstr "Sekme boyutu"
 msgid "Text formatting"
 msgstr "Metin biçimlendirme"
 
-#: src/components/header-actions/index.tsx:338
+#: src/components/header-actions/index.tsx:365
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -432,11 +440,11 @@ msgstr ""
 "Bu platform, varsayılan uygulamanın MarkBricks içinden ayarlanmasını "
 "desteklemiyor. Lütfen sisteminizin dosya yöneticisinden yapılandırın."
 
-#: src/components/header-actions/index.tsx:266
+#: src/components/header-actions/index.tsx:293
 msgid "Tools"
 msgstr "Araçlar"
 
-#: src/components/header-actions/index.tsx:200
+#: src/components/header-actions/index.tsx:227
 msgid "Top toolbar"
 msgstr "Üst araç çubuğu"
 
@@ -465,12 +473,12 @@ msgstr "Güncelleme mevcut"
 msgid "Update check failed: %s"
 msgstr "Güncelleme denetimi başarısız oldu: %s"
 
-#: src/components/header-actions/index.tsx:191
+#: src/components/header-actions/index.tsx:218
 msgid "View"
 msgstr "Görünüm"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:246
+#: src/components/header-actions/index.tsx:273
 msgid "Visual editor"
 msgstr "Görsel düzenleyici"
 

@@ -56,6 +56,13 @@ MarkBricks previews [Marp](https://marp.app/) slide decks. When a document's fro
 
 While presenting, move between the slides with the arrow keys, Page Up, Page Down, Home, End or the wheel, and press `Escape` to go back to the scrolling view.
 
+To share a deck, export it as an HTML or PDF file, including unsaved edits:
+
+- **Desktop**: **Export Slide Deck…** in the options menu.
+- **VSCode**: **Export Slide Deck…** from the MarkBricks button in the editor title bar or the Command Palette. PDF export needs Chrome, Edge or Firefox installed where the extension runs.
+
+Both apps write the same HTML: a standalone page with one slide per screen, whose images keep the paths written in the Markdown, so save it next to the deck. The PDF has one page per slide, at the slide's size. The desktop app prints it with the system's web view, so on macOS and Linux, which use WebKit, fonts and line breaks may differ slightly from the VSCode extension's.
+
 For an example deck that uses directives, split backgrounds, image filters, tables and math, see [`marp.md`](packages/fixtures/markdown/marp.md).
 
 ### Light and dark themes, in your language
