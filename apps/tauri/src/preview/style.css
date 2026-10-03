@@ -1,6 +1,4 @@
 :root {
 	--marp-preview-background: #3c3c3c;
-	--marp-preview-font-family: var(--wpds-typography-font-family-body);
 	--marp-preview-notice-color: var(--wpds-color-foreground-content-neutral-weak);
-	--marp-preview-notice-font-size: var(--wpds-typography-font-size-lg);
 }
