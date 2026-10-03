@@ -123,12 +123,23 @@ export type ConfigurationChangeEvent = {
 	affectsConfiguration: ( section: string, scope?: Uri ) => boolean;
 };
 
+export enum ProgressLocation {
+	Notification = 15,
+}
+
 export class FakeTextDocument {
+	public isDirty = false;
+	public encoding = 'utf8';
+
 	public constructor(
 		public readonly uri: Uri,
 		private text: string,
 		public readonly languageId = 'markdown'
 	) {}
+
+	public get isUntitled(): boolean {
+		return this.uri.scheme === 'untitled';
+	}
 
 	public getText(): string {
 		return this.text;
@@ -216,6 +227,7 @@ function createState() {
 		workspaceFolders: [] as { uri: Uri }[],
 		config: new Map< string, ConfigValue >(),
 		customEditorProviders: new Map< string, unknown >(),
+		commandHandlers: new Map< string, ( ...args: unknown[] ) => unknown >(),
 	};
 }
 
@@ -241,6 +253,10 @@ export const workspace = {
 	},
 	getConfiguration: vi.fn(),
 	applyEdit: vi.fn(),
+	fs: {
+		writeFile: vi.fn(),
+		copy: vi.fn(),
+	},
 	onDidChangeTextDocument: (
 		listener: Listener< TextDocumentChangeEvent >
 	) => state.onDidChangeTextDocument.event( listener ),
@@ -257,8 +273,11 @@ export const workspace = {
 export const window = {
 	registerCustomEditorProvider: vi.fn(),
 	showErrorMessage: vi.fn(),
+	showInformationMessage: vi.fn(),
 	showOpenDialog: vi.fn(),
+	showSaveDialog: vi.fn(),
 	showQuickPick: vi.fn(),
+	withProgress: vi.fn(),
 	createWebviewPanel: vi.fn(),
 	registerWebviewPanelSerializer: vi.fn(),
 	tabGroups: {
@@ -279,10 +298,13 @@ export const window = {
 
 export const commands = {
 	executeCommand: vi.fn(),
+	registerCommand: vi.fn(),
 };
 
 export const env = {
 	language: 'en',
+	remoteName: undefined as string | undefined,
+	openExternal: vi.fn(),
 };
 
 export const l10n = {
@@ -328,6 +350,16 @@ async function applyEdit( edit: WorkspaceEdit ): Promise< boolean > {
 export function resetVscode(): void {
 	state = createState();
 	vi.clearAllMocks();
+	env.remoteName = undefined;
+	commands.registerCommand.mockImplementation(
+		( command: string, handler: ( ...args: unknown[] ) => unknown ) => {
+			state.commandHandlers.set( command, handler );
+			return { dispose: () => {} };
+		}
+	);
+	window.withProgress.mockImplementation(
+		( _options: unknown, task: () => Promise< unknown > ) => task()
+	);
 	workspace.getConfiguration.mockImplementation( getConfiguration );
 	workspace.applyEdit.mockImplementation( applyEdit );
 	workspace.openTextDocument.mockImplementation( async ( uri: Uri ) => {
@@ -409,6 +441,11 @@ export function getWebviewPanels(): FakeWebviewPanel[] {
 
 export function getWebviewPanelSerializer( viewType: string ): unknown {
 	return state.webviewPanelSerializers.get( viewType );
+}
+
+// Runs a command the extension registered, as VS Code would.
+export function runCommand( command: string, ...args: unknown[] ): unknown {
+	return state.commandHandlers.get( command )?.( ...args );
 }
 
 export function getCustomEditorProvider( viewType: string ): unknown {

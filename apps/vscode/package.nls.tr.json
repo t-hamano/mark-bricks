@@ -4,6 +4,7 @@
 	"command.openVisual.title": "MarkBricks ile Aç",
 	"command.openText.title": "Metin Düzenleyicisi ile Aç",
 	"command.openMarpPreview.title": "Slaytları önizle",
+	"command.exportSlideDeck.title": "Slayt destesini dışa aktar…",
 	"command.showQuickPick.title": "MarkBricks komutlarını göster",
 	"config.showListViewByDefault.description": "Liste görünümü panelini varsayılan olarak aç.",
 	"config.showBlockBreadcrumbs.description": "Blok hiyerarşisini düzenleyicinin altında göster.",

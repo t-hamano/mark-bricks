@@ -61,6 +61,10 @@
 				"icon": "$(open-preview)"
 			},
 			{
+				"command": "markBricks.exportSlideDeck",
+				"title": "%command.exportSlideDeck.title%"
+			},
+			{
 				"command": "markBricks.showQuickPick",
 				"title": "%command.showQuickPick.title%",
 				"icon": {
@@ -85,6 +89,10 @@
 			"commandPalette": [
 				{
 					"command": "markBricks.openMarpPreview",
+					"when": "markBricks.isMarp"
+				},
+				{
+					"command": "markBricks.exportSlideDeck",
 					"when": "markBricks.isMarp"
 				},
 				{
@@ -219,6 +227,7 @@
 		"@mark-bricks/editor": "workspace:*",
 		"@mark-bricks/image-path": "workspace:*",
 		"@mark-bricks/marp-preview": "workspace:*",
+		"@marp-team/marp-cli": "^4.5.1",
 		"@wordpress/base-styles": "^13.2.0",
 		"@wordpress/i18n": "^6.29.0",
 		"@wordpress/icons": "^17.0.0",

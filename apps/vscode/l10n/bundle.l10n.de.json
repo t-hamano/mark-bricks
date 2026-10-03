@@ -7,5 +7,16 @@
 	"Open with Text Editor": "Mit Text-Editor öffnen",
 	"Preview Slides": "Folienvorschau anzeigen",
 	"Open Extension Settings": "Erweiterungseinstellungen öffnen",
-	"Select a MarkBricks command": "MarkBricks-Befehl auswählen"
+	"Select a MarkBricks command": "MarkBricks-Befehl auswählen",
+	"Export Slide Deck…": "Foliensatz exportieren…",
+	"Export Slide Deck": "Foliensatz exportieren",
+	"HTML slide deck": "HTML-Foliensatz",
+	"PDF slide deck": "PDF-Foliensatz",
+	"Export": "Exportieren",
+	"Exporting the slide deck…": "Foliensatz wird exportiert…",
+	"Exported the slide deck to {0}.": "Der Foliensatz wurde nach {0} exportiert.",
+	"Open": "Öffnen",
+	"Could not export the slide deck: {0}": "Der Foliensatz konnte nicht exportiert werden: {0}",
+	"Exporting to PDF requires {0}, {1} or {2}.": "Für den PDF-Export ist {0}, {1} oder {2} erforderlich.",
+	"Marp CLI exited with code {0}.": "Marp CLI wurde mit dem Code {0} beendet."
 }

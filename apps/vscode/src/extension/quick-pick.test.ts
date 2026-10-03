@@ -51,13 +51,14 @@ describe( 'getCommandItems', () => {
 		] );
 	} );
 
-	it( 'offers the slide preview for a Marp deck', () => {
+	it( 'offers the slide preview and the export for a Marp deck', () => {
 		const document = createDocument( '/docs/deck.md', DECK );
 		setActiveTab( new TabInputText( document.uri ) );
 
 		expect( listedCommands() ).toEqual( [
 			'markBricks.openVisual',
 			'markBricks.openMarpPreview',
+			'markBricks.exportSlideDeck',
 			'workbench.action.openSettings',
 		] );
 	} );

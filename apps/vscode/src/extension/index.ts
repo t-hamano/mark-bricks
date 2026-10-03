@@ -8,6 +8,7 @@ import * as vscode from 'vscode';
  */
 import type { CodePreviewReport } from '../shared/messages';
 import { MarkBricksEditorProvider } from './editor-provider';
+import { exportSlideDeck, registerExportCommand } from './export';
 import { trackMarpContext } from './marp-context';
 import { MarpPreview } from './marp-preview';
 import { showCommandQuickPick } from './quick-pick';
@@ -35,12 +36,18 @@ export type ExtensionApi = {
 	isEditorRendered: ( uri: vscode.Uri ) => boolean;
 	getCodePreviews: ( uri: vscode.Uri ) => CodePreviewReport | null;
 	getSlideCount: ( uri: vscode.Uri ) => number | null;
+	// The export without its save dialog.
+	exportSlideDeck: (
+		document: vscode.TextDocument,
+		uri: vscode.Uri
+	) => Promise< void >;
 };
 
 export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 	context.subscriptions.push(
 		MarkBricksEditorProvider.register( context ),
 		MarpPreview.register( context ),
+		registerExportCommand( context ),
 		trackMarpContext()
 	);
 
@@ -91,6 +98,7 @@ export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 		getCodePreviews: ( uri ) =>
 			MarkBricksEditorProvider.getCodePreviews( uri ),
 		getSlideCount: ( uri ) => MarpPreview.getSlideCount( uri ),
+		exportSlideDeck,
 	};
 }
 

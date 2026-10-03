@@ -28,6 +28,11 @@ When a document's front matter contains `marp: true`, the visual editor's header
 
 To present, **Enter slide mode** in the preview's toolbar, or press `F` in the preview, to show one slide at a time within the panel. Move between the slides with the arrow keys, Page Up, Page Down, Home, End or the wheel, and press `Escape` to leave. Maximize the panel or enter VS Code's full screen to fill the screen.
 
+To share a deck, run **Export Slide Deck…** from the MarkBricks button or the Command Palette, and save it as an HTML or PDF file. The export includes unsaved edits.
+
+- **HTML** is a standalone page that any browser opens, one slide per screen. Images keep the paths written in the Markdown, so save the page next to the deck for relative paths to work.
+- **PDF** has one page per slide. It needs [Google Chrome](https://www.google.com/chrome/), [Microsoft Edge](https://www.microsoft.com/edge) or [Mozilla Firefox](https://www.mozilla.org/firefox/) installed where the extension runs: on the remote host over Remote - SSH, for example.
+
 ### Light and dark themes, in your language
 
 ![Light and dark themes, in your language](https://github.com/t-hamano/mark-bricks/raw/HEAD/.github/assets/feature-light-and-dark-themes-in-your-language.png)
@@ -44,7 +49,7 @@ You can also switch editors from the editor title bar. To open every Markdown fi
 
 ![Setting MarkBricks as the default editor for Markdown files](https://github.com/t-hamano/mark-bricks/raw/HEAD/.github/assets/usage-set-default-editor.jpg)
 
-The MarkBricks button in the editor title bar lists the commands for the current file: switching editors, previewing slides, and opening the extension settings.
+The MarkBricks button in the editor title bar lists the commands for the current file: switching editors, previewing and exporting slides, and opening the extension settings.
 
 ## Settings
 

@@ -12,13 +12,25 @@ if ( ! watch ) {
 }
 
 const context = await esbuild.context( {
-	entryPoints: [ resolve( appRoot, 'src/extension/index.ts' ) ],
-	outfile: resolve( appRoot, 'dist/extension.cjs' ),
+	entryPoints: {
+		extension: resolve( appRoot, 'src/extension/index.ts' ),
+		// Marp CLI, which the extension loads on the first PDF export.
+		'marp-cli': resolve( appRoot, 'src/extension/export/marp-cli.ts' ),
+	},
+	outdir: resolve( appRoot, 'dist' ),
+	outExtension: { '.js': '.cjs' },
 	bundle: true,
 	platform: 'node',
 	format: 'cjs',
 	target: 'node18',
-	external: [ 'vscode' ],
+	external: [
+		'vscode',
+		// Marp CLI's dependencies require these only in code the export never
+		// runs: `batch` falls back to `emitter` outside Node, and
+		// `cosmiconfig` loads TypeScript for a `.ts` config file.
+		'emitter',
+		'typescript',
+	],
 	sourcemap: watch,
 	minify: ! watch,
 	logLevel: 'info',

@@ -41,6 +41,10 @@ export function getCommandItems( extensionId: string ): CommandItem[] {
 			label: `$(open-preview) ${ vscode.l10n.t( 'Preview Slides' ) }`,
 			command: 'markBricks.openMarpPreview',
 		} );
+		items.push( {
+			label: `$(export) ${ vscode.l10n.t( 'Export Slide Deck…' ) }`,
+			command: 'markBricks.exportSlideDeck',
+		} );
 	}
 	items.push( {
 		label: `$(gear) ${ vscode.l10n.t( 'Open Extension Settings' ) }`,

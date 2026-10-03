@@ -7,5 +7,16 @@
 	"Open with Text Editor": "以文字編輯器開啟",
 	"Preview Slides": "預覽投影片",
 	"Open Extension Settings": "開啟擴充功能設定",
-	"Select a MarkBricks command": "選取 MarkBricks 命令"
+	"Select a MarkBricks command": "選取 MarkBricks 命令",
+	"Export Slide Deck…": "匯出投影片…",
+	"Export Slide Deck": "匯出投影片",
+	"HTML slide deck": "HTML 投影片",
+	"PDF slide deck": "PDF 投影片",
+	"Export": "匯出",
+	"Exporting the slide deck…": "正在匯出投影片…",
+	"Exported the slide deck to {0}.": "已將投影片匯出至 {0}。",
+	"Open": "開啟",
+	"Could not export the slide deck: {0}": "無法匯出投影片: {0}",
+	"Exporting to PDF requires {0}, {1} or {2}.": "匯出為 PDF 需要 {0}、{1} 或 {2}。",
+	"Marp CLI exited with code {0}.": "Marp CLI 已結束，代碼為 {0}。"
 }

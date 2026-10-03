@@ -4,6 +4,7 @@
 	"command.openVisual.title": "Mit MarkBricks öffnen",
 	"command.openText.title": "Mit Text-Editor öffnen",
 	"command.openMarpPreview.title": "Folienvorschau anzeigen",
+	"command.exportSlideDeck.title": "Foliensatz exportieren…",
 	"command.showQuickPick.title": "MarkBricks-Befehle anzeigen",
 	"config.showListViewByDefault.description": "Das Listenansicht-Panel standardmäßig öffnen.",
 	"config.showBlockBreadcrumbs.description": "Die Blockhierarchie am unteren Rand des Editors anzeigen.",

@@ -7,5 +7,16 @@
 	"Open with Text Editor": "Otevřít v textovém editoru",
 	"Preview Slides": "Zobrazit náhled snímků",
 	"Open Extension Settings": "Otevřít nastavení rozšíření",
-	"Select a MarkBricks command": "Vyberte příkaz MarkBricks"
+	"Select a MarkBricks command": "Vyberte příkaz MarkBricks",
+	"Export Slide Deck…": "Exportovat prezentaci…",
+	"Export Slide Deck": "Exportovat prezentaci",
+	"HTML slide deck": "Prezentace HTML",
+	"PDF slide deck": "Prezentace PDF",
+	"Export": "Exportovat",
+	"Exporting the slide deck…": "Exportuje se prezentace…",
+	"Exported the slide deck to {0}.": "Prezentace byla exportována do {0}.",
+	"Open": "Otevřít",
+	"Could not export the slide deck: {0}": "Prezentaci se nepodařilo exportovat: {0}",
+	"Exporting to PDF requires {0}, {1} or {2}.": "Export do PDF vyžaduje {0}, {1} nebo {2}.",
+	"Marp CLI exited with code {0}.": "Marp CLI skončil s kódem {0}."
 }

@@ -132,6 +132,29 @@ suite( 'MarkBricks smoke test', () => {
 			'The slide preview did not show the slides'
 		);
 
+		// Exports the deck while it is open, as the command does. The PDF
+		// needs a browser on the machine, which the GitHub runners have.
+		const deck = await vscode.workspace.openTextDocument( deckUri );
+		for ( const extension of [ 'html', 'pdf' ] ) {
+			const output = path.join( tempDir, `marp.${ extension }` );
+			await api.exportSlideDeck( deck, vscode.Uri.file( output ) );
+			const content = await fs.readFile( output );
+			assert.ok(
+				content
+					.subarray( 0, 15 )
+					.toString()
+					.startsWith( extension === 'pdf' ? '%PDF' : '<!DOCTYPE' ),
+				`The ${ extension } export is not a ${ extension } file`
+			);
+		}
+		// Marp CLI read the saved deck itself, leaving no work file behind.
+		assert.deepStrictEqual(
+			( await fs.readdir( tempDir ) ).filter( ( name ) =>
+				name.startsWith( '.mark-bricks-export-' )
+			),
+			[]
+		);
+
 		// Closes the preview beside the deck, then the deck, leaving the visual
 		// editor active for `suiteTeardown` to revert.
 		await vscode.commands.executeCommand(

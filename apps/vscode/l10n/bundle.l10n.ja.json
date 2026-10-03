@@ -7,5 +7,16 @@
 	"Open with Text Editor": "テキストエディターで開く",
 	"Preview Slides": "スライドをプレビュー",
 	"Open Extension Settings": "拡張機能の設定を開く",
-	"Select a MarkBricks command": "MarkBricks のコマンドを選択"
+	"Select a MarkBricks command": "MarkBricks のコマンドを選択",
+	"Export Slide Deck…": "スライドデッキをエクスポート…",
+	"Export Slide Deck": "スライドデッキをエクスポート",
+	"HTML slide deck": "HTML スライドデッキ",
+	"PDF slide deck": "PDF スライドデッキ",
+	"Export": "エクスポート",
+	"Exporting the slide deck…": "スライドデッキをエクスポートしています…",
+	"Exported the slide deck to {0}.": "スライドデッキを {0} にエクスポートしました。",
+	"Open": "開く",
+	"Could not export the slide deck: {0}": "スライドデッキをエクスポートできませんでした: {0}",
+	"Exporting to PDF requires {0}, {1} or {2}.": "PDF へのエクスポートには {0}、{1}、{2} のいずれかが必要です。",
+	"Marp CLI exited with code {0}.": "Marp CLI が終了コード {0} で終了しました。"
 }

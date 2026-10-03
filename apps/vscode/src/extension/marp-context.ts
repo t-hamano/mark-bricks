@@ -15,7 +15,7 @@ export const MARP_CONTEXT_KEY = 'markBricks.isMarp';
 
 // The document the active tab edits, if it is a text editor or the visual
 // editor.
-function getActiveDocument(): vscode.TextDocument | undefined {
+export function getActiveDocument(): vscode.TextDocument | undefined {
 	const input = vscode.window.tabGroups.activeTabGroup.activeTab?.input;
 	const uri =
 		input instanceof vscode.TabInputText ||

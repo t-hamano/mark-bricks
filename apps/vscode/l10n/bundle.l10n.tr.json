@@ -7,5 +7,16 @@
 	"Open with Text Editor": "Metin Düzenleyicisi ile Aç",
 	"Preview Slides": "Slaytları önizle",
 	"Open Extension Settings": "Uzantı ayarlarını aç",
-	"Select a MarkBricks command": "Bir MarkBricks komutu seçin"
+	"Select a MarkBricks command": "Bir MarkBricks komutu seçin",
+	"Export Slide Deck…": "Slayt destesini dışa aktar…",
+	"Export Slide Deck": "Slayt destesini dışa aktar",
+	"HTML slide deck": "HTML slayt destesi",
+	"PDF slide deck": "PDF slayt destesi",
+	"Export": "Dışa aktar",
+	"Exporting the slide deck…": "Slayt destesi dışa aktarılıyor…",
+	"Exported the slide deck to {0}.": "Slayt destesi {0} olarak dışa aktarıldı.",
+	"Open": "Aç",
+	"Could not export the slide deck: {0}": "Slayt destesi dışa aktarılamadı: {0}",
+	"Exporting to PDF requires {0}, {1} or {2}.": "PDF olarak dışa aktarmak için {0}, {1} veya {2} gerekir.",
+	"Marp CLI exited with code {0}.": "Marp CLI {0} koduyla sonlandı."
 }

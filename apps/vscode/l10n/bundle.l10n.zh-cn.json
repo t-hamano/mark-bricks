@@ -7,5 +7,16 @@
 	"Open with Text Editor": "使用文本编辑器打开",
 	"Preview Slides": "预览幻灯片",
 	"Open Extension Settings": "打开扩展设置",
-	"Select a MarkBricks command": "选择 MarkBricks 命令"
+	"Select a MarkBricks command": "选择 MarkBricks 命令",
+	"Export Slide Deck…": "导出幻灯片…",
+	"Export Slide Deck": "导出幻灯片",
+	"HTML slide deck": "HTML 幻灯片",
+	"PDF slide deck": "PDF 幻灯片",
+	"Export": "导出",
+	"Exporting the slide deck…": "正在导出幻灯片…",
+	"Exported the slide deck to {0}.": "已将幻灯片导出到 {0}。",
+	"Open": "打开",
+	"Could not export the slide deck: {0}": "无法导出幻灯片: {0}",
+	"Exporting to PDF requires {0}, {1} or {2}.": "导出为 PDF 需要 {0}、{1} 或 {2}。",
+	"Marp CLI exited with code {0}.": "Marp CLI 已退出，代码为 {0}。"
 }
