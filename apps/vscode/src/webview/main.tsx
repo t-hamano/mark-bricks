@@ -278,6 +278,23 @@ function App() {
 	);
 }
 
+// VS Code cancels copy, cut and paste keydowns bubbled from the block canvas
+// iframe and runs them on this document, missing the iframe's selection.
+// Keep them from VS Code so the browser handles them in the iframe.
+document.addEventListener( 'keydown', ( event ) => {
+	if ( ! ( event.target instanceof HTMLIFrameElement ) ) {
+		return;
+	}
+	// Ctrl/Cmd+C, V or X, or Shift+Insert, as VS Code checks them.
+	const hasModifier = event.ctrlKey || event.metaKey;
+	if (
+		( hasModifier && [ 67, 86, 88 ].includes( event.keyCode ) ) ||
+		( event.shiftKey && event.keyCode === 45 )
+	) {
+		event.stopPropagation();
+	}
+} );
+
 async function bootstrap() {
 	// The extension host writes VS Code's display language into `<html lang>`.
 	// Write the resolved locale back so it matches the language the UI is
