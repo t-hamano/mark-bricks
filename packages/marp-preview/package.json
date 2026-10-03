@@ -2,7 +2,7 @@
 	"name": "@mark-bricks/marp-preview",
 	"version": "0.0.0",
 	"private": true,
-	"description": "Renders and shows Marp slide decks in the hosts' slide previews.",
+	"description": "Renders Marp slide decks for the hosts' slide previews and exports, and shows them in the previews.",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
 	"type": "module",
@@ -10,6 +10,10 @@
 		"./render": {
 			"types": "./src/render/index.ts",
 			"default": "./src/render/index.ts"
+		},
+		"./export": {
+			"types": "./src/export/index.ts",
+			"default": "./src/export/index.ts"
 		},
 		"./controls": {
 			"types": "./src/controls/index.ts",
