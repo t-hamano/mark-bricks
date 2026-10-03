@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
-"PO-Revision-Date: 2026-10-03T02:51:36.123Z\n"
+"POT-Creation-Date: 2026-10-03T06:47:32.758Z\n"
+"PO-Revision-Date: 2026-10-03T06:47:37.933Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,16 +26,16 @@ msgstr "「%s」有未儲存的變更。要捨棄變更並關閉嗎？"
 msgid "(Untitled)"
 msgstr "(未命名)"
 
-#: src/components/header-actions/index.tsx:302
+#: src/components/header-actions/index.tsx:313
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "關於 MarkBricks"
 
-#: src/components/header-actions/index.tsx:192
+#: src/components/header-actions/index.tsx:203
 msgid "Access all block and document tools in a single place"
 msgstr "可在同一位置使用全部區塊及內容工具"
 
-#: src/components/header-actions/index.tsx:271
+#: src/components/header-actions/index.tsx:282
 msgid "Add YAML front matter"
 msgstr "新增 YAML 前置資料"
 
@@ -56,7 +56,7 @@ msgstr "內容區域的基本字型大小 (像素)。"
 msgid "Block shortcuts"
 msgstr "區塊快速鍵"
 
-#: src/components/header-actions/index.tsx:331
+#: src/components/header-actions/index.tsx:342
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "取消"
@@ -96,13 +96,18 @@ msgid "Close the active tab."
 msgstr "關閉目前的分頁。"
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:247
+#: src/components/header-actions/index.tsx:258
 msgid "Code editor"
 msgstr "程式碼編輯器"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:106
 msgid "Content width"
 msgstr "內容寬度"
+
+# %s: Error message.
+#: src/actions/index.ts:322
+msgid "Could not export the slide deck: %s"
+msgstr "無法匯出投影片: %s"
 
 #: src/hooks/use-file-open-events.ts:43
 msgid "Could not open the following file:"
@@ -134,13 +139,26 @@ msgstr "捨棄變更"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "在編輯器底部顯示區塊階層路徑。"
 
-#: src/components/header-actions/index.tsx:218
+#: src/components/header-actions/index.tsx:229
 msgid "Editor"
 msgstr "編輯器"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:103
 msgid "Editor styles"
 msgstr "編輯器樣式"
+
+#: src/actions/index.ts:308
+msgid "Export Slide Deck"
+msgstr "匯出投影片"
+
+#: src/components/header-actions/index.tsx:180
+msgid "Export Slide Deck…"
+msgstr "匯出投影片…"
+
+# %s: Name of the exported file.
+#: src/actions/index.ts:333
+msgid "Exported the slide deck to %s."
+msgstr "已將投影片匯出至 %s。"
 
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
@@ -150,11 +168,11 @@ msgstr "檔案關聯"
 msgid "File shortcuts"
 msgstr "檔案快速鍵"
 
-#: src/components/header-actions/index.tsx:142
+#: src/components/header-actions/index.tsx:143
 msgid "Files"
 msgstr "檔案"
 
-#: src/components/header-actions/index.tsx:208
+#: src/components/header-actions/index.tsx:219
 msgid "Focus on one block at a time"
 msgstr "畫面僅會聚焦於正在編輯的區塊"
 
@@ -175,11 +193,15 @@ msgstr "一般"
 msgid "Global shortcuts"
 msgstr "全域快速鍵"
 
+#: src/actions/index.ts:316
+msgid "HTML slide deck"
+msgstr "HTML 投影片"
+
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
 msgstr "手寫"
 
-#: src/components/header-actions/index.tsx:276
+#: src/components/header-actions/index.tsx:287
 msgid "Hide YAML front matter"
 msgstr "隱藏 YAML 前置資料"
 
@@ -196,7 +218,7 @@ msgid "Images with relative paths are displayed once the document is saved."
 msgstr "使用相對路徑的圖片會在文件儲存後顯示。"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:295
+#: src/components/header-actions/index.tsx:306
 msgid "Keyboard shortcuts"
 msgstr "鍵盤快速鍵"
 
@@ -230,7 +252,7 @@ msgstr "內容區域的最大寬度 (像素)。"
 msgid "Monospace"
 msgstr "等寬"
 
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:150
 msgid "New"
 msgstr "新增"
 
@@ -268,32 +290,32 @@ msgstr "開啟檔案…"
 msgid "Opens the List View panel by default."
 msgstr "預設開啟 [清單檢視] 面板。"
 
-#: src/components/header-actions/index.tsx:157
+#: src/components/header-actions/index.tsx:158
 msgid "Open…"
 msgstr "開啟…"
 
-#: src/components/header-actions/index.tsx:129
+#: src/components/header-actions/index.tsx:130
 msgid "Options"
 msgstr "選項"
 
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:311
+#: src/components/header-actions/index.tsx:322
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: src/components/header-actions/index.tsx:103
+#: src/components/header-actions/index.tsx:104
 msgid "Preview Slides"
 msgstr "預覽投影片"
 
-#: src/components/header-actions/index.tsx:332
+#: src/components/header-actions/index.tsx:343
 msgid "Remove"
 msgstr "移除"
 
-#: src/components/header-actions/index.tsx:282
+#: src/components/header-actions/index.tsx:293
 msgid "Remove YAML front matter"
 msgstr "移除 YAML 前置資料"
 
-#: src/components/header-actions/index.tsx:326
+#: src/components/header-actions/index.tsx:337
 msgid "Remove YAML front matter?"
 msgstr "要移除 YAML 前置資料嗎？"
 
@@ -314,12 +336,12 @@ msgid "Sans-serif"
 msgstr "無襯線"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:119
-#: src/components/header-actions/index.tsx:165
+#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:166
 msgid "Save"
 msgstr "儲存"
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:174
 msgid "Save As…"
 msgstr "另存新檔…"
 
@@ -360,7 +382,7 @@ msgstr "顯示區塊導覽標記"
 msgid "Show line numbers"
 msgstr "顯示行號"
 
-#: src/actions/index.ts:300
+#: src/actions/index.ts:347
 msgid "Slide Preview"
 msgstr "投影片預覽"
 
@@ -368,7 +390,7 @@ msgstr "投影片預覽"
 msgid "Spell check"
 msgstr "拼字檢查"
 
-#: src/components/header-actions/index.tsx:205
+#: src/components/header-actions/index.tsx:216
 msgid "Spotlight mode"
 msgstr "焦點模式"
 
@@ -385,7 +407,7 @@ msgstr "定位點大小"
 msgid "Text formatting"
 msgstr "內容格式化"
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:338
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -402,11 +424,11 @@ msgid ""
 "MarkBricks. Please configure it from your system file manager."
 msgstr "此平台不支援從 MarkBricks 內設定預設應用程式。請從系統的檔案管理員進行設定。"
 
-#: src/components/header-actions/index.tsx:255
+#: src/components/header-actions/index.tsx:266
 msgid "Tools"
 msgstr "工具"
 
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:200
 msgid "Top toolbar"
 msgstr "頂端工具列"
 
@@ -435,12 +457,12 @@ msgstr "有可用的更新"
 msgid "Update check failed: %s"
 msgstr "檢查更新失敗：%s"
 
-#: src/components/header-actions/index.tsx:180
+#: src/components/header-actions/index.tsx:191
 msgid "View"
 msgstr "檢視"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:235
+#: src/components/header-actions/index.tsx:246
 msgid "Visual editor"
 msgstr "視覺化編輯器"
 
