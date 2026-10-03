@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
-"PO-Revision-Date: 2026-10-03T02:34:59.663Z\n"
+"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
+"PO-Revision-Date: 2026-10-03T02:51:35.471Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -142,14 +142,6 @@ msgstr "编辑器"
 msgid "Editor styles"
 msgstr "编辑器样式"
 
-#: src/hooks/use-preview-sync.ts:39
-msgid "Enter full screen"
-msgstr "全屏"
-
-#: src/hooks/use-preview-sync.ts:40
-msgid "Exit full screen"
-msgstr "退出全屏"
-
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "文件关联"
@@ -251,15 +243,11 @@ msgstr "新建文件"
 msgid "New…"
 msgstr "新建…"
 
-#: src/hooks/use-preview-sync.ts:46
-msgid "Next slide"
-msgstr "下一张幻灯片"
-
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "没有打开的文件"
 
-#: src/hooks/use-preview-sync.ts:54
+#: src/hooks/use-preview-sync.ts:40
 msgid "Not a Marp document"
 msgstr "不是 Marp 文档"
 
@@ -293,17 +281,9 @@ msgstr "选项"
 msgid "Preferences"
 msgstr "偏好设置"
 
-#: src/hooks/use-preview-sync.ts:41
-msgid "Press F or Escape to exit full screen"
-msgstr "按 F 或 Esc 键退出全屏"
-
 #: src/components/header-actions/index.tsx:103
 msgid "Preview Slides"
 msgstr "预览幻灯片"
-
-#: src/hooks/use-preview-sync.ts:45
-msgid "Previous slide"
-msgstr "上一张幻灯片"
 
 #: src/components/header-actions/index.tsx:332
 msgid "Remove"
@@ -380,18 +360,9 @@ msgstr "显示区块面包屑"
 msgid "Show line numbers"
 msgstr "显示行号"
 
-# 1: Slide number. 2: Number of slides.
-#: src/hooks/use-preview-sync.ts:50
-msgid "Slide %1$d of %2$d"
-msgstr "幻灯片 %1$d / %2$d"
-
-#: src/actions/index.ts:299
+#: src/actions/index.ts:300
 msgid "Slide Preview"
 msgstr "幻灯片预览"
-
-#: src/hooks/use-preview-sync.ts:47
-msgid "Slide number"
-msgstr "幻灯片编号"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"

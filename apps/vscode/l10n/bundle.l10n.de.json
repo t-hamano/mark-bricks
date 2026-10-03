@@ -2,12 +2,5 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks konnte die Änderungen nicht auf {0} anwenden.",
 	"Images": "Bilder",
 	"Not a Marp document": "Kein Marp-Dokument",
-	"Slide Preview: {0}": "Folienvorschau: {0}",
-	"Enter slide mode": "Folienmodus",
-	"Exit slide mode": "Folienmodus beenden",
-	"Press F or Escape to exit slide mode": "Zum Beenden des Folienmodus F oder Esc drücken",
-	"Previous slide": "Vorherige Folie",
-	"Next slide": "Nächste Folie",
-	"Slide number": "Foliennummer",
-	"Slide %1$d of %2$d": "Folie %1$d von %2$d"
+	"Slide Preview: {0}": "Folienvorschau: {0}"
 }

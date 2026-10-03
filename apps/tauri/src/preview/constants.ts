@@ -1,8 +1,3 @@
-/**
- * External dependencies
- */
-import type { PreviewLabels } from '@mark-bricks/marp-preview/render';
-
 // Label of the slide preview window, as `open_preview` creates it.
 export const PREVIEW_WINDOW = 'preview';
 
@@ -13,8 +8,6 @@ export const PREVIEW_READY_EVENT = 'preview-ready';
 export const PREVIEW_DOCUMENT_EVENT = 'preview-document';
 
 // What the preview window shows: the active document's slides, or a notice
-// when it is not a Marp slide deck. The main window translates the notice and
-// the labels, since the preview window loads no translations.
-export type PreviewPayload = { labels: PreviewLabels } & (
-	{ markdown: string; documentPath?: string } | { notice: string }
-);
+// when it is not a Marp slide deck. The main window translates the notice.
+export type PreviewPayload =
+	{ markdown: string; documentPath?: string } | { notice: string };

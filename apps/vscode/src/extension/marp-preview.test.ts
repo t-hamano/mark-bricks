@@ -131,20 +131,10 @@ describe( 'rendering', () => {
 
 		panel.send( { type: 'ready' } );
 
-		// Tells the webview which document to save in its state, and the
-		// text of its controls.
+		// Tells the webview which document to save in its state.
 		expect( panel.posted[ 0 ] ).toEqual( {
 			type: 'document',
 			uri: document.uri.toString(),
-			labels: {
-				enterSlideMode: 'Enter slide mode',
-				exitSlideMode: 'Exit slide mode',
-				exitSlideModeHint: 'Press F or Escape to exit slide mode',
-				previousSlide: 'Previous slide',
-				nextSlide: 'Next slide',
-				slideNumber: 'Slide number',
-				slideLabel: 'Slide %1$d of %2$d',
-			},
 		} );
 		await vi.waitFor(
 			() => expect( rendered( panel ) ).toHaveLength( 1 ),

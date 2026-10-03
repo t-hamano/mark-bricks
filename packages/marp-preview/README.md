@@ -7,5 +7,5 @@ Renders a Marp slide deck into the HTML and stylesheet of the hosts' slide previ
 
 ## Entry points
 
-- `@mark-bricks/marp-preview/render`: `renderSlides` and the `PreviewLabels` type, for the hosts. Each host passes a function that turns the deck's image sources into URLs its preview can load. It depends on neither the editor nor a bundler, so the VS Code extension host can load it.
+- `@mark-bricks/marp-preview/render`: `renderSlides`, for the hosts. Each host passes a function that turns the deck's image sources into URLs its preview can load. It depends on neither the editor nor a bundler, so the VS Code extension host can load it.
 - `@mark-bricks/marp-preview/controls`: `createSlidePreview`, for the preview pages. It sets up a preview page: the slides with their controls and the slide mode, which the toolbar's button, `F` and `Escape` turn on and off. A host can add toggle keys, and handle the requests to turn the slide mode on and off itself, such as to enter full screen with it.

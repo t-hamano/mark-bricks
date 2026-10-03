@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client';
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { chevronLeft, chevronRight } from '@wordpress/icons';
 import { ThemeProvider } from '@wordpress/theme';
 import { Button, Field, IconButton, Select } from '@wordpress/ui';
@@ -15,7 +16,6 @@ import '@wordpress/theme/design-tokens.css';
 /**
  * Internal dependencies
  */
-import type { PreviewLabels } from '../render';
 import './style.css';
 
 const HINT_DURATION = 3000;
@@ -27,19 +27,17 @@ const VISIBLE_CLASS = 'is-visible';
 const BACKGROUND_COLOR = '#3c3c3c';
 
 export type PreviewControls = {
-	setLabels: ( labels: PreviewLabels ) => void;
 	setSlideMode: ( enabled: boolean ) => void;
 	setSlide: ( current: number, count: number ) => void;
 };
 
 type PagerProps = {
-	labels: PreviewLabels;
 	current: number;
 	count: number;
 	onNavigate: ( index: number ) => void;
 };
 
-function Pager( { labels, current, count, onNavigate }: PagerProps ) {
+function Pager( { current, count, onNavigate }: PagerProps ) {
 	const items = useMemo(
 		() =>
 			Array.from( { length: count }, ( _, index ) => ( {
@@ -52,7 +50,7 @@ function Pager( { labels, current, count, onNavigate }: PagerProps ) {
 		<div className="preview-pager">
 			<IconButton
 				icon={ chevronLeft }
-				label={ labels.previousSlide }
+				label={ __( 'Previous slide', 'mark-bricks' ) }
 				variant="minimal"
 				tone="neutral"
 				size="compact"
@@ -60,7 +58,9 @@ function Pager( { labels, current, count, onNavigate }: PagerProps ) {
 				onClick={ () => onNavigate( current - 1 ) }
 			/>
 			<Field.Root>
-				<Field.Label hideFromVision>{ labels.slideNumber }</Field.Label>
+				<Field.Label hideFromVision>
+					{ __( 'Slide number', 'mark-bricks' ) }
+				</Field.Label>
 				<Select.Root
 					items={ items }
 					value={ items[ current ] ?? null }
@@ -100,7 +100,7 @@ function Pager( { labels, current, count, onNavigate }: PagerProps ) {
 			</Field.Root>
 			<IconButton
 				icon={ chevronRight }
-				label={ labels.nextSlide }
+				label={ __( 'Next slide', 'mark-bricks' ) }
 				variant="minimal"
 				tone="neutral"
 				size="compact"
@@ -112,7 +112,6 @@ function Pager( { labels, current, count, onNavigate }: PagerProps ) {
 }
 
 type Props = {
-	labels: PreviewLabels | null;
 	slideMode: boolean;
 	current: number;
 	count: number;
@@ -120,37 +119,23 @@ type Props = {
 	onNavigate: ( index: number ) => void;
 };
 
-function Toolbar( {
-	labels,
-	slideMode,
-	current,
-	count,
-	onToggle,
-	onNavigate,
-}: Props ) {
+function Toolbar( { slideMode, current, count, onToggle, onNavigate }: Props ) {
 	return (
 		<ThemeProvider isRoot color={ { background: BACKGROUND_COLOR } }>
-			{ labels && (
-				<div className="preview-toolbar">
-					{ count > 0 && (
-						<Pager
-							labels={ labels }
-							current={ current }
-							count={ count }
-							onNavigate={ onNavigate }
-						/>
-					) }
-					<Button
-						variant="outline"
-						tone="neutral"
-						onClick={ onToggle }
-					>
-						{ slideMode
-							? labels.exitSlideMode
-							: labels.enterSlideMode }
-					</Button>
-				</div>
-			) }
+			<div className="preview-toolbar">
+				{ count > 0 && (
+					<Pager
+						current={ current }
+						count={ count }
+						onNavigate={ onNavigate }
+					/>
+				) }
+				<Button variant="outline" tone="neutral" onClick={ onToggle }>
+					{ slideMode
+						? __( 'Exit slide mode', 'mark-bricks' )
+						: __( 'Enter slide mode', 'mark-bricks' ) }
+				</Button>
+			</div>
 		</ThemeProvider>
 	);
 }
@@ -162,14 +147,13 @@ function Toolbar( {
  *
  * @param toggle   Toggles the slide mode.
  * @param navigate Moves to the slide at an index.
- * @return Functions to update the controls with the labels, the slide mode's
- *         state and the current slide.
+ * @return Functions to update the controls with the slide mode's state and
+ *         the current slide.
  */
 export function createPreviewControls(
 	toggle: () => void,
 	navigate: ( index: number ) => void
 ): PreviewControls {
-	let labels: PreviewLabels | null = null;
 	let slideMode = false;
 	let current = 0;
 	let count = 0;
@@ -196,7 +180,6 @@ export function createPreviewControls(
 	function renderToolbar() {
 		root.render(
 			<Toolbar
-				labels={ labels }
 				slideMode={ slideMode }
 				current={ current }
 				count={ count }
@@ -217,19 +200,17 @@ export function createPreviewControls(
 	}
 
 	function showHint() {
-		if ( ! labels ) {
-			return;
-		}
-		hint.textContent = labels.exitSlideModeHint;
+		hint.textContent = __(
+			'Press F or Escape to exit slide mode',
+			'mark-bricks'
+		);
 		hint.classList.add( VISIBLE_CLASS );
 		hintTimer = window.setTimeout( hideHint, HINT_DURATION );
 	}
 
+	renderToolbar();
+
 	return {
-		setLabels( value ) {
-			labels = value;
-			renderToolbar();
-		},
 		setSlideMode( value ) {
 			slideMode = value;
 			renderToolbar();

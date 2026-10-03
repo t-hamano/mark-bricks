@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
+"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -88,36 +88,7 @@ msgstr ""
 msgid "Close the active tab."
 msgstr ""
 
-#: src/hooks/use-preview-sync.ts:39
-msgid "Enter full screen"
-msgstr ""
-
 #: src/hooks/use-preview-sync.ts:40
-msgid "Exit full screen"
-msgstr ""
-
-#: src/hooks/use-preview-sync.ts:41
-msgid "Press F or Escape to exit full screen"
-msgstr ""
-
-#: src/hooks/use-preview-sync.ts:45
-msgid "Previous slide"
-msgstr ""
-
-#: src/hooks/use-preview-sync.ts:46
-msgid "Next slide"
-msgstr ""
-
-#: src/hooks/use-preview-sync.ts:47
-msgid "Slide number"
-msgstr ""
-
-# 1: Slide number. 2: Number of slides.
-#: src/hooks/use-preview-sync.ts:50
-msgid "Slide %1$d of %2$d"
-msgstr ""
-
-#: src/hooks/use-preview-sync.ts:54
 msgid "Not a Marp document"
 msgstr ""
 
@@ -166,7 +137,7 @@ msgstr ""
 msgid "Update check failed: %s"
 msgstr ""
 
-#: src/actions/index.ts:299
+#: src/actions/index.ts:300
 msgid "Slide Preview"
 msgstr ""
 

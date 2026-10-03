@@ -2,12 +2,5 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks nie może zastosować zmian w {0}.",
 	"Images": "Obrazy",
 	"Not a Marp document": "To nie jest dokument Marp",
-	"Slide Preview: {0}": "Podgląd slajdów: {0}",
-	"Enter slide mode": "Tryb slajdów",
-	"Exit slide mode": "Zamknij tryb slajdów",
-	"Press F or Escape to exit slide mode": "Naciśnij F lub Esc, aby zamknąć tryb slajdów",
-	"Previous slide": "Poprzedni slajd",
-	"Next slide": "Następny slajd",
-	"Slide number": "Numer slajdu",
-	"Slide %1$d of %2$d": "Slajd %1$d z %2$d"
+	"Slide Preview: {0}": "Podgląd slajdów: {0}"
 }

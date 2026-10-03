@@ -2,12 +2,5 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks, düzenlemeleri {0} dosyasına uygulayamadı.",
 	"Images": "Görseller",
 	"Not a Marp document": "Marp belgesi değil",
-	"Slide Preview: {0}": "Slayt önizlemesi: {0}",
-	"Enter slide mode": "Slayt modu",
-	"Exit slide mode": "Slayt modundan çık",
-	"Press F or Escape to exit slide mode": "Slayt modundan çıkmak için F veya Esc tuşuna basın",
-	"Previous slide": "Önceki slayt",
-	"Next slide": "Sonraki slayt",
-	"Slide number": "Slayt numarası",
-	"Slide %1$d of %2$d": "Slayt %1$d / %2$d"
+	"Slide Preview: {0}": "Slayt önizlemesi: {0}"
 }

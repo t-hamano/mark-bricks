@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
-"PO-Revision-Date: 2026-10-03T02:34:56.391Z\n"
+"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
+"PO-Revision-Date: 2026-10-03T02:51:32.069Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -142,14 +142,6 @@ msgstr "エディター"
 msgid "Editor styles"
 msgstr "エディタースタイル"
 
-#: src/hooks/use-preview-sync.ts:39
-msgid "Enter full screen"
-msgstr "全画面表示"
-
-#: src/hooks/use-preview-sync.ts:40
-msgid "Exit full screen"
-msgstr "全画面表示を終了"
-
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "ファイルの関連付け"
@@ -251,15 +243,11 @@ msgstr "新規ファイル"
 msgid "New…"
 msgstr "新規…"
 
-#: src/hooks/use-preview-sync.ts:46
-msgid "Next slide"
-msgstr "次のスライド"
-
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "開いているファイルがありません"
 
-#: src/hooks/use-preview-sync.ts:54
+#: src/hooks/use-preview-sync.ts:40
 msgid "Not a Marp document"
 msgstr "Marp 文書ではありません"
 
@@ -293,17 +281,9 @@ msgstr "オプション"
 msgid "Preferences"
 msgstr "設定"
 
-#: src/hooks/use-preview-sync.ts:41
-msgid "Press F or Escape to exit full screen"
-msgstr "F キーまたは Esc キーを押すと全画面表示を終了します"
-
 #: src/components/header-actions/index.tsx:103
 msgid "Preview Slides"
 msgstr "スライドをプレビュー"
-
-#: src/hooks/use-preview-sync.ts:45
-msgid "Previous slide"
-msgstr "前のスライド"
 
 #: src/components/header-actions/index.tsx:332
 msgid "Remove"
@@ -380,18 +360,9 @@ msgstr "ブロックのパンくずリストを表示"
 msgid "Show line numbers"
 msgstr "行番号を表示"
 
-# 1: Slide number. 2: Number of slides.
-#: src/hooks/use-preview-sync.ts:50
-msgid "Slide %1$d of %2$d"
-msgstr "スライド %1$d / %2$d"
-
-#: src/actions/index.ts:299
+#: src/actions/index.ts:300
 msgid "Slide Preview"
 msgstr "スライドプレビュー"
-
-#: src/hooks/use-preview-sync.ts:47
-msgid "Slide number"
-msgstr "スライド番号"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"

@@ -9,18 +9,16 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 /**
  * Internal dependencies
  */
-import type { PreviewLabels } from '../render';
-import { createPreviewControls } from './controls';
+import { createPreviewControls, type PreviewControls } from './controls';
 
-const labels: PreviewLabels = {
-	enterSlideMode: 'Enter slide mode',
-	exitSlideMode: 'Exit slide mode',
-	exitSlideModeHint: 'Press Escape to exit',
-	previousSlide: 'Previous slide',
-	nextSlide: 'Next slide',
-	slideNumber: 'Slide number',
-	slideLabel: 'Slide %1$d of %2$d',
-};
+// Creates the controls, which render their toolbar right away.
+function setup( toggle = vi.fn(), navigate = vi.fn() ) {
+	let controls: PreviewControls | undefined;
+	act( () => {
+		controls = createPreviewControls( toggle, navigate );
+	} );
+	return controls as PreviewControls;
+}
 
 function getButton( name: string ) {
 	return Array.from( document.querySelectorAll( 'button' ) ).find(
@@ -36,17 +34,9 @@ describe( 'createPreviewControls', () => {
 		Object.assign( globalThis, { IS_REACT_ACT_ENVIRONMENT: true } );
 	} );
 
-	it( 'shows nothing until the labels arrive', () => {
-		act( () => {
-			createPreviewControls( vi.fn(), vi.fn() );
-		} );
-		expect( document.querySelector( '.preview-toolbar' ) ).toBeNull();
-	} );
-
 	it( 'toggles the slide mode with the button', () => {
 		const toggle = vi.fn();
-		const controls = createPreviewControls( toggle, vi.fn() );
-		act( () => controls.setLabels( labels ) );
+		const controls = setup( toggle );
 
 		act( () => getButton( 'Enter slide mode' )?.click() );
 		expect( toggle ).toHaveBeenCalledTimes( 1 );
@@ -56,19 +46,19 @@ describe( 'createPreviewControls', () => {
 	} );
 
 	it( 'shows the hint on entering the slide mode', () => {
-		const controls = createPreviewControls( vi.fn(), vi.fn() );
-		act( () => controls.setLabels( labels ) );
+		const controls = setup();
 		act( () => controls.setSlideMode( true ) );
 
 		const hint = document.querySelector( '.preview-hint' );
-		expect( hint?.textContent ).toBe( 'Press Escape to exit' );
+		expect( hint?.textContent ).toBe(
+			'Press F or Escape to exit slide mode'
+		);
 		expect( hint?.classList.contains( 'is-visible' ) ).toBe( true );
 	} );
 
 	it( 'moves between the slides with the pager', () => {
 		const navigate = vi.fn();
-		const controls = createPreviewControls( vi.fn(), navigate );
-		act( () => controls.setLabels( labels ) );
+		const controls = setup( vi.fn(), navigate );
 		act( () => controls.setSlide( 1, 3 ) );
 
 		act( () => getButton( 'Next slide' )?.click() );
@@ -78,8 +68,7 @@ describe( 'createPreviewControls', () => {
 	} );
 
 	it( 'disables the pager buttons at either end', () => {
-		const controls = createPreviewControls( vi.fn(), vi.fn() );
-		act( () => controls.setLabels( labels ) );
+		const controls = setup();
 		act( () => controls.setSlide( 0, 1 ) );
 
 		// The buttons stay focusable while disabled.

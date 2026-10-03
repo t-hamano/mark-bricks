@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { invoke } from '@tauri-apps/api/core';
+import { getLocale } from '@mark-bricks/editor/i18n';
 
 /**
  * WordPress dependencies
@@ -297,5 +298,6 @@ export async function closeOtherTabs( keepId: string ) {
 export async function openPreview() {
 	await invoke( 'open_preview', {
 		title: __( 'Slide Preview', 'mark-bricks' ),
+		locale: getLocale(),
 	} );
 }
