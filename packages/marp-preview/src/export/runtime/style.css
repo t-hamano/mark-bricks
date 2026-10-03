@@ -1,0 +1,140 @@
+/*
+ * The toolbar and the slide mode of an exported page, styled after the
+ * preview's, without its design tokens. The slide mode presents one slide at
+ * a time, letterboxed on black. Slides print as they are.
+ */
+@media screen {
+	.is-slide-mode body {
+		overflow: hidden;
+	}
+
+	.is-slide-mode body > svg {
+		display: none;
+	}
+
+	.is-slide-mode body > svg.is-current {
+		display: block;
+	}
+
+	/*
+	 * The current slide takes focus, so that the keyboard reaches it, but
+	 * shows no focus ring, which would get in the way of the slide.
+	 */
+	body > svg:focus {
+		outline: none;
+	}
+
+	.mark-bricks-toolbar {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		box-sizing: border-box;
+		height: 56px;
+		padding: 0 24px;
+		background: rgb(0 0 0 / 70%);
+		color: #fff;
+		font-family: system-ui, sans-serif;
+		font-size: 13px;
+		line-height: 1.4;
+		opacity: 0;
+		transition: opacity 0.2s;
+	}
+
+	.mark-bricks-toolbar:hover,
+	.mark-bricks-toolbar:focus-within {
+		opacity: 1;
+	}
+
+	.mark-bricks-pager {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		margin-inline-end: auto;
+	}
+
+	.mark-bricks-button,
+	.mark-bricks-select {
+		box-sizing: border-box;
+		height: 32px;
+		margin: 0;
+		border: 1px solid rgb(255 255 255 / 40%);
+		border-radius: 2px;
+		background: transparent;
+		color: inherit;
+		font: inherit;
+	}
+
+	.mark-bricks-button {
+		padding: 0 12px;
+		cursor: pointer;
+	}
+
+	.mark-bricks-button.is-icon {
+		display: grid;
+		place-items: center;
+		width: 32px;
+		padding: 0;
+		border-color: transparent;
+	}
+
+	.mark-bricks-button:hover:not(:disabled) {
+		background: rgb(255 255 255 / 15%);
+	}
+
+	.mark-bricks-button:disabled {
+		cursor: default;
+		opacity: 0.4;
+	}
+
+	.mark-bricks-select {
+		padding: 0 8px;
+		color-scheme: dark;
+	}
+
+	.mark-bricks-button:focus-visible,
+	.mark-bricks-select:focus-visible {
+		outline: 2px solid #fff;
+		outline-offset: 1px;
+	}
+
+	.mark-bricks-hint {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		z-index: 2;
+		padding: 8px 24px;
+		border-radius: 4px;
+		background: rgb(0 0 0 / 70%);
+		color: #fff;
+		font-family: system-ui, sans-serif;
+		font-size: 20px;
+		line-height: 1.4;
+		pointer-events: none;
+		opacity: 0;
+		transform: translate(-50%, -50%);
+		transition: opacity 0.4s;
+	}
+
+	.mark-bricks-hint.is-visible {
+		opacity: 1;
+	}
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	.mark-bricks-toolbar,
+	.mark-bricks-hint {
+		transition: none;
+	}
+}
+
+@media print {
+	.mark-bricks-toolbar,
+	.mark-bricks-hint {
+		display: none;
+	}
+}

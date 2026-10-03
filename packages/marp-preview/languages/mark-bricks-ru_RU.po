@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:49:43.401Z\n"
-"PO-Revision-Date: 2026-10-03T02:49:50.159Z\n"
+"POT-Creation-Date: 2026-10-03T09:32:33.730Z\n"
+"PO-Revision-Date: 2026-10-03T09:32:46.812Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,36 +26,45 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr ""
 
-#: src/controls/controls.tsx:142
+#: src/controls/controls.tsx:136
+#: src/export/runtime/toolbar.tsx:94
 msgid "Enter slide mode"
 msgstr "Режим слайдов"
 
-#: src/controls/controls.tsx:141
+#: src/controls/controls.tsx:135
+#: src/export/runtime/toolbar.tsx:93
 msgid "Exit slide mode"
 msgstr "Выйти из режима слайдов"
 
 #: src/controls/controls.tsx:103
+#: src/export/runtime/toolbar.tsx:81
 msgid "Next slide"
 msgstr "Следующий слайд"
 
-#: src/controls/controls.tsx:209
+#: src/controls/controls.tsx:203
+#: src/export/runtime/toolbar.tsx:165
 msgid "Press F or Escape to exit slide mode"
 msgstr "Нажмите F или Esc, чтобы выйти из режима слайдов"
 
 #: src/controls/controls.tsx:53
+#: src/export/runtime/toolbar.tsx:61
 msgid "Previous slide"
 msgstr "Предыдущий слайд"
 
 #: style.css
 #. Description of the generic
-msgid "Renders and shows Marp slide decks in the hosts' slide previews."
+msgid ""
+"Renders Marp slide decks for the hosts' slide previews and exports, and "
+"shows them in the previews."
 msgstr ""
 
 # 1: Slide number. 2: Number of slides.
 #: src/browser/slide-view.ts:83
+#: src/export/runtime/deck.ts:43
 msgid "Slide %1$d of %2$d"
 msgstr "Слайд %1$d из %2$d"
 
 #: src/controls/controls.tsx:62
+#: src/export/runtime/toolbar.tsx:67
 msgid "Slide number"
 msgstr "Номер слайда"
