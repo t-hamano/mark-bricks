@@ -49,12 +49,7 @@ YAML front matter and GitHub-style alerts (`> [!NOTE]`) can be edited in the vis
 
 ![Marp slide preview](.github/assets/feature-marp-slide-preview.png)
 
-MarkBricks previews [Marp](https://marp.app/) slide decks. When a document's front matter contains `marp: true`, the editor header shows **Marp Mode**, and a **Preview Slides** button opens the slides:
-
-- **Desktop**: the button in the header opens them in a separate window. **Enter full screen** in its toolbar, or `F` or `F11`, presents the slides one at a time in full screen.
-- **VSCode**: the button opens them beside the editor. It sits next to **Marp Mode** in the visual editor, and in the editor title bar of the text editor. **Enter slide mode** in the preview's toolbar, or `F`, presents the slides one at a time within the panel.
-
-While presenting, move between the slides with the arrow keys, Page Up, Page Down, Home, End or the wheel, and press `Escape` to go back to the scrolling view.
+MarkBricks supports [Marp](https://marp.app/) slide decks. Add `marp: true` to a document's front matter to preview it as slides, present them right from the app, and export the deck as HTML or PDF.
 
 For an example deck that uses directives, split backgrounds, image filters, tables and math, see [`marp.md`](packages/fixtures/markdown/marp.md).
 
@@ -82,7 +77,7 @@ This is a pnpm monorepo. The editor itself lives in a host-agnostic package that
 - **[`apps/vscode`](apps/vscode)** — VSCode extension. Embeds the editor as a custom editor for `.md` files.
 - **[`packages/editor`](packages/editor)** — `@mark-bricks/editor`. The host-agnostic React component at the heart of MarkBricks. Ships the blocks, inline formats, a Monaco-based source editor, and i18n.
 - **[`packages/image-path`](packages/image-path)** — `@mark-bricks/image-path`. Shared, dependency-free parser for Markdown image paths and URLs, used by the Tauri and VSCode hosts to resolve images against the document.
-- **[`packages/marp-preview`](packages/marp-preview)** — `@mark-bricks/marp-preview`. Renders Marp slide decks for the hosts' slide previews, with images resolved by each host.
+- **[`packages/marp-preview`](packages/marp-preview)** — `@mark-bricks/marp-preview`. Renders Marp slide decks for the hosts' slide previews and exports, with images resolved by each host.
 - **[`packages/i18n-tools`](packages/i18n-tools)** — `@mark-bricks/i18n-tools`. Shared i18n build tooling. Provides the `mb-i18n` CLI that runs the gettext PO/JSON pipeline.
 - **[`packages/fixtures`](packages/fixtures)** — `@mark-bricks/fixtures`. Shared Markdown fixtures consumed by Storybook, the round-trip tests, and manual smoke tests.
 - **[`storybook`](storybook)** — Storybook workspace for previewing the editor.
