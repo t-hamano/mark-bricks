@@ -56,6 +56,7 @@ export type PreviewLabels = {
 	previousSlide: string;
 	nextSlide: string;
 	slideNumber: string;
+	slideLabel: string;
 };
 
 export type RenderSlidesOptions = {

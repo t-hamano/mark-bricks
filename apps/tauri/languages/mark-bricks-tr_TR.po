@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:44:38.495Z\n"
-"PO-Revision-Date: 2026-10-01T13:44:43.277Z\n"
+"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
+"PO-Revision-Date: 2026-10-03T02:34:59.097Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -265,7 +265,7 @@ msgstr "Sonraki slayt"
 msgid "No file open"
 msgstr "Açık dosya yok"
 
-#: src/hooks/use-preview-sync.ts:51
+#: src/hooks/use-preview-sync.ts:54
 msgid "Not a Marp document"
 msgstr "Marp belgesi değil"
 
@@ -385,6 +385,11 @@ msgstr "Blok sayfa yollarını görüntüle"
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
 msgstr "Satır numaralarını göster"
+
+# 1: Slide number. 2: Number of slides.
+#: src/hooks/use-preview-sync.ts:50
+msgid "Slide %1$d of %2$d"
+msgstr "Slayt %1$d / %2$d"
 
 #: src/actions/index.ts:299
 msgid "Slide Preview"

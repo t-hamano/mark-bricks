@@ -42,6 +42,7 @@ function getLabels(): PreviewLabels {
 		previousSlide: vscode.l10n.t( 'Previous slide' ),
 		nextSlide: vscode.l10n.t( 'Next slide' ),
 		slideNumber: vscode.l10n.t( 'Slide number' ),
+		slideLabel: vscode.l10n.t( 'Slide %1$d of %2$d' ),
 	};
 }
 

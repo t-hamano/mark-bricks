@@ -33,8 +33,9 @@ export type SlidePreview = {
  * @param options   How the page toggles the slide mode, and what it does
  *                  after each render.
  * @return `render` to show content on the next frame, `setLabels` to set the
- *         controls' text, and `isSlideMode` and `setSlideMode` to read and
- *         turn the slide mode on or off.
+ *         text of the controls and the slides' names for screen readers, and
+ *         `isSlideMode` and `setSlideMode` to read and turn the slide mode on
+ *         or off.
  */
 export function createSlidePreview(
 	container: HTMLElement,
@@ -85,9 +86,14 @@ export function createSlidePreview(
 		}
 	} );
 
+	function setLabels( labels: PreviewLabels ) {
+		view.setSlideLabel( labels.slideLabel );
+		controls.setLabels( labels );
+	}
+
 	return {
 		render: view.render,
-		setLabels: controls.setLabels,
+		setLabels,
 		isSlideMode: slideMode.isEnabled,
 		setSlideMode,
 	};

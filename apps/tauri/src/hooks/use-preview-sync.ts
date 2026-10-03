@@ -45,6 +45,9 @@ export default function usePreviewSync( activeTab: Tab | undefined ) {
 			previousSlide: __( 'Previous slide', 'mark-bricks' ),
 			nextSlide: __( 'Next slide', 'mark-bricks' ),
 			slideNumber: __( 'Slide number', 'mark-bricks' ),
+			slideLabel:
+				/* translators: 1: Slide number. 2: Number of slides. */
+				__( 'Slide %1$d of %2$d', 'mark-bricks' ),
 		};
 		return isMarpDocument( markdown )
 			? { labels, markdown, documentPath }

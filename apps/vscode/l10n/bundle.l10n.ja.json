@@ -8,5 +8,6 @@
 	"Press F or Escape to exit slide mode": "F キーまたは Esc キーを押すとスライドモードを終了します",
 	"Previous slide": "前のスライド",
 	"Next slide": "次のスライド",
-	"Slide number": "スライド番号"
+	"Slide number": "スライド番号",
+	"Slide %1$d of %2$d": "スライド %1$d / %2$d"
 }

@@ -8,5 +8,6 @@
 	"Press F or Escape to exit slide mode": "按 F 或 Esc 鍵結束投影片模式",
 	"Previous slide": "上一張投影片",
 	"Next slide": "下一張投影片",
-	"Slide number": "投影片編號"
+	"Slide number": "投影片編號",
+	"Slide %1$d of %2$d": "投影片 %1$d / %2$d"
 }

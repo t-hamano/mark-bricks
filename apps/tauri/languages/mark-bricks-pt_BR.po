@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:44:38.495Z\n"
-"PO-Revision-Date: 2026-10-01T13:44:42.447Z\n"
+"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
+"PO-Revision-Date: 2026-10-03T02:34:58.022Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -259,7 +259,7 @@ msgstr "Próximo slide"
 msgid "No file open"
 msgstr "Nenhum arquivo aberto"
 
-#: src/hooks/use-preview-sync.ts:51
+#: src/hooks/use-preview-sync.ts:54
 msgid "Not a Marp document"
 msgstr "Não é um documento do Marp"
 
@@ -379,6 +379,11 @@ msgstr "Mostrar bloco de caminho de navegação"
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
 msgstr "Mostrar números de linha"
+
+# 1: Slide number. 2: Number of slides.
+#: src/hooks/use-preview-sync.ts:50
+msgid "Slide %1$d of %2$d"
+msgstr "Slide %1$d de %2$d"
 
 #: src/actions/index.ts:299
 msgid "Slide Preview"

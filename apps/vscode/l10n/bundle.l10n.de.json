@@ -8,5 +8,6 @@
 	"Press F or Escape to exit slide mode": "Zum Beenden des Folienmodus F oder Esc drücken",
 	"Previous slide": "Vorherige Folie",
 	"Next slide": "Nächste Folie",
-	"Slide number": "Foliennummer"
+	"Slide number": "Foliennummer",
+	"Slide %1$d of %2$d": "Folie %1$d von %2$d"
 }

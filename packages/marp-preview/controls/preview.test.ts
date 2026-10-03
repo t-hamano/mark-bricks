@@ -36,6 +36,7 @@ const labels = {
 	previousSlide: 'Previous slide',
 	nextSlide: 'Next slide',
 	slideNumber: 'Slide number',
+	slideLabel: 'Slide %1$d of %2$d',
 };
 
 function nextFrame() {

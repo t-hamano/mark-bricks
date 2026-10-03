@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:44:38.495Z\n"
+"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -112,7 +112,12 @@ msgstr ""
 msgid "Slide number"
 msgstr ""
 
-#: src/hooks/use-preview-sync.ts:51
+# 1: Slide number. 2: Number of slides.
+#: src/hooks/use-preview-sync.ts:50
+msgid "Slide %1$d of %2$d"
+msgstr ""
+
+#: src/hooks/use-preview-sync.ts:54
 msgid "Not a Marp document"
 msgstr ""
 

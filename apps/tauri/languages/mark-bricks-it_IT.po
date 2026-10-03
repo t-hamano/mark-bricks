@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:44:38.495Z\n"
-"PO-Revision-Date: 2026-10-01T13:44:40.779Z\n"
+"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
+"PO-Revision-Date: 2026-10-03T02:34:55.853Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -265,7 +265,7 @@ msgstr "Diapositiva successiva"
 msgid "No file open"
 msgstr "Nessun file aperto"
 
-#: src/hooks/use-preview-sync.ts:51
+#: src/hooks/use-preview-sync.ts:54
 msgid "Not a Marp document"
 msgstr "Non è un documento Marp"
 
@@ -385,6 +385,11 @@ msgstr "Mostra i breadcrumb del blocco"
 #: src/components/preferences-modal/code-editor-panel.tsx:85
 msgid "Show line numbers"
 msgstr "Mostra i numeri di riga"
+
+# 1: Slide number. 2: Number of slides.
+#: src/hooks/use-preview-sync.ts:50
+msgid "Slide %1$d of %2$d"
+msgstr "Diapositiva %1$d di %2$d"
 
 #: src/actions/index.ts:299
 msgid "Slide Preview"

@@ -8,5 +8,6 @@
 	"Press F or Escape to exit slide mode": "Naciśnij F lub Esc, aby zamknąć tryb slajdów",
 	"Previous slide": "Poprzedni slajd",
 	"Next slide": "Następny slajd",
-	"Slide number": "Numer slajdu"
+	"Slide number": "Numer slajdu",
+	"Slide %1$d of %2$d": "Slajd %1$d z %2$d"
 }

@@ -8,5 +8,6 @@
 	"Press F or Escape to exit slide mode": "Нажмите F или Esc, чтобы выйти из режима слайдов",
 	"Previous slide": "Предыдущий слайд",
 	"Next slide": "Следующий слайд",
-	"Slide number": "Номер слайда"
+	"Slide number": "Номер слайда",
+	"Slide %1$d of %2$d": "Слайд %1$d из %2$d"
 }

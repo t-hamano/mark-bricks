@@ -8,5 +8,6 @@
 	"Press F or Escape to exit slide mode": "Pressione F ou Esc para sair do modo de slides",
 	"Previous slide": "Slide anterior",
 	"Next slide": "Próximo slide",
-	"Slide number": "Número do slide"
+	"Slide number": "Número do slide",
+	"Slide %1$d of %2$d": "Slide %1$d de %2$d"
 }

@@ -8,5 +8,6 @@
 	"Press F or Escape to exit slide mode": "Režim snímků ukončíte klávesou F nebo Esc",
 	"Previous slide": "Předchozí snímek",
 	"Next slide": "Další snímek",
-	"Slide number": "Číslo snímku"
+	"Slide number": "Číslo snímku",
+	"Slide %1$d of %2$d": "Snímek %1$d z %2$d"
 }

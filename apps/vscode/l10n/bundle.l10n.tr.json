@@ -8,5 +8,6 @@
 	"Press F or Escape to exit slide mode": "Slayt modundan çıkmak için F veya Esc tuşuna basın",
 	"Previous slide": "Önceki slayt",
 	"Next slide": "Sonraki slayt",
-	"Slide number": "Slayt numarası"
+	"Slide number": "Slayt numarası",
+	"Slide %1$d of %2$d": "Slayt %1$d / %2$d"
 }

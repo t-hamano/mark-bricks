@@ -8,5 +8,6 @@
 	"Press F or Escape to exit slide mode": "Pulsa F o Esc para salir del modo diapositiva",
 	"Previous slide": "Diapositiva anterior",
 	"Next slide": "Diapositiva siguiente",
-	"Slide number": "Número de diapositiva"
+	"Slide number": "Número de diapositiva",
+	"Slide %1$d of %2$d": "Diapositiva %1$d de %2$d"
 }

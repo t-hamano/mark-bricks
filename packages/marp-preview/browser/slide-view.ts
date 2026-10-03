@@ -22,6 +22,7 @@ export type SlideContent = RenderedSlides | { notice: string };
 export type SlideView = {
 	render: ( content: SlideContent | ( () => SlideContent ) ) => void;
 	getSlides: () => SVGSVGElement[];
+	setSlideLabel: ( label: string ) => void;
 };
 
 /**
@@ -29,10 +30,11 @@ export type SlideView = {
  *
  * @param container Element to add the slides and the notice to.
  * @param onRender  Called each time the view shows new content.
- * @return `render` to show content on the next frame, and `getSlides` to
- *         list the slides shown. `render` takes a function too, to defer
- *         rendering the deck to that frame: only the latest content passed
- *         within a frame is shown.
+ * @return `render` to show content on the next frame, `getSlides` to list
+ *         the slides shown, and `setSlideLabel` to set the slides' names for
+ *         screen readers. `render` takes a function too, to defer rendering
+ *         the deck to that frame: only the latest content passed within a
+ *         frame is shown.
  */
 export function createSlideView(
 	container: HTMLElement,
@@ -50,10 +52,31 @@ export function createSlideView(
 	// cannot render HTML inside an SVG on its own.
 	const marpBrowser = browser( slides );
 
+	let slideLabel = 'Slide %1$d of %2$d';
+
 	function getSlides() {
 		return Array.from(
 			slides.querySelectorAll< SVGSVGElement >( ':scope > .marpit > svg' )
 		);
+	}
+
+	// Names each slide for screen readers by its number.
+	function labelSlides() {
+		const rendered = getSlides();
+		rendered.forEach( ( slide, index ) => {
+			slide.setAttribute( 'role', 'group' );
+			slide.setAttribute(
+				'aria-label',
+				slideLabel
+					.replace( '%1$d', String( index + 1 ) )
+					.replace( '%2$d', String( rendered.length ) )
+			);
+		} );
+	}
+
+	function setSlideLabel( label: string ) {
+		slideLabel = label;
+		labelSlides();
 	}
 
 	function show( content: SlideContent ) {
@@ -67,15 +90,7 @@ export function createSlideView(
 			// Points KaTeX at the fonts the page bundles.
 			style.textContent = rewriteFontSources( content.css );
 			slides.innerHTML = content.html;
-			// Names each slide for screen readers by its number.
-			const rendered = getSlides();
-			rendered.forEach( ( slide, index ) => {
-				slide.setAttribute( 'role', 'group' );
-				slide.setAttribute(
-					'aria-label',
-					`Slide ${ index + 1 } of ${ rendered.length }`
-				);
-			} );
+			labelSlides();
 			// WebKit has no customized built-in elements, so Marp swaps in its
 			// auto-scaling elements itself, but only for the slides present.
 			marpBrowser.update();
@@ -100,5 +115,5 @@ export function createSlideView(
 		pending = typeof content === 'function' ? content : () => content;
 	}
 
-	return { render, getSlides };
+	return { render, getSlides, setSlideLabel };
 }
