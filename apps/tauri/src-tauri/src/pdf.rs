@@ -80,7 +80,13 @@ pub async fn export_pdf(
             EXPORT_WINDOW,
             WebviewUrl::App("export.html".into()),
         )
-        .visible(false)
+        // WebKitGTK lays out a page it never showed at no size, and then
+        // prints no pages, so on Linux the window shows off the screen.
+        .visible(cfg!(target_os = "linux"))
+        .position(-10000.0, -10000.0)
+        .skip_taskbar(true)
+        .focused(false)
+        .decorations(false)
         .build()
         .map_err(|e| e.to_string())?;
         trace("window created");

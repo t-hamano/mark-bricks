@@ -82,7 +82,8 @@ const child = spawn( cmd, args, {
 
 const expectedLine = `[smoke] rendered: ${ documentPath }`;
 const PREVIEWS_PREFIX = '[smoke] previews: ';
-const PDF_PREFIX = '[smoke] pdf';
+// The export's result, or why it failed, after the steps it traces.
+const PDF_RESULT = /^\[smoke\] pdf(?: error)?: /;
 let previews = null;
 let rendered = false;
 
@@ -117,8 +118,8 @@ const failure = await new Promise( ( resolve ) => {
 			);
 		}
 		// The app exports the PDF once the editor has rendered.
-		if ( rendered && line.startsWith( PDF_PREFIX ) ) {
-			const result = line.slice( PDF_PREFIX.length ).replace( /^: /, '' );
+		if ( rendered && PDF_RESULT.test( line ) ) {
+			const result = line.replace( PDF_RESULT, '' );
 			finish(
 				result === EXPECTED_PDF
 					? null
