@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T07:25:56.354Z\n"
-"PO-Revision-Date: 2026-10-03T07:25:58.795Z\n"
+"POT-Creation-Date: 2026-10-03T08:32:47.628Z\n"
+"PO-Revision-Date: 2026-10-03T08:32:50.518Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,16 +26,16 @@ msgstr "「%s」に保存されていない変更があります。変更を破�
 msgid "(Untitled)"
 msgstr "(無題)"
 
-#: src/components/header-actions/index.tsx:340
+#: src/components/header-actions/index.tsx:353
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "MarkBricks について"
 
-#: src/components/header-actions/index.tsx:230
+#: src/components/header-actions/index.tsx:243
 msgid "Access all block and document tools in a single place"
 msgstr "ブロック・文書ツールを同じ場所にまとめる"
 
-#: src/components/header-actions/index.tsx:309
+#: src/components/header-actions/index.tsx:322
 msgid "Add YAML front matter"
 msgstr "YAML フロントマターを追加"
 
@@ -56,7 +56,7 @@ msgstr "コンテンツ領域の基本フォントサイズ (ピクセル単位)
 msgid "Block shortcuts"
 msgstr "ブロックショートカット"
 
-#: src/components/header-actions/index.tsx:369
+#: src/components/header-actions/index.tsx:382
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "キャンセル"
@@ -96,7 +96,7 @@ msgid "Close the active tab."
 msgstr "アクティブなタブを閉じる。"
 
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:285
+#: src/components/header-actions/index.tsx:298
 msgid "Code editor"
 msgstr "コードエディター"
 
@@ -105,7 +105,7 @@ msgid "Content width"
 msgstr "コンテンツ幅"
 
 # %s: Error message.
-#: src/actions/index.ts:332
+#: src/actions/index.ts:376
 msgid "Could not export the slide deck: %s"
 msgstr "スライドデッキをエクスポートできませんでした: %s"
 
@@ -139,7 +139,7 @@ msgstr "変更を破棄"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "エディターの最下段にブロックのパンくずリストを表示します。"
 
-#: src/components/header-actions/index.tsx:256
+#: src/components/header-actions/index.tsx:269
 msgid "Editor"
 msgstr "エディター"
 
@@ -147,20 +147,17 @@ msgstr "エディター"
 msgid "Editor styles"
 msgstr "エディタースタイル"
 
-#: src/actions/index.ts:313
+#: src/actions/index.ts:349
+#: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "スライドデッキをエクスポート"
 
-#: src/components/header-actions/index.tsx:207
-msgid "Export Slide Deck…"
-msgstr "スライドデッキをエクスポート…"
-
 # %s: Name of the exported file.
-#: src/actions/index.ts:345
+#: src/actions/index.ts:390
 msgid "Exported the slide deck to %s."
 msgstr "スライドデッキを %s にエクスポートしました。"
 
-#: src/components/header-actions/index.tsx:110
+#: src/components/header-actions/index.tsx:111
 msgid "Exporting the slide deck…"
 msgstr "スライドデッキをエクスポートしています…"
 
@@ -172,11 +169,11 @@ msgstr "ファイルの関連付け"
 msgid "File shortcuts"
 msgstr "ファイルショートカット"
 
-#: src/components/header-actions/index.tsx:158
+#: src/components/header-actions/index.tsx:159
 msgid "Files"
 msgstr "ファイル"
 
-#: src/components/header-actions/index.tsx:246
+#: src/components/header-actions/index.tsx:259
 msgid "Focus on one block at a time"
 msgstr "ひとつのブロックに集中"
 
@@ -197,15 +194,19 @@ msgstr "一般"
 msgid "Global shortcuts"
 msgstr "グローバルショートカット"
 
-#: src/actions/index.ts:325
+#: src/actions/index.ts:369
 msgid "HTML slide deck"
 msgstr "HTML スライドデッキ"
+
+#: src/components/header-actions/index.tsx:212
+msgid "HTML…"
+msgstr "HTML…"
 
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
 msgstr "手書き"
 
-#: src/components/header-actions/index.tsx:314
+#: src/components/header-actions/index.tsx:327
 msgid "Hide YAML front matter"
 msgstr "YAML フロントマターを非表示"
 
@@ -221,8 +222,8 @@ msgstr "HTTP の URL の画像は表示できません。HTTPS の URL を使用
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "相対パスの画像は、文書を保存すると表示されます。"
 
-#: src/components/header-actions/index.tsx:333
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
+#: src/components/header-actions/index.tsx:346
 msgid "Keyboard shortcuts"
 msgstr "キーボードショートカット"
 
@@ -256,7 +257,7 @@ msgstr "コンテンツ領域の最大幅 (ピクセル単位)。"
 msgid "Monospace"
 msgstr "等幅"
 
-#: src/components/header-actions/index.tsx:165
+#: src/components/header-actions/index.tsx:166
 msgid "New"
 msgstr "新規"
 
@@ -294,36 +295,40 @@ msgstr "ファイルを開く…"
 msgid "Opens the List View panel by default."
 msgstr "デフォルトでリストビューパネルを開きます。"
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:174
 msgid "Open…"
 msgstr "開く…"
 
-#: src/components/header-actions/index.tsx:145
+#: src/components/header-actions/index.tsx:146
 msgid "Options"
 msgstr "オプション"
 
-#: src/actions/index.ts:326
+#: src/actions/index.ts:370
 msgid "PDF slide deck"
 msgstr "PDF スライドデッキ"
 
+#: src/components/header-actions/index.tsx:221
+msgid "PDF…"
+msgstr "PDF…"
+
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:349
+#: src/components/header-actions/index.tsx:362
 msgid "Preferences"
 msgstr "設定"
 
-#: src/components/header-actions/index.tsx:119
+#: src/components/header-actions/index.tsx:120
 msgid "Preview Slides"
 msgstr "スライドをプレビュー"
 
-#: src/components/header-actions/index.tsx:370
+#: src/components/header-actions/index.tsx:383
 msgid "Remove"
 msgstr "削除"
 
-#: src/components/header-actions/index.tsx:320
+#: src/components/header-actions/index.tsx:333
 msgid "Remove YAML front matter"
 msgstr "YAML フロントマターを削除"
 
-#: src/components/header-actions/index.tsx:364
+#: src/components/header-actions/index.tsx:377
 msgid "Remove YAML front matter?"
 msgstr "YAML フロントマターを削除しますか？"
 
@@ -344,12 +349,12 @@ msgid "Sans-serif"
 msgstr "サンセリフ"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:135
-#: src/components/header-actions/index.tsx:181
+#: src/components/header-actions/index.tsx:136
+#: src/components/header-actions/index.tsx:182
 msgid "Save"
 msgstr "保存"
 
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:190
 msgid "Save As…"
 msgstr "名前を付けて保存…"
 
@@ -390,7 +395,7 @@ msgstr "ブロックのパンくずリストを表示"
 msgid "Show line numbers"
 msgstr "行番号を表示"
 
-#: src/actions/index.ts:359
+#: src/actions/index.ts:404
 msgid "Slide Preview"
 msgstr "スライドプレビュー"
 
@@ -398,7 +403,7 @@ msgstr "スライドプレビュー"
 msgid "Spell check"
 msgstr "スペルチェック"
 
-#: src/components/header-actions/index.tsx:243
+#: src/components/header-actions/index.tsx:256
 msgid "Spotlight mode"
 msgstr "スポットライトモード"
 
@@ -415,7 +420,7 @@ msgstr "タブ幅"
 msgid "Text formatting"
 msgstr "書式設定"
 
-#: src/components/header-actions/index.tsx:365
+#: src/components/header-actions/index.tsx:378
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -432,11 +437,11 @@ msgid ""
 "MarkBricks. Please configure it from your system file manager."
 msgstr "このプラットフォームでは MarkBricks 内から既定のアプリを設定できません。システムのファイルマネージャーから設定してください。"
 
-#: src/components/header-actions/index.tsx:293
+#: src/components/header-actions/index.tsx:306
 msgid "Tools"
 msgstr "ツール"
 
-#: src/components/header-actions/index.tsx:227
+#: src/components/header-actions/index.tsx:240
 msgid "Top toolbar"
 msgstr "トップツールバー"
 
@@ -465,12 +470,12 @@ msgstr "アップデートが利用可能"
 msgid "Update check failed: %s"
 msgstr "アップデートの確認に失敗しました: %s"
 
-#: src/components/header-actions/index.tsx:218
+#: src/components/header-actions/index.tsx:231
 msgid "View"
 msgstr "表示"
 
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:273
+#: src/components/header-actions/index.tsx:286
 msgid "Visual editor"
 msgstr "ビジュアルエディター"
 

@@ -294,36 +294,80 @@ export async function closeOtherTabs( keepId: string ) {
 	}
 }
 
+export type ExportFormat = 'html' | 'pdf';
+
+// `busy` from the start of an export to its end, and `printing` while a PDF
+// prints, after the dialog. Kept here rather than in a component, since the
+// header remounts with each tab.
+export type ExportStatus = 'idle' | 'busy' | 'printing';
+
+let exportStatus: ExportStatus = 'idle';
+const exportStatusListeners = new Set< () => void >();
+
+function setExportStatus( status: ExportStatus ) {
+	exportStatus = status;
+	for ( const listener of exportStatusListeners ) {
+		listener();
+	}
+}
+
+export function getExportStatus(): ExportStatus {
+	return exportStatus;
+}
+
 /**
- * Exports the active tab's Marp slide deck to HTML or PDF, as the user picks
- * in the save dialog, including unsaved edits.
+ * Calls `listener` each time the export status changes.
  *
- * @param onExporting Called when a PDF export starts, after the dialog, since
- *                    printing it takes a few seconds.
+ * @param listener Called with no arguments.
+ * @return A function that stops calling it.
  */
-export async function exportSlideDeck( onExporting?: () => void ) {
+export function subscribeExportStatus( listener: () => void ) {
+	exportStatusListeners.add( listener );
+	return () => {
+		exportStatusListeners.delete( listener );
+	};
+}
+
+/**
+ * Exports the active tab's Marp slide deck, including unsaved edits, after
+ * asking where. Does nothing while another export runs.
+ *
+ * @param format The format the user chose, before the dialog: the save
+ *               dialogs on Linux keep the file name's extension when the user
+ *               picks another filter.
+ */
+export async function exportSlideDeck( format: ExportFormat ) {
 	flushPendingEdits();
 	const tab = select( tabsStore )
 		.getTabs()
 		.find( ( t ) => t.id === select( tabsStore ).getActiveTabId() );
-	if ( ! tab || ! isMarpDocument( tab.content ) ) {
+	if ( exportStatus !== 'idle' || ! tab || ! isMarpDocument( tab.content ) ) {
 		return;
 	}
 
+	setExportStatus( 'busy' );
 	const title = __( 'Export Slide Deck', 'mark-bricks' );
 	let fileName: string | null;
-	const unlisten = await listen( 'slide-deck-exporting', () =>
-		onExporting?.()
-	);
+	let unlisten: ( () => void ) | undefined;
 	try {
-		const { renderHtmlDocument } =
-			await import( '@mark-bricks/marp-preview/export' );
+		unlisten = await listen( 'slide-deck-exporting', () =>
+			setExportStatus( 'printing' )
+		);
+		let request;
+		if ( format === 'html' ) {
+			const { renderHtmlDocument } =
+				await import( '@mark-bricks/marp-preview/export' );
+			request = { format, html: renderHtmlDocument( tab.content ) };
+		} else {
+			request = { format, markdown: tab.content };
+		}
 		fileName = await invoke< string | null >( 'export_slide_deck', {
-			html: renderHtmlDocument( tab.content ),
-			markdown: tab.content,
+			request,
 			documentPath: tab.filePath ?? null,
-			htmlFilter: __( 'HTML slide deck', 'mark-bricks' ),
-			pdfFilter: __( 'PDF slide deck', 'mark-bricks' ),
+			filterName:
+				format === 'html'
+					? __( 'HTML slide deck', 'mark-bricks' )
+					: __( 'PDF slide deck', 'mark-bricks' ),
 		} );
 	} catch ( error ) {
 		await message(
@@ -336,7 +380,8 @@ export async function exportSlideDeck( onExporting?: () => void ) {
 		);
 		return;
 	} finally {
-		unlisten();
+		unlisten?.();
+		setExportStatus( 'idle' );
 	}
 	if ( fileName ) {
 		await message(

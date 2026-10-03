@@ -1,4 +1,5 @@
 use std::path::Path;
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::time::Duration;
 
 use lopdf::{Dictionary, Document, Object, StringFormat};
@@ -50,6 +51,28 @@ fn trace(step: &str) {
     }
 }
 
+/// Whether a PDF export is running. There is one export window, so a second
+/// export would tear down the first one's.
+static EXPORTING: AtomicBool = AtomicBool::new(false);
+
+/// Marks a PDF export as running until it drops.
+struct ExportGuard;
+
+impl ExportGuard {
+    fn acquire() -> Result<Self, String> {
+        if EXPORTING.swap(true, Ordering::SeqCst) {
+            return Err("Another slide deck is being exported to PDF.".to_string());
+        }
+        Ok(ExportGuard)
+    }
+}
+
+impl Drop for ExportGuard {
+    fn drop(&mut self) {
+        EXPORTING.store(false, Ordering::SeqCst);
+    }
+}
+
 /// Called once with the result of printing.
 type Done = Box<dyn FnOnce(Result<(), String>) + Send>;
 
@@ -61,6 +84,7 @@ pub async fn export_pdf(
     document_path: Option<String>,
     path: &Path,
 ) -> Result<(), String> {
+    let _guard = ExportGuard::acquire()?;
     // A window left by an export that failed to close it.
     if let Some(window) = app.get_webview_window(EXPORT_WINDOW) {
         let _ = window.destroy();
@@ -473,7 +497,9 @@ mod native {
         page_setup.set_right_margin(0.0, Unit::Points);
 
         let settings = PrintSettings::new();
-        settings.set_printer("Print to File");
+        // GTK names its file printer in the user's language, so the name
+        // comes from GTK's own translations.
+        settings.set_printer(&gtk::glib::dgettext(Some("gtk30"), "Print to File"));
         settings.set(&gtk::PRINT_SETTINGS_OUTPUT_FILE_FORMAT, Some("pdf"));
         settings.set(&gtk::PRINT_SETTINGS_OUTPUT_URI, Some(&uri));
         settings.set_paper_size(&paper);
@@ -507,6 +533,14 @@ mod tests {
     use lopdf::dictionary;
 
     use super::*;
+
+    #[test]
+    fn runs_one_export_at_a_time() {
+        let first = ExportGuard::acquire().unwrap();
+        assert!(ExportGuard::acquire().is_err());
+        drop(first);
+        assert!(ExportGuard::acquire().is_ok());
+    }
 
     #[test]
     fn encodes_ascii_as_a_literal_and_the_rest_as_utf16() {

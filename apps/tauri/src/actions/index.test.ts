@@ -18,11 +18,14 @@ import {
 	closeTab,
 	closeOtherTabs,
 	exportSlideDeck,
+	getExportStatus,
 	openDocument,
 	openFile,
 	saveTab,
 	saveTabAs,
 	setEditorFlush,
+	subscribeExportStatus,
+	type ExportFormat,
 } from '.';
 
 const selected = {
@@ -577,20 +580,18 @@ describe( 'exportSlideDeck', () => {
 
 	// Opens a deck from `/docs/deck.md` and records the IPC calls, except for
 	// the events, answering the export with `exported`, the written file's
-	// name. The export reports that it started printing when `printing` is
-	// true, as the native side does for a PDF.
+	// name. For a PDF, the export reports that it started printing, as the
+	// native side does, and records the status then.
 	async function exportDeck( {
+		format = 'html' as ExportFormat,
 		content = DECK,
 		exported = 'deck.html' as string | null,
 		error,
-		printing = false,
-		onExporting,
 	}: {
+		format?: ExportFormat;
 		content?: string;
 		exported?: string | null;
 		error?: string;
-		printing?: boolean;
-		onExporting?: () => void;
 	} = {} ) {
 		await openDocument( {
 			...selected,
@@ -598,14 +599,17 @@ describe( 'exportSlideDeck', () => {
 			contents: content,
 		} );
 		const calls: { cmd: string; payload: unknown }[] = [];
+		const statuses: string[] = [];
 		mockIPC(
 			async ( cmd, payload ) => {
 				if ( ! cmd.startsWith( 'plugin:event|' ) ) {
 					calls.push( { cmd, payload } );
 				}
 				if ( cmd === 'export_slide_deck' ) {
-					if ( printing ) {
+					statuses.push( getExportStatus() );
+					if ( format === 'pdf' ) {
 						await emit( 'slide-deck-exporting' );
+						statuses.push( getExportStatus() );
 					}
 					if ( error ) {
 						throw error;
@@ -616,33 +620,86 @@ describe( 'exportSlideDeck', () => {
 			},
 			{ shouldMockEvents: true }
 		);
-		await exportSlideDeck( onExporting );
-		return calls;
+		await exportSlideDeck( format );
+		return { calls, statuses };
 	}
 
-	it( 'sends the rendered HTML, the Markdown and the document path', async () => {
-		const calls = await exportDeck();
-		const payload = calls.find( ( c ) => c.cmd === 'export_slide_deck' )
-			?.payload as Record< string, string >;
+	const exportPayload = ( calls: { cmd: string; payload: unknown }[] ) =>
+		calls.find( ( c ) => c.cmd === 'export_slide_deck' )?.payload as {
+			request: Record< string, string >;
+			documentPath: string;
+			filterName: string;
+		};
 
-		expect( payload.html ).toMatch( /^<!DOCTYPE html>/ );
-		expect( payload.html ).toContain( '<title>Deck</title>' );
-		expect( payload.markdown ).toBe( DECK );
-		expect( payload.documentPath ).toBe( '/docs/deck.md' );
-		expect( payload.htmlFilter ).toBe( 'HTML slide deck' );
-		expect( payload.pdfFilter ).toBe( 'PDF slide deck' );
+	it( 'sends the rendered HTML for an HTML export', async () => {
+		const { calls } = await exportDeck();
+		const { request, documentPath, filterName } = exportPayload( calls );
+
+		expect( request.format ).toBe( 'html' );
+		expect( request.html ).toMatch( /^<!DOCTYPE html>/ );
+		expect( request.html ).toContain( '<title>Deck</title>' );
+		expect( request ).not.toHaveProperty( 'markdown' );
+		expect( documentPath ).toBe( '/docs/deck.md' );
+		expect( filterName ).toBe( 'HTML slide deck' );
 	} );
 
-	it( 'reports when a PDF starts printing', async () => {
-		const onExporting = vi.fn();
-		await exportDeck( { printing: true, onExporting } );
-		expect( onExporting ).toHaveBeenCalledTimes( 1 );
+	it( 'sends the Markdown for a PDF export', async () => {
+		const { calls } = await exportDeck( {
+			format: 'pdf',
+			exported: 'deck.pdf',
+		} );
+		const { request, filterName } = exportPayload( calls );
+
+		expect( request ).toEqual( { format: 'pdf', markdown: DECK } );
+		expect( filterName ).toBe( 'PDF slide deck' );
 	} );
 
-	it( 'reports nothing for an HTML export', async () => {
-		const onExporting = vi.fn();
-		await exportDeck( { onExporting } );
-		expect( onExporting ).not.toHaveBeenCalled();
+	it( 'is busy during an export, and printing while a PDF prints', async () => {
+		const { statuses } = await exportDeck( {
+			format: 'pdf',
+			exported: 'deck.pdf',
+		} );
+		expect( statuses ).toEqual( [ 'busy', 'printing' ] );
+		expect( getExportStatus() ).toBe( 'idle' );
+	} );
+
+	it( 'tells subscribers when the status changes', async () => {
+		const listener = vi.fn();
+		const unsubscribe = subscribeExportStatus( listener );
+		await exportDeck();
+		unsubscribe();
+		// Busy, then idle again.
+		expect( listener ).toHaveBeenCalledTimes( 2 );
+	} );
+
+	it( 'ignores a second export while one runs', async () => {
+		await openDocument( {
+			...selected,
+			path: '/docs/deck.md',
+			contents: DECK,
+		} );
+		let finish: ( value: string ) => void = () => {};
+		let exports = 0;
+		mockIPC(
+			( cmd ) => {
+				if ( cmd !== 'export_slide_deck' ) {
+					return null;
+				}
+				exports++;
+				return new Promise( ( resolve ) => {
+					finish = resolve;
+				} );
+			},
+			{ shouldMockEvents: true }
+		);
+
+		const first = exportSlideDeck( 'pdf' );
+		await vi.waitFor( () => expect( exports ).toBe( 1 ) );
+		await exportSlideDeck( 'html' );
+		finish( 'deck.pdf' );
+		await first;
+
+		expect( exports ).toBe( 1 );
 	} );
 
 	it( 'exports unsaved edits', async () => {
@@ -659,32 +716,36 @@ describe( 'exportSlideDeck', () => {
 			)
 		);
 		let html = '';
-		mockIPC( ( cmd, payload ) => {
-			if ( cmd === 'export_slide_deck' ) {
-				html = ( payload as { html: string } ).html;
-			}
-			return null;
-		} );
+		mockIPC(
+			( cmd, payload ) => {
+				if ( cmd === 'export_slide_deck' ) {
+					html = ( payload as { request: { html: string } } ).request
+						.html;
+				}
+				return null;
+			},
+			{ shouldMockEvents: true }
+		);
 
-		await exportSlideDeck();
+		await exportSlideDeck( 'html' );
 
 		expect( html ).toContain( '<title>Edited</title>' );
 	} );
 
 	it( 'does nothing for a document that is not a Marp deck', async () => {
-		const calls = await exportDeck( { content: '# Notes\n' } );
+		const { calls } = await exportDeck( { content: '# Notes\n' } );
 		expect( calls ).toEqual( [] );
 	} );
 
 	it( 'stops quietly when the dialog is canceled', async () => {
-		const calls = await exportDeck( { exported: null } );
+		const { calls } = await exportDeck( { exported: null } );
 		expect( calls.map( ( c ) => c.cmd ) ).toEqual( [
 			'export_slide_deck',
 		] );
 	} );
 
 	it( 'tells which file it exported', async () => {
-		const calls = await exportDeck();
+		const { calls } = await exportDeck();
 		const shown = calls.find( ( c ) => c.cmd === 'plugin:dialog|message' );
 
 		expect( shown?.payload ).toMatchObject( {
@@ -694,12 +755,13 @@ describe( 'exportSlideDeck', () => {
 	} );
 
 	it( 'shows why an export failed', async () => {
-		const calls = await exportDeck( { error: 'Access is denied.' } );
+		const { calls } = await exportDeck( { error: 'Access is denied.' } );
 		const shown = calls.find( ( c ) => c.cmd === 'plugin:dialog|message' );
 
 		expect( shown?.payload ).toMatchObject( {
 			message: 'Could not export the slide deck: Access is denied.',
 			kind: 'error',
 		} );
+		expect( getExportStatus() ).toBe( 'idle' );
 	} );
 } );
