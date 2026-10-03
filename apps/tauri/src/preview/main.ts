@@ -6,11 +6,6 @@ import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { createSlidePreview } from '@mark-bricks/marp-preview/controls';
 
 /**
- * WordPress dependencies
- */
-import '@wordpress/theme/design-tokens.css';
-
-/**
  * Internal dependencies
  */
 import {
@@ -20,7 +15,6 @@ import {
 } from './constants';
 import { setupFullscreen } from './fullscreen';
 import { renderSlides } from './render';
-import './style.css';
 
 // The slide mode comes with full screen, which `F` and F11 toggle.
 const preview = createSlidePreview( document.body, {
