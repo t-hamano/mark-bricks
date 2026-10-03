@@ -40,8 +40,9 @@ export type DeckInfo = {
  * browser script, KaTeX's CDN font URLs and the web fonts a theme imports,
  * since an exported deck runs under no CSP.
  *
- * It also serves as Marp CLI's functional engine (`--engine`), so that Marp
- * CLI renders with this package's Marp Core version and options.
+ * Marp CLI's functional engine (`--engine`) is built on it: the host bundles
+ * a module whose default export calls it, so that Marp CLI renders with this
+ * package's Marp Core version and options.
  *
  * @param options Constructor options, such as the ones Marp CLI passes.
  * @return A Marp instance.
