@@ -5,10 +5,12 @@ use std::sync::{Mutex, OnceLock};
 use tauri::{Emitter, Env, Manager};
 
 mod documents;
+mod export;
 use documents::{
     close_document, open_document, read_document, save_document_as, with_documents, write_document,
     Documents, OpenedDocument,
 };
+use export::export_slide_deck;
 
 /// Markdown files the OS asked us to open before the app window was ready to
 /// receive them — for example when opening a file starts the app, or a second
@@ -433,6 +435,7 @@ pub fn run() {
             save_document_as,
             write_document,
             close_document,
+            export_slide_deck,
             take_pending_documents,
             report_rendered,
             open_preview,

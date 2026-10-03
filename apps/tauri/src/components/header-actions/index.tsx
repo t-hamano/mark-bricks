@@ -26,6 +26,7 @@ import {
  * Internal dependencies
  */
 import {
+	exportSlideDeck,
 	newFile,
 	openFile,
 	openPreview,
@@ -173,6 +174,16 @@ export default function HeaderActions( {
 								{ __( 'Save As…', 'mark-bricks' ) }
 							</Menu.ItemLabel>
 						</Menu.Item>
+						{ isActiveTabMarp && (
+							<Menu.Item onClick={ () => exportSlideDeck() }>
+								<Menu.ItemLabel>
+									{ __(
+										'Export Slide Deck…',
+										'mark-bricks'
+									) }
+								</Menu.ItemLabel>
+							</Menu.Item>
+						) }
 					</Menu.Group>
 					<Menu.Separator />
 					<Menu.Group>

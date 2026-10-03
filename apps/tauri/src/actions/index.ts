@@ -2,13 +2,15 @@
  * External dependencies
  */
 import { invoke } from '@tauri-apps/api/core';
+import { message } from '@tauri-apps/plugin-dialog';
 import { getLocale } from '@mark-bricks/editor/i18n';
+import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
  * WordPress dependencies
  */
 import { dispatch, select } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -288,6 +290,51 @@ export async function closeOtherTabs( keepId: string ) {
 
 	if ( firstDirty ) {
 		dispatch( tabsStore ).setPendingCloseId( firstDirty.id );
+	}
+}
+
+/**
+ * Exports the active tab's Marp slide deck to HTML, including unsaved edits.
+ */
+export async function exportSlideDeck() {
+	flushPendingEdits();
+	const tab = select( tabsStore )
+		.getTabs()
+		.find( ( t ) => t.id === select( tabsStore ).getActiveTabId() );
+	if ( ! tab || ! isMarpDocument( tab.content ) ) {
+		return;
+	}
+
+	const title = __( 'Export Slide Deck', 'mark-bricks' );
+	let fileName: string | null;
+	try {
+		const { renderHtmlDocument } =
+			await import( '@mark-bricks/marp-preview/export' );
+		fileName = await invoke< string | null >( 'export_slide_deck', {
+			html: renderHtmlDocument( tab.content ),
+			documentPath: tab.filePath ?? null,
+			filterName: __( 'HTML slide deck', 'mark-bricks' ),
+		} );
+	} catch ( error ) {
+		await message(
+			sprintf(
+				/* translators: %s: Error message. */
+				__( 'Could not export the slide deck: %s', 'mark-bricks' ),
+				String( error )
+			),
+			{ title, kind: 'error' }
+		);
+		return;
+	}
+	if ( fileName ) {
+		await message(
+			sprintf(
+				/* translators: %s: Name of the exported file. */
+				__( 'Exported the slide deck to %s.', 'mark-bricks' ),
+				fileName
+			),
+			{ title, kind: 'info' }
+		);
 	}
 }
 
