@@ -11,7 +11,6 @@ import type {
 	PreviewState,
 	PreviewWebviewMessage,
 } from '../shared/messages';
-import './style.css';
 
 const host = acquireVsCodeApi();
 

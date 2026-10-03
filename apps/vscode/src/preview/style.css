@@ -1,5 +1,0 @@
-/* Follows the user's color theme. */
-:root {
-	--marp-preview-background: var(--vscode-editorWidget-background);
-	--marp-preview-notice-color: var(--vscode-descriptionForeground);
-}
