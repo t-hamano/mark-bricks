@@ -16,6 +16,7 @@ import tabsStore from '../store';
 import {
 	closeTab,
 	closeOtherTabs,
+	exportSlideDeck,
 	openDocument,
 	openFile,
 	saveTab,
@@ -568,4 +569,126 @@ it( 'revokes the native grant when closing a tab', async () => {
 		{ cmd: 'close_document', payload: { documentId: 'approved-1' } },
 	] );
 	expect( select( tabsStore ).getTabs() ).toHaveLength( 0 );
+} );
+
+describe( 'exportSlideDeck', () => {
+	const DECK = '---\nmarp: true\ntitle: Deck\n---\n\n# One\n';
+
+	// Opens a deck from `/docs/deck.md` and records the IPC calls, answering
+	// the export with `exported`, and the dialog that offers to open the file
+	// with its "Open" button when `open` is true. `ask` resolves to whether
+	// the dialog returned its OK label.
+	async function exportDeck( {
+		content = DECK,
+		exported = '/docs/deck.html' as string | null,
+		open = false,
+		error,
+	}: {
+		content?: string;
+		exported?: string | null;
+		open?: boolean;
+		error?: string;
+	} = {} ) {
+		await openDocument( {
+			...selected,
+			path: '/docs/deck.md',
+			contents: content,
+		} );
+		const calls: { cmd: string; payload: unknown }[] = [];
+		mockIPC( ( cmd, payload ) => {
+			calls.push( { cmd, payload } );
+			if ( cmd === 'export_slide_deck' ) {
+				if ( error ) {
+					throw error;
+				}
+				return exported;
+			}
+			if ( cmd === 'plugin:dialog|message' ) {
+				return open ? 'Open' : 'Close';
+			}
+			return null;
+		} );
+		await exportSlideDeck();
+		return calls;
+	}
+
+	it( 'sends the rendered HTML and the document path', async () => {
+		const calls = await exportDeck();
+		const payload = calls.find( ( c ) => c.cmd === 'export_slide_deck' )
+			?.payload as Record< string, string >;
+
+		expect( payload.html ).toMatch( /^<!DOCTYPE html>/ );
+		expect( payload.html ).toContain( '<title>Deck</title>' );
+		expect( payload.documentPath ).toBe( '/docs/deck.md' );
+		expect( payload.filterName ).toBe( 'HTML slide deck' );
+	} );
+
+	it( 'exports unsaved edits', async () => {
+		await openDocument( {
+			...selected,
+			path: '/docs/deck.md',
+			contents: DECK,
+		} );
+		const id = activeTab().id;
+		setEditorFlush( () =>
+			dispatch( tabsStore ).setTabContent(
+				id,
+				DECK.replace( 'title: Deck', 'title: Edited' )
+			)
+		);
+		let html = '';
+		mockIPC( ( cmd, payload ) => {
+			if ( cmd === 'export_slide_deck' ) {
+				html = ( payload as { html: string } ).html;
+			}
+			return null;
+		} );
+
+		await exportSlideDeck();
+
+		expect( html ).toContain( '<title>Edited</title>' );
+	} );
+
+	it( 'does nothing for a document that is not a Marp deck', async () => {
+		const calls = await exportDeck( { content: '# Notes\n' } );
+		expect( calls ).toEqual( [] );
+	} );
+
+	it( 'stops quietly when the dialog is canceled', async () => {
+		const calls = await exportDeck( { exported: null } );
+		expect( calls.map( ( c ) => c.cmd ) ).toEqual( [
+			'export_slide_deck',
+		] );
+	} );
+
+	it( 'opens the exported file when asked to', async () => {
+		const calls = await exportDeck( { open: true } );
+		const ask = calls.find( ( c ) => c.cmd === 'plugin:dialog|message' );
+
+		expect( ask?.payload ).toMatchObject( {
+			message: 'Exported the slide deck to deck.html.',
+			buttons: { OkCancelCustom: [ 'Open', 'Close' ] },
+		} );
+		expect( calls[ calls.length - 1 ] ).toEqual( {
+			cmd: 'open_exported_file',
+			payload: { path: '/docs/deck.html' },
+		} );
+	} );
+
+	it( 'leaves the file closed otherwise', async () => {
+		const calls = await exportDeck();
+		expect( calls.map( ( c ) => c.cmd ) ).not.toContain(
+			'open_exported_file'
+		);
+	} );
+
+	it( 'shows why an export failed', async () => {
+		const calls = await exportDeck( { error: 'Access is denied.' } );
+		const shown = calls.find( ( c ) => c.cmd === 'plugin:dialog|message' );
+
+		expect( shown?.payload ).toMatchObject( {
+			message: 'Could not export the slide deck: Access is denied.',
+			kind: 'error',
+		} );
+	} );
 } );

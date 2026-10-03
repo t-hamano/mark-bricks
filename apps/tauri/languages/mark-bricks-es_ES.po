@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
-"PO-Revision-Date: 2026-10-03T02:51:30.427Z\n"
+"POT-Creation-Date: 2026-10-03T06:34:38.534Z\n"
+"PO-Revision-Date: 2026-10-03T06:34:45.348Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,16 +26,16 @@ msgstr "«%s» tiene cambios sin guardar. ¿Quieres descartarlos y cerrar?"
 msgid "(Untitled)"
 msgstr "(Sin título)"
 
-#: src/components/header-actions/index.tsx:302
+#: src/components/header-actions/index.tsx:313
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "Acerca de MarkBricks"
 
-#: src/components/header-actions/index.tsx:192
+#: src/components/header-actions/index.tsx:203
 msgid "Access all block and document tools in a single place"
 msgstr "Accede a todas las herramientas de bloques y documentos desde un solo lugar"
 
-#: src/components/header-actions/index.tsx:271
+#: src/components/header-actions/index.tsx:282
 msgid "Add YAML front matter"
 msgstr "Añadir front matter YAML"
 
@@ -56,7 +56,7 @@ msgstr "Tamaño de fuente base del área de contenido, en píxeles."
 msgid "Block shortcuts"
 msgstr "Atajos de bloques"
 
-#: src/components/header-actions/index.tsx:331
+#: src/components/header-actions/index.tsx:342
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Cancelar"
@@ -75,6 +75,7 @@ msgstr "Buscar actualizaciones automáticamente"
 msgid "Checking…"
 msgstr "Comprobando…"
 
+#: src/actions/index.ts:344
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
@@ -95,14 +96,19 @@ msgstr "Cerrar las demás pestañas"
 msgid "Close the active tab."
 msgstr "Cerrar la pestaña activa."
 
+#: src/components/header-actions/index.tsx:258
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:247
 msgid "Code editor"
 msgstr "Editor de código"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:106
 msgid "Content width"
 msgstr "Ancho del contenido"
+
+# %s: Error message.
+#: src/actions/index.ts:323
+msgid "Could not export the slide deck: %s"
+msgstr "No se pudo exportar la presentación: %s"
 
 #: src/hooks/use-file-open-events.ts:43
 msgid "Could not open the following file:"
@@ -134,13 +140,26 @@ msgstr "Descartar cambios"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Mostrar la jerarquía de bloques en la parte inferior del editor."
 
-#: src/components/header-actions/index.tsx:218
+#: src/components/header-actions/index.tsx:229
 msgid "Editor"
 msgstr "Editor"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:103
 msgid "Editor styles"
 msgstr "Estilos del editor"
+
+#: src/actions/index.ts:309
+msgid "Export Slide Deck"
+msgstr "Exportar presentación"
+
+#: src/components/header-actions/index.tsx:180
+msgid "Export Slide Deck…"
+msgstr "Exportar presentación…"
+
+# %s: Name of the exported file.
+#: src/actions/index.ts:337
+msgid "Exported the slide deck to %s."
+msgstr "La presentación se exportó a %s."
 
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
@@ -150,11 +169,11 @@ msgstr "Asociaciones de archivos"
 msgid "File shortcuts"
 msgstr "Atajos de archivo"
 
-#: src/components/header-actions/index.tsx:142
+#: src/components/header-actions/index.tsx:143
 msgid "Files"
 msgstr "Archivos"
 
-#: src/components/header-actions/index.tsx:208
+#: src/components/header-actions/index.tsx:219
 msgid "Focus on one block at a time"
 msgstr "Concéntrate en un bloque cada vez"
 
@@ -175,11 +194,15 @@ msgstr "Generales"
 msgid "Global shortcuts"
 msgstr "Atajos globales"
 
+#: src/actions/index.ts:317
+msgid "HTML slide deck"
+msgstr "Presentación HTML"
+
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
 msgstr "Manuscrita"
 
-#: src/components/header-actions/index.tsx:276
+#: src/components/header-actions/index.tsx:287
 msgid "Hide YAML front matter"
 msgstr "Ocultar front matter YAML"
 
@@ -195,8 +218,8 @@ msgstr "No se pueden mostrar imágenes de URL HTTP. Usa una URL HTTPS en su luga
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Las imágenes con rutas relativas se muestran una vez guardado el documento."
 
+#: src/components/header-actions/index.tsx:306
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:295
 msgid "Keyboard shortcuts"
 msgstr "Atajos del teclado"
 
@@ -230,7 +253,7 @@ msgstr "Ancho máximo del área de contenido, en píxeles."
 msgid "Monospace"
 msgstr "Monoespaciada"
 
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:150
 msgid "New"
 msgstr "Nuevo"
 
@@ -251,6 +274,10 @@ msgstr "No hay ningún archivo abierto"
 msgid "Not a Marp document"
 msgstr "No es un documento de Marp"
 
+#: src/actions/index.ts:343
+msgid "Open"
+msgstr "Abrir"
+
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "Abrir un archivo."
@@ -268,32 +295,32 @@ msgstr "Abrir archivo…"
 msgid "Opens the List View panel by default."
 msgstr "Abre por defecto el panel de vista en modo lista."
 
-#: src/components/header-actions/index.tsx:157
+#: src/components/header-actions/index.tsx:158
 msgid "Open…"
 msgstr "Abrir…"
 
-#: src/components/header-actions/index.tsx:129
+#: src/components/header-actions/index.tsx:130
 msgid "Options"
 msgstr "Opciones"
 
+#: src/components/header-actions/index.tsx:322
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:311
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/components/header-actions/index.tsx:103
+#: src/components/header-actions/index.tsx:104
 msgid "Preview Slides"
 msgstr "Previsualizar diapositivas"
 
-#: src/components/header-actions/index.tsx:332
+#: src/components/header-actions/index.tsx:343
 msgid "Remove"
 msgstr "Eliminar"
 
-#: src/components/header-actions/index.tsx:282
+#: src/components/header-actions/index.tsx:293
 msgid "Remove YAML front matter"
 msgstr "Eliminar front matter YAML"
 
-#: src/components/header-actions/index.tsx:326
+#: src/components/header-actions/index.tsx:337
 msgid "Remove YAML front matter?"
 msgstr "¿Eliminar el front matter YAML?"
 
@@ -314,12 +341,12 @@ msgid "Sans-serif"
 msgstr "Sans serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:119
-#: src/components/header-actions/index.tsx:165
+#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:166
 msgid "Save"
 msgstr "Guardar"
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:174
 msgid "Save As…"
 msgstr "Guardar como…"
 
@@ -360,7 +387,7 @@ msgstr "Mostrar las migas de pan del bloque"
 msgid "Show line numbers"
 msgstr "Mostrar números de línea"
 
-#: src/actions/index.ts:300
+#: src/actions/index.ts:358
 msgid "Slide Preview"
 msgstr "Vista previa de diapositivas"
 
@@ -368,7 +395,7 @@ msgstr "Vista previa de diapositivas"
 msgid "Spell check"
 msgstr "Corrector ortográfico"
 
-#: src/components/header-actions/index.tsx:205
+#: src/components/header-actions/index.tsx:216
 msgid "Spotlight mode"
 msgstr "Modo de enfoque"
 
@@ -385,7 +412,7 @@ msgstr "Tamaño de tabulación"
 msgid "Text formatting"
 msgstr "Formatos de texto"
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:338
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -404,11 +431,11 @@ msgstr ""
 "Esta plataforma no permite establecer la aplicación predeterminada desde "
 "MarkBricks. Configúrala desde el gestor de archivos del sistema."
 
-#: src/components/header-actions/index.tsx:255
+#: src/components/header-actions/index.tsx:266
 msgid "Tools"
 msgstr "Herramientas"
 
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:200
 msgid "Top toolbar"
 msgstr "Barra de herramientas superior"
 
@@ -437,12 +464,12 @@ msgstr "Actualización disponible"
 msgid "Update check failed: %s"
 msgstr "Error al buscar actualizaciones: %s"
 
-#: src/components/header-actions/index.tsx:180
+#: src/components/header-actions/index.tsx:191
 msgid "View"
 msgstr "Ver"
 
+#: src/components/header-actions/index.tsx:246
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:235
 msgid "Visual editor"
 msgstr "Editor visual"
 

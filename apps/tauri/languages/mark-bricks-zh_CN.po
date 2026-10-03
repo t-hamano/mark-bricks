@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
-"PO-Revision-Date: 2026-10-03T02:51:35.471Z\n"
+"POT-Creation-Date: 2026-10-03T06:34:38.534Z\n"
+"PO-Revision-Date: 2026-10-03T06:34:48.636Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,16 +26,16 @@ msgstr "“%s”有未保存的更改。要放弃更改并关闭吗？"
 msgid "(Untitled)"
 msgstr "(未命名)"
 
-#: src/components/header-actions/index.tsx:302
+#: src/components/header-actions/index.tsx:313
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "关于 MarkBricks"
 
-#: src/components/header-actions/index.tsx:192
+#: src/components/header-actions/index.tsx:203
 msgid "Access all block and document tools in a single place"
 msgstr "在一个位置访问所有的区块和文档工具"
 
-#: src/components/header-actions/index.tsx:271
+#: src/components/header-actions/index.tsx:282
 msgid "Add YAML front matter"
 msgstr "添加 YAML 前置元数据"
 
@@ -56,7 +56,7 @@ msgstr "内容区域的基础字号（像素）。"
 msgid "Block shortcuts"
 msgstr "区块快捷键"
 
-#: src/components/header-actions/index.tsx:331
+#: src/components/header-actions/index.tsx:342
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "取消"
@@ -75,6 +75,7 @@ msgstr "自动检查更新"
 msgid "Checking…"
 msgstr "正在检查…"
 
+#: src/actions/index.ts:344
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
@@ -95,14 +96,19 @@ msgstr "关闭其他标签页"
 msgid "Close the active tab."
 msgstr "关闭当前标签页。"
 
+#: src/components/header-actions/index.tsx:258
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:247
 msgid "Code editor"
 msgstr "代码编辑器"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:106
 msgid "Content width"
 msgstr "内容宽度"
+
+# %s: Error message.
+#: src/actions/index.ts:323
+msgid "Could not export the slide deck: %s"
+msgstr "无法导出幻灯片: %s"
 
 #: src/hooks/use-file-open-events.ts:43
 msgid "Could not open the following file:"
@@ -134,13 +140,26 @@ msgstr "放弃更改"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "在编辑器底部显示区块层级路径。"
 
-#: src/components/header-actions/index.tsx:218
+#: src/components/header-actions/index.tsx:229
 msgid "Editor"
 msgstr "编辑器"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:103
 msgid "Editor styles"
 msgstr "编辑器样式"
+
+#: src/actions/index.ts:309
+msgid "Export Slide Deck"
+msgstr "导出幻灯片"
+
+#: src/components/header-actions/index.tsx:180
+msgid "Export Slide Deck…"
+msgstr "导出幻灯片…"
+
+# %s: Name of the exported file.
+#: src/actions/index.ts:337
+msgid "Exported the slide deck to %s."
+msgstr "已将幻灯片导出到 %s。"
 
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
@@ -150,11 +169,11 @@ msgstr "文件关联"
 msgid "File shortcuts"
 msgstr "文件快捷键"
 
-#: src/components/header-actions/index.tsx:142
+#: src/components/header-actions/index.tsx:143
 msgid "Files"
 msgstr "文件"
 
-#: src/components/header-actions/index.tsx:208
+#: src/components/header-actions/index.tsx:219
 msgid "Focus on one block at a time"
 msgstr "集中注意力在一个区块上"
 
@@ -175,11 +194,15 @@ msgstr "常规"
 msgid "Global shortcuts"
 msgstr "全局快捷键"
 
+#: src/actions/index.ts:317
+msgid "HTML slide deck"
+msgstr "HTML 幻灯片"
+
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
 msgstr "手写"
 
-#: src/components/header-actions/index.tsx:276
+#: src/components/header-actions/index.tsx:287
 msgid "Hide YAML front matter"
 msgstr "隐藏 YAML 前置元数据"
 
@@ -195,8 +218,8 @@ msgstr "无法显示来自 HTTP URL 的图片。请改用 HTTPS URL。"
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "使用相对路径的图片将在文档保存后显示。"
 
+#: src/components/header-actions/index.tsx:306
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:295
 msgid "Keyboard shortcuts"
 msgstr "键盘快捷键"
 
@@ -230,7 +253,7 @@ msgstr "内容区域的最大宽度（像素）。"
 msgid "Monospace"
 msgstr "等宽"
 
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:150
 msgid "New"
 msgstr "新建"
 
@@ -251,6 +274,10 @@ msgstr "没有打开的文件"
 msgid "Not a Marp document"
 msgstr "不是 Marp 文档"
 
+#: src/actions/index.ts:343
+msgid "Open"
+msgstr "打开"
+
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "打开文件。"
@@ -268,32 +295,32 @@ msgstr "打开文件…"
 msgid "Opens the List View panel by default."
 msgstr "默认情况下打开列表视图的侧边栏。"
 
-#: src/components/header-actions/index.tsx:157
+#: src/components/header-actions/index.tsx:158
 msgid "Open…"
 msgstr "打开…"
 
-#: src/components/header-actions/index.tsx:129
+#: src/components/header-actions/index.tsx:130
 msgid "Options"
 msgstr "选项"
 
+#: src/components/header-actions/index.tsx:322
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:311
 msgid "Preferences"
 msgstr "偏好设置"
 
-#: src/components/header-actions/index.tsx:103
+#: src/components/header-actions/index.tsx:104
 msgid "Preview Slides"
 msgstr "预览幻灯片"
 
-#: src/components/header-actions/index.tsx:332
+#: src/components/header-actions/index.tsx:343
 msgid "Remove"
 msgstr "移除"
 
-#: src/components/header-actions/index.tsx:282
+#: src/components/header-actions/index.tsx:293
 msgid "Remove YAML front matter"
 msgstr "移除 YAML 前置元数据"
 
-#: src/components/header-actions/index.tsx:326
+#: src/components/header-actions/index.tsx:337
 msgid "Remove YAML front matter?"
 msgstr "要移除 YAML 前置元数据吗？"
 
@@ -314,12 +341,12 @@ msgid "Sans-serif"
 msgstr "无衬线"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:119
-#: src/components/header-actions/index.tsx:165
+#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:166
 msgid "Save"
 msgstr "保存"
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:174
 msgid "Save As…"
 msgstr "另存为…"
 
@@ -360,7 +387,7 @@ msgstr "显示区块面包屑"
 msgid "Show line numbers"
 msgstr "显示行号"
 
-#: src/actions/index.ts:300
+#: src/actions/index.ts:358
 msgid "Slide Preview"
 msgstr "幻灯片预览"
 
@@ -368,7 +395,7 @@ msgstr "幻灯片预览"
 msgid "Spell check"
 msgstr "拼写检查"
 
-#: src/components/header-actions/index.tsx:205
+#: src/components/header-actions/index.tsx:216
 msgid "Spotlight mode"
 msgstr "焦点模式"
 
@@ -385,7 +412,7 @@ msgstr "制表符宽度"
 msgid "Text formatting"
 msgstr "文字内容格式化"
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:338
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -402,11 +429,11 @@ msgid ""
 "MarkBricks. Please configure it from your system file manager."
 msgstr "此平台不支持在 MarkBricks 内设置默认应用。请在系统文件管理器中进行设置。"
 
-#: src/components/header-actions/index.tsx:255
+#: src/components/header-actions/index.tsx:266
 msgid "Tools"
 msgstr "工具"
 
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:200
 msgid "Top toolbar"
 msgstr "顶部工具栏"
 
@@ -435,12 +462,12 @@ msgstr "有可用更新"
 msgid "Update check failed: %s"
 msgstr "检查更新失败：%s"
 
-#: src/components/header-actions/index.tsx:180
+#: src/components/header-actions/index.tsx:191
 msgid "View"
 msgstr "视图"
 
+#: src/components/header-actions/index.tsx:246
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:235
 msgid "Visual editor"
 msgstr "可视化编辑器"
 

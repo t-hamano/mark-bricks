@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
-"PO-Revision-Date: 2026-10-03T02:51:34.325Z\n"
+"POT-Creation-Date: 2026-10-03T06:34:38.534Z\n"
+"PO-Revision-Date: 2026-10-03T06:34:47.910Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,16 +26,16 @@ msgstr "В «%s» есть несохраненные изменения. Отб
 msgid "(Untitled)"
 msgstr "(Без названия)"
 
-#: src/components/header-actions/index.tsx:302
+#: src/components/header-actions/index.tsx:313
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "О MarkBricks"
 
-#: src/components/header-actions/index.tsx:192
+#: src/components/header-actions/index.tsx:203
 msgid "Access all block and document tools in a single place"
 msgstr "Доступ ко всем блокам и инструментам в одном месте"
 
-#: src/components/header-actions/index.tsx:271
+#: src/components/header-actions/index.tsx:282
 msgid "Add YAML front matter"
 msgstr "Добавить YAML front matter"
 
@@ -56,7 +56,7 @@ msgstr "Базовый размер шрифта области содержим
 msgid "Block shortcuts"
 msgstr "Горячие клавиши (блоки)"
 
-#: src/components/header-actions/index.tsx:331
+#: src/components/header-actions/index.tsx:342
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Отмена"
@@ -75,6 +75,7 @@ msgstr "Автоматически проверять обновления"
 msgid "Checking…"
 msgstr "Проверка…"
 
+#: src/actions/index.ts:344
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
@@ -95,14 +96,19 @@ msgstr "Закрыть другие вкладки"
 msgid "Close the active tab."
 msgstr "Закрыть активную вкладку."
 
+#: src/components/header-actions/index.tsx:258
 #: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:247
 msgid "Code editor"
 msgstr "Редактор кода"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:106
 msgid "Content width"
 msgstr "Ширина содержимого"
+
+# %s: Error message.
+#: src/actions/index.ts:323
+msgid "Could not export the slide deck: %s"
+msgstr "Не удалось экспортировать презентацию: %s"
 
 #: src/hooks/use-file-open-events.ts:43
 msgid "Could not open the following file:"
@@ -136,13 +142,26 @@ msgstr "Отбросить изменения"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Показывать иерархию блоков в нижней части редактора."
 
-#: src/components/header-actions/index.tsx:218
+#: src/components/header-actions/index.tsx:229
 msgid "Editor"
 msgstr "Редактор"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:103
 msgid "Editor styles"
 msgstr "Стили редактора"
+
+#: src/actions/index.ts:309
+msgid "Export Slide Deck"
+msgstr "Экспорт презентации"
+
+#: src/components/header-actions/index.tsx:180
+msgid "Export Slide Deck…"
+msgstr "Экспортировать презентацию…"
+
+# %s: Name of the exported file.
+#: src/actions/index.ts:337
+msgid "Exported the slide deck to %s."
+msgstr "Презентация экспортирована в %s."
 
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
@@ -152,11 +171,11 @@ msgstr "Сопоставления файлов"
 msgid "File shortcuts"
 msgstr "Сочетания клавиш для файлов"
 
-#: src/components/header-actions/index.tsx:142
+#: src/components/header-actions/index.tsx:143
 msgid "Files"
 msgstr "Файлы"
 
-#: src/components/header-actions/index.tsx:208
+#: src/components/header-actions/index.tsx:219
 msgid "Focus on one block at a time"
 msgstr "Сосредоточьтесь на одном блоке"
 
@@ -177,11 +196,15 @@ msgstr "Общие"
 msgid "Global shortcuts"
 msgstr "Горячие клавиши (общие)"
 
+#: src/actions/index.ts:317
+msgid "HTML slide deck"
+msgstr "Презентация HTML"
+
 #: src/preferences/constants.ts:75
 msgid "Handwriting"
 msgstr "Рукописный"
 
-#: src/components/header-actions/index.tsx:276
+#: src/components/header-actions/index.tsx:287
 msgid "Hide YAML front matter"
 msgstr "Скрыть YAML front matter"
 
@@ -197,8 +220,8 @@ msgstr "Изображения по HTTP-адресам не отображаю�
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Изображения с относительными путями отображаются после сохранения документа."
 
+#: src/components/header-actions/index.tsx:306
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:295
 msgid "Keyboard shortcuts"
 msgstr "Горячие клавиши"
 
@@ -232,7 +255,7 @@ msgstr "Максимальная ширина области содержимо�
 msgid "Monospace"
 msgstr "Моноширинный"
 
-#: src/components/header-actions/index.tsx:149
+#: src/components/header-actions/index.tsx:150
 msgid "New"
 msgstr "Создать"
 
@@ -253,6 +276,10 @@ msgstr "Нет открытых файлов"
 msgid "Not a Marp document"
 msgstr "Это не документ Marp"
 
+#: src/actions/index.ts:343
+msgid "Open"
+msgstr "Открыть"
+
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "Открыть файл."
@@ -270,32 +297,32 @@ msgstr "Открыть файл…"
 msgid "Opens the List View panel by default."
 msgstr "По умолчанию открывает панель List View."
 
-#: src/components/header-actions/index.tsx:157
+#: src/components/header-actions/index.tsx:158
 msgid "Open…"
 msgstr "Открыть…"
 
-#: src/components/header-actions/index.tsx:129
+#: src/components/header-actions/index.tsx:130
 msgid "Options"
 msgstr "Параметры"
 
+#: src/components/header-actions/index.tsx:322
 #: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:311
 msgid "Preferences"
 msgstr "Предпочтения"
 
-#: src/components/header-actions/index.tsx:103
+#: src/components/header-actions/index.tsx:104
 msgid "Preview Slides"
 msgstr "Просмотр слайдов"
 
-#: src/components/header-actions/index.tsx:332
+#: src/components/header-actions/index.tsx:343
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/components/header-actions/index.tsx:282
+#: src/components/header-actions/index.tsx:293
 msgid "Remove YAML front matter"
 msgstr "Удалить YAML front matter"
 
-#: src/components/header-actions/index.tsx:326
+#: src/components/header-actions/index.tsx:337
 msgid "Remove YAML front matter?"
 msgstr "Удалить YAML front matter?"
 
@@ -316,12 +343,12 @@ msgid "Sans-serif"
 msgstr "Без засечек"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:119
-#: src/components/header-actions/index.tsx:165
+#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:166
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/components/header-actions/index.tsx:173
+#: src/components/header-actions/index.tsx:174
 msgid "Save As…"
 msgstr "Сохранить как…"
 
@@ -362,7 +389,7 @@ msgstr "Показать блок \"хлебных крошек\""
 msgid "Show line numbers"
 msgstr "Показывать номера строк"
 
-#: src/actions/index.ts:300
+#: src/actions/index.ts:358
 msgid "Slide Preview"
 msgstr "Предпросмотр слайдов"
 
@@ -370,7 +397,7 @@ msgstr "Предпросмотр слайдов"
 msgid "Spell check"
 msgstr "Проверка орфографии"
 
-#: src/components/header-actions/index.tsx:205
+#: src/components/header-actions/index.tsx:216
 msgid "Spotlight mode"
 msgstr "Режим подсветки"
 
@@ -387,7 +414,7 @@ msgstr "Размер табуляции"
 msgid "Text formatting"
 msgstr "Форматирование текста"
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:338
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -406,11 +433,11 @@ msgstr ""
 "На этой платформе нельзя назначить приложение по умолчанию из MarkBricks. "
 "Настройте его в системном файловом менеджере."
 
-#: src/components/header-actions/index.tsx:255
+#: src/components/header-actions/index.tsx:266
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/components/header-actions/index.tsx:189
+#: src/components/header-actions/index.tsx:200
 msgid "Top toolbar"
 msgstr "Верхняя панель инструментов"
 
@@ -439,12 +466,12 @@ msgstr "Доступно обновление"
 msgid "Update check failed: %s"
 msgstr "Не удалось проверить обновления: %s"
 
-#: src/components/header-actions/index.tsx:180
+#: src/components/header-actions/index.tsx:191
 msgid "View"
 msgstr "Вид"
 
+#: src/components/header-actions/index.tsx:246
 #: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:235
 msgid "Visual editor"
 msgstr "Визуальный редактор"
 
