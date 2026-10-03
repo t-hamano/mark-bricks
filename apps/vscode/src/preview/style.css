@@ -1,7 +1,5 @@
 /* Follows the user's color theme. */
 :root {
 	--marp-preview-background: var(--vscode-editorWidget-background);
-	--marp-preview-font-family: var(--vscode-font-family);
 	--marp-preview-notice-color: var(--vscode-descriptionForeground);
-	--marp-preview-notice-font-size: 16px;
 }
