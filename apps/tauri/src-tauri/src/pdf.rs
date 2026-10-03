@@ -102,7 +102,7 @@ pub async fn export_pdf(
         let window = tauri::WebviewWindowBuilder::new(
             app,
             EXPORT_WINDOW,
-            WebviewUrl::App("export.html".into()),
+            WebviewUrl::App("pages/export.html".into()),
         )
         // WebKitGTK lays out a page it never showed at no size, and then
         // prints no pages, so on Linux the window shows off the screen.

@@ -100,7 +100,7 @@ async fn open_preview(app: tauri::AppHandle, title: String, locale: String) -> R
     tauri::WebviewWindowBuilder::new(
         &app,
         PREVIEW_WINDOW,
-        tauri::WebviewUrl::App(format!("preview.html?locale={locale}").into()),
+        tauri::WebviewUrl::App(format!("pages/preview.html?locale={locale}").into()),
     )
     .title(title)
     .inner_size(960.0, 540.0)
