@@ -15,6 +15,10 @@
 			"types": "./src/export/index.ts",
 			"default": "./src/export/index.ts"
 		},
+		"./browser": {
+			"types": "./src/browser/index.ts",
+			"default": "./src/browser/index.ts"
+		},
 		"./controls": {
 			"types": "./src/controls/index.ts",
 			"default": "./src/controls/index.ts"
