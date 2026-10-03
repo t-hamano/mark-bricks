@@ -9,7 +9,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 /**
  * Internal dependencies
  */
-import type { PreviewLabels } from '..';
+import type { PreviewLabels } from '../render';
 import { createPreviewControls } from './controls';
 
 const labels: PreviewLabels = {

@@ -12,7 +12,7 @@ import '@fontsource/roboto-mono/700.css';
 /**
  * Internal dependencies
  */
-import type { RenderedSlides } from '..';
+import type { RenderedSlides } from '../render';
 import './style.css';
 
 // What the view shows: a deck's slides, or a notice when the document is not

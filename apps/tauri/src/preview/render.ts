@@ -5,7 +5,7 @@ import { convertFileSrc } from '@tauri-apps/api/core';
 import {
 	renderSlides as renderMarpSlides,
 	type RenderedSlides,
-} from '@mark-bricks/marp-preview';
+} from '@mark-bricks/marp-preview/render';
 
 /**
  * Internal dependencies

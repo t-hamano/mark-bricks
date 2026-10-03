@@ -9,7 +9,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 /**
  * Internal dependencies
  */
-import { renderSlides } from '..';
+import { renderSlides } from '../render';
 import { createSlidePreview } from './preview';
 
 // Used by Marp's auto-scaling elements, but missing from jsdom.

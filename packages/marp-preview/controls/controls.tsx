@@ -15,7 +15,7 @@ import '@wordpress/theme/design-tokens.css';
 /**
  * Internal dependencies
  */
-import type { PreviewLabels } from '..';
+import type { PreviewLabels } from '../render';
 import './style.css';
 
 const HINT_DURATION = 3000;

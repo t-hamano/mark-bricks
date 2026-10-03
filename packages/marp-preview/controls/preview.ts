@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import type { PreviewLabels } from '..';
+import type { PreviewLabels } from '../render';
 import { createSlideMode, createSlideView, type SlideView } from '../browser';
 import { createPreviewControls } from './controls';
 
