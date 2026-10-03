@@ -46,7 +46,12 @@ export function createSlidePreview(
 		onRender?.( view.getSlides().length );
 	} );
 	const controls = createPreviewControls(
-		() => requestSlideMode( ! slideMode.isEnabled() ),
+		() => {
+			requestSlideMode( ! slideMode.isEnabled() );
+			// Moves the focus from the button to the slide, so that Enter and
+			// Space do not press the button again.
+			slideMode.focusCurrentSlide();
+		},
 		( index ) => slideMode.goToSlide( index )
 	);
 	const slideMode = createSlideMode( view, controls.setSlide );

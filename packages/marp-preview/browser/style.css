@@ -26,6 +26,14 @@ body {
 	max-height: calc(100vh - 32px);
 }
 
+/*
+ * The current slide takes focus, so that the keyboard reaches it, but shows
+ * no focus ring, which would get in the way of the slide.
+ */
+.marpit > svg:focus {
+	outline: none;
+}
+
 /* The slide mode presents one slide at a time, letterboxed on black. */
 .is-slide-mode,
 .is-slide-mode body {

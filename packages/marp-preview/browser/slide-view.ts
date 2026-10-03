@@ -67,6 +67,15 @@ export function createSlideView(
 			// Points KaTeX at the fonts the page bundles.
 			style.textContent = rewriteFontSources( content.css );
 			slides.innerHTML = content.html;
+			// Names each slide for screen readers by its number.
+			const rendered = getSlides();
+			rendered.forEach( ( slide, index ) => {
+				slide.setAttribute( 'role', 'group' );
+				slide.setAttribute(
+					'aria-label',
+					`Slide ${ index + 1 } of ${ rendered.length }`
+				);
+			} );
 			// WebKit has no customized built-in elements, so Marp swaps in its
 			// auto-scaling elements itself, but only for the slides present.
 			marpBrowser.update();

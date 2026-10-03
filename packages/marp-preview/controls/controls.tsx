@@ -57,10 +57,7 @@ function Pager( { labels, current, count, onNavigate }: PagerProps ) {
 				tone="neutral"
 				size="compact"
 				disabled={ current === 0 }
-				onClick={ ( event ) => {
-					onNavigate( current - 1 );
-					event.currentTarget.blur();
-				} }
+				onClick={ () => onNavigate( current - 1 ) }
 			/>
 			<Field.Root>
 				<Field.Label hideFromVision>{ labels.slideNumber }</Field.Label>
@@ -79,13 +76,7 @@ function Pager( { labels, current, count, onNavigate }: PagerProps ) {
 							`${ item.label } / ${ count }`
 						}
 					</Select.Trigger>
-					{ /*
-					 * Like the buttons, the select gives up focus once used, so
-					 * that keyboard input does not open it again, and the
-					 * toolbar hides once the pointer leaves.
-					 */ }
 					<Select.Popup
-						finalFocus={ false }
 						// Opens the list below the trigger rather than over it,
 						// where it keeps within the window and scrolls a long
 						// deck.
@@ -114,10 +105,7 @@ function Pager( { labels, current, count, onNavigate }: PagerProps ) {
 				tone="neutral"
 				size="compact"
 				disabled={ current >= count - 1 }
-				onClick={ ( event ) => {
-					onNavigate( current + 1 );
-					event.currentTarget.blur();
-				} }
+				onClick={ () => onNavigate( current + 1 ) }
 			/>
 		</div>
 	);
@@ -155,10 +143,7 @@ function Toolbar( {
 					<Button
 						variant="outline"
 						tone="neutral"
-						onClick={ ( event ) => {
-							onToggle();
-							event.currentTarget.blur();
-						} }
+						onClick={ onToggle }
 					>
 						{ slideMode
 							? labels.exitSlideMode

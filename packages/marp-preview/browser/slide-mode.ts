@@ -16,6 +16,7 @@ export type SlideMode = {
 	setEnabled: ( enabled: boolean ) => void;
 	showCurrentSlide: () => void;
 	goToSlide: ( index: number ) => void;
+	focusCurrentSlide: () => void;
 };
 
 /**
@@ -44,14 +45,16 @@ function findMostVisibleSlide( slides: Element[] ): number {
  * the one most visible in the scrolling view, and lets the arrow, Page Up,
  * Page Down, Home and End keys and the wheel move between them. Leaving it
  * scrolls back to the slide shown last. Outside the slide mode, the current
- * slide is the one most visible in the scrolling view.
+ * slide is the one most visible in the scrolling view. Only the current slide
+ * takes focus with Tab, and the slide mode moves the focus along with it.
  *
  * @param view          The view showing the slides.
  * @param onSlideChange Called with the index of the current slide and the
  *                      number of slides, when either changes.
  * @return `isEnabled` and `setEnabled` to read and turn the slide mode on or
  *         off, `showCurrentSlide` to call after the slides are rendered again,
- *         to keep the current slide shown, and `goToSlide` to move to a slide.
+ *         to keep the current slide shown, `goToSlide` to move to a slide,
+ *         and `focusCurrentSlide` to move the focus to the current slide.
  */
 export function createSlideMode(
 	view: Pick< SlideView, 'getSlides' >,
@@ -76,12 +79,24 @@ export function createSlideMode(
 		}
 		// An edit can remove slides while one of them is shown.
 		current = clampSlideIndex( current, slides.length );
-		slides.forEach( ( slide, index ) =>
+		// Taken before the slide mode hides the slide, which drops the focus.
+		const focused = slides.findIndex( ( slide ) =>
+			slide.matches( ':focus-within' )
+		);
+		slides.forEach( ( slide, index ) => {
 			slide.classList.toggle(
 				CURRENT_SLIDE_CLASS,
 				enabled && index === current
-			)
-		);
+			);
+			// Only the current slide is in the focus order, so that Tab
+			// moves from the toolbar to the slide shown.
+			slide.setAttribute( 'tabindex', index === current ? '0' : '-1' );
+		} );
+		// Moves the focus along with the slide shown, from one that the slide
+		// mode hides.
+		if ( enabled && focused !== -1 && focused !== current ) {
+			slides[ current ]?.focus( { preventScroll: true } );
+		}
 		if (
 			current !== reported.current ||
 			slides.length !== reported.count
@@ -121,6 +136,10 @@ export function createSlideMode(
 			scrollToAnchor();
 		}
 		showCurrentSlide();
+	}
+
+	function focusCurrentSlide() {
+		view.getSlides()[ current ]?.focus( { preventScroll: true } );
 	}
 
 	for ( const type of [ 'wheel', 'pointerdown', 'keydown' ] as const ) {
@@ -186,5 +205,6 @@ export function createSlideMode(
 		setEnabled,
 		showCurrentSlide,
 		goToSlide,
+		focusCurrentSlide,
 	};
 }
