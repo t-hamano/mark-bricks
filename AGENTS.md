@@ -13,6 +13,18 @@ Always format commits as `type(scope): subject`.
 Release commits are produced by `npm version` and formatted automatically as
 `chore(release): <app> v<version>` — do not create release commits by hand.
 
+### The `refactor` type
+
+Be careful with `refactor` in commit and PR titles: the apps' changelogs leave
+it out. PRs are squash-merged, so the PR title becomes the commit the
+changelog reads. When a change affects behavior or what users see, even
+slightly:
+
+- Suggest committing the pure refactoring first, on its own, and the change
+  users notice in a follow-up commit/PR.
+- Otherwise, use the type that fits the change, such as `fix` or `feat`,
+  instead of `refactor`.
+
 ## Changes spanning an app and shared packages
 
 Each app's changelog collects commits touching its own directory plus the
