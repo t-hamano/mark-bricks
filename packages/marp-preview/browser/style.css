@@ -1,7 +1,6 @@
 /*
- * Each host sets the page's colors and fonts through these custom properties:
- * `--marp-preview-background`, `--marp-preview-font-family`,
- * `--marp-preview-notice-color` and `--marp-preview-notice-font-size`.
+ * Each host sets the page's colors through these custom properties:
+ * `--marp-preview-background` and `--marp-preview-notice-color`.
  */
 html,
 body {
@@ -11,7 +10,7 @@ body {
 }
 
 body {
-	font-family: var(--marp-preview-font-family);
+	font-family: var(--wpds-typography-font-family-body);
 }
 
 /* Marp wraps every slide in an SVG that scales it to the window's width. */
@@ -59,7 +58,7 @@ body {
 	min-height: 100vh;
 	margin: 0;
 	color: var(--marp-preview-notice-color);
-	font-size: var(--marp-preview-notice-font-size);
+	font-size: var(--wpds-typography-font-size-lg);
 }
 
 .preview-notice[hidden] {
