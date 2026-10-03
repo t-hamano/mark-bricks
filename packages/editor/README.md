@@ -18,6 +18,20 @@ They're exposed as three components, sharing the same header/footer/sidebars and
 - **`<BlockEditor />`** — the block editor only, with no switch to source editing. Its module never references the source editor, so hosts that only need visual editing (the VSCode extension) don't bundle Monaco.
 - **`<CodeEditor />`** — the source editor only, with no switch to block editing.
 
+## Entry points
+
+- `@mark-bricks/editor`: the three components, plus what the entry points below export except `marp` and `katex-fonts`, and the keyboard shortcut hooks. It references the source editor, so it is for hosts that bundle it (the Tauri app).
+- `@mark-bricks/editor/block-editor`: `<BlockEditor />`, without the source editor.
+- `@mark-bricks/editor/block-library`: `registerBlocks`, which registers the blocks.
+- `@mark-bricks/editor/format-library`: `registerFormats`, which registers the inline formats.
+- `@mark-bricks/editor/i18n`: `applyLocale` and `getLocale`. See [Localization](#localization).
+- `@mark-bricks/editor/editor-theme-provider`: `EditorThemeProvider` and `useEditorTheme`. See [Appearance](#appearance).
+- `@mark-bricks/editor/front-matter`: `useFrontMatter`, for host UI that reads or updates the document's YAML front matter.
+- `@mark-bricks/editor/font-families`: `FONT_FAMILY_STACKS`, the font stacks the content area can be set to. It has no dependencies, so the VS Code extension host can load it to validate settings.
+- `@mark-bricks/editor/marp`: `isMarpDocument`. It depends on neither React nor `@wordpress/*`, so the VS Code extension host can load it.
+- `@mark-bricks/editor/katex-fonts`: `rewriteFontSources`, which points a KaTeX stylesheet at the bundled WOFF2 fonts. `@mark-bricks/marp-preview` uses it for the math in slides.
+- `@mark-bricks/editor/code-previews`: `inspectCodePreviews`, which reports how the previews of the math and code blocks rendered, for the apps' smoke tests.
+
 ## Appearance
 
 The editor supports light and dark modes through `EditorThemeProvider`. It uses `ThemeProvider` from `@wordpress/theme` to update WPDS design tokens for the selected theme.
