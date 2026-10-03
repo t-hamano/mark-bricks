@@ -7,7 +7,7 @@
 	"publisher": "aki-hamano",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
-	"icon": "icon.png",
+	"icon": "icons/icon.png",
 	"preview": true,
 	"repository": {
 		"type": "git",
@@ -63,7 +63,10 @@
 			{
 				"command": "markBricks.showQuickPick",
 				"title": "%command.showQuickPick.title%",
-				"icon": "$(layers)"
+				"icon": {
+					"light": "icons/icon-light.svg",
+					"dark": "icons/icon-dark.svg"
+				}
 			}
 		],
 		"menus": {
