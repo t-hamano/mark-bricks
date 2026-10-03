@@ -575,18 +575,14 @@ describe( 'exportSlideDeck', () => {
 	const DECK = '---\nmarp: true\ntitle: Deck\n---\n\n# One\n';
 
 	// Opens a deck from `/docs/deck.md` and records the IPC calls, answering
-	// the export with `exported`, and the dialog that offers to open the file
-	// with its "Open" button when `open` is true. `ask` resolves to whether
-	// the dialog returned its OK label.
+	// the export with `exported`, the written file's name.
 	async function exportDeck( {
 		content = DECK,
-		exported = '/docs/deck.html' as string | null,
-		open = false,
+		exported = 'deck.html' as string | null,
 		error,
 	}: {
 		content?: string;
 		exported?: string | null;
-		open?: boolean;
 		error?: string;
 	} = {} ) {
 		await openDocument( {
@@ -602,9 +598,6 @@ describe( 'exportSlideDeck', () => {
 					throw error;
 				}
 				return exported;
-			}
-			if ( cmd === 'plugin:dialog|message' ) {
-				return open ? 'Open' : 'Close';
 			}
 			return null;
 		} );
@@ -661,25 +654,14 @@ describe( 'exportSlideDeck', () => {
 		] );
 	} );
 
-	it( 'opens the exported file when asked to', async () => {
-		const calls = await exportDeck( { open: true } );
-		const ask = calls.find( ( c ) => c.cmd === 'plugin:dialog|message' );
-
-		expect( ask?.payload ).toMatchObject( {
-			message: 'Exported the slide deck to deck.html.',
-			buttons: { OkCancelCustom: [ 'Open', 'Close' ] },
-		} );
-		expect( calls[ calls.length - 1 ] ).toEqual( {
-			cmd: 'open_exported_file',
-			payload: { path: '/docs/deck.html' },
-		} );
-	} );
-
-	it( 'leaves the file closed otherwise', async () => {
+	it( 'tells which file it exported', async () => {
 		const calls = await exportDeck();
-		expect( calls.map( ( c ) => c.cmd ) ).not.toContain(
-			'open_exported_file'
-		);
+		const shown = calls.find( ( c ) => c.cmd === 'plugin:dialog|message' );
+
+		expect( shown?.payload ).toMatchObject( {
+			message: 'Exported the slide deck to deck.html.',
+			kind: 'info',
+		} );
 	} );
 
 	it( 'shows why an export failed', async () => {

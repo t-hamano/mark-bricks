@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T06:34:38.534Z\n"
-"PO-Revision-Date: 2026-10-03T06:34:48.271Z\n"
+"POT-Creation-Date: 2026-10-03T06:47:32.758Z\n"
+"PO-Revision-Date: 2026-10-03T06:47:37.201Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -77,7 +77,6 @@ msgstr "Güncellemeleri otomatik denetle"
 msgid "Checking…"
 msgstr "Denetleniyor…"
 
-#: src/actions/index.ts:344
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
@@ -98,8 +97,8 @@ msgstr "Diğer sekmeleri kapat"
 msgid "Close the active tab."
 msgstr "Etkin sekmeyi kapat."
 
-#: src/components/header-actions/index.tsx:258
 #: src/components/preferences-modal/index.tsx:191
+#: src/components/header-actions/index.tsx:258
 msgid "Code editor"
 msgstr "Kod düzenleyici"
 
@@ -108,7 +107,7 @@ msgid "Content width"
 msgstr "İçerik genişliği"
 
 # %s: Error message.
-#: src/actions/index.ts:323
+#: src/actions/index.ts:322
 msgid "Could not export the slide deck: %s"
 msgstr "Slayt destesi dışa aktarılamadı: %s"
 
@@ -152,7 +151,7 @@ msgstr "Düzenleyici"
 msgid "Editor styles"
 msgstr "Düzenleyici stilleri"
 
-#: src/actions/index.ts:309
+#: src/actions/index.ts:308
 msgid "Export Slide Deck"
 msgstr "Slayt destesini dışa aktar"
 
@@ -161,7 +160,7 @@ msgid "Export Slide Deck…"
 msgstr "Slayt destesini dışa aktar…"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:337
+#: src/actions/index.ts:333
 msgid "Exported the slide deck to %s."
 msgstr "Slayt destesi %s olarak dışa aktarıldı."
 
@@ -198,7 +197,7 @@ msgstr "Genel"
 msgid "Global shortcuts"
 msgstr "Genel kısayollar"
 
-#: src/actions/index.ts:317
+#: src/actions/index.ts:316
 msgid "HTML slide deck"
 msgstr "HTML slayt destesi"
 
@@ -224,8 +223,8 @@ msgstr ""
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Göreli yollara sahip görseller, belge kaydedildikten sonra görüntülenir."
 
-#: src/components/header-actions/index.tsx:306
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
+#: src/components/header-actions/index.tsx:306
 msgid "Keyboard shortcuts"
 msgstr "Klavye kısayolları"
 
@@ -280,10 +279,6 @@ msgstr "Açık dosya yok"
 msgid "Not a Marp document"
 msgstr "Marp belgesi değil"
 
-#: src/actions/index.ts:343
-msgid "Open"
-msgstr "Aç"
-
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "Bir dosya aç."
@@ -309,8 +304,8 @@ msgstr "Aç…"
 msgid "Options"
 msgstr "Seçenekler"
 
-#: src/components/header-actions/index.tsx:322
 #: src/components/preferences-modal/index.tsx:166
+#: src/components/header-actions/index.tsx:322
 msgid "Preferences"
 msgstr "Tercihler"
 
@@ -393,7 +388,7 @@ msgstr "Blok sayfa yollarını görüntüle"
 msgid "Show line numbers"
 msgstr "Satır numaralarını göster"
 
-#: src/actions/index.ts:358
+#: src/actions/index.ts:347
 msgid "Slide Preview"
 msgstr "Slayt önizlemesi"
 
@@ -474,8 +469,8 @@ msgstr "Güncelleme denetimi başarısız oldu: %s"
 msgid "View"
 msgstr "Görünüm"
 
-#: src/components/header-actions/index.tsx:246
 #: src/components/preferences-modal/index.tsx:188
+#: src/components/header-actions/index.tsx:246
 msgid "Visual editor"
 msgstr "Görsel düzenleyici"
 

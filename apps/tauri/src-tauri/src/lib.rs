@@ -10,7 +10,7 @@ use documents::{
     close_document, open_document, read_document, save_document_as, with_documents, write_document,
     Documents, OpenedDocument,
 };
-use export::{export_slide_deck, open_exported_file, Exports};
+use export::export_slide_deck;
 
 /// Markdown files the OS asked us to open before the app window was ready to
 /// receive them — for example when opening a file starts the app, or a second
@@ -424,7 +424,6 @@ pub fn run() {
             }
         })
         .manage(Documents::default())
-        .manage(Exports::default())
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
@@ -437,7 +436,6 @@ pub fn run() {
             write_document,
             close_document,
             export_slide_deck,
-            open_exported_file,
             take_pending_documents,
             report_rendered,
             open_preview,

@@ -1,15 +1,7 @@
-use std::collections::HashSet;
 use std::path::{Path, PathBuf};
-use std::sync::Mutex;
 
-use tauri::{AppHandle, Manager, State};
+use tauri::{AppHandle, Manager};
 use tauri_plugin_dialog::DialogExt;
-use tauri_plugin_opener::OpenerExt;
-
-/// The files this session exported, which the frontend may open. The
-/// frontend never names a path to write, and can open no other file.
-#[derive(Default)]
-pub struct Exports(Mutex<HashSet<PathBuf>>);
 
 /// The name and folder the save dialog suggests: the document's own name with
 /// `extension`, next to it, or "untitled" for an unsaved document.
@@ -25,9 +17,9 @@ fn suggested_file(document_path: Option<&Path>, extension: &str) -> (String, Opt
     (format!("{stem}.{extension}"), directory)
 }
 
-/// Asks where to export a slide deck, and writes `html` there. `document_path`
-/// only seeds the dialog. Returns the chosen path, or `None` when the user
-/// cancels.
+/// Asks where to export a slide deck, and writes `html` there. The frontend
+/// never names the path to write: `document_path` only seeds the dialog.
+/// Returns the written file's name, or `None` when the user cancels.
 #[tauri::command]
 pub async fn export_slide_deck(
     app: AppHandle,
@@ -54,35 +46,14 @@ pub async fn export_slide_deck(
         };
         let path = path.into_path().map_err(|e| e.to_string())?;
         std::fs::write(&path, html).map_err(|e| e.to_string())?;
-        app.state::<Exports>()
-            .0
-            .lock()
-            .map_err(|e| e.to_string())?
-            .insert(path.clone());
-        Ok(Some(path.to_string_lossy().into_owned()))
+        Ok(Some(
+            path.file_name()
+                .map(|name| name.to_string_lossy().into_owned())
+                .unwrap_or_default(),
+        ))
     })
     .await
     .map_err(|e| e.to_string())?
-}
-
-/// Opens a file `export_slide_deck` wrote, in its default app.
-#[tauri::command]
-pub fn open_exported_file(
-    app: AppHandle,
-    exports: State<'_, Exports>,
-    path: String,
-) -> Result<(), String> {
-    if !exports
-        .0
-        .lock()
-        .map_err(|e| e.to_string())?
-        .contains(Path::new(&path))
-    {
-        return Err("The file was not exported in this session.".to_string());
-    }
-    app.opener()
-        .open_path(path, None::<&str>)
-        .map_err(|e| e.to_string())
 }
 
 #[cfg(test)]

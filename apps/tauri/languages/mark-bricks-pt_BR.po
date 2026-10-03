@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T06:34:38.534Z\n"
-"PO-Revision-Date: 2026-10-03T06:34:47.557Z\n"
+"POT-Creation-Date: 2026-10-03T06:47:32.758Z\n"
+"PO-Revision-Date: 2026-10-03T06:47:36.478Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,6 @@ msgstr "Verificar atualizações automaticamente"
 msgid "Checking…"
 msgstr "Verificando…"
 
-#: src/actions/index.ts:344
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
@@ -96,8 +95,8 @@ msgstr "Fechar outras abas"
 msgid "Close the active tab."
 msgstr "Fechar a aba ativa."
 
-#: src/components/header-actions/index.tsx:258
 #: src/components/preferences-modal/index.tsx:191
+#: src/components/header-actions/index.tsx:258
 msgid "Code editor"
 msgstr "Editor de código"
 
@@ -106,7 +105,7 @@ msgid "Content width"
 msgstr "Largura do conteúdo"
 
 # %s: Error message.
-#: src/actions/index.ts:323
+#: src/actions/index.ts:322
 msgid "Could not export the slide deck: %s"
 msgstr "Não foi possível exportar a apresentação: %s"
 
@@ -148,7 +147,7 @@ msgstr "Editor"
 msgid "Editor styles"
 msgstr "Estilos do editor"
 
-#: src/actions/index.ts:309
+#: src/actions/index.ts:308
 msgid "Export Slide Deck"
 msgstr "Exportar apresentação"
 
@@ -157,7 +156,7 @@ msgid "Export Slide Deck…"
 msgstr "Exportar apresentação…"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:337
+#: src/actions/index.ts:333
 msgid "Exported the slide deck to %s."
 msgstr "A apresentação foi exportada para %s."
 
@@ -194,7 +193,7 @@ msgstr "Geral"
 msgid "Global shortcuts"
 msgstr "Atalhos globais"
 
-#: src/actions/index.ts:317
+#: src/actions/index.ts:316
 msgid "HTML slide deck"
 msgstr "Apresentação HTML"
 
@@ -218,8 +217,8 @@ msgstr "Imagens de URLs HTTP não podem ser exibidas. Use uma URL HTTPS."
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Imagens com caminhos relativos são exibidas depois que o documento é salvo."
 
-#: src/components/header-actions/index.tsx:306
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
+#: src/components/header-actions/index.tsx:306
 msgid "Keyboard shortcuts"
 msgstr "Atalhos do teclado"
 
@@ -274,10 +273,6 @@ msgstr "Nenhum arquivo aberto"
 msgid "Not a Marp document"
 msgstr "Não é um documento do Marp"
 
-#: src/actions/index.ts:343
-msgid "Open"
-msgstr "Abrir"
-
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "Abrir um arquivo."
@@ -303,8 +298,8 @@ msgstr "Abrir…"
 msgid "Options"
 msgstr "Opções"
 
-#: src/components/header-actions/index.tsx:322
 #: src/components/preferences-modal/index.tsx:166
+#: src/components/header-actions/index.tsx:322
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -387,7 +382,7 @@ msgstr "Mostrar bloco de caminho de navegação"
 msgid "Show line numbers"
 msgstr "Mostrar números de linha"
 
-#: src/actions/index.ts:358
+#: src/actions/index.ts:347
 msgid "Slide Preview"
 msgstr "Visualização de slides"
 
@@ -468,8 +463,8 @@ msgstr "Falha ao verificar atualizações: %s"
 msgid "View"
 msgstr "Visualizar"
 
-#: src/components/header-actions/index.tsx:246
 #: src/components/preferences-modal/index.tsx:188
+#: src/components/header-actions/index.tsx:246
 msgid "Visual editor"
 msgstr "Editor visual"
 

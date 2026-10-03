@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T06:34:38.534Z\n"
-"PO-Revision-Date: 2026-10-03T06:34:47.910Z\n"
+"POT-Creation-Date: 2026-10-03T06:47:32.758Z\n"
+"PO-Revision-Date: 2026-10-03T06:47:36.839Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,6 @@ msgstr "Автоматически проверять обновления"
 msgid "Checking…"
 msgstr "Проверка…"
 
-#: src/actions/index.ts:344
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
@@ -96,8 +95,8 @@ msgstr "Закрыть другие вкладки"
 msgid "Close the active tab."
 msgstr "Закрыть активную вкладку."
 
-#: src/components/header-actions/index.tsx:258
 #: src/components/preferences-modal/index.tsx:191
+#: src/components/header-actions/index.tsx:258
 msgid "Code editor"
 msgstr "Редактор кода"
 
@@ -106,7 +105,7 @@ msgid "Content width"
 msgstr "Ширина содержимого"
 
 # %s: Error message.
-#: src/actions/index.ts:323
+#: src/actions/index.ts:322
 msgid "Could not export the slide deck: %s"
 msgstr "Не удалось экспортировать презентацию: %s"
 
@@ -150,7 +149,7 @@ msgstr "Редактор"
 msgid "Editor styles"
 msgstr "Стили редактора"
 
-#: src/actions/index.ts:309
+#: src/actions/index.ts:308
 msgid "Export Slide Deck"
 msgstr "Экспорт презентации"
 
@@ -159,7 +158,7 @@ msgid "Export Slide Deck…"
 msgstr "Экспортировать презентацию…"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:337
+#: src/actions/index.ts:333
 msgid "Exported the slide deck to %s."
 msgstr "Презентация экспортирована в %s."
 
@@ -196,7 +195,7 @@ msgstr "Общие"
 msgid "Global shortcuts"
 msgstr "Горячие клавиши (общие)"
 
-#: src/actions/index.ts:317
+#: src/actions/index.ts:316
 msgid "HTML slide deck"
 msgstr "Презентация HTML"
 
@@ -220,8 +219,8 @@ msgstr "Изображения по HTTP-адресам не отображаю�
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Изображения с относительными путями отображаются после сохранения документа."
 
-#: src/components/header-actions/index.tsx:306
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
+#: src/components/header-actions/index.tsx:306
 msgid "Keyboard shortcuts"
 msgstr "Горячие клавиши"
 
@@ -276,10 +275,6 @@ msgstr "Нет открытых файлов"
 msgid "Not a Marp document"
 msgstr "Это не документ Marp"
 
-#: src/actions/index.ts:343
-msgid "Open"
-msgstr "Открыть"
-
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "Открыть файл."
@@ -305,8 +300,8 @@ msgstr "Открыть…"
 msgid "Options"
 msgstr "Параметры"
 
-#: src/components/header-actions/index.tsx:322
 #: src/components/preferences-modal/index.tsx:166
+#: src/components/header-actions/index.tsx:322
 msgid "Preferences"
 msgstr "Предпочтения"
 
@@ -389,7 +384,7 @@ msgstr "Показать блок \"хлебных крошек\""
 msgid "Show line numbers"
 msgstr "Показывать номера строк"
 
-#: src/actions/index.ts:358
+#: src/actions/index.ts:347
 msgid "Slide Preview"
 msgstr "Предпросмотр слайдов"
 
@@ -470,8 +465,8 @@ msgstr "Не удалось проверить обновления: %s"
 msgid "View"
 msgstr "Вид"
 
-#: src/components/header-actions/index.tsx:246
 #: src/components/preferences-modal/index.tsx:188
+#: src/components/header-actions/index.tsx:246
 msgid "Visual editor"
 msgstr "Визуальный редактор"
 

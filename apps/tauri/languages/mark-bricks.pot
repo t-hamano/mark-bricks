@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T06:34:38.534Z\n"
+"POT-Creation-Date: 2026-10-03T06:47:32.758Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -137,37 +137,25 @@ msgstr ""
 msgid "Update check failed: %s"
 msgstr ""
 
-#: src/actions/index.ts:309
+#: src/actions/index.ts:308
 msgid "Export Slide Deck"
 msgstr ""
 
-#: src/actions/index.ts:317
+#: src/actions/index.ts:316
 msgid "HTML slide deck"
 msgstr ""
 
 # %s: Error message.
-#: src/actions/index.ts:323
+#: src/actions/index.ts:322
 msgid "Could not export the slide deck: %s"
 msgstr ""
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:337
+#: src/actions/index.ts:333
 msgid "Exported the slide deck to %s."
 msgstr ""
 
-#: src/actions/index.ts:343
-msgid "Open"
-msgstr ""
-
-#: src/actions/index.ts:344
-#: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:168
-#: src/components/keyboard-shortcuts-modal/index.tsx:230
-#: src/components/about-modal/index.tsx:82
-msgid "Close"
-msgstr ""
-
-#: src/actions/index.ts:358
+#: src/actions/index.ts:347
 msgid "Slide Preview"
 msgstr ""
 
@@ -183,6 +171,13 @@ msgstr ""
 #: src/components/tabbar/index.tsx:150
 #: src/components/editor-placeholder/index.tsx:42
 msgid "Open file…"
+msgstr ""
+
+#: src/components/tabbar/index.tsx:178
+#: src/components/preferences-modal/index.tsx:168
+#: src/components/keyboard-shortcuts-modal/index.tsx:230
+#: src/components/about-modal/index.tsx:82
+msgid "Close"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:186
@@ -202,118 +197,6 @@ msgstr ""
 # %s: tab title.
 #: src/components/tabbar/index.tsx:273
 msgid "Close %s"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:104
-msgid "Preview Slides"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:130
-msgid "Options"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:143
-msgid "Files"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:150
-msgid "New"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:158
-msgid "Open…"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:174
-msgid "Save As…"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:180
-msgid "Export Slide Deck…"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:191
-msgid "View"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:200
-msgid "Top toolbar"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:203
-msgid "Access all block and document tools in a single place"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:216
-msgid "Spotlight mode"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:219
-msgid "Focus on one block at a time"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:229
-msgid "Editor"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:246
-#: src/components/preferences-modal/index.tsx:188
-msgid "Visual editor"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:258
-#: src/components/preferences-modal/index.tsx:191
-msgid "Code editor"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:266
-msgid "Tools"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:282
-msgid "Add YAML front matter"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:287
-msgid "Hide YAML front matter"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:293
-msgid "Remove YAML front matter"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:306
-#: src/components/keyboard-shortcuts-modal/index.tsx:228
-msgid "Keyboard shortcuts"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:313
-#: src/components/about-modal/index.tsx:80
-msgid "About"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:322
-#: src/components/preferences-modal/index.tsx:166
-msgid "Preferences"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:337
-msgid "Remove YAML front matter?"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:338
-msgid ""
-"The YAML front matter and all of its content will be removed from the "
-"document."
-msgstr ""
-
-#: src/components/header-actions/index.tsx:342
-#: src/components/dirty-confirm-dialog/index.tsx:64
-msgid "Cancel"
-msgstr ""
-
-#: src/components/header-actions/index.tsx:343
-msgid "Remove"
 msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:47
@@ -379,8 +262,23 @@ msgstr ""
 msgid "Typeface used for the content area."
 msgstr ""
 
+#: src/components/preferences-modal/index.tsx:166
+#: src/components/header-actions/index.tsx:322
+msgid "Preferences"
+msgstr ""
+
 #: src/components/preferences-modal/index.tsx:185
 msgid "General"
+msgstr ""
+
+#: src/components/preferences-modal/index.tsx:188
+#: src/components/header-actions/index.tsx:246
+msgid "Visual editor"
+msgstr ""
+
+#: src/components/preferences-modal/index.tsx:191
+#: src/components/header-actions/index.tsx:258
+msgid "Code editor"
 msgstr ""
 
 #: src/components/preferences-modal/general-panel.tsx:93
@@ -440,17 +338,9 @@ msgstr ""
 msgid "Restore default settings"
 msgstr ""
 
-# %s: tab title.
-#: src/components/dirty-confirm-dialog/index.tsx:58
-msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
-msgstr ""
-
-#: src/components/dirty-confirm-dialog/index.tsx:67
-msgid "Discard changes"
-msgstr ""
-
-#: src/components/dirty-confirm-dialog/index.tsx:68
-msgid "Discard"
+#: src/components/keyboard-shortcuts-modal/index.tsx:228
+#: src/components/header-actions/index.tsx:306
+msgid "Keyboard shortcuts"
 msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
@@ -477,12 +367,117 @@ msgstr ""
 msgid "List View shortcuts"
 msgstr ""
 
+#: src/components/header-actions/index.tsx:104
+msgid "Preview Slides"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:130
+msgid "Options"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:143
+msgid "Files"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:150
+msgid "New"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:158
+msgid "Open…"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:174
+msgid "Save As…"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:180
+msgid "Export Slide Deck…"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:191
+msgid "View"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:200
+msgid "Top toolbar"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:203
+msgid "Access all block and document tools in a single place"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:216
+msgid "Spotlight mode"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:219
+msgid "Focus on one block at a time"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:229
+msgid "Editor"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:266
+msgid "Tools"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:282
+msgid "Add YAML front matter"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:287
+msgid "Hide YAML front matter"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:293
+msgid "Remove YAML front matter"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:313
+#: src/components/about-modal/index.tsx:80
+msgid "About"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:337
+msgid "Remove YAML front matter?"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:338
+msgid ""
+"The YAML front matter and all of its content will be removed from the "
+"document."
+msgstr ""
+
+#: src/components/header-actions/index.tsx:342
+#: src/components/dirty-confirm-dialog/index.tsx:64
+msgid "Cancel"
+msgstr ""
+
+#: src/components/header-actions/index.tsx:343
+msgid "Remove"
+msgstr ""
+
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr ""
 
 #: src/components/editor-placeholder/index.tsx:26
 msgid "Create a new Markdown file or open an existing one to start editing."
+msgstr ""
+
+# %s: tab title.
+#: src/components/dirty-confirm-dialog/index.tsx:58
+msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
+msgstr ""
+
+#: src/components/dirty-confirm-dialog/index.tsx:67
+msgid "Discard changes"
+msgstr ""
+
+#: src/components/dirty-confirm-dialog/index.tsx:68
+msgid "Discard"
 msgstr ""
 
 #: src/components/about-modal/index.tsx:132

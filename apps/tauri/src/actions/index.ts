@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { invoke } from '@tauri-apps/api/core';
-import { ask, message } from '@tauri-apps/plugin-dialog';
+import { message } from '@tauri-apps/plugin-dialog';
 import { getLocale } from '@mark-bricks/editor/i18n';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
 
@@ -294,8 +294,7 @@ export async function closeOtherTabs( keepId: string ) {
 }
 
 /**
- * Exports the active tab's Marp slide deck to HTML, including unsaved edits,
- * and offers to open the file.
+ * Exports the active tab's Marp slide deck to HTML, including unsaved edits.
  */
 export async function exportSlideDeck() {
 	flushPendingEdits();
@@ -307,11 +306,11 @@ export async function exportSlideDeck() {
 	}
 
 	const title = __( 'Export Slide Deck', 'mark-bricks' );
-	let path: string | null;
+	let fileName: string | null;
 	try {
 		const { renderHtmlDocument } =
 			await import( '@mark-bricks/marp-preview/export' );
-		path = await invoke< string | null >( 'export_slide_deck', {
+		fileName = await invoke< string | null >( 'export_slide_deck', {
 			html: renderHtmlDocument( tab.content ),
 			documentPath: tab.filePath ?? null,
 			filterName: __( 'HTML slide deck', 'mark-bricks' ),
@@ -327,25 +326,15 @@ export async function exportSlideDeck() {
 		);
 		return;
 	}
-	if ( ! path ) {
-		return;
-	}
-
-	const open = await ask(
-		sprintf(
-			/* translators: %s: Name of the exported file. */
-			__( 'Exported the slide deck to %s.', 'mark-bricks' ),
-			path.split( /[\\/]/ ).pop() ?? path
-		),
-		{
-			title,
-			kind: 'info',
-			okLabel: __( 'Open', 'mark-bricks' ),
-			cancelLabel: __( 'Close', 'mark-bricks' ),
-		}
-	);
-	if ( open ) {
-		await invoke( 'open_exported_file', { path } );
+	if ( fileName ) {
+		await message(
+			sprintf(
+				/* translators: %s: Name of the exported file. */
+				__( 'Exported the slide deck to %s.', 'mark-bricks' ),
+				fileName
+			),
+			{ title, kind: 'info' }
+		);
 	}
 }
 

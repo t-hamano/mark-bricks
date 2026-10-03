@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T06:34:38.534Z\n"
-"PO-Revision-Date: 2026-10-03T06:34:44.596Z\n"
+"POT-Creation-Date: 2026-10-03T06:47:32.758Z\n"
+"PO-Revision-Date: 2026-10-03T06:47:33.348Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,6 @@ msgstr "Automaticky kontrolovat aktualizace"
 msgid "Checking…"
 msgstr "Kontrola…"
 
-#: src/actions/index.ts:344
 #: src/components/tabbar/index.tsx:178
 #: src/components/preferences-modal/index.tsx:168
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
@@ -96,8 +95,8 @@ msgstr "Zavřít ostatní karty"
 msgid "Close the active tab."
 msgstr "Zavřít aktivní kartu."
 
-#: src/components/header-actions/index.tsx:258
 #: src/components/preferences-modal/index.tsx:191
+#: src/components/header-actions/index.tsx:258
 msgid "Code editor"
 msgstr "Editor kódu"
 
@@ -106,7 +105,7 @@ msgid "Content width"
 msgstr "Šířka obsahu"
 
 # %s: Error message.
-#: src/actions/index.ts:323
+#: src/actions/index.ts:322
 msgid "Could not export the slide deck: %s"
 msgstr "Prezentaci se nepodařilo exportovat: %s"
 
@@ -148,7 +147,7 @@ msgstr "Editor"
 msgid "Editor styles"
 msgstr "Styly editoru"
 
-#: src/actions/index.ts:309
+#: src/actions/index.ts:308
 msgid "Export Slide Deck"
 msgstr "Exportovat prezentaci"
 
@@ -157,7 +156,7 @@ msgid "Export Slide Deck…"
 msgstr "Exportovat prezentaci…"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:337
+#: src/actions/index.ts:333
 msgid "Exported the slide deck to %s."
 msgstr "Prezentace byla exportována do %s."
 
@@ -194,7 +193,7 @@ msgstr "Obecné"
 msgid "Global shortcuts"
 msgstr "Obecné zkratky"
 
-#: src/actions/index.ts:317
+#: src/actions/index.ts:316
 msgid "HTML slide deck"
 msgstr "Prezentace HTML"
 
@@ -220,8 +219,8 @@ msgstr ""
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Obrázky s relativními cestami se zobrazí po uložení dokumentu."
 
-#: src/components/header-actions/index.tsx:306
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
+#: src/components/header-actions/index.tsx:306
 msgid "Keyboard shortcuts"
 msgstr "Klávesové zkratky"
 
@@ -276,10 +275,6 @@ msgstr "Není otevřen žádný soubor"
 msgid "Not a Marp document"
 msgstr "Nejedná se o dokument Marp"
 
-#: src/actions/index.ts:343
-msgid "Open"
-msgstr "Otevřít"
-
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "Otevřít soubor."
@@ -305,8 +300,8 @@ msgstr "Otevřít…"
 msgid "Options"
 msgstr "Možnosti"
 
-#: src/components/header-actions/index.tsx:322
 #: src/components/preferences-modal/index.tsx:166
+#: src/components/header-actions/index.tsx:322
 msgid "Preferences"
 msgstr "Předvolby"
 
@@ -389,7 +384,7 @@ msgstr "Zobrazit navigační lištu"
 msgid "Show line numbers"
 msgstr "Zobrazit čísla řádků"
 
-#: src/actions/index.ts:358
+#: src/actions/index.ts:347
 msgid "Slide Preview"
 msgstr "Náhled snímků"
 
@@ -470,8 +465,8 @@ msgstr "Kontrola aktualizací selhala: %s"
 msgid "View"
 msgstr "Zobrazení"
 
-#: src/components/header-actions/index.tsx:246
 #: src/components/preferences-modal/index.tsx:188
+#: src/components/header-actions/index.tsx:246
 msgid "Visual editor"
 msgstr "Vizuální editor"
 
