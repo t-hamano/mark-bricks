@@ -1,12 +1,9 @@
-/*
- * Each host sets the page's colors through these custom properties:
- * `--marp-preview-background` and `--marp-preview-notice-color`.
- */
+/* The dark background that the controls seed their theme with. */
 html,
 body {
 	margin: 0;
 	padding: 0;
-	background: var(--marp-preview-background);
+	background: #3c3c3c;
 }
 
 body {
@@ -57,7 +54,7 @@ body {
 	place-items: center;
 	min-height: 100vh;
 	margin: 0;
-	color: var(--marp-preview-notice-color);
+	color: var(--wpds-color-foreground-content-neutral-weak);
 	font-size: var(--wpds-typography-font-size-lg);
 }
 
