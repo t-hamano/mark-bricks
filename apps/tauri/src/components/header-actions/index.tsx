@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { useFrontMatter, useKeyboardShortcut } from '@mark-bricks/editor';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
 
@@ -19,6 +19,7 @@ import {
 	getWpCompatOverlaySlot,
 	IconButton,
 	Menu,
+	Spinner,
 	Stack,
 } from '@wordpress/ui';
 
@@ -27,11 +28,13 @@ import {
  */
 import {
 	exportSlideDeck,
+	getExportStatus,
 	newFile,
 	openFile,
 	openPreview,
 	saveActiveFile,
 	saveActiveFileAs,
+	subscribeExportStatus,
 } from '../../actions';
 import tabsStore from '../../store';
 import { ABOUT_MODAL_NAME } from '../about-modal';
@@ -85,6 +88,10 @@ export default function HeaderActions( {
 	const isFrontMatterEmpty = frontMatter?.trim() === '';
 	const [ isRemoveFrontMatterOpen, setIsRemoveFrontMatterOpen ] =
 		useState( false );
+	const exportStatus = useSyncExternalStore(
+		subscribeExportStatus,
+		getExportStatus
+	);
 	useEffect( () => {
 		if ( isPreferencesOpened ) {
 			setIsOptionsMenuOpen( false );
@@ -98,6 +105,15 @@ export default function HeaderActions( {
 			align="center"
 			gap="sm"
 		>
+			{ exportStatus === 'printing' && (
+				<Spinner
+					role="status"
+					aria-label={ __(
+						'Exporting the slide deck…',
+						'mark-bricks'
+					) }
+				/>
+			) }
 			{ isActiveTabMarp && (
 				<IconButton
 					icon={ external }
@@ -175,14 +191,38 @@ export default function HeaderActions( {
 							</Menu.ItemLabel>
 						</Menu.Item>
 						{ isActiveTabMarp && (
-							<Menu.Item onClick={ () => exportSlideDeck() }>
-								<Menu.ItemLabel>
-									{ __(
-										'Export Slide Deck…',
-										'mark-bricks'
-									) }
-								</Menu.ItemLabel>
-							</Menu.Item>
+							<Menu.SubmenuRoot>
+								<Menu.SubmenuTrigger
+									disabled={ exportStatus !== 'idle' }
+								>
+									<Menu.ItemLabel>
+										{ __(
+											'Export Slide Deck',
+											'mark-bricks'
+										) }
+									</Menu.ItemLabel>
+								</Menu.SubmenuTrigger>
+								<Menu.Popup>
+									<Menu.Item
+										onClick={ () =>
+											exportSlideDeck( 'html' )
+										}
+									>
+										<Menu.ItemLabel>
+											{ __( 'HTML…', 'mark-bricks' ) }
+										</Menu.ItemLabel>
+									</Menu.Item>
+									<Menu.Item
+										onClick={ () =>
+											exportSlideDeck( 'pdf' )
+										}
+									>
+										<Menu.ItemLabel>
+											{ __( 'PDF…', 'mark-bricks' ) }
+										</Menu.ItemLabel>
+									</Menu.Item>
+								</Menu.Popup>
+							</Menu.SubmenuRoot>
 						) }
 					</Menu.Group>
 					<Menu.Separator />

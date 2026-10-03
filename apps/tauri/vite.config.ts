@@ -41,8 +41,9 @@ export default defineConfig( async () => ( {
 		assetsInlineLimit: ( file: string ) =>
 			/\.(?:woff2?|ttf)$/.test( file ) ? false : undefined,
 		rolldownOptions: {
-			// The slide preview window loads a page of its own.
-			input: [ 'index.html', 'preview.html' ],
+			// The slide preview window and the hidden window that prints a deck
+			// to PDF load pages of their own.
+			input: [ 'index.html', 'preview.html', 'export.html' ],
 		},
 	},
 	server: {

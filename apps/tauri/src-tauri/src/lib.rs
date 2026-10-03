@@ -6,6 +6,7 @@ use tauri::{Emitter, Env, Manager};
 
 mod documents;
 mod export;
+mod pdf;
 use documents::{
     close_document, open_document, read_document, save_document_as, with_documents, write_document,
     Documents, OpenedDocument,
@@ -51,13 +52,36 @@ async fn take_pending_documents(
 }
 
 /// Prints that `path` rendered, and how its code block previews rendered, for
-/// the smoke test (`MARK_BRICKS_SMOKE_TEST`).
+/// the smoke test (`MARK_BRICKS_SMOKE_TEST`). Then exports the Marp deck at
+/// `MARK_BRICKS_SMOKE_EXPORT_DECK` to the PDF at
+/// `MARK_BRICKS_SMOKE_EXPORT_PDF`, if both are set, and prints the result,
+/// since the test cannot answer the save dialog.
 #[tauri::command]
-fn report_rendered(path: String, previews: serde_json::Value) {
-    if std::env::var_os("MARK_BRICKS_SMOKE_TEST").is_some() {
-        println!("[smoke] previews: {previews}");
-        println!("[smoke] rendered: {path}");
+fn report_rendered(app: tauri::AppHandle, path: String, previews: serde_json::Value) {
+    if std::env::var_os("MARK_BRICKS_SMOKE_TEST").is_none() {
+        return;
     }
+    println!("[smoke] previews: {previews}");
+    println!("[smoke] rendered: {path}");
+    let (Some(deck), Some(pdf)) = (
+        std::env::var_os("MARK_BRICKS_SMOKE_EXPORT_DECK"),
+        std::env::var_os("MARK_BRICKS_SMOKE_EXPORT_PDF"),
+    ) else {
+        return;
+    };
+    tauri::async_runtime::spawn(async move {
+        let result = match std::fs::read_to_string(&deck) {
+            Ok(markdown) => {
+                let deck = PathBuf::from(deck).to_string_lossy().into_owned();
+                pdf::export_pdf(&app, markdown, Some(deck), Path::new(&pdf)).await
+            }
+            Err(error) => Err(error.to_string()),
+        };
+        match result.and_then(|()| pdf::describe(Path::new(&pdf))) {
+            Ok(description) => println!("[smoke] pdf: {description}"),
+            Err(error) => println!("[smoke] pdf error: {error}"),
+        }
+    });
 }
 
 /// Label of the slide preview window.
