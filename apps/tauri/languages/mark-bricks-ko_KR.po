@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
-"PO-Revision-Date: 2026-10-03T02:34:56.923Z\n"
+"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
+"PO-Revision-Date: 2026-10-03T02:51:32.610Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -142,14 +142,6 @@ msgstr "편집기"
 msgid "Editor styles"
 msgstr "편집기 스타일"
 
-#: src/hooks/use-preview-sync.ts:39
-msgid "Enter full screen"
-msgstr "전체 화면"
-
-#: src/hooks/use-preview-sync.ts:40
-msgid "Exit full screen"
-msgstr "전체 화면 종료"
-
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "파일 연결"
@@ -251,15 +243,11 @@ msgstr "새 파일"
 msgid "New…"
 msgstr "새로 만들기…"
 
-#: src/hooks/use-preview-sync.ts:46
-msgid "Next slide"
-msgstr "다음 슬라이드"
-
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "열린 파일 없음"
 
-#: src/hooks/use-preview-sync.ts:54
+#: src/hooks/use-preview-sync.ts:40
 msgid "Not a Marp document"
 msgstr "Marp 문서가 아닙니다"
 
@@ -293,17 +281,9 @@ msgstr "옵션"
 msgid "Preferences"
 msgstr "환경설정"
 
-#: src/hooks/use-preview-sync.ts:41
-msgid "Press F or Escape to exit full screen"
-msgstr "전체 화면을 종료하려면 F 또는 Esc 키를 누르세요"
-
 #: src/components/header-actions/index.tsx:103
 msgid "Preview Slides"
 msgstr "슬라이드 미리 보기"
-
-#: src/hooks/use-preview-sync.ts:45
-msgid "Previous slide"
-msgstr "이전 슬라이드"
 
 #: src/components/header-actions/index.tsx:332
 msgid "Remove"
@@ -380,18 +360,9 @@ msgstr "블록 이동 경로 표시"
 msgid "Show line numbers"
 msgstr "줄 번호 표시"
 
-# 1: Slide number. 2: Number of slides.
-#: src/hooks/use-preview-sync.ts:50
-msgid "Slide %1$d of %2$d"
-msgstr "슬라이드 %1$d / %2$d"
-
-#: src/actions/index.ts:299
+#: src/actions/index.ts:300
 msgid "Slide Preview"
 msgstr "슬라이드 미리 보기"
-
-#: src/hooks/use-preview-sync.ts:47
-msgid "Slide number"
-msgstr "슬라이드 번호"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"

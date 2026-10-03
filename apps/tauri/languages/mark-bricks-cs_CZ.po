@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
-"PO-Revision-Date: 2026-10-03T02:34:53.643Z\n"
+"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
+"PO-Revision-Date: 2026-10-03T02:51:28.953Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -142,14 +142,6 @@ msgstr "Editor"
 msgid "Editor styles"
 msgstr "Styly editoru"
 
-#: src/hooks/use-preview-sync.ts:39
-msgid "Enter full screen"
-msgstr "Celá obrazovka"
-
-#: src/hooks/use-preview-sync.ts:40
-msgid "Exit full screen"
-msgstr "Ukončit celou obrazovku"
-
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "Přidružení souborů"
@@ -253,15 +245,11 @@ msgstr "Nový soubor"
 msgid "New…"
 msgstr "Nový…"
 
-#: src/hooks/use-preview-sync.ts:46
-msgid "Next slide"
-msgstr "Další snímek"
-
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "Není otevřen žádný soubor"
 
-#: src/hooks/use-preview-sync.ts:54
+#: src/hooks/use-preview-sync.ts:40
 msgid "Not a Marp document"
 msgstr "Nejedná se o dokument Marp"
 
@@ -295,17 +283,9 @@ msgstr "Možnosti"
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: src/hooks/use-preview-sync.ts:41
-msgid "Press F or Escape to exit full screen"
-msgstr "Celou obrazovku ukončíte klávesou F nebo Esc"
-
 #: src/components/header-actions/index.tsx:103
 msgid "Preview Slides"
 msgstr "Zobrazit náhled snímků"
-
-#: src/hooks/use-preview-sync.ts:45
-msgid "Previous slide"
-msgstr "Předchozí snímek"
 
 #: src/components/header-actions/index.tsx:332
 msgid "Remove"
@@ -382,18 +362,9 @@ msgstr "Zobrazit navigační lištu"
 msgid "Show line numbers"
 msgstr "Zobrazit čísla řádků"
 
-# 1: Slide number. 2: Number of slides.
-#: src/hooks/use-preview-sync.ts:50
-msgid "Slide %1$d of %2$d"
-msgstr "Snímek %1$d z %2$d"
-
-#: src/actions/index.ts:299
+#: src/actions/index.ts:300
 msgid "Slide Preview"
 msgstr "Náhled snímků"
-
-#: src/hooks/use-preview-sync.ts:47
-msgid "Slide number"
-msgstr "Číslo snímku"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"

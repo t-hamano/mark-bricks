@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
-"PO-Revision-Date: 2026-10-03T02:35:00.224Z\n"
+"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
+"PO-Revision-Date: 2026-10-03T02:51:36.123Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -142,14 +142,6 @@ msgstr "編輯器"
 msgid "Editor styles"
 msgstr "編輯器樣式"
 
-#: src/hooks/use-preview-sync.ts:39
-msgid "Enter full screen"
-msgstr "全螢幕"
-
-#: src/hooks/use-preview-sync.ts:40
-msgid "Exit full screen"
-msgstr "結束全螢幕"
-
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "檔案關聯"
@@ -251,15 +243,11 @@ msgstr "新增檔案"
 msgid "New…"
 msgstr "新增…"
 
-#: src/hooks/use-preview-sync.ts:46
-msgid "Next slide"
-msgstr "下一張投影片"
-
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "沒有開啟的檔案"
 
-#: src/hooks/use-preview-sync.ts:54
+#: src/hooks/use-preview-sync.ts:40
 msgid "Not a Marp document"
 msgstr "不是 Marp 文件"
 
@@ -293,17 +281,9 @@ msgstr "選項"
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: src/hooks/use-preview-sync.ts:41
-msgid "Press F or Escape to exit full screen"
-msgstr "按 F 或 Esc 鍵結束全螢幕"
-
 #: src/components/header-actions/index.tsx:103
 msgid "Preview Slides"
 msgstr "預覽投影片"
-
-#: src/hooks/use-preview-sync.ts:45
-msgid "Previous slide"
-msgstr "上一張投影片"
 
 #: src/components/header-actions/index.tsx:332
 msgid "Remove"
@@ -380,18 +360,9 @@ msgstr "顯示區塊導覽標記"
 msgid "Show line numbers"
 msgstr "顯示行號"
 
-# 1: Slide number. 2: Number of slides.
-#: src/hooks/use-preview-sync.ts:50
-msgid "Slide %1$d of %2$d"
-msgstr "投影片 %1$d / %2$d"
-
-#: src/actions/index.ts:299
+#: src/actions/index.ts:300
 msgid "Slide Preview"
 msgstr "投影片預覽"
-
-#: src/hooks/use-preview-sync.ts:47
-msgid "Slide number"
-msgstr "投影片編號"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"

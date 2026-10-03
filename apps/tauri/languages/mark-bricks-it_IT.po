@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T02:34:52.935Z\n"
-"PO-Revision-Date: 2026-10-03T02:34:55.853Z\n"
+"POT-Creation-Date: 2026-10-03T02:51:21.212Z\n"
+"PO-Revision-Date: 2026-10-03T02:51:31.538Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -144,14 +144,6 @@ msgstr "Editor"
 msgid "Editor styles"
 msgstr "Stili dell'editor"
 
-#: src/hooks/use-preview-sync.ts:39
-msgid "Enter full screen"
-msgstr "Schermo intero"
-
-#: src/hooks/use-preview-sync.ts:40
-msgid "Exit full screen"
-msgstr "Esci da schermo intero"
-
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "Associazioni file"
@@ -257,15 +249,11 @@ msgstr "Nuovo file"
 msgid "New…"
 msgstr "Nuovo…"
 
-#: src/hooks/use-preview-sync.ts:46
-msgid "Next slide"
-msgstr "Diapositiva successiva"
-
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "Nessun file aperto"
 
-#: src/hooks/use-preview-sync.ts:54
+#: src/hooks/use-preview-sync.ts:40
 msgid "Not a Marp document"
 msgstr "Non è un documento Marp"
 
@@ -299,17 +287,9 @@ msgstr "Opzioni"
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/hooks/use-preview-sync.ts:41
-msgid "Press F or Escape to exit full screen"
-msgstr "Premi F o Esc per uscire da schermo intero"
-
 #: src/components/header-actions/index.tsx:103
 msgid "Preview Slides"
 msgstr "Visualizza anteprima diapositive"
-
-#: src/hooks/use-preview-sync.ts:45
-msgid "Previous slide"
-msgstr "Diapositiva precedente"
 
 #: src/components/header-actions/index.tsx:332
 msgid "Remove"
@@ -386,18 +366,9 @@ msgstr "Mostra i breadcrumb del blocco"
 msgid "Show line numbers"
 msgstr "Mostra i numeri di riga"
 
-# 1: Slide number. 2: Number of slides.
-#: src/hooks/use-preview-sync.ts:50
-msgid "Slide %1$d of %2$d"
-msgstr "Diapositiva %1$d di %2$d"
-
-#: src/actions/index.ts:299
+#: src/actions/index.ts:300
 msgid "Slide Preview"
 msgstr "Anteprima diapositive"
-
-#: src/hooks/use-preview-sync.ts:47
-msgid "Slide number"
-msgstr "Numero diapositiva"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:68
 msgid "Spell check"

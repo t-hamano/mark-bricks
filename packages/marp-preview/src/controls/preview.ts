@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import type { PreviewLabels } from '../render';
 import { createSlideMode, createSlideView, type SlideView } from '../browser';
 import { createPreviewControls } from './controls';
 
@@ -20,7 +19,6 @@ export type SlidePreviewOptions = {
 
 export type SlidePreview = {
 	render: SlideView[ 'render' ];
-	setLabels: ( labels: PreviewLabels ) => void;
 	isSlideMode: () => boolean;
 	setSlideMode: ( enabled: boolean ) => void;
 };
@@ -32,10 +30,8 @@ export type SlidePreview = {
  * @param container Element to add the slides and the notice to.
  * @param options   How the page toggles the slide mode, and what it does
  *                  after each render.
- * @return `render` to show content on the next frame, `setLabels` to set the
- *         text of the controls and the slides' names for screen readers, and
- *         `isSlideMode` and `setSlideMode` to read and turn the slide mode on
- *         or off.
+ * @return `render` to show content on the next frame, and `isSlideMode` and
+ *         `setSlideMode` to read and turn the slide mode on or off.
  */
 export function createSlidePreview(
 	container: HTMLElement,
@@ -86,14 +82,8 @@ export function createSlidePreview(
 		}
 	} );
 
-	function setLabels( labels: PreviewLabels ) {
-		view.setSlideLabel( labels.slideLabel );
-		controls.setLabels( labels );
-	}
-
 	return {
 		render: view.render,
-		setLabels,
 		isSlideMode: slideMode.isEnabled,
 		setSlideMode,
 	};

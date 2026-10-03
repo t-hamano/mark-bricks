@@ -2,12 +2,5 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks не удалось применить изменения к {0}.",
 	"Images": "Изображения",
 	"Not a Marp document": "Это не документ Marp",
-	"Slide Preview: {0}": "Предпросмотр слайдов: {0}",
-	"Enter slide mode": "Режим слайдов",
-	"Exit slide mode": "Выйти из режима слайдов",
-	"Press F or Escape to exit slide mode": "Нажмите F или Esc, чтобы выйти из режима слайдов",
-	"Previous slide": "Предыдущий слайд",
-	"Next slide": "Следующий слайд",
-	"Slide number": "Номер слайда",
-	"Slide %1$d of %2$d": "Слайд %1$d из %2$d"
+	"Slide Preview: {0}": "Предпросмотр слайдов: {0}"
 }

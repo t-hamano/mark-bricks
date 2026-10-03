@@ -10,7 +10,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
  * Internal dependencies
  */
 import { renderSlides } from '../render';
-import { createSlidePreview } from './preview';
+import {
+	createSlidePreview,
+	type SlidePreview,
+	type SlidePreviewOptions,
+} from './preview';
 
 // Used by Marp's auto-scaling elements, but missing from jsdom.
 vi.stubGlobal(
@@ -29,15 +33,14 @@ vi.spyOn( HTMLCanvasElement.prototype, 'getContext' ).mockReturnValue( null );
 
 const DECK = '---\nmarp: true\n---\n\nA\n\n---\n\nB\n';
 
-const labels = {
-	enterSlideMode: 'Enter slide mode',
-	exitSlideMode: 'Exit slide mode',
-	exitSlideModeHint: 'Press F or Escape to exit',
-	previousSlide: 'Previous slide',
-	nextSlide: 'Next slide',
-	slideNumber: 'Slide number',
-	slideLabel: 'Slide %1$d of %2$d',
-};
+// Sets up a preview page, which renders its toolbar right away.
+function setup( options?: SlidePreviewOptions ) {
+	let preview: SlidePreview | undefined;
+	act( () => {
+		preview = createSlidePreview( document.body, options );
+	} );
+	return preview as SlidePreview;
+}
 
 function nextFrame() {
 	return new Promise( ( resolve ) => requestAnimationFrame( resolve ) );
@@ -83,7 +86,7 @@ describe( 'createSlidePreview', () => {
 
 	it( 'reports the number of slides after each render', async () => {
 		const onRender = vi.fn();
-		const preview = createSlidePreview( document.body, { onRender } );
+		const preview = setup( { onRender } );
 
 		preview.render( renderSlides( DECK ) );
 		await nextFrame();
@@ -95,7 +98,7 @@ describe( 'createSlidePreview', () => {
 	} );
 
 	it( 'names the slides and puts only the current one in the focus order', async () => {
-		const preview = createSlidePreview( document.body );
+		const preview = setup();
 		preview.render( renderSlides( DECK ) );
 		await nextFrame();
 
@@ -112,7 +115,7 @@ describe( 'createSlidePreview', () => {
 	} );
 
 	it( 'moves the focus along with the slide shown in the slide mode', async () => {
-		const preview = createSlidePreview( document.body );
+		const preview = setup();
 		preview.render( renderSlides( DECK ) );
 		await nextFrame();
 		press( 'f' );
@@ -127,7 +130,7 @@ describe( 'createSlidePreview', () => {
 	} );
 
 	it( 'toggles the slide mode with F and leaves it with Escape', () => {
-		const preview = createSlidePreview( document.body );
+		const preview = setup();
 
 		press( 'f' );
 		expect( preview.isSlideMode() ).toBe( true );
@@ -142,8 +145,7 @@ describe( 'createSlidePreview', () => {
 	} );
 
 	it( 'toggles the slide mode with the toolbar button', () => {
-		const preview = createSlidePreview( document.body );
-		act( () => preview.setLabels( labels ) );
+		const preview = setup();
 
 		const button = Array.from( document.querySelectorAll( 'button' ) ).find(
 			( element ) => element.textContent === 'Enter slide mode'
@@ -155,8 +157,7 @@ describe( 'createSlidePreview', () => {
 	} );
 
 	it( 'moves the focus to the current slide with the toolbar button', async () => {
-		const preview = createSlidePreview( document.body );
-		act( () => preview.setLabels( labels ) );
+		const preview = setup();
 		preview.render( renderSlides( DECK ) );
 		await nextFrame();
 
@@ -176,20 +177,20 @@ describe( 'createSlidePreview', () => {
 	} );
 
 	it( 'toggles the slide mode with the given keys only', () => {
-		const preview = createSlidePreview( document.body, {
+		const preview = setup( {
 			toggleKeys: [ 'f', 'F11' ],
 		} );
 
 		press( 'F11' );
 		expect( preview.isSlideMode() ).toBe( true );
 
-		const other = createSlidePreview( document.body );
+		const other = setup();
 		press( 'F11' );
 		expect( other.isSlideMode() ).toBe( false );
 	} );
 
 	it( 'only leaves the slide mode with Escape, even as a toggle key', () => {
-		const preview = createSlidePreview( document.body, {
+		const preview = setup( {
 			toggleKeys: [ 'f', 'Escape' ],
 		} );
 
@@ -202,7 +203,7 @@ describe( 'createSlidePreview', () => {
 	} );
 
 	it( 'ignores the keys with modifiers or while held', () => {
-		const preview = createSlidePreview( document.body );
+		const preview = setup();
 
 		press( 'f', { ctrlKey: true } );
 		press( 'f', { metaKey: true } );
@@ -214,7 +215,7 @@ describe( 'createSlidePreview', () => {
 
 	it( 'leaves the slide mode to the host when it handles the requests', () => {
 		const onSlideModeRequest = vi.fn();
-		const preview = createSlidePreview( document.body, {
+		const preview = setup( {
 			onSlideModeRequest,
 		} );
 

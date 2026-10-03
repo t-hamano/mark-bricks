@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import type { PreviewLabels } from '@mark-bricks/marp-preview/render';
-
-/**
  * Internal dependencies
  */
 import type { Settings, WritableSettingKey } from './settings';
@@ -103,15 +98,12 @@ export type PreviewState = {
 	uri: string;
 };
 
-// Sent to the slide preview: the document it shows with the text of its
-// controls, then the document's slides, or a notice when the document is not
-// a Marp slide deck. The host translates the text, since the preview loads no
-// translations.
+// Sent to the slide preview: the document it shows, then the document's
+// slides, or a notice when the document is not a Marp slide deck.
 export type PreviewHostMessage =
 	| {
 			type: 'document';
 			uri: string;
-			labels: PreviewLabels;
 	  }
 	| {
 			type: 'slides';

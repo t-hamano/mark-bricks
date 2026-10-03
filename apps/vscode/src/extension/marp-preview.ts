@@ -4,7 +4,6 @@
 import * as path from 'node:path';
 import * as vscode from 'vscode';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
-import type { PreviewLabels } from '@mark-bricks/marp-preview/render';
 
 /**
  * Internal dependencies
@@ -29,21 +28,6 @@ let marpPreview: Promise<
 function loadMarpPreview() {
 	marpPreview ??= import( '@mark-bricks/marp-preview/render' );
 	return marpPreview;
-}
-
-// The text of the preview's controls, in VS Code's display language.
-function getLabels(): PreviewLabels {
-	return {
-		enterSlideMode: vscode.l10n.t( 'Enter slide mode' ),
-		exitSlideMode: vscode.l10n.t( 'Exit slide mode' ),
-		exitSlideModeHint: vscode.l10n.t(
-			'Press F or Escape to exit slide mode'
-		),
-		previousSlide: vscode.l10n.t( 'Previous slide' ),
-		nextSlide: vscode.l10n.t( 'Next slide' ),
-		slideNumber: vscode.l10n.t( 'Slide number' ),
-		slideLabel: vscode.l10n.t( 'Slide %1$d of %2$d' ),
-	};
 }
 
 // The URI of the document a restored panel previews, from the state its
@@ -229,7 +213,6 @@ class PreviewSession {
 				this.post( {
 					type: 'document',
 					uri: this.document.uri.toString(),
-					labels: getLabels(),
 				} );
 				void this.render();
 				break;

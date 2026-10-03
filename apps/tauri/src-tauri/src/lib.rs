@@ -62,10 +62,11 @@ fn report_rendered(path: String, previews: serde_json::Value) {
 const PREVIEW_WINDOW: &str = "preview";
 
 /// Opens the slide preview window, or brings it to the front when it is
-/// already open. Async because creating a window from a synchronous command
-/// deadlocks on Windows.
+/// already open. The window shows its controls in `locale`, the WordPress
+/// locale slug the main window applied. Async because creating a window from
+/// a synchronous command deadlocks on Windows.
 #[tauri::command]
-async fn open_preview(app: tauri::AppHandle, title: String) -> Result<(), String> {
+async fn open_preview(app: tauri::AppHandle, title: String, locale: String) -> Result<(), String> {
     if let Some(window) = app.get_webview_window(PREVIEW_WINDOW) {
         let _ = window.unminimize();
         return window.set_focus().map_err(|e| e.to_string());
@@ -73,7 +74,7 @@ async fn open_preview(app: tauri::AppHandle, title: String) -> Result<(), String
     tauri::WebviewWindowBuilder::new(
         &app,
         PREVIEW_WINDOW,
-        tauri::WebviewUrl::App("preview.html".into()),
+        tauri::WebviewUrl::App(format!("preview.html?locale={locale}").into()),
     )
     .title(title)
     .inner_size(960.0, 540.0)

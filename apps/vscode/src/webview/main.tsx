@@ -27,10 +27,11 @@ import type {
 	ImageError,
 	WebviewMessage,
 } from '../shared/messages';
+import { resolveVsCodeLocale } from '../shared/locale';
 import type { Settings } from '../shared/settings';
 import { toEditorStyles } from './editor-styles';
 import HeaderActions from './header-actions';
-import { applyVsCodeLocale, resolveVsCodeLocale } from './i18n';
+import { applyVsCodeLocale } from './i18n';
 import { useVsCodeTheme } from './use-vscode-theme';
 import './style.scss';
 

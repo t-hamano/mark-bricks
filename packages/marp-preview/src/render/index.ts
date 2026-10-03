@@ -47,18 +47,6 @@ const marp = new Marp( {
 	);
 } );
 
-// Text of the controls on the preview pages. The host translates it, since
-// the preview pages load no translations.
-export type PreviewLabels = {
-	enterSlideMode: string;
-	exitSlideMode: string;
-	exitSlideModeHint: string;
-	previousSlide: string;
-	nextSlide: string;
-	slideNumber: string;
-	slideLabel: string;
-};
-
 export type RenderSlidesOptions = {
 	// Maps an image source in the deck to the URL the preview loads it
 	// from, or returns `null` to keep the source as it is.
