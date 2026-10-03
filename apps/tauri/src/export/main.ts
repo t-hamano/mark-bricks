@@ -9,16 +9,31 @@ import { getDeckInfo } from '@mark-bricks/marp-preview/export';
  * Internal dependencies
  */
 import { renderSlides } from '../preview/render';
-import {
-	EXPORT_DECK_EVENT,
-	EXPORT_READY_EVENT,
-	EXPORT_RENDERED_EVENT,
-	type ExportDeck,
-	type ExportRendered,
-} from './constants';
 import './style.css';
 
 // The page the export window prints to PDF: the slides alone, one per page.
+
+// The events between this page and `src-tauri/src/pdf.rs`, which names them
+// the same. The page sends `EXPORT_READY_EVENT` once it listens, receives the
+// deck with `EXPORT_DECK_EVENT`, and sends `EXPORT_RENDERED_EVENT` once the
+// slides, their fonts and their images have loaded.
+const EXPORT_READY_EVENT = 'export-ready';
+const EXPORT_DECK_EVENT = 'export-deck';
+const EXPORT_RENDERED_EVENT = 'export-rendered';
+
+type ExportDeck = { markdown: string; documentPath?: string };
+
+// The page size and the PDF's metadata, or why the deck did not render.
+type ExportRendered =
+	| {
+			width: number;
+			height: number;
+			title?: string;
+			description?: string;
+			author?: string;
+			keywords?: string[];
+	  }
+	| { error: string };
 
 // A hidden window may never paint, and WebKit then never runs animation
 // frames, which the slide view and Marp's browser script wait for. Nothing

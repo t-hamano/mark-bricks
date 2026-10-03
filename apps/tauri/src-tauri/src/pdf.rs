@@ -8,7 +8,7 @@ use tauri::{AppHandle, Emitter, Listener, Manager, WebviewUrl, WebviewWindow};
 pub const EXPORT_WINDOW: &str = "export";
 
 // The events between the export window and this module, as in
-// `src/export/constants.ts`.
+// `src/export/main.ts`.
 const READY_EVENT: &str = "export-ready";
 const DECK_EVENT: &str = "export-deck";
 const RENDERED_EVENT: &str = "export-rendered";
