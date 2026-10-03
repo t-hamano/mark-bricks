@@ -31,6 +31,8 @@ pnpm package
 pnpm e2e:smoke
 ```
 
+The build bundles [Marp CLI](https://github.com/marp-team/marp-cli) into its own file, `dist/marp-cli.cjs`, which the extension loads on the first PDF export. It renders the PDF in a browser installed on the machine, so `pnpm e2e:smoke` needs Chrome, Edge or Firefox too.
+
 To try changes without packaging, run `pnpm dev` and open an Extension Development Host via a `launch.json` with `"type": "extensionHost"` and `"args": ["--extensionDevelopmentPath=${workspaceFolder}/apps/vscode"]`, or `code --extensionDevelopmentPath=apps/vscode`.
 
 From the repository root:

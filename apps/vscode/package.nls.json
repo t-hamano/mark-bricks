@@ -4,6 +4,7 @@
 	"command.openVisual.title": "Open with MarkBricks",
 	"command.openText.title": "Open with Text Editor",
 	"command.openMarpPreview.title": "Preview Slides",
+	"command.exportSlideDeck.title": "Export Slide Deck…",
 	"command.showQuickPick.title": "Show MarkBricks Commands",
 	"config.showListViewByDefault.description": "Open the List View panel by default.",
 	"config.showBlockBreadcrumbs.description": "Display the block hierarchy trail at the bottom of the editor.",

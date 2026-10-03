@@ -4,6 +4,7 @@
 	"command.openVisual.title": "Abrir com MarkBricks",
 	"command.openText.title": "Abrir com Editor de Texto",
 	"command.openMarpPreview.title": "Visualizar slides",
+	"command.exportSlideDeck.title": "Exportar apresentação…",
 	"command.showQuickPick.title": "Mostrar comandos do MarkBricks",
 	"config.showListViewByDefault.description": "Abrir o painel Visualização em lista por padrão.",
 	"config.showBlockBreadcrumbs.description": "Exibir a hierarquia de blocos na parte inferior do editor.",

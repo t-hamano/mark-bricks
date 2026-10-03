@@ -4,6 +4,7 @@
 	"command.openVisual.title": "使用 MarkBricks 打开",
 	"command.openText.title": "使用文本编辑器打开",
 	"command.openMarpPreview.title": "预览幻灯片",
+	"command.exportSlideDeck.title": "导出幻灯片…",
 	"command.showQuickPick.title": "显示 MarkBricks 命令",
 	"config.showListViewByDefault.description": "默认打开列表视图面板。",
 	"config.showBlockBreadcrumbs.description": "在编辑器底部显示区块层级路径。",

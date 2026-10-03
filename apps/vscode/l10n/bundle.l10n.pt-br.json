@@ -7,5 +7,16 @@
 	"Open with Text Editor": "Abrir com Editor de Texto",
 	"Preview Slides": "Visualizar slides",
 	"Open Extension Settings": "Abrir configurações da extensão",
-	"Select a MarkBricks command": "Selecione um comando do MarkBricks"
+	"Select a MarkBricks command": "Selecione um comando do MarkBricks",
+	"Export Slide Deck…": "Exportar apresentação…",
+	"Export Slide Deck": "Exportar apresentação",
+	"HTML slide deck": "Apresentação HTML",
+	"PDF slide deck": "Apresentação PDF",
+	"Export": "Exportar",
+	"Exporting the slide deck…": "Exportando a apresentação…",
+	"Exported the slide deck to {0}.": "A apresentação foi exportada para {0}.",
+	"Open": "Abrir",
+	"Could not export the slide deck: {0}": "Não foi possível exportar a apresentação: {0}",
+	"Exporting to PDF requires {0}, {1} or {2}.": "A exportação para PDF requer {0}, {1} ou {2}.",
+	"Marp CLI exited with code {0}.": "O Marp CLI foi encerrado com o código {0}."
 }
