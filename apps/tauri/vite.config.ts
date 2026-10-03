@@ -43,7 +43,7 @@ export default defineConfig( async () => ( {
 		rolldownOptions: {
 			// The slide preview window and the hidden window that prints a deck
 			// to PDF load pages of their own.
-			input: [ 'index.html', 'preview.html', 'export.html' ],
+			input: [ 'index.html', 'pages/preview.html', 'pages/export.html' ],
 		},
 	},
 	server: {
