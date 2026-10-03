@@ -2,5 +2,10 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks 无法将编辑应用到 {0}。",
 	"Images": "图片",
 	"Not a Marp document": "不是 Marp 文档",
-	"Slide Preview: {0}": "幻灯片预览: {0}"
+	"Slide Preview: {0}": "幻灯片预览: {0}",
+	"Open with MarkBricks": "使用 MarkBricks 打开",
+	"Open with Text Editor": "使用文本编辑器打开",
+	"Preview Slides": "预览幻灯片",
+	"Open Extension Settings": "打开扩展设置",
+	"Select a MarkBricks command": "选择 MarkBricks 命令"
 }

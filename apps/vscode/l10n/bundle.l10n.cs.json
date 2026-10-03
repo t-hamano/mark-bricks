@@ -2,5 +2,10 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks nemohl použít úpravy na {0}.",
 	"Images": "Obrázky",
 	"Not a Marp document": "Nejedná se o dokument Marp",
-	"Slide Preview: {0}": "Náhled snímků: {0}"
+	"Slide Preview: {0}": "Náhled snímků: {0}",
+	"Open with MarkBricks": "Otevřít v MarkBricks",
+	"Open with Text Editor": "Otevřít v textovém editoru",
+	"Preview Slides": "Zobrazit náhled snímků",
+	"Open Extension Settings": "Otevřít nastavení rozšíření",
+	"Select a MarkBricks command": "Vyberte příkaz MarkBricks"
 }

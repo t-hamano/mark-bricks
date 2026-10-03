@@ -7,7 +7,7 @@
 	"publisher": "aki-hamano",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
-	"icon": "icon.png",
+	"icon": "icons/icon.png",
 	"preview": true,
 	"repository": {
 		"type": "git",
@@ -59,6 +59,14 @@
 				"command": "markBricks.openMarpPreview",
 				"title": "%command.openMarpPreview.title%",
 				"icon": "$(open-preview)"
+			},
+			{
+				"command": "markBricks.showQuickPick",
+				"title": "%command.showQuickPick.title%",
+				"icon": {
+					"light": "icons/icon-light.svg",
+					"dark": "icons/icon-dark.svg"
+				}
 			}
 		],
 		"menus": {
@@ -67,12 +75,21 @@
 					"command": "markBricks.openMarpPreview",
 					"when": "markBricks.isMarp && activeCustomEditorId != 'markBricks.visualEditor'",
 					"group": "navigation"
+				},
+				{
+					"command": "markBricks.showQuickPick",
+					"when": "resourceLangId == markdown || activeCustomEditorId == 'markBricks.visualEditor'",
+					"group": "navigation@100"
 				}
 			],
 			"commandPalette": [
 				{
 					"command": "markBricks.openMarpPreview",
 					"when": "markBricks.isMarp"
+				},
+				{
+					"command": "markBricks.showQuickPick",
+					"when": "resourceLangId == markdown || activeCustomEditorId == 'markBricks.visualEditor'"
 				}
 			]
 		},

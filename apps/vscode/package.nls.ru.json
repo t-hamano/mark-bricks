@@ -4,6 +4,7 @@
 	"command.openVisual.title": "Открыть в MarkBricks",
 	"command.openText.title": "Открыть в текстовом редакторе",
 	"command.openMarpPreview.title": "Просмотр слайдов",
+	"command.showQuickPick.title": "Показать команды MarkBricks",
 	"config.showListViewByDefault.description": "Открывать панель «Обзор списком» по умолчанию.",
 	"config.showBlockBreadcrumbs.description": "Показывать иерархию блоков в нижней части редактора.",
 	"config.topToolbar.description": "Доступ ко всем инструментам блоков и документа в одном месте.",

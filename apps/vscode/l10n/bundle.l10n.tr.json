@@ -2,5 +2,10 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks, düzenlemeleri {0} dosyasına uygulayamadı.",
 	"Images": "Görseller",
 	"Not a Marp document": "Marp belgesi değil",
-	"Slide Preview: {0}": "Slayt önizlemesi: {0}"
+	"Slide Preview: {0}": "Slayt önizlemesi: {0}",
+	"Open with MarkBricks": "MarkBricks ile Aç",
+	"Open with Text Editor": "Metin Düzenleyicisi ile Aç",
+	"Preview Slides": "Slaytları önizle",
+	"Open Extension Settings": "Uzantı ayarlarını aç",
+	"Select a MarkBricks command": "Bir MarkBricks komutu seçin"
 }

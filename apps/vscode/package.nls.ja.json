@@ -4,6 +4,7 @@
 	"command.openVisual.title": "MarkBricks で開く",
 	"command.openText.title": "テキストエディターで開く",
 	"command.openMarpPreview.title": "スライドをプレビュー",
+	"command.showQuickPick.title": "MarkBricks のコマンドを表示",
 	"config.showListViewByDefault.description": "デフォルトでリストビューパネルを開きます。",
 	"config.showBlockBreadcrumbs.description": "エディターの最下段にブロックのパンくずリストを表示します。",
 	"config.topToolbar.description": "ブロック・文書ツールを同じ場所にまとめます。",
