@@ -10,6 +10,7 @@ import type { CodePreviewReport } from '../shared/messages';
 import { MarkBricksEditorProvider } from './editor-provider';
 import { trackMarpContext } from './marp-context';
 import { MarpPreview } from './marp-preview';
+import { showCommandQuickPick } from './quick-pick';
 
 const SHADOWED_COMMANDS = [
 	'markBricks.suppressUndo',
@@ -78,6 +79,9 @@ export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 					await MarpPreview.show( uri );
 				}
 			}
+		),
+		vscode.commands.registerCommand( 'markBricks.showQuickPick', () =>
+			showCommandQuickPick( context.extension.id )
 		)
 	);
 

@@ -258,6 +258,7 @@ export const window = {
 	registerCustomEditorProvider: vi.fn(),
 	showErrorMessage: vi.fn(),
 	showOpenDialog: vi.fn(),
+	showQuickPick: vi.fn(),
 	createWebviewPanel: vi.fn(),
 	registerWebviewPanelSerializer: vi.fn(),
 	tabGroups: {

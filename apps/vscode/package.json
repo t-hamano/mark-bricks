@@ -59,6 +59,11 @@
 				"command": "markBricks.openMarpPreview",
 				"title": "%command.openMarpPreview.title%",
 				"icon": "$(open-preview)"
+			},
+			{
+				"command": "markBricks.showQuickPick",
+				"title": "%command.showQuickPick.title%",
+				"icon": "$(layers)"
 			}
 		],
 		"menus": {
@@ -67,12 +72,21 @@
 					"command": "markBricks.openMarpPreview",
 					"when": "markBricks.isMarp && activeCustomEditorId != 'markBricks.visualEditor'",
 					"group": "navigation"
+				},
+				{
+					"command": "markBricks.showQuickPick",
+					"when": "resourceLangId == markdown || activeCustomEditorId == 'markBricks.visualEditor'",
+					"group": "navigation@100"
 				}
 			],
 			"commandPalette": [
 				{
 					"command": "markBricks.openMarpPreview",
 					"when": "markBricks.isMarp"
+				},
+				{
+					"command": "markBricks.showQuickPick",
+					"when": "resourceLangId == markdown || activeCustomEditorId == 'markBricks.visualEditor'"
 				}
 			]
 		},

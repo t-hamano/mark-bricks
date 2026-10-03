@@ -4,6 +4,7 @@
 	"command.openVisual.title": "Abrir con MarkBricks",
 	"command.openText.title": "Abrir con el editor de texto",
 	"command.openMarpPreview.title": "Previsualizar diapositivas",
+	"command.showQuickPick.title": "Mostrar comandos de MarkBricks",
 	"config.showListViewByDefault.description": "Abrir el panel Vista de lista de forma predeterminada.",
 	"config.showBlockBreadcrumbs.description": "Mostrar la jerarquía de bloques en la parte inferior del editor.",
 	"config.topToolbar.description": "Acceder a todas las herramientas de bloques y documentos en un solo lugar.",

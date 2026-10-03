@@ -44,6 +44,8 @@ You can also switch editors from the editor title bar. To open every Markdown fi
 
 ![Setting MarkBricks as the default editor for Markdown files](https://github.com/t-hamano/mark-bricks/raw/HEAD/.github/assets/usage-set-default-editor.jpg)
 
+The MarkBricks button in the editor title bar lists the commands for the current file: switching editors, previewing slides, and opening the extension settings.
+
 ## Settings
 
 - `markBricks.showListViewByDefault`: Open the List View panel by default. Default: `false`

@@ -2,5 +2,10 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks no pudo aplicar las modificaciones a {0}.",
 	"Images": "Imágenes",
 	"Not a Marp document": "No es un documento de Marp",
-	"Slide Preview: {0}": "Vista previa de diapositivas: {0}"
+	"Slide Preview: {0}": "Vista previa de diapositivas: {0}",
+	"Open with MarkBricks": "Abrir con MarkBricks",
+	"Open with Text Editor": "Abrir con el editor de texto",
+	"Preview Slides": "Previsualizar diapositivas",
+	"Open Extension Settings": "Abrir la configuración de la extensión",
+	"Select a MarkBricks command": "Selecciona un comando de MarkBricks"
 }

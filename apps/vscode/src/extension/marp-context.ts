@@ -30,14 +30,20 @@ function getActiveDocument(): vscode.TextDocument | undefined {
 		: undefined;
 }
 
+// Whether the active tab edits a Marp slide deck.
+export function isActiveDocumentMarp(): boolean {
+	const document = getActiveDocument();
+	return (
+		document?.languageId === 'markdown' &&
+		isMarpDocument( document.getText() )
+	);
+}
+
 // Keeps `MARP_CONTEXT_KEY` in sync with the active tab and its document.
 export function trackMarpContext(): vscode.Disposable {
 	let isMarp: boolean | undefined;
 	const update = () => {
-		const document = getActiveDocument();
-		const next =
-			document?.languageId === 'markdown' &&
-			isMarpDocument( document.getText() );
+		const next = isActiveDocumentMarp();
 		if ( next !== isMarp ) {
 			isMarp = next;
 			void vscode.commands.executeCommand(

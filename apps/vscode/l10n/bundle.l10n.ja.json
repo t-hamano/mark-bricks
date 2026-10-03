@@ -2,5 +2,10 @@
 	"MarkBricks could not apply edits to {0}.": "MarkBricks は {0} に編集を適用できませんでした。",
 	"Images": "画像",
 	"Not a Marp document": "Marp 文書ではありません",
-	"Slide Preview: {0}": "スライドプレビュー: {0}"
+	"Slide Preview: {0}": "スライドプレビュー: {0}",
+	"Open with MarkBricks": "MarkBricks で開く",
+	"Open with Text Editor": "テキストエディターで開く",
+	"Preview Slides": "スライドをプレビュー",
+	"Open Extension Settings": "拡張機能の設定を開く",
+	"Select a MarkBricks command": "MarkBricks のコマンドを選択"
 }
