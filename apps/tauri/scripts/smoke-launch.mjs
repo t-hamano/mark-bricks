@@ -40,6 +40,9 @@ const EXPECTED_PDF =
 	'10 pages, media box [0 0 960 540], title "Markdown Slides for Engineering Teams"';
 
 const TIMEOUT_MS = Number( process.env.SMOKE_TIMEOUT_MS ?? 60000 );
+// Longer than the app's own time limits for the three steps of the export,
+// so that the app reports which step failed.
+const PDF_TIMEOUT_MS = 200000;
 
 if ( ! existsSync( binaryPath ) ) {
 	console.error(
@@ -84,12 +87,10 @@ let previews = null;
 let rendered = false;
 
 const failure = await new Promise( ( resolve ) => {
-	const timer = setTimeout(
+	let timer = setTimeout(
 		() =>
 			resolve(
-				rendered
-					? 'the app did not export the PDF'
-					: `the editor did not render the blocks of ${ documentPath }`
+				`the editor did not render the blocks of ${ documentPath }`
 			),
 		TIMEOUT_MS
 	);
@@ -109,6 +110,11 @@ const failure = await new Promise( ( resolve ) => {
 			if ( error ) {
 				finish( error );
 			}
+			clearTimeout( timer );
+			timer = setTimeout(
+				() => resolve( 'the app did not export the PDF' ),
+				PDF_TIMEOUT_MS
+			);
 		}
 		// The app exports the PDF once the editor has rendered.
 		if ( rendered && line.startsWith( PDF_PREFIX ) ) {

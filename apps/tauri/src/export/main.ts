@@ -20,6 +20,13 @@ import './style.css';
 
 // The page the export window prints to PDF: the slides alone, one per page.
 
+// A hidden window may never paint, and WebKit then never runs animation
+// frames, which the slide view and Marp's browser script wait for. Nothing
+// animates on this page, so a timer stands in for them.
+window.requestAnimationFrame = ( callback ) =>
+	window.setTimeout( () => callback( performance.now() ), 0 );
+window.cancelAnimationFrame = ( id ) => window.clearTimeout( id );
+
 const pageStyle = document.createElement( 'style' );
 document.head.append( pageStyle );
 

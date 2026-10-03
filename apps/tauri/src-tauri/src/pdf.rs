@@ -42,6 +42,14 @@ enum Rendered {
     Done(Layout),
 }
 
+/// Prints a step of the export for the smoke test, which shows where an
+/// export stops on each OS.
+fn trace(step: &str) {
+    if std::env::var_os("MARK_BRICKS_SMOKE_TEST").is_some() {
+        eprintln!("[smoke] pdf step: {step}");
+    }
+}
+
 /// Called once with the result of printing.
 type Done = Box<dyn FnOnce(Result<(), String>) + Send>;
 
@@ -75,9 +83,11 @@ pub async fn export_pdf(
         .visible(false)
         .build()
         .map_err(|e| e.to_string())?;
+        trace("window created");
 
         let printed = async {
             within(ready_rx.recv(), "load the export page").await?;
+            trace("page ready");
             app.emit_to(
                 EXPORT_WINDOW,
                 DECK_EVENT,
@@ -88,12 +98,14 @@ pub async fn export_pdf(
             )
             .map_err(|e| e.to_string())?;
             let payload = within(rendered_rx.recv(), "render the slides").await?;
+            trace("slides rendered");
             let layout =
                 match serde_json::from_str::<Rendered>(&payload).map_err(|e| e.to_string())? {
                     Rendered::Failed { error } => return Err(error),
                     Rendered::Done(layout) => layout,
                 };
             print_to_pdf(&window, path, layout.width, layout.height).await?;
+            trace("printed");
             write_metadata(path, &layout)
         }
         .await;
