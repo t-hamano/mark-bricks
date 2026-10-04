@@ -1,10 +1,15 @@
 /**
  * Internal dependencies
  */
-import { createSlideMode, createSlideView, type SlideView } from '../browser';
+import { createSlideMode } from '../browser/slide-mode';
+import { createSlideView, type SlideView } from '../browser/slide-view';
 import { createPreviewControls } from './controls';
+import { applyLocale } from './i18n';
 
 export type SlidePreviewOptions = {
+	// WordPress locale slug of the controls' language (e.g. `ja`, `pt_BR`).
+	// A locale without translations stays in English, as does no locale.
+	locale?: string;
 	// Keys that toggle the slide mode, as `KeyboardEvent.key`, matched
 	// regardless of case. `Escape` always leaves it.
 	toggleKeys?: string[];
@@ -28,8 +33,8 @@ export type SlidePreview = {
  * mode, which the toolbar's button and the keys turn on and off.
  *
  * @param container Element to add the slides and the notice to.
- * @param options   How the page toggles the slide mode, and what it does
- *                  after each render.
+ * @param options   The controls' language, how the page toggles the slide
+ *                  mode, and what it does after each render.
  * @return `render` to show content on the next frame, and `isSlideMode` and
  *         `setSlideMode` to read and turn the slide mode on or off.
  */
@@ -37,7 +42,15 @@ export function createSlidePreview(
 	container: HTMLElement,
 	options: SlidePreviewOptions = {}
 ): SlidePreview {
-	const { toggleKeys = [ 'f' ], onSlideModeRequest, onRender } = options;
+	const {
+		locale,
+		toggleKeys = [ 'f' ],
+		onSlideModeRequest,
+		onRender,
+	} = options;
+	if ( locale ) {
+		applyLocale( locale );
+	}
 	const view = createSlideView( container, () => {
 		slideMode.showCurrentSlide();
 		onRender?.( view.getSlides().length );

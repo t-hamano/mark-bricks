@@ -25,7 +25,7 @@ const CATALOGS: Partial< Record< string, Catalog > > = Object.fromEntries(
 
 /**
  * Applies the translations for a WordPress locale slug to `@wordpress/i18n`.
- * A preview page calls it before `createSlidePreview`. English needs no
+ * `createSlidePreview` calls it before it renders any text. English needs no
  * catalog (msgids are English), nor does a locale without one, which stays in
  * English.
  *

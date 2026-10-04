@@ -7,6 +7,11 @@ import { act } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 /**
+ * WordPress dependencies
+ */
+import { resetLocaleData } from '@wordpress/i18n';
+
+/**
  * Internal dependencies
  */
 import { renderSlides } from '../render';
@@ -82,6 +87,7 @@ describe( 'createSlidePreview', () => {
 		for ( const [ type, listener ] of listeners.splice( 0 ) ) {
 			window.removeEventListener( type, listener );
 		}
+		resetLocaleData();
 	} );
 
 	it( 'reports the number of slides after each render', async () => {
@@ -112,6 +118,17 @@ describe( 'createSlidePreview', () => {
 		);
 		expect( slides[ 0 ].getAttribute( 'tabindex' ) ).toBe( '0' );
 		expect( slides[ 1 ].getAttribute( 'tabindex' ) ).toBe( '-1' );
+	} );
+
+	it( 'names the slides in the locale passed', async () => {
+		const preview = setup( { locale: 'ja' } );
+		preview.render( renderSlides( DECK ) );
+		await nextFrame();
+
+		const slides = document.querySelectorAll( '.marpit > svg' );
+		expect( slides[ 0 ].getAttribute( 'aria-label' ) ).toBe(
+			'スライド 1 / 2'
+		);
 	} );
 
 	it( 'moves the focus along with the slide shown in the slide mode', async () => {

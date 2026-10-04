@@ -3,10 +3,7 @@
  */
 import { emitTo } from '@tauri-apps/api/event';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
-import {
-	applyLocale,
-	createSlidePreview,
-} from '@mark-bricks/marp-preview/controls';
+import { createSlidePreview } from '@mark-bricks/marp-preview/controls';
 
 /**
  * Internal dependencies
@@ -20,11 +17,9 @@ import { setupFullscreen } from './fullscreen';
 import { renderSlides } from './render';
 
 // Shows the controls in the locale that the main window opened the window
-// with.
-applyLocale( new URLSearchParams( location.search ).get( 'locale' ) ?? 'en' );
-
-// The slide mode comes with full screen, which `F` and F11 toggle.
+// with. The slide mode comes with full screen, which `F` and F11 toggle.
 const preview = createSlidePreview( document.body, {
+	locale: new URLSearchParams( location.search ).get( 'locale' ) ?? 'en',
 	toggleKeys: [ 'f', 'F11' ],
 	onSlideModeRequest: ( enabled ) => fullscreen.setFullscreen( enabled ),
 } );
