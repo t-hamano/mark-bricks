@@ -6,7 +6,7 @@
 		<meta name="robots" content="noindex" />
 		<meta name="color-scheme" content="light dark" />
 		<style>
-			/* Fill the embedding frame; the editor supplies its own appearance. */
+			/* Fill the embedding frame and give the editor UI its base typography. */
 			html,
 			body,
 			#root {
@@ -16,6 +16,10 @@
 
 			body {
 				overflow: hidden;
+				color: var(--wpds-color-foreground-content-neutral);
+				font-family: var(--wpds-typography-font-family-body);
+				font-size: var(--wpds-typography-font-size-md);
+				line-height: var(--wpds-typography-line-height-sm);
 			}
 		</style>
 		<title>MarkBricks — interactive editor</title>
