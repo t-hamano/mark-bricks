@@ -119,7 +119,12 @@ describe( 'setupExportedDeck', () => {
 
 		act( () => getButton( 'Next slide' )?.click() );
 		expect( getCurrentSlide() ).toBe( 2 );
-		expect( getButton( 'Next slide' )?.disabled ).toBe( true );
+		// The button stays focusable at the end, and does nothing.
+		expect(
+			getButton( 'Next slide' )?.getAttribute( 'aria-disabled' )
+		).toBe( 'true' );
+		act( () => getButton( 'Next slide' )?.click() );
+		expect( getCurrentSlide() ).toBe( 2 );
 
 		const select = document.querySelector( 'select' ) as HTMLSelectElement;
 		expect( select.value ).toBe( '2' );

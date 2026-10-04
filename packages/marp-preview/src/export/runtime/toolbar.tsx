@@ -27,8 +27,8 @@ function IconButton( { icon, label, disabled, onClick }: IconButtonProps ) {
 			className="mark-bricks-button is-icon"
 			aria-label={ label }
 			title={ label }
-			disabled={ disabled }
-			onClick={ onClick }
+			aria-disabled={ disabled }
+			onClick={ disabled ? undefined : onClick }
 		>
 			<Icon icon={ icon } />
 		</button>

@@ -82,11 +82,11 @@
 		border-color: transparent;
 	}
 
-	.mark-bricks-button:hover:not(:disabled) {
+	.mark-bricks-button:hover:not([aria-disabled="true"]) {
 		background: rgb(255 255 255 / 15%);
 	}
 
-	.mark-bricks-button:disabled {
+	.mark-bricks-button[aria-disabled="true"] {
 		cursor: default;
 		opacity: 0.4;
 	}
