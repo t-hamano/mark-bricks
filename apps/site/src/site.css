@@ -275,7 +275,7 @@ h6,
 	gap: 64px;
 }
 .feature-card + .feature-card {
-	margin-top: 192px;
+	margin-top: 160px;
 }
 .feature-card:nth-of-type(even) {
 	grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
