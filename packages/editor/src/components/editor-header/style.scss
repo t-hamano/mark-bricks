@@ -27,8 +27,8 @@
 		overflow-x: auto;
 		overflow-y: hidden;
 
-		.components-toolbar-group,
-		.components-toolbar {
+		.components-toolbar-group.components-toolbar-group,
+		.components-toolbar.components-toolbar {
 			border-color: var(--wpds-color-stroke-surface-neutral);
 		}
 	}
