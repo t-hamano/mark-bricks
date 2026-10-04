@@ -21,13 +21,9 @@
 			"types": "./src/i18n.ts",
 			"default": "./src/i18n.ts"
 		},
-		"./block-library": {
-			"types": "./src/block-library/index.ts",
-			"default": "./src/block-library/index.ts"
-		},
-		"./format-library": {
-			"types": "./src/format-library/index.ts",
-			"default": "./src/format-library/index.ts"
+		"./setup": {
+			"types": "./src/setup.ts",
+			"default": "./src/setup.ts"
 		},
 		"./front-matter": {
 			"types": "./src/components/front-matter-editor/context.ts",

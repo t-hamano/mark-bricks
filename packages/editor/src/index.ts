@@ -1,6 +1,5 @@
 export { applyLocale, getLocale } from './i18n';
-export { registerBlocks } from './block-library';
-export { registerFormats } from './format-library';
+export { setupEditor } from './setup';
 export { Editor } from './components/editor';
 export {
 	useFrontMatter,
