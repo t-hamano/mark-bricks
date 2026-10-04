@@ -3,6 +3,11 @@
  */
 import { Marp, type MarpOptions } from '@marp-team/marp-core';
 
+/**
+ * Internal dependencies
+ */
+import { runtimeScript, runtimeStyle } from '../../dist/runtime';
+
 type Token = {
 	type: string;
 	tag: string;
@@ -182,8 +187,9 @@ const PAGE_STYLE =
 
 /**
  * Renders a Marp slide deck into a standalone HTML page, as Marp CLI's
- * `bare` template does. Image sources stay as written in the deck, so its
- * relative image paths work when the page is saved next to it.
+ * `bare` template does, with the preview's toolbar and slide mode in the
+ * language of the reader's browser. Image sources stay as written in the
+ * deck, so its relative image paths work when the page is saved next to it.
  *
  * @param markdown Markdown of the deck.
  * @return The page's HTML.
@@ -220,13 +226,14 @@ export function renderHtmlDocument( markdown: string ): string {
 		),
 		`<style media="screen">${ PAGE_STYLE }</style>`,
 		`<style>${ css }</style>`,
+		`<style>${ runtimeStyle }</style>`,
 	].join( '' );
 
 	return (
 		'<!DOCTYPE html>' +
 		`<html${ lang ? ` lang="${ escapeHtml( lang ) }"` : '' }>` +
 		`<head>${ head }</head>` +
-		`<body>${ html }</body>` +
+		`<body>${ html }<script>${ runtimeScript }</script></body>` +
 		'</html>\n'
 	);
 }

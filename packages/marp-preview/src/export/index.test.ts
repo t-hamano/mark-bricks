@@ -7,6 +7,7 @@ import * as fixtures from '@mark-bricks/fixtures';
 /**
  * Internal dependencies
  */
+import { runtimeScript, runtimeStyle } from '../../dist/runtime';
 import { createExportMarp, getDeckInfo, renderHtmlDocument } from '.';
 
 const deck = ( frontMatter: string, body = '# Slide\n' ) =>
@@ -83,6 +84,16 @@ describe( 'renderHtmlDocument', () => {
 	it( "includes Marp's inline browser script", () => {
 		const html = renderHtmlDocument( fixtures.marp );
 		expect( html ).toContain( '<script>' );
+	} );
+
+	it( "adds the toolbar's script and stylesheet", () => {
+		const html = renderHtmlDocument( fixtures.marp );
+		expect( html ).toContain( `<style>${ runtimeStyle }</style>` );
+		expect( html ).toContain(
+			`<script>${ runtimeScript }</script></body>`
+		);
+		// The script does not close its element early.
+		expect( runtimeScript ).not.toMatch( /<\/script/i );
 	} );
 
 	it( 'renders the slides straight into the body', () => {
