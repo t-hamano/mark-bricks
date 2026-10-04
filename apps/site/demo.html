@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="noindex" />
+		<meta name="color-scheme" content="light dark" />
+		<style>
+			/* Fill the embedding frame; the editor supplies its own appearance. */
+			html,
+			body,
+			#root {
+				height: 100%;
+				margin: 0;
+			}
+
+			body {
+				overflow: hidden;
+			}
+		</style>
+		<script>
+			document.documentElement.dataset.theme = window.matchMedia(
+				'(prefers-color-scheme: dark)'
+			).matches
+				? 'dark'
+				: 'light';
+		</script>
+		<title>MarkBricks — interactive editor</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/demo/main.tsx"></script>
+	</body>
+</html>

@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#ffffff" />
+		<meta name="color-scheme" content="light dark" />
+		<script>
+			document.documentElement.dataset.theme = window.matchMedia(
+				'(prefers-color-scheme: dark)'
+			).matches
+				? 'dark'
+				: 'light';
+		</script>
+		<meta
+			name="description"
+			content="Edit Markdown visually with blocks. Available on desktop and in VS Code, with your documents in standard .md files."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="MarkBricks — Markdown, in blocks." />
+		<meta
+			property="og:description"
+			content="Edit Markdown visually with blocks. Available on desktop and in VS Code, with your documents in standard .md files."
+		/>
+		<meta
+			property="og:image"
+			content="https://t-hamano.github.io/mark-bricks/social-card.png"
+		/>
+		<meta
+			property="og:url"
+			content="https://t-hamano.github.io/mark-bricks/"
+		/>
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="icon" type="image/png" href="/app-icon.png" />
+		<link
+			rel="preload"
+			href="./fonts/newsreader-latin-normal.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link rel="stylesheet" href="/src/site.css" />
+		<script type="module" src="/src/site.ts"></script>
+		<title>MarkBricks — Markdown editor</title>
+	</head>
+	<body>
+		<span id="new-tab-description" hidden>Opens in a new tab.</span>
+		<header class="site-header wrap">
+			<a class="brand" href="./" aria-label="MarkBricks home"
+				><img
+					src="/app-icon.png"
+					alt=""
+					width="34"
+					height="34"
+				/>MarkBricks</a
+			>
+			<nav aria-label="Main navigation">
+				<a href="#playground">Try the editor</a>
+				<a href="#features">Features</a>
+				<a href="#download">Download</a>
+			</nav>
+			<button
+				id="theme-toggle"
+				class="theme-toggle"
+				type="button"
+				aria-label="Dark mode"
+				aria-pressed="false"
+				title="Switch to dark mode"
+			>
+				<svg
+					class="theme-icon-moon"
+					viewBox="0 0 24 24"
+					fill="none"
+					aria-hidden="true"
+				>
+					<path
+						d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"
+						stroke="currentColor"
+						stroke-width="1.6"
+						stroke-linejoin="round"
+					/>
+				</svg>
+				<svg
+					class="theme-icon-sun"
+					viewBox="0 0 24 24"
+					fill="none"
+					aria-hidden="true"
+				>
+					<circle
+						cx="12"
+						cy="12"
+						r="4"
+						stroke="currentColor"
+						stroke-width="1.6"
+					/>
+					<path
+						d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+						stroke="currentColor"
+						stroke-width="1.6"
+						stroke-linecap="round"
+					/>
+				</svg>
+			</button>
+		</header>
+		<main>
+			<section class="hero wrap" aria-labelledby="hero-title">
+				<h1 id="hero-title">Markdown,<br /><span>in blocks.</span></h1>
+				<div class="hero-copy">
+					<p class="hero-description">
+						Edit Markdown.<br />Visually, with blocks.
+					</p>
+					<p>
+						Edit and arrange your entire document with a block
+						editor adapted from WordPress. Switch to Markdown source
+						whenever you need to, and keep your documents in
+						standard
+						<code>.md</code> files.
+					</p>
+					<a class="button button-outline" href="#download"
+						>Download <span aria-hidden="true">↓</span></a
+					>
+				</div>
+			</section>
+			<section
+				class="playground"
+				id="playground"
+				aria-labelledby="playground-title"
+			>
+				<div class="wrap">
+					<h2 id="playground-title" class="playground-heading">
+						Try the editor
+					</h2>
+					<div class="demo-frame">
+						<a class="skip-editor" href="#features-title"
+							>Skip the interactive editor</a
+						>
+						<iframe
+							src="./demo.html"
+							title="Interactive MarkBricks editor: edit blocks or Markdown source"
+							aria-description="Press Escape, then Tab to leave block editing. In Markdown source mode, press Tab."
+							loading="lazy"
+						></iframe>
+						<noscript
+							><p class="no-script">
+								The interactive editor needs JavaScript. You can
+								still
+								<a href="#download">download MarkBricks</a> and
+								explore the features below.
+							</p></noscript
+						>
+					</div>
+					<a
+						class="playground-more"
+						id="playground-storybook"
+						href="./storybook/"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-describedby="new-tab-description"
+						>Try more in Storybook<span aria-hidden="true"
+							>&nbsp;↗</span
+						></a
+					>
+				</div>
+			</section>
+			<section
+				class="features wrap"
+				id="features"
+				aria-labelledby="features-title"
+			>
+				<h2 id="features-title" tabindex="-1">Features</h2>
+				<article class="feature-card">
+					<div class="feature-copy">
+						<h3>Blocks or source.<br />One file.</h3>
+						<p>
+							Work with your entire document as blocks, using a
+							streamlined version of the WordPress block editor.
+							Move things around as your document takes shape.
+						</p>
+						<p>
+							Switch to Monaco to edit the source. Both views work
+							on the same <code>.md</code> document.
+						</p>
+					</div>
+					<picture class="feature-screenshot">
+						<source
+							srcset="/features/blocks-dark.png"
+							media="(prefers-color-scheme: dark)"
+						/>
+						<img
+							src="/features/blocks-light.png"
+							alt="MarkBricks visual editor with headings, text, and lists."
+							width="960"
+							height="600"
+							loading="lazy"
+							decoding="async"
+						/>
+					</picture>
+				</article>
+				<article class="feature-card">
+					<div class="feature-copy">
+						<h3>
+							Diagrams, math, and code.<br />With live previews.
+						</h3>
+						<p>
+							Keep technical details in the same document as your
+							writing. Mermaid diagrams and TeX formulas render
+							inside the visual editor, while code blocks use
+							syntax highlighting for the language you choose.
+						</p>
+						<p>
+							Select a diagram or formula to edit its source, then
+							click away to see the result on its own. Both remain
+							editable text in your Markdown file.
+						</p>
+					</div>
+					<picture class="feature-screenshot">
+						<source
+							srcset="/features/diagrams-dark.png"
+							media="(prefers-color-scheme: dark)"
+						/>
+						<img
+							src="/features/diagrams-light.png"
+							alt="Mermaid diagram and math formula previewed in the MarkBricks editor."
+							width="960"
+							height="600"
+							loading="lazy"
+							decoding="async"
+						/>
+					</picture>
+				</article>
+				<article class="feature-card">
+					<div class="feature-copy">
+						<h3>
+							From Markdown notes<br />to presentation slides.
+						</h3>
+						<p>
+							Start a
+							<a
+								href="https://marp.app/"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-describedby="new-tab-description"
+								>Marp<span aria-hidden="true">&nbsp;↗</span></a
+							>
+							deck by adding <code>marp: true</code> to your YAML
+							front matter. Write your slides in Markdown, with
+							headings, images, code, and equations in the same
+							file.
+						</p>
+						<p>
+							Preview and present your deck in the desktop app or
+							VS Code, then export it as HTML or PDF. Themes, page
+							numbers, and slide dividers help you prepare the
+							presentation.
+						</p>
+					</div>
+					<picture class="feature-screenshot">
+						<source
+							srcset="/features/slides-dark.png"
+							media="(prefers-color-scheme: dark)"
+						/>
+						<img
+							src="/features/slides-light.png"
+							alt="A Marp slide deck in the MarkBricks preview, with slide navigation controls."
+							width="1280"
+							height="800"
+							loading="lazy"
+							decoding="async"
+						/>
+					</picture>
+				</article>
+				<article class="feature-card">
+					<div class="feature-copy">
+						<h3>
+							Front matter and alerts.<br />In plain Markdown.
+						</h3>
+						<p>
+							Keep document metadata in YAML front matter and edit
+							it from the visual editor. Add GitHub-style alerts
+							for notes, warnings, and other information that
+							needs attention.
+						</p>
+						<p>
+							Choose light or dark mode for your workspace. The
+							desktop app and VS Code extension support English
+							and 13 other interface languages, and your metadata
+							and alerts stay in the same <code>.md</code> file.
+						</p>
+					</div>
+					<picture class="feature-screenshot">
+						<source
+							srcset="/features/source-dark.png"
+							media="(prefers-color-scheme: dark)"
+						/>
+						<img
+							src="/features/source-light.png"
+							alt="Monaco editing Markdown with YAML front matter and a GitHub-style note."
+							width="960"
+							height="600"
+							loading="lazy"
+							decoding="async"
+						/>
+					</picture>
+				</article>
+			</section>
+			<section
+				class="download-section"
+				id="download"
+				aria-labelledby="download-title"
+			>
+				<div class="wrap">
+					<h2 id="download-title">Downloads</h2>
+					<p class="download-description">
+						Start writing on your desktop or in VS Code.
+					</p>
+					<div class="download-grid">
+						<div class="download-card">
+							<div class="download-card-heading">
+								<svg
+									viewBox="0 0 32 32"
+									fill="currentColor"
+									aria-hidden="true"
+								>
+									<path
+										d="M3 5.5 14 4v11H3zm13-1.8L29 2v13H16zM3 17h11v11L3 26.5zm13 0h13v13l-13-1.7z"
+									/>
+								</svg>
+								<h3>Windows</h3>
+							</div>
+							<p>x64 · .exe installer</p>
+							<p class="download-card-note">
+								Unsigned installer. Windows may show a security
+								warning during installation.
+							</p>
+							<a
+								class="button button-outline"
+								href="__DOWNLOAD_WINDOWS__"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-describedby="new-tab-description"
+								>Download for Windows
+								<span aria-hidden="true">↗</span></a
+							>
+						</div>
+						<div class="download-card">
+							<div class="download-card-heading">
+								<svg
+									viewBox="0 0 32 32"
+									fill="currentColor"
+									aria-hidden="true"
+								>
+									<path
+										d="M20.5 7c1.5-1.8 1.5-4 1.5-4s-2.4.2-4 2c-1.4 1.5-1.7 3.6-1.7 3.6s2.5.3 4.2-1.6ZM24.8 17c0-3.6 2.9-5.1 3-5.2-1.7-2.5-4.4-2.8-5.4-2.9-2.3-.2-4.5 1.3-5.6 1.3s-3-1.3-4.8-1.3C7.3 8.9 5 13 5 17.2c0 4.1 1.5 7.1 3 9.2 1 1.5 2.3 3.1 3.9 3 1.6-.1 2.2-1 4.2-1s2.5 1 4.2.9c1.7 0 2.8-1.5 3.9-3 1.2-1.8 1.7-3.6 1.7-3.7-.1 0-3.1-1.2-3.1-5.6z"
+									/>
+								</svg>
+								<h3>macOS</h3>
+							</div>
+							<p>Apple silicon &amp; Intel · .dmg</p>
+							<p class="download-card-note">
+								Signed with a Developer ID certificate and
+								notarized by Apple.
+							</p>
+							<a
+								class="button button-outline"
+								href="__DOWNLOAD_MACOS__"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-describedby="new-tab-description"
+								>Download for macOS
+								<span aria-hidden="true">↗</span></a
+							>
+						</div>
+						<div class="download-card">
+							<div class="download-card-heading">
+								<svg
+									viewBox="0 0 32 32"
+									fill="none"
+									aria-hidden="true"
+								>
+									<path
+										d="M12 11V8a4 4 0 0 1 8 0v3l4 9c1 3-2 6-8 6s-9-3-8-6l4-9Z"
+										stroke="currentColor"
+										stroke-width="1.7"
+									/>
+									<path
+										d="m8 23-4 5h9l1-3m10-2 4 5h-9l-1-3"
+										stroke="currentColor"
+										stroke-width="1.7"
+										stroke-linejoin="round"
+									/>
+									<circle
+										cx="14"
+										cy="9"
+										r="1"
+										fill="currentColor"
+									/>
+									<circle
+										cx="18"
+										cy="9"
+										r="1"
+										fill="currentColor"
+									/>
+									<path
+										d="m13 13 3 2 3-2-3-1-3 1Z"
+										fill="currentColor"
+									/>
+								</svg>
+								<h3>Linux</h3>
+							</div>
+							<p>x64 · AppImage</p>
+							<p class="download-card-note">
+								Unsigned AppImage. Mark the downloaded file as
+								executable before launching it.
+							</p>
+							<a
+								class="button button-outline"
+								href="__DOWNLOAD_LINUX__"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-describedby="new-tab-description"
+								>Download for Linux
+								<span aria-hidden="true">↗</span></a
+							>
+						</div>
+					</div>
+					<div class="vscode-download">
+						<div>
+							<svg
+								viewBox="0 0 28 28"
+								fill="none"
+								aria-hidden="true"
+							>
+								<path
+									d="m20 2 6 3v18l-6 3-12-9-4 3-2-1V9l2-1 4 3L20 2Zm0 7-8 5 8 5V9ZM4 11v6l3-3-3-3Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<p>
+								VS Code extension<span
+									>Bring block editing to your Markdown files
+									in VS Code.</span
+								>
+							</p>
+						</div>
+						<a
+							class="button button-outline"
+							href="https://marketplace.visualstudio.com/items?itemName=aki-hamano.mark-bricks-vscode"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-describedby="new-tab-description"
+							>Install the extension
+							<span aria-hidden="true">↗</span></a
+						>
+					</div>
+					<a
+						class="release-note"
+						href="https://github.com/t-hamano/mark-bricks/releases"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-describedby="new-tab-description"
+						>Release notes &amp; other versions
+						<span aria-hidden="true">↗</span></a
+					>
+				</div>
+			</section>
+			<section
+				class="open-source wrap"
+				aria-labelledby="open-source-title"
+			>
+				<div class="open-source-symbol" aria-hidden="true">
+					{&nbsp;}
+				</div>
+				<div>
+					<h2 id="open-source-title">Open source</h2>
+					<p>
+						Explore the code, share an idea, or follow the project
+						on GitHub.<br class="desktop-break" />
+						Licensed under GPL-2.0-or-later.
+					</p>
+				</div>
+				<a
+					class="text-link"
+					href="https://github.com/t-hamano/mark-bricks"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-describedby="new-tab-description"
+					>View repository<span aria-hidden="true">&nbsp;↗</span></a
+				>
+			</section>
+		</main>
+		<footer class="site-footer wrap">
+			<a class="brand footer-brand" href="./"
+				><img
+					src="/app-icon.png"
+					alt=""
+					width="24"
+					height="24"
+				/>MarkBricks</a
+			>
+			<nav aria-label="Footer navigation">
+				<a
+					href="https://github.com/t-hamano/mark-bricks"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-describedby="new-tab-description"
+					>GitHub<span class="external-link-icon" aria-hidden="true"
+						>↗</span
+					></a
+				><a
+					href="./storybook/"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-describedby="new-tab-description"
+					>Storybook<span
+						class="external-link-icon"
+						aria-hidden="true"
+						>↗</span
+					></a
+				><a
+					href="https://github.com/t-hamano/mark-bricks/blob/main/LICENSE"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-describedby="new-tab-description"
+					>Licence<span class="external-link-icon" aria-hidden="true"
+						>↗</span
+					></a
+				>
+			</nav>
+			<span class="copyright">© Aki Hamano</span>
+		</footer>
+	</body>
+</html>

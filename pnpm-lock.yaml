@@ -54,6 +54,43 @@ importers:
         specifier: ~6.0.3
         version: 6.0.3
 
+  apps/site:
+    dependencies:
+      '@mark-bricks/editor':
+        specifier: workspace:*
+        version: link:../../packages/editor
+      monaco-editor:
+        specifier: ^0.57.0
+        version: 0.57.0
+      react:
+        specifier: ^19.3.0
+        version: 19.3.0
+      react-dom:
+        specifier: ^19.3.0
+        version: 19.3.0(react@19.3.0)
+    devDependencies:
+      '@types/node':
+        specifier: ^26.6.0
+        version: 26.6.3
+      '@types/react':
+        specifier: ^19.3.0
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: ^19.2.8
+        version: 19.3.0(@types/react@19.3.0)
+      '@vitejs/plugin-react':
+        specifier: ^6.1.1
+        version: 6.1.1(vite@8.3.1(@types/node@26.6.3)(esbuild@0.28.2)(jiti@2.6.1)(sass@1.105.0)(yaml@2.9.1))
+      sass:
+        specifier: ^1.105.0
+        version: 1.105.0
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.3.1
+        version: 8.3.1(@types/node@26.6.3)(esbuild@0.28.2)(jiti@2.6.1)(sass@1.105.0)(yaml@2.9.1)
+
   apps/tauri:
     dependencies:
       '@mark-bricks/editor':
