@@ -271,7 +271,6 @@ h6,
 	display: grid;
 	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 	grid-template-areas: "copy image";
-	align-items: center;
 	gap: 64px;
 }
 .feature-card + .feature-card {
@@ -326,12 +325,8 @@ code {
 	background: var(--color-paper);
 }
 .download-section h2 {
-	margin-bottom: 24px;
-	font-size: var(--font-size-fluid-medium);
-}
-.download-description {
 	margin-bottom: 72px;
-	color: var(--color-muted);
+	font-size: var(--font-size-fluid-medium);
 }
 .download-grid {
 	display: grid;
@@ -560,9 +555,6 @@ code {
 		padding-block: 88px 80px;
 	}
 	.download-section h2 {
-		margin-bottom: 32px;
-	}
-	.download-description {
 		margin-bottom: 48px;
 	}
 	.download-grid {
