@@ -10,6 +10,11 @@ import {
 	type EditorTheme,
 } from '@mark-bricks/editor';
 
+/**
+ * Internal dependencies
+ */
+import HeaderActions from './header-actions';
+
 const sample = `# Project notes
 
 This is a sample Markdown document. **Edit this text** as a block or use the Code editor button to edit the source.
@@ -32,6 +37,8 @@ function Demo() {
 	const [ theme, setTheme ] = useState( getSiteTheme );
 	const [ content, setContent ] = useState( sample );
 	const [ mode, setMode ] = useState< 'visual' | 'text' >( 'visual' );
+	const [ topToolbar, setTopToolbar ] = useState( true );
+	const [ spotlightMode, setSpotlightMode ] = useState( false );
 
 	useEffect( () => {
 		const observer = new MutationObserver( () =>
@@ -49,13 +56,22 @@ function Demo() {
 				editorMode={ mode }
 				onEditorModeChange={ setMode }
 				settings={ {
-					fixedToolbar: true,
+					fixedToolbar: topToolbar,
+					focusMode: spotlightMode,
 					showBlockBreadcrumbs: false,
 					spellCheck: true,
 					codeEditor: {
 						theme,
 					},
 				} }
+				headerActions={
+					<HeaderActions
+						topToolbar={ topToolbar }
+						onTopToolbarChange={ setTopToolbar }
+						spotlightMode={ spotlightMode }
+						onSpotlightModeChange={ setSpotlightMode }
+					/>
+				}
 			/>
 		</EditorThemeProvider>
 	);
