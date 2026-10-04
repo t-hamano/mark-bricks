@@ -1,10 +1,7 @@
 /**
  * External dependencies
  */
-import {
-	applyLocale,
-	createSlidePreview,
-} from '@mark-bricks/marp-preview/controls';
+import { createSlidePreview } from '@mark-bricks/marp-preview/controls';
 
 /**
  * Internal dependencies
@@ -23,13 +20,11 @@ function post( message: PreviewWebviewMessage ): void {
 }
 
 // Shows the controls in VS Code's display language, which the page's `lang`
-// holds.
-applyLocale( resolveVsCodeLocale( document.documentElement.lang ) );
-
-// The slide mode stays within the panel: webviews cannot enter full screen,
-// and maximizing the panel is left to the user. F11 is left to VS Code, which
-// uses it to toggle full screen.
+// holds. The slide mode stays within the panel: webviews cannot enter full
+// screen, and maximizing the panel is left to the user. F11 is left to VS
+// Code, which uses it to toggle full screen.
 const preview = createSlidePreview( document.body, {
+	locale: resolveVsCodeLocale( document.documentElement.lang ),
 	onRender: ( slideCount ) => post( { type: 'rendered', slideCount } ),
 } );
 

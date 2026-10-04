@@ -47,7 +47,7 @@ const marp = new Marp( {
 	);
 } );
 
-export type RenderSlidesOptions = {
+type RenderSlidesOptions = {
 	// Maps an image source in the deck to the URL the preview loads it
 	// from, or returns `null` to keep the source as it is.
 	resolveImageSrc?: ( src: string ) => string | null;

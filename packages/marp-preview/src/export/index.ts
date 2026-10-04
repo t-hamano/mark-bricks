@@ -26,7 +26,7 @@ type ExportEnv = {
 	headingTitle?: string;
 };
 
-export type DeckInfo = {
+type DeckInfo = {
 	title?: string;
 	description?: string;
 	author?: string;
