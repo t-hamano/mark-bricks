@@ -100,21 +100,6 @@ Requires Node.js and [pnpm](https://pnpm.io/). Run any of the root scripts with 
 pnpm install
 ```
 
-### Website
-
-```sh
-# Start the product website
-pnpm dev:site
-
-# Build the site with Storybook at /storybook/
-pnpm build:pages
-
-# Preview the assembled GitHub Pages site
-pnpm preview:site
-```
-
-See [`apps/site/README.md`](apps/site/README.md) for development and deployment.
-
 ### Storybook
 
 ```sh
