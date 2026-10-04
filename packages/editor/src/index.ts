@@ -7,7 +7,6 @@ export {
 	type FrontMatterContextValue,
 } from './components/front-matter-editor/context';
 export { BlockEditor } from './components/block-editor';
-export { CodeEditor } from './components/code-editor';
 export type { EditorHandle, EditorStyles } from './components/editor';
 export type { CodeEditorSettings } from './components/text-editor';
 export type { Platform } from './platform';

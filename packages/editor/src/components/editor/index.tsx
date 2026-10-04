@@ -62,8 +62,8 @@ type Props = {
 
 // The full authoring experience: block editor and code editor, switchable
 // via `editorMode` without losing undo history or block state. Consumers
-// that only need one mode should use `BlockEditor` or `CodeEditor` instead,
-// which don't pull the other mode into their bundle.
+// that only need the block editor should use `BlockEditor` instead, which
+// doesn't pull the code editor into their bundle.
 function UnforwardedEditor(
 	{
 		content,
