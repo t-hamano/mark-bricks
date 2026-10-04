@@ -29,6 +29,7 @@ export default function Edit( {
 			identifier="content"
 			tagName="p"
 			{ ...blockProps }
+			role="textbox"
 			value={ content }
 			onChange={ ( newContent ) =>
 				setAttributes( { content: newContent } )

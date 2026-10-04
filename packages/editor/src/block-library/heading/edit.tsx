@@ -24,7 +24,7 @@ export default function Edit( {
 	const { content = '', level } = attributes;
 	const safeLevel: HeadingLevel =
 		level >= 1 && level <= 6 ? ( level as HeadingLevel ) : 2;
-	const tagName = `h${ safeLevel }` as const;
+	const TagName = `h${ safeLevel }` as const;
 	const blockProps = useBlockProps();
 
 	return (
@@ -39,19 +39,22 @@ export default function Edit( {
 					}
 				/>
 			</BlockControls>
-			<RichText
-				identifier="content"
-				tagName={ tagName }
-				{ ...blockProps }
-				value={ content }
-				onChange={ ( newContent ) =>
-					setAttributes( { content: newContent } )
-				}
-				onMerge={ mergeBlocks }
-				onReplace={ onReplace }
-				onRemove={ () => onReplace?.( [] ) }
-				placeholder={ __( 'Heading', 'mark-bricks' ) }
-			/>
+			<TagName { ...blockProps } role="heading" aria-label={ undefined }>
+				<RichText
+					identifier="content"
+					tagName="span"
+					role="textbox"
+					aria-label={ __( 'Heading', 'mark-bricks' ) }
+					value={ content }
+					onChange={ ( newContent ) =>
+						setAttributes( { content: newContent } )
+					}
+					onMerge={ mergeBlocks }
+					onReplace={ onReplace }
+					onRemove={ () => onReplace?.( [] ) }
+					placeholder={ __( 'Heading', 'mark-bricks' ) }
+				/>
+			</TagName>
 		</>
 	);
 }

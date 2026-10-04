@@ -91,7 +91,7 @@ export default function Edit( props: BlockEditProps ) {
 	const onMerge = useMerge( clientId, mergeBlocks ?? ( () => {} ) );
 	return (
 		<>
-			<li { ...innerBlocksProps }>
+			<li { ...innerBlocksProps } role={ undefined }>
 				{ isTaskItem && (
 					<input
 						type="checkbox"

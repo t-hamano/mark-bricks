@@ -56,7 +56,7 @@ export default function Edit( props: BlockEditProps ) {
 					onClick={ () => setAttributes( { ordered: true } ) }
 				/>
 			</BlockControls>
-			<TagName { ...innerBlocksProps } />
+			<TagName { ...innerBlocksProps } role="list" />
 		</>
 	);
 }
