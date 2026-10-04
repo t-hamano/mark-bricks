@@ -75,6 +75,7 @@ This is a pnpm monorepo. The editor itself lives in a host-agnostic package that
 
 - **[`apps/tauri`](apps/tauri)** — Desktop application. Built on Tauri 2 + React, it hosts `@mark-bricks/editor` for editing local Markdown files.
 - **[`apps/vscode`](apps/vscode)** — VSCode extension. Embeds the editor as a custom editor for `.md` files.
+- **[`apps/site`](apps/site)** — Product website with an interactive editor demo, published alongside Storybook on GitHub Pages.
 - **[`packages/editor`](packages/editor)** — `@mark-bricks/editor`. The host-agnostic React component at the heart of MarkBricks. Ships the blocks, inline formats, a Monaco-based source editor, and i18n.
 - **[`packages/image-path`](packages/image-path)** — `@mark-bricks/image-path`. Shared, dependency-free parser for Markdown image paths and URLs, used by the Tauri and VSCode hosts to resolve images against the document.
 - **[`packages/marp-preview`](packages/marp-preview)** — `@mark-bricks/marp-preview`. Renders Marp slide decks for the hosts' slide previews and exports, with images resolved by each host.
@@ -82,11 +83,11 @@ This is a pnpm monorepo. The editor itself lives in a host-agnostic package that
 - **[`packages/fixtures`](packages/fixtures)** — `@mark-bricks/fixtures`. Shared Markdown fixtures consumed by Storybook, the round-trip tests, and manual smoke tests.
 - **[`storybook`](storybook)** — Storybook workspace for previewing the editor.
 
-## Storybook
+## Website and Storybook
 
-Here you can see the core `@mark-bricks/editor` in action.
+Try the editor and explore MarkBricks on the [product website](https://t-hamano.github.io/mark-bricks/).
 
-<https://t-hamano.github.io/mark-bricks/>
+The [Storybook](https://t-hamano.github.io/mark-bricks/storybook/) provides the core `@mark-bricks/editor` examples.
 
 ## Development
 
@@ -130,7 +131,7 @@ pnpm i18n:make-json
 pnpm test
 ```
 
-For running, building, and versioning a specific app, see its own README ([`apps/tauri`](apps/tauri/README.md), [`apps/vscode`](apps/vscode/README.md)).
+For running, building, and versioning a specific app, see its own README ([`apps/tauri`](apps/tauri/README.md), [`apps/vscode`](apps/vscode/README.md), [`apps/site`](apps/site/README.md)).
 
 ## License
 
