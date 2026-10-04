@@ -8,8 +8,8 @@ import {
 } from '@mark-bricks/editor/block-editor';
 import { inspectCodePreviews } from '@mark-bricks/editor/code-previews';
 import { EditorThemeProvider } from '@mark-bricks/editor/editor-theme-provider';
-import { applyLocale as applyEditorLocale } from '@mark-bricks/editor/i18n';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
+import { setupEditor } from '@mark-bricks/editor/setup';
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -301,18 +301,11 @@ async function bootstrap() {
 	// Write the resolved locale back so it matches the language the UI is
 	// actually rendered in (e.g. English for an unsupported display language),
 	// as a BCP 47 tag (`pt_BR` → `pt-BR`).
-	const locale = applyEditorLocale(
+	const locale = await setupEditor(
 		resolveVsCodeLocale( document.documentElement.lang )
 	);
 	document.documentElement.lang = locale.replace( '_', '-' );
 	applyVsCodeLocale( locale );
-
-	const [ { registerBlocks }, { registerFormats } ] = await Promise.all( [
-		import( '@mark-bricks/editor/block-library' ),
-		import( '@mark-bricks/editor/format-library' ),
-	] );
-	registerBlocks();
-	registerFormats();
 
 	const container = document.getElementById( 'root' );
 

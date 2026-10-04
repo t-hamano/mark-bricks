@@ -17,7 +17,7 @@ flowchart TD
 	wporg(["WordPress.org Gutenberg language pack"]) -- "i18n:fetch-gutenberg (editor only)" --> gb["gutenberg-&lt;ver&gt;-&lt;locale&gt;.json"]
 	po -- make-json --> json["&lt;slug&gt;-&lt;locale&gt;.json"]
 	gb -. "make-json (merged if present)" .-> json
-	json -- "import.meta.glob + applyLocale" --> runtime(["@wordpress/i18n setLocaleData"])
+	json -- "import.meta.glob + setupEditor" --> runtime(["@wordpress/i18n setLocaleData"])
 ```
 
 `make-json` also runs on `pnpm install` (root `postinstall`), so the gitignored JSON is rebuilt without a manual step.
@@ -82,16 +82,16 @@ Any sibling `gutenberg*-<locale>.json` is merged in, layering its `default` Gute
 
 ## Adding a new locale
 
-Locales are identified by their WordPress locale slug (e.g. `ja`, `pt_BR`, `de_DE`, `zh_CN` — see the [WordPress locale list](https://translate.wordpress.org/locale/)). Use the same slug everywhere below: it names the `.po`/`.json` files, selects the Gutenberg language pack, and is what hosts pass to the editor's `applyLocale`.
+Locales are identified by their WordPress locale slug (e.g. `ja`, `pt_BR`, `de_DE`, `zh_CN` — see the [WordPress locale list](https://translate.wordpress.org/locale/)). Use the same slug everywhere below: it names the `.po`/`.json` files, selects the Gutenberg language pack, and is what hosts pass to the editor's `setupEditor`.
 
 The steps below use `pt_BR` as an example.
 
 ### 1. Translate the editor
 
-The editor keeps no list of languages: `applyLocale` applies any slug it has a catalog for, so adding a locale needs no code change here, only the catalog.
+The editor keeps no list of languages: `setupEditor` applies any slug it has a catalog for, so adding a locale needs no code change here, only the catalog.
 
 > [!IMPORTANT]
-> Translate the editor first. `applyLocale` falls back to English for a slug the editor has no catalog for, and each host layers its own `.po` strings onto the locale it returns. Without the editor catalog, the desktop app and the VS Code webview stay in English even when their own `.po` is translated. The VS Code `package.nls.*.json` and `bundle.l10n.*.json` files (step 3) are loaded by VS Code itself and do not depend on it.
+> Translate the editor first. `setupEditor` falls back to English for a slug the editor has no catalog for, and each host layers its own `.po` strings onto the locale it returns. Without the editor catalog, the desktop app and the VS Code webview stay in English even when their own `.po` is translated. The VS Code `package.nls.*.json` and `bundle.l10n.*.json` files (step 3) are loaded by VS Code itself and do not depend on it.
 
 It ships the block editor, so it needs the Gutenberg (`default` domain) strings as well as its own. Fetch the Gutenberg catalog:
 
@@ -123,7 +123,7 @@ export const LOCALES = [
 ] as const;
 ```
 
-- `code` is the WordPress locale slug. It is saved as the language setting and passed to the editor's `applyLocale`.
+- `code` is the WordPress locale slug. It is saved as the language setting and passed to the editor's `setupEditor`.
 - `name` is shown in the language setting, so write it in the language itself.
 - `tags` lists the lower-cased OS language tags that pick this locale when no language has been chosen in the settings yet. A tag is looked up as is, then by its primary language subtag (`pt-br`, then `pt`).
 

@@ -4,7 +4,7 @@
 import { invoke } from '@tauri-apps/api/core';
 import { listen } from '@tauri-apps/api/event';
 import { message } from '@tauri-apps/plugin-dialog';
-import { getLocale } from '@mark-bricks/editor/i18n';
+import { getLocale } from '@mark-bricks/editor/locale';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
