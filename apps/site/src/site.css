@@ -113,8 +113,8 @@ h6,
 }
 .theme-toggle {
 	display: grid;
-	width: 44px;
-	height: 44px;
+	width: 48px;
+	height: 48px;
 	flex-shrink: 0;
 	place-items: center;
 	border: 1px solid var(--color-line);
@@ -127,8 +127,8 @@ h6,
 	background: var(--color-blue-surface);
 }
 .theme-toggle svg {
-	width: 22px;
-	height: 22px;
+	width: 24px;
+	height: 24px;
 }
 .theme-icon-sun {
 	display: none;
@@ -144,20 +144,20 @@ h6,
 }
 .brand {
 	display: inline-flex;
-	min-height: 44px;
+	min-height: 48px;
 	align-items: center;
-	gap: 10px;
+	gap: 8px;
 	font-size: var(--font-size-medium);
 	font-weight: 650;
 }
 .site-header nav {
 	display: flex;
-	gap: 36px;
+	gap: 40px;
 	font-weight: 550;
 }
 .site-header nav a {
 	display: inline-flex;
-	min-height: 44px;
+	min-height: 48px;
 	align-items: center;
 }
 .site-header nav a:hover,
@@ -190,7 +190,7 @@ h6,
 .hero-copy > .button {
 	display: flex;
 	width: fit-content;
-	margin-top: 36px;
+	margin-top: 40px;
 }
 .button {
 	display: inline-flex;
@@ -198,7 +198,7 @@ h6,
 	align-items: center;
 	justify-content: center;
 	gap: 24px;
-	padding: 12px 22px;
+	padding: 16px 24px;
 	border: 1px solid transparent;
 	border-radius: 6px;
 	font-weight: 600;
@@ -248,12 +248,12 @@ h6,
 .demo-frame iframe {
 	display: block;
 	width: 100%;
-	height: clamp(280px, 72svh, 650px);
+	height: clamp(280px, 72svh, 648px);
 	border: 0;
 	background: var(--color-surface);
 }
 .no-script {
-	padding: 20px;
+	padding: 24px;
 }
 .no-script a {
 	text-decoration: underline;
@@ -272,7 +272,7 @@ h6,
 	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 	grid-template-areas: "copy image";
 	align-items: center;
-	gap: 60px;
+	gap: 64px;
 }
 .feature-card + .feature-card {
 	margin-top: 192px;
@@ -285,14 +285,14 @@ h6,
 	grid-area: copy;
 }
 .feature-copy h3 {
-	margin-bottom: 28px;
+	margin-bottom: 32px;
 	font-size: var(--font-size-fluid-small);
 }
 .feature-copy p {
 	color: var(--color-muted);
 }
 .feature-copy p + p {
-	margin-top: 14px;
+	margin-top: 16px;
 }
 code {
 	padding: 0.1em 0.35em;
@@ -336,12 +336,12 @@ code {
 .download-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 18px;
+	gap: 16px;
 }
 .download-card {
 	display: flex;
 	flex-direction: column;
-	padding: 30px 28px 22px;
+	padding: 32px 32px 24px;
 	border: 1px solid var(--color-line);
 	border-radius: 8px;
 	background: var(--color-surface);
@@ -349,8 +349,8 @@ code {
 .download-card-heading {
 	display: flex;
 	align-items: center;
-	gap: 14px;
-	margin-bottom: 12px;
+	gap: 16px;
+	margin-bottom: 16px;
 }
 .download-card-heading svg {
 	width: 40px;
@@ -364,8 +364,8 @@ code {
 	color: var(--color-muted);
 }
 .download-card .download-card-note {
-	margin-top: 12px;
-	margin-bottom: 26px;
+	margin-top: 16px;
+	margin-bottom: 24px;
 	font-size: var(--font-size-small);
 }
 .download-card > .button {
@@ -375,9 +375,9 @@ code {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 30px;
+	gap: 32px;
 	margin-top: 32px;
-	padding: 24px 28px;
+	padding: 24px 32px;
 	border: 1px solid var(--color-line);
 	border-radius: 8px;
 	background: var(--color-surface);
@@ -385,11 +385,11 @@ code {
 .vscode-download > div {
 	display: flex;
 	align-items: center;
-	gap: 20px;
+	gap: 24px;
 }
 .vscode-download svg {
-	width: 30px;
-	height: 30px;
+	width: 32px;
+	height: 32px;
 	color: #2474b8;
 }
 .vscode-download p {
@@ -403,7 +403,7 @@ code {
 .release-note {
 	display: block;
 	width: fit-content;
-	margin-top: 28px;
+	margin-top: 32px;
 	margin-left: auto;
 	color: var(--color-muted);
 	text-decoration: underline;
@@ -419,14 +419,14 @@ code {
 	padding-block: 112px;
 }
 .open-source-symbol {
-	width: 62px;
+	width: 64px;
 	flex-shrink: 0;
 	color: var(--color-blue);
 	font-family: Consolas, monospace;
 	font-size: var(--font-size-large);
 }
 .open-source h2 {
-	margin-bottom: 20px;
+	margin-bottom: 24px;
 	font-size: var(--font-size-fluid-small);
 }
 .open-source p {
@@ -444,8 +444,8 @@ code {
 	min-height: 112px;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 28px;
-	padding-block: 28px;
+	gap: 32px;
+	padding-block: 32px;
 }
 .footer-brand {
 	gap: 8px;
@@ -453,13 +453,13 @@ code {
 }
 .site-footer nav {
 	display: flex;
-	gap: 22px;
+	gap: 24px;
 	margin-left: auto;
 	color: var(--color-muted);
 }
 .site-footer nav a {
 	display: inline-flex;
-	min-height: 44px;
+	min-height: 48px;
 	align-items: center;
 }
 .copyright {
@@ -467,7 +467,7 @@ code {
 }
 @media (max-width: 1100px) {
 	.site-header nav {
-		gap: 20px;
+		gap: 24px;
 	}
 	.wrap {
 		width: calc(100% - 64px);
@@ -479,10 +479,10 @@ code {
 		font-size: var(--font-size-fluid-xx-large);
 	}
 	.feature-card {
-		gap: 30px;
+		gap: 32px;
 	}
 	.site-footer {
-		gap: 18px;
+		gap: 16px;
 	}
 }
 @media (max-width: 960px) {
@@ -494,8 +494,8 @@ code {
 	}
 	.site-header {
 		flex-wrap: wrap;
-		gap: 0 20px;
-		padding-block: 12px 8px;
+		gap: 0 24px;
+		padding-block: 16px 8px;
 	}
 	.site-header .brand {
 		order: 1;
@@ -506,7 +506,7 @@ code {
 	.site-header nav {
 		order: 3;
 		width: 100%;
-		gap: 20px;
+		gap: 24px;
 	}
 }
 @media (max-width: 760px) {
@@ -517,21 +517,21 @@ code {
 		gap: 16px;
 	}
 	.brand img {
-		width: 28px;
-		height: 28px;
+		width: 32px;
+		height: 32px;
 	}
 	.site-header nav {
-		gap: 18px;
+		gap: 16px;
 	}
 	.hero {
-		gap: 36px;
+		gap: 40px;
 		padding-block: 80px 104px;
 	}
 	.hero h1 {
 		font-size: var(--font-size-fluid-x-large);
 	}
 	.hero-copy > .button {
-		margin-top: 28px;
+		margin-top: 32px;
 	}
 	.demo-frame {
 		margin-top: 32px;
@@ -560,7 +560,7 @@ code {
 		padding-block: 88px 80px;
 	}
 	.download-section h2 {
-		margin-bottom: 28px;
+		margin-bottom: 32px;
 	}
 	.download-description {
 		margin-bottom: 48px;
@@ -570,19 +570,19 @@ code {
 		gap: 16px;
 	}
 	.download-card {
-		padding: 22px;
+		padding: 24px;
 	}
 	.download-card .download-card-note {
 		margin-top: 16px;
 		margin-bottom: 0;
 	}
 	.download-card > .button {
-		margin-top: 18px;
+		margin-top: 16px;
 	}
 	.vscode-download {
 		flex-wrap: wrap;
-		gap: 18px;
-		padding: 22px;
+		gap: 16px;
+		padding: 24px;
 	}
 	.vscode-download .button {
 		width: 100%;
@@ -600,7 +600,7 @@ code {
 	}
 	.site-footer {
 		align-items: flex-start;
-		gap: 8px 20px;
+		gap: 8px 24px;
 	}
 	.site-footer nav {
 		flex-wrap: wrap;
@@ -615,7 +615,7 @@ code {
 		gap: 0;
 	}
 	.site-header nav {
-		gap: 12px;
+		gap: 16px;
 	}
 	.hero h1 {
 		font-size: var(--font-size-fluid-large);
@@ -628,12 +628,12 @@ code {
 		display: block;
 	}
 	.site-footer nav {
-		gap: 22px;
-		margin-top: 4px;
+		gap: 24px;
+		margin-top: 8px;
 	}
 	.copyright {
 		display: block;
-		margin-top: 4px;
+		margin-top: 8px;
 	}
 	.desktop-break {
 		display: none;
