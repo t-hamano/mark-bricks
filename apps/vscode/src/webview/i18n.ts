@@ -28,12 +28,12 @@ const CATALOGS: Partial< Record< string, Catalog > > = Object.fromEntries(
 /**
  * Merges the extension's own translations into the `mark-bricks` domain.
  *
- * Runs after the editor's `applyLocale`, which seeds the domain. `setLocaleData`
+ * Runs after the editor's `setupEditor`, which seeds the domain. `setLocaleData`
  * merges at the message-key level, so the extension strings layer on top
  * without dropping the editor's keys. English needs no catalog (msgids are
  * English).
  *
- * @param locale Locale slug already applied by the editor's `applyLocale`.
+ * @param locale Locale slug already applied by the editor's `setupEditor`.
  */
 export function applyVsCodeLocale( locale: string ) {
 	const dict = CATALOGS[ locale ]?.locale_data?.[ TEXT_DOMAIN ];

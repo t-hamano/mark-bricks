@@ -17,9 +17,9 @@
 			"types": "./src/components/block-editor/index.tsx",
 			"default": "./src/components/block-editor/index.tsx"
 		},
-		"./i18n": {
-			"types": "./src/i18n.ts",
-			"default": "./src/i18n.ts"
+		"./locale": {
+			"types": "./src/locale.ts",
+			"default": "./src/locale.ts"
 		},
 		"./setup": {
 			"types": "./src/setup.ts",

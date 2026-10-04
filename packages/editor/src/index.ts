@@ -1,4 +1,4 @@
-export { applyLocale, getLocale } from './i18n';
+export { getLocale } from './locale';
 export { setupEditor } from './setup';
 export { Editor } from './components/editor';
 export {

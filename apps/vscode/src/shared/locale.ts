@@ -22,7 +22,7 @@ const WP_LOCALES: Partial< Record< string, string > > = {
 
 /**
  * Converts a VS Code display language ID to the WordPress locale slug that
- * the editor's and the slide preview's `applyLocale` expect.
+ * the editor's `setupEditor` and the slide preview's `applyLocale` expect.
  *
  * @param lang VS Code display language ID (`vscode.env.language`).
  * @return WordPress locale slug.
