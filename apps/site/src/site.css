@@ -271,6 +271,7 @@ h6,
 	display: grid;
 	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 	grid-template-areas: "copy image";
+	align-items: flex-start;
 	gap: 64px;
 }
 .feature-card + .feature-card {
@@ -412,13 +413,6 @@ code {
 	align-items: center;
 	gap: 40px;
 	padding-block: 112px;
-}
-.open-source-symbol {
-	width: 64px;
-	flex-shrink: 0;
-	color: var(--color-blue);
-	font-family: Consolas, monospace;
-	font-size: var(--font-size-large);
 }
 .open-source h2 {
 	margin-bottom: 24px;
@@ -583,9 +577,6 @@ code {
 		flex-wrap: wrap;
 		gap: 24px;
 		padding-block: 88px;
-	}
-	.open-source-symbol {
-		display: none;
 	}
 	.open-source-link {
 		margin-left: 0;
