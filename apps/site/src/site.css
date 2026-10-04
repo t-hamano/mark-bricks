@@ -264,7 +264,7 @@ h6,
 }
 .features > h2 {
 	width: fit-content;
-	margin-block: 24px 72px;
+	margin-bottom: 72px;
 	font-size: var(--font-size-fluid-medium);
 }
 .feature-card {
@@ -285,7 +285,7 @@ h6,
 	grid-area: copy;
 }
 .feature-copy h3 {
-	margin-block: 0 28px;
+	margin-bottom: 28px;
 	font-size: var(--font-size-fluid-small);
 }
 .feature-copy p {
@@ -326,7 +326,7 @@ code {
 	background: var(--color-paper);
 }
 .download-section h2 {
-	margin-block: 24px;
+	margin-bottom: 24px;
 	font-size: var(--font-size-fluid-medium);
 }
 .download-description {
@@ -543,7 +543,7 @@ code {
 		padding-block: 88px 96px;
 	}
 	.features > h2 {
-		margin-block: 24px 48px;
+		margin-bottom: 48px;
 	}
 	.feature-card,
 	.feature-card:nth-of-type(even) {
