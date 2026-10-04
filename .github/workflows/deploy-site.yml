@@ -18,7 +18,6 @@ on:
     pull_request:
         paths:
             - 'apps/site/**'
-            - 'storybook/**'
             - 'packages/**'
             - 'README.md'
             - 'package.json'
@@ -64,10 +63,13 @@ jobs:
             - name: Build site
               run: pnpm build:site
 
+            # Visual Regression Test already builds Storybook for PRs.
             - name: Build Storybook
+              if: github.event_name != 'pull_request'
               run: pnpm build-storybook
 
             - name: Assemble Pages artifact
+              if: github.event_name != 'pull_request'
               run: node apps/site/scripts/assemble-pages.mjs
 
             - name: Setup Pages
