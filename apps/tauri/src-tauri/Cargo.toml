@@ -42,7 +42,7 @@ objc2-web-kit = { version = "0.3", features = ["WKWebView", "objc2-app-kit"] }
 # Prints the export window's WebView2 to PDF.
 [target.'cfg(windows)'.dependencies]
 webview2-com = "0.39"
-windows-core = "0.62"
+windows-core = "0.100"
 
 # Prints the export window's WebKitGTK web view to PDF.
 [target.'cfg(target_os = "linux")'.dependencies]
