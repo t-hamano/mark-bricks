@@ -28,6 +28,16 @@ updates:
           # Tauri crates are updated by the tauri multi-ecosystem group.
           - dependency-name: 'tauri'
           - dependency-name: 'tauri-*'
+          # pdf.rs passes WebView2 objects from wry between these crates, so
+          # they must stay on the versions wry depends on.
+          - dependency-name: 'webview2-com'
+            update-types:
+                - 'version-update:semver-major'
+                - 'version-update:semver-minor'
+          - dependency-name: 'windows-core'
+            update-types:
+                - 'version-update:semver-major'
+                - 'version-update:semver-minor'
 
     # Frontend/build dependencies.
     - package-ecosystem: npm
@@ -46,6 +56,12 @@ updates:
           - dependency-name: '@wordpress/*'
           # Tauri packages are updated by the tauri multi-ecosystem group.
           - dependency-name: '@tauri-apps/*'
+          # vsce refuses to package when @types/vscode is newer than
+          # engines.vscode, so it is updated together with the engine.
+          - dependency-name: '@types/vscode'
+            update-types:
+                - 'version-update:semver-major'
+                - 'version-update:semver-minor'
 
     # Tauri crates and npm packages.
     - package-ecosystem: cargo
