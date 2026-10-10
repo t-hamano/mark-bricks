@@ -8,13 +8,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T08:32:47.628Z\n"
-"PO-Revision-Date: 2026-10-03T08:32:50.980Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:57.530Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: ko_KR\n"
 "X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/actions/index.ts:308
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr "\"%s\"이(가) 디스크에서 변경되었습니다. 다시 불러와서 변경 사항을 버리시겠습니까, 아니면 현재 버전을 유지하시겠습니까?"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
@@ -105,7 +112,7 @@ msgid "Content width"
 msgstr "콘텐츠 너비"
 
 # %s: Error message.
-#: src/actions/index.ts:376
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "슬라이드 덱을 내보낼 수 없습니다: %s"
 
@@ -147,13 +154,13 @@ msgstr "편집기"
 msgid "Editor styles"
 msgstr "편집기 스타일"
 
-#: src/actions/index.ts:349
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "슬라이드 덱 내보내기"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:390
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "슬라이드 덱을 %s(으)로 내보냈습니다."
 
@@ -164,6 +171,10 @@ msgstr "슬라이드 덱을 내보내는 중…"
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "파일 연결"
+
+#: src/actions/index.ts:315
+msgid "File changed"
+msgstr "파일이 변경됨"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
 msgid "File shortcuts"
@@ -194,7 +205,7 @@ msgstr "일반"
 msgid "Global shortcuts"
 msgstr "전역 단축키"
 
-#: src/actions/index.ts:369
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "HTML 슬라이드 덱"
 
@@ -221,6 +232,10 @@ msgstr "HTTP URL의 이미지는 표시할 수 없습니다. 대신 HTTPS URL을
 #: src/platform/index.ts:90
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "상대 경로의 이미지는 문서를 저장하면 표시됩니다."
+
+#: src/actions/index.ts:318
+msgid "Keep my version"
+msgstr "현재 버전 유지"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:346
@@ -303,7 +318,7 @@ msgstr "열기…"
 msgid "Options"
 msgstr "옵션"
 
-#: src/actions/index.ts:370
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "PDF 슬라이드 덱"
 
@@ -319,6 +334,10 @@ msgstr "환경설정"
 #: src/components/header-actions/index.tsx:120
 msgid "Preview Slides"
 msgstr "슬라이드 미리 보기"
+
+#: src/actions/index.ts:317
+msgid "Reload"
+msgstr "다시 불러오기"
 
 #: src/components/header-actions/index.tsx:383
 msgid "Remove"
@@ -395,7 +414,7 @@ msgstr "블록 이동 경로 표시"
 msgid "Show line numbers"
 msgstr "줄 번호 표시"
 
-#: src/actions/index.ts:404
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "슬라이드 미리 보기"
 

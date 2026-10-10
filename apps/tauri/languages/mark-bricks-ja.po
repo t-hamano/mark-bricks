@@ -8,13 +8,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T08:32:47.628Z\n"
-"PO-Revision-Date: 2026-10-03T08:32:50.518Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:55.169Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: ja\n"
 "X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/actions/index.ts:308
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr "「%s」がディスク上で変更されました。再読み込みして変更を破棄しますか？それとも現在の内容を保持しますか？"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
@@ -105,7 +112,7 @@ msgid "Content width"
 msgstr "コンテンツ幅"
 
 # %s: Error message.
-#: src/actions/index.ts:376
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "スライドデッキをエクスポートできませんでした: %s"
 
@@ -147,13 +154,13 @@ msgstr "エディター"
 msgid "Editor styles"
 msgstr "エディタースタイル"
 
-#: src/actions/index.ts:349
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "スライドデッキをエクスポート"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:390
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "スライドデッキを %s にエクスポートしました。"
 
@@ -164,6 +171,10 @@ msgstr "スライドデッキをエクスポートしています…"
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "ファイルの関連付け"
+
+#: src/actions/index.ts:315
+msgid "File changed"
+msgstr "ファイルが変更されました"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
 msgid "File shortcuts"
@@ -194,7 +205,7 @@ msgstr "一般"
 msgid "Global shortcuts"
 msgstr "グローバルショートカット"
 
-#: src/actions/index.ts:369
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "HTML スライドデッキ"
 
@@ -221,6 +232,10 @@ msgstr "HTTP の URL の画像は表示できません。HTTPS の URL を使用
 #: src/platform/index.ts:90
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "相対パスの画像は、文書を保存すると表示されます。"
+
+#: src/actions/index.ts:318
+msgid "Keep my version"
+msgstr "現在の内容を保持"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:346
@@ -303,7 +318,7 @@ msgstr "開く…"
 msgid "Options"
 msgstr "オプション"
 
-#: src/actions/index.ts:370
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "PDF スライドデッキ"
 
@@ -319,6 +334,10 @@ msgstr "設定"
 #: src/components/header-actions/index.tsx:120
 msgid "Preview Slides"
 msgstr "スライドをプレビュー"
+
+#: src/actions/index.ts:317
+msgid "Reload"
+msgstr "再読み込み"
 
 #: src/components/header-actions/index.tsx:383
 msgid "Remove"
@@ -395,7 +414,7 @@ msgstr "ブロックのパンくずリストを表示"
 msgid "Show line numbers"
 msgstr "行番号を表示"
 
-#: src/actions/index.ts:404
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "スライドプレビュー"
 

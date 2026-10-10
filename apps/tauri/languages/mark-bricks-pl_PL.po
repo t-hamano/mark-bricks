@@ -8,13 +8,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T08:32:47.628Z\n"
-"PO-Revision-Date: 2026-10-03T08:32:51.437Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:57.959Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: pl_PL\n"
 "X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/actions/index.ts:308
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr ""
+"„%s” został zmieniony na dysku. Czy wczytać go ponownie i odrzucić zmiany, "
+"czy zachować swoją wersję?"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
@@ -107,7 +116,7 @@ msgid "Content width"
 msgstr "Szerokość treści"
 
 # %s: Error message.
-#: src/actions/index.ts:376
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "Nie udało się wyeksportować prezentacji: %s"
 
@@ -149,13 +158,13 @@ msgstr "Edytor"
 msgid "Editor styles"
 msgstr "Style edytora"
 
-#: src/actions/index.ts:349
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "Eksportuj prezentację"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:390
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "Wyeksportowano prezentację do %s."
 
@@ -166,6 +175,10 @@ msgstr "Eksportowanie prezentacji…"
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "Skojarzenia plików"
+
+#: src/actions/index.ts:315
+msgid "File changed"
+msgstr "Plik został zmieniony"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
 msgid "File shortcuts"
@@ -196,7 +209,7 @@ msgstr "Ogólne"
 msgid "Global shortcuts"
 msgstr "Globalne skróty"
 
-#: src/actions/index.ts:369
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "Prezentacja HTML"
 
@@ -223,6 +236,10 @@ msgstr "Nie można wyświetlić obrazów z adresów URL HTTP. Użyj adresu URL H
 #: src/platform/index.ts:90
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Obrazy ze ścieżkami względnymi są wyświetlane po zapisaniu dokumentu."
+
+#: src/actions/index.ts:318
+msgid "Keep my version"
+msgstr "Zachowaj moją wersję"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:346
@@ -305,7 +322,7 @@ msgstr "Otwórz…"
 msgid "Options"
 msgstr "Opcje"
 
-#: src/actions/index.ts:370
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "Prezentacja PDF"
 
@@ -321,6 +338,10 @@ msgstr "Preferencje"
 #: src/components/header-actions/index.tsx:120
 msgid "Preview Slides"
 msgstr "Wyświetl podgląd slajdów"
+
+#: src/actions/index.ts:317
+msgid "Reload"
+msgstr "Wczytaj ponownie"
 
 #: src/components/header-actions/index.tsx:383
 msgid "Remove"
@@ -397,7 +418,7 @@ msgstr "Pokaż blok okruszków"
 msgid "Show line numbers"
 msgstr "Pokaż numery wierszy"
 
-#: src/actions/index.ts:404
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "Podgląd slajdów"
 

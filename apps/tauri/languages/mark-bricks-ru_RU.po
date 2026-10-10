@@ -8,13 +8,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T08:32:47.628Z\n"
-"PO-Revision-Date: 2026-10-03T08:32:52.402Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:58.761Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: ru_RU\n"
 "X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/actions/index.ts:308
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr ""
+"Файл «%s» изменен на диске. Перезагрузить его и отбросить ваши изменения "
+"или сохранить вашу версию?"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
@@ -105,7 +114,7 @@ msgid "Content width"
 msgstr "Ширина содержимого"
 
 # %s: Error message.
-#: src/actions/index.ts:376
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "Не удалось экспортировать презентацию: %s"
 
@@ -149,13 +158,13 @@ msgstr "Редактор"
 msgid "Editor styles"
 msgstr "Стили редактора"
 
-#: src/actions/index.ts:349
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "Экспорт презентации"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:390
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "Презентация экспортирована в %s."
 
@@ -166,6 +175,10 @@ msgstr "Экспорт презентации…"
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "Сопоставления файлов"
+
+#: src/actions/index.ts:315
+msgid "File changed"
+msgstr "Файл изменен"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
 msgid "File shortcuts"
@@ -196,7 +209,7 @@ msgstr "Общие"
 msgid "Global shortcuts"
 msgstr "Горячие клавиши (общие)"
 
-#: src/actions/index.ts:369
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "Презентация HTML"
 
@@ -223,6 +236,10 @@ msgstr "Изображения по HTTP-адресам не отображаю�
 #: src/platform/index.ts:90
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Изображения с относительными путями отображаются после сохранения документа."
+
+#: src/actions/index.ts:318
+msgid "Keep my version"
+msgstr "Сохранить мою версию"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:346
@@ -305,7 +322,7 @@ msgstr "Открыть…"
 msgid "Options"
 msgstr "Параметры"
 
-#: src/actions/index.ts:370
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "Презентация PDF"
 
@@ -321,6 +338,10 @@ msgstr "Предпочтения"
 #: src/components/header-actions/index.tsx:120
 msgid "Preview Slides"
 msgstr "Просмотр слайдов"
+
+#: src/actions/index.ts:317
+msgid "Reload"
+msgstr "Перезагрузить"
 
 #: src/components/header-actions/index.tsx:383
 msgid "Remove"
@@ -397,7 +418,7 @@ msgstr "Показать блок \"хлебных крошек\""
 msgid "Show line numbers"
 msgstr "Показывать номера строк"
 
-#: src/actions/index.ts:404
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "Предпросмотр слайдов"
 

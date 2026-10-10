@@ -33,6 +33,7 @@ import PreferencesModal from '../preferences-modal';
 import Tabbar from '../tabbar';
 import useAppCloseGuard from '../../hooks/use-app-close-guard';
 import useAutoUpdater from '../../hooks/use-auto-updater';
+import useDocumentChangeEvents from '../../hooks/use-document-change-events';
 import useEditorFlush from '../../hooks/use-editor-flush';
 import useFileOpenEvents from '../../hooks/use-file-open-events';
 import usePreviewSync from '../../hooks/use-preview-sync';
@@ -50,6 +51,7 @@ export function App() {
 	useShortcuts();
 	useAutoUpdater();
 	useFileOpenEvents();
+	useDocumentChangeEvents();
 
 	const [ appName, setAppName ] = useState< string >( '' );
 	const [ appVersion, setAppVersion ] = useState< string >( '' );

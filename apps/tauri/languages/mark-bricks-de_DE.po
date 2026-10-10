@@ -8,13 +8,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T08:32:47.628Z\n"
-"PO-Revision-Date: 2026-10-03T08:32:48.727Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:55.892Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: de_DE\n"
 "X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/actions/index.ts:308
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr ""
+"„%s“ wurde auf dem Datenträger geändert. Möchten Sie die Datei neu laden "
+"und Ihre Änderungen verwerfen oder Ihre Version behalten?"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
@@ -107,7 +116,7 @@ msgid "Content width"
 msgstr "Inhaltsbreite"
 
 # %s: Error message.
-#: src/actions/index.ts:376
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "Der Foliensatz konnte nicht exportiert werden: %s"
 
@@ -151,13 +160,13 @@ msgstr "Editor"
 msgid "Editor styles"
 msgstr "Editor-Stile"
 
-#: src/actions/index.ts:349
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "Foliensatz exportieren"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:390
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "Der Foliensatz wurde nach %s exportiert."
 
@@ -168,6 +177,10 @@ msgstr "Foliensatz wird exportiert…"
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "Dateizuordnungen"
+
+#: src/actions/index.ts:315
+msgid "File changed"
+msgstr "Datei geändert"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
 msgid "File shortcuts"
@@ -198,7 +211,7 @@ msgstr "Allgemein"
 msgid "Global shortcuts"
 msgstr "Globale Tastaturbefehle"
 
-#: src/actions/index.ts:369
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "HTML-Foliensatz"
 
@@ -229,6 +242,10 @@ msgid "Images with relative paths are displayed once the document is saved."
 msgstr ""
 "Bilder mit relativen Pfaden werden angezeigt, sobald das Dokument "
 "gespeichert ist."
+
+#: src/actions/index.ts:318
+msgid "Keep my version"
+msgstr "Meine Version behalten"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:346
@@ -311,7 +328,7 @@ msgstr "Öffnen…"
 msgid "Options"
 msgstr "Optionen"
 
-#: src/actions/index.ts:370
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "PDF-Foliensatz"
 
@@ -327,6 +344,10 @@ msgstr "Voreinstellungen"
 #: src/components/header-actions/index.tsx:120
 msgid "Preview Slides"
 msgstr "Folienvorschau anzeigen"
+
+#: src/actions/index.ts:317
+msgid "Reload"
+msgstr "Neu laden"
 
 #: src/components/header-actions/index.tsx:383
 msgid "Remove"
@@ -403,7 +424,7 @@ msgstr "Block-Breadcrumbs anzeigen"
 msgid "Show line numbers"
 msgstr "Zeilennummern anzeigen"
 
-#: src/actions/index.ts:404
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "Folienvorschau"
 
