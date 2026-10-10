@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-10T12:26:51.271Z\n"
-"PO-Revision-Date: 2026-10-10T12:26:51.926Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:55.169Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/actions/index.ts:279
+#: src/actions/index.ts:308
 msgid ""
 "\"%s\" changed on disk. Reload it and discard your changes, or keep your "
 "version?"
@@ -112,7 +112,7 @@ msgid "Content width"
 msgstr "コンテンツ幅"
 
 # %s: Error message.
-#: src/actions/index.ts:454
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "スライドデッキをエクスポートできませんでした: %s"
 
@@ -154,13 +154,13 @@ msgstr "エディター"
 msgid "Editor styles"
 msgstr "エディタースタイル"
 
-#: src/actions/index.ts:427
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "スライドデッキをエクスポート"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:468
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "スライドデッキを %s にエクスポートしました。"
 
@@ -172,7 +172,7 @@ msgstr "スライドデッキをエクスポートしています…"
 msgid "File associations"
 msgstr "ファイルの関連付け"
 
-#: src/actions/index.ts:286
+#: src/actions/index.ts:315
 msgid "File changed"
 msgstr "ファイルが変更されました"
 
@@ -205,7 +205,7 @@ msgstr "一般"
 msgid "Global shortcuts"
 msgstr "グローバルショートカット"
 
-#: src/actions/index.ts:447
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "HTML スライドデッキ"
 
@@ -233,7 +233,7 @@ msgstr "HTTP の URL の画像は表示できません。HTTPS の URL を使用
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "相対パスの画像は、文書を保存すると表示されます。"
 
-#: src/actions/index.ts:289
+#: src/actions/index.ts:318
 msgid "Keep my version"
 msgstr "現在の内容を保持"
 
@@ -318,7 +318,7 @@ msgstr "開く…"
 msgid "Options"
 msgstr "オプション"
 
-#: src/actions/index.ts:448
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "PDF スライドデッキ"
 
@@ -335,7 +335,7 @@ msgstr "設定"
 msgid "Preview Slides"
 msgstr "スライドをプレビュー"
 
-#: src/actions/index.ts:288
+#: src/actions/index.ts:317
 msgid "Reload"
 msgstr "再読み込み"
 
@@ -414,7 +414,7 @@ msgstr "ブロックのパンくずリストを表示"
 msgid "Show line numbers"
 msgstr "行番号を表示"
 
-#: src/actions/index.ts:482
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "スライドプレビュー"
 

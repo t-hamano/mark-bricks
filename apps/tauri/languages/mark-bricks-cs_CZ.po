@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-10T12:26:51.271Z\n"
-"PO-Revision-Date: 2026-10-10T12:26:56.815Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:55.527Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/actions/index.ts:279
+#: src/actions/index.ts:308
 msgid ""
 "\"%s\" changed on disk. Reload it and discard your changes, or keep your "
 "version?"
@@ -114,7 +114,7 @@ msgid "Content width"
 msgstr "Šířka obsahu"
 
 # %s: Error message.
-#: src/actions/index.ts:454
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "Prezentaci se nepodařilo exportovat: %s"
 
@@ -156,13 +156,13 @@ msgstr "Editor"
 msgid "Editor styles"
 msgstr "Styly editoru"
 
-#: src/actions/index.ts:427
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "Exportovat prezentaci"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:468
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "Prezentace byla exportována do %s."
 
@@ -174,7 +174,7 @@ msgstr "Exportuje se prezentace…"
 msgid "File associations"
 msgstr "Přidružení souborů"
 
-#: src/actions/index.ts:286
+#: src/actions/index.ts:315
 msgid "File changed"
 msgstr "Soubor byl změněn"
 
@@ -207,7 +207,7 @@ msgstr "Obecné"
 msgid "Global shortcuts"
 msgstr "Obecné zkratky"
 
-#: src/actions/index.ts:447
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "Prezentace HTML"
 
@@ -237,7 +237,7 @@ msgstr ""
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Obrázky s relativními cestami se zobrazí po uložení dokumentu."
 
-#: src/actions/index.ts:289
+#: src/actions/index.ts:318
 msgid "Keep my version"
 msgstr "Ponechat moji verzi"
 
@@ -322,7 +322,7 @@ msgstr "Otevřít…"
 msgid "Options"
 msgstr "Možnosti"
 
-#: src/actions/index.ts:448
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "Prezentace PDF"
 
@@ -339,7 +339,7 @@ msgstr "Předvolby"
 msgid "Preview Slides"
 msgstr "Zobrazit náhled snímků"
 
-#: src/actions/index.ts:288
+#: src/actions/index.ts:317
 msgid "Reload"
 msgstr "Znovu načíst"
 
@@ -418,7 +418,7 @@ msgstr "Zobrazit navigační lištu"
 msgid "Show line numbers"
 msgstr "Zobrazit čísla řádků"
 
-#: src/actions/index.ts:482
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "Náhled snímků"
 

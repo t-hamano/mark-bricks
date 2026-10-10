@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-10T12:26:51.271Z\n"
-"PO-Revision-Date: 2026-10-10T12:27:01.071Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:59.147Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/actions/index.ts:279
+#: src/actions/index.ts:308
 msgid ""
 "\"%s\" changed on disk. Reload it and discard your changes, or keep your "
 "version?"
@@ -116,7 +116,7 @@ msgid "Content width"
 msgstr "İçerik genişliği"
 
 # %s: Error message.
-#: src/actions/index.ts:454
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "Slayt destesi dışa aktarılamadı: %s"
 
@@ -160,13 +160,13 @@ msgstr "Düzenleyici"
 msgid "Editor styles"
 msgstr "Düzenleyici stilleri"
 
-#: src/actions/index.ts:427
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "Slayt destesini dışa aktar"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:468
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "Slayt destesi %s olarak dışa aktarıldı."
 
@@ -178,7 +178,7 @@ msgstr "Slayt destesi dışa aktarılıyor…"
 msgid "File associations"
 msgstr "Dosya ilişkilendirmeleri"
 
-#: src/actions/index.ts:286
+#: src/actions/index.ts:315
 msgid "File changed"
 msgstr "Dosya değişti"
 
@@ -211,7 +211,7 @@ msgstr "Genel"
 msgid "Global shortcuts"
 msgstr "Genel kısayollar"
 
-#: src/actions/index.ts:447
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "HTML slayt destesi"
 
@@ -241,7 +241,7 @@ msgstr ""
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Göreli yollara sahip görseller, belge kaydedildikten sonra görüntülenir."
 
-#: src/actions/index.ts:289
+#: src/actions/index.ts:318
 msgid "Keep my version"
 msgstr "Benim sürümümü koru"
 
@@ -326,7 +326,7 @@ msgstr "Aç…"
 msgid "Options"
 msgstr "Seçenekler"
 
-#: src/actions/index.ts:448
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "PDF slayt destesi"
 
@@ -343,7 +343,7 @@ msgstr "Tercihler"
 msgid "Preview Slides"
 msgstr "Slaytları önizle"
 
-#: src/actions/index.ts:288
+#: src/actions/index.ts:317
 msgid "Reload"
 msgstr "Yeniden yükle"
 
@@ -422,7 +422,7 @@ msgstr "Blok sayfa yollarını görüntüle"
 msgid "Show line numbers"
 msgstr "Satır numaralarını göster"
 
-#: src/actions/index.ts:482
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "Slayt önizlemesi"
 

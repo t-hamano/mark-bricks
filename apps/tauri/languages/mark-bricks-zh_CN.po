@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-10T12:26:51.271Z\n"
-"PO-Revision-Date: 2026-10-10T12:27:01.535Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:59.573Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/actions/index.ts:279
+#: src/actions/index.ts:308
 msgid ""
 "\"%s\" changed on disk. Reload it and discard your changes, or keep your "
 "version?"
@@ -112,7 +112,7 @@ msgid "Content width"
 msgstr "内容宽度"
 
 # %s: Error message.
-#: src/actions/index.ts:454
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "无法导出幻灯片: %s"
 
@@ -154,13 +154,13 @@ msgstr "编辑器"
 msgid "Editor styles"
 msgstr "编辑器样式"
 
-#: src/actions/index.ts:427
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "导出幻灯片"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:468
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "已将幻灯片导出到 %s。"
 
@@ -172,7 +172,7 @@ msgstr "正在导出幻灯片…"
 msgid "File associations"
 msgstr "文件关联"
 
-#: src/actions/index.ts:286
+#: src/actions/index.ts:315
 msgid "File changed"
 msgstr "文件已更改"
 
@@ -205,7 +205,7 @@ msgstr "常规"
 msgid "Global shortcuts"
 msgstr "全局快捷键"
 
-#: src/actions/index.ts:447
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "HTML 幻灯片"
 
@@ -233,7 +233,7 @@ msgstr "无法显示来自 HTTP URL 的图片。请改用 HTTPS URL。"
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "使用相对路径的图片将在文档保存后显示。"
 
-#: src/actions/index.ts:289
+#: src/actions/index.ts:318
 msgid "Keep my version"
 msgstr "保留我的版本"
 
@@ -318,7 +318,7 @@ msgstr "打开…"
 msgid "Options"
 msgstr "选项"
 
-#: src/actions/index.ts:448
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "PDF 幻灯片"
 
@@ -335,7 +335,7 @@ msgstr "偏好设置"
 msgid "Preview Slides"
 msgstr "预览幻灯片"
 
-#: src/actions/index.ts:288
+#: src/actions/index.ts:317
 msgid "Reload"
 msgstr "重新加载"
 
@@ -414,7 +414,7 @@ msgstr "显示区块面包屑"
 msgid "Show line numbers"
 msgstr "显示行号"
 
-#: src/actions/index.ts:482
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "幻灯片预览"
 

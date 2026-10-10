@@ -30,6 +30,7 @@ pub struct OpenedDocument {
 #[serde(tag = "code", content = "message", rename_all = "snake_case")]
 pub enum WriteError {
     SaveAsRequired,
+    ChangedOnDisk,
     Other(String),
 }
 
@@ -55,6 +56,9 @@ impl From<WriteError> for String {
             WriteError::SaveAsRequired => {
                 "The file is missing or has been replaced. Use Save As.".into()
             }
+            WriteError::ChangedOnDisk => {
+                "The file changed on disk. Reload it or keep your version first.".into()
+            }
             WriteError::Other(message) => message,
         }
     }
@@ -62,11 +66,13 @@ impl From<WriteError> for String {
 
 /// An outside change to an open document's file, sent to the frontend as the
 /// `document-changed` event. `contents` is `None` when the file was deleted
-/// or moved away.
+/// or moved away. Saves are rejected until the frontend acknowledges the
+/// change's `revision`.
 #[derive(Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct DocumentChange {
     pub document_id: String,
+    pub revision: u64,
     pub contents: Option<String>,
 }
 
@@ -88,6 +94,12 @@ struct Document {
     contents_hash: Option<u64>,
     /// Whether the watcher has reported the file as deleted or moved away.
     missing: bool,
+    /// Counts the changes reported to the frontend.
+    revision: u64,
+    /// Whether the frontend has yet to acknowledge the last reported change.
+    /// Saves wait for it, so a save requested before the user saw the change
+    /// cannot overwrite it.
+    unacknowledged: bool,
     #[cfg(test)]
     after_sync: Option<Box<dyn FnOnce() + Send>>,
 }
@@ -147,6 +159,8 @@ impl Document {
             references: 1,
             contents_hash: None,
             missing: false,
+            revision: 0,
+            unacknowledged: false,
             #[cfg(test)]
             after_sync: None,
         };
@@ -229,6 +243,9 @@ impl Document {
     }
 
     fn write(&mut self, contents: &str) -> Result<(), WriteError> {
+        if self.unacknowledged {
+            return Err(WriteError::ChangedOnDisk);
+        }
         self.validate_identity()?;
         if !self.writable {
             // Permissions or sharing locks may have changed since opening.
@@ -287,7 +304,7 @@ impl Document {
                 (was_missing || self.contents_hash != previous).then_some(Some(contents))
             }
             Err(WriteError::SaveAsRequired) => self.rebind(),
-            Err(WriteError::Other(_)) => None,
+            Err(_) => None,
         }
     }
 
@@ -326,16 +343,25 @@ pub struct DocumentWatcher {
 
 impl DocumentWatcher {
     fn sync(&mut self, directories: HashSet<PathBuf>) {
-        for directory in self.directories.difference(&directories) {
-            let _ = self.debouncer.watcher().unwatch(directory);
+        let debouncer = &mut self.debouncer;
+        self.directories.retain(|directory| {
+            directories.contains(directory) || {
+                let _ = debouncer.watcher().unwatch(directory);
+                false
+            }
+        });
+        // Record only the watches that succeeded, so a directory the OS
+        // refused (e.g. at its watch limit) is retried on the next sync.
+        for directory in directories {
+            if !self.directories.contains(&directory)
+                && debouncer
+                    .watcher()
+                    .watch(&directory, RecursiveMode::NonRecursive)
+                    .is_ok()
+            {
+                self.directories.insert(directory);
+            }
         }
-        for directory in directories.difference(&self.directories) {
-            let _ = self
-                .debouncer
-                .watcher()
-                .watch(directory, RecursiveMode::NonRecursive);
-        }
-        self.directories = directories;
     }
 }
 
@@ -430,12 +456,26 @@ impl DocumentRegistry {
                     .is_some_and(|directory| directories.contains(directory))
             })
             .filter_map(|(id, document)| {
-                document.refresh().map(|contents| DocumentChange {
+                let contents = document.refresh()?;
+                document.revision += 1;
+                document.unacknowledged = true;
+                Some(DocumentChange {
                     document_id: id.clone(),
+                    revision: document.revision,
                     contents,
                 })
             })
             .collect()
+    }
+
+    /// Lets saves through again once the frontend has handled the change
+    /// `revision`. Acknowledging an older change keeps a newer one pending.
+    fn acknowledge(&mut self, id: &str, revision: u64) {
+        if let Some(document) = self.documents.get_mut(id) {
+            if document.revision == revision {
+                document.unacknowledged = false;
+            }
+        }
     }
 
     pub fn open_selected(&mut self, path: &Path) -> Result<OpenedDocument, String> {
@@ -589,6 +629,19 @@ pub async fn write_document(
 ) -> Result<(), WriteError> {
     with_documents(state.inner().clone(), move |registry| {
         registry.write(&document_id, &contents)
+    })
+    .await
+}
+
+#[tauri::command]
+pub async fn acknowledge_document_change(
+    state: State<'_, Documents>,
+    document_id: String,
+    revision: u64,
+) -> Result<(), String> {
+    with_documents(state.inner().clone(), move |registry| {
+        registry.acknowledge(&document_id, revision);
+        Ok(())
     })
     .await
 }
@@ -972,6 +1025,33 @@ mod tests {
             .collect()
     }
 
+    /// Acknowledges the last change reported for `id`, as the frontend does.
+    fn acknowledge(registry: &mut DocumentRegistry, id: &str) {
+        let revision = registry.documents[id].revision;
+        registry.acknowledge(id, revision);
+    }
+
+    #[test]
+    fn saves_wait_until_the_latest_change_is_acknowledged() {
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let mut registry = DocumentRegistry::default();
+        let id = registry.open_selected(&path).unwrap().info.document_id;
+        let temporary = dir.file("selected.md.tmp", "replaced");
+        std::fs::rename(&temporary, &path).unwrap();
+        assert_eq!(changes(&mut registry, &path).len(), 1);
+        // A save requested before the user saw the change cannot overwrite it.
+        assert_eq!(registry.write(&id, "stale"), Err(WriteError::ChangedOnDisk));
+        std::fs::write(&path, "again").unwrap();
+        assert_eq!(changes(&mut registry, &path).len(), 1);
+        registry.acknowledge(&id, 1);
+        assert_eq!(registry.write(&id, "stale"), Err(WriteError::ChangedOnDisk));
+        assert_eq!(std::fs::read_to_string(&path).unwrap(), "again");
+        registry.acknowledge(&id, 2);
+        registry.write(&id, "kept").unwrap();
+        assert_eq!(std::fs::read_to_string(&path).unwrap(), "kept");
+    }
+
     #[test]
     fn own_saves_and_unchanged_contents_are_not_reported() {
         let dir = TestDirectory::new();
@@ -1016,6 +1096,7 @@ mod tests {
             changes(&mut registry, &path),
             [(id.clone(), Some("replaced".into()))]
         );
+        acknowledge(&mut registry, &id);
         registry.write(&id, "edited").unwrap();
         assert_eq!(std::fs::read_to_string(&path).unwrap(), "edited");
         // An identical replacement rebinds without reporting a change.
@@ -1035,6 +1116,7 @@ mod tests {
         std::fs::remove_file(&path).unwrap();
         assert_eq!(changes(&mut registry, &path), [(id.clone(), None)]);
         assert!(changes(&mut registry, &path).is_empty());
+        acknowledge(&mut registry, &id);
         assert_eq!(
             registry.write(&id, "unsaved edits"),
             Err(WriteError::SaveAsRequired)
@@ -1046,8 +1128,26 @@ mod tests {
             changes(&mut registry, &path),
             [(id.clone(), Some("original".into()))]
         );
+        acknowledge(&mut registry, &id);
         registry.write(&id, "edited").unwrap();
         assert_eq!(std::fs::read_to_string(&path).unwrap(), "edited");
+    }
+
+    #[test]
+    fn directories_that_cannot_be_watched_are_retried() {
+        let dir = TestDirectory::new();
+        let later = dir.0.join("later");
+        let mut watcher = DocumentWatcher {
+            debouncer: new_debouncer(Duration::from_millis(300), |_| {}).unwrap(),
+            directories: HashSet::new(),
+        };
+        watcher.sync(HashSet::from([later.clone()]));
+        assert!(watcher.directories.is_empty());
+        std::fs::create_dir(&later).unwrap();
+        watcher.sync(HashSet::from([later.clone()]));
+        assert_eq!(watcher.directories, HashSet::from([later]));
+        watcher.sync(HashSet::new());
+        assert!(watcher.directories.is_empty());
     }
 
     #[test]
@@ -1074,7 +1174,10 @@ mod tests {
         let temporary = dir.file("selected.md.tmp", "replaced");
         std::fs::rename(&temporary, &path).unwrap();
         assert_eq!(next(), (id.clone(), Some("replaced".into())));
-        documents.lock().unwrap().write(&id, "saved").unwrap();
+        let mut registry = documents.lock().unwrap();
+        acknowledge(&mut registry, &id);
+        registry.write(&id, "saved").unwrap();
+        drop(registry);
         std::fs::remove_file(&path).unwrap();
         // Our own save is skipped, so the deletion is the next change.
         assert_eq!(next(), (id.clone(), None));
@@ -1118,6 +1221,10 @@ mod tests {
         assert_eq!(
             serde_json::to_value(WriteError::SaveAsRequired).unwrap(),
             serde_json::json!({ "code": "save_as_required" })
+        );
+        assert_eq!(
+            serde_json::to_value(WriteError::ChangedOnDisk).unwrap(),
+            serde_json::json!({ "code": "changed_on_disk" })
         );
         assert!(matches!(
             WriteError::from_path_error(std::io::ErrorKind::PermissionDenied.into()),

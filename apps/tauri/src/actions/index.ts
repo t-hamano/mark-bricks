@@ -153,12 +153,16 @@ async function saveTabNow( id: string ) {
 				contents: tab.content,
 			} );
 		} catch ( error ) {
-			if (
-				typeof error === 'object' &&
-				error !== null &&
-				'code' in error &&
-				error.code === 'save_as_required'
-			) {
+			const code =
+				typeof error === 'object' && error !== null && 'code' in error
+					? error.code
+					: null;
+			// The file changed on disk after this save was requested. The
+			// change's prompt follows; keep the edits until it is answered.
+			if ( code === 'changed_on_disk' ) {
+				return false;
+			}
+			if ( code === 'save_as_required' ) {
 				const current = select( tabsStore )
 					.getTabs()
 					.find( ( t ) => t.id === id );
@@ -226,12 +230,14 @@ async function saveTabAsNow( id: string ) {
 
 export type DocumentChange = {
 	documentId: string;
+	// Saves fail until this change is acknowledged.
+	revision: number;
 	// `null` when the file was deleted or moved away.
 	contents: string | null;
 };
 
-// The latest outside contents of each document whose reload prompt is open.
-const reloadPrompts = new Map< string, string >();
+// The latest change to each document whose reload prompt is open.
+const reloadPrompts = new Map< string, DocumentChange >();
 
 function findDocumentTab( documentId: string ) {
 	return select( tabsStore )
@@ -239,15 +245,12 @@ function findDocumentTab( documentId: string ) {
 		.find( ( t ) => t.documentId === documentId );
 }
 
-/**
- * Applies a change made to an open document's file outside the app. A tab
- * without unsaved changes reloads; a tab with them asks the user first.
- *
- * @param change The change the native watcher reported.
- */
-export async function handleDocumentChange( change: DocumentChange ) {
-	const { documentId, contents } = change;
-	flushPendingEdits();
+// Updates the document's tab for `change`, replacing unsaved changes only
+// when `reload` is set.
+function applyDocumentChange(
+	{ documentId, contents }: DocumentChange,
+	reload: boolean
+) {
 	const tab = findDocumentTab( documentId );
 
 	if ( ! tab ) {
@@ -256,50 +259,75 @@ export async function handleDocumentChange( change: DocumentChange ) {
 	if ( contents === null ) {
 		// Keep the contents; the next save falls through to Save As.
 		dispatch( tabsStore ).setTabDirty( tab.id, true );
-		return;
-	}
-	if ( tab.content === contents ) {
+	} else if ( tab.content === contents ) {
 		dispatch( tabsStore ).setTabDirty( tab.id, false );
-		return;
-	}
-	if ( ! tab.isDirty ) {
+	} else if ( reload ) {
 		dispatch( tabsStore ).setTabContent( tab.id, contents );
-		return;
+		dispatch( tabsStore ).setTabDirty( tab.id, false );
 	}
+}
+
+// Lets saves reach the file again. Queued with the tab's saves, so a save
+// requested after the change was handled waits for it.
+function acknowledgeDocumentChange( { documentId, revision }: DocumentChange ) {
+	const acknowledge = () =>
+		invoke( 'acknowledge_document_change', { documentId, revision } ).then(
+			() => true
+		);
+	const tab = findDocumentTab( documentId );
+	return tab ? enqueueSave( tab.id, acknowledge ) : acknowledge();
+}
+
+/**
+ * Applies a change made to an open document's file outside the app. A tab
+ * without unsaved changes reloads; a tab with them asks the user first.
+ * Keeping their version leaves the tab dirty, so the next save writes it over
+ * the outside change.
+ *
+ * @param change The change the native watcher reported.
+ */
+export async function handleDocumentChange( change: DocumentChange ) {
+	const { documentId, contents } = change;
+
 	if ( reloadPrompts.has( documentId ) ) {
-		reloadPrompts.set( documentId, contents );
+		// The open prompt applies the latest change once answered.
+		reloadPrompts.set( documentId, change );
 		return;
 	}
 
-	reloadPrompts.set( documentId, contents );
-	try {
-		const reload = await ask(
-			sprintf(
-				/* translators: %s: tab title. */
-				__(
-					'"%s" changed on disk. Reload it and discard your changes, or keep your version?',
-					'mark-bricks'
+	flushPendingEdits();
+	const tab = findDocumentTab( documentId );
+	let latest = change;
+
+	if ( tab?.isDirty && contents !== null && contents !== tab.content ) {
+		reloadPrompts.set( documentId, change );
+		try {
+			const reload = await ask(
+				sprintf(
+					/* translators: %s: tab title. */
+					__(
+						'"%s" changed on disk. Reload it and discard your changes, or keep your version?',
+						'mark-bricks'
+					),
+					tab.title
 				),
-				tab.title
-			),
-			{
-				title: __( 'File changed', 'mark-bricks' ),
-				kind: 'warning',
-				okLabel: __( 'Reload', 'mark-bricks' ),
-				cancelLabel: __( 'Keep my version', 'mark-bricks' ),
-			}
-		);
-		const current = findDocumentTab( documentId );
-		const latest = reloadPrompts.get( documentId );
-		// Keeping their version leaves the tab dirty, so the next save
-		// writes it over the outside change.
-		if ( reload && current && latest !== undefined ) {
-			dispatch( tabsStore ).setTabContent( current.id, latest );
-			dispatch( tabsStore ).setTabDirty( current.id, false );
+				{
+					title: __( 'File changed', 'mark-bricks' ),
+					kind: 'warning',
+					okLabel: __( 'Reload', 'mark-bricks' ),
+					cancelLabel: __( 'Keep my version', 'mark-bricks' ),
+				}
+			);
+			latest = reloadPrompts.get( documentId ) ?? change;
+			applyDocumentChange( latest, reload );
+		} finally {
+			reloadPrompts.delete( documentId );
 		}
-	} finally {
-		reloadPrompts.delete( documentId );
+	} else {
+		applyDocumentChange( change, true );
 	}
+
+	await acknowledgeDocumentChange( latest );
 }
 
 export function requestCloseActiveTab() {

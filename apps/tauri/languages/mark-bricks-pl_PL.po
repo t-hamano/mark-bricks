@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-10T12:26:51.271Z\n"
-"PO-Revision-Date: 2026-10-10T12:26:59.583Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:57.959Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/actions/index.ts:279
+#: src/actions/index.ts:308
 msgid ""
 "\"%s\" changed on disk. Reload it and discard your changes, or keep your "
 "version?"
@@ -116,7 +116,7 @@ msgid "Content width"
 msgstr "Szerokość treści"
 
 # %s: Error message.
-#: src/actions/index.ts:454
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "Nie udało się wyeksportować prezentacji: %s"
 
@@ -158,13 +158,13 @@ msgstr "Edytor"
 msgid "Editor styles"
 msgstr "Style edytora"
 
-#: src/actions/index.ts:427
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "Eksportuj prezentację"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:468
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "Wyeksportowano prezentację do %s."
 
@@ -176,7 +176,7 @@ msgstr "Eksportowanie prezentacji…"
 msgid "File associations"
 msgstr "Skojarzenia plików"
 
-#: src/actions/index.ts:286
+#: src/actions/index.ts:315
 msgid "File changed"
 msgstr "Plik został zmieniony"
 
@@ -209,7 +209,7 @@ msgstr "Ogólne"
 msgid "Global shortcuts"
 msgstr "Globalne skróty"
 
-#: src/actions/index.ts:447
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "Prezentacja HTML"
 
@@ -237,7 +237,7 @@ msgstr "Nie można wyświetlić obrazów z adresów URL HTTP. Użyj adresu URL H
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Obrazy ze ścieżkami względnymi są wyświetlane po zapisaniu dokumentu."
 
-#: src/actions/index.ts:289
+#: src/actions/index.ts:318
 msgid "Keep my version"
 msgstr "Zachowaj moją wersję"
 
@@ -322,7 +322,7 @@ msgstr "Otwórz…"
 msgid "Options"
 msgstr "Opcje"
 
-#: src/actions/index.ts:448
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "Prezentacja PDF"
 
@@ -339,7 +339,7 @@ msgstr "Preferencje"
 msgid "Preview Slides"
 msgstr "Wyświetl podgląd slajdów"
 
-#: src/actions/index.ts:288
+#: src/actions/index.ts:317
 msgid "Reload"
 msgstr "Wczytaj ponownie"
 
@@ -418,7 +418,7 @@ msgstr "Pokaż blok okruszków"
 msgid "Show line numbers"
 msgstr "Pokaż numery wierszy"
 
-#: src/actions/index.ts:482
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "Podgląd slajdów"
 
