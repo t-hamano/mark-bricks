@@ -41,12 +41,20 @@ export default function useIndentListItem( clientId: string ) {
 				cloneBlock( block )
 			);
 			const newListItem = cloneBlock( previousSiblingBlock );
-			if ( ! newListItem.innerBlocks?.length ) {
-				newListItem.innerBlocks = [ createBlock( 'core/list' ) ];
+			// The items continue the previous item after all of its content,
+			// so they join its nested list only when that list is the last
+			// block. Otherwise, e.g. when the item ends with a paragraph, a
+			// new nested list is appended.
+			const lastInnerBlock =
+				newListItem.innerBlocks[ newListItem.innerBlocks.length - 1 ];
+			if ( lastInnerBlock?.name === 'core/list' ) {
+				lastInnerBlock.innerBlocks.push( ...clonedBlocks );
+			} else {
+				newListItem.innerBlocks = [
+					...newListItem.innerBlocks,
+					createBlock( 'core/list', {}, clonedBlocks ),
+				];
 			}
-			newListItem.innerBlocks[
-				newListItem.innerBlocks.length - 1
-			].innerBlocks.push( ...clonedBlocks );
 
 			const selectionStart = getSelectionStart();
 			const selectionEnd = getSelectionEnd();

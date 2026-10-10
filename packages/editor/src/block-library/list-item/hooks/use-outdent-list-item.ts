@@ -96,7 +96,17 @@ export default function useOutdentListItem() {
 
 			registry.batch( () => {
 				if ( followingListItems.length ) {
-					let nestedListId = getBlockOrder( firstClientId )[ 0 ];
+					// The following items continue the item after all of its
+					// content, so they join its nested list only when that list
+					// is the last block. Otherwise a new nested list is appended.
+					const innerBlockIds = getBlockOrder( firstClientId );
+					const lastInnerBlockId =
+						innerBlockIds[ innerBlockIds.length - 1 ];
+					let nestedListId =
+						lastInnerBlockId &&
+						getBlockName( lastInnerBlockId ) === 'core/list'
+							? lastInnerBlockId
+							: undefined;
 
 					if ( ! nestedListId ) {
 						const parentListBlock = getBlock( parentListId );
@@ -109,7 +119,12 @@ export default function useOutdentListItem() {
 							[]
 						);
 						nestedListId = nestedListBlock.clientId;
-						insertBlock( nestedListBlock, 0, firstClientId, false );
+						insertBlock(
+							nestedListBlock,
+							innerBlockIds.length,
+							firstClientId,
+							false
+						);
 						const parentListSettings =
 							getBlockListSettings( parentListId );
 						if ( parentListSettings ) {
