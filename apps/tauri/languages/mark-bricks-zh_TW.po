@@ -8,13 +8,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T08:32:47.628Z\n"
-"PO-Revision-Date: 2026-10-03T08:32:53.774Z\n"
+"POT-Creation-Date: 2026-10-10T12:26:51.271Z\n"
+"PO-Revision-Date: 2026-10-10T12:27:01.995Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: zh_TW\n"
 "X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/actions/index.ts:279
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr "「%s」已在磁碟上變更。要重新載入並捨棄你的變更，還是保留你的版本？"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
@@ -105,7 +112,7 @@ msgid "Content width"
 msgstr "內容寬度"
 
 # %s: Error message.
-#: src/actions/index.ts:376
+#: src/actions/index.ts:454
 msgid "Could not export the slide deck: %s"
 msgstr "無法匯出投影片: %s"
 
@@ -147,13 +154,13 @@ msgstr "編輯器"
 msgid "Editor styles"
 msgstr "編輯器樣式"
 
-#: src/actions/index.ts:349
+#: src/actions/index.ts:427
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "匯出投影片"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:390
+#: src/actions/index.ts:468
 msgid "Exported the slide deck to %s."
 msgstr "已將投影片匯出至 %s。"
 
@@ -164,6 +171,10 @@ msgstr "正在匯出投影片…"
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "檔案關聯"
+
+#: src/actions/index.ts:286
+msgid "File changed"
+msgstr "檔案已變更"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
 msgid "File shortcuts"
@@ -194,7 +205,7 @@ msgstr "一般"
 msgid "Global shortcuts"
 msgstr "全域快速鍵"
 
-#: src/actions/index.ts:369
+#: src/actions/index.ts:447
 msgid "HTML slide deck"
 msgstr "HTML 投影片"
 
@@ -221,6 +232,10 @@ msgstr "無法顯示來自 HTTP URL 的圖片。請改用 HTTPS URL。"
 #: src/platform/index.ts:90
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "使用相對路徑的圖片會在文件儲存後顯示。"
+
+#: src/actions/index.ts:289
+msgid "Keep my version"
+msgstr "保留我的版本"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:346
@@ -303,7 +318,7 @@ msgstr "開啟…"
 msgid "Options"
 msgstr "選項"
 
-#: src/actions/index.ts:370
+#: src/actions/index.ts:448
 msgid "PDF slide deck"
 msgstr "PDF 投影片"
 
@@ -319,6 +334,10 @@ msgstr "偏好設定"
 #: src/components/header-actions/index.tsx:120
 msgid "Preview Slides"
 msgstr "預覽投影片"
+
+#: src/actions/index.ts:288
+msgid "Reload"
+msgstr "重新載入"
 
 #: src/components/header-actions/index.tsx:383
 msgid "Remove"
@@ -395,7 +414,7 @@ msgstr "顯示區塊導覽標記"
 msgid "Show line numbers"
 msgstr "顯示行號"
 
-#: src/actions/index.ts:404
+#: src/actions/index.ts:482
 msgid "Slide Preview"
 msgstr "投影片預覽"
 

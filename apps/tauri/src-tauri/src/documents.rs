@@ -1,11 +1,15 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::fs::{File, OpenOptions};
+use std::hash::{DefaultHasher, Hash, Hasher};
 use std::io::{Read, Seek, SeekFrom, Write};
 use std::path::{Path, PathBuf};
 use std::sync::{Arc, Mutex};
+use std::time::Duration;
 
+use notify_debouncer_mini::notify::{RecommendedWatcher, RecursiveMode};
+use notify_debouncer_mini::{new_debouncer, DebounceEventResult, Debouncer};
 use serde::Serialize;
-use tauri::{AppHandle, Manager, State};
+use tauri::{AppHandle, Emitter, Manager, State};
 use tauri_plugin_dialog::DialogExt;
 
 #[derive(Clone, Serialize)]
@@ -56,6 +60,22 @@ impl From<WriteError> for String {
     }
 }
 
+/// An outside change to an open document's file, sent to the frontend as the
+/// `document-changed` event. `contents` is `None` when the file was deleted
+/// or moved away.
+#[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DocumentChange {
+    pub document_id: String,
+    pub contents: Option<String>,
+}
+
+fn hash_contents(contents: &str) -> u64 {
+    let mut hasher = DefaultHasher::new();
+    contents.hash(&mut hasher);
+    hasher.finish()
+}
+
 struct Document {
     path: PathBuf,
     canonical_path: PathBuf,
@@ -63,12 +83,18 @@ struct Document {
     writable: bool,
     readable: bool,
     references: usize,
+    /// Hash of the contents last read from or written to the file, so the
+    /// watcher skips our own saves and changes that leave the contents as is.
+    contents_hash: Option<u64>,
+    /// Whether the watcher has reported the file as deleted or moved away.
+    missing: bool,
     #[cfg(test)]
     after_sync: Option<Box<dyn FnOnce() + Send>>,
 }
 
 impl Document {
-    // Only native dialog results and OS open requests may reach this function.
+    // Only native dialog results, OS open requests, and reloads of a path one
+    // of those already opened (`rebind`) may reach this function.
     // Keep the handle: a later path/symlink replacement must never redirect a save.
     fn open(path: &Path, create: bool) -> Result<Self, String> {
         let canonical_path = match path.canonicalize() {
@@ -119,6 +145,8 @@ impl Document {
             writable,
             readable: !create,
             references: 1,
+            contents_hash: None,
+            missing: false,
             #[cfg(test)]
             after_sync: None,
         };
@@ -196,6 +224,7 @@ impl Document {
         file.read_to_string(&mut contents)
             .map_err(|e| e.to_string())?;
         self.validate_identity()?;
+        self.contents_hash = Some(hash_contents(&contents));
         Ok(contents)
     }
 
@@ -238,14 +267,125 @@ impl Document {
         }
         // Another application may replace the path while the retained handle is
         // being written. Only report success if that path still names our file.
-        self.validate_identity()
+        self.validate_identity()?;
+        self.contents_hash = Some(hash_contents(contents));
+        self.missing = false;
+        Ok(())
     }
+
+    /// Rereads the file after the watcher saw a change in its directory.
+    /// Returns `Some(Some(contents))` when the contents changed, and
+    /// `Some(None)` when the file was deleted or moved away.
+    fn refresh(&mut self) -> Option<Option<String>> {
+        match self.validate_identity() {
+            Ok(()) => {
+                let previous = self.contents_hash;
+                let was_missing = std::mem::take(&mut self.missing);
+                let contents = self.read().ok()?;
+                // A file moved back is reported even when unchanged, so its tab
+                // can drop the unsaved state the move gave it.
+                (was_missing || self.contents_hash != previous).then_some(Some(contents))
+            }
+            Err(WriteError::SaveAsRequired) => self.rebind(),
+            Err(WriteError::Other(_)) => None,
+        }
+    }
+
+    /// Binds the document to the file now at its path, for applications that
+    /// save by replacing the file. Only the path the user opened is reopened,
+    /// and only while it still resolves to the same place, so neither a new
+    /// path nor a retargeted symlink can redirect a later save.
+    fn rebind(&mut self) -> Option<Option<String>> {
+        let replacement = Document::open(&self.path, false)
+            .ok()
+            .filter(|document| document.canonical_path == self.canonical_path);
+        let Some(mut replacement) = replacement else {
+            if self.missing {
+                return None;
+            }
+            self.missing = true;
+            return Some(None);
+        };
+        let contents = replacement.read().ok()?;
+        let changed = self.missing || replacement.contents_hash != self.contents_hash;
+        self.file = replacement.file;
+        self.writable = replacement.writable;
+        self.readable = replacement.readable;
+        self.contents_hash = replacement.contents_hash;
+        self.missing = false;
+        changed.then_some(Some(contents))
+    }
+}
+
+/// Watches the directories of the open documents. Directories rather than
+/// files, so saves that replace a file by renaming another over it are seen.
+pub struct DocumentWatcher {
+    debouncer: Debouncer<RecommendedWatcher>,
+    directories: HashSet<PathBuf>,
+}
+
+impl DocumentWatcher {
+    fn sync(&mut self, directories: HashSet<PathBuf>) {
+        for directory in self.directories.difference(&directories) {
+            let _ = self.debouncer.watcher().unwatch(directory);
+        }
+        for directory in directories.difference(&self.directories) {
+            let _ = self
+                .debouncer
+                .watcher()
+                .watch(directory, RecursiveMode::NonRecursive);
+        }
+        self.directories = directories;
+    }
+}
+
+/// Starts watching open documents and emits `document-changed` to the main
+/// window when one changes on disk.
+pub fn watch_documents(app: &AppHandle) -> Result<(), String> {
+    let documents = app.state::<Documents>().inner().clone();
+    let app = app.clone();
+    start_watcher(&documents, move |change| {
+        let _ = app.emit_to("main", "document-changed", change);
+    })
+}
+
+fn start_watcher(
+    documents: &Documents,
+    on_change: impl Fn(DocumentChange) + Send + 'static,
+) -> Result<(), String> {
+    let weak = Arc::downgrade(documents);
+    // One save can emit several events; handle them once they settle.
+    let debouncer = new_debouncer(
+        Duration::from_millis(300),
+        move |result: DebounceEventResult| {
+            let (Ok(events), Some(documents)) = (result, weak.upgrade()) else {
+                return;
+            };
+            let paths: Vec<PathBuf> = events.into_iter().map(|event| event.path).collect();
+            let Ok(changes) = documents
+                .lock()
+                .map(|mut registry| registry.refresh(&paths))
+            else {
+                return;
+            };
+            changes.into_iter().for_each(&on_change);
+        },
+    )
+    .map_err(|e| e.to_string())?;
+    let mut registry = documents.lock().map_err(|e| e.to_string())?;
+    registry.watcher = Some(DocumentWatcher {
+        debouncer,
+        directories: HashSet::new(),
+    });
+    registry.sync_watcher();
+    Ok(())
 }
 
 #[derive(Default)]
 pub struct DocumentRegistry {
     next_id: u64,
     documents: HashMap<String, Document>,
+    watcher: Option<DocumentWatcher>,
 }
 
 impl DocumentRegistry {
@@ -257,7 +397,45 @@ impl DocumentRegistry {
             path: document.path.to_string_lossy().into_owned(),
         };
         self.documents.insert(document_id, document);
+        self.sync_watcher();
         info
+    }
+
+    /// Watches exactly the directories that hold open documents.
+    fn sync_watcher(&mut self) {
+        if let Some(watcher) = &mut self.watcher {
+            watcher.sync(
+                self.documents
+                    .values()
+                    .filter_map(|document| document.canonical_path.parent())
+                    .map(Path::to_path_buf)
+                    .collect(),
+            );
+        }
+    }
+
+    /// Rereads the documents in the directories of the changed `paths`.
+    fn refresh(&mut self, paths: &[PathBuf]) -> Vec<DocumentChange> {
+        let directories: HashSet<&Path> = paths
+            .iter()
+            .flat_map(|path| [Some(path.as_path()), path.parent()])
+            .flatten()
+            .collect();
+        self.documents
+            .iter_mut()
+            .filter(|(_, document)| {
+                document
+                    .canonical_path
+                    .parent()
+                    .is_some_and(|directory| directories.contains(directory))
+            })
+            .filter_map(|(id, document)| {
+                document.refresh().map(|contents| DocumentChange {
+                    document_id: id.clone(),
+                    contents,
+                })
+            })
+            .collect()
     }
 
     pub fn open_selected(&mut self, path: &Path) -> Result<OpenedDocument, String> {
@@ -314,6 +492,7 @@ impl DocumentRegistry {
             document.references -= 1;
             if document.references == 0 {
                 self.documents.remove(id);
+                self.sync_watcher();
             }
         }
     }
@@ -781,6 +960,157 @@ mod tests {
                 assert_eq!(std::fs::read_to_string(moved).unwrap(), "original");
             }
         }
+    }
+
+    fn changes(registry: &mut DocumentRegistry, path: &Path) -> Vec<(String, Option<String>)> {
+        // The watcher reports paths in the canonical directories it watches.
+        let directory = path.parent().unwrap().canonicalize().unwrap();
+        registry
+            .refresh(&[directory.join(path.file_name().unwrap())])
+            .into_iter()
+            .map(|change| (change.document_id, change.contents))
+            .collect()
+    }
+
+    #[test]
+    fn own_saves_and_unchanged_contents_are_not_reported() {
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let mut registry = DocumentRegistry::default();
+        let id = registry.open_selected(&path).unwrap().info.document_id;
+        assert!(changes(&mut registry, &path).is_empty());
+        registry.write(&id, "edited").unwrap();
+        assert!(changes(&mut registry, &path).is_empty());
+        std::fs::write(&path, "edited").unwrap();
+        assert!(changes(&mut registry, &path).is_empty());
+    }
+
+    #[test]
+    fn changes_in_place_are_reported_once() {
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let other = dir.file("other.md", "other");
+        let mut registry = DocumentRegistry::default();
+        let id = registry.open_selected(&path).unwrap().info.document_id;
+        std::fs::write(&path, "outside").unwrap();
+        assert_eq!(
+            changes(&mut registry, &other),
+            [(id.clone(), Some("outside".into()))]
+        );
+        assert!(changes(&mut registry, &path).is_empty());
+        let unrelated = TestDirectory::new();
+        std::fs::write(&path, "again").unwrap();
+        assert!(changes(&mut registry, &unrelated.file("other.md", "")).is_empty());
+    }
+
+    #[test]
+    fn replaced_files_are_reloaded_and_saved_in_place() {
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let mut registry = DocumentRegistry::default();
+        let id = registry.open_selected(&path).unwrap().info.document_id;
+        // Save the way many editors do: write a temporary file, then rename it.
+        let temporary = dir.file("selected.md.tmp", "replaced");
+        std::fs::rename(&temporary, &path).unwrap();
+        assert_eq!(
+            changes(&mut registry, &path),
+            [(id.clone(), Some("replaced".into()))]
+        );
+        registry.write(&id, "edited").unwrap();
+        assert_eq!(std::fs::read_to_string(&path).unwrap(), "edited");
+        // An identical replacement rebinds without reporting a change.
+        let temporary = dir.file("selected.md.tmp", "edited");
+        std::fs::rename(&temporary, &path).unwrap();
+        assert!(changes(&mut registry, &path).is_empty());
+        registry.write(&id, "short").unwrap();
+        assert_eq!(std::fs::read_to_string(&path).unwrap(), "short");
+    }
+
+    #[test]
+    fn deleted_files_are_reported_once_and_require_save_as() {
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let mut registry = DocumentRegistry::default();
+        let id = registry.open_selected(&path).unwrap().info.document_id;
+        std::fs::remove_file(&path).unwrap();
+        assert_eq!(changes(&mut registry, &path), [(id.clone(), None)]);
+        assert!(changes(&mut registry, &path).is_empty());
+        assert_eq!(
+            registry.write(&id, "unsaved edits"),
+            Err(WriteError::SaveAsRequired)
+        );
+        assert!(!path.exists());
+        // A file restored at the path is reported even with the old contents.
+        std::fs::write(&path, "original").unwrap();
+        assert_eq!(
+            changes(&mut registry, &path),
+            [(id.clone(), Some("original".into()))]
+        );
+        registry.write(&id, "edited").unwrap();
+        assert_eq!(std::fs::read_to_string(&path).unwrap(), "edited");
+    }
+
+    #[test]
+    fn the_watcher_reports_changes_until_the_document_closes() {
+        use std::sync::mpsc;
+
+        let dir = TestDirectory::new();
+        let path = dir.file("selected.md", "original");
+        let documents = Documents::default();
+        let (sender, receiver) = mpsc::channel();
+        start_watcher(&documents, move |change| {
+            let _ = sender.send((change.document_id, change.contents));
+        })
+        .unwrap();
+        let id = documents
+            .lock()
+            .unwrap()
+            .open_selected(&path)
+            .unwrap()
+            .info
+            .document_id;
+        let next = || receiver.recv_timeout(Duration::from_secs(10)).unwrap();
+
+        let temporary = dir.file("selected.md.tmp", "replaced");
+        std::fs::rename(&temporary, &path).unwrap();
+        assert_eq!(next(), (id.clone(), Some("replaced".into())));
+        documents.lock().unwrap().write(&id, "saved").unwrap();
+        std::fs::remove_file(&path).unwrap();
+        // Our own save is skipped, so the deletion is the next change.
+        assert_eq!(next(), (id.clone(), None));
+
+        documents.lock().unwrap().close(&id);
+        assert!(documents
+            .lock()
+            .unwrap()
+            .watcher
+            .as_ref()
+            .unwrap()
+            .directories
+            .is_empty());
+        std::fs::write(&path, "after closing").unwrap();
+        assert!(receiver.recv_timeout(Duration::from_secs(1)).is_err());
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn retargeted_symlinks_are_not_reloaded() {
+        let dir = TestDirectory::new();
+        let target = dir.file("selected.md", "original");
+        let other = dir.file("private.md", "private");
+        let link = dir.0.join("link.md");
+        std::os::unix::fs::symlink(&target, &link).unwrap();
+        let mut registry = DocumentRegistry::default();
+        let id = registry.open_selected(&link).unwrap().info.document_id;
+        std::fs::remove_file(&target).unwrap();
+        std::fs::remove_file(&link).unwrap();
+        std::os::unix::fs::symlink(&other, &link).unwrap();
+        assert_eq!(changes(&mut registry, &target), [(id.clone(), None)]);
+        assert_eq!(
+            registry.write(&id, "attacker"),
+            Err(WriteError::SaveAsRequired)
+        );
+        assert_eq!(std::fs::read_to_string(other).unwrap(), "private");
     }
 
     #[test]

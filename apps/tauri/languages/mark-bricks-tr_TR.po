@@ -8,13 +8,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T08:32:47.628Z\n"
-"PO-Revision-Date: 2026-10-03T08:32:52.878Z\n"
+"POT-Creation-Date: 2026-10-10T12:26:51.271Z\n"
+"PO-Revision-Date: 2026-10-10T12:27:01.071Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: tr_TR\n"
 "X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/actions/index.ts:279
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr ""
+"\"%s\" diskte değiştirildi. Yeniden yükleyip değişikliklerinizi atmak mı, "
+"yoksa kendi sürümünüzü korumak mı istiyorsunuz?"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
@@ -107,7 +116,7 @@ msgid "Content width"
 msgstr "İçerik genişliği"
 
 # %s: Error message.
-#: src/actions/index.ts:376
+#: src/actions/index.ts:454
 msgid "Could not export the slide deck: %s"
 msgstr "Slayt destesi dışa aktarılamadı: %s"
 
@@ -151,13 +160,13 @@ msgstr "Düzenleyici"
 msgid "Editor styles"
 msgstr "Düzenleyici stilleri"
 
-#: src/actions/index.ts:349
+#: src/actions/index.ts:427
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "Slayt destesini dışa aktar"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:390
+#: src/actions/index.ts:468
 msgid "Exported the slide deck to %s."
 msgstr "Slayt destesi %s olarak dışa aktarıldı."
 
@@ -168,6 +177,10 @@ msgstr "Slayt destesi dışa aktarılıyor…"
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "Dosya ilişkilendirmeleri"
+
+#: src/actions/index.ts:286
+msgid "File changed"
+msgstr "Dosya değişti"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
 msgid "File shortcuts"
@@ -198,7 +211,7 @@ msgstr "Genel"
 msgid "Global shortcuts"
 msgstr "Genel kısayollar"
 
-#: src/actions/index.ts:369
+#: src/actions/index.ts:447
 msgid "HTML slide deck"
 msgstr "HTML slayt destesi"
 
@@ -227,6 +240,10 @@ msgstr ""
 #: src/platform/index.ts:90
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "Göreli yollara sahip görseller, belge kaydedildikten sonra görüntülenir."
+
+#: src/actions/index.ts:289
+msgid "Keep my version"
+msgstr "Benim sürümümü koru"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:346
@@ -309,7 +326,7 @@ msgstr "Aç…"
 msgid "Options"
 msgstr "Seçenekler"
 
-#: src/actions/index.ts:370
+#: src/actions/index.ts:448
 msgid "PDF slide deck"
 msgstr "PDF slayt destesi"
 
@@ -325,6 +342,10 @@ msgstr "Tercihler"
 #: src/components/header-actions/index.tsx:120
 msgid "Preview Slides"
 msgstr "Slaytları önizle"
+
+#: src/actions/index.ts:288
+msgid "Reload"
+msgstr "Yeniden yükle"
 
 #: src/components/header-actions/index.tsx:383
 msgid "Remove"
@@ -401,7 +422,7 @@ msgstr "Blok sayfa yollarını görüntüle"
 msgid "Show line numbers"
 msgstr "Satır numaralarını göster"
 
-#: src/actions/index.ts:404
+#: src/actions/index.ts:482
 msgid "Slide Preview"
 msgstr "Slayt önizlemesi"
 

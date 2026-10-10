@@ -19,6 +19,7 @@ import {
 	closeOtherTabs,
 	exportSlideDeck,
 	getExportStatus,
+	handleDocumentChange,
 	openDocument,
 	openFile,
 	saveTab,
@@ -561,6 +562,133 @@ describe( 'saveTabAs', () => {
 		} );
 		expect( await saveTabAs( id ) ).toBe( false );
 		expect( released ).toEqual( [ { documentId: 'approved-2' } ] );
+	} );
+} );
+
+describe( 'handleDocumentChange', () => {
+	// Records the dialogs shown, answering each with `answer`.
+	function mockDialogs( answer: () => Promise< string > | string ) {
+		const asked: unknown[] = [];
+		mockIPC( ( cmd, payload ) => {
+			if ( cmd === 'plugin:dialog|message' ) {
+				asked.push( payload );
+				return answer();
+			}
+		} );
+		return asked;
+	}
+
+	it( 'reloads a tab without unsaved changes', async () => {
+		await openDocument( selected );
+		const asked = mockDialogs( () => 'Reload' );
+		await handleDocumentChange( {
+			documentId: 'approved-1',
+			contents: 'outside',
+		} );
+		expect( activeTab() ).toMatchObject( {
+			content: 'outside',
+			isDirty: false,
+		} );
+		expect( asked ).toEqual( [] );
+	} );
+
+	it( 'flushes pending editor changes before deciding to ask', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		setEditorFlush( () => {
+			dispatch( tabsStore ).setTabContent( id, 'typed' );
+			dispatch( tabsStore ).setTabDirty( id, true );
+		} );
+		const asked = mockDialogs( () => 'Keep my version' );
+		await handleDocumentChange( {
+			documentId: 'approved-1',
+			contents: 'outside',
+		} );
+		expect( asked ).toHaveLength( 1 );
+		expect( activeTab() ).toMatchObject( {
+			content: 'typed',
+			isDirty: true,
+		} );
+	} );
+
+	it( 'asks before discarding unsaved changes', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		dispatch( tabsStore ).setTabContent( id, 'unsaved' );
+		dispatch( tabsStore ).setTabDirty( id, true );
+		const asked = mockDialogs( () => 'Reload' );
+		await handleDocumentChange( {
+			documentId: 'approved-1',
+			contents: 'outside',
+		} );
+		expect( asked ).toEqual( [
+			expect.objectContaining( {
+				message:
+					'"selected.md" changed on disk. Reload it and discard your changes, or keep your version?',
+				kind: 'warning',
+			} ),
+		] );
+		expect( activeTab() ).toMatchObject( {
+			content: 'outside',
+			isDirty: false,
+		} );
+	} );
+
+	it( 'reloads the latest contents after one prompt for repeated changes', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		dispatch( tabsStore ).setTabContent( id, 'unsaved' );
+		dispatch( tabsStore ).setTabDirty( id, true );
+		let answer: ( label: string ) => void = () => {};
+		const asked = mockDialogs(
+			() => new Promise( ( resolve ) => ( answer = resolve ) )
+		);
+		const first = handleDocumentChange( {
+			documentId: 'approved-1',
+			contents: 'first',
+		} );
+		await vi.waitFor( () => expect( asked ).toHaveLength( 1 ) );
+		await handleDocumentChange( {
+			documentId: 'approved-1',
+			contents: 'second',
+		} );
+		answer( 'Reload' );
+		await first;
+		expect( asked ).toHaveLength( 1 );
+		expect( activeTab().content ).toBe( 'second' );
+	} );
+
+	it( 'marks a tab dirty when its file is deleted', async () => {
+		await openDocument( selected );
+		await handleDocumentChange( {
+			documentId: 'approved-1',
+			contents: null,
+		} );
+		expect( activeTab() ).toMatchObject( {
+			content: 'original',
+			isDirty: true,
+		} );
+	} );
+
+	it( 'marks a tab clean without asking when the file matches it', async () => {
+		await openDocument( selected );
+		dispatch( tabsStore ).setTabDirty( activeTab().id, true );
+		const asked = mockDialogs( () => 'Reload' );
+		await handleDocumentChange( {
+			documentId: 'approved-1',
+			contents: 'original',
+		} );
+		expect( asked ).toEqual( [] );
+		expect( activeTab().isDirty ).toBe( false );
+	} );
+
+	it( 'ignores documents without a tab', async () => {
+		await openDocument( selected );
+		await handleDocumentChange( {
+			documentId: 'approved-2',
+			contents: 'outside',
+		} );
+		expect( activeTab().content ).toBe( 'original' );
 	} );
 } );
 

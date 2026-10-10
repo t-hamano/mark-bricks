@@ -3,7 +3,7 @@
  */
 import { invoke } from '@tauri-apps/api/core';
 import { listen } from '@tauri-apps/api/event';
-import { message } from '@tauri-apps/plugin-dialog';
+import { ask, message } from '@tauri-apps/plugin-dialog';
 import { getLocale } from '@mark-bricks/editor/locale';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
 
@@ -222,6 +222,84 @@ async function saveTabAsNow( id: string ) {
 	}
 
 	return true;
+}
+
+export type DocumentChange = {
+	documentId: string;
+	// `null` when the file was deleted or moved away.
+	contents: string | null;
+};
+
+// The latest outside contents of each document whose reload prompt is open.
+const reloadPrompts = new Map< string, string >();
+
+function findDocumentTab( documentId: string ) {
+	return select( tabsStore )
+		.getTabs()
+		.find( ( t ) => t.documentId === documentId );
+}
+
+/**
+ * Applies a change made to an open document's file outside the app. A tab
+ * without unsaved changes reloads; a tab with them asks the user first.
+ *
+ * @param change The change the native watcher reported.
+ */
+export async function handleDocumentChange( change: DocumentChange ) {
+	const { documentId, contents } = change;
+	flushPendingEdits();
+	const tab = findDocumentTab( documentId );
+
+	if ( ! tab ) {
+		return;
+	}
+	if ( contents === null ) {
+		// Keep the contents; the next save falls through to Save As.
+		dispatch( tabsStore ).setTabDirty( tab.id, true );
+		return;
+	}
+	if ( tab.content === contents ) {
+		dispatch( tabsStore ).setTabDirty( tab.id, false );
+		return;
+	}
+	if ( ! tab.isDirty ) {
+		dispatch( tabsStore ).setTabContent( tab.id, contents );
+		return;
+	}
+	if ( reloadPrompts.has( documentId ) ) {
+		reloadPrompts.set( documentId, contents );
+		return;
+	}
+
+	reloadPrompts.set( documentId, contents );
+	try {
+		const reload = await ask(
+			sprintf(
+				/* translators: %s: tab title. */
+				__(
+					'"%s" changed on disk. Reload it and discard your changes, or keep your version?',
+					'mark-bricks'
+				),
+				tab.title
+			),
+			{
+				title: __( 'File changed', 'mark-bricks' ),
+				kind: 'warning',
+				okLabel: __( 'Reload', 'mark-bricks' ),
+				cancelLabel: __( 'Keep my version', 'mark-bricks' ),
+			}
+		);
+		const current = findDocumentTab( documentId );
+		const latest = reloadPrompts.get( documentId );
+		// Keeping their version leaves the tab dirty, so the next save
+		// writes it over the outside change.
+		if ( reload && current && latest !== undefined ) {
+			dispatch( tabsStore ).setTabContent( current.id, latest );
+			dispatch( tabsStore ).setTabDirty( current.id, false );
+		}
+	} finally {
+		reloadPrompts.delete( documentId );
+	}
 }
 
 export function requestCloseActiveTab() {
