@@ -96,7 +96,7 @@
 		"remark-parse": "^11.0.0",
 		"remark-stringify": "^11.0.0",
 		"unified": "^11.0.5",
-		"uuid": "^14.0.2"
+		"uuid": "^14.0.3"
 	},
 	"peerDependencies": {
 		"react": "^19.3.0",
