@@ -70,11 +70,20 @@ updates:
       patterns:
           - 'tauri'
           - 'tauri-*'
+      # Without an allow list, dependencies outside the patterns get their own
+      # PRs and collide with the cargo-minor-patch group.
+      allow:
+          - dependency-name: 'tauri'
+          - dependency-name: 'tauri-*'
     - package-ecosystem: npm
       directory: /
       multi-ecosystem-group: tauri
       patterns:
           - '@tauri-apps/*'
+      # Without an allow list, dependencies outside the patterns get their own
+      # PRs and collide with the npm-minor-patch group.
+      allow:
+          - dependency-name: '@tauri-apps/*'
 
     # GitHub Actions dependencies.
     - package-ecosystem: github-actions
