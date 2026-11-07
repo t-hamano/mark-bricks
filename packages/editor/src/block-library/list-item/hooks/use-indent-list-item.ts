@@ -4,7 +4,7 @@
 import { useCallback } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { store as blockEditorStore } from '@wordpress/block-editor';
-import { createBlock, cloneBlock } from '@wordpress/blocks';
+import { cloneBlock } from '@wordpress/blocks';
 
 export default function useIndentListItem( clientId: string ) {
 	const { replaceBlocks, selectionChange, multiSelect } =
@@ -12,6 +12,7 @@ export default function useIndentListItem( clientId: string ) {
 	const {
 		getBlock,
 		getPreviousBlockClientId,
+		getBlockRootClientId,
 		getSelectionStart,
 		getSelectionEnd,
 		hasMultiSelection,
@@ -50,9 +51,18 @@ export default function useIndentListItem( clientId: string ) {
 			if ( lastInnerBlock?.name === 'core/list' ) {
 				lastInnerBlock.innerBlocks.push( ...clonedBlocks );
 			} else {
+				// Clone the items' own list so the new nested list keeps its
+				// type and Markdown marker attributes.
+				const sourceListId = getBlockRootClientId( clientId );
+				const sourceListBlock = sourceListId
+					? getBlock( sourceListId )
+					: null;
+				if ( ! sourceListBlock ) {
+					return false;
+				}
 				newListItem.innerBlocks = [
 					...newListItem.innerBlocks,
-					createBlock( 'core/list', {}, clonedBlocks ),
+					cloneBlock( sourceListBlock, {}, clonedBlocks ),
 				];
 			}
 

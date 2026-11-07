@@ -16,6 +16,7 @@ export default function useOutdentListItem() {
 			index?: number
 		) => void;
 		removeBlock: ( clientId: string, selectPrevious?: boolean ) => void;
+		removeBlocks: ( clientIds: string[], selectPrevious?: boolean ) => void;
 		insertBlock: (
 			block: unknown,
 			index: number,
@@ -30,6 +31,7 @@ export default function useOutdentListItem() {
 	const {
 		moveBlocksToPosition,
 		removeBlock,
+		removeBlocks,
 		insertBlock,
 		updateBlockListSettings,
 	} = dispatch;
@@ -102,23 +104,33 @@ export default function useOutdentListItem() {
 					const innerBlockIds = getBlockOrder( firstClientId );
 					const lastInnerBlockId =
 						innerBlockIds[ innerBlockIds.length - 1 ];
-					let nestedListId =
+					if (
 						lastInnerBlockId &&
 						getBlockName( lastInnerBlockId ) === 'core/list'
-							? lastInnerBlockId
-							: undefined;
-
-					if ( ! nestedListId ) {
+					) {
+						moveBlocksToPosition(
+							followingListItems,
+							parentListId,
+							lastInnerBlockId
+						);
+					} else {
 						const parentListBlock = getBlock( parentListId );
 						if ( ! parentListBlock ) {
 							return;
 						}
+						// Insert the new nested list with the following items
+						// already inside. An empty list would get a blank item
+						// from the list block's template.
+						const followingBlocks = followingListItems
+							.map( ( id ) => getBlock( id ) )
+							.filter( ( block ) => !! block )
+							.map( ( block ) => cloneBlock( block ) );
 						const nestedListBlock = cloneBlock(
 							parentListBlock,
 							{},
-							[]
+							followingBlocks
 						);
-						nestedListId = nestedListBlock.clientId;
+						removeBlocks( followingListItems, false );
 						insertBlock(
 							nestedListBlock,
 							innerBlockIds.length,
@@ -129,17 +141,11 @@ export default function useOutdentListItem() {
 							getBlockListSettings( parentListId );
 						if ( parentListSettings ) {
 							updateBlockListSettings(
-								nestedListId,
+								nestedListBlock.clientId,
 								parentListSettings
 							);
 						}
 					}
-
-					moveBlocksToPosition(
-						followingListItems,
-						parentListId,
-						nestedListId
-					);
 				}
 				moveBlocksToPosition(
 					clientIds,
