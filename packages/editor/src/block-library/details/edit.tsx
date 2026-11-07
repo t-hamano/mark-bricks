@@ -26,7 +26,6 @@ import { richTextToString } from '../utils';
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes } from './types';
 
-const TEMPLATE = [ [ 'core/paragraph' ] ];
 const DEFAULT_BLOCK = { name: 'core/paragraph' };
 
 export default function Edit( {
@@ -48,8 +47,6 @@ export default function Edit( {
 		defaultBlock: DEFAULT_BLOCK,
 		directInsert: true,
 		templateLock: false,
-		// @ts-expect-error @types enforces a stricter template tuple than runtime accepts.
-		template: TEMPLATE,
 	} );
 
 	return (
