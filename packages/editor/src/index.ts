@@ -1,13 +1,11 @@
-export { applyLocale, getLocale } from './i18n';
-export { registerBlocks } from './block-library';
-export { registerFormats } from './format-library';
+export { getLocale } from './locale';
+export { setupEditor } from './setup';
 export { Editor } from './components/editor';
 export {
 	useFrontMatter,
 	type FrontMatterContextValue,
 } from './components/front-matter-editor/context';
 export { BlockEditor } from './components/block-editor';
-export { CodeEditor } from './components/code-editor';
 export type { EditorHandle, EditorStyles } from './components/editor';
 export type { CodeEditorSettings } from './components/text-editor';
 export type { Platform } from './platform';
@@ -28,4 +26,4 @@ export {
 	inspectCodePreviews,
 	type CodePreviewReport,
 	type CodePreviewStatus,
-} from './block-library/code/inspect-previews';
+} from './inspect-previews';

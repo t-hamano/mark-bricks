@@ -6,17 +6,22 @@ import type { ReactNode, RefObject } from 'react';
 /**
  * WordPress dependencies
  */
-import { BlockToolbar } from '@wordpress/block-editor';
+import {
+	BlockToolbar,
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
 import { Popover } from '@wordpress/components';
 import { useViewportMatch } from '@wordpress/compose';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { plus, undo, redo, listView } from '@wordpress/icons';
-import { IconButton, Stack } from '@wordpress/ui';
+import { Badge, IconButton, Stack } from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
+import { isMarpFrontMatter } from '../../converter/front-matter';
+import { useFrontMatter } from '../front-matter-editor/context';
 import { useKeyboardShortcut } from '../keyboard-shortcuts/hooks';
 import { store as editorStore } from '../../store';
 import './style.scss';
@@ -46,23 +51,32 @@ export function EditorHeader( {
 	fixedToolbar,
 	headerActions,
 }: Props ) {
-	const { isListViewOpened, isInserterOpened } = useSelect( ( select ) => {
-		const {
-			isListViewOpened: _isListViewOpened,
-			isInserterOpened: _isInserterOpened,
-		} = select( editorStore );
+	const { isListViewOpened, isInserterOpened, hasBlockSelection } = useSelect(
+		( select ) => {
+			const {
+				isListViewOpened: _isListViewOpened,
+				isInserterOpened: _isInserterOpened,
+			} = select( editorStore );
 
-		return {
-			isListViewOpened: _isListViewOpened(),
-			isInserterOpened: _isInserterOpened(),
-		};
-	}, [] );
+			return {
+				isListViewOpened: _isListViewOpened(),
+				isInserterOpened: _isInserterOpened(),
+				hasBlockSelection:
+					!! select( blockEditorStore ).getBlockSelectionStart(),
+			};
+		},
+		[]
+	);
 	const toggleListViewShortcut = useKeyboardShortcut(
 		'mark-bricks/toggle-list-view'
 	);
+	const { frontMatter } = useFrontMatter();
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
 	const showFixedToolbar =
-		fixedToolbar && editorMode === 'visual' && ! isMobileViewport;
+		fixedToolbar &&
+		editorMode === 'visual' &&
+		! isMobileViewport &&
+		hasBlockSelection;
 	const { setIsListViewOpened, setIsInserterOpened } =
 		useDispatch( editorStore );
 
@@ -70,11 +84,16 @@ export function EditorHeader( {
 		<Stack
 			render={ <header /> }
 			className="editor-header"
-			align="center"
+			align="flex-start"
 			justify="space-between"
 			gap="sm"
 		>
-			<Stack direction="row" align="center" gap="sm">
+			<Stack
+				className="editor-header__start"
+				direction="row"
+				align="center"
+				gap="sm"
+			>
 				{ editorMode === 'visual' && (
 					<IconButton
 						ref={ inserterToggleRef }
@@ -146,7 +165,17 @@ export function EditorHeader( {
 					<Popover.Slot name="block-toolbar" />
 				</Stack>
 			) }
-			<Stack direction="row" align="center" gap="sm">
+			<Stack
+				className="editor-header__end"
+				direction="row"
+				align="center"
+				gap="sm"
+			>
+				{ isMarpFrontMatter( frontMatter ) && (
+					<Badge intent="high">
+						{ __( 'Marp Mode', 'mark-bricks' ) }
+					</Badge>
+				) }
 				{ headerActions }
 			</Stack>
 		</Stack>

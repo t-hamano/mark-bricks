@@ -15,6 +15,7 @@ import * as heading from './heading';
 import * as list from './list';
 import * as listItem from './list-item';
 import * as code from './code';
+import * as math from './math';
 import * as image from './image';
 import * as table from './table';
 import * as quote from './quote';
@@ -28,6 +29,7 @@ const blocks = [
 	list,
 	listItem,
 	code,
+	math,
 	image,
 	table,
 	quote,

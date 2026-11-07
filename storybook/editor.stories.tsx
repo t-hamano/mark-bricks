@@ -88,6 +88,14 @@ export const WithFocusMode: Story = {
 
 export const WithCustomStyles: Story = {
 	args: {
+		settings: {
+			codeEditor: {
+				theme: 'dark',
+				fontSize: 20,
+				tabSize: 2,
+				showLineNumbers: false,
+			},
+		},
 		editorStyles: {
 			contentWidth: 900,
 			fontSize: 20,

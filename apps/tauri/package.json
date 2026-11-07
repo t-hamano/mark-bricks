@@ -1,7 +1,7 @@
 {
 	"name": "mark-bricks-desktop",
 	"private": true,
-	"version": "0.15.0",
+	"version": "0.16.0",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
 	"bugs": {
@@ -22,12 +22,13 @@
 		"i18n:make-po": "mb-i18n make-po",
 		"i18n:make-json": "mb-i18n make-json",
 		"preversion": "node scripts/check-releasable.mjs",
-		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path && node scripts/bump-version.mjs",
-		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path"
+		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path --commit-path ../../packages/marp-preview && node scripts/bump-version.mjs",
+		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path --commit-path ../../packages/marp-preview"
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
 		"@mark-bricks/image-path": "workspace:*",
+		"@mark-bricks/marp-preview": "workspace:*",
 		"@tauri-apps/api": "^2",
 		"@tauri-apps/plugin-dialog": "^2",
 		"@tauri-apps/plugin-opener": "^2",
@@ -44,23 +45,24 @@
 		"@wordpress/keyboard-shortcuts": "^5.56.0",
 		"@wordpress/keycodes": "^4.56.0",
 		"@wordpress/preferences": "^4.56.0",
+		"@wordpress/theme": "^2.2.0",
 		"@wordpress/ui": "^0.23.0",
 		"clsx": "^2.1.1",
-		"react": "^19.3.0",
-		"react-dom": "^19.3.0"
+		"react": "^19.3.1",
+		"react-dom": "^19.3.1"
 	},
 	"devDependencies": {
 		"@mark-bricks/fixtures": "workspace:*",
 		"@mark-bricks/i18n-tools": "workspace:*",
 		"@tauri-apps/cli": "^2",
-		"@types/node": "^26.6.2",
+		"@types/node": "^26.6.6",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
-		"@vitejs/plugin-react": "^6.1.1",
-		"jsdom": "^30.1.0",
-		"sass": "^1.104.1",
+		"@vitejs/plugin-react": "^6.1.2",
+		"jsdom": "^30.1.3",
+		"sass": "^1.107.1",
 		"typescript": "~6.0.3",
-		"vite": "^8.3.0",
-		"vitest": "^5.0.1"
+		"vite": "^8.3.5",
+		"vitest": "^5.0.5"
 	}
 }

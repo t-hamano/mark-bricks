@@ -1,3 +1,25 @@
+# [0.16.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.15.0...tauri-v0.16.0) (2026-10-01)
+
+### Bug Fixes
+
+- **editor:** support attention serialization of mdast-util-to-markdown 2.1.3 ([#153](https://github.com/t-hamano/mark-bricks/issues/153)) ([54d3070](https://github.com/t-hamano/mark-bricks/commit/54d3070ab31eda25e205b6c001ca06d96f8b79e1))
+- **tauri:** fit each slide to the preview window height so maximized windows do not cut it off ([8503a21](https://github.com/t-hamano/mark-bricks/commit/8503a2154b315099c94af430cdd43e9696432f49))
+
+### Features
+
+- **editor:** add a math block that reads and writes $$ and ```math ([#144](https://github.com/t-hamano/mark-bricks/issues/144)) ([28e9101](https://github.com/t-hamano/mark-bricks/commit/28e91017ef436176af1168a66d9314e34f72b12d))
+- **editor:** keep every block inside a list item ([#130](https://github.com/t-hamano/mark-bricks/issues/130)) ([889f162](https://github.com/t-hamano/mark-bricks/commit/889f162506442f5346b2f212d773bf2407073e6d))
+- **tauri:** add a full screen toolbar button and exit hint to the slide preview ([#158](https://github.com/t-hamano/mark-bricks/issues/158)) ([183aff9](https://github.com/t-hamano/mark-bricks/commit/183aff9d1a2f559f5b91d408dc02e387d783fbbc))
+- **tauri:** add a pager to the slide preview toolbar ([#162](https://github.com/t-hamano/mark-bricks/issues/162)) ([5199b3b](https://github.com/t-hamano/mark-bricks/commit/5199b3b692a8c64cbbf8590498fc07e81ae612c0))
+- **tauri:** move between slides with the keyboard in the full screen preview ([#159](https://github.com/t-hamano/mark-bricks/issues/159)) ([d0db2ed](https://github.com/t-hamano/mark-bricks/commit/d0db2ed05e57ecf71f83b1f7c953f0f52a4ae94a))
+- **tauri:** move between slides with the wheel in the full screen preview ([#161](https://github.com/t-hamano/mark-bricks/issues/161)) ([9766934](https://github.com/t-hamano/mark-bricks/commit/97669347ff86dc9b77fe51573f639a2847cc588a))
+- **tauri:** open a slide preview window for marp documents ([#148](https://github.com/t-hamano/mark-bricks/issues/148)) ([8536368](https://github.com/t-hamano/mark-bricks/commit/8536368e037f91ab629b9a2437b03a38ee16e804))
+- **tauri:** render marp slides in the preview window and keep them in sync with edits ([#150](https://github.com/t-hamano/mark-bricks/issues/150)) ([385a3cb](https://github.com/t-hamano/mark-bricks/commit/385a3cb7a383922baf611cdb99bc948e7c6a71f4))
+- **tauri:** send translated labels to the slide preview window ([7d4017b](https://github.com/t-hamano/mark-bricks/commit/7d4017ba94e1dd487adbdde65dd46d408a00b3f5)), closes [#155](https://github.com/t-hamano/mark-bricks/issues/155)
+- **tauri:** show local images in the slide preview and a notice for non-marp documents ([#152](https://github.com/t-hamano/mark-bricks/issues/152)) ([ecea754](https://github.com/t-hamano/mark-bricks/commit/ecea7543560f1e83a5109407a5ca025db53bd9e9))
+- **tauri:** toggle full screen in the slide preview ([#157](https://github.com/t-hamano/mark-bricks/issues/157)) ([c71fee6](https://github.com/t-hamano/mark-bricks/commit/c71fee68536d4974c3dc2011114326f2fe0949cc))
+- **tauri:** use design system tokens and button in the slide preview ([#160](https://github.com/t-hamano/mark-bricks/issues/160)) ([1cc6d1d](https://github.com/t-hamano/mark-bricks/commit/1cc6d1d6920149576e01dfaaa6867e7c5426a600))
+
 # [0.15.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.14.1...tauri-v0.15.0) (2026-09-29)
 
 ### Bug Fixes

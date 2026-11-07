@@ -8,6 +8,8 @@ import { describe, it, expect } from 'vitest';
  */
 import {
 	blocksToMarkdown,
+	isMarpDocument,
+	isMarpFrontMatter,
 	joinFrontMatter,
 	markdownToBlocks,
 	splitFrontMatter,
@@ -154,5 +156,51 @@ describe( 'front matter round-trip', () => {
 		expect( blocks.map( ( block ) => block.name ) ).toEqual( [
 			'core/paragraph',
 		] );
+	} );
+} );
+
+describe( 'isMarpFrontMatter', () => {
+	it.each( [
+		[ 'is the only key', 'marp: true' ],
+		[ 'is among other keys', 'theme: gaia\nmarp: true\npaginate: true' ],
+		[ 'has a comment', 'marp: true # slides' ],
+	] )( 'detects `marp: true` that %s', ( _name, frontMatter ) => {
+		expect( isMarpFrontMatter( frontMatter ) ).toBe( true );
+	} );
+
+	it.each( [
+		[ 'is missing', null ],
+		[ 'is empty', '' ],
+		[ 'sets marp to false', 'marp: false' ],
+		[ 'nests marp under another key', 'slides:\n  marp: true' ],
+		[ 'has no space after the colon', 'marp:true' ],
+	] )( 'does not detect front matter that %s', ( _name, frontMatter ) => {
+		expect( isMarpFrontMatter( frontMatter ) ).toBe( false );
+	} );
+} );
+
+describe( 'isMarpDocument', () => {
+	it.each( [
+		[ 'is the only key', '---\nmarp: true\n---\n' ],
+		[ 'is among other keys', '---\ntheme: gaia\nmarp: true\n---\n# A' ],
+		[ 'has a comment', '---\nmarp: true # slides\n---\n' ],
+		[ 'has CRLF line endings', '---\r\nmarp: true\r\n---\r\n' ],
+		[ 'follows a BOM', '\uFEFF---\nmarp: true\n---\n' ],
+	] )( 'detects `marp: true` that %s', ( _name, markdown ) => {
+		expect( isMarpDocument( markdown ) ).toBe( true );
+	} );
+
+	it.each( [
+		[ 'has no front matter', '# marp: true\n' ],
+		[ 'has empty front matter', '---\n---\n' ],
+		[ 'sets marp to false', '---\nmarp: false\n---\n' ],
+		[ 'nests marp under another key', '---\nslides:\n  marp: true\n---\n' ],
+		[ 'has no space after the colon', '---\nmarp:true\n---\n' ],
+		[
+			'has marp: true only in the body',
+			'---\ntitle: A\n---\n\nmarp: true\n',
+		],
+	] )( 'does not detect a document that %s', ( _name, markdown ) => {
+		expect( isMarpDocument( markdown ) ).toBe( false );
 	} );
 } );

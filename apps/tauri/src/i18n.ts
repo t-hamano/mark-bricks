@@ -6,7 +6,7 @@ import { setLocaleData, type LocaleData } from '@wordpress/i18n';
 const TEXT_DOMAIN = 'mark-bricks';
 
 // Languages offered in the language setting, identified by WordPress locale
-// slug (the code the editor's `applyLocale` takes). `name` is written in the
+// slug (the code the editor's `setupEditor` takes). `name` is written in the
 // language itself, and `tags` lists the lower-cased OS language tags that
 // pick it.
 export const LOCALES = [
@@ -82,11 +82,11 @@ const CATALOGS: Partial< Record< string, Catalog > > = Object.fromEntries(
 /**
  * Merges the desktop app's own translations into the `mark-bricks` domain.
  *
- * Runs after the editor's `applyLocale`, which seeds the domain. `setLocaleData`
+ * Runs after the editor's `setupEditor`, which seeds the domain. `setLocaleData`
  * merges at the message-key level, so the app strings layer on top without
  * dropping the editor's keys. English needs no catalog (msgids are English).
  *
- * @param locale Locale slug already applied by the editor's `applyLocale`.
+ * @param locale Locale slug already applied by the editor's `setupEditor`.
  */
 export function applyDesktopLocale( locale: string ) {
 	const dict = CATALOGS[ locale ]?.locale_data?.[ TEXT_DOMAIN ];

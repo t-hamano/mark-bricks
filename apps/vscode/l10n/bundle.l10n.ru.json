@@ -1,4 +1,22 @@
 {
 	"MarkBricks could not apply edits to {0}.": "MarkBricks не удалось применить изменения к {0}.",
-	"Images": "Изображения"
+	"Images": "Изображения",
+	"Not a Marp document": "Это не документ Marp",
+	"Slide Preview: {0}": "Предпросмотр слайдов: {0}",
+	"Open with MarkBricks": "Открыть в MarkBricks",
+	"Open with Text Editor": "Открыть в текстовом редакторе",
+	"Preview Slides": "Просмотр слайдов",
+	"Open Extension Settings": "Открыть параметры расширения",
+	"Select a MarkBricks command": "Выберите команду MarkBricks",
+	"Export Slide Deck…": "Экспортировать презентацию…",
+	"Export Slide Deck": "Экспорт презентации",
+	"HTML slide deck": "Презентация HTML",
+	"PDF slide deck": "Презентация PDF",
+	"Export": "Экспортировать",
+	"Exporting the slide deck…": "Экспорт презентации…",
+	"Exported the slide deck to {0}.": "Презентация экспортирована в {0}.",
+	"Open": "Открыть",
+	"Could not export the slide deck: {0}": "Не удалось экспортировать презентацию: {0}",
+	"Exporting to PDF requires {0}, {1} or {2}.": "Для экспорта в PDF требуется {0}, {1} или {2}.",
+	"Marp CLI exited with code {0}.": "Marp CLI завершился с кодом {0}."
 }

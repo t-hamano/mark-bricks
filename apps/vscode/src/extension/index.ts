@@ -8,6 +8,10 @@ import * as vscode from 'vscode';
  */
 import type { CodePreviewReport } from '../shared/messages';
 import { MarkBricksEditorProvider } from './editor-provider';
+import { exportSlideDeck, registerExportCommand } from './export';
+import { trackMarpContext } from './marp-context';
+import { MarpPreview } from './marp-preview';
+import { showCommandQuickPick } from './quick-pick';
 
 const SHADOWED_COMMANDS = [
 	'markBricks.suppressUndo',
@@ -31,10 +35,21 @@ function resolveActiveResource(): vscode.Uri | undefined {
 export type ExtensionApi = {
 	isEditorRendered: ( uri: vscode.Uri ) => boolean;
 	getCodePreviews: ( uri: vscode.Uri ) => CodePreviewReport | null;
+	getSlideCount: ( uri: vscode.Uri ) => number | null;
+	// The export without its save dialog.
+	exportSlideDeck: (
+		document: vscode.TextDocument,
+		uri: vscode.Uri
+	) => Promise< void >;
 };
 
 export function activate( context: vscode.ExtensionContext ): ExtensionApi {
-	context.subscriptions.push( MarkBricksEditorProvider.register( context ) );
+	context.subscriptions.push(
+		MarkBricksEditorProvider.register( context ),
+		MarpPreview.register( context ),
+		registerExportCommand( context ),
+		trackMarpContext()
+	);
 
 	for ( const command of SHADOWED_COMMANDS ) {
 		context.subscriptions.push(
@@ -62,7 +77,19 @@ export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 					'default'
 				);
 			}
-		} )
+		} ),
+		vscode.commands.registerCommand(
+			'markBricks.openMarpPreview',
+			async () => {
+				const uri = resolveActiveResource();
+				if ( uri ) {
+					await MarpPreview.show( uri );
+				}
+			}
+		),
+		vscode.commands.registerCommand( 'markBricks.showQuickPick', () =>
+			showCommandQuickPick( context.extension.id )
+		)
 	);
 
 	return {
@@ -70,6 +97,8 @@ export function activate( context: vscode.ExtensionContext ): ExtensionApi {
 			MarkBricksEditorProvider.isEditorRendered( uri ),
 		getCodePreviews: ( uri ) =>
 			MarkBricksEditorProvider.getCodePreviews( uri ),
+		getSlideCount: ( uri ) => MarpPreview.getSlideCount( uri ),
+		exportSlideDeck,
 	};
 }
 

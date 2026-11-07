@@ -36,6 +36,15 @@ export default defineConfig( async () => ( {
 		// Keeps `light-dark()` intact, since its fallback ignores the runtime
 		// `color-scheme` set by the theme provider.
 		cssTarget: [ 'chrome123', 'safari17.5' ],
+		// Keeps every font a file: the CSP's `font-src 'self'` refuses the
+		// `data:` URI a small one would otherwise be inlined as.
+		assetsInlineLimit: ( file: string ) =>
+			/\.(?:woff2?|ttf)$/.test( file ) ? false : undefined,
+		rolldownOptions: {
+			// The slide preview window and the hidden window that prints a deck
+			// to PDF load pages of their own.
+			input: [ 'index.html', 'pages/preview.html', 'pages/export.html' ],
+		},
 	},
 	server: {
 		port: 1420,

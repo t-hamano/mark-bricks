@@ -1,20 +1,20 @@
 /// <reference types="vite/client" />
 import type { Preview } from '@storybook/react-vite';
 import { DecoratorHelpers } from '@storybook/addon-themes';
-import {
-	EditorThemeProvider,
-	registerBlocks,
-	registerFormats,
-} from '@mark-bricks/editor';
+import { EditorThemeProvider, setupEditor } from '@mark-bricks/editor';
 import './preview.scss';
 
-registerBlocks();
-registerFormats();
+const editorReady = setupEditor( 'en' );
 
 const { initializeThemeState, pluckThemeFromContext } = DecoratorHelpers;
 initializeThemeState( [ 'Light', 'Dark' ], 'Light' );
 
 const preview: Preview = {
+	loaders: [
+		async () => {
+			await editorReady;
+		},
+	],
 	decorators: [
 		( Story, context ) => (
 			<EditorThemeProvider

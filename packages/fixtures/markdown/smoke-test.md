@@ -170,6 +170,16 @@ flowchart LR
     C --> A
 ```
 
+## Math
+
+Dollar fence:
+
+$$
+\int_0^\infty e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}
+$$
+
+Backtick fence:
+
 ```math
 \sum_{k=1}^{n} k = \frac{n(n+1)}{2}
 ```

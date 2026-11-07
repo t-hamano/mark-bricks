@@ -2,12 +2,12 @@
 	"name": "mark-bricks-vscode",
 	"displayName": "MarkBricks",
 	"description": "%description%",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"private": true,
 	"publisher": "aki-hamano",
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
-	"icon": "icon.png",
+	"icon": "icons/icon.png",
 	"preview": true,
 	"repository": {
 		"type": "git",
@@ -29,6 +29,10 @@
 	],
 	"main": "./dist/extension.cjs",
 	"l10n": "./l10n",
+	"activationEvents": [
+		"onLanguage:markdown",
+		"onWebviewPanel:markBricks.marpPreview"
+	],
 	"contributes": {
 		"customEditors": [
 			{
@@ -50,8 +54,53 @@
 			{
 				"command": "markBricks.openText",
 				"title": "%command.openText.title%"
+			},
+			{
+				"command": "markBricks.openMarpPreview",
+				"title": "%command.openMarpPreview.title%",
+				"icon": "$(open-preview)"
+			},
+			{
+				"command": "markBricks.exportSlideDeck",
+				"title": "%command.exportSlideDeck.title%"
+			},
+			{
+				"command": "markBricks.showQuickPick",
+				"title": "%command.showQuickPick.title%",
+				"icon": {
+					"light": "icons/icon-light.svg",
+					"dark": "icons/icon-dark.svg"
+				}
 			}
 		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "markBricks.openMarpPreview",
+					"when": "markBricks.isMarp && activeCustomEditorId != 'markBricks.visualEditor'",
+					"group": "navigation"
+				},
+				{
+					"command": "markBricks.showQuickPick",
+					"when": "resourceLangId == markdown || activeCustomEditorId == 'markBricks.visualEditor'",
+					"group": "navigation@100"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "markBricks.openMarpPreview",
+					"when": "markBricks.isMarp"
+				},
+				{
+					"command": "markBricks.exportSlideDeck",
+					"when": "markBricks.isMarp"
+				},
+				{
+					"command": "markBricks.showQuickPick",
+					"when": "resourceLangId == markdown || activeCustomEditorId == 'markBricks.visualEditor'"
+				}
+			]
+		},
 		"keybindings": [
 			{
 				"command": "markBricks.suppressUndo",
@@ -168,8 +217,8 @@
 		"i18n:make-pot": "mb-i18n make-pot",
 		"i18n:make-po": "mb-i18n make-po",
 		"i18n:make-json": "mb-i18n make-json",
-		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path && node scripts/bump-version.mjs",
-		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path",
+		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path --commit-path ../../packages/marp-preview && node scripts/bump-version.mjs",
+		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix vscode-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path --commit-path ../../packages/marp-preview",
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"e2e:smoke": "vscode-test"
@@ -177,29 +226,31 @@
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
 		"@mark-bricks/image-path": "workspace:*",
+		"@mark-bricks/marp-preview": "workspace:*",
+		"@marp-team/marp-cli": "^4.5.1",
 		"@wordpress/base-styles": "^13.2.0",
 		"@wordpress/i18n": "^6.29.0",
 		"@wordpress/icons": "^17.0.0",
 		"@wordpress/ui": "^0.23.0",
-		"react": "^19.3.0",
-		"react-dom": "^19.2.8"
+		"react": "^19.3.1",
+		"react-dom": "^19.3.1"
 	},
 	"devDependencies": {
 		"@mark-bricks/fixtures": "workspace:*",
 		"@mark-bricks/i18n-tools": "workspace:*",
-		"@types/node": "^26.3.0",
+		"@types/node": "^26.6.6",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.2.4",
 		"@types/vscode": "^1.137.0",
-		"@vitejs/plugin-react": "^6.1.0",
+		"@vitejs/plugin-react": "^6.1.2",
 		"@vscode/test-cli": "^0.0.15",
 		"@vscode/test-electron": "^3.1.0",
 		"@vscode/vsce": "^4",
 		"esbuild": "^0.28.2",
-		"sass": "^1.103.1",
+		"sass": "^1.107.1",
 		"typescript": "~6.0.3",
-		"vite": "^8.2.2",
-		"vitest": "^5.0.1",
+		"vite": "^8.3.5",
+		"vitest": "^5.0.5",
 		"vscode-uri": "^3.2.0"
 	}
 }

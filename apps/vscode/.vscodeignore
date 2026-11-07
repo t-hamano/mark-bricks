@@ -10,7 +10,6 @@ vite.config.ts
 **/*.map
 **/*.ts
 **/*.tsx
-screenshots/**
 README.md
 e2e/**
 .vscode-test.mjs

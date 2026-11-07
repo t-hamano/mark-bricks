@@ -5,10 +5,13 @@ use std::sync::{Mutex, OnceLock};
 use tauri::{Emitter, Env, Manager};
 
 mod documents;
+mod export;
+mod pdf;
 use documents::{
     close_document, open_document, read_document, save_document_as, with_documents, write_document,
     Documents, OpenedDocument,
 };
+use export::export_slide_deck;
 
 /// Markdown files the OS asked us to open before the app window was ready to
 /// receive them — for example when opening a file starts the app, or a second
@@ -49,13 +52,62 @@ async fn take_pending_documents(
 }
 
 /// Prints that `path` rendered, and how its code block previews rendered, for
-/// the smoke test (`MARK_BRICKS_SMOKE_TEST`).
+/// the smoke test (`MARK_BRICKS_SMOKE_TEST`). Then exports the Marp deck at
+/// `MARK_BRICKS_SMOKE_EXPORT_DECK` to the PDF at
+/// `MARK_BRICKS_SMOKE_EXPORT_PDF`, if both are set, and prints the result,
+/// since the test cannot answer the save dialog.
 #[tauri::command]
-fn report_rendered(path: String, previews: serde_json::Value) {
-    if std::env::var_os("MARK_BRICKS_SMOKE_TEST").is_some() {
-        println!("[smoke] previews: {previews}");
-        println!("[smoke] rendered: {path}");
+fn report_rendered(app: tauri::AppHandle, path: String, previews: serde_json::Value) {
+    if std::env::var_os("MARK_BRICKS_SMOKE_TEST").is_none() {
+        return;
     }
+    println!("[smoke] previews: {previews}");
+    println!("[smoke] rendered: {path}");
+    let (Some(deck), Some(pdf)) = (
+        std::env::var_os("MARK_BRICKS_SMOKE_EXPORT_DECK"),
+        std::env::var_os("MARK_BRICKS_SMOKE_EXPORT_PDF"),
+    ) else {
+        return;
+    };
+    tauri::async_runtime::spawn(async move {
+        let result = match std::fs::read_to_string(&deck) {
+            Ok(markdown) => {
+                let deck = PathBuf::from(deck).to_string_lossy().into_owned();
+                pdf::export_pdf(&app, markdown, Some(deck), Path::new(&pdf)).await
+            }
+            Err(error) => Err(error.to_string()),
+        };
+        match result.and_then(|()| pdf::describe(Path::new(&pdf))) {
+            Ok(description) => println!("[smoke] pdf: {description}"),
+            Err(error) => println!("[smoke] pdf error: {error}"),
+        }
+    });
+}
+
+/// Label of the slide preview window.
+const PREVIEW_WINDOW: &str = "preview";
+
+/// Opens the slide preview window, or brings it to the front when it is
+/// already open. The window shows its controls in `locale`, the WordPress
+/// locale slug the main window applied. Async because creating a window from
+/// a synchronous command deadlocks on Windows.
+#[tauri::command]
+async fn open_preview(app: tauri::AppHandle, title: String, locale: String) -> Result<(), String> {
+    if let Some(window) = app.get_webview_window(PREVIEW_WINDOW) {
+        let _ = window.unminimize();
+        return window.set_focus().map_err(|e| e.to_string());
+    }
+    tauri::WebviewWindowBuilder::new(
+        &app,
+        PREVIEW_WINDOW,
+        tauri::WebviewUrl::App(format!("pages/preview.html?locale={locale}").into()),
+    )
+    .title(title)
+    .inner_size(960.0, 540.0)
+    .min_inner_size(320.0, 180.0)
+    .build()
+    .map(|_| ())
+    .map_err(|e| e.to_string())
 }
 
 /// Result variants for `set_as_default_markdown_handler`.
@@ -385,6 +437,16 @@ pub fn run() {
             app.manage(env);
             Ok(())
         })
+        .on_window_event(|window, event| {
+            // The preview belongs to the main window, so it closes with it.
+            // `Destroyed` fires only once the close guard has let the main
+            // window go.
+            if window.label() == "main" && matches!(event, tauri::WindowEvent::Destroyed) {
+                if let Some(preview) = window.app_handle().get_webview_window(PREVIEW_WINDOW) {
+                    let _ = preview.destroy();
+                }
+            }
+        })
         .manage(Documents::default())
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(tauri_plugin_dialog::init())
@@ -397,8 +459,10 @@ pub fn run() {
             save_document_as,
             write_document,
             close_document,
+            export_slide_deck,
             take_pending_documents,
             report_rendered,
+            open_preview,
             remember_documents_for_relaunch,
             set_as_default_markdown_handler
         ])

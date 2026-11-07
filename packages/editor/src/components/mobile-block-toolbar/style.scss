@@ -1,14 +1,18 @@
 .mobile-block-toolbar {
 	flex: 0 0 auto;
-	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
 
 	.block-editor-block-contextual-toolbar.is-unstyled {
 		box-shadow: none;
 	}
 
-	// The toolbar is as tall as its container, so the default `overflow: auto`
-	// would add a scrollbar that does not fit.
 	.block-editor-block-toolbar {
-		overflow: visible;
+		overflow-x: auto;
+		overflow-y: hidden;
+
+		.components-toolbar-group,
+		.components-toolbar {
+			border-color: var(--wpds-color-stroke-surface-neutral);
+		}
 	}
 }

@@ -6,6 +6,10 @@
 	"license": "GPL-2.0-or-later",
 	"packageManager": "pnpm@10.33.0",
 	"scripts": {
+		"dev:site": "pnpm --filter @mark-bricks/site dev",
+		"build:site": "pnpm --filter @mark-bricks/site build",
+		"preview:site": "pnpm --filter @mark-bricks/site preview",
+		"build:pages": "pnpm build:site && pnpm build-storybook && node apps/site/scripts/assemble-pages.mjs",
 		"dev:tauri": "pnpm --filter mark-bricks-desktop dev",
 		"build:tauri": "pnpm --filter mark-bricks-desktop build",
 		"tauri": "pnpm --filter mark-bricks-desktop tauri",
@@ -24,11 +28,11 @@
 		"i18n:make-pot": "pnpm -r --if-present i18n:make-pot",
 		"i18n:make-po": "pnpm -r --if-present i18n:make-po",
 		"i18n:make-json": "pnpm -r --if-present i18n:make-json",
-		"type-check": "tsc -p packages/editor/tsconfig.json --noEmit && tsc -p packages/image-path/tsconfig.json --noEmit && tsc -p apps/tauri/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.webview.json --noEmit && tsc -p apps/vscode/tsconfig.node.json --noEmit",
+		"type-check": "tsc -p packages/editor/tsconfig.json --noEmit && tsc -p packages/image-path/tsconfig.json --noEmit && tsc -p packages/marp-preview/tsconfig.json --noEmit && tsc -p apps/tauri/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.json --noEmit && tsc -p apps/vscode/tsconfig.webview.json --noEmit && tsc -p apps/vscode/tsconfig.node.json --noEmit && pnpm --filter @mark-bricks/site type-check",
 		"test": "pnpm -r --if-present test",
 		"format": "prettier --write .",
 		"prepare": "husky",
-		"postinstall": "pnpm i18n:make-json"
+		"postinstall": "pnpm i18n:make-json && pnpm --filter @mark-bricks/marp-preview build"
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx,json,yml,yaml,md}": [
@@ -45,18 +49,18 @@
 		]
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^21.2.3",
-		"@commitlint/config-conventional": "^21.2.3",
+		"@commitlint/cli": "^21.2.4",
+		"@commitlint/config-conventional": "^21.2.4",
 		"@wordpress/eslint-plugin": "^27.0.0",
 		"@wordpress/prettier-config": "^4.56.0",
 		"@wordpress/stylelint-config": "^26.0.0",
 		"conventional-changelog-cli": "^5.0.0",
-		"eslint": "^10.11.0",
+		"eslint": "^10.14.0",
 		"husky": "^9.1.7",
-		"lint-staged": "^17.5.1",
+		"lint-staged": "^17.6.0",
 		"prettier": "npm:wp-prettier@3.9.6",
-		"stylelint": "^17.15.0",
-		"stylelint-scss": "^7.3.0",
+		"stylelint": "^17.16.0",
+		"stylelint-scss": "^7.4.0",
 		"typescript": "~6.0.3"
 	},
 	"pnpm": {

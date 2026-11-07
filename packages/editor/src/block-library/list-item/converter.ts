@@ -84,21 +84,23 @@ export function toBlock(
  * Without the blank line, the next block would otherwise continue the
  * previous one: a paragraph absorbs following text, a quote, table, HTML
  * block, or list absorbs it lazily, and two adjacent quotes or lists merge.
- * Only a nested list, a fenced code block, or a quote can start right after
- * a paragraph.
+ * Only a nested list, a fenced code or math block, or a quote can start right
+ * after a paragraph.
  *
  * @param prev The earlier block.
  * @param next The block directly after it.
  * @return Whether a blank line is required between them.
  */
 function needsBlankLine( prev: ListItemChild, next: ListItemChild ): boolean {
-	if ( ! [ 'list', 'code', 'blockquote' ].includes( next.type ) ) {
+	if ( ! [ 'list', 'code', 'math', 'blockquote' ].includes( next.type ) ) {
 		return true;
 	}
 	if ( prev.type === 'html' ) {
 		return true;
 	}
-	return prev.type === next.type && next.type !== 'code';
+	return (
+		prev.type === next.type && next.type !== 'code' && next.type !== 'math'
+	);
 }
 
 /**

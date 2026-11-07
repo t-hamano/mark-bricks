@@ -12,11 +12,23 @@ This package provides two main features:
 - **Block editor** — the basic blocks and inline formats needed to author Markdown, plus the surrounding editing UI (block inserter, list view, document outline, keyboard shortcuts).
 - **Source code editor** — a [Monaco Editor](https://microsoft.github.io/monaco-editor/)-based source editor for editing raw Markdown, configured by the host with Markdown-aware key bindings wired in on top.
 
-They're exposed as three components, sharing the same header/footer/sidebars and undo history:
+They're exposed as two components, sharing the same header/footer/sidebars and undo history:
 
 - **`<Editor />`** — both editors, switchable at runtime via `editorMode`. For hosts that let the user toggle between visual and source editing (the Tauri app).
 - **`<BlockEditor />`** — the block editor only, with no switch to source editing. Its module never references the source editor, so hosts that only need visual editing (the VSCode extension) don't bundle Monaco.
-- **`<CodeEditor />`** — the source editor only, with no switch to block editing.
+
+## Entry points
+
+- `@mark-bricks/editor`: the two components, plus what the entry points below export except `marp` and `katex-fonts`, and the keyboard shortcut hooks. It references the source editor, so it is for hosts that bundle it (the Tauri app).
+- `@mark-bricks/editor/block-editor`: `<BlockEditor />`, without the source editor.
+- `@mark-bricks/editor/setup`: `setupEditor`, which applies the locale and registers the blocks and inline formats. See [Localization](#localization).
+- `@mark-bricks/editor/locale`: `getLocale`, which returns the applied locale. See [Localization](#localization).
+- `@mark-bricks/editor/editor-theme-provider`: `EditorThemeProvider` and `useEditorTheme`. See [Appearance](#appearance).
+- `@mark-bricks/editor/front-matter`: `useFrontMatter`, for host UI that reads or updates the document's YAML front matter.
+- `@mark-bricks/editor/font-families`: `FONT_FAMILY_STACKS`, the font stacks the content area can be set to. It has no dependencies, so the VS Code extension host can load it to validate settings.
+- `@mark-bricks/editor/marp`: `isMarpDocument`. It depends on neither React nor `@wordpress/*`, so the VS Code extension host can load it.
+- `@mark-bricks/editor/katex-fonts`: `rewriteFontSources`, which points a KaTeX stylesheet at the bundled WOFF2 fonts. `@mark-bricks/marp-preview` uses it for the math in slides.
+- `@mark-bricks/editor/code-previews`: `inspectCodePreviews`, which reports how the previews of the math and code blocks rendered, for the apps' smoke tests.
 
 ## Appearance
 
@@ -28,9 +40,9 @@ Some Gutenberg components hard-code colors. These styles are overridden with WPD
 
 Localization is built on `@wordpress/i18n`. Dictionaries from `languages/mark-bricks-{locale}.json` are bundled at build time.
 
-Call `applyLocale()` once at startup, before the editor renders and before any module that calls `__()` at module load is imported. Switching locale afterward requires an app restart.
+Call `setupEditor()` once at startup, before the editor renders and before any module that calls `__()` at module load is imported. It applies the locale, then registers the blocks and inline formats, whose titles are translated at registration. Switching locale afterward requires an app restart.
 
-`applyLocale()` takes a WordPress locale slug (e.g. `ja`, `pt_BR`) and applies it when a catalog for it exists, otherwise English. The editor keeps no list of languages: choosing the slug is up to each host.
+`setupEditor()` takes a WordPress locale slug (e.g. `ja`, `pt_BR`) and applies it when a catalog for it exists, otherwise English, and resolves to the applied slug. The editor keeps no list of languages: choosing the slug is up to each host.
 
 ## Localization pipeline
 

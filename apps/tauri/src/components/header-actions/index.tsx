@@ -1,8 +1,9 @@
 /**
  * External dependencies
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { useFrontMatter, useKeyboardShortcut } from '@mark-bricks/editor';
+import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
  * WordPress dependencies
@@ -11,13 +12,14 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as preferencesStore } from '@wordpress/preferences';
-import { moreVertical } from '@wordpress/icons';
+import { external, moreVertical } from '@wordpress/icons';
 import {
 	AlertDialog,
 	Button,
 	getWpCompatOverlaySlot,
 	IconButton,
 	Menu,
+	Spinner,
 	Stack,
 } from '@wordpress/ui';
 
@@ -25,10 +27,14 @@ import {
  * Internal dependencies
  */
 import {
+	exportSlideDeck,
+	getExportStatus,
 	newFile,
 	openFile,
+	openPreview,
 	saveActiveFile,
 	saveActiveFileAs,
+	subscribeExportStatus,
 } from '../../actions';
 import tabsStore from '../../store';
 import { ABOUT_MODAL_NAME } from '../about-modal';
@@ -47,6 +53,7 @@ export default function HeaderActions( {
 }: Props ) {
 	const {
 		isActiveTabDirty,
+		isActiveTabMarp,
 		isPreferencesOpened,
 		isFixedToolbar,
 		isFocusMode,
@@ -57,6 +64,7 @@ export default function HeaderActions( {
 		const activeTab = getTabs().find( ( t ) => t.id === getActiveTabId() );
 		return {
 			isActiveTabDirty: !! activeTab?.isDirty,
+			isActiveTabMarp: isMarpDocument( activeTab?.content ?? '' ),
 			isPreferencesOpened: isModalActive( PREFERENCES_MODAL_NAME ),
 			isFixedToolbar: !! get( 'core', 'fixedToolbar' ),
 			isFocusMode: !! get( 'core', 'focusMode' ),
@@ -80,6 +88,10 @@ export default function HeaderActions( {
 	const isFrontMatterEmpty = frontMatter?.trim() === '';
 	const [ isRemoveFrontMatterOpen, setIsRemoveFrontMatterOpen ] =
 		useState( false );
+	const exportStatus = useSyncExternalStore(
+		subscribeExportStatus,
+		getExportStatus
+	);
 	useEffect( () => {
 		if ( isPreferencesOpened ) {
 			setIsOptionsMenuOpen( false );
@@ -93,6 +105,27 @@ export default function HeaderActions( {
 			align="center"
 			gap="sm"
 		>
+			{ exportStatus === 'printing' && (
+				<Spinner
+					role="status"
+					aria-label={ __(
+						'Exporting the slide deck…',
+						'mark-bricks'
+					) }
+				/>
+			) }
+			{ isActiveTabMarp && (
+				<IconButton
+					icon={ external }
+					label={ __( 'Preview Slides', 'mark-bricks' ) }
+					variant="minimal"
+					tone="neutral"
+					size="compact"
+					onClick={ () => {
+						void openPreview();
+					} }
+				/>
+			) }
 			<Button
 				size="compact"
 				onClick={ () => {
@@ -157,6 +190,40 @@ export default function HeaderActions( {
 								{ __( 'Save As…', 'mark-bricks' ) }
 							</Menu.ItemLabel>
 						</Menu.Item>
+						{ isActiveTabMarp && (
+							<Menu.SubmenuRoot>
+								<Menu.SubmenuTrigger
+									disabled={ exportStatus !== 'idle' }
+								>
+									<Menu.ItemLabel>
+										{ __(
+											'Export Slide Deck',
+											'mark-bricks'
+										) }
+									</Menu.ItemLabel>
+								</Menu.SubmenuTrigger>
+								<Menu.Popup>
+									<Menu.Item
+										onClick={ () =>
+											exportSlideDeck( 'html' )
+										}
+									>
+										<Menu.ItemLabel>
+											{ __( 'HTML…', 'mark-bricks' ) }
+										</Menu.ItemLabel>
+									</Menu.Item>
+									<Menu.Item
+										onClick={ () =>
+											exportSlideDeck( 'pdf' )
+										}
+									>
+										<Menu.ItemLabel>
+											{ __( 'PDF…', 'mark-bricks' ) }
+										</Menu.ItemLabel>
+									</Menu.Item>
+								</Menu.Popup>
+							</Menu.SubmenuRoot>
+						) }
 					</Menu.Group>
 					<Menu.Separator />
 					<Menu.Group>

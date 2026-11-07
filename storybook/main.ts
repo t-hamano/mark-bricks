@@ -1,6 +1,9 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
+	// Relative image URLs in the shared Markdown examples resolve against
+	// the Storybook root, both in development and under /storybook/ on Pages.
+	staticDirs: [ '../packages/fixtures/markdown' ],
 	stories: [
 		'./*.stories.@(ts|tsx)',
 		// The visual regression tests' stories stay out of the published

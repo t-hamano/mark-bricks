@@ -17,6 +17,7 @@ import type { Block } from '@wordpress/blocks';
 import * as paragraphConverter from '../block-library/paragraph/converter';
 import * as headingConverter from '../block-library/heading/converter';
 import * as codeConverter from '../block-library/code/converter';
+import * as mathConverter from '../block-library/math/converter';
 import * as separatorConverter from '../block-library/separator/converter';
 import * as tableConverter from '../block-library/table/converter';
 import * as listConverter from '../block-library/list/converter';
@@ -26,6 +27,7 @@ import * as htmlConverter from '../block-library/html/converter';
 import * as detailsConverter from '../block-library/details/converter';
 import type { NodeResult } from '../block-library/types';
 import { sourceSyntaxHandlers } from './source-syntax';
+import { remarkMathBlock } from './math-block';
 
 /**
  * Maps a single block to its corresponding mdast node.
@@ -47,6 +49,8 @@ export function blockToNode( block: Block ): NodeResult | null {
 			return headingConverter.toNode( block );
 		case 'core/code':
 			return codeConverter.toNode( block );
+		case 'core/math':
+			return mathConverter.toNode( block );
 		case 'core/separator':
 			return separatorConverter.toNode( block );
 		case 'core/table':
@@ -97,6 +101,7 @@ export function blocksToMarkdown( blocks: Block[] ): string {
 					handlers: { ...sourceSyntaxHandlers, ...handlers },
 				} )
 				.use( remarkGfm )
+				.use( remarkMathBlock )
 				.stringify( tree );
 		} )
 		// Strip the trailing newline remark-stringify appends, since the

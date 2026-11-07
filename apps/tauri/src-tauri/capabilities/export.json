@@ -1,0 +1,11 @@
+{
+	"$schema": "../gen/schemas/desktop-schema.json",
+	"identifier": "export",
+	"description": "Capability for the hidden window that prints a slide deck to PDF",
+	"windows": [ "export" ],
+	"permissions": [
+		"core:event:allow-listen",
+		"core:event:allow-unlisten",
+		"core:event:allow-emit"
+	]
+}

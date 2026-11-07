@@ -12,6 +12,13 @@
 	color: var(--wpds-color-foreground-content-neutral);
 	background: var(--wpds-color-background-surface-neutral-strong);
 	overflow: hidden;
+
+	// The block mover stretches every child to `width: 100%`, including its
+	// absolutely positioned screen reader descriptions. Keep them sized to the
+	// mover so they do not overflow a scrolling block toolbar.
+	.block-editor-block-mover__move-button-container {
+		position: relative;
+	}
 }
 
 .editor-shell__body {

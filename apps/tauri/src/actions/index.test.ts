@@ -1,7 +1,8 @@
 /**
  * External dependencies
  */
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { emit } from '@tauri-apps/api/event';
 import { clearMocks, mockIPC } from '@tauri-apps/api/mocks';
 
 /**
@@ -16,11 +17,15 @@ import tabsStore from '../store';
 import {
 	closeTab,
 	closeOtherTabs,
+	exportSlideDeck,
+	getExportStatus,
 	openDocument,
 	openFile,
 	saveTab,
 	saveTabAs,
 	setEditorFlush,
+	subscribeExportStatus,
+	type ExportFormat,
 } from '.';
 
 const selected = {
@@ -568,4 +573,195 @@ it( 'revokes the native grant when closing a tab', async () => {
 		{ cmd: 'close_document', payload: { documentId: 'approved-1' } },
 	] );
 	expect( select( tabsStore ).getTabs() ).toHaveLength( 0 );
+} );
+
+describe( 'exportSlideDeck', () => {
+	const DECK = '---\nmarp: true\ntitle: Deck\n---\n\n# One\n';
+
+	// Opens a deck from `/docs/deck.md` and records the IPC calls, except for
+	// the events, answering the export with `exported`, the written file's
+	// name. For a PDF, the export reports that it started printing, as the
+	// native side does, and records the status then.
+	async function exportDeck( {
+		format = 'html' as ExportFormat,
+		content = DECK,
+		exported = 'deck.html' as string | null,
+		error,
+	}: {
+		format?: ExportFormat;
+		content?: string;
+		exported?: string | null;
+		error?: string;
+	} = {} ) {
+		await openDocument( {
+			...selected,
+			path: '/docs/deck.md',
+			contents: content,
+		} );
+		const calls: { cmd: string; payload: unknown }[] = [];
+		const statuses: string[] = [];
+		mockIPC(
+			async ( cmd, payload ) => {
+				if ( ! cmd.startsWith( 'plugin:event|' ) ) {
+					calls.push( { cmd, payload } );
+				}
+				if ( cmd === 'export_slide_deck' ) {
+					statuses.push( getExportStatus() );
+					if ( format === 'pdf' ) {
+						await emit( 'slide-deck-exporting' );
+						statuses.push( getExportStatus() );
+					}
+					if ( error ) {
+						throw error;
+					}
+					return exported;
+				}
+				return null;
+			},
+			{ shouldMockEvents: true }
+		);
+		await exportSlideDeck( format );
+		return { calls, statuses };
+	}
+
+	const exportPayload = ( calls: { cmd: string; payload: unknown }[] ) =>
+		calls.find( ( c ) => c.cmd === 'export_slide_deck' )?.payload as {
+			request: Record< string, string >;
+			documentPath: string;
+			filterName: string;
+		};
+
+	it( 'sends the rendered HTML for an HTML export', async () => {
+		const { calls } = await exportDeck();
+		const { request, documentPath, filterName } = exportPayload( calls );
+
+		expect( request.format ).toBe( 'html' );
+		expect( request.html ).toMatch( /^<!DOCTYPE html>/ );
+		expect( request.html ).toContain( '<title>Deck</title>' );
+		expect( request ).not.toHaveProperty( 'markdown' );
+		expect( documentPath ).toBe( '/docs/deck.md' );
+		expect( filterName ).toBe( 'HTML slide deck' );
+	} );
+
+	it( 'sends the Markdown for a PDF export', async () => {
+		const { calls } = await exportDeck( {
+			format: 'pdf',
+			exported: 'deck.pdf',
+		} );
+		const { request, filterName } = exportPayload( calls );
+
+		expect( request ).toEqual( { format: 'pdf', markdown: DECK } );
+		expect( filterName ).toBe( 'PDF slide deck' );
+	} );
+
+	it( 'is busy during an export, and printing while a PDF prints', async () => {
+		const { statuses } = await exportDeck( {
+			format: 'pdf',
+			exported: 'deck.pdf',
+		} );
+		expect( statuses ).toEqual( [ 'busy', 'printing' ] );
+		expect( getExportStatus() ).toBe( 'idle' );
+	} );
+
+	it( 'tells subscribers when the status changes', async () => {
+		const listener = vi.fn();
+		const unsubscribe = subscribeExportStatus( listener );
+		await exportDeck();
+		unsubscribe();
+		// Busy, then idle again.
+		expect( listener ).toHaveBeenCalledTimes( 2 );
+	} );
+
+	it( 'ignores a second export while one runs', async () => {
+		await openDocument( {
+			...selected,
+			path: '/docs/deck.md',
+			contents: DECK,
+		} );
+		let finish: ( value: string ) => void = () => {};
+		let exports = 0;
+		mockIPC(
+			( cmd ) => {
+				if ( cmd !== 'export_slide_deck' ) {
+					return null;
+				}
+				exports++;
+				return new Promise( ( resolve ) => {
+					finish = resolve;
+				} );
+			},
+			{ shouldMockEvents: true }
+		);
+
+		const first = exportSlideDeck( 'pdf' );
+		await vi.waitFor( () => expect( exports ).toBe( 1 ) );
+		await exportSlideDeck( 'html' );
+		finish( 'deck.pdf' );
+		await first;
+
+		expect( exports ).toBe( 1 );
+	} );
+
+	it( 'exports unsaved edits', async () => {
+		await openDocument( {
+			...selected,
+			path: '/docs/deck.md',
+			contents: DECK,
+		} );
+		const id = activeTab().id;
+		setEditorFlush( () =>
+			dispatch( tabsStore ).setTabContent(
+				id,
+				DECK.replace( 'title: Deck', 'title: Edited' )
+			)
+		);
+		let html = '';
+		mockIPC(
+			( cmd, payload ) => {
+				if ( cmd === 'export_slide_deck' ) {
+					html = ( payload as { request: { html: string } } ).request
+						.html;
+				}
+				return null;
+			},
+			{ shouldMockEvents: true }
+		);
+
+		await exportSlideDeck( 'html' );
+
+		expect( html ).toContain( '<title>Edited</title>' );
+	} );
+
+	it( 'does nothing for a document that is not a Marp deck', async () => {
+		const { calls } = await exportDeck( { content: '# Notes\n' } );
+		expect( calls ).toEqual( [] );
+	} );
+
+	it( 'stops quietly when the dialog is canceled', async () => {
+		const { calls } = await exportDeck( { exported: null } );
+		expect( calls.map( ( c ) => c.cmd ) ).toEqual( [
+			'export_slide_deck',
+		] );
+	} );
+
+	it( 'tells which file it exported', async () => {
+		const { calls } = await exportDeck();
+		const shown = calls.find( ( c ) => c.cmd === 'plugin:dialog|message' );
+
+		expect( shown?.payload ).toMatchObject( {
+			message: 'Exported the slide deck to deck.html.',
+			kind: 'info',
+		} );
+	} );
+
+	it( 'shows why an export failed', async () => {
+		const { calls } = await exportDeck( { error: 'Access is denied.' } );
+		const shown = calls.find( ( c ) => c.cmd === 'plugin:dialog|message' );
+
+		expect( shown?.payload ).toMatchObject( {
+			message: 'Could not export the slide deck: Access is denied.',
+			kind: 'error',
+		} );
+		expect( getExportStatus() ).toBe( 'idle' );
+	} );
 } );
