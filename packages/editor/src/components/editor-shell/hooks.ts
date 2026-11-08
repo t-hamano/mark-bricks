@@ -228,6 +228,9 @@ export function useMarkdownDocument( {
 			return;
 		}
 		debouncedEmitMarkdown.cancel();
+		// The tree now holds this content, so a later change back to the value
+		// emitted before it is an external change too, not this editor's echo.
+		lastEmittedRef.current = content;
 		isExternalUpdateRef.current = true;
 		const doc = parseDocument( content );
 		setHistory( ( h ) => ( {
