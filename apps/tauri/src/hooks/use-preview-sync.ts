@@ -260,16 +260,21 @@ export default function usePreviewSync(
 	}, [ handleEvent ] );
 
 	// Opens the window while the preview is on there, and closes it when the
-	// preview is off or moves next to the editor.
+	// preview is off or moves next to the editor. Each call waits for the one
+	// before, and follows the latest state, so that a close never runs ahead
+	// of an open that would then leave a window behind.
+	const windowQueueRef = useRef< Promise< unknown > >( Promise.resolve() );
 	useEffect( () => {
-		if ( isWindow ) {
-			void invoke( 'open_preview', {
-				title: __( 'Slide Preview', 'mark-bricks' ),
-				locale: getLocale(),
-			} );
-		} else {
-			void invoke( 'close_preview' );
-		}
+		windowQueueRef.current = windowQueueRef.current
+			.then( () =>
+				isWindowRef.current
+					? invoke( 'open_preview', {
+							title: __( 'Slide Preview', 'mark-bricks' ),
+							locale: getLocale(),
+						} )
+					: invoke( 'close_preview' )
+			)
+			.catch( () => {} );
 	}, [ isWindow ] );
 
 	// Closing the window turns the preview off, rather than moving it next to

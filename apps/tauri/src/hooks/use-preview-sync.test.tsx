@@ -320,6 +320,23 @@ describe( 'in a window', () => {
 		expect( mocks.invoke ).toHaveBeenLastCalledWith( 'close_preview' );
 	} );
 
+	it( 'does not open the window after the preview turns off', async () => {
+		let finishOpen = () => {};
+		mocks.invoke.mockImplementation( ( command ) =>
+			command === 'open_preview'
+				? new Promise< void >( ( resolve ) => {
+						finishOpen = resolve;
+					} )
+				: Promise.resolve()
+		);
+		await render( MARP, { placement: 'window' } );
+		await render( MARP, { placement: 'window', isShown: false } );
+		expect( mocks.invoke ).not.toHaveBeenCalledWith( 'close_preview' );
+
+		await act( async () => finishOpen() );
+		expect( mocks.invoke ).toHaveBeenLastCalledWith( 'close_preview' );
+	} );
+
 	it( 'closes the window when the preview is off', async () => {
 		await render( MARP, { placement: 'window' } );
 		await render( MARP, { placement: 'window', isShown: false } );
