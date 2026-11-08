@@ -214,11 +214,9 @@ pub async fn ai_request(
     on_event: Channel<AiStreamEvent>,
 ) -> Result<(), AiRequestError> {
     api_key::check_window(&window).map_err(AiRequestError::other)?;
-    let api_key = api_key::run_blocking(move || api_key::read_key(&OsKeyStore, provider))
-        .await
-        .map_err(AiRequestError::other)?
-        .ok_or(AiRequestError::NoApiKey)?;
 
+    // Registered before the key is read, since reading it can wait for the
+    // user to unlock the keychain, and the request may be stopped meanwhile.
     let (cancel, cancelled) = oneshot::channel();
     requests
         .0
@@ -226,8 +224,15 @@ pub async fn ai_request(
         .map_err(AiRequestError::other)?
         .insert(id.clone(), cancel);
 
+    let request = async {
+        let api_key = api_key::run_blocking(move || api_key::read_key(&OsKeyStore, provider))
+            .await
+            .map_err(AiRequestError::other)?
+            .ok_or(AiRequestError::NoApiKey)?;
+        send(provider, api_key, body, &on_event).await
+    };
     let result = tokio::select! {
-        result = send(provider, api_key, body, &on_event) => result,
+        result = request => result,
         _ = cancelled => Err(AiRequestError::Cancelled),
     };
 
