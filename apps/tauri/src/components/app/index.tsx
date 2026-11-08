@@ -114,7 +114,7 @@ export function App() {
 
 	useWindowTitle( activeTab );
 	useAppCloseGuard( { tabs, pendingCloseId } );
-	usePreviewSync( activeTab );
+	const onSelectedLineChange = usePreviewSync( activeTab, editorRef );
 
 	return (
 		<EditorThemeProvider theme={ editorTheme ?? 'system' }>
@@ -143,6 +143,7 @@ export function App() {
 						} }
 						editorStyles={ editorStyles }
 						platform={ platform }
+						onSelectedLineChange={ onSelectedLineChange }
 						headerActions={
 							<HeaderActions
 								editorMode={ editorMode }
