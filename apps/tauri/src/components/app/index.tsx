@@ -84,6 +84,7 @@ export function App() {
 		editorTheme,
 		editorStyles,
 		codeEditor,
+		slidePreviewPlacement,
 	} = useSelect( ( select ) => {
 		const { getTabs, getActiveTabId, getPendingCloseId } =
 			select( tabsStore );
@@ -105,6 +106,10 @@ export function App() {
 				EditorStyles | undefined,
 			codeEditor: get( 'mark-bricks', 'codeEditor' ) as
 				CodeEditorSettings | undefined,
+			slidePreviewPlacement:
+				get( 'mark-bricks', 'slidePreviewPlacement' ) === 'window'
+					? ( 'window' as const )
+					: ( 'panel' as const ),
 		};
 	}, [] );
 
@@ -120,7 +125,9 @@ export function App() {
 	useAppCloseGuard( { tabs, pendingCloseId } );
 	const { frameRef, onSelectedLineChange, isSlideMode } = usePreviewSync(
 		activeTab,
-		editorRef
+		editorRef,
+		showSlidePreview,
+		slidePreviewPlacement
 	);
 	const isMarp = isMarpDocument( activeTab?.content ?? '' );
 
@@ -154,6 +161,7 @@ export function App() {
 						onSelectedLineChange={ onSelectedLineChange }
 						sidePanel={
 							showSlidePreview &&
+							slidePreviewPlacement === 'panel' &&
 							isMarp && (
 								<SlidePreview
 									frameRef={ frameRef }

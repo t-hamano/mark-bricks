@@ -7,6 +7,7 @@ import {
 	type EditorStyles,
 	type EditorThemePreference,
 } from '@mark-bricks/editor';
+import type { PreviewPlacement } from '@mark-bricks/marp-preview/controls';
 
 /**
  * WordPress dependencies
@@ -44,6 +45,7 @@ export const DEFAULT_PREFERENCES = {
 		editorTheme: 'system' as EditorThemePreference,
 		editorStyles: DEFAULT_EDITOR_STYLES,
 		codeEditor: DEFAULT_CODE_EDITOR,
+		slidePreviewPlacement: 'panel' as PreviewPlacement,
 	},
 };
 
