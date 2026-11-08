@@ -10,4 +10,7 @@ export const selectors = {
 	isInserterOpened( state: State ) {
 		return state.isInserterOpened;
 	},
+	isAiSidebarOpened( state: State ) {
+		return state.isAiSidebarOpened;
+	},
 };
