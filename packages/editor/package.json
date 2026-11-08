@@ -45,6 +45,10 @@
 			"types": "./src/katex/fonts.ts",
 			"default": "./src/katex/fonts.ts"
 		},
+		"./marp-patterns": {
+			"types": "./src/marp-patterns/index.ts",
+			"default": "./src/marp-patterns/index.ts"
+		},
 		"./marp": {
 			"types": "./src/marp.ts",
 			"default": "./src/marp.ts"

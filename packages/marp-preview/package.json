@@ -28,6 +28,7 @@
 		"build": "node scripts/build-runtime.mjs",
 		"test": "vitest run",
 		"test:watch": "vitest",
+		"slide-patterns:update": "vitest run src/slide-patterns -u",
 		"i18n:make-pot": "mb-i18n make-pot",
 		"i18n:make-po": "mb-i18n make-po",
 		"i18n:make-json": "mb-i18n make-json"
