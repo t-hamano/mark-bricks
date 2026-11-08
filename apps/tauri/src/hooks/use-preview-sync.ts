@@ -1,91 +1,192 @@
 /**
  * External dependencies
  */
-import { useCallback, useEffect, useMemo, useRef, type RefObject } from 'react';
-import { emitTo, listen } from '@tauri-apps/api/event';
+import {
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+	type RefObject,
+} from 'react';
+import { getCurrentWindow } from '@tauri-apps/api/window';
 import type { EditorHandle } from '@mark-bricks/editor';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-
-/**
  * Internal dependencies
  */
-import {
-	PREVIEW_DOCUMENT_EVENT,
-	PREVIEW_LINE_CLICK_EVENT,
-	PREVIEW_READY_EVENT,
-	PREVIEW_SELECTED_LINE_EVENT,
-	PREVIEW_WINDOW,
-	type PreviewLinePayload,
-	type PreviewPayload,
-} from '../preview/constants';
+import type { PreviewCommand, PreviewEvent } from '../preview/constants';
 import type { Tab } from '../store';
-
-function sendToPreview( event: string, payload: unknown ) {
-	void emitTo( PREVIEW_WINDOW, event, payload );
-}
 
 function isLine( line: unknown ): line is number {
 	return Number.isInteger( line ) && ( line as number ) >= 0;
 }
 
+export type PreviewSync = {
+	// The frame of the slide preview, when it is shown.
+	frameRef: RefObject< HTMLIFrameElement | null >;
+	// Callback for the editor's `onSelectedLineChange`.
+	onSelectedLineChange: ( line: number | null ) => void;
+	// Whether the preview fills the window in full screen.
+	isSlideMode: boolean;
+};
+
 /**
- * Keeps the slide preview window showing the active document: sends it each
- * time it changes, and when the preview window opens. Links the slides to the
- * editor too: the preview highlights the element of the selected block and
- * moves to its slide, and a click on an element selects its block.
+ * Keeps the slide preview frame showing the active document: renders it each
+ * time it changes, and when the frame loads. Links the slides to the editor
+ * too: the preview highlights the element of the selected block and moves to
+ * its slide, and a click on an element selects its block. Handles the slide
+ * mode, which fills the window in full screen with the preview.
  *
  * @param activeTab The active tab, if any.
  * @param editorRef The editor of the active tab.
- * @return Callback for the editor's `onSelectedLineChange`.
+ * @return The frame's ref, the editor's callback, and the slide mode.
  */
 export default function usePreviewSync(
 	activeTab: Tab | undefined,
 	editorRef: RefObject< EditorHandle | null >
-): ( line: number | null ) => void {
+): PreviewSync {
 	const markdown = activeTab?.content ?? '';
 	const documentPath = activeTab?.filePath;
 	const isMarp = isMarpDocument( markdown );
-	const payload = useMemo< PreviewPayload >( () => {
-		return isMarp
-			? { markdown, documentPath }
-			: { notice: __( 'Not a Marp document', 'mark-bricks' ) };
-	}, [ isMarp, markdown, documentPath ] );
 
-	const payloadRef = useRef( payload );
-	payloadRef.current = payload;
-	const isMarpRef = useRef( isMarp );
-	isMarpRef.current = isMarp;
+	const frameRef = useRef< HTMLIFrameElement >( null );
+	const documentRef = useRef( { markdown, documentPath, isMarp } );
+	documentRef.current = { markdown, documentPath, isMarp };
 	const selectedLineRef = useRef< number | null >( null );
+	const [ isSlideMode, setIsSlideMode ] = useState( false );
+	// Whether the slide mode put the window in full screen, which it then
+	// leaves with it.
+	const enteredFullscreenRef = useRef( false );
 
-	useEffect( () => {
-		const unlistenReady = listen( PREVIEW_READY_EVENT, () => {
-			sendToPreview( PREVIEW_DOCUMENT_EVENT, payloadRef.current );
-			sendToPreview( PREVIEW_SELECTED_LINE_EVENT, {
-				line: selectedLineRef.current,
-			} satisfies PreviewLinePayload );
-		} );
-		const unlistenClick = listen< PreviewLinePayload >(
-			PREVIEW_LINE_CLICK_EVENT,
-			( { payload: { line } } ) => {
-				if ( isMarpRef.current && isLine( line ) ) {
-					editorRef.current?.selectLine( line );
-				}
-			}
+	const send = useCallback( ( command: PreviewCommand ) => {
+		frameRef.current?.contentWindow?.postMessage(
+			command,
+			location.origin
 		);
+	}, [] );
+
+	// Renders the deck on the next frame, once however often it changes.
+	const renderFrameRef = useRef< number | null >( null );
+	const scheduleRender = useCallback( () => {
+		if ( renderFrameRef.current !== null ) {
+			return;
+		}
+		renderFrameRef.current = requestAnimationFrame( () => {
+			renderFrameRef.current = null;
+			const current = documentRef.current;
+			if ( ! current.isMarp || ! frameRef.current ) {
+				return;
+			}
+			void import( '../preview/render' ).then( ( { renderSlides } ) => {
+				// A later render already holds the latest document.
+				if (
+					documentRef.current.markdown !== current.markdown ||
+					documentRef.current.documentPath !== current.documentPath
+				) {
+					return;
+				}
+				send( {
+					type: 'slides',
+					slides: renderSlides(
+						current.markdown,
+						current.documentPath
+					),
+				} );
+			} );
+		} );
+	}, [ send ] );
+
+	useEffect(
+		() => () => {
+			if ( renderFrameRef.current !== null ) {
+				cancelAnimationFrame( renderFrameRef.current );
+				renderFrameRef.current = null;
+			}
+		},
+		[]
+	);
+
+	const setSlideMode = useCallback(
+		async ( enabled: boolean ) => {
+			const appWindow = getCurrentWindow();
+			setIsSlideMode( enabled );
+			send( { type: 'slide-mode', enabled } );
+			if ( enabled ) {
+				// Moves the keyboard to the slides, for the keys to reach them.
+				frameRef.current?.focus();
+				if ( ! ( await appWindow.isFullscreen() ) ) {
+					enteredFullscreenRef.current = true;
+					await appWindow.setFullscreen( true );
+				}
+			} else if ( enteredFullscreenRef.current ) {
+				enteredFullscreenRef.current = false;
+				await appWindow.setFullscreen( false );
+			}
+		},
+		[ send ]
+	);
+
+	// Full screen can also end without the `F` key, such as with the green
+	// button on macOS.
+	const isSlideModeRef = useRef( isSlideMode );
+	isSlideModeRef.current = isSlideMode;
+	useEffect( () => {
+		const unlisten = getCurrentWindow().onResized( async () => {
+			if (
+				isSlideModeRef.current &&
+				! ( await getCurrentWindow().isFullscreen() )
+			) {
+				enteredFullscreenRef.current = false;
+				setIsSlideMode( false );
+				send( { type: 'slide-mode', enabled: false } );
+			}
+		} );
 		return () => {
-			void unlistenReady.then( ( fn ) => fn() );
-			void unlistenClick.then( ( fn ) => fn() );
+			void unlisten.then( ( fn ) => fn() );
 		};
-	}, [ editorRef ] );
+	}, [ send ] );
 
 	useEffect( () => {
-		sendToPreview( PREVIEW_DOCUMENT_EVENT, payload );
-	}, [ payload ] );
+		function onMessage( event: MessageEvent ) {
+			if (
+				! frameRef.current ||
+				event.source !== frameRef.current.contentWindow ||
+				event.origin !== location.origin
+			) {
+				return;
+			}
+			const data = event.data as PreviewEvent;
+			switch ( data.type ) {
+				case 'ready':
+					// A new frame, such as one of another tab, starts outside
+					// the slide mode, so the window leaves it too.
+					if ( isSlideModeRef.current ) {
+						void setSlideMode( false );
+					}
+					scheduleRender();
+					send( {
+						type: 'selected-line',
+						line: selectedLineRef.current,
+					} );
+					break;
+				case 'line-click':
+					if ( documentRef.current.isMarp && isLine( data.line ) ) {
+						editorRef.current?.selectLine( data.line );
+					}
+					break;
+				case 'slide-mode-request':
+					void setSlideMode( !! data.enabled );
+					break;
+			}
+		}
+		window.addEventListener( 'message', onMessage );
+		return () => window.removeEventListener( 'message', onMessage );
+	}, [ editorRef, scheduleRender, send, setSlideMode ] );
+
+	useEffect( () => {
+		scheduleRender();
+	}, [ markdown, documentPath, scheduleRender ] );
 
 	// The editor of another tab starts with no block selected, and reports
 	// nothing until one is.
@@ -93,16 +194,25 @@ export default function usePreviewSync(
 	useEffect( () => {
 		if ( selectedLineRef.current !== null ) {
 			selectedLineRef.current = null;
-			sendToPreview( PREVIEW_SELECTED_LINE_EVENT, {
-				line: null,
-			} satisfies PreviewLinePayload );
+			send( { type: 'selected-line', line: null } );
 		}
-	}, [ tabId ] );
+	}, [ tabId, send ] );
 
-	return useCallback( ( line: number | null ) => {
-		selectedLineRef.current = line;
-		sendToPreview( PREVIEW_SELECTED_LINE_EVENT, {
-			line,
-		} satisfies PreviewLinePayload );
-	}, [] );
+	// The preview leaves with the deck, such as when the user switches to a
+	// tab that is not one, so the slide mode does too.
+	useEffect( () => {
+		if ( ! isMarp && isSlideModeRef.current ) {
+			void setSlideMode( false );
+		}
+	}, [ isMarp, setSlideMode ] );
+
+	const onSelectedLineChange = useCallback(
+		( line: number | null ) => {
+			selectedLineRef.current = line;
+			send( { type: 'selected-line', line } );
+		},
+		[ send ]
+	);
+
+	return { frameRef, onSelectedLineChange, isSlideMode };
 }

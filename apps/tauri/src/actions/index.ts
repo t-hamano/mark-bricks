@@ -4,7 +4,6 @@
 import { invoke } from '@tauri-apps/api/core';
 import { listen } from '@tauri-apps/api/event';
 import { message } from '@tauri-apps/plugin-dialog';
-import { getLocale } from '@mark-bricks/editor/locale';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
@@ -519,9 +518,3 @@ export async function exportSlideDeck( format: ExportFormat ) {
  * Opens the slide preview window, or brings it to the front when it is
  * already open.
  */
-export async function openPreview() {
-	await invoke( 'open_preview', {
-		title: __( 'Slide Preview', 'mark-bricks' ),
-		locale: getLocale(),
-	} );
-}

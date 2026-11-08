@@ -12,7 +12,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as preferencesStore } from '@wordpress/preferences';
-import { external, moreVertical } from '@wordpress/icons';
+import { drawerRight, moreVertical } from '@wordpress/icons';
 import {
 	AlertDialog,
 	Button,
@@ -31,11 +31,14 @@ import {
 	getExportStatus,
 	newFile,
 	openFile,
-	openPreview,
 	saveActiveFile,
 	saveActiveFileAs,
 	subscribeExportStatus,
 } from '../../actions';
+import {
+	setSlidePreviewShown,
+	useSlidePreviewShown,
+} from '../../preview/visibility';
 import tabsStore from '../../store';
 import { ABOUT_MODAL_NAME } from '../about-modal';
 import { KEYBOARD_SHORTCUTS_MODAL_NAME } from '../keyboard-shortcuts-modal';
@@ -70,6 +73,7 @@ export default function HeaderActions( {
 			isFocusMode: !! get( 'core', 'focusMode' ),
 		};
 	}, [] );
+	const isSlidePreviewShown = useSlidePreviewShown();
 	const newFileShortcut = useKeyboardShortcut( 'mark-bricks/new-file' );
 	const openFileShortcut = useKeyboardShortcut( 'mark-bricks/open-file' );
 	const saveFileShortcut = useKeyboardShortcut( 'mark-bricks/save-file' );
@@ -116,14 +120,15 @@ export default function HeaderActions( {
 			) }
 			{ isActiveTabMarp && (
 				<IconButton
-					icon={ external }
+					icon={ drawerRight }
 					label={ __( 'Preview Slides', 'mark-bricks' ) }
 					variant="minimal"
 					tone="neutral"
 					size="compact"
-					onClick={ () => {
-						void openPreview();
-					} }
+					onClick={ () =>
+						setSlidePreviewShown( ! isSlidePreviewShown )
+					}
+					aria-pressed={ isSlidePreviewShown }
 				/>
 			) }
 			<Button

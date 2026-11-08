@@ -13,6 +13,7 @@ import {
 	type EditorStyles,
 	type EditorThemePreference,
 } from '@mark-bricks/editor';
+import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
  * WordPress dependencies
@@ -31,6 +32,7 @@ import EditorPlaceholder from '../editor-placeholder';
 import HeaderActions from '../header-actions';
 import KeyboardShortcutsModal from '../keyboard-shortcuts-modal';
 import PreferencesModal from '../preferences-modal';
+import SlidePreview from '../slide-preview';
 import Tabbar from '../tabbar';
 import useAppCloseGuard from '../../hooks/use-app-close-guard';
 import useAutoUpdater from '../../hooks/use-auto-updater';
@@ -41,6 +43,7 @@ import usePreviewSync from '../../hooks/use-preview-sync';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
 import { createPlatform } from '../../platform';
+import { useSlidePreviewShown } from '../../preview/visibility';
 import tabsStore from '../../store';
 import './style.scss';
 
@@ -106,6 +109,7 @@ export function App() {
 	}, [] );
 
 	const { setTabContent, setTabDirty } = useDispatch( tabsStore );
+	const showSlidePreview = useSlidePreviewShown();
 
 	// Relative image paths resolve against the active document's folder, so
 	// the platform changes with it (e.g. when an untitled tab is saved).
@@ -114,7 +118,11 @@ export function App() {
 
 	useWindowTitle( activeTab );
 	useAppCloseGuard( { tabs, pendingCloseId } );
-	const onSelectedLineChange = usePreviewSync( activeTab, editorRef );
+	const { frameRef, onSelectedLineChange, isSlideMode } = usePreviewSync(
+		activeTab,
+		editorRef
+	);
+	const isMarp = isMarpDocument( activeTab?.content ?? '' );
 
 	return (
 		<EditorThemeProvider theme={ editorTheme ?? 'system' }>
@@ -144,6 +152,15 @@ export function App() {
 						editorStyles={ editorStyles }
 						platform={ platform }
 						onSelectedLineChange={ onSelectedLineChange }
+						sidePanel={
+							showSlidePreview &&
+							isMarp && (
+								<SlidePreview
+									frameRef={ frameRef }
+									isSlideMode={ isSlideMode }
+								/>
+							)
+						}
 						headerActions={
 							<HeaderActions
 								editorMode={ editorMode }
