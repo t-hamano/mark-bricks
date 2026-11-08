@@ -144,17 +144,18 @@ export function createSlidePreview(
 		if ( slideMode.isEnabled() ) {
 			return;
 		}
-		let line: number | null = null;
-		if ( sourceSyncLevel === 'element' ) {
-			line = getSourceLine( event.target );
-		} else {
-			const slide = view
-				.getSlides()
-				.find( ( element ) =>
-					element.contains( event.target as Node )
-				);
-			line = slide ? getSlideSourceLine( slide ) : null;
+		const slide = view
+			.getSlides()
+			.find( ( element ) => element.contains( event.target as Node ) );
+		if ( ! slide ) {
+			return;
 		}
+		// A click on a slide outside its elements, such as on its padding,
+		// stands for the whole slide, as at the slide level.
+		const line =
+			( sourceSyncLevel === 'element'
+				? getSourceLine( event.target )
+				: null ) ?? getSlideSourceLine( slide );
 		if ( line !== null ) {
 			onSourceLineClick?.( line );
 		}
