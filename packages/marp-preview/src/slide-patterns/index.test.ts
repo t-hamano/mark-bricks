@@ -42,6 +42,19 @@ describe( 'renderSlidePatternPreviews', () => {
 		}
 	} );
 
+	it( 'renders every image', () => {
+		const { html } = renderSlidePatternPreviews( SLIDE_PATTERNS );
+		for ( const pattern of SLIDE_PATTERNS ) {
+			for ( const theme of SLIDE_PATTERN_THEMES ) {
+				// An image Marp refuses to load stays as Markdown text.
+				expect( html[ pattern.name ][ theme ] ).not.toContain( '![' );
+			}
+		}
+		expect( html[ 'image-and-text' ].default ).toContain(
+			'background-image:url(&quot;data:image/png;base64,'
+		);
+	} );
+
 	it( 'loads no web fonts', () => {
 		const { css } = renderSlidePatternPreviews( SLIDE_PATTERNS );
 		for ( const theme of SLIDE_PATTERN_THEMES ) {
