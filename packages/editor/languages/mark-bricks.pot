@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:17:34.271Z\n"
+"POT-Creation-Date: 2026-11-08T12:23:34.883Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -232,72 +232,72 @@ msgstr ""
 msgid "Blocks"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:44
-msgid "Simple and clean, based on GitHub Markdown style."
-msgstr ""
-
-#: src/components/front-matter-editor/index.tsx:52
-msgid "Classic look with a colored background."
-msgstr ""
-
-#: src/components/front-matter-editor/index.tsx:60
-msgid "Minimal and modern, with centered content."
-msgstr ""
-
-#: src/components/front-matter-editor/index.tsx:74
-msgid "Widescreen, 1280 × 720."
-msgstr ""
-
-#: src/components/front-matter-editor/index.tsx:79
-msgid "Standard, 960 × 720."
-msgstr ""
-
-#: src/components/front-matter-editor/index.tsx:119
+#: src/components/front-matter-editor/index.tsx:73
 msgid "Write YAML front matter…"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:137
+#: src/components/front-matter-editor/index.tsx:91
 msgid "YAML front matter"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:164
-#: src/components/front-matter-editor/index.tsx:183
+#: src/components/front-matter-editor/index.tsx:118
+#: src/components/front-matter-editor/index.tsx:137
 msgid "Front matter settings"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:187
+#: src/components/front-matter-editor/index.tsx:141
 msgid "Marp"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:188
+#: src/components/front-matter-editor/index.tsx:142
 msgid "Turn the document into a slide deck."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:227
+#: src/components/front-matter-editor/index.tsx:181
 msgid "Theme"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:234
+#: src/components/front-matter-editor/index.tsx:187
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:195
+msgid "Classic look with a colored background."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:203
+msgid "Minimal and modern, with centered content."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:214
 msgid "Size"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:241
+#: src/components/front-matter-editor/index.tsx:220
+msgid "Widescreen, 1280 × 720."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:228
+msgid "Standard, 960 × 720."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:239
 msgid "Paginate"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:242
+#: src/components/front-matter-editor/index.tsx:240
 msgid "Show the page number on each slide."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:252
+#: src/components/front-matter-editor/index.tsx:250
 msgid "Header"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:259
+#: src/components/front-matter-editor/index.tsx:257
 msgid "Footer"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:267
+#: src/components/front-matter-editor/index.tsx:265
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr ""
 

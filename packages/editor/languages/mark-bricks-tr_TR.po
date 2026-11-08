@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:17:34.271Z\n"
-"PO-Revision-Date: 2026-11-08T12:17:42.821Z\n"
+"POT-Creation-Date: 2026-11-08T12:23:34.883Z\n"
+"PO-Revision-Date: 2026-11-08T12:23:55.556Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -93,7 +93,7 @@ msgstr "Yeni paragraf ekledikten sonra blok türünü değiştirin."
 msgid "Choose language…"
 msgstr "Dil seçin…"
 
-#: src/components/front-matter-editor/index.tsx:52
+#: src/components/front-matter-editor/index.tsx:195
 msgid "Classic look with a colored background."
 msgstr "Renkli arka planlı klasik bir görünüm."
 
@@ -179,7 +179,7 @@ msgstr "Başlığı girin…"
 msgid "Failed to load image."
 msgstr "Görsel yüklenemedi."
 
-#: src/components/front-matter-editor/index.tsx:259
+#: src/components/front-matter-editor/index.tsx:257
 msgid "Footer"
 msgstr "Alt bilgi"
 
@@ -187,8 +187,8 @@ msgstr "Alt bilgi"
 msgid "Forward-slash"
 msgstr "Eğik çizgi"
 
-#: src/components/front-matter-editor/index.tsx:164
-#: src/components/front-matter-editor/index.tsx:183
+#: src/components/front-matter-editor/index.tsx:118
+#: src/components/front-matter-editor/index.tsx:137
 msgid "Front matter settings"
 msgstr "Front matter ayarları"
 
@@ -201,7 +201,7 @@ msgstr "GitHub uyarı türü"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:252
+#: src/components/front-matter-editor/index.tsx:250
 msgid "Header"
 msgstr "Üst bilgi"
 
@@ -302,7 +302,7 @@ msgstr "Seçilmiş metni satır içi koda dönüştürür."
 msgid "Make the selected text italic."
 msgstr "Seçilmiş metni yatık yapar."
 
-#: src/components/front-matter-editor/index.tsx:187
+#: src/components/front-matter-editor/index.tsx:141
 msgid "Marp"
 msgstr "Marp"
 
@@ -319,7 +319,7 @@ msgstr ""
 "belirler. Diğer sözcükler alternatif metin ya da arka plan görselinin "
 "açıklaması olur."
 
-#: src/components/front-matter-editor/index.tsx:60
+#: src/components/front-matter-editor/index.tsx:203
 msgid "Minimal and modern, with centered content."
 msgstr "İçeriği ortalanmış, minimal ve modern bir tema."
 
@@ -355,7 +355,7 @@ msgstr "Girintiyi azalt"
 msgid "Outline"
 msgstr "Anahat"
 
-#: src/components/front-matter-editor/index.tsx:241
+#: src/components/front-matter-editor/index.tsx:239
 msgid "Paginate"
 msgstr "Sayfa numarası"
 
@@ -401,7 +401,7 @@ msgstr "Ara"
 msgid "Search for blocks"
 msgstr "Blok ara"
 
-#: src/components/front-matter-editor/index.tsx:267
+#: src/components/front-matter-editor/index.tsx:265
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Diğer ayarlar için <a>Marp belgelerine</a> bakın."
 
@@ -409,7 +409,7 @@ msgstr "Diğer ayarlar için <a>Marp belgelerine</a> bakın."
 msgid "Show or hide the List View."
 msgstr "Liste görünümünü gösterin veya gizleyin."
 
-#: src/components/front-matter-editor/index.tsx:242
+#: src/components/front-matter-editor/index.tsx:240
 msgid "Show the page number on each slide."
 msgstr "Her slaytta sayfa numarasını gösterir."
 
@@ -419,15 +419,15 @@ msgstr "Her slaytta sayfa numarasını gösterir."
 msgid "Shown as a tooltip on hover."
 msgstr "Üzerine gelindiğinde araç ipucu olarak gösterilir."
 
-#: src/components/front-matter-editor/index.tsx:44
+#: src/components/front-matter-editor/index.tsx:187
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "GitHub Markdown stiline dayanan sade ve temiz bir tema."
 
-#: src/components/front-matter-editor/index.tsx:234
+#: src/components/front-matter-editor/index.tsx:214
 msgid "Size"
 msgstr "Boyut"
 
-#: src/components/front-matter-editor/index.tsx:79
+#: src/components/front-matter-editor/index.tsx:228
 msgid "Standard, 960 × 720."
 msgstr "Standart, 960 × 720."
 
@@ -455,7 +455,7 @@ msgstr "Diyagram oluşturulamadı."
 msgid "The formula could not be rendered."
 msgstr "Formül oluşturulamadı."
 
-#: src/components/front-matter-editor/index.tsx:227
+#: src/components/front-matter-editor/index.tsx:181
 msgid "Theme"
 msgstr "Tema"
 
@@ -481,7 +481,7 @@ msgstr "Normal öğeye dönüştür"
 msgid "Turn into a task item"
 msgstr "Görev öğesine dönüştür"
 
-#: src/components/front-matter-editor/index.tsx:188
+#: src/components/front-matter-editor/index.tsx:142
 msgid "Turn the document into a slide deck."
 msgstr "Belgeyi bir slayt sunusuna dönüştürür."
 
@@ -524,7 +524,7 @@ msgstr "Görsel Markdown blok düzenleyicisi."
 msgid "Warning"
 msgstr "Uyarı"
 
-#: src/components/front-matter-editor/index.tsx:74
+#: src/components/front-matter-editor/index.tsx:220
 msgid "Widescreen, 1280 × 720."
 msgstr "Geniş ekran, 1280 × 720."
 
@@ -536,7 +536,7 @@ msgstr "HTML yazın…"
 msgid "Write TeX…"
 msgstr "TeX yazın…"
 
-#: src/components/front-matter-editor/index.tsx:119
+#: src/components/front-matter-editor/index.tsx:73
 msgid "Write YAML front matter…"
 msgstr "YAML front matter yazın…"
 
@@ -548,6 +548,6 @@ msgstr "Kod yaz…"
 msgid "Write summary…"
 msgstr "Özet yaz…"
 
-#: src/components/front-matter-editor/index.tsx:137
+#: src/components/front-matter-editor/index.tsx:91
 msgid "YAML front matter"
 msgstr "YAML front matter"

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:17:34.271Z\n"
-"PO-Revision-Date: 2026-11-08T12:17:42.078Z\n"
+"POT-Creation-Date: 2026-11-08T12:23:34.883Z\n"
+"PO-Revision-Date: 2026-11-08T12:23:54.854Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -93,7 +93,7 @@ msgstr "Изменить тип блока после добавления но�
 msgid "Choose language…"
 msgstr "Выберите язык…"
 
-#: src/components/front-matter-editor/index.tsx:52
+#: src/components/front-matter-editor/index.tsx:195
 msgid "Classic look with a colored background."
 msgstr "Классический вид с цветным фоном."
 
@@ -179,7 +179,7 @@ msgstr "Введите заголовок…"
 msgid "Failed to load image."
 msgstr "Не удалось загрузить изображение."
 
-#: src/components/front-matter-editor/index.tsx:259
+#: src/components/front-matter-editor/index.tsx:257
 msgid "Footer"
 msgstr "Нижний колонтитул"
 
@@ -187,8 +187,8 @@ msgstr "Нижний колонтитул"
 msgid "Forward-slash"
 msgstr "Косая черта"
 
-#: src/components/front-matter-editor/index.tsx:164
-#: src/components/front-matter-editor/index.tsx:183
+#: src/components/front-matter-editor/index.tsx:118
+#: src/components/front-matter-editor/index.tsx:137
 msgid "Front matter settings"
 msgstr "Настройки front matter"
 
@@ -201,7 +201,7 @@ msgstr "Тип оповещения GitHub"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:252
+#: src/components/front-matter-editor/index.tsx:250
 msgid "Header"
 msgstr "Верхний колонтитул"
 
@@ -302,7 +302,7 @@ msgstr "Сделать выделенный текст встроенным ко
 msgid "Make the selected text italic."
 msgstr "Сделать выделенный текст курсивом."
 
-#: src/components/front-matter-editor/index.tsx:187
+#: src/components/front-matter-editor/index.tsx:141
 msgid "Marp"
 msgstr "Marp"
 
@@ -319,7 +319,7 @@ msgstr ""
 "Остальные слова становятся альтернативным текстом или подписью фонового "
 "изображения."
 
-#: src/components/front-matter-editor/index.tsx:60
+#: src/components/front-matter-editor/index.tsx:203
 msgid "Minimal and modern, with centered content."
 msgstr "Минималистичная и современная, с выравниванием по центру."
 
@@ -355,7 +355,7 @@ msgstr "Убрать отступ"
 msgid "Outline"
 msgstr "Структура"
 
-#: src/components/front-matter-editor/index.tsx:241
+#: src/components/front-matter-editor/index.tsx:239
 msgid "Paginate"
 msgstr "Нумерация страниц"
 
@@ -401,7 +401,7 @@ msgstr "Поиск"
 msgid "Search for blocks"
 msgstr "Поиск блоков"
 
-#: src/components/front-matter-editor/index.tsx:267
+#: src/components/front-matter-editor/index.tsx:265
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Другие настройки описаны в <a>документации Marp</a>."
 
@@ -409,7 +409,7 @@ msgstr "Другие настройки описаны в <a>документа�
 msgid "Show or hide the List View."
 msgstr "Показать или скрыть представление в виде списка."
 
-#: src/components/front-matter-editor/index.tsx:242
+#: src/components/front-matter-editor/index.tsx:240
 msgid "Show the page number on each slide."
 msgstr "Показывает номер страницы на каждом слайде."
 
@@ -419,15 +419,15 @@ msgstr "Показывает номер страницы на каждом сл�
 msgid "Shown as a tooltip on hover."
 msgstr "Показывается как всплывающая подсказка при наведении."
 
-#: src/components/front-matter-editor/index.tsx:44
+#: src/components/front-matter-editor/index.tsx:187
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "Простая и аккуратная, в стиле GitHub Markdown."
 
-#: src/components/front-matter-editor/index.tsx:234
+#: src/components/front-matter-editor/index.tsx:214
 msgid "Size"
 msgstr "Размер"
 
-#: src/components/front-matter-editor/index.tsx:79
+#: src/components/front-matter-editor/index.tsx:228
 msgid "Standard, 960 × 720."
 msgstr "Стандартный, 960 × 720."
 
@@ -455,7 +455,7 @@ msgstr "Не удалось отобразить диаграмму."
 msgid "The formula could not be rendered."
 msgstr "Не удалось отобразить формулу."
 
-#: src/components/front-matter-editor/index.tsx:227
+#: src/components/front-matter-editor/index.tsx:181
 msgid "Theme"
 msgstr "Тема"
 
@@ -481,7 +481,7 @@ msgstr "Преобразовать в обычный элемент"
 msgid "Turn into a task item"
 msgstr "Преобразовать в задачу"
 
-#: src/components/front-matter-editor/index.tsx:188
+#: src/components/front-matter-editor/index.tsx:142
 msgid "Turn the document into a slide deck."
 msgstr "Превращает документ в слайд-презентацию."
 
@@ -524,7 +524,7 @@ msgstr "Визуальный блочный редактор Markdown."
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: src/components/front-matter-editor/index.tsx:74
+#: src/components/front-matter-editor/index.tsx:220
 msgid "Widescreen, 1280 × 720."
 msgstr "Широкоэкранный, 1280 × 720."
 
@@ -536,7 +536,7 @@ msgstr "Напишите HTML…"
 msgid "Write TeX…"
 msgstr "Напишите TeX…"
 
-#: src/components/front-matter-editor/index.tsx:119
+#: src/components/front-matter-editor/index.tsx:73
 msgid "Write YAML front matter…"
 msgstr "Введите YAML front matter…"
 
@@ -548,6 +548,6 @@ msgstr "Введите код…"
 msgid "Write summary…"
 msgstr "Написать резюме…"
 
-#: src/components/front-matter-editor/index.tsx:137
+#: src/components/front-matter-editor/index.tsx:91
 msgid "YAML front matter"
 msgstr "YAML front matter"

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:17:34.271Z\n"
-"PO-Revision-Date: 2026-11-08T12:17:35.604Z\n"
+"POT-Creation-Date: 2026-11-08T12:23:34.883Z\n"
+"PO-Revision-Date: 2026-11-08T12:23:48.389Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -93,7 +93,7 @@ msgstr "Změnit typ bloku po přidání nového odstavce."
 msgid "Choose language…"
 msgstr "Vyberte jazyk…"
 
-#: src/components/front-matter-editor/index.tsx:52
+#: src/components/front-matter-editor/index.tsx:195
 msgid "Classic look with a colored background."
 msgstr "Klasický vzhled s barevným pozadím."
 
@@ -179,7 +179,7 @@ msgstr "Zadejte název…"
 msgid "Failed to load image."
 msgstr "Obrázek se nepodařilo načíst."
 
-#: src/components/front-matter-editor/index.tsx:259
+#: src/components/front-matter-editor/index.tsx:257
 msgid "Footer"
 msgstr "Zápatí"
 
@@ -187,8 +187,8 @@ msgstr "Zápatí"
 msgid "Forward-slash"
 msgstr "Lomítko"
 
-#: src/components/front-matter-editor/index.tsx:164
-#: src/components/front-matter-editor/index.tsx:183
+#: src/components/front-matter-editor/index.tsx:118
+#: src/components/front-matter-editor/index.tsx:137
 msgid "Front matter settings"
 msgstr "Nastavení front matter"
 
@@ -201,7 +201,7 @@ msgstr "Typ výstrahy GitHub"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:252
+#: src/components/front-matter-editor/index.tsx:250
 msgid "Header"
 msgstr "Záhlaví"
 
@@ -302,7 +302,7 @@ msgstr "Změnit vybraný text na vložený kód."
 msgid "Make the selected text italic."
 msgstr "Kurzíva"
 
-#: src/components/front-matter-editor/index.tsx:187
+#: src/components/front-matter-editor/index.tsx:141
 msgid "Marp"
 msgstr "Marp"
 
@@ -318,7 +318,7 @@ msgstr ""
 "Klíčová slova Marp jako bg, w:200px nebo sepia určují rozvržení a velikost. "
 "Ostatní slova se stanou alternativním textem nebo popiskem obrázku na pozadí."
 
-#: src/components/front-matter-editor/index.tsx:60
+#: src/components/front-matter-editor/index.tsx:203
 msgid "Minimal and modern, with centered content."
 msgstr "Minimalistický a moderní, s obsahem na středu."
 
@@ -354,7 +354,7 @@ msgstr "Zmenšit odsazení"
 msgid "Outline"
 msgstr "Osnova"
 
-#: src/components/front-matter-editor/index.tsx:241
+#: src/components/front-matter-editor/index.tsx:239
 msgid "Paginate"
 msgstr "Číslování stránek"
 
@@ -400,7 +400,7 @@ msgstr "Hledat"
 msgid "Search for blocks"
 msgstr "Hledat bloky"
 
-#: src/components/front-matter-editor/index.tsx:267
+#: src/components/front-matter-editor/index.tsx:265
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
 
@@ -408,7 +408,7 @@ msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
 msgid "Show or hide the List View."
 msgstr "Zobrazit nebo skrýt Zobrazení seznamu."
 
-#: src/components/front-matter-editor/index.tsx:242
+#: src/components/front-matter-editor/index.tsx:240
 msgid "Show the page number on each slide."
 msgstr "Zobrazí číslo stránky na každém snímku."
 
@@ -418,15 +418,15 @@ msgstr "Zobrazí číslo stránky na každém snímku."
 msgid "Shown as a tooltip on hover."
 msgstr "Zobrazí se jako popisek při najetí myší."
 
-#: src/components/front-matter-editor/index.tsx:44
+#: src/components/front-matter-editor/index.tsx:187
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "Jednoduchý a čistý, založený na stylu GitHub Markdown."
 
-#: src/components/front-matter-editor/index.tsx:234
+#: src/components/front-matter-editor/index.tsx:214
 msgid "Size"
 msgstr "Velikost"
 
-#: src/components/front-matter-editor/index.tsx:79
+#: src/components/front-matter-editor/index.tsx:228
 msgid "Standard, 960 × 720."
 msgstr "Standardní, 960 × 720."
 
@@ -454,7 +454,7 @@ msgstr "Diagram se nepodařilo vykreslit."
 msgid "The formula could not be rendered."
 msgstr "Vzorec se nepodařilo vykreslit."
 
-#: src/components/front-matter-editor/index.tsx:227
+#: src/components/front-matter-editor/index.tsx:181
 msgid "Theme"
 msgstr "Motiv"
 
@@ -480,7 +480,7 @@ msgstr "Převést na běžnou položku"
 msgid "Turn into a task item"
 msgstr "Převést na úkol"
 
-#: src/components/front-matter-editor/index.tsx:188
+#: src/components/front-matter-editor/index.tsx:142
 msgid "Turn the document into a slide deck."
 msgstr "Změní dokument na sadu snímků."
 
@@ -523,7 +523,7 @@ msgstr "Vizuální blokový editor Markdownu."
 msgid "Warning"
 msgstr "Varování"
 
-#: src/components/front-matter-editor/index.tsx:74
+#: src/components/front-matter-editor/index.tsx:220
 msgid "Widescreen, 1280 × 720."
 msgstr "Širokoúhlá, 1280 × 720."
 
@@ -535,7 +535,7 @@ msgstr "Začněte psát HTML…"
 msgid "Write TeX…"
 msgstr "Začněte psát TeX…"
 
-#: src/components/front-matter-editor/index.tsx:119
+#: src/components/front-matter-editor/index.tsx:73
 msgid "Write YAML front matter…"
 msgstr "Napište YAML front matter…"
 
@@ -547,6 +547,6 @@ msgstr "Napište kód"
 msgid "Write summary…"
 msgstr "Napište shrnutí…"
 
-#: src/components/front-matter-editor/index.tsx:137
+#: src/components/front-matter-editor/index.tsx:91
 msgid "YAML front matter"
 msgstr "YAML front matter"

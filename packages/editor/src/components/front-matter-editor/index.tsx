@@ -34,52 +34,6 @@ import {
 	setFrontMatterValue,
 	setMarpFrontMatter,
 } from '../../converter/front-matter';
-
-// Marp's built-in themes. Translated at render time.
-function getMarpThemes(): SelectOption[] {
-	return [
-		{
-			label: 'default',
-			value: 'default',
-			description: __(
-				'Simple and clean, based on GitHub Markdown style.',
-				'mark-bricks'
-			),
-		},
-		{
-			label: 'gaia',
-			value: 'gaia',
-			description: __(
-				'Classic look with a colored background.',
-				'mark-bricks'
-			),
-		},
-		{
-			label: 'uncover',
-			value: 'uncover',
-			description: __(
-				'Minimal and modern, with centered content.',
-				'mark-bricks'
-			),
-		},
-	];
-}
-
-// The slide sizes that Marp's built-in themes provide.
-function getMarpSizes(): SelectOption[] {
-	return [
-		{
-			label: '16:9',
-			value: '16:9',
-			description: __( 'Widescreen, 1280 × 720.', 'mark-bricks' ),
-		},
-		{
-			label: '4:3',
-			value: '4:3',
-			description: __( 'Standard, 960 × 720.', 'mark-bricks' ),
-		},
-	];
-}
 import { useCodeMirror } from '../../block-library/hooks/use-code-mirror';
 import { usePlatform } from '../../platform';
 
@@ -225,14 +179,58 @@ function MarpSettings( {
 		<>
 			<FrontMatterSelect
 				label={ __( 'Theme', 'mark-bricks' ) }
-				options={ getMarpThemes() }
+				// Marp's built-in themes.
+				options={ [
+					{
+						label: 'default',
+						value: 'default',
+						description: __(
+							'Simple and clean, based on GitHub Markdown style.',
+							'mark-bricks'
+						),
+					},
+					{
+						label: 'gaia',
+						value: 'gaia',
+						description: __(
+							'Classic look with a colored background.',
+							'mark-bricks'
+						),
+					},
+					{
+						label: 'uncover',
+						value: 'uncover',
+						description: __(
+							'Minimal and modern, with centered content.',
+							'mark-bricks'
+						),
+					},
+				] }
 				value={ getFrontMatterValue( value, 'theme' ) ?? 'default' }
 				onChange={ ( next ) => setValue( 'theme', next ) }
 				portalContainer={ portalContainer }
 			/>
 			<FrontMatterSelect
 				label={ __( 'Size', 'mark-bricks' ) }
-				options={ getMarpSizes() }
+				// The sizes that Marp's built-in themes provide.
+				options={ [
+					{
+						label: '16:9',
+						value: '16:9',
+						description: __(
+							'Widescreen, 1280 × 720.',
+							'mark-bricks'
+						),
+					},
+					{
+						label: '4:3',
+						value: '4:3',
+						description: __(
+							'Standard, 960 × 720.',
+							'mark-bricks'
+						),
+					},
+				] }
 				value={ getFrontMatterValue( value, 'size' ) ?? '16:9' }
 				onChange={ ( next ) => setValue( 'size', next ) }
 				portalContainer={ portalContainer }
