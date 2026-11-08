@@ -54,4 +54,32 @@ window.addEventListener( 'message', ( event: MessageEvent ) => {
 	}
 } );
 
+// Keys do not cross into the main window, so the app's shortcuts, such as
+// saving, would not work while the slides have the focus. Passes on the keys
+// that may be one.
+window.addEventListener(
+	'keydown',
+	( event ) => {
+		if ( ! event.ctrlKey && ! event.metaKey && ! event.altKey ) {
+			return;
+		}
+		const forwarded = new KeyboardEvent( 'keydown', {
+			key: event.key,
+			code: event.code,
+			ctrlKey: event.ctrlKey,
+			metaKey: event.metaKey,
+			altKey: event.altKey,
+			shiftKey: event.shiftKey,
+			repeat: event.repeat,
+			bubbles: true,
+			cancelable: true,
+		} );
+		window.parent.document.dispatchEvent( forwarded );
+		if ( forwarded.defaultPrevented ) {
+			event.preventDefault();
+		}
+	},
+	{ capture: true }
+);
+
 send( { type: 'ready' } );

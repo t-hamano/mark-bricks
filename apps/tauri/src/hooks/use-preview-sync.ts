@@ -135,7 +135,6 @@ export default function usePreviewSync(
 		const unlisten = getCurrentWindow().onResized( async () => {
 			if (
 				isSlideModeRef.current &&
-				enteredFullscreenRef.current &&
 				! ( await getCurrentWindow().isFullscreen() )
 			) {
 				enteredFullscreenRef.current = false;
@@ -160,6 +159,11 @@ export default function usePreviewSync(
 			const data = event.data as PreviewEvent;
 			switch ( data.type ) {
 				case 'ready':
+					// A new frame, such as one of another tab, starts outside
+					// the slide mode, so the window leaves it too.
+					if ( isSlideModeRef.current ) {
+						void setSlideMode( false );
+					}
 					scheduleRender();
 					send( {
 						type: 'selected-line',

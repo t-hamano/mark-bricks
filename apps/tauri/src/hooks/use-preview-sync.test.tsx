@@ -199,6 +199,25 @@ it( 'keeps a window that was in full screen there', async () => {
 	expect( mocks.setFullscreen ).not.toHaveBeenCalled();
 } );
 
+it( 'leaves the slide mode when a new preview loads', async () => {
+	await render( MARP );
+	await receive( { type: 'slide-mode-request', enabled: true } );
+	await receive( { type: 'ready' } );
+	expect( sync.isSlideMode ).toBe( false );
+	expect( mocks.setFullscreen ).toHaveBeenLastCalledWith( false );
+} );
+
+it( 'leaves the slide mode when a full screen it did not enter ends', async () => {
+	mocks.isFullscreen.mockResolvedValue( true );
+	await render( MARP );
+	await receive( { type: 'slide-mode-request', enabled: true } );
+
+	mocks.isFullscreen.mockResolvedValue( false );
+	await act( () => onResized() );
+	expect( sync.isSlideMode ).toBe( false );
+	expect( mocks.setFullscreen ).not.toHaveBeenCalled();
+} );
+
 it( 'leaves the slide mode when full screen ends', async () => {
 	await render( MARP );
 	await receive( { type: 'slide-mode-request', enabled: true } );
