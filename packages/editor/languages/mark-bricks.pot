@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T11:58:16.516Z\n"
+"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -125,7 +125,7 @@ msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:210
-#: src/components/ai-sidebar/index.tsx:90
+#: src/components/ai-sidebar/sidebar.tsx:106
 msgid "Close"
 msgstr ""
 
@@ -281,13 +281,69 @@ msgid "Close AI Assistant"
 msgstr ""
 
 #: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/index.tsx:55
-#: src/components/ai-sidebar/index.tsx:86
+#: src/components/ai-sidebar/sidebar.tsx:60
+#: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
 msgstr ""
 
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
+msgstr ""
+
+#: src/components/ai-sidebar/sidebar.tsx:96
+msgid "New conversation"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:45
+msgid "Waiting for the answer…"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:56
+msgid "Edited the document."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:61
+msgid ""
+"The edit was not applied because the selection changed, for example by "
+"switching editors."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:69
+msgid "Stopped."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:76
+msgid "The answer could not be loaded."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:170
+msgid "Set an API key to use the AI Assistant."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:180
+msgid "Open settings"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:188
+msgid ""
+"Ask the AI Assistant to write or edit. Your selection, or the line the "
+"cursor is on in the code editor, is sent with your message."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:207
+msgid "Message"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:209
+msgid "Ask the AI Assistant"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:218
+msgid "Stop"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:227
+msgid "Send"
 msgstr ""
 
 #: src/block-library/table/edit.tsx:231

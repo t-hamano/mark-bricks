@@ -33,7 +33,7 @@ import '@wordpress/block-editor/build-style/style.css';
  * Internal dependencies
  */
 import { useInitialListView, useMarkdownDocument } from './hooks';
-import { AiSidebar } from '../ai-sidebar';
+import { AiAssistant } from '../ai-sidebar';
 import { EditorFooter } from '../editor-footer';
 import { EditorHeader } from '../editor-header';
 import { FrontMatterContext } from '../front-matter-editor/context';
@@ -203,13 +203,14 @@ function UnforwardedEditorShell(
 								<main className="editor-shell__content">
 									{ children }
 								</main>
-								<AnimatePresence initial={ false }>
-									{ hasAi && isAiSidebarOpened && (
-										<AiSidebar
-											toggleRef={ aiSidebarToggleRef }
-										/>
-									) }
-								</AnimatePresence>
+								{ hasAi && (
+									<AiAssistant
+										toggleRef={ aiSidebarToggleRef }
+										isOpened={ isAiSidebarOpened }
+										editorMode={ editorMode }
+										frontMatter={ frontMatter }
+									/>
+								) }
 							</Stack>
 							{ showBreadcrumbs && <EditorFooter /> }
 						</BlockEditorProvider>

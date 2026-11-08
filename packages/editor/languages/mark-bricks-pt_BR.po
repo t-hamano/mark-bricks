@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T11:58:16.516Z\n"
-"PO-Revision-Date: 2026-11-08T11:58:22.012Z\n"
+"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
+"PO-Revision-Date: 2026-11-08T12:26:49.904Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -39,10 +39,10 @@ msgid "A short line about this section"
 msgstr "Uma linha curta sobre esta seção"
 
 #: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/index.tsx:55
-#: src/components/ai-sidebar/index.tsx:86
+#: src/components/ai-sidebar/sidebar.tsx:60
+#: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
-msgstr ""
+msgstr "Assistente de IA"
 
 #: src/marp-patterns/patterns/agenda.ts:13
 #: src/marp-patterns/patterns/agenda.ts:20
@@ -65,6 +65,16 @@ msgstr "Texto alternativo"
 #: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "Aplicar"
+
+#: src/components/ai-sidebar/chat.tsx:209
+msgid "Ask the AI Assistant"
+msgstr "Pergunte ao assistente de IA"
+
+#: src/components/ai-sidebar/chat.tsx:188
+msgid ""
+"Ask the AI Assistant to write or edit. Your selection, or the line the "
+"cursor is on in the code editor, is sent with your message."
+msgstr "Peça ao assistente de IA para escrever ou editar. Sua seleção, ou a linha em que o cursor está no editor de código, é enviada com sua mensagem."
 
 #: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
@@ -115,13 +125,13 @@ msgstr "Limpar formatação"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:210
-#: src/components/ai-sidebar/index.tsx:90
+#: src/components/ai-sidebar/sidebar.tsx:106
 msgid "Close"
 msgstr "Fechar"
 
 #: src/components/editor-header/index.tsx:194
 msgid "Close AI Assistant"
-msgstr ""
+msgstr "Fechar o assistente de IA"
 
 #: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
@@ -181,6 +191,10 @@ msgstr "Editar imagem"
 #: src/block-library/table/edit.tsx:331
 msgid "Edit table"
 msgstr "Editar tabela"
+
+#: src/components/ai-sidebar/chat.tsx:56
+msgid "Edited the document."
+msgstr "O documento foi editado."
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -337,6 +351,10 @@ msgstr ""
 "tamanho. As demais palavras viram o texto alternativo ou a legenda de uma "
 "imagem de fundo."
 
+#: src/components/ai-sidebar/chat.tsx:207
+msgid "Message"
+msgstr "Mensagem"
+
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
@@ -344,6 +362,10 @@ msgid ""
 msgstr ""
 "Navegue pela estrutura do seu documento e corrija problemas como título "
 "vazios ou com níveis incorretos."
+
+#: src/components/ai-sidebar/sidebar.tsx:96
+msgid "New conversation"
+msgstr "Nova conversa"
 
 #: src/marp-patterns/patterns/agenda.ts:23
 msgctxt "slide pattern"
@@ -361,6 +383,10 @@ msgstr "Nota"
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "Aberto por padrão"
+
+#: src/components/ai-sidebar/chat.tsx:180
+msgid "Open settings"
+msgstr "Abrir configurações"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
@@ -446,6 +472,14 @@ msgctxt "slide pattern"
 msgid "Section title"
 msgstr "Título da seção"
 
+#: src/components/ai-sidebar/chat.tsx:227
+msgid "Send"
+msgstr "Enviar"
+
+#: src/components/ai-sidebar/chat.tsx:170
+msgid "Set an API key to use the AI Assistant."
+msgstr "Defina uma chave de API para usar o assistente de IA."
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "Exibir ou ocultar a visualização em lista."
@@ -460,6 +494,14 @@ msgstr "Exibido como dica ao passar o mouse."
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "Título do slide"
+
+#: src/components/ai-sidebar/chat.tsx:218
+msgid "Stop"
+msgstr "Parar"
+
+#: src/components/ai-sidebar/chat.tsx:69
+msgid "Stopped."
+msgstr "Interrompido."
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -482,9 +524,19 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "Obrigado"
 
+#: src/components/ai-sidebar/chat.tsx:76
+msgid "The answer could not be loaded."
+msgstr "Não foi possível carregar a resposta."
+
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "Não foi possível renderizar o diagrama."
+
+#: src/components/ai-sidebar/chat.tsx:61
+msgid ""
+"The edit was not applied because the selection changed, for example by "
+"switching editors."
+msgstr "A edição não foi aplicada porque a seleção mudou, por exemplo, ao trocar de editor."
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
@@ -560,6 +612,10 @@ msgstr "Envie uma imagem do seu dispositivo ou insira a partir de uma URL."
 #. Description of the generic
 msgid "Visual markdown block editor."
 msgstr "Editor visual de blocos Markdown."
+
+#: src/components/ai-sidebar/chat.tsx:45
+msgid "Waiting for the answer…"
+msgstr "Aguardando a resposta…"
 
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"

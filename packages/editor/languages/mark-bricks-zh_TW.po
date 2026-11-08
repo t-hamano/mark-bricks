@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T11:58:16.516Z\n"
-"PO-Revision-Date: 2026-11-08T11:58:24.439Z\n"
+"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
+"PO-Revision-Date: 2026-11-08T12:26:52.134Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -39,10 +39,10 @@ msgid "A short line about this section"
 msgstr "關於本節的簡短說明"
 
 #: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/index.tsx:55
-#: src/components/ai-sidebar/index.tsx:86
+#: src/components/ai-sidebar/sidebar.tsx:60
+#: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
-msgstr ""
+msgstr "AI 助理"
 
 #: src/marp-patterns/patterns/agenda.ts:13
 #: src/marp-patterns/patterns/agenda.ts:20
@@ -65,6 +65,16 @@ msgstr "替代文字"
 #: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "套用"
+
+#: src/components/ai-sidebar/chat.tsx:209
+msgid "Ask the AI Assistant"
+msgstr "詢問 AI 助理"
+
+#: src/components/ai-sidebar/chat.tsx:188
+msgid ""
+"Ask the AI Assistant to write or edit. Your selection, or the line the "
+"cursor is on in the code editor, is sent with your message."
+msgstr "請 AI 助理撰寫或編輯內容。你的選取範圍，或程式碼編輯器中游標所在的那一行，會隨訊息一起傳送。"
 
 #: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
@@ -115,13 +125,13 @@ msgstr "清除格式"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:210
-#: src/components/ai-sidebar/index.tsx:90
+#: src/components/ai-sidebar/sidebar.tsx:106
 msgid "Close"
 msgstr "關閉"
 
 #: src/components/editor-header/index.tsx:194
 msgid "Close AI Assistant"
-msgstr ""
+msgstr "關閉 AI 助理"
 
 #: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
@@ -181,6 +191,10 @@ msgstr "編輯圖片"
 #: src/block-library/table/edit.tsx:331
 msgid "Edit table"
 msgstr "編輯表格"
+
+#: src/components/ai-sidebar/chat.tsx:56
+msgid "Edited the document."
+msgstr "已編輯文件。"
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -336,11 +350,19 @@ msgstr ""
 "bg、w:200px、sepia 等 Marp 關鍵字用於設定版面配置與尺寸。其餘文字會成為替代文"
 "字，背景圖片則成為說明文字。"
 
+#: src/components/ai-sidebar/chat.tsx:207
+msgid "Message"
+msgstr "訊息"
+
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
 "incorrect heading levels."
 msgstr "瀏覽這篇內容的結構並解決標題層級為空或不正確等問題。"
+
+#: src/components/ai-sidebar/sidebar.tsx:96
+msgid "New conversation"
+msgstr "新對話"
 
 #: src/marp-patterns/patterns/agenda.ts:23
 msgctxt "slide pattern"
@@ -358,6 +380,10 @@ msgstr "說明"
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "預設開啟"
+
+#: src/components/ai-sidebar/chat.tsx:180
+msgid "Open settings"
+msgstr "開啟設定"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
@@ -443,6 +469,14 @@ msgctxt "slide pattern"
 msgid "Section title"
 msgstr "章節標題"
 
+#: src/components/ai-sidebar/chat.tsx:227
+msgid "Send"
+msgstr "傳送"
+
+#: src/components/ai-sidebar/chat.tsx:170
+msgid "Set an API key to use the AI Assistant."
+msgstr "請設定 API 金鑰以使用 AI 助理。"
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "顯示或隱藏清單檢視"
@@ -457,6 +491,14 @@ msgstr "滑鼠懸停時會顯示為工具提示。"
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "投影片標題"
+
+#: src/components/ai-sidebar/chat.tsx:218
+msgid "Stop"
+msgstr "停止"
+
+#: src/components/ai-sidebar/chat.tsx:69
+msgid "Stopped."
+msgstr "已停止。"
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -479,9 +521,19 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "謝謝"
 
+#: src/components/ai-sidebar/chat.tsx:76
+msgid "The answer could not be loaded."
+msgstr "無法載入回答。"
+
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "無法轉譯圖表。"
+
+#: src/components/ai-sidebar/chat.tsx:61
+msgid ""
+"The edit was not applied because the selection changed, for example by "
+"switching editors."
+msgstr "由於選取範圍已變更（例如切換了編輯器），編輯未套用。"
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
@@ -557,6 +609,10 @@ msgstr "從裝置上傳圖片或透過網址插入。"
 #. Description of the generic
 msgid "Visual markdown block editor."
 msgstr "視覺化 Markdown 區塊編輯器。"
+
+#: src/components/ai-sidebar/chat.tsx:45
+msgid "Waiting for the answer…"
+msgstr "正在等待回答…"
 
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"
