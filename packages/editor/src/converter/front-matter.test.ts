@@ -12,6 +12,7 @@ import {
 	isMarpFrontMatter,
 	joinFrontMatter,
 	markdownToBlocks,
+	setMarpFrontMatter,
 	splitFrontMatter,
 } from '.';
 
@@ -177,6 +178,49 @@ describe( 'isMarpFrontMatter', () => {
 	] )( 'does not detect front matter that %s', ( _name, frontMatter ) => {
 		expect( isMarpFrontMatter( frontMatter ) ).toBe( false );
 	} );
+} );
+
+describe( 'setMarpFrontMatter', () => {
+	it.each( [
+		[ 'is empty', '', 'marp: true' ],
+		[ 'has other keys', 'title: Hi', 'marp: true\ntitle: Hi' ],
+		[
+			'sets marp to false',
+			'title: Hi\nmarp: false',
+			'marp: true\ntitle: Hi',
+		],
+		[
+			'already enables marp',
+			'title: Hi\nmarp: true',
+			'title: Hi\nmarp: true',
+		],
+	] )(
+		'turns Marp on in front matter that %s',
+		( _name, input, expected ) => {
+			expect( setMarpFrontMatter( input, true ) ).toBe( expected );
+		}
+	);
+
+	it.each( [
+		[ 'is the only key', 'marp: true', '' ],
+		[
+			'is among other keys',
+			'theme: gaia\nmarp: true\npaginate: true',
+			'theme: gaia\npaginate: true',
+		],
+		[ 'has a comment', 'marp: true # slides\ntitle: Hi', 'title: Hi' ],
+		[ 'sets marp to false', 'marp: false\ntitle: Hi', 'title: Hi' ],
+		[
+			'nests marp under another key',
+			'slides:\n  marp: true',
+			'slides:\n  marp: true',
+		],
+	] )(
+		'turns Marp off in front matter that %s',
+		( _name, input, expected ) => {
+			expect( setMarpFrontMatter( input, false ) ).toBe( expected );
+		}
+	);
 } );
 
 describe( 'isMarpDocument', () => {
