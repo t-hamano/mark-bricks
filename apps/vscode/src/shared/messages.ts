@@ -47,8 +47,8 @@ export type HostMessage =
 			error: ImageError | null;
 	  }
 	| {
-			// A slide was clicked in the slide preview: select the block of
-			// this line, counted from 0.
+			// An element was clicked in the slide preview: select the block
+			// of this line, counted from 0.
 			type: 'selectLine';
 			line: number;
 	  };
@@ -128,7 +128,7 @@ export type PreviewHostMessage =
 	  }
 	| {
 			// The line of the block selected in the editor, for the preview
-			// to move to its slide.
+			// to highlight its element and move to its slide.
 			type: 'selectedLine';
 			line: number | null;
 	  };
@@ -142,7 +142,7 @@ export type PreviewWebviewMessage =
 			slideCount: number;
 	  }
 	| {
-			// The first line of the clicked slide, counted from 0.
+			// The line of the clicked element, counted from 0.
 			type: 'lineClick';
 			line: number;
 	  };
