@@ -158,7 +158,12 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 									css={ preview.css }
 								/>
 							) : (
-								<Text variant="body-sm">{ title }</Text>
+								<Text
+									variant="body-sm"
+									className="inserter-sidebar__pattern-title"
+								>
+									{ title }
+								</Text>
 							) }
 						</Composite.Item>
 						<Tooltip.Popup>{ title }</Tooltip.Popup>
