@@ -15,10 +15,10 @@
 		color: var(--wpds-color-foreground-content-neutral-weak);
 		font-size: 0.85em;
 	}
+}
 
-	&__line {
-		flex: 1;
-		height: 3px;
-		background-color: var(--wpds-color-stroke-surface-neutral);
-	}
+.wp-block-separator__line {
+	flex: 1;
+	height: 3px;
+	background-color: var(--wpds-color-stroke-surface-neutral);
 }
