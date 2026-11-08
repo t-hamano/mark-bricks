@@ -507,3 +507,98 @@ describe( 'image paths', () => {
 		] );
 	} );
 } );
+
+describe( 'slide preview sync', () => {
+	// The editors each test opens, closed after it so that the next test
+	// starts with no selected line.
+	const editors: Array< ReturnType< typeof openEditor > > = [];
+
+	function openDeck() {
+		const editor = openEditor( '---\nmarp: true\n---\n\nA\n' );
+		editors.push( editor );
+		return editor;
+	}
+
+	async function openBoth() {
+		const context = { extensionUri: Uri.file( '/extension' ) };
+		MarpPreview.register( context as unknown as vscode.ExtensionContext );
+		const editor = openDeck();
+		editor.send( { type: 'ready' } );
+		editor.send( { type: 'openMarpPreview' } );
+		await vi.waitFor( () =>
+			expect( getWebviewPanels() ).toHaveLength( 1 )
+		);
+		const [ preview ] = getWebviewPanels();
+		preview.send( { type: 'ready' } );
+		return { editor, preview };
+	}
+
+	function selectedLines( posted: unknown[] ) {
+		return ( posted as Array< { type: string; line?: unknown } > )
+			.filter( ( message ) => message.type === 'selectedLine' )
+			.map( ( message ) => message.line );
+	}
+
+	afterEach( () => {
+		for ( const editor of editors.splice( 0 ) ) {
+			editor.close();
+		}
+		for ( const panel of getWebviewPanels() ) {
+			panel.dispose();
+		}
+	} );
+
+	it( 'sends the selected line to the preview', async () => {
+		const { editor, preview } = await openBoth();
+		expect( selectedLines( preview.posted ) ).toEqual( [ null ] );
+
+		editor.send( { type: 'selectedLine', line: 4 } );
+		expect( selectedLines( preview.posted ) ).toEqual( [ null, 4 ] );
+
+		editor.close();
+		expect( selectedLines( preview.posted ) ).toEqual( [ null, 4, null ] );
+	} );
+
+	it( 'sends the selected line to a preview opened later', async () => {
+		const context = { extensionUri: Uri.file( '/extension' ) };
+		MarpPreview.register( context as unknown as vscode.ExtensionContext );
+		const editor = openDeck();
+		editor.send( { type: 'ready' } );
+		editor.send( { type: 'selectedLine', line: 4 } );
+		editor.send( { type: 'openMarpPreview' } );
+		await vi.waitFor( () =>
+			expect( getWebviewPanels() ).toHaveLength( 1 )
+		);
+		const [ preview ] = getWebviewPanels();
+		preview.send( { type: 'ready' } );
+
+		expect( selectedLines( preview.posted ) ).toEqual( [ 4 ] );
+	} );
+
+	it( 'selects the block of a clicked slide', async () => {
+		const { editor, preview } = await openBoth();
+
+		preview.send( { type: 'lineClick', line: 4 } );
+		expect( editor.posted ).toContainEqual( {
+			type: 'selectLine',
+			line: 4,
+		} );
+	} );
+
+	it( 'ignores lines that are not lines of the document', async () => {
+		const { editor, preview } = await openBoth();
+
+		for ( const line of [ -1, 1.5, '4', null ] ) {
+			preview.send( { type: 'lineClick', line } );
+			editor.send( {
+				type: 'selectedLine',
+				line,
+			} as unknown as WebviewMessage );
+		}
+		expect(
+			editor.posted.filter( ( message ) => message.type === 'selectLine' )
+		).toEqual( [] );
+		// Only `null`, which clears the selection, reaches the preview.
+		expect( selectedLines( preview.posted ) ).toEqual( [ null, null ] );
+	} );
+} );

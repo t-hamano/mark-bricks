@@ -45,6 +45,12 @@ export type HostMessage =
 			type: 'checkImage:done';
 			requestId: number;
 			error: ImageError | null;
+	  }
+	| {
+			// A slide was clicked in the slide preview: select the block of
+			// this line, counted from 0.
+			type: 'selectLine';
+			line: number;
 	  };
 
 export type WebviewMessage =
@@ -90,6 +96,12 @@ export type WebviewMessage =
 			type: 'checkImage';
 			requestId: number;
 			path: string;
+	  }
+	| {
+			// The line, counted from 0, that the selected block starts at,
+			// or `null` when no block is selected.
+			type: 'selectedLine';
+			line: number | null;
 	  };
 
 // What the slide preview's webview saves with `setState`, for the host to
@@ -113,6 +125,12 @@ export type PreviewHostMessage =
 	| {
 			type: 'notice';
 			text: string;
+	  }
+	| {
+			// The line of the block selected in the editor, for the preview
+			// to move to its slide.
+			type: 'selectedLine';
+			line: number | null;
 	  };
 
 export type PreviewWebviewMessage =
@@ -122,4 +140,9 @@ export type PreviewWebviewMessage =
 	| {
 			type: 'rendered';
 			slideCount: number;
+	  }
+	| {
+			// The first line of the clicked slide, counted from 0.
+			type: 'lineClick';
+			line: number;
 	  };
