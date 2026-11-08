@@ -29,7 +29,8 @@ function post( message: PreviewWebviewMessage ): void {
 // renders of earlier edits.
 let selectedLine: number | null = null;
 
-// The slides follow the block selected in the visual editor, by slide.
+// The slides follow the block selected in the visual editor, which they
+// highlight.
 const preview = createSlidePreview( document.body, {
 	locale: resolveVsCodeLocale( document.documentElement.lang ),
 	onRender: ( slideCount ) => {
@@ -38,7 +39,6 @@ const preview = createSlidePreview( document.body, {
 		}
 		post( { type: 'rendered', slideCount } );
 	},
-	sourceSyncLevel: 'slide',
 	onSourceLineClick: ( line ) => post( { type: 'lineClick', line } ),
 } );
 
