@@ -4,6 +4,7 @@ use std::sync::{Mutex, OnceLock};
 
 use tauri::{Emitter, Env, Manager};
 
+mod ai_request;
 mod api_key;
 mod documents;
 mod export;
@@ -454,6 +455,7 @@ pub fn run() {
             }
         })
         .manage(Documents::default())
+        .manage(ai_request::AiRequests::default())
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
@@ -474,7 +476,9 @@ pub fn run() {
             set_as_default_markdown_handler,
             api_key::save_ai_api_key,
             api_key::delete_ai_api_key,
-            api_key::has_ai_api_key
+            api_key::has_ai_api_key,
+            ai_request::ai_request,
+            ai_request::cancel_ai_request
         ])
         .build(ctx)
         .expect("error while building tauri application")

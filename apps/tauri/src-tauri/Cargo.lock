@@ -2432,6 +2432,7 @@ name = "mark-bricks"
 version = "0.17.0"
 dependencies = [
  "core-foundation 0.10.1",
+ "futures-util",
  "gtk",
  "keyring",
  "lopdf",
@@ -2440,6 +2441,8 @@ dependencies = [
  "objc2-app-kit",
  "objc2-foundation",
  "objc2-web-kit",
+ "reqwest",
+ "rustls",
  "same-file",
  "serde",
  "serde_json",

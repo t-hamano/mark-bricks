@@ -29,10 +29,15 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 same-file = "1"
 lopdf = { version = "0.47", default-features = false }
-tokio = { version = "1", features = ["time"] }
+tokio = { version = "1", features = ["time", "macros", "sync"] }
 notify-debouncer-mini = "0.7"
 # Keeps the AI assistant's API key in the OS credential store.
 keyring = "4"
+# Sends the AI assistant's requests to the API. Already in the tree through
+# the updater.
+reqwest = { version = "0.13", default-features = false, features = ["rustls-no-provider", "stream", "system-proxy"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std"] }
+futures-util = "0.3"
 
 [target.'cfg(target_os = "macos")'.dependencies]
 core-foundation = "0.10"
