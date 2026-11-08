@@ -248,7 +248,7 @@ describe( 'createSlidePreview', () => {
 		expect( onSlideModeRequest ).toHaveBeenLastCalledWith( false );
 		expect( preview.isSlideMode() ).toBe( true );
 	} );
-	it( 'reports the line of the element clicked', async () => {
+	it( 'reports the line of the element clicked, or of the slide outside its elements', async () => {
 		const onSourceLineClick = vi.fn();
 		const preview = setup( { onSourceLineClick } );
 		preview.render( renderSlides( SOURCE_DECK ) );
@@ -256,8 +256,8 @@ describe( 'createSlidePreview', () => {
 
 		act( () => document.querySelector( 'li' )?.click() );
 		expect( onSourceLineClick ).toHaveBeenLastCalledWith( 6 );
-		act( () => document.querySelector( 'section' )?.click() );
-		expect( onSourceLineClick ).toHaveBeenLastCalledWith( 0 );
+		act( () => document.querySelectorAll( 'section' )[ 1 ]?.click() );
+		expect( onSourceLineClick ).toHaveBeenLastCalledWith( 10 );
 	} );
 
 	it( 'does not report clicks in the slide mode', async () => {

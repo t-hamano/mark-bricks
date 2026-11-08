@@ -42,6 +42,8 @@ import { InserterSidebar } from '../inserter-sidebar';
 import { KeyboardShortcuts } from '../keyboard-shortcuts';
 import { ListViewSidebar } from '../list-view-sidebar';
 import { MobileBlockToolbar } from '../mobile-block-toolbar';
+import { useMarpSeparatorTitle } from '../../block-library/separator/use-marp-title';
+import { isMarpFrontMatter } from '../../converter/front-matter';
 import { PlatformProvider, type Platform } from '../../platform';
 import { TextEditorContext } from '../../ai/text-editor-context';
 import { store as editorStore } from '../../store';
@@ -141,6 +143,7 @@ function UnforwardedEditorShell(
 	);
 
 	useInitialListView( !! settings?.showListViewByDefault );
+	useMarpSeparatorTitle( isMarpFrontMatter( frontMatter ) );
 
 	const { isInserterOpened, isListViewOpened, isAiSidebarOpened } = useSelect(
 		( select ) => {
