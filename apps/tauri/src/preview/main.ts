@@ -1,23 +1,16 @@
 /**
  * External dependencies
  */
-import { emitTo } from '@tauri-apps/api/event';
-import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { createSlidePreview } from '@mark-bricks/marp-preview/controls';
 
 /**
  * Internal dependencies
  */
-import {
-	PREVIEW_DOCUMENT_EVENT,
-	PREVIEW_LINE_CLICK_EVENT,
-	PREVIEW_READY_EVENT,
-	PREVIEW_SELECTED_LINE_EVENT,
-	type PreviewLinePayload,
-	type PreviewPayload,
-} from './constants';
-import { setupFullscreen } from './fullscreen';
-import { renderSlides } from './render';
+import type { PreviewCommand, PreviewEvent } from './constants';
+
+function send( event: PreviewEvent ) {
+	window.parent.postMessage( event, location.origin );
+}
 
 // The line of the selected block, which every render with slides moves to: the
 // editor reports a selection right away, but the document that holds it,
@@ -25,45 +18,68 @@ import { renderSlides } from './render';
 // renders of earlier edits.
 let selectedLine: number | null = null;
 
-// Shows the controls in the locale that the main window opened the window
-// with. The slide mode comes with full screen, which `F` and F11 toggle. The
-// slides follow the selected block in the main window, which they highlight.
+// Shows the controls in the locale that the main window opened the frame
+// with. The main window handles the slide mode, which `F` and F11 toggle: it
+// makes the frame fill the window in full screen. The slides follow the
+// selected block in the editor, which they highlight.
 const preview = createSlidePreview( document.body, {
 	locale: new URLSearchParams( location.search ).get( 'locale' ) ?? 'en',
 	toggleKeys: [ 'f', 'F11' ],
-	onSlideModeRequest: ( enabled ) => fullscreen.setFullscreen( enabled ),
-	onSourceLineClick: ( line ) =>
-		void emitTo( 'main', PREVIEW_LINE_CLICK_EVENT, {
-			line,
-		} satisfies PreviewLinePayload ),
+	onSlideModeRequest: ( enabled ) =>
+		send( { type: 'slide-mode-request', enabled } ),
+	onSourceLineClick: ( line ) => send( { type: 'line-click', line } ),
 	onRender: ( slideCount ) => {
 		if ( slideCount > 0 && selectedLine !== null ) {
 			preview.revealSourceLine( selectedLine );
 		}
 	},
 } );
-const fullscreen = setupFullscreen( preview );
 
-async function main() {
-	await getCurrentWebviewWindow().listen< PreviewPayload >(
-		PREVIEW_DOCUMENT_EVENT,
-		( { payload } ) =>
-			// Renders the deck on the next frame, once however often it
-			// arrives.
-			preview.render( () => {
-				return 'notice' in payload
-					? { notice: payload.notice }
-					: renderSlides( payload.markdown, payload.documentPath );
-			} )
-	);
-	await getCurrentWebviewWindow().listen< PreviewLinePayload >(
-		PREVIEW_SELECTED_LINE_EVENT,
-		( { payload: { line } } ) => {
-			selectedLine = line;
+window.addEventListener( 'message', ( event: MessageEvent ) => {
+	if ( event.source !== window.parent || event.origin !== location.origin ) {
+		return;
+	}
+	const command = event.data as PreviewCommand;
+	switch ( command.type ) {
+		case 'slides':
+			preview.render( command.slides );
+			break;
+		case 'selected-line':
+			selectedLine = command.line;
 			preview.revealSourceLine( selectedLine );
-		}
-	);
-	await emitTo( 'main', PREVIEW_READY_EVENT );
-}
+			break;
+		case 'slide-mode':
+			preview.setSlideMode( command.enabled );
+			break;
+	}
+} );
 
-void main();
+// Keys do not cross into the main window, so the app's shortcuts, such as
+// saving, would not work while the slides have the focus. Passes on the keys
+// that may be one.
+window.addEventListener(
+	'keydown',
+	( event ) => {
+		if ( ! event.ctrlKey && ! event.metaKey && ! event.altKey ) {
+			return;
+		}
+		const forwarded = new KeyboardEvent( 'keydown', {
+			key: event.key,
+			code: event.code,
+			ctrlKey: event.ctrlKey,
+			metaKey: event.metaKey,
+			altKey: event.altKey,
+			shiftKey: event.shiftKey,
+			repeat: event.repeat,
+			bubbles: true,
+			cancelable: true,
+		} );
+		window.parent.document.dispatchEvent( forwarded );
+		if ( forwarded.defaultPrevented ) {
+			event.preventDefault();
+		}
+	},
+	{ capture: true }
+);
+
+send( { type: 'ready' } );

@@ -1,25 +1,28 @@
-// Label of the slide preview window, as `open_preview` creates it.
-export const PREVIEW_WINDOW = 'preview';
+/**
+ * External dependencies
+ */
+import type { RenderedSlides } from '@mark-bricks/marp-preview/render';
 
-// Sent by the preview window once it listens, to ask for the document.
-export const PREVIEW_READY_EVENT = 'preview-ready';
+// Path of the slide preview page, which the main window shows in a frame
+// next to the editor.
+export const PREVIEW_PAGE = '/pages/preview.html';
 
-// Sent to the preview window with a `PreviewPayload` for the active document.
-export const PREVIEW_DOCUMENT_EVENT = 'preview-document';
+// Sent by the main window to the preview frame.
+export type PreviewCommand =
+	// The active document's slides, rendered by the main window.
+	| { type: 'slides'; slides: RenderedSlides }
+	// The line of the selected block, for the preview to highlight its
+	// element and move to its slide.
+	| { type: 'selected-line'; line: number | null }
+	// Turns the slide mode on or off, once the frame fills the window.
+	| { type: 'slide-mode'; enabled: boolean };
 
-// What the preview window shows: the active document's slides, or a notice
-// when it is not a Marp slide deck. The main window translates the notice.
-export type PreviewPayload =
-	{ markdown: string; documentPath?: string } | { notice: string };
-
-// Sent to the preview window with a `PreviewLinePayload` whenever the line
-// of the selected block changes, for the preview to highlight its element
-// and move to its slide.
-export const PREVIEW_SELECTED_LINE_EVENT = 'preview-selected-line';
-
-// Sent by the preview window with a `PreviewLinePayload` when the user clicks
-// an element of a slide, for the editor to select its block.
-export const PREVIEW_LINE_CLICK_EVENT = 'preview-line-click';
-
-// A line of the active document, counted from 0, or `null` for none.
-export type PreviewLinePayload = { line: number | null };
+// Sent by the preview frame to the main window.
+export type PreviewEvent =
+	// The frame listens, and asks for the document.
+	| { type: 'ready' }
+	// The user clicked an element of a slide, for the editor to select its
+	// block.
+	| { type: 'line-click'; line: number }
+	// The user asked to turn the slide mode on or off.
+	| { type: 'slide-mode-request'; enabled: boolean };
