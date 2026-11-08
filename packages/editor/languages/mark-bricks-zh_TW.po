@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:25:22.022Z\n"
-"PO-Revision-Date: 2026-11-08T09:25:51.154Z\n"
+"POT-Creation-Date: 2026-11-08T09:45:44.030Z\n"
+"PO-Revision-Date: 2026-11-08T09:45:52.137Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,13 +33,13 @@ msgstr "(不建議在同一篇內容中有多個 H1 標題)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/marp-patterns/patterns/section.ts:25
+#: src/marp-patterns/patterns/section.ts:21
 msgctxt "slide pattern"
 msgid "A short line about this section"
 msgstr "關於本節的簡短說明"
 
 #: src/marp-patterns/patterns/agenda.ts:13
-#: src/marp-patterns/patterns/agenda.ts:25
+#: src/marp-patterns/patterns/agenda.ts:20
 msgctxt "slide pattern"
 msgid "Agenda"
 msgstr "議程"
@@ -60,7 +60,7 @@ msgstr "替代文字"
 msgid "Apply"
 msgstr "套用"
 
-#: src/marp-patterns/patterns/agenda.ts:26
+#: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
 msgid "Background"
 msgstr "背景"
@@ -185,7 +185,7 @@ msgstr "輸入標題…"
 msgid "Failed to load image."
 msgstr "圖片載入失敗。"
 
-#: src/marp-patterns/patterns/image-and-text.ts:29
+#: src/marp-patterns/patterns/image-and-text.ts:24
 msgctxt "slide pattern"
 msgid "First point"
 msgstr "第一點"
@@ -323,7 +323,7 @@ msgid ""
 "incorrect heading levels."
 msgstr "瀏覽這篇內容的結構並解決標題層級為空或不正確等問題。"
 
-#: src/marp-patterns/patterns/agenda.ts:28
+#: src/marp-patterns/patterns/agenda.ts:23
 msgctxt "slide pattern"
 msgid "Next steps"
 msgstr "後續步驟"
@@ -362,17 +362,17 @@ msgstr "貼上或輸入網址"
 msgid "Paste or type URL or file path"
 msgstr "貼上或輸入網址或檔案路徑"
 
-#: src/marp-patterns/patterns/title.ts:24
+#: src/marp-patterns/patterns/title.ts:20
 msgctxt "slide pattern"
 msgid "Presentation title"
 msgstr "簡報標題"
 
-#: src/marp-patterns/patterns/agenda.ts:27
+#: src/marp-patterns/patterns/agenda.ts:22
 msgctxt "slide pattern"
 msgid "Proposal"
 msgstr "提案"
 
-#: src/marp-patterns/patterns/closing.ts:26
+#: src/marp-patterns/patterns/closing.ts:21
 msgctxt "slide pattern"
 msgid "Questions and contact details"
 msgstr "問題與聯絡方式"
@@ -409,7 +409,7 @@ msgstr "搜尋"
 msgid "Search for blocks"
 msgstr "搜尋區塊"
 
-#: src/marp-patterns/patterns/image-and-text.ts:30
+#: src/marp-patterns/patterns/image-and-text.ts:25
 msgctxt "slide pattern"
 msgid "Second point"
 msgstr "第二點"
@@ -419,7 +419,7 @@ msgctxt "slide pattern"
 msgid "Section divider"
 msgstr "章節分隔"
 
-#: src/marp-patterns/patterns/section.ts:24
+#: src/marp-patterns/patterns/section.ts:20
 msgctxt "slide pattern"
 msgid "Section title"
 msgstr "章節標題"
@@ -434,7 +434,7 @@ msgstr "顯示或隱藏清單檢視"
 msgid "Shown as a tooltip on hover."
 msgstr "滑鼠懸停時會顯示為工具提示。"
 
-#: src/marp-patterns/patterns/image-and-text.ts:28
+#: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "投影片標題"
@@ -455,7 +455,7 @@ msgstr "在視覺化編輯器和程式碼編輯器之間切換。"
 msgid "Table"
 msgstr "表格"
 
-#: src/marp-patterns/patterns/closing.ts:25
+#: src/marp-patterns/patterns/closing.ts:20
 msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "謝謝"
@@ -468,7 +468,7 @@ msgstr "無法轉譯圖表。"
 msgid "The formula could not be rendered."
 msgstr "無法轉譯公式。"
 
-#: src/marp-patterns/patterns/image-and-text.ts:31
+#: src/marp-patterns/patterns/image-and-text.ts:26
 msgctxt "slide pattern"
 msgid "Third point"
 msgstr "第三點"
@@ -563,72 +563,7 @@ msgstr "撰寫摘要..."
 msgid "YAML front matter"
 msgstr "YAML 前置資料"
 
-#: src/marp-patterns/patterns/title.ts:25
+#: src/marp-patterns/patterns/title.ts:21
 msgctxt "slide pattern"
 msgid "Your name · Date"
 msgstr "姓名 · 日期"
-
-#: src/marp-patterns/patterns/section.ts:15
-msgctxt "slide pattern keyword"
-msgid "chapter"
-msgstr "章節"
-
-#: src/marp-patterns/patterns/agenda.ts:16
-msgctxt "slide pattern keyword"
-msgid "contents"
-msgstr "目錄"
-
-#: src/marp-patterns/patterns/title.ts:15
-msgctxt "slide pattern keyword"
-msgid "cover"
-msgstr "封面"
-
-#: src/marp-patterns/patterns/closing.ts:17
-msgctxt "slide pattern keyword"
-msgid "end"
-msgstr "結尾"
-
-#: src/marp-patterns/patterns/section.ts:16
-msgctxt "slide pattern keyword"
-msgid "heading"
-msgstr "標題"
-
-#: src/marp-patterns/patterns/agenda.ts:17
-msgctxt "slide pattern keyword"
-msgid "list"
-msgstr "清單"
-
-#: src/marp-patterns/patterns/title.ts:16
-msgctxt "slide pattern keyword"
-msgid "opening"
-msgstr "開場"
-
-#: src/marp-patterns/patterns/agenda.ts:15
-msgctxt "slide pattern keyword"
-msgid "outline"
-msgstr "大綱"
-
-#: src/marp-patterns/patterns/image-and-text.ts:17
-msgctxt "slide pattern keyword"
-msgid "photo"
-msgstr "照片"
-
-#: src/marp-patterns/patterns/image-and-text.ts:16
-msgctxt "slide pattern keyword"
-msgid "picture"
-msgstr "圖片"
-
-#: src/marp-patterns/patterns/closing.ts:16
-msgctxt "slide pattern keyword"
-msgid "questions"
-msgstr "問題"
-
-#: src/marp-patterns/patterns/image-and-text.ts:18
-msgctxt "slide pattern keyword"
-msgid "split"
-msgstr "分欄"
-
-#: src/marp-patterns/patterns/closing.ts:15
-msgctxt "slide pattern keyword"
-msgid "thanks"
-msgstr "致謝"

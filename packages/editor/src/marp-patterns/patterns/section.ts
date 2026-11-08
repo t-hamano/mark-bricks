@@ -11,10 +11,6 @@ import type { SlidePattern } from '../types';
 const pattern: SlidePattern = {
 	name: 'section',
 	title: () => _x( 'Section divider', 'slide pattern', 'mark-bricks' ),
-	keywords: () => [
-		_x( 'chapter', 'slide pattern keyword', 'mark-bricks' ),
-		_x( 'heading', 'slide pattern keyword', 'mark-bricks' ),
-	],
 	markdown: `<!-- _class: lead invert -->
 
 # {{heading}}

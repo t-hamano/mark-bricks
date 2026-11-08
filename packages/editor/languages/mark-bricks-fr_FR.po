@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:25:22.022Z\n"
-"PO-Revision-Date: 2026-11-08T09:25:46.458Z\n"
+"POT-Creation-Date: 2026-11-08T09:45:44.030Z\n"
+"PO-Revision-Date: 2026-11-08T09:45:47.355Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,13 +33,13 @@ msgstr "(il est déconseillé d’utiliser plusieurs titres H1)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/marp-patterns/patterns/section.ts:25
+#: src/marp-patterns/patterns/section.ts:21
 msgctxt "slide pattern"
 msgid "A short line about this section"
 msgstr "Une courte ligne sur cette section"
 
 #: src/marp-patterns/patterns/agenda.ts:13
-#: src/marp-patterns/patterns/agenda.ts:25
+#: src/marp-patterns/patterns/agenda.ts:20
 msgctxt "slide pattern"
 msgid "Agenda"
 msgstr "Ordre du jour"
@@ -60,7 +60,7 @@ msgstr "Texte alternatif"
 msgid "Apply"
 msgstr "Appliquer"
 
-#: src/marp-patterns/patterns/agenda.ts:26
+#: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
 msgid "Background"
 msgstr "Contexte"
@@ -185,7 +185,7 @@ msgstr "Saisir le titre…"
 msgid "Failed to load image."
 msgstr "Échec du chargement de l’image."
 
-#: src/marp-patterns/patterns/image-and-text.ts:29
+#: src/marp-patterns/patterns/image-and-text.ts:24
 msgctxt "slide pattern"
 msgid "First point"
 msgstr "Premier point"
@@ -326,7 +326,7 @@ msgstr ""
 "Naviguez dans la structure de votre document et résolvez les problèmes tels "
 "que les niveaux de titre vides ou incorrects."
 
-#: src/marp-patterns/patterns/agenda.ts:28
+#: src/marp-patterns/patterns/agenda.ts:23
 msgctxt "slide pattern"
 msgid "Next steps"
 msgstr "Prochaines étapes"
@@ -365,17 +365,17 @@ msgstr "Collez ou saisissez l’URL"
 msgid "Paste or type URL or file path"
 msgstr "Collez ou saisissez une URL ou un chemin de fichier"
 
-#: src/marp-patterns/patterns/title.ts:24
+#: src/marp-patterns/patterns/title.ts:20
 msgctxt "slide pattern"
 msgid "Presentation title"
 msgstr "Titre de la présentation"
 
-#: src/marp-patterns/patterns/agenda.ts:27
+#: src/marp-patterns/patterns/agenda.ts:22
 msgctxt "slide pattern"
 msgid "Proposal"
 msgstr "Proposition"
 
-#: src/marp-patterns/patterns/closing.ts:26
+#: src/marp-patterns/patterns/closing.ts:21
 msgctxt "slide pattern"
 msgid "Questions and contact details"
 msgstr "Questions et coordonnées"
@@ -412,7 +412,7 @@ msgstr "Recherche"
 msgid "Search for blocks"
 msgstr "Rechercher des blocs"
 
-#: src/marp-patterns/patterns/image-and-text.ts:30
+#: src/marp-patterns/patterns/image-and-text.ts:25
 msgctxt "slide pattern"
 msgid "Second point"
 msgstr "Deuxième point"
@@ -422,7 +422,7 @@ msgctxt "slide pattern"
 msgid "Section divider"
 msgstr "Séparateur de section"
 
-#: src/marp-patterns/patterns/section.ts:24
+#: src/marp-patterns/patterns/section.ts:20
 msgctxt "slide pattern"
 msgid "Section title"
 msgstr "Titre de la section"
@@ -437,7 +437,7 @@ msgstr "Afficher ou masquer la vue en liste."
 msgid "Shown as a tooltip on hover."
 msgstr "Affiché en infobulle au survol."
 
-#: src/marp-patterns/patterns/image-and-text.ts:28
+#: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "Titre de la diapositive"
@@ -458,7 +458,7 @@ msgstr "Basculer entre l’éditeur visuel et l’éditeur de code."
 msgid "Table"
 msgstr "Tableau"
 
-#: src/marp-patterns/patterns/closing.ts:25
+#: src/marp-patterns/patterns/closing.ts:20
 msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "Merci"
@@ -471,7 +471,7 @@ msgstr "Le diagramme n’a pas pu être affiché."
 msgid "The formula could not be rendered."
 msgstr "La formule n’a pas pu être affichée."
 
-#: src/marp-patterns/patterns/image-and-text.ts:31
+#: src/marp-patterns/patterns/image-and-text.ts:26
 msgctxt "slide pattern"
 msgid "Third point"
 msgstr "Troisième point"
@@ -567,72 +567,7 @@ msgstr "Rédiger un résumé…"
 msgid "YAML front matter"
 msgstr "Front matter YAML"
 
-#: src/marp-patterns/patterns/title.ts:25
+#: src/marp-patterns/patterns/title.ts:21
 msgctxt "slide pattern"
 msgid "Your name · Date"
 msgstr "Votre nom · Date"
-
-#: src/marp-patterns/patterns/section.ts:15
-msgctxt "slide pattern keyword"
-msgid "chapter"
-msgstr "chapitre"
-
-#: src/marp-patterns/patterns/agenda.ts:16
-msgctxt "slide pattern keyword"
-msgid "contents"
-msgstr "sommaire"
-
-#: src/marp-patterns/patterns/title.ts:15
-msgctxt "slide pattern keyword"
-msgid "cover"
-msgstr "couverture"
-
-#: src/marp-patterns/patterns/closing.ts:17
-msgctxt "slide pattern keyword"
-msgid "end"
-msgstr "fin"
-
-#: src/marp-patterns/patterns/section.ts:16
-msgctxt "slide pattern keyword"
-msgid "heading"
-msgstr "titre"
-
-#: src/marp-patterns/patterns/agenda.ts:17
-msgctxt "slide pattern keyword"
-msgid "list"
-msgstr "liste"
-
-#: src/marp-patterns/patterns/title.ts:16
-msgctxt "slide pattern keyword"
-msgid "opening"
-msgstr "ouverture"
-
-#: src/marp-patterns/patterns/agenda.ts:15
-msgctxt "slide pattern keyword"
-msgid "outline"
-msgstr "plan"
-
-#: src/marp-patterns/patterns/image-and-text.ts:17
-msgctxt "slide pattern keyword"
-msgid "photo"
-msgstr "photo"
-
-#: src/marp-patterns/patterns/image-and-text.ts:16
-msgctxt "slide pattern keyword"
-msgid "picture"
-msgstr "image"
-
-#: src/marp-patterns/patterns/closing.ts:16
-msgctxt "slide pattern keyword"
-msgid "questions"
-msgstr "questions"
-
-#: src/marp-patterns/patterns/image-and-text.ts:18
-msgctxt "slide pattern keyword"
-msgid "split"
-msgstr "partagé"
-
-#: src/marp-patterns/patterns/closing.ts:15
-msgctxt "slide pattern keyword"
-msgid "thanks"
-msgstr "remerciements"
