@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:53:29.097Z\n"
-"PO-Revision-Date: 2026-11-08T12:53:29.997Z\n"
+"POT-Creation-Date: 2026-11-08T13:12:57.475Z\n"
+"PO-Revision-Date: 2026-11-08T13:12:58.528Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -531,6 +531,10 @@ msgstr "GitHub の Markdown スタイルをベースにしたシンプルなテ�
 #: src/components/front-matter-editor/index.tsx:255
 msgid "Size"
 msgstr "サイズ"
+
+#: src/block-library/separator/use-marp-title.ts:39
+msgid "Slide Separator"
+msgstr "スライド区切り"
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:92
 #: src/components/inserter-sidebar/index.tsx:280
