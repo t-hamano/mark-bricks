@@ -10,9 +10,6 @@
 		overflow-x: auto;
 		overflow-y: hidden;
 
-		// Outrank the generic toolbar separator color in the theme provider's
-		// Gutenberg overrides, so the separators match the toolbar's bottom
-		// border.
 		.components-toolbar-group.components-toolbar-group,
 		.components-toolbar.components-toolbar {
 			border-color: var(--wpds-color-stroke-surface-neutral);
