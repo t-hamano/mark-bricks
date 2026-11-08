@@ -57,6 +57,11 @@ type Models =
 type ModelItem = { value: string; label: string };
 
 /**
+ * The value shown, masked, in place of a saved API key.
+ */
+const SAVED_KEY_MASK = '•'.repeat( 24 );
+
+/**
  * The item value of the default model. The select shows its placeholder for
  * an empty value, so the setting's empty string is not used as is.
  */
@@ -163,12 +168,7 @@ export function AiPanel( { settings, onChange }: Props ) {
 			await saveApiKey( key );
 			setKey( '' );
 			setKeyStatus( { kind: 'saved' } );
-			if ( hasKey ) {
-				// The new key may be able to use other models.
-				loadModels();
-			} else {
-				setHasKey( true );
-			}
+			setHasKey( true );
 		} catch ( error ) {
 			setKeyStatus( { kind: 'error', message: String( error ) } );
 		}
@@ -208,18 +208,21 @@ export function AiPanel( { settings, onChange }: Props ) {
 					{ __( 'Anthropic API key', 'mark-bricks' ) }
 				</Text>
 				<Text>
-					{ hasKey
-						? __( 'An API key is saved.', 'mark-bricks' )
-						: __(
-								'The AI Assistant needs your Anthropic API key. It is kept in the system’s credential store and only sent to the Anthropic API.',
-								'mark-bricks'
-							) }
+					{ __(
+						'The AI Assistant needs your Anthropic API key. It is kept in the system’s credential store and only sent to the Anthropic API.',
+						'mark-bricks'
+					) }
 				</Text>
 				<form
 					className="preferences-modal__api-key-form"
 					onSubmit={ ( event ) => {
 						event.preventDefault();
-						if ( key.trim() && ! isBusy ) {
+						if ( isBusy ) {
+							return;
+						}
+						if ( hasKey ) {
+							onDelete();
+						} else if ( key.trim() ) {
 							onSave();
 						}
 					} }
@@ -231,40 +234,42 @@ export function AiPanel( { settings, onChange }: Props ) {
 							type="password"
 							autoComplete="off"
 							spellCheck={ false }
-							label={
-								hasKey
-									? __( 'New API key', 'mark-bricks' )
-									: __( 'API key', 'mark-bricks' )
-							}
+							label={ __( 'API key', 'mark-bricks' ) }
 							placeholder="sk-ant-…"
-							value={ key }
+							// The saved key never reaches the webview, so a
+							// placeholder value stands for it.
+							value={ hasKey ? SAVED_KEY_MASK : key }
 							onValueChange={ setKey }
+							disabled={ !! hasKey }
 						/>
 						<Button
 							type="submit"
 							variant="outline"
 							size="compact"
-							disabled={ ! key.trim() || isBusy }
+							disabled={
+								hasKey === null ||
+								isBusy ||
+								( ! hasKey && ! key.trim() )
+							}
 							loading={ isBusy }
-							loadingAnnouncement={ __(
-								'Checking the API key…',
-								'mark-bricks'
-							) }
+							loadingAnnouncement={
+								hasKey
+									? __(
+											'Deleting the API key…',
+											'mark-bricks'
+										)
+									: __(
+											'Checking the API key…',
+											'mark-bricks'
+										)
+							}
 						>
-							{ __( 'Save', 'mark-bricks' ) }
+							{ hasKey
+								? __( 'Delete', 'mark-bricks' )
+								: __( 'Save', 'mark-bricks' ) }
 						</Button>
 					</Stack>
 				</form>
-				{ hasKey && (
-					<Button
-						variant="outline"
-						size="compact"
-						disabled={ isBusy }
-						onClick={ onDelete }
-					>
-						{ __( 'Delete API key', 'mark-bricks' ) }
-					</Button>
-				) }
 				{ keyStatus.kind === 'saved' && (
 					<Notice.Root
 						className="preferences-modal__notice"

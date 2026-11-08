@@ -120,8 +120,9 @@ describe( 'AiPanel', () => {
 			button( 'Save' )!.click();
 		} );
 		expect( savedKey ).toBe( 'sk-ant-key' );
-		expect( input().value ).toBe( '' );
-		expect( container.textContent ).toContain( 'An API key is saved.' );
+		expect( input().value ).not.toContain( 'sk-ant' );
+		expect( input().disabled ).toBe( true );
+		expect( button( 'Delete' ) ).toBeDefined();
 		expect( commands ).toContain( 'list_ai_models' );
 	} );
 
@@ -151,11 +152,14 @@ describe( 'AiPanel', () => {
 		mockIPC( ( command, args ) => {
 			switch ( command ) {
 				case 'has_ai_api_key':
-					return true;
+					return savedKey !== null;
 				case 'check_ai_api_key':
 					return null;
 				case 'save_ai_api_key':
 					savedKey = ( args as { key: string } ).key;
+					return null;
+				case 'delete_ai_api_key':
+					savedKey = null;
 					return null;
 				case 'list_ai_models':
 					return new Promise( ( resolve ) =>
@@ -164,6 +168,9 @@ describe( 'AiPanel', () => {
 			}
 		} );
 		await render();
+		await act( async () => {
+			button( 'Delete' )!.click();
+		} );
 		await act( async () => {
 			const setValue = Object.getOwnPropertyDescriptor(
 				HTMLInputElement.prototype,
@@ -196,9 +203,11 @@ describe( 'AiPanel', () => {
 		savedKey = 'sk-ant-key';
 		await render();
 		await act( async () => {
-			button( 'Delete API key' )!.click();
+			button( 'Delete' )!.click();
 		} );
 		expect( savedKey ).toBeNull();
 		expect( container.textContent ).toContain( 'The API key was deleted.' );
+		expect( input().disabled ).toBe( false );
+		expect( input().value ).toBe( '' );
 	} );
 } );

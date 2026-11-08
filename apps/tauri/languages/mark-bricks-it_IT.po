@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:04:43.845Z\n"
-"PO-Revision-Date: 2026-11-08T14:04:47.346Z\n"
+"POT-Creation-Date: 2026-11-08T14:12:04.259Z\n"
+"PO-Revision-Date: 2026-11-08T14:12:07.898Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -43,16 +43,16 @@ msgstr "Assistente IA"
 msgid "API key"
 msgstr "Chiave API"
 
-#: src/components/header-actions/index.tsx:353
+#: src/components/header-actions/index.tsx:358
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "Informazioni su MarkBricks"
 
-#: src/components/header-actions/index.tsx:243
+#: src/components/header-actions/index.tsx:248
 msgid "Access all block and document tools in a single place"
 msgstr "Accedi a tutti gli strumenti di blocco e documento in un unico posto"
 
-#: src/components/header-actions/index.tsx:322
+#: src/components/header-actions/index.tsx:327
 msgid "Add YAML front matter"
 msgstr "Aggiungi front matter YAML"
 
@@ -60,10 +60,6 @@ msgstr "Aggiungi front matter YAML"
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "Apri sempre la vista elenco"
-
-#: src/components/preferences-modal/ai-panel.tsx:212
-msgid "An API key is saved."
-msgstr "È salvata una chiave API."
 
 #: src/components/preferences-modal/ai-panel.tsx:208
 msgid "Anthropic API key"
@@ -77,7 +73,7 @@ msgstr "Dimensione del carattere di base dell’area del contenuto, in pixel."
 msgid "Block shortcuts"
 msgstr "Scorciatoie per il blocco"
 
-#: src/components/header-actions/index.tsx:382
+#: src/components/header-actions/index.tsx:387
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Annulla"
@@ -91,7 +87,7 @@ msgstr "Verifica aggiornamenti"
 msgid "Check updates automatically"
 msgstr "Verifica automaticamente gli aggiornamenti"
 
-#: src/components/preferences-modal/ai-panel.tsx:249
+#: src/components/preferences-modal/ai-panel.tsx:261
 msgid "Checking the API key…"
 msgstr "Verifica della chiave API…"
 
@@ -121,7 +117,7 @@ msgid "Close the active tab."
 msgstr "Chiudi la scheda attiva."
 
 #: src/components/preferences-modal/index.tsx:200
-#: src/components/header-actions/index.tsx:298
+#: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Editor del codice"
 
@@ -134,7 +130,7 @@ msgid "Could not connect to the Anthropic API."
 msgstr "Impossibile connettersi all’API di Anthropic."
 
 # %s: Error message.
-#: src/actions/index.ts:496
+#: src/actions/index.ts:495
 msgid "Could not export the slide deck: %s"
 msgstr "Impossibile esportare la presentazione: %s"
 
@@ -158,13 +154,17 @@ msgid "Dark"
 msgstr "Scuro"
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:82
+#: src/components/preferences-modal/ai-panel.tsx:87
 msgid "Default (%s)"
 msgstr "Predefinito (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:265
-msgid "Delete API key"
-msgstr "Elimina la chiave API"
+#: src/components/preferences-modal/ai-panel.tsx:268
+msgid "Delete"
+msgstr "Elimina"
+
+#: src/components/preferences-modal/ai-panel.tsx:257
+msgid "Deleting the API key…"
+msgstr "Eliminazione della chiave API…"
 
 #: src/components/dirty-confirm-dialog/index.tsx:68
 msgid "Discard"
@@ -178,7 +178,7 @@ msgstr "Scarta le modifiche"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Mostra la gerarchia dei blocchi nella parte inferiore dell’editor."
 
-#: src/components/header-actions/index.tsx:269
+#: src/components/header-actions/index.tsx:274
 msgid "Editor"
 msgstr "Editor"
 
@@ -186,17 +186,17 @@ msgstr "Editor"
 msgid "Editor styles"
 msgstr "Stili dell'editor"
 
-#: src/actions/index.ts:469
-#: src/components/header-actions/index.tsx:199
+#: src/actions/index.ts:468
+#: src/components/header-actions/index.tsx:204
 msgid "Export Slide Deck"
 msgstr "Esporta presentazione"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:510
+#: src/actions/index.ts:509
 msgid "Exported the slide deck to %s."
 msgstr "Presentazione esportata in %s."
 
-#: src/components/header-actions/index.tsx:111
+#: src/components/header-actions/index.tsx:115
 msgid "Exporting the slide deck…"
 msgstr "Esportazione della presentazione in corso…"
 
@@ -212,11 +212,11 @@ msgstr "File modificato"
 msgid "File shortcuts"
 msgstr "Scorciatoie dei file"
 
-#: src/components/header-actions/index.tsx:159
+#: src/components/header-actions/index.tsx:164
 msgid "Files"
 msgstr "File"
 
-#: src/components/header-actions/index.tsx:259
+#: src/components/header-actions/index.tsx:264
 msgid "Focus on one block at a time"
 msgstr "Concentrati su un blocco alla volta"
 
@@ -237,11 +237,11 @@ msgstr "Generale"
 msgid "Global shortcuts"
 msgstr "Scorciatoie globali"
 
-#: src/actions/index.ts:489
+#: src/actions/index.ts:488
 msgid "HTML slide deck"
 msgstr "Presentazione HTML"
 
-#: src/components/header-actions/index.tsx:212
+#: src/components/header-actions/index.tsx:217
 msgid "HTML…"
 msgstr "HTML…"
 
@@ -249,7 +249,7 @@ msgstr "HTML…"
 msgid "Handwriting"
 msgstr "Scrittura a mano"
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:332
 msgid "Hide YAML front matter"
 msgstr "Nascondi front matter YAML"
 
@@ -274,7 +274,7 @@ msgid "Keep my version"
 msgstr "Mantieni la mia versione"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:346
+#: src/components/header-actions/index.tsx:351
 msgid "Keyboard shortcuts"
 msgstr "Scorciatoie da tastiera"
 
@@ -308,8 +308,8 @@ msgstr "MarkBricks è ora l’app predefinita per i file Markdown."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Larghezza massima dell’area del contenuto, in pixel."
 
-#: src/components/preferences-modal/ai-panel.tsx:301
 #: src/components/preferences-modal/ai-panel.tsx:306
+#: src/components/preferences-modal/ai-panel.tsx:311
 msgid "Model"
 msgstr "Modello"
 
@@ -317,13 +317,9 @@ msgstr "Modello"
 msgid "Monospace"
 msgstr "Monospazio"
 
-#: src/components/header-actions/index.tsx:166
+#: src/components/header-actions/index.tsx:171
 msgid "New"
 msgstr "Nuovo"
-
-#: src/components/preferences-modal/ai-panel.tsx:236
-msgid "New API key"
-msgstr "Nuova chiave API"
 
 #: src/components/tabbar/index.tsx:142
 #: src/components/editor-placeholder/index.tsx:33
@@ -342,10 +338,6 @@ msgstr "Nessuna chiave API salvata. Aggiungine una nelle impostazioni."
 msgid "No file open"
 msgstr "Nessun file aperto"
 
-#: src/hooks/use-preview-sync.ts:56
-msgid "Not a Marp document"
-msgstr "Non è un documento Marp"
-
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "Apri un file."
@@ -363,28 +355,28 @@ msgstr "Apri file…"
 msgid "Opens the List View panel by default."
 msgstr "Apre il pannello Vista elenco per impostazione predefinita."
 
-#: src/components/header-actions/index.tsx:174
+#: src/components/header-actions/index.tsx:179
 msgid "Open…"
 msgstr "Apri…"
 
-#: src/components/header-actions/index.tsx:146
+#: src/components/header-actions/index.tsx:151
 msgid "Options"
 msgstr "Opzioni"
 
-#: src/actions/index.ts:490
+#: src/actions/index.ts:489
 msgid "PDF slide deck"
 msgstr "Presentazione PDF"
 
-#: src/components/header-actions/index.tsx:221
+#: src/components/header-actions/index.tsx:226
 msgid "PDF…"
 msgstr "PDF…"
 
 #: src/components/preferences-modal/index.tsx:175
-#: src/components/header-actions/index.tsx:362
+#: src/components/header-actions/index.tsx:367
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:124
 msgid "Preview Slides"
 msgstr "Visualizza anteprima diapositive"
 
@@ -392,15 +384,15 @@ msgstr "Visualizza anteprima diapositive"
 msgid "Reload"
 msgstr "Ricarica"
 
-#: src/components/header-actions/index.tsx:383
+#: src/components/header-actions/index.tsx:388
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: src/components/header-actions/index.tsx:333
+#: src/components/header-actions/index.tsx:338
 msgid "Remove YAML front matter"
 msgstr "Rimuovi front matter YAML"
 
-#: src/components/header-actions/index.tsx:377
+#: src/components/header-actions/index.tsx:382
 msgid "Remove YAML front matter?"
 msgstr "Rimuovere il front matter YAML?"
 
@@ -421,13 +413,13 @@ msgid "Sans-serif"
 msgstr "Sans-serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:254
-#: src/components/header-actions/index.tsx:136
-#: src/components/header-actions/index.tsx:182
+#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:187
 msgid "Save"
 msgstr "Salva"
 
-#: src/components/header-actions/index.tsx:190
+#: src/components/header-actions/index.tsx:195
 msgid "Save As…"
 msgstr "Salva con nome…"
 
@@ -472,7 +464,7 @@ msgstr "Mostra i breadcrumb del blocco"
 msgid "Show line numbers"
 msgstr "Mostra i numeri di riga"
 
-#: src/actions/index.ts:524
+#: src/components/slide-preview/index.tsx:39
 msgid "Slide Preview"
 msgstr "Anteprima diapositive"
 
@@ -480,7 +472,7 @@ msgstr "Anteprima diapositive"
 msgid "Spell check"
 msgstr "Controllo ortografico"
 
-#: src/components/header-actions/index.tsx:256
+#: src/components/header-actions/index.tsx:261
 msgid "Spotlight mode"
 msgstr "Modalità in risalto"
 
@@ -497,7 +489,7 @@ msgstr "Dimensione tabulazione"
 msgid "Text formatting"
 msgstr "Formattazione del testo"
 
-#: src/components/preferences-modal/ai-panel.tsx:213
+#: src/components/preferences-modal/ai-panel.tsx:211
 msgid ""
 "The AI Assistant needs your Anthropic API key. It is kept in the system’s "
 "credential store and only sent to the Anthropic API."
@@ -514,11 +506,11 @@ msgstr "Questa chiave API non può usare questo modello."
 msgid "The API key is not valid. Check it in the settings."
 msgstr "La chiave API non è valida. Controllala nelle impostazioni."
 
-#: src/components/preferences-modal/ai-panel.tsx:284
+#: src/components/preferences-modal/ai-panel.tsx:289
 msgid "The API key was deleted."
 msgstr "La chiave API è stata eliminata."
 
-#: src/components/preferences-modal/ai-panel.tsx:274
+#: src/components/preferences-modal/ai-panel.tsx:279
 msgid "The API key was saved."
 msgstr "La chiave API è stata salvata."
 
@@ -526,7 +518,7 @@ msgstr "La chiave API è stata salvata."
 msgid "The Anthropic API is not available right now. Try again later."
 msgstr "L’API di Anthropic non è disponibile al momento. Riprova più tardi."
 
-#: src/components/header-actions/index.tsx:378
+#: src/components/header-actions/index.tsx:383
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -555,7 +547,7 @@ msgid "The model was not found."
 msgstr "Modello non trovato."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:337
+#: src/components/preferences-modal/ai-panel.tsx:342
 msgid "The models could not be loaded: %s"
 msgstr "Impossibile caricare i modelli: %s"
 
@@ -589,15 +581,15 @@ msgstr ""
 msgid "Too many requests. Wait a moment and try again."
 msgstr "Troppe richieste. Attendi un momento e riprova."
 
-#: src/components/header-actions/index.tsx:306
+#: src/components/header-actions/index.tsx:311
 msgid "Tools"
 msgstr "Strumenti"
 
-#: src/components/header-actions/index.tsx:240
+#: src/components/header-actions/index.tsx:245
 msgid "Top toolbar"
 msgstr "Barra degli strumenti in alto"
 
-#: src/components/preferences-modal/ai-panel.tsx:346
+#: src/components/preferences-modal/ai-panel.tsx:351
 msgid "Try again"
 msgstr "Riprova"
 
@@ -626,12 +618,12 @@ msgstr "Aggiornamento disponibile"
 msgid "Update check failed: %s"
 msgstr "Verifica degli aggiornamenti non riuscita: %s"
 
-#: src/components/header-actions/index.tsx:231
+#: src/components/header-actions/index.tsx:236
 msgid "View"
 msgstr "Visualizza"
 
 #: src/components/preferences-modal/index.tsx:197
-#: src/components/header-actions/index.tsx:286
+#: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Editor visuale"
 

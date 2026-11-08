@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:04:43.845Z\n"
+"POT-Creation-Date: 2026-11-08T14:12:04.259Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -88,10 +88,6 @@ msgstr ""
 msgid "Close the active tab."
 msgstr ""
 
-#: src/hooks/use-preview-sync.ts:56
-msgid "Not a Marp document"
-msgstr ""
-
 #: src/hooks/use-file-open-events.ts:43
 msgid "Could not open the following file:"
 msgid_plural "Could not open the following files:"
@@ -149,31 +145,27 @@ msgstr ""
 msgid "This API key is not valid."
 msgstr ""
 
-#: src/actions/index.ts:469
-#: src/components/header-actions/index.tsx:199
+#: src/actions/index.ts:468
+#: src/components/header-actions/index.tsx:204
 msgid "Export Slide Deck"
 msgstr ""
 
-#: src/actions/index.ts:489
+#: src/actions/index.ts:488
 msgid "HTML slide deck"
 msgstr ""
 
-#: src/actions/index.ts:490
+#: src/actions/index.ts:489
 msgid "PDF slide deck"
 msgstr ""
 
 # %s: Error message.
-#: src/actions/index.ts:496
+#: src/actions/index.ts:495
 msgid "Could not export the slide deck: %s"
 msgstr ""
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:510
+#: src/actions/index.ts:509
 msgid "Exported the slide deck to %s."
-msgstr ""
-
-#: src/actions/index.ts:524
-msgid "Slide Preview"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:128
@@ -202,9 +194,9 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:254
-#: src/components/header-actions/index.tsx:136
-#: src/components/header-actions/index.tsx:182
+#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:187
 msgid "Save"
 msgstr ""
 
@@ -215,6 +207,10 @@ msgstr ""
 # %s: tab title.
 #: src/components/tabbar/index.tsx:273
 msgid "Close %s"
+msgstr ""
+
+#: src/components/slide-preview/index.tsx:39
+msgid "Slide Preview"
 msgstr ""
 
 #: src/components/reload-prompt-dialog/index.tsx:58
@@ -300,7 +296,7 @@ msgid "Typeface used for the content area."
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:175
-#: src/components/header-actions/index.tsx:362
+#: src/components/header-actions/index.tsx:367
 msgid "Preferences"
 msgstr ""
 
@@ -309,12 +305,12 @@ msgid "General"
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:197
-#: src/components/header-actions/index.tsx:286
+#: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr ""
 
 #: src/components/preferences-modal/index.tsx:200
-#: src/components/header-actions/index.tsx:298
+#: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr ""
 
@@ -380,7 +376,7 @@ msgid "Restore default settings"
 msgstr ""
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:82
+#: src/components/preferences-modal/ai-panel.tsx:87
 msgid "Default (%s)"
 msgstr ""
 
@@ -396,56 +392,52 @@ msgstr ""
 msgid "Anthropic API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:212
-msgid "An API key is saved."
-msgstr ""
-
-#: src/components/preferences-modal/ai-panel.tsx:213
+#: src/components/preferences-modal/ai-panel.tsx:211
 msgid ""
 "The AI Assistant needs your Anthropic API key. It is kept in the system’s "
 "credential store and only sent to the Anthropic API."
-msgstr ""
-
-#: src/components/preferences-modal/ai-panel.tsx:236
-msgid "New API key"
 msgstr ""
 
 #: src/components/preferences-modal/ai-panel.tsx:237
 msgid "API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:249
+#: src/components/preferences-modal/ai-panel.tsx:257
+msgid "Deleting the API key…"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:261
 msgid "Checking the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:265
-msgid "Delete API key"
+#: src/components/preferences-modal/ai-panel.tsx:268
+msgid "Delete"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:274
+#: src/components/preferences-modal/ai-panel.tsx:279
 msgid "The API key was saved."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:284
+#: src/components/preferences-modal/ai-panel.tsx:289
 msgid "The API key was deleted."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:301
 #: src/components/preferences-modal/ai-panel.tsx:306
+#: src/components/preferences-modal/ai-panel.tsx:311
 msgid "Model"
 msgstr ""
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:337
+#: src/components/preferences-modal/ai-panel.tsx:342
 msgid "The models could not be loaded: %s"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:346
+#: src/components/preferences-modal/ai-panel.tsx:351
 msgid "Try again"
 msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:346
+#: src/components/header-actions/index.tsx:351
 msgid "Keyboard shortcuts"
 msgstr ""
 
@@ -473,103 +465,103 @@ msgstr ""
 msgid "List View shortcuts"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:111
+#: src/components/header-actions/index.tsx:115
 msgid "Exporting the slide deck…"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:124
 msgid "Preview Slides"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:146
+#: src/components/header-actions/index.tsx:151
 msgid "Options"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:159
+#: src/components/header-actions/index.tsx:164
 msgid "Files"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:166
+#: src/components/header-actions/index.tsx:171
 msgid "New"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:174
+#: src/components/header-actions/index.tsx:179
 msgid "Open…"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:190
+#: src/components/header-actions/index.tsx:195
 msgid "Save As…"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:212
+#: src/components/header-actions/index.tsx:217
 msgid "HTML…"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:221
+#: src/components/header-actions/index.tsx:226
 msgid "PDF…"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:231
+#: src/components/header-actions/index.tsx:236
 msgid "View"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:240
+#: src/components/header-actions/index.tsx:245
 msgid "Top toolbar"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:243
+#: src/components/header-actions/index.tsx:248
 msgid "Access all block and document tools in a single place"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:256
+#: src/components/header-actions/index.tsx:261
 msgid "Spotlight mode"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:259
+#: src/components/header-actions/index.tsx:264
 msgid "Focus on one block at a time"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:269
+#: src/components/header-actions/index.tsx:274
 msgid "Editor"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:306
+#: src/components/header-actions/index.tsx:311
 msgid "Tools"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:322
+#: src/components/header-actions/index.tsx:327
 msgid "Add YAML front matter"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:332
 msgid "Hide YAML front matter"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:333
+#: src/components/header-actions/index.tsx:338
 msgid "Remove YAML front matter"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:353
+#: src/components/header-actions/index.tsx:358
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:377
+#: src/components/header-actions/index.tsx:382
 msgid "Remove YAML front matter?"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:378
+#: src/components/header-actions/index.tsx:383
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr ""
 
-#: src/components/header-actions/index.tsx:382
+#: src/components/header-actions/index.tsx:387
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:383
+#: src/components/header-actions/index.tsx:388
 msgid "Remove"
 msgstr ""
 

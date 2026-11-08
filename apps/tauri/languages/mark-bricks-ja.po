@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:04:43.845Z\n"
-"PO-Revision-Date: 2026-11-08T14:04:44.660Z\n"
+"POT-Creation-Date: 2026-11-08T14:12:04.259Z\n"
+"PO-Revision-Date: 2026-11-08T14:12:05.046Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -43,16 +43,16 @@ msgstr "AI アシスタント"
 msgid "API key"
 msgstr "API キー"
 
-#: src/components/header-actions/index.tsx:353
+#: src/components/header-actions/index.tsx:358
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "MarkBricks について"
 
-#: src/components/header-actions/index.tsx:243
+#: src/components/header-actions/index.tsx:248
 msgid "Access all block and document tools in a single place"
 msgstr "ブロック・文書ツールを同じ場所にまとめる"
 
-#: src/components/header-actions/index.tsx:322
+#: src/components/header-actions/index.tsx:327
 msgid "Add YAML front matter"
 msgstr "YAML フロントマターを追加"
 
@@ -60,10 +60,6 @@ msgstr "YAML フロントマターを追加"
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "常にリストビューを開く"
-
-#: src/components/preferences-modal/ai-panel.tsx:212
-msgid "An API key is saved."
-msgstr "API キーは保存されています。"
 
 #: src/components/preferences-modal/ai-panel.tsx:208
 msgid "Anthropic API key"
@@ -77,7 +73,7 @@ msgstr "コンテンツ領域の基本フォントサイズ (ピクセル単位)
 msgid "Block shortcuts"
 msgstr "ブロックショートカット"
 
-#: src/components/header-actions/index.tsx:382
+#: src/components/header-actions/index.tsx:387
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "キャンセル"
@@ -91,7 +87,7 @@ msgstr "アップデートを確認"
 msgid "Check updates automatically"
 msgstr "自動的にアップデートを確認"
 
-#: src/components/preferences-modal/ai-panel.tsx:249
+#: src/components/preferences-modal/ai-panel.tsx:261
 msgid "Checking the API key…"
 msgstr "API キーを確認しています…"
 
@@ -121,7 +117,7 @@ msgid "Close the active tab."
 msgstr "アクティブなタブを閉じる。"
 
 #: src/components/preferences-modal/index.tsx:200
-#: src/components/header-actions/index.tsx:298
+#: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "コードエディター"
 
@@ -134,7 +130,7 @@ msgid "Could not connect to the Anthropic API."
 msgstr "Anthropic API に接続できませんでした。"
 
 # %s: Error message.
-#: src/actions/index.ts:496
+#: src/actions/index.ts:495
 msgid "Could not export the slide deck: %s"
 msgstr "スライドデッキをエクスポートできませんでした: %s"
 
@@ -159,13 +155,17 @@ msgid "Dark"
 msgstr "ダーク"
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:82
+#: src/components/preferences-modal/ai-panel.tsx:87
 msgid "Default (%s)"
 msgstr "デフォルト (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:265
-msgid "Delete API key"
-msgstr "API キーを削除"
+#: src/components/preferences-modal/ai-panel.tsx:268
+msgid "Delete"
+msgstr "削除"
+
+#: src/components/preferences-modal/ai-panel.tsx:257
+msgid "Deleting the API key…"
+msgstr "API キーを削除しています…"
 
 #: src/components/dirty-confirm-dialog/index.tsx:68
 msgid "Discard"
@@ -179,7 +179,7 @@ msgstr "変更を破棄"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "エディターの最下段にブロックのパンくずリストを表示します。"
 
-#: src/components/header-actions/index.tsx:269
+#: src/components/header-actions/index.tsx:274
 msgid "Editor"
 msgstr "エディター"
 
@@ -187,17 +187,17 @@ msgstr "エディター"
 msgid "Editor styles"
 msgstr "エディタースタイル"
 
-#: src/actions/index.ts:469
-#: src/components/header-actions/index.tsx:199
+#: src/actions/index.ts:468
+#: src/components/header-actions/index.tsx:204
 msgid "Export Slide Deck"
 msgstr "スライドデッキをエクスポート"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:510
+#: src/actions/index.ts:509
 msgid "Exported the slide deck to %s."
 msgstr "スライドデッキを %s にエクスポートしました。"
 
-#: src/components/header-actions/index.tsx:111
+#: src/components/header-actions/index.tsx:115
 msgid "Exporting the slide deck…"
 msgstr "スライドデッキをエクスポートしています…"
 
@@ -213,11 +213,11 @@ msgstr "ファイルが変更されました"
 msgid "File shortcuts"
 msgstr "ファイルショートカット"
 
-#: src/components/header-actions/index.tsx:159
+#: src/components/header-actions/index.tsx:164
 msgid "Files"
 msgstr "ファイル"
 
-#: src/components/header-actions/index.tsx:259
+#: src/components/header-actions/index.tsx:264
 msgid "Focus on one block at a time"
 msgstr "ひとつのブロックに集中"
 
@@ -238,11 +238,11 @@ msgstr "一般"
 msgid "Global shortcuts"
 msgstr "グローバルショートカット"
 
-#: src/actions/index.ts:489
+#: src/actions/index.ts:488
 msgid "HTML slide deck"
 msgstr "HTML スライドデッキ"
 
-#: src/components/header-actions/index.tsx:212
+#: src/components/header-actions/index.tsx:217
 msgid "HTML…"
 msgstr "HTML…"
 
@@ -250,7 +250,7 @@ msgstr "HTML…"
 msgid "Handwriting"
 msgstr "手書き"
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:332
 msgid "Hide YAML front matter"
 msgstr "YAML フロントマターを非表示"
 
@@ -271,7 +271,7 @@ msgid "Keep my version"
 msgstr "現在の内容を保持"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:346
+#: src/components/header-actions/index.tsx:351
 msgid "Keyboard shortcuts"
 msgstr "キーボードショートカット"
 
@@ -305,8 +305,8 @@ msgstr "MarkBricks が Markdown ファイルの既定のアプリになりまし
 msgid "Maximum width of the content area, in pixels."
 msgstr "コンテンツ領域の最大幅 (ピクセル単位)。"
 
-#: src/components/preferences-modal/ai-panel.tsx:301
 #: src/components/preferences-modal/ai-panel.tsx:306
+#: src/components/preferences-modal/ai-panel.tsx:311
 msgid "Model"
 msgstr "モデル"
 
@@ -314,13 +314,9 @@ msgstr "モデル"
 msgid "Monospace"
 msgstr "等幅"
 
-#: src/components/header-actions/index.tsx:166
+#: src/components/header-actions/index.tsx:171
 msgid "New"
 msgstr "新規"
-
-#: src/components/preferences-modal/ai-panel.tsx:236
-msgid "New API key"
-msgstr "新しい API キー"
 
 #: src/components/tabbar/index.tsx:142
 #: src/components/editor-placeholder/index.tsx:33
@@ -339,10 +335,6 @@ msgstr "API キーが保存されていません。設定で追加してくだ�
 msgid "No file open"
 msgstr "開いているファイルがありません"
 
-#: src/hooks/use-preview-sync.ts:56
-msgid "Not a Marp document"
-msgstr "Marp 文書ではありません"
-
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "ファイルを開く。"
@@ -360,28 +352,28 @@ msgstr "ファイルを開く…"
 msgid "Opens the List View panel by default."
 msgstr "デフォルトでリストビューパネルを開きます。"
 
-#: src/components/header-actions/index.tsx:174
+#: src/components/header-actions/index.tsx:179
 msgid "Open…"
 msgstr "開く…"
 
-#: src/components/header-actions/index.tsx:146
+#: src/components/header-actions/index.tsx:151
 msgid "Options"
 msgstr "オプション"
 
-#: src/actions/index.ts:490
+#: src/actions/index.ts:489
 msgid "PDF slide deck"
 msgstr "PDF スライドデッキ"
 
-#: src/components/header-actions/index.tsx:221
+#: src/components/header-actions/index.tsx:226
 msgid "PDF…"
 msgstr "PDF…"
 
 #: src/components/preferences-modal/index.tsx:175
-#: src/components/header-actions/index.tsx:362
+#: src/components/header-actions/index.tsx:367
 msgid "Preferences"
 msgstr "設定"
 
-#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:124
 msgid "Preview Slides"
 msgstr "スライドをプレビュー"
 
@@ -389,15 +381,15 @@ msgstr "スライドをプレビュー"
 msgid "Reload"
 msgstr "再読み込み"
 
-#: src/components/header-actions/index.tsx:383
+#: src/components/header-actions/index.tsx:388
 msgid "Remove"
 msgstr "削除"
 
-#: src/components/header-actions/index.tsx:333
+#: src/components/header-actions/index.tsx:338
 msgid "Remove YAML front matter"
 msgstr "YAML フロントマターを削除"
 
-#: src/components/header-actions/index.tsx:377
+#: src/components/header-actions/index.tsx:382
 msgid "Remove YAML front matter?"
 msgstr "YAML フロントマターを削除しますか？"
 
@@ -418,13 +410,13 @@ msgid "Sans-serif"
 msgstr "サンセリフ"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:254
-#: src/components/header-actions/index.tsx:136
-#: src/components/header-actions/index.tsx:182
+#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:187
 msgid "Save"
 msgstr "保存"
 
-#: src/components/header-actions/index.tsx:190
+#: src/components/header-actions/index.tsx:195
 msgid "Save As…"
 msgstr "名前を付けて保存…"
 
@@ -469,7 +461,7 @@ msgstr "ブロックのパンくずリストを表示"
 msgid "Show line numbers"
 msgstr "行番号を表示"
 
-#: src/actions/index.ts:524
+#: src/components/slide-preview/index.tsx:39
 msgid "Slide Preview"
 msgstr "スライドプレビュー"
 
@@ -477,7 +469,7 @@ msgstr "スライドプレビュー"
 msgid "Spell check"
 msgstr "スペルチェック"
 
-#: src/components/header-actions/index.tsx:256
+#: src/components/header-actions/index.tsx:261
 msgid "Spotlight mode"
 msgstr "スポットライトモード"
 
@@ -494,7 +486,7 @@ msgstr "タブ幅"
 msgid "Text formatting"
 msgstr "書式設定"
 
-#: src/components/preferences-modal/ai-panel.tsx:213
+#: src/components/preferences-modal/ai-panel.tsx:211
 msgid ""
 "The AI Assistant needs your Anthropic API key. It is kept in the system’s "
 "credential store and only sent to the Anthropic API."
@@ -510,11 +502,11 @@ msgstr "この API キーではこのモデルを使えません。"
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API キーが無効です。設定で確認してください。"
 
-#: src/components/preferences-modal/ai-panel.tsx:284
+#: src/components/preferences-modal/ai-panel.tsx:289
 msgid "The API key was deleted."
 msgstr "API キーを削除しました。"
 
-#: src/components/preferences-modal/ai-panel.tsx:274
+#: src/components/preferences-modal/ai-panel.tsx:279
 msgid "The API key was saved."
 msgstr "API キーを保存しました。"
 
@@ -523,7 +515,7 @@ msgid "The Anthropic API is not available right now. Try again later."
 msgstr ""
 "Anthropic API は現在利用できません。しばらくしてから再試行してください。"
 
-#: src/components/header-actions/index.tsx:378
+#: src/components/header-actions/index.tsx:383
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -550,7 +542,7 @@ msgid "The model was not found."
 msgstr "モデルが見つかりませんでした。"
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:337
+#: src/components/preferences-modal/ai-panel.tsx:342
 msgid "The models could not be loaded: %s"
 msgstr "モデルを読み込めませんでした: %s"
 
@@ -584,15 +576,15 @@ msgstr ""
 msgid "Too many requests. Wait a moment and try again."
 msgstr "リクエストが多すぎます。少し待ってから再試行してください。"
 
-#: src/components/header-actions/index.tsx:306
+#: src/components/header-actions/index.tsx:311
 msgid "Tools"
 msgstr "ツール"
 
-#: src/components/header-actions/index.tsx:240
+#: src/components/header-actions/index.tsx:245
 msgid "Top toolbar"
 msgstr "トップツールバー"
 
-#: src/components/preferences-modal/ai-panel.tsx:346
+#: src/components/preferences-modal/ai-panel.tsx:351
 msgid "Try again"
 msgstr "再試行"
 
@@ -621,12 +613,12 @@ msgstr "アップデートが利用可能"
 msgid "Update check failed: %s"
 msgstr "アップデートの確認に失敗しました: %s"
 
-#: src/components/header-actions/index.tsx:231
+#: src/components/header-actions/index.tsx:236
 msgid "View"
 msgstr "表示"
 
 #: src/components/preferences-modal/index.tsx:197
-#: src/components/header-actions/index.tsx:286
+#: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "ビジュアルエディター"
 

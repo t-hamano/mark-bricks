@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:04:43.845Z\n"
-"PO-Revision-Date: 2026-11-08T14:04:45.192Z\n"
+"POT-Creation-Date: 2026-11-08T14:12:04.259Z\n"
+"PO-Revision-Date: 2026-11-08T14:12:05.616Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -43,16 +43,16 @@ msgstr "Asistent AI"
 msgid "API key"
 msgstr "Klíč API"
 
-#: src/components/header-actions/index.tsx:353
+#: src/components/header-actions/index.tsx:358
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "O aplikaci MarkBricks"
 
-#: src/components/header-actions/index.tsx:243
+#: src/components/header-actions/index.tsx:248
 msgid "Access all block and document tools in a single place"
 msgstr "Mějte veškeré nástroje dokumentu a aktivního bloku na jednom místě"
 
-#: src/components/header-actions/index.tsx:322
+#: src/components/header-actions/index.tsx:327
 msgid "Add YAML front matter"
 msgstr "Přidat YAML front matter"
 
@@ -60,10 +60,6 @@ msgstr "Přidat YAML front matter"
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "Vždy otevřít Zobrazení seznamu"
-
-#: src/components/preferences-modal/ai-panel.tsx:212
-msgid "An API key is saved."
-msgstr "Klíč API je uložen."
 
 #: src/components/preferences-modal/ai-panel.tsx:208
 msgid "Anthropic API key"
@@ -77,7 +73,7 @@ msgstr "Základní velikost písma oblasti obsahu v pixelech."
 msgid "Block shortcuts"
 msgstr "Práce s bloky"
 
-#: src/components/header-actions/index.tsx:382
+#: src/components/header-actions/index.tsx:387
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Zrušit"
@@ -91,7 +87,7 @@ msgstr "Zkontrolovat aktualizace"
 msgid "Check updates automatically"
 msgstr "Automaticky kontrolovat aktualizace"
 
-#: src/components/preferences-modal/ai-panel.tsx:249
+#: src/components/preferences-modal/ai-panel.tsx:261
 msgid "Checking the API key…"
 msgstr "Ověřování klíče API…"
 
@@ -121,7 +117,7 @@ msgid "Close the active tab."
 msgstr "Zavřít aktivní kartu."
 
 #: src/components/preferences-modal/index.tsx:200
-#: src/components/header-actions/index.tsx:298
+#: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Editor kódu"
 
@@ -134,7 +130,7 @@ msgid "Could not connect to the Anthropic API."
 msgstr "Nepodařilo se připojit k API Anthropic."
 
 # %s: Error message.
-#: src/actions/index.ts:496
+#: src/actions/index.ts:495
 msgid "Could not export the slide deck: %s"
 msgstr "Prezentaci se nepodařilo exportovat: %s"
 
@@ -158,13 +154,17 @@ msgid "Dark"
 msgstr "Tmavý"
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:82
+#: src/components/preferences-modal/ai-panel.tsx:87
 msgid "Default (%s)"
 msgstr "Výchozí (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:265
-msgid "Delete API key"
-msgstr "Smazat klíč API"
+#: src/components/preferences-modal/ai-panel.tsx:268
+msgid "Delete"
+msgstr "Smazat"
+
+#: src/components/preferences-modal/ai-panel.tsx:257
+msgid "Deleting the API key…"
+msgstr "Mazání klíče API…"
 
 #: src/components/dirty-confirm-dialog/index.tsx:68
 msgid "Discard"
@@ -178,7 +178,7 @@ msgstr "Zahodit změny"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "Zobrazit hierarchii bloků v dolní části editoru."
 
-#: src/components/header-actions/index.tsx:269
+#: src/components/header-actions/index.tsx:274
 msgid "Editor"
 msgstr "Editor"
 
@@ -186,17 +186,17 @@ msgstr "Editor"
 msgid "Editor styles"
 msgstr "Styly editoru"
 
-#: src/actions/index.ts:469
-#: src/components/header-actions/index.tsx:199
+#: src/actions/index.ts:468
+#: src/components/header-actions/index.tsx:204
 msgid "Export Slide Deck"
 msgstr "Exportovat prezentaci"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:510
+#: src/actions/index.ts:509
 msgid "Exported the slide deck to %s."
 msgstr "Prezentace byla exportována do %s."
 
-#: src/components/header-actions/index.tsx:111
+#: src/components/header-actions/index.tsx:115
 msgid "Exporting the slide deck…"
 msgstr "Exportuje se prezentace…"
 
@@ -212,11 +212,11 @@ msgstr "Soubor byl změněn"
 msgid "File shortcuts"
 msgstr "Klávesové zkratky souborů"
 
-#: src/components/header-actions/index.tsx:159
+#: src/components/header-actions/index.tsx:164
 msgid "Files"
 msgstr "Soubory"
 
-#: src/components/header-actions/index.tsx:259
+#: src/components/header-actions/index.tsx:264
 msgid "Focus on one block at a time"
 msgstr "Zaměřte se vždy jen na jeden blok"
 
@@ -237,11 +237,11 @@ msgstr "Obecné"
 msgid "Global shortcuts"
 msgstr "Obecné zkratky"
 
-#: src/actions/index.ts:489
+#: src/actions/index.ts:488
 msgid "HTML slide deck"
 msgstr "Prezentace HTML"
 
-#: src/components/header-actions/index.tsx:212
+#: src/components/header-actions/index.tsx:217
 msgid "HTML…"
 msgstr "HTML…"
 
@@ -249,7 +249,7 @@ msgstr "HTML…"
 msgid "Handwriting"
 msgstr "Ručně psané"
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:332
 msgid "Hide YAML front matter"
 msgstr "Skrýt YAML front matter"
 
@@ -272,7 +272,7 @@ msgid "Keep my version"
 msgstr "Ponechat moji verzi"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:346
+#: src/components/header-actions/index.tsx:351
 msgid "Keyboard shortcuts"
 msgstr "Klávesové zkratky"
 
@@ -306,8 +306,8 @@ msgstr "MarkBricks je nyní výchozí aplikací pro soubory Markdown."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Maximální šířka oblasti obsahu v pixelech."
 
-#: src/components/preferences-modal/ai-panel.tsx:301
 #: src/components/preferences-modal/ai-panel.tsx:306
+#: src/components/preferences-modal/ai-panel.tsx:311
 msgid "Model"
 msgstr "Model"
 
@@ -315,13 +315,9 @@ msgstr "Model"
 msgid "Monospace"
 msgstr "Neproporcionální"
 
-#: src/components/header-actions/index.tsx:166
+#: src/components/header-actions/index.tsx:171
 msgid "New"
 msgstr "Nový"
-
-#: src/components/preferences-modal/ai-panel.tsx:236
-msgid "New API key"
-msgstr "Nový klíč API"
 
 #: src/components/tabbar/index.tsx:142
 #: src/components/editor-placeholder/index.tsx:33
@@ -340,10 +336,6 @@ msgstr "Není uložen žádný klíč API. Přidejte ho v nastavení."
 msgid "No file open"
 msgstr "Není otevřen žádný soubor"
 
-#: src/hooks/use-preview-sync.ts:56
-msgid "Not a Marp document"
-msgstr "Nejedná se o dokument Marp"
-
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "Otevřít soubor."
@@ -361,28 +353,28 @@ msgstr "Otevřít soubor…"
 msgid "Opens the List View panel by default."
 msgstr "Ve výchozím nastavení otevře panel Zobrazení seznamu."
 
-#: src/components/header-actions/index.tsx:174
+#: src/components/header-actions/index.tsx:179
 msgid "Open…"
 msgstr "Otevřít…"
 
-#: src/components/header-actions/index.tsx:146
+#: src/components/header-actions/index.tsx:151
 msgid "Options"
 msgstr "Možnosti"
 
-#: src/actions/index.ts:490
+#: src/actions/index.ts:489
 msgid "PDF slide deck"
 msgstr "Prezentace PDF"
 
-#: src/components/header-actions/index.tsx:221
+#: src/components/header-actions/index.tsx:226
 msgid "PDF…"
 msgstr "PDF…"
 
 #: src/components/preferences-modal/index.tsx:175
-#: src/components/header-actions/index.tsx:362
+#: src/components/header-actions/index.tsx:367
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:124
 msgid "Preview Slides"
 msgstr "Zobrazit náhled snímků"
 
@@ -390,15 +382,15 @@ msgstr "Zobrazit náhled snímků"
 msgid "Reload"
 msgstr "Znovu načíst"
 
-#: src/components/header-actions/index.tsx:383
+#: src/components/header-actions/index.tsx:388
 msgid "Remove"
 msgstr "Odstranit"
 
-#: src/components/header-actions/index.tsx:333
+#: src/components/header-actions/index.tsx:338
 msgid "Remove YAML front matter"
 msgstr "Odebrat YAML front matter"
 
-#: src/components/header-actions/index.tsx:377
+#: src/components/header-actions/index.tsx:382
 msgid "Remove YAML front matter?"
 msgstr "Odebrat YAML front matter?"
 
@@ -419,13 +411,13 @@ msgid "Sans-serif"
 msgstr "Bezpatkové"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:254
-#: src/components/header-actions/index.tsx:136
-#: src/components/header-actions/index.tsx:182
+#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:187
 msgid "Save"
 msgstr "Uložit"
 
-#: src/components/header-actions/index.tsx:190
+#: src/components/header-actions/index.tsx:195
 msgid "Save As…"
 msgstr "Uložit jako…"
 
@@ -470,7 +462,7 @@ msgstr "Zobrazit navigační lištu"
 msgid "Show line numbers"
 msgstr "Zobrazit čísla řádků"
 
-#: src/actions/index.ts:524
+#: src/components/slide-preview/index.tsx:39
 msgid "Slide Preview"
 msgstr "Náhled snímků"
 
@@ -478,7 +470,7 @@ msgstr "Náhled snímků"
 msgid "Spell check"
 msgstr "Kontrola pravopisu"
 
-#: src/components/header-actions/index.tsx:256
+#: src/components/header-actions/index.tsx:261
 msgid "Spotlight mode"
 msgstr "Režim nevyrušovaného psaní"
 
@@ -495,7 +487,7 @@ msgstr "Velikost tabulátoru"
 msgid "Text formatting"
 msgstr "Formátování textu"
 
-#: src/components/preferences-modal/ai-panel.tsx:213
+#: src/components/preferences-modal/ai-panel.tsx:211
 msgid ""
 "The AI Assistant needs your Anthropic API key. It is kept in the system’s "
 "credential store and only sent to the Anthropic API."
@@ -511,11 +503,11 @@ msgstr "Tento klíč API nemůže používat tento model."
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Klíč API není platný. Zkontrolujte ho v nastavení."
 
-#: src/components/preferences-modal/ai-panel.tsx:284
+#: src/components/preferences-modal/ai-panel.tsx:289
 msgid "The API key was deleted."
 msgstr "Klíč API byl smazán."
 
-#: src/components/preferences-modal/ai-panel.tsx:274
+#: src/components/preferences-modal/ai-panel.tsx:279
 msgid "The API key was saved."
 msgstr "Klíč API byl uložen."
 
@@ -523,7 +515,7 @@ msgstr "Klíč API byl uložen."
 msgid "The Anthropic API is not available right now. Try again later."
 msgstr "API Anthropic teď není dostupné. Zkuste to později."
 
-#: src/components/header-actions/index.tsx:378
+#: src/components/header-actions/index.tsx:383
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -550,7 +542,7 @@ msgid "The model was not found."
 msgstr "Model nebyl nalezen."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:337
+#: src/components/preferences-modal/ai-panel.tsx:342
 msgid "The models could not be loaded: %s"
 msgstr "Modely se nepodařilo načíst: %s"
 
@@ -584,15 +576,15 @@ msgstr ""
 msgid "Too many requests. Wait a moment and try again."
 msgstr "Příliš mnoho požadavků. Chvíli počkejte a zkuste to znovu."
 
-#: src/components/header-actions/index.tsx:306
+#: src/components/header-actions/index.tsx:311
 msgid "Tools"
 msgstr "Nástroje"
 
-#: src/components/header-actions/index.tsx:240
+#: src/components/header-actions/index.tsx:245
 msgid "Top toolbar"
 msgstr "Horní panel nástrojů"
 
-#: src/components/preferences-modal/ai-panel.tsx:346
+#: src/components/preferences-modal/ai-panel.tsx:351
 msgid "Try again"
 msgstr "Zkusit znovu"
 
@@ -621,12 +613,12 @@ msgstr "K dispozici je aktualizace"
 msgid "Update check failed: %s"
 msgstr "Kontrola aktualizací selhala: %s"
 
-#: src/components/header-actions/index.tsx:231
+#: src/components/header-actions/index.tsx:236
 msgid "View"
 msgstr "Zobrazení"
 
 #: src/components/preferences-modal/index.tsx:197
-#: src/components/header-actions/index.tsx:286
+#: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Vizuální editor"
 
