@@ -8,7 +8,12 @@ import { createRoot } from 'react-dom/client';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { chevronLeft, chevronRight } from '@wordpress/icons';
+import {
+	chevronLeft,
+	chevronRight,
+	drawerRight,
+	external,
+} from '@wordpress/icons';
 import { ThemeProvider } from '@wordpress/theme';
 import { Button, Field, IconButton, Select } from '@wordpress/ui';
 import '@wordpress/theme/design-tokens.css';
@@ -25,6 +30,15 @@ const VISIBLE_CLASS = 'is-visible';
 // background, so that the controls and text in the theme's colors stay
 // legible on the toolbar's backdrop and a dark page.
 const BACKGROUND_COLOR = '#3c3c3c';
+
+// Where the host shows the preview: next to its editor, or in a window of its
+// own. The toolbar then offers to move it to the other place.
+export type PreviewPlacement = 'panel' | 'window';
+
+export type PlacementAction = {
+	placement: PreviewPlacement;
+	onClick: () => void;
+};
 
 export type PreviewControls = {
 	setSlideMode: ( enabled: boolean ) => void;
@@ -117,9 +131,17 @@ type Props = {
 	count: number;
 	onToggle: () => void;
 	onNavigate: ( index: number ) => void;
+	placementAction?: PlacementAction;
 };
 
-function Toolbar( { slideMode, current, count, onToggle, onNavigate }: Props ) {
+function Toolbar( {
+	slideMode,
+	current,
+	count,
+	onToggle,
+	onNavigate,
+	placementAction,
+}: Props ) {
 	return (
 		<ThemeProvider isRoot color={ { background: BACKGROUND_COLOR } }>
 			<div className="preview-toolbar">
@@ -128,6 +150,25 @@ function Toolbar( { slideMode, current, count, onToggle, onNavigate }: Props ) {
 						current={ current }
 						count={ count }
 						onNavigate={ onNavigate }
+					/>
+				) }
+				{ placementAction && ! slideMode && (
+					<IconButton
+						className="preview-placement"
+						icon={
+							placementAction.placement === 'panel'
+								? external
+								: drawerRight
+						}
+						label={
+							placementAction.placement === 'panel'
+								? __( 'Open in new window', 'mark-bricks' )
+								: __( 'Show next to editor', 'mark-bricks' )
+						}
+						variant="minimal"
+						tone="neutral"
+						size="compact"
+						onClick={ placementAction.onClick }
 					/>
 				) }
 				<Button variant="outline" tone="neutral" onClick={ onToggle }>
@@ -145,14 +186,17 @@ function Toolbar( { slideMode, current, count, onToggle, onNavigate }: Props ) {
  * between the slides and a button that toggles the slide mode, and a hint on
  * how to leave the slide mode.
  *
- * @param toggle   Toggles the slide mode.
- * @param navigate Moves to the slide at an index.
+ * @param toggle          Toggles the slide mode.
+ * @param navigate        Moves to the slide at an index.
+ * @param placementAction Adds a button, outside the slide mode, that moves
+ *                        the preview between the host's editor and a window.
  * @return Functions to update the controls with the slide mode's state and
  *         the current slide.
  */
 export function createPreviewControls(
 	toggle: () => void,
-	navigate: ( index: number ) => void
+	navigate: ( index: number ) => void,
+	placementAction?: PlacementAction
 ): PreviewControls {
 	let slideMode = false;
 	let current = 0;
@@ -185,6 +229,7 @@ export function createPreviewControls(
 				count={ count }
 				onToggle={ toggle }
 				onNavigate={ navigate }
+				placementAction={ placementAction }
 			/>
 		);
 	}

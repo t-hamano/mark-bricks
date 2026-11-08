@@ -9,13 +9,21 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 /**
  * Internal dependencies
  */
-import { createPreviewControls, type PreviewControls } from './controls';
+import {
+	createPreviewControls,
+	type PlacementAction,
+	type PreviewControls,
+} from './controls';
 
 // Creates the controls, which render their toolbar right away.
-function setup( toggle = vi.fn(), navigate = vi.fn() ) {
+function setup(
+	toggle = vi.fn(),
+	navigate = vi.fn(),
+	placementAction?: PlacementAction
+) {
 	let controls: PreviewControls | undefined;
 	act( () => {
-		controls = createPreviewControls( toggle, navigate );
+		controls = createPreviewControls( toggle, navigate, placementAction );
 	} );
 	return controls as PreviewControls;
 }
@@ -65,6 +73,28 @@ describe( 'createPreviewControls', () => {
 		expect( navigate ).toHaveBeenLastCalledWith( 2 );
 		act( () => getButton( 'Previous slide' )?.click() );
 		expect( navigate ).toHaveBeenLastCalledWith( 0 );
+	} );
+
+	it( 'offers to move the preview out of the panel', () => {
+		const onClick = vi.fn();
+		setup( vi.fn(), vi.fn(), { placement: 'panel', onClick } );
+
+		act( () => getButton( 'Open in new window' )?.click() );
+		expect( onClick ).toHaveBeenCalledTimes( 1 );
+	} );
+
+	it( 'offers to move the preview back next to the editor', () => {
+		setup( vi.fn(), vi.fn(), { placement: 'window', onClick: vi.fn() } );
+		expect( getButton( 'Show next to editor' ) ).toBeDefined();
+	} );
+
+	it( 'hides the placement button in the slide mode', () => {
+		const controls = setup( vi.fn(), vi.fn(), {
+			placement: 'panel',
+			onClick: vi.fn(),
+		} );
+		act( () => controls.setSlideMode( true ) );
+		expect( getButton( 'Open in new window' ) ).toBeUndefined();
 	} );
 
 	it( 'disables the pager buttons at either end', () => {
