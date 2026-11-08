@@ -9,19 +9,35 @@ import { useState } from 'react';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import type { Block } from '@wordpress/blocks';
 import { useDispatch, useSelect } from '@wordpress/data';
+import { createInterpolateElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { moreVertical } from '@wordpress/icons';
-import { IconButton, Popover, SwitchControl } from '@wordpress/ui';
+import {
+	Field,
+	IconButton,
+	InputControl,
+	Link,
+	Popover,
+	Select,
+	Stack,
+	SwitchControl,
+	VisuallyHidden,
+} from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
 import { useFrontMatter } from './context';
 import {
+	getFrontMatterValue,
 	isMarpFrontMatter,
+	setFrontMatterValue,
 	setMarpFrontMatter,
 } from '../../converter/front-matter';
 import { useCodeMirror } from '../../block-library/hooks/use-code-mirror';
+import { usePlatform } from '../../platform';
+
+const MARP_DIRECTIVES_URL = 'https://marpit.marp.app/directives';
 
 export { FrontMatterContext, useFrontMatter } from './context';
 export type { FrontMatterContextValue } from './context';
@@ -85,6 +101,7 @@ function FrontMatterSettings( {
 	portalContainer: HTMLElement | null;
 } ) {
 	const { setFrontMatter } = useFrontMatter();
+	const isMarp = isMarpFrontMatter( value );
 	return (
 		<div className="front-matter-editor__settings">
 			<Popover.Root>
@@ -110,21 +127,214 @@ function FrontMatterSettings( {
 					portal={ <Popover.Portal container={ portalContainer } /> }
 					positioner={ <Popover.Positioner align="end" /> }
 				>
-					<SwitchControl
-						label={ __( 'Marp', 'mark-bricks' ) }
-						description={ __(
-							'Turn the document into a slide deck.',
-							'mark-bricks'
+					<VisuallyHidden render={ <Popover.Title /> }>
+						{ __( 'Front matter settings', 'mark-bricks' ) }
+					</VisuallyHidden>
+					<Stack direction="column" gap="lg">
+						<SwitchControl
+							label={ __( 'Marp', 'mark-bricks' ) }
+							description={ __(
+								'Turn the document into a slide deck.',
+								'mark-bricks'
+							) }
+							checked={ isMarp }
+							onCheckedChange={ ( checked ) =>
+								setFrontMatter(
+									setMarpFrontMatter( value, checked )
+								)
+							}
+						/>
+						{ isMarp && (
+							<MarpSettings
+								value={ value }
+								portalContainer={ portalContainer }
+							/>
 						) }
-						checked={ isMarpFrontMatter( value ) }
-						onCheckedChange={ ( checked ) =>
-							setFrontMatter(
-								setMarpFrontMatter( value, checked )
-							)
-						}
-					/>
+					</Stack>
 				</Popover.Popup>
 			</Popover.Root>
 		</div>
+	);
+}
+
+function MarpSettings( {
+	value,
+	portalContainer,
+}: {
+	value: string;
+	portalContainer: HTMLElement | null;
+} ) {
+	const { setFrontMatter } = useFrontMatter();
+	const { openUrl } = usePlatform();
+	const setValue = ( key: string, next: string | null ) =>
+		setFrontMatter( setFrontMatterValue( value, key, next ) );
+
+	const theme = getFrontMatterValue( value, 'theme' ) ?? 'default';
+	// Marp's built-in themes.
+	const themes: Array< {
+		label: string;
+		value: string;
+		description?: string;
+	} > = [
+		{
+			label: 'default',
+			value: 'default',
+			description: __(
+				'Simple and clean, based on GitHub Markdown style.',
+				'mark-bricks'
+			),
+		},
+		{
+			label: 'gaia',
+			value: 'gaia',
+			description: __(
+				'Classic look with a colored background.',
+				'mark-bricks'
+			),
+		},
+		{
+			label: 'uncover',
+			value: 'uncover',
+			description: __(
+				'Minimal and modern, with centered content.',
+				'mark-bricks'
+			),
+		},
+	];
+	// Keeps a theme written by hand selectable alongside the built-in ones.
+	if ( ! themes.some( ( item ) => item.value === theme ) ) {
+		themes.push( { label: theme, value: theme } );
+	}
+
+	const size = getFrontMatterValue( value, 'size' ) ?? '16:9';
+	// The sizes that Marp's built-in themes provide.
+	const sizes = [ '16:9', '4:3' ];
+	if ( ! sizes.includes( size ) ) {
+		sizes.push( size );
+	}
+
+	return (
+		<>
+			<Field.Root>
+				<Field.Label>{ __( 'Theme', 'mark-bricks' ) }</Field.Label>
+				<Select.Root
+					items={ themes }
+					value={ theme }
+					onValueChange={ ( next ) => {
+						if ( typeof next === 'string' ) {
+							setValue( 'theme', next );
+						}
+					} }
+				>
+					<Select.Trigger />
+					{ /* Portaled into the iframe document, like the popover. */ }
+					<Select.Popup
+						portal={
+							<Select.Portal container={ portalContainer } />
+						}
+					>
+						{ themes.map( ( item ) => (
+							<Select.Item
+								key={ item.value }
+								value={ item.value }
+							>
+								<Select.ItemLabel>
+									{ item.label }
+								</Select.ItemLabel>
+								{ item.description ? (
+									<Select.ItemDescription>
+										{ item.description }
+									</Select.ItemDescription>
+								) : null }
+							</Select.Item>
+						) ) }
+					</Select.Popup>
+				</Select.Root>
+			</Field.Root>
+			<Field.Root>
+				<Field.Label>{ __( 'Size', 'mark-bricks' ) }</Field.Label>
+				<Select.Root
+					value={ size }
+					onValueChange={ ( next ) => {
+						if ( typeof next === 'string' ) {
+							setValue( 'size', next );
+						}
+					} }
+				>
+					<Select.Trigger />
+					<Select.Popup
+						portal={
+							<Select.Portal container={ portalContainer } />
+						}
+					>
+						{ sizes.map( ( item ) => (
+							<Select.Item key={ item } value={ item }>
+								<Select.ItemLabel>{ item }</Select.ItemLabel>
+							</Select.Item>
+						) ) }
+					</Select.Popup>
+				</Select.Root>
+				<Field.Description>
+					{ __( 'The aspect ratio of the slides.', 'mark-bricks' ) }
+				</Field.Description>
+			</Field.Root>
+			<InputControl
+				label={ __( 'Header', 'mark-bricks' ) }
+				description={ __(
+					'Text shown at the top of each slide.',
+					'mark-bricks'
+				) }
+				value={ getFrontMatterValue( value, 'header' ) ?? '' }
+				onChange={ ( event ) =>
+					setValue( 'header', event.target.value || null )
+				}
+			/>
+			<InputControl
+				label={ __( 'Footer', 'mark-bricks' ) }
+				description={ __(
+					'Text shown at the bottom of each slide.',
+					'mark-bricks'
+				) }
+				value={ getFrontMatterValue( value, 'footer' ) ?? '' }
+				onChange={ ( event ) =>
+					setValue( 'footer', event.target.value || null )
+				}
+			/>
+			<SwitchControl
+				label={ __( 'Paginate', 'mark-bricks' ) }
+				description={ __(
+					'Show the page number on each slide.',
+					'mark-bricks'
+				) }
+				checked={ getFrontMatterValue( value, 'paginate' ) === 'true' }
+				onCheckedChange={ ( checked ) =>
+					setValue( 'paginate', checked ? 'true' : null )
+				}
+			/>
+			<p className="front-matter-editor__settings-help">
+				{ createInterpolateElement(
+					__(
+						'See the <a>Marp documentation</a> for other settings.',
+						'mark-bricks'
+					),
+					{
+						a: (
+							<Link
+								href={ MARP_DIRECTIVES_URL }
+								openInNewTab
+								onClick={
+									openUrl
+										? ( event ) => {
+												event.preventDefault();
+												openUrl( MARP_DIRECTIVES_URL );
+											}
+										: undefined
+								}
+							/>
+						),
+					}
+				) }
+			</p>
+		</>
 	);
 }

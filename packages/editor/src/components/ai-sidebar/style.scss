@@ -24,5 +24,46 @@
 .ai-sidebar__body {
 	flex: 1 1 auto;
 	min-height: 0;
+}
+
+.ai-chat {
+	height: 100%;
+}
+
+.ai-chat__messages {
+	flex: 1 1 auto;
+	min-height: 0;
 	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--wpds-dimension-gap-lg);
+	padding: var(--wpds-dimension-padding-md);
+}
+
+.ai-chat__message-text {
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+.ai-chat__message.is-user {
+	align-self: flex-end;
+	max-width: 85%;
+	padding: var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-md);
+	border-radius: var(--wpds-border-radius-md);
+	background: var(--wpds-color-background-surface-neutral);
+}
+
+.ai-chat__message-status,
+.ai-chat__intro {
+	color: var(--wpds-color-foreground-content-neutral-weak);
+}
+
+.ai-chat__composer {
+	flex: 0 0 auto;
+	padding: var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-md) var(--wpds-dimension-padding-md);
+	border-top: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+}
+
+.ai-chat__input {
+	flex: 1 1 auto;
 }

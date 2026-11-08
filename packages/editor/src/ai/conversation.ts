@@ -1,0 +1,153 @@
+/**
+ * External dependencies
+ */
+import { v4 as uuid } from 'uuid';
+
+/**
+ * Internal dependencies
+ */
+import type { AiEdit, AiMessage } from '../platform';
+
+export type UserChatMessage = {
+	id: string;
+	role: 'user';
+	text: string;
+};
+
+export type AssistantChatMessage = {
+	id: string;
+	role: 'assistant';
+	text: string;
+	status: 'streaming' | 'done' | 'stopped' | 'error';
+	edit?: AiEdit;
+	/**
+	 * `applied` when the edit changed the document, and `dropped` when the
+	 * selection it was for no longer exists, for example after switching
+	 * editor modes.
+	 */
+	editStatus?: 'applied' | 'dropped';
+	error?: string;
+};
+
+export type ChatMessage = UserChatMessage | AssistantChatMessage;
+
+/**
+ * A conversation with the AI assistant. It lives in memory only.
+ */
+export type Conversation = {
+	id: string;
+	messages: ChatMessage[];
+};
+
+export type ConversationAction =
+	| { type: 'START'; text: string }
+	| { type: 'APPEND_TEXT'; text: string }
+	| { type: 'EDIT'; edit: AiEdit; applied: boolean }
+	| {
+			type: 'FINISH';
+			status: 'done' | 'stopped' | 'error';
+			error?: string;
+	  }
+	| { type: 'RESET' };
+
+export function createConversation(): Conversation {
+	return { id: uuid(), messages: [] };
+}
+
+/**
+ * Updates the answer being streamed, which is always the last message.
+ *
+ * @param conversation The conversation.
+ * @param update       Changes to the answer.
+ * @return The conversation with the answer updated.
+ */
+function updateAnswer(
+	conversation: Conversation,
+	update: ( message: AssistantChatMessage ) => AssistantChatMessage
+): Conversation {
+	const last = conversation.messages[ conversation.messages.length - 1 ];
+	if ( last?.role !== 'assistant' || last.status !== 'streaming' ) {
+		return conversation;
+	}
+	return {
+		...conversation,
+		messages: [ ...conversation.messages.slice( 0, -1 ), update( last ) ],
+	};
+}
+
+export function conversationReducer(
+	conversation: Conversation,
+	action: ConversationAction
+): Conversation {
+	switch ( action.type ) {
+		case 'START':
+			return {
+				...conversation,
+				messages: [
+					...conversation.messages,
+					{ id: uuid(), role: 'user', text: action.text },
+					{
+						id: uuid(),
+						role: 'assistant',
+						text: '',
+						status: 'streaming',
+					},
+				],
+			};
+		case 'APPEND_TEXT':
+			return updateAnswer( conversation, ( message ) => ( {
+				...message,
+				text: message.text + action.text,
+			} ) );
+		case 'EDIT':
+			return updateAnswer( conversation, ( message ) => ( {
+				...message,
+				edit: action.edit,
+				editStatus: action.applied ? 'applied' : 'dropped',
+			} ) );
+		case 'FINISH':
+			return updateAnswer( conversation, ( message ) => ( {
+				...message,
+				status: action.status,
+				error: action.error,
+			} ) );
+		case 'RESET':
+			return createConversation();
+		default:
+			return conversation;
+	}
+}
+
+/**
+ * Converts the conversation into the messages sent to the model. An
+ * exchange whose answer failed is left out, together with its question, and
+ * an edit is sent only when it changed the document.
+ *
+ * @param messages The conversation's messages.
+ * @return The messages for the model.
+ */
+export function toAiMessages( messages: ChatMessage[] ): AiMessage[] {
+	const result: AiMessage[] = [];
+	messages.forEach( ( message, index ) => {
+		if ( message.role === 'user' ) {
+			const answer = messages[ index + 1 ];
+			if ( answer?.role === 'assistant' && answer.status === 'error' ) {
+				return;
+			}
+			result.push( { role: 'user', text: message.text } );
+		} else if ( message.status !== 'error' ) {
+			const edit =
+				message.editStatus === 'applied' ? message.edit : undefined;
+			// An answer stopped before it said anything has nothing to send.
+			if ( ! message.text && ! edit ) {
+				return;
+			}
+			result.push( {
+				role: 'assistant',
+				text: message.text,
+				...( edit ? { edit } : {} ),
+			} );
+		}
+	} );
+	return result;
+}

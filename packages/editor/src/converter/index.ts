@@ -14,6 +14,8 @@ export {
 	isMarpFrontMatter,
 	isMarpDocument,
 	setMarpFrontMatter,
+	getFrontMatterValue,
+	setFrontMatterValue,
 } from './front-matter';
 export {
 	getBlockLineRanges,
