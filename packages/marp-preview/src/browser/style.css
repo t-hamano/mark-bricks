@@ -69,3 +69,18 @@ body {
 .preview-notice[hidden] {
 	display: none;
 }
+
+/* The element of the line the host reveals, such as the selected block. */
+.marpit .is-source-highlighted {
+	outline: 4px solid #3858e9;
+	outline-offset: 4px;
+}
+
+/* A slide clips what is outside it. */
+.marpit section.is-source-highlighted {
+	outline-offset: -4px;
+}
+
+.is-slide-mode .marpit .is-source-highlighted {
+	outline: none;
+}
