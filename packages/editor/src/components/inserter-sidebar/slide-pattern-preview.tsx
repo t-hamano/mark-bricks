@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import { browser } from '@marp-team/marp-core/browser';
 import { useLayoutEffect, useRef } from 'react';
 
 // Fits the first slide to the card. The slides are SVGs, so they scale with
@@ -38,6 +39,11 @@ export function SlidePatternPreview( { html, css }: Props ) {
 		// The HTML was rendered ahead of time from the patterns, and the
 		// text put into it is escaped.
 		root.innerHTML = `<style>${ PREVIEW_STYLE }${ css }</style>${ html }`;
+		// Scales auto-scaling elements, and lays out the slide in WebKit,
+		// which cannot render HTML inside an SVG on its own. It must observe
+		// the shadow root: an observer on the document would not reach it.
+		const marpBrowser = browser( root );
+		return () => marpBrowser.cleanup();
 	}, [ html, css ] );
 
 	return (
