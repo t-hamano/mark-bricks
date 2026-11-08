@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:35:54.001Z\n"
-"PO-Revision-Date: 2026-11-08T13:38:24.505Z\n"
+"POT-Creation-Date: 2026-11-08T14:14:58.685Z\n"
+"PO-Revision-Date: 2026-11-08T14:15:02.874Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -37,16 +37,24 @@ msgstr ""
 msgid "(Untitled)"
 msgstr "(제목 없음)"
 
-#: src/components/header-actions/index.tsx:353
+#: src/components/preferences-modal/index.tsx:203
+msgid "AI Assistant"
+msgstr "AI 어시스턴트"
+
+#: src/components/preferences-modal/ai-panel.tsx:239
+msgid "API key"
+msgstr "API 키"
+
+#: src/components/header-actions/index.tsx:358
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "MarkBricks 정보"
 
-#: src/components/header-actions/index.tsx:243
+#: src/components/header-actions/index.tsx:248
 msgid "Access all block and document tools in a single place"
 msgstr "한 곳에서 모든 블록과 문서 도구에 접근합니다"
 
-#: src/components/header-actions/index.tsx:322
+#: src/components/header-actions/index.tsx:327
 msgid "Add YAML front matter"
 msgstr "YAML 프런트 매터 추가"
 
@@ -54,6 +62,10 @@ msgstr "YAML 프런트 매터 추가"
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "항상 목록 보기 열기"
+
+#: src/components/preferences-modal/ai-panel.tsx:205
+msgid "Anthropic API key"
+msgstr "Anthropic API 키"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -63,7 +75,7 @@ msgstr "콘텐츠 영역의 기본 글꼴 크기(픽셀)입니다."
 msgid "Block shortcuts"
 msgstr "블록 단축키"
 
-#: src/components/header-actions/index.tsx:382
+#: src/components/header-actions/index.tsx:387
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "취소"
@@ -77,13 +89,17 @@ msgstr "업데이트 확인"
 msgid "Check updates automatically"
 msgstr "자동으로 업데이트 확인"
 
+#: src/components/preferences-modal/ai-panel.tsx:263
+msgid "Checking the API key…"
+msgstr "API 키를 확인하는 중…"
+
 #: src/components/preferences-modal/general-panel.tsx:132
 #: src/components/about-modal/index.tsx:115
 msgid "Checking…"
 msgstr "확인 중…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:168
+#: src/components/preferences-modal/index.tsx:177
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -102,8 +118,8 @@ msgstr "다른 탭 닫기"
 msgid "Close the active tab."
 msgstr "활성 탭을 닫습니다."
 
-#: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:298
+#: src/components/preferences-modal/index.tsx:200
+#: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "코드 편집기"
 
@@ -116,7 +132,7 @@ msgid "Could not connect to the Anthropic API."
 msgstr "Anthropic API에 연결할 수 없습니다."
 
 # %s: Error message.
-#: src/actions/index.ts:496
+#: src/actions/index.ts:495
 msgid "Could not export the slide deck: %s"
 msgstr "슬라이드 덱을 내보낼 수 없습니다: %s"
 
@@ -134,9 +150,22 @@ msgstr "새 Markdown 파일을 만들거나 기존 파일을 열어 편집을 �
 msgid "Create a new file."
 msgstr "새 파일을 만듭니다."
 
-#: src/preferences/constants.ts:53
+#: src/preferences/constants.ts:55
 msgid "Dark"
 msgstr "어둡게"
+
+# %s: The name of the default AI model.
+#: src/components/preferences-modal/ai-panel.tsx:87
+msgid "Default (%s)"
+msgstr "기본값 (%s)"
+
+#: src/components/preferences-modal/ai-panel.tsx:270
+msgid "Delete"
+msgstr "삭제"
+
+#: src/components/preferences-modal/ai-panel.tsx:259
+msgid "Deleting the API key…"
+msgstr "API 키를 삭제하는 중…"
 
 #: src/components/dirty-confirm-dialog/index.tsx:68
 msgid "Discard"
@@ -150,7 +179,7 @@ msgstr "변경 사항 버리기"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "편집기 하단에 블록 계층 경로를 표시합니다."
 
-#: src/components/header-actions/index.tsx:269
+#: src/components/header-actions/index.tsx:274
 msgid "Editor"
 msgstr "편집기"
 
@@ -158,17 +187,17 @@ msgstr "편집기"
 msgid "Editor styles"
 msgstr "편집기 스타일"
 
-#: src/actions/index.ts:469
-#: src/components/header-actions/index.tsx:199
+#: src/actions/index.ts:468
+#: src/components/header-actions/index.tsx:204
 msgid "Export Slide Deck"
 msgstr "슬라이드 덱 내보내기"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:510
+#: src/actions/index.ts:509
 msgid "Exported the slide deck to %s."
 msgstr "슬라이드 덱을 %s(으)로 내보냈습니다."
 
-#: src/components/header-actions/index.tsx:111
+#: src/components/header-actions/index.tsx:115
 msgid "Exporting the slide deck…"
 msgstr "슬라이드 덱을 내보내는 중…"
 
@@ -184,11 +213,11 @@ msgstr "파일이 변경됨"
 msgid "File shortcuts"
 msgstr "파일 단축키"
 
-#: src/components/header-actions/index.tsx:159
+#: src/components/header-actions/index.tsx:164
 msgid "Files"
 msgstr "파일"
 
-#: src/components/header-actions/index.tsx:259
+#: src/components/header-actions/index.tsx:264
 msgid "Focus on one block at a time"
 msgstr "한 번에 한 블록씩 집중"
 
@@ -201,7 +230,7 @@ msgstr "글꼴 모음"
 msgid "Font size"
 msgstr "글꼴 사이즈"
 
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:194
 msgid "General"
 msgstr "일반"
 
@@ -209,19 +238,19 @@ msgstr "일반"
 msgid "Global shortcuts"
 msgstr "전역 단축키"
 
-#: src/actions/index.ts:489
+#: src/actions/index.ts:488
 msgid "HTML slide deck"
 msgstr "HTML 슬라이드 덱"
 
-#: src/components/header-actions/index.tsx:212
+#: src/components/header-actions/index.tsx:217
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:75
+#: src/preferences/constants.ts:77
 msgid "Handwriting"
 msgstr "손글씨"
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:332
 msgid "Hide YAML front matter"
 msgstr "YAML 프런트 매터 숨기기"
 
@@ -242,7 +271,7 @@ msgid "Keep my version"
 msgstr "현재 버전 유지"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:346
+#: src/components/header-actions/index.tsx:351
 msgid "Keyboard shortcuts"
 msgstr "키보드 단축키"
 
@@ -251,13 +280,17 @@ msgstr "키보드 단축키"
 msgid "Language"
 msgstr "언어"
 
-#: src/preferences/constants.ts:52
+#: src/preferences/constants.ts:54
 msgid "Light"
 msgstr "밝게"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
 msgstr "목록 보기 바로 가기"
+
+#: src/components/preferences-modal/ai-panel.tsx:198
+msgid "Loading the models…"
+msgstr "모델을 불러오는 중…"
 
 # %s: new version number
 #: src/hooks/use-auto-updater.ts:91
@@ -272,11 +305,16 @@ msgstr "이제 MarkBricks가 Markdown 파일의 기본 앱입니다."
 msgid "Maximum width of the content area, in pixels."
 msgstr "콘텐츠 영역의 최대 너비(픽셀)입니다."
 
-#: src/preferences/constants.ts:71
+#: src/components/preferences-modal/ai-panel.tsx:309
+#: src/components/preferences-modal/ai-panel.tsx:314
+msgid "Model"
+msgstr "모델"
+
+#: src/preferences/constants.ts:73
 msgid "Monospace"
 msgstr "고정폭"
 
-#: src/components/header-actions/index.tsx:166
+#: src/components/header-actions/index.tsx:171
 msgid "New"
 msgstr "새로 만들기"
 
@@ -297,10 +335,6 @@ msgstr "저장된 API 키가 없습니다. 설정에서 추가하세요."
 msgid "No file open"
 msgstr "열린 파일 없음"
 
-#: src/hooks/use-preview-sync.ts:56
-msgid "Not a Marp document"
-msgstr "Marp 문서가 아닙니다"
-
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "파일을 엽니다."
@@ -318,28 +352,28 @@ msgstr "파일 열기…"
 msgid "Opens the List View panel by default."
 msgstr "기본적으로 목록 보기 사이드바를 엽니다."
 
-#: src/components/header-actions/index.tsx:174
+#: src/components/header-actions/index.tsx:179
 msgid "Open…"
 msgstr "열기…"
 
-#: src/components/header-actions/index.tsx:146
+#: src/components/header-actions/index.tsx:151
 msgid "Options"
 msgstr "옵션"
 
-#: src/actions/index.ts:490
+#: src/actions/index.ts:489
 msgid "PDF slide deck"
 msgstr "PDF 슬라이드 덱"
 
-#: src/components/header-actions/index.tsx:221
+#: src/components/header-actions/index.tsx:226
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:362
+#: src/components/preferences-modal/index.tsx:175
+#: src/components/header-actions/index.tsx:367
 msgid "Preferences"
 msgstr "환경설정"
 
-#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:124
 msgid "Preview Slides"
 msgstr "슬라이드 미리 보기"
 
@@ -347,15 +381,15 @@ msgstr "슬라이드 미리 보기"
 msgid "Reload"
 msgstr "다시 불러오기"
 
-#: src/components/header-actions/index.tsx:383
+#: src/components/header-actions/index.tsx:388
 msgid "Remove"
 msgstr "제거"
 
-#: src/components/header-actions/index.tsx:333
+#: src/components/header-actions/index.tsx:338
 msgid "Remove YAML front matter"
 msgstr "YAML 프런트 매터 제거"
 
-#: src/components/header-actions/index.tsx:377
+#: src/components/header-actions/index.tsx:382
 msgid "Remove YAML front matter?"
 msgstr "YAML 프런트 매터를 제거하시겠습니까?"
 
@@ -371,17 +405,18 @@ msgstr "새 언어를 적용하려면 앱을 다시 시작하세요."
 msgid "Restore default settings"
 msgstr "기본 설정 복원"
 
-#: src/preferences/constants.ts:63
+#: src/preferences/constants.ts:65
 msgid "Sans-serif"
 msgstr "산세리프"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:136
-#: src/components/header-actions/index.tsx:182
+#: src/components/preferences-modal/ai-panel.tsx:271
+#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:187
 msgid "Save"
 msgstr "저장"
 
-#: src/components/header-actions/index.tsx:190
+#: src/components/header-actions/index.tsx:195
 msgid "Save As…"
 msgstr "다른 이름으로 저장…"
 
@@ -401,7 +436,7 @@ msgstr "활성 파일을 저장합니다."
 msgid "Selection shortcuts"
 msgstr "선택 단축키"
 
-#: src/preferences/constants.ts:67
+#: src/preferences/constants.ts:69
 msgid "Serif"
 msgstr "세리프"
 
@@ -422,7 +457,7 @@ msgstr "블록 이동 경로 표시"
 msgid "Show line numbers"
 msgstr "줄 번호 표시"
 
-#: src/actions/index.ts:524
+#: src/components/slide-preview/index.tsx:39
 msgid "Slide Preview"
 msgstr "슬라이드 미리 보기"
 
@@ -430,12 +465,12 @@ msgstr "슬라이드 미리 보기"
 msgid "Spell check"
 msgstr "맞춤법 검사"
 
-#: src/components/header-actions/index.tsx:256
+#: src/components/header-actions/index.tsx:261
 msgid "Spotlight mode"
 msgstr "스포트라이트 모드"
 
-#: src/preferences/constants.ts:51
-#: src/preferences/constants.ts:60
+#: src/preferences/constants.ts:53
+#: src/preferences/constants.ts:62
 msgid "System Default"
 msgstr "시스템 기본값"
 
@@ -451,15 +486,30 @@ msgstr "텍스트 서식 지정"
 msgid "The API key cannot use this model."
 msgstr "이 API 키로는 이 모델을 사용할 수 없습니다."
 
+#: src/components/preferences-modal/ai-panel.tsx:212
+msgid ""
+"The API key is kept in the system’s credential store and only sent to the "
+"Anthropic API."
+msgstr ""
+"API 키는 시스템의 자격 증명 저장소에 보관되며 Anthropic API로만 전송됩니다."
+
 #: src/ai/anthropic/errors.ts:35
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 키가 올바르지 않습니다. 설정에서 확인하세요."
+
+#: src/components/preferences-modal/ai-panel.tsx:291
+msgid "The API key was deleted."
+msgstr "API 키를 삭제했습니다."
+
+#: src/components/preferences-modal/ai-panel.tsx:281
+msgid "The API key was saved."
+msgstr "API 키를 저장했습니다."
 
 #: src/ai/anthropic/errors.ts:50
 msgid "The Anthropic API is not available right now. Try again later."
 msgstr "지금은 Anthropic API를 사용할 수 없습니다. 나중에 다시 시도하세요."
 
-#: src/components/header-actions/index.tsx:378
+#: src/components/header-actions/index.tsx:383
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -485,6 +535,11 @@ msgstr "모델이 이 요청에 대한 답변을 거부했습니다."
 msgid "The model was not found."
 msgstr "모델을 찾을 수 없습니다."
 
+# %s: Why the models could not be loaded.
+#: src/components/preferences-modal/ai-panel.tsx:344
+msgid "The models could not be loaded: %s"
+msgstr "모델을 불러오지 못했습니다: %s"
+
 #: src/ai/anthropic/errors.ts:61
 msgid "The request failed."
 msgstr "요청이 실패했습니다."
@@ -499,6 +554,10 @@ msgstr "요청이 실패했습니다: %s"
 msgid "Theme"
 msgstr "테마"
 
+#: src/ai/settings.ts:53
+msgid "This API key is not valid."
+msgstr "이 API 키는 올바르지 않습니다."
+
 #: src/components/preferences-modal/general-panel.tsx:166
 msgid ""
 "This platform does not support setting the default app from inside "
@@ -511,13 +570,17 @@ msgstr ""
 msgid "Too many requests. Wait a moment and try again."
 msgstr "요청이 너무 많습니다. 잠시 후 다시 시도하세요."
 
-#: src/components/header-actions/index.tsx:306
+#: src/components/header-actions/index.tsx:311
 msgid "Tools"
 msgstr "도구"
 
-#: src/components/header-actions/index.tsx:240
+#: src/components/header-actions/index.tsx:245
 msgid "Top toolbar"
 msgstr "상단 툴바"
+
+#: src/components/preferences-modal/ai-panel.tsx:353
+msgid "Try again"
+msgstr "다시 시도"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:157
 msgid "Typeface used for the content area."
@@ -544,12 +607,12 @@ msgstr "업데이트 사용 가능"
 msgid "Update check failed: %s"
 msgstr "업데이트 확인 실패: %s"
 
-#: src/components/header-actions/index.tsx:231
+#: src/components/header-actions/index.tsx:236
 msgid "View"
 msgstr "보기"
 
-#: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:286
+#: src/components/preferences-modal/index.tsx:197
+#: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "비주얼 편집기"
 

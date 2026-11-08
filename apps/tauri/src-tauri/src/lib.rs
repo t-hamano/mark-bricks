@@ -441,7 +441,9 @@ pub fn run() {
             api_key::delete_ai_api_key,
             api_key::has_ai_api_key,
             ai_request::ai_request,
-            ai_request::cancel_ai_request
+            ai_request::cancel_ai_request,
+            ai_request::list_ai_models,
+            ai_request::check_ai_api_key
         ])
         .build(ctx)
         .expect("error while building tauri application")

@@ -44,6 +44,8 @@ export const DEFAULT_PREFERENCES = {
 		editorTheme: 'system' as EditorThemePreference,
 		editorStyles: DEFAULT_EDITOR_STYLES,
 		codeEditor: DEFAULT_CODE_EDITOR,
+		// The AI Assistant's model. Empty for the adapter's default model.
+		aiModel: '',
 	},
 };
 
