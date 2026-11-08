@@ -6,6 +6,9 @@ const FRONT_MATTER_PATTERN =
 // A top-level `marp: true`, optionally followed by a YAML comment.
 const MARP_DIRECTIVE_PATTERN = /^marp[ \t]*:[ \t]+true[ \t]*(?:#.*)?$/m;
 
+// Any top-level `marp` key, whatever its value.
+const MARP_KEY_PATTERN = /^marp[ \t]*:/;
+
 export type SplitFrontMatterResult = {
 	// `null` when the document has no front matter.
 	frontMatter: string | null;
@@ -59,6 +62,31 @@ export function joinFrontMatter(
  */
 export function isMarpFrontMatter( frontMatter: string | null ): boolean {
 	return frontMatter !== null && MARP_DIRECTIVE_PATTERN.test( frontMatter );
+}
+
+/**
+ * Turns Marp on or off in front matter. Turning it on writes `marp: true`
+ * as the first line; turning it off removes every top-level `marp` line.
+ *
+ * @param frontMatter Front matter content.
+ * @param enabled     Whether the document should be a Marp slide deck.
+ * @return The updated front matter content.
+ */
+export function setMarpFrontMatter(
+	frontMatter: string,
+	enabled: boolean
+): string {
+	if ( enabled && isMarpFrontMatter( frontMatter ) ) {
+		return frontMatter;
+	}
+	const lines = frontMatter
+		.split( '\n' )
+		.filter( ( line ) => ! MARP_KEY_PATTERN.test( line ) );
+	const rest = lines.join( '\n' );
+	if ( ! enabled ) {
+		return rest;
+	}
+	return rest === '' ? 'marp: true' : `marp: true\n${ rest }`;
 }
 
 /**

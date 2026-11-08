@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T08:35:34.954Z\n"
+"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -116,6 +116,214 @@ msgstr ""
 
 #: src/format-library/image/index.tsx:22
 msgid "Inline image"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:231
+msgid "Table"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:232
+msgid "Insert a table for sharing data."
+msgstr ""
+
+#: src/block-library/table/edit.tsx:246
+msgid "Column count"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:253
+msgid "Row count"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:259
+msgid "Create Table"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:300
+msgid "Header label"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:301
+msgid "Cell content"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:331
+msgid "Edit table"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:335
+msgid "Insert row before"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:343
+msgid "Insert row after"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:351
+msgid "Delete row"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:360
+msgid "Insert column before"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:369
+msgid "Insert column after"
+msgstr ""
+
+#: src/block-library/table/edit.tsx:378
+msgid "Delete column"
+msgstr ""
+
+#: src/block-library/quote/edit.tsx:40
+msgid "Note"
+msgstr ""
+
+#: src/block-library/quote/edit.tsx:55
+msgid "Tip"
+msgstr ""
+
+#: src/block-library/quote/edit.tsx:70
+msgid "Important"
+msgstr ""
+
+#: src/block-library/quote/edit.tsx:85
+msgid "Warning"
+msgstr ""
+
+#: src/block-library/quote/edit.tsx:100
+msgid "Caution"
+msgstr ""
+
+#: src/block-library/quote/edit.tsx:148
+msgid "GitHub alert type"
+msgstr ""
+
+#: src/block-library/quote/edit.tsx:151
+msgid "Default"
+msgstr ""
+
+#: src/block-library/paragraph/edit.tsx:41
+msgid "Type / to choose a block"
+msgstr ""
+
+#: src/block-library/math/preview.tsx:89
+msgid "The formula could not be rendered."
+msgstr ""
+
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr ""
+
+#: src/block-library/list/edit.tsx:45
+msgid "Unordered"
+msgstr ""
+
+#: src/block-library/list/edit.tsx:51
+msgid "Ordered"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:62
+msgid "Outdent"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:69
+msgid "Indent"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:133
+msgid "Toggle task"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:147
+msgid "List text"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:149
+msgid "List"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:162
+msgid "Turn into a regular item"
+msgstr ""
+
+#: src/block-library/list-item/edit.tsx:163
+msgid "Turn into a task item"
+msgstr ""
+
+#: src/block-library/image/edit.tsx:76
+msgid "Image"
+msgstr ""
+
+#: src/block-library/image/edit.tsx:77
+msgid "Upload an image from your device or insert from a URL."
+msgstr ""
+
+#: src/block-library/image/edit.tsx:104
+#: src/block-library/image/edit.tsx:200
+msgid "Paste or type URL or file path"
+msgstr ""
+
+#: src/block-library/image/edit.tsx:162
+msgid "Edit image"
+msgstr ""
+
+#: src/block-library/image/edit.tsx:242
+msgid ""
+"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
+"other words become the alt text, or the caption of a background image."
+msgstr ""
+
+#: src/block-library/image/edit.tsx:274
+msgid "Reset"
+msgstr ""
+
+#: src/block-library/image/edit.tsx:291
+msgid "Failed to load image."
+msgstr ""
+
+#: src/block-library/html/edit.tsx:43
+msgid "Write HTML…"
+msgstr ""
+
+# %d: heading level e.g: "1", "2", "3"
+#: src/block-library/heading/index.ts:51
+msgid "Heading %d"
+msgstr ""
+
+#: src/block-library/heading/edit.tsx:53
+msgid "Heading"
+msgstr ""
+
+#: src/block-library/details/edit.tsx:57
+msgid "Open by default"
+msgstr ""
+
+#: src/block-library/details/edit.tsx:83
+msgid "Write summary…"
+msgstr ""
+
+#: src/block-library/code/mermaid-preview.tsx:135
+msgid "The diagram could not be rendered."
+msgstr ""
+
+#: src/block-library/code/edit.tsx:74
+msgid "Write code…"
+msgstr ""
+
+#: src/block-library/code/edit.tsx:99
+msgid "Change language"
+msgstr ""
+
+#: src/block-library/code/edit.tsx:114
+msgid "Language"
+msgstr ""
+
+#: src/block-library/code/edit.tsx:131
+msgid "Choose language…"
+msgstr ""
+
+#: src/block-library/code/edit.tsx:140
+msgid "No matching language."
 msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:43
@@ -232,12 +440,24 @@ msgstr ""
 msgid "Blocks"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:38
+#: src/components/front-matter-editor/index.tsx:51
 msgid "Write YAML front matter…"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:55
+#: src/components/front-matter-editor/index.tsx:69
 msgid "YAML front matter"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:95
+msgid "Front matter settings"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:114
+msgid "Marp"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:115
+msgid "Turn the document into a slide deck."
 msgstr ""
 
 #: src/components/editor-header/index.tsx:111
@@ -276,212 +496,4 @@ msgstr ""
 
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:231
-msgid "Table"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:232
-msgid "Insert a table for sharing data."
-msgstr ""
-
-#: src/block-library/table/edit.tsx:246
-msgid "Column count"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:253
-msgid "Row count"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:259
-msgid "Create Table"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:300
-msgid "Header label"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:301
-msgid "Cell content"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:331
-msgid "Edit table"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:335
-msgid "Insert row before"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:343
-msgid "Insert row after"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:351
-msgid "Delete row"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:360
-msgid "Insert column before"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:369
-msgid "Insert column after"
-msgstr ""
-
-#: src/block-library/table/edit.tsx:378
-msgid "Delete column"
-msgstr ""
-
-#: src/block-library/quote/edit.tsx:40
-msgid "Note"
-msgstr ""
-
-#: src/block-library/quote/edit.tsx:55
-msgid "Tip"
-msgstr ""
-
-#: src/block-library/quote/edit.tsx:70
-msgid "Important"
-msgstr ""
-
-#: src/block-library/quote/edit.tsx:85
-msgid "Warning"
-msgstr ""
-
-#: src/block-library/quote/edit.tsx:100
-msgid "Caution"
-msgstr ""
-
-#: src/block-library/quote/edit.tsx:148
-msgid "GitHub alert type"
-msgstr ""
-
-#: src/block-library/quote/edit.tsx:151
-msgid "Default"
-msgstr ""
-
-#: src/block-library/paragraph/edit.tsx:41
-msgid "Type / to choose a block"
-msgstr ""
-
-#: src/block-library/math/preview.tsx:89
-msgid "The formula could not be rendered."
-msgstr ""
-
-#: src/block-library/math/edit.tsx:47
-msgid "Write TeX…"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:62
-msgid "Outdent"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:69
-msgid "Indent"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:133
-msgid "Toggle task"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:147
-msgid "List text"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:149
-msgid "List"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:162
-msgid "Turn into a regular item"
-msgstr ""
-
-#: src/block-library/list-item/edit.tsx:163
-msgid "Turn into a task item"
-msgstr ""
-
-#: src/block-library/list/edit.tsx:45
-msgid "Unordered"
-msgstr ""
-
-#: src/block-library/list/edit.tsx:51
-msgid "Ordered"
-msgstr ""
-
-#: src/block-library/image/edit.tsx:76
-msgid "Image"
-msgstr ""
-
-#: src/block-library/image/edit.tsx:77
-msgid "Upload an image from your device or insert from a URL."
-msgstr ""
-
-#: src/block-library/image/edit.tsx:104
-#: src/block-library/image/edit.tsx:200
-msgid "Paste or type URL or file path"
-msgstr ""
-
-#: src/block-library/image/edit.tsx:162
-msgid "Edit image"
-msgstr ""
-
-#: src/block-library/image/edit.tsx:242
-msgid ""
-"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
-"other words become the alt text, or the caption of a background image."
-msgstr ""
-
-#: src/block-library/image/edit.tsx:274
-msgid "Reset"
-msgstr ""
-
-#: src/block-library/image/edit.tsx:291
-msgid "Failed to load image."
-msgstr ""
-
-#: src/block-library/html/edit.tsx:43
-msgid "Write HTML…"
-msgstr ""
-
-# %d: heading level e.g: "1", "2", "3"
-#: src/block-library/heading/index.ts:51
-msgid "Heading %d"
-msgstr ""
-
-#: src/block-library/heading/edit.tsx:53
-msgid "Heading"
-msgstr ""
-
-#: src/block-library/details/edit.tsx:57
-msgid "Open by default"
-msgstr ""
-
-#: src/block-library/details/edit.tsx:83
-msgid "Write summary…"
-msgstr ""
-
-#: src/block-library/code/mermaid-preview.tsx:135
-msgid "The diagram could not be rendered."
-msgstr ""
-
-#: src/block-library/code/edit.tsx:74
-msgid "Write code…"
-msgstr ""
-
-#: src/block-library/code/edit.tsx:99
-msgid "Change language"
-msgstr ""
-
-#: src/block-library/code/edit.tsx:114
-msgid "Language"
-msgstr ""
-
-#: src/block-library/code/edit.tsx:131
-msgid "Choose language…"
-msgstr ""
-
-#: src/block-library/code/edit.tsx:140
-msgid "No matching language."
 msgstr ""
