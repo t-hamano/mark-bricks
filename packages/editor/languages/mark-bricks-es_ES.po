@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:23:34.883Z\n"
-"PO-Revision-Date: 2026-11-08T12:23:49.846Z\n"
+"POT-Creation-Date: 2026-11-08T12:27:00.940Z\n"
+"PO-Revision-Date: 2026-11-08T12:27:04.059Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -93,7 +93,7 @@ msgstr "Cambia el tipo de bloque después de añadir un nuevo párrafo."
 msgid "Choose language…"
 msgstr "Elegir lenguaje…"
 
-#: src/components/front-matter-editor/index.tsx:195
+#: src/components/front-matter-editor/index.tsx:235
 msgid "Classic look with a colored background."
 msgstr "Aspecto clásico con fondo de color."
 
@@ -179,7 +179,7 @@ msgstr "Introduce el título…"
 msgid "Failed to load image."
 msgstr "No se pudo cargar la imagen."
 
-#: src/components/front-matter-editor/index.tsx:257
+#: src/components/front-matter-editor/index.tsx:307
 msgid "Footer"
 msgstr "Pie de página"
 
@@ -187,8 +187,8 @@ msgstr "Pie de página"
 msgid "Forward-slash"
 msgstr "Barra diagonal"
 
-#: src/components/front-matter-editor/index.tsx:118
-#: src/components/front-matter-editor/index.tsx:137
+#: src/components/front-matter-editor/index.tsx:158
+#: src/components/front-matter-editor/index.tsx:177
 msgid "Front matter settings"
 msgstr "Ajustes del front matter"
 
@@ -201,7 +201,7 @@ msgstr "Tipo de alerta de GitHub"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:250
+#: src/components/front-matter-editor/index.tsx:296
 msgid "Header"
 msgstr "Encabezado"
 
@@ -302,7 +302,7 @@ msgstr "Hacer que el texto seleccionado sea código integrado."
 msgid "Make the selected text italic."
 msgstr "Cambia el texto seleccionado a cursiva."
 
-#: src/components/front-matter-editor/index.tsx:141
+#: src/components/front-matter-editor/index.tsx:181
 msgid "Marp"
 msgstr "Marp"
 
@@ -319,7 +319,7 @@ msgstr ""
 "tamaño. Las demás palabras se convierten en el texto alternativo o en el pie "
 "de una imagen de fondo."
 
-#: src/components/front-matter-editor/index.tsx:203
+#: src/components/front-matter-editor/index.tsx:243
 msgid "Minimal and modern, with centered content."
 msgstr "Minimalista y moderno, con el contenido centrado."
 
@@ -355,7 +355,7 @@ msgstr "Disminuir margen"
 msgid "Outline"
 msgstr "Esquema"
 
-#: src/components/front-matter-editor/index.tsx:239
+#: src/components/front-matter-editor/index.tsx:285
 msgid "Paginate"
 msgstr "Paginar"
 
@@ -401,7 +401,7 @@ msgstr "Buscar"
 msgid "Search for blocks"
 msgstr "Buscar bloques"
 
-#: src/components/front-matter-editor/index.tsx:265
+#: src/components/front-matter-editor/index.tsx:319
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Consulta la <a>documentación de Marp</a> para otros ajustes."
 
@@ -409,7 +409,7 @@ msgstr "Consulta la <a>documentación de Marp</a> para otros ajustes."
 msgid "Show or hide the List View."
 msgstr "Mostrar u ocultar la vista de listado."
 
-#: src/components/front-matter-editor/index.tsx:240
+#: src/components/front-matter-editor/index.tsx:286
 msgid "Show the page number on each slide."
 msgstr "Muestra el número de página en cada diapositiva."
 
@@ -419,15 +419,15 @@ msgstr "Muestra el número de página en cada diapositiva."
 msgid "Shown as a tooltip on hover."
 msgstr "Se muestra como información sobre herramientas al pasar el ratón."
 
-#: src/components/front-matter-editor/index.tsx:187
+#: src/components/front-matter-editor/index.tsx:227
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "Simple y limpio, basado en el estilo Markdown de GitHub."
 
-#: src/components/front-matter-editor/index.tsx:214
+#: src/components/front-matter-editor/index.tsx:254
 msgid "Size"
 msgstr "Tamaño"
 
-#: src/components/front-matter-editor/index.tsx:228
+#: src/components/front-matter-editor/index.tsx:274
 msgid "Standard, 960 × 720."
 msgstr "Estándar, 960 × 720."
 
@@ -447,6 +447,18 @@ msgstr "Cambiar entre el editor visual y el editor de código."
 msgid "Table"
 msgstr "Tabla"
 
+#: src/components/front-matter-editor/index.tsx:308
+msgid "Text shown at the bottom of each slide."
+msgstr "Texto que se muestra en la parte inferior de cada diapositiva."
+
+#: src/components/front-matter-editor/index.tsx:297
+msgid "Text shown at the top of each slide."
+msgstr "Texto que se muestra en la parte superior de cada diapositiva."
+
+#: src/components/front-matter-editor/index.tsx:255
+msgid "The aspect ratio of the slides."
+msgstr "La relación de aspecto de las diapositivas."
+
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "No se pudo renderizar el diagrama."
@@ -455,7 +467,7 @@ msgstr "No se pudo renderizar el diagrama."
 msgid "The formula could not be rendered."
 msgstr "No se pudo renderizar la fórmula."
 
-#: src/components/front-matter-editor/index.tsx:181
+#: src/components/front-matter-editor/index.tsx:221
 msgid "Theme"
 msgstr "Tema"
 
@@ -481,7 +493,7 @@ msgstr "Transformar en elemento normal"
 msgid "Turn into a task item"
 msgstr "Transformar en tarea"
 
-#: src/components/front-matter-editor/index.tsx:142
+#: src/components/front-matter-editor/index.tsx:182
 msgid "Turn the document into a slide deck."
 msgstr "Convierte el documento en una presentación de diapositivas."
 
@@ -524,7 +536,7 @@ msgstr "Editor visual de bloques Markdown."
 msgid "Warning"
 msgstr "Advertencia"
 
-#: src/components/front-matter-editor/index.tsx:220
+#: src/components/front-matter-editor/index.tsx:265
 msgid "Widescreen, 1280 × 720."
 msgstr "Panorámico, 1280 × 720."
 
@@ -536,7 +548,7 @@ msgstr "Escribe HTML..."
 msgid "Write TeX…"
 msgstr "Escribe TeX..."
 
-#: src/components/front-matter-editor/index.tsx:73
+#: src/components/front-matter-editor/index.tsx:113
 msgid "Write YAML front matter…"
 msgstr "Escribe el front matter YAML…"
 
@@ -548,6 +560,6 @@ msgstr "Escribe el código…"
 msgid "Write summary…"
 msgstr "Escribe un resumen…"
 
-#: src/components/front-matter-editor/index.tsx:91
+#: src/components/front-matter-editor/index.tsx:131
 msgid "YAML front matter"
 msgstr "Front matter YAML"

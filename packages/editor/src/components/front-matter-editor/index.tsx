@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { useState } from 'react';
+import type { ReactNode } from 'react';
 
 /**
  * WordPress dependencies
@@ -43,7 +44,46 @@ type SelectOption = {
 	label: string;
 	value: string;
 	description?: string;
+	// Shown before the label, in the list and in the trigger.
+	prefix?: ReactNode;
 };
+
+/**
+ * An outlined rectangle in a slide's aspect ratio.
+ *
+ * @param props        The component props.
+ * @param props.width  Width in a 24 × 24 view box.
+ * @param props.height Height in a 24 × 24 view box.
+ */
+function AspectRatioIcon( {
+	width,
+	height,
+}: {
+	width: number;
+	height: number;
+} ) {
+	return (
+		<svg
+			className="front-matter-editor__aspect-ratio-icon"
+			viewBox="0 0 24 24"
+			width="24"
+			height="24"
+			aria-hidden="true"
+			focusable="false"
+		>
+			<rect
+				x={ ( 24 - width ) / 2 }
+				y={ ( 24 - height ) / 2 }
+				width={ width }
+				height={ height }
+				rx="1.5"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.5"
+			/>
+		</svg>
+	);
+}
 
 export { FrontMatterContext, useFrontMatter } from './context';
 export type { FrontMatterContextValue } from './context';
@@ -212,11 +252,16 @@ function MarpSettings( {
 			/>
 			<FrontMatterSelect
 				label={ __( 'Size', 'mark-bricks' ) }
+				description={ __(
+					'The aspect ratio of the slides.',
+					'mark-bricks'
+				) }
 				// The sizes that Marp's built-in themes provide.
 				options={ [
 					{
 						label: '16:9',
 						value: '16:9',
+						prefix: <AspectRatioIcon width={ 18 } height={ 10 } />,
 						description: __(
 							'Widescreen, 1280 × 720.',
 							'mark-bricks'
@@ -225,6 +270,7 @@ function MarpSettings( {
 					{
 						label: '4:3',
 						value: '4:3',
+						prefix: <AspectRatioIcon width={ 16 } height={ 12 } />,
 						description: __(
 							'Standard, 960 × 720.',
 							'mark-bricks'
@@ -248,6 +294,10 @@ function MarpSettings( {
 			/>
 			<InputControl
 				label={ __( 'Header', 'mark-bricks' ) }
+				description={ __(
+					'Text shown at the top of each slide.',
+					'mark-bricks'
+				) }
 				value={ getFrontMatterValue( value, 'header' ) ?? '' }
 				onChange={ ( event ) =>
 					setValue( 'header', event.target.value || null )
@@ -255,6 +305,10 @@ function MarpSettings( {
 			/>
 			<InputControl
 				label={ __( 'Footer', 'mark-bricks' ) }
+				description={ __(
+					'Text shown at the bottom of each slide.',
+					'mark-bricks'
+				) }
 				value={ getFrontMatterValue( value, 'footer' ) ?? '' }
 				onChange={ ( event ) =>
 					setValue( 'footer', event.target.value || null )
@@ -290,12 +344,14 @@ function MarpSettings( {
 
 function FrontMatterSelect( {
 	label,
+	description,
 	options,
 	value,
 	onChange,
 	portalContainer,
 }: {
 	label: string;
+	description?: string;
 	options: SelectOption[];
 	value: string;
 	onChange: ( next: string ) => void;
@@ -305,6 +361,15 @@ function FrontMatterSelect( {
 	const items = options.some( ( option ) => option.value === value )
 		? options
 		: [ ...options, { label: value, value } ];
+	const renderLabel = ( item: SelectOption ) =>
+		item.prefix ? (
+			<span className="front-matter-editor__select-label">
+				{ item.prefix }
+				{ item.label }
+			</span>
+		) : (
+			item.label
+		);
 
 	return (
 		<Field.Root>
@@ -318,14 +383,23 @@ function FrontMatterSelect( {
 					}
 				} }
 			>
-				<Select.Trigger />
+				<Select.Trigger>
+					{ ( selected: string ) => {
+						const item = items.find(
+							( option ) => option.value === selected
+						);
+						return item ? renderLabel( item ) : selected;
+					} }
+				</Select.Trigger>
 				{ /* Portaled into the iframe document, like the popover. */ }
 				<Select.Popup
 					portal={ <Select.Portal container={ portalContainer } /> }
 				>
 					{ items.map( ( item ) => (
 						<Select.Item key={ item.value } value={ item.value }>
-							<Select.ItemLabel>{ item.label }</Select.ItemLabel>
+							<Select.ItemLabel>
+								{ renderLabel( item ) }
+							</Select.ItemLabel>
 							{ item.description ? (
 								<Select.ItemDescription>
 									{ item.description }
@@ -335,6 +409,9 @@ function FrontMatterSelect( {
 					) ) }
 				</Select.Popup>
 			</Select.Root>
+			{ description && (
+				<Field.Description>{ description }</Field.Description>
+			) }
 		</Field.Root>
 	);
 }
