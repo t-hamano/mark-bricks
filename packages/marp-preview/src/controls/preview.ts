@@ -129,13 +129,14 @@ export function createSlidePreview(
 		const index = slides.findIndex( ( slide ) =>
 			slide.contains( element )
 		);
-		if ( index === -1 ) {
+		// Leaves the slide mode on the slide the presenter is showing.
+		if ( index === -1 || slideMode.isEnabled() ) {
 			return;
 		}
 		// Leaves the view as it is while the slide is already in it, such as
 		// after the user clicks it.
 		const { top, bottom } = slides[ index ].getBoundingClientRect();
-		if ( slideMode.isEnabled() || top < 0 || bottom > window.innerHeight ) {
+		if ( top < 0 || bottom > window.innerHeight ) {
 			slideMode.goToSlide( index );
 		}
 	}

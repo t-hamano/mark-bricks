@@ -292,7 +292,22 @@ describe( 'createSlidePreview', () => {
 		expect( highlighted() ).toEqual( [] );
 	} );
 
-	it( 'moves to the slide of a line in the slide mode', async () => {
+	it( 'moves to the slide of a line out of view', async () => {
+		const preview = setup();
+		preview.render( renderSlides( SOURCE_DECK ) );
+		await nextFrame();
+
+		const slides =
+			document.querySelectorAll< SVGSVGElement >( '.marpit > svg' );
+		vi.spyOn( slides[ 1 ], 'getBoundingClientRect' ).mockReturnValue(
+			new DOMRect( 0, window.innerHeight, 100, 100 )
+		);
+		const scrollIntoView = vi.spyOn( slides[ 1 ], 'scrollIntoView' );
+		preview.revealSourceLine( 10 );
+		expect( scrollIntoView ).toHaveBeenCalled();
+	} );
+
+	it( 'stays on the current slide in the slide mode', async () => {
 		const preview = setup();
 		preview.render( renderSlides( SOURCE_DECK ) );
 		await nextFrame();
@@ -300,8 +315,9 @@ describe( 'createSlidePreview', () => {
 
 		preview.revealSourceLine( 10 );
 		const slides = document.querySelectorAll( '.marpit > svg' );
-		expect( slides[ 1 ].classList.contains( 'is-current' ) ).toBe( true );
+		expect( slides[ 0 ].classList.contains( 'is-current' ) ).toBe( true );
 	} );
+
 	it( 'reports the first line of the clicked slide at the slide level', async () => {
 		const onSourceLineClick = vi.fn();
 		const preview = setup( {
@@ -321,11 +337,15 @@ describe( 'createSlidePreview', () => {
 		const preview = setup( { sourceSyncLevel: 'slide' } );
 		preview.render( renderSlides( SOURCE_DECK ) );
 		await nextFrame();
-		press( 'f' );
 
+		const slides =
+			document.querySelectorAll< SVGSVGElement >( '.marpit > svg' );
+		vi.spyOn( slides[ 1 ], 'getBoundingClientRect' ).mockReturnValue(
+			new DOMRect( 0, window.innerHeight, 100, 100 )
+		);
+		const scrollIntoView = vi.spyOn( slides[ 1 ], 'scrollIntoView' );
 		preview.revealSourceLine( 10 );
-		const slides = document.querySelectorAll( '.marpit > svg' );
-		expect( slides[ 1 ].classList.contains( 'is-current' ) ).toBe( true );
+		expect( scrollIntoView ).toHaveBeenCalled();
 		expect( document.querySelector( '.is-source-highlighted' ) ).toBeNull();
 	} );
 } );
