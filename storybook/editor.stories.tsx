@@ -64,6 +64,12 @@ type Story = StoryObj< typeof Editor >;
 
 export const Default: Story = {};
 
+export const WithMarpDeck: Story = {
+	args: {
+		content: fixtures.marp,
+	},
+};
+
 export const WithHeaderActions: Story = {
 	args: {
 		headerActions: (
