@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:45:44.030Z\n"
-"PO-Revision-Date: 2026-11-08T09:45:47.355Z\n"
+"POT-Creation-Date: 2026-11-08T11:58:16.516Z\n"
+"PO-Revision-Date: 2026-11-08T11:58:19.827Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -38,6 +38,12 @@ msgctxt "slide pattern"
 msgid "A short line about this section"
 msgstr "Une courte ligne sur cette section"
 
+#: src/components/editor-header/index.tsx:195
+#: src/components/ai-sidebar/index.tsx:55
+#: src/components/ai-sidebar/index.tsx:86
+msgid "AI Assistant"
+msgstr ""
+
 #: src/marp-patterns/patterns/agenda.ts:13
 #: src/marp-patterns/patterns/agenda.ts:20
 msgctxt "slide pattern"
@@ -65,7 +71,7 @@ msgctxt "slide pattern"
 msgid "Background"
 msgstr "Contexte"
 
-#: src/components/editor-header/index.tsx:104
+#: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
 msgstr "Outil d’insertion de blocs"
 
@@ -109,10 +115,15 @@ msgstr "Effacer la mise en forme"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:210
+#: src/components/ai-sidebar/index.tsx:90
 msgid "Close"
 msgstr "Fermer"
 
-#: src/components/editor-header/index.tsx:103
+#: src/components/editor-header/index.tsx:194
+msgid "Close AI Assistant"
+msgstr ""
+
+#: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
 msgstr "Fermer l’inserteur de bloc"
 
@@ -159,7 +170,7 @@ msgid "Display these keyboard shortcuts."
 msgstr "Afficher ces raccourcis clavier."
 
 #: src/components/list-view-sidebar/index.tsx:43
-#: src/components/editor-header/index.tsx:145
+#: src/components/editor-header/index.tsx:153
 msgid "Document Overview"
 msgstr "Vue d’ensemble du document"
 
@@ -194,6 +205,10 @@ msgstr "Premier point"
 msgid "Forward-slash"
 msgstr "Barre oblique"
 
+#: src/components/front-matter-editor/index.tsx:95
+msgid "Front matter settings"
+msgstr "Réglages du front matter"
+
 #: src/block-library/quote/edit.tsx:148
 msgid "GitHub alert type"
 msgstr "Type d’alerte GitHub"
@@ -216,7 +231,7 @@ msgstr "Titre"
 msgid "Heading %d"
 msgstr "Titre %d"
 
-#: src/components/editor-header/index.tsx:144
+#: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "Masquer la vue d’ensemble du document"
 
@@ -305,7 +320,11 @@ msgstr "Créer du code en ligne à partir du texte sélectionné."
 msgid "Make the selected text italic."
 msgstr "Passer le texte sélectionné en italique."
 
-#: src/components/editor-header/index.tsx:176
+#: src/components/front-matter-editor/index.tsx:114
+msgid "Marp"
+msgstr "Marp"
+
+#: src/components/editor-header/index.tsx:184
 msgid "Marp Mode"
 msgstr "Mode Marp"
 
@@ -380,7 +399,7 @@ msgctxt "slide pattern"
 msgid "Questions and contact details"
 msgstr "Questions et coordonnées"
 
-#: src/components/editor-header/index.tsx:129
+#: src/components/editor-header/index.tsx:137
 msgid "Redo"
 msgstr "Rétablir"
 
@@ -503,6 +522,10 @@ msgstr "Transformer en élément normal"
 msgid "Turn into a task item"
 msgstr "Transformer en tâche"
 
+#: src/components/front-matter-editor/index.tsx:115
+msgid "Turn the document into a slide deck."
+msgstr "Transforme le document en présentation."
+
 #: src/block-library/paragraph/edit.tsx:41
 msgid "Type / to choose a block"
 msgstr "Saisir / pour choisir un bloc"
@@ -517,7 +540,7 @@ msgstr "URL ou chemin de fichier"
 msgid "Underline the selected text."
 msgstr "Souligner le texte sélectionné."
 
-#: src/components/editor-header/index.tsx:120
+#: src/components/editor-header/index.tsx:128
 msgid "Undo"
 msgstr "Défaire"
 
@@ -551,7 +574,7 @@ msgstr "Écriture de HTML…"
 msgid "Write TeX…"
 msgstr "Écriture de TeX…"
 
-#: src/components/front-matter-editor/index.tsx:38
+#: src/components/front-matter-editor/index.tsx:51
 msgid "Write YAML front matter…"
 msgstr "Rédiger le front matter YAML…"
 
@@ -563,7 +586,7 @@ msgstr "Rédiger du code…"
 msgid "Write summary…"
 msgstr "Rédiger un résumé…"
 
-#: src/components/front-matter-editor/index.tsx:55
+#: src/components/front-matter-editor/index.tsx:69
 msgid "YAML front matter"
 msgstr "Front matter YAML"
 

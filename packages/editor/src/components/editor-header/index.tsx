@@ -14,7 +14,7 @@ import { Popover } from '@wordpress/components';
 import { useViewportMatch } from '@wordpress/compose';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { plus, undo, redo, listView } from '@wordpress/icons';
+import { comment, plus, undo, redo, listView } from '@wordpress/icons';
 import { Badge, IconButton, Stack } from '@wordpress/ui';
 
 /**
@@ -23,6 +23,7 @@ import { Badge, IconButton, Stack } from '@wordpress/ui';
 import { isMarpFrontMatter } from '../../converter/front-matter';
 import { useFrontMatter } from '../front-matter-editor/context';
 import { useKeyboardShortcut } from '../keyboard-shortcuts/hooks';
+import { usePlatform } from '../../platform';
 import { store as editorStore } from '../../store';
 import './style.scss';
 
@@ -34,6 +35,7 @@ type Props = {
 	showUndoRedo: boolean;
 	inserterToggleRef: RefObject< HTMLButtonElement | null >;
 	listViewToggleRef: RefObject< HTMLButtonElement | null >;
+	aiSidebarToggleRef: RefObject< HTMLButtonElement | null >;
 	editorMode: 'visual' | 'text';
 	fixedToolbar: boolean;
 	headerActions?: ReactNode;
@@ -47,29 +49,35 @@ export function EditorHeader( {
 	showUndoRedo,
 	inserterToggleRef,
 	listViewToggleRef,
+	aiSidebarToggleRef,
 	editorMode,
 	fixedToolbar,
 	headerActions,
 }: Props ) {
-	const { isListViewOpened, isInserterOpened, hasBlockSelection } = useSelect(
-		( select ) => {
-			const {
-				isListViewOpened: _isListViewOpened,
-				isInserterOpened: _isInserterOpened,
-			} = select( editorStore );
+	const {
+		isListViewOpened,
+		isInserterOpened,
+		isAiSidebarOpened,
+		hasBlockSelection,
+	} = useSelect( ( select ) => {
+		const {
+			isListViewOpened: _isListViewOpened,
+			isInserterOpened: _isInserterOpened,
+			isAiSidebarOpened: _isAiSidebarOpened,
+		} = select( editorStore );
 
-			return {
-				isListViewOpened: _isListViewOpened(),
-				isInserterOpened: _isInserterOpened(),
-				hasBlockSelection:
-					!! select( blockEditorStore ).getBlockSelectionStart(),
-			};
-		},
-		[]
-	);
+		return {
+			isListViewOpened: _isListViewOpened(),
+			isInserterOpened: _isInserterOpened(),
+			isAiSidebarOpened: _isAiSidebarOpened(),
+			hasBlockSelection:
+				!! select( blockEditorStore ).getBlockSelectionStart(),
+		};
+	}, [] );
 	const toggleListViewShortcut = useKeyboardShortcut(
 		'mark-bricks/toggle-list-view'
 	);
+	const hasAi = !! usePlatform().ai;
 	const { frontMatter } = useFrontMatter();
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
 	const showFixedToolbar =
@@ -77,7 +85,7 @@ export function EditorHeader( {
 		editorMode === 'visual' &&
 		! isMobileViewport &&
 		hasBlockSelection;
-	const { setIsListViewOpened, setIsInserterOpened } =
+	const { setIsListViewOpened, setIsInserterOpened, setIsAiSidebarOpened } =
 		useDispatch( editorStore );
 
 	return (
@@ -177,6 +185,25 @@ export function EditorHeader( {
 					</Badge>
 				) }
 				{ headerActions }
+				{ hasAi && (
+					<IconButton
+						ref={ aiSidebarToggleRef }
+						icon={ comment }
+						label={
+							isAiSidebarOpened
+								? __( 'Close AI Assistant', 'mark-bricks' )
+								: __( 'AI Assistant', 'mark-bricks' )
+						}
+						variant="minimal"
+						tone="neutral"
+						size="compact"
+						onClick={ () =>
+							setIsAiSidebarOpened( ! isAiSidebarOpened )
+						}
+						aria-expanded={ isAiSidebarOpened }
+						aria-pressed={ isAiSidebarOpened }
+					/>
+				) }
 			</Stack>
 		</Stack>
 	);

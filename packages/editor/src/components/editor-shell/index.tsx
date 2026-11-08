@@ -12,6 +12,7 @@ import {
 	type ReactNode,
 	type SetStateAction,
 } from 'react';
+import type { editor as MonacoEditor } from 'monaco-editor';
 
 /**
  * WordPress dependencies
@@ -32,6 +33,7 @@ import '@wordpress/block-editor/build-style/style.css';
  * Internal dependencies
  */
 import { useInitialListView, useMarkdownDocument } from './hooks';
+import { AiSidebar } from '../ai-sidebar';
 import { EditorFooter } from '../editor-footer';
 import { EditorHeader } from '../editor-header';
 import { FrontMatterContext } from '../front-matter-editor/context';
@@ -40,6 +42,7 @@ import { KeyboardShortcuts } from '../keyboard-shortcuts';
 import { ListViewSidebar } from '../list-view-sidebar';
 import { MobileBlockToolbar } from '../mobile-block-toolbar';
 import { PlatformProvider, type Platform } from '../../platform';
+import { TextEditorContext } from '../../ai/text-editor-context';
 import { store as editorStore } from '../../store';
 import './style.scss';
 
@@ -95,6 +98,9 @@ function UnforwardedEditorShell(
 
 	const inserterToggleRef = useRef< HTMLButtonElement >( null );
 	const listViewToggleRef = useRef< HTMLButtonElement >( null );
+	const aiSidebarToggleRef = useRef< HTMLButtonElement >( null );
+	const textEditorRef = useRef< MonacoEditor.IStandaloneCodeEditor >( null );
+	const hasAi = !! platform?.ai;
 
 	const {
 		blocks,
@@ -118,16 +124,21 @@ function UnforwardedEditorShell(
 
 	useInitialListView( !! settings?.showListViewByDefault );
 
-	const { isInserterOpened, isListViewOpened } = useSelect( ( select ) => {
-		const {
-			isInserterOpened: _isInserterOpened,
-			isListViewOpened: _isListViewOpened,
-		} = select( editorStore );
-		return {
-			isInserterOpened: _isInserterOpened(),
-			isListViewOpened: _isListViewOpened(),
-		};
-	}, [] );
+	const { isInserterOpened, isListViewOpened, isAiSidebarOpened } = useSelect(
+		( select ) => {
+			const {
+				isInserterOpened: _isInserterOpened,
+				isListViewOpened: _isListViewOpened,
+				isAiSidebarOpened: _isAiSidebarOpened,
+			} = select( editorStore );
+			return {
+				isInserterOpened: _isInserterOpened(),
+				isListViewOpened: _isListViewOpened(),
+				isAiSidebarOpened: _isAiSidebarOpened(),
+			};
+		},
+		[]
+	);
 
 	const blockEditorSettings = useMemo(
 		() => ( {
@@ -140,61 +151,71 @@ function UnforwardedEditorShell(
 
 	return (
 		<PlatformProvider platform={ platform }>
-			<FrontMatterContext.Provider value={ frontMatterContext }>
-				<Stack
-					render={ <ShortcutProvider /> }
-					className="editor-shell"
-					direction="column"
-					style={ style }
-				>
-					<BlockEditorProvider
-						value={ blocks }
-						onChange={ onBlocksChange }
-						onInput={ onInput }
-						settings={ blockEditorSettings }
+			<TextEditorContext.Provider value={ textEditorRef }>
+				<FrontMatterContext.Provider value={ frontMatterContext }>
+					<Stack
+						render={ <ShortcutProvider /> }
+						className="editor-shell"
+						direction="column"
+						style={ style }
 					>
-						<KeyboardShortcuts
-							canUndo={ canUndo }
-							canRedo={ canRedo }
-							onUndo={ undo }
-							onRedo={ redo }
-							editorMode={ editorMode }
-							onEditorModeChange={ onEditorModeChange }
-						/>
-						<EditorHeader
-							canUndo={ canUndo }
-							canRedo={ canRedo }
-							onUndo={ undo }
-							onRedo={ redo }
-							showUndoRedo={ settings?.showUndoRedo ?? true }
-							inserterToggleRef={ inserterToggleRef }
-							listViewToggleRef={ listViewToggleRef }
-							editorMode={ editorMode }
-							fixedToolbar={ hasFixedToolbar }
-							headerActions={ headerActions }
-						/>
-						{ showMobileToolbar && <MobileBlockToolbar /> }
-						<Stack className="editor-shell__body">
-							<AnimatePresence initial={ false }>
-								{ isVisualMode && isInserterOpened && (
-									<InserterSidebar
-										toggleRef={ inserterToggleRef }
-									/>
-								) }
-								{ isVisualMode && isListViewOpened && (
-									<ListViewSidebar
-										toggleRef={ listViewToggleRef }
-									/>
-								) }
-							</AnimatePresence>
-							<main className="editor-shell__content">
-								{ children }
-							</main>
-						</Stack>
-						{ showBreadcrumbs && <EditorFooter /> }
-					</BlockEditorProvider>
-				</Stack>
-			</FrontMatterContext.Provider>
+						<BlockEditorProvider
+							value={ blocks }
+							onChange={ onBlocksChange }
+							onInput={ onInput }
+							settings={ blockEditorSettings }
+						>
+							<KeyboardShortcuts
+								canUndo={ canUndo }
+								canRedo={ canRedo }
+								onUndo={ undo }
+								onRedo={ redo }
+								editorMode={ editorMode }
+								onEditorModeChange={ onEditorModeChange }
+							/>
+							<EditorHeader
+								canUndo={ canUndo }
+								canRedo={ canRedo }
+								onUndo={ undo }
+								onRedo={ redo }
+								showUndoRedo={ settings?.showUndoRedo ?? true }
+								inserterToggleRef={ inserterToggleRef }
+								listViewToggleRef={ listViewToggleRef }
+								aiSidebarToggleRef={ aiSidebarToggleRef }
+								editorMode={ editorMode }
+								fixedToolbar={ hasFixedToolbar }
+								headerActions={ headerActions }
+							/>
+							{ showMobileToolbar && <MobileBlockToolbar /> }
+							<Stack className="editor-shell__body">
+								<AnimatePresence initial={ false }>
+									{ isVisualMode && isInserterOpened && (
+										<InserterSidebar
+											toggleRef={ inserterToggleRef }
+										/>
+									) }
+									{ isVisualMode && isListViewOpened && (
+										<ListViewSidebar
+											toggleRef={ listViewToggleRef }
+										/>
+									) }
+								</AnimatePresence>
+								<main className="editor-shell__content">
+									{ children }
+								</main>
+								<AnimatePresence initial={ false }>
+									{ hasAi && isAiSidebarOpened && (
+										<AiSidebar
+											toggleRef={ aiSidebarToggleRef }
+										/>
+									) }
+								</AnimatePresence>
+							</Stack>
+							{ showBreadcrumbs && <EditorFooter /> }
+						</BlockEditorProvider>
+					</Stack>
+				</FrontMatterContext.Provider>
+			</TextEditorContext.Provider>
 		</PlatformProvider>
 	);
 }

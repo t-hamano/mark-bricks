@@ -9,4 +9,5 @@ export {
 	joinFrontMatter,
 	isMarpFrontMatter,
 	isMarpDocument,
+	setMarpFrontMatter,
 } from './front-matter';
