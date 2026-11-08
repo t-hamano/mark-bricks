@@ -1,25 +1,19 @@
 /**
  * External dependencies
  */
-import type { SlidePattern } from '@mark-bricks/editor/marp-patterns';
+import {
+	SLIDE_PATTERN_THEMES,
+	type SlidePattern,
+	type SlidePatternPreviews,
+	type SlidePatternTheme,
+} from '@mark-bricks/editor/marp-patterns';
 
 /**
  * Internal dependencies
  */
 import { renderSlides } from '../render';
 
-// The built-in themes the editor shows the patterns in.
-export const SLIDE_PATTERN_THEMES = [ 'default', 'gaia', 'uncover' ] as const;
-
-export type SlidePatternTheme = ( typeof SLIDE_PATTERN_THEMES )[ number ];
-
-export type SlidePatternPreviews = {
-	// The stylesheet of each theme, which every pattern shares.
-	css: Record< SlidePatternTheme, string >;
-	// The slides' HTML of each pattern in each theme, with the `{{key}}`
-	// placeholders of its text left in.
-	html: Record< string, Record< SlidePatternTheme, string > >;
-};
+export { SLIDE_PATTERN_THEMES };
 
 /**
  * Renders every slide pattern in every built-in theme, for the editor to show
