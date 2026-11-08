@@ -12,7 +12,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as preferencesStore } from '@wordpress/preferences';
-import { layout, moreVertical } from '@wordpress/icons';
+import { drawerRight, moreVertical } from '@wordpress/icons';
 import {
 	AlertDialog,
 	Button,
@@ -117,7 +117,7 @@ export default function HeaderActions( {
 			) }
 			{ isActiveTabMarp && (
 				<IconButton
-					icon={ layout }
+					icon={ drawerRight }
 					label={ __( 'Preview Slides', 'mark-bricks' ) }
 					variant="minimal"
 					tone="neutral"
