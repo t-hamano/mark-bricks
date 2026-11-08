@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:12:57.475Z\n"
+"POT-Creation-Date: 2026-11-08T13:16:03.096Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -465,6 +465,11 @@ msgstr ""
 msgid "Delete column"
 msgstr ""
 
+#: src/block-library/separator/use-marp-title.ts:39
+#: src/block-library/separator/edit.tsx:25
+msgid "Slide Separator"
+msgstr ""
+
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr ""
@@ -503,10 +508,6 @@ msgstr ""
 
 #: src/block-library/math/edit.tsx:47
 msgid "Write TeX…"
-msgstr ""
-
-#: src/block-library/separator/use-marp-title.ts:39
-msgid "Slide Separator"
 msgstr ""
 
 #: src/block-library/list-item/edit.tsx:62

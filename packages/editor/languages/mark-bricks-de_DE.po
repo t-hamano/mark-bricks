@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:12:57.475Z\n"
-"PO-Revision-Date: 2026-11-08T13:12:59.392Z\n"
+"POT-Creation-Date: 2026-11-08T13:16:03.096Z\n"
+"PO-Revision-Date: 2026-11-08T13:16:05.010Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -536,6 +536,7 @@ msgid "Size"
 msgstr "Größe"
 
 #: src/block-library/separator/use-marp-title.ts:39
+#: src/block-library/separator/edit.tsx:25
 msgid "Slide Separator"
 msgstr "Folientrenner"
 
