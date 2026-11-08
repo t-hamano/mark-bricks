@@ -44,6 +44,7 @@ export const DEFAULT_PREFERENCES = {
 		editorTheme: 'system' as EditorThemePreference,
 		editorStyles: DEFAULT_EDITOR_STYLES,
 		codeEditor: DEFAULT_CODE_EDITOR,
+		showSlidePreview: false,
 	},
 };
 
