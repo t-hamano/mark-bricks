@@ -28,8 +28,6 @@ export function reducer( state: State = DEFAULT_STATE, action: Action ) {
 					? false
 					: state.isListViewOpened,
 			};
-		// The AI sidebar opens on the other side, so it stays open next to
-		// the list view and the inserter.
 		case 'SET_IS_AI_SIDEBAR_OPENED':
 			return {
 				...state,
