@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:27:00.940Z\n"
-"PO-Revision-Date: 2026-11-08T12:27:11.193Z\n"
+"POT-Creation-Date: 2026-11-08T12:28:29.201Z\n"
+"PO-Revision-Date: 2026-11-08T12:28:38.871Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -93,7 +93,7 @@ msgstr "在新增段落后修改区块类型。"
 msgid "Choose language…"
 msgstr "选择语言…"
 
-#: src/components/front-matter-editor/index.tsx:235
+#: src/components/front-matter-editor/index.tsx:195
 msgid "Classic look with a colored background."
 msgstr "带有彩色背景的经典风格。"
 
@@ -179,7 +179,7 @@ msgstr "输入标题…"
 msgid "Failed to load image."
 msgstr "图片加载失败。"
 
-#: src/components/front-matter-editor/index.tsx:307
+#: src/components/front-matter-editor/index.tsx:257
 msgid "Footer"
 msgstr "页脚"
 
@@ -187,8 +187,8 @@ msgstr "页脚"
 msgid "Forward-slash"
 msgstr "正斜杠"
 
-#: src/components/front-matter-editor/index.tsx:158
-#: src/components/front-matter-editor/index.tsx:177
+#: src/components/front-matter-editor/index.tsx:118
+#: src/components/front-matter-editor/index.tsx:137
 msgid "Front matter settings"
 msgstr "前置元数据设置"
 
@@ -201,7 +201,7 @@ msgstr "GitHub 警示类型"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:296
+#: src/components/front-matter-editor/index.tsx:246
 msgid "Header"
 msgstr "页眉"
 
@@ -302,7 +302,7 @@ msgstr "将选定的文本设为内联代码。"
 msgid "Make the selected text italic."
 msgstr "将选中的文字设为斜体。"
 
-#: src/components/front-matter-editor/index.tsx:181
+#: src/components/front-matter-editor/index.tsx:141
 msgid "Marp"
 msgstr "Marp"
 
@@ -318,7 +318,7 @@ msgstr ""
 "bg、w:200px、sepia 等 Marp 关键字用于设置布局和尺寸。其余文字将作为替代文字，"
 "背景图片则作为说明文字。"
 
-#: src/components/front-matter-editor/index.tsx:243
+#: src/components/front-matter-editor/index.tsx:203
 msgid "Minimal and modern, with centered content."
 msgstr "简约现代，内容居中。"
 
@@ -352,7 +352,7 @@ msgstr "减少缩进量"
 msgid "Outline"
 msgstr "大纲"
 
-#: src/components/front-matter-editor/index.tsx:285
+#: src/components/front-matter-editor/index.tsx:235
 msgid "Paginate"
 msgstr "页码"
 
@@ -398,7 +398,7 @@ msgstr "搜索"
 msgid "Search for blocks"
 msgstr "搜索区块"
 
-#: src/components/front-matter-editor/index.tsx:319
+#: src/components/front-matter-editor/index.tsx:269
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 
@@ -406,7 +406,7 @@ msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 msgid "Show or hide the List View."
 msgstr "显示或隐藏列表视图。"
 
-#: src/components/front-matter-editor/index.tsx:286
+#: src/components/front-matter-editor/index.tsx:236
 msgid "Show the page number on each slide."
 msgstr "在每张幻灯片上显示页码。"
 
@@ -416,17 +416,13 @@ msgstr "在每张幻灯片上显示页码。"
 msgid "Shown as a tooltip on hover."
 msgstr "悬停时显示为工具提示。"
 
-#: src/components/front-matter-editor/index.tsx:227
+#: src/components/front-matter-editor/index.tsx:187
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "简洁清爽，基于 GitHub Markdown 样式。"
 
-#: src/components/front-matter-editor/index.tsx:254
+#: src/components/front-matter-editor/index.tsx:214
 msgid "Size"
 msgstr "尺寸"
-
-#: src/components/front-matter-editor/index.tsx:274
-msgid "Standard, 960 × 720."
-msgstr "标准，960 × 720。"
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -444,15 +440,15 @@ msgstr "在可视化编辑器和代码编辑器之间切换。"
 msgid "Table"
 msgstr "表格"
 
-#: src/components/front-matter-editor/index.tsx:308
+#: src/components/front-matter-editor/index.tsx:258
 msgid "Text shown at the bottom of each slide."
 msgstr "显示在每张幻灯片底部的文本。"
 
-#: src/components/front-matter-editor/index.tsx:297
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Text shown at the top of each slide."
 msgstr "显示在每张幻灯片顶部的文本。"
 
-#: src/components/front-matter-editor/index.tsx:255
+#: src/components/front-matter-editor/index.tsx:215
 msgid "The aspect ratio of the slides."
 msgstr "幻灯片的宽高比。"
 
@@ -464,7 +460,7 @@ msgstr "无法渲染图表。"
 msgid "The formula could not be rendered."
 msgstr "无法渲染公式。"
 
-#: src/components/front-matter-editor/index.tsx:221
+#: src/components/front-matter-editor/index.tsx:181
 msgid "Theme"
 msgstr "主题"
 
@@ -490,7 +486,7 @@ msgstr "转换为普通项目"
 msgid "Turn into a task item"
 msgstr "转换为任务项目"
 
-#: src/components/front-matter-editor/index.tsx:182
+#: src/components/front-matter-editor/index.tsx:142
 msgid "Turn the document into a slide deck."
 msgstr "将文档转换为幻灯片。"
 
@@ -533,10 +529,6 @@ msgstr "可视化 Markdown 区块编辑器。"
 msgid "Warning"
 msgstr "警告"
 
-#: src/components/front-matter-editor/index.tsx:265
-msgid "Widescreen, 1280 × 720."
-msgstr "宽屏，1280 × 720。"
-
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
 msgstr "编写 HTML…"
@@ -545,7 +537,7 @@ msgstr "编写 HTML…"
 msgid "Write TeX…"
 msgstr "编写 TeX…"
 
-#: src/components/front-matter-editor/index.tsx:113
+#: src/components/front-matter-editor/index.tsx:73
 msgid "Write YAML front matter…"
 msgstr "编写 YAML 前置元数据…"
 
@@ -557,6 +549,6 @@ msgstr "编写代码…"
 msgid "Write summary…"
 msgstr "编写摘要…"
 
-#: src/components/front-matter-editor/index.tsx:131
+#: src/components/front-matter-editor/index.tsx:91
 msgid "YAML front matter"
 msgstr "YAML 前置元数据"

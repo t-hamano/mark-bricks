@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:27:00.940Z\n"
-"PO-Revision-Date: 2026-11-08T12:27:08.066Z\n"
+"POT-Creation-Date: 2026-11-08T12:28:29.201Z\n"
+"PO-Revision-Date: 2026-11-08T12:28:35.606Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -93,7 +93,7 @@ msgstr "Zmień rodzaj bloku po dodaniu nowego akapitu."
 msgid "Choose language…"
 msgstr "Wybierz język…"
 
-#: src/components/front-matter-editor/index.tsx:235
+#: src/components/front-matter-editor/index.tsx:195
 msgid "Classic look with a colored background."
 msgstr "Klasyczny wygląd z kolorowym tłem."
 
@@ -179,7 +179,7 @@ msgstr "Wpisz tytuł…"
 msgid "Failed to load image."
 msgstr "Nie udało się wczytać obrazka."
 
-#: src/components/front-matter-editor/index.tsx:307
+#: src/components/front-matter-editor/index.tsx:257
 msgid "Footer"
 msgstr "Stopka"
 
@@ -187,8 +187,8 @@ msgstr "Stopka"
 msgid "Forward-slash"
 msgstr "Ukośnik"
 
-#: src/components/front-matter-editor/index.tsx:158
-#: src/components/front-matter-editor/index.tsx:177
+#: src/components/front-matter-editor/index.tsx:118
+#: src/components/front-matter-editor/index.tsx:137
 msgid "Front matter settings"
 msgstr "Ustawienia front matter"
 
@@ -201,7 +201,7 @@ msgstr "Typ alertu GitHub"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:296
+#: src/components/front-matter-editor/index.tsx:246
 msgid "Header"
 msgstr "Nagłówek"
 
@@ -302,7 +302,7 @@ msgstr "Zamień zaznaczony tekst na kod liniowy."
 msgid "Make the selected text italic."
 msgstr "Dodaj kursywę dla zaznaczonego tekstu."
 
-#: src/components/front-matter-editor/index.tsx:181
+#: src/components/front-matter-editor/index.tsx:141
 msgid "Marp"
 msgstr "Marp"
 
@@ -319,7 +319,7 @@ msgstr ""
 "rozmiar. Pozostałe słowa stają się tekstem alternatywnym lub podpisem "
 "obrazka w tle."
 
-#: src/components/front-matter-editor/index.tsx:243
+#: src/components/front-matter-editor/index.tsx:203
 msgid "Minimal and modern, with centered content."
 msgstr "Minimalistyczny i nowoczesny, z wyśrodkowaną treścią."
 
@@ -355,7 +355,7 @@ msgstr "Zmniejsz wcięcie"
 msgid "Outline"
 msgstr "Konspekt"
 
-#: src/components/front-matter-editor/index.tsx:285
+#: src/components/front-matter-editor/index.tsx:235
 msgid "Paginate"
 msgstr "Numeracja stron"
 
@@ -401,7 +401,7 @@ msgstr "Szukaj"
 msgid "Search for blocks"
 msgstr "Szukaj bloków"
 
-#: src/components/front-matter-editor/index.tsx:319
+#: src/components/front-matter-editor/index.tsx:269
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Inne ustawienia opisano w <a>dokumentacji Marp</a>."
 
@@ -409,7 +409,7 @@ msgstr "Inne ustawienia opisano w <a>dokumentacji Marp</a>."
 msgid "Show or hide the List View."
 msgstr "Pokaż lub ukryj widok listy."
 
-#: src/components/front-matter-editor/index.tsx:286
+#: src/components/front-matter-editor/index.tsx:236
 msgid "Show the page number on each slide."
 msgstr "Wyświetla numer strony na każdym slajdzie."
 
@@ -419,17 +419,13 @@ msgstr "Wyświetla numer strony na każdym slajdzie."
 msgid "Shown as a tooltip on hover."
 msgstr "Wyświetlany jako podpowiedź po najechaniu kursorem."
 
-#: src/components/front-matter-editor/index.tsx:227
+#: src/components/front-matter-editor/index.tsx:187
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "Prosty i przejrzysty, oparty na stylu Markdown z GitHuba."
 
-#: src/components/front-matter-editor/index.tsx:254
+#: src/components/front-matter-editor/index.tsx:214
 msgid "Size"
 msgstr "Rozmiar"
-
-#: src/components/front-matter-editor/index.tsx:274
-msgid "Standard, 960 × 720."
-msgstr "Standardowy, 960 × 720."
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -447,15 +443,15 @@ msgstr "Przełącz między edytorem wizualnym a edytorem kodu."
 msgid "Table"
 msgstr "Tabela"
 
-#: src/components/front-matter-editor/index.tsx:308
+#: src/components/front-matter-editor/index.tsx:258
 msgid "Text shown at the bottom of each slide."
 msgstr "Tekst wyświetlany u dołu każdego slajdu."
 
-#: src/components/front-matter-editor/index.tsx:297
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Text shown at the top of each slide."
 msgstr "Tekst wyświetlany u góry każdego slajdu."
 
-#: src/components/front-matter-editor/index.tsx:255
+#: src/components/front-matter-editor/index.tsx:215
 msgid "The aspect ratio of the slides."
 msgstr "Proporcje slajdów."
 
@@ -467,7 +463,7 @@ msgstr "Nie można wyrenderować diagramu."
 msgid "The formula could not be rendered."
 msgstr "Nie można wyrenderować wzoru."
 
-#: src/components/front-matter-editor/index.tsx:221
+#: src/components/front-matter-editor/index.tsx:181
 msgid "Theme"
 msgstr "Motyw"
 
@@ -493,7 +489,7 @@ msgstr "Przekształć w zwykły element"
 msgid "Turn into a task item"
 msgstr "Przekształć w zadanie"
 
-#: src/components/front-matter-editor/index.tsx:182
+#: src/components/front-matter-editor/index.tsx:142
 msgid "Turn the document into a slide deck."
 msgstr "Zamienia dokument w prezentację."
 
@@ -536,10 +532,6 @@ msgstr "Wizualny blokowy edytor Markdown."
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
-#: src/components/front-matter-editor/index.tsx:265
-msgid "Widescreen, 1280 × 720."
-msgstr "Panoramiczny, 1280 × 720."
-
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
 msgstr "Napisz HTML…"
@@ -548,7 +540,7 @@ msgstr "Napisz HTML…"
 msgid "Write TeX…"
 msgstr "Napisz TeX…"
 
-#: src/components/front-matter-editor/index.tsx:113
+#: src/components/front-matter-editor/index.tsx:73
 msgid "Write YAML front matter…"
 msgstr "Napisz YAML front matter…"
 
@@ -560,6 +552,6 @@ msgstr "Napisz kod…"
 msgid "Write summary…"
 msgstr "Napisz podsumowanie…"
 
-#: src/components/front-matter-editor/index.tsx:131
+#: src/components/front-matter-editor/index.tsx:91
 msgid "YAML front matter"
 msgstr "YAML front matter"
