@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:44:31.640Z\n"
+"POT-Creation-Date: 2026-11-08T09:27:14.318Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -323,35 +323,35 @@ msgstr ""
 msgid "Delete column"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:41
+#: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:56
+#: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:71
+#: src/block-library/quote/edit.tsx:70
 msgid "Important"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:86
+#: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:101
+#: src/block-library/quote/edit.tsx:100
 msgid "Caution"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:151
+#: src/block-library/quote/edit.tsx:148
 msgid "GitHub alert type"
 msgstr ""
 
-#: src/block-library/quote/edit.tsx:154
+#: src/block-library/quote/edit.tsx:151
 msgid "Default"
 msgstr ""
 
-#: src/block-library/paragraph/edit.tsx:39
+#: src/block-library/paragraph/edit.tsx:41
 msgid "Type / to choose a block"
 msgstr ""
 
@@ -371,31 +371,31 @@ msgstr ""
 msgid "Indent"
 msgstr ""
 
-#: src/block-library/list-item/edit.tsx:107
+#: src/block-library/list-item/edit.tsx:133
 msgid "Toggle task"
 msgstr ""
 
-#: src/block-library/list-item/edit.tsx:120
+#: src/block-library/list-item/edit.tsx:147
 msgid "List text"
 msgstr ""
 
-#: src/block-library/list-item/edit.tsx:121
+#: src/block-library/list-item/edit.tsx:149
 msgid "List"
 msgstr ""
 
-#: src/block-library/list-item/edit.tsx:132
+#: src/block-library/list-item/edit.tsx:162
 msgid "Turn into a regular item"
 msgstr ""
 
-#: src/block-library/list-item/edit.tsx:133
+#: src/block-library/list-item/edit.tsx:163
 msgid "Turn into a task item"
 msgstr ""
 
-#: src/block-library/list/edit.tsx:48
+#: src/block-library/list/edit.tsx:45
 msgid "Unordered"
 msgstr ""
 
-#: src/block-library/list/edit.tsx:54
+#: src/block-library/list/edit.tsx:51
 msgid "Ordered"
 msgstr ""
 
@@ -443,11 +443,11 @@ msgstr ""
 msgid "Heading"
 msgstr ""
 
-#: src/block-library/details/edit.tsx:60
+#: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr ""
 
-#: src/block-library/details/edit.tsx:86
+#: src/block-library/details/edit.tsx:83
 msgid "Write summary…"
 msgstr ""
 
@@ -473,4 +473,160 @@ msgstr ""
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
+msgstr ""
+
+#: src/marp-patterns/patterns/title.ts:13
+msgctxt "slide pattern"
+msgid "Title"
+msgstr ""
+
+#: src/marp-patterns/patterns/title.ts:24
+msgctxt "slide pattern"
+msgid "Presentation title"
+msgstr ""
+
+#: src/marp-patterns/patterns/title.ts:25
+msgctxt "slide pattern"
+msgid "Your name · Date"
+msgstr ""
+
+#: src/marp-patterns/patterns/section.ts:13
+msgctxt "slide pattern"
+msgid "Section divider"
+msgstr ""
+
+#: src/marp-patterns/patterns/section.ts:24
+msgctxt "slide pattern"
+msgid "Section title"
+msgstr ""
+
+#: src/marp-patterns/patterns/section.ts:25
+msgctxt "slide pattern"
+msgid "A short line about this section"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:14
+msgctxt "slide pattern"
+msgid "Image and text"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:28
+msgctxt "slide pattern"
+msgid "Slide title"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:29
+msgctxt "slide pattern"
+msgid "First point"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:30
+msgctxt "slide pattern"
+msgid "Second point"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:31
+msgctxt "slide pattern"
+msgid "Third point"
+msgstr ""
+
+#: src/marp-patterns/patterns/closing.ts:13
+msgctxt "slide pattern"
+msgid "Closing"
+msgstr ""
+
+#: src/marp-patterns/patterns/closing.ts:25
+msgctxt "slide pattern"
+msgid "Thank you"
+msgstr ""
+
+#: src/marp-patterns/patterns/closing.ts:26
+msgctxt "slide pattern"
+msgid "Questions and contact details"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:13
+#: src/marp-patterns/patterns/agenda.ts:25
+msgctxt "slide pattern"
+msgid "Agenda"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:26
+msgctxt "slide pattern"
+msgid "Background"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:27
+msgctxt "slide pattern"
+msgid "Proposal"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:28
+msgctxt "slide pattern"
+msgid "Next steps"
+msgstr ""
+
+#: src/marp-patterns/patterns/title.ts:15
+msgctxt "slide pattern keyword"
+msgid "cover"
+msgstr ""
+
+#: src/marp-patterns/patterns/title.ts:16
+msgctxt "slide pattern keyword"
+msgid "opening"
+msgstr ""
+
+#: src/marp-patterns/patterns/section.ts:15
+msgctxt "slide pattern keyword"
+msgid "chapter"
+msgstr ""
+
+#: src/marp-patterns/patterns/section.ts:16
+msgctxt "slide pattern keyword"
+msgid "heading"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:16
+msgctxt "slide pattern keyword"
+msgid "picture"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:17
+msgctxt "slide pattern keyword"
+msgid "photo"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:18
+msgctxt "slide pattern keyword"
+msgid "split"
+msgstr ""
+
+#: src/marp-patterns/patterns/closing.ts:15
+msgctxt "slide pattern keyword"
+msgid "thanks"
+msgstr ""
+
+#: src/marp-patterns/patterns/closing.ts:16
+msgctxt "slide pattern keyword"
+msgid "questions"
+msgstr ""
+
+#: src/marp-patterns/patterns/closing.ts:17
+msgctxt "slide pattern keyword"
+msgid "end"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:15
+msgctxt "slide pattern keyword"
+msgid "outline"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:16
+msgctxt "slide pattern keyword"
+msgid "contents"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:17
+msgctxt "slide pattern keyword"
+msgid "list"
 msgstr ""

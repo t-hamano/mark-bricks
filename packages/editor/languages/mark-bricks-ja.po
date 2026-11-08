@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:44:31.640Z\n"
-"PO-Revision-Date: 2026-10-01T13:44:34.497Z\n"
+"POT-Creation-Date: 2026-11-08T09:25:22.022Z\n"
+"PO-Revision-Date: 2026-11-08T09:25:22.897Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,6 +33,17 @@ msgstr "(複数の H1 見出しは非推奨です)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/marp-patterns/patterns/section.ts:25
+msgctxt "slide pattern"
+msgid "A short line about this section"
+msgstr "このセクションの短い説明"
+
+#: src/marp-patterns/patterns/agenda.ts:13
+#: src/marp-patterns/patterns/agenda.ts:25
+msgctxt "slide pattern"
+msgid "Agenda"
+msgstr "アジェンダ"
+
 #: style.css
 #. Author of the generic
 msgid "Aki Hamano"
@@ -48,6 +59,11 @@ msgstr "代替テキスト"
 #: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "適用"
+
+#: src/marp-patterns/patterns/agenda.ts:26
+msgctxt "slide pattern"
+msgid "Background"
+msgstr "背景"
 
 #: src/components/editor-header/index.tsx:104
 msgid "Block Inserter"
@@ -67,7 +83,7 @@ msgstr "太字"
 msgid "Browse local file"
 msgstr "ローカルファイルを参照"
 
-#: src/block-library/quote/edit.tsx:101
+#: src/block-library/quote/edit.tsx:100
 msgid "Caution"
 msgstr "注意"
 
@@ -100,6 +116,11 @@ msgstr "閉じる"
 msgid "Close Block Inserter"
 msgstr "ブロックインサーターを閉じる"
 
+#: src/marp-patterns/patterns/closing.ts:13
+msgctxt "slide pattern"
+msgid "Closing"
+msgstr "締めくくり"
+
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
 msgstr "コードエディター"
@@ -116,7 +137,7 @@ msgstr "選択したテキストをリンクに変換する。"
 msgid "Create Table"
 msgstr "表を作成"
 
-#: src/block-library/quote/edit.tsx:154
+#: src/block-library/quote/edit.tsx:151
 msgid "Default"
 msgstr "デフォルト"
 
@@ -164,11 +185,16 @@ msgstr "タイトルを入力…"
 msgid "Failed to load image."
 msgstr "画像の読み込みに失敗しました。"
 
+#: src/marp-patterns/patterns/image-and-text.ts:29
+msgctxt "slide pattern"
+msgid "First point"
+msgstr "1つ目のポイント"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "前方スラッシュ"
 
-#: src/block-library/quote/edit.tsx:151
+#: src/block-library/quote/edit.tsx:148
 msgid "GitHub alert type"
 msgstr "GitHub アラートタイプ"
 
@@ -198,7 +224,12 @@ msgstr "ドキュメント概観を非表示"
 msgid "Image"
 msgstr "画像"
 
-#: src/block-library/quote/edit.tsx:71
+#: src/marp-patterns/patterns/image-and-text.ts:14
+msgctxt "slide pattern"
+msgid "Image and text"
+msgstr "画像とテキスト"
+
+#: src/block-library/quote/edit.tsx:70
 msgid "Important"
 msgstr "重要"
 
@@ -250,7 +281,7 @@ msgstr "言語"
 msgid "Link"
 msgstr "リンク"
 
-#: src/block-library/list-item/edit.tsx:121
+#: src/block-library/list-item/edit.tsx:149
 msgid "List"
 msgstr "リスト"
 
@@ -258,7 +289,7 @@ msgstr "リスト"
 msgid "List View"
 msgstr "リスト表示"
 
-#: src/block-library/list-item/edit.tsx:120
+#: src/block-library/list-item/edit.tsx:147
 msgid "List text"
 msgstr "リストのテキスト"
 
@@ -283,28 +314,34 @@ msgid ""
 "Marp keywords such as bg, w:200px or sepia set the layout and size. The "
 "other words become the alt text, or the caption of a background image."
 msgstr ""
-"bg、w:200px、sepia などの Marp "
-"キーワードでレイアウトとサイズを指定します。それ以外の語は代替テキスト、背景画像の場合はキャプションになります。"
+"bg、w:200px、sepia などの Marp キーワードでレイアウトとサイズを指定します。そ"
+"れ以外の語は代替テキスト、背景画像の場合はキャプションになります。"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
 "incorrect heading levels."
-msgstr "ドキュメントの構造を調べ、空白や不正確な見出しレベルなどの問題に対処します。"
+msgstr ""
+"ドキュメントの構造を調べ、空白や不正確な見出しレベルなどの問題に対処します。"
+
+#: src/marp-patterns/patterns/agenda.ts:28
+msgctxt "slide pattern"
+msgid "Next steps"
+msgstr "今後の進め方"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "一致する言語がありません。"
 
-#: src/block-library/quote/edit.tsx:41
+#: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "ノート"
 
-#: src/block-library/details/edit.tsx:60
+#: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "デフォルトで開く"
 
-#: src/block-library/list/edit.tsx:54
+#: src/block-library/list/edit.tsx:51
 msgid "Ordered"
 msgstr "順序付きリスト"
 
@@ -325,6 +362,21 @@ msgstr "URL を入力または貼り付け"
 #: src/block-library/image/edit.tsx:200
 msgid "Paste or type URL or file path"
 msgstr "URL またはファイルパスを入力または貼り付け"
+
+#: src/marp-patterns/patterns/title.ts:24
+msgctxt "slide pattern"
+msgid "Presentation title"
+msgstr "プレゼンテーションのタイトル"
+
+#: src/marp-patterns/patterns/agenda.ts:27
+msgctxt "slide pattern"
+msgid "Proposal"
+msgstr "提案"
+
+#: src/marp-patterns/patterns/closing.ts:26
+msgctxt "slide pattern"
+msgid "Questions and contact details"
+msgstr "質問・連絡先"
 
 #: src/components/editor-header/index.tsx:129
 msgid "Redo"
@@ -358,6 +410,21 @@ msgstr "検索"
 msgid "Search for blocks"
 msgstr "ブロックを検索"
 
+#: src/marp-patterns/patterns/image-and-text.ts:30
+msgctxt "slide pattern"
+msgid "Second point"
+msgstr "2つ目のポイント"
+
+#: src/marp-patterns/patterns/section.ts:13
+msgctxt "slide pattern"
+msgid "Section divider"
+msgstr "セクション区切り"
+
+#: src/marp-patterns/patterns/section.ts:24
+msgctxt "slide pattern"
+msgid "Section title"
+msgstr "セクションのタイトル"
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "リストビューの表示、非表示。"
@@ -367,6 +434,11 @@ msgstr "リストビューの表示、非表示。"
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
+
+#: src/marp-patterns/patterns/image-and-text.ts:28
+msgctxt "slide pattern"
+msgid "Slide title"
+msgstr "スライドのタイトル"
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -384,6 +456,11 @@ msgstr "ビジュアルエディターとコードエディターを切り替え
 msgid "Table"
 msgstr "テーブル"
 
+#: src/marp-patterns/patterns/closing.ts:25
+msgctxt "slide pattern"
+msgid "Thank you"
+msgstr "ありがとうございました"
+
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "図を描画できませんでした。"
@@ -392,7 +469,12 @@ msgstr "図を描画できませんでした。"
 msgid "The formula could not be rendered."
 msgstr "数式を描画できませんでした。"
 
-#: src/block-library/quote/edit.tsx:56
+#: src/marp-patterns/patterns/image-and-text.ts:31
+msgctxt "slide pattern"
+msgid "Third point"
+msgstr "3つ目のポイント"
+
+#: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "ヒント"
 
@@ -402,19 +484,24 @@ msgstr "ヒント"
 msgid "Title"
 msgstr "タイトル"
 
-#: src/block-library/list-item/edit.tsx:107
+#: src/marp-patterns/patterns/title.ts:13
+msgctxt "slide pattern"
+msgid "Title"
+msgstr "タイトル"
+
+#: src/block-library/list-item/edit.tsx:133
 msgid "Toggle task"
 msgstr "タスクを切り替え"
 
-#: src/block-library/list-item/edit.tsx:132
+#: src/block-library/list-item/edit.tsx:162
 msgid "Turn into a regular item"
 msgstr "通常の項目に変換"
 
-#: src/block-library/list-item/edit.tsx:133
+#: src/block-library/list-item/edit.tsx:163
 msgid "Turn into a task item"
 msgstr "タスク項目に変換"
 
-#: src/block-library/paragraph/edit.tsx:39
+#: src/block-library/paragraph/edit.tsx:41
 msgid "Type / to choose a block"
 msgstr "ブロックを選択するには「/」を入力"
 
@@ -436,7 +523,7 @@ msgstr "元に戻す"
 msgid "Undo your last changes."
 msgstr "直前の変更を取り消す。"
 
-#: src/block-library/list/edit.tsx:48
+#: src/block-library/list/edit.tsx:45
 msgid "Unordered"
 msgstr "順序なしリスト"
 
@@ -449,7 +536,7 @@ msgstr "デバイスから画像をアップロードするか、URL から挿�
 msgid "Visual markdown block editor."
 msgstr "ビジュアルマークダウンブロックエディター。"
 
-#: src/block-library/quote/edit.tsx:86
+#: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr "警告"
 
@@ -469,10 +556,80 @@ msgstr "YAML フロントマターを入力…"
 msgid "Write code…"
 msgstr "コードを入力..."
 
-#: src/block-library/details/edit.tsx:86
+#: src/block-library/details/edit.tsx:83
 msgid "Write summary…"
 msgstr "要約を入力…"
 
 #: src/components/front-matter-editor/index.tsx:55
 msgid "YAML front matter"
 msgstr "YAML フロントマター"
+
+#: src/marp-patterns/patterns/title.ts:25
+msgctxt "slide pattern"
+msgid "Your name · Date"
+msgstr "名前・日付"
+
+#: src/marp-patterns/patterns/section.ts:15
+msgctxt "slide pattern keyword"
+msgid "chapter"
+msgstr "章"
+
+#: src/marp-patterns/patterns/agenda.ts:16
+msgctxt "slide pattern keyword"
+msgid "contents"
+msgstr "目次"
+
+#: src/marp-patterns/patterns/title.ts:15
+msgctxt "slide pattern keyword"
+msgid "cover"
+msgstr "表紙"
+
+#: src/marp-patterns/patterns/closing.ts:17
+msgctxt "slide pattern keyword"
+msgid "end"
+msgstr "終わり"
+
+#: src/marp-patterns/patterns/section.ts:16
+msgctxt "slide pattern keyword"
+msgid "heading"
+msgstr "見出し"
+
+#: src/marp-patterns/patterns/agenda.ts:17
+msgctxt "slide pattern keyword"
+msgid "list"
+msgstr "リスト"
+
+#: src/marp-patterns/patterns/title.ts:16
+msgctxt "slide pattern keyword"
+msgid "opening"
+msgstr "オープニング"
+
+#: src/marp-patterns/patterns/agenda.ts:15
+msgctxt "slide pattern keyword"
+msgid "outline"
+msgstr "概要"
+
+#: src/marp-patterns/patterns/image-and-text.ts:17
+msgctxt "slide pattern keyword"
+msgid "photo"
+msgstr "写真"
+
+#: src/marp-patterns/patterns/image-and-text.ts:16
+msgctxt "slide pattern keyword"
+msgid "picture"
+msgstr "画像"
+
+#: src/marp-patterns/patterns/closing.ts:16
+msgctxt "slide pattern keyword"
+msgid "questions"
+msgstr "質問"
+
+#: src/marp-patterns/patterns/image-and-text.ts:18
+msgctxt "slide pattern keyword"
+msgid "split"
+msgstr "分割"
+
+#: src/marp-patterns/patterns/closing.ts:15
+msgctxt "slide pattern keyword"
+msgid "thanks"
+msgstr "お礼"

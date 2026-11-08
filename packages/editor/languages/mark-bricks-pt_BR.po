@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:44:31.640Z\n"
-"PO-Revision-Date: 2026-10-01T13:44:35.780Z\n"
+"POT-Creation-Date: 2026-11-08T09:25:22.022Z\n"
+"PO-Revision-Date: 2026-11-08T09:25:48.818Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,6 +33,17 @@ msgstr "(Múltiplos títulos H1 não são recomendados)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/marp-patterns/patterns/section.ts:25
+msgctxt "slide pattern"
+msgid "A short line about this section"
+msgstr "Uma linha curta sobre esta seção"
+
+#: src/marp-patterns/patterns/agenda.ts:13
+#: src/marp-patterns/patterns/agenda.ts:25
+msgctxt "slide pattern"
+msgid "Agenda"
+msgstr "Agenda"
+
 #: style.css
 #. Author of the generic
 msgid "Aki Hamano"
@@ -48,6 +59,11 @@ msgstr "Texto alternativo"
 #: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "Aplicar"
+
+#: src/marp-patterns/patterns/agenda.ts:26
+msgctxt "slide pattern"
+msgid "Background"
+msgstr "Contexto"
 
 #: src/components/editor-header/index.tsx:104
 msgid "Block Inserter"
@@ -67,7 +83,7 @@ msgstr "Negrito"
 msgid "Browse local file"
 msgstr "Procurar arquivo local"
 
-#: src/block-library/quote/edit.tsx:101
+#: src/block-library/quote/edit.tsx:100
 msgid "Caution"
 msgstr "Cuidado"
 
@@ -100,6 +116,11 @@ msgstr "Fechar"
 msgid "Close Block Inserter"
 msgstr "Fechar Inserir bloco"
 
+#: src/marp-patterns/patterns/closing.ts:13
+msgctxt "slide pattern"
+msgid "Closing"
+msgstr "Encerramento"
+
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
 msgstr "Editor de código"
@@ -116,7 +137,7 @@ msgstr "Converter o texto selecionado em um link."
 msgid "Create Table"
 msgstr "Criar tabela"
 
-#: src/block-library/quote/edit.tsx:154
+#: src/block-library/quote/edit.tsx:151
 msgid "Default"
 msgstr "Padrão"
 
@@ -164,11 +185,16 @@ msgstr "Digite o título…"
 msgid "Failed to load image."
 msgstr "Falha ao carregar a imagem."
 
+#: src/marp-patterns/patterns/image-and-text.ts:29
+msgctxt "slide pattern"
+msgid "First point"
+msgstr "Primeiro ponto"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Barra"
 
-#: src/block-library/quote/edit.tsx:151
+#: src/block-library/quote/edit.tsx:148
 msgid "GitHub alert type"
 msgstr "Tipo de alerta do GitHub"
 
@@ -198,7 +224,12 @@ msgstr "Ocultar visão geral do documento"
 msgid "Image"
 msgstr "Imagem"
 
-#: src/block-library/quote/edit.tsx:71
+#: src/marp-patterns/patterns/image-and-text.ts:14
+msgctxt "slide pattern"
+msgid "Image and text"
+msgstr "Imagem e texto"
+
+#: src/block-library/quote/edit.tsx:70
 msgid "Important"
 msgstr "Importante"
 
@@ -250,7 +281,7 @@ msgstr "Linguagem"
 msgid "Link"
 msgstr "Link"
 
-#: src/block-library/list-item/edit.tsx:121
+#: src/block-library/list-item/edit.tsx:149
 msgid "List"
 msgstr "Lista"
 
@@ -258,7 +289,7 @@ msgstr "Lista"
 msgid "List View"
 msgstr "Visualização em lista"
 
-#: src/block-library/list-item/edit.tsx:120
+#: src/block-library/list-item/edit.tsx:147
 msgid "List text"
 msgstr "Texto da lista"
 
@@ -295,19 +326,24 @@ msgstr ""
 "Navegue pela estrutura do seu documento e corrija problemas como título "
 "vazios ou com níveis incorretos."
 
+#: src/marp-patterns/patterns/agenda.ts:28
+msgctxt "slide pattern"
+msgid "Next steps"
+msgstr "Próximos passos"
+
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "Nenhuma linguagem correspondente."
 
-#: src/block-library/quote/edit.tsx:41
+#: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "Nota"
 
-#: src/block-library/details/edit.tsx:60
+#: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "Aberto por padrão"
 
-#: src/block-library/list/edit.tsx:54
+#: src/block-library/list/edit.tsx:51
 msgid "Ordered"
 msgstr "Ordenada"
 
@@ -328,6 +364,21 @@ msgstr "Colar ou digitar URL"
 #: src/block-library/image/edit.tsx:200
 msgid "Paste or type URL or file path"
 msgstr "Colar ou digitar URL ou caminho do arquivo"
+
+#: src/marp-patterns/patterns/title.ts:24
+msgctxt "slide pattern"
+msgid "Presentation title"
+msgstr "Título da apresentação"
+
+#: src/marp-patterns/patterns/agenda.ts:27
+msgctxt "slide pattern"
+msgid "Proposal"
+msgstr "Proposta"
+
+#: src/marp-patterns/patterns/closing.ts:26
+msgctxt "slide pattern"
+msgid "Questions and contact details"
+msgstr "Perguntas e contato"
 
 #: src/components/editor-header/index.tsx:129
 msgid "Redo"
@@ -361,6 +412,21 @@ msgstr "Pesquisar"
 msgid "Search for blocks"
 msgstr "Pesquisar blocos"
 
+#: src/marp-patterns/patterns/image-and-text.ts:30
+msgctxt "slide pattern"
+msgid "Second point"
+msgstr "Segundo ponto"
+
+#: src/marp-patterns/patterns/section.ts:13
+msgctxt "slide pattern"
+msgid "Section divider"
+msgstr "Divisor de seção"
+
+#: src/marp-patterns/patterns/section.ts:24
+msgctxt "slide pattern"
+msgid "Section title"
+msgstr "Título da seção"
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "Exibir ou ocultar a visualização em lista."
@@ -370,6 +436,11 @@ msgstr "Exibir ou ocultar a visualização em lista."
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Exibido como dica ao passar o mouse."
+
+#: src/marp-patterns/patterns/image-and-text.ts:28
+msgctxt "slide pattern"
+msgid "Slide title"
+msgstr "Título do slide"
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -387,6 +458,11 @@ msgstr "Alternar entre o editor visual e o editor de código."
 msgid "Table"
 msgstr "Tabela"
 
+#: src/marp-patterns/patterns/closing.ts:25
+msgctxt "slide pattern"
+msgid "Thank you"
+msgstr "Obrigado"
+
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "Não foi possível renderizar o diagrama."
@@ -395,7 +471,12 @@ msgstr "Não foi possível renderizar o diagrama."
 msgid "The formula could not be rendered."
 msgstr "Não foi possível renderizar a fórmula."
 
-#: src/block-library/quote/edit.tsx:56
+#: src/marp-patterns/patterns/image-and-text.ts:31
+msgctxt "slide pattern"
+msgid "Third point"
+msgstr "Terceiro ponto"
+
+#: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "Dica"
 
@@ -405,19 +486,24 @@ msgstr "Dica"
 msgid "Title"
 msgstr "Título"
 
-#: src/block-library/list-item/edit.tsx:107
+#: src/marp-patterns/patterns/title.ts:13
+msgctxt "slide pattern"
+msgid "Title"
+msgstr "Título"
+
+#: src/block-library/list-item/edit.tsx:133
 msgid "Toggle task"
 msgstr "Alternar tarefa"
 
-#: src/block-library/list-item/edit.tsx:132
+#: src/block-library/list-item/edit.tsx:162
 msgid "Turn into a regular item"
 msgstr "Transformar em item normal"
 
-#: src/block-library/list-item/edit.tsx:133
+#: src/block-library/list-item/edit.tsx:163
 msgid "Turn into a task item"
 msgstr "Transformar em tarefa"
 
-#: src/block-library/paragraph/edit.tsx:39
+#: src/block-library/paragraph/edit.tsx:41
 msgid "Type / to choose a block"
 msgstr "Digite / para escolher um bloco"
 
@@ -439,7 +525,7 @@ msgstr "Desfazer"
 msgid "Undo your last changes."
 msgstr "Desfaz as últimas alterações."
 
-#: src/block-library/list/edit.tsx:48
+#: src/block-library/list/edit.tsx:45
 msgid "Unordered"
 msgstr "Não ordenada"
 
@@ -452,7 +538,7 @@ msgstr "Envie uma imagem do seu dispositivo ou insira a partir de uma URL."
 msgid "Visual markdown block editor."
 msgstr "Editor visual de blocos Markdown."
 
-#: src/block-library/quote/edit.tsx:86
+#: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr "Aviso"
 
@@ -472,10 +558,80 @@ msgstr "Escreva o front matter YAML…"
 msgid "Write code…"
 msgstr "Escreva o código…"
 
-#: src/block-library/details/edit.tsx:86
+#: src/block-library/details/edit.tsx:83
 msgid "Write summary…"
 msgstr "Escrever resumo…"
 
 #: src/components/front-matter-editor/index.tsx:55
 msgid "YAML front matter"
 msgstr "Front matter YAML"
+
+#: src/marp-patterns/patterns/title.ts:25
+msgctxt "slide pattern"
+msgid "Your name · Date"
+msgstr "Seu nome · Data"
+
+#: src/marp-patterns/patterns/section.ts:15
+msgctxt "slide pattern keyword"
+msgid "chapter"
+msgstr "capítulo"
+
+#: src/marp-patterns/patterns/agenda.ts:16
+msgctxt "slide pattern keyword"
+msgid "contents"
+msgstr "sumário"
+
+#: src/marp-patterns/patterns/title.ts:15
+msgctxt "slide pattern keyword"
+msgid "cover"
+msgstr "capa"
+
+#: src/marp-patterns/patterns/closing.ts:17
+msgctxt "slide pattern keyword"
+msgid "end"
+msgstr "fim"
+
+#: src/marp-patterns/patterns/section.ts:16
+msgctxt "slide pattern keyword"
+msgid "heading"
+msgstr "título"
+
+#: src/marp-patterns/patterns/agenda.ts:17
+msgctxt "slide pattern keyword"
+msgid "list"
+msgstr "lista"
+
+#: src/marp-patterns/patterns/title.ts:16
+msgctxt "slide pattern keyword"
+msgid "opening"
+msgstr "abertura"
+
+#: src/marp-patterns/patterns/agenda.ts:15
+msgctxt "slide pattern keyword"
+msgid "outline"
+msgstr "estrutura"
+
+#: src/marp-patterns/patterns/image-and-text.ts:17
+msgctxt "slide pattern keyword"
+msgid "photo"
+msgstr "foto"
+
+#: src/marp-patterns/patterns/image-and-text.ts:16
+msgctxt "slide pattern keyword"
+msgid "picture"
+msgstr "imagem"
+
+#: src/marp-patterns/patterns/closing.ts:16
+msgctxt "slide pattern keyword"
+msgid "questions"
+msgstr "perguntas"
+
+#: src/marp-patterns/patterns/image-and-text.ts:18
+msgctxt "slide pattern keyword"
+msgid "split"
+msgstr "dividido"
+
+#: src/marp-patterns/patterns/closing.ts:15
+msgctxt "slide pattern keyword"
+msgid "thanks"
+msgstr "agradecimentos"
