@@ -26,6 +26,7 @@ type Props = {
 	onRedo: () => void;
 	editorMode: 'visual' | 'text';
 	onEditorModeChange?: Dispatch< SetStateAction< 'visual' | 'text' > >;
+	hasAi: boolean;
 };
 
 export function KeyboardShortcuts( {
@@ -35,14 +36,19 @@ export function KeyboardShortcuts( {
 	onRedo,
 	editorMode,
 	onEditorModeChange,
+	hasAi,
 }: Props ) {
 	const canToggleMode = !! onEditorModeChange;
 
-	const isListViewOpened = useSelect(
-		( select ) => select( editorStore ).isListViewOpened(),
+	const { isListViewOpened, isAiSidebarOpened } = useSelect(
+		( select ) => ( {
+			isListViewOpened: select( editorStore ).isListViewOpened(),
+			isAiSidebarOpened: select( editorStore ).isAiSidebarOpened(),
+		} ),
 		[]
 	);
-	const { setIsListViewOpened } = useDispatch( editorStore );
+	const { setIsListViewOpened, setIsAiSidebarOpened } =
+		useDispatch( editorStore );
 	const { registerShortcut, unregisterShortcut } = useDispatch(
 		keyboardShortcutsStore
 	);
@@ -97,6 +103,21 @@ export function KeyboardShortcuts( {
 			},
 		} );
 
+		if ( hasAi ) {
+			registerShortcut( {
+				name: 'mark-bricks/toggle-ai-sidebar',
+				category: 'global',
+				description: __(
+					'Show or hide the AI Assistant.',
+					'mark-bricks'
+				),
+				keyCombination: {
+					modifier: 'access',
+					character: 'a',
+				},
+			} );
+		}
+
 		registerShortcut( {
 			name: 'mark-bricks/keyboard-shortcuts',
 			category: 'global',
@@ -115,9 +136,10 @@ export function KeyboardShortcuts( {
 			unregisterShortcut( 'mark-bricks/redo' );
 			unregisterShortcut( 'mark-bricks/toggle-mode' );
 			unregisterShortcut( 'mark-bricks/toggle-list-view' );
+			unregisterShortcut( 'mark-bricks/toggle-ai-sidebar' );
 			unregisterShortcut( 'mark-bricks/keyboard-shortcuts' );
 		};
-	}, [ registerShortcut, unregisterShortcut, canToggleMode ] );
+	}, [ registerShortcut, unregisterShortcut, canToggleMode, hasAi ] );
 
 	useShortcut(
 		'mark-bricks/undo',
@@ -155,6 +177,15 @@ export function KeyboardShortcuts( {
 			setIsListViewOpened( ! isListViewOpened );
 		},
 		{ isDisabled: editorMode === 'text' }
+	);
+
+	useShortcut(
+		'mark-bricks/toggle-ai-sidebar',
+		( event ) => {
+			event.preventDefault();
+			setIsAiSidebarOpened( ! isAiSidebarOpened );
+		},
+		{ isDisabled: ! hasAi }
 	);
 
 	return null;

@@ -7,6 +7,7 @@ import { DEFAULT_STATE } from './constants';
 export interface State {
 	isListViewOpened: boolean;
 	isInserterOpened: boolean;
+	isAiSidebarOpened: boolean;
 }
 
 export function reducer( state: State = DEFAULT_STATE, action: Action ) {
@@ -26,6 +27,13 @@ export function reducer( state: State = DEFAULT_STATE, action: Action ) {
 				isListViewOpened: action.isOpened
 					? false
 					: state.isListViewOpened,
+			};
+		// The AI sidebar opens on the other side, so it stays open next to
+		// the list view and the inserter.
+		case 'SET_IS_AI_SIDEBAR_OPENED':
+			return {
+				...state,
+				isAiSidebarOpened: action.isOpened,
 			};
 		default:
 			return state;

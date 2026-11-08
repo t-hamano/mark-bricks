@@ -5,6 +5,9 @@ export const actions = {
 	setIsInserterOpened( isOpened: boolean ) {
 		return { type: 'SET_IS_INSERTER_OPENED' as const, isOpened };
 	},
+	setIsAiSidebarOpened( isOpened: boolean ) {
+		return { type: 'SET_IS_AI_SIDEBAR_OPENED' as const, isOpened };
+	},
 };
 
 export type Action = ReturnType< ( typeof actions )[ keyof typeof actions ] >;

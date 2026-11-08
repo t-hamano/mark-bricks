@@ -32,6 +32,7 @@ import '@wordpress/block-editor/build-style/style.css';
  * Internal dependencies
  */
 import { useInitialListView, useMarkdownDocument } from './hooks';
+import { AiSidebar } from '../ai-sidebar';
 import { EditorFooter } from '../editor-footer';
 import { EditorHeader } from '../editor-header';
 import { FrontMatterContext } from '../front-matter-editor/context';
@@ -95,6 +96,8 @@ function UnforwardedEditorShell(
 
 	const inserterToggleRef = useRef< HTMLButtonElement >( null );
 	const listViewToggleRef = useRef< HTMLButtonElement >( null );
+	const aiSidebarToggleRef = useRef< HTMLButtonElement >( null );
+	const hasAi = !! platform?.ai;
 
 	const {
 		blocks,
@@ -118,16 +121,21 @@ function UnforwardedEditorShell(
 
 	useInitialListView( !! settings?.showListViewByDefault );
 
-	const { isInserterOpened, isListViewOpened } = useSelect( ( select ) => {
-		const {
-			isInserterOpened: _isInserterOpened,
-			isListViewOpened: _isListViewOpened,
-		} = select( editorStore );
-		return {
-			isInserterOpened: _isInserterOpened(),
-			isListViewOpened: _isListViewOpened(),
-		};
-	}, [] );
+	const { isInserterOpened, isListViewOpened, isAiSidebarOpened } = useSelect(
+		( select ) => {
+			const {
+				isInserterOpened: _isInserterOpened,
+				isListViewOpened: _isListViewOpened,
+				isAiSidebarOpened: _isAiSidebarOpened,
+			} = select( editorStore );
+			return {
+				isInserterOpened: _isInserterOpened(),
+				isListViewOpened: _isListViewOpened(),
+				isAiSidebarOpened: _isAiSidebarOpened(),
+			};
+		},
+		[]
+	);
 
 	const blockEditorSettings = useMemo(
 		() => ( {
@@ -160,6 +168,7 @@ function UnforwardedEditorShell(
 							onRedo={ redo }
 							editorMode={ editorMode }
 							onEditorModeChange={ onEditorModeChange }
+							hasAi={ hasAi }
 						/>
 						<EditorHeader
 							canUndo={ canUndo }
@@ -169,6 +178,7 @@ function UnforwardedEditorShell(
 							showUndoRedo={ settings?.showUndoRedo ?? true }
 							inserterToggleRef={ inserterToggleRef }
 							listViewToggleRef={ listViewToggleRef }
+							aiSidebarToggleRef={ aiSidebarToggleRef }
 							editorMode={ editorMode }
 							fixedToolbar={ hasFixedToolbar }
 							headerActions={ headerActions }
@@ -190,6 +200,13 @@ function UnforwardedEditorShell(
 							<main className="editor-shell__content">
 								{ children }
 							</main>
+							<AnimatePresence initial={ false }>
+								{ hasAi && isAiSidebarOpened && (
+									<AiSidebar
+										toggleRef={ aiSidebarToggleRef }
+									/>
+								) }
+							</AnimatePresence>
 						</Stack>
 						{ showBreadcrumbs && <EditorFooter /> }
 					</BlockEditorProvider>
