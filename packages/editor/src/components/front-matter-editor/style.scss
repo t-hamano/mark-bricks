@@ -8,7 +8,7 @@
 	border: 1px solid var(--wpds-color-stroke-surface-neutral);
 
 	.cm-editor {
-		padding: 1.5rem 1rem 1rem;
+		padding: 2rem 1rem 1rem;
 	}
 
 	.cm-focused {
@@ -25,17 +25,18 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	padding: 0 0.5rem;
-	font-size: 0.75em;
+	padding: 0.125rem 0.625rem;
+	font-size: 0.8125em;
 	pointer-events: none;
 	border-right: 1px solid var(--wpds-color-stroke-surface-neutral);
 	border-bottom: 1px solid var(--wpds-color-stroke-surface-neutral);
 	border-bottom-right-radius: 3px;
 	z-index: 1;
 }
+
 .front-matter-editor__settings {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 4px;
+	right: 4px;
 	z-index: 1;
 }
