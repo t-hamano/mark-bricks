@@ -31,3 +31,23 @@
 	flex: 1 1 auto;
 	min-width: 0;
 }
+
+.editor-shell__content[hidden] {
+	display: none;
+}
+
+// Shares the width with the content equally.
+.editor-shell__content:has(+ .editor-shell__side-panel),
+.editor-shell__side-panel {
+	flex: 1 1 0;
+}
+
+.editor-shell__side-panel {
+	min-width: 0;
+	border-inline-start: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
+}
+
+// Takes the place of the hidden content on a narrow viewport.
+.editor-shell__content[hidden] + .editor-shell__side-panel {
+	border-inline-start: 0;
+}

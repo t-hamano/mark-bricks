@@ -78,6 +78,10 @@ export type EditorShellProps = {
 	// selected top-level block starts at, whenever it changes, or `null`
 	// when no block is selected or the code editor is shown.
 	onSelectedLineChange?: ( line: number | null ) => void;
+	// Shown to the right of the content, such as a preview of the document.
+	// On a narrow viewport it takes the content's place, which stays
+	// mounted, hidden, so that it keeps its state.
+	sidePanel?: ReactNode;
 	children: ReactNode;
 };
 
@@ -92,6 +96,7 @@ function UnforwardedEditorShell(
 		style,
 		platform,
 		onSelectedLineChange,
+		sidePanel,
 		children,
 	}: EditorShellProps,
 	ref: ForwardedRef< EditorHandle >
@@ -112,6 +117,7 @@ function UnforwardedEditorShell(
 	const aiSidebarToggleRef = useRef< HTMLButtonElement >( null );
 	const textEditorRef = useRef< MonacoEditor.IStandaloneCodeEditor >( null );
 	const hasAi = !! platform?.ai;
+	const hasSidePanel = !! sidePanel;
 
 	const {
 		blocks,
@@ -228,9 +234,17 @@ function UnforwardedEditorShell(
 										/>
 									) }
 								</AnimatePresence>
-								<main className="editor-shell__content">
+								<main
+									className="editor-shell__content"
+									hidden={ hasSidePanel && isMobileViewport }
+								>
 									{ children }
 								</main>
+								{ hasSidePanel && (
+									<div className="editor-shell__side-panel">
+										{ sidePanel }
+									</div>
+								) }
 								{ hasAi && (
 									<AiAssistant
 										toggleRef={ aiSidebarToggleRef }
