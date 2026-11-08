@@ -36,8 +36,8 @@ function isLine( line: unknown ): line is number {
 /**
  * Keeps the slide preview window showing the active document: sends it each
  * time it changes, and when the preview window opens. Links the slides to the
- * editor too: the preview follows the selected block to its slide, and a
- * click on a slide selects the slide's first block.
+ * editor too: the preview highlights the element of the selected block and
+ * moves to its slide, and a click on an element selects its block.
  *
  * @param activeTab The active tab, if any.
  * @param editorRef The editor of the active tab.
