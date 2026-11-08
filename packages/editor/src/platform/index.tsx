@@ -5,6 +5,99 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 
 /**
+ * A message in a conversation with the AI assistant.
+ */
+export type AiMessage =
+	| {
+			role: 'user';
+			text: string;
+	  }
+	| {
+			role: 'assistant';
+			text: string;
+			/**
+			 * The edit the assistant made to the document while answering,
+			 * if any. The host sends it back to the model as part of the
+			 * conversation.
+			 */
+			edit?: AiEdit;
+	  };
+
+/**
+ * An edit the AI assistant makes to the selection it was given.
+ */
+export type AiEdit = {
+	/**
+	 * `replace` replaces the selection, and `insert_after` inserts the
+	 * Markdown after it.
+	 */
+	action: 'replace' | 'insert_after';
+	markdown: string;
+};
+
+/**
+ * What the host reports while the model answers.
+ */
+export type AiStreamEvent =
+	| {
+			/**
+			 * A piece of the answer's text, to append to what came before.
+			 */
+			type: 'text';
+			text: string;
+	  }
+	| {
+			/**
+			 * The model edited the selection.
+			 */
+			type: 'edit';
+			edit: AiEdit;
+	  };
+
+export type AiChatRequest = {
+	/**
+	 * Instructions for the model, including the selection and the
+	 * document it belongs to.
+	 */
+	system: string;
+	/**
+	 * The conversation so far, ending with the user's new message.
+	 */
+	messages: AiMessage[];
+	/**
+	 * Called for each event while the model answers.
+	 */
+	onEvent: ( event: AiStreamEvent ) => void;
+	/**
+	 * Aborted when the user stops the answer.
+	 */
+	signal: AbortSignal;
+};
+
+/**
+ * Connects the AI assistant to a model. The host keeps the API key and
+ * sends the requests, so the editor never sees the key.
+ */
+export type AiPlatform = {
+	/**
+	 * Resolves with whether the user has set an API key.
+	 */
+	hasApiKey: () => Promise< boolean >;
+	/**
+	 * Sends the conversation to the model and streams its answer through
+	 * `onEvent`. Resolves when the answer ends, and rejects when the
+	 * request fails. When `signal` is aborted, rejects with an
+	 * `AbortError`.
+	 */
+	chat: ( request: AiChatRequest ) => Promise< void >;
+	/**
+	 * Opens the host's settings where the user sets the API key. Omitted
+	 * when the host has no such place.
+	 */
+	openSettings?: () => void;
+};
+
+/**
  * Platform integration points that depend on the host environment
  * (Tauri, VS Code, …). The editor stays environment-agnostic and only
  * calls these callbacks; each host app injects its own implementation.
@@ -32,6 +125,11 @@ export type Platform = {
 	 * load the bundled URLs.
 	 */
 	resolveAssetUrl?: ( url: string ) => Promise< string >;
+	/**
+	 * Connects the AI assistant to a model. Omitted when the host does not
+	 * offer the assistant, which hides it.
+	 */
+	ai?: AiPlatform;
 };
 
 const defaultPlatform: Platform = {
