@@ -27,12 +27,11 @@ let selectedLine: number | null = null;
 
 // Shows the controls in the locale that the main window opened the window
 // with. The slide mode comes with full screen, which `F` and F11 toggle. The
-// slides follow the selected block in the main window, by slide.
+// slides follow the selected block in the main window, which they highlight.
 const preview = createSlidePreview( document.body, {
 	locale: new URLSearchParams( location.search ).get( 'locale' ) ?? 'en',
 	toggleKeys: [ 'f', 'F11' ],
 	onSlideModeRequest: ( enabled ) => fullscreen.setFullscreen( enabled ),
-	sourceSyncLevel: 'slide',
 	onSourceLineClick: ( line ) =>
 		void emitTo( 'main', PREVIEW_LINE_CLICK_EVENT, {
 			line,
