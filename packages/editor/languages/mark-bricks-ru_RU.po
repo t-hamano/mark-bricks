@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
-"PO-Revision-Date: 2026-11-08T12:35:56.691Z\n"
+"POT-Creation-Date: 2026-11-08T13:03:57.689Z\n"
+"PO-Revision-Date: 2026-11-08T13:04:26.843Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -149,7 +149,7 @@ msgctxt "slide pattern"
 msgid "Closing"
 msgstr "Завершение"
 
-#: src/components/editor/index.tsx:99
+#: src/components/editor/index.tsx:102
 msgid "Code editor"
 msgstr "Редактор кода"
 
@@ -529,6 +529,10 @@ msgstr "Простая и аккуратная, в стиле GitHub Markdown."
 #: src/components/front-matter-editor/index.tsx:255
 msgid "Size"
 msgstr "Размер"
+
+#: src/block-library/separator/use-marp-title.ts:39
+msgid "Slide Separator"
+msgstr "Разделитель слайдов"
 
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"

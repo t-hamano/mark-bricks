@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
-"PO-Revision-Date: 2026-11-08T12:35:54.254Z\n"
+"POT-Creation-Date: 2026-11-08T13:03:57.689Z\n"
+"PO-Revision-Date: 2026-11-08T13:04:25.302Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -148,7 +148,7 @@ msgctxt "slide pattern"
 msgid "Closing"
 msgstr "마무리"
 
-#: src/components/editor/index.tsx:99
+#: src/components/editor/index.tsx:102
 msgid "Code editor"
 msgstr "코드 편집기"
 
@@ -526,6 +526,10 @@ msgstr "GitHub Markdown 스타일 기반의 깔끔한 테마."
 #: src/components/front-matter-editor/index.tsx:255
 msgid "Size"
 msgstr "크기"
+
+#: src/block-library/separator/use-marp-title.ts:39
+msgid "Slide Separator"
+msgstr "슬라이드 구분자"
 
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
