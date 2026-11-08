@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-01T13:44:31.640Z\n"
-"PO-Revision-Date: 2026-10-01T13:44:33.618Z\n"
+"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
+"PO-Revision-Date: 2026-11-08T09:10:51.610Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,6 +33,12 @@ msgstr "(il est déconseillé d’utiliser plusieurs titres H1)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/components/editor-header/index.tsx:195
+#: src/components/ai-sidebar/index.tsx:55
+#: src/components/ai-sidebar/index.tsx:86
+msgid "AI Assistant"
+msgstr ""
+
 #: style.css
 #. Author of the generic
 msgid "Aki Hamano"
@@ -49,7 +55,7 @@ msgstr "Texte alternatif"
 msgid "Apply"
 msgstr "Appliquer"
 
-#: src/components/editor-header/index.tsx:104
+#: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
 msgstr "Outil d’insertion de blocs"
 
@@ -67,7 +73,7 @@ msgstr "Gras"
 msgid "Browse local file"
 msgstr "Parcourir un fichier local"
 
-#: src/block-library/quote/edit.tsx:101
+#: src/block-library/quote/edit.tsx:100
 msgid "Caution"
 msgstr "Attention"
 
@@ -93,10 +99,15 @@ msgstr "Effacer la mise en forme"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:210
+#: src/components/ai-sidebar/index.tsx:90
 msgid "Close"
 msgstr "Fermer"
 
-#: src/components/editor-header/index.tsx:103
+#: src/components/editor-header/index.tsx:194
+msgid "Close AI Assistant"
+msgstr ""
+
+#: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
 msgstr "Fermer l’inserteur de bloc"
 
@@ -116,7 +127,7 @@ msgstr "Convertir le texte sélectionné en lien."
 msgid "Create Table"
 msgstr "Créer un tableau"
 
-#: src/block-library/quote/edit.tsx:154
+#: src/block-library/quote/edit.tsx:151
 msgid "Default"
 msgstr "Par défaut"
 
@@ -138,7 +149,7 @@ msgid "Display these keyboard shortcuts."
 msgstr "Afficher ces raccourcis clavier."
 
 #: src/components/list-view-sidebar/index.tsx:43
-#: src/components/editor-header/index.tsx:145
+#: src/components/editor-header/index.tsx:153
 msgid "Document Overview"
 msgstr "Vue d’ensemble du document"
 
@@ -168,7 +179,11 @@ msgstr "Échec du chargement de l’image."
 msgid "Forward-slash"
 msgstr "Barre oblique"
 
-#: src/block-library/quote/edit.tsx:151
+#: src/components/front-matter-editor/index.tsx:95
+msgid "Front matter settings"
+msgstr "Réglages du front matter"
+
+#: src/block-library/quote/edit.tsx:148
 msgid "GitHub alert type"
 msgstr "Type d’alerte GitHub"
 
@@ -190,7 +205,7 @@ msgstr "Titre"
 msgid "Heading %d"
 msgstr "Titre %d"
 
-#: src/components/editor-header/index.tsx:144
+#: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "Masquer la vue d’ensemble du document"
 
@@ -198,7 +213,7 @@ msgstr "Masquer la vue d’ensemble du document"
 msgid "Image"
 msgstr "Image"
 
-#: src/block-library/quote/edit.tsx:71
+#: src/block-library/quote/edit.tsx:70
 msgid "Important"
 msgstr "Important"
 
@@ -250,7 +265,7 @@ msgstr "Langage"
 msgid "Link"
 msgstr "Lien"
 
-#: src/block-library/list-item/edit.tsx:121
+#: src/block-library/list-item/edit.tsx:149
 msgid "List"
 msgstr "Liste"
 
@@ -258,7 +273,7 @@ msgstr "Liste"
 msgid "List View"
 msgstr "Vue en liste"
 
-#: src/block-library/list-item/edit.tsx:120
+#: src/block-library/list-item/edit.tsx:147
 msgid "List text"
 msgstr "Texte de la liste"
 
@@ -274,7 +289,11 @@ msgstr "Créer du code en ligne à partir du texte sélectionné."
 msgid "Make the selected text italic."
 msgstr "Passer le texte sélectionné en italique."
 
-#: src/components/editor-header/index.tsx:176
+#: src/components/front-matter-editor/index.tsx:114
+msgid "Marp"
+msgstr "Marp"
+
+#: src/components/editor-header/index.tsx:184
 msgid "Marp Mode"
 msgstr "Mode Marp"
 
@@ -283,8 +302,8 @@ msgid ""
 "Marp keywords such as bg, w:200px or sepia set the layout and size. The "
 "other words become the alt text, or the caption of a background image."
 msgstr ""
-"Les mots-clés Marp comme bg, w:200px ou sepia définissent la mise en page "
-"et la taille. Les autres mots deviennent le texte alternatif, ou la légende "
+"Les mots-clés Marp comme bg, w:200px ou sepia définissent la mise en page et "
+"la taille. Les autres mots deviennent le texte alternatif, ou la légende "
 "d’une image d’arrière-plan."
 
 #: src/components/list-view-outline/index.tsx:97
@@ -299,15 +318,15 @@ msgstr ""
 msgid "No matching language."
 msgstr "Aucun langage correspondant."
 
-#: src/block-library/quote/edit.tsx:41
+#: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "Remarque"
 
-#: src/block-library/details/edit.tsx:60
+#: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "Ouvert par défaut"
 
-#: src/block-library/list/edit.tsx:54
+#: src/block-library/list/edit.tsx:51
 msgid "Ordered"
 msgstr "Ordonnée"
 
@@ -329,7 +348,7 @@ msgstr "Collez ou saisissez l’URL"
 msgid "Paste or type URL or file path"
 msgstr "Collez ou saisissez une URL ou un chemin de fichier"
 
-#: src/components/editor-header/index.tsx:129
+#: src/components/editor-header/index.tsx:137
 msgid "Redo"
 msgstr "Rétablir"
 
@@ -395,7 +414,7 @@ msgstr "Le diagramme n’a pas pu être affiché."
 msgid "The formula could not be rendered."
 msgstr "La formule n’a pas pu être affichée."
 
-#: src/block-library/quote/edit.tsx:56
+#: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "Astuce"
 
@@ -405,19 +424,23 @@ msgstr "Astuce"
 msgid "Title"
 msgstr "Titre"
 
-#: src/block-library/list-item/edit.tsx:107
+#: src/block-library/list-item/edit.tsx:133
 msgid "Toggle task"
 msgstr "Basculer la tâche"
 
-#: src/block-library/list-item/edit.tsx:132
+#: src/block-library/list-item/edit.tsx:162
 msgid "Turn into a regular item"
 msgstr "Transformer en élément normal"
 
-#: src/block-library/list-item/edit.tsx:133
+#: src/block-library/list-item/edit.tsx:163
 msgid "Turn into a task item"
 msgstr "Transformer en tâche"
 
-#: src/block-library/paragraph/edit.tsx:39
+#: src/components/front-matter-editor/index.tsx:115
+msgid "Turn the document into a slide deck."
+msgstr "Transforme le document en présentation."
+
+#: src/block-library/paragraph/edit.tsx:41
 msgid "Type / to choose a block"
 msgstr "Saisir / pour choisir un bloc"
 
@@ -431,7 +454,7 @@ msgstr "URL ou chemin de fichier"
 msgid "Underline the selected text."
 msgstr "Souligner le texte sélectionné."
 
-#: src/components/editor-header/index.tsx:120
+#: src/components/editor-header/index.tsx:128
 msgid "Undo"
 msgstr "Défaire"
 
@@ -439,20 +462,21 @@ msgstr "Défaire"
 msgid "Undo your last changes."
 msgstr "Annuler vos dernières modifications."
 
-#: src/block-library/list/edit.tsx:48
+#: src/block-library/list/edit.tsx:45
 msgid "Unordered"
 msgstr "Non ordonnée"
 
 #: src/block-library/image/edit.tsx:77
 msgid "Upload an image from your device or insert from a URL."
-msgstr "Téléversez une image depuis votre appareil ou insérez-la depuis une URL."
+msgstr ""
+"Téléversez une image depuis votre appareil ou insérez-la depuis une URL."
 
 #: style.css
 #. Description of the generic
 msgid "Visual markdown block editor."
 msgstr "Éditeur de blocs Markdown visuel."
 
-#: src/block-library/quote/edit.tsx:86
+#: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr "Avertissement"
 
@@ -464,7 +488,7 @@ msgstr "Écriture de HTML…"
 msgid "Write TeX…"
 msgstr "Écriture de TeX…"
 
-#: src/components/front-matter-editor/index.tsx:38
+#: src/components/front-matter-editor/index.tsx:51
 msgid "Write YAML front matter…"
 msgstr "Rédiger le front matter YAML…"
 
@@ -472,10 +496,10 @@ msgstr "Rédiger le front matter YAML…"
 msgid "Write code…"
 msgstr "Rédiger du code…"
 
-#: src/block-library/details/edit.tsx:86
+#: src/block-library/details/edit.tsx:83
 msgid "Write summary…"
 msgstr "Rédiger un résumé…"
 
-#: src/components/front-matter-editor/index.tsx:55
+#: src/components/front-matter-editor/index.tsx:69
 msgid "YAML front matter"
 msgstr "Front matter YAML"
