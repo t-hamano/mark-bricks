@@ -1,7 +1,11 @@
 /**
  * External dependencies
  */
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+
+vi.mock( '../components/preferences-modal/open', () => ( {
+	openPreferences: vi.fn(),
+} ) );
 
 /**
  * Internal dependencies
@@ -109,5 +113,13 @@ describe( 'createPlatform().getImageNotice', () => {
 	it( 'does not warn once the document is saved', async () => {
 		const { getImageNotice } = createPlatform( '/docs/note.md' );
 		expect( await getImageNotice?.( './a.png' ) ).toBeNull();
+	} );
+} );
+
+describe( 'createPlatform().ai', () => {
+	it( 'is the same for every document', () => {
+		const { ai } = createPlatform( '/docs/a.md' );
+		expect( ai ).toBeDefined();
+		expect( createPlatform( '/docs/b.md' ).ai ).toBe( ai );
 	} );
 } );

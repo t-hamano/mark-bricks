@@ -28,10 +28,11 @@ import {
 	VisualEditorPanel,
 	type VisualEditorSettings,
 } from './visual-editor-panel';
+import { getInitialPreferencesTab, PREFERENCES_MODAL_NAME } from './open';
 import { DEFAULT_PREFERENCES } from '../../preferences/constants';
 import './style.scss';
 
-export const PREFERENCES_MODAL_NAME = 'mark-bricks/preferences';
+export { openPreferences, PREFERENCES_MODAL_NAME } from './open';
 
 export default function PreferencesModal() {
 	const [ locale, setLocale ] = useState( getLocale );
@@ -178,7 +179,7 @@ export default function PreferencesModal() {
 				</Dialog.Header>
 				<Dialog.Content>
 					<Tabs.Root
-						defaultValue="general"
+						defaultValue={ getInitialPreferencesTab() }
 						orientation="vertical"
 						render={ ( props ) => (
 							<Stack
