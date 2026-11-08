@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.16.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
-"PO-Revision-Date: 2026-10-10T12:50:58.761Z\n"
+"POT-Creation-Date: 2026-11-08T13:35:54.001Z\n"
+"PO-Revision-Date: 2026-11-08T13:38:26.245Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,20 +17,20 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/actions/index.ts:308
+#: src/components/reload-prompt-dialog/index.tsx:61
 msgid ""
 "\"%s\" changed on disk. Reload it and discard your changes, or keep your "
 "version?"
 msgstr ""
-"Файл «%s» изменен на диске. Перезагрузить его и отбросить ваши изменения "
-"или сохранить вашу версию?"
+"Файл «%s» изменен на диске. Перезагрузить его и отбросить ваши изменения или "
+"сохранить вашу версию?"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
 msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "В «%s» есть несохраненные изменения. Отбросить их и закрыть?"
 
-#: src/store/reducer.ts:40
+#: src/store/reducer.ts:42
 #: src/store/constants.ts:13
 msgid "(Untitled)"
 msgstr "(Без названия)"
@@ -48,10 +48,6 @@ msgstr "Доступ ко всем блокам и инструментам в �
 msgid "Add YAML front matter"
 msgstr "Добавить YAML front matter"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
@@ -113,8 +109,12 @@ msgstr "Редактор кода"
 msgid "Content width"
 msgstr "Ширина содержимого"
 
+#: src/ai/transport.ts:55
+msgid "Could not connect to the Anthropic API."
+msgstr "Не удалось подключиться к API Anthropic."
+
 # %s: Error message.
-#: src/actions/index.ts:482
+#: src/actions/index.ts:496
 msgid "Could not export the slide deck: %s"
 msgstr "Не удалось экспортировать презентацию: %s"
 
@@ -158,13 +158,13 @@ msgstr "Редактор"
 msgid "Editor styles"
 msgstr "Стили редактора"
 
-#: src/actions/index.ts:455
+#: src/actions/index.ts:469
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "Экспорт презентации"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:496
+#: src/actions/index.ts:510
 msgid "Exported the slide deck to %s."
 msgstr "Презентация экспортирована в %s."
 
@@ -176,7 +176,7 @@ msgstr "Экспорт презентации…"
 msgid "File associations"
 msgstr "Сопоставления файлов"
 
-#: src/actions/index.ts:315
+#: src/components/reload-prompt-dialog/index.tsx:58
 msgid "File changed"
 msgstr "Файл изменен"
 
@@ -209,7 +209,7 @@ msgstr "Общие"
 msgid "Global shortcuts"
 msgstr "Горячие клавиши (общие)"
 
-#: src/actions/index.ts:475
+#: src/actions/index.ts:489
 msgid "HTML slide deck"
 msgstr "Презентация HTML"
 
@@ -229,15 +229,16 @@ msgstr "Скрыть YAML front matter"
 msgid "Highlight misspelled words while editing."
 msgstr "Выделять слова с ошибками при редактировании."
 
-#: src/platform/index.ts:82
+#: src/platform/index.ts:83
 msgid "Images from HTTP URLs cannot be displayed. Use an HTTPS URL instead."
 msgstr "Изображения по HTTP-адресам не отображаются. Используйте HTTPS-адрес."
 
-#: src/platform/index.ts:90
+#: src/platform/index.ts:91
 msgid "Images with relative paths are displayed once the document is saved."
-msgstr "Изображения с относительными путями отображаются после сохранения документа."
+msgstr ""
+"Изображения с относительными путями отображаются после сохранения документа."
 
-#: src/actions/index.ts:318
+#: src/components/reload-prompt-dialog/index.tsx:67
 msgid "Keep my version"
 msgstr "Сохранить мою версию"
 
@@ -289,11 +290,15 @@ msgstr "Новый файл"
 msgid "New…"
 msgstr "Создать…"
 
+#: src/ai/transport.ts:44
+msgid "No API key is saved. Add one in the settings."
+msgstr "Ключ API не сохранён. Добавьте его в настройках."
+
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "Нет открытых файлов"
 
-#: src/hooks/use-preview-sync.ts:40
+#: src/hooks/use-preview-sync.ts:56
 msgid "Not a Marp document"
 msgstr "Это не документ Marp"
 
@@ -322,7 +327,7 @@ msgstr "Открыть…"
 msgid "Options"
 msgstr "Параметры"
 
-#: src/actions/index.ts:476
+#: src/actions/index.ts:490
 msgid "PDF slide deck"
 msgstr "Презентация PDF"
 
@@ -339,7 +344,7 @@ msgstr "Предпочтения"
 msgid "Preview Slides"
 msgstr "Просмотр слайдов"
 
-#: src/actions/index.ts:317
+#: src/components/reload-prompt-dialog/index.tsx:68
 msgid "Reload"
 msgstr "Перезагрузить"
 
@@ -418,7 +423,7 @@ msgstr "Показать блок \"хлебных крошек\""
 msgid "Show line numbers"
 msgstr "Показывать номера строк"
 
-#: src/actions/index.ts:510
+#: src/actions/index.ts:524
 msgid "Slide Preview"
 msgstr "Предпросмотр слайдов"
 
@@ -443,11 +448,52 @@ msgstr "Размер табуляции"
 msgid "Text formatting"
 msgstr "Форматирование текста"
 
+#: src/ai/anthropic/errors.ts:40
+msgid "The API key cannot use this model."
+msgstr "С этим ключом API нельзя использовать эту модель."
+
+#: src/ai/anthropic/errors.ts:35
+msgid "The API key is not valid. Check it in the settings."
+msgstr "Ключ API недействителен. Проверьте его в настройках."
+
+#: src/ai/anthropic/errors.ts:50
+msgid "The Anthropic API is not available right now. Try again later."
+msgstr "API Anthropic сейчас недоступен. Повторите попытку позже."
+
 #: src/components/header-actions/index.tsx:378
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr "YAML front matter и все его содержимое будут удалены из документа."
+
+#: src/ai/anthropic/chat.ts:159
+msgid "The answer was cut off because it reached the length limit."
+msgstr "Ответ обрезан, так как достиг ограничения по длине."
+
+#: src/ai/anthropic/message-stream.ts:134
+msgid "The connection closed before the answer was complete."
+msgstr "Соединение закрылось до того, как ответ был получен полностью."
+
+#: src/ai/anthropic/chat.ts:105
+msgid "The edit from the model could not be read."
+msgstr "Не удалось прочитать изменение от модели."
+
+#: src/ai/anthropic/chat.ts:153
+msgid "The model declined to answer this request."
+msgstr "Модель отказалась отвечать на этот запрос."
+
+#: src/ai/anthropic/errors.ts:42
+msgid "The model was not found."
+msgstr "Модель не найдена."
+
+#: src/ai/anthropic/errors.ts:61
+msgid "The request failed."
+msgstr "Не удалось выполнить запрос."
+
+# %s: The error message from the Anthropic API.
+#: src/ai/anthropic/errors.ts:58
+msgid "The request failed: %s"
+msgstr "Не удалось выполнить запрос: %s"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:51
 #: src/components/preferences-modal/code-editor-panel.tsx:46
@@ -461,6 +507,10 @@ msgid ""
 msgstr ""
 "На этой платформе нельзя назначить приложение по умолчанию из MarkBricks. "
 "Настройте его в системном файловом менеджере."
+
+#: src/ai/anthropic/errors.ts:44
+msgid "Too many requests. Wait a moment and try again."
+msgstr "Слишком много запросов. Подождите немного и повторите попытку."
 
 #: src/components/header-actions/index.tsx:306
 msgid "Tools"
@@ -517,7 +567,3 @@ msgstr "Вы используете последнюю версию (%s)."
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "Есть несохраненные изменения. Сохраните их перед обновлением."
 
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""

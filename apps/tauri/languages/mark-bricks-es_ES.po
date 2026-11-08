@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.16.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
-"PO-Revision-Date: 2026-10-10T12:50:56.268Z\n"
+"POT-Creation-Date: 2026-11-08T13:35:54.001Z\n"
+"PO-Revision-Date: 2026-11-08T13:38:22.616Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,20 +17,20 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/actions/index.ts:308
+#: src/components/reload-prompt-dialog/index.tsx:61
 msgid ""
 "\"%s\" changed on disk. Reload it and discard your changes, or keep your "
 "version?"
 msgstr ""
-"«%s» ha cambiado en el disco. ¿Quieres recargarlo y descartar tus cambios, "
-"o conservar tu versión?"
+"«%s» ha cambiado en el disco. ¿Quieres recargarlo y descartar tus cambios, o "
+"conservar tu versión?"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
 msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "«%s» tiene cambios sin guardar. ¿Quieres descartarlos y cerrar?"
 
-#: src/store/reducer.ts:40
+#: src/store/reducer.ts:42
 #: src/store/constants.ts:13
 msgid "(Untitled)"
 msgstr "(Sin título)"
@@ -42,16 +42,13 @@ msgstr "Acerca de MarkBricks"
 
 #: src/components/header-actions/index.tsx:243
 msgid "Access all block and document tools in a single place"
-msgstr "Accede a todas las herramientas de bloques y documentos desde un solo lugar"
+msgstr ""
+"Accede a todas las herramientas de bloques y documentos desde un solo lugar"
 
 #: src/components/header-actions/index.tsx:322
 msgid "Add YAML front matter"
 msgstr "Añadir front matter YAML"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
@@ -113,8 +110,12 @@ msgstr "Editor de código"
 msgid "Content width"
 msgstr "Ancho del contenido"
 
+#: src/ai/transport.ts:55
+msgid "Could not connect to the Anthropic API."
+msgstr "No se pudo conectar con la API de Anthropic."
+
 # %s: Error message.
-#: src/actions/index.ts:482
+#: src/actions/index.ts:496
 msgid "Could not export the slide deck: %s"
 msgstr "No se pudo exportar la presentación: %s"
 
@@ -126,7 +127,8 @@ msgstr[1] "No se pudieron abrir los siguientes archivos:"
 
 #: src/components/editor-placeholder/index.tsx:26
 msgid "Create a new Markdown file or open an existing one to start editing."
-msgstr "Crea un archivo Markdown nuevo o abre uno existente para empezar a editar."
+msgstr ""
+"Crea un archivo Markdown nuevo o abre uno existente para empezar a editar."
 
 #: src/hooks/use-shortcuts.ts:41
 msgid "Create a new file."
@@ -156,13 +158,13 @@ msgstr "Editor"
 msgid "Editor styles"
 msgstr "Estilos del editor"
 
-#: src/actions/index.ts:455
+#: src/actions/index.ts:469
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "Exportar presentación"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:496
+#: src/actions/index.ts:510
 msgid "Exported the slide deck to %s."
 msgstr "La presentación se exportó a %s."
 
@@ -174,7 +176,7 @@ msgstr "Exportando la presentación…"
 msgid "File associations"
 msgstr "Asociaciones de archivos"
 
-#: src/actions/index.ts:315
+#: src/components/reload-prompt-dialog/index.tsx:58
 msgid "File changed"
 msgstr "Archivo modificado"
 
@@ -207,7 +209,7 @@ msgstr "Generales"
 msgid "Global shortcuts"
 msgstr "Atajos globales"
 
-#: src/actions/index.ts:475
+#: src/actions/index.ts:489
 msgid "HTML slide deck"
 msgstr "Presentación HTML"
 
@@ -227,15 +229,17 @@ msgstr "Ocultar front matter YAML"
 msgid "Highlight misspelled words while editing."
 msgstr "Resaltar las palabras mal escritas al editar."
 
-#: src/platform/index.ts:82
+#: src/platform/index.ts:83
 msgid "Images from HTTP URLs cannot be displayed. Use an HTTPS URL instead."
-msgstr "No se pueden mostrar imágenes de URL HTTP. Usa una URL HTTPS en su lugar."
+msgstr ""
+"No se pueden mostrar imágenes de URL HTTP. Usa una URL HTTPS en su lugar."
 
-#: src/platform/index.ts:90
+#: src/platform/index.ts:91
 msgid "Images with relative paths are displayed once the document is saved."
-msgstr "Las imágenes con rutas relativas se muestran una vez guardado el documento."
+msgstr ""
+"Las imágenes con rutas relativas se muestran una vez guardado el documento."
 
-#: src/actions/index.ts:318
+#: src/components/reload-prompt-dialog/index.tsx:67
 msgid "Keep my version"
 msgstr "Conservar mi versión"
 
@@ -264,7 +268,8 @@ msgstr "MarkBricks %s está disponible. ¿Instalar ahora?"
 
 #: src/components/preferences-modal/general-panel.tsx:156
 msgid "MarkBricks is now the default app for Markdown files."
-msgstr "MarkBricks es ahora la aplicación predeterminada para los archivos Markdown."
+msgstr ""
+"MarkBricks es ahora la aplicación predeterminada para los archivos Markdown."
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:118
 msgid "Maximum width of the content area, in pixels."
@@ -287,11 +292,15 @@ msgstr "Nuevo archivo"
 msgid "New…"
 msgstr "Nuevo…"
 
+#: src/ai/transport.ts:44
+msgid "No API key is saved. Add one in the settings."
+msgstr "No hay ninguna clave de API guardada. Añade una en los ajustes."
+
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "No hay ningún archivo abierto"
 
-#: src/hooks/use-preview-sync.ts:40
+#: src/hooks/use-preview-sync.ts:56
 msgid "Not a Marp document"
 msgstr "No es un documento de Marp"
 
@@ -320,7 +329,7 @@ msgstr "Abrir…"
 msgid "Options"
 msgstr "Opciones"
 
-#: src/actions/index.ts:476
+#: src/actions/index.ts:490
 msgid "PDF slide deck"
 msgstr "Presentación PDF"
 
@@ -337,7 +346,7 @@ msgstr "Preferencias"
 msgid "Preview Slides"
 msgstr "Previsualizar diapositivas"
 
-#: src/actions/index.ts:317
+#: src/components/reload-prompt-dialog/index.tsx:68
 msgid "Reload"
 msgstr "Recargar"
 
@@ -416,7 +425,7 @@ msgstr "Mostrar las migas de pan del bloque"
 msgid "Show line numbers"
 msgstr "Mostrar números de línea"
 
-#: src/actions/index.ts:510
+#: src/actions/index.ts:524
 msgid "Slide Preview"
 msgstr "Vista previa de diapositivas"
 
@@ -441,11 +450,52 @@ msgstr "Tamaño de tabulación"
 msgid "Text formatting"
 msgstr "Formatos de texto"
 
+#: src/ai/anthropic/errors.ts:40
+msgid "The API key cannot use this model."
+msgstr "Esta clave de API no puede usar este modelo."
+
+#: src/ai/anthropic/errors.ts:35
+msgid "The API key is not valid. Check it in the settings."
+msgstr "La clave de API no es válida. Revísala en los ajustes."
+
+#: src/ai/anthropic/errors.ts:50
+msgid "The Anthropic API is not available right now. Try again later."
+msgstr "La API de Anthropic no está disponible en este momento. Inténtalo de nuevo más tarde."
+
 #: src/components/header-actions/index.tsx:378
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr "El front matter YAML y todo su contenido se eliminarán del documento."
+
+#: src/ai/anthropic/chat.ts:159
+msgid "The answer was cut off because it reached the length limit."
+msgstr "La respuesta se cortó porque alcanzó el límite de longitud."
+
+#: src/ai/anthropic/message-stream.ts:134
+msgid "The connection closed before the answer was complete."
+msgstr "La conexión se cerró antes de que la respuesta estuviera completa."
+
+#: src/ai/anthropic/chat.ts:105
+msgid "The edit from the model could not be read."
+msgstr "No se pudo leer la edición del modelo."
+
+#: src/ai/anthropic/chat.ts:153
+msgid "The model declined to answer this request."
+msgstr "El modelo se negó a responder a esta solicitud."
+
+#: src/ai/anthropic/errors.ts:42
+msgid "The model was not found."
+msgstr "No se encontró el modelo."
+
+#: src/ai/anthropic/errors.ts:61
+msgid "The request failed."
+msgstr "La solicitud falló."
+
+# %s: The error message from the Anthropic API.
+#: src/ai/anthropic/errors.ts:58
+msgid "The request failed: %s"
+msgstr "La solicitud falló: %s"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:51
 #: src/components/preferences-modal/code-editor-panel.tsx:46
@@ -459,6 +509,10 @@ msgid ""
 msgstr ""
 "Esta plataforma no permite establecer la aplicación predeterminada desde "
 "MarkBricks. Configúrala desde el gestor de archivos del sistema."
+
+#: src/ai/anthropic/errors.ts:44
+msgid "Too many requests. Wait a moment and try again."
+msgstr "Demasiadas solicitudes. Espera un momento e inténtalo de nuevo."
 
 #: src/components/header-actions/index.tsx:306
 msgid "Tools"
@@ -515,7 +569,3 @@ msgstr "Estás usando la versión más reciente (%s)."
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "Tienes cambios sin guardar. Guárdalos antes de actualizar."
 
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""

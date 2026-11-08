@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: mark-bricks-desktop 0.16.0\n"
+"Project-Id-Version: mark-bricks-desktop 0.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugins/mark-bricks\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
-"PO-Revision-Date: 2026-10-10T12:50:59.976Z\n"
+"POT-Creation-Date: 2026-11-08T13:35:54.001Z\n"
+"PO-Revision-Date: 2026-11-08T13:38:28.065Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # %s: tab title.
-#: src/actions/index.ts:308
+#: src/components/reload-prompt-dialog/index.tsx:61
 msgid ""
 "\"%s\" changed on disk. Reload it and discard your changes, or keep your "
 "version?"
@@ -28,7 +28,7 @@ msgstr "「%s」已在磁碟上變更。要重新載入並捨棄你的變更，�
 msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "「%s」有未儲存的變更。要捨棄變更並關閉嗎？"
 
-#: src/store/reducer.ts:40
+#: src/store/reducer.ts:42
 #: src/store/constants.ts:13
 msgid "(Untitled)"
 msgstr "(未命名)"
@@ -46,10 +46,6 @@ msgstr "可在同一位置使用全部區塊及內容工具"
 msgid "Add YAML front matter"
 msgstr "新增 YAML 前置資料"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
@@ -111,8 +107,12 @@ msgstr "程式碼編輯器"
 msgid "Content width"
 msgstr "內容寬度"
 
+#: src/ai/transport.ts:55
+msgid "Could not connect to the Anthropic API."
+msgstr "無法連線至 Anthropic API。"
+
 # %s: Error message.
-#: src/actions/index.ts:482
+#: src/actions/index.ts:496
 msgid "Could not export the slide deck: %s"
 msgstr "無法匯出投影片: %s"
 
@@ -154,13 +154,13 @@ msgstr "編輯器"
 msgid "Editor styles"
 msgstr "編輯器樣式"
 
-#: src/actions/index.ts:455
+#: src/actions/index.ts:469
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "匯出投影片"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:496
+#: src/actions/index.ts:510
 msgid "Exported the slide deck to %s."
 msgstr "已將投影片匯出至 %s。"
 
@@ -172,7 +172,7 @@ msgstr "正在匯出投影片…"
 msgid "File associations"
 msgstr "檔案關聯"
 
-#: src/actions/index.ts:315
+#: src/components/reload-prompt-dialog/index.tsx:58
 msgid "File changed"
 msgstr "檔案已變更"
 
@@ -205,7 +205,7 @@ msgstr "一般"
 msgid "Global shortcuts"
 msgstr "全域快速鍵"
 
-#: src/actions/index.ts:475
+#: src/actions/index.ts:489
 msgid "HTML slide deck"
 msgstr "HTML 投影片"
 
@@ -225,15 +225,15 @@ msgstr "隱藏 YAML 前置資料"
 msgid "Highlight misspelled words while editing."
 msgstr "編輯時醒目提示拼錯的字詞。"
 
-#: src/platform/index.ts:82
+#: src/platform/index.ts:83
 msgid "Images from HTTP URLs cannot be displayed. Use an HTTPS URL instead."
 msgstr "無法顯示來自 HTTP URL 的圖片。請改用 HTTPS URL。"
 
-#: src/platform/index.ts:90
+#: src/platform/index.ts:91
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "使用相對路徑的圖片會在文件儲存後顯示。"
 
-#: src/actions/index.ts:318
+#: src/components/reload-prompt-dialog/index.tsx:67
 msgid "Keep my version"
 msgstr "保留我的版本"
 
@@ -285,11 +285,15 @@ msgstr "新增檔案"
 msgid "New…"
 msgstr "新增…"
 
+#: src/ai/transport.ts:44
+msgid "No API key is saved. Add one in the settings."
+msgstr "尚未儲存 API 金鑰。請在設定中新增。"
+
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "沒有開啟的檔案"
 
-#: src/hooks/use-preview-sync.ts:40
+#: src/hooks/use-preview-sync.ts:56
 msgid "Not a Marp document"
 msgstr "不是 Marp 文件"
 
@@ -318,7 +322,7 @@ msgstr "開啟…"
 msgid "Options"
 msgstr "選項"
 
-#: src/actions/index.ts:476
+#: src/actions/index.ts:490
 msgid "PDF slide deck"
 msgstr "PDF 投影片"
 
@@ -335,7 +339,7 @@ msgstr "偏好設定"
 msgid "Preview Slides"
 msgstr "預覽投影片"
 
-#: src/actions/index.ts:317
+#: src/components/reload-prompt-dialog/index.tsx:68
 msgid "Reload"
 msgstr "重新載入"
 
@@ -414,7 +418,7 @@ msgstr "顯示區塊導覽標記"
 msgid "Show line numbers"
 msgstr "顯示行號"
 
-#: src/actions/index.ts:510
+#: src/actions/index.ts:524
 msgid "Slide Preview"
 msgstr "投影片預覽"
 
@@ -439,11 +443,52 @@ msgstr "定位點大小"
 msgid "Text formatting"
 msgstr "內容格式化"
 
+#: src/ai/anthropic/errors.ts:40
+msgid "The API key cannot use this model."
+msgstr "此 API 金鑰無法使用這個模型。"
+
+#: src/ai/anthropic/errors.ts:35
+msgid "The API key is not valid. Check it in the settings."
+msgstr "API 金鑰無效。請在設定中檢查。"
+
+#: src/ai/anthropic/errors.ts:50
+msgid "The Anthropic API is not available right now. Try again later."
+msgstr "Anthropic API 目前無法使用。請稍後再試。"
+
 #: src/components/header-actions/index.tsx:378
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr "將從文件中移除 YAML 前置資料及其所有內容。"
+
+#: src/ai/anthropic/chat.ts:159
+msgid "The answer was cut off because it reached the length limit."
+msgstr "回答已達到長度上限，因此被截斷。"
+
+#: src/ai/anthropic/message-stream.ts:134
+msgid "The connection closed before the answer was complete."
+msgstr "回答完成前連線已關閉。"
+
+#: src/ai/anthropic/chat.ts:105
+msgid "The edit from the model could not be read."
+msgstr "無法讀取模型的編輯內容。"
+
+#: src/ai/anthropic/chat.ts:153
+msgid "The model declined to answer this request."
+msgstr "模型拒絕回答此請求。"
+
+#: src/ai/anthropic/errors.ts:42
+msgid "The model was not found."
+msgstr "找不到該模型。"
+
+#: src/ai/anthropic/errors.ts:61
+msgid "The request failed."
+msgstr "請求失敗。"
+
+# %s: The error message from the Anthropic API.
+#: src/ai/anthropic/errors.ts:58
+msgid "The request failed: %s"
+msgstr "請求失敗：%s"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:51
 #: src/components/preferences-modal/code-editor-panel.tsx:46
@@ -454,7 +499,12 @@ msgstr "佈景主題"
 msgid ""
 "This platform does not support setting the default app from inside "
 "MarkBricks. Please configure it from your system file manager."
-msgstr "此平台不支援從 MarkBricks 內設定預設應用程式。請從系統的檔案管理員進行設定。"
+msgstr ""
+"此平台不支援從 MarkBricks 內設定預設應用程式。請從系統的檔案管理員進行設定。"
+
+#: src/ai/anthropic/errors.ts:44
+msgid "Too many requests. Wait a moment and try again."
+msgstr "請求過多。請稍候再試。"
 
 #: src/components/header-actions/index.tsx:306
 msgid "Tools"
@@ -511,7 +561,3 @@ msgstr "你正在使用最新版本 (%s)。"
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "你有未儲存的變更。請在更新前儲存。"
 
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""
