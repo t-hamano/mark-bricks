@@ -109,7 +109,7 @@ describe( 'buildRequestBody', () => {
 			model: 'claude-opus-5-5',
 			stream: true,
 			system: 'S',
-			tool_choice: { type: 'auto' },
+			tool_choice: { type: 'auto', disable_parallel_tool_use: true },
 			fallbacks: 'default',
 		} );
 		expect( body.tools ).toEqual( [

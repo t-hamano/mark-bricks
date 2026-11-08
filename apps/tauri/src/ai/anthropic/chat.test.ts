@@ -146,6 +146,22 @@ describe( 'createAnthropicChat', () => {
 		expect( transport ).toHaveBeenCalledTimes( 1 );
 	} );
 
+	it( 'rejects a response that ends before the message is complete', async () => {
+		const truncated = edit.slice(
+			0,
+			edit.indexOf(
+				'event: content_block_start\ndata: {"type":"content_block_start","index":2'
+			)
+		);
+		const { result, events } = await run( [ truncated ] );
+		await expect( result ).rejects.toThrow(
+			'The connection closed before the answer was complete.'
+		);
+		expect( events.some( ( event ) => event.type === 'edit' ) ).toBe(
+			false
+		);
+	} );
+
 	it( 'rejects when the model declines', async () => {
 		const { result } = await run( [ refusal ] );
 		await expect( result ).rejects.toThrow(

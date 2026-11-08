@@ -1,4 +1,9 @@
 /**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+
+/**
  * Internal dependencies
  */
 import { AnthropicError, describeApiError } from './errors';
@@ -42,6 +47,7 @@ type BlockState = {
 export function createMessageStream( onText: ( text: string ) => void ) {
 	const blocks: BlockState[] = [];
 	let stopReason: string | null = null;
+	let isComplete = false;
 
 	const handle = ( data: unknown ) => {
 		const event = data as StreamEvent;
@@ -101,6 +107,9 @@ export function createMessageStream( onText: ( text: string ) => void ) {
 				}
 				return;
 			}
+			case 'message_stop':
+				isComplete = true;
+				return;
 			case 'message_delta':
 				if ( event.delta && 'stop_reason' in event.delta ) {
 					stopReason = event.delta.stop_reason ?? null;
@@ -117,12 +126,24 @@ export function createMessageStream( onText: ( text: string ) => void ) {
 		}
 	};
 
-	const finish = (): StreamedMessage => ( {
-		content: blocks
-			.filter( ( state ) => state !== undefined )
-			.map( ( state ) => state.block as ContentBlock ),
-		stopReason,
-	} );
+	const finish = (): StreamedMessage => {
+		// The response ended before the API finished the message, for
+		// example because the connection dropped.
+		if ( ! isComplete ) {
+			throw new AnthropicError(
+				__(
+					'The connection closed before the answer was complete.',
+					'mark-bricks'
+				)
+			);
+		}
+		return {
+			content: blocks
+				.filter( ( state ) => state !== undefined )
+				.map( ( state ) => state.block as ContentBlock ),
+			stopReason,
+		};
+	};
 
 	return { handle, finish };
 }

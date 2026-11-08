@@ -66,7 +66,8 @@ export type RequestBody = {
 	system: string;
 	messages: MessageParam[];
 	tools: unknown[];
-	tool_choice: { type: 'auto' | 'none' };
+	tool_choice:
+		{ type: 'auto'; disable_parallel_tool_use: true } | { type: 'none' };
 	output_config: { effort: 'medium' };
 	fallbacks: 'default';
 };
@@ -195,7 +196,10 @@ export function buildRequestBody( {
 		// The tool stays declared when it may no longer be called, so the
 		// request keeps the same tools as the one before it.
 		tools: [ EDIT_TOOL ],
-		tool_choice: { type: allowEditTool ? 'auto' : 'none' },
+		// One edit per answer, since the selection changes after an edit.
+		tool_choice: allowEditTool
+			? { type: 'auto', disable_parallel_tool_use: true }
+			: { type: 'none' },
 		output_config: { effort: 'medium' },
 		fallbacks: 'default',
 	};
