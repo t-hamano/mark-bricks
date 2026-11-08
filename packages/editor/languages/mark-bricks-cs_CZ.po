@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:28:29.201Z\n"
-"PO-Revision-Date: 2026-11-08T12:28:30.441Z\n"
+"POT-Creation-Date: 2026-11-08T12:30:41.892Z\n"
+"PO-Revision-Date: 2026-11-08T12:30:43.201Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,7 @@ msgstr "Zadejte název…"
 msgid "Failed to load image."
 msgstr "Obrázek se nepodařilo načíst."
 
-#: src/components/front-matter-editor/index.tsx:257
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Footer"
 msgstr "Zápatí"
 
@@ -201,7 +201,7 @@ msgstr "Typ výstrahy GitHub"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:246
+#: src/components/front-matter-editor/index.tsx:236
 msgid "Header"
 msgstr "Záhlaví"
 
@@ -354,7 +354,7 @@ msgstr "Zmenšit odsazení"
 msgid "Outline"
 msgstr "Osnova"
 
-#: src/components/front-matter-editor/index.tsx:235
+#: src/components/front-matter-editor/index.tsx:258
 msgid "Paginate"
 msgstr "Číslování stránek"
 
@@ -400,7 +400,7 @@ msgstr "Hledat"
 msgid "Search for blocks"
 msgstr "Hledat bloky"
 
-#: src/components/front-matter-editor/index.tsx:269
+#: src/components/front-matter-editor/index.tsx:270
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
 
@@ -408,7 +408,7 @@ msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
 msgid "Show or hide the List View."
 msgstr "Zobrazit nebo skrýt Zobrazení seznamu."
 
-#: src/components/front-matter-editor/index.tsx:236
+#: src/components/front-matter-editor/index.tsx:259
 msgid "Show the page number on each slide."
 msgstr "Zobrazí číslo stránky na každém snímku."
 
@@ -442,11 +442,11 @@ msgstr "Přepnout mezi vizuálním editorem a editorem kódu."
 msgid "Table"
 msgstr "Tabulka"
 
-#: src/components/front-matter-editor/index.tsx:258
+#: src/components/front-matter-editor/index.tsx:248
 msgid "Text shown at the bottom of each slide."
 msgstr "Text zobrazený v dolní části každého snímku."
 
-#: src/components/front-matter-editor/index.tsx:247
+#: src/components/front-matter-editor/index.tsx:237
 msgid "Text shown at the top of each slide."
 msgstr "Text zobrazený v horní části každého snímku."
 

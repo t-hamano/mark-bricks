@@ -231,17 +231,7 @@ function MarpSettings( {
 				onChange={ ( next ) => setValue( 'size', next ) }
 				portalContainer={ portalContainer }
 			/>
-			<SwitchControl
-				label={ __( 'Paginate', 'mark-bricks' ) }
-				description={ __(
-					'Show the page number on each slide.',
-					'mark-bricks'
-				) }
-				checked={ getFrontMatterValue( value, 'paginate' ) === 'true' }
-				onCheckedChange={ ( checked ) =>
-					setValue( 'paginate', checked ? 'true' : null )
-				}
-			/>
+
 			<InputControl
 				label={ __( 'Header', 'mark-bricks' ) }
 				description={ __(
@@ -262,6 +252,17 @@ function MarpSettings( {
 				value={ getFrontMatterValue( value, 'footer' ) ?? '' }
 				onChange={ ( event ) =>
 					setValue( 'footer', event.target.value || null )
+				}
+			/>
+			<SwitchControl
+				label={ __( 'Paginate', 'mark-bricks' ) }
+				description={ __(
+					'Show the page number on each slide.',
+					'mark-bricks'
+				) }
+				checked={ getFrontMatterValue( value, 'paginate' ) === 'true' }
+				onCheckedChange={ ( checked ) =>
+					setValue( 'paginate', checked ? 'true' : null )
 				}
 			/>
 			<p className="front-matter-editor__settings-help">

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:28:29.201Z\n"
-"PO-Revision-Date: 2026-11-08T12:28:32.612Z\n"
+"POT-Creation-Date: 2026-11-08T12:30:41.892Z\n"
+"PO-Revision-Date: 2026-11-08T12:30:45.447Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,7 @@ msgstr "Saisir le titre…"
 msgid "Failed to load image."
 msgstr "Échec du chargement de l’image."
 
-#: src/components/front-matter-editor/index.tsx:257
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Footer"
 msgstr "Pied de page"
 
@@ -201,7 +201,7 @@ msgstr "Type d’alerte GitHub"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:246
+#: src/components/front-matter-editor/index.tsx:236
 msgid "Header"
 msgstr "En-tête"
 
@@ -355,7 +355,7 @@ msgstr "Désindenter"
 msgid "Outline"
 msgstr "Plan"
 
-#: src/components/front-matter-editor/index.tsx:235
+#: src/components/front-matter-editor/index.tsx:258
 msgid "Paginate"
 msgstr "Pagination"
 
@@ -401,7 +401,7 @@ msgstr "Recherche"
 msgid "Search for blocks"
 msgstr "Rechercher des blocs"
 
-#: src/components/front-matter-editor/index.tsx:269
+#: src/components/front-matter-editor/index.tsx:270
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Consultez la <a>documentation de Marp</a> pour les autres réglages."
 
@@ -409,7 +409,7 @@ msgstr "Consultez la <a>documentation de Marp</a> pour les autres réglages."
 msgid "Show or hide the List View."
 msgstr "Afficher ou masquer la vue en liste."
 
-#: src/components/front-matter-editor/index.tsx:236
+#: src/components/front-matter-editor/index.tsx:259
 msgid "Show the page number on each slide."
 msgstr "Affiche le numéro de page sur chaque diapositive."
 
@@ -443,11 +443,11 @@ msgstr "Basculer entre l’éditeur visuel et l’éditeur de code."
 msgid "Table"
 msgstr "Tableau"
 
-#: src/components/front-matter-editor/index.tsx:258
+#: src/components/front-matter-editor/index.tsx:248
 msgid "Text shown at the bottom of each slide."
 msgstr "Texte affiché en bas de chaque diapositive."
 
-#: src/components/front-matter-editor/index.tsx:247
+#: src/components/front-matter-editor/index.tsx:237
 msgid "Text shown at the top of each slide."
 msgstr "Texte affiché en haut de chaque diapositive."
 

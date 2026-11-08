@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:28:29.201Z\n"
-"PO-Revision-Date: 2026-11-08T12:28:38.134Z\n"
+"POT-Creation-Date: 2026-11-08T12:30:41.892Z\n"
+"PO-Revision-Date: 2026-11-08T12:30:50.586Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,7 @@ msgstr "Başlığı girin…"
 msgid "Failed to load image."
 msgstr "Görsel yüklenemedi."
 
-#: src/components/front-matter-editor/index.tsx:257
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Footer"
 msgstr "Alt bilgi"
 
@@ -201,7 +201,7 @@ msgstr "GitHub uyarı türü"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:246
+#: src/components/front-matter-editor/index.tsx:236
 msgid "Header"
 msgstr "Üst bilgi"
 
@@ -355,7 +355,7 @@ msgstr "Girintiyi azalt"
 msgid "Outline"
 msgstr "Anahat"
 
-#: src/components/front-matter-editor/index.tsx:235
+#: src/components/front-matter-editor/index.tsx:258
 msgid "Paginate"
 msgstr "Sayfa numarası"
 
@@ -401,7 +401,7 @@ msgstr "Ara"
 msgid "Search for blocks"
 msgstr "Blok ara"
 
-#: src/components/front-matter-editor/index.tsx:269
+#: src/components/front-matter-editor/index.tsx:270
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Diğer ayarlar için <a>Marp belgelerine</a> bakın."
 
@@ -409,7 +409,7 @@ msgstr "Diğer ayarlar için <a>Marp belgelerine</a> bakın."
 msgid "Show or hide the List View."
 msgstr "Liste görünümünü gösterin veya gizleyin."
 
-#: src/components/front-matter-editor/index.tsx:236
+#: src/components/front-matter-editor/index.tsx:259
 msgid "Show the page number on each slide."
 msgstr "Her slaytta sayfa numarasını gösterir."
 
@@ -443,11 +443,11 @@ msgstr "Görsel düzenleyici ile kod düzenleyici arasında geçiş yap."
 msgid "Table"
 msgstr "Tablo"
 
-#: src/components/front-matter-editor/index.tsx:258
+#: src/components/front-matter-editor/index.tsx:248
 msgid "Text shown at the bottom of each slide."
 msgstr "Her slaytın altında gösterilen metin."
 
-#: src/components/front-matter-editor/index.tsx:247
+#: src/components/front-matter-editor/index.tsx:237
 msgid "Text shown at the top of each slide."
 msgstr "Her slaytın üstünde gösterilen metin."
 

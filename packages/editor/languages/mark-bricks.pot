@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:28:29.201Z\n"
+"POT-Creation-Date: 2026-11-08T12:30:41.892Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -277,31 +277,31 @@ msgstr ""
 msgid "The aspect ratio of the slides."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:235
-msgid "Paginate"
-msgstr ""
-
 #: src/components/front-matter-editor/index.tsx:236
-msgid "Show the page number on each slide."
-msgstr ""
-
-#: src/components/front-matter-editor/index.tsx:246
 msgid "Header"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:247
+#: src/components/front-matter-editor/index.tsx:237
 msgid "Text shown at the top of each slide."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:257
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Footer"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:258
+#: src/components/front-matter-editor/index.tsx:248
 msgid "Text shown at the bottom of each slide."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:269
+#: src/components/front-matter-editor/index.tsx:258
+msgid "Paginate"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:259
+msgid "Show the page number on each slide."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:270
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr ""
 

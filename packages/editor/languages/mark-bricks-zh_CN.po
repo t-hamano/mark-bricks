@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:28:29.201Z\n"
-"PO-Revision-Date: 2026-11-08T12:28:38.871Z\n"
+"POT-Creation-Date: 2026-11-08T12:30:41.892Z\n"
+"PO-Revision-Date: 2026-11-08T12:30:51.356Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,7 @@ msgstr "输入标题…"
 msgid "Failed to load image."
 msgstr "图片加载失败。"
 
-#: src/components/front-matter-editor/index.tsx:257
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Footer"
 msgstr "页脚"
 
@@ -201,7 +201,7 @@ msgstr "GitHub 警示类型"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:246
+#: src/components/front-matter-editor/index.tsx:236
 msgid "Header"
 msgstr "页眉"
 
@@ -352,7 +352,7 @@ msgstr "减少缩进量"
 msgid "Outline"
 msgstr "大纲"
 
-#: src/components/front-matter-editor/index.tsx:235
+#: src/components/front-matter-editor/index.tsx:258
 msgid "Paginate"
 msgstr "页码"
 
@@ -398,7 +398,7 @@ msgstr "搜索"
 msgid "Search for blocks"
 msgstr "搜索区块"
 
-#: src/components/front-matter-editor/index.tsx:269
+#: src/components/front-matter-editor/index.tsx:270
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 
@@ -406,7 +406,7 @@ msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 msgid "Show or hide the List View."
 msgstr "显示或隐藏列表视图。"
 
-#: src/components/front-matter-editor/index.tsx:236
+#: src/components/front-matter-editor/index.tsx:259
 msgid "Show the page number on each slide."
 msgstr "在每张幻灯片上显示页码。"
 
@@ -440,11 +440,11 @@ msgstr "在可视化编辑器和代码编辑器之间切换。"
 msgid "Table"
 msgstr "表格"
 
-#: src/components/front-matter-editor/index.tsx:258
+#: src/components/front-matter-editor/index.tsx:248
 msgid "Text shown at the bottom of each slide."
 msgstr "显示在每张幻灯片底部的文本。"
 
-#: src/components/front-matter-editor/index.tsx:247
+#: src/components/front-matter-editor/index.tsx:237
 msgid "Text shown at the top of each slide."
 msgstr "显示在每张幻灯片顶部的文本。"
 

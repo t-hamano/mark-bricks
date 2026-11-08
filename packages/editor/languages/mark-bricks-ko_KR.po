@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:28:29.201Z\n"
-"PO-Revision-Date: 2026-11-08T12:28:34.831Z\n"
+"POT-Creation-Date: 2026-11-08T12:30:41.892Z\n"
+"PO-Revision-Date: 2026-11-08T12:30:47.621Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,7 @@ msgstr "제목 입력…"
 msgid "Failed to load image."
 msgstr "이미지를 불러오지 못했습니다."
 
-#: src/components/front-matter-editor/index.tsx:257
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Footer"
 msgstr "바닥글"
 
@@ -201,7 +201,7 @@ msgstr "GitHub 알림 유형"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:246
+#: src/components/front-matter-editor/index.tsx:236
 msgid "Header"
 msgstr "머리글"
 
@@ -353,7 +353,7 @@ msgstr "내어쓰기"
 msgid "Outline"
 msgstr "아웃라인"
 
-#: src/components/front-matter-editor/index.tsx:235
+#: src/components/front-matter-editor/index.tsx:258
 msgid "Paginate"
 msgstr "페이지 번호"
 
@@ -399,7 +399,7 @@ msgstr "검색"
 msgid "Search for blocks"
 msgstr "블록 검색"
 
-#: src/components/front-matter-editor/index.tsx:269
+#: src/components/front-matter-editor/index.tsx:270
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "다른 설정은 <a>Marp 문서</a>를 참고하세요."
 
@@ -407,7 +407,7 @@ msgstr "다른 설정은 <a>Marp 문서</a>를 참고하세요."
 msgid "Show or hide the List View."
 msgstr "목록 보기를 표시하거나 숨깁니다."
 
-#: src/components/front-matter-editor/index.tsx:236
+#: src/components/front-matter-editor/index.tsx:259
 msgid "Show the page number on each slide."
 msgstr "각 슬라이드에 페이지 번호를 표시합니다."
 
@@ -441,11 +441,11 @@ msgstr "비주얼 편집기와 코드 편집기 간에 전환합니다."
 msgid "Table"
 msgstr "테이블"
 
-#: src/components/front-matter-editor/index.tsx:258
+#: src/components/front-matter-editor/index.tsx:248
 msgid "Text shown at the bottom of each slide."
 msgstr "각 슬라이드 하단에 표시되는 텍스트."
 
-#: src/components/front-matter-editor/index.tsx:247
+#: src/components/front-matter-editor/index.tsx:237
 msgid "Text shown at the top of each slide."
 msgstr "각 슬라이드 상단에 표시되는 텍스트."
 
