@@ -456,22 +456,22 @@ pub fn run() {
             Ok(())
         })
         .on_window_event(|window, event| {
-            if !matches!(event, tauri::WindowEvent::Destroyed) {
-                return;
-            }
             let app = window.app_handle();
-            match window.label() {
+            match (window.label(), event) {
                 // The preview belongs to the main window, so it closes with
                 // it. `Destroyed` fires only once the close guard has let the
                 // main window go.
-                "main" => {
+                ("main", tauri::WindowEvent::Destroyed) => {
                     if let Some(preview) = app.get_webview_window(PREVIEW_WINDOW) {
                         let _ = preview.destroy();
                     }
                 }
                 // Lets the main window turn the preview off when the user
-                // closes its window.
-                PREVIEW_WINDOW => {
+                // closes its window. The app's own `destroy` skips
+                // `CloseRequested`, so a window that the app closes, when the
+                // preview is already off or moves next to the editor, sends
+                // nothing that could arrive after the preview is back on.
+                (PREVIEW_WINDOW, tauri::WindowEvent::CloseRequested { .. }) => {
                     let _ = app.emit_to("main", "preview-window-closed", ());
                 }
                 _ => {}
