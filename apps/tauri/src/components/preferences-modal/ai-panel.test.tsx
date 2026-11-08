@@ -19,7 +19,7 @@ const MODELS = [
 describe( 'getModelItems', () => {
 	it( 'lists the default model first, by its name', () => {
 		expect( getModelItems( MODELS, '' ) ).toEqual( [
-			{ value: '', label: 'Default (Claude Opus 5.5)' },
+			{ value: 'default', label: 'Default (Claude Opus 5.5)' },
 			{ value: 'claude-opus-5-5', label: 'Claude Opus 5.5' },
 			{ value: 'claude-sonnet-5-5', label: 'Claude Sonnet 5.5' },
 		] );
@@ -27,7 +27,7 @@ describe( 'getModelItems', () => {
 
 	it( 'keeps a chosen model that is not listed', () => {
 		expect( getModelItems( [], 'claude-old' ) ).toEqual( [
-			{ value: '', label: 'Default (claude-opus-5-5)' },
+			{ value: 'default', label: 'Default (claude-opus-5-5)' },
 			{ value: 'claude-old', label: 'claude-old' },
 		] );
 	} );

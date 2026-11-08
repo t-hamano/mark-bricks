@@ -56,6 +56,12 @@ type Models =
 type ModelItem = { value: string; label: string };
 
 /**
+ * The item value of the default model. The select shows its placeholder for
+ * an empty value, so the setting's empty string is not used as is.
+ */
+export const DEFAULT_MODEL_ITEM = 'default';
+
+/**
  * The items of the model list: the default model first, then the models the
  * API key can use. A chosen model that is not listed stays, so the setting
  * is not lost while the list cannot be loaded.
@@ -69,7 +75,7 @@ export function getModelItems( models: AiModel[], chosen: string ) {
 		DEFAULT_MODEL;
 	const items: ModelItem[] = [
 		{
-			value: '',
+			value: DEFAULT_MODEL_ITEM,
 			label: sprintf(
 				/* translators: %s: The name of the default AI model. */
 				__( 'Default (%s)', 'mark-bricks' ),
@@ -270,13 +276,20 @@ export function AiPanel( { settings, onChange }: Props ) {
 					items={ modelItems }
 					value={
 						modelItems.find(
-							( item ) => item.value === settings.model
+							( item ) =>
+								item.value ===
+								( settings.model || DEFAULT_MODEL_ITEM )
 						) ?? null
 					}
 					isItemEqualToValue={ ( a, b ) => a.value === b.value }
 					onValueChange={ ( item ) => {
 						if ( item ) {
-							onChange( { model: item.value ?? '' } );
+							onChange( {
+								model:
+									item.value === DEFAULT_MODEL_ITEM
+										? ''
+										: ( item.value ?? '' ),
+							} );
 						}
 					} }
 					disabled={ ! hasKey }
