@@ -185,6 +185,9 @@ function App() {
 					);
 					pendingCheckImageRequests.delete( message.requestId );
 					break;
+				case 'selectLine':
+					editorRef.current?.selectLine( message.line );
+					break;
 			}
 		}
 
@@ -268,6 +271,9 @@ function App() {
 					/>
 				}
 				platform={ platform }
+				onSelectedLineChange={ ( line ) =>
+					post( { type: 'selectedLine', line } )
+				}
 				onRendered={ ( canvas ) => {
 					post( { type: 'rendered' } );
 					void inspectCodePreviews( canvas ).then( ( report ) =>

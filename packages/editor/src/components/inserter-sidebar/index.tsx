@@ -10,6 +10,7 @@ import {
 	useState,
 	type KeyboardEvent,
 	type RefObject,
+	type UIEvent,
 } from 'react';
 
 /**
@@ -33,6 +34,7 @@ import {
 	InputControl,
 	InputLayout,
 	Stack,
+	Tabs,
 	Text,
 	Tooltip,
 } from '@wordpress/ui';
@@ -40,11 +42,16 @@ import {
 /**
  * Internal dependencies
  */
+import { isMarpFrontMatter } from '../../converter/front-matter';
+import { useFrontMatter } from '../front-matter-editor/context';
 import { store as editorStore } from '../../store';
 import { SIDEBAR_WIDTH, SIDEBAR_TRANSITION } from '../constants';
+import { SlidePatternList } from './slide-pattern-list';
 import './style.scss';
 
 const BLOCKS_PER_ROW = 2;
+
+type Tab = 'blocks' | 'patterns';
 
 function chunk< T >( items: T[], size: number ) {
 	const rows: T[][] = [];
@@ -67,8 +74,12 @@ export function InserterSidebar( { toggleRef }: Props ) {
 	);
 	const [ search, setSearch ] = useState( '' );
 	const [ isScrolled, setIsScrolled ] = useState( false );
+	const [ tab, setTab ] = useState< Tab >( 'blocks' );
 	const searchRef = useRef< HTMLInputElement >( null );
-	const blockListRef = useRef< HTMLDivElement >( null );
+	const { frontMatter } = useFrontMatter();
+	// Slide patterns are offered only for Marp decks.
+	const isMarp = isMarpFrontMatter( frontMatter );
+	const activeTab: Tab = isMarp ? tab : 'blocks';
 	const disableMotion = useReducedMotion();
 	const transition = disableMotion ? undefined : SIDEBAR_TRANSITION;
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
@@ -78,16 +89,14 @@ export function InserterSidebar( { toggleRef }: Props ) {
 		searchRef.current?.focus();
 	}, [] );
 
-	useEffect( () => {
-		const el = blockListRef.current;
-		if ( ! el ) {
-			return;
-		}
-		const update = () => setIsScrolled( el.scrollTop > 0 );
-		update();
-		el.addEventListener( 'scroll', update, { passive: true } );
-		return () => el.removeEventListener( 'scroll', update );
+	const onListScroll = useCallback( ( event: UIEvent< HTMLDivElement > ) => {
+		setIsScrolled( event.currentTarget.scrollTop > 0 );
 	}, [] );
+
+	// Each tab's list starts at its top.
+	useEffect( () => {
+		setIsScrolled( false );
+	}, [ activeTab ] );
 
 	const filtered = useMemo( () => {
 		const q = search.trim().toLowerCase();
@@ -133,6 +142,41 @@ export function InserterSidebar( { toggleRef }: Props ) {
 		[ insertBlock ]
 	);
 
+	const blockList = (
+		<Composite
+			className="inserter-sidebar__block-list"
+			role="listbox"
+			aria-label={ __( 'Blocks', 'mark-bricks' ) }
+			onScroll={ onListScroll }
+			focusLoop
+			focusShift
+			focusWrap
+		>
+			{ rows.map( ( row, rowIndex ) => (
+				<Composite.Row
+					key={ rowIndex }
+					role="presentation"
+					className="inserter-sidebar__block-list-row"
+				>
+					{ row.map( ( item ) => (
+						<Composite.Item
+							key={ item.id }
+							role="option"
+							className="inserter-sidebar__block-list-item"
+							onClick={ () => onSelectItem( item ) }
+							render={
+								<Button variant="minimal" tone="neutral" />
+							}
+						>
+							<BlockIcon icon={ item.icon as never } />
+							<Text variant="body-sm">{ item.title }</Text>
+						</Composite.Item>
+					) ) }
+				</Composite.Row>
+			) ) }
+		</Composite>
+	);
+
 	return (
 		<Stack
 			render={
@@ -175,7 +219,14 @@ export function InserterSidebar( { toggleRef }: Props ) {
 					<InputControl
 						ref={ searchRef }
 						className="inserter-sidebar__search-control"
-						label={ __( 'Search for blocks', 'mark-bricks' ) }
+						label={
+							activeTab === 'patterns'
+								? __(
+										'Search for slide patterns',
+										'mark-bricks'
+									)
+								: __( 'Search for blocks', 'mark-bricks' )
+						}
 						hideLabelFromVision
 						type="search"
 						size="compact"
@@ -215,43 +266,41 @@ export function InserterSidebar( { toggleRef }: Props ) {
 						onClick={ closeInserterSidebar }
 					/>
 				</Stack>
-				<Composite
-					ref={ blockListRef }
-					className="inserter-sidebar__block-list"
-					role="listbox"
-					aria-label={ __( 'Blocks', 'mark-bricks' ) }
-					focusLoop
-					focusShift
-					focusWrap
-				>
-					{ rows.map( ( row, rowIndex ) => (
-						<Composite.Row
-							key={ rowIndex }
-							role="presentation"
-							className="inserter-sidebar__block-list-row"
+				{ isMarp ? (
+					<Tabs.Root
+						className="inserter-sidebar__tabs"
+						value={ activeTab }
+						onValueChange={ ( value ) => setTab( value as Tab ) }
+					>
+						<Tabs.List className="inserter-sidebar__tabs-list">
+							<Tabs.Tab value="blocks">
+								{ __( 'Blocks', 'mark-bricks' ) }
+							</Tabs.Tab>
+							<Tabs.Tab value="patterns">
+								{ __( 'Slide patterns', 'mark-bricks' ) }
+							</Tabs.Tab>
+						</Tabs.List>
+						<Tabs.Panel
+							className="inserter-sidebar__tab-panel"
+							value="blocks"
+							tabIndex={ -1 }
 						>
-							{ row.map( ( item ) => (
-								<Composite.Item
-									key={ item.id }
-									role="option"
-									className="inserter-sidebar__block-list-item"
-									onClick={ () => onSelectItem( item ) }
-									render={
-										<Button
-											variant="minimal"
-											tone="neutral"
-										/>
-									}
-								>
-									<BlockIcon icon={ item.icon as never } />
-									<Text variant="body-sm">
-										{ item.title }
-									</Text>
-								</Composite.Item>
-							) ) }
-						</Composite.Row>
-					) ) }
-				</Composite>
+							{ blockList }
+						</Tabs.Panel>
+						<Tabs.Panel
+							className="inserter-sidebar__tab-panel"
+							value="patterns"
+							tabIndex={ -1 }
+						>
+							<SlidePatternList
+								search={ search }
+								onScroll={ onListScroll }
+							/>
+						</Tabs.Panel>
+					</Tabs.Root>
+				) : (
+					blockList
+				) }
 			</Stack>
 		</Stack>
 	);

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:03:57.689Z\n"
-"PO-Revision-Date: 2026-11-08T13:04:23.909Z\n"
+"POT-Creation-Date: 2026-11-08T13:12:57.475Z\n"
+"PO-Revision-Date: 2026-11-08T13:12:59.839Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -87,7 +87,8 @@ msgstr "Contexto"
 msgid "Block Inserter"
 msgstr "Insertador de bloques"
 
-#: src/components/inserter-sidebar/index.tsx:222
+#: src/components/inserter-sidebar/index.tsx:149
+#: src/components/inserter-sidebar/index.tsx:277
 msgid "Blocks"
 msgstr "Bloques"
 
@@ -130,7 +131,7 @@ msgid "Clear formatting"
 msgstr "Borrar formato"
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:210
+#: src/components/inserter-sidebar/index.tsx:261
 #: src/components/ai-sidebar/sidebar.tsx:106
 msgid "Close"
 msgstr "Cerrar"
@@ -464,7 +465,7 @@ msgstr "Elimina un enlace."
 msgid "Reset"
 msgstr "Restablecer"
 
-#: src/components/inserter-sidebar/index.tsx:195
+#: src/components/inserter-sidebar/index.tsx:246
 msgid "Reset search"
 msgstr "Restablecer la búsqueda"
 
@@ -472,13 +473,17 @@ msgstr "Restablecer la búsqueda"
 msgid "Row count"
 msgstr "Núm. filas"
 
-#: src/components/inserter-sidebar/index.tsx:182
+#: src/components/inserter-sidebar/index.tsx:233
 msgid "Search"
 msgstr "Buscar"
 
-#: src/components/inserter-sidebar/index.tsx:178
+#: src/components/inserter-sidebar/index.tsx:228
 msgid "Search for blocks"
 msgstr "Buscar bloques"
+
+#: src/components/inserter-sidebar/index.tsx:224
+msgid "Search for slide patterns"
+msgstr "Buscar patrones de diapositivas"
 
 #: src/marp-patterns/patterns/image-and-text.ts:25
 msgctxt "slide pattern"
@@ -532,6 +537,11 @@ msgstr "Tamaño"
 #: src/block-library/separator/use-marp-title.ts:39
 msgid "Slide Separator"
 msgstr "Separador de diapositivas"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:92
+#: src/components/inserter-sidebar/index.tsx:280
+msgid "Slide patterns"
+msgstr "Patrones de diapositivas"
 
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"

@@ -14,7 +14,7 @@ import type {
 	WebviewMessage,
 } from '../shared/messages';
 import { getImageRoots, resolveImageUri } from './images';
-import { MarpPreview } from './marp-preview';
+import { MarpPreview, isSourceLine } from './marp-preview';
 import { CONFIGURATION_SECTION, readSettings, writeSetting } from './settings';
 import { getHtmlForWebview } from './webview-html';
 
@@ -153,7 +153,12 @@ class EditorSession {
 			),
 			vscode.workspace.onDidChangeConfiguration( ( event ) =>
 				this.onConfigurationChanged( event )
-			)
+			),
+			MarpPreview.onLineClick( ( uri, line ) => {
+				if ( this.isReady && uri === this.document.uri.toString() ) {
+					this.post( { type: 'selectLine', line } );
+				}
+			} )
 		);
 
 		panel.onDidDispose( () => this.dispose() );
@@ -194,6 +199,15 @@ class EditorSession {
 					'workbench.action.openSettings',
 					`@ext:${ this.extensionId }`
 				);
+				break;
+
+			case 'selectedLine':
+				if ( message.line === null || isSourceLine( message.line ) ) {
+					MarpPreview.setSelectedLine(
+						this.document.uri,
+						message.line
+					);
+				}
 				break;
 
 			case 'openMarpPreview':
@@ -455,6 +469,7 @@ class EditorSession {
 	private dispose(): void {
 		this.isDisposed = true;
 		this.onRenderedChange( null );
+		MarpPreview.setSelectedLine( this.document.uri, null );
 		const hasPendingWrite = this.pendingText !== null;
 		this.cancelChangeTimer();
 		if ( hasPendingWrite ) {

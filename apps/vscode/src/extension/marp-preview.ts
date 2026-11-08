@@ -19,6 +19,20 @@ import { getHtmlForPreview } from './preview-html';
 // How long edits are collected before the slides are rendered again.
 const RENDER_DELAY_MS = 100;
 
+// The line of the block selected in each document's visual editor, by the
+// document's URI, for its preview to move to that slide.
+const selectedLines = new Map< string, number >();
+
+// Called when a slide is clicked in a preview, with the URI of its document
+// and the slide's first line.
+type LineClickListener = ( uri: string, line: number ) => void;
+const lineClickListeners = new Set< LineClickListener >();
+
+// Whether a webview sent a line of a document, counted from 0.
+export function isSourceLine( line: unknown ): line is number {
+	return Number.isInteger( line ) && ( line as number ) >= 0;
+}
+
 let marpPreview: Promise<
 	typeof import( '@mark-bricks/marp-preview/render' )
 > | null = null;
@@ -107,6 +121,29 @@ export class MarpPreview {
 	// open or has not rendered yet.
 	public static getSlideCount( uri: vscode.Uri ): number | null {
 		return MarpPreview.sessions.get( uri.toString() )?.slideCount ?? null;
+	}
+
+	// Keeps the document's preview on the slide of the block selected in its
+	// editor, or `null` when none is selected.
+	public static setSelectedLine(
+		uri: vscode.Uri,
+		line: number | null
+	): void {
+		const key = uri.toString();
+		if ( line === null ) {
+			selectedLines.delete( key );
+		} else {
+			selectedLines.set( key, line );
+		}
+		MarpPreview.sessions.get( key )?.postSelectedLine();
+	}
+
+	// Calls the listener whenever a slide is clicked in a preview.
+	public static onLineClick(
+		listener: LineClickListener
+	): vscode.Disposable {
+		lineClickListeners.add( listener );
+		return { dispose: () => lineClickListeners.delete( listener ) };
 	}
 
 	// Reveals the document's preview, returning whether it was open.
@@ -205,6 +242,16 @@ class PreviewSession {
 		this.panel.reveal( undefined, true );
 	}
 
+	// Sends the line of the block selected in the document's editor.
+	public postSelectedLine(): void {
+		if ( this.isReady ) {
+			this.post( {
+				type: 'selectedLine',
+				line: selectedLines.get( this.document.uri.toString() ) ?? null,
+			} );
+		}
+	}
+
 	// Handles a message from the webview.
 	private onWebviewMessage( message: PreviewWebviewMessage ): void {
 		switch ( message.type ) {
@@ -215,10 +262,19 @@ class PreviewSession {
 					uri: this.document.uri.toString(),
 				} );
 				void this.render();
+				this.postSelectedLine();
 				break;
 
 			case 'rendered':
 				this.slideCount = message.slideCount;
+				break;
+
+			case 'lineClick':
+				if ( isSourceLine( message.line ) ) {
+					for ( const listener of lineClickListeners ) {
+						listener( this.document.uri.toString(), message.line );
+					}
+				}
 				break;
 		}
 	}
