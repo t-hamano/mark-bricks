@@ -2,4 +2,23 @@
 	height: 3px;
 	background-color: var(--wpds-color-stroke-surface-neutral);
 	border: 0;
+
+	// A Marp slide break: the label sits between two rules.
+	&.is-slide-separator {
+		display: flex;
+		align-items: center;
+		gap: 0.75em;
+		height: auto;
+		background-color: transparent;
+		color: var(--wpds-color-foreground-content-neutral-weak);
+		font-size: 0.85em;
+
+		&::before,
+		&::after {
+			content: "";
+			flex: 1;
+			height: 3px;
+			background-color: var(--wpds-color-stroke-surface-neutral);
+		}
+	}
 }

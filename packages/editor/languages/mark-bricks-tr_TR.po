@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:12:57.475Z\n"
-"PO-Revision-Date: 2026-11-08T13:13:02.905Z\n"
+"POT-Creation-Date: 2026-11-08T13:18:19.184Z\n"
+"PO-Revision-Date: 2026-11-08T13:18:25.329Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -535,6 +535,7 @@ msgid "Size"
 msgstr "Boyut"
 
 #: src/block-library/separator/use-marp-title.ts:39
+#: src/block-library/separator/edit.tsx:24
 msgid "Slide Separator"
 msgstr "Slayt ayırıcı"
 
