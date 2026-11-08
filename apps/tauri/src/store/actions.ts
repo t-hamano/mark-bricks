@@ -28,6 +28,12 @@ export const actions = {
 	setPendingCloseId( id: string | null ) {
 		return { type: 'SET_PENDING_CLOSE_ID' as const, id };
 	},
+	addReloadPrompt( documentId: string ) {
+		return { type: 'ADD_RELOAD_PROMPT' as const, documentId };
+	},
+	removeReloadPrompt( documentId: string ) {
+		return { type: 'REMOVE_RELOAD_PROMPT' as const, documentId };
+	},
 };
 
 export type Action = ReturnType< ( typeof actions )[ keyof typeof actions ] >;

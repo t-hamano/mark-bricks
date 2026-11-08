@@ -20,4 +20,5 @@ export const DEFAULT_STATE: State = {
 	nextTabSeq: 2,
 	activeTabId: INITIAL_TAB.id,
 	pendingCloseId: null,
+	reloadPromptIds: [],
 };
