@@ -81,5 +81,17 @@
 }
 
 .inserter-sidebar__pattern-list-item {
-	justify-content: flex-start;
+	flex-direction: column;
+	align-items: stretch;
+	gap: var(--wpds-dimension-gap-xs);
+	height: auto;
+	padding: var(--wpds-dimension-padding-xs);
+	text-align: start;
+}
+
+.inserter-sidebar__pattern-preview {
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	border: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	pointer-events: none;
 }
