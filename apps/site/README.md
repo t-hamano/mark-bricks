@@ -22,7 +22,9 @@ The site is at `/`, and Storybook is at `/storybook/`. Use `pnpm build:site` for
 
 ## Publishing
 
-Set GitHub Pages to use **GitHub Actions**. Relevant pushes to `main` deploy the site and Storybook through `.github/workflows/deploy-site.yml`. Pull requests only validate the build.
+Set GitHub Pages to deploy from the `gh-pages` branch (root). Relevant pushes to `main` publish the site and Storybook to that branch through `.github/workflows/deploy-site.yml`. Pull requests only validate the build.
+
+Pull requests that change the editor or Storybook also get a Storybook preview at `/pr-preview/pr-<number>/` through `.github/workflows/storybook-preview.yml`. It is linked from a PR comment and removed when the PR closes. PRs from forks and Dependabot get no preview.
 
 Desktop download links come from the root `README.md`.
 

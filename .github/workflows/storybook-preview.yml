@@ -1,0 +1,149 @@
+name: Storybook Preview
+
+# Publishes each PR's Storybook to GitHub Pages under /pr-preview/pr-<number>/
+# and links it from a PR comment. The preview is removed when the PR closes.
+on:
+    pull_request:
+        types: [opened, synchronize, reopened, closed]
+        paths:
+            - 'packages/editor/**'
+            - 'packages/fixtures/**'
+            - 'packages/i18n-tools/**'
+            - 'storybook/**'
+            - 'package.json'
+            - 'pnpm-lock.yaml'
+            - 'pnpm-workspace.yaml'
+            - 'tsconfig.base.json'
+            - '.nvmrc'
+            - '.github/scripts/publish-gh-pages.mjs'
+            - '.github/workflows/storybook-preview.yml'
+
+# Only the latest commit of a PR needs a preview.
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+    cancel-in-progress: true
+
+permissions: {}
+
+env:
+    PR_NUMBER: ${{ github.event.pull_request.number }}
+    PREVIEW_DIR: pr-preview/pr-${{ github.event.pull_request.number }}
+    PREVIEW_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-preview/pr-${{ github.event.pull_request.number }}/
+    COMMENT_MARKER: '<!-- storybook-preview -->'
+
+jobs:
+    build:
+        name: Build
+        # Publishing needs a write token, which PRs from forks and Dependabot
+        # do not get. Previews also stay limited to trusted authors, since
+        # they are served from the project's own site.
+        if: >-
+            github.event.action != 'closed' &&
+            github.event.pull_request.head.repo.full_name == github.repository &&
+            github.event.pull_request.user.login != 'dependabot[bot]'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  persist-credentials: false
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+
+            - name: Setup Node.js
+              uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+              with:
+                  node-version-file: .nvmrc
+                  cache: pnpm
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Build Storybook
+              run: pnpm build-storybook
+
+            - name: Upload Storybook
+              uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+              with:
+                  name: storybook
+                  path: storybook/storybook-static
+                  retention-days: 1
+
+    publish:
+        name: Publish
+        needs: build
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  persist-credentials: false
+                  sparse-checkout: .github/scripts
+
+            - name: Download Storybook
+              uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+              with:
+                  name: storybook
+                  path: ${{ runner.temp }}/storybook
+
+            - name: Publish to GitHub Pages
+              run: node .github/scripts/publish-gh-pages.mjs --target "$PREVIEW_DIR" --source "$RUNNER_TEMP/storybook"
+
+            - name: Comment the preview link
+              run: |
+                  body="$COMMENT_MARKER
+                  [![Preview: Storybook](https://img.shields.io/badge/Preview-Storybook-ff4785)]($PREVIEW_URL)
+
+                  Built from $HEAD_SHA. GitHub Pages may take a minute to update."
+                  id=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" --paginate \
+                      --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | startswith(env.COMMENT_MARKER))) | .id' | head -n1)
+                  if [ -n "$id" ]; then
+                      gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -f body="$body" > /dev/null
+                  else
+                      gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" -f body="$body" > /dev/null
+                  fi
+
+    remove:
+        name: Remove
+        if: >-
+            github.event.action == 'closed' &&
+            github.event.pull_request.head.repo.full_name == github.repository &&
+            github.event.pull_request.user.login != 'dependabot[bot]'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        steps:
+            # The PR's merge ref is gone once it closes.
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  ref: ${{ github.event.pull_request.base.ref }}
+                  persist-credentials: false
+                  sparse-checkout: .github/scripts
+
+            - name: Remove from GitHub Pages
+              run: node .github/scripts/publish-gh-pages.mjs --target "$PREVIEW_DIR" --remove
+
+            - name: Update the preview comment
+              run: |
+                  body="$COMMENT_MARKER
+                  The Storybook preview was removed because this PR was closed."
+                  id=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" --paginate \
+                      --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | startswith(env.COMMENT_MARKER))) | .id' | head -n1)
+                  if [ -n "$id" ]; then
+                      gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -f body="$body" > /dev/null
+                  fi
