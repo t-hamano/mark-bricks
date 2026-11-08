@@ -19,5 +19,6 @@ export const settings: Partial< BlockConfiguration > = {
 			type: 'object',
 		},
 	},
+	template: [ [ 'core/paragraph' ] ],
 	edit: Edit,
 };
