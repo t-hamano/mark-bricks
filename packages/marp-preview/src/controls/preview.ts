@@ -8,7 +8,7 @@ import {
 	getSlideSourceLine,
 	getSourceLine,
 } from '../browser/source-lines';
-import { createPreviewControls } from './controls';
+import { createPreviewControls, type PlacementAction } from './controls';
 import { applyLocale } from './i18n';
 
 const HIGHLIGHT_CLASS = 'is-source-highlighted';
@@ -37,6 +37,10 @@ export type SlidePreviewOptions = {
 	// first element, or of the slide when it has none, and only moves to
 	// the slide of a revealed line.
 	sourceSyncLevel?: 'element' | 'slide';
+	// Adds a button to the toolbar, outside the slide mode, that moves the
+	// preview from where the host shows it, next to its editor or in a
+	// window, to the other place.
+	placementAction?: PlacementAction;
 };
 
 export type SlidePreview = {
@@ -68,6 +72,7 @@ export function createSlidePreview(
 		onRender,
 		onSourceLineClick,
 		sourceSyncLevel = 'element',
+		placementAction,
 	} = options;
 	if ( locale ) {
 		applyLocale( locale );
@@ -85,7 +90,8 @@ export function createSlidePreview(
 			// Space do not press the button again.
 			slideMode.focusCurrentSlide();
 		},
-		( index ) => slideMode.goToSlide( index )
+		( index ) => slideMode.goToSlide( index ),
+		placementAction
 	);
 	const slideMode = createSlideMode( view, controls.setSlide );
 	const keys = toggleKeys.map( ( key ) => key.toLowerCase() );

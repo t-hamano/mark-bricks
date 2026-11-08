@@ -24,6 +24,10 @@
 	opacity: 1;
 }
 
+.preview-placement {
+	margin-inline-end: var(--wpds-dimension-gap-sm);
+}
+
 .preview-pager {
 	display: flex;
 	align-items: center;
