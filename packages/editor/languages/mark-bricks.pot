@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:32:09.685Z\n"
+"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -125,7 +125,7 @@ msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:210
-#: src/components/ai-sidebar/index.tsx:90
+#: src/components/ai-sidebar/sidebar.tsx:106
 msgid "Close"
 msgstr ""
 
@@ -334,13 +334,69 @@ msgid "Close AI Assistant"
 msgstr ""
 
 #: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/index.tsx:55
-#: src/components/ai-sidebar/index.tsx:86
+#: src/components/ai-sidebar/sidebar.tsx:60
+#: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
 msgstr ""
 
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
+msgstr ""
+
+#: src/components/ai-sidebar/sidebar.tsx:96
+msgid "New conversation"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:46
+msgid "Waiting for the answer…"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:57
+msgid "Edited the document."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:62
+msgid ""
+"The edit was not applied because the selection changed, for example by "
+"switching editors."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:70
+msgid "Stopped."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:77
+msgid "The answer could not be loaded."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:180
+msgid "Set an API key to use the AI Assistant."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:190
+msgid "Open settings"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:198
+msgid ""
+"Ask the AI Assistant to write or edit. Your selection, or the line the "
+"cursor is on in the code editor, is sent with your message."
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:217
+msgid "Message"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:219
+msgid "Ask the AI Assistant"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:228
+msgid "Stop"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:237
+msgid "Send"
 msgstr ""
 
 #: src/block-library/table/edit.tsx:231
@@ -549,4 +605,95 @@ msgstr ""
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
+msgstr ""
+
+#: src/marp-patterns/patterns/title.ts:13
+msgctxt "slide pattern"
+msgid "Title"
+msgstr ""
+
+#: src/marp-patterns/patterns/title.ts:20
+msgctxt "slide pattern"
+msgid "Presentation title"
+msgstr ""
+
+#: src/marp-patterns/patterns/title.ts:21
+msgctxt "slide pattern"
+msgid "Your name · Date"
+msgstr ""
+
+#: src/marp-patterns/patterns/section.ts:13
+msgctxt "slide pattern"
+msgid "Section divider"
+msgstr ""
+
+#: src/marp-patterns/patterns/section.ts:20
+msgctxt "slide pattern"
+msgid "Section title"
+msgstr ""
+
+#: src/marp-patterns/patterns/section.ts:21
+msgctxt "slide pattern"
+msgid "A short line about this section"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:14
+msgctxt "slide pattern"
+msgid "Image and text"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:23
+msgctxt "slide pattern"
+msgid "Slide title"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:24
+msgctxt "slide pattern"
+msgid "First point"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:25
+msgctxt "slide pattern"
+msgid "Second point"
+msgstr ""
+
+#: src/marp-patterns/patterns/image-and-text.ts:26
+msgctxt "slide pattern"
+msgid "Third point"
+msgstr ""
+
+#: src/marp-patterns/patterns/closing.ts:13
+msgctxt "slide pattern"
+msgid "Closing"
+msgstr ""
+
+#: src/marp-patterns/patterns/closing.ts:20
+msgctxt "slide pattern"
+msgid "Thank you"
+msgstr ""
+
+#: src/marp-patterns/patterns/closing.ts:21
+msgctxt "slide pattern"
+msgid "Questions and contact details"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:13
+#: src/marp-patterns/patterns/agenda.ts:20
+msgctxt "slide pattern"
+msgid "Agenda"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:21
+msgctxt "slide pattern"
+msgid "Background"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:22
+msgctxt "slide pattern"
+msgid "Proposal"
+msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:23
+msgctxt "slide pattern"
+msgid "Next steps"
 msgstr ""

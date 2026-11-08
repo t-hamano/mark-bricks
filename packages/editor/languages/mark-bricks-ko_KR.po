@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:32:09.685Z\n"
-"PO-Revision-Date: 2026-11-08T12:32:15.529Z\n"
+"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
+"PO-Revision-Date: 2026-11-08T12:35:54.254Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,11 +33,22 @@ msgstr "(다중 H1 헤딩은 추천하지 않습니다)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/marp-patterns/patterns/section.ts:21
+msgctxt "slide pattern"
+msgid "A short line about this section"
+msgstr "이 섹션에 대한 짧은 설명"
+
 #: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/index.tsx:55
-#: src/components/ai-sidebar/index.tsx:86
+#: src/components/ai-sidebar/sidebar.tsx:60
+#: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
-msgstr ""
+msgstr "AI 어시스턴트"
+
+#: src/marp-patterns/patterns/agenda.ts:13
+#: src/marp-patterns/patterns/agenda.ts:20
+msgctxt "slide pattern"
+msgid "Agenda"
+msgstr "안건"
 
 #: style.css
 #. Author of the generic
@@ -54,6 +65,23 @@ msgstr "대체 텍스트"
 #: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "적용"
+
+#: src/components/ai-sidebar/chat.tsx:219
+msgid "Ask the AI Assistant"
+msgstr "AI 어시스턴트에게 질문"
+
+#: src/components/ai-sidebar/chat.tsx:198
+msgid ""
+"Ask the AI Assistant to write or edit. Your selection, or the line the "
+"cursor is on in the code editor, is sent with your message."
+msgstr ""
+"AI 어시스턴트에게 작성이나 편집을 요청하세요. 선택 영역 또는 코드 편집기에서 "
+"커서가 있는 줄이 메시지와 함께 전송됩니다."
+
+#: src/marp-patterns/patterns/agenda.ts:21
+msgctxt "slide pattern"
+msgid "Background"
+msgstr "배경"
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -103,17 +131,22 @@ msgstr "서식 지우기"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:210
-#: src/components/ai-sidebar/index.tsx:90
+#: src/components/ai-sidebar/sidebar.tsx:106
 msgid "Close"
 msgstr "닫기"
 
 #: src/components/editor-header/index.tsx:194
 msgid "Close AI Assistant"
-msgstr ""
+msgstr "AI 어시스턴트 닫기"
 
 #: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
 msgstr "블록 삽입기 닫기"
+
+#: src/marp-patterns/patterns/closing.ts:13
+msgctxt "slide pattern"
+msgid "Closing"
+msgstr "마무리"
 
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
@@ -165,6 +198,10 @@ msgstr "이미지 편집"
 msgid "Edit table"
 msgstr "테이블 편집"
 
+#: src/components/ai-sidebar/chat.tsx:57
+msgid "Edited the document."
+msgstr "문서를 편집했습니다."
+
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
 msgid "Enter alt text…"
@@ -178,6 +215,11 @@ msgstr "제목 입력…"
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "이미지를 불러오지 못했습니다."
+
+#: src/marp-patterns/patterns/image-and-text.ts:24
+msgctxt "slide pattern"
+msgid "First point"
+msgstr "첫 번째 요점"
 
 #: src/components/front-matter-editor/index.tsx:293
 msgid "Footer"
@@ -225,6 +267,11 @@ msgstr "문서 개요 숨기기"
 #: src/block-library/image/edit.tsx:76
 msgid "Image"
 msgstr "이미지"
+
+#: src/marp-patterns/patterns/image-and-text.ts:14
+msgctxt "slide pattern"
+msgid "Image and text"
+msgstr "이미지와 텍스트"
 
 #: src/block-library/quote/edit.tsx:70
 msgid "Important"
@@ -318,6 +365,10 @@ msgstr ""
 "bg, w:200px, sepia 같은 Marp 키워드로 레이아웃과 크기를 지정합니다. 나머지 단"
 "어는 대체 텍스트가 되며, 배경 이미지에서는 캡션이 됩니다."
 
+#: src/components/ai-sidebar/chat.tsx:217
+msgid "Message"
+msgstr "메시지"
+
 #: src/components/front-matter-editor/index.tsx:198
 msgid "Minimal and modern, with centered content."
 msgstr "콘텐츠가 가운데 정렬된 미니멀하고 모던한 테마."
@@ -328,6 +379,15 @@ msgid ""
 "incorrect heading levels."
 msgstr ""
 "문서의 구조를 탐색하고 비어 있거나 잘못된 제목 수준과 같은 문제를 해결하세요."
+
+#: src/components/ai-sidebar/sidebar.tsx:96
+msgid "New conversation"
+msgstr "새 대화"
+
+#: src/marp-patterns/patterns/agenda.ts:23
+msgctxt "slide pattern"
+msgid "Next steps"
+msgstr "다음 단계"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
@@ -340,6 +400,10 @@ msgstr "참고"
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "기본적으로 열기"
+
+#: src/components/ai-sidebar/chat.tsx:190
+msgid "Open settings"
+msgstr "설정 열기"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
@@ -366,6 +430,21 @@ msgstr "URL 붙여넣기 또는 입력"
 #: src/block-library/image/edit.tsx:200
 msgid "Paste or type URL or file path"
 msgstr "URL 또는 파일 경로 붙여넣기 또는 입력"
+
+#: src/marp-patterns/patterns/title.ts:20
+msgctxt "slide pattern"
+msgid "Presentation title"
+msgstr "프레젠테이션 제목"
+
+#: src/marp-patterns/patterns/agenda.ts:22
+msgctxt "slide pattern"
+msgid "Proposal"
+msgstr "제안"
+
+#: src/marp-patterns/patterns/closing.ts:21
+msgctxt "slide pattern"
+msgid "Questions and contact details"
+msgstr "질문 및 연락처"
 
 #: src/components/editor-header/index.tsx:137
 msgid "Redo"
@@ -399,9 +478,32 @@ msgstr "검색"
 msgid "Search for blocks"
 msgstr "블록 검색"
 
+#: src/marp-patterns/patterns/image-and-text.ts:25
+msgctxt "slide pattern"
+msgid "Second point"
+msgstr "두 번째 요점"
+
+#: src/marp-patterns/patterns/section.ts:13
+msgctxt "slide pattern"
+msgid "Section divider"
+msgstr "섹션 구분"
+
+#: src/marp-patterns/patterns/section.ts:20
+msgctxt "slide pattern"
+msgid "Section title"
+msgstr "섹션 제목"
+
 #: src/components/front-matter-editor/index.tsx:316
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "다른 설정은 <a>Marp 문서</a>를 참고하세요."
+
+#: src/components/ai-sidebar/chat.tsx:237
+msgid "Send"
+msgstr "보내기"
+
+#: src/components/ai-sidebar/chat.tsx:180
+msgid "Set an API key to use the AI Assistant."
+msgstr "AI 어시스턴트를 사용하려면 API 키를 설정하세요."
 
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
@@ -424,6 +526,19 @@ msgstr "GitHub Markdown 스타일 기반의 깔끔한 테마."
 #: src/components/front-matter-editor/index.tsx:255
 msgid "Size"
 msgstr "크기"
+
+#: src/marp-patterns/patterns/image-and-text.ts:23
+msgctxt "slide pattern"
+msgid "Slide title"
+msgstr "슬라이드 제목"
+
+#: src/components/ai-sidebar/chat.tsx:228
+msgid "Stop"
+msgstr "중지"
+
+#: src/components/ai-sidebar/chat.tsx:70
+msgid "Stopped."
+msgstr "중지했습니다."
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -449,6 +564,15 @@ msgstr "각 슬라이드 하단에 표시되는 텍스트."
 msgid "Text shown at the top of each slide."
 msgstr "각 슬라이드 상단에 표시되는 텍스트."
 
+#: src/marp-patterns/patterns/closing.ts:20
+msgctxt "slide pattern"
+msgid "Thank you"
+msgstr "감사합니다"
+
+#: src/components/ai-sidebar/chat.tsx:77
+msgid "The answer could not be loaded."
+msgstr "답변을 불러오지 못했습니다."
+
 #: src/components/front-matter-editor/index.tsx:278
 msgid "The aspect ratio of the slides."
 msgstr "슬라이드의 가로세로 비율."
@@ -456,6 +580,12 @@ msgstr "슬라이드의 가로세로 비율."
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "다이어그램을 렌더링할 수 없습니다."
+
+#: src/components/ai-sidebar/chat.tsx:62
+msgid ""
+"The edit was not applied because the selection changed, for example by "
+"switching editors."
+msgstr "편집기 전환 등으로 선택 영역이 바뀌어 편집이 적용되지 않았습니다."
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
@@ -465,6 +595,11 @@ msgstr "수식을 렌더링할 수 없습니다."
 msgid "Theme"
 msgstr "테마"
 
+#: src/marp-patterns/patterns/image-and-text.ts:26
+msgctxt "slide pattern"
+msgid "Third point"
+msgstr "세 번째 요점"
+
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "팁"
@@ -472,6 +607,11 @@ msgstr "팁"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/block-library/image/edit.tsx:253
+msgid "Title"
+msgstr "제목"
+
+#: src/marp-patterns/patterns/title.ts:13
+msgctxt "slide pattern"
 msgid "Title"
 msgstr "제목"
 
@@ -526,6 +666,10 @@ msgstr "기기에서 이미지를 업로드하거나 URL로 삽입하세요."
 msgid "Visual markdown block editor."
 msgstr "비주얼 Markdown 블록 편집기."
 
+#: src/components/ai-sidebar/chat.tsx:46
+msgid "Waiting for the answer…"
+msgstr "답변을 기다리는 중…"
+
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr "경고"
@@ -553,3 +697,8 @@ msgstr "요약 쓰기..."
 #: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML 프런트 매터"
+
+#: src/marp-patterns/patterns/title.ts:21
+msgctxt "slide pattern"
+msgid "Your name · Date"
+msgstr "이름 · 날짜"

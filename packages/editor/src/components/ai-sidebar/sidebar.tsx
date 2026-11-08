@@ -10,13 +10,16 @@ import { __unstableMotion as motion } from '@wordpress/components';
 import { useReducedMotion, useViewportMatch } from '@wordpress/compose';
 import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { closeSmall } from '@wordpress/icons';
+import { closeSmall, plus } from '@wordpress/icons';
 import { IconButton, Stack, Text, Tooltip } from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
+import type { AiChat as AiChatState } from '../../ai/use-ai-chat';
+import { usePlatform } from '../../platform';
 import { store as editorStore } from '../../store';
+import { AiChat } from './chat';
 import { SIDEBAR_TRANSITION, SIDEBAR_WIDTH } from '../constants';
 import './style.scss';
 
@@ -25,9 +28,11 @@ const AI_SIDEBAR_WIDTH = SIDEBAR_WIDTH + 60;
 
 type Props = {
 	toggleRef: RefObject< HTMLButtonElement | null >;
+	chat: AiChatState;
 };
 
-export function AiSidebar( { toggleRef }: Props ) {
+export function AiSidebar( { toggleRef, chat }: Props ) {
+	const { ai } = usePlatform();
 	const { setIsAiSidebarOpened } = useDispatch( editorStore );
 	const disableMotion = useReducedMotion();
 	const transition = disableMotion ? undefined : SIDEBAR_TRANSITION;
@@ -85,17 +90,31 @@ export function AiSidebar( { toggleRef }: Props ) {
 					<Text variant="heading-md" render={ <h2 /> }>
 						{ __( 'AI Assistant', 'mark-bricks' ) }
 					</Text>
-					<IconButton
-						icon={ closeSmall }
-						label={ __( 'Close', 'mark-bricks' ) }
-						variant="minimal"
-						tone="neutral"
-						size="compact"
-						positioner={ <Tooltip.Positioner side="bottom" /> }
-						onClick={ closeAiSidebar }
-					/>
+					<Stack direction="row" align="center">
+						<IconButton
+							icon={ plus }
+							label={ __( 'New conversation', 'mark-bricks' ) }
+							variant="minimal"
+							tone="neutral"
+							size="compact"
+							positioner={ <Tooltip.Positioner side="bottom" /> }
+							onClick={ chat.reset }
+							disabled={ chat.conversation.messages.length === 0 }
+						/>
+						<IconButton
+							icon={ closeSmall }
+							label={ __( 'Close', 'mark-bricks' ) }
+							variant="minimal"
+							tone="neutral"
+							size="compact"
+							positioner={ <Tooltip.Positioner side="bottom" /> }
+							onClick={ closeAiSidebar }
+						/>
+					</Stack>
 				</Stack>
-				<div className="ai-sidebar__body" />
+				<div className="ai-sidebar__body">
+					{ ai && <AiChat ai={ ai } chat={ chat } /> }
+				</div>
 			</Stack>
 		</motion.aside>
 	);
