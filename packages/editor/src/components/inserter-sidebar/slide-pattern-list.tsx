@@ -17,7 +17,7 @@ import { isUnmodifiedDefaultBlock } from '@wordpress/blocks';
 import { Composite } from '@wordpress/components';
 import { useRegistry } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { Button, Text, Tooltip, VisuallyHidden } from '@wordpress/ui';
+import { Button, Text, Tooltip } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -138,6 +138,7 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 					<Tooltip.Root key={ pattern.name } disabled={ ! preview }>
 						<Composite.Item
 							role="option"
+							aria-label={ title }
 							className="inserter-sidebar__pattern-list-item"
 							onClick={ () => insertPattern( pattern ) }
 							render={
@@ -152,13 +153,10 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 							}
 						>
 							{ preview ? (
-								<>
-									<SlidePatternPreview
-										html={ preview.html }
-										css={ preview.css }
-									/>
-									<VisuallyHidden>{ title }</VisuallyHidden>
-								</>
+								<SlidePatternPreview
+									html={ preview.html }
+									css={ preview.css }
+								/>
 							) : (
 								<Text variant="body-sm">{ title }</Text>
 							) }
