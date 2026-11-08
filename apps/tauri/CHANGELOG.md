@@ -1,3 +1,33 @@
+# [0.17.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.16.0...tauri-v0.17.0) (2026-11-08)
+
+### Bug Fixes
+
+- **editor:** apply external content that returns to an earlier version ([#235](https://github.com/t-hamano/mark-bricks/issues/235)) ([005b404](https://github.com/t-hamano/mark-bricks/commit/005b404404b89ae4dff532d9b59ffe8c2136fbb9))
+- **editor:** keep inner blocks other than a nested list when editing list items ([#139](https://github.com/t-hamano/mark-bricks/issues/139)) ([261b1fe](https://github.com/t-hamano/mark-bricks/commit/261b1fea18d18f4ca497599a8587de904ebb8f20))
+- **editor:** keep the header toolbar separators light regardless of stylesheet order ([bf402f2](https://github.com/t-hamano/mark-bricks/commit/bf402f2540512ecf06775951b9bb87082da035f9))
+- **editor:** lighten the mobile block toolbar borders and scroll it when it overflows ([2f01865](https://github.com/t-hamano/mark-bricks/commit/2f018657bf3b5778f4c315c9a8229c381015de2b))
+- **editor:** match mobile toolbar separator color to its border ([#233](https://github.com/t-hamano/mark-bricks/issues/233)) ([7142197](https://github.com/t-hamano/mark-bricks/commit/71421971d0a867386578aec76cea13c7cf7cdfa6))
+- **editor:** move inner block templates to block type settings ([#228](https://github.com/t-hamano/mark-bricks/issues/228)) ([b75dfab](https://github.com/t-hamano/mark-bricks/commit/b75dfab25e8c1ed6e219d251b3183fe5d266af21))
+- **editor:** scroll the header block toolbar instead of squeezing the header actions ([fea8a6e](https://github.com/t-hamano/mark-bricks/commit/fea8a6e249092dece40005efe338c0db39aca231))
+- **editor:** stop the block mover from adding a scrollbar to the mobile block toolbar ([97d7a45](https://github.com/t-hamano/mark-bricks/commit/97d7a45b9f188337001493472afb102d9cbb37bc))
+- **repo:** let the keyboard reach the current slide in the slide preview ([99f34c7](https://github.com/t-hamano/mark-bricks/commit/99f34c7c6eb8498f5c9fcf1a6648cb9318f72e79))
+- **repo:** translate the slide names that screen readers announce ([ebcbf25](https://github.com/t-hamano/mark-bricks/commit/ebcbf254b592817e5ff9c91cdac4419824ccc631))
+- **repo:** word the slide preview's controls the same in both apps ([#180](https://github.com/t-hamano/mark-bricks/issues/180)) ([beadc87](https://github.com/t-hamano/mark-bricks/commit/beadc8760127c0fe1e560cbc32ccce5c14a2db33))
+- **tauri:** update rustls to address security advisories ([#236](https://github.com/t-hamano/mark-bricks/issues/236)) ([d1748aa](https://github.com/t-hamano/mark-bricks/commit/d1748aab426df1d693672224d93c3bf6cef1ba46))
+
+### Features
+
+- **editor:** explain marp image keywords in the image alt text field ([#165](https://github.com/t-hamano/mark-bricks/issues/165)) ([e58629f](https://github.com/t-hamano/mark-bricks/commit/e58629f8dc591f79bf5372b350499a2635e13f9a))
+- **editor:** hide the empty text of a list item that opens with a block ([#231](https://github.com/t-hamano/mark-bricks/issues/231)) ([bad278b](https://github.com/t-hamano/mark-bricks/commit/bad278b42332acfb12f8efe3b3f3a1447a9bca39))
+- **editor:** merge list item text with an inner paragraph on delete and backspace ([#232](https://github.com/t-hamano/mark-bricks/issues/232)) ([5bc8ea8](https://github.com/t-hamano/mark-bricks/commit/5bc8ea89a0078e42a8bc5f1c49d2537cbb975ea2))
+- **editor:** share the marp check and show the marp mode badge in the editor header ([#167](https://github.com/t-hamano/mark-bricks/issues/167)) ([86d6529](https://github.com/t-hamano/mark-bricks/commit/86d6529b8ef1301321d8e050e0b69e6538e4b519))
+- **repo:** add an export entry that renders marp decks into standalone html ([#182](https://github.com/t-hamano/mark-bricks/issues/182)) ([81956c5](https://github.com/t-hamano/mark-bricks/commit/81956c53f5ca575791ce6e008730c526cfbf9a4f))
+- **repo:** add the preview's toolbar and slide mode to exported marp html ([#188](https://github.com/t-hamano/mark-bricks/issues/188)) ([4b07d2f](https://github.com/t-hamano/mark-bricks/commit/4b07d2f00fd959b5e9047bf438eac8b0c466a932))
+- **tauri:** ask about files changed on disk in an in-app dialog ([#234](https://github.com/t-hamano/mark-bricks/issues/234)) ([aaea74c](https://github.com/t-hamano/mark-bricks/commit/aaea74ce5ac9d4d279f1e1724b3fa427cf5bb98d))
+- **tauri:** export marp slide decks to html ([#184](https://github.com/t-hamano/mark-bricks/issues/184)) ([d3f955c](https://github.com/t-hamano/mark-bricks/commit/d3f955c9d5984ce2424eb27621dfffc614f7d738))
+- **tauri:** export marp slide decks to pdf ([#186](https://github.com/t-hamano/mark-bricks/issues/186)) ([cf1fbf5](https://github.com/t-hamano/mark-bricks/commit/cf1fbf53afb892add3204bb2bb83bcc992d62cc8))
+- **tauri:** reload open documents when they change on disk ([#203](https://github.com/t-hamano/mark-bricks/issues/203)) ([0ac883b](https://github.com/t-hamano/mark-bricks/commit/0ac883b428b8a00b78d8f99d6700b5532e938ba3))
+
 # [0.16.0](https://github.com/t-hamano/mark-bricks/compare/tauri-v0.15.0...tauri-v0.16.0) (2026-10-01)
 
 ### Bug Fixes
