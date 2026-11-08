@@ -116,6 +116,51 @@ describe( 'AiPanel', () => {
 		expect( commands ).toContain( 'list_ai_models' );
 	} );
 
+	it( 'ignores the models of a replaced API key', async () => {
+		savedKey = 'sk-ant-old';
+		const pending: Array< ( models: unknown ) => void > = [];
+		mockIPC( ( command, args ) => {
+			switch ( command ) {
+				case 'has_ai_api_key':
+					return true;
+				case 'save_ai_api_key':
+					savedKey = ( args as { key: string } ).key;
+					return null;
+				case 'list_ai_models':
+					return new Promise( ( resolve ) =>
+						pending.push( resolve )
+					);
+			}
+		} );
+		await render();
+		await act( async () => {
+			const setValue = Object.getOwnPropertyDescriptor(
+				HTMLInputElement.prototype,
+				'value'
+			)!.set!;
+			setValue.call( input(), 'sk-ant-new' );
+			input().dispatchEvent( new Event( 'input', { bubbles: true } ) );
+		} );
+		await act( async () => {
+			button( 'Save' )!.click();
+		} );
+		expect( pending ).toHaveLength( 2 );
+		await act( async () => {
+			pending[ 1 ]( [] );
+		} );
+		await act( async () => {
+			pending[ 0 ]( MODELS );
+		} );
+		expect( container.textContent ).not.toContain( 'Loading the models' );
+		const combobox = container.querySelector( '[role="combobox"]' );
+		await act( async () => {
+			( combobox as HTMLElement ).click();
+		} );
+		expect( document.body.textContent ).not.toContain(
+			'Claude Sonnet 5.5'
+		);
+	} );
+
 	it( 'deletes the API key', async () => {
 		savedKey = 'sk-ant-key';
 		await render();

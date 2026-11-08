@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
  * WordPress dependencies
@@ -101,15 +101,21 @@ export function AiPanel( { settings, onChange }: Props ) {
 	} );
 	const [ models, setModels ] = useState< Models >( { kind: 'none' } );
 
+	// Counts the model requests, so that the answer to a request made for a
+	// key that was since replaced or deleted is ignored.
+	const modelsRequest = useRef( 0 );
+
 	const loadModels = useCallback( async () => {
+		const request = ++modelsRequest.current;
 		setModels( { kind: 'loading' } );
+		let next: Models;
 		try {
-			setModels( { kind: 'loaded', models: await listModels() } );
+			next = { kind: 'loaded', models: await listModels() };
 		} catch ( error ) {
-			setModels( {
-				kind: 'error',
-				message: ( error as Error ).message,
-			} );
+			next = { kind: 'error', message: ( error as Error ).message };
+		}
+		if ( request === modelsRequest.current ) {
+			setModels( next );
 		}
 	}, [] );
 
@@ -136,6 +142,7 @@ export function AiPanel( { settings, onChange }: Props ) {
 		if ( hasKey ) {
 			loadModels();
 		} else {
+			modelsRequest.current++;
 			setModels( { kind: 'none' } );
 		}
 	}, [ hasKey, loadModels ] );
