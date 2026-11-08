@@ -8,6 +8,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import useEnter from './use-enter';
+import useMerge from './use-merge';
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes } from './types';
 
@@ -20,6 +21,7 @@ export default function Edit( {
 	onRemove,
 }: BlockEditProps< BlockAttributes > ) {
 	const { content = '' } = attributes;
+	const onMerge = useMerge( clientId, mergeBlocks ?? ( () => {} ) );
 	const blockProps = useBlockProps( {
 		ref: useEnter( { content, clientId } ),
 	} );
@@ -33,7 +35,7 @@ export default function Edit( {
 			onChange={ ( newContent ) =>
 				setAttributes( { content: newContent } )
 			}
-			onMerge={ mergeBlocks }
+			onMerge={ onMerge }
 			onReplace={ onReplace }
 			onRemove={ onRemove }
 			placeholder={ __( 'Type / to choose a block', 'mark-bricks' ) }
