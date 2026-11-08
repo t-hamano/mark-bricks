@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
-"PO-Revision-Date: 2026-11-08T09:10:49.416Z\n"
+"POT-Creation-Date: 2026-11-08T11:58:16.516Z\n"
+"PO-Revision-Date: 2026-11-08T11:58:18.125Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,11 +33,22 @@ msgstr "(Nedoporučuje se více nadpisů H1)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/marp-patterns/patterns/section.ts:21
+msgctxt "slide pattern"
+msgid "A short line about this section"
+msgstr "Krátký řádek o této části"
+
 #: src/components/editor-header/index.tsx:195
 #: src/components/ai-sidebar/index.tsx:55
 #: src/components/ai-sidebar/index.tsx:86
 msgid "AI Assistant"
 msgstr ""
+
+#: src/marp-patterns/patterns/agenda.ts:13
+#: src/marp-patterns/patterns/agenda.ts:20
+msgctxt "slide pattern"
+msgid "Agenda"
+msgstr "Program"
 
 #: style.css
 #. Author of the generic
@@ -54,6 +65,11 @@ msgstr "Alternativní text"
 #: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "Použít"
+
+#: src/marp-patterns/patterns/agenda.ts:21
+msgctxt "slide pattern"
+msgid "Background"
+msgstr "Souvislosti"
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -110,6 +126,11 @@ msgstr ""
 #: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
 msgstr "Zavřít vkládání bloku"
+
+#: src/marp-patterns/patterns/closing.ts:13
+msgctxt "slide pattern"
+msgid "Closing"
+msgstr "Závěr"
 
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
@@ -175,6 +196,11 @@ msgstr "Zadejte název…"
 msgid "Failed to load image."
 msgstr "Obrázek se nepodařilo načíst."
 
+#: src/marp-patterns/patterns/image-and-text.ts:24
+msgctxt "slide pattern"
+msgid "First point"
+msgstr "První bod"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Lomítko"
@@ -212,6 +238,11 @@ msgstr "Skrýt přehled dokumentu"
 #: src/block-library/image/edit.tsx:76
 msgid "Image"
 msgstr "Obrázek"
+
+#: src/marp-patterns/patterns/image-and-text.ts:14
+msgctxt "slide pattern"
+msgid "Image and text"
+msgstr "Obrázek a text"
 
 #: src/block-library/quote/edit.tsx:70
 msgid "Important"
@@ -313,6 +344,11 @@ msgstr ""
 "Projděte si strukturu dokumentu a vyřešte problémy, jako jsou prázdné nebo "
 "nesprávné úrovně nadpisů."
 
+#: src/marp-patterns/patterns/agenda.ts:23
+msgctxt "slide pattern"
+msgid "Next steps"
+msgstr "Další kroky"
+
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "Žádný odpovídající jazyk."
@@ -347,6 +383,21 @@ msgstr "Vložte nebo napište adresu URL"
 msgid "Paste or type URL or file path"
 msgstr "Vložte nebo napište adresu URL nebo cestu k souboru"
 
+#: src/marp-patterns/patterns/title.ts:20
+msgctxt "slide pattern"
+msgid "Presentation title"
+msgstr "Název prezentace"
+
+#: src/marp-patterns/patterns/agenda.ts:22
+msgctxt "slide pattern"
+msgid "Proposal"
+msgstr "Návrh"
+
+#: src/marp-patterns/patterns/closing.ts:21
+msgctxt "slide pattern"
+msgid "Questions and contact details"
+msgstr "Dotazy a kontakty"
+
 #: src/components/editor-header/index.tsx:137
 msgid "Redo"
 msgstr "Znovu"
@@ -379,6 +430,21 @@ msgstr "Hledat"
 msgid "Search for blocks"
 msgstr "Hledat bloky"
 
+#: src/marp-patterns/patterns/image-and-text.ts:25
+msgctxt "slide pattern"
+msgid "Second point"
+msgstr "Druhý bod"
+
+#: src/marp-patterns/patterns/section.ts:13
+msgctxt "slide pattern"
+msgid "Section divider"
+msgstr "Oddělovač části"
+
+#: src/marp-patterns/patterns/section.ts:20
+msgctxt "slide pattern"
+msgid "Section title"
+msgstr "Název části"
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "Zobrazit nebo skrýt Zobrazení seznamu."
@@ -388,6 +454,11 @@ msgstr "Zobrazit nebo skrýt Zobrazení seznamu."
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Zobrazí se jako popisek při najetí myší."
+
+#: src/marp-patterns/patterns/image-and-text.ts:23
+msgctxt "slide pattern"
+msgid "Slide title"
+msgstr "Název snímku"
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -405,6 +476,11 @@ msgstr "Přepnout mezi vizuálním editorem a editorem kódu."
 msgid "Table"
 msgstr "Tabulka"
 
+#: src/marp-patterns/patterns/closing.ts:20
+msgctxt "slide pattern"
+msgid "Thank you"
+msgstr "Děkuji"
+
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "Diagram se nepodařilo vykreslit."
@@ -412,6 +488,11 @@ msgstr "Diagram se nepodařilo vykreslit."
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Vzorec se nepodařilo vykreslit."
+
+#: src/marp-patterns/patterns/image-and-text.ts:26
+msgctxt "slide pattern"
+msgid "Third point"
+msgstr "Třetí bod"
 
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
@@ -422,6 +503,11 @@ msgstr "Tip"
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "Název"
+
+#: src/marp-patterns/patterns/title.ts:13
+msgctxt "slide pattern"
+msgid "Title"
+msgstr "Titulní snímek"
 
 #: src/block-library/list-item/edit.tsx:133
 msgid "Toggle task"
@@ -501,3 +587,8 @@ msgstr "Napište shrnutí…"
 #: src/components/front-matter-editor/index.tsx:69
 msgid "YAML front matter"
 msgstr "YAML front matter"
+
+#: src/marp-patterns/patterns/title.ts:21
+msgctxt "slide pattern"
+msgid "Your name · Date"
+msgstr "Vaše jméno · Datum"
