@@ -12,6 +12,7 @@ import {
 	InputControl,
 	Notice,
 	SelectControl,
+	Spinner,
 	Stack,
 	Text,
 } from '@wordpress/ui';
@@ -193,11 +194,6 @@ export function AiPanel( { settings, onChange }: Props ) {
 		settings.model
 	);
 
-	const modelDescription =
-		models.kind === 'loading'
-			? __( 'Loading the models…', 'mark-bricks' )
-			: undefined;
-
 	return (
 		<Stack direction="column" gap="xl">
 			<Stack direction="column" gap="md" align="flex-start">
@@ -308,31 +304,41 @@ export function AiPanel( { settings, onChange }: Props ) {
 					<Text variant="heading-xl" render={ <h2 /> }>
 						{ __( 'Model', 'mark-bricks' ) }
 					</Text>
-					<SelectControl
-						hideLabelFromVision
-						size="compact"
-						label={ __( 'Model', 'mark-bricks' ) }
-						items={ modelItems }
-						value={
-							modelItems.find(
-								( item ) =>
-									item.value ===
-									( settings.model || DEFAULT_MODEL_ITEM )
-							) ?? null
-						}
-						isItemEqualToValue={ ( a, b ) => a.value === b.value }
-						onValueChange={ ( item ) => {
-							if ( item ) {
-								onChange( {
-									model:
-										item.value === DEFAULT_MODEL_ITEM
-											? ''
-											: ( item.value ?? '' ),
-								} );
+					{ models.kind === 'loading' ? (
+						<Spinner
+							aria-label={ __(
+								'Loading the models…',
+								'mark-bricks'
+							) }
+						/>
+					) : (
+						<SelectControl
+							hideLabelFromVision
+							size="compact"
+							label={ __( 'Model', 'mark-bricks' ) }
+							items={ modelItems }
+							value={
+								modelItems.find(
+									( item ) =>
+										item.value ===
+										( settings.model || DEFAULT_MODEL_ITEM )
+								) ?? null
 							}
-						} }
-						description={ modelDescription }
-					/>
+							isItemEqualToValue={ ( a, b ) =>
+								a.value === b.value
+							}
+							onValueChange={ ( item ) => {
+								if ( item ) {
+									onChange( {
+										model:
+											item.value === DEFAULT_MODEL_ITEM
+												? ''
+												: ( item.value ?? '' ),
+									} );
+								}
+							} }
+						/>
+					) }
 					{ models.kind === 'error' && (
 						<Notice.Root
 							className="preferences-modal__notice"
