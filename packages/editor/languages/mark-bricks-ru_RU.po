@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:00:37.339Z\n"
-"PO-Revision-Date: 2026-11-08T12:00:44.830Z\n"
+"POT-Creation-Date: 2026-11-08T12:13:21.423Z\n"
+"PO-Revision-Date: 2026-11-08T12:13:29.327Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -92,6 +92,10 @@ msgstr "Изменить тип блока после добавления но�
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Выберите язык…"
+
+#: src/components/front-matter-editor/index.tsx:47
+msgid "Classic look with a colored background."
+msgstr "Классический вид с цветным фоном."
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -179,8 +183,8 @@ msgstr "Не удалось загрузить изображение."
 msgid "Forward-slash"
 msgstr "Косая черта"
 
-#: src/components/front-matter-editor/index.tsx:109
-#: src/components/front-matter-editor/index.tsx:128
+#: src/components/front-matter-editor/index.tsx:133
+#: src/components/front-matter-editor/index.tsx:152
 msgid "Front matter settings"
 msgstr "Настройки front matter"
 
@@ -290,7 +294,7 @@ msgstr "Сделать выделенный текст встроенным ко
 msgid "Make the selected text italic."
 msgstr "Сделать выделенный текст курсивом."
 
-#: src/components/front-matter-editor/index.tsx:132
+#: src/components/front-matter-editor/index.tsx:156
 msgid "Marp"
 msgstr "Marp"
 
@@ -306,6 +310,10 @@ msgstr ""
 "Ключевые слова Marp, например bg, w:200px или sepia, задают макет и размер. "
 "Остальные слова становятся альтернативным текстом или подписью фонового "
 "изображения."
+
+#: src/components/front-matter-editor/index.tsx:54
+msgid "Minimal and modern, with centered content."
+msgstr "Минималистичная и современная, с выравниванием по центру."
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -339,7 +347,7 @@ msgstr "Убрать отступ"
 msgid "Outline"
 msgstr "Структура"
 
-#: src/components/front-matter-editor/index.tsx:208
+#: src/components/front-matter-editor/index.tsx:246
 msgid "Paginate"
 msgstr "Нумерация страниц"
 
@@ -389,7 +397,7 @@ msgstr "Поиск блоков"
 msgid "Show or hide the List View."
 msgstr "Показать или скрыть представление в виде списка."
 
-#: src/components/front-matter-editor/index.tsx:209
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Show the page number on each slide."
 msgstr "Показывает номер страницы на каждом слайде."
 
@@ -398,6 +406,10 @@ msgstr "Показывает номер страницы на каждом сл�
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Показывается как всплывающая подсказка при наведении."
+
+#: src/components/front-matter-editor/index.tsx:40
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "Простая и аккуратная, в стиле GitHub Markdown."
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -423,7 +435,7 @@ msgstr "Не удалось отобразить диаграмму."
 msgid "The formula could not be rendered."
 msgstr "Не удалось отобразить формулу."
 
-#: src/components/front-matter-editor/index.tsx:175
+#: src/components/front-matter-editor/index.tsx:208
 msgid "Theme"
 msgstr "Тема"
 
@@ -449,7 +461,7 @@ msgstr "Преобразовать в обычный элемент"
 msgid "Turn into a task item"
 msgstr "Преобразовать в задачу"
 
-#: src/components/front-matter-editor/index.tsx:133
+#: src/components/front-matter-editor/index.tsx:157
 msgid "Turn the document into a slide deck."
 msgstr "Превращает документ в слайд-презентацию."
 
@@ -500,7 +512,7 @@ msgstr "Напишите HTML…"
 msgid "Write TeX…"
 msgstr "Напишите TeX…"
 
-#: src/components/front-matter-editor/index.tsx:64
+#: src/components/front-matter-editor/index.tsx:88
 msgid "Write YAML front matter…"
 msgstr "Введите YAML front matter…"
 
@@ -512,6 +524,6 @@ msgstr "Введите код…"
 msgid "Write summary…"
 msgstr "Написать резюме…"
 
-#: src/components/front-matter-editor/index.tsx:82
+#: src/components/front-matter-editor/index.tsx:106
 msgid "YAML front matter"
 msgstr "YAML front matter"

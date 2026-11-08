@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:00:37.339Z\n"
-"PO-Revision-Date: 2026-11-08T12:00:43.428Z\n"
+"POT-Creation-Date: 2026-11-08T12:13:21.423Z\n"
+"PO-Revision-Date: 2026-11-08T12:13:27.796Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -92,6 +92,10 @@ msgstr "Zmień rodzaj bloku po dodaniu nowego akapitu."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Wybierz język…"
+
+#: src/components/front-matter-editor/index.tsx:47
+msgid "Classic look with a colored background."
+msgstr "Klasyczny wygląd z kolorowym tłem."
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -179,8 +183,8 @@ msgstr "Nie udało się wczytać obrazka."
 msgid "Forward-slash"
 msgstr "Ukośnik"
 
-#: src/components/front-matter-editor/index.tsx:109
-#: src/components/front-matter-editor/index.tsx:128
+#: src/components/front-matter-editor/index.tsx:133
+#: src/components/front-matter-editor/index.tsx:152
 msgid "Front matter settings"
 msgstr "Ustawienia front matter"
 
@@ -290,7 +294,7 @@ msgstr "Zamień zaznaczony tekst na kod liniowy."
 msgid "Make the selected text italic."
 msgstr "Dodaj kursywę dla zaznaczonego tekstu."
 
-#: src/components/front-matter-editor/index.tsx:132
+#: src/components/front-matter-editor/index.tsx:156
 msgid "Marp"
 msgstr "Marp"
 
@@ -306,6 +310,10 @@ msgstr ""
 "Słowa kluczowe Marp, takie jak bg, w:200px czy sepia, ustawiają układ i "
 "rozmiar. Pozostałe słowa stają się tekstem alternatywnym lub podpisem "
 "obrazka w tle."
+
+#: src/components/front-matter-editor/index.tsx:54
+msgid "Minimal and modern, with centered content."
+msgstr "Minimalistyczny i nowoczesny, z wyśrodkowaną treścią."
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -339,7 +347,7 @@ msgstr "Zmniejsz wcięcie"
 msgid "Outline"
 msgstr "Konspekt"
 
-#: src/components/front-matter-editor/index.tsx:208
+#: src/components/front-matter-editor/index.tsx:246
 msgid "Paginate"
 msgstr "Numeracja stron"
 
@@ -389,7 +397,7 @@ msgstr "Szukaj bloków"
 msgid "Show or hide the List View."
 msgstr "Pokaż lub ukryj widok listy."
 
-#: src/components/front-matter-editor/index.tsx:209
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Show the page number on each slide."
 msgstr "Wyświetla numer strony na każdym slajdzie."
 
@@ -398,6 +406,10 @@ msgstr "Wyświetla numer strony na każdym slajdzie."
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Wyświetlany jako podpowiedź po najechaniu kursorem."
+
+#: src/components/front-matter-editor/index.tsx:40
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "Prosty i przejrzysty, oparty na stylu Markdown z GitHuba."
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -423,7 +435,7 @@ msgstr "Nie można wyrenderować diagramu."
 msgid "The formula could not be rendered."
 msgstr "Nie można wyrenderować wzoru."
 
-#: src/components/front-matter-editor/index.tsx:175
+#: src/components/front-matter-editor/index.tsx:208
 msgid "Theme"
 msgstr "Motyw"
 
@@ -449,7 +461,7 @@ msgstr "Przekształć w zwykły element"
 msgid "Turn into a task item"
 msgstr "Przekształć w zadanie"
 
-#: src/components/front-matter-editor/index.tsx:133
+#: src/components/front-matter-editor/index.tsx:157
 msgid "Turn the document into a slide deck."
 msgstr "Zamienia dokument w prezentację."
 
@@ -500,7 +512,7 @@ msgstr "Napisz HTML…"
 msgid "Write TeX…"
 msgstr "Napisz TeX…"
 
-#: src/components/front-matter-editor/index.tsx:64
+#: src/components/front-matter-editor/index.tsx:88
 msgid "Write YAML front matter…"
 msgstr "Napisz YAML front matter…"
 
@@ -512,6 +524,6 @@ msgstr "Napisz kod…"
 msgid "Write summary…"
 msgstr "Napisz podsumowanie…"
 
-#: src/components/front-matter-editor/index.tsx:82
+#: src/components/front-matter-editor/index.tsx:106
 msgid "YAML front matter"
 msgstr "YAML front matter"

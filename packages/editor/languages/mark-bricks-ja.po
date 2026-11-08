@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:00:37.339Z\n"
-"PO-Revision-Date: 2026-11-08T12:00:42.045Z\n"
+"POT-Creation-Date: 2026-11-08T12:13:21.423Z\n"
+"PO-Revision-Date: 2026-11-08T12:13:26.372Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -92,6 +92,10 @@ msgstr "新規段落の追加後、ブロックタイプを変更します。"
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "言語を選択…"
+
+#: src/components/front-matter-editor/index.tsx:47
+msgid "Classic look with a colored background."
+msgstr "背景色のついたクラシックなテーマ。"
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -179,8 +183,8 @@ msgstr "画像の読み込みに失敗しました。"
 msgid "Forward-slash"
 msgstr "前方スラッシュ"
 
-#: src/components/front-matter-editor/index.tsx:109
-#: src/components/front-matter-editor/index.tsx:128
+#: src/components/front-matter-editor/index.tsx:133
+#: src/components/front-matter-editor/index.tsx:152
 msgid "Front matter settings"
 msgstr "フロントマター設定"
 
@@ -290,7 +294,7 @@ msgstr "選択したテキストをインラインコードにする。"
 msgid "Make the selected text italic."
 msgstr "選択したテキストを斜体にする。"
 
-#: src/components/front-matter-editor/index.tsx:132
+#: src/components/front-matter-editor/index.tsx:156
 msgid "Marp"
 msgstr "Marp"
 
@@ -305,6 +309,10 @@ msgid ""
 msgstr ""
 "bg、w:200px、sepia などの Marp キーワードでレイアウトとサイズを指定します。そ"
 "れ以外の語は代替テキスト、背景画像の場合はキャプションになります。"
+
+#: src/components/front-matter-editor/index.tsx:54
+msgid "Minimal and modern, with centered content."
+msgstr "中央揃えのミニマルでモダンなテーマ。"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -337,7 +345,7 @@ msgstr "インデント解除"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: src/components/front-matter-editor/index.tsx:208
+#: src/components/front-matter-editor/index.tsx:246
 msgid "Paginate"
 msgstr "ページ番号"
 
@@ -387,7 +395,7 @@ msgstr "ブロックを検索"
 msgid "Show or hide the List View."
 msgstr "リストビューの表示、非表示。"
 
-#: src/components/front-matter-editor/index.tsx:209
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Show the page number on each slide."
 msgstr "各スライドにページ番号を表示します。"
 
@@ -396,6 +404,10 @@ msgstr "各スライドにページ番号を表示します。"
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
+
+#: src/components/front-matter-editor/index.tsx:40
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "GitHub の Markdown スタイルをベースにしたシンプルなテーマ。"
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -421,7 +433,7 @@ msgstr "図を描画できませんでした。"
 msgid "The formula could not be rendered."
 msgstr "数式を描画できませんでした。"
 
-#: src/components/front-matter-editor/index.tsx:175
+#: src/components/front-matter-editor/index.tsx:208
 msgid "Theme"
 msgstr "テーマ"
 
@@ -447,7 +459,7 @@ msgstr "通常の項目に変換"
 msgid "Turn into a task item"
 msgstr "タスク項目に変換"
 
-#: src/components/front-matter-editor/index.tsx:133
+#: src/components/front-matter-editor/index.tsx:157
 msgid "Turn the document into a slide deck."
 msgstr "ドキュメントをスライドデッキにします。"
 
@@ -498,7 +510,7 @@ msgstr "HTML を入力…"
 msgid "Write TeX…"
 msgstr "TeX を入力…"
 
-#: src/components/front-matter-editor/index.tsx:64
+#: src/components/front-matter-editor/index.tsx:88
 msgid "Write YAML front matter…"
 msgstr "YAML フロントマターを入力…"
 
@@ -510,6 +522,6 @@ msgstr "コードを入力..."
 msgid "Write summary…"
 msgstr "要約を入力…"
 
-#: src/components/front-matter-editor/index.tsx:82
+#: src/components/front-matter-editor/index.tsx:106
 msgid "YAML front matter"
 msgstr "YAML フロントマター"

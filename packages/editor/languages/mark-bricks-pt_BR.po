@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:00:37.339Z\n"
-"PO-Revision-Date: 2026-11-08T12:00:44.155Z\n"
+"POT-Creation-Date: 2026-11-08T12:13:21.423Z\n"
+"PO-Revision-Date: 2026-11-08T12:13:28.521Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -92,6 +92,10 @@ msgstr "Mude o tipo de bloco após adicionar um novo parágrafo."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Escolher linguagem…"
+
+#: src/components/front-matter-editor/index.tsx:47
+msgid "Classic look with a colored background."
+msgstr "Visual clássico com fundo colorido."
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -179,8 +183,8 @@ msgstr "Falha ao carregar a imagem."
 msgid "Forward-slash"
 msgstr "Barra"
 
-#: src/components/front-matter-editor/index.tsx:109
-#: src/components/front-matter-editor/index.tsx:128
+#: src/components/front-matter-editor/index.tsx:133
+#: src/components/front-matter-editor/index.tsx:152
 msgid "Front matter settings"
 msgstr "Configurações do front matter"
 
@@ -290,7 +294,7 @@ msgstr "Tornar o texto selecionado um código embutido."
 msgid "Make the selected text italic."
 msgstr "Tornar itálico o texto selecionado."
 
-#: src/components/front-matter-editor/index.tsx:132
+#: src/components/front-matter-editor/index.tsx:156
 msgid "Marp"
 msgstr "Marp"
 
@@ -306,6 +310,10 @@ msgstr ""
 "Palavras-chave do Marp como bg, w:200px ou sepia definem o layout e o "
 "tamanho. As demais palavras viram o texto alternativo ou a legenda de uma "
 "imagem de fundo."
+
+#: src/components/front-matter-editor/index.tsx:54
+msgid "Minimal and modern, with centered content."
+msgstr "Minimalista e moderno, com conteúdo centralizado."
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -339,7 +347,7 @@ msgstr "Diminuir recuo"
 msgid "Outline"
 msgstr "Estrutura"
 
-#: src/components/front-matter-editor/index.tsx:208
+#: src/components/front-matter-editor/index.tsx:246
 msgid "Paginate"
 msgstr "Paginar"
 
@@ -389,7 +397,7 @@ msgstr "Pesquisar blocos"
 msgid "Show or hide the List View."
 msgstr "Exibir ou ocultar a visualização em lista."
 
-#: src/components/front-matter-editor/index.tsx:209
+#: src/components/front-matter-editor/index.tsx:247
 msgid "Show the page number on each slide."
 msgstr "Mostra o número da página em cada slide."
 
@@ -398,6 +406,10 @@ msgstr "Mostra o número da página em cada slide."
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Exibido como dica ao passar o mouse."
+
+#: src/components/front-matter-editor/index.tsx:40
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "Simples e limpo, baseado no estilo Markdown do GitHub."
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -423,7 +435,7 @@ msgstr "Não foi possível renderizar o diagrama."
 msgid "The formula could not be rendered."
 msgstr "Não foi possível renderizar a fórmula."
 
-#: src/components/front-matter-editor/index.tsx:175
+#: src/components/front-matter-editor/index.tsx:208
 msgid "Theme"
 msgstr "Tema"
 
@@ -449,7 +461,7 @@ msgstr "Transformar em item normal"
 msgid "Turn into a task item"
 msgstr "Transformar em tarefa"
 
-#: src/components/front-matter-editor/index.tsx:133
+#: src/components/front-matter-editor/index.tsx:157
 msgid "Turn the document into a slide deck."
 msgstr "Transforma o documento em uma apresentação de slides."
 
@@ -500,7 +512,7 @@ msgstr "Escreva HTML…"
 msgid "Write TeX…"
 msgstr "Escreva TeX…"
 
-#: src/components/front-matter-editor/index.tsx:64
+#: src/components/front-matter-editor/index.tsx:88
 msgid "Write YAML front matter…"
 msgstr "Escreva o front matter YAML…"
 
@@ -512,6 +524,6 @@ msgstr "Escreva o código…"
 msgid "Write summary…"
 msgstr "Escrever resumo…"
 
-#: src/components/front-matter-editor/index.tsx:82
+#: src/components/front-matter-editor/index.tsx:106
 msgid "YAML front matter"
 msgstr "Front matter YAML"

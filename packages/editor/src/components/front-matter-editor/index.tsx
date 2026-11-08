@@ -32,8 +32,32 @@ import {
 	setMarpFrontMatter,
 } from '../../converter/front-matter';
 
-// Marp's built-in themes.
-const MARP_THEMES = [ 'default', 'gaia', 'uncover' ];
+// Marp's built-in themes. Descriptions are translated at render time.
+function getMarpThemes(): Array< { name: string; description: string } > {
+	return [
+		{
+			name: 'default',
+			description: __(
+				'Simple and clean, based on GitHub Markdown style.',
+				'mark-bricks'
+			),
+		},
+		{
+			name: 'gaia',
+			description: __(
+				'Classic look with a colored background.',
+				'mark-bricks'
+			),
+		},
+		{
+			name: 'uncover',
+			description: __(
+				'Minimal and modern, with centered content.',
+				'mark-bricks'
+			),
+		},
+	];
+}
 import { useCodeMirror } from '../../block-library/hooks/use-code-mirror';
 
 export { FrontMatterContext, useFrontMatter } from './context';
@@ -164,10 +188,19 @@ function MarpSettings( {
 	const { setFrontMatter } = useFrontMatter();
 	const theme = getFrontMatterValue( value, 'theme' ) ?? 'default';
 	// Keeps a custom theme selectable alongside the built-in ones.
-	const themes = MARP_THEMES.includes( theme )
-		? MARP_THEMES
-		: [ ...MARP_THEMES, theme ];
-	const items = themes.map( ( name ) => ( { label: name, value: name } ) );
+	const builtInThemes = getMarpThemes();
+	const items: Array< {
+		label: string;
+		value: string;
+		description?: string;
+	} > = builtInThemes.map( ( { name, description } ) => ( {
+		label: name,
+		value: name,
+		description,
+	} ) );
+	if ( ! builtInThemes.some( ( { name } ) => name === theme ) ) {
+		items.push( { label: theme, value: theme } );
+	}
 
 	return (
 		<>
@@ -199,6 +232,11 @@ function MarpSettings( {
 								<Select.ItemLabel>
 									{ item.label }
 								</Select.ItemLabel>
+								{ item.description ? (
+									<Select.ItemDescription>
+										{ item.description }
+									</Select.ItemDescription>
+								) : null }
 							</Select.Item>
 						) ) }
 					</Select.Popup>
