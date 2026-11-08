@@ -8,7 +8,11 @@ import { beforeEach, describe, expect, it } from 'vitest';
 /**
  * Internal dependencies
  */
-import { findSourceElement, getSourceLine } from './source-lines';
+import {
+	findSourceElement,
+	getSlideSourceLine,
+	getSourceLine,
+} from './source-lines';
 
 describe( 'source lines', () => {
 	beforeEach( () => {
@@ -49,5 +53,17 @@ describe( 'source lines', () => {
 	it( 'finds nothing before the first element', () => {
 		document.querySelector( 'section' )?.setAttribute( 'data-line', '3' );
 		expect( findSourceElement( document.body, 1 ) ).toBeNull();
+	} );
+	it( 'reads the line of the first element of a slide', () => {
+		const slide = document.createElement( 'svg' );
+		slide.innerHTML =
+			'<section></section><section data-line="8"><h2 data-line="10">B</h2></section>';
+		expect( getSlideSourceLine( slide ) ).toBe( 10 );
+
+		slide.innerHTML = '<section data-line="8"></section>';
+		expect( getSlideSourceLine( slide ) ).toBe( 8 );
+
+		slide.innerHTML = '<section></section>';
+		expect( getSlideSourceLine( slide ) ).toBeNull();
 	} );
 } );

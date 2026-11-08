@@ -302,4 +302,30 @@ describe( 'createSlidePreview', () => {
 		const slides = document.querySelectorAll( '.marpit > svg' );
 		expect( slides[ 1 ].classList.contains( 'is-current' ) ).toBe( true );
 	} );
+	it( 'reports the first line of the clicked slide at the slide level', async () => {
+		const onSourceLineClick = vi.fn();
+		const preview = setup( {
+			onSourceLineClick,
+			sourceSyncLevel: 'slide',
+		} );
+		preview.render( renderSlides( SOURCE_DECK ) );
+		await nextFrame();
+
+		act( () => document.querySelector( 'li' )?.click() );
+		expect( onSourceLineClick ).toHaveBeenLastCalledWith( 4 );
+		act( () => document.querySelectorAll( 'section' )[ 1 ]?.click() );
+		expect( onSourceLineClick ).toHaveBeenLastCalledWith( 10 );
+	} );
+
+	it( 'moves to the slide of a line without highlighting at the slide level', async () => {
+		const preview = setup( { sourceSyncLevel: 'slide' } );
+		preview.render( renderSlides( SOURCE_DECK ) );
+		await nextFrame();
+		press( 'f' );
+
+		preview.revealSourceLine( 10 );
+		const slides = document.querySelectorAll( '.marpit > svg' );
+		expect( slides[ 1 ].classList.contains( 'is-current' ) ).toBe( true );
+		expect( document.querySelector( '.is-source-highlighted' ) ).toBeNull();
+	} );
 } );
