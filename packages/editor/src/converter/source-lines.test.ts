@@ -12,6 +12,7 @@ import {
 	blockToMarkdown,
 	findBlockIndexAtLine,
 	getBlockLineRanges,
+	getDocumentBlockLineRanges,
 	getSourceBlockLineRanges,
 	joinFrontMatter,
 	markdownToBlocks,
@@ -56,6 +57,33 @@ describe( 'getSourceBlockLineRanges', () => {
 		).toEqual( [
 			{ start: 0, end: 6 },
 			{ start: 7, end: 8 },
+		] );
+	} );
+} );
+
+describe( 'getDocumentBlockLineRanges', () => {
+	it( 'takes the lines of the document while it holds the same blocks', () => {
+		const markdown = '# A\n\n\n* x\n* y\n';
+		const blocks = markdownToBlocks( markdown );
+		expect( getDocumentBlockLineRanges( blocks, null, markdown ) ).toEqual(
+			[
+				{ start: 0, end: 1 },
+				{ start: 3, end: 5 },
+			]
+		);
+	} );
+
+	it( 'counts the lines the editor writes while the document holds other blocks', () => {
+		const blocks = markdownToBlocks( '# A\n\nB\n' );
+		// As many blocks, but others.
+		expect(
+			getDocumentBlockLineRanges( blocks, null, '# A\n\n\n\nC\n' )
+		).toEqual( getBlockLineRanges( blocks, null ) );
+		expect(
+			getDocumentBlockLineRanges( blocks, null, '# A\n\n\n\nC\n' )
+		).toEqual( [
+			{ start: 0, end: 1 },
+			{ start: 2, end: 3 },
 		] );
 	} );
 } );

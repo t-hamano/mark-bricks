@@ -21,9 +21,7 @@ import { useDispatch, useRegistry, useSelect } from '@wordpress/data';
  */
 import {
 	findBlockIndexAtLine,
-	getBlockLineRanges,
-	getSourceBlockLineRanges,
-	type BlockLineRange,
+	getDocumentBlockLineRanges,
 } from '../../converter';
 
 /**
@@ -47,29 +45,6 @@ function findBlockElement( clientId: string ): HTMLElement | null {
 		}
 	}
 	return null;
-}
-
-/**
- * Finds the lines that each top-level block takes up in the document as it
- * is written, which is what the host shows the slides of. The blocks match it
- * while they are the ones parsed from it, and again once the editor writes
- * out an edit. In between, while it holds another number of blocks, their
- * lines are counted in the document the editor writes of them instead.
- *
- * @param blocks      Top-level blocks of the document.
- * @param frontMatter Front matter content, or `null`.
- * @param content     The document as it is written.
- * @return The lines of each block, or `null` for a block that writes nothing.
- */
-function findBlockLineRanges(
-	blocks: Block[],
-	frontMatter: string | null,
-	content: string
-): Array< BlockLineRange | null > {
-	const ranges = getSourceBlockLineRanges( content );
-	return ranges.length === blocks.length
-		? ranges
-		: getBlockLineRanges( blocks, frontMatter );
 }
 
 export type SourceLineSyncHandle = {
@@ -123,7 +98,7 @@ export function SourceLineSync( {
 	const ranges = useMemo(
 		() =>
 			tracksLines
-				? findBlockLineRanges( blocks, frontMatter, content )
+				? getDocumentBlockLineRanges( blocks, frontMatter, content )
 				: [],
 		[ tracksLines, blocks, frontMatter, content ]
 	);
@@ -155,7 +130,7 @@ export function SourceLineSync( {
 					return;
 				}
 				const found = findBlockIndexAtLine(
-					findBlockLineRanges(
+					getDocumentBlockLineRanges(
 						current.blocks,
 						current.frontMatter,
 						current.content
