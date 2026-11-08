@@ -5,22 +5,6 @@ import type { AiEdit, AiMessage } from '@mark-bricks/editor';
 
 export const DEFAULT_MODEL = 'claude-opus-5-5';
 
-/**
- * The API version the requests are written for. The proxy sends it as the
- * `anthropic-version` header.
- */
-export const ANTHROPIC_VERSION = '2026-10-21';
-
-/**
- * Beta features the requests use. The proxy sends them as the
- * `anthropic-beta` header.
- */
-export const ANTHROPIC_BETAS = [
-	// `fallbacks: "default"`: when the model declines a request, the API
-	// answers it with the model Anthropic recommends instead.
-	'server-side-fallback-2026-07-01',
-];
-
 export const EDIT_TOOL_NAME = 'edit_selection';
 
 const MAX_TOKENS = 64000;
@@ -201,6 +185,8 @@ export function buildRequestBody( {
 			? { type: 'auto', disable_parallel_tool_use: true }
 			: { type: 'none' },
 		output_config: { effort: 'medium' },
+		// When the model declines, the API answers with the model Anthropic
+		// recommends instead. It needs a beta, which the proxy sends.
 		fallbacks: 'default',
 	};
 }

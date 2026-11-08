@@ -28,7 +28,7 @@ impl Provider {
     }
 }
 
-/// The only window that may change the key. The preview and export windows
+/// The only window that may change or use the key. The preview and export windows
 /// render documents and have no use for it.
 const MAIN_WINDOW: &str = "main";
 
@@ -89,22 +89,21 @@ pub fn has_key(store: &impl KeyStore, provider: Provider) -> Result<bool, String
 
 /// Reads the saved key, for the requests to the API. Not exposed to the
 /// webview.
-#[allow(dead_code)] // Used by the API request command, which comes next.
 pub fn read_key(store: &impl KeyStore, provider: Provider) -> Result<Option<String>, String> {
     Ok(store.get(provider)?.filter(|key| !key.is_empty()))
 }
 
-fn check_window(window: &WebviewWindow) -> Result<(), String> {
+pub(crate) fn check_window(window: &WebviewWindow) -> Result<(), String> {
     if window.label() == MAIN_WINDOW {
         Ok(())
     } else {
-        Err("This window cannot change the API key.".to_string())
+        Err("This window cannot use the API key.".to_string())
     }
 }
 
 /// Runs a credential store call off the main thread, since the OS may wait
 /// for the user, for example to unlock the keychain.
-async fn run_blocking<T: Send + 'static>(
+pub(crate) async fn run_blocking<T: Send + 'static>(
     operation: impl FnOnce() -> Result<T, String> + Send + 'static,
 ) -> Result<T, String> {
     tauri::async_runtime::spawn_blocking(operation)
