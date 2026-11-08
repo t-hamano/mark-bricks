@@ -14,12 +14,35 @@ import {
  */
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import type { Block } from '@wordpress/blocks';
-import { useDispatch, useSelect } from '@wordpress/data';
+import { useDispatch, useRegistry, useSelect } from '@wordpress/data';
 
 /**
  * Internal dependencies
  */
 import { findBlockIndexAtLine, getBlockLineRanges } from '../../converter';
+
+/**
+ * Finds the element of a block, in the page or in the canvas iframe.
+ *
+ * @param clientId Client ID of the block.
+ * @return The element, or `null` when it is not rendered.
+ */
+function findBlockElement( clientId: string ): HTMLElement | null {
+	const documents = [
+		document,
+		...Array.from(
+			document.querySelectorAll( 'iframe' ),
+			( frame ) => frame.contentDocument
+		),
+	];
+	for ( const doc of documents ) {
+		const element = doc?.getElementById( `block-${ clientId }` );
+		if ( element ) {
+			return element;
+		}
+	}
+	return null;
+}
 
 export type SourceLineSyncHandle = {
 	selectLine: ( line: number ) => void;
@@ -62,6 +85,7 @@ export function SourceLineSync( {
 		return clientId ? getBlockHierarchyRootClientId( clientId ) : null;
 	}, [] );
 	const { selectBlock } = useDispatch( blockEditorStore );
+	const registry = useRegistry();
 
 	// Only worked out for a host that follows the selection.
 	const tracksLines = !! onSelectedLineChange && enabled;
@@ -100,12 +124,26 @@ export function SourceLineSync( {
 					getBlockLineRanges( current.blocks, current.frontMatter ),
 					target
 				);
-				if ( found !== -1 ) {
-					selectBlock( current.blocks[ found ].clientId );
+				if ( found === -1 ) {
+					return;
+				}
+				const { clientId } = current.blocks[ found ];
+				// The block editor scrolls a block into view only as it gets
+				// selected, so a block already selected is scrolled here.
+				if (
+					registry
+						.select( blockEditorStore )
+						.getSelectedBlockClientId() === clientId
+				) {
+					findBlockElement( clientId )?.scrollIntoView( {
+						block: 'nearest',
+					} );
+				} else {
+					selectBlock( clientId );
 				}
 			},
 		} ),
-		[ selectBlock ]
+		[ registry, selectBlock ]
 	);
 
 	return null;

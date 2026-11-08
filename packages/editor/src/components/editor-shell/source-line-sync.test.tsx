@@ -16,6 +16,9 @@ import { SourceLineSync, type SourceLineSyncHandle } from './source-line-sync';
 // The root of the selected block, which the tests set.
 let selectedRoot: string | null = null;
 const selectBlock = vi.fn();
+const registry = {
+	select: () => ( { getSelectedBlockClientId: () => selectedRoot } ),
+};
 
 vi.mock( '@wordpress/block-editor', () => ( { store: {} } ) );
 vi.mock( '@wordpress/data', () => ( {
@@ -25,6 +28,7 @@ vi.mock( '@wordpress/data', () => ( {
 			getBlockHierarchyRootClientId: ( clientId: string ) => clientId,
 		} ) ),
 	useDispatch: () => ( { selectBlock } ),
+	useRegistry: () => registry,
 } ) );
 
 (
@@ -95,6 +99,22 @@ describe( 'SourceLineSync', () => {
 		expect( selectBlock ).toHaveBeenLastCalledWith( blocks[ 1 ].clientId );
 		handleRef.current?.selectLine( 1 );
 		expect( selectBlock ).toHaveBeenLastCalledWith( blocks[ 0 ].clientId );
+	} );
+
+	it( 'scrolls to the block of a line when it is already selected', () => {
+		const element = document.createElement( 'div' );
+		element.id = `block-${ blocks[ 1 ].clientId }`;
+		element.scrollIntoView = vi.fn();
+		document.body.append( element );
+		selectedRoot = blocks[ 1 ].clientId;
+		render();
+
+		handleRef.current?.selectLine( 6 );
+		expect( selectBlock ).not.toHaveBeenCalled();
+		expect( element.scrollIntoView ).toHaveBeenCalledWith( {
+			block: 'nearest',
+		} );
+		element.remove();
 	} );
 
 	it( 'selects nothing in the code editor', () => {
