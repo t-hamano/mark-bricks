@@ -38,3 +38,12 @@ $sidebar-width: 200px;
 		white-space: nowrap;
 	}
 }
+
+.preferences-modal__api-key-form {
+	align-self: stretch;
+}
+
+.preferences-modal__api-key-input {
+	flex: 1;
+	min-width: 0;
+}

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:35:54.001Z\n"
-"PO-Revision-Date: 2026-11-08T13:38:21.345Z\n"
+"POT-Creation-Date: 2026-11-08T13:57:04.267Z\n"
+"PO-Revision-Date: 2026-11-08T13:57:05.534Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -35,6 +35,14 @@ msgstr "„%s“ obsahuje neuložené změny. Chcete je zahodit a zavřít?"
 msgid "(Untitled)"
 msgstr "(Bez názvu)"
 
+#: src/components/preferences-modal/index.tsx:203
+msgid "AI Assistant"
+msgstr "Asistent AI"
+
+#: src/components/preferences-modal/ai-panel.tsx:214
+msgid "API key"
+msgstr "Klíč API"
+
 #: src/components/header-actions/index.tsx:353
 #: src/components/about-modal/index.tsx:80
 msgid "About"
@@ -52,6 +60,14 @@ msgstr "Přidat YAML front matter"
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "Vždy otevřít Zobrazení seznamu"
+
+#: src/components/preferences-modal/ai-panel.tsx:189
+msgid "An API key is saved."
+msgstr "Klíč API je uložen."
+
+#: src/components/preferences-modal/ai-panel.tsx:185
+msgid "Anthropic API key"
+msgstr "Klíč API Anthropic"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -81,7 +97,7 @@ msgid "Checking…"
 msgstr "Kontrola…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:168
+#: src/components/preferences-modal/index.tsx:177
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -100,7 +116,7 @@ msgstr "Zavřít ostatní karty"
 msgid "Close the active tab."
 msgstr "Zavřít aktivní kartu."
 
-#: src/components/preferences-modal/index.tsx:191
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:298
 msgid "Code editor"
 msgstr "Editor kódu"
@@ -133,9 +149,18 @@ msgstr ""
 msgid "Create a new file."
 msgstr "Vytvořit nový soubor."
 
-#: src/preferences/constants.ts:53
+#: src/preferences/constants.ts:55
 msgid "Dark"
 msgstr "Tmavý"
+
+# %s: The name of the default AI model.
+#: src/components/preferences-modal/ai-panel.tsx:75
+msgid "Default (%s)"
+msgstr "Výchozí (%s)"
+
+#: src/components/preferences-modal/ai-panel.tsx:237
+msgid "Delete API key"
+msgstr "Smazat klíč API"
 
 #: src/components/dirty-confirm-dialog/index.tsx:68
 msgid "Discard"
@@ -200,7 +225,7 @@ msgstr "Rodina písem"
 msgid "Font size"
 msgstr "Velikost písma"
 
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:194
 msgid "General"
 msgstr "Obecné"
 
@@ -216,7 +241,7 @@ msgstr "Prezentace HTML"
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:75
+#: src/preferences/constants.ts:77
 msgid "Handwriting"
 msgstr "Ručně psané"
 
@@ -252,13 +277,17 @@ msgstr "Klávesové zkratky"
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/preferences/constants.ts:52
+#: src/preferences/constants.ts:54
 msgid "Light"
 msgstr "Světlý"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
 msgstr "Klávesové zkratky Zobrazení seznamu"
+
+#: src/components/preferences-modal/ai-panel.tsx:178
+msgid "Loading the models…"
+msgstr "Načítání modelů…"
 
 # %s: new version number
 #: src/hooks/use-auto-updater.ts:91
@@ -273,13 +302,22 @@ msgstr "MarkBricks je nyní výchozí aplikací pro soubory Markdown."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Maximální šířka oblasti obsahu v pixelech."
 
-#: src/preferences/constants.ts:71
+#: src/components/preferences-modal/ai-panel.tsx:264
+#: src/components/preferences-modal/ai-panel.tsx:269
+msgid "Model"
+msgstr "Model"
+
+#: src/preferences/constants.ts:73
 msgid "Monospace"
 msgstr "Neproporcionální"
 
 #: src/components/header-actions/index.tsx:166
 msgid "New"
 msgstr "Nový"
+
+#: src/components/preferences-modal/ai-panel.tsx:213
+msgid "New API key"
+msgstr "Nový klíč API"
 
 #: src/components/tabbar/index.tsx:142
 #: src/components/editor-placeholder/index.tsx:33
@@ -335,7 +373,7 @@ msgstr "Prezentace PDF"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:166
+#: src/components/preferences-modal/index.tsx:175
 #: src/components/header-actions/index.tsx:362
 msgid "Preferences"
 msgstr "Předvolby"
@@ -372,11 +410,12 @@ msgstr "Restartujte aplikaci, aby se použil nový jazyk."
 msgid "Restore default settings"
 msgstr "Obnovit výchozí nastavení"
 
-#: src/preferences/constants.ts:63
+#: src/preferences/constants.ts:65
 msgid "Sans-serif"
 msgstr "Bezpatkové"
 
 #: src/components/tabbar/index.tsx:195
+#: src/components/preferences-modal/ai-panel.tsx:226
 #: src/components/header-actions/index.tsx:136
 #: src/components/header-actions/index.tsx:182
 msgid "Save"
@@ -385,6 +424,10 @@ msgstr "Uložit"
 #: src/components/header-actions/index.tsx:190
 msgid "Save As…"
 msgstr "Uložit jako…"
+
+#: src/components/preferences-modal/ai-panel.tsx:173
+msgid "Save an API key to choose a model."
+msgstr "Pro výběr modelu uložte klíč API."
 
 #: src/components/tabbar/index.tsx:203
 msgid "Save as…"
@@ -402,7 +445,7 @@ msgstr "Uložit aktivní soubor."
 msgid "Selection shortcuts"
 msgstr "Zkratky výběru textu"
 
-#: src/preferences/constants.ts:67
+#: src/preferences/constants.ts:69
 msgid "Serif"
 msgstr "Patkové"
 
@@ -435,8 +478,8 @@ msgstr "Kontrola pravopisu"
 msgid "Spotlight mode"
 msgstr "Režim nevyrušovaného psaní"
 
-#: src/preferences/constants.ts:51
-#: src/preferences/constants.ts:60
+#: src/preferences/constants.ts:53
+#: src/preferences/constants.ts:62
 msgid "System Default"
 msgstr "Výchozí systémové"
 
@@ -448,6 +491,12 @@ msgstr "Velikost tabulátoru"
 msgid "Text formatting"
 msgstr "Formátování textu"
 
+#: src/components/preferences-modal/ai-panel.tsx:190
+msgid ""
+"The AI Assistant needs your Anthropic API key. It is kept in the system’s "
+"credential store and only sent to the Anthropic API."
+msgstr "Asistent AI potřebuje váš klíč API Anthropic. Je uložen v systémovém úložišti přihlašovacích údajů a odesílá se pouze do API Anthropic."
+
 #: src/ai/anthropic/errors.ts:40
 msgid "The API key cannot use this model."
 msgstr "Tento klíč API nemůže používat tento model."
@@ -455,6 +504,14 @@ msgstr "Tento klíč API nemůže používat tento model."
 #: src/ai/anthropic/errors.ts:35
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Klíč API není platný. Zkontrolujte ho v nastavení."
+
+#: src/components/preferences-modal/ai-panel.tsx:250
+msgid "The API key was deleted."
+msgstr "Klíč API byl smazán."
+
+#: src/components/preferences-modal/ai-panel.tsx:243
+msgid "The API key was saved."
+msgstr "Klíč API byl uložen."
 
 #: src/ai/anthropic/errors.ts:50
 msgid "The Anthropic API is not available right now. Try again later."
@@ -485,6 +542,11 @@ msgstr "Model odmítl na tento požadavek odpovědět."
 #: src/ai/anthropic/errors.ts:42
 msgid "The model was not found."
 msgstr "Model nebyl nalezen."
+
+# %s: Why the models could not be loaded.
+#: src/components/preferences-modal/ai-panel.tsx:290
+msgid "The models could not be loaded: %s"
+msgstr "Modely se nepodařilo načíst: %s"
 
 #: src/ai/anthropic/errors.ts:61
 msgid "The request failed."
@@ -520,6 +582,10 @@ msgstr "Nástroje"
 msgid "Top toolbar"
 msgstr "Horní panel nástrojů"
 
+#: src/components/preferences-modal/ai-panel.tsx:299
+msgid "Try again"
+msgstr "Zkusit znovu"
+
 #: src/components/preferences-modal/visual-editor-panel.tsx:157
 msgid "Typeface used for the content area."
 msgstr "Písmo použité v oblasti obsahu."
@@ -549,7 +615,7 @@ msgstr "Kontrola aktualizací selhala: %s"
 msgid "View"
 msgstr "Zobrazení"
 
-#: src/components/preferences-modal/index.tsx:188
+#: src/components/preferences-modal/index.tsx:197
 #: src/components/header-actions/index.tsx:286
 msgid "Visual editor"
 msgstr "Vizuální editor"

@@ -21,6 +21,7 @@ import { Dialog, getWpCompatOverlaySlot, Stack, Tabs } from '@wordpress/ui';
 /**
  * Internal dependencies
  */
+import { AiPanel, type AiSettings } from './ai-panel';
 import { CodeEditorPanel } from './code-editor-panel';
 import { GeneralPanel, type GeneralSettings } from './general-panel';
 import {
@@ -48,6 +49,7 @@ export default function PreferencesModal() {
 		showListViewByDefault,
 		showBlockBreadcrumbs,
 		editorStyles,
+		aiModel,
 	} = useSelect( ( select ) => {
 		const { get } = select( preferencesStore );
 		return {
@@ -67,6 +69,7 @@ export default function PreferencesModal() {
 			editorStyles:
 				get( 'mark-bricks', 'editorStyles' ) ??
 				DEFAULT_PREFERENCES[ 'mark-bricks' ].editorStyles,
+			aiModel: ( get( 'mark-bricks', 'aiModel' ) ?? '' ) as string,
 		};
 	}, [] );
 
@@ -145,6 +148,12 @@ export default function PreferencesModal() {
 		} );
 	};
 
+	const handleAiChange = ( edits: Partial< AiSettings > ) => {
+		if ( edits.model !== undefined ) {
+			setPreference( 'mark-bricks', 'aiModel', edits.model );
+		}
+	};
+
 	return (
 		<Dialog.Root
 			open
@@ -189,6 +198,9 @@ export default function PreferencesModal() {
 							</Tabs.Tab>
 							<Tabs.Tab value="code-editor">
 								{ __( 'Code editor', 'mark-bricks' ) }
+							</Tabs.Tab>
+							<Tabs.Tab value="ai">
+								{ __( 'AI Assistant', 'mark-bricks' ) }
 							</Tabs.Tab>
 						</Tabs.List>
 						<Tabs.Panel
@@ -239,6 +251,16 @@ export default function PreferencesModal() {
 							<CodeEditorPanel
 								settings={ codeEditor }
 								onChange={ handleCodeEditorChange }
+							/>
+						</Tabs.Panel>
+						<Tabs.Panel
+							value="ai"
+							className="preferences-modal__panel"
+							tabIndex={ -1 }
+						>
+							<AiPanel
+								settings={ { model: aiModel } }
+								onChange={ handleAiChange }
 							/>
 						</Tabs.Panel>
 					</Tabs.Root>

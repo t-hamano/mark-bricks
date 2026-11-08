@@ -10,7 +10,7 @@ use std::sync::{Mutex, OnceLock};
 use std::time::Duration;
 
 use futures_util::StreamExt;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use tauri::ipc::Channel;
 use tauri::{State, WebviewWindow};
 use tokio::sync::oneshot;
@@ -18,6 +18,10 @@ use tokio::sync::oneshot;
 use crate::api_key::{self, OsKeyStore, Provider};
 
 const ANTHROPIC_MESSAGES_URL: &str = "https://api.anthropic.com/v1/messages";
+const ANTHROPIC_MODELS_URL: &str = "https://api.anthropic.com/v1/models";
+
+/// The most models the Models API lists in one page.
+const MODELS_PAGE_LIMIT: &str = "1000";
 
 /// The API version the adapter's requests are written for.
 const ANTHROPIC_VERSION: &str = "2026-10-21";
@@ -75,19 +79,46 @@ impl AiRequestError {
     }
 }
 
+/// The API endpoints the commands send requests to.
+#[derive(Clone, Copy, Debug, PartialEq)]
+enum Endpoint {
+    /// Sends a message and streams the answer.
+    Messages,
+    /// Lists the models.
+    Models,
+}
+
 /// The URL and headers of a request to the provider's API.
-fn request_parts(provider: Provider, api_key: &str) -> (&'static str, Vec<(&'static str, String)>) {
+fn request_parts(
+    provider: Provider,
+    endpoint: Endpoint,
+    api_key: &str,
+) -> (&'static str, Vec<(&'static str, String)>) {
     match provider {
-        Provider::Anthropic => (
-            ANTHROPIC_MESSAGES_URL,
-            vec![
+        Provider::Anthropic => {
+            let mut headers = vec![
                 ("x-api-key", api_key.to_string()),
                 ("anthropic-version", ANTHROPIC_VERSION.to_string()),
                 ("anthropic-beta", ANTHROPIC_BETAS.to_string()),
-                ("content-type", "application/json".to_string()),
-            ],
-        ),
+            ];
+            let url = match endpoint {
+                Endpoint::Messages => {
+                    headers.push(("content-type", "application/json".to_string()));
+                    ANTHROPIC_MESSAGES_URL
+                }
+                Endpoint::Models => ANTHROPIC_MODELS_URL,
+            };
+            (url, headers)
+        }
     }
+}
+
+/// Reads the saved key, off the main thread.
+async fn read_api_key(provider: Provider) -> Result<String, AiRequestError> {
+    api_key::run_blocking(move || api_key::read_key(&OsKeyStore, provider))
+        .await
+        .map_err(AiRequestError::other)?
+        .ok_or(AiRequestError::NoApiKey)
 }
 
 fn client() -> Result<&'static reqwest::Client, AiRequestError> {
@@ -165,7 +196,7 @@ async fn send(
     body: String,
     on_event: &Channel<AiStreamEvent>,
 ) -> Result<(), AiRequestError> {
-    let (url, headers) = request_parts(provider, &api_key);
+    let (url, headers) = request_parts(provider, Endpoint::Messages, &api_key);
     let mut request = client()?.post(url).body(body);
     for (name, value) in headers {
         request = request.header(name, value);
@@ -225,10 +256,7 @@ pub async fn ai_request(
         .insert(id.clone(), cancel);
 
     let request = async {
-        let api_key = api_key::run_blocking(move || api_key::read_key(&OsKeyStore, provider))
-            .await
-            .map_err(AiRequestError::other)?
-            .ok_or(AiRequestError::NoApiKey)?;
+        let api_key = read_api_key(provider).await?;
         send(provider, api_key, body, &on_event).await
     };
     let result = tokio::select! {
@@ -255,13 +283,78 @@ pub fn cancel_ai_request(requests: State<'_, AiRequests>, id: String) {
     }
 }
 
+/// A model the API key can use.
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[serde(rename_all(serialize = "camelCase"))]
+pub struct AiModel {
+    pub id: String,
+    pub display_name: String,
+}
+
+/// A page of the Models API's list.
+#[derive(Debug, Deserialize)]
+struct ModelsPage {
+    data: Vec<AiModel>,
+    #[serde(default)]
+    has_more: bool,
+    last_id: Option<String>,
+}
+
+/// The most pages read, so that a broken `has_more` cannot loop forever.
+const MAX_MODELS_PAGES: usize = 10;
+
+async fn fetch_models(provider: Provider, api_key: String) -> Result<Vec<AiModel>, AiRequestError> {
+    let (url, headers) = request_parts(provider, Endpoint::Models, &api_key);
+    let mut models = Vec::new();
+    let mut after_id: Option<String> = None;
+    for _ in 0..MAX_MODELS_PAGES {
+        let mut params = vec![("limit", MODELS_PAGE_LIMIT)];
+        if let Some(after_id) = &after_id {
+            params.push(("after_id", after_id));
+        }
+        let page_url =
+            reqwest::Url::parse_with_params(url, &params).map_err(AiRequestError::other)?;
+        let mut request = client()?.get(page_url);
+        for (name, value) in &headers {
+            request = request.header(*name, value);
+        }
+        let response = request.send().await.map_err(AiRequestError::network)?;
+        let status = response.status();
+        let body = response.text().await.map_err(AiRequestError::network)?;
+        if !status.is_success() {
+            return Err(AiRequestError::Http {
+                status: status.as_u16(),
+                body,
+            });
+        }
+        let page: ModelsPage = serde_json::from_str(&body).map_err(AiRequestError::other)?;
+        models.extend(page.data);
+        match page.last_id {
+            Some(last_id) if page.has_more => after_id = Some(last_id),
+            _ => break,
+        }
+    }
+    Ok(models)
+}
+
+/// Lists the models the saved API key can use, newest first.
+#[tauri::command]
+pub async fn list_ai_models(
+    window: WebviewWindow,
+    provider: Provider,
+) -> Result<Vec<AiModel>, AiRequestError> {
+    api_key::check_window(&window).map_err(AiRequestError::other)?;
+    let api_key = read_api_key(provider).await?;
+    fetch_models(provider, api_key).await
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn sends_anthropic_requests_to_its_api_with_the_key() {
-        let (url, headers) = request_parts(Provider::Anthropic, "sk-ant-key");
+        let (url, headers) = request_parts(Provider::Anthropic, Endpoint::Messages, "sk-ant-key");
         assert_eq!(url, "https://api.anthropic.com/v1/messages");
         assert!(headers.contains(&("x-api-key", "sk-ant-key".to_string())));
         assert!(headers.contains(&("anthropic-version", "2026-10-21".to_string())));
@@ -269,6 +362,27 @@ mod tests {
             "anthropic-beta",
             "server-side-fallback-2026-07-01".to_string()
         )));
+    }
+
+    #[test]
+    fn lists_anthropic_models_from_its_api_with_the_key() {
+        let (url, headers) = request_parts(Provider::Anthropic, Endpoint::Models, "sk-ant-key");
+        assert_eq!(url, "https://api.anthropic.com/v1/models");
+        assert!(headers.contains(&("x-api-key", "sk-ant-key".to_string())));
+        assert!(headers.contains(&("anthropic-version", "2026-10-21".to_string())));
+    }
+
+    #[test]
+    fn reads_a_page_of_models_and_sends_them_to_the_webview() {
+        let page: ModelsPage = serde_json::from_str(
+            r#"{"data":[{"type":"model","id":"claude-opus-5-5","display_name":"Claude Opus 5.5","created_at":"2026-10-01T00:00:00Z"}],"has_more":false,"first_id":"claude-opus-5-5","last_id":"claude-opus-5-5"}"#,
+        )
+        .unwrap();
+        assert!(!page.has_more);
+        assert_eq!(
+            serde_json::to_value(&page.data).unwrap(),
+            serde_json::json!([{ "id": "claude-opus-5-5", "displayName": "Claude Opus 5.5" }])
+        );
     }
 
     #[test]

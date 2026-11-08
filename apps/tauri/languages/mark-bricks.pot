@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:35:54.001Z\n"
+"POT-Creation-Date: 2026-11-08T13:57:04.267Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -31,32 +31,32 @@ msgstr ""
 msgid "(Untitled)"
 msgstr ""
 
-#: src/preferences/constants.ts:51
-#: src/preferences/constants.ts:60
+#: src/preferences/constants.ts:53
+#: src/preferences/constants.ts:62
 msgid "System Default"
 msgstr ""
 
-#: src/preferences/constants.ts:52
+#: src/preferences/constants.ts:54
 msgid "Light"
 msgstr ""
 
-#: src/preferences/constants.ts:53
+#: src/preferences/constants.ts:55
 msgid "Dark"
 msgstr ""
 
-#: src/preferences/constants.ts:63
+#: src/preferences/constants.ts:65
 msgid "Sans-serif"
 msgstr ""
 
-#: src/preferences/constants.ts:67
+#: src/preferences/constants.ts:69
 msgid "Serif"
 msgstr ""
 
-#: src/preferences/constants.ts:71
+#: src/preferences/constants.ts:73
 msgid "Monospace"
 msgstr ""
 
-#: src/preferences/constants.ts:75
+#: src/preferences/constants.ts:77
 msgid "Handwriting"
 msgstr ""
 
@@ -187,7 +187,7 @@ msgid "Open file…"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:168
+#: src/components/preferences-modal/index.tsx:177
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -198,6 +198,7 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
+#: src/components/preferences-modal/ai-panel.tsx:226
 #: src/components/header-actions/index.tsx:136
 #: src/components/header-actions/index.tsx:182
 msgid "Save"
@@ -294,23 +295,27 @@ msgstr ""
 msgid "Typeface used for the content area."
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:166
+#: src/components/preferences-modal/index.tsx:175
 #: src/components/header-actions/index.tsx:362
 msgid "Preferences"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:194
 msgid "General"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:188
+#: src/components/preferences-modal/index.tsx:197
 #: src/components/header-actions/index.tsx:286
 msgid "Visual editor"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:191
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:298
 msgid "Code editor"
+msgstr ""
+
+#: src/components/preferences-modal/index.tsx:203
+msgid "AI Assistant"
 msgstr ""
 
 #: src/components/preferences-modal/general-panel.tsx:93
@@ -368,6 +373,67 @@ msgstr ""
 
 #: src/components/preferences-modal/code-editor-panel.tsx:102
 msgid "Restore default settings"
+msgstr ""
+
+# %s: The name of the default AI model.
+#: src/components/preferences-modal/ai-panel.tsx:75
+msgid "Default (%s)"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:173
+msgid "Save an API key to choose a model."
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:178
+msgid "Loading the models…"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:185
+msgid "Anthropic API key"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:189
+msgid "An API key is saved."
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:190
+msgid ""
+"The AI Assistant needs your Anthropic API key. It is kept in the system’s "
+"credential store and only sent to the Anthropic API."
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:213
+msgid "New API key"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:214
+msgid "API key"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:237
+msgid "Delete API key"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:243
+msgid "The API key was saved."
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:250
+msgid "The API key was deleted."
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:264
+#: src/components/preferences-modal/ai-panel.tsx:269
+msgid "Model"
+msgstr ""
+
+# %s: Why the models could not be loaded.
+#: src/components/preferences-modal/ai-panel.tsx:290
+msgid "The models could not be loaded: %s"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:299
+msgid "Try again"
 msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
