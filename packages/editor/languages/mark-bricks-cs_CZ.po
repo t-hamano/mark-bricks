@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
-"PO-Revision-Date: 2026-11-08T09:10:49.416Z\n"
+"POT-Creation-Date: 2026-11-08T12:17:13.387Z\n"
+"PO-Revision-Date: 2026-11-08T12:17:14.338Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -34,10 +34,10 @@ msgid "@mark-bricks/editor"
 msgstr ""
 
 #: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/index.tsx:55
-#: src/components/ai-sidebar/index.tsx:86
+#: src/components/ai-sidebar/sidebar.tsx:60
+#: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
-msgstr ""
+msgstr "Asistent AI"
 
 #: style.css
 #. Author of the generic
@@ -54,6 +54,16 @@ msgstr "Alternativní text"
 #: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "Použít"
+
+#: src/components/ai-sidebar/chat.tsx:209
+msgid "Ask the AI Assistant"
+msgstr "Zeptejte se asistenta AI"
+
+#: src/components/ai-sidebar/chat.tsx:188
+msgid ""
+"Ask the AI Assistant to write or edit. Your selection, or the line the "
+"cursor is on in the code editor, is sent with your message."
+msgstr "Požádejte asistenta AI o napsání nebo úpravu. Váš výběr, nebo řádek s kurzorem v editoru kódu, se odešle spolu se zprávou."
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -99,13 +109,13 @@ msgstr "Vymazat formátování"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:210
-#: src/components/ai-sidebar/index.tsx:90
+#: src/components/ai-sidebar/sidebar.tsx:106
 msgid "Close"
 msgstr "Zavřít"
 
 #: src/components/editor-header/index.tsx:194
 msgid "Close AI Assistant"
-msgstr ""
+msgstr "Zavřít asistenta AI"
 
 #: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
@@ -160,6 +170,10 @@ msgstr "Upravit obrázek"
 #: src/block-library/table/edit.tsx:331
 msgid "Edit table"
 msgstr "Upravit tabulku"
+
+#: src/components/ai-sidebar/chat.tsx:56
+msgid "Edited the document."
+msgstr "Dokument byl upraven."
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -305,6 +319,10 @@ msgstr ""
 "Klíčová slova Marp jako bg, w:200px nebo sepia určují rozvržení a velikost. "
 "Ostatní slova se stanou alternativním textem nebo popiskem obrázku na pozadí."
 
+#: src/components/ai-sidebar/chat.tsx:207
+msgid "Message"
+msgstr "Zpráva"
+
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
@@ -312,6 +330,10 @@ msgid ""
 msgstr ""
 "Projděte si strukturu dokumentu a vyřešte problémy, jako jsou prázdné nebo "
 "nesprávné úrovně nadpisů."
+
+#: src/components/ai-sidebar/sidebar.tsx:96
+msgid "New conversation"
+msgstr "Nová konverzace"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
@@ -324,6 +346,10 @@ msgstr "Poznámka"
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "Ve výchozím nastavení otevřeno"
+
+#: src/components/ai-sidebar/chat.tsx:180
+msgid "Open settings"
+msgstr "Otevřít nastavení"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
@@ -379,6 +405,14 @@ msgstr "Hledat"
 msgid "Search for blocks"
 msgstr "Hledat bloky"
 
+#: src/components/ai-sidebar/chat.tsx:227
+msgid "Send"
+msgstr "Odeslat"
+
+#: src/components/ai-sidebar/chat.tsx:170
+msgid "Set an API key to use the AI Assistant."
+msgstr "Pro použití asistenta AI nastavte klíč API."
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "Zobrazit nebo skrýt Zobrazení seznamu."
@@ -388,6 +422,14 @@ msgstr "Zobrazit nebo skrýt Zobrazení seznamu."
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Zobrazí se jako popisek při najetí myší."
+
+#: src/components/ai-sidebar/chat.tsx:218
+msgid "Stop"
+msgstr "Zastavit"
+
+#: src/components/ai-sidebar/chat.tsx:69
+msgid "Stopped."
+msgstr "Zastaveno."
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -405,9 +447,19 @@ msgstr "Přepnout mezi vizuálním editorem a editorem kódu."
 msgid "Table"
 msgstr "Tabulka"
 
+#: src/components/ai-sidebar/chat.tsx:76
+msgid "The answer could not be loaded."
+msgstr "Odpověď se nepodařilo načíst."
+
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "Diagram se nepodařilo vykreslit."
+
+#: src/components/ai-sidebar/chat.tsx:61
+msgid ""
+"The edit was not applied because the selection changed, for example by "
+"switching editors."
+msgstr "Úprava nebyla použita, protože se změnil výběr, například přepnutím editoru."
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
@@ -473,6 +525,10 @@ msgstr "Nahrajte obrázek ze zařízení nebo jej vložte z adresy URL."
 #. Description of the generic
 msgid "Visual markdown block editor."
 msgstr "Vizuální blokový editor Markdownu."
+
+#: src/components/ai-sidebar/chat.tsx:45
+msgid "Waiting for the answer…"
+msgstr "Čekání na odpověď…"
 
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"

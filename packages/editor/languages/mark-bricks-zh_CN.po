@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
-"PO-Revision-Date: 2026-11-08T09:10:57.184Z\n"
+"POT-Creation-Date: 2026-11-08T12:17:13.387Z\n"
+"PO-Revision-Date: 2026-11-08T12:17:20.121Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -34,10 +34,10 @@ msgid "@mark-bricks/editor"
 msgstr ""
 
 #: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/index.tsx:55
-#: src/components/ai-sidebar/index.tsx:86
+#: src/components/ai-sidebar/sidebar.tsx:60
+#: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
-msgstr ""
+msgstr "AI 助手"
 
 #: style.css
 #. Author of the generic
@@ -54,6 +54,16 @@ msgstr "替代文字"
 #: src/block-library/image/edit.tsx:280
 msgid "Apply"
 msgstr "应用"
+
+#: src/components/ai-sidebar/chat.tsx:209
+msgid "Ask the AI Assistant"
+msgstr "询问 AI 助手"
+
+#: src/components/ai-sidebar/chat.tsx:188
+msgid ""
+"Ask the AI Assistant to write or edit. Your selection, or the line the "
+"cursor is on in the code editor, is sent with your message."
+msgstr "让 AI 助手撰写或编辑内容。你的选区，或代码编辑器中光标所在的行，会随消息一起发送。"
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -99,13 +109,13 @@ msgstr "清除格式"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:210
-#: src/components/ai-sidebar/index.tsx:90
+#: src/components/ai-sidebar/sidebar.tsx:106
 msgid "Close"
 msgstr "关闭"
 
 #: src/components/editor-header/index.tsx:194
 msgid "Close AI Assistant"
-msgstr ""
+msgstr "关闭 AI 助手"
 
 #: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
@@ -160,6 +170,10 @@ msgstr "编辑图片"
 #: src/block-library/table/edit.tsx:331
 msgid "Edit table"
 msgstr "编辑表格"
+
+#: src/components/ai-sidebar/chat.tsx:56
+msgid "Edited the document."
+msgstr "已编辑文档。"
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -305,11 +319,19 @@ msgstr ""
 "bg、w:200px、sepia 等 Marp 关键字用于设置布局和尺寸。其余文字将作为替代文字，"
 "背景图片则作为说明文字。"
 
+#: src/components/ai-sidebar/chat.tsx:207
+msgid "Message"
+msgstr "消息"
+
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
 "incorrect heading levels."
 msgstr "浏览文档结构并解决标题级别为空或不正确等问题。"
+
+#: src/components/ai-sidebar/sidebar.tsx:96
+msgid "New conversation"
+msgstr "新对话"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
@@ -322,6 +344,10 @@ msgstr "说明"
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "默认打开"
+
+#: src/components/ai-sidebar/chat.tsx:180
+msgid "Open settings"
+msgstr "打开设置"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
@@ -377,6 +403,14 @@ msgstr "搜索"
 msgid "Search for blocks"
 msgstr "搜索区块"
 
+#: src/components/ai-sidebar/chat.tsx:227
+msgid "Send"
+msgstr "发送"
+
+#: src/components/ai-sidebar/chat.tsx:170
+msgid "Set an API key to use the AI Assistant."
+msgstr "请设置 API 密钥以使用 AI 助手。"
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "显示或隐藏列表视图。"
@@ -386,6 +420,14 @@ msgstr "显示或隐藏列表视图。"
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "悬停时显示为工具提示。"
+
+#: src/components/ai-sidebar/chat.tsx:218
+msgid "Stop"
+msgstr "停止"
+
+#: src/components/ai-sidebar/chat.tsx:69
+msgid "Stopped."
+msgstr "已停止。"
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -403,9 +445,19 @@ msgstr "在可视化编辑器和代码编辑器之间切换。"
 msgid "Table"
 msgstr "表格"
 
+#: src/components/ai-sidebar/chat.tsx:76
+msgid "The answer could not be loaded."
+msgstr "无法加载回答。"
+
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "无法渲染图表。"
+
+#: src/components/ai-sidebar/chat.tsx:61
+msgid ""
+"The edit was not applied because the selection changed, for example by "
+"switching editors."
+msgstr "由于选区已更改（例如切换了编辑器），编辑未被应用。"
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
@@ -471,6 +523,10 @@ msgstr "从设备上传图片或通过 URL 插入。"
 #. Description of the generic
 msgid "Visual markdown block editor."
 msgstr "可视化 Markdown 区块编辑器。"
+
+#: src/components/ai-sidebar/chat.tsx:45
+msgid "Waiting for the answer…"
+msgstr "正在等待回答…"
 
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"
