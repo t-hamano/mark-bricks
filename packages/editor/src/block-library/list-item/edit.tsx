@@ -27,6 +27,7 @@ import {
 	useMerge,
 } from './hooks';
 import taskItemIcon from './icon';
+import { richTextToString } from '../utils';
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes as ListItemAttributes } from './types';
 
@@ -81,18 +82,30 @@ export default function Edit( props: BlockEditProps ) {
 	const { placeholder, content, markdownData } = attributes;
 	const isTaskItem = markdownData?.checked !== undefined;
 	// An item that opens with a block other than a nested list, such as a
-	// code block on the marker line, has no item text by design. Its
-	// placeholder is only shown while the item is selected, so it does not
-	// read as a missing text when browsing the document.
-	const opensWithBlock = useSelect(
+	// code block on the marker line, has no item text by design. Its empty
+	// text field is only rendered while the item or one of its inner blocks
+	// is selected, so it does not leave a blank line above the block when
+	// browsing the document. A task item keeps it, as the checkbox belongs
+	// to the item text.
+	const { opensWithBlock, hasSelectedInnerBlock } = useSelect(
 		( select ) => {
-			const [ firstBlock ] =
-				select( blockEditorStore ).getBlocks( clientId );
-			return !! firstBlock && firstBlock.name !== 'core/list';
+			const { getBlocks, hasSelectedInnerBlock: hasSelected } =
+				select( blockEditorStore );
+			const [ firstBlock ] = getBlocks( clientId );
+			return {
+				opensWithBlock:
+					!! firstBlock && firstBlock.name !== 'core/list',
+				hasSelectedInnerBlock: hasSelected( clientId, true ),
+			};
 		},
 		[ clientId ]
 	);
-	const showPlaceholder = isSelected || ! opensWithBlock;
+	const showText =
+		richTextToString( content ) !== '' ||
+		isTaskItem ||
+		! opensWithBlock ||
+		isSelected ||
+		hasSelectedInnerBlock;
 	const blockProps = useBlockProps();
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		__unstableDisableDropZone: true,
@@ -102,6 +115,7 @@ export default function Edit( props: BlockEditProps ) {
 	const useEnterRef = useEnter( { content, clientId, isTaskItem } );
 	const useSpaceRef = useSpace( clientId );
 	const onMerge = useMerge( clientId, mergeBlocks ?? ( () => {} ) );
+	const richTextRef = useMergeRefs( [ useEnterRef, useSpaceRef ] );
 	return (
 		<>
 			<li { ...innerBlocksProps }>
@@ -120,24 +134,24 @@ export default function Edit( props: BlockEditProps ) {
 						aria-label={ __( 'Toggle task', 'mark-bricks' ) }
 					/>
 				) }
-				<RichText
-					// @ts-expect-error @types mismatch: RichText ref is typed as
-					// LegacyRef<'div'>, but useMergeRefs returns RefCallback<HTMLElement>.
-					ref={ useMergeRefs( [ useEnterRef, useSpaceRef ] ) }
-					identifier="content"
-					tagName="div"
-					onChange={ ( nextContent ) =>
-						setAttributes( { content: nextContent } )
-					}
-					value={ content }
-					aria-label={ __( 'List text', 'mark-bricks' ) }
-					placeholder={
-						showPlaceholder
-							? placeholder || __( 'List', 'mark-bricks' )
-							: undefined
-					}
-					onMerge={ onMerge }
-				/>
+				{ showText && (
+					<RichText
+						// @ts-expect-error @types mismatch: RichText ref is typed as
+						// LegacyRef<'div'>, but useMergeRefs returns RefCallback<HTMLElement>.
+						ref={ richTextRef }
+						identifier="content"
+						tagName="div"
+						onChange={ ( nextContent ) =>
+							setAttributes( { content: nextContent } )
+						}
+						value={ content }
+						aria-label={ __( 'List text', 'mark-bricks' ) }
+						placeholder={
+							placeholder || __( 'List', 'mark-bricks' )
+						}
+						onMerge={ onMerge }
+					/>
+				) }
 				{ innerBlocksProps.children }
 			</li>
 			<BlockControls group="block">
