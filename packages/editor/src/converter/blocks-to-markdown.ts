@@ -71,6 +71,40 @@ export function blockToNode( block: Block ): NodeResult | null {
 }
 
 /**
+ * Converts a single block into the Markdown it takes up in a document.
+ *
+ * @param block Block to convert.
+ * @return Markdown string without a trailing newline. Empty when the block
+ *         has no converter or no content.
+ */
+export function blockToMarkdown( block: Block ): string {
+	// Convert the block to a single-node mdast tree and stringify it to
+	// Markdown. A block with no converter yields an empty string.
+	const result = blockToNode( block );
+	if ( ! result ) {
+		return '';
+	}
+	const tree: Root = {
+		type: 'root',
+		children: [ result.node ],
+	};
+	const { handlers, ...options } = result.options ?? {};
+	return (
+		unified()
+			.use( remarkStringify, {
+				...options,
+				handlers: { ...sourceSyntaxHandlers, ...handlers },
+			} )
+			.use( remarkGfm )
+			.use( remarkMathBlock )
+			.stringify( tree )
+			// Strip the trailing newline remark-stringify appends, since
+			// blocks are joined with an explicit blank line.
+			.replace( /\n+$/, '' )
+	);
+}
+
+/**
  * Converts an array of blocks into a Markdown string.
  *
  * Each block is stringified independently, trailing newlines are trimmed, and
@@ -83,30 +117,7 @@ export function blockToNode( block: Block ): NodeResult | null {
  */
 export function blocksToMarkdown( blocks: Block[] ): string {
 	const segments = blocks
-		// Convert each block to a single-node mdast tree and stringify it to
-		// Markdown. A block with no converter yields an empty string.
-		.map( ( block ) => {
-			const result = blockToNode( block );
-			if ( ! result ) {
-				return '';
-			}
-			const tree: Root = {
-				type: 'root',
-				children: [ result.node ],
-			};
-			const { handlers, ...options } = result.options ?? {};
-			return unified()
-				.use( remarkStringify, {
-					...options,
-					handlers: { ...sourceSyntaxHandlers, ...handlers },
-				} )
-				.use( remarkGfm )
-				.use( remarkMathBlock )
-				.stringify( tree );
-		} )
-		// Strip the trailing newline remark-stringify appends, since the
-		// segments are rejoined with an explicit blank line below.
-		.map( ( s ) => s.replace( /\n+$/, '' ) )
+		.map( blockToMarkdown )
 		// Drop empty segments (blocks with no converter, or empty output).
 		.filter( ( s ) => s !== '' );
 	return segments.length === 0 ? '' : segments.join( '\n\n' ) + '\n';

@@ -38,6 +38,7 @@ type Props = {
 	style?: CSSProperties;
 	platform?: Partial< Platform >;
 	onRendered?: ( canvas: HTMLElement ) => void;
+	onSelectedLineChange?: ( line: number | null ) => void;
 };
 
 function UnforwardedBlockEditor(
@@ -50,6 +51,7 @@ function UnforwardedBlockEditor(
 		style,
 		platform,
 		onRendered,
+		onSelectedLineChange,
 	}: Props,
 	ref: ForwardedRef< EditorHandle >
 ) {
@@ -65,6 +67,7 @@ function UnforwardedBlockEditor(
 			headerActions={ headerActions }
 			style={ style }
 			platform={ platform }
+			onSelectedLineChange={ onSelectedLineChange }
 		>
 			<EditorCanvas
 				styles={ contentStyles }

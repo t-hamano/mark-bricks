@@ -30,6 +30,10 @@ They're exposed as two components, sharing the same header/footer/sidebars and u
 - `@mark-bricks/editor/katex-fonts`: `rewriteFontSources`, which points a KaTeX stylesheet at the bundled WOFF2 fonts. `@mark-bricks/marp-preview` uses it for the math in slides.
 - `@mark-bricks/editor/code-previews`: `inspectCodePreviews`, which reports how the previews of the math and code blocks rendered, for the apps' smoke tests.
 
+## Source lines
+
+Both components link the selected block to the lines of the document they write, counted from 0 with the front matter's lines, for a host that follows it elsewhere, such as in a slide preview. `onSelectedLineChange` reports the line that the selected top-level block starts at whenever it changes, or `null` when no block is selected or the code editor is shown. The handle's `selectLine` selects the top-level block that shows a line and scrolls it into view.
+
 ## Appearance
 
 The editor supports light and dark modes through `EditorThemeProvider`. It uses `ThemeProvider` from `@wordpress/theme` to update WPDS design tokens for the selected theme.

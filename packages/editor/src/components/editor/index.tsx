@@ -58,6 +58,7 @@ type Props = {
 	style?: CSSProperties;
 	platform?: Partial< Platform >;
 	onRendered?: ( canvas: HTMLElement ) => void;
+	onSelectedLineChange?: ( line: number | null ) => void;
 };
 
 // The full authoring experience: block editor and code editor, switchable
@@ -76,6 +77,7 @@ function UnforwardedEditor(
 		style,
 		platform,
 		onRendered,
+		onSelectedLineChange,
 	}: Props,
 	ref: ForwardedRef< EditorHandle >
 ) {
@@ -92,6 +94,7 @@ function UnforwardedEditor(
 			settings={ settings }
 			style={ style }
 			platform={ platform }
+			onSelectedLineChange={ onSelectedLineChange }
 			headerActions={
 				<Stack direction="row" align="center" gap="sm">
 					<IconButton
