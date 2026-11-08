@@ -4,6 +4,7 @@
 import { useRegistry, useDispatch, useSelect } from '@wordpress/data';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import { isUnmodifiedBlock } from '@wordpress/blocks';
+import { create } from '@wordpress/rich-text';
 
 /**
  * Internal dependencies
@@ -22,11 +23,14 @@ export default function useMerge(
 		getBlockRootClientId,
 		getBlockName,
 		getBlock,
+		getBlockAttributes,
 	} = useSelect( blockEditorStore );
 	const dispatch = useDispatch( blockEditorStore );
 	const {
 		mergeBlocks,
 		removeBlock,
+		updateBlockAttributes,
+		selectionChange,
 		// @ts-expect-error @types is outdated and missing moveBlocksToPosition on this dispatch type.
 		moveBlocksToPosition,
 	} = dispatch;
@@ -36,8 +40,12 @@ export default function useMerge(
 		return !! id && getBlockName( id ) === 'core/list';
 	}
 
-	// Only list item text can be merged, so there is no trailing id when an
-	// item ends with a block other than a nested list (a paragraph, ...).
+	function isParagraph( id: string | undefined ) {
+		return !! id && getBlockName( id ) === 'core/paragraph';
+	}
+
+	// Text can be merged into list item text or a paragraph, so there is no
+	// trailing id when an item ends with any other block (a code block, ...).
 	function getTrailingId( id: string ): string | undefined {
 		const order = getBlockOrder( id );
 
@@ -47,7 +55,7 @@ export default function useMerge(
 
 		const lastId = order[ order.length - 1 ];
 		if ( getBlockName( id ) === 'core/list-item' && ! isList( lastId ) ) {
-			return;
+			return isParagraph( lastId ) ? lastId : undefined;
 		}
 
 		return getTrailingId( lastId );
@@ -90,6 +98,26 @@ export default function useMerge(
 		return getBlockOrder( order[ 0 ] )[ 0 ];
 	}
 
+	function getTextLength( content: unknown ) {
+		return create( { html: String( content ?? '' ) } ).text.length;
+	}
+
+	// Moves the text of `sourceId` to the end of the text of `targetId` and
+	// removes `sourceId`, keeping the caret where the two texts meet.
+	function mergeText( targetId: string, sourceId: string ) {
+		const targetContent = getBlockAttributes( targetId )?.content ?? '';
+		const sourceContent = getBlockAttributes( sourceId )?.content ?? '';
+		const offset = getTextLength( targetContent );
+
+		registry.batch( () => {
+			updateBlockAttributes( targetId, {
+				content: `${ targetContent }${ sourceContent }`,
+			} );
+			removeBlock( sourceId, false );
+			selectionChange( targetId, 'content', offset, offset );
+		} );
+	}
+
 	return ( forward?: boolean ) => {
 		function mergeWithNested( clientIdA: string, clientIdB: string ) {
 			registry.batch( () => {
@@ -124,10 +152,30 @@ export default function useMerge(
 			} );
 		}
 
+		// Merges the item's text into a paragraph that ends the previous
+		// item. The item's inner blocks follow the paragraph.
+		function mergeIntoParagraph( paragraphId: string, itemId: string ) {
+			const listItemId = getBlockRootClientId( paragraphId );
+			registry.batch( () => {
+				const innerBlockIds = getBlockOrder( itemId );
+				if ( innerBlockIds.length && listItemId ) {
+					moveBlocksToPosition( innerBlockIds, itemId, listItemId );
+				}
+				mergeText( paragraphId, itemId );
+			} );
+		}
+
 		if ( forward ) {
-			// Text followed by a block other than a nested list (a
-			// paragraph, ...) has no list item text to merge with.
 			const [ firstInnerBlockId ] = getBlockOrder( clientId );
+
+			// A paragraph right after the text joins the text.
+			if ( isParagraph( firstInnerBlockId ) ) {
+				mergeText( clientId, firstInnerBlockId );
+				return;
+			}
+
+			// Text followed by any other block than a nested list (a code
+			// block, ...) has no text to merge with.
 			if ( firstInnerBlockId && ! isList( firstInnerBlockId ) ) {
 				return;
 			}
@@ -152,7 +200,9 @@ export default function useMerge(
 			const previousBlockClientId = getPreviousBlockClientId( clientId );
 			if ( previousBlockClientId ) {
 				const trailingId = getTrailingId( previousBlockClientId );
-				if ( trailingId ) {
+				if ( isParagraph( trailingId ) ) {
+					mergeIntoParagraph( trailingId as string, clientId );
+				} else if ( trailingId ) {
 					mergeWithNested( trailingId, clientId );
 				}
 				return;
