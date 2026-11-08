@@ -20,11 +20,12 @@ import { getHtmlForPreview } from './preview-html';
 const RENDER_DELAY_MS = 100;
 
 // The line of the block selected in each document's visual editor, by the
-// document's URI, for its preview to move to that slide.
+// document's URI, for its preview to highlight its element and move to its
+// slide.
 const selectedLines = new Map< string, number >();
 
-// Called when a slide is clicked in a preview, with the URI of its document
-// and the slide's first line.
+// Called when an element is clicked in a preview, with the URI of its
+// document and the element's line.
 type LineClickListener = ( uri: string, line: number ) => void;
 const lineClickListeners = new Set< LineClickListener >();
 
