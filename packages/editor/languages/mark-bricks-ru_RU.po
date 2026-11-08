@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
-"PO-Revision-Date: 2026-11-08T12:26:50.454Z\n"
+"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
+"PO-Revision-Date: 2026-11-08T12:35:56.691Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -66,15 +66,18 @@ msgstr "Альтернативный текст"
 msgid "Apply"
 msgstr "Применить"
 
-#: src/components/ai-sidebar/chat.tsx:209
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Ask the AI Assistant"
 msgstr "Спросите ИИ-ассистента"
 
-#: src/components/ai-sidebar/chat.tsx:188
+#: src/components/ai-sidebar/chat.tsx:198
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
-msgstr "Попросите ИИ-ассистента написать или отредактировать текст. Выделенный фрагмент или строка с курсором в редакторе кода отправляется вместе с сообщением."
+msgstr ""
+"Попросите ИИ-ассистента написать или отредактировать текст. Выделенный "
+"фрагмент или строка с курсором в редакторе кода отправляется вместе с "
+"сообщением."
 
 #: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
@@ -118,6 +121,10 @@ msgstr "Изменить тип блока после добавления но�
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Выберите язык…"
+
+#: src/components/front-matter-editor/index.tsx:190
+msgid "Classic look with a colored background."
+msgstr "Классический вид с цветным фоном."
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -192,7 +199,7 @@ msgstr "Редактировать изображение"
 msgid "Edit table"
 msgstr "Редактировать таблицу"
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Edited the document."
 msgstr "Документ изменён."
 
@@ -215,11 +222,16 @@ msgctxt "slide pattern"
 msgid "First point"
 msgstr "Первый пункт"
 
+#: src/components/front-matter-editor/index.tsx:293
+msgid "Footer"
+msgstr "Нижний колонтитул"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Косая черта"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:112
+#: src/components/front-matter-editor/index.tsx:131
 msgid "Front matter settings"
 msgstr "Настройки front matter"
 
@@ -231,6 +243,10 @@ msgstr "Тип оповещения GitHub"
 #: src/components/list-view-outline/index.tsx:109
 msgid "H%d"
 msgstr "H%d"
+
+#: src/components/front-matter-editor/index.tsx:282
+msgid "Header"
+msgstr "Верхний колонтитул"
 
 #: src/block-library/table/edit.tsx:300
 msgid "Header label"
@@ -334,7 +350,7 @@ msgstr "Сделать выделенный текст встроенным ко
 msgid "Make the selected text italic."
 msgstr "Сделать выделенный текст курсивом."
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
 
@@ -351,9 +367,13 @@ msgstr ""
 "Остальные слова становятся альтернативным текстом или подписью фонового "
 "изображения."
 
-#: src/components/ai-sidebar/chat.tsx:207
+#: src/components/ai-sidebar/chat.tsx:217
 msgid "Message"
 msgstr "Сообщение"
+
+#: src/components/front-matter-editor/index.tsx:198
+msgid "Minimal and modern, with centered content."
+msgstr "Минималистичная и современная, с выравниванием по центру."
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -384,7 +404,7 @@ msgstr "Примечание"
 msgid "Open by default"
 msgstr "Открыто по умолчанию"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:190
 msgid "Open settings"
 msgstr "Открыть настройки"
 
@@ -399,6 +419,10 @@ msgstr "Убрать отступ"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "Структура"
+
+#: src/components/front-matter-editor/index.tsx:304
+msgid "Paginate"
+msgstr "Нумерация страниц"
 
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
@@ -472,11 +496,15 @@ msgctxt "slide pattern"
 msgid "Section title"
 msgstr "Название раздела"
 
-#: src/components/ai-sidebar/chat.tsx:227
+#: src/components/front-matter-editor/index.tsx:316
+msgid "See the <a>Marp documentation</a> for other settings."
+msgstr "Другие настройки описаны в <a>документации Marp</a>."
+
+#: src/components/ai-sidebar/chat.tsx:237
 msgid "Send"
 msgstr "Отправить"
 
-#: src/components/ai-sidebar/chat.tsx:170
+#: src/components/ai-sidebar/chat.tsx:180
 msgid "Set an API key to use the AI Assistant."
 msgstr "Укажите ключ API, чтобы использовать ИИ-ассистента."
 
@@ -484,22 +512,34 @@ msgstr "Укажите ключ API, чтобы использовать ИИ-а
 msgid "Show or hide the List View."
 msgstr "Показать или скрыть представление в виде списка."
 
+#: src/components/front-matter-editor/index.tsx:305
+msgid "Show the page number on each slide."
+msgstr "Показывает номер страницы на каждом слайде."
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Показывается как всплывающая подсказка при наведении."
 
+#: src/components/front-matter-editor/index.tsx:182
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "Простая и аккуратная, в стиле GitHub Markdown."
+
+#: src/components/front-matter-editor/index.tsx:255
+msgid "Size"
+msgstr "Размер"
+
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "Заголовок слайда"
 
-#: src/components/ai-sidebar/chat.tsx:218
+#: src/components/ai-sidebar/chat.tsx:228
 msgid "Stop"
 msgstr "Остановить"
 
-#: src/components/ai-sidebar/chat.tsx:69
+#: src/components/ai-sidebar/chat.tsx:70
 msgid "Stopped."
 msgstr "Остановлено."
 
@@ -519,28 +559,46 @@ msgstr "Переключение между визуальным редакто�
 msgid "Table"
 msgstr "Таблица"
 
+#: src/components/front-matter-editor/index.tsx:294
+msgid "Text shown at the bottom of each slide."
+msgstr "Текст в нижней части каждого слайда."
+
+#: src/components/front-matter-editor/index.tsx:283
+msgid "Text shown at the top of each slide."
+msgstr "Текст в верхней части каждого слайда."
+
 #: src/marp-patterns/patterns/closing.ts:20
 msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "Спасибо"
 
-#: src/components/ai-sidebar/chat.tsx:76
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "The answer could not be loaded."
 msgstr "Не удалось загрузить ответ."
+
+#: src/components/front-matter-editor/index.tsx:278
+msgid "The aspect ratio of the slides."
+msgstr "Соотношение сторон слайдов."
 
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "Не удалось отобразить диаграмму."
 
-#: src/components/ai-sidebar/chat.tsx:61
+#: src/components/ai-sidebar/chat.tsx:62
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
-msgstr "Изменение не применено, потому что выделение изменилось, например при переключении редактора."
+msgstr ""
+"Изменение не применено, потому что выделение изменилось, например при "
+"переключении редактора."
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Не удалось отобразить формулу."
+
+#: src/components/front-matter-editor/index.tsx:219
+msgid "Theme"
+msgstr "Тема"
 
 #: src/marp-patterns/patterns/image-and-text.ts:26
 msgctxt "slide pattern"
@@ -574,7 +632,7 @@ msgstr "Преобразовать в обычный элемент"
 msgid "Turn into a task item"
 msgstr "Преобразовать в задачу"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:136
 msgid "Turn the document into a slide deck."
 msgstr "Превращает документ в слайд-презентацию."
 
@@ -613,7 +671,7 @@ msgstr "Загрузите изображение с устройства или
 msgid "Visual markdown block editor."
 msgstr "Визуальный блочный редактор Markdown."
 
-#: src/components/ai-sidebar/chat.tsx:45
+#: src/components/ai-sidebar/chat.tsx:46
 msgid "Waiting for the answer…"
 msgstr "Ожидание ответа…"
 
@@ -629,7 +687,7 @@ msgstr "Напишите HTML…"
 msgid "Write TeX…"
 msgstr "Напишите TeX…"
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:67
 msgid "Write YAML front matter…"
 msgstr "Введите YAML front matter…"
 
@@ -641,7 +699,7 @@ msgstr "Введите код…"
 msgid "Write summary…"
 msgstr "Написать резюме…"
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML front matter"
 

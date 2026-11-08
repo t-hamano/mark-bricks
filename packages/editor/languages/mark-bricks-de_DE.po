@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
-"PO-Revision-Date: 2026-11-08T12:26:45.886Z\n"
+"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
+"PO-Revision-Date: 2026-11-08T12:35:50.095Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -66,15 +66,18 @@ msgstr "Alternativtext"
 msgid "Apply"
 msgstr "Anwenden"
 
-#: src/components/ai-sidebar/chat.tsx:209
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Ask the AI Assistant"
 msgstr "KI-Assistenten fragen"
 
-#: src/components/ai-sidebar/chat.tsx:188
+#: src/components/ai-sidebar/chat.tsx:198
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
-msgstr "Bitte den KI-Assistenten, zu schreiben oder zu bearbeiten. Deine Auswahl oder im Code-Editor die Zeile mit dem Cursor wird mit deiner Nachricht gesendet."
+msgstr ""
+"Bitte den KI-Assistenten, zu schreiben oder zu bearbeiten. Deine Auswahl "
+"oder im Code-Editor die Zeile mit dem Cursor wird mit deiner Nachricht "
+"gesendet."
 
 #: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
@@ -118,6 +121,10 @@ msgstr "Den Blocktyp nach Hinzufügen eines neuen Absatzes ändern."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Sprache auswählen …"
+
+#: src/components/front-matter-editor/index.tsx:190
+msgid "Classic look with a colored background."
+msgstr "Klassischer Look mit farbigem Hintergrund."
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -192,7 +199,7 @@ msgstr "Bild bearbeiten"
 msgid "Edit table"
 msgstr "Tabelle bearbeiten"
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Edited the document."
 msgstr "Das Dokument wurde bearbeitet."
 
@@ -215,11 +222,16 @@ msgctxt "slide pattern"
 msgid "First point"
 msgstr "Erster Punkt"
 
+#: src/components/front-matter-editor/index.tsx:293
+msgid "Footer"
+msgstr "Fußzeile"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Schrägstrich"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:112
+#: src/components/front-matter-editor/index.tsx:131
 msgid "Front matter settings"
 msgstr "Front-Matter-Einstellungen"
 
@@ -231,6 +243,10 @@ msgstr "GitHub-Alert-Typ"
 #: src/components/list-view-outline/index.tsx:109
 msgid "H%d"
 msgstr "H%d"
+
+#: src/components/front-matter-editor/index.tsx:282
+msgid "Header"
+msgstr "Kopfzeile"
 
 #: src/block-library/table/edit.tsx:300
 msgid "Header label"
@@ -334,7 +350,7 @@ msgstr "Ausgewählten Text als Inline-Code formatieren."
 msgid "Make the selected text italic."
 msgstr "Ausgewählten Text kursiv formatieren."
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
 
@@ -351,9 +367,13 @@ msgstr ""
 "Die übrigen Wörter werden zum Alternativtext oder zur Bildunterschrift eines "
 "Hintergrundbilds."
 
-#: src/components/ai-sidebar/chat.tsx:207
+#: src/components/ai-sidebar/chat.tsx:217
 msgid "Message"
 msgstr "Nachricht"
+
+#: src/components/front-matter-editor/index.tsx:198
+msgid "Minimal and modern, with centered content."
+msgstr "Minimalistisch und modern, mit zentriertem Inhalt."
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -384,7 +404,7 @@ msgstr "Hinweis"
 msgid "Open by default"
 msgstr "Standardmäßig offen"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:190
 msgid "Open settings"
 msgstr "Einstellungen öffnen"
 
@@ -399,6 +419,10 @@ msgstr "Einzug verringern"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "Gliederung"
+
+#: src/components/front-matter-editor/index.tsx:304
+msgid "Paginate"
+msgstr "Seitenzahlen"
 
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
@@ -472,11 +496,15 @@ msgctxt "slide pattern"
 msgid "Section title"
 msgstr "Abschnittstitel"
 
-#: src/components/ai-sidebar/chat.tsx:227
+#: src/components/front-matter-editor/index.tsx:316
+msgid "See the <a>Marp documentation</a> for other settings."
+msgstr "Weitere Einstellungen findest du in der <a>Marp-Dokumentation</a>."
+
+#: src/components/ai-sidebar/chat.tsx:237
 msgid "Send"
 msgstr "Senden"
 
-#: src/components/ai-sidebar/chat.tsx:170
+#: src/components/ai-sidebar/chat.tsx:180
 msgid "Set an API key to use the AI Assistant."
 msgstr "Lege einen API-Schlüssel fest, um den KI-Assistenten zu verwenden."
 
@@ -484,22 +512,34 @@ msgstr "Lege einen API-Schlüssel fest, um den KI-Assistenten zu verwenden."
 msgid "Show or hide the List View."
 msgstr "Die Listenansicht ein- oder ausblenden."
 
+#: src/components/front-matter-editor/index.tsx:305
+msgid "Show the page number on each slide."
+msgstr "Zeigt auf jeder Folie die Seitenzahl an."
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Wird beim Überfahren mit der Maus als Tooltip angezeigt."
 
+#: src/components/front-matter-editor/index.tsx:182
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "Schlicht und klar, basierend auf dem GitHub-Markdown-Stil."
+
+#: src/components/front-matter-editor/index.tsx:255
+msgid "Size"
+msgstr "Größe"
+
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "Folientitel"
 
-#: src/components/ai-sidebar/chat.tsx:218
+#: src/components/ai-sidebar/chat.tsx:228
 msgid "Stop"
 msgstr "Anhalten"
 
-#: src/components/ai-sidebar/chat.tsx:69
+#: src/components/ai-sidebar/chat.tsx:70
 msgid "Stopped."
 msgstr "Angehalten."
 
@@ -519,28 +559,46 @@ msgstr "Zwischen visuellem Editor und Code-Editor wechseln."
 msgid "Table"
 msgstr "Tabelle"
 
+#: src/components/front-matter-editor/index.tsx:294
+msgid "Text shown at the bottom of each slide."
+msgstr "Text unten auf jeder Folie."
+
+#: src/components/front-matter-editor/index.tsx:283
+msgid "Text shown at the top of each slide."
+msgstr "Text oben auf jeder Folie."
+
 #: src/marp-patterns/patterns/closing.ts:20
 msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "Vielen Dank"
 
-#: src/components/ai-sidebar/chat.tsx:76
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "The answer could not be loaded."
 msgstr "Die Antwort konnte nicht geladen werden."
+
+#: src/components/front-matter-editor/index.tsx:278
+msgid "The aspect ratio of the slides."
+msgstr "Das Seitenverhältnis der Folien."
 
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "Das Diagramm konnte nicht dargestellt werden."
 
-#: src/components/ai-sidebar/chat.tsx:61
+#: src/components/ai-sidebar/chat.tsx:62
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
-msgstr "Die Bearbeitung wurde nicht übernommen, weil sich die Auswahl geändert hat, zum Beispiel durch einen Wechsel des Editors."
+msgstr ""
+"Die Bearbeitung wurde nicht übernommen, weil sich die Auswahl geändert hat, "
+"zum Beispiel durch einen Wechsel des Editors."
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Die Formel konnte nicht dargestellt werden."
+
+#: src/components/front-matter-editor/index.tsx:219
+msgid "Theme"
+msgstr "Theme"
 
 #: src/marp-patterns/patterns/image-and-text.ts:26
 msgctxt "slide pattern"
@@ -574,7 +632,7 @@ msgstr "In normales Element umwandeln"
 msgid "Turn into a task item"
 msgstr "In Aufgabenelement umwandeln"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:136
 msgid "Turn the document into a slide deck."
 msgstr "Macht das Dokument zu einem Foliensatz."
 
@@ -613,7 +671,7 @@ msgstr "Lade ein Bild von deinem Gerät hoch oder füge es über eine URL ein."
 msgid "Visual markdown block editor."
 msgstr "Visueller Markdown-Blockeditor."
 
-#: src/components/ai-sidebar/chat.tsx:45
+#: src/components/ai-sidebar/chat.tsx:46
 msgid "Waiting for the answer…"
 msgstr "Warte auf die Antwort …"
 
@@ -629,7 +687,7 @@ msgstr "Schreibe etwas in HTML …"
 msgid "Write TeX…"
 msgstr "Schreibe etwas in TeX …"
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:67
 msgid "Write YAML front matter…"
 msgstr "YAML-Front-Matter schreiben …"
 
@@ -641,7 +699,7 @@ msgstr "Schreibe etwas Code …"
 msgid "Write summary…"
 msgstr "Eine Zusammenfassung schreiben …"
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML-Front-Matter"
 

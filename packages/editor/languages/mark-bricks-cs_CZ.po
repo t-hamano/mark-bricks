@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
-"PO-Revision-Date: 2026-11-08T12:26:45.298Z\n"
+"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
+"PO-Revision-Date: 2026-11-08T12:35:49.347Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -66,15 +66,17 @@ msgstr "Alternativní text"
 msgid "Apply"
 msgstr "Použít"
 
-#: src/components/ai-sidebar/chat.tsx:209
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Ask the AI Assistant"
 msgstr "Zeptejte se asistenta AI"
 
-#: src/components/ai-sidebar/chat.tsx:188
+#: src/components/ai-sidebar/chat.tsx:198
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
-msgstr "Požádejte asistenta AI o napsání nebo úpravu. Váš výběr, nebo řádek s kurzorem v editoru kódu, se odešle spolu se zprávou."
+msgstr ""
+"Požádejte asistenta AI o napsání nebo úpravu. Váš výběr, nebo řádek s "
+"kurzorem v editoru kódu, se odešle spolu se zprávou."
 
 #: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
@@ -118,6 +120,10 @@ msgstr "Změnit typ bloku po přidání nového odstavce."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Vyberte jazyk…"
+
+#: src/components/front-matter-editor/index.tsx:190
+msgid "Classic look with a colored background."
+msgstr "Klasický vzhled s barevným pozadím."
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -192,7 +198,7 @@ msgstr "Upravit obrázek"
 msgid "Edit table"
 msgstr "Upravit tabulku"
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Edited the document."
 msgstr "Dokument byl upraven."
 
@@ -215,11 +221,16 @@ msgctxt "slide pattern"
 msgid "First point"
 msgstr "První bod"
 
+#: src/components/front-matter-editor/index.tsx:293
+msgid "Footer"
+msgstr "Zápatí"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Lomítko"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:112
+#: src/components/front-matter-editor/index.tsx:131
 msgid "Front matter settings"
 msgstr "Nastavení front matter"
 
@@ -231,6 +242,10 @@ msgstr "Typ výstrahy GitHub"
 #: src/components/list-view-outline/index.tsx:109
 msgid "H%d"
 msgstr "H%d"
+
+#: src/components/front-matter-editor/index.tsx:282
+msgid "Header"
+msgstr "Záhlaví"
 
 #: src/block-library/table/edit.tsx:300
 msgid "Header label"
@@ -334,7 +349,7 @@ msgstr "Změnit vybraný text na vložený kód."
 msgid "Make the selected text italic."
 msgstr "Kurzíva"
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
 
@@ -350,9 +365,13 @@ msgstr ""
 "Klíčová slova Marp jako bg, w:200px nebo sepia určují rozvržení a velikost. "
 "Ostatní slova se stanou alternativním textem nebo popiskem obrázku na pozadí."
 
-#: src/components/ai-sidebar/chat.tsx:207
+#: src/components/ai-sidebar/chat.tsx:217
 msgid "Message"
 msgstr "Zpráva"
+
+#: src/components/front-matter-editor/index.tsx:198
+msgid "Minimal and modern, with centered content."
+msgstr "Minimalistický a moderní, s obsahem na středu."
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -383,7 +402,7 @@ msgstr "Poznámka"
 msgid "Open by default"
 msgstr "Ve výchozím nastavení otevřeno"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:190
 msgid "Open settings"
 msgstr "Otevřít nastavení"
 
@@ -398,6 +417,10 @@ msgstr "Zmenšit odsazení"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "Osnova"
+
+#: src/components/front-matter-editor/index.tsx:304
+msgid "Paginate"
+msgstr "Číslování stránek"
 
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
@@ -471,11 +494,15 @@ msgctxt "slide pattern"
 msgid "Section title"
 msgstr "Název části"
 
-#: src/components/ai-sidebar/chat.tsx:227
+#: src/components/front-matter-editor/index.tsx:316
+msgid "See the <a>Marp documentation</a> for other settings."
+msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
+
+#: src/components/ai-sidebar/chat.tsx:237
 msgid "Send"
 msgstr "Odeslat"
 
-#: src/components/ai-sidebar/chat.tsx:170
+#: src/components/ai-sidebar/chat.tsx:180
 msgid "Set an API key to use the AI Assistant."
 msgstr "Pro použití asistenta AI nastavte klíč API."
 
@@ -483,22 +510,34 @@ msgstr "Pro použití asistenta AI nastavte klíč API."
 msgid "Show or hide the List View."
 msgstr "Zobrazit nebo skrýt Zobrazení seznamu."
 
+#: src/components/front-matter-editor/index.tsx:305
+msgid "Show the page number on each slide."
+msgstr "Zobrazí číslo stránky na každém snímku."
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Zobrazí se jako popisek při najetí myší."
 
+#: src/components/front-matter-editor/index.tsx:182
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "Jednoduchý a čistý, založený na stylu GitHub Markdown."
+
+#: src/components/front-matter-editor/index.tsx:255
+msgid "Size"
+msgstr "Velikost"
+
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "Název snímku"
 
-#: src/components/ai-sidebar/chat.tsx:218
+#: src/components/ai-sidebar/chat.tsx:228
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/components/ai-sidebar/chat.tsx:69
+#: src/components/ai-sidebar/chat.tsx:70
 msgid "Stopped."
 msgstr "Zastaveno."
 
@@ -518,28 +557,45 @@ msgstr "Přepnout mezi vizuálním editorem a editorem kódu."
 msgid "Table"
 msgstr "Tabulka"
 
+#: src/components/front-matter-editor/index.tsx:294
+msgid "Text shown at the bottom of each slide."
+msgstr "Text zobrazený v dolní části každého snímku."
+
+#: src/components/front-matter-editor/index.tsx:283
+msgid "Text shown at the top of each slide."
+msgstr "Text zobrazený v horní části každého snímku."
+
 #: src/marp-patterns/patterns/closing.ts:20
 msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "Děkuji"
 
-#: src/components/ai-sidebar/chat.tsx:76
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "The answer could not be loaded."
 msgstr "Odpověď se nepodařilo načíst."
+
+#: src/components/front-matter-editor/index.tsx:278
+msgid "The aspect ratio of the slides."
+msgstr "Poměr stran snímků."
 
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "Diagram se nepodařilo vykreslit."
 
-#: src/components/ai-sidebar/chat.tsx:61
+#: src/components/ai-sidebar/chat.tsx:62
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
-msgstr "Úprava nebyla použita, protože se změnil výběr, například přepnutím editoru."
+msgstr ""
+"Úprava nebyla použita, protože se změnil výběr, například přepnutím editoru."
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Vzorec se nepodařilo vykreslit."
+
+#: src/components/front-matter-editor/index.tsx:219
+msgid "Theme"
+msgstr "Motiv"
 
 #: src/marp-patterns/patterns/image-and-text.ts:26
 msgctxt "slide pattern"
@@ -573,7 +629,7 @@ msgstr "Převést na běžnou položku"
 msgid "Turn into a task item"
 msgstr "Převést na úkol"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:136
 msgid "Turn the document into a slide deck."
 msgstr "Změní dokument na sadu snímků."
 
@@ -612,7 +668,7 @@ msgstr "Nahrajte obrázek ze zařízení nebo jej vložte z adresy URL."
 msgid "Visual markdown block editor."
 msgstr "Vizuální blokový editor Markdownu."
 
-#: src/components/ai-sidebar/chat.tsx:45
+#: src/components/ai-sidebar/chat.tsx:46
 msgid "Waiting for the answer…"
 msgstr "Čekání na odpověď…"
 
@@ -628,7 +684,7 @@ msgstr "Začněte psát HTML…"
 msgid "Write TeX…"
 msgstr "Začněte psát TeX…"
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:67
 msgid "Write YAML front matter…"
 msgstr "Napište YAML front matter…"
 
@@ -640,7 +696,7 @@ msgstr "Napište kód"
 msgid "Write summary…"
 msgstr "Napište shrnutí…"
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML front matter"
 

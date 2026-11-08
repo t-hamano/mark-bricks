@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
-"PO-Revision-Date: 2026-11-08T12:26:50.995Z\n"
+"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
+"PO-Revision-Date: 2026-11-08T12:35:57.537Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -66,15 +66,17 @@ msgstr "Alternatif metin"
 msgid "Apply"
 msgstr "Uygula"
 
-#: src/components/ai-sidebar/chat.tsx:209
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Ask the AI Assistant"
 msgstr "Yapay Zekâ Asistanına sorun"
 
-#: src/components/ai-sidebar/chat.tsx:188
+#: src/components/ai-sidebar/chat.tsx:198
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
-msgstr "Yapay Zekâ Asistanından yazmasını veya düzenlemesini isteyin. Seçiminiz ya da kod düzenleyicide imlecin bulunduğu satır mesajınızla birlikte gönderilir."
+msgstr ""
+"Yapay Zekâ Asistanından yazmasını veya düzenlemesini isteyin. Seçiminiz ya "
+"da kod düzenleyicide imlecin bulunduğu satır mesajınızla birlikte gönderilir."
 
 #: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
@@ -118,6 +120,10 @@ msgstr "Yeni paragraf ekledikten sonra blok türünü değiştirin."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Dil seçin…"
+
+#: src/components/front-matter-editor/index.tsx:190
+msgid "Classic look with a colored background."
+msgstr "Renkli arka planlı klasik bir görünüm."
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -192,7 +198,7 @@ msgstr "Görseli düzenle"
 msgid "Edit table"
 msgstr "Tabloyu düzenle"
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Edited the document."
 msgstr "Belge düzenlendi."
 
@@ -215,11 +221,16 @@ msgctxt "slide pattern"
 msgid "First point"
 msgstr "Birinci madde"
 
+#: src/components/front-matter-editor/index.tsx:293
+msgid "Footer"
+msgstr "Alt bilgi"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Eğik çizgi"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:112
+#: src/components/front-matter-editor/index.tsx:131
 msgid "Front matter settings"
 msgstr "Front matter ayarları"
 
@@ -231,6 +242,10 @@ msgstr "GitHub uyarı türü"
 #: src/components/list-view-outline/index.tsx:109
 msgid "H%d"
 msgstr "H%d"
+
+#: src/components/front-matter-editor/index.tsx:282
+msgid "Header"
+msgstr "Üst bilgi"
 
 #: src/block-library/table/edit.tsx:300
 msgid "Header label"
@@ -334,7 +349,7 @@ msgstr "Seçilmiş metni satır içi koda dönüştürür."
 msgid "Make the selected text italic."
 msgstr "Seçilmiş metni yatık yapar."
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
 
@@ -351,9 +366,13 @@ msgstr ""
 "belirler. Diğer sözcükler alternatif metin ya da arka plan görselinin "
 "açıklaması olur."
 
-#: src/components/ai-sidebar/chat.tsx:207
+#: src/components/ai-sidebar/chat.tsx:217
 msgid "Message"
 msgstr "Mesaj"
+
+#: src/components/front-matter-editor/index.tsx:198
+msgid "Minimal and modern, with centered content."
+msgstr "İçeriği ortalanmış, minimal ve modern bir tema."
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -384,7 +403,7 @@ msgstr "Not"
 msgid "Open by default"
 msgstr "Varsayılan olarak açık"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:190
 msgid "Open settings"
 msgstr "Ayarları aç"
 
@@ -399,6 +418,10 @@ msgstr "Girintiyi azalt"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "Anahat"
+
+#: src/components/front-matter-editor/index.tsx:304
+msgid "Paginate"
+msgstr "Sayfa numarası"
 
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
@@ -472,11 +495,15 @@ msgctxt "slide pattern"
 msgid "Section title"
 msgstr "Bölüm başlığı"
 
-#: src/components/ai-sidebar/chat.tsx:227
+#: src/components/front-matter-editor/index.tsx:316
+msgid "See the <a>Marp documentation</a> for other settings."
+msgstr "Diğer ayarlar için <a>Marp belgelerine</a> bakın."
+
+#: src/components/ai-sidebar/chat.tsx:237
 msgid "Send"
 msgstr "Gönder"
 
-#: src/components/ai-sidebar/chat.tsx:170
+#: src/components/ai-sidebar/chat.tsx:180
 msgid "Set an API key to use the AI Assistant."
 msgstr "Yapay Zekâ Asistanını kullanmak için bir API anahtarı ayarlayın."
 
@@ -484,22 +511,34 @@ msgstr "Yapay Zekâ Asistanını kullanmak için bir API anahtarı ayarlayın."
 msgid "Show or hide the List View."
 msgstr "Liste görünümünü gösterin veya gizleyin."
 
+#: src/components/front-matter-editor/index.tsx:305
+msgid "Show the page number on each slide."
+msgstr "Her slaytta sayfa numarasını gösterir."
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Üzerine gelindiğinde araç ipucu olarak gösterilir."
 
+#: src/components/front-matter-editor/index.tsx:182
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "GitHub Markdown stiline dayanan sade ve temiz bir tema."
+
+#: src/components/front-matter-editor/index.tsx:255
+msgid "Size"
+msgstr "Boyut"
+
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "Slayt başlığı"
 
-#: src/components/ai-sidebar/chat.tsx:218
+#: src/components/ai-sidebar/chat.tsx:228
 msgid "Stop"
 msgstr "Durdur"
 
-#: src/components/ai-sidebar/chat.tsx:69
+#: src/components/ai-sidebar/chat.tsx:70
 msgid "Stopped."
 msgstr "Durduruldu."
 
@@ -519,28 +558,46 @@ msgstr "Görsel düzenleyici ile kod düzenleyici arasında geçiş yap."
 msgid "Table"
 msgstr "Tablo"
 
+#: src/components/front-matter-editor/index.tsx:294
+msgid "Text shown at the bottom of each slide."
+msgstr "Her slaytın altında gösterilen metin."
+
+#: src/components/front-matter-editor/index.tsx:283
+msgid "Text shown at the top of each slide."
+msgstr "Her slaytın üstünde gösterilen metin."
+
 #: src/marp-patterns/patterns/closing.ts:20
 msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "Teşekkürler"
 
-#: src/components/ai-sidebar/chat.tsx:76
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "The answer could not be loaded."
 msgstr "Yanıt yüklenemedi."
+
+#: src/components/front-matter-editor/index.tsx:278
+msgid "The aspect ratio of the slides."
+msgstr "Slaytların en boy oranı."
 
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "Diyagram oluşturulamadı."
 
-#: src/components/ai-sidebar/chat.tsx:61
+#: src/components/ai-sidebar/chat.tsx:62
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
-msgstr "Seçim değiştiği için (örneğin düzenleyici değiştirildiğinde) düzenleme uygulanmadı."
+msgstr ""
+"Seçim değiştiği için (örneğin düzenleyici değiştirildiğinde) düzenleme "
+"uygulanmadı."
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Formül oluşturulamadı."
+
+#: src/components/front-matter-editor/index.tsx:219
+msgid "Theme"
+msgstr "Tema"
 
 #: src/marp-patterns/patterns/image-and-text.ts:26
 msgctxt "slide pattern"
@@ -574,7 +631,7 @@ msgstr "Normal öğeye dönüştür"
 msgid "Turn into a task item"
 msgstr "Görev öğesine dönüştür"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:136
 msgid "Turn the document into a slide deck."
 msgstr "Belgeyi bir slayt sunusuna dönüştürür."
 
@@ -613,7 +670,7 @@ msgstr "Cihazınızdan bir görsel yükleyin veya bir URL’den ekleyin."
 msgid "Visual markdown block editor."
 msgstr "Görsel Markdown blok düzenleyicisi."
 
-#: src/components/ai-sidebar/chat.tsx:45
+#: src/components/ai-sidebar/chat.tsx:46
 msgid "Waiting for the answer…"
 msgstr "Yanıt bekleniyor…"
 
@@ -629,7 +686,7 @@ msgstr "HTML yazın…"
 msgid "Write TeX…"
 msgstr "TeX yazın…"
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:67
 msgid "Write YAML front matter…"
 msgstr "YAML front matter yazın…"
 
@@ -641,7 +698,7 @@ msgstr "Kod yaz…"
 msgid "Write summary…"
 msgstr "Özet yaz…"
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML front matter"
 

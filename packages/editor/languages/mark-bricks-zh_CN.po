@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
-"PO-Revision-Date: 2026-11-08T12:26:51.600Z\n"
+"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
+"PO-Revision-Date: 2026-11-08T12:35:58.316Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -66,15 +66,17 @@ msgstr "替代文字"
 msgid "Apply"
 msgstr "应用"
 
-#: src/components/ai-sidebar/chat.tsx:209
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Ask the AI Assistant"
 msgstr "询问 AI 助手"
 
-#: src/components/ai-sidebar/chat.tsx:188
+#: src/components/ai-sidebar/chat.tsx:198
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
-msgstr "让 AI 助手撰写或编辑内容。你的选区，或代码编辑器中光标所在的行，会随消息一起发送。"
+msgstr ""
+"让 AI 助手撰写或编辑内容。你的选区，或代码编辑器中光标所在的行，会随消息一起"
+"发送。"
 
 #: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
@@ -118,6 +120,10 @@ msgstr "在新增段落后修改区块类型。"
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "选择语言…"
+
+#: src/components/front-matter-editor/index.tsx:190
+msgid "Classic look with a colored background."
+msgstr "带有彩色背景的经典风格。"
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -192,7 +198,7 @@ msgstr "编辑图片"
 msgid "Edit table"
 msgstr "编辑表格"
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Edited the document."
 msgstr "已编辑文档。"
 
@@ -215,11 +221,16 @@ msgctxt "slide pattern"
 msgid "First point"
 msgstr "第一点"
 
+#: src/components/front-matter-editor/index.tsx:293
+msgid "Footer"
+msgstr "页脚"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "正斜杠"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:112
+#: src/components/front-matter-editor/index.tsx:131
 msgid "Front matter settings"
 msgstr "前置元数据设置"
 
@@ -231,6 +242,10 @@ msgstr "GitHub 警示类型"
 #: src/components/list-view-outline/index.tsx:109
 msgid "H%d"
 msgstr "H%d"
+
+#: src/components/front-matter-editor/index.tsx:282
+msgid "Header"
+msgstr "页眉"
 
 #: src/block-library/table/edit.tsx:300
 msgid "Header label"
@@ -334,7 +349,7 @@ msgstr "将选定的文本设为内联代码。"
 msgid "Make the selected text italic."
 msgstr "将选中的文字设为斜体。"
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
 
@@ -350,9 +365,13 @@ msgstr ""
 "bg、w:200px、sepia 等 Marp 关键字用于设置布局和尺寸。其余文字将作为替代文字，"
 "背景图片则作为说明文字。"
 
-#: src/components/ai-sidebar/chat.tsx:207
+#: src/components/ai-sidebar/chat.tsx:217
 msgid "Message"
 msgstr "消息"
+
+#: src/components/front-matter-editor/index.tsx:198
+msgid "Minimal and modern, with centered content."
+msgstr "简约现代，内容居中。"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -381,7 +400,7 @@ msgstr "说明"
 msgid "Open by default"
 msgstr "默认打开"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:190
 msgid "Open settings"
 msgstr "打开设置"
 
@@ -396,6 +415,10 @@ msgstr "减少缩进量"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "大纲"
+
+#: src/components/front-matter-editor/index.tsx:304
+msgid "Paginate"
+msgstr "页码"
 
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
@@ -469,11 +492,15 @@ msgctxt "slide pattern"
 msgid "Section title"
 msgstr "章节标题"
 
-#: src/components/ai-sidebar/chat.tsx:227
+#: src/components/front-matter-editor/index.tsx:316
+msgid "See the <a>Marp documentation</a> for other settings."
+msgstr "其他设置请参阅 <a>Marp 文档</a>。"
+
+#: src/components/ai-sidebar/chat.tsx:237
 msgid "Send"
 msgstr "发送"
 
-#: src/components/ai-sidebar/chat.tsx:170
+#: src/components/ai-sidebar/chat.tsx:180
 msgid "Set an API key to use the AI Assistant."
 msgstr "请设置 API 密钥以使用 AI 助手。"
 
@@ -481,22 +508,34 @@ msgstr "请设置 API 密钥以使用 AI 助手。"
 msgid "Show or hide the List View."
 msgstr "显示或隐藏列表视图。"
 
+#: src/components/front-matter-editor/index.tsx:305
+msgid "Show the page number on each slide."
+msgstr "在每张幻灯片上显示页码。"
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "悬停时显示为工具提示。"
 
+#: src/components/front-matter-editor/index.tsx:182
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "简洁清爽，基于 GitHub Markdown 样式。"
+
+#: src/components/front-matter-editor/index.tsx:255
+msgid "Size"
+msgstr "尺寸"
+
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "幻灯片标题"
 
-#: src/components/ai-sidebar/chat.tsx:218
+#: src/components/ai-sidebar/chat.tsx:228
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:69
+#: src/components/ai-sidebar/chat.tsx:70
 msgid "Stopped."
 msgstr "已停止。"
 
@@ -516,20 +555,32 @@ msgstr "在可视化编辑器和代码编辑器之间切换。"
 msgid "Table"
 msgstr "表格"
 
+#: src/components/front-matter-editor/index.tsx:294
+msgid "Text shown at the bottom of each slide."
+msgstr "显示在每张幻灯片底部的文本。"
+
+#: src/components/front-matter-editor/index.tsx:283
+msgid "Text shown at the top of each slide."
+msgstr "显示在每张幻灯片顶部的文本。"
+
 #: src/marp-patterns/patterns/closing.ts:20
 msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "谢谢"
 
-#: src/components/ai-sidebar/chat.tsx:76
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "The answer could not be loaded."
 msgstr "无法加载回答。"
+
+#: src/components/front-matter-editor/index.tsx:278
+msgid "The aspect ratio of the slides."
+msgstr "幻灯片的宽高比。"
 
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "无法渲染图表。"
 
-#: src/components/ai-sidebar/chat.tsx:61
+#: src/components/ai-sidebar/chat.tsx:62
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -538,6 +589,10 @@ msgstr "由于选区已更改（例如切换了编辑器），编辑未被应用
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "无法渲染公式。"
+
+#: src/components/front-matter-editor/index.tsx:219
+msgid "Theme"
+msgstr "主题"
 
 #: src/marp-patterns/patterns/image-and-text.ts:26
 msgctxt "slide pattern"
@@ -571,7 +626,7 @@ msgstr "转换为普通项目"
 msgid "Turn into a task item"
 msgstr "转换为任务项目"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:136
 msgid "Turn the document into a slide deck."
 msgstr "将文档转换为幻灯片。"
 
@@ -610,7 +665,7 @@ msgstr "从设备上传图片或通过 URL 插入。"
 msgid "Visual markdown block editor."
 msgstr "可视化 Markdown 区块编辑器。"
 
-#: src/components/ai-sidebar/chat.tsx:45
+#: src/components/ai-sidebar/chat.tsx:46
 msgid "Waiting for the answer…"
 msgstr "正在等待回答…"
 
@@ -626,7 +681,7 @@ msgstr "编写 HTML…"
 msgid "Write TeX…"
 msgstr "编写 TeX…"
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:67
 msgid "Write YAML front matter…"
 msgstr "编写 YAML 前置元数据…"
 
@@ -638,7 +693,7 @@ msgstr "编写代码…"
 msgid "Write summary…"
 msgstr "编写摘要…"
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML 前置元数据"
 

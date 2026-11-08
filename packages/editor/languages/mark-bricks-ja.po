@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
-"PO-Revision-Date: 2026-11-08T12:26:48.120Z\n"
+"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
+"PO-Revision-Date: 2026-11-08T12:35:53.450Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -66,15 +66,17 @@ msgstr "代替テキスト"
 msgid "Apply"
 msgstr "適用"
 
-#: src/components/ai-sidebar/chat.tsx:209
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Ask the AI Assistant"
 msgstr "AI アシスタントに質問"
 
-#: src/components/ai-sidebar/chat.tsx:188
+#: src/components/ai-sidebar/chat.tsx:198
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
-msgstr "AI アシスタントに執筆や編集を依頼できます。選択範囲、またはコードエディターでカーソルがある行がメッセージと一緒に送信されます。"
+msgstr ""
+"AI アシスタントに執筆や編集を依頼できます。選択範囲、またはコードエディターで"
+"カーソルがある行がメッセージと一緒に送信されます。"
 
 #: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
@@ -118,6 +120,10 @@ msgstr "新規段落の追加後、ブロックタイプを変更します。"
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "言語を選択…"
+
+#: src/components/front-matter-editor/index.tsx:190
+msgid "Classic look with a colored background."
+msgstr "背景色のついたクラシックなテーマ。"
 
 #: src/format-library/clear-formatting.tsx:20
 msgid "Clear formatting"
@@ -192,7 +198,7 @@ msgstr "画像を編集"
 msgid "Edit table"
 msgstr "表を編集"
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Edited the document."
 msgstr "ドキュメントを編集しました。"
 
@@ -215,11 +221,16 @@ msgctxt "slide pattern"
 msgid "First point"
 msgstr "1つ目のポイント"
 
+#: src/components/front-matter-editor/index.tsx:293
+msgid "Footer"
+msgstr "フッター"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "前方スラッシュ"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:112
+#: src/components/front-matter-editor/index.tsx:131
 msgid "Front matter settings"
 msgstr "フロントマター設定"
 
@@ -231,6 +242,10 @@ msgstr "GitHub アラートタイプ"
 #: src/components/list-view-outline/index.tsx:109
 msgid "H%d"
 msgstr "H%d"
+
+#: src/components/front-matter-editor/index.tsx:282
+msgid "Header"
+msgstr "ヘッダー"
 
 #: src/block-library/table/edit.tsx:300
 msgid "Header label"
@@ -334,7 +349,7 @@ msgstr "選択したテキストをインラインコードにする。"
 msgid "Make the selected text italic."
 msgstr "選択したテキストを斜体にする。"
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
 
@@ -350,9 +365,13 @@ msgstr ""
 "bg、w:200px、sepia などの Marp キーワードでレイアウトとサイズを指定します。そ"
 "れ以外の語は代替テキスト、背景画像の場合はキャプションになります。"
 
-#: src/components/ai-sidebar/chat.tsx:207
+#: src/components/ai-sidebar/chat.tsx:217
 msgid "Message"
 msgstr "メッセージ"
+
+#: src/components/front-matter-editor/index.tsx:198
+msgid "Minimal and modern, with centered content."
+msgstr "中央揃えのミニマルでモダンなテーマ。"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -382,7 +401,7 @@ msgstr "ノート"
 msgid "Open by default"
 msgstr "デフォルトで開く"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:190
 msgid "Open settings"
 msgstr "設定を開く"
 
@@ -397,6 +416,10 @@ msgstr "インデント解除"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "アウトライン"
+
+#: src/components/front-matter-editor/index.tsx:304
+msgid "Paginate"
+msgstr "ページ番号"
 
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
@@ -470,11 +493,15 @@ msgctxt "slide pattern"
 msgid "Section title"
 msgstr "セクションのタイトル"
 
-#: src/components/ai-sidebar/chat.tsx:227
+#: src/components/front-matter-editor/index.tsx:316
+msgid "See the <a>Marp documentation</a> for other settings."
+msgstr "その他の設定は<a>Marp のドキュメント</a>を参照してください。"
+
+#: src/components/ai-sidebar/chat.tsx:237
 msgid "Send"
 msgstr "送信"
 
-#: src/components/ai-sidebar/chat.tsx:170
+#: src/components/ai-sidebar/chat.tsx:180
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI アシスタントを使うには API キーを設定してください。"
 
@@ -482,22 +509,34 @@ msgstr "AI アシスタントを使うには API キーを設定してくださ�
 msgid "Show or hide the List View."
 msgstr "リストビューの表示、非表示。"
 
+#: src/components/front-matter-editor/index.tsx:305
+msgid "Show the page number on each slide."
+msgstr "各スライドにページ番号を表示します。"
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
 
+#: src/components/front-matter-editor/index.tsx:182
+msgid "Simple and clean, based on GitHub Markdown style."
+msgstr "GitHub の Markdown スタイルをベースにしたシンプルなテーマ。"
+
+#: src/components/front-matter-editor/index.tsx:255
+msgid "Size"
+msgstr "サイズ"
+
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "スライドのタイトル"
 
-#: src/components/ai-sidebar/chat.tsx:218
+#: src/components/ai-sidebar/chat.tsx:228
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:69
+#: src/components/ai-sidebar/chat.tsx:70
 msgid "Stopped."
 msgstr "停止しました。"
 
@@ -517,28 +556,46 @@ msgstr "ビジュアルエディターとコードエディターを切り替え
 msgid "Table"
 msgstr "テーブル"
 
+#: src/components/front-matter-editor/index.tsx:294
+msgid "Text shown at the bottom of each slide."
+msgstr "各スライドの下部に表示するテキスト。"
+
+#: src/components/front-matter-editor/index.tsx:283
+msgid "Text shown at the top of each slide."
+msgstr "各スライドの上部に表示するテキスト。"
+
 #: src/marp-patterns/patterns/closing.ts:20
 msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "ありがとうございました"
 
-#: src/components/ai-sidebar/chat.tsx:76
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "The answer could not be loaded."
 msgstr "回答を読み込めませんでした。"
+
+#: src/components/front-matter-editor/index.tsx:278
+msgid "The aspect ratio of the slides."
+msgstr "スライドの縦横比。"
 
 #: src/block-library/code/mermaid-preview.tsx:135
 msgid "The diagram could not be rendered."
 msgstr "図を描画できませんでした。"
 
-#: src/components/ai-sidebar/chat.tsx:61
+#: src/components/ai-sidebar/chat.tsx:62
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
-msgstr "エディターの切り替えなどで選択範囲が変わったため、編集は適用されませんでした。"
+msgstr ""
+"エディターの切り替えなどで選択範囲が変わったため、編集は適用されませんでし"
+"た。"
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "数式を描画できませんでした。"
+
+#: src/components/front-matter-editor/index.tsx:219
+msgid "Theme"
+msgstr "テーマ"
 
 #: src/marp-patterns/patterns/image-and-text.ts:26
 msgctxt "slide pattern"
@@ -572,7 +629,7 @@ msgstr "通常の項目に変換"
 msgid "Turn into a task item"
 msgstr "タスク項目に変換"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:136
 msgid "Turn the document into a slide deck."
 msgstr "ドキュメントをスライドデッキにします。"
 
@@ -611,7 +668,7 @@ msgstr "デバイスから画像をアップロードするか、URL から挿�
 msgid "Visual markdown block editor."
 msgstr "ビジュアルマークダウンブロックエディター。"
 
-#: src/components/ai-sidebar/chat.tsx:45
+#: src/components/ai-sidebar/chat.tsx:46
 msgid "Waiting for the answer…"
 msgstr "回答を待っています…"
 
@@ -627,7 +684,7 @@ msgstr "HTML を入力…"
 msgid "Write TeX…"
 msgstr "TeX を入力…"
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:67
 msgid "Write YAML front matter…"
 msgstr "YAML フロントマターを入力…"
 
@@ -639,7 +696,7 @@ msgstr "コードを入力..."
 msgid "Write summary…"
 msgstr "要約を入力…"
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML フロントマター"
 
