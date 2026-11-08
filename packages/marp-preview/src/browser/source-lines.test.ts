@@ -66,4 +66,12 @@ describe( 'source lines', () => {
 		slide.innerHTML = '<section></section>';
 		expect( getSlideSourceLine( slide ) ).toBeNull();
 	} );
+
+	it( 'reads no line from the section of a slide itself', () => {
+		const slide = document.createElement( 'div' );
+		slide.innerHTML =
+			'<svg><foreignObject><section data-line="8"><h2 data-line="10">B</h2></section></foreignObject></svg>';
+		expect( getSourceLine( slide.querySelector( 'h2' ) ) ).toBe( 10 );
+		expect( getSourceLine( slide.querySelector( 'section' ) ) ).toBeNull();
+	} );
 } );

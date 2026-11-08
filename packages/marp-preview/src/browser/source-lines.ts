@@ -9,17 +9,27 @@ function readLine( element: Element ): number {
 	return Number( element.getAttribute( SOURCE_LINE_ATTRIBUTE ) );
 }
 
+// The section of a slide itself, which stands for the whole slide, rather
+// than one in its content.
+function isSlideSection( element: Element ): boolean {
+	return (
+		element.localName === 'section' &&
+		element.parentElement?.localName === 'foreignObject'
+	);
+}
+
 /**
  * Finds the line of the Markdown that the element under a pointer starts at.
  *
  * @param target The element under the pointer, such as an event's target.
  * @return The line of the innermost element with one, or `null` when there is
- *         none, such as outside the slides.
+ *         none, such as outside the elements of the slides, on their padding
+ *         or outside the slides.
  */
 export function getSourceLine( target: EventTarget | null ): number | null {
 	const element =
 		target instanceof Element ? target.closest( SELECTOR ) : null;
-	return element ? readLine( element ) : null;
+	return element && ! isSlideSection( element ) ? readLine( element ) : null;
 }
 
 /**
