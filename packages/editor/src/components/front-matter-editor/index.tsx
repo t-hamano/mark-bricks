@@ -11,16 +11,29 @@ import type { Block } from '@wordpress/blocks';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { moreVertical } from '@wordpress/icons';
-import { IconButton, Popover, SwitchControl } from '@wordpress/ui';
+import {
+	Field,
+	IconButton,
+	Popover,
+	Select,
+	Stack,
+	SwitchControl,
+	VisuallyHidden,
+} from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
 import { useFrontMatter } from './context';
 import {
+	getFrontMatterValue,
 	isMarpFrontMatter,
+	setFrontMatterValue,
 	setMarpFrontMatter,
 } from '../../converter/front-matter';
+
+// Marp's built-in themes.
+const MARP_THEMES = [ 'default', 'gaia', 'uncover' ];
 import { useCodeMirror } from '../../block-library/hooks/use-code-mirror';
 
 export { FrontMatterContext, useFrontMatter } from './context';
@@ -85,6 +98,7 @@ function FrontMatterSettings( {
 	portalContainer: HTMLElement | null;
 } ) {
 	const { setFrontMatter } = useFrontMatter();
+	const isMarp = isMarpFrontMatter( value );
 	return (
 		<div className="front-matter-editor__settings">
 			<Popover.Root>
@@ -110,21 +124,103 @@ function FrontMatterSettings( {
 					portal={ <Popover.Portal container={ portalContainer } /> }
 					positioner={ <Popover.Positioner align="end" /> }
 				>
-					<SwitchControl
-						label={ __( 'Marp', 'mark-bricks' ) }
-						description={ __(
-							'Turn the document into a slide deck.',
-							'mark-bricks'
+					<VisuallyHidden render={ <Popover.Title /> }>
+						{ __( 'Front matter settings', 'mark-bricks' ) }
+					</VisuallyHidden>
+					<Stack direction="column" gap="lg">
+						<SwitchControl
+							label={ __( 'Marp', 'mark-bricks' ) }
+							description={ __(
+								'Turn the document into a slide deck.',
+								'mark-bricks'
+							) }
+							checked={ isMarp }
+							onCheckedChange={ ( checked ) =>
+								setFrontMatter(
+									setMarpFrontMatter( value, checked )
+								)
+							}
+						/>
+						{ isMarp && (
+							<MarpSettings
+								value={ value }
+								portalContainer={ portalContainer }
+							/>
 						) }
-						checked={ isMarpFrontMatter( value ) }
-						onCheckedChange={ ( checked ) =>
-							setFrontMatter(
-								setMarpFrontMatter( value, checked )
-							)
-						}
-					/>
+					</Stack>
 				</Popover.Popup>
 			</Popover.Root>
 		</div>
+	);
+}
+
+function MarpSettings( {
+	value,
+	portalContainer,
+}: {
+	value: string;
+	portalContainer: HTMLElement | null;
+} ) {
+	const { setFrontMatter } = useFrontMatter();
+	const theme = getFrontMatterValue( value, 'theme' ) ?? 'default';
+	// Keeps a custom theme selectable alongside the built-in ones.
+	const themes = MARP_THEMES.includes( theme )
+		? MARP_THEMES
+		: [ ...MARP_THEMES, theme ];
+	const items = themes.map( ( name ) => ( { label: name, value: name } ) );
+
+	return (
+		<>
+			<Field.Root>
+				<Field.Label>{ __( 'Theme', 'mark-bricks' ) }</Field.Label>
+				<Select.Root
+					items={ items }
+					value={ theme }
+					onValueChange={ ( next ) => {
+						if ( typeof next === 'string' ) {
+							setFrontMatter(
+								setFrontMatterValue( value, 'theme', next )
+							);
+						}
+					} }
+				>
+					<Select.Trigger />
+					{ /* Portaled into the iframe document, like the popover. */ }
+					<Select.Popup
+						portal={
+							<Select.Portal container={ portalContainer } />
+						}
+					>
+						{ items.map( ( item ) => (
+							<Select.Item
+								key={ item.value }
+								value={ item.value }
+							>
+								<Select.ItemLabel>
+									{ item.label }
+								</Select.ItemLabel>
+							</Select.Item>
+						) ) }
+					</Select.Popup>
+				</Select.Root>
+			</Field.Root>
+			<SwitchControl
+				label={ __( 'Paginate', 'mark-bricks' ) }
+				description={ __(
+					'Show the page number on each slide.',
+					'mark-bricks'
+				) }
+				checked={ getFrontMatterValue( value, 'paginate' ) === 'true' }
+				onCheckedChange={ ( checked ) =>
+					setFrontMatter(
+						setFrontMatterValue(
+							value,
+							'paginate',
+							checked ? 'true' : null
+						)
+					)
+				}
+			/>
+		</>
 	);
 }

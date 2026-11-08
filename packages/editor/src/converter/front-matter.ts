@@ -9,6 +9,17 @@ const MARP_DIRECTIVE_PATTERN = /^marp[ \t]*:[ \t]+true[ \t]*(?:#.*)?$/m;
 // Any top-level `marp` key, whatever its value.
 const MARP_KEY_PATTERN = /^marp[ \t]*:/;
 
+function escapeRegExp( text: string ): string {
+	return text.replace( /[.*+?^${}()|[\]\\]/g, '\\$&' );
+}
+
+// A top-level `key: value` line. The value excludes a trailing comment.
+function keyLinePattern( key: string ): RegExp {
+	return new RegExp(
+		`^${ escapeRegExp( key ) }[ \\t]*:(?:[ \\t]+(.*?))?[ \\t]*(?:[ \\t]#.*)?$`
+	);
+}
+
 export type SplitFrontMatterResult = {
 	// `null` when the document has no front matter.
 	frontMatter: string | null;
@@ -98,4 +109,76 @@ export function setMarpFrontMatter(
  */
 export function isMarpDocument( markdown: string ): boolean {
 	return isMarpFrontMatter( splitFrontMatter( markdown ).frontMatter );
+}
+
+/**
+ * Reads a top-level scalar value from front matter, without its quotes or
+ * a trailing comment.
+ *
+ * @param frontMatter Front matter content, or `null` when there is none.
+ * @param key         Top-level key.
+ * @return The value, or `null` when the key is missing or empty.
+ */
+export function getFrontMatterValue(
+	frontMatter: string | null,
+	key: string
+): string | null {
+	if ( frontMatter === null ) {
+		return null;
+	}
+	const pattern = keyLinePattern( key );
+	for ( const line of frontMatter.split( '\n' ) ) {
+		const match = pattern.exec( line );
+		if ( match ) {
+			const value = ( match[ 1 ] ?? '' ).replace(
+				/^(["'])(.*)\1$/,
+				'$2'
+			);
+			return value === '' ? null : value;
+		}
+	}
+	return null;
+}
+
+/**
+ * Writes a top-level scalar value into front matter. An existing line for
+ * the key is replaced in place; otherwise the line goes right after the
+ * `marp` line, or at the end when there is none.
+ *
+ * @param frontMatter Front matter content.
+ * @param key         Top-level key.
+ * @param value       New value, or `null` to remove the key.
+ * @return The updated front matter content.
+ */
+export function setFrontMatterValue(
+	frontMatter: string,
+	key: string,
+	value: string | null
+): string {
+	const keyPattern = new RegExp( `^${ escapeRegExp( key ) }[ \\t]*:` );
+	let replaced = false;
+	const lines = (
+		frontMatter === '' ? [] : frontMatter.split( '\n' )
+	).flatMap( ( line ) => {
+		if ( ! keyPattern.test( line ) ) {
+			return [ line ];
+		}
+		if ( replaced || value === null ) {
+			return [];
+		}
+		replaced = true;
+		const comment = line.match( /[ \t]#.*$/ )?.[ 0 ] ?? '';
+		return [ `${ key }: ${ value }${ comment }` ];
+	} );
+	if ( ! replaced && value !== null ) {
+		const marpIndex = lines.findIndex( ( line ) =>
+			MARP_KEY_PATTERN.test( line )
+		);
+		lines.splice(
+			marpIndex === -1 ? lines.length : marpIndex + 1,
+			0,
+			`${ key }: ${ value }`
+		);
+	}
+	return lines.join( '\n' );
 }

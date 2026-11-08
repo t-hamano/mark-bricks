@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
-"PO-Revision-Date: 2026-11-08T09:10:57.184Z\n"
+"POT-Creation-Date: 2026-11-08T12:00:37.339Z\n"
+"PO-Revision-Date: 2026-11-08T12:00:46.209Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,8 @@ msgstr "图片加载失败。"
 msgid "Forward-slash"
 msgstr "正斜杠"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:109
+#: src/components/front-matter-editor/index.tsx:128
 msgid "Front matter settings"
 msgstr "前置元数据设置"
 
@@ -289,7 +290,7 @@ msgstr "将选定的文本设为内联代码。"
 msgid "Make the selected text italic."
 msgstr "将选中的文字设为斜体。"
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:132
 msgid "Marp"
 msgstr "Marp"
 
@@ -334,6 +335,10 @@ msgstr "减少缩进量"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "大纲"
+
+#: src/components/front-matter-editor/index.tsx:208
+msgid "Paginate"
+msgstr "页码"
 
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
@@ -381,6 +386,10 @@ msgstr "搜索区块"
 msgid "Show or hide the List View."
 msgstr "显示或隐藏列表视图。"
 
+#: src/components/front-matter-editor/index.tsx:209
+msgid "Show the page number on each slide."
+msgstr "在每张幻灯片上显示页码。"
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
@@ -411,6 +420,10 @@ msgstr "无法渲染图表。"
 msgid "The formula could not be rendered."
 msgstr "无法渲染公式。"
 
+#: src/components/front-matter-editor/index.tsx:175
+msgid "Theme"
+msgstr "主题"
+
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "提示"
@@ -433,7 +446,7 @@ msgstr "转换为普通项目"
 msgid "Turn into a task item"
 msgstr "转换为任务项目"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:133
 msgid "Turn the document into a slide deck."
 msgstr "将文档转换为幻灯片。"
 
@@ -484,7 +497,7 @@ msgstr "编写 HTML…"
 msgid "Write TeX…"
 msgstr "编写 TeX…"
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:64
 msgid "Write YAML front matter…"
 msgstr "编写 YAML 前置元数据…"
 
@@ -496,6 +509,6 @@ msgstr "编写代码…"
 msgid "Write summary…"
 msgstr "编写摘要…"
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:82
 msgid "YAML front matter"
 msgstr "YAML 前置元数据"

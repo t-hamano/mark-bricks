@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
-"PO-Revision-Date: 2026-11-08T09:10:49.416Z\n"
+"POT-Creation-Date: 2026-11-08T12:00:37.339Z\n"
+"PO-Revision-Date: 2026-11-08T12:00:38.582Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,8 @@ msgstr "Obrázek se nepodařilo načíst."
 msgid "Forward-slash"
 msgstr "Lomítko"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:109
+#: src/components/front-matter-editor/index.tsx:128
 msgid "Front matter settings"
 msgstr "Nastavení front matter"
 
@@ -289,7 +290,7 @@ msgstr "Změnit vybraný text na vložený kód."
 msgid "Make the selected text italic."
 msgstr "Kurzíva"
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:132
 msgid "Marp"
 msgstr "Marp"
 
@@ -337,6 +338,10 @@ msgstr "Zmenšit odsazení"
 msgid "Outline"
 msgstr "Osnova"
 
+#: src/components/front-matter-editor/index.tsx:208
+msgid "Paginate"
+msgstr "Číslování stránek"
+
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
 msgid "Paste or type URL"
@@ -383,6 +388,10 @@ msgstr "Hledat bloky"
 msgid "Show or hide the List View."
 msgstr "Zobrazit nebo skrýt Zobrazení seznamu."
 
+#: src/components/front-matter-editor/index.tsx:209
+msgid "Show the page number on each slide."
+msgstr "Zobrazí číslo stránky na každém snímku."
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
@@ -413,6 +422,10 @@ msgstr "Diagram se nepodařilo vykreslit."
 msgid "The formula could not be rendered."
 msgstr "Vzorec se nepodařilo vykreslit."
 
+#: src/components/front-matter-editor/index.tsx:175
+msgid "Theme"
+msgstr "Motiv"
+
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "Tip"
@@ -435,7 +448,7 @@ msgstr "Převést na běžnou položku"
 msgid "Turn into a task item"
 msgstr "Převést na úkol"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:133
 msgid "Turn the document into a slide deck."
 msgstr "Změní dokument na sadu snímků."
 
@@ -486,7 +499,7 @@ msgstr "Začněte psát HTML…"
 msgid "Write TeX…"
 msgstr "Začněte psát TeX…"
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:64
 msgid "Write YAML front matter…"
 msgstr "Napište YAML front matter…"
 
@@ -498,6 +511,6 @@ msgstr "Napište kód"
 msgid "Write summary…"
 msgstr "Napište shrnutí…"
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:82
 msgid "YAML front matter"
 msgstr "YAML front matter"

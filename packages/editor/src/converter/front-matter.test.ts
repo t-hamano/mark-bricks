@@ -8,10 +8,12 @@ import { describe, it, expect } from 'vitest';
  */
 import {
 	blocksToMarkdown,
+	getFrontMatterValue,
 	isMarpDocument,
 	isMarpFrontMatter,
 	joinFrontMatter,
 	markdownToBlocks,
+	setFrontMatterValue,
 	setMarpFrontMatter,
 	splitFrontMatter,
 } from '.';
@@ -221,6 +223,70 @@ describe( 'setMarpFrontMatter', () => {
 			expect( setMarpFrontMatter( input, false ) ).toBe( expected );
 		}
 	);
+} );
+
+describe( 'getFrontMatterValue', () => {
+	it.each( [
+		[ 'a plain value', 'marp: true\ntheme: gaia', 'gaia' ],
+		[ 'a quoted value', 'theme: "gaia"', 'gaia' ],
+		[ 'a single-quoted value', "theme: 'gaia'", 'gaia' ],
+		[ 'a value with a comment', 'theme: gaia # dark', 'gaia' ],
+		[ 'an empty value', 'theme:', null ],
+		[ 'a nested key', 'slides:\n  theme: gaia', null ],
+		[ 'a missing key', 'marp: true', null ],
+	] )( 'reads %s', ( _name, frontMatter, expected ) => {
+		expect( getFrontMatterValue( frontMatter, 'theme' ) ).toBe( expected );
+	} );
+
+	it( 'reads nothing from missing front matter', () => {
+		expect( getFrontMatterValue( null, 'theme' ) ).toBeNull();
+	} );
+} );
+
+describe( 'setFrontMatterValue', () => {
+	it.each( [
+		[
+			'replaces an existing line in place',
+			'marp: true\ntheme: gaia\ntitle: Hi',
+			'uncover',
+			'marp: true\ntheme: uncover\ntitle: Hi',
+		],
+		[
+			'keeps a trailing comment',
+			'theme: gaia # dark',
+			'uncover',
+			'theme: uncover # dark',
+		],
+		[
+			'adds a missing key after the marp line',
+			'title: Hi\nmarp: true\nfoo: bar',
+			'gaia',
+			'title: Hi\nmarp: true\ntheme: gaia\nfoo: bar',
+		],
+		[
+			'adds a missing key at the end without a marp line',
+			'title: Hi',
+			'gaia',
+			'title: Hi\ntheme: gaia',
+		],
+		[ 'adds a key to empty front matter', '', 'gaia', 'theme: gaia' ],
+		[
+			'removes duplicate keys',
+			'theme: gaia\ntheme: default',
+			'uncover',
+			'theme: uncover',
+		],
+		[
+			'removes the key',
+			'marp: true\ntheme: gaia\ntitle: Hi',
+			null,
+			'marp: true\ntitle: Hi',
+		],
+	] )( '%s', ( _name, frontMatter, value, expected ) => {
+		expect( setFrontMatterValue( frontMatter, 'theme', value ) ).toBe(
+			expected
+		);
+	} );
 } );
 
 describe( 'isMarpDocument', () => {

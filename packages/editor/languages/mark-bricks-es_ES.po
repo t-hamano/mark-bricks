@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
-"PO-Revision-Date: 2026-11-08T09:10:50.932Z\n"
+"POT-Creation-Date: 2026-11-08T12:00:37.339Z\n"
+"PO-Revision-Date: 2026-11-08T12:00:39.958Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,8 @@ msgstr "No se pudo cargar la imagen."
 msgid "Forward-slash"
 msgstr "Barra diagonal"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:109
+#: src/components/front-matter-editor/index.tsx:128
 msgid "Front matter settings"
 msgstr "Ajustes del front matter"
 
@@ -289,7 +290,7 @@ msgstr "Hacer que el texto seleccionado sea código integrado."
 msgid "Make the selected text italic."
 msgstr "Cambia el texto seleccionado a cursiva."
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:132
 msgid "Marp"
 msgstr "Marp"
 
@@ -338,6 +339,10 @@ msgstr "Disminuir margen"
 msgid "Outline"
 msgstr "Esquema"
 
+#: src/components/front-matter-editor/index.tsx:208
+msgid "Paginate"
+msgstr "Paginar"
+
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
 msgid "Paste or type URL"
@@ -384,6 +389,10 @@ msgstr "Buscar bloques"
 msgid "Show or hide the List View."
 msgstr "Mostrar u ocultar la vista de listado."
 
+#: src/components/front-matter-editor/index.tsx:209
+msgid "Show the page number on each slide."
+msgstr "Muestra el número de página en cada diapositiva."
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
@@ -414,6 +423,10 @@ msgstr "No se pudo renderizar el diagrama."
 msgid "The formula could not be rendered."
 msgstr "No se pudo renderizar la fórmula."
 
+#: src/components/front-matter-editor/index.tsx:175
+msgid "Theme"
+msgstr "Tema"
+
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "Consejo"
@@ -436,7 +449,7 @@ msgstr "Transformar en elemento normal"
 msgid "Turn into a task item"
 msgstr "Transformar en tarea"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:133
 msgid "Turn the document into a slide deck."
 msgstr "Convierte el documento en una presentación de diapositivas."
 
@@ -487,7 +500,7 @@ msgstr "Escribe HTML..."
 msgid "Write TeX…"
 msgstr "Escribe TeX..."
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:64
 msgid "Write YAML front matter…"
 msgstr "Escribe el front matter YAML…"
 
@@ -499,6 +512,6 @@ msgstr "Escribe el código…"
 msgid "Write summary…"
 msgstr "Escribe un resumen…"
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:82
 msgid "YAML front matter"
 msgstr "Front matter YAML"

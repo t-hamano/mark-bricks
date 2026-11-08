@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
-"PO-Revision-Date: 2026-11-08T09:10:53.696Z\n"
+"POT-Creation-Date: 2026-11-08T12:00:37.339Z\n"
+"PO-Revision-Date: 2026-11-08T12:00:42.724Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,8 @@ msgstr "이미지를 불러오지 못했습니다."
 msgid "Forward-slash"
 msgstr "슬래시"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:109
+#: src/components/front-matter-editor/index.tsx:128
 msgid "Front matter settings"
 msgstr "프런트 매터 설정"
 
@@ -289,7 +290,7 @@ msgstr "선택한 텍스트를 인라인 코드로 만듭니다."
 msgid "Make the selected text italic."
 msgstr "선택한 텍스트에 이탤릭체로 적용."
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:132
 msgid "Marp"
 msgstr "Marp"
 
@@ -335,6 +336,10 @@ msgstr "내어쓰기"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "아웃라인"
+
+#: src/components/front-matter-editor/index.tsx:208
+msgid "Paginate"
+msgstr "페이지 번호"
 
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
@@ -382,6 +387,10 @@ msgstr "블록 검색"
 msgid "Show or hide the List View."
 msgstr "목록 보기를 표시하거나 숨깁니다."
 
+#: src/components/front-matter-editor/index.tsx:209
+msgid "Show the page number on each slide."
+msgstr "각 슬라이드에 페이지 번호를 표시합니다."
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
@@ -412,6 +421,10 @@ msgstr "다이어그램을 렌더링할 수 없습니다."
 msgid "The formula could not be rendered."
 msgstr "수식을 렌더링할 수 없습니다."
 
+#: src/components/front-matter-editor/index.tsx:175
+msgid "Theme"
+msgstr "테마"
+
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "팁"
@@ -434,7 +447,7 @@ msgstr "일반 항목으로 변환"
 msgid "Turn into a task item"
 msgstr "작업 항목으로 변환"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:133
 msgid "Turn the document into a slide deck."
 msgstr "문서를 슬라이드 덱으로 만듭니다."
 
@@ -485,7 +498,7 @@ msgstr "HTML 작성…"
 msgid "Write TeX…"
 msgstr "TeX 작성…"
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:64
 msgid "Write YAML front matter…"
 msgstr "YAML 프런트 매터 작성…"
 
@@ -497,6 +510,6 @@ msgstr "코드 쓰기…"
 msgid "Write summary…"
 msgstr "요약 쓰기..."
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:82
 msgid "YAML front matter"
 msgstr "YAML 프런트 매터"

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T09:10:37.897Z\n"
-"PO-Revision-Date: 2026-11-08T09:10:57.906Z\n"
+"POT-Creation-Date: 2026-11-08T12:00:37.339Z\n"
+"PO-Revision-Date: 2026-11-08T12:00:46.862Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -179,7 +179,8 @@ msgstr "圖片載入失敗。"
 msgid "Forward-slash"
 msgstr "正斜線"
 
-#: src/components/front-matter-editor/index.tsx:95
+#: src/components/front-matter-editor/index.tsx:109
+#: src/components/front-matter-editor/index.tsx:128
 msgid "Front matter settings"
 msgstr "前置資料設定"
 
@@ -289,7 +290,7 @@ msgstr "將選取內容變更為內嵌程式碼"
 msgid "Make the selected text italic."
 msgstr "將選取內容變更為斜體"
 
-#: src/components/front-matter-editor/index.tsx:114
+#: src/components/front-matter-editor/index.tsx:132
 msgid "Marp"
 msgstr "Marp"
 
@@ -334,6 +335,10 @@ msgstr "減少縮排"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "大綱"
+
+#: src/components/front-matter-editor/index.tsx:208
+msgid "Paginate"
+msgstr "頁碼"
 
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
@@ -381,6 +386,10 @@ msgstr "搜尋區塊"
 msgid "Show or hide the List View."
 msgstr "顯示或隱藏清單檢視"
 
+#: src/components/front-matter-editor/index.tsx:209
+msgid "Show the page number on each slide."
+msgstr "在每張投影片上顯示頁碼。"
+
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
@@ -411,6 +420,10 @@ msgstr "無法轉譯圖表。"
 msgid "The formula could not be rendered."
 msgstr "無法轉譯公式。"
 
+#: src/components/front-matter-editor/index.tsx:175
+msgid "Theme"
+msgstr "主題"
+
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "提示"
@@ -433,7 +446,7 @@ msgstr "轉換為一般項目"
 msgid "Turn into a task item"
 msgstr "轉換為任務項目"
 
-#: src/components/front-matter-editor/index.tsx:115
+#: src/components/front-matter-editor/index.tsx:133
 msgid "Turn the document into a slide deck."
 msgstr "將文件轉換為投影片。"
 
@@ -484,7 +497,7 @@ msgstr "撰寫 HTML 程式碼..."
 msgid "Write TeX…"
 msgstr "撰寫 TeX..."
 
-#: src/components/front-matter-editor/index.tsx:51
+#: src/components/front-matter-editor/index.tsx:64
 msgid "Write YAML front matter…"
 msgstr "撰寫 YAML 前置資料…"
 
@@ -496,6 +509,6 @@ msgstr "撰寫程式碼..."
 msgid "Write summary…"
 msgstr "撰寫摘要..."
 
-#: src/components/front-matter-editor/index.tsx:69
+#: src/components/front-matter-editor/index.tsx:82
 msgid "YAML front matter"
 msgstr "YAML 前置資料"
