@@ -50,7 +50,8 @@ async function openPreview( text = DECK ) {
 // The messages the host posted to the panel that render something.
 function rendered( panel: FakeWebviewPanel ) {
 	return ( panel.posted as PreviewHostMessage[] ).filter(
-		( message ) => message.type !== 'document'
+		( message ) =>
+			message.type !== 'document' && message.type !== 'selectedLine'
 	);
 }
 
