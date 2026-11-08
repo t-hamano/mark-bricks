@@ -42,6 +42,7 @@ import useFileOpenEvents from '../../hooks/use-file-open-events';
 import usePreviewSync from '../../hooks/use-preview-sync';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
+import { aiPlatform } from '../../ai/platform';
 import { createPlatform } from '../../platform';
 import { useSlidePreviewShown } from '../../preview/visibility';
 import tabsStore from '../../store';
@@ -112,9 +113,14 @@ export function App() {
 	const showSlidePreview = useSlidePreviewShown();
 
 	// Relative image paths resolve against the active document's folder, so
-	// the platform changes with it (e.g. when an untitled tab is saved).
+	// the platform changes with it (e.g. when an untitled tab is saved). The
+	// AI assistant is added here, so that the preview window, which also
+	// uses the platform, does not load it.
 	const filePath = activeTab?.filePath;
-	const platform = useMemo( () => createPlatform( filePath ), [ filePath ] );
+	const platform = useMemo(
+		() => ( { ...createPlatform( filePath ), ai: aiPlatform } ),
+		[ filePath ]
+	);
 
 	useWindowTitle( activeTab );
 	useAppCloseGuard( { tabs, pendingCloseId } );

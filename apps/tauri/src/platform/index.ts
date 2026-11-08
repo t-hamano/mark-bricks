@@ -12,11 +12,6 @@ import { parseImageSrc } from '@mark-bricks/image-path';
  */
 import { __ } from '@wordpress/i18n';
 
-/**
- * Internal dependencies
- */
-import { aiPlatform } from '../ai/platform';
-
 const IMAGE_EXTENSIONS = [
 	'png',
 	'jpg',
@@ -104,6 +99,5 @@ export function createPlatform( documentPath?: string ): Platform {
 		openUrl( url ) {
 			void openUrl( url );
 		},
-		ai: aiPlatform,
 	};
 }
