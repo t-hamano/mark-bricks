@@ -301,9 +301,6 @@ export function AiPanel( { settings, onChange }: Props ) {
 			</Stack>
 			{ hasKey && (
 				<Stack direction="column" gap="md" align="flex-start">
-					<Text variant="heading-xl" render={ <h2 /> }>
-						{ __( 'Model', 'mark-bricks' ) }
-					</Text>
 					{ models.kind === 'loading' ? (
 						<Spinner
 							aria-label={ __(
@@ -313,7 +310,6 @@ export function AiPanel( { settings, onChange }: Props ) {
 						/>
 					) : (
 						<SelectControl
-							hideLabelFromVision
 							size="compact"
 							label={ __( 'Model', 'mark-bricks' ) }
 							items={ modelItems }
