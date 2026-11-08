@@ -8,8 +8,8 @@ mod documents;
 mod export;
 mod pdf;
 use documents::{
-    close_document, open_document, read_document, save_document_as, with_documents, write_document,
-    Documents, OpenedDocument,
+    acknowledge_document_change, close_document, open_document, read_document, save_document_as,
+    watch_documents, with_documents, write_document, Documents, OpenedDocument,
 };
 use export::export_slide_deck;
 
@@ -435,6 +435,11 @@ pub fn run() {
             #[allow(deprecated)]
             app.unmanage::<Env>();
             app.manage(env);
+            // Without a watcher, documents still open and save; they just
+            // do not reload when changed on disk.
+            if let Err(error) = watch_documents(app.handle()) {
+                eprintln!("Could not watch open documents: {error}");
+            }
             Ok(())
         })
         .on_window_event(|window, event| {
@@ -454,6 +459,7 @@ pub fn run() {
         .plugin(tauri_plugin_process::init())
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
+            acknowledge_document_change,
             read_document,
             open_document,
             save_document_as,

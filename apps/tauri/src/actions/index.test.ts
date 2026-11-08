@@ -19,6 +19,7 @@ import {
 	closeOtherTabs,
 	exportSlideDeck,
 	getExportStatus,
+	handleDocumentChange,
 	openDocument,
 	openFile,
 	saveTab,
@@ -561,6 +562,180 @@ describe( 'saveTabAs', () => {
 		} );
 		expect( await saveTabAs( id ) ).toBe( false );
 		expect( released ).toEqual( [ { documentId: 'approved-2' } ] );
+	} );
+} );
+
+describe( 'handleDocumentChange', () => {
+	const change = ( contents: string | null, revision = 1 ) => ( {
+		documentId: 'approved-1',
+		revision,
+		contents,
+	} );
+
+	// Records the dialogs shown, answering each with `answer`, and the
+	// acknowledged changes.
+	function mockDialogs(
+		answer: () => Promise< string > | string = () => ''
+	) {
+		const asked: unknown[] = [];
+		const acknowledged: unknown[] = [];
+		mockIPC( ( cmd, payload ) => {
+			if ( cmd === 'plugin:dialog|message' ) {
+				asked.push( payload );
+				return answer();
+			}
+			if ( cmd === 'acknowledge_document_change' ) {
+				acknowledged.push( payload );
+			}
+		} );
+		return { asked, acknowledged };
+	}
+
+	// Opens the selected document with unsaved changes.
+	async function openDirty() {
+		await openDocument( selected );
+		const id = activeTab().id;
+		dispatch( tabsStore ).setTabContent( id, 'unsaved' );
+		dispatch( tabsStore ).setTabDirty( id, true );
+	}
+
+	it( 'reloads a tab without unsaved changes and acknowledges the change', async () => {
+		await openDocument( selected );
+		const { asked, acknowledged } = mockDialogs();
+		await handleDocumentChange( change( 'outside' ) );
+		expect( activeTab() ).toMatchObject( {
+			content: 'outside',
+			isDirty: false,
+		} );
+		expect( asked ).toEqual( [] );
+		expect( acknowledged ).toEqual( [
+			{ documentId: 'approved-1', revision: 1 },
+		] );
+	} );
+
+	it( 'flushes pending editor changes before deciding to ask', async () => {
+		await openDocument( selected );
+		const id = activeTab().id;
+		setEditorFlush( () => {
+			dispatch( tabsStore ).setTabContent( id, 'typed' );
+			dispatch( tabsStore ).setTabDirty( id, true );
+		} );
+		const { asked, acknowledged } = mockDialogs( () => 'Keep my version' );
+		await handleDocumentChange( change( 'outside' ) );
+		expect( asked ).toHaveLength( 1 );
+		expect( activeTab() ).toMatchObject( {
+			content: 'typed',
+			isDirty: true,
+		} );
+		// Keeping their version lets the next save write it.
+		expect( acknowledged ).toHaveLength( 1 );
+	} );
+
+	it( 'asks before discarding unsaved changes', async () => {
+		await openDirty();
+		const { asked } = mockDialogs( () => 'Reload' );
+		await handleDocumentChange( change( 'outside' ) );
+		expect( asked ).toEqual( [
+			expect.objectContaining( {
+				message:
+					'"selected.md" changed on disk. Reload it and discard your changes, or keep your version?',
+				kind: 'warning',
+			} ),
+		] );
+		expect( activeTab() ).toMatchObject( {
+			content: 'outside',
+			isDirty: false,
+		} );
+	} );
+
+	// Shows one prompt for `first`, reports `second` while it is open, then
+	// answers it with `label`.
+	async function changeTwiceDuringPrompt(
+		first: string | null,
+		second: string | null,
+		label: string
+	) {
+		await openDirty();
+		let answer: ( value: string ) => void = () => {};
+		const calls = mockDialogs(
+			() => new Promise( ( resolve ) => ( answer = resolve ) )
+		);
+		const handling = handleDocumentChange( change( first, 1 ) );
+		await vi.waitFor( () => expect( calls.asked ).toHaveLength( 1 ) );
+		await handleDocumentChange( change( second, 2 ) );
+		answer( label );
+		await handling;
+		expect( calls.asked ).toHaveLength( 1 );
+		expect( calls.acknowledged ).toEqual( [
+			{ documentId: 'approved-1', revision: 2 },
+		] );
+	}
+
+	it( 'reloads the latest contents after one prompt for repeated changes', async () => {
+		await changeTwiceDuringPrompt( 'first', 'second', 'Reload' );
+		expect( activeTab() ).toMatchObject( {
+			content: 'second',
+			isDirty: false,
+		} );
+	} );
+
+	it( 'does not reload stale contents when a later change matches the tab', async () => {
+		await changeTwiceDuringPrompt( 'first', 'unsaved', 'Reload' );
+		expect( activeTab() ).toMatchObject( {
+			content: 'unsaved',
+			isDirty: false,
+		} );
+	} );
+
+	it( 'keeps the edits when the file is deleted during the prompt', async () => {
+		await changeTwiceDuringPrompt( 'first', null, 'Reload' );
+		expect( activeTab() ).toMatchObject( {
+			content: 'unsaved',
+			isDirty: true,
+		} );
+	} );
+
+	it( 'marks a tab dirty when its file is deleted', async () => {
+		await openDocument( selected );
+		await handleDocumentChange( change( null ) );
+		expect( activeTab() ).toMatchObject( {
+			content: 'original',
+			isDirty: true,
+		} );
+	} );
+
+	it( 'marks a tab clean without asking when the file matches it', async () => {
+		await openDocument( selected );
+		dispatch( tabsStore ).setTabDirty( activeTab().id, true );
+		const { asked } = mockDialogs( () => 'Reload' );
+		await handleDocumentChange( change( 'original' ) );
+		expect( asked ).toEqual( [] );
+		expect( activeTab().isDirty ).toBe( false );
+	} );
+
+	it( 'ignores documents without a tab', async () => {
+		await openDocument( selected );
+		const { acknowledged } = mockDialogs();
+		await handleDocumentChange( {
+			...change( 'outside' ),
+			documentId: 'approved-2',
+		} );
+		expect( activeTab().content ).toBe( 'original' );
+		expect( acknowledged ).toEqual( [
+			{ documentId: 'approved-2', revision: 1 },
+		] );
+	} );
+
+	it( 'keeps the edits when a save meets an unacknowledged change', async () => {
+		await openDirty();
+		const calls: string[] = [];
+		mockIPC( ( cmd ) => {
+			calls.push( cmd );
+			throw { code: 'changed_on_disk' };
+		} );
+		expect( await saveTab( activeTab().id ) ).toBe( false );
+		expect( calls ).toEqual( [ 'write_document' ] );
+		expect( activeTab().isDirty ).toBe( true );
 	} );
 } );
 

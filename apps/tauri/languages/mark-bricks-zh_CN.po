@@ -8,13 +8,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T08:32:47.628Z\n"
-"PO-Revision-Date: 2026-10-03T08:32:53.330Z\n"
+"POT-Creation-Date: 2026-10-10T12:50:54.625Z\n"
+"PO-Revision-Date: 2026-10-10T12:50:59.573Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: zh_CN\n"
 "X-Domain: mark-bricks\n"
+
+# %s: tab title.
+#: src/actions/index.ts:308
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr "“%s”已在磁盘上更改。要重新加载并放弃你的更改，还是保留你的版本？"
 
 # %s: tab title.
 #: src/components/dirty-confirm-dialog/index.tsx:58
@@ -105,7 +112,7 @@ msgid "Content width"
 msgstr "内容宽度"
 
 # %s: Error message.
-#: src/actions/index.ts:376
+#: src/actions/index.ts:482
 msgid "Could not export the slide deck: %s"
 msgstr "无法导出幻灯片: %s"
 
@@ -147,13 +154,13 @@ msgstr "编辑器"
 msgid "Editor styles"
 msgstr "编辑器样式"
 
-#: src/actions/index.ts:349
+#: src/actions/index.ts:455
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
 msgstr "导出幻灯片"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:390
+#: src/actions/index.ts:496
 msgid "Exported the slide deck to %s."
 msgstr "已将幻灯片导出到 %s。"
 
@@ -164,6 +171,10 @@ msgstr "正在导出幻灯片…"
 #: src/components/preferences-modal/general-panel.tsx:141
 msgid "File associations"
 msgstr "文件关联"
+
+#: src/actions/index.ts:315
+msgid "File changed"
+msgstr "文件已更改"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:245
 msgid "File shortcuts"
@@ -194,7 +205,7 @@ msgstr "常规"
 msgid "Global shortcuts"
 msgstr "全局快捷键"
 
-#: src/actions/index.ts:369
+#: src/actions/index.ts:475
 msgid "HTML slide deck"
 msgstr "HTML 幻灯片"
 
@@ -221,6 +232,10 @@ msgstr "无法显示来自 HTTP URL 的图片。请改用 HTTPS URL。"
 #: src/platform/index.ts:90
 msgid "Images with relative paths are displayed once the document is saved."
 msgstr "使用相对路径的图片将在文档保存后显示。"
+
+#: src/actions/index.ts:318
+msgid "Keep my version"
+msgstr "保留我的版本"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
 #: src/components/header-actions/index.tsx:346
@@ -303,7 +318,7 @@ msgstr "打开…"
 msgid "Options"
 msgstr "选项"
 
-#: src/actions/index.ts:370
+#: src/actions/index.ts:476
 msgid "PDF slide deck"
 msgstr "PDF 幻灯片"
 
@@ -319,6 +334,10 @@ msgstr "偏好设置"
 #: src/components/header-actions/index.tsx:120
 msgid "Preview Slides"
 msgstr "预览幻灯片"
+
+#: src/actions/index.ts:317
+msgid "Reload"
+msgstr "重新加载"
 
 #: src/components/header-actions/index.tsx:383
 msgid "Remove"
@@ -395,7 +414,7 @@ msgstr "显示区块面包屑"
 msgid "Show line numbers"
 msgstr "显示行号"
 
-#: src/actions/index.ts:404
+#: src/actions/index.ts:510
 msgid "Slide Preview"
 msgstr "幻灯片预览"
 
