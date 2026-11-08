@@ -31,6 +31,8 @@ same-file = "1"
 lopdf = { version = "0.47", default-features = false }
 tokio = { version = "1", features = ["time"] }
 notify-debouncer-mini = "0.7"
+# Keeps the AI assistant's API key in the OS credential store.
+keyring = "4"
 
 [target.'cfg(target_os = "macos")'.dependencies]
 core-foundation = "0.10"

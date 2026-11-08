@@ -4,6 +4,7 @@ use std::sync::{Mutex, OnceLock};
 
 use tauri::{Emitter, Env, Manager};
 
+mod api_key;
 mod documents;
 mod export;
 mod pdf;
@@ -470,7 +471,10 @@ pub fn run() {
             report_rendered,
             open_preview,
             remember_documents_for_relaunch,
-            set_as_default_markdown_handler
+            set_as_default_markdown_handler,
+            api_key::save_ai_api_key,
+            api_key::delete_ai_api_key,
+            api_key::has_ai_api_key
         ])
         .build(ctx)
         .expect("error while building tauri application")
