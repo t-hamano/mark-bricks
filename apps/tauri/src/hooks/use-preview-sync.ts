@@ -18,9 +18,7 @@ import { isMarpDocument } from '@mark-bricks/editor/marp';
 /**
  * WordPress dependencies
  */
-import { dispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { store as preferencesStore } from '@wordpress/preferences';
 
 /**
  * Internal dependencies
@@ -34,7 +32,10 @@ import {
 	type PreviewEvent,
 	type PreviewPlacement,
 } from '../preview/constants';
-import { setSlidePreviewShown } from '../preview/visibility';
+import {
+	setSlidePreviewPlacement,
+	setSlidePreviewShown,
+} from '../preview/visibility';
 import type { Tab } from '../store';
 
 function isLine( line: unknown ): line is number {
@@ -220,11 +221,7 @@ export default function usePreviewSync(
 						data.placement === 'panel' ||
 						data.placement === 'window'
 					) {
-						void dispatch( preferencesStore ).set(
-							'mark-bricks',
-							'slidePreviewPlacement',
-							data.placement
-						);
+						setSlidePreviewPlacement( data.placement );
 					}
 					break;
 			}

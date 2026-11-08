@@ -43,7 +43,10 @@ import usePreviewSync from '../../hooks/use-preview-sync';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
 import { createPlatform } from '../../platform';
-import { useSlidePreviewShown } from '../../preview/visibility';
+import {
+	useSlidePreviewPlacement,
+	useSlidePreviewShown,
+} from '../../preview/visibility';
 import tabsStore from '../../store';
 import './style.scss';
 
@@ -84,7 +87,6 @@ export function App() {
 		editorTheme,
 		editorStyles,
 		codeEditor,
-		slidePreviewPlacement,
 	} = useSelect( ( select ) => {
 		const { getTabs, getActiveTabId, getPendingCloseId } =
 			select( tabsStore );
@@ -106,15 +108,12 @@ export function App() {
 				EditorStyles | undefined,
 			codeEditor: get( 'mark-bricks', 'codeEditor' ) as
 				CodeEditorSettings | undefined,
-			slidePreviewPlacement:
-				get( 'mark-bricks', 'slidePreviewPlacement' ) === 'window'
-					? ( 'window' as const )
-					: ( 'panel' as const ),
 		};
 	}, [] );
 
 	const { setTabContent, setTabDirty } = useDispatch( tabsStore );
 	const showSlidePreview = useSlidePreviewShown();
+	const slidePreviewPlacement = useSlidePreviewPlacement();
 
 	// Relative image paths resolve against the active document's folder, so
 	// the platform changes with it (e.g. when an untitled tab is saved).

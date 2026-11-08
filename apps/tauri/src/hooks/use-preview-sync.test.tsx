@@ -7,12 +7,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { EditorHandle } from '@mark-bricks/editor';
 
 /**
- * WordPress dependencies
- */
-import { select } from '@wordpress/data';
-import { store as preferencesStore } from '@wordpress/preferences';
-
-/**
  * Internal dependencies
  */
 import usePreviewSync, { type PreviewSync } from './use-preview-sync';
@@ -22,7 +16,9 @@ import type {
 	PreviewPlacement,
 } from '../preview/constants';
 import {
+	setSlidePreviewPlacement,
 	setSlidePreviewShown,
+	useSlidePreviewPlacement,
 	useSlidePreviewShown,
 } from '../preview/visibility';
 import type { Tab } from '../store';
@@ -110,8 +106,16 @@ function isPreviewShown() {
 	return value;
 }
 
-function getPreference( name: string ) {
-	return select( preferencesStore ).get( 'mark-bricks', name );
+function previewPlacement() {
+	let value: PreviewPlacement = 'panel';
+	function Probe() {
+		value = useSlidePreviewPlacement();
+		return null;
+	}
+	act( () =>
+		createRoot( document.createElement( 'div' ) ).render( <Probe /> )
+	);
+	return value;
 }
 
 async function receive( data: PreviewEvent | Record< string, unknown > ) {
@@ -296,7 +300,8 @@ it( 'leaves the slide mode when full screen ends', async () => {
 it( 'moves the preview to the place the preview asks for', async () => {
 	await render( MARP );
 	await receive( { type: 'placement-request', placement: 'window' } );
-	expect( getPreference( 'slidePreviewPlacement' ) ).toBe( 'window' );
+	expect( previewPlacement() ).toBe( 'window' );
+	setSlidePreviewPlacement( 'panel' );
 } );
 
 describe( 'in a window', () => {
