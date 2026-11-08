@@ -3,7 +3,7 @@
  */
 import * as monaco from 'monaco-editor';
 import EditorWorker from 'monaco-editor/editor/editor.worker?worker';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 
 /**
  * WordPress dependencies
@@ -19,6 +19,7 @@ import {
 } from './markdown-commands';
 import type { CodeEditorThemePreference } from './themes';
 import { useCodeEditorTheme } from './use-code-editor-theme';
+import { TextEditorContext } from '../../ai/text-editor-context';
 import './style.scss';
 
 // Monaco offloads heavy work to a web worker. Tell it to use the Vite-bundled
@@ -62,6 +63,8 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 		null
 	);
 
+	const sharedEditorRef = useContext( TextEditorContext );
+
 	const contentRef = useRef( content );
 	contentRef.current = content;
 
@@ -102,6 +105,9 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 			insertSpaces: true,
 		} );
 		editorRef.current = editor;
+		if ( sharedEditorRef ) {
+			sharedEditorRef.current = editor;
+		}
 
 		const changeSubscription = editor.onDidChangeModelContent( () => {
 			const value = editor.getValue();
@@ -137,8 +143,11 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 			keySubscription.dispose();
 			editor.dispose();
 			editorRef.current = null;
+			if ( sharedEditorRef?.current === editor ) {
+				sharedEditorRef.current = null;
+			}
 		};
-	}, [] );
+	}, [ sharedEditorRef ] );
 
 	// Reflect external `content` changes (e.g. switching tabs) into the model.
 	useEffect( () => {
