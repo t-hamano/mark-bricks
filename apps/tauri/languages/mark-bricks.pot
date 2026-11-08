@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:13:58.238Z\n"
+"POT-Creation-Date: 2026-11-08T14:14:58.685Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -194,7 +194,7 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:274
+#: src/components/preferences-modal/ai-panel.tsx:271
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -211,25 +211,6 @@ msgstr ""
 
 #: src/components/slide-preview/index.tsx:39
 msgid "Slide Preview"
-msgstr ""
-
-#: src/components/reload-prompt-dialog/index.tsx:58
-msgid "File changed"
-msgstr ""
-
-# %s: tab title.
-#: src/components/reload-prompt-dialog/index.tsx:61
-msgid ""
-"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
-"version?"
-msgstr ""
-
-#: src/components/reload-prompt-dialog/index.tsx:67
-msgid "Keep my version"
-msgstr ""
-
-#: src/components/reload-prompt-dialog/index.tsx:68
-msgid "Reload"
 msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:47
@@ -380,60 +361,75 @@ msgstr ""
 msgid "Default (%s)"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:196
-msgid "Save an API key to choose a model."
-msgstr ""
-
-#: src/components/preferences-modal/ai-panel.tsx:201
+#: src/components/preferences-modal/ai-panel.tsx:198
 msgid "Loading the models…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:208
+#: src/components/preferences-modal/ai-panel.tsx:205
 msgid "Anthropic API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:215
+#: src/components/preferences-modal/ai-panel.tsx:212
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the "
 "Anthropic API."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:242
+#: src/components/preferences-modal/ai-panel.tsx:239
 msgid "API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:262
+#: src/components/preferences-modal/ai-panel.tsx:259
 msgid "Deleting the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:266
+#: src/components/preferences-modal/ai-panel.tsx:263
 msgid "Checking the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:273
+#: src/components/preferences-modal/ai-panel.tsx:270
 msgid "Delete"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:284
+#: src/components/preferences-modal/ai-panel.tsx:281
 msgid "The API key was saved."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:294
+#: src/components/preferences-modal/ai-panel.tsx:291
 msgid "The API key was deleted."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:311
-#: src/components/preferences-modal/ai-panel.tsx:316
+#: src/components/preferences-modal/ai-panel.tsx:309
+#: src/components/preferences-modal/ai-panel.tsx:314
 msgid "Model"
 msgstr ""
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:347
+#: src/components/preferences-modal/ai-panel.tsx:344
 msgid "The models could not be loaded: %s"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:356
+#: src/components/preferences-modal/ai-panel.tsx:353
 msgid "Try again"
+msgstr ""
+
+#: src/components/reload-prompt-dialog/index.tsx:58
+msgid "File changed"
+msgstr ""
+
+# %s: tab title.
+#: src/components/reload-prompt-dialog/index.tsx:61
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr ""
+
+#: src/components/reload-prompt-dialog/index.tsx:67
+msgid "Keep my version"
+msgstr ""
+
+#: src/components/reload-prompt-dialog/index.tsx:68
+msgid "Reload"
 msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228

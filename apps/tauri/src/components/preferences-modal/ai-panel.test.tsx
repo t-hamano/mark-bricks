@@ -42,6 +42,7 @@ describe( 'AiPanel', () => {
 	beforeEach( () => {
 		savedKey = null;
 		commands.length = 0;
+		onChange.mockReset();
 		mockIPC( ( command, args ) => {
 			commands.push( command );
 			const payload = args as { key?: string };
@@ -78,10 +79,12 @@ describe( 'AiPanel', () => {
 		clearMocks();
 	} );
 
+	const onChange = vi.fn();
+
 	async function render() {
 		await act( async () => {
 			root.render(
-				<AiPanel settings={ { model: '' } } onChange={ vi.fn() } />
+				<AiPanel settings={ { model: '' } } onChange={ onChange } />
 			);
 		} );
 	}
@@ -100,9 +103,7 @@ describe( 'AiPanel', () => {
 
 	it( 'does not load the models without an API key', async () => {
 		await render();
-		expect( container.textContent ).toContain(
-			'Save an API key to choose a model.'
-		);
+		expect( container.textContent ).not.toContain( 'Model' );
 		expect( commands ).not.toContain( 'list_ai_models' );
 	} );
 
@@ -209,5 +210,7 @@ describe( 'AiPanel', () => {
 		expect( container.textContent ).toContain( 'The API key was deleted.' );
 		expect( input().disabled ).toBe( false );
 		expect( input().value ).toBe( '' );
+		expect( onChange ).toHaveBeenCalledWith( { model: '' } );
+		expect( container.textContent ).not.toContain( 'Model' );
 	} );
 } );

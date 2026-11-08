@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:13:58.238Z\n"
-"PO-Revision-Date: 2026-11-08T14:14:02.232Z\n"
+"POT-Creation-Date: 2026-11-08T14:14:58.685Z\n"
+"PO-Revision-Date: 2026-11-08T14:15:02.874Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -41,7 +41,7 @@ msgstr "(제목 없음)"
 msgid "AI Assistant"
 msgstr "AI 어시스턴트"
 
-#: src/components/preferences-modal/ai-panel.tsx:242
+#: src/components/preferences-modal/ai-panel.tsx:239
 msgid "API key"
 msgstr "API 키"
 
@@ -63,7 +63,7 @@ msgstr "YAML 프런트 매터 추가"
 msgid "Always open List View"
 msgstr "항상 목록 보기 열기"
 
-#: src/components/preferences-modal/ai-panel.tsx:208
+#: src/components/preferences-modal/ai-panel.tsx:205
 msgid "Anthropic API key"
 msgstr "Anthropic API 키"
 
@@ -89,7 +89,7 @@ msgstr "업데이트 확인"
 msgid "Check updates automatically"
 msgstr "자동으로 업데이트 확인"
 
-#: src/components/preferences-modal/ai-panel.tsx:266
+#: src/components/preferences-modal/ai-panel.tsx:263
 msgid "Checking the API key…"
 msgstr "API 키를 확인하는 중…"
 
@@ -159,11 +159,11 @@ msgstr "어둡게"
 msgid "Default (%s)"
 msgstr "기본값 (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:273
+#: src/components/preferences-modal/ai-panel.tsx:270
 msgid "Delete"
 msgstr "삭제"
 
-#: src/components/preferences-modal/ai-panel.tsx:262
+#: src/components/preferences-modal/ai-panel.tsx:259
 msgid "Deleting the API key…"
 msgstr "API 키를 삭제하는 중…"
 
@@ -288,7 +288,7 @@ msgstr "밝게"
 msgid "List View shortcuts"
 msgstr "목록 보기 바로 가기"
 
-#: src/components/preferences-modal/ai-panel.tsx:201
+#: src/components/preferences-modal/ai-panel.tsx:198
 msgid "Loading the models…"
 msgstr "모델을 불러오는 중…"
 
@@ -305,8 +305,8 @@ msgstr "이제 MarkBricks가 Markdown 파일의 기본 앱입니다."
 msgid "Maximum width of the content area, in pixels."
 msgstr "콘텐츠 영역의 최대 너비(픽셀)입니다."
 
-#: src/components/preferences-modal/ai-panel.tsx:311
-#: src/components/preferences-modal/ai-panel.tsx:316
+#: src/components/preferences-modal/ai-panel.tsx:309
+#: src/components/preferences-modal/ai-panel.tsx:314
 msgid "Model"
 msgstr "모델"
 
@@ -410,7 +410,7 @@ msgid "Sans-serif"
 msgstr "산세리프"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:274
+#: src/components/preferences-modal/ai-panel.tsx:271
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -419,10 +419,6 @@ msgstr "저장"
 #: src/components/header-actions/index.tsx:195
 msgid "Save As…"
 msgstr "다른 이름으로 저장…"
-
-#: src/components/preferences-modal/ai-panel.tsx:196
-msgid "Save an API key to choose a model."
-msgstr "모델을 선택하려면 API 키를 저장하세요."
 
 #: src/components/tabbar/index.tsx:203
 msgid "Save as…"
@@ -490,21 +486,22 @@ msgstr "텍스트 서식 지정"
 msgid "The API key cannot use this model."
 msgstr "이 API 키로는 이 모델을 사용할 수 없습니다."
 
-#: src/components/preferences-modal/ai-panel.tsx:215
+#: src/components/preferences-modal/ai-panel.tsx:212
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the "
 "Anthropic API."
-msgstr "API 키는 시스템의 자격 증명 저장소에 보관되며 Anthropic API로만 전송됩니다."
+msgstr ""
+"API 키는 시스템의 자격 증명 저장소에 보관되며 Anthropic API로만 전송됩니다."
 
 #: src/ai/anthropic/errors.ts:35
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 키가 올바르지 않습니다. 설정에서 확인하세요."
 
-#: src/components/preferences-modal/ai-panel.tsx:294
+#: src/components/preferences-modal/ai-panel.tsx:291
 msgid "The API key was deleted."
 msgstr "API 키를 삭제했습니다."
 
-#: src/components/preferences-modal/ai-panel.tsx:284
+#: src/components/preferences-modal/ai-panel.tsx:281
 msgid "The API key was saved."
 msgstr "API 키를 저장했습니다."
 
@@ -539,7 +536,7 @@ msgid "The model was not found."
 msgstr "모델을 찾을 수 없습니다."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:347
+#: src/components/preferences-modal/ai-panel.tsx:344
 msgid "The models could not be loaded: %s"
 msgstr "모델을 불러오지 못했습니다: %s"
 
@@ -581,7 +578,7 @@ msgstr "도구"
 msgid "Top toolbar"
 msgstr "상단 툴바"
 
-#: src/components/preferences-modal/ai-panel.tsx:356
+#: src/components/preferences-modal/ai-panel.tsx:353
 msgid "Try again"
 msgstr "다시 시도"
 

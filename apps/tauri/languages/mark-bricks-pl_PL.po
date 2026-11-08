@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:13:58.238Z\n"
-"PO-Revision-Date: 2026-11-08T14:14:02.801Z\n"
+"POT-Creation-Date: 2026-11-08T14:14:58.685Z\n"
+"PO-Revision-Date: 2026-11-08T14:15:03.402Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -39,7 +39,7 @@ msgstr "(Bez nazwy)"
 msgid "AI Assistant"
 msgstr "Asystent AI"
 
-#: src/components/preferences-modal/ai-panel.tsx:242
+#: src/components/preferences-modal/ai-panel.tsx:239
 msgid "API key"
 msgstr "Klucz API"
 
@@ -63,7 +63,7 @@ msgstr "Dodaj YAML front matter"
 msgid "Always open List View"
 msgstr "Zawsze otwieraj widok listy"
 
-#: src/components/preferences-modal/ai-panel.tsx:208
+#: src/components/preferences-modal/ai-panel.tsx:205
 msgid "Anthropic API key"
 msgstr "Klucz API Anthropic"
 
@@ -89,7 +89,7 @@ msgstr "Sprawdź aktualizacje"
 msgid "Check updates automatically"
 msgstr "Automatycznie sprawdzaj aktualizacje"
 
-#: src/components/preferences-modal/ai-panel.tsx:266
+#: src/components/preferences-modal/ai-panel.tsx:263
 msgid "Checking the API key…"
 msgstr "Sprawdzanie klucza API…"
 
@@ -159,11 +159,11 @@ msgstr "Ciemny"
 msgid "Default (%s)"
 msgstr "Domyślny (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:273
+#: src/components/preferences-modal/ai-panel.tsx:270
 msgid "Delete"
 msgstr "Usuń"
 
-#: src/components/preferences-modal/ai-panel.tsx:262
+#: src/components/preferences-modal/ai-panel.tsx:259
 msgid "Deleting the API key…"
 msgstr "Usuwanie klucza API…"
 
@@ -289,7 +289,7 @@ msgstr "Jasny"
 msgid "List View shortcuts"
 msgstr "Skróty widoku listy"
 
-#: src/components/preferences-modal/ai-panel.tsx:201
+#: src/components/preferences-modal/ai-panel.tsx:198
 msgid "Loading the models…"
 msgstr "Wczytywanie modeli…"
 
@@ -306,8 +306,8 @@ msgstr "MarkBricks jest teraz domyślną aplikacją dla plików Markdown."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Maksymalna szerokość obszaru treści w pikselach."
 
-#: src/components/preferences-modal/ai-panel.tsx:311
-#: src/components/preferences-modal/ai-panel.tsx:316
+#: src/components/preferences-modal/ai-panel.tsx:309
+#: src/components/preferences-modal/ai-panel.tsx:314
 msgid "Model"
 msgstr "Model"
 
@@ -411,7 +411,7 @@ msgid "Sans-serif"
 msgstr "Bezszeryfowa"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:274
+#: src/components/preferences-modal/ai-panel.tsx:271
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -420,10 +420,6 @@ msgstr "Zapisz"
 #: src/components/header-actions/index.tsx:195
 msgid "Save As…"
 msgstr "Zapisz jako…"
-
-#: src/components/preferences-modal/ai-panel.tsx:196
-msgid "Save an API key to choose a model."
-msgstr "Zapisz klucz API, aby wybrać model."
 
 #: src/components/tabbar/index.tsx:203
 msgid "Save as…"
@@ -491,21 +487,23 @@ msgstr "Formatowanie tekstu"
 msgid "The API key cannot use this model."
 msgstr "Ten klucz API nie pozwala używać tego modelu."
 
-#: src/components/preferences-modal/ai-panel.tsx:215
+#: src/components/preferences-modal/ai-panel.tsx:212
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the "
 "Anthropic API."
-msgstr "Klucz API jest przechowywany w systemowym magazynie poświadczeń i wysyłany wyłącznie do API Anthropic."
+msgstr ""
+"Klucz API jest przechowywany w systemowym magazynie poświadczeń i wysyłany "
+"wyłącznie do API Anthropic."
 
 #: src/ai/anthropic/errors.ts:35
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Klucz API jest nieprawidłowy. Sprawdź go w ustawieniach."
 
-#: src/components/preferences-modal/ai-panel.tsx:294
+#: src/components/preferences-modal/ai-panel.tsx:291
 msgid "The API key was deleted."
 msgstr "Klucz API został usunięty."
 
-#: src/components/preferences-modal/ai-panel.tsx:284
+#: src/components/preferences-modal/ai-panel.tsx:281
 msgid "The API key was saved."
 msgstr "Klucz API został zapisany."
 
@@ -540,7 +538,7 @@ msgid "The model was not found."
 msgstr "Nie znaleziono modelu."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:347
+#: src/components/preferences-modal/ai-panel.tsx:344
 msgid "The models could not be loaded: %s"
 msgstr "Nie udało się wczytać modeli: %s"
 
@@ -582,7 +580,7 @@ msgstr "Narzędzia"
 msgid "Top toolbar"
 msgstr "Górny pasek narzędzi"
 
-#: src/components/preferences-modal/ai-panel.tsx:356
+#: src/components/preferences-modal/ai-panel.tsx:353
 msgid "Try again"
 msgstr "Spróbuj ponownie"
 

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:13:58.238Z\n"
-"PO-Revision-Date: 2026-11-08T14:14:01.168Z\n"
+"POT-Creation-Date: 2026-11-08T14:14:58.685Z\n"
+"PO-Revision-Date: 2026-11-08T14:15:01.722Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -41,7 +41,7 @@ msgstr "(Sans titre)"
 msgid "AI Assistant"
 msgstr "Assistant IA"
 
-#: src/components/preferences-modal/ai-panel.tsx:242
+#: src/components/preferences-modal/ai-panel.tsx:239
 msgid "API key"
 msgstr "Clé d’API"
 
@@ -63,7 +63,7 @@ msgstr "Ajouter un front matter YAML"
 msgid "Always open List View"
 msgstr "Toujours ouvrir la vue en liste"
 
-#: src/components/preferences-modal/ai-panel.tsx:208
+#: src/components/preferences-modal/ai-panel.tsx:205
 msgid "Anthropic API key"
 msgstr "Clé d’API Anthropic"
 
@@ -89,7 +89,7 @@ msgstr "Rechercher des mises à jour"
 msgid "Check updates automatically"
 msgstr "Rechercher automatiquement les mises à jour"
 
-#: src/components/preferences-modal/ai-panel.tsx:266
+#: src/components/preferences-modal/ai-panel.tsx:263
 msgid "Checking the API key…"
 msgstr "Vérification de la clé d’API…"
 
@@ -160,11 +160,11 @@ msgstr "Sombre"
 msgid "Default (%s)"
 msgstr "Par défaut (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:273
+#: src/components/preferences-modal/ai-panel.tsx:270
 msgid "Delete"
 msgstr "Supprimer"
 
-#: src/components/preferences-modal/ai-panel.tsx:262
+#: src/components/preferences-modal/ai-panel.tsx:259
 msgid "Deleting the API key…"
 msgstr "Suppression de la clé d’API…"
 
@@ -293,7 +293,7 @@ msgstr "Clair"
 msgid "List View shortcuts"
 msgstr "Raccourcis de la vue en liste"
 
-#: src/components/preferences-modal/ai-panel.tsx:201
+#: src/components/preferences-modal/ai-panel.tsx:198
 msgid "Loading the models…"
 msgstr "Chargement des modèles…"
 
@@ -311,8 +311,8 @@ msgstr ""
 msgid "Maximum width of the content area, in pixels."
 msgstr "Largeur maximale de la zone de contenu, en pixels."
 
-#: src/components/preferences-modal/ai-panel.tsx:311
-#: src/components/preferences-modal/ai-panel.tsx:316
+#: src/components/preferences-modal/ai-panel.tsx:309
+#: src/components/preferences-modal/ai-panel.tsx:314
 msgid "Model"
 msgstr "Modèle"
 
@@ -416,7 +416,7 @@ msgid "Sans-serif"
 msgstr "Sans empattement"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:274
+#: src/components/preferences-modal/ai-panel.tsx:271
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -425,10 +425,6 @@ msgstr "Enregistrer"
 #: src/components/header-actions/index.tsx:195
 msgid "Save As…"
 msgstr "Enregistrer sous…"
-
-#: src/components/preferences-modal/ai-panel.tsx:196
-msgid "Save an API key to choose a model."
-msgstr "Enregistrez une clé d’API pour choisir un modèle."
 
 #: src/components/tabbar/index.tsx:203
 msgid "Save as…"
@@ -496,21 +492,23 @@ msgstr "Mise en forme du texte"
 msgid "The API key cannot use this model."
 msgstr "Cette clé d’API ne permet pas d’utiliser ce modèle."
 
-#: src/components/preferences-modal/ai-panel.tsx:215
+#: src/components/preferences-modal/ai-panel.tsx:212
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the "
 "Anthropic API."
-msgstr "La clé d’API est conservée dans le gestionnaire d’identifiants du système et envoyée uniquement à l’API Anthropic."
+msgstr ""
+"La clé d’API est conservée dans le gestionnaire d’identifiants du système et "
+"envoyée uniquement à l’API Anthropic."
 
 #: src/ai/anthropic/errors.ts:35
 msgid "The API key is not valid. Check it in the settings."
 msgstr "La clé d’API n’est pas valide. Vérifiez-la dans les réglages."
 
-#: src/components/preferences-modal/ai-panel.tsx:294
+#: src/components/preferences-modal/ai-panel.tsx:291
 msgid "The API key was deleted."
 msgstr "La clé d’API a été supprimée."
 
-#: src/components/preferences-modal/ai-panel.tsx:284
+#: src/components/preferences-modal/ai-panel.tsx:281
 msgid "The API key was saved."
 msgstr "La clé d’API a été enregistrée."
 
@@ -547,7 +545,7 @@ msgid "The model was not found."
 msgstr "Le modèle est introuvable."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:347
+#: src/components/preferences-modal/ai-panel.tsx:344
 msgid "The models could not be loaded: %s"
 msgstr "Les modèles n’ont pas pu être chargés : %s"
 
@@ -590,7 +588,7 @@ msgstr "Outils"
 msgid "Top toolbar"
 msgstr "Barre d’outils supérieure"
 
-#: src/components/preferences-modal/ai-panel.tsx:356
+#: src/components/preferences-modal/ai-panel.tsx:353
 msgid "Try again"
 msgstr "Réessayer"
 

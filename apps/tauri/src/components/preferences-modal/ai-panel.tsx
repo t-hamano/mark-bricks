@@ -180,6 +180,8 @@ export function AiPanel( { settings, onChange }: Props ) {
 			await deleteApiKey();
 			setKeyStatus( { kind: 'deleted' } );
 			setHasKey( false );
+			// The model was chosen for that key.
+			onChange( { model: '' } );
 		} catch ( error ) {
 			setKeyStatus( { kind: 'error', message: String( error ) } );
 		}
@@ -191,15 +193,10 @@ export function AiPanel( { settings, onChange }: Props ) {
 		settings.model
 	);
 
-	let modelDescription = '';
-	if ( hasKey === false ) {
-		modelDescription = __(
-			'Save an API key to choose a model.',
-			'mark-bricks'
-		);
-	} else if ( models.kind === 'loading' ) {
-		modelDescription = __( 'Loading the models…', 'mark-bricks' );
-	}
+	const modelDescription =
+		models.kind === 'loading'
+			? __( 'Loading the models…', 'mark-bricks' )
+			: undefined;
 
 	return (
 		<Stack direction="column" gap="xl">
@@ -306,59 +303,60 @@ export function AiPanel( { settings, onChange }: Props ) {
 					</Notice.Root>
 				) }
 			</Stack>
-			<Stack direction="column" gap="md" align="flex-start">
-				<Text variant="heading-xl" render={ <h2 /> }>
-					{ __( 'Model', 'mark-bricks' ) }
-				</Text>
-				<SelectControl
-					hideLabelFromVision
-					size="compact"
-					label={ __( 'Model', 'mark-bricks' ) }
-					items={ modelItems }
-					value={
-						modelItems.find(
-							( item ) =>
-								item.value ===
-								( settings.model || DEFAULT_MODEL_ITEM )
-						) ?? null
-					}
-					isItemEqualToValue={ ( a, b ) => a.value === b.value }
-					onValueChange={ ( item ) => {
-						if ( item ) {
-							onChange( {
-								model:
-									item.value === DEFAULT_MODEL_ITEM
-										? ''
-										: ( item.value ?? '' ),
-							} );
+			{ hasKey && (
+				<Stack direction="column" gap="md" align="flex-start">
+					<Text variant="heading-xl" render={ <h2 /> }>
+						{ __( 'Model', 'mark-bricks' ) }
+					</Text>
+					<SelectControl
+						hideLabelFromVision
+						size="compact"
+						label={ __( 'Model', 'mark-bricks' ) }
+						items={ modelItems }
+						value={
+							modelItems.find(
+								( item ) =>
+									item.value ===
+									( settings.model || DEFAULT_MODEL_ITEM )
+							) ?? null
 						}
-					} }
-					disabled={ ! hasKey }
-					description={ modelDescription || undefined }
-				/>
-				{ models.kind === 'error' && (
-					<Notice.Root
-						className="preferences-modal__notice"
-						intent="warning"
-					>
-						<Notice.Description>
-							{ sprintf(
-								/* translators: %s: Why the models could not be loaded. */
-								__(
-									'The models could not be loaded: %s',
-									'mark-bricks'
-								),
-								models.message
-							) }
-						</Notice.Description>
-						<Notice.Actions>
-							<Notice.ActionButton onClick={ loadModels }>
-								{ __( 'Try again', 'mark-bricks' ) }
-							</Notice.ActionButton>
-						</Notice.Actions>
-					</Notice.Root>
-				) }
-			</Stack>
+						isItemEqualToValue={ ( a, b ) => a.value === b.value }
+						onValueChange={ ( item ) => {
+							if ( item ) {
+								onChange( {
+									model:
+										item.value === DEFAULT_MODEL_ITEM
+											? ''
+											: ( item.value ?? '' ),
+								} );
+							}
+						} }
+						description={ modelDescription }
+					/>
+					{ models.kind === 'error' && (
+						<Notice.Root
+							className="preferences-modal__notice"
+							intent="warning"
+						>
+							<Notice.Description>
+								{ sprintf(
+									/* translators: %s: Why the models could not be loaded. */
+									__(
+										'The models could not be loaded: %s',
+										'mark-bricks'
+									),
+									models.message
+								) }
+							</Notice.Description>
+							<Notice.Actions>
+								<Notice.ActionButton onClick={ loadModels }>
+									{ __( 'Try again', 'mark-bricks' ) }
+								</Notice.ActionButton>
+							</Notice.Actions>
+						</Notice.Root>
+					) }
+				</Stack>
+			) }
 		</Stack>
 	);
 }
