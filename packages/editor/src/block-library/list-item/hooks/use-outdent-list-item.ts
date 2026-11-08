@@ -16,6 +16,7 @@ export default function useOutdentListItem() {
 			index?: number
 		) => void;
 		removeBlock: ( clientId: string, selectPrevious?: boolean ) => void;
+		removeBlocks: ( clientIds: string[], selectPrevious?: boolean ) => void;
 		insertBlock: (
 			block: unknown,
 			index: number,
@@ -30,6 +31,7 @@ export default function useOutdentListItem() {
 	const {
 		moveBlocksToPosition,
 		removeBlock,
+		removeBlocks,
 		insertBlock,
 		updateBlockListSettings,
 	} = dispatch;
@@ -96,35 +98,54 @@ export default function useOutdentListItem() {
 
 			registry.batch( () => {
 				if ( followingListItems.length ) {
-					let nestedListId = getBlockOrder( firstClientId )[ 0 ];
-
-					if ( ! nestedListId ) {
+					// The following items continue the item after all of its
+					// content, so they join its nested list only when that list
+					// is the last block. Otherwise a new nested list is appended.
+					const innerBlockIds = getBlockOrder( firstClientId );
+					const lastInnerBlockId =
+						innerBlockIds[ innerBlockIds.length - 1 ];
+					if (
+						lastInnerBlockId &&
+						getBlockName( lastInnerBlockId ) === 'core/list'
+					) {
+						moveBlocksToPosition(
+							followingListItems,
+							parentListId,
+							lastInnerBlockId
+						);
+					} else {
 						const parentListBlock = getBlock( parentListId );
 						if ( ! parentListBlock ) {
 							return;
 						}
+						// Insert the new nested list with the following items
+						// already inside. An empty list would get a blank item
+						// from the list block's template.
+						const followingBlocks = followingListItems
+							.map( ( id ) => getBlock( id ) )
+							.filter( ( block ) => !! block )
+							.map( ( block ) => cloneBlock( block ) );
 						const nestedListBlock = cloneBlock(
 							parentListBlock,
 							{},
-							[]
+							followingBlocks
 						);
-						nestedListId = nestedListBlock.clientId;
-						insertBlock( nestedListBlock, 0, firstClientId, false );
+						removeBlocks( followingListItems, false );
+						insertBlock(
+							nestedListBlock,
+							innerBlockIds.length,
+							firstClientId,
+							false
+						);
 						const parentListSettings =
 							getBlockListSettings( parentListId );
 						if ( parentListSettings ) {
 							updateBlockListSettings(
-								nestedListId,
+								nestedListBlock.clientId,
 								parentListSettings
 							);
 						}
 					}
-
-					moveBlocksToPosition(
-						followingListItems,
-						parentListId,
-						nestedListId
-					);
 				}
 				moveBlocksToPosition(
 					clientIds,

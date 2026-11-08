@@ -4,7 +4,7 @@
 import { useCallback } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { store as blockEditorStore } from '@wordpress/block-editor';
-import { createBlock, cloneBlock } from '@wordpress/blocks';
+import { cloneBlock } from '@wordpress/blocks';
 
 export default function useIndentListItem( clientId: string ) {
 	const { replaceBlocks, selectionChange, multiSelect } =
@@ -12,6 +12,7 @@ export default function useIndentListItem( clientId: string ) {
 	const {
 		getBlock,
 		getPreviousBlockClientId,
+		getBlockRootClientId,
 		getSelectionStart,
 		getSelectionEnd,
 		hasMultiSelection,
@@ -41,12 +42,29 @@ export default function useIndentListItem( clientId: string ) {
 				cloneBlock( block )
 			);
 			const newListItem = cloneBlock( previousSiblingBlock );
-			if ( ! newListItem.innerBlocks?.length ) {
-				newListItem.innerBlocks = [ createBlock( 'core/list' ) ];
+			// The items continue the previous item after all of its content,
+			// so they join its nested list only when that list is the last
+			// block. Otherwise, e.g. when the item ends with a paragraph, a
+			// new nested list is appended.
+			const lastInnerBlock =
+				newListItem.innerBlocks[ newListItem.innerBlocks.length - 1 ];
+			if ( lastInnerBlock?.name === 'core/list' ) {
+				lastInnerBlock.innerBlocks.push( ...clonedBlocks );
+			} else {
+				// Clone the items' own list so the new nested list keeps its
+				// type and Markdown marker attributes.
+				const sourceListId = getBlockRootClientId( clientId );
+				const sourceListBlock = sourceListId
+					? getBlock( sourceListId )
+					: null;
+				if ( ! sourceListBlock ) {
+					return false;
+				}
+				newListItem.innerBlocks = [
+					...newListItem.innerBlocks,
+					cloneBlock( sourceListBlock, {}, clonedBlocks ),
+				];
 			}
-			newListItem.innerBlocks[
-				newListItem.innerBlocks.length - 1
-			].innerBlocks.push( ...clonedBlocks );
 
 			const selectionStart = getSelectionStart();
 			const selectionEnd = getSelectionEnd();
