@@ -35,6 +35,10 @@ import {
 	saveActiveFileAs,
 	subscribeExportStatus,
 } from '../../actions';
+import {
+	setSlidePreviewShown,
+	useSlidePreviewShown,
+} from '../../preview/visibility';
 import tabsStore from '../../store';
 import { ABOUT_MODAL_NAME } from '../about-modal';
 import { KEYBOARD_SHORTCUTS_MODAL_NAME } from '../keyboard-shortcuts-modal';
@@ -56,7 +60,6 @@ export default function HeaderActions( {
 		isPreferencesOpened,
 		isFixedToolbar,
 		isFocusMode,
-		isSlidePreviewShown,
 	} = useSelect( ( select ) => {
 		const { getTabs, getActiveTabId } = select( tabsStore );
 		const { isModalActive } = select( interfaceStore );
@@ -68,9 +71,9 @@ export default function HeaderActions( {
 			isPreferencesOpened: isModalActive( PREFERENCES_MODAL_NAME ),
 			isFixedToolbar: !! get( 'core', 'fixedToolbar' ),
 			isFocusMode: !! get( 'core', 'focusMode' ),
-			isSlidePreviewShown: !! get( 'mark-bricks', 'showSlidePreview' ),
 		};
 	}, [] );
+	const isSlidePreviewShown = useSlidePreviewShown();
 	const newFileShortcut = useKeyboardShortcut( 'mark-bricks/new-file' );
 	const openFileShortcut = useKeyboardShortcut( 'mark-bricks/open-file' );
 	const saveFileShortcut = useKeyboardShortcut( 'mark-bricks/save-file' );
@@ -123,11 +126,7 @@ export default function HeaderActions( {
 					tone="neutral"
 					size="compact"
 					onClick={ () =>
-						setPreference(
-							'mark-bricks',
-							'showSlidePreview',
-							! isSlidePreviewShown
-						)
+						setSlidePreviewShown( ! isSlidePreviewShown )
 					}
 					aria-pressed={ isSlidePreviewShown }
 				/>
