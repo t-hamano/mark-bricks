@@ -54,6 +54,7 @@ type Props = {
 		codeEditor?: Partial< CodeEditorSettings >;
 	};
 	headerActions?: ReactNode;
+	sidePanel?: ReactNode;
 	editorStyles?: EditorStyles;
 	style?: CSSProperties;
 	platform?: Partial< Platform >;
@@ -73,6 +74,7 @@ function UnforwardedEditor(
 		onEditorModeChange,
 		settings,
 		headerActions,
+		sidePanel,
 		editorStyles,
 		style,
 		platform,
@@ -95,6 +97,7 @@ function UnforwardedEditor(
 			style={ style }
 			platform={ platform }
 			onSelectedLineChange={ onSelectedLineChange }
+			sidePanel={ sidePanel }
 			headerActions={
 				<Stack direction="row" align="center" gap="sm">
 					<IconButton
