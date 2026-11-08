@@ -17,7 +17,7 @@ import { isUnmodifiedDefaultBlock } from '@wordpress/blocks';
 import { Composite } from '@wordpress/components';
 import { useRegistry } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { Button, Text } from '@wordpress/ui';
+import { Button, Text, Tooltip, VisuallyHidden } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -45,7 +45,8 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 	const theme = getSlidePatternTheme(
 		getFrontMatterValue( frontMatter, 'theme' )
 	);
-	// The cards show their titles until the previews have loaded.
+	// The cards show their titles until the previews have loaded. After that,
+	// a card shows its preview, and its title in a tooltip.
 	const [ previews, setPreviews ] = useState< SlidePatternPreviews | null >(
 		null
 	);
@@ -124,31 +125,48 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 	);
 
 	return (
-		<Composite
-			className="inserter-sidebar__pattern-list"
-			role="listbox"
-			aria-label={ __( 'Slide patterns', 'mark-bricks' ) }
-			onScroll={ onScroll }
-			focusLoop
-			focusWrap
-		>
-			{ patterns.map( ( { pattern, title, preview } ) => (
-				<Composite.Item
-					key={ pattern.name }
-					role="option"
-					className="inserter-sidebar__pattern-list-item"
-					onClick={ () => insertPattern( pattern ) }
-					render={ <Button variant="outline" tone="neutral" /> }
-				>
-					{ preview && (
-						<SlidePatternPreview
-							html={ preview.html }
-							css={ preview.css }
-						/>
-					) }
-					<Text variant="body-sm">{ title }</Text>
-				</Composite.Item>
-			) ) }
-		</Composite>
+		<Tooltip.Provider>
+			<Composite
+				className="inserter-sidebar__pattern-list"
+				role="listbox"
+				aria-label={ __( 'Slide patterns', 'mark-bricks' ) }
+				onScroll={ onScroll }
+				focusLoop
+				focusWrap
+			>
+				{ patterns.map( ( { pattern, title, preview } ) => (
+					<Tooltip.Root key={ pattern.name } disabled={ ! preview }>
+						<Composite.Item
+							role="option"
+							className="inserter-sidebar__pattern-list-item"
+							onClick={ () => insertPattern( pattern ) }
+							render={
+								<Tooltip.Trigger
+									render={
+										<Button
+											variant="outline"
+											tone="neutral"
+										/>
+									}
+								/>
+							}
+						>
+							{ preview ? (
+								<>
+									<SlidePatternPreview
+										html={ preview.html }
+										css={ preview.css }
+									/>
+									<VisuallyHidden>{ title }</VisuallyHidden>
+								</>
+							) : (
+								<Text variant="body-sm">{ title }</Text>
+							) }
+						</Composite.Item>
+						<Tooltip.Popup>{ title }</Tooltip.Popup>
+					</Tooltip.Root>
+				) ) }
+			</Composite>
+		</Tooltip.Provider>
 	);
 }
