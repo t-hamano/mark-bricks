@@ -3,6 +3,7 @@
  */
 import { convertFileSrc } from '@tauri-apps/api/core';
 import { open as openDialog } from '@tauri-apps/plugin-dialog';
+import { openUrl } from '@tauri-apps/plugin-opener';
 import type { Platform } from '@mark-bricks/editor';
 import { parseImageSrc } from '@mark-bricks/image-path';
 
@@ -93,6 +94,10 @@ export function createPlatform( documentPath?: string ): Platform {
 				);
 			}
 			return null;
+		},
+		// The webview does not open `target="_blank"` links by itself.
+		openUrl( url ) {
+			void openUrl( url );
 		},
 	};
 }
