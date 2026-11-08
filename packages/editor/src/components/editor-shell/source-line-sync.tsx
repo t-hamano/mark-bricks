@@ -19,7 +19,10 @@ import { useDispatch, useRegistry, useSelect } from '@wordpress/data';
 /**
  * Internal dependencies
  */
-import { findBlockIndexAtLine, getBlockLineRanges } from '../../converter';
+import {
+	findBlockIndexAtLine,
+	getDocumentBlockLineRanges,
+} from '../../converter';
 
 /**
  * Finds the element of a block, in the page or in the canvas iframe.
@@ -51,6 +54,7 @@ export type SourceLineSyncHandle = {
 type Props = {
 	blocks: Block[];
 	frontMatter: string | null;
+	content: string;
 	enabled: boolean;
 	onSelectedLineChange?: ( line: number | null ) => void;
 	handleRef: Ref< SourceLineSyncHandle >;
@@ -66,6 +70,7 @@ type Props = {
  * @param props                      Component props.
  * @param props.blocks               Top-level blocks of the document.
  * @param props.frontMatter          Front matter content, or `null`.
+ * @param props.content              The document as it is written.
  * @param props.enabled              Whether the block editor is shown.
  * @param props.onSelectedLineChange Called with the line, or `null` when no
  *                                   block is selected.
@@ -74,6 +79,7 @@ type Props = {
 export function SourceLineSync( {
 	blocks,
 	frontMatter,
+	content,
 	enabled,
 	onSelectedLineChange,
 	handleRef,
@@ -90,8 +96,11 @@ export function SourceLineSync( {
 	// Only worked out for a host that follows the selection.
 	const tracksLines = !! onSelectedLineChange && enabled;
 	const ranges = useMemo(
-		() => ( tracksLines ? getBlockLineRanges( blocks, frontMatter ) : [] ),
-		[ tracksLines, blocks, frontMatter ]
+		() =>
+			tracksLines
+				? getDocumentBlockLineRanges( blocks, frontMatter, content )
+				: [],
+		[ tracksLines, blocks, frontMatter, content ]
 	);
 	const index = rootClientId
 		? blocks.findIndex( ( block ) => block.clientId === rootClientId )
@@ -109,8 +118,8 @@ export function SourceLineSync( {
 		}
 	}, [ line ] );
 
-	const stateRef = useRef( { blocks, frontMatter, enabled } );
-	stateRef.current = { blocks, frontMatter, enabled };
+	const stateRef = useRef( { blocks, frontMatter, content, enabled } );
+	stateRef.current = { blocks, frontMatter, content, enabled };
 
 	useImperativeHandle(
 		handleRef,
@@ -121,7 +130,11 @@ export function SourceLineSync( {
 					return;
 				}
 				const found = findBlockIndexAtLine(
-					getBlockLineRanges( current.blocks, current.frontMatter ),
+					getDocumentBlockLineRanges(
+						current.blocks,
+						current.frontMatter,
+						current.content
+					),
 					target
 				);
 				if ( found === -1 ) {

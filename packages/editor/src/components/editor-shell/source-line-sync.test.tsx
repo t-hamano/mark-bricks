@@ -38,18 +38,20 @@ vi.mock( '@wordpress/data', () => ( {
 // `# A` at line 4, and `B` at line 6, after the front matter.
 const FRONT_MATTER = 'marp: true';
 const blocks = markdownToBlocks( '# A\n\nB\n' );
+const CONTENT = `---\n${ FRONT_MATTER }\n---\n\n# A\n\nB\n`;
 
 describe( 'SourceLineSync', () => {
 	let root: Root;
 	const handleRef = createRef< SourceLineSyncHandle >();
 	const onSelectedLineChange = vi.fn();
 
-	function render( enabled = true ) {
+	function render( enabled = true, content = CONTENT ) {
 		act( () =>
 			root.render(
 				<SourceLineSync
 					blocks={ blocks }
 					frontMatter={ FRONT_MATTER }
+					content={ content }
 					enabled={ enabled }
 					onSelectedLineChange={ onSelectedLineChange }
 					handleRef={ handleRef }
@@ -82,6 +84,21 @@ describe( 'SourceLineSync', () => {
 		selectedRoot = null;
 		render();
 		expect( onSelectedLineChange ).toHaveBeenLastCalledWith( null );
+	} );
+
+	it( 'reports the line of the selected block as the document is written', () => {
+		selectedRoot = blocks[ 1 ].clientId;
+		render( true, `---\n${ FRONT_MATTER }\n---\n\n\n# A\n\n\nB\n` );
+		expect( onSelectedLineChange ).toHaveBeenLastCalledWith( 8 );
+
+		handleRef.current?.selectLine( 6 );
+		expect( selectBlock ).toHaveBeenLastCalledWith( blocks[ 0 ].clientId );
+	} );
+
+	it( 'counts the lines the editor writes while the document holds other blocks', () => {
+		selectedRoot = blocks[ 1 ].clientId;
+		render( true, `---\n${ FRONT_MATTER }\n---\n\n\n# A\n` );
+		expect( onSelectedLineChange ).toHaveBeenLastCalledWith( 6 );
 	} );
 
 	it( 'reports no line in the code editor', () => {
