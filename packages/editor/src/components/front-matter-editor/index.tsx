@@ -39,12 +39,6 @@ import { usePlatform } from '../../platform';
 
 const MARP_DIRECTIVES_URL = 'https://marpit.marp.app/directives';
 
-type SelectOption = {
-	label: string;
-	value: string;
-	description?: string;
-};
-
 export { FrontMatterContext, useFrontMatter } from './context';
 export type { FrontMatterContextValue } from './context';
 
@@ -175,63 +169,115 @@ function MarpSettings( {
 	const setValue = ( key: string, next: string | null ) =>
 		setFrontMatter( setFrontMatterValue( value, key, next ) );
 
+	const theme = getFrontMatterValue( value, 'theme' ) ?? 'default';
+	// Marp's built-in themes.
+	const themes: Array< {
+		label: string;
+		value: string;
+		description?: string;
+	} > = [
+		{
+			label: 'default',
+			value: 'default',
+			description: __(
+				'Simple and clean, based on GitHub Markdown style.',
+				'mark-bricks'
+			),
+		},
+		{
+			label: 'gaia',
+			value: 'gaia',
+			description: __(
+				'Classic look with a colored background.',
+				'mark-bricks'
+			),
+		},
+		{
+			label: 'uncover',
+			value: 'uncover',
+			description: __(
+				'Minimal and modern, with centered content.',
+				'mark-bricks'
+			),
+		},
+	];
+	// Keeps a theme written by hand selectable alongside the built-in ones.
+	if ( ! themes.some( ( item ) => item.value === theme ) ) {
+		themes.push( { label: theme, value: theme } );
+	}
+
+	const size = getFrontMatterValue( value, 'size' ) ?? '16:9';
+	// The sizes that Marp's built-in themes provide.
+	const sizes = [ '16:9', '4:3' ];
+	if ( ! sizes.includes( size ) ) {
+		sizes.push( size );
+	}
+
 	return (
 		<>
-			<FrontMatterSelect
-				label={ __( 'Theme', 'mark-bricks' ) }
-				// Marp's built-in themes.
-				options={ [
-					{
-						label: 'default',
-						value: 'default',
-						description: __(
-							'Simple and clean, based on GitHub Markdown style.',
-							'mark-bricks'
-						),
-					},
-					{
-						label: 'gaia',
-						value: 'gaia',
-						description: __(
-							'Classic look with a colored background.',
-							'mark-bricks'
-						),
-					},
-					{
-						label: 'uncover',
-						value: 'uncover',
-						description: __(
-							'Minimal and modern, with centered content.',
-							'mark-bricks'
-						),
-					},
-				] }
-				value={ getFrontMatterValue( value, 'theme' ) ?? 'default' }
-				onChange={ ( next ) => setValue( 'theme', next ) }
-				portalContainer={ portalContainer }
-			/>
-			<FrontMatterSelect
-				label={ __( 'Size', 'mark-bricks' ) }
-				description={ __(
-					'The aspect ratio of the slides.',
-					'mark-bricks'
-				) }
-				// The sizes that Marp's built-in themes provide.
-				options={ [
-					{
-						label: '16:9',
-						value: '16:9',
-					},
-					{
-						label: '4:3',
-						value: '4:3',
-					},
-				] }
-				value={ getFrontMatterValue( value, 'size' ) ?? '16:9' }
-				onChange={ ( next ) => setValue( 'size', next ) }
-				portalContainer={ portalContainer }
-			/>
-
+			<Field.Root>
+				<Field.Label>{ __( 'Theme', 'mark-bricks' ) }</Field.Label>
+				<Select.Root
+					items={ themes }
+					value={ theme }
+					onValueChange={ ( next ) => {
+						if ( typeof next === 'string' ) {
+							setValue( 'theme', next );
+						}
+					} }
+				>
+					<Select.Trigger />
+					{ /* Portaled into the iframe document, like the popover. */ }
+					<Select.Popup
+						portal={
+							<Select.Portal container={ portalContainer } />
+						}
+					>
+						{ themes.map( ( item ) => (
+							<Select.Item
+								key={ item.value }
+								value={ item.value }
+							>
+								<Select.ItemLabel>
+									{ item.label }
+								</Select.ItemLabel>
+								{ item.description ? (
+									<Select.ItemDescription>
+										{ item.description }
+									</Select.ItemDescription>
+								) : null }
+							</Select.Item>
+						) ) }
+					</Select.Popup>
+				</Select.Root>
+			</Field.Root>
+			<Field.Root>
+				<Field.Label>{ __( 'Size', 'mark-bricks' ) }</Field.Label>
+				<Select.Root
+					value={ size }
+					onValueChange={ ( next ) => {
+						if ( typeof next === 'string' ) {
+							setValue( 'size', next );
+						}
+					} }
+				>
+					<Select.Trigger />
+					<Select.Popup
+						portal={
+							<Select.Portal container={ portalContainer } />
+						}
+					>
+						{ sizes.map( ( item ) => (
+							<Select.Item key={ item } value={ item }>
+								<Select.ItemLabel>{ item }</Select.ItemLabel>
+							</Select.Item>
+						) ) }
+					</Select.Popup>
+				</Select.Root>
+				<Field.Description>
+					{ __( 'The aspect ratio of the slides.', 'mark-bricks' ) }
+				</Field.Description>
+			</Field.Root>
 			<InputControl
 				label={ __( 'Header', 'mark-bricks' ) }
 				description={ __(
@@ -290,61 +336,5 @@ function MarpSettings( {
 				) }
 			</p>
 		</>
-	);
-}
-
-function FrontMatterSelect( {
-	label,
-	description,
-	options,
-	value,
-	onChange,
-	portalContainer,
-}: {
-	label: string;
-	description?: string;
-	options: SelectOption[];
-	value: string;
-	onChange: ( next: string ) => void;
-	portalContainer: HTMLElement | null;
-} ) {
-	// Keeps a value written by hand selectable alongside the known ones.
-	const items = options.some( ( option ) => option.value === value )
-		? options
-		: [ ...options, { label: value, value } ];
-
-	return (
-		<Field.Root>
-			<Field.Label>{ label }</Field.Label>
-			<Select.Root
-				items={ items }
-				value={ value }
-				onValueChange={ ( next ) => {
-					if ( typeof next === 'string' ) {
-						onChange( next );
-					}
-				} }
-			>
-				<Select.Trigger />
-				{ /* Portaled into the iframe document, like the popover. */ }
-				<Select.Popup
-					portal={ <Select.Portal container={ portalContainer } /> }
-				>
-					{ items.map( ( item ) => (
-						<Select.Item key={ item.value } value={ item.value }>
-							<Select.ItemLabel>{ item.label }</Select.ItemLabel>
-							{ item.description ? (
-								<Select.ItemDescription>
-									{ item.description }
-								</Select.ItemDescription>
-							) : null }
-						</Select.Item>
-					) ) }
-				</Select.Popup>
-			</Select.Root>
-			{ description && (
-				<Field.Description>{ description }</Field.Description>
-			) }
-		</Field.Root>
 	);
 }
