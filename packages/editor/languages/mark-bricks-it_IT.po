@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:35:47.866Z\n"
-"PO-Revision-Date: 2026-11-08T12:35:52.585Z\n"
+"POT-Creation-Date: 2026-11-08T12:53:29.097Z\n"
+"PO-Revision-Date: 2026-11-08T12:53:32.578Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -88,7 +88,8 @@ msgstr "Contesto"
 msgid "Block Inserter"
 msgstr "Inseritore di blocchi"
 
-#: src/components/inserter-sidebar/index.tsx:222
+#: src/components/inserter-sidebar/index.tsx:149
+#: src/components/inserter-sidebar/index.tsx:277
 msgid "Blocks"
 msgstr "Blocchi"
 
@@ -131,7 +132,7 @@ msgid "Clear formatting"
 msgstr "Cancella formattazione"
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:210
+#: src/components/inserter-sidebar/index.tsx:261
 #: src/components/ai-sidebar/sidebar.tsx:106
 msgid "Close"
 msgstr "Chiudi"
@@ -149,7 +150,7 @@ msgctxt "slide pattern"
 msgid "Closing"
 msgstr "Chiusura"
 
-#: src/components/editor/index.tsx:99
+#: src/components/editor/index.tsx:102
 msgid "Code editor"
 msgstr "Editor del codice"
 
@@ -465,7 +466,7 @@ msgstr "Rimuove un link."
 msgid "Reset"
 msgstr "Reimposta"
 
-#: src/components/inserter-sidebar/index.tsx:195
+#: src/components/inserter-sidebar/index.tsx:246
 msgid "Reset search"
 msgstr "Reimposta la ricerca"
 
@@ -473,13 +474,17 @@ msgstr "Reimposta la ricerca"
 msgid "Row count"
 msgstr "Numero di righe"
 
-#: src/components/inserter-sidebar/index.tsx:182
+#: src/components/inserter-sidebar/index.tsx:233
 msgid "Search"
 msgstr "Cerca"
 
-#: src/components/inserter-sidebar/index.tsx:178
+#: src/components/inserter-sidebar/index.tsx:228
 msgid "Search for blocks"
 msgstr "Cerca blocchi"
+
+#: src/components/inserter-sidebar/index.tsx:224
+msgid "Search for slide patterns"
+msgstr "Cerca modelli di diapositive"
 
 #: src/marp-patterns/patterns/image-and-text.ts:25
 msgctxt "slide pattern"
@@ -529,6 +534,11 @@ msgstr "Semplice e pulito, basato sullo stile Markdown di GitHub."
 #: src/components/front-matter-editor/index.tsx:255
 msgid "Size"
 msgstr "Dimensione"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:92
+#: src/components/inserter-sidebar/index.tsx:280
+msgid "Slide patterns"
+msgstr "Modelli di diapositive"
 
 #: src/marp-patterns/patterns/image-and-text.ts:23
 msgctxt "slide pattern"
