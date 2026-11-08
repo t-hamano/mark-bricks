@@ -9,11 +9,14 @@ import { useState } from 'react';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import type { Block } from '@wordpress/blocks';
 import { useDispatch, useSelect } from '@wordpress/data';
+import { createInterpolateElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { moreVertical } from '@wordpress/icons';
 import {
 	Field,
 	IconButton,
+	InputControl,
+	Link,
 	Popover,
 	Select,
 	Stack,
@@ -32,25 +35,28 @@ import {
 	setMarpFrontMatter,
 } from '../../converter/front-matter';
 
-// Marp's built-in themes. Descriptions are translated at render time.
-function getMarpThemes(): Array< { name: string; description: string } > {
+// Marp's built-in themes. Translated at render time.
+function getMarpThemes(): SelectOption[] {
 	return [
 		{
-			name: 'default',
+			label: 'default',
+			value: 'default',
 			description: __(
 				'Simple and clean, based on GitHub Markdown style.',
 				'mark-bricks'
 			),
 		},
 		{
-			name: 'gaia',
+			label: 'gaia',
+			value: 'gaia',
 			description: __(
 				'Classic look with a colored background.',
 				'mark-bricks'
 			),
 		},
 		{
-			name: 'uncover',
+			label: 'uncover',
+			value: 'uncover',
 			description: __(
 				'Minimal and modern, with centered content.',
 				'mark-bricks'
@@ -58,7 +64,32 @@ function getMarpThemes(): Array< { name: string; description: string } > {
 		},
 	];
 }
+
+// The slide sizes that Marp's built-in themes provide.
+function getMarpSizes(): SelectOption[] {
+	return [
+		{
+			label: '16:9',
+			value: '16:9',
+			description: __( 'Widescreen, 1280 × 720.', 'mark-bricks' ),
+		},
+		{
+			label: '4:3',
+			value: '4:3',
+			description: __( 'Standard, 960 × 720.', 'mark-bricks' ),
+		},
+	];
+}
 import { useCodeMirror } from '../../block-library/hooks/use-code-mirror';
+import { usePlatform } from '../../platform';
+
+const MARP_DIRECTIVES_URL = 'https://marpit.marp.app/directives';
+
+type SelectOption = {
+	label: string;
+	value: string;
+	description?: string;
+};
 
 export { FrontMatterContext, useFrontMatter } from './context';
 export type { FrontMatterContextValue } from './context';
@@ -186,62 +217,26 @@ function MarpSettings( {
 	portalContainer: HTMLElement | null;
 } ) {
 	const { setFrontMatter } = useFrontMatter();
-	const theme = getFrontMatterValue( value, 'theme' ) ?? 'default';
-	// Keeps a custom theme selectable alongside the built-in ones.
-	const builtInThemes = getMarpThemes();
-	const items: Array< {
-		label: string;
-		value: string;
-		description?: string;
-	} > = builtInThemes.map( ( { name, description } ) => ( {
-		label: name,
-		value: name,
-		description,
-	} ) );
-	if ( ! builtInThemes.some( ( { name } ) => name === theme ) ) {
-		items.push( { label: theme, value: theme } );
-	}
+	const { openUrl } = usePlatform();
+	const setValue = ( key: string, next: string | null ) =>
+		setFrontMatter( setFrontMatterValue( value, key, next ) );
 
 	return (
 		<>
-			<Field.Root>
-				<Field.Label>{ __( 'Theme', 'mark-bricks' ) }</Field.Label>
-				<Select.Root
-					items={ items }
-					value={ theme }
-					onValueChange={ ( next ) => {
-						if ( typeof next === 'string' ) {
-							setFrontMatter(
-								setFrontMatterValue( value, 'theme', next )
-							);
-						}
-					} }
-				>
-					<Select.Trigger />
-					{ /* Portaled into the iframe document, like the popover. */ }
-					<Select.Popup
-						portal={
-							<Select.Portal container={ portalContainer } />
-						}
-					>
-						{ items.map( ( item ) => (
-							<Select.Item
-								key={ item.value }
-								value={ item.value }
-							>
-								<Select.ItemLabel>
-									{ item.label }
-								</Select.ItemLabel>
-								{ item.description ? (
-									<Select.ItemDescription>
-										{ item.description }
-									</Select.ItemDescription>
-								) : null }
-							</Select.Item>
-						) ) }
-					</Select.Popup>
-				</Select.Root>
-			</Field.Root>
+			<FrontMatterSelect
+				label={ __( 'Theme', 'mark-bricks' ) }
+				options={ getMarpThemes() }
+				value={ getFrontMatterValue( value, 'theme' ) ?? 'default' }
+				onChange={ ( next ) => setValue( 'theme', next ) }
+				portalContainer={ portalContainer }
+			/>
+			<FrontMatterSelect
+				label={ __( 'Size', 'mark-bricks' ) }
+				options={ getMarpSizes() }
+				value={ getFrontMatterValue( value, 'size' ) ?? '16:9' }
+				onChange={ ( next ) => setValue( 'size', next ) }
+				portalContainer={ portalContainer }
+			/>
 			<SwitchControl
 				label={ __( 'Paginate', 'mark-bricks' ) }
 				description={ __(
@@ -250,15 +245,98 @@ function MarpSettings( {
 				) }
 				checked={ getFrontMatterValue( value, 'paginate' ) === 'true' }
 				onCheckedChange={ ( checked ) =>
-					setFrontMatter(
-						setFrontMatterValue(
-							value,
-							'paginate',
-							checked ? 'true' : null
-						)
-					)
+					setValue( 'paginate', checked ? 'true' : null )
 				}
 			/>
+			<InputControl
+				label={ __( 'Header', 'mark-bricks' ) }
+				value={ getFrontMatterValue( value, 'header' ) ?? '' }
+				onChange={ ( event ) =>
+					setValue( 'header', event.target.value || null )
+				}
+			/>
+			<InputControl
+				label={ __( 'Footer', 'mark-bricks' ) }
+				value={ getFrontMatterValue( value, 'footer' ) ?? '' }
+				onChange={ ( event ) =>
+					setValue( 'footer', event.target.value || null )
+				}
+			/>
+			<p className="front-matter-editor__settings-help">
+				{ createInterpolateElement(
+					__(
+						'See the <a>Marp documentation</a> for other settings.',
+						'mark-bricks'
+					),
+					{
+						a: (
+							<Link
+								href={ MARP_DIRECTIVES_URL }
+								openInNewTab
+								onClick={
+									openUrl
+										? ( event ) => {
+												event.preventDefault();
+												openUrl( MARP_DIRECTIVES_URL );
+											}
+										: undefined
+								}
+							/>
+						),
+					}
+				) }
+			</p>
 		</>
+	);
+}
+
+function FrontMatterSelect( {
+	label,
+	options,
+	value,
+	onChange,
+	portalContainer,
+}: {
+	label: string;
+	options: SelectOption[];
+	value: string;
+	onChange: ( next: string ) => void;
+	portalContainer: HTMLElement | null;
+} ) {
+	// Keeps a value written by hand selectable alongside the known ones.
+	const items = options.some( ( option ) => option.value === value )
+		? options
+		: [ ...options, { label: value, value } ];
+
+	return (
+		<Field.Root>
+			<Field.Label>{ label }</Field.Label>
+			<Select.Root
+				items={ items }
+				value={ value }
+				onValueChange={ ( next ) => {
+					if ( typeof next === 'string' ) {
+						onChange( next );
+					}
+				} }
+			>
+				<Select.Trigger />
+				{ /* Portaled into the iframe document, like the popover. */ }
+				<Select.Popup
+					portal={ <Select.Portal container={ portalContainer } /> }
+				>
+					{ items.map( ( item ) => (
+						<Select.Item key={ item.value } value={ item.value }>
+							<Select.ItemLabel>{ item.label }</Select.ItemLabel>
+							{ item.description ? (
+								<Select.ItemDescription>
+									{ item.description }
+								</Select.ItemDescription>
+							) : null }
+						</Select.Item>
+					) ) }
+				</Select.Popup>
+			</Select.Root>
+		</Field.Root>
 	);
 }

@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:13:21.423Z\n"
+"POT-Creation-Date: 2026-11-08T12:17:34.271Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -232,49 +232,73 @@ msgstr ""
 msgid "Blocks"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:40
+#: src/components/front-matter-editor/index.tsx:44
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:47
+#: src/components/front-matter-editor/index.tsx:52
 msgid "Classic look with a colored background."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:54
+#: src/components/front-matter-editor/index.tsx:60
 msgid "Minimal and modern, with centered content."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:88
+#: src/components/front-matter-editor/index.tsx:74
+msgid "Widescreen, 1280 × 720."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:79
+msgid "Standard, 960 × 720."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:119
 msgid "Write YAML front matter…"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:106
+#: src/components/front-matter-editor/index.tsx:137
 msgid "YAML front matter"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:133
-#: src/components/front-matter-editor/index.tsx:152
+#: src/components/front-matter-editor/index.tsx:164
+#: src/components/front-matter-editor/index.tsx:183
 msgid "Front matter settings"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:156
+#: src/components/front-matter-editor/index.tsx:187
 msgid "Marp"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:157
+#: src/components/front-matter-editor/index.tsx:188
 msgid "Turn the document into a slide deck."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:208
+#: src/components/front-matter-editor/index.tsx:227
 msgid "Theme"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:246
+#: src/components/front-matter-editor/index.tsx:234
+msgid "Size"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:241
 msgid "Paginate"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:247
+#: src/components/front-matter-editor/index.tsx:242
 msgid "Show the page number on each slide."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:252
+msgid "Header"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:259
+msgid "Footer"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:267
+msgid "See the <a>Marp documentation</a> for other settings."
 msgstr ""
 
 #: src/components/editor-header/index.tsx:111

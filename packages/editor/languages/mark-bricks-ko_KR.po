@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:13:21.423Z\n"
-"PO-Revision-Date: 2026-11-08T12:13:27.075Z\n"
+"POT-Creation-Date: 2026-11-08T12:17:34.271Z\n"
+"PO-Revision-Date: 2026-11-08T12:17:39.947Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -93,7 +93,7 @@ msgstr "새 단락을 추가한 후 블록 유형을 변경."
 msgid "Choose language…"
 msgstr "언어 선택…"
 
-#: src/components/front-matter-editor/index.tsx:47
+#: src/components/front-matter-editor/index.tsx:52
 msgid "Classic look with a colored background."
 msgstr "색상 배경이 있는 클래식한 테마."
 
@@ -179,12 +179,16 @@ msgstr "제목 입력…"
 msgid "Failed to load image."
 msgstr "이미지를 불러오지 못했습니다."
 
+#: src/components/front-matter-editor/index.tsx:259
+msgid "Footer"
+msgstr "바닥글"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "슬래시"
 
-#: src/components/front-matter-editor/index.tsx:133
-#: src/components/front-matter-editor/index.tsx:152
+#: src/components/front-matter-editor/index.tsx:164
+#: src/components/front-matter-editor/index.tsx:183
 msgid "Front matter settings"
 msgstr "프런트 매터 설정"
 
@@ -196,6 +200,10 @@ msgstr "GitHub 알림 유형"
 #: src/components/list-view-outline/index.tsx:109
 msgid "H%d"
 msgstr "H%d"
+
+#: src/components/front-matter-editor/index.tsx:252
+msgid "Header"
+msgstr "머리글"
 
 #: src/block-library/table/edit.tsx:300
 msgid "Header label"
@@ -294,7 +302,7 @@ msgstr "선택한 텍스트를 인라인 코드로 만듭니다."
 msgid "Make the selected text italic."
 msgstr "선택한 텍스트에 이탤릭체로 적용."
 
-#: src/components/front-matter-editor/index.tsx:156
+#: src/components/front-matter-editor/index.tsx:187
 msgid "Marp"
 msgstr "Marp"
 
@@ -310,7 +318,7 @@ msgstr ""
 "bg, w:200px, sepia 같은 Marp 키워드로 레이아웃과 크기를 지정합니다. 나머지 단"
 "어는 대체 텍스트가 되며, 배경 이미지에서는 캡션이 됩니다."
 
-#: src/components/front-matter-editor/index.tsx:54
+#: src/components/front-matter-editor/index.tsx:60
 msgid "Minimal and modern, with centered content."
 msgstr "콘텐츠가 가운데 정렬된 미니멀하고 모던한 테마."
 
@@ -345,7 +353,7 @@ msgstr "내어쓰기"
 msgid "Outline"
 msgstr "아웃라인"
 
-#: src/components/front-matter-editor/index.tsx:246
+#: src/components/front-matter-editor/index.tsx:241
 msgid "Paginate"
 msgstr "페이지 번호"
 
@@ -391,11 +399,15 @@ msgstr "검색"
 msgid "Search for blocks"
 msgstr "블록 검색"
 
+#: src/components/front-matter-editor/index.tsx:267
+msgid "See the <a>Marp documentation</a> for other settings."
+msgstr "다른 설정은 <a>Marp 문서</a>를 참고하세요."
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "목록 보기를 표시하거나 숨깁니다."
 
-#: src/components/front-matter-editor/index.tsx:247
+#: src/components/front-matter-editor/index.tsx:242
 msgid "Show the page number on each slide."
 msgstr "각 슬라이드에 페이지 번호를 표시합니다."
 
@@ -405,9 +417,17 @@ msgstr "각 슬라이드에 페이지 번호를 표시합니다."
 msgid "Shown as a tooltip on hover."
 msgstr "마우스를 올리면 툴팁으로 표시됩니다."
 
-#: src/components/front-matter-editor/index.tsx:40
+#: src/components/front-matter-editor/index.tsx:44
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "GitHub Markdown 스타일 기반의 깔끔한 테마."
+
+#: src/components/front-matter-editor/index.tsx:234
+msgid "Size"
+msgstr "크기"
+
+#: src/components/front-matter-editor/index.tsx:79
+msgid "Standard, 960 × 720."
+msgstr "표준, 960 × 720."
 
 #: src/format-library/strikethrough.tsx:17
 msgid "Strikethrough"
@@ -433,7 +453,7 @@ msgstr "다이어그램을 렌더링할 수 없습니다."
 msgid "The formula could not be rendered."
 msgstr "수식을 렌더링할 수 없습니다."
 
-#: src/components/front-matter-editor/index.tsx:208
+#: src/components/front-matter-editor/index.tsx:227
 msgid "Theme"
 msgstr "테마"
 
@@ -459,7 +479,7 @@ msgstr "일반 항목으로 변환"
 msgid "Turn into a task item"
 msgstr "작업 항목으로 변환"
 
-#: src/components/front-matter-editor/index.tsx:157
+#: src/components/front-matter-editor/index.tsx:188
 msgid "Turn the document into a slide deck."
 msgstr "문서를 슬라이드 덱으로 만듭니다."
 
@@ -502,6 +522,10 @@ msgstr "비주얼 Markdown 블록 편집기."
 msgid "Warning"
 msgstr "경고"
 
+#: src/components/front-matter-editor/index.tsx:74
+msgid "Widescreen, 1280 × 720."
+msgstr "와이드, 1280 × 720."
+
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
 msgstr "HTML 작성…"
@@ -510,7 +534,7 @@ msgstr "HTML 작성…"
 msgid "Write TeX…"
 msgstr "TeX 작성…"
 
-#: src/components/front-matter-editor/index.tsx:88
+#: src/components/front-matter-editor/index.tsx:119
 msgid "Write YAML front matter…"
 msgstr "YAML 프런트 매터 작성…"
 
@@ -522,6 +546,6 @@ msgstr "코드 쓰기…"
 msgid "Write summary…"
 msgstr "요약 쓰기..."
 
-#: src/components/front-matter-editor/index.tsx:106
+#: src/components/front-matter-editor/index.tsx:137
 msgid "YAML front matter"
 msgstr "YAML 프런트 매터"

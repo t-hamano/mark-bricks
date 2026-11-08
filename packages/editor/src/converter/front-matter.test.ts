@@ -231,6 +231,11 @@ describe( 'getFrontMatterValue', () => {
 		[ 'a quoted value', 'theme: "gaia"', 'gaia' ],
 		[ 'a single-quoted value', "theme: 'gaia'", 'gaia' ],
 		[ 'a value with a comment', 'theme: gaia # dark', 'gaia' ],
+		[ 'a value with a hash', 'theme: a#b', 'a#b' ],
+		[ 'a quoted value with a hash', 'theme: "a # b" # c', 'a # b' ],
+		[ 'an escaped quote', 'theme: "say \\"hi\\""', 'say "hi"' ],
+		[ 'a single-quoted quote', "theme: 'it''s'", "it's" ],
+		[ 'a value with a colon', 'theme: 16:9', '16:9' ],
 		[ 'an empty value', 'theme:', null ],
 		[ 'a nested key', 'slides:\n  theme: gaia', null ],
 		[ 'a missing key', 'marp: true', null ],
@@ -244,6 +249,18 @@ describe( 'getFrontMatterValue', () => {
 } );
 
 describe( 'setFrontMatterValue', () => {
+	it.each( [ 'Hello', 'a: b', 'a #b', ' a ', '"quoted"', "it's", '#tag' ] )(
+		'reads back %j unchanged',
+		( text ) => {
+			expect(
+				getFrontMatterValue(
+					setFrontMatterValue( 'marp: true', 'footer', text ),
+					'footer'
+				)
+			).toBe( text );
+		}
+	);
+
 	it.each( [
 		[
 			'replaces an existing line in place',
@@ -270,6 +287,22 @@ describe( 'setFrontMatterValue', () => {
 			'title: Hi\ntheme: gaia',
 		],
 		[ 'adds a key to empty front matter', '', 'gaia', 'theme: gaia' ],
+		[
+			'keeps the comment of a quoted value',
+			'theme: "a # b" # c',
+			'd',
+			'theme: d # c',
+		],
+		[
+			'quotes a value with a colon and space',
+			'',
+			'a: b',
+			'theme: "a: b"',
+		],
+		[ 'quotes a value with a comment marker', '', 'a #b', 'theme: "a #b"' ],
+		[ 'quotes surrounding spaces', '', 'a ', 'theme: "a "' ],
+		[ 'quotes a leading quote', '', '"a"', 'theme: "\\"a\\""' ],
+		[ 'keeps a colon without a space plain', '', '16:9', 'theme: 16:9' ],
 		[
 			'removes duplicate keys',
 			'theme: gaia\ntheme: default',

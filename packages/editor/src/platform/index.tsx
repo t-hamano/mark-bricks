@@ -126,6 +126,12 @@ export type Platform = {
 	 */
 	resolveAssetUrl?: ( url: string ) => Promise< string >;
 	/**
+	 * Opens an external URL, such as a documentation link, in the system
+	 * browser. Omitted when the host opens links with `target="_blank"`
+	 * itself.
+	 */
+	openUrl?: ( url: string ) => void;
+	/**
 	 * Connects the AI assistant to a model. Omitted when the host does not
 	 * offer the assistant, which hides it.
 	 */
