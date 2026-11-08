@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:17:13.387Z\n"
-"PO-Revision-Date: 2026-11-08T12:17:15.399Z\n"
+"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
+"PO-Revision-Date: 2026-11-08T12:26:46.435Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,11 +33,22 @@ msgstr "(No se recomiendan varios H1)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/marp-patterns/patterns/section.ts:21
+msgctxt "slide pattern"
+msgid "A short line about this section"
+msgstr "Una línea breve sobre esta sección"
+
 #: src/components/editor-header/index.tsx:195
 #: src/components/ai-sidebar/sidebar.tsx:60
 #: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
 msgstr "Asistente de IA"
+
+#: src/marp-patterns/patterns/agenda.ts:13
+#: src/marp-patterns/patterns/agenda.ts:20
+msgctxt "slide pattern"
+msgid "Agenda"
+msgstr "Agenda"
 
 #: style.css
 #. Author of the generic
@@ -64,6 +75,11 @@ msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
 msgstr "Pide al asistente de IA que escriba o edite. Tu selección, o la línea donde está el cursor en el editor de código, se envía con tu mensaje."
+
+#: src/marp-patterns/patterns/agenda.ts:21
+msgctxt "slide pattern"
+msgid "Background"
+msgstr "Contexto"
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -120,6 +136,11 @@ msgstr "Cerrar el asistente de IA"
 #: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
 msgstr "Cerrar el insertador de bloques"
+
+#: src/marp-patterns/patterns/closing.ts:13
+msgctxt "slide pattern"
+msgid "Closing"
+msgstr "Cierre"
 
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
@@ -189,6 +210,11 @@ msgstr "Introduce el título…"
 msgid "Failed to load image."
 msgstr "No se pudo cargar la imagen."
 
+#: src/marp-patterns/patterns/image-and-text.ts:24
+msgctxt "slide pattern"
+msgid "First point"
+msgstr "Primer punto"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Barra diagonal"
@@ -226,6 +252,11 @@ msgstr "Ocultar resumen del documento"
 #: src/block-library/image/edit.tsx:76
 msgid "Image"
 msgstr "Imagen"
+
+#: src/marp-patterns/patterns/image-and-text.ts:14
+msgctxt "slide pattern"
+msgid "Image and text"
+msgstr "Imagen y texto"
 
 #: src/block-library/quote/edit.tsx:70
 msgid "Important"
@@ -336,6 +367,11 @@ msgstr ""
 msgid "New conversation"
 msgstr "Nueva conversación"
 
+#: src/marp-patterns/patterns/agenda.ts:23
+msgctxt "slide pattern"
+msgid "Next steps"
+msgstr "Próximos pasos"
+
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "No hay ningún lenguaje coincidente."
@@ -374,6 +410,21 @@ msgstr "Pega o escribe la URL"
 msgid "Paste or type URL or file path"
 msgstr "Pega o escribe una URL o una ruta de archivo"
 
+#: src/marp-patterns/patterns/title.ts:20
+msgctxt "slide pattern"
+msgid "Presentation title"
+msgstr "Título de la presentación"
+
+#: src/marp-patterns/patterns/agenda.ts:22
+msgctxt "slide pattern"
+msgid "Proposal"
+msgstr "Propuesta"
+
+#: src/marp-patterns/patterns/closing.ts:21
+msgctxt "slide pattern"
+msgid "Questions and contact details"
+msgstr "Preguntas y datos de contacto"
+
 #: src/components/editor-header/index.tsx:137
 msgid "Redo"
 msgstr "Rehacer"
@@ -406,6 +457,21 @@ msgstr "Buscar"
 msgid "Search for blocks"
 msgstr "Buscar bloques"
 
+#: src/marp-patterns/patterns/image-and-text.ts:25
+msgctxt "slide pattern"
+msgid "Second point"
+msgstr "Segundo punto"
+
+#: src/marp-patterns/patterns/section.ts:13
+msgctxt "slide pattern"
+msgid "Section divider"
+msgstr "Separador de sección"
+
+#: src/marp-patterns/patterns/section.ts:20
+msgctxt "slide pattern"
+msgid "Section title"
+msgstr "Título de la sección"
+
 #: src/components/ai-sidebar/chat.tsx:227
 msgid "Send"
 msgstr "Enviar"
@@ -423,6 +489,11 @@ msgstr "Mostrar u ocultar la vista de listado."
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Se muestra como información sobre herramientas al pasar el ratón."
+
+#: src/marp-patterns/patterns/image-and-text.ts:23
+msgctxt "slide pattern"
+msgid "Slide title"
+msgstr "Título de la diapositiva"
 
 #: src/components/ai-sidebar/chat.tsx:218
 msgid "Stop"
@@ -448,6 +519,11 @@ msgstr "Cambiar entre el editor visual y el editor de código."
 msgid "Table"
 msgstr "Tabla"
 
+#: src/marp-patterns/patterns/closing.ts:20
+msgctxt "slide pattern"
+msgid "Thank you"
+msgstr "Gracias"
+
 #: src/components/ai-sidebar/chat.tsx:76
 msgid "The answer could not be loaded."
 msgstr "No se pudo cargar la respuesta."
@@ -466,6 +542,11 @@ msgstr "La edición no se aplicó porque la selección cambió, por ejemplo, al 
 msgid "The formula could not be rendered."
 msgstr "No se pudo renderizar la fórmula."
 
+#: src/marp-patterns/patterns/image-and-text.ts:26
+msgctxt "slide pattern"
+msgid "Third point"
+msgstr "Tercer punto"
+
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "Consejo"
@@ -473,6 +554,11 @@ msgstr "Consejo"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/block-library/image/edit.tsx:253
+msgid "Title"
+msgstr "Título"
+
+#: src/marp-patterns/patterns/title.ts:13
+msgctxt "slide pattern"
 msgid "Title"
 msgstr "Título"
 
@@ -558,3 +644,8 @@ msgstr "Escribe un resumen…"
 #: src/components/front-matter-editor/index.tsx:69
 msgid "YAML front matter"
 msgstr "Front matter YAML"
+
+#: src/marp-patterns/patterns/title.ts:21
+msgctxt "slide pattern"
+msgid "Your name · Date"
+msgstr "Tu nombre · Fecha"

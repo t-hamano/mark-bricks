@@ -3,6 +3,11 @@
  */
 import { Marp } from '@marp-team/marp-core';
 
+/**
+ * Internal dependencies
+ */
+import { sourceLines } from './source-lines';
+
 // The web fonts a built-in theme imports, which the hosts bundle instead:
 // their CSP refuses stylesheets and fonts from other origins.
 const WEB_FONT_IMPORT_PATTERN =
@@ -45,7 +50,10 @@ const marp = new Marp( {
 			}
 		}
 	);
+	sourceLines( md );
 } );
+
+export { SOURCE_LINE_ATTRIBUTE } from './source-lines';
 
 type RenderSlidesOptions = {
 	// Maps an image source in the deck to the URL the preview loads it
@@ -61,7 +69,9 @@ export type RenderedSlides = {
 /**
  * Renders a Marp slide deck the way the official Marp tools do, without the
  * web fonts its theme imports. KaTeX's font URLs stay relative, for the host
- * to point them at the fonts it bundles.
+ * to point them at the fonts it bundles. Each slide, and each block element
+ * in it, holds the line of the Markdown it starts at in
+ * `data-line`.
  *
  * @param markdown Markdown of the deck.
  * @param options  How to resolve the deck's images.

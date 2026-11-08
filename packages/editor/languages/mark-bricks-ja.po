@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:03:14.954Z\n"
-"PO-Revision-Date: 2026-11-08T12:17:42.101Z\n"
+"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
+"PO-Revision-Date: 2026-11-08T12:26:48.120Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,11 +33,22 @@ msgstr "(複数の H1 見出しは非推奨です)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/marp-patterns/patterns/section.ts:21
+msgctxt "slide pattern"
+msgid "A short line about this section"
+msgstr "このセクションの短い説明"
+
 #: src/components/editor-header/index.tsx:195
 #: src/components/ai-sidebar/sidebar.tsx:60
 #: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
 msgstr "AI アシスタント"
+
+#: src/marp-patterns/patterns/agenda.ts:13
+#: src/marp-patterns/patterns/agenda.ts:20
+msgctxt "slide pattern"
+msgid "Agenda"
+msgstr "アジェンダ"
 
 #: style.css
 #. Author of the generic
@@ -55,15 +66,20 @@ msgstr "代替テキスト"
 msgid "Apply"
 msgstr "適用"
 
-#: src/components/ai-sidebar/chat.tsx:201
+#: src/components/ai-sidebar/chat.tsx:209
 msgid "Ask the AI Assistant"
 msgstr "AI アシスタントに質問"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:188
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
 msgstr "AI アシスタントに執筆や編集を依頼できます。選択範囲、またはコードエディターでカーソルがある行がメッセージと一緒に送信されます。"
+
+#: src/marp-patterns/patterns/agenda.ts:21
+msgctxt "slide pattern"
+msgid "Background"
+msgstr "背景"
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -120,6 +136,11 @@ msgstr "AI アシスタントを閉じる"
 #: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
 msgstr "ブロックインサーターを閉じる"
+
+#: src/marp-patterns/patterns/closing.ts:13
+msgctxt "slide pattern"
+msgid "Closing"
+msgstr "締めくくり"
 
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
@@ -189,6 +210,11 @@ msgstr "タイトルを入力…"
 msgid "Failed to load image."
 msgstr "画像の読み込みに失敗しました。"
 
+#: src/marp-patterns/patterns/image-and-text.ts:24
+msgctxt "slide pattern"
+msgid "First point"
+msgstr "1つ目のポイント"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "前方スラッシュ"
@@ -226,6 +252,11 @@ msgstr "ドキュメント概観を非表示"
 #: src/block-library/image/edit.tsx:76
 msgid "Image"
 msgstr "画像"
+
+#: src/marp-patterns/patterns/image-and-text.ts:14
+msgctxt "slide pattern"
+msgid "Image and text"
+msgstr "画像とテキスト"
 
 #: src/block-library/quote/edit.tsx:70
 msgid "Important"
@@ -319,7 +350,7 @@ msgstr ""
 "bg、w:200px、sepia などの Marp キーワードでレイアウトとサイズを指定します。そ"
 "れ以外の語は代替テキスト、背景画像の場合はキャプションになります。"
 
-#: src/components/ai-sidebar/chat.tsx:199
+#: src/components/ai-sidebar/chat.tsx:207
 msgid "Message"
 msgstr "メッセージ"
 
@@ -334,6 +365,11 @@ msgstr ""
 msgid "New conversation"
 msgstr "新しい会話"
 
+#: src/marp-patterns/patterns/agenda.ts:23
+msgctxt "slide pattern"
+msgid "Next steps"
+msgstr "今後の進め方"
+
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "一致する言語がありません。"
@@ -346,7 +382,7 @@ msgstr "ノート"
 msgid "Open by default"
 msgstr "デフォルトで開く"
 
-#: src/components/ai-sidebar/chat.tsx:172
+#: src/components/ai-sidebar/chat.tsx:180
 msgid "Open settings"
 msgstr "設定を開く"
 
@@ -371,6 +407,21 @@ msgstr "URL を入力または貼り付け"
 #: src/block-library/image/edit.tsx:200
 msgid "Paste or type URL or file path"
 msgstr "URL またはファイルパスを入力または貼り付け"
+
+#: src/marp-patterns/patterns/title.ts:20
+msgctxt "slide pattern"
+msgid "Presentation title"
+msgstr "プレゼンテーションのタイトル"
+
+#: src/marp-patterns/patterns/agenda.ts:22
+msgctxt "slide pattern"
+msgid "Proposal"
+msgstr "提案"
+
+#: src/marp-patterns/patterns/closing.ts:21
+msgctxt "slide pattern"
+msgid "Questions and contact details"
+msgstr "質問・連絡先"
 
 #: src/components/editor-header/index.tsx:137
 msgid "Redo"
@@ -404,11 +455,26 @@ msgstr "検索"
 msgid "Search for blocks"
 msgstr "ブロックを検索"
 
-#: src/components/ai-sidebar/chat.tsx:220
+#: src/marp-patterns/patterns/image-and-text.ts:25
+msgctxt "slide pattern"
+msgid "Second point"
+msgstr "2つ目のポイント"
+
+#: src/marp-patterns/patterns/section.ts:13
+msgctxt "slide pattern"
+msgid "Section divider"
+msgstr "セクション区切り"
+
+#: src/marp-patterns/patterns/section.ts:20
+msgctxt "slide pattern"
+msgid "Section title"
+msgstr "セクションのタイトル"
+
+#: src/components/ai-sidebar/chat.tsx:227
 msgid "Send"
 msgstr "送信"
 
-#: src/components/ai-sidebar/chat.tsx:162
+#: src/components/ai-sidebar/chat.tsx:170
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI アシスタントを使うには API キーを設定してください。"
 
@@ -422,7 +488,12 @@ msgstr "リストビューの表示、非表示。"
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
 
-#: src/components/ai-sidebar/chat.tsx:211
+#: src/marp-patterns/patterns/image-and-text.ts:23
+msgctxt "slide pattern"
+msgid "Slide title"
+msgstr "スライドのタイトル"
+
+#: src/components/ai-sidebar/chat.tsx:218
 msgid "Stop"
 msgstr "停止"
 
@@ -446,6 +517,11 @@ msgstr "ビジュアルエディターとコードエディターを切り替え
 msgid "Table"
 msgstr "テーブル"
 
+#: src/marp-patterns/patterns/closing.ts:20
+msgctxt "slide pattern"
+msgid "Thank you"
+msgstr "ありがとうございました"
+
 #: src/components/ai-sidebar/chat.tsx:76
 msgid "The answer could not be loaded."
 msgstr "回答を読み込めませんでした。"
@@ -464,6 +540,11 @@ msgstr "エディターの切り替えなどで選択範囲が変わったため
 msgid "The formula could not be rendered."
 msgstr "数式を描画できませんでした。"
 
+#: src/marp-patterns/patterns/image-and-text.ts:26
+msgctxt "slide pattern"
+msgid "Third point"
+msgstr "3つ目のポイント"
+
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "ヒント"
@@ -471,6 +552,11 @@ msgstr "ヒント"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/block-library/image/edit.tsx:253
+msgid "Title"
+msgstr "タイトル"
+
+#: src/marp-patterns/patterns/title.ts:13
+msgctxt "slide pattern"
 msgid "Title"
 msgstr "タイトル"
 
@@ -556,3 +642,8 @@ msgstr "要約を入力…"
 #: src/components/front-matter-editor/index.tsx:69
 msgid "YAML front matter"
 msgstr "YAML フロントマター"
+
+#: src/marp-patterns/patterns/title.ts:21
+msgctxt "slide pattern"
+msgid "Your name · Date"
+msgstr "名前・日付"

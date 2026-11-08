@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T12:17:13.387Z\n"
-"PO-Revision-Date: 2026-11-08T12:17:20.641Z\n"
+"POT-Creation-Date: 2026-11-08T12:26:44.300Z\n"
+"PO-Revision-Date: 2026-11-08T12:26:52.134Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,11 +33,22 @@ msgstr "(不建議在同一篇內容中有多個 H1 標題)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/marp-patterns/patterns/section.ts:21
+msgctxt "slide pattern"
+msgid "A short line about this section"
+msgstr "關於本節的簡短說明"
+
 #: src/components/editor-header/index.tsx:195
 #: src/components/ai-sidebar/sidebar.tsx:60
 #: src/components/ai-sidebar/sidebar.tsx:91
 msgid "AI Assistant"
 msgstr "AI 助理"
+
+#: src/marp-patterns/patterns/agenda.ts:13
+#: src/marp-patterns/patterns/agenda.ts:20
+msgctxt "slide pattern"
+msgid "Agenda"
+msgstr "議程"
 
 #: style.css
 #. Author of the generic
@@ -64,6 +75,11 @@ msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
 msgstr "請 AI 助理撰寫或編輯內容。你的選取範圍，或程式碼編輯器中游標所在的那一行，會隨訊息一起傳送。"
+
+#: src/marp-patterns/patterns/agenda.ts:21
+msgctxt "slide pattern"
+msgid "Background"
+msgstr "背景"
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -120,6 +136,11 @@ msgstr "關閉 AI 助理"
 #: src/components/editor-header/index.tsx:111
 msgid "Close Block Inserter"
 msgstr "關閉區塊插入器"
+
+#: src/marp-patterns/patterns/closing.ts:13
+msgctxt "slide pattern"
+msgid "Closing"
+msgstr "結尾"
 
 #: src/components/editor/index.tsx:99
 msgid "Code editor"
@@ -189,6 +210,11 @@ msgstr "輸入標題…"
 msgid "Failed to load image."
 msgstr "圖片載入失敗。"
 
+#: src/marp-patterns/patterns/image-and-text.ts:24
+msgctxt "slide pattern"
+msgid "First point"
+msgstr "第一點"
+
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "正斜線"
@@ -226,6 +252,11 @@ msgstr "隱藏內容總覽"
 #: src/block-library/image/edit.tsx:76
 msgid "Image"
 msgstr "圖片"
+
+#: src/marp-patterns/patterns/image-and-text.ts:14
+msgctxt "slide pattern"
+msgid "Image and text"
+msgstr "圖片與文字"
 
 #: src/block-library/quote/edit.tsx:70
 msgid "Important"
@@ -333,6 +364,11 @@ msgstr "瀏覽這篇內容的結構並解決標題層級為空或不正確等問
 msgid "New conversation"
 msgstr "新對話"
 
+#: src/marp-patterns/patterns/agenda.ts:23
+msgctxt "slide pattern"
+msgid "Next steps"
+msgstr "後續步驟"
+
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "沒有符合的語言。"
@@ -371,6 +407,21 @@ msgstr "貼上或輸入網址"
 msgid "Paste or type URL or file path"
 msgstr "貼上或輸入網址或檔案路徑"
 
+#: src/marp-patterns/patterns/title.ts:20
+msgctxt "slide pattern"
+msgid "Presentation title"
+msgstr "簡報標題"
+
+#: src/marp-patterns/patterns/agenda.ts:22
+msgctxt "slide pattern"
+msgid "Proposal"
+msgstr "提案"
+
+#: src/marp-patterns/patterns/closing.ts:21
+msgctxt "slide pattern"
+msgid "Questions and contact details"
+msgstr "問題與聯絡方式"
+
 #: src/components/editor-header/index.tsx:137
 msgid "Redo"
 msgstr "取消復原"
@@ -403,6 +454,21 @@ msgstr "搜尋"
 msgid "Search for blocks"
 msgstr "搜尋區塊"
 
+#: src/marp-patterns/patterns/image-and-text.ts:25
+msgctxt "slide pattern"
+msgid "Second point"
+msgstr "第二點"
+
+#: src/marp-patterns/patterns/section.ts:13
+msgctxt "slide pattern"
+msgid "Section divider"
+msgstr "章節分隔"
+
+#: src/marp-patterns/patterns/section.ts:20
+msgctxt "slide pattern"
+msgid "Section title"
+msgstr "章節標題"
+
 #: src/components/ai-sidebar/chat.tsx:227
 msgid "Send"
 msgstr "傳送"
@@ -420,6 +486,11 @@ msgstr "顯示或隱藏清單檢視"
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "滑鼠懸停時會顯示為工具提示。"
+
+#: src/marp-patterns/patterns/image-and-text.ts:23
+msgctxt "slide pattern"
+msgid "Slide title"
+msgstr "投影片標題"
 
 #: src/components/ai-sidebar/chat.tsx:218
 msgid "Stop"
@@ -445,6 +516,11 @@ msgstr "在視覺化編輯器和程式碼編輯器之間切換。"
 msgid "Table"
 msgstr "表格"
 
+#: src/marp-patterns/patterns/closing.ts:20
+msgctxt "slide pattern"
+msgid "Thank you"
+msgstr "謝謝"
+
 #: src/components/ai-sidebar/chat.tsx:76
 msgid "The answer could not be loaded."
 msgstr "無法載入回答。"
@@ -463,6 +539,11 @@ msgstr "由於選取範圍已變更（例如切換了編輯器），編輯未套
 msgid "The formula could not be rendered."
 msgstr "無法轉譯公式。"
 
+#: src/marp-patterns/patterns/image-and-text.ts:26
+msgctxt "slide pattern"
+msgid "Third point"
+msgstr "第三點"
+
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
 msgstr "提示"
@@ -470,6 +551,11 @@ msgstr "提示"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/block-library/image/edit.tsx:253
+msgid "Title"
+msgstr "標題"
+
+#: src/marp-patterns/patterns/title.ts:13
+msgctxt "slide pattern"
 msgid "Title"
 msgstr "標題"
 
@@ -555,3 +641,8 @@ msgstr "撰寫摘要..."
 #: src/components/front-matter-editor/index.tsx:69
 msgid "YAML front matter"
 msgstr "YAML 前置資料"
+
+#: src/marp-patterns/patterns/title.ts:21
+msgctxt "slide pattern"
+msgid "Your name · Date"
+msgstr "姓名 · 日期"
