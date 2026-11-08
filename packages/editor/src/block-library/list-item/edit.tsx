@@ -76,10 +76,23 @@ function IndentUI( { clientId }: { clientId: string } ) {
 }
 
 export default function Edit( props: BlockEditProps ) {
-	const { attributes, setAttributes, clientId, mergeBlocks } =
+	const { attributes, setAttributes, clientId, isSelected, mergeBlocks } =
 		props as BlockEditProps< ListItemBlockAttributes >;
 	const { placeholder, content, markdownData } = attributes;
 	const isTaskItem = markdownData?.checked !== undefined;
+	// An item that opens with a block other than a nested list, such as a
+	// code block on the marker line, has no item text by design. Its
+	// placeholder is only shown while the item is selected, so it does not
+	// read as a missing text when browsing the document.
+	const opensWithBlock = useSelect(
+		( select ) => {
+			const [ firstBlock ] =
+				select( blockEditorStore ).getBlocks( clientId );
+			return !! firstBlock && firstBlock.name !== 'core/list';
+		},
+		[ clientId ]
+	);
+	const showPlaceholder = isSelected || ! opensWithBlock;
 	const blockProps = useBlockProps();
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		__unstableDisableDropZone: true,
@@ -118,7 +131,11 @@ export default function Edit( props: BlockEditProps ) {
 					}
 					value={ content }
 					aria-label={ __( 'List text', 'mark-bricks' ) }
-					placeholder={ placeholder || __( 'List', 'mark-bricks' ) }
+					placeholder={
+						showPlaceholder
+							? placeholder || __( 'List', 'mark-bricks' )
+							: undefined
+					}
 					onMerge={ onMerge }
 				/>
 				{ innerBlocksProps.children }
