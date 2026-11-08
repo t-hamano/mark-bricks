@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:16:03.096Z\n"
+"POT-Creation-Date: 2026-11-08T13:18:19.184Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -466,7 +466,7 @@ msgid "Delete column"
 msgstr ""
 
 #: src/block-library/separator/use-marp-title.ts:39
-#: src/block-library/separator/edit.tsx:25
+#: src/block-library/separator/edit.tsx:24
 msgid "Slide Separator"
 msgstr ""
 

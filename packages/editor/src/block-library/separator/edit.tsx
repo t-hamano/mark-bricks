@@ -21,9 +21,7 @@ export default function Edit() {
 	if ( isMarp ) {
 		return (
 			<div { ...blockProps } role="separator">
-				<span className="wp-block-separator__label">
-					{ __( 'Slide Separator', 'mark-bricks' ) }
-				</span>
+				{ __( 'Slide Separator', 'mark-bricks' ) }
 			</div>
 		);
 	}
