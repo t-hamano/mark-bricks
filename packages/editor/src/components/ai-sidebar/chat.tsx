@@ -14,6 +14,7 @@ import {
  */
 import { __ } from '@wordpress/i18n';
 import { arrowUp, square } from '@wordpress/icons';
+import { isKeyboardEvent } from '@wordpress/keycodes';
 import {
 	IconButton,
 	Notice,
@@ -151,6 +152,15 @@ export function AiChat( { ai, chat }: Props ) {
 	// Enter sends, and Shift+Enter adds a line. Enter that confirms an IME
 	// conversion does neither.
 	const onKeyDown = ( event: KeyboardEvent< HTMLTextAreaElement > ) => {
+		// Undo and redo act on the draft, not on the document.
+		if (
+			isKeyboardEvent.primary( event.nativeEvent, 'z' ) ||
+			isKeyboardEvent.primaryShift( event.nativeEvent, 'z' ) ||
+			isKeyboardEvent.primary( event.nativeEvent, 'y' )
+		) {
+			event.stopPropagation();
+			return;
+		}
 		if (
 			event.key === 'Enter' &&
 			! event.shiftKey &&
