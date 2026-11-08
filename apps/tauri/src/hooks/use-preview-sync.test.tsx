@@ -108,3 +108,17 @@ it( 'ignores clicks when the document is not a Marp slide deck', async () => {
 	listeners.get( 'preview-line-click' )?.( { payload: { line: 0 } } );
 	expect( selectLine ).not.toHaveBeenCalled();
 } );
+
+it( 'forgets the selected line when the active tab changes', async () => {
+	await render( MARP );
+	act( () => onSelectedLineChange( 4 ) );
+	mocks.emitTo.mockClear();
+
+	await render( { ...MARP, id: 'b' } );
+	expect( emitted( 'preview-selected-line' ) ).toEqual( [ { line: null } ] );
+	listeners.get( 'preview-ready' )?.( {} );
+	expect( emitted( 'preview-selected-line' ) ).toEqual( [
+		{ line: null },
+		{ line: null },
+	] );
+} );

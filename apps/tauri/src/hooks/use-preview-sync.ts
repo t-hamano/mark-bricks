@@ -87,6 +87,18 @@ export default function usePreviewSync(
 		sendToPreview( PREVIEW_DOCUMENT_EVENT, payload );
 	}, [ payload ] );
 
+	// The editor of another tab starts with no block selected, and reports
+	// nothing until one is.
+	const tabId = activeTab?.id;
+	useEffect( () => {
+		if ( selectedLineRef.current !== null ) {
+			selectedLineRef.current = null;
+			sendToPreview( PREVIEW_SELECTED_LINE_EVENT, {
+				line: null,
+			} satisfies PreviewLinePayload );
+		}
+	}, [ tabId ] );
+
 	return useCallback( ( line: number | null ) => {
 		selectedLineRef.current = line;
 		sendToPreview( PREVIEW_SELECTED_LINE_EVENT, {

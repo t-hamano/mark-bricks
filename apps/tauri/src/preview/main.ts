@@ -19,10 +19,10 @@ import {
 import { setupFullscreen } from './fullscreen';
 import { renderSlides } from './render';
 
-// The line of the selected block, until the first slides are shown, which
-// the line moves to then.
+// The line of the selected block, until the next slides are shown, which
+// the line moves to then: the editor reports a selection right away, but the
+// document that holds it, such as one with a new slide, only after a while.
 let pendingLine: number | null | undefined;
-let hasSlides = false;
 
 // Shows the controls in the locale that the main window opened the window
 // with. The slide mode comes with full screen, which `F` and F11 toggle. The
@@ -37,8 +37,7 @@ const preview = createSlidePreview( document.body, {
 			line,
 		} satisfies PreviewLinePayload ),
 	onRender: ( slideCount ) => {
-		hasSlides = slideCount > 0;
-		if ( hasSlides && pendingLine !== undefined ) {
+		if ( slideCount > 0 && pendingLine !== undefined ) {
 			preview.revealSourceLine( pendingLine );
 			pendingLine = undefined;
 		}
@@ -61,11 +60,8 @@ async function main() {
 	await getCurrentWebviewWindow().listen< PreviewLinePayload >(
 		PREVIEW_SELECTED_LINE_EVENT,
 		( { payload: { line } } ) => {
-			if ( hasSlides ) {
-				preview.revealSourceLine( line );
-			} else {
-				pendingLine = line;
-			}
+			preview.revealSourceLine( line );
+			pendingLine = line;
 		}
 	);
 	await emitTo( 'main', PREVIEW_READY_EVENT );
