@@ -38,6 +38,9 @@ vi.spyOn( HTMLCanvasElement.prototype, 'getContext' ).mockReturnValue( null );
 
 const DECK = '---\nmarp: true\n---\n\nA\n\n---\n\nB\n';
 
+// A list item at line 6, and `B` at line 10, on the second slide.
+const SOURCE_DECK = '---\nmarp: true\n---\n\n# A\n\n- x\n\n---\n\nB\n';
+
 // Sets up a preview page, which renders its toolbar right away.
 function setup( options?: SlidePreviewOptions ) {
 	let preview: SlidePreview | undefined;
@@ -244,5 +247,59 @@ describe( 'createSlidePreview', () => {
 		press( 'Escape' );
 		expect( onSlideModeRequest ).toHaveBeenLastCalledWith( false );
 		expect( preview.isSlideMode() ).toBe( true );
+	} );
+	it( 'reports the line of the element clicked', async () => {
+		const onSourceLineClick = vi.fn();
+		const preview = setup( { onSourceLineClick } );
+		preview.render( renderSlides( SOURCE_DECK ) );
+		await nextFrame();
+
+		act( () => document.querySelector( 'li' )?.click() );
+		expect( onSourceLineClick ).toHaveBeenLastCalledWith( 6 );
+		act( () => document.querySelector( 'section' )?.click() );
+		expect( onSourceLineClick ).toHaveBeenLastCalledWith( 0 );
+	} );
+
+	it( 'does not report clicks in the slide mode', async () => {
+		const onSourceLineClick = vi.fn();
+		const preview = setup( { onSourceLineClick } );
+		preview.render( renderSlides( SOURCE_DECK ) );
+		await nextFrame();
+		press( 'f' );
+
+		act( () => document.querySelector( 'li' )?.click() );
+		expect( onSourceLineClick ).not.toHaveBeenCalled();
+	} );
+
+	it( 'highlights the element of a line, and keeps it after a render', async () => {
+		const preview = setup();
+		preview.render( renderSlides( SOURCE_DECK ) );
+		await nextFrame();
+
+		preview.revealSourceLine( 10 );
+		const highlighted = () =>
+			Array.from(
+				document.querySelectorAll( '.is-source-highlighted' ),
+				( element ) => element.textContent
+			);
+		expect( highlighted() ).toEqual( [ 'B' ] );
+
+		preview.render( renderSlides( SOURCE_DECK ) );
+		await nextFrame();
+		expect( highlighted() ).toEqual( [ 'B' ] );
+
+		preview.revealSourceLine( null );
+		expect( highlighted() ).toEqual( [] );
+	} );
+
+	it( 'moves to the slide of a line in the slide mode', async () => {
+		const preview = setup();
+		preview.render( renderSlides( SOURCE_DECK ) );
+		await nextFrame();
+		press( 'f' );
+
+		preview.revealSourceLine( 10 );
+		const slides = document.querySelectorAll( '.marpit > svg' );
+		expect( slides[ 1 ].classList.contains( 'is-current' ) ).toBe( true );
 	} );
 } );
