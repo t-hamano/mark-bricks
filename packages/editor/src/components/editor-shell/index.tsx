@@ -168,7 +168,6 @@ function UnforwardedEditorShell(
 							onRedo={ redo }
 							editorMode={ editorMode }
 							onEditorModeChange={ onEditorModeChange }
-							hasAi={ hasAi }
 						/>
 						<EditorHeader
 							canUndo={ canUndo }

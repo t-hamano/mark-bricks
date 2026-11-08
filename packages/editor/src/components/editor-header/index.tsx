@@ -77,9 +77,6 @@ export function EditorHeader( {
 	const toggleListViewShortcut = useKeyboardShortcut(
 		'mark-bricks/toggle-list-view'
 	);
-	const toggleAiSidebarShortcut = useKeyboardShortcut(
-		'mark-bricks/toggle-ai-sidebar'
-	);
 	const hasAi = !! usePlatform().ai;
 	const { frontMatter } = useFrontMatter();
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
@@ -197,7 +194,6 @@ export function EditorHeader( {
 								? __( 'Close AI Assistant', 'mark-bricks' )
 								: __( 'AI Assistant', 'mark-bricks' )
 						}
-						shortcut={ toggleAiSidebarShortcut }
 						variant="minimal"
 						tone="neutral"
 						size="compact"

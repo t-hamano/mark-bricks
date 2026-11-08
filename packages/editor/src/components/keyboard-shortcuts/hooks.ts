@@ -79,7 +79,6 @@ export function useEditorShortcuts(): EditorShortcuts {
 				'mark-bricks/undo',
 				'mark-bricks/redo',
 				'mark-bricks/toggle-list-view',
-				'mark-bricks/toggle-ai-sidebar',
 			],
 			selection: excludeCoreShortcuts(
 				getCategoryShortcuts( 'selection' )
