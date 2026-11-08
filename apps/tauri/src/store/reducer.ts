@@ -23,6 +23,8 @@ export interface State {
 	nextTabSeq: number;
 	activeTabId: string | null;
 	pendingCloseId: string | null;
+	// Documents whose reload prompt is waiting, in the order they asked.
+	reloadPromptIds: string[];
 }
 
 function basename( path: string ) {
@@ -126,6 +128,24 @@ export function reducer( state: State = DEFAULT_STATE, action: Action ) {
 			};
 		case 'SET_PENDING_CLOSE_ID':
 			return { ...state, pendingCloseId: action.id };
+		case 'ADD_RELOAD_PROMPT':
+			if ( state.reloadPromptIds.includes( action.documentId ) ) {
+				return state;
+			}
+			return {
+				...state,
+				reloadPromptIds: [
+					...state.reloadPromptIds,
+					action.documentId,
+				],
+			};
+		case 'REMOVE_RELOAD_PROMPT':
+			return {
+				...state,
+				reloadPromptIds: state.reloadPromptIds.filter(
+					( id ) => id !== action.documentId
+				),
+			};
 		default:
 			return state;
 	}

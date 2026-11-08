@@ -8,13 +8,14 @@ import { clearMocks, mockIPC } from '@tauri-apps/api/mocks';
 /**
  * WordPress dependencies
  */
-import { dispatch, select } from '@wordpress/data';
+import { dispatch, select, subscribe } from '@wordpress/data';
 
 /**
  * Internal dependencies
  */
 import tabsStore from '../store';
 import {
+	answerReloadPrompt,
 	closeTab,
 	closeOtherTabs,
 	exportSlideDeck,
@@ -572,22 +573,40 @@ describe( 'handleDocumentChange', () => {
 		contents,
 	} );
 
-	// Records the dialogs shown, answering each with `answer`, and the
-	// acknowledged changes.
+	let unsubscribe: ( () => void ) | undefined;
+
+	afterEach( () => {
+		unsubscribe?.();
+		unsubscribe = undefined;
+	} );
+
+	// Records the documents whose reload prompt was shown, answering each
+	// with `answer` (whether to reload), and the acknowledged changes.
 	function mockDialogs(
-		answer: () => Promise< string > | string = () => ''
+		answer: () => Promise< boolean > | boolean = () => false
 	) {
-		const asked: unknown[] = [];
+		const asked: string[] = [];
 		const acknowledged: unknown[] = [];
 		mockIPC( ( cmd, payload ) => {
-			if ( cmd === 'plugin:dialog|message' ) {
-				asked.push( payload );
-				return answer();
-			}
 			if ( cmd === 'acknowledge_document_change' ) {
 				acknowledged.push( payload );
 			}
 		} );
+		let shown: string | null = null;
+		unsubscribe?.();
+		unsubscribe = subscribe( () => {
+			const id = select( tabsStore ).getReloadPromptId();
+			if ( id === shown ) {
+				return;
+			}
+			shown = id;
+			if ( id ) {
+				asked.push( id );
+				void Promise.resolve( answer() ).then( ( reload ) =>
+					answerReloadPrompt( id, reload )
+				);
+			}
+		}, tabsStore );
 		return { asked, acknowledged };
 	}
 
@@ -620,7 +639,7 @@ describe( 'handleDocumentChange', () => {
 			dispatch( tabsStore ).setTabContent( id, 'typed' );
 			dispatch( tabsStore ).setTabDirty( id, true );
 		} );
-		const { asked, acknowledged } = mockDialogs( () => 'Keep my version' );
+		const { asked, acknowledged } = mockDialogs( () => false );
 		await handleDocumentChange( change( 'outside' ) );
 		expect( asked ).toHaveLength( 1 );
 		expect( activeTab() ).toMatchObject( {
@@ -633,15 +652,9 @@ describe( 'handleDocumentChange', () => {
 
 	it( 'asks before discarding unsaved changes', async () => {
 		await openDirty();
-		const { asked } = mockDialogs( () => 'Reload' );
+		const { asked } = mockDialogs( () => true );
 		await handleDocumentChange( change( 'outside' ) );
-		expect( asked ).toEqual( [
-			expect.objectContaining( {
-				message:
-					'"selected.md" changed on disk. Reload it and discard your changes, or keep your version?',
-				kind: 'warning',
-			} ),
-		] );
+		expect( asked ).toEqual( [ 'approved-1' ] );
 		expect( activeTab() ).toMatchObject( {
 			content: 'outside',
 			isDirty: false,
@@ -649,21 +662,21 @@ describe( 'handleDocumentChange', () => {
 	} );
 
 	// Shows one prompt for `first`, reports `second` while it is open, then
-	// answers it with `label`.
+	// answers it with `reload`.
 	async function changeTwiceDuringPrompt(
 		first: string | null,
 		second: string | null,
-		label: string
+		reload: boolean
 	) {
 		await openDirty();
-		let answer: ( value: string ) => void = () => {};
+		let answer: ( value: boolean ) => void = () => {};
 		const calls = mockDialogs(
 			() => new Promise( ( resolve ) => ( answer = resolve ) )
 		);
 		const handling = handleDocumentChange( change( first, 1 ) );
 		await vi.waitFor( () => expect( calls.asked ).toHaveLength( 1 ) );
 		await handleDocumentChange( change( second, 2 ) );
-		answer( label );
+		answer( reload );
 		await handling;
 		expect( calls.asked ).toHaveLength( 1 );
 		expect( calls.acknowledged ).toEqual( [
@@ -672,7 +685,7 @@ describe( 'handleDocumentChange', () => {
 	}
 
 	it( 'reloads the latest contents after one prompt for repeated changes', async () => {
-		await changeTwiceDuringPrompt( 'first', 'second', 'Reload' );
+		await changeTwiceDuringPrompt( 'first', 'second', true );
 		expect( activeTab() ).toMatchObject( {
 			content: 'second',
 			isDirty: false,
@@ -680,7 +693,7 @@ describe( 'handleDocumentChange', () => {
 	} );
 
 	it( 'does not reload stale contents when a later change matches the tab', async () => {
-		await changeTwiceDuringPrompt( 'first', 'unsaved', 'Reload' );
+		await changeTwiceDuringPrompt( 'first', 'unsaved', true );
 		expect( activeTab() ).toMatchObject( {
 			content: 'unsaved',
 			isDirty: false,
@@ -688,11 +701,47 @@ describe( 'handleDocumentChange', () => {
 	} );
 
 	it( 'keeps the edits when the file is deleted during the prompt', async () => {
-		await changeTwiceDuringPrompt( 'first', null, 'Reload' );
+		await changeTwiceDuringPrompt( 'first', null, true );
 		expect( activeTab() ).toMatchObject( {
 			content: 'unsaved',
 			isDirty: true,
 		} );
+	} );
+
+	it( 'asks about one document at a time', async () => {
+		await openDirty();
+		await openDocument( {
+			documentId: 'approved-2',
+			path: '/docs/other.md',
+			contents: 'other',
+		} );
+		dispatch( tabsStore ).setTabContent( activeTab().id, 'unsaved' );
+		dispatch( tabsStore ).setTabDirty( activeTab().id, true );
+		const answers: ( ( reload: boolean ) => void )[] = [];
+		const { asked } = mockDialogs(
+			() => new Promise( ( resolve ) => answers.push( resolve ) )
+		);
+		const first = handleDocumentChange( change( 'outside' ) );
+		const second = handleDocumentChange( {
+			...change( 'outside' ),
+			documentId: 'approved-2',
+		} );
+		await vi.waitFor( () => expect( asked ).toEqual( [ 'approved-1' ] ) );
+		answers[ 0 ]( true );
+		await first;
+		await vi.waitFor( () =>
+			expect( asked ).toEqual( [ 'approved-1', 'approved-2' ] )
+		);
+		answers[ 1 ]( false );
+		await second;
+		expect(
+			select( tabsStore )
+				.getTabs()
+				.map( ( { content, isDirty } ) => ( { content, isDirty } ) )
+		).toEqual( [
+			{ content: 'outside', isDirty: false },
+			{ content: 'unsaved', isDirty: true },
+		] );
 	} );
 
 	it( 'marks a tab dirty when its file is deleted', async () => {
@@ -707,7 +756,7 @@ describe( 'handleDocumentChange', () => {
 	it( 'marks a tab clean without asking when the file matches it', async () => {
 		await openDocument( selected );
 		dispatch( tabsStore ).setTabDirty( activeTab().id, true );
-		const { asked } = mockDialogs( () => 'Reload' );
+		const { asked } = mockDialogs( () => true );
 		await handleDocumentChange( change( 'original' ) );
 		expect( asked ).toEqual( [] );
 		expect( activeTab().isDirty ).toBe( false );

@@ -13,4 +13,8 @@ export const selectors = {
 	getPendingCloseId( state: State ) {
 		return state.pendingCloseId;
 	},
+	// The document whose reload prompt is shown, or `null`.
+	getReloadPromptId( state: State ) {
+		return state.reloadPromptIds[ 0 ] ?? null;
+	},
 };

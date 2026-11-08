@@ -3,7 +3,7 @@
  */
 import { invoke } from '@tauri-apps/api/core';
 import { listen } from '@tauri-apps/api/event';
-import { ask, message } from '@tauri-apps/plugin-dialog';
+import { message } from '@tauri-apps/plugin-dialog';
 import { getLocale } from '@mark-bricks/editor/locale';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
 
@@ -238,6 +238,35 @@ export type DocumentChange = {
 
 // The latest change to each document whose reload prompt is open.
 const reloadPrompts = new Map< string, DocumentChange >();
+// Settles each open reload prompt with the user's answer.
+const reloadAnswers = new Map< string, ( reload: boolean ) => void >();
+
+// Shows the document's reload prompt and resolves to whether the user chose
+// to reload.
+function askToReload( documentId: string ) {
+	return new Promise< boolean >( ( resolve ) => {
+		reloadAnswers.set( documentId, resolve );
+		dispatch( tabsStore ).addReloadPrompt( documentId );
+	} );
+}
+
+/**
+ * Answers the document's open reload prompt. Later answers to the same prompt
+ * are ignored.
+ *
+ * @param documentId The document the prompt asks about.
+ * @param reload     Whether to reload the file and discard unsaved changes.
+ */
+export function answerReloadPrompt( documentId: string, reload: boolean ) {
+	const answer = reloadAnswers.get( documentId );
+
+	if ( ! answer ) {
+		return;
+	}
+	reloadAnswers.delete( documentId );
+	dispatch( tabsStore ).removeReloadPrompt( documentId );
+	answer( reload );
+}
 
 function findDocumentTab( documentId: string ) {
 	return select( tabsStore )
@@ -302,22 +331,7 @@ export async function handleDocumentChange( change: DocumentChange ) {
 	if ( tab?.isDirty && contents !== null && contents !== tab.content ) {
 		reloadPrompts.set( documentId, change );
 		try {
-			const reload = await ask(
-				sprintf(
-					/* translators: %s: tab title. */
-					__(
-						'"%s" changed on disk. Reload it and discard your changes, or keep your version?',
-						'mark-bricks'
-					),
-					tab.title
-				),
-				{
-					title: __( 'File changed', 'mark-bricks' ),
-					kind: 'warning',
-					okLabel: __( 'Reload', 'mark-bricks' ),
-					cancelLabel: __( 'Keep my version', 'mark-bricks' ),
-				}
-			);
+			const reload = await askToReload( documentId );
 			latest = reloadPrompts.get( documentId ) ?? change;
 			applyDocumentChange( latest, reload );
 		} finally {

@@ -26,6 +26,7 @@ import { Stack, useEnableWpCompatOverlaySlot } from '@wordpress/ui';
  */
 import AboutModal from '../about-modal';
 import DirtyConfirmDialog from '../dirty-confirm-dialog';
+import ReloadPromptDialog from '../reload-prompt-dialog';
 import EditorPlaceholder from '../editor-placeholder';
 import HeaderActions from '../header-actions';
 import KeyboardShortcutsModal from '../keyboard-shortcuts-modal';
@@ -163,6 +164,7 @@ export function App() {
 					/>
 				) }
 				<DirtyConfirmDialog />
+				<ReloadPromptDialog />
 				<PreferencesModal />
 				<AboutModal name={ appName } version={ appVersion } />
 				<KeyboardShortcutsModal />
