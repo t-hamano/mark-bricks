@@ -22,7 +22,6 @@ import { comment } from '@wordpress/icons';
 import type { BlockEditProps } from '../types';
 import type { AlertType, BlockAttributes } from './types';
 
-const TEMPLATE = [ [ 'core/paragraph' ] ];
 const DEFAULT_BLOCK = { name: 'core/paragraph' };
 
 type Alert = {
@@ -132,8 +131,6 @@ export default function Edit( {
 		defaultBlock: DEFAULT_BLOCK,
 		directInsert: true,
 		templateLock: false,
-		// @ts-expect-error @types enforces a stricter template tuple than runtime accepts.
-		template: TEMPLATE,
 	} );
 
 	const setAlertType = ( type: AlertType | undefined ) =>

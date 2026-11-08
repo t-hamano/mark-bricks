@@ -21,7 +21,6 @@ type ListBlockAttributes = Block[ 'attributes' ] & {
 };
 
 const DEFAULT_BLOCK = { name: 'core/list-item' };
-const TEMPLATE = [ [ 'core/list-item' ] ];
 
 export default function Edit( props: BlockEditProps ) {
 	const { attributes, setAttributes } =
@@ -32,9 +31,7 @@ export default function Edit( props: BlockEditProps ) {
 		defaultBlock: DEFAULT_BLOCK,
 		directInsert: true,
 		templateLock: false,
-		templateInsertUpdatesSelection: true,
-		// @ts-expect-error @types enforces a stricter template tuple than runtime accepts.
-		template: TEMPLATE,
+		// @ts-expect-error __experimentalCaptureToolbars is missing from type definitions.
 		__experimentalCaptureToolbars: true,
 	} );
 

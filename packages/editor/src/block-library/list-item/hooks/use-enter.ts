@@ -1,7 +1,11 @@
 /**
  * WordPress dependencies
  */
-import { createBlock, getDefaultBlockName } from '@wordpress/blocks';
+import {
+	createBlock,
+	getDefaultBlockName,
+	type Block,
+} from '@wordpress/blocks';
 import { useRef } from '@wordpress/element';
 import { useRefEffect } from '@wordpress/compose';
 import { create } from '@wordpress/rich-text';
@@ -116,14 +120,31 @@ export default function useEnter( props: Props ) {
 				parentInnerBlocks.slice( 0, blockIndex )
 			);
 			const middle = createBlock( defaultBlockName );
-			const after = [
-				...( parentInnerBlocks[ blockIndex ]?.innerBlocks[ 0 ]
-					?.innerBlocks || [] ),
-				...parentInnerBlocks.slice( blockIndex + 1 ),
-			];
-			const tail = after.length
-				? [ createBlock( parentName, parentAttributes, after ) ]
-				: [];
+			// The item's inner blocks follow the new block in order: the items
+			// of a nested list are lifted into the list that continues after
+			// it, and any other block (a paragraph, a code block, ...) is
+			// placed between the lists.
+			const tail: Block[] = [];
+			let items: Block[] = [];
+			const flushItems = () => {
+				if ( items.length ) {
+					tail.push(
+						createBlock( parentName, parentAttributes, items )
+					);
+					items = [];
+				}
+			};
+			for ( const innerBlock of parentInnerBlocks[ blockIndex ]
+				.innerBlocks ) {
+				if ( innerBlock.name === 'core/list' ) {
+					items.push( ...innerBlock.innerBlocks );
+				} else {
+					flushItems();
+					tail.push( innerBlock );
+				}
+			}
+			items.push( ...parentInnerBlocks.slice( blockIndex + 1 ) );
+			flushItems();
 			replaceBlocks( parentListClientId, [ head, middle, ...tail ], 1 );
 			// @ts-expect-error @types signature is outdated; runtime supports selectionChange( clientId ).
 			selectionChange( middle.clientId );

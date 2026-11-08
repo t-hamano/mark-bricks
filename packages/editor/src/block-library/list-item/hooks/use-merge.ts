@@ -32,14 +32,25 @@ export default function useMerge(
 	} = dispatch;
 	const outdentListItem = useOutdentListItem();
 
-	function getTrailingId( id: string ): string {
+	function isList( id: string | undefined ) {
+		return !! id && getBlockName( id ) === 'core/list';
+	}
+
+	// Only list item text can be merged, so there is no trailing id when an
+	// item ends with a block other than a nested list (a paragraph, ...).
+	function getTrailingId( id: string ): string | undefined {
 		const order = getBlockOrder( id );
 
 		if ( ! order.length ) {
 			return id;
 		}
 
-		return getTrailingId( order[ order.length - 1 ] );
+		const lastId = order[ order.length - 1 ];
+		if ( getBlockName( id ) === 'core/list-item' && ! isList( lastId ) ) {
+			return;
+		}
+
+		return getTrailingId( lastId );
 	}
 
 	function getParentListItemId( id: string ) {
@@ -82,24 +93,29 @@ export default function useMerge(
 	return ( forward?: boolean ) => {
 		function mergeWithNested( clientIdA: string, clientIdB: string ) {
 			registry.batch( () => {
-				const [ nestedListClientId ] = getBlockOrder( clientIdB );
-				if ( nestedListClientId ) {
+				const innerBlockIds = getBlockOrder( clientIdB );
+				if ( innerBlockIds.length ) {
+					// Blocks other than nested lists stay with the merged text,
+					// so every inner block moves into the item merged into.
 					if (
-						getPreviousBlockClientId( clientIdB ) === clientIdA &&
-						! getBlockOrder( clientIdA ).length
+						( getPreviousBlockClientId( clientIdB ) === clientIdA &&
+							! getBlockOrder( clientIdA ).length ) ||
+						! innerBlockIds.every( isList )
 					) {
 						moveBlocksToPosition(
-							[ nestedListClientId ],
+							innerBlockIds,
 							clientIdB,
 							clientIdA
 						);
 					} else {
 						const rootIdA = getBlockRootClientId( clientIdA );
 						if ( rootIdA ) {
-							moveBlocksToPosition(
-								getBlockOrder( nestedListClientId ),
-								nestedListClientId,
-								rootIdA
+							innerBlockIds.forEach( ( nestedListClientId ) =>
+								moveBlocksToPosition(
+									getBlockOrder( nestedListClientId ),
+									nestedListClientId,
+									rootIdA
+								)
 							);
 						}
 					}
@@ -109,6 +125,13 @@ export default function useMerge(
 		}
 
 		if ( forward ) {
+			// Text followed by a block other than a nested list (a
+			// paragraph, ...) has no list item text to merge with.
+			const [ firstInnerBlockId ] = getBlockOrder( clientId );
+			if ( firstInnerBlockId && ! isList( firstInnerBlockId ) ) {
+				return;
+			}
+
 			const nextBlockClientId = getNextId( clientId );
 
 			if ( ! nextBlockClientId ) {
@@ -129,16 +152,20 @@ export default function useMerge(
 			const previousBlockClientId = getPreviousBlockClientId( clientId );
 			if ( previousBlockClientId ) {
 				const trailingId = getTrailingId( previousBlockClientId );
-				mergeWithNested( trailingId, clientId );
+				if ( trailingId ) {
+					mergeWithNested( trailingId, clientId );
+				}
 				return;
 			}
 
+			// Only an item holding nothing but a nested list is replaced by
+			// the list's items; any other inner block would be removed with it.
 			const blockOrder = getBlockOrder( clientId );
 			const currentBlock = getBlock( clientId );
-			const nestedListClientId = blockOrder[ 0 ];
-			const nestedListItemIds = nestedListClientId
-				? getBlockOrder( nestedListClientId )
-				: [];
+			const nestedListItemIds =
+				blockOrder.length === 1 && isList( blockOrder[ 0 ] )
+					? getBlockOrder( blockOrder[ 0 ] )
+					: [];
 			if (
 				!! currentBlock &&
 				isUnmodifiedBlock( currentBlock ) &&

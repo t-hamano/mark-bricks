@@ -24,5 +24,7 @@ export const settings: Partial< BlockConfiguration > = {
 			},
 		},
 	},
+	template: [ [ 'core/list-item' ] ],
+	templateInsertUpdatesSelection: true,
 	edit: Edit as BlockConfiguration[ 'edit' ],
 };
