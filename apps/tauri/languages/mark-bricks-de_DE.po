@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:12:04.259Z\n"
-"PO-Revision-Date: 2026-11-08T14:12:06.201Z\n"
+"POT-Creation-Date: 2026-11-08T14:13:58.238Z\n"
+"PO-Revision-Date: 2026-11-08T14:14:00.117Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -41,7 +41,7 @@ msgstr "(Ohne Titel)"
 msgid "AI Assistant"
 msgstr "KI-Assistent"
 
-#: src/components/preferences-modal/ai-panel.tsx:237
+#: src/components/preferences-modal/ai-panel.tsx:242
 msgid "API key"
 msgstr "API-Schlüssel"
 
@@ -89,7 +89,7 @@ msgstr "Nach Updates suchen"
 msgid "Check updates automatically"
 msgstr "Automatisch nach Updates suchen"
 
-#: src/components/preferences-modal/ai-panel.tsx:261
+#: src/components/preferences-modal/ai-panel.tsx:266
 msgid "Checking the API key…"
 msgstr "API-Schlüssel wird überprüft …"
 
@@ -161,11 +161,11 @@ msgstr "Dunkel"
 msgid "Default (%s)"
 msgstr "Standard (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:268
+#: src/components/preferences-modal/ai-panel.tsx:273
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/components/preferences-modal/ai-panel.tsx:257
+#: src/components/preferences-modal/ai-panel.tsx:262
 msgid "Deleting the API key…"
 msgstr "API-Schlüssel wird gelöscht …"
 
@@ -311,8 +311,8 @@ msgstr "MarkBricks ist jetzt die Standard-App für Markdown-Dateien."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Maximale Breite des Inhaltsbereichs in Pixeln."
 
-#: src/components/preferences-modal/ai-panel.tsx:306
 #: src/components/preferences-modal/ai-panel.tsx:311
+#: src/components/preferences-modal/ai-panel.tsx:316
 msgid "Model"
 msgstr "Modell"
 
@@ -417,7 +417,7 @@ msgid "Sans-serif"
 msgstr "Serifenlos"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/preferences-modal/ai-panel.tsx:274
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -493,28 +493,25 @@ msgstr "Tabulatorgröße"
 msgid "Text formatting"
 msgstr "Textformatierung"
 
-#: src/components/preferences-modal/ai-panel.tsx:211
-msgid ""
-"The AI Assistant needs your Anthropic API key. It is kept in the system’s "
-"credential store and only sent to the Anthropic API."
-msgstr ""
-"Der KI-Assistent benötigt deinen Anthropic-API-Schlüssel. Er wird im "
-"Anmeldeinformationsspeicher des Systems aufbewahrt und nur an die Anthropic-"
-"API gesendet."
-
 #: src/ai/anthropic/errors.ts:40
 msgid "The API key cannot use this model."
 msgstr "Mit diesem API-Schlüssel kann dieses Modell nicht verwendet werden."
+
+#: src/components/preferences-modal/ai-panel.tsx:215
+msgid ""
+"The API key is kept in the system’s credential store and only sent to the "
+"Anthropic API."
+msgstr "Der API-Schlüssel wird im Anmeldeinformationsspeicher des Systems aufbewahrt und nur an die Anthropic-API gesendet."
 
 #: src/ai/anthropic/errors.ts:35
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Der API-Schlüssel ist ungültig. Überprüfe ihn in den Einstellungen."
 
-#: src/components/preferences-modal/ai-panel.tsx:289
+#: src/components/preferences-modal/ai-panel.tsx:294
 msgid "The API key was deleted."
 msgstr "Der API-Schlüssel wurde gelöscht."
 
-#: src/components/preferences-modal/ai-panel.tsx:279
+#: src/components/preferences-modal/ai-panel.tsx:284
 msgid "The API key was saved."
 msgstr "Der API-Schlüssel wurde gespeichert."
 
@@ -553,7 +550,7 @@ msgid "The model was not found."
 msgstr "Das Modell wurde nicht gefunden."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:342
+#: src/components/preferences-modal/ai-panel.tsx:347
 msgid "The models could not be loaded: %s"
 msgstr "Die Modelle konnten nicht geladen werden: %s"
 
@@ -595,7 +592,7 @@ msgstr "Werkzeuge"
 msgid "Top toolbar"
 msgstr "Obere Werkzeugleiste"
 
-#: src/components/preferences-modal/ai-panel.tsx:351
+#: src/components/preferences-modal/ai-panel.tsx:356
 msgid "Try again"
 msgstr "Erneut versuchen"
 

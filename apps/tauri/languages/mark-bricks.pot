@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:12:04.259Z\n"
+"POT-Creation-Date: 2026-11-08T14:13:58.238Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -194,7 +194,7 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/preferences-modal/ai-panel.tsx:274
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -392,47 +392,47 @@ msgstr ""
 msgid "Anthropic API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:211
+#: src/components/preferences-modal/ai-panel.tsx:215
 msgid ""
-"The AI Assistant needs your Anthropic API key. It is kept in the system’s "
-"credential store and only sent to the Anthropic API."
+"The API key is kept in the system’s credential store and only sent to the "
+"Anthropic API."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:237
+#: src/components/preferences-modal/ai-panel.tsx:242
 msgid "API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:257
+#: src/components/preferences-modal/ai-panel.tsx:262
 msgid "Deleting the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:261
+#: src/components/preferences-modal/ai-panel.tsx:266
 msgid "Checking the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:268
+#: src/components/preferences-modal/ai-panel.tsx:273
 msgid "Delete"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:279
+#: src/components/preferences-modal/ai-panel.tsx:284
 msgid "The API key was saved."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:289
+#: src/components/preferences-modal/ai-panel.tsx:294
 msgid "The API key was deleted."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:306
 #: src/components/preferences-modal/ai-panel.tsx:311
+#: src/components/preferences-modal/ai-panel.tsx:316
 msgid "Model"
 msgstr ""
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:342
+#: src/components/preferences-modal/ai-panel.tsx:347
 msgid "The models could not be loaded: %s"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:351
+#: src/components/preferences-modal/ai-panel.tsx:356
 msgid "Try again"
 msgstr ""
 

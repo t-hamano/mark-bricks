@@ -207,12 +207,17 @@ export function AiPanel( { settings, onChange }: Props ) {
 				<Text variant="heading-xl" render={ <h2 /> }>
 					{ __( 'Anthropic API key', 'mark-bricks' ) }
 				</Text>
-				<Text>
-					{ __(
-						'The AI Assistant needs your Anthropic API key. It is kept in the system’s credential store and only sent to the Anthropic API.',
-						'mark-bricks'
-					) }
-				</Text>
+				<Notice.Root
+					className="preferences-modal__notice"
+					intent="info"
+				>
+					<Notice.Description>
+						{ __(
+							'The API key is kept in the system’s credential store and only sent to the Anthropic API.',
+							'mark-bricks'
+						) }
+					</Notice.Description>
+				</Notice.Root>
 				<form
 					className="preferences-modal__api-key-form"
 					onSubmit={ ( event ) => {

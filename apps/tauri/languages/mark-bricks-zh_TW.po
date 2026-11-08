@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:12:04.259Z\n"
-"PO-Revision-Date: 2026-11-08T14:12:11.847Z\n"
+"POT-Creation-Date: 2026-11-08T14:13:58.238Z\n"
+"PO-Revision-Date: 2026-11-08T14:14:05.599Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -37,7 +37,7 @@ msgstr "(未命名)"
 msgid "AI Assistant"
 msgstr "AI 助理"
 
-#: src/components/preferences-modal/ai-panel.tsx:237
+#: src/components/preferences-modal/ai-panel.tsx:242
 msgid "API key"
 msgstr "API 金鑰"
 
@@ -85,7 +85,7 @@ msgstr "檢查更新"
 msgid "Check updates automatically"
 msgstr "自動檢查更新"
 
-#: src/components/preferences-modal/ai-panel.tsx:261
+#: src/components/preferences-modal/ai-panel.tsx:266
 msgid "Checking the API key…"
 msgstr "正在檢查 API 金鑰…"
 
@@ -155,11 +155,11 @@ msgstr "深色"
 msgid "Default (%s)"
 msgstr "預設（%s）"
 
-#: src/components/preferences-modal/ai-panel.tsx:268
+#: src/components/preferences-modal/ai-panel.tsx:273
 msgid "Delete"
 msgstr "刪除"
 
-#: src/components/preferences-modal/ai-panel.tsx:257
+#: src/components/preferences-modal/ai-panel.tsx:262
 msgid "Deleting the API key…"
 msgstr "正在刪除 API 金鑰…"
 
@@ -301,8 +301,8 @@ msgstr "MarkBricks 現在是 Markdown 檔案的預設應用程式。"
 msgid "Maximum width of the content area, in pixels."
 msgstr "內容區域的最大寬度 (像素)。"
 
-#: src/components/preferences-modal/ai-panel.tsx:306
 #: src/components/preferences-modal/ai-panel.tsx:311
+#: src/components/preferences-modal/ai-panel.tsx:316
 msgid "Model"
 msgstr "模型"
 
@@ -406,7 +406,7 @@ msgid "Sans-serif"
 msgstr "無襯線"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/preferences-modal/ai-panel.tsx:274
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -482,27 +482,25 @@ msgstr "定位點大小"
 msgid "Text formatting"
 msgstr "內容格式化"
 
-#: src/components/preferences-modal/ai-panel.tsx:211
-msgid ""
-"The AI Assistant needs your Anthropic API key. It is kept in the system’s "
-"credential store and only sent to the Anthropic API."
-msgstr ""
-"AI 助理需要你的 Anthropic API 金鑰。金鑰儲存在系統的憑證存放區中，且只會傳送"
-"至 Anthropic API。"
-
 #: src/ai/anthropic/errors.ts:40
 msgid "The API key cannot use this model."
 msgstr "此 API 金鑰無法使用這個模型。"
+
+#: src/components/preferences-modal/ai-panel.tsx:215
+msgid ""
+"The API key is kept in the system’s credential store and only sent to the "
+"Anthropic API."
+msgstr "API 金鑰儲存在系統的憑證存放區中，且只會傳送至 Anthropic API。"
 
 #: src/ai/anthropic/errors.ts:35
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 金鑰無效。請在設定中檢查。"
 
-#: src/components/preferences-modal/ai-panel.tsx:289
+#: src/components/preferences-modal/ai-panel.tsx:294
 msgid "The API key was deleted."
 msgstr "API 金鑰已刪除。"
 
-#: src/components/preferences-modal/ai-panel.tsx:279
+#: src/components/preferences-modal/ai-panel.tsx:284
 msgid "The API key was saved."
 msgstr "API 金鑰已儲存。"
 
@@ -537,7 +535,7 @@ msgid "The model was not found."
 msgstr "找不到該模型。"
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:342
+#: src/components/preferences-modal/ai-panel.tsx:347
 msgid "The models could not be loaded: %s"
 msgstr "無法載入模型：%s"
 
@@ -578,7 +576,7 @@ msgstr "工具"
 msgid "Top toolbar"
 msgstr "頂端工具列"
 
-#: src/components/preferences-modal/ai-panel.tsx:351
+#: src/components/preferences-modal/ai-panel.tsx:356
 msgid "Try again"
 msgstr "重試"
 
