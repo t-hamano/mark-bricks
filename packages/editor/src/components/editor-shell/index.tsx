@@ -33,6 +33,7 @@ import '@wordpress/block-editor/build-style/style.css';
  * Internal dependencies
  */
 import { useInitialListView, useMarkdownDocument } from './hooks';
+import { SourceLineSync, type SourceLineSyncHandle } from './source-line-sync';
 import { AiSidebar } from '../ai-sidebar';
 import { EditorFooter } from '../editor-footer';
 import { EditorHeader } from '../editor-header';
@@ -51,6 +52,9 @@ export type { EditorStyles } from './hooks';
 
 export type EditorHandle = {
 	flush: () => void;
+	// Selects the top-level block that shows a line of the document, counted
+	// from 0, and scrolls it into view. Does nothing in the code editor.
+	selectLine: ( line: number ) => void;
 };
 
 export type EditorShellProps = {
@@ -68,6 +72,10 @@ export type EditorShellProps = {
 	headerActions?: ReactNode;
 	style?: CSSProperties;
 	platform?: Partial< Platform >;
+	// Called with the line of the document, counted from 0, that the
+	// selected top-level block starts at, whenever it changes, or `null`
+	// when no block is selected or the code editor is shown.
+	onSelectedLineChange?: ( line: number | null ) => void;
 	children: ReactNode;
 };
 
@@ -81,6 +89,7 @@ function UnforwardedEditorShell(
 		headerActions,
 		style,
 		platform,
+		onSelectedLineChange,
 		children,
 	}: EditorShellProps,
 	ref: ForwardedRef< EditorHandle >
@@ -115,7 +124,16 @@ function UnforwardedEditorShell(
 		setFrontMatter,
 	} = useMarkdownDocument( { content, onChange, isVisualMode } );
 
-	useImperativeHandle( ref, () => ( { flush } ), [ flush ] );
+	const sourceLineSyncRef = useRef< SourceLineSyncHandle >( null );
+	useImperativeHandle(
+		ref,
+		() => ( {
+			flush,
+			selectLine: ( line ) =>
+				sourceLineSyncRef.current?.selectLine( line ),
+		} ),
+		[ flush ]
+	);
 
 	const frontMatterContext = useMemo(
 		() => ( { frontMatter, setFrontMatter } ),
@@ -165,6 +183,13 @@ function UnforwardedEditorShell(
 							onInput={ onInput }
 							settings={ blockEditorSettings }
 						>
+							<SourceLineSync
+								blocks={ blocks }
+								frontMatter={ frontMatter }
+								enabled={ isVisualMode }
+								onSelectedLineChange={ onSelectedLineChange }
+								handleRef={ sourceLineSyncRef }
+							/>
 							<KeyboardShortcuts
 								canUndo={ canUndo }
 								canRedo={ canRedo }
