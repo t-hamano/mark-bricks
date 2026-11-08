@@ -251,21 +251,30 @@ export function AiPanel( { settings, onChange }: Props ) {
 					</Button>
 				) }
 				{ keyStatus.kind === 'saved' && (
-					<Notice.Root intent="success">
+					<Notice.Root
+						className="preferences-modal__notice"
+						intent="success"
+					>
 						<Notice.Description>
 							{ __( 'The API key was saved.', 'mark-bricks' ) }
 						</Notice.Description>
 					</Notice.Root>
 				) }
 				{ keyStatus.kind === 'deleted' && (
-					<Notice.Root intent="success">
+					<Notice.Root
+						className="preferences-modal__notice"
+						intent="success"
+					>
 						<Notice.Description>
 							{ __( 'The API key was deleted.', 'mark-bricks' ) }
 						</Notice.Description>
 					</Notice.Root>
 				) }
 				{ keyStatus.kind === 'error' && (
-					<Notice.Root intent="error">
+					<Notice.Root
+						className="preferences-modal__notice"
+						intent="error"
+					>
 						<Notice.Description>
 							{ keyStatus.message }
 						</Notice.Description>
@@ -303,7 +312,10 @@ export function AiPanel( { settings, onChange }: Props ) {
 					description={ modelDescription || undefined }
 				/>
 				{ models.kind === 'error' && (
-					<Notice.Root intent="warning">
+					<Notice.Root
+						className="preferences-modal__notice"
+						intent="warning"
+					>
 						<Notice.Description>
 							{ sprintf(
 								/* translators: %s: Why the models could not be loaded. */

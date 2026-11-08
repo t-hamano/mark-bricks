@@ -47,3 +47,10 @@ $sidebar-width: 200px;
 	flex: 1;
 	min-width: 0;
 }
+
+// Keeps a notice as wide as the panel. In a column aligned to the start,
+// it would otherwise shrink to its shortest line, which breaks CJK text at
+// every character.
+.preferences-modal__notice {
+	align-self: stretch;
+}
