@@ -3,6 +3,10 @@
  */
 import { browser } from '@marp-team/marp-core/browser';
 import { useLayoutEffect, useRef } from 'react';
+// The web fonts of the built-in Gaia theme. The patterns hold no code, so
+// they need no monospace font.
+import '@fontsource/lato/400.css';
+import '@fontsource/lato/900.css';
 
 // Fits the first slide to the card. The slides are SVGs, so they scale with
 // their width.
