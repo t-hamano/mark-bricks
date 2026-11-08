@@ -3,7 +3,11 @@
  */
 import { createSlideMode } from '../browser/slide-mode';
 import { createSlideView, type SlideView } from '../browser/slide-view';
-import { findSourceElement, getSourceLine } from '../browser/source-lines';
+import {
+	findSourceElement,
+	getSlideSourceLine,
+	getSourceLine,
+} from '../browser/source-lines';
 import { createPreviewControls } from './controls';
 import { applyLocale } from './i18n';
 
@@ -27,6 +31,12 @@ export type SlidePreviewOptions = {
 	// at, counted from 0, when the user clicks a slide outside the slide
 	// mode.
 	onSourceLineClick?: ( line: number ) => void;
+	// How finely the slides follow the Markdown. `element`, the default,
+	// reports the line of the clicked element, and highlights the element
+	// of a revealed line. `slide` reports the line of the clicked slide's
+	// first element, or of the slide when it has none, and only moves to
+	// the slide of a revealed line.
+	sourceSyncLevel?: 'element' | 'slide';
 };
 
 export type SlidePreview = {
@@ -57,6 +67,7 @@ export function createSlidePreview(
 		onSlideModeRequest,
 		onRender,
 		onSourceLineClick,
+		sourceSyncLevel = 'element',
 	} = options;
 	if ( locale ) {
 		applyLocale( locale );
@@ -90,10 +101,11 @@ export function createSlidePreview(
 		( onSlideModeRequest ?? setSlideMode )( enabled );
 	}
 
-	// The line whose element is highlighted, if any.
+	// The line last revealed, if any.
 	let highlightedLine: number | null = null;
 
-	// Highlights the element of `highlightedLine`, and returns it.
+	// Finds the element of `highlightedLine`, and highlights it at the
+	// element level.
 	function highlight(): Element | null {
 		container
 			.querySelectorAll( `.${ HIGHLIGHT_CLASS }` )
@@ -104,7 +116,9 @@ export function createSlidePreview(
 			highlightedLine === null
 				? null
 				: findSourceElement( container, highlightedLine );
-		element?.classList.add( HIGHLIGHT_CLASS );
+		if ( sourceSyncLevel === 'element' ) {
+			element?.classList.add( HIGHLIGHT_CLASS );
+		}
 		return element;
 	}
 
@@ -130,7 +144,17 @@ export function createSlidePreview(
 		if ( slideMode.isEnabled() ) {
 			return;
 		}
-		const line = getSourceLine( event.target );
+		let line: number | null = null;
+		if ( sourceSyncLevel === 'element' ) {
+			line = getSourceLine( event.target );
+		} else {
+			const slide = view
+				.getSlides()
+				.find( ( element ) =>
+					element.contains( event.target as Node )
+				);
+			line = slide ? getSlideSourceLine( slide ) : null;
+		}
 		if ( line !== null ) {
 			onSourceLineClick?.( line );
 		}

@@ -23,6 +23,23 @@ export function getSourceLine( target: EventTarget | null ): number | null {
 }
 
 /**
+ * Finds the line of the Markdown that a slide's first element starts at.
+ *
+ * @param slide The SVG that holds the slide.
+ * @return The line of the first element in the slide, or of the slide itself
+ *         when it has none, such as a slide with only a background image, or
+ *         `null` when neither has one.
+ */
+export function getSlideSourceLine( slide: Element ): number | null {
+	// A slide with background images holds extra sections for them, which
+	// have no line.
+	const element =
+		slide.querySelector( `section${ SELECTOR } ${ SELECTOR }` ) ??
+		slide.querySelector( SELECTOR );
+	return element ? readLine( element ) : null;
+}
+
+/**
  * Finds the element that shows a line of the Markdown: the one that starts
  * at the line, or else the closest one before it. Of the elements that start
  * at the same line, such as a list and its first item, it takes the
