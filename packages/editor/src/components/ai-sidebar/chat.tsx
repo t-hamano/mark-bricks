@@ -125,11 +125,19 @@ export function AiChat( { ai, chat }: Props ) {
 		}
 	}, [ conversation ] );
 
-	const canSend = hasApiKey !== false && !! draft.trim() && ! isResponding;
+	const canSend = !! draft.trim() && ! isResponding;
 
-	const submit = () => {
+	const submit = async () => {
 		if ( ! canSend ) {
 			return;
+		}
+		// The key may have been set in the settings since the last check.
+		if ( hasApiKey === false ) {
+			const result = await ai.hasApiKey().catch( () => false );
+			setHasApiKey( result );
+			if ( ! result ) {
+				return;
+			}
 		}
 		send( draft );
 		setDraft( '' );
@@ -203,7 +211,6 @@ export function AiChat( { ai, chat }: Props ) {
 					value={ draft }
 					onValueChange={ setDraft }
 					onKeyDown={ onKeyDown }
-					disabled={ hasApiKey === false }
 				/>
 				{ isResponding ? (
 					<IconButton

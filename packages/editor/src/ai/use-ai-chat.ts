@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useCallback, useReducer, useRef } from 'react';
+import { useCallback, useEffect, useReducer, useRef } from 'react';
 
 /**
  * Internal dependencies
@@ -149,6 +149,17 @@ export function useAiChat( {
 		controller?.abort();
 		dispatch( { type: 'RESET' } );
 	}, [] );
+
+	// Abandon the answer when the editor closes, so its late edits do not
+	// reach a document that is gone.
+	useEffect(
+		() => () => {
+			const controller = controllerRef.current;
+			controllerRef.current = null;
+			controller?.abort();
+		},
+		[]
+	);
 
 	const last = conversation.messages[ conversation.messages.length - 1 ];
 	const isResponding =
