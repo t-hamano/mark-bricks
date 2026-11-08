@@ -21,6 +21,7 @@ import {
  */
 import { DEFAULT_MODEL } from '../../ai/anthropic';
 import {
+	checkApiKey,
 	deleteApiKey,
 	hasApiKey,
 	listModels,
@@ -150,6 +151,15 @@ export function AiPanel( { settings, onChange }: Props ) {
 	const onSave = async () => {
 		setKeyStatus( { kind: 'busy' } );
 		try {
+			await checkApiKey( key );
+		} catch ( error ) {
+			setKeyStatus( {
+				kind: 'error',
+				message: ( error as Error ).message,
+			} );
+			return;
+		}
+		try {
 			await saveApiKey( key );
 			setKey( '' );
 			setKeyStatus( { kind: 'saved' } );
@@ -235,6 +245,11 @@ export function AiPanel( { settings, onChange }: Props ) {
 							variant="outline"
 							size="compact"
 							disabled={ ! key.trim() || isBusy }
+							loading={ isBusy }
+							loadingAnnouncement={ __(
+								'Checking the API key…',
+								'mark-bricks'
+							) }
 						>
 							{ __( 'Save', 'mark-bricks' ) }
 						</Button>

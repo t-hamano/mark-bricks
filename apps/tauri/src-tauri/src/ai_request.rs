@@ -303,31 +303,41 @@ struct ModelsPage {
 /// The most pages read, so that a broken `has_more` cannot loop forever.
 const MAX_MODELS_PAGES: usize = 10;
 
+/// Reads one page of the Models API's list.
+async fn fetch_models_page(
+    provider: Provider,
+    api_key: &str,
+    limit: &str,
+    after_id: Option<&str>,
+) -> Result<ModelsPage, AiRequestError> {
+    let (url, headers) = request_parts(provider, Endpoint::Models, api_key);
+    let mut params = vec![("limit", limit)];
+    if let Some(after_id) = after_id {
+        params.push(("after_id", after_id));
+    }
+    let page_url = reqwest::Url::parse_with_params(url, &params).map_err(AiRequestError::other)?;
+    let mut request = client()?.get(page_url);
+    for (name, value) in headers {
+        request = request.header(name, value);
+    }
+    let response = request.send().await.map_err(AiRequestError::network)?;
+    let status = response.status();
+    let body = response.text().await.map_err(AiRequestError::network)?;
+    if !status.is_success() {
+        return Err(AiRequestError::Http {
+            status: status.as_u16(),
+            body,
+        });
+    }
+    serde_json::from_str(&body).map_err(AiRequestError::other)
+}
+
 async fn fetch_models(provider: Provider, api_key: String) -> Result<Vec<AiModel>, AiRequestError> {
-    let (url, headers) = request_parts(provider, Endpoint::Models, &api_key);
     let mut models = Vec::new();
     let mut after_id: Option<String> = None;
     for _ in 0..MAX_MODELS_PAGES {
-        let mut params = vec![("limit", MODELS_PAGE_LIMIT)];
-        if let Some(after_id) = &after_id {
-            params.push(("after_id", after_id));
-        }
-        let page_url =
-            reqwest::Url::parse_with_params(url, &params).map_err(AiRequestError::other)?;
-        let mut request = client()?.get(page_url);
-        for (name, value) in &headers {
-            request = request.header(*name, value);
-        }
-        let response = request.send().await.map_err(AiRequestError::network)?;
-        let status = response.status();
-        let body = response.text().await.map_err(AiRequestError::network)?;
-        if !status.is_success() {
-            return Err(AiRequestError::Http {
-                status: status.as_u16(),
-                body,
-            });
-        }
-        let page: ModelsPage = serde_json::from_str(&body).map_err(AiRequestError::other)?;
+        let page =
+            fetch_models_page(provider, &api_key, MODELS_PAGE_LIMIT, after_id.as_deref()).await?;
         models.extend(page.data);
         match page.last_id {
             Some(last_id) if page.has_more => after_id = Some(last_id),
@@ -335,6 +345,19 @@ async fn fetch_models(provider: Provider, api_key: String) -> Result<Vec<AiModel
         }
     }
     Ok(models)
+}
+
+/// Checks that the API accepts `key`, before it is saved, by listing one
+/// model with it.
+#[tauri::command]
+pub async fn check_ai_api_key(
+    window: WebviewWindow,
+    provider: Provider,
+    key: String,
+) -> Result<(), AiRequestError> {
+    api_key::check_window(&window).map_err(AiRequestError::other)?;
+    fetch_models_page(provider, key.trim(), "1", None).await?;
+    Ok(())
 }
 
 /// Lists the models the saved API key can use, newest first.

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:57:04.267Z\n"
-"PO-Revision-Date: 2026-11-08T13:57:05.011Z\n"
+"POT-Creation-Date: 2026-11-08T14:04:43.845Z\n"
+"PO-Revision-Date: 2026-11-08T14:04:44.660Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -39,7 +39,7 @@ msgstr "(無題)"
 msgid "AI Assistant"
 msgstr "AI アシスタント"
 
-#: src/components/preferences-modal/ai-panel.tsx:214
+#: src/components/preferences-modal/ai-panel.tsx:237
 msgid "API key"
 msgstr "API キー"
 
@@ -61,11 +61,11 @@ msgstr "YAML フロントマターを追加"
 msgid "Always open List View"
 msgstr "常にリストビューを開く"
 
-#: src/components/preferences-modal/ai-panel.tsx:189
+#: src/components/preferences-modal/ai-panel.tsx:212
 msgid "An API key is saved."
 msgstr "API キーは保存されています。"
 
-#: src/components/preferences-modal/ai-panel.tsx:185
+#: src/components/preferences-modal/ai-panel.tsx:208
 msgid "Anthropic API key"
 msgstr "Anthropic API キー"
 
@@ -90,6 +90,10 @@ msgstr "アップデートを確認"
 #: src/components/preferences-modal/general-panel.tsx:122
 msgid "Check updates automatically"
 msgstr "自動的にアップデートを確認"
+
+#: src/components/preferences-modal/ai-panel.tsx:249
+msgid "Checking the API key…"
+msgstr "API キーを確認しています…"
 
 #: src/components/preferences-modal/general-panel.tsx:132
 #: src/components/about-modal/index.tsx:115
@@ -155,11 +159,11 @@ msgid "Dark"
 msgstr "ダーク"
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:75
+#: src/components/preferences-modal/ai-panel.tsx:82
 msgid "Default (%s)"
 msgstr "デフォルト (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:237
+#: src/components/preferences-modal/ai-panel.tsx:265
 msgid "Delete API key"
 msgstr "API キーを削除"
 
@@ -284,7 +288,7 @@ msgstr "ライト"
 msgid "List View shortcuts"
 msgstr "リストビューのショートカット"
 
-#: src/components/preferences-modal/ai-panel.tsx:178
+#: src/components/preferences-modal/ai-panel.tsx:201
 msgid "Loading the models…"
 msgstr "モデルを読み込んでいます…"
 
@@ -301,8 +305,8 @@ msgstr "MarkBricks が Markdown ファイルの既定のアプリになりまし
 msgid "Maximum width of the content area, in pixels."
 msgstr "コンテンツ領域の最大幅 (ピクセル単位)。"
 
-#: src/components/preferences-modal/ai-panel.tsx:264
-#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/preferences-modal/ai-panel.tsx:301
+#: src/components/preferences-modal/ai-panel.tsx:306
 msgid "Model"
 msgstr "モデル"
 
@@ -314,7 +318,7 @@ msgstr "等幅"
 msgid "New"
 msgstr "新規"
 
-#: src/components/preferences-modal/ai-panel.tsx:213
+#: src/components/preferences-modal/ai-panel.tsx:236
 msgid "New API key"
 msgstr "新しい API キー"
 
@@ -414,7 +418,7 @@ msgid "Sans-serif"
 msgstr "サンセリフ"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:226
+#: src/components/preferences-modal/ai-panel.tsx:254
 #: src/components/header-actions/index.tsx:136
 #: src/components/header-actions/index.tsx:182
 msgid "Save"
@@ -424,7 +428,7 @@ msgstr "保存"
 msgid "Save As…"
 msgstr "名前を付けて保存…"
 
-#: src/components/preferences-modal/ai-panel.tsx:173
+#: src/components/preferences-modal/ai-panel.tsx:196
 msgid "Save an API key to choose a model."
 msgstr "モデルを選ぶには API キーを保存してください。"
 
@@ -490,11 +494,13 @@ msgstr "タブ幅"
 msgid "Text formatting"
 msgstr "書式設定"
 
-#: src/components/preferences-modal/ai-panel.tsx:190
+#: src/components/preferences-modal/ai-panel.tsx:213
 msgid ""
 "The AI Assistant needs your Anthropic API key. It is kept in the system’s "
 "credential store and only sent to the Anthropic API."
-msgstr "AI アシスタントを使うには Anthropic API キーが必要です。キーはシステムの資格情報ストアに保存され、Anthropic API にのみ送信されます。"
+msgstr ""
+"AI アシスタントを使うには Anthropic API キーが必要です。キーはシステムの資格"
+"情報ストアに保存され、Anthropic API にのみ送信されます。"
 
 #: src/ai/anthropic/errors.ts:40
 msgid "The API key cannot use this model."
@@ -504,11 +510,11 @@ msgstr "この API キーではこのモデルを使えません。"
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API キーが無効です。設定で確認してください。"
 
-#: src/components/preferences-modal/ai-panel.tsx:250
+#: src/components/preferences-modal/ai-panel.tsx:284
 msgid "The API key was deleted."
 msgstr "API キーを削除しました。"
 
-#: src/components/preferences-modal/ai-panel.tsx:243
+#: src/components/preferences-modal/ai-panel.tsx:274
 msgid "The API key was saved."
 msgstr "API キーを保存しました。"
 
@@ -544,7 +550,7 @@ msgid "The model was not found."
 msgstr "モデルが見つかりませんでした。"
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:290
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The models could not be loaded: %s"
 msgstr "モデルを読み込めませんでした: %s"
 
@@ -561,6 +567,10 @@ msgstr "リクエストに失敗しました: %s"
 #: src/components/preferences-modal/code-editor-panel.tsx:46
 msgid "Theme"
 msgstr "テーマ"
+
+#: src/ai/settings.ts:53
+msgid "This API key is not valid."
+msgstr "この API キーは無効です。"
 
 #: src/components/preferences-modal/general-panel.tsx:166
 msgid ""
@@ -582,7 +592,7 @@ msgstr "ツール"
 msgid "Top toolbar"
 msgstr "トップツールバー"
 
-#: src/components/preferences-modal/ai-panel.tsx:299
+#: src/components/preferences-modal/ai-panel.tsx:346
 msgid "Try again"
 msgstr "再試行"
 

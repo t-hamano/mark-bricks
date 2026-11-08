@@ -48,6 +48,15 @@ describe( 'AiPanel', () => {
 			switch ( command ) {
 				case 'has_ai_api_key':
 					return savedKey !== null;
+				case 'check_ai_api_key':
+					if ( payload.key === 'sk-ant-invalid' ) {
+						throw {
+							code: 'http',
+							status: 401,
+							body: '{"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"}}',
+						};
+					}
+					return null;
 				case 'save_ai_api_key':
 					savedKey = payload.key ?? '';
 					return null;
@@ -116,6 +125,26 @@ describe( 'AiPanel', () => {
 		expect( commands ).toContain( 'list_ai_models' );
 	} );
 
+	it( 'does not save an API key the API refuses', async () => {
+		await render();
+		await act( async () => {
+			const setValue = Object.getOwnPropertyDescriptor(
+				HTMLInputElement.prototype,
+				'value'
+			)!.set!;
+			setValue.call( input(), 'sk-ant-invalid' );
+			input().dispatchEvent( new Event( 'input', { bubbles: true } ) );
+		} );
+		await act( async () => {
+			button( 'Save' )!.click();
+		} );
+		expect( savedKey ).toBeNull();
+		expect( input().value ).toBe( 'sk-ant-invalid' );
+		expect( container.textContent ).toContain(
+			'This API key is not valid.'
+		);
+	} );
+
 	it( 'ignores the models of a replaced API key', async () => {
 		savedKey = 'sk-ant-old';
 		const pending: Array< ( models: unknown ) => void > = [];
@@ -123,6 +152,8 @@ describe( 'AiPanel', () => {
 			switch ( command ) {
 				case 'has_ai_api_key':
 					return true;
+				case 'check_ai_api_key':
+					return null;
 				case 'save_ai_api_key':
 					savedKey = ( args as { key: string } ).key;
 					return null;

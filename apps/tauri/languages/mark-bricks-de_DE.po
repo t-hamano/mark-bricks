@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:57:04.267Z\n"
-"PO-Revision-Date: 2026-11-08T13:57:06.119Z\n"
+"POT-Creation-Date: 2026-11-08T14:04:43.845Z\n"
+"PO-Revision-Date: 2026-11-08T14:04:45.758Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -41,7 +41,7 @@ msgstr "(Ohne Titel)"
 msgid "AI Assistant"
 msgstr "KI-Assistent"
 
-#: src/components/preferences-modal/ai-panel.tsx:214
+#: src/components/preferences-modal/ai-panel.tsx:237
 msgid "API key"
 msgstr "API-Schlüssel"
 
@@ -63,11 +63,11 @@ msgstr "YAML-Front-Matter hinzufügen"
 msgid "Always open List View"
 msgstr "Immer die Listenansicht öffnen"
 
-#: src/components/preferences-modal/ai-panel.tsx:189
+#: src/components/preferences-modal/ai-panel.tsx:212
 msgid "An API key is saved."
 msgstr "Ein API-Schlüssel ist gespeichert."
 
-#: src/components/preferences-modal/ai-panel.tsx:185
+#: src/components/preferences-modal/ai-panel.tsx:208
 msgid "Anthropic API key"
 msgstr "Anthropic-API-Schlüssel"
 
@@ -92,6 +92,10 @@ msgstr "Nach Updates suchen"
 #: src/components/preferences-modal/general-panel.tsx:122
 msgid "Check updates automatically"
 msgstr "Automatisch nach Updates suchen"
+
+#: src/components/preferences-modal/ai-panel.tsx:249
+msgid "Checking the API key…"
+msgstr "API-Schlüssel wird überprüft …"
 
 #: src/components/preferences-modal/general-panel.tsx:132
 #: src/components/about-modal/index.tsx:115
@@ -157,11 +161,11 @@ msgid "Dark"
 msgstr "Dunkel"
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:75
+#: src/components/preferences-modal/ai-panel.tsx:82
 msgid "Default (%s)"
 msgstr "Standard (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:237
+#: src/components/preferences-modal/ai-panel.tsx:265
 msgid "Delete API key"
 msgstr "API-Schlüssel löschen"
 
@@ -290,7 +294,7 @@ msgstr "Hell"
 msgid "List View shortcuts"
 msgstr "Tastaturbefehle der Listenansicht"
 
-#: src/components/preferences-modal/ai-panel.tsx:178
+#: src/components/preferences-modal/ai-panel.tsx:201
 msgid "Loading the models…"
 msgstr "Modelle werden geladen …"
 
@@ -307,8 +311,8 @@ msgstr "MarkBricks ist jetzt die Standard-App für Markdown-Dateien."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Maximale Breite des Inhaltsbereichs in Pixeln."
 
-#: src/components/preferences-modal/ai-panel.tsx:264
-#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/preferences-modal/ai-panel.tsx:301
+#: src/components/preferences-modal/ai-panel.tsx:306
 msgid "Model"
 msgstr "Modell"
 
@@ -320,7 +324,7 @@ msgstr "Monospace"
 msgid "New"
 msgstr "Neu"
 
-#: src/components/preferences-modal/ai-panel.tsx:213
+#: src/components/preferences-modal/ai-panel.tsx:236
 msgid "New API key"
 msgstr "Neuer API-Schlüssel"
 
@@ -421,7 +425,7 @@ msgid "Sans-serif"
 msgstr "Serifenlos"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:226
+#: src/components/preferences-modal/ai-panel.tsx:254
 #: src/components/header-actions/index.tsx:136
 #: src/components/header-actions/index.tsx:182
 msgid "Save"
@@ -431,7 +435,7 @@ msgstr "Speichern"
 msgid "Save As…"
 msgstr "Speichern unter…"
 
-#: src/components/preferences-modal/ai-panel.tsx:173
+#: src/components/preferences-modal/ai-panel.tsx:196
 msgid "Save an API key to choose a model."
 msgstr "Speichere einen API-Schlüssel, um ein Modell auszuwählen."
 
@@ -497,11 +501,14 @@ msgstr "Tabulatorgröße"
 msgid "Text formatting"
 msgstr "Textformatierung"
 
-#: src/components/preferences-modal/ai-panel.tsx:190
+#: src/components/preferences-modal/ai-panel.tsx:213
 msgid ""
 "The AI Assistant needs your Anthropic API key. It is kept in the system’s "
 "credential store and only sent to the Anthropic API."
-msgstr "Der KI-Assistent benötigt deinen Anthropic-API-Schlüssel. Er wird im Anmeldeinformationsspeicher des Systems aufbewahrt und nur an die Anthropic-API gesendet."
+msgstr ""
+"Der KI-Assistent benötigt deinen Anthropic-API-Schlüssel. Er wird im "
+"Anmeldeinformationsspeicher des Systems aufbewahrt und nur an die Anthropic-"
+"API gesendet."
 
 #: src/ai/anthropic/errors.ts:40
 msgid "The API key cannot use this model."
@@ -511,11 +518,11 @@ msgstr "Mit diesem API-Schlüssel kann dieses Modell nicht verwendet werden."
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Der API-Schlüssel ist ungültig. Überprüfe ihn in den Einstellungen."
 
-#: src/components/preferences-modal/ai-panel.tsx:250
+#: src/components/preferences-modal/ai-panel.tsx:284
 msgid "The API key was deleted."
 msgstr "Der API-Schlüssel wurde gelöscht."
 
-#: src/components/preferences-modal/ai-panel.tsx:243
+#: src/components/preferences-modal/ai-panel.tsx:274
 msgid "The API key was saved."
 msgstr "Der API-Schlüssel wurde gespeichert."
 
@@ -554,7 +561,7 @@ msgid "The model was not found."
 msgstr "Das Modell wurde nicht gefunden."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:290
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The models could not be loaded: %s"
 msgstr "Die Modelle konnten nicht geladen werden: %s"
 
@@ -571,6 +578,10 @@ msgstr "Die Anfrage ist fehlgeschlagen: %s"
 #: src/components/preferences-modal/code-editor-panel.tsx:46
 msgid "Theme"
 msgstr "Theme"
+
+#: src/ai/settings.ts:53
+msgid "This API key is not valid."
+msgstr "Dieser API-Schlüssel ist ungültig."
 
 #: src/components/preferences-modal/general-panel.tsx:166
 msgid ""
@@ -592,7 +603,7 @@ msgstr "Werkzeuge"
 msgid "Top toolbar"
 msgstr "Obere Werkzeugleiste"
 
-#: src/components/preferences-modal/ai-panel.tsx:299
+#: src/components/preferences-modal/ai-panel.tsx:346
 msgid "Try again"
 msgstr "Erneut versuchen"
 

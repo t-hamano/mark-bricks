@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:57:04.267Z\n"
-"PO-Revision-Date: 2026-11-08T13:57:10.437Z\n"
+"POT-Creation-Date: 2026-11-08T14:04:43.845Z\n"
+"PO-Revision-Date: 2026-11-08T14:04:50.186Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -41,7 +41,7 @@ msgstr "(Başlıksız)"
 msgid "AI Assistant"
 msgstr "Yapay Zekâ Asistanı"
 
-#: src/components/preferences-modal/ai-panel.tsx:214
+#: src/components/preferences-modal/ai-panel.tsx:237
 msgid "API key"
 msgstr "API anahtarı"
 
@@ -63,11 +63,11 @@ msgstr "YAML front matter ekle"
 msgid "Always open List View"
 msgstr "Her zaman liste görünümünü aç"
 
-#: src/components/preferences-modal/ai-panel.tsx:189
+#: src/components/preferences-modal/ai-panel.tsx:212
 msgid "An API key is saved."
 msgstr "Kayıtlı bir API anahtarı var."
 
-#: src/components/preferences-modal/ai-panel.tsx:185
+#: src/components/preferences-modal/ai-panel.tsx:208
 msgid "Anthropic API key"
 msgstr "Anthropic API anahtarı"
 
@@ -92,6 +92,10 @@ msgstr "Güncellemeleri denetle"
 #: src/components/preferences-modal/general-panel.tsx:122
 msgid "Check updates automatically"
 msgstr "Güncellemeleri otomatik denetle"
+
+#: src/components/preferences-modal/ai-panel.tsx:249
+msgid "Checking the API key…"
+msgstr "API anahtarı kontrol ediliyor…"
 
 #: src/components/preferences-modal/general-panel.tsx:132
 #: src/components/about-modal/index.tsx:115
@@ -157,11 +161,11 @@ msgid "Dark"
 msgstr "Koyu"
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:75
+#: src/components/preferences-modal/ai-panel.tsx:82
 msgid "Default (%s)"
 msgstr "Varsayılan (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:237
+#: src/components/preferences-modal/ai-panel.tsx:265
 msgid "Delete API key"
 msgstr "API anahtarını sil"
 
@@ -289,7 +293,7 @@ msgstr "Açık"
 msgid "List View shortcuts"
 msgstr "Liste görünümü kısayolları"
 
-#: src/components/preferences-modal/ai-panel.tsx:178
+#: src/components/preferences-modal/ai-panel.tsx:201
 msgid "Loading the models…"
 msgstr "Modeller yükleniyor…"
 
@@ -306,8 +310,8 @@ msgstr "MarkBricks artık Markdown dosyaları için varsayılan uygulama."
 msgid "Maximum width of the content area, in pixels."
 msgstr "İçerik alanının piksel cinsinden en büyük genişliği."
 
-#: src/components/preferences-modal/ai-panel.tsx:264
-#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/preferences-modal/ai-panel.tsx:301
+#: src/components/preferences-modal/ai-panel.tsx:306
 msgid "Model"
 msgstr "Model"
 
@@ -319,7 +323,7 @@ msgstr "Eş aralıklı"
 msgid "New"
 msgstr "Yeni"
 
-#: src/components/preferences-modal/ai-panel.tsx:213
+#: src/components/preferences-modal/ai-panel.tsx:236
 msgid "New API key"
 msgstr "Yeni API anahtarı"
 
@@ -419,7 +423,7 @@ msgid "Sans-serif"
 msgstr "Sans-serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:226
+#: src/components/preferences-modal/ai-panel.tsx:254
 #: src/components/header-actions/index.tsx:136
 #: src/components/header-actions/index.tsx:182
 msgid "Save"
@@ -429,7 +433,7 @@ msgstr "Kaydet"
 msgid "Save As…"
 msgstr "Farklı kaydet…"
 
-#: src/components/preferences-modal/ai-panel.tsx:173
+#: src/components/preferences-modal/ai-panel.tsx:196
 msgid "Save an API key to choose a model."
 msgstr "Model seçmek için bir API anahtarı kaydedin."
 
@@ -495,11 +499,14 @@ msgstr "Sekme boyutu"
 msgid "Text formatting"
 msgstr "Metin biçimlendirme"
 
-#: src/components/preferences-modal/ai-panel.tsx:190
+#: src/components/preferences-modal/ai-panel.tsx:213
 msgid ""
 "The AI Assistant needs your Anthropic API key. It is kept in the system’s "
 "credential store and only sent to the Anthropic API."
-msgstr "Yapay Zekâ Asistanı, Anthropic API anahtarınıza ihtiyaç duyar. Anahtar sistemin kimlik bilgisi deposunda saklanır ve yalnızca Anthropic API'sine gönderilir."
+msgstr ""
+"Yapay Zekâ Asistanı, Anthropic API anahtarınıza ihtiyaç duyar. Anahtar "
+"sistemin kimlik bilgisi deposunda saklanır ve yalnızca Anthropic API'sine "
+"gönderilir."
 
 #: src/ai/anthropic/errors.ts:40
 msgid "The API key cannot use this model."
@@ -509,11 +516,11 @@ msgstr "Bu API anahtarı bu modeli kullanamaz."
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API anahtarı geçerli değil. Ayarlardan kontrol edin."
 
-#: src/components/preferences-modal/ai-panel.tsx:250
+#: src/components/preferences-modal/ai-panel.tsx:284
 msgid "The API key was deleted."
 msgstr "API anahtarı silindi."
 
-#: src/components/preferences-modal/ai-panel.tsx:243
+#: src/components/preferences-modal/ai-panel.tsx:274
 msgid "The API key was saved."
 msgstr "API anahtarı kaydedildi."
 
@@ -548,7 +555,7 @@ msgid "The model was not found."
 msgstr "Model bulunamadı."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:290
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The models could not be loaded: %s"
 msgstr "Modeller yüklenemedi: %s"
 
@@ -565,6 +572,10 @@ msgstr "İstek başarısız oldu: %s"
 #: src/components/preferences-modal/code-editor-panel.tsx:46
 msgid "Theme"
 msgstr "Tema"
+
+#: src/ai/settings.ts:53
+msgid "This API key is not valid."
+msgstr "Bu API anahtarı geçerli değil."
 
 #: src/components/preferences-modal/general-panel.tsx:166
 msgid ""
@@ -586,7 +597,7 @@ msgstr "Araçlar"
 msgid "Top toolbar"
 msgstr "Üst araç çubuğu"
 
-#: src/components/preferences-modal/ai-panel.tsx:299
+#: src/components/preferences-modal/ai-panel.tsx:346
 msgid "Try again"
 msgstr "Tekrar dene"
 

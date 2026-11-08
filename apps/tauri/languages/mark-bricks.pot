@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:57:04.267Z\n"
+"POT-Creation-Date: 2026-11-08T14:04:43.845Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -145,6 +145,10 @@ msgstr ""
 msgid "Could not connect to the Anthropic API."
 msgstr ""
 
+#: src/ai/settings.ts:53
+msgid "This API key is not valid."
+msgstr ""
+
 #: src/actions/index.ts:469
 #: src/components/header-actions/index.tsx:199
 msgid "Export Slide Deck"
@@ -198,7 +202,7 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:226
+#: src/components/preferences-modal/ai-panel.tsx:254
 #: src/components/header-actions/index.tsx:136
 #: src/components/header-actions/index.tsx:182
 msgid "Save"
@@ -376,63 +380,67 @@ msgid "Restore default settings"
 msgstr ""
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:75
+#: src/components/preferences-modal/ai-panel.tsx:82
 msgid "Default (%s)"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:173
+#: src/components/preferences-modal/ai-panel.tsx:196
 msgid "Save an API key to choose a model."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:178
+#: src/components/preferences-modal/ai-panel.tsx:201
 msgid "Loading the models…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:185
+#: src/components/preferences-modal/ai-panel.tsx:208
 msgid "Anthropic API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:189
+#: src/components/preferences-modal/ai-panel.tsx:212
 msgid "An API key is saved."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:190
+#: src/components/preferences-modal/ai-panel.tsx:213
 msgid ""
 "The AI Assistant needs your Anthropic API key. It is kept in the system’s "
 "credential store and only sent to the Anthropic API."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:213
+#: src/components/preferences-modal/ai-panel.tsx:236
 msgid "New API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:214
+#: src/components/preferences-modal/ai-panel.tsx:237
 msgid "API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:237
+#: src/components/preferences-modal/ai-panel.tsx:249
+msgid "Checking the API key…"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:265
 msgid "Delete API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:243
+#: src/components/preferences-modal/ai-panel.tsx:274
 msgid "The API key was saved."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:250
+#: src/components/preferences-modal/ai-panel.tsx:284
 msgid "The API key was deleted."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:264
-#: src/components/preferences-modal/ai-panel.tsx:269
+#: src/components/preferences-modal/ai-panel.tsx:301
+#: src/components/preferences-modal/ai-panel.tsx:306
 msgid "Model"
 msgstr ""
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:290
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The models could not be loaded: %s"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:299
+#: src/components/preferences-modal/ai-panel.tsx:346
 msgid "Try again"
 msgstr ""
 

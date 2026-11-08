@@ -4,8 +4,14 @@
 import { invoke } from '@tauri-apps/api/core';
 
 /**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+
+/**
  * Internal dependencies
  */
+import { AnthropicError } from './anthropic';
 import { toTransportError } from './transport';
 
 /**
@@ -26,6 +32,30 @@ export type AiModel = {
  */
 export function hasApiKey(): Promise< boolean > {
 	return invoke< boolean >( 'has_ai_api_key', { provider: PROVIDER } );
+}
+
+/**
+ * Checks that the Anthropic API accepts the key, before it is saved. Rejects
+ * with an error whose message is written for the user.
+ *
+ * @param key The API key.
+ */
+export async function checkApiKey( key: string ): Promise< void > {
+	try {
+		await invoke( 'check_ai_api_key', { provider: PROVIDER, key } );
+	} catch ( error ) {
+		const transportError = toTransportError( error );
+		if (
+			transportError instanceof AnthropicError &&
+			transportError.errorType === 'authentication_error'
+		) {
+			throw new AnthropicError(
+				__( 'This API key is not valid.', 'mark-bricks' ),
+				transportError.errorType
+			);
+		}
+		throw transportError;
+	}
 }
 
 /**
