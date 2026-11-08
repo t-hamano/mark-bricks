@@ -19,6 +19,7 @@ export {
 } from './front-matter';
 export {
 	getBlockLineRanges,
+	getSourceBlockLineRanges,
 	findBlockIndexAtLine,
 	type BlockLineRange,
 } from './source-lines';

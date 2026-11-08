@@ -12,10 +12,53 @@ import {
 	blockToMarkdown,
 	findBlockIndexAtLine,
 	getBlockLineRanges,
+	getSourceBlockLineRanges,
 	joinFrontMatter,
 	markdownToBlocks,
 	splitFrontMatter,
 } from '.';
+
+describe( 'getSourceBlockLineRanges', () => {
+	// Checks the ranges against the document as it is written.
+	it.each( Object.entries( fixtures ) )(
+		'finds the lines of each block of the %s fixture as written',
+		( _name, markdown ) => {
+			const { body } = splitFrontMatter( markdown );
+			const blocks = markdownToBlocks( body );
+			const lines = markdown.split( '\n' );
+
+			const ranges = getSourceBlockLineRanges( markdown );
+			expect( ranges ).toHaveLength( blocks.length );
+			ranges.forEach( ( range ) => {
+				expect( range.start ).toBeLessThan( range.end );
+				expect( lines[ range.start ].trim() ).not.toBe( '' );
+			} );
+		}
+	);
+
+	it( 'keeps the blank lines and markers of the document', () => {
+		expect(
+			getSourceBlockLineRanges(
+				'---\nmarp: true\n---\n\n\n# A\n\n\n* x\n* y\n\nB\nC\n'
+			)
+		).toEqual( [
+			{ start: 5, end: 6 },
+			{ start: 8, end: 10 },
+			{ start: 11, end: 13 },
+		] );
+	} );
+
+	it( 'counts one range for each block of a details element', () => {
+		expect(
+			getSourceBlockLineRanges(
+				'<details>\n<summary>S</summary>\n\nBody\n\n</details>\n\nA\n'
+			)
+		).toEqual( [
+			{ start: 0, end: 6 },
+			{ start: 7, end: 8 },
+		] );
+	} );
+} );
 
 describe( 'getBlockLineRanges', () => {
 	// Checks the ranges against the document the editor writes.

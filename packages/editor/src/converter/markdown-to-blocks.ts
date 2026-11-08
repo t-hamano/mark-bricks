@@ -82,6 +82,50 @@ export function nodeToBlocks( node: RootContent, source: string ): Block[] {
 	}
 }
 
+// The blocks parsed from a run of sibling mdast nodes, from the first node
+// of the run to its last.
+export type BlockSpan = {
+	blocks: Block[];
+	first: RootContent;
+	last: RootContent;
+};
+
+/**
+ * Maps a run of sibling mdast nodes to blocks, along with the nodes each one
+ * comes from: one node, or the run of a `<details>` element.
+ *
+ * @param nodes  mdast nodes, i.e. the children of a root or of a container
+ *               node.
+ * @param source The original markdown source, forwarded to converters that
+ *               detect syntax via `node.position`.
+ * @return The blocks of each node, or run of nodes, in order.
+ */
+function nodesToBlockSpans(
+	nodes: RootContent[],
+	source: string
+): BlockSpan[] {
+	const spans: BlockSpan[] = [];
+	for ( let index = 0; index < nodes.length; index++ ) {
+		const details = detailsConverter.toBlock( nodes, index, source );
+		if ( details ) {
+			spans.push( {
+				blocks: [ details.block ],
+				first: nodes[ index ],
+				last: nodes[ details.endIndex ],
+			} );
+			index = details.endIndex;
+			continue;
+		}
+		const node = nodes[ index ];
+		spans.push( {
+			blocks: nodeToBlocks( node, source ),
+			first: node,
+			last: node,
+		} );
+	}
+	return spans;
+}
+
 /**
  * Maps a run of sibling mdast nodes to blocks.
  *
@@ -97,17 +141,9 @@ export function nodeToBlocks( node: RootContent, source: string ): Block[] {
  * @return Blocks parsed from the nodes.
  */
 export function nodesToBlocks( nodes: RootContent[], source: string ): Block[] {
-	const blocks: Block[] = [];
-	for ( let index = 0; index < nodes.length; index++ ) {
-		const details = detailsConverter.toBlock( nodes, index, source );
-		if ( details ) {
-			blocks.push( details.block );
-			index = details.endIndex;
-			continue;
-		}
-		blocks.push( ...nodeToBlocks( nodes[ index ], source ) );
-	}
-	return blocks;
+	return nodesToBlockSpans( nodes, source ).flatMap(
+		( span ) => span.blocks
+	);
 }
 
 /**
@@ -121,6 +157,18 @@ export function nodesToBlocks( nodes: RootContent[], source: string ): Block[] {
  * @return Blocks parsed from the Markdown.
  */
 export function markdownToBlocks( markdown: string ): Block[] {
+	return markdownToBlockSpans( markdown ).flatMap( ( span ) => span.blocks );
+}
+
+/**
+ * Converts a Markdown string into blocks, as {@link markdownToBlocks} does,
+ * along with the top-level nodes each block comes from, whose positions give
+ * the lines of the source it takes up.
+ *
+ * @param markdown Markdown source to convert.
+ * @return The blocks of each top-level node, or run of nodes, in order.
+ */
+export function markdownToBlockSpans( markdown: string ): BlockSpan[] {
 	const tree = unified()
 		.use( remarkParse )
 		.use( remarkGfm )
@@ -130,5 +178,5 @@ export function markdownToBlocks( markdown: string ): Block[] {
 	// way is only recoverable from the source, so it is recorded on the tree
 	// before it is taken apart into blocks.
 	annotateSourceSyntax( tree, markdown );
-	return nodesToBlocks( tree.children, markdown );
+	return nodesToBlockSpans( tree.children, markdown );
 }

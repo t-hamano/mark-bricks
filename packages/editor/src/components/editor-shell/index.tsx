@@ -189,6 +189,7 @@ function UnforwardedEditorShell(
 							<SourceLineSync
 								blocks={ blocks }
 								frontMatter={ frontMatter }
+								content={ content }
 								enabled={ isVisualMode }
 								onSelectedLineChange={ onSelectedLineChange }
 								handleRef={ sourceLineSyncRef }

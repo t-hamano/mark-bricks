@@ -19,7 +19,12 @@ import { useDispatch, useRegistry, useSelect } from '@wordpress/data';
 /**
  * Internal dependencies
  */
-import { findBlockIndexAtLine, getBlockLineRanges } from '../../converter';
+import {
+	findBlockIndexAtLine,
+	getBlockLineRanges,
+	getSourceBlockLineRanges,
+	type BlockLineRange,
+} from '../../converter';
 
 /**
  * Finds the element of a block, in the page or in the canvas iframe.
@@ -44,6 +49,29 @@ function findBlockElement( clientId: string ): HTMLElement | null {
 	return null;
 }
 
+/**
+ * Finds the lines that each top-level block takes up in the document as it
+ * is written, which is what the host shows the slides of. The blocks match it
+ * while they are the ones parsed from it, and again once the editor writes
+ * out an edit. In between, while it holds another number of blocks, their
+ * lines are counted in the document the editor writes of them instead.
+ *
+ * @param blocks      Top-level blocks of the document.
+ * @param frontMatter Front matter content, or `null`.
+ * @param content     The document as it is written.
+ * @return The lines of each block, or `null` for a block that writes nothing.
+ */
+function findBlockLineRanges(
+	blocks: Block[],
+	frontMatter: string | null,
+	content: string
+): Array< BlockLineRange | null > {
+	const ranges = getSourceBlockLineRanges( content );
+	return ranges.length === blocks.length
+		? ranges
+		: getBlockLineRanges( blocks, frontMatter );
+}
+
 export type SourceLineSyncHandle = {
 	selectLine: ( line: number ) => void;
 };
@@ -51,6 +79,7 @@ export type SourceLineSyncHandle = {
 type Props = {
 	blocks: Block[];
 	frontMatter: string | null;
+	content: string;
 	enabled: boolean;
 	onSelectedLineChange?: ( line: number | null ) => void;
 	handleRef: Ref< SourceLineSyncHandle >;
@@ -66,6 +95,7 @@ type Props = {
  * @param props                      Component props.
  * @param props.blocks               Top-level blocks of the document.
  * @param props.frontMatter          Front matter content, or `null`.
+ * @param props.content              The document as it is written.
  * @param props.enabled              Whether the block editor is shown.
  * @param props.onSelectedLineChange Called with the line, or `null` when no
  *                                   block is selected.
@@ -74,6 +104,7 @@ type Props = {
 export function SourceLineSync( {
 	blocks,
 	frontMatter,
+	content,
 	enabled,
 	onSelectedLineChange,
 	handleRef,
@@ -90,8 +121,11 @@ export function SourceLineSync( {
 	// Only worked out for a host that follows the selection.
 	const tracksLines = !! onSelectedLineChange && enabled;
 	const ranges = useMemo(
-		() => ( tracksLines ? getBlockLineRanges( blocks, frontMatter ) : [] ),
-		[ tracksLines, blocks, frontMatter ]
+		() =>
+			tracksLines
+				? findBlockLineRanges( blocks, frontMatter, content )
+				: [],
+		[ tracksLines, blocks, frontMatter, content ]
 	);
 	const index = rootClientId
 		? blocks.findIndex( ( block ) => block.clientId === rootClientId )
@@ -109,8 +143,8 @@ export function SourceLineSync( {
 		}
 	}, [ line ] );
 
-	const stateRef = useRef( { blocks, frontMatter, enabled } );
-	stateRef.current = { blocks, frontMatter, enabled };
+	const stateRef = useRef( { blocks, frontMatter, content, enabled } );
+	stateRef.current = { blocks, frontMatter, content, enabled };
 
 	useImperativeHandle(
 		handleRef,
@@ -121,7 +155,11 @@ export function SourceLineSync( {
 					return;
 				}
 				const found = findBlockIndexAtLine(
-					getBlockLineRanges( current.blocks, current.frontMatter ),
+					findBlockLineRanges(
+						current.blocks,
+						current.frontMatter,
+						current.content
+					),
 					target
 				);
 				if ( found === -1 ) {

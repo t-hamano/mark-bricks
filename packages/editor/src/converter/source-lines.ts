@@ -7,6 +7,8 @@ import type { Block } from '@wordpress/blocks';
  * Internal dependencies
  */
 import { blockToMarkdown } from './blocks-to-markdown';
+import { splitFrontMatter } from './front-matter';
+import { markdownToBlockSpans } from './markdown-to-blocks';
 
 // The lines of a document a block takes up: from `start` up to, but not
 // including, `end`, counted from 0, as markdown-it counts them.
@@ -54,6 +56,41 @@ export function getBlockLineRanges(
 		line = range.end + 1;
 		return range;
 	} );
+}
+
+// The ranges of the document last read, as the editor shows the same one
+// across many selections.
+let lastSource: { markdown: string; ranges: BlockLineRange[] } | null = null;
+
+/**
+ * Finds the lines that each top-level block takes up in a document as it is
+ * written, which can differ from the document the editor writes of the same
+ * blocks, such as by its blank lines or its list markers.
+ *
+ * @param markdown The document, with its front matter if any.
+ * @return The lines of each top-level block that `splitFrontMatter` and
+ *         `markdownToBlocks` make of the document, in their order.
+ */
+export function getSourceBlockLineRanges( markdown: string ): BlockLineRange[] {
+	if ( lastSource?.markdown === markdown ) {
+		return lastSource.ranges;
+	}
+	const { body } = splitFrontMatter( markdown );
+	// The lines of the front matter, which the body's positions leave out.
+	const offset =
+		markdown.slice( 0, markdown.length - body.length ).split( '\n' )
+			.length - 1;
+	const ranges = markdownToBlockSpans( body ).flatMap( ( span ) => {
+		const start = span.first.position?.start.line ?? 1;
+		const end = span.last.position?.end.line ?? start;
+		// markdown-it counts lines from 0, and mdast from 1.
+		return span.blocks.map( () => ( {
+			start: start - 1 + offset,
+			end: end + offset,
+		} ) );
+	} );
+	lastSource = { markdown, ranges };
+	return ranges;
 }
 
 /**
