@@ -27,7 +27,6 @@ import {
 	useMerge,
 } from './hooks';
 import taskItemIcon from './icon';
-import { richTextToString } from '../utils';
 import type { BlockEditProps } from '../types';
 import type { BlockAttributes as ListItemAttributes } from './types';
 
@@ -101,7 +100,7 @@ export default function Edit( props: BlockEditProps ) {
 		[ clientId ]
 	);
 	const showText =
-		richTextToString( content ) !== '' ||
+		! RichText.isEmpty( content ) ||
 		isTaskItem ||
 		! opensWithBlock ||
 		isSelected ||
