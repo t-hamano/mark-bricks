@@ -1209,6 +1209,7 @@ mod tests {
         std::fs::remove_file(&link).unwrap();
         std::os::unix::fs::symlink(&other, &link).unwrap();
         assert_eq!(changes(&mut registry, &target), [(id.clone(), None)]);
+        acknowledge(&mut registry, &id);
         assert_eq!(
             registry.write(&id, "attacker"),
             Err(WriteError::SaveAsRequired)
