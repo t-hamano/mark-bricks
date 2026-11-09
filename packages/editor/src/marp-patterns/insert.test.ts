@@ -13,6 +13,7 @@ import type { SlidePattern } from './types';
 const pattern: SlidePattern = {
 	name: 'test',
 	title: () => 'Test',
+	categories: [ 'text' ],
 	markdown: '# {{heading}}',
 	strings: () => ( { heading: 'Heading' } ),
 };

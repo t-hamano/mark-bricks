@@ -31,6 +31,7 @@ describe( 'getSlidePatternPreview', () => {
 	const pattern: SlidePattern = {
 		name: 'test',
 		title: () => 'Test',
+		categories: [ 'text' ],
 		markdown: '# {{heading}}',
 		strings: () => ( { heading: 'Q&A <today>' } ),
 	};

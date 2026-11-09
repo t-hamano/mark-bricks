@@ -11,6 +11,7 @@ import type { SlidePattern } from '../types';
 const pattern: SlidePattern = {
 	name: 'title',
 	title: () => _x( 'Title', 'slide pattern', 'mark-bricks' ),
+	categories: [ 'title' ],
 	markdown: `<!-- _class: lead -->
 
 # {{title}}
