@@ -17,7 +17,7 @@ import { __, isRTL } from '@wordpress/i18n';
 export const DEFAULT_SIDE_PANEL_SIZE = 50;
 // The content's share of the width, in percent, that the bar keeps between.
 const MIN_SIZE = 30;
-const MAX_SIZE = 90;
+const MAX_SIZE = 80;
 const KEYBOARD_STEP = 5;
 const OVERLAY_CLASS = 'editor-shell__side-panel-resize-overlay';
 
