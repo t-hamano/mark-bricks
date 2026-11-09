@@ -3,17 +3,30 @@
  */
 import { act, createRef } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
-import { afterEach, beforeEach, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { EditorHandle } from '@mark-bricks/editor';
 
 /**
  * Internal dependencies
  */
 import usePreviewSync, { type PreviewSync } from './use-preview-sync';
-import type { PreviewCommand, PreviewEvent } from '../preview/constants';
+import type {
+	PreviewCommand,
+	PreviewEvent,
+	PreviewPlacement,
+} from '../preview/constants';
+import {
+	setSlidePreviewPlacement,
+	setSlidePreviewShown,
+	useSlidePreviewPlacement,
+	useSlidePreviewShown,
+} from '../preview/visibility';
 import type { Tab } from '../store';
 
 const mocks = vi.hoisted( () => ( {
+	emitTo: vi.fn(),
+	listen: vi.fn(),
+	invoke: vi.fn(),
 	isFullscreen: vi.fn(),
 	setFullscreen: vi.fn(),
 	onResized: vi.fn(),
@@ -25,6 +38,15 @@ vi.mock( '@tauri-apps/api/window', () => ( {
 		setFullscreen: mocks.setFullscreen,
 		onResized: mocks.onResized,
 	} ),
+} ) );
+
+vi.mock( '@tauri-apps/api/event', () => ( {
+	emitTo: mocks.emitTo,
+	listen: mocks.listen,
+} ) );
+
+vi.mock( '@tauri-apps/api/core', () => ( {
+	invoke: mocks.invoke,
 } ) );
 
 vi.mock( '../preview/render', () => ( {
@@ -47,14 +69,53 @@ const editorRef = createRef< EditorHandle >();
 const selectLine = vi.fn();
 let sync: PreviewSync;
 
-function TestHook( { tab }: { tab: Tab } ) {
-	sync = usePreviewSync( tab, editorRef );
+const listeners = new Map< string, ( event: unknown ) => void >();
+
+type HookProps = { tab: Tab; placement?: PreviewPlacement; isShown?: boolean };
+
+function TestHook( { tab, placement = 'panel', isShown = true }: HookProps ) {
+	sync = usePreviewSync( tab, editorRef, isShown, placement );
 	( sync.frameRef as { current: HTMLIFrameElement } ).current = frame;
 	return null;
 }
 
-async function render( tab: Tab ) {
-	await act( async () => root.render( <TestHook tab={ tab } /> ) );
+async function render( tab: Tab, options: Omit< HookProps, 'tab' > = {} ) {
+	await act( async () =>
+		root.render( <TestHook tab={ tab } { ...options } /> )
+	);
+}
+
+function emitted() {
+	return mocks.emitTo.mock.calls
+		.filter(
+			( [ label, event ] ) =>
+				label === 'preview' && event === 'preview-command'
+		)
+		.map( ( [ , , command ] ) => command as PreviewCommand );
+}
+
+function isPreviewShown() {
+	let value = false;
+	function Probe() {
+		value = useSlidePreviewShown();
+		return null;
+	}
+	act( () =>
+		createRoot( document.createElement( 'div' ) ).render( <Probe /> )
+	);
+	return value;
+}
+
+function previewPlacement() {
+	let value: PreviewPlacement = 'panel';
+	function Probe() {
+		value = useSlidePreviewPlacement();
+		return null;
+	}
+	act( () =>
+		createRoot( document.createElement( 'div' ) ).render( <Probe /> )
+	);
+	return value;
 }
 
 async function receive( data: PreviewEvent | Record< string, unknown > ) {
@@ -82,6 +143,12 @@ beforeEach( () => {
 	vi.clearAllMocks();
 	mocks.isFullscreen.mockResolvedValue( false );
 	mocks.setFullscreen.mockResolvedValue( undefined );
+	listeners.clear();
+	mocks.listen.mockImplementation( async ( event, callback ) => {
+		listeners.set( event, callback );
+		return () => {};
+	} );
+	mocks.invoke.mockResolvedValue( undefined );
 	mocks.onResized.mockImplementation( async ( callback ) => {
 		onResized = callback;
 		return () => {};
@@ -228,4 +295,95 @@ it( 'leaves the slide mode when full screen ends', async () => {
 	expect( sentOf( 'slide-mode' ) ).toEqual( [
 		{ type: 'slide-mode', enabled: false },
 	] );
+} );
+
+it( 'moves the preview to the place the preview asks for', async () => {
+	await render( MARP );
+	await receive( { type: 'placement-request', placement: 'window' } );
+	expect( previewPlacement() ).toBe( 'window' );
+	setSlidePreviewPlacement( 'panel' );
+} );
+
+describe( 'in a window', () => {
+	beforeEach( () => {
+		setSlidePreviewShown( true );
+	} );
+
+	it( 'opens the window, and closes it when the preview moves', async () => {
+		await render( MARP, { placement: 'window' } );
+		expect( mocks.invoke ).toHaveBeenLastCalledWith(
+			'open_preview',
+			expect.anything()
+		);
+
+		await render( MARP, { placement: 'panel' } );
+		expect( mocks.invoke ).toHaveBeenLastCalledWith( 'close_preview' );
+	} );
+
+	it( 'does not open the window after the preview turns off', async () => {
+		let finishOpen = () => {};
+		mocks.invoke.mockImplementation( ( command ) =>
+			command === 'open_preview'
+				? new Promise< void >( ( resolve ) => {
+						finishOpen = resolve;
+					} )
+				: Promise.resolve()
+		);
+		await render( MARP, { placement: 'window' } );
+		await render( MARP, { placement: 'window', isShown: false } );
+		expect( mocks.invoke ).not.toHaveBeenCalledWith( 'close_preview' );
+
+		await act( async () => finishOpen() );
+		expect( mocks.invoke ).toHaveBeenLastCalledWith( 'close_preview' );
+	} );
+
+	it( 'closes the window when the preview is off', async () => {
+		await render( MARP, { placement: 'window' } );
+		await render( MARP, { placement: 'window', isShown: false } );
+		expect( mocks.invoke ).toHaveBeenLastCalledWith( 'close_preview' );
+	} );
+
+	it( 'sends the slides when the window loads', async () => {
+		await render( MARP, { placement: 'window' } );
+		act( () => sync.onSelectedLineChange( 4 ) );
+		mocks.emitTo.mockClear();
+
+		await act( async () =>
+			listeners.get( 'preview-event' )?.( {
+				payload: { type: 'ready' },
+			} )
+		);
+		expect( emitted() ).toContainEqual( {
+			type: 'slides',
+			slides: { html: MARP.content, css: '' },
+		} );
+		expect( emitted() ).toContainEqual( {
+			type: 'selected-line',
+			line: 4,
+		} );
+	} );
+
+	it( 'tells the window when the document is not a deck', async () => {
+		await render( PLAIN, { placement: 'window' } );
+		expect( emitted() ).toContainEqual( {
+			type: 'slides',
+			slides: { notice: 'Not a Marp document' },
+		} );
+	} );
+
+	it( 'turns the preview off when the user closes the window', async () => {
+		await render( MARP, { placement: 'window' } );
+		await act( async () =>
+			listeners.get( 'preview-window-closed' )?.( {} )
+		);
+		expect( isPreviewShown() ).toBe( false );
+	} );
+
+	it( 'keeps the preview on when the window closes as it moves', async () => {
+		await render( MARP, { placement: 'panel' } );
+		await act( async () =>
+			listeners.get( 'preview-window-closed' )?.( {} )
+		);
+		expect( isPreviewShown() ).toBe( true );
+	} );
 } );

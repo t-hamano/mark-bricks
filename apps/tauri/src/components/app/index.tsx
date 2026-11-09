@@ -43,7 +43,10 @@ import usePreviewSync from '../../hooks/use-preview-sync';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
 import { createPlatform } from '../../platform';
-import { useSlidePreviewShown } from '../../preview/visibility';
+import {
+	useSlidePreviewPlacement,
+	useSlidePreviewShown,
+} from '../../preview/visibility';
 import tabsStore from '../../store';
 import './style.scss';
 
@@ -110,6 +113,7 @@ export function App() {
 
 	const { setTabContent, setTabDirty } = useDispatch( tabsStore );
 	const showSlidePreview = useSlidePreviewShown();
+	const slidePreviewPlacement = useSlidePreviewPlacement();
 
 	// Relative image paths resolve against the active document's folder, so
 	// the platform changes with it (e.g. when an untitled tab is saved).
@@ -120,7 +124,9 @@ export function App() {
 	useAppCloseGuard( { tabs, pendingCloseId } );
 	const { frameRef, onSelectedLineChange, isSlideMode } = usePreviewSync(
 		activeTab,
-		editorRef
+		editorRef,
+		showSlidePreview,
+		slidePreviewPlacement
 	);
 	const isMarp = isMarpDocument( activeTab?.content ?? '' );
 
@@ -154,6 +160,7 @@ export function App() {
 						onSelectedLineChange={ onSelectedLineChange }
 						sidePanel={
 							showSlidePreview &&
+							slidePreviewPlacement === 'panel' &&
 							isMarp && (
 								<SlidePreview
 									frameRef={ frameRef }

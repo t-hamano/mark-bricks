@@ -86,6 +86,43 @@ fn report_rendered(app: tauri::AppHandle, path: String, previews: serde_json::Va
     });
 }
 
+/// Label of the slide preview window.
+const PREVIEW_WINDOW: &str = "preview";
+
+/// Opens the slide preview window, or brings it to the front when it is
+/// already open. The window shows its controls in `locale`, the WordPress
+/// locale slug the main window applied. Async because creating a window from
+/// a synchronous command deadlocks on Windows.
+#[tauri::command]
+async fn open_preview(app: tauri::AppHandle, title: String, locale: String) -> Result<(), String> {
+    if let Some(window) = app.get_webview_window(PREVIEW_WINDOW) {
+        let _ = window.unminimize();
+        return window.set_focus().map_err(|e| e.to_string());
+    }
+    tauri::WebviewWindowBuilder::new(
+        &app,
+        PREVIEW_WINDOW,
+        tauri::WebviewUrl::App(
+            format!("pages/preview.html?placement=window&locale={locale}").into(),
+        ),
+    )
+    .title(title)
+    .inner_size(960.0, 540.0)
+    .min_inner_size(320.0, 180.0)
+    .build()
+    .map(|_| ())
+    .map_err(|e| e.to_string())
+}
+
+/// Closes the slide preview window, if it is open.
+#[tauri::command]
+fn close_preview(app: tauri::AppHandle) -> Result<(), String> {
+    match app.get_webview_window(PREVIEW_WINDOW) {
+        Some(window) => window.destroy().map_err(|e| e.to_string()),
+        None => Ok(()),
+    }
+}
+
 /// Result variants for `set_as_default_markdown_handler`.
 /// - `"set"`: we changed the default handler directly.
 /// - `"declined"`: the user dismissed the macOS confirmation.
@@ -418,6 +455,28 @@ pub fn run() {
             }
             Ok(())
         })
+        .on_window_event(|window, event| {
+            let app = window.app_handle();
+            match (window.label(), event) {
+                // The preview belongs to the main window, so it closes with
+                // it. `Destroyed` fires only once the close guard has let the
+                // main window go.
+                ("main", tauri::WindowEvent::Destroyed) => {
+                    if let Some(preview) = app.get_webview_window(PREVIEW_WINDOW) {
+                        let _ = preview.destroy();
+                    }
+                }
+                // Lets the main window turn the preview off when the user
+                // closes its window. The app's own `destroy` skips
+                // `CloseRequested`, so a window that the app closes, when the
+                // preview is already off or moves next to the editor, sends
+                // nothing that could arrive after the preview is back on.
+                (PREVIEW_WINDOW, tauri::WindowEvent::CloseRequested { .. }) => {
+                    let _ = app.emit_to("main", "preview-window-closed", ());
+                }
+                _ => {}
+            }
+        })
         .manage(Documents::default())
         .manage(ai_request::AiRequests::default())
         .plugin(tauri_plugin_store::Builder::new().build())
@@ -436,6 +495,8 @@ pub fn run() {
             take_pending_documents,
             report_rendered,
             remember_documents_for_relaunch,
+            open_preview,
+            close_preview,
             set_as_default_markdown_handler,
             api_key::save_ai_api_key,
             api_key::delete_ai_api_key,
