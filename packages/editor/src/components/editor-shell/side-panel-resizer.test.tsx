@@ -75,9 +75,9 @@ describe( 'SidePanelResizer', () => {
 		const onChange = vi.fn();
 		const bar = renderResizer( onChange );
 		pointer( bar, 'pointerdown', 500 );
-		pointer( window, 'pointermove', 450 );
-		expect( onChange ).toHaveBeenLastCalledWith( 55 );
-		pointer( window, 'pointerup', 450 );
+		pointer( window, 'pointermove', 400 );
+		expect( onChange ).toHaveBeenLastCalledWith( 60 );
+		pointer( window, 'pointerup', 400 );
 		pointer( window, 'pointermove', 800 );
 		expect( onChange ).toHaveBeenCalledTimes( 1 );
 	} );
