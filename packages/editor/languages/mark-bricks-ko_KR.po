@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:07:01.634Z\n"
-"PO-Revision-Date: 2026-11-09T14:08:50.427Z\n"
+"POT-Creation-Date: 2026-11-09T14:29:03.392Z\n"
+"PO-Revision-Date: 2026-11-09T14:29:26.885Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -81,6 +81,10 @@ msgstr "안건"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+msgid "All categories"
+msgstr "모든 카테고리"
+
 #: src/format-library/image/inline.tsx:147
 #: src/block-library/image/edit.tsx:233
 msgid "Alt text"
@@ -137,6 +141,10 @@ msgstr "실행"
 msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "글머리 기호"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+msgid "Category"
+msgstr "카테고리"
 
 #: src/block-library/quote/edit.tsx:100
 msgid "Caution"
@@ -589,6 +597,10 @@ msgstr "다음 단계"
 msgid "No matching language."
 msgstr "일치하는 언어가 없습니다."
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+msgid "No slide patterns found."
+msgstr "슬라이드 패턴을 찾을 수 없습니다."
+
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "참고"
@@ -847,7 +859,7 @@ msgstr "크기"
 msgid "Slide Separator"
 msgstr "슬라이드 구분자"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:129
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
 #: src/components/inserter-sidebar/index.tsx:297
 msgid "Slide patterns"
 msgstr "슬라이드 패턴"

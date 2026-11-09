@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:07:01.634Z\n"
-"PO-Revision-Date: 2026-11-09T14:08:53.018Z\n"
+"POT-Creation-Date: 2026-11-09T14:29:03.392Z\n"
+"PO-Revision-Date: 2026-11-09T14:29:29.603Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -81,6 +81,10 @@ msgstr "议程"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+msgid "All categories"
+msgstr "所有分类"
+
 #: src/format-library/image/inline.tsx:147
 #: src/block-library/image/edit.tsx:233
 msgid "Alt text"
@@ -137,6 +141,10 @@ msgstr "执行"
 msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "项目符号"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+msgid "Category"
+msgstr "分类"
 
 #: src/block-library/quote/edit.tsx:100
 msgid "Caution"
@@ -588,6 +596,10 @@ msgstr "后续步骤"
 msgid "No matching language."
 msgstr "没有匹配的语言。"
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+msgid "No slide patterns found."
+msgstr "未找到幻灯片模式。"
+
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "说明"
@@ -846,7 +858,7 @@ msgstr "尺寸"
 msgid "Slide Separator"
 msgstr "幻灯片分隔符"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:129
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
 #: src/components/inserter-sidebar/index.tsx:297
 msgid "Slide patterns"
 msgstr "幻灯片模式"
