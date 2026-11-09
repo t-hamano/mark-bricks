@@ -82,14 +82,14 @@ describe( 'SidePanelResizer', () => {
 		expect( onChange ).toHaveBeenCalledTimes( 1 );
 	} );
 
-	it( 'keeps the side panel between 30% and 90% of the width', () => {
+	it( 'keeps the content between 30% and 90% of the width', () => {
 		const onChange = vi.fn();
 		const bar = renderResizer( onChange );
 		pointer( bar, 'pointerdown', 500 );
 		pointer( window, 'pointermove', 0 );
-		expect( onChange ).toHaveBeenLastCalledWith( 90 );
+		expect( onChange ).toHaveBeenLastCalledWith( 70 );
 		pointer( window, 'pointermove', 1000 );
-		expect( onChange ).toHaveBeenLastCalledWith( 30 );
+		expect( onChange ).toHaveBeenLastCalledWith( 10 );
 	} );
 
 	it( 'moves with the arrow keys', () => {

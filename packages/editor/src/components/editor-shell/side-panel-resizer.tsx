@@ -15,13 +15,14 @@ import {
 import { __, isRTL } from '@wordpress/i18n';
 
 export const DEFAULT_SIDE_PANEL_SIZE = 50;
+// The content's share of the width, in percent, that the bar keeps between.
 const MIN_SIZE = 30;
 const MAX_SIZE = 90;
 const KEYBOARD_STEP = 5;
 const OVERLAY_CLASS = 'editor-shell__side-panel-resize-overlay';
 
 export function clampSidePanelSize( size: number ): number {
-	return Math.min( MAX_SIZE, Math.max( MIN_SIZE, size ) );
+	return Math.min( 100 - MIN_SIZE, Math.max( 100 - MAX_SIZE, size ) );
 }
 
 type Props = {
@@ -132,8 +133,8 @@ export function SidePanelResizer( {
 			aria-orientation="vertical"
 			aria-label={ __( 'Resize side panel', 'mark-bricks' ) }
 			aria-valuenow={ Math.round( 100 - size ) }
-			aria-valuemin={ 100 - MAX_SIZE }
-			aria-valuemax={ 100 - MIN_SIZE }
+			aria-valuemin={ MIN_SIZE }
+			aria-valuemax={ MAX_SIZE }
 			tabIndex={ 0 }
 			onPointerDown={ onPointerDown }
 			onKeyDown={ onKeyDown }
