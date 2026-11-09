@@ -116,4 +116,16 @@ describe( 'SidePanelResizer', () => {
 		} );
 		expect( onChange ).toHaveBeenLastCalledWith( 45 );
 	} );
+
+	it( 'gives the frames the pointer back when it goes away mid-drag', () => {
+		const bar = renderResizer( vi.fn() );
+		pointer( bar, 'pointerdown', 500 );
+		expect(
+			document.body.classList.contains( 'is-resizing-side-panel' )
+		).toBe( true );
+		act( () => root.render( null ) );
+		expect(
+			document.body.classList.contains( 'is-resizing-side-panel' )
+		).toBe( false );
+	} );
 } );
