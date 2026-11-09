@@ -3,8 +3,8 @@
  */
 import { browser } from '@marp-team/marp-core/browser';
 import { useLayoutEffect, useRef } from 'react';
-// The web fonts of the built-in Gaia theme. The patterns hold no code, so
-// they need no monospace font.
+// The web fonts of the built-in Gaia theme. Its monospace font is left out:
+// the code in a preview is too small to tell it from the system's own.
 import '@fontsource/lato/400.css';
 import '@fontsource/lato/900.css';
 

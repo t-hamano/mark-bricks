@@ -68,6 +68,7 @@ describe( 'renderSlidePatternPreviews', () => {
 				{
 					name: 'styled',
 					title: () => 'Styled',
+					categories: [ 'text' ],
 					markdown: '<style>h1 { color: red; }</style>\n\n# Title',
 					strings: () => ( {} ),
 				},
