@@ -37,7 +37,7 @@ export default function SlidePreview( { frameRef, isSlideMode }: Props ) {
 				isSlideMode ? 'slide-preview is-slide-mode' : 'slide-preview'
 			}
 			title={ __( 'Slide Preview', 'mark-bricks' ) }
-			src={ `${ PREVIEW_PAGE }?locale=${ encodeURIComponent(
+			src={ `${ PREVIEW_PAGE }?placement=panel&locale=${ encodeURIComponent(
 				getLocale()
 			) }` }
 		/>
