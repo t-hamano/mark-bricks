@@ -66,6 +66,7 @@
 	cursor: col-resize;
 	touch-action: none;
 
+	&:hover,
 	&:focus-visible {
 		outline: none;
 		background: linear-gradient(var(--wpds-color-stroke-focus), var(--wpds-color-stroke-focus)) center / var(--wpds-border-width-focus) 100% no-repeat;
