@@ -56,12 +56,10 @@ describe( 'SidePanelResizer', () => {
 			)
 		);
 		const bar = container.querySelector( '[role="separator"]' )!;
-		( bar as HTMLElement ).setPointerCapture = vi.fn();
-		( bar as HTMLElement ).hasPointerCapture = () => false;
 		return bar as HTMLElement;
 	}
 
-	function pointer( bar: HTMLElement, type: string, clientX: number ) {
+	function pointer( target: EventTarget, type: string, clientX: number ) {
 		const event = new MouseEvent( type, {
 			bubbles: true,
 			button: 0,
@@ -69,7 +67,7 @@ describe( 'SidePanelResizer', () => {
 		} );
 		Object.defineProperty( event, 'pointerId', { value: 1 } );
 		act( () => {
-			bar.dispatchEvent( event );
+			target.dispatchEvent( event );
 		} );
 	}
 
@@ -77,10 +75,10 @@ describe( 'SidePanelResizer', () => {
 		const onChange = vi.fn();
 		const bar = renderResizer( onChange );
 		pointer( bar, 'pointerdown', 500 );
-		pointer( bar, 'pointermove', 300 );
+		pointer( window, 'pointermove', 300 );
 		expect( onChange ).toHaveBeenLastCalledWith( 70 );
-		pointer( bar, 'pointerup', 300 );
-		pointer( bar, 'pointermove', 800 );
+		pointer( window, 'pointerup', 300 );
+		pointer( window, 'pointermove', 800 );
 		expect( onChange ).toHaveBeenCalledTimes( 1 );
 	} );
 
@@ -88,9 +86,9 @@ describe( 'SidePanelResizer', () => {
 		const onChange = vi.fn();
 		const bar = renderResizer( onChange );
 		pointer( bar, 'pointerdown', 500 );
-		pointer( bar, 'pointermove', 0 );
+		pointer( window, 'pointermove', 0 );
 		expect( onChange ).toHaveBeenLastCalledWith( 90 );
-		pointer( bar, 'pointermove', 1000 );
+		pointer( window, 'pointermove', 1000 );
 		expect( onChange ).toHaveBeenLastCalledWith( 30 );
 	} );
 
@@ -117,15 +115,12 @@ describe( 'SidePanelResizer', () => {
 		expect( onChange ).toHaveBeenLastCalledWith( 45 );
 	} );
 
-	it( 'gives the frames the pointer back when it goes away mid-drag', () => {
+	it( 'removes its overlay when it goes away mid-drag', () => {
 		const bar = renderResizer( vi.fn() );
 		pointer( bar, 'pointerdown', 500 );
-		expect(
-			document.body.classList.contains( 'is-resizing-side-panel' )
-		).toBe( true );
+		const overlay = '.editor-shell__side-panel-resize-overlay';
+		expect( document.querySelector( overlay ) ).not.toBeNull();
 		act( () => root.render( null ) );
-		expect(
-			document.body.classList.contains( 'is-resizing-side-panel' )
-		).toBe( false );
+		expect( document.querySelector( overlay ) ).toBeNull();
 	} );
 } );
