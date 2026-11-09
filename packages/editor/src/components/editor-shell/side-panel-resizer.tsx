@@ -15,7 +15,7 @@ import {
 import { __, isRTL } from '@wordpress/i18n';
 
 export const DEFAULT_SIDE_PANEL_SIZE = 50;
-const MIN_SIZE = 10;
+const MIN_SIZE = 30;
 const MAX_SIZE = 90;
 const KEYBOARD_STEP = 5;
 const RESIZING_CLASS = 'is-resizing-side-panel';
