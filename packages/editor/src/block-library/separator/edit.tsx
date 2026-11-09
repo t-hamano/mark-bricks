@@ -21,7 +21,9 @@ export default function Edit() {
 	if ( isMarp ) {
 		return (
 			<div { ...blockProps } role="separator">
+				<div className="wp-block-separator__line" aria-hidden="true" />
 				{ __( 'Slide Separator', 'mark-bricks' ) }
+				<div className="wp-block-separator__line" aria-hidden="true" />
 			</div>
 		);
 	}
