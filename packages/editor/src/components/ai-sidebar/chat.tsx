@@ -3,6 +3,7 @@
  */
 import {
 	useEffect,
+	useLayoutEffect,
 	useRef,
 	useState,
 	type FormEvent,
@@ -118,6 +119,7 @@ export function AiChat( { ai, chat, selectionSummary }: Props ) {
 	const [ draft, setDraft ] = useState( '' );
 	const [ hasApiKey, setHasApiKey ] = useState< boolean | null >( null );
 	const messagesRef = useRef< HTMLDivElement >( null );
+	const inputRef = useRef< HTMLTextAreaElement >( null );
 
 	useEffect( () => {
 		let cancelled = false;
@@ -137,6 +139,31 @@ export function AiChat( { ai, chat, selectionSummary }: Props ) {
 			element.scrollTop = element.scrollHeight;
 		}
 	}, [ conversation ] );
+
+	// Grow the message box with its text, up to the height the stylesheet
+	// allows. `field-sizing: content` is not supported by every webview the
+	// apps run in. The width changes the wrapping too, for example while the
+	// sidebar opens.
+	useLayoutEffect( () => {
+		const input = inputRef.current;
+		if ( ! input ) {
+			return;
+		}
+		const fitToText = () => {
+			input.style.height = 'auto';
+			input.style.height = `${ input.scrollHeight }px`;
+		};
+		fitToText();
+		let width = input.clientWidth;
+		const observer = new ResizeObserver( () => {
+			if ( input.clientWidth !== width ) {
+				width = input.clientWidth;
+				fitToText();
+			}
+		} );
+		observer.observe( input );
+		return () => observer.disconnect();
+	}, [ draft ] );
 
 	const canSend = !! draft.trim() && ! isResponding;
 
@@ -225,6 +252,7 @@ export function AiChat( { ai, chat, selectionSummary }: Props ) {
 			>
 				<Stack direction="row" align="flex-end" gap="sm">
 					<TextareaControl
+						ref={ inputRef }
 						className="ai-chat__input"
 						label={ __( 'Message', 'mark-bricks' ) }
 						hideLabelFromVision

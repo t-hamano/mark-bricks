@@ -76,5 +76,9 @@
 	// (line-height 1.4), plus the padding and the 1px borders.
 	textarea {
 		--wp-ui-input-padding-block: calc((var(--wpds-dimension-size-md) - 2px - 1.4em) / 2);
+
+		// The chat grows the box with its text, up to about eight lines.
+		max-height: 12em;
+		resize: none;
 	}
 }
