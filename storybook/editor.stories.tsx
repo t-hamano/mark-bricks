@@ -12,6 +12,11 @@ import * as fixtures from '@mark-bricks/fixtures';
  */
 import { Button } from '@wordpress/ui';
 
+/**
+ * Internal dependencies
+ */
+import { SlidePreview } from './slide-preview';
+
 const meta: Meta< typeof Editor > = {
 	component: Editor,
 	title: 'Editor',
@@ -64,9 +69,37 @@ type Story = StoryObj< typeof Editor >;
 
 export const Default: Story = {};
 
+// Shows the slides next to the editor, as the app does, in a frame that the
+// bar between them resizes.
 export const WithMarpDeck: Story = {
 	args: {
 		content: fixtures.marp,
+	},
+	render: function Render( args ) {
+		const [ content, setContent ] = useState( args.content ?? '' );
+		const [ , updateArgs ] = useArgs();
+		const editorMode = args.editorMode ?? 'visual';
+		return (
+			<div style={ { height: '100vh' } }>
+				<Editor
+					{ ...args }
+					content={ content }
+					onChange={ ( next ) => {
+						setContent( next );
+						args.onChange( next );
+					} }
+					onEditorModeChange={ ( value ) =>
+						updateArgs( {
+							editorMode:
+								typeof value === 'function'
+									? value( editorMode )
+									: value,
+						} )
+					}
+					sidePanel={ <SlidePreview markdown={ content } /> }
+				/>
+			</div>
+		);
 	},
 };
 
