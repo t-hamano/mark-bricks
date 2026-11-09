@@ -14,6 +14,14 @@
 		background-color: transparent;
 		color: var(--wpds-color-foreground-content-neutral-weak);
 		font-size: 0.85em;
+
+		// A slide break spans the whole canvas, past the content width. The
+		// class is repeated to outrank the root container's layout rule,
+		// which caps every block at the content width and comes later in the
+		// canvas stylesheet with the same specificity.
+		&.is-slide-separator {
+			max-width: none;
+		}
 	}
 }
 
@@ -21,9 +29,4 @@
 	flex: 1;
 	height: 3px;
 	background-color: var(--wpds-color-stroke-surface-neutral);
-}
-
-// A slide break spans the whole canvas, past the content width.
-.block-editor-block-list__layout.is-root-container > .wp-block-separator.is-slide-separator {
-	max-width: none;
 }
