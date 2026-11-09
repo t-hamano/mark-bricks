@@ -16,7 +16,7 @@ import {
 /**
  * WordPress dependencies
  */
-import { useSelect, useDispatch } from '@wordpress/data';
+import { useSelect, useDispatch, useRegistry } from '@wordpress/data';
 import {
 	store as blockEditorStore,
 	BlockIcon,
@@ -47,6 +47,10 @@ import { useFrontMatter } from '../front-matter-editor/context';
 import { store as editorStore } from '../../store';
 import { SIDEBAR_WIDTH, SIDEBAR_TRANSITION } from '../constants';
 import { SlidePatternList } from './slide-pattern-list';
+import {
+	getInsertionTarget,
+	useInsertionPointPreview,
+} from './insertion-target';
 import './style.scss';
 
 const BLOCKS_PER_ROW = 2;
@@ -67,7 +71,9 @@ type Props = {
 
 export function InserterSidebar( { toggleRef }: Props ) {
 	const { setIsInserterOpened } = useDispatch( editorStore );
-	const { insertBlock } = useDispatch( blockEditorStore );
+	const { insertBlock, replaceBlock } = useDispatch( blockEditorStore );
+	const registry = useRegistry();
+	const preview = useInsertionPointPreview();
 	const items = useSelect(
 		( select ) => select( blockEditorStore ).getInserterItems(),
 		[]
@@ -137,9 +143,16 @@ export function InserterSidebar( { toggleRef }: Props ) {
 
 	const onSelectItem = useCallback(
 		( item: EditorInserterItem ) => {
-			insertBlock( createBlock( item.name, item.initialAttributes ) );
+			const block = createBlock( item.name, item.initialAttributes );
+			const { index, replaceClientId } = getInsertionTarget( registry );
+			if ( replaceClientId ) {
+				replaceBlock( replaceClientId, block );
+			} else {
+				insertBlock( block, index, '' );
+			}
+			preview.hide();
 		},
-		[ insertBlock ]
+		[ insertBlock, replaceBlock, registry, preview ]
 	);
 
 	const blockList = (
@@ -164,6 +177,10 @@ export function InserterSidebar( { toggleRef }: Props ) {
 							role="option"
 							className="inserter-sidebar__block-list-item"
 							onClick={ () => onSelectItem( item ) }
+							onMouseEnter={ preview.show }
+							onMouseLeave={ preview.hide }
+							onFocus={ preview.show }
+							onBlur={ preview.hide }
 							render={
 								<Button variant="minimal" tone="neutral" />
 							}
