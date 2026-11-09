@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:36:19.677Z\n"
-"PO-Revision-Date: 2026-11-09T14:36:20.980Z\n"
+"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
+"PO-Revision-Date: 2026-11-09T14:46:21.854Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,6 +95,10 @@ msgstr "アジェンダ"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+msgid "All categories"
+msgstr "すべてのカテゴリー"
+
 #: src/format-library/image/inline.tsx:147
 #: src/block-library/image/edit.tsx:233
 msgid "Alt text"
@@ -106,11 +110,11 @@ msgstr "代替テキスト"
 msgid "Apply"
 msgstr "適用"
 
-#: src/components/ai-sidebar/chat.tsx:231
+#: src/components/ai-sidebar/chat.tsx:259
 msgid "Ask the AI Assistant"
 msgstr "AI アシスタントに質問"
 
-#: src/components/ai-sidebar/chat.tsx:210
+#: src/components/ai-sidebar/chat.tsx:237
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -151,6 +155,10 @@ msgstr "実行"
 msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "箇条書き"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+msgid "Category"
+msgstr "カテゴリー"
 
 #: src/block-library/quote/edit.tsx:100
 msgid "Caution"
@@ -319,7 +327,7 @@ msgstr "画像を編集"
 msgid "Edit table"
 msgstr "表を編集"
 
-#: src/components/ai-sidebar/chat.tsx:65
+#: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr "ドキュメントを編集しました。"
 
@@ -569,7 +577,7 @@ msgstr ""
 "bg、w:200px、sepia などの Marp キーワードでレイアウトとサイズを指定します。そ"
 "れ以外の語は代替テキスト、背景画像の場合はキャプションになります。"
 
-#: src/components/ai-sidebar/chat.tsx:229
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "メッセージ"
 
@@ -612,6 +620,10 @@ msgstr "選択中のブロックなし"
 msgid "No matching language."
 msgstr "一致する言語がありません。"
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+msgid "No slide patterns found."
+msgstr "スライドパターンが見つかりません。"
+
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "ノート"
@@ -630,7 +642,7 @@ msgstr "全員に覚えてほしいひとこと"
 msgid "Open by default"
 msgstr "デフォルトで開く"
 
-#: src/components/ai-sidebar/chat.tsx:202
+#: src/components/ai-sidebar/chat.tsx:229
 msgid "Open settings"
 msgstr "設定を開く"
 
@@ -835,11 +847,11 @@ msgstr "セクションのタイトル"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "その他の設定は<a>Marp のドキュメント</a>を参照してください。"
 
-#: src/components/ai-sidebar/chat.tsx:252
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Send"
 msgstr "送信"
 
-#: src/components/ai-sidebar/chat.tsx:192
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI アシスタントを使うには API キーを設定してください。"
 
@@ -870,7 +882,7 @@ msgstr "サイズ"
 msgid "Slide Separator"
 msgstr "スライド区切り"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:129
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
 #: src/components/inserter-sidebar/index.tsx:297
 msgid "Slide patterns"
 msgstr "スライドパターン"
@@ -901,11 +913,11 @@ msgctxt "slide pattern"
 msgid "Steps"
 msgstr "ステップ"
 
-#: src/components/ai-sidebar/chat.tsx:243
+#: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:78
+#: src/components/ai-sidebar/chat.tsx:79
 msgid "Stopped."
 msgstr "停止しました。"
 
@@ -949,7 +961,7 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "ありがとうございました"
 
-#: src/components/ai-sidebar/chat.tsx:85
+#: src/components/ai-sidebar/chat.tsx:86
 msgid "The answer could not be loaded."
 msgstr "回答を読み込めませんでした。"
 
@@ -961,7 +973,7 @@ msgstr "スライドの縦横比。"
 msgid "The diagram could not be rendered."
 msgstr "図を描画できませんでした。"
 
-#: src/components/ai-sidebar/chat.tsx:70
+#: src/components/ai-sidebar/chat.tsx:71
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1086,7 +1098,7 @@ msgstr "デバイスから画像をアップロードするか、URL から挿�
 msgid "Visual markdown block editor."
 msgstr "ビジュアルマークダウンブロックエディター。"
 
-#: src/components/ai-sidebar/chat.tsx:54
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Waiting for the answer…"
 msgstr "回答を待っています…"
 

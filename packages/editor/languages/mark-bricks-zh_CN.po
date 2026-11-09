@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:36:19.677Z\n"
-"PO-Revision-Date: 2026-11-09T14:36:28.724Z\n"
+"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
+"PO-Revision-Date: 2026-11-09T14:46:29.346Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,6 +95,10 @@ msgstr "议程"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+msgid "All categories"
+msgstr "所有分类"
+
 #: src/format-library/image/inline.tsx:147
 #: src/block-library/image/edit.tsx:233
 msgid "Alt text"
@@ -106,11 +110,11 @@ msgstr "替代文字"
 msgid "Apply"
 msgstr "应用"
 
-#: src/components/ai-sidebar/chat.tsx:231
+#: src/components/ai-sidebar/chat.tsx:259
 msgid "Ask the AI Assistant"
 msgstr "询问 AI 助手"
 
-#: src/components/ai-sidebar/chat.tsx:210
+#: src/components/ai-sidebar/chat.tsx:237
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -151,6 +155,10 @@ msgstr "执行"
 msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "项目符号"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+msgid "Category"
+msgstr "分类"
 
 #: src/block-library/quote/edit.tsx:100
 msgid "Caution"
@@ -319,7 +327,7 @@ msgstr "编辑图片"
 msgid "Edit table"
 msgstr "编辑表格"
 
-#: src/components/ai-sidebar/chat.tsx:65
+#: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr "已编辑文档。"
 
@@ -569,7 +577,7 @@ msgstr ""
 "bg、w:200px、sepia 等 Marp 关键字用于设置布局和尺寸。其余文字将作为替代文字，"
 "背景图片则作为说明文字。"
 
-#: src/components/ai-sidebar/chat.tsx:229
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "消息"
 
@@ -611,6 +619,10 @@ msgstr "未选择区块"
 msgid "No matching language."
 msgstr "没有匹配的语言。"
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+msgid "No slide patterns found."
+msgstr "未找到幻灯片模式。"
+
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "说明"
@@ -629,7 +641,7 @@ msgstr "希望每个人都记住的一句话"
 msgid "Open by default"
 msgstr "默认打开"
 
-#: src/components/ai-sidebar/chat.tsx:202
+#: src/components/ai-sidebar/chat.tsx:229
 msgid "Open settings"
 msgstr "打开设置"
 
@@ -834,11 +846,11 @@ msgstr "章节标题"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 
-#: src/components/ai-sidebar/chat.tsx:252
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Send"
 msgstr "发送"
 
-#: src/components/ai-sidebar/chat.tsx:192
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr "请设置 API 密钥以使用 AI 助手。"
 
@@ -869,7 +881,7 @@ msgstr "尺寸"
 msgid "Slide Separator"
 msgstr "幻灯片分隔符"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:129
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
 #: src/components/inserter-sidebar/index.tsx:297
 msgid "Slide patterns"
 msgstr "幻灯片模式"
@@ -900,11 +912,11 @@ msgctxt "slide pattern"
 msgid "Steps"
 msgstr "步骤"
 
-#: src/components/ai-sidebar/chat.tsx:243
+#: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:78
+#: src/components/ai-sidebar/chat.tsx:79
 msgid "Stopped."
 msgstr "已停止。"
 
@@ -948,7 +960,7 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "谢谢"
 
-#: src/components/ai-sidebar/chat.tsx:85
+#: src/components/ai-sidebar/chat.tsx:86
 msgid "The answer could not be loaded."
 msgstr "无法加载回答。"
 
@@ -960,7 +972,7 @@ msgstr "幻灯片的宽高比。"
 msgid "The diagram could not be rendered."
 msgstr "无法渲染图表。"
 
-#: src/components/ai-sidebar/chat.tsx:70
+#: src/components/ai-sidebar/chat.tsx:71
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1083,7 +1095,7 @@ msgstr "从设备上传图片或通过 URL 插入。"
 msgid "Visual markdown block editor."
 msgstr "可视化 Markdown 区块编辑器。"
 
-#: src/components/ai-sidebar/chat.tsx:54
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Waiting for the answer…"
 msgstr "正在等待回答…"
 

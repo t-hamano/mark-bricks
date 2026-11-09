@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:36:19.677Z\n"
-"PO-Revision-Date: 2026-11-09T14:36:21.664Z\n"
+"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
+"PO-Revision-Date: 2026-11-09T14:46:22.561Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,6 +95,10 @@ msgstr "Program"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+msgid "All categories"
+msgstr "Všechny kategorie"
+
 #: src/format-library/image/inline.tsx:147
 #: src/block-library/image/edit.tsx:233
 msgid "Alt text"
@@ -106,11 +110,11 @@ msgstr "Alternativní text"
 msgid "Apply"
 msgstr "Použít"
 
-#: src/components/ai-sidebar/chat.tsx:231
+#: src/components/ai-sidebar/chat.tsx:259
 msgid "Ask the AI Assistant"
 msgstr "Zeptejte se asistenta AI"
 
-#: src/components/ai-sidebar/chat.tsx:210
+#: src/components/ai-sidebar/chat.tsx:237
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -151,6 +155,10 @@ msgstr "Realizace"
 msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "Odrážky"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+msgid "Category"
+msgstr "Kategorie"
 
 #: src/block-library/quote/edit.tsx:100
 msgid "Caution"
@@ -319,7 +327,7 @@ msgstr "Upravit obrázek"
 msgid "Edit table"
 msgstr "Upravit tabulku"
 
-#: src/components/ai-sidebar/chat.tsx:65
+#: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr "Dokument byl upraven."
 
@@ -569,7 +577,7 @@ msgstr ""
 "Klíčová slova Marp jako bg, w:200px nebo sepia určují rozvržení a velikost. "
 "Ostatní slova se stanou alternativním textem nebo popiskem obrázku na pozadí."
 
-#: src/components/ai-sidebar/chat.tsx:229
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "Zpráva"
 
@@ -613,6 +621,10 @@ msgstr "Není vybrán žádný blok"
 msgid "No matching language."
 msgstr "Žádný odpovídající jazyk."
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+msgid "No slide patterns found."
+msgstr "Nebyly nalezeny žádné vzory snímků."
+
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "Poznámka"
@@ -631,7 +643,7 @@ msgstr "Jedno sdělení, které si mají všichni zapamatovat"
 msgid "Open by default"
 msgstr "Ve výchozím nastavení otevřeno"
 
-#: src/components/ai-sidebar/chat.tsx:202
+#: src/components/ai-sidebar/chat.tsx:229
 msgid "Open settings"
 msgstr "Otevřít nastavení"
 
@@ -836,11 +848,11 @@ msgstr "Název části"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
 
-#: src/components/ai-sidebar/chat.tsx:252
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Send"
 msgstr "Odeslat"
 
-#: src/components/ai-sidebar/chat.tsx:192
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr "Pro použití asistenta AI nastavte klíč API."
 
@@ -871,7 +883,7 @@ msgstr "Velikost"
 msgid "Slide Separator"
 msgstr "Oddělovač snímků"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:129
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
 #: src/components/inserter-sidebar/index.tsx:297
 msgid "Slide patterns"
 msgstr "Vzory snímků"
@@ -902,11 +914,11 @@ msgctxt "slide pattern"
 msgid "Steps"
 msgstr "Kroky"
 
-#: src/components/ai-sidebar/chat.tsx:243
+#: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/components/ai-sidebar/chat.tsx:78
+#: src/components/ai-sidebar/chat.tsx:79
 msgid "Stopped."
 msgstr "Zastaveno."
 
@@ -950,7 +962,7 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "Děkuji"
 
-#: src/components/ai-sidebar/chat.tsx:85
+#: src/components/ai-sidebar/chat.tsx:86
 msgid "The answer could not be loaded."
 msgstr "Odpověď se nepodařilo načíst."
 
@@ -962,7 +974,7 @@ msgstr "Poměr stran snímků."
 msgid "The diagram could not be rendered."
 msgstr "Diagram se nepodařilo vykreslit."
 
-#: src/components/ai-sidebar/chat.tsx:70
+#: src/components/ai-sidebar/chat.tsx:71
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1086,7 +1098,7 @@ msgstr "Nahrajte obrázek ze zařízení nebo jej vložte z adresy URL."
 msgid "Visual markdown block editor."
 msgstr "Vizuální blokový editor Markdownu."
 
-#: src/components/ai-sidebar/chat.tsx:54
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Waiting for the answer…"
 msgstr "Čekání na odpověď…"
 
