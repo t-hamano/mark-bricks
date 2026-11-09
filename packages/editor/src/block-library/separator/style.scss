@@ -22,3 +22,8 @@
 	height: 3px;
 	background-color: var(--wpds-color-stroke-surface-neutral);
 }
+
+// A slide break spans the whole canvas, past the content width.
+.block-editor-block-list__layout.is-root-container > .wp-block-separator.is-slide-separator {
+	max-width: none;
+}
