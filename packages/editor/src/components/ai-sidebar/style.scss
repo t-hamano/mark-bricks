@@ -50,11 +50,16 @@
 	max-width: 85%;
 	padding: var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-md);
 	border-radius: var(--wpds-border-radius-md);
-	background: var(--wpds-color-background-surface-neutral);
+	background: var(--wpds-color-background-surface-neutral-weak);
+}
+
+.ai-chat__spinner {
+	align-self: center;
 }
 
 .ai-chat__message-status,
-.ai-chat__intro {
+.ai-chat__intro,
+.ai-chat__selection {
 	color: var(--wpds-color-foreground-content-neutral-weak);
 }
 

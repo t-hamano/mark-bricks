@@ -8,13 +8,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:44:28.418Z\n"
-"PO-Revision-Date: 2026-11-08T14:44:34.936Z\n"
+"POT-Creation-Date: 2026-11-09T14:19:54.419Z\n"
+"PO-Revision-Date: 2026-11-09T14:20:03.285Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: zh_CN\n"
 "X-Domain: mark-bricks\n"
+
+# %d: The number of blocks.
+#: src/ai/selection-summary.ts:46
+msgid "%d block selected"
+msgid_plural "%d blocks selected"
+msgstr[0] "已选择 %d 个区块"
+msgstr[1] "已选择 %d 个区块"
+
+# %d: The number of lines.
+#: src/ai/selection-summary.ts:29
+msgid "%d line selected"
+msgid_plural "%d lines selected"
+msgstr[0] "已选择 %d 行"
+msgstr[1] "已选择 %d 行"
 
 #: src/components/list-view-outline/index.tsx:159
 msgid "(Empty heading)"
@@ -39,8 +53,8 @@ msgid "A short line about this section"
 msgstr "关于本节的简短说明"
 
 #: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/sidebar.tsx:60
-#: src/components/ai-sidebar/sidebar.tsx:91
+#: src/components/ai-sidebar/sidebar.tsx:61
+#: src/components/ai-sidebar/sidebar.tsx:92
 msgid "AI Assistant"
 msgstr "AI 助手"
 
@@ -66,11 +80,11 @@ msgstr "替代文字"
 msgid "Apply"
 msgstr "应用"
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:231
 msgid "Ask the AI Assistant"
 msgstr "询问 AI 助手"
 
-#: src/components/ai-sidebar/chat.tsx:198
+#: src/components/ai-sidebar/chat.tsx:210
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -87,8 +101,8 @@ msgstr "背景"
 msgid "Block Inserter"
 msgstr "区块插入器"
 
-#: src/components/inserter-sidebar/index.tsx:149
-#: src/components/inserter-sidebar/index.tsx:277
+#: src/components/inserter-sidebar/index.tsx:162
+#: src/components/inserter-sidebar/index.tsx:294
 msgid "Blocks"
 msgstr "区块"
 
@@ -131,8 +145,8 @@ msgid "Clear formatting"
 msgstr "清除格式"
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:261
-#: src/components/ai-sidebar/sidebar.tsx:106
+#: src/components/inserter-sidebar/index.tsx:278
+#: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr "关闭"
 
@@ -149,7 +163,7 @@ msgctxt "slide pattern"
 msgid "Closing"
 msgstr "结束"
 
-#: src/components/editor/index.tsx:105
+#: src/components/editor/index.tsx:111
 msgid "Code editor"
 msgstr "代码编辑器"
 
@@ -199,7 +213,7 @@ msgstr "编辑图片"
 msgid "Edit table"
 msgstr "编辑表格"
 
-#: src/components/ai-sidebar/chat.tsx:57
+#: src/components/ai-sidebar/chat.tsx:65
 msgid "Edited the document."
 msgstr "已编辑文档。"
 
@@ -322,6 +336,11 @@ msgstr "斜体"
 msgid "Language"
 msgstr "语言"
 
+# %d: The line number.
+#: src/ai/selection-summary.ts:22
+msgid "Line %d"
+msgstr "第 %d 行"
+
 #: src/format-library/link/index.tsx:36
 msgid "Link"
 msgstr "链接"
@@ -366,7 +385,7 @@ msgstr ""
 "bg、w:200px、sepia 等 Marp 关键字用于设置布局和尺寸。其余文字将作为替代文字，"
 "背景图片则作为说明文字。"
 
-#: src/components/ai-sidebar/chat.tsx:217
+#: src/components/ai-sidebar/chat.tsx:229
 msgid "Message"
 msgstr "消息"
 
@@ -380,7 +399,7 @@ msgid ""
 "incorrect heading levels."
 msgstr "浏览文档结构并解决标题级别为空或不正确等问题。"
 
-#: src/components/ai-sidebar/sidebar.tsx:96
+#: src/components/ai-sidebar/sidebar.tsx:97
 msgid "New conversation"
 msgstr "新对话"
 
@@ -388,6 +407,10 @@ msgstr "新对话"
 msgctxt "slide pattern"
 msgid "Next steps"
 msgstr "后续步骤"
+
+#: src/ai/selection-summary.ts:42
+msgid "No block selected"
+msgstr "未选择区块"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
@@ -401,7 +424,7 @@ msgstr "说明"
 msgid "Open by default"
 msgstr "默认打开"
 
-#: src/components/ai-sidebar/chat.tsx:190
+#: src/components/ai-sidebar/chat.tsx:202
 msgid "Open settings"
 msgstr "打开设置"
 
@@ -462,23 +485,27 @@ msgstr "移除链接。"
 msgid "Reset"
 msgstr "重置"
 
-#: src/components/inserter-sidebar/index.tsx:246
+#: src/components/inserter-sidebar/index.tsx:263
 msgid "Reset search"
 msgstr "重置搜索"
+
+#: src/components/editor-shell/side-panel-resizer.tsx:134
+msgid "Resize side panel"
+msgstr "调整侧边面板大小"
 
 #: src/block-library/table/edit.tsx:253
 msgid "Row count"
 msgstr "行数"
 
-#: src/components/inserter-sidebar/index.tsx:233
+#: src/components/inserter-sidebar/index.tsx:250
 msgid "Search"
 msgstr "搜索"
 
-#: src/components/inserter-sidebar/index.tsx:228
+#: src/components/inserter-sidebar/index.tsx:245
 msgid "Search for blocks"
 msgstr "搜索区块"
 
-#: src/components/inserter-sidebar/index.tsx:224
+#: src/components/inserter-sidebar/index.tsx:241
 msgid "Search for slide patterns"
 msgstr "搜索幻灯片模式"
 
@@ -501,11 +528,11 @@ msgstr "章节标题"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:252
 msgid "Send"
 msgstr "发送"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:192
 msgid "Set an API key to use the AI Assistant."
 msgstr "请设置 API 密钥以使用 AI 助手。"
 
@@ -536,8 +563,8 @@ msgstr "尺寸"
 msgid "Slide Separator"
 msgstr "幻灯片分隔符"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:92
-#: src/components/inserter-sidebar/index.tsx:280
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:129
+#: src/components/inserter-sidebar/index.tsx:297
 msgid "Slide patterns"
 msgstr "幻灯片模式"
 
@@ -546,11 +573,11 @@ msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "幻灯片标题"
 
-#: src/components/ai-sidebar/chat.tsx:228
+#: src/components/ai-sidebar/chat.tsx:243
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:70
+#: src/components/ai-sidebar/chat.tsx:78
 msgid "Stopped."
 msgstr "已停止。"
 
@@ -583,7 +610,7 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "谢谢"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:85
 msgid "The answer could not be loaded."
 msgstr "无法加载回答。"
 
@@ -595,7 +622,7 @@ msgstr "幻灯片的宽高比。"
 msgid "The diagram could not be rendered."
 msgstr "无法渲染图表。"
 
-#: src/components/ai-sidebar/chat.tsx:62
+#: src/components/ai-sidebar/chat.tsx:70
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -680,7 +707,7 @@ msgstr "从设备上传图片或通过 URL 插入。"
 msgid "Visual markdown block editor."
 msgstr "可视化 Markdown 区块编辑器。"
 
-#: src/components/ai-sidebar/chat.tsx:46
+#: src/components/ai-sidebar/chat.tsx:54
 msgid "Waiting for the answer…"
 msgstr "正在等待回答…"
 

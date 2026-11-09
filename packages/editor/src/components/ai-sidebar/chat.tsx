@@ -13,7 +13,7 @@ import {
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { arrowUp, square } from '@wordpress/icons';
+import { arrowUp } from '@wordpress/icons';
 import { isKeyboardEvent } from '@wordpress/keycodes';
 import {
 	IconButton,
@@ -31,6 +31,13 @@ import type { AssistantChatMessage, ChatMessage } from '../../ai/conversation';
 import type { AiChat as AiChatState } from '../../ai/use-ai-chat';
 import type { AiPlatform } from '../../platform';
 
+// A filled square, the usual stop symbol. `@wordpress/icons` has none.
+const stopIcon = (
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+		<path d="M7 7h10v10H7z" />
+	</svg>
+);
+
 function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 	const isWaiting =
 		message.status === 'streaming' && ! message.text && ! message.edit;
@@ -43,6 +50,7 @@ function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 		>
 			{ isWaiting && (
 				<Spinner
+					className="ai-chat__spinner"
 					aria-label={ __(
 						'Waiting for the answer…',
 						'mark-bricks'
@@ -99,9 +107,13 @@ function Message( { message }: { message: ChatMessage } ) {
 type Props = {
 	ai: AiPlatform;
 	chat: AiChatState;
+	/**
+	 * What is sent as the selection with the next message.
+	 */
+	selectionSummary: string | null;
 };
 
-export function AiChat( { ai, chat }: Props ) {
+export function AiChat( { ai, chat, selectionSummary }: Props ) {
 	const { conversation, isResponding, send, stop } = chat;
 	const [ draft, setDraft ] = useState( '' );
 	const [ hasApiKey, setHasApiKey ] = useState< boolean | null >( null );
@@ -208,36 +220,49 @@ export function AiChat( { ai, chat }: Props ) {
 			<Stack
 				render={ <form onSubmit={ onSubmit } /> }
 				className="ai-chat__composer"
-				direction="row"
-				align="flex-end"
-				gap="sm"
+				direction="column"
+				gap="xs"
 			>
-				<TextareaControl
-					className="ai-chat__input"
-					label={ __( 'Message', 'mark-bricks' ) }
-					hideLabelFromVision
-					placeholder={ __( 'Ask the AI Assistant', 'mark-bricks' ) }
-					rows={ 3 }
-					value={ draft }
-					onValueChange={ setDraft }
-					onKeyDown={ onKeyDown }
-				/>
-				{ isResponding ? (
-					<IconButton
-						icon={ square }
-						label={ __( 'Stop', 'mark-bricks' ) }
-						tone="neutral"
-						size="compact"
-						onClick={ stop }
+				<Stack direction="row" align="flex-end" gap="sm">
+					<TextareaControl
+						className="ai-chat__input"
+						label={ __( 'Message', 'mark-bricks' ) }
+						hideLabelFromVision
+						placeholder={ __(
+							'Ask the AI Assistant',
+							'mark-bricks'
+						) }
+						rows={ 1 }
+						value={ draft }
+						onValueChange={ setDraft }
+						onKeyDown={ onKeyDown }
 					/>
-				) : (
-					<IconButton
-						type="submit"
-						icon={ arrowUp }
-						label={ __( 'Send', 'mark-bricks' ) }
-						size="compact"
-						disabled={ ! canSend }
-					/>
+					{ isResponding ? (
+						<IconButton
+							icon={ stopIcon }
+							label={ __( 'Stop', 'mark-bricks' ) }
+							tone="neutral"
+							size="compact"
+							onClick={ stop }
+						/>
+					) : (
+						<IconButton
+							type="submit"
+							icon={ arrowUp }
+							label={ __( 'Send', 'mark-bricks' ) }
+							size="compact"
+							disabled={ ! canSend }
+						/>
+					) }
+				</Stack>
+				{ selectionSummary && (
+					<Text
+						variant="body-sm"
+						className="ai-chat__selection"
+						aria-live="polite"
+					>
+						{ selectionSummary }
+					</Text>
 				) }
 			</Stack>
 		</Stack>
