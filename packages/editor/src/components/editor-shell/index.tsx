@@ -6,6 +6,7 @@ import {
 	useImperativeHandle,
 	useMemo,
 	useRef,
+	useState,
 	type CSSProperties,
 	type Dispatch,
 	type ForwardedRef,
@@ -33,6 +34,10 @@ import '@wordpress/block-editor/build-style/style.css';
  * Internal dependencies
  */
 import { useInitialListView, useMarkdownDocument } from './hooks';
+import {
+	DEFAULT_SIDE_PANEL_SIZE,
+	SidePanelResizer,
+} from './side-panel-resizer';
 import { SourceLineSync, type SourceLineSyncHandle } from './source-line-sync';
 import { AiAssistant } from '../ai-sidebar';
 import { EditorFooter } from '../editor-footer';
@@ -82,6 +87,11 @@ export type EditorShellProps = {
 	// On a narrow viewport it takes the content's place, which stays
 	// mounted, hidden, so that it keeps its state.
 	sidePanel?: ReactNode;
+	// The side panel's share of the width, in percent, which the user changes
+	// with the bar between the content and the side panel. Left out, the
+	// shell keeps it itself, starting at half.
+	sidePanelSize?: number;
+	onSidePanelSizeChange?: ( size: number ) => void;
 	children: ReactNode;
 };
 
@@ -97,6 +107,8 @@ function UnforwardedEditorShell(
 		platform,
 		onSelectedLineChange,
 		sidePanel,
+		sidePanelSize: controlledSidePanelSize,
+		onSidePanelSizeChange,
 		children,
 	}: EditorShellProps,
 	ref: ForwardedRef< EditorHandle >
@@ -118,6 +130,16 @@ function UnforwardedEditorShell(
 	const textEditorRef = useRef< MonacoEditor.IStandaloneCodeEditor >( null );
 	const hasAi = !! platform?.ai;
 	const hasSidePanel = !! sidePanel;
+	const contentRef = useRef< HTMLElement >( null );
+	const sidePanelRef = useRef< HTMLDivElement >( null );
+	const [ ownSidePanelSize, setOwnSidePanelSize ] = useState(
+		DEFAULT_SIDE_PANEL_SIZE
+	);
+	const sidePanelSize = controlledSidePanelSize ?? ownSidePanelSize;
+	function setSidePanelSize( size: number ) {
+		setOwnSidePanelSize( size );
+		onSidePanelSizeChange?.( size );
+	}
 
 	const {
 		blocks,
@@ -236,13 +258,31 @@ function UnforwardedEditorShell(
 									) }
 								</AnimatePresence>
 								<main
+									ref={ contentRef }
 									className="editor-shell__content"
 									hidden={ hasSidePanel && isMobileViewport }
+									style={
+										hasSidePanel
+											? { flexGrow: 100 - sidePanelSize }
+											: undefined
+									}
 								>
 									{ children }
 								</main>
 								{ hasSidePanel && (
-									<div className="editor-shell__side-panel">
+									<div
+										ref={ sidePanelRef }
+										className="editor-shell__side-panel"
+										style={ { flexGrow: sidePanelSize } }
+									>
+										{ ! isMobileViewport && (
+											<SidePanelResizer
+												contentRef={ contentRef }
+												sidePanelRef={ sidePanelRef }
+												size={ sidePanelSize }
+												onChange={ setSidePanelSize }
+											/>
+										) }
 										{ sidePanel }
 									</div>
 								) }

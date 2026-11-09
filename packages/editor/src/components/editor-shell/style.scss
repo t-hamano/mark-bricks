@@ -36,13 +36,16 @@
 	display: none;
 }
 
-// Shares the width with the content equally.
+// Shares the width with the content, by the grow factors that the shell sets
+// from the side panel's size.
 .editor-shell__content:has(+ .editor-shell__side-panel),
 .editor-shell__side-panel {
-	flex: 1 1 0;
+	flex-shrink: 1;
+	flex-basis: 0;
 }
 
 .editor-shell__side-panel {
+	position: relative;
 	min-width: 0;
 	border-inline-start: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
 }
@@ -50,4 +53,31 @@
 // Takes the place of the hidden content on a narrow viewport.
 .editor-shell__content[hidden] + .editor-shell__side-panel {
 	border-inline-start: 0;
+}
+
+// Looks like the 1px border at the side panel's start, and takes the pointer
+// over 10px around it.
+.editor-shell__side-panel-resizer {
+	position: absolute;
+	z-index: 1;
+	inset-block: 0;
+	inset-inline-start: -5px;
+	width: 10px;
+	cursor: col-resize;
+	touch-action: none;
+
+	&:hover,
+	&:focus-visible {
+		outline: none;
+		background: linear-gradient(var(--wpds-color-stroke-focus), var(--wpds-color-stroke-focus)) center / var(--wpds-border-width-focus) 100% no-repeat;
+	}
+}
+
+// Covers the page while the user drags the bar, so that frames do not take
+// the pointer.
+.editor-shell__side-panel-resize-overlay {
+	position: fixed;
+	z-index: 1000001;
+	inset: 0;
+	cursor: col-resize;
 }

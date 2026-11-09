@@ -55,6 +55,8 @@ type Props = {
 	};
 	headerActions?: ReactNode;
 	sidePanel?: ReactNode;
+	sidePanelSize?: number;
+	onSidePanelSizeChange?: ( size: number ) => void;
 	editorStyles?: EditorStyles;
 	style?: CSSProperties;
 	platform?: Partial< Platform >;
@@ -75,6 +77,8 @@ function UnforwardedEditor(
 		settings,
 		headerActions,
 		sidePanel,
+		sidePanelSize,
+		onSidePanelSizeChange,
 		editorStyles,
 		style,
 		platform,
@@ -98,6 +102,8 @@ function UnforwardedEditor(
 			platform={ platform }
 			onSelectedLineChange={ onSelectedLineChange }
 			sidePanel={ sidePanel }
+			sidePanelSize={ sidePanelSize }
+			onSidePanelSizeChange={ onSidePanelSizeChange }
 			headerActions={
 				<Stack direction="row" align="center" gap="sm">
 					<IconButton
