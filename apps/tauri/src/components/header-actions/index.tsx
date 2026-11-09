@@ -42,7 +42,7 @@ import {
 import tabsStore from '../../store';
 import { ABOUT_MODAL_NAME } from '../about-modal';
 import { KEYBOARD_SHORTCUTS_MODAL_NAME } from '../keyboard-shortcuts-modal';
-import { PREFERENCES_MODAL_NAME } from '../preferences-modal';
+import { openPreferences, PREFERENCES_MODAL_NAME } from '../preferences-modal';
 import './style.scss';
 
 type Props = {
@@ -360,9 +360,7 @@ export default function HeaderActions( {
 						</Menu.Item>
 					</Menu.Group>
 					<Menu.Separator />
-					<Menu.Item
-						onClick={ () => openModal( PREFERENCES_MODAL_NAME ) }
-					>
+					<Menu.Item onClick={ () => openPreferences() }>
 						<Menu.ItemLabel>
 							{ __( 'Preferences', 'mark-bricks' ) }
 						</Menu.ItemLabel>
