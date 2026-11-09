@@ -71,4 +71,10 @@
 
 .ai-chat__input {
 	flex: 1 1 auto;
+
+	// Starts as tall as the compact button next to it: one line of text
+	// (line-height 1.4), plus the padding and the 1px borders.
+	textarea {
+		--wp-ui-input-padding-block: calc((var(--wpds-dimension-size-md) - 2px - 1.4em) / 2);
+	}
 }

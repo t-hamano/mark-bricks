@@ -34,7 +34,7 @@ import type { AiPlatform } from '../../platform';
 // A filled square, the usual stop symbol. `@wordpress/icons` has none.
 const stopIcon = (
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-		<path d="M7 7h10v10H7z" />
+		<path d="M7 7h10v10H7z" fill="currentColor" />
 	</svg>
 );
 
@@ -221,7 +221,7 @@ export function AiChat( { ai, chat, selectionSummary }: Props ) {
 				render={ <form onSubmit={ onSubmit } /> }
 				className="ai-chat__composer"
 				direction="column"
-				gap="xs"
+				gap="sm"
 			>
 				<Stack direction="row" align="flex-end" gap="sm">
 					<TextareaControl
