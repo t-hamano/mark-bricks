@@ -16,12 +16,17 @@ import { store as blockEditorStore } from '@wordpress/block-editor';
 import { Composite } from '@wordpress/components';
 import { useRegistry } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { Button, Text, Tooltip } from '@wordpress/ui';
+import { Button, SelectControl, Text, Tooltip } from '@wordpress/ui';
 
 /**
  * Internal dependencies
  */
-import { SLIDE_PATTERNS, type SlidePattern } from '../../marp-patterns';
+import {
+	SLIDE_PATTERN_CATEGORIES,
+	SLIDE_PATTERNS,
+	type SlidePattern,
+	type SlidePatternCategory,
+} from '../../marp-patterns';
 import { getSlidePatternBlocks } from '../../marp-patterns/insert';
 import {
 	getSlidePatternPreview,
@@ -37,6 +42,11 @@ import {
 	useInsertionPointPreview,
 } from './insertion-target';
 
+// The value of the category filter that shows every pattern.
+const ALL_CATEGORIES = 'all';
+
+type CategoryFilter = SlidePatternCategory | typeof ALL_CATEGORIES;
+
 type Props = {
 	search: string;
 	onScroll: UIEventHandler< HTMLDivElement >;
@@ -48,6 +58,8 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 	const theme = getSlidePatternTheme(
 		getFrontMatterValue( frontMatter, 'theme' )
 	);
+	const [ category, setCategory ] =
+		useState< CategoryFilter >( ALL_CATEGORIES );
 	// The cards show their titles until the previews have loaded. After that,
 	// a card shows its preview, and its title in a tooltip.
 	const [ previews, setPreviews ] = useState< SlidePatternPreviews | null >(
@@ -68,7 +80,11 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 
 	const patterns = useMemo( () => {
 		const q = search.trim().toLowerCase();
-		const items = SLIDE_PATTERNS.map( ( pattern ) => ( {
+		const items = SLIDE_PATTERNS.filter(
+			( pattern ) =>
+				category === ALL_CATEGORIES ||
+				pattern.categories.includes( category )
+		).map( ( pattern ) => ( {
 			pattern,
 			title: pattern.title(),
 			preview: previews
@@ -78,7 +94,21 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 		return q
 			? items.filter( ( { title } ) => title.toLowerCase().includes( q ) )
 			: items;
-	}, [ search, previews, theme ] );
+	}, [ search, category, previews, theme ] );
+
+	const categoryItems = useMemo(
+		() => [
+			{
+				value: ALL_CATEGORIES,
+				label: __( 'All categories', 'mark-bricks' ),
+			},
+			...SLIDE_PATTERN_CATEGORIES.map( ( { name, label } ) => ( {
+				value: name,
+				label: label(),
+			} ) ),
+		],
+		[]
+	);
 
 	const insertionPoint = useInsertionPointPreview();
 
@@ -123,6 +153,30 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 
 	return (
 		<Tooltip.Provider>
+			<div className="inserter-sidebar__pattern-filter">
+				<SelectControl
+					label={ __( 'Category', 'mark-bricks' ) }
+					hideLabelFromVision
+					size="compact"
+					items={ categoryItems }
+					value={ categoryItems.find(
+						( item ) => item.value === category
+					) }
+					onValueChange={ ( next ) => {
+						if ( next?.value ) {
+							setCategory( next.value as CategoryFilter );
+						}
+					} }
+				/>
+			</div>
+			{ patterns.length === 0 && (
+				<Text
+					variant="body-sm"
+					className="inserter-sidebar__pattern-empty"
+				>
+					{ __( 'No slide patterns found.', 'mark-bricks' ) }
+				</Text>
+			) }
 			<Composite
 				className="inserter-sidebar__pattern-list"
 				role="listbox"

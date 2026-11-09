@@ -1,9 +1,10 @@
 @use "@wordpress/base-styles/mixins";
 
-// Tooltips are portaled to the document body, so they need to outrank the
-// positioned editor chrome.
+// Tooltips and select popups are portaled to the document body, so they need
+// to outrank the positioned editor chrome.
 :root {
 	--wp-ui-tooltip-z-index: 1000000;
+	--wp-ui-select-z-index: 1000000;
 }
 
 .editor-shell {

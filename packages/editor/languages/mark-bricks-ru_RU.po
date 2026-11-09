@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:07:01.634Z\n"
-"PO-Revision-Date: 2026-11-09T14:08:52.011Z\n"
+"POT-Creation-Date: 2026-11-09T14:29:03.392Z\n"
+"PO-Revision-Date: 2026-11-09T14:29:28.509Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -81,6 +81,10 @@ msgstr "Повестка"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+msgid "All categories"
+msgstr "Все категории"
+
 #: src/format-library/image/inline.tsx:147
 #: src/block-library/image/edit.tsx:233
 msgid "Alt text"
@@ -138,6 +142,10 @@ msgstr "Реализация"
 msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "Маркированный список"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+msgid "Category"
+msgstr "Категория"
 
 #: src/block-library/quote/edit.tsx:100
 msgid "Caution"
@@ -592,6 +600,10 @@ msgstr "Следующие шаги"
 msgid "No matching language."
 msgstr "Нет подходящего языка."
 
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+msgid "No slide patterns found."
+msgstr "Шаблоны слайдов не найдены."
+
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "Примечание"
@@ -850,7 +862,7 @@ msgstr "Размер"
 msgid "Slide Separator"
 msgstr "Разделитель слайдов"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:129
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
 #: src/components/inserter-sidebar/index.tsx:297
 msgid "Slide patterns"
 msgstr "Шаблоны слайдов"
