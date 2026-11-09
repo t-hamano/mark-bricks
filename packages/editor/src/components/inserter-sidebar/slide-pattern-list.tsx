@@ -58,10 +58,10 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 	const theme = getSlidePatternTheme(
 		getFrontMatterValue( frontMatter, 'theme' )
 	);
-	// The cards show their titles until the previews have loaded. After that,
-	// a card shows its preview, and its title in a tooltip.
 	const [ category, setCategory ] =
 		useState< CategoryFilter >( ALL_CATEGORIES );
+	// The cards show their titles until the previews have loaded. After that,
+	// a card shows its preview, and its title in a tooltip.
 	const [ previews, setPreviews ] = useState< SlidePatternPreviews | null >(
 		null
 	);
