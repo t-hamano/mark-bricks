@@ -12,7 +12,7 @@ import {
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { __, isRTL } from '@wordpress/i18n';
 
 export const DEFAULT_SIDE_PANEL_SIZE = 50;
 const MIN_SIZE = 10;
@@ -62,11 +62,6 @@ export function SidePanelResizer( {
 		[]
 	);
 
-	function isRtl() {
-		const element = sidePanelRef.current;
-		return !! element && getComputedStyle( element ).direction === 'rtl';
-	}
-
 	function sizeAt( clientX: number ): number | null {
 		const content = contentRef.current?.getBoundingClientRect();
 		const sidePanel = sidePanelRef.current?.getBoundingClientRect();
@@ -77,7 +72,7 @@ export function SidePanelResizer( {
 		if ( width <= 0 ) {
 			return null;
 		}
-		const panelWidth = isRtl()
+		const panelWidth = isRTL()
 			? clientX - sidePanel.left
 			: sidePanel.right - clientX;
 		return clampSidePanelSize( ( panelWidth / width ) * 100 );
@@ -119,8 +114,8 @@ export function SidePanelResizer( {
 	function onKeyDown( event: KeyboardEvent< HTMLDivElement > ) {
 		// The bar moves the way of the arrow, so the side panel, which is on
 		// the inline end, grows toward the inline start.
-		const towardStart = isRtl() ? 'ArrowRight' : 'ArrowLeft';
-		const towardEnd = isRtl() ? 'ArrowLeft' : 'ArrowRight';
+		const towardStart = isRTL() ? 'ArrowRight' : 'ArrowLeft';
+		const towardEnd = isRTL() ? 'ArrowLeft' : 'ArrowRight';
 		let delta = 0;
 		if ( event.key === towardStart ) {
 			delta = KEYBOARD_STEP;
