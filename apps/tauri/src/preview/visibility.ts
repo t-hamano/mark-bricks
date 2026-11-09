@@ -5,7 +5,8 @@ import { useSyncExternalStore } from 'react';
 import type { PreviewPlacement } from '@mark-bricks/marp-preview/controls';
 
 // Whether the slide preview is on, and where. They last only while the app
-// runs: each launch starts with the preview off, next to the editor.
+// runs: each launch starts with the preview off, next to the editor. Turning
+// the preview off moves it back next to the editor, for the next time.
 let isShown = false;
 let placement: PreviewPlacement = 'panel';
 const listeners = new Set< () => void >();
@@ -32,7 +33,8 @@ function notify() {
 }
 
 /**
- * Turns the slide preview on or off.
+ * Turns the slide preview on or off. Turning it off also moves it back next
+ * to the editor, where it shows the next time it is turned on.
  *
  * @param value Whether to show the preview.
  */
@@ -41,6 +43,9 @@ export function setSlidePreviewShown( value: boolean ) {
 		return;
 	}
 	isShown = value;
+	if ( ! value ) {
+		placement = 'panel';
+	}
 	notify();
 }
 
