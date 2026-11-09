@@ -2,6 +2,7 @@
  * External dependencies
  */
 import {
+	useEffect,
 	useRef,
 	type KeyboardEvent,
 	type PointerEvent,
@@ -49,6 +50,17 @@ export function SidePanelResizer( {
 	onChange,
 }: Props ) {
 	const isDraggingRef = useRef( false );
+
+	// A bar that goes away mid-drag, such as when the viewport narrows,
+	// handles no more pointer events, so it gives the frames the pointer back.
+	useEffect(
+		() => () => {
+			if ( isDraggingRef.current ) {
+				document.body.classList.remove( RESIZING_CLASS );
+			}
+		},
+		[]
+	);
 
 	function isRtl() {
 		const element = sidePanelRef.current;
