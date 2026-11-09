@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:35:54.001Z\n"
-"PO-Revision-Date: 2026-11-08T13:38:27.437Z\n"
+"POT-Creation-Date: 2026-11-08T14:14:58.685Z\n"
+"PO-Revision-Date: 2026-11-08T14:15:05.809Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,16 +33,24 @@ msgstr "“%s”有未保存的更改。要放弃更改并关闭吗？"
 msgid "(Untitled)"
 msgstr "(未命名)"
 
-#: src/components/header-actions/index.tsx:353
+#: src/components/preferences-modal/index.tsx:203
+msgid "AI Assistant"
+msgstr "AI 助手"
+
+#: src/components/preferences-modal/ai-panel.tsx:239
+msgid "API key"
+msgstr "API 密钥"
+
+#: src/components/header-actions/index.tsx:358
 #: src/components/about-modal/index.tsx:80
 msgid "About"
 msgstr "关于 MarkBricks"
 
-#: src/components/header-actions/index.tsx:243
+#: src/components/header-actions/index.tsx:248
 msgid "Access all block and document tools in a single place"
 msgstr "在一个位置访问所有的区块和文档工具"
 
-#: src/components/header-actions/index.tsx:322
+#: src/components/header-actions/index.tsx:327
 msgid "Add YAML front matter"
 msgstr "添加 YAML 前置元数据"
 
@@ -50,6 +58,10 @@ msgstr "添加 YAML 前置元数据"
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "始终打开列表视图"
+
+#: src/components/preferences-modal/ai-panel.tsx:205
+msgid "Anthropic API key"
+msgstr "Anthropic API 密钥"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -59,7 +71,7 @@ msgstr "内容区域的基础字号（像素）。"
 msgid "Block shortcuts"
 msgstr "区块快捷键"
 
-#: src/components/header-actions/index.tsx:382
+#: src/components/header-actions/index.tsx:387
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "取消"
@@ -73,13 +85,17 @@ msgstr "检查更新"
 msgid "Check updates automatically"
 msgstr "自动检查更新"
 
+#: src/components/preferences-modal/ai-panel.tsx:263
+msgid "Checking the API key…"
+msgstr "正在检查 API 密钥…"
+
 #: src/components/preferences-modal/general-panel.tsx:132
 #: src/components/about-modal/index.tsx:115
 msgid "Checking…"
 msgstr "正在检查…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:168
+#: src/components/preferences-modal/index.tsx:177
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -98,8 +114,8 @@ msgstr "关闭其他标签页"
 msgid "Close the active tab."
 msgstr "关闭当前标签页。"
 
-#: src/components/preferences-modal/index.tsx:191
-#: src/components/header-actions/index.tsx:298
+#: src/components/preferences-modal/index.tsx:200
+#: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "代码编辑器"
 
@@ -112,7 +128,7 @@ msgid "Could not connect to the Anthropic API."
 msgstr "无法连接到 Anthropic API。"
 
 # %s: Error message.
-#: src/actions/index.ts:496
+#: src/actions/index.ts:495
 msgid "Could not export the slide deck: %s"
 msgstr "无法导出幻灯片: %s"
 
@@ -130,9 +146,22 @@ msgstr "新建 Markdown 文件或打开现有文件以开始编辑。"
 msgid "Create a new file."
 msgstr "新建文件。"
 
-#: src/preferences/constants.ts:53
+#: src/preferences/constants.ts:55
 msgid "Dark"
 msgstr "深色"
+
+# %s: The name of the default AI model.
+#: src/components/preferences-modal/ai-panel.tsx:87
+msgid "Default (%s)"
+msgstr "默认（%s）"
+
+#: src/components/preferences-modal/ai-panel.tsx:270
+msgid "Delete"
+msgstr "删除"
+
+#: src/components/preferences-modal/ai-panel.tsx:259
+msgid "Deleting the API key…"
+msgstr "正在删除 API 密钥…"
 
 #: src/components/dirty-confirm-dialog/index.tsx:68
 msgid "Discard"
@@ -146,7 +175,7 @@ msgstr "放弃更改"
 msgid "Displays the block hierarchy trail at the bottom of the editor."
 msgstr "在编辑器底部显示区块层级路径。"
 
-#: src/components/header-actions/index.tsx:269
+#: src/components/header-actions/index.tsx:274
 msgid "Editor"
 msgstr "编辑器"
 
@@ -154,17 +183,17 @@ msgstr "编辑器"
 msgid "Editor styles"
 msgstr "编辑器样式"
 
-#: src/actions/index.ts:469
-#: src/components/header-actions/index.tsx:199
+#: src/actions/index.ts:468
+#: src/components/header-actions/index.tsx:204
 msgid "Export Slide Deck"
 msgstr "导出幻灯片"
 
 # %s: Name of the exported file.
-#: src/actions/index.ts:510
+#: src/actions/index.ts:509
 msgid "Exported the slide deck to %s."
 msgstr "已将幻灯片导出到 %s。"
 
-#: src/components/header-actions/index.tsx:111
+#: src/components/header-actions/index.tsx:115
 msgid "Exporting the slide deck…"
 msgstr "正在导出幻灯片…"
 
@@ -180,11 +209,11 @@ msgstr "文件已更改"
 msgid "File shortcuts"
 msgstr "文件快捷键"
 
-#: src/components/header-actions/index.tsx:159
+#: src/components/header-actions/index.tsx:164
 msgid "Files"
 msgstr "文件"
 
-#: src/components/header-actions/index.tsx:259
+#: src/components/header-actions/index.tsx:264
 msgid "Focus on one block at a time"
 msgstr "集中注意力在一个区块上"
 
@@ -197,7 +226,7 @@ msgstr "字体"
 msgid "Font size"
 msgstr "字号"
 
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:194
 msgid "General"
 msgstr "常规"
 
@@ -205,19 +234,19 @@ msgstr "常规"
 msgid "Global shortcuts"
 msgstr "全局快捷键"
 
-#: src/actions/index.ts:489
+#: src/actions/index.ts:488
 msgid "HTML slide deck"
 msgstr "HTML 幻灯片"
 
-#: src/components/header-actions/index.tsx:212
+#: src/components/header-actions/index.tsx:217
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:75
+#: src/preferences/constants.ts:77
 msgid "Handwriting"
 msgstr "手写"
 
-#: src/components/header-actions/index.tsx:327
+#: src/components/header-actions/index.tsx:332
 msgid "Hide YAML front matter"
 msgstr "隐藏 YAML 前置元数据"
 
@@ -238,7 +267,7 @@ msgid "Keep my version"
 msgstr "保留我的版本"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
-#: src/components/header-actions/index.tsx:346
+#: src/components/header-actions/index.tsx:351
 msgid "Keyboard shortcuts"
 msgstr "键盘快捷键"
 
@@ -247,13 +276,17 @@ msgstr "键盘快捷键"
 msgid "Language"
 msgstr "语言"
 
-#: src/preferences/constants.ts:52
+#: src/preferences/constants.ts:54
 msgid "Light"
 msgstr "浅色"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:265
 msgid "List View shortcuts"
 msgstr "列表视图快捷键"
+
+#: src/components/preferences-modal/ai-panel.tsx:198
+msgid "Loading the models…"
+msgstr "正在加载模型…"
 
 # %s: new version number
 #: src/hooks/use-auto-updater.ts:91
@@ -268,11 +301,16 @@ msgstr "MarkBricks 现已成为 Markdown 文件的默认应用。"
 msgid "Maximum width of the content area, in pixels."
 msgstr "内容区域的最大宽度（像素）。"
 
-#: src/preferences/constants.ts:71
+#: src/components/preferences-modal/ai-panel.tsx:309
+#: src/components/preferences-modal/ai-panel.tsx:314
+msgid "Model"
+msgstr "模型"
+
+#: src/preferences/constants.ts:73
 msgid "Monospace"
 msgstr "等宽"
 
-#: src/components/header-actions/index.tsx:166
+#: src/components/header-actions/index.tsx:171
 msgid "New"
 msgstr "新建"
 
@@ -293,10 +331,6 @@ msgstr "尚未保存 API 密钥。请在设置中添加。"
 msgid "No file open"
 msgstr "没有打开的文件"
 
-#: src/hooks/use-preview-sync.ts:56
-msgid "Not a Marp document"
-msgstr "不是 Marp 文档"
-
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
 msgstr "打开文件。"
@@ -314,28 +348,28 @@ msgstr "打开文件…"
 msgid "Opens the List View panel by default."
 msgstr "默认情况下打开列表视图的侧边栏。"
 
-#: src/components/header-actions/index.tsx:174
+#: src/components/header-actions/index.tsx:179
 msgid "Open…"
 msgstr "打开…"
 
-#: src/components/header-actions/index.tsx:146
+#: src/components/header-actions/index.tsx:151
 msgid "Options"
 msgstr "选项"
 
-#: src/actions/index.ts:490
+#: src/actions/index.ts:489
 msgid "PDF slide deck"
 msgstr "PDF 幻灯片"
 
-#: src/components/header-actions/index.tsx:221
+#: src/components/header-actions/index.tsx:226
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:166
-#: src/components/header-actions/index.tsx:362
+#: src/components/preferences-modal/index.tsx:175
+#: src/components/header-actions/index.tsx:367
 msgid "Preferences"
 msgstr "偏好设置"
 
-#: src/components/header-actions/index.tsx:120
+#: src/components/header-actions/index.tsx:124
 msgid "Preview Slides"
 msgstr "预览幻灯片"
 
@@ -343,15 +377,15 @@ msgstr "预览幻灯片"
 msgid "Reload"
 msgstr "重新加载"
 
-#: src/components/header-actions/index.tsx:383
+#: src/components/header-actions/index.tsx:388
 msgid "Remove"
 msgstr "移除"
 
-#: src/components/header-actions/index.tsx:333
+#: src/components/header-actions/index.tsx:338
 msgid "Remove YAML front matter"
 msgstr "移除 YAML 前置元数据"
 
-#: src/components/header-actions/index.tsx:377
+#: src/components/header-actions/index.tsx:382
 msgid "Remove YAML front matter?"
 msgstr "要移除 YAML 前置元数据吗？"
 
@@ -367,17 +401,18 @@ msgstr "重新启动应用以应用新语言。"
 msgid "Restore default settings"
 msgstr "恢复默认设置"
 
-#: src/preferences/constants.ts:63
+#: src/preferences/constants.ts:65
 msgid "Sans-serif"
 msgstr "无衬线"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/header-actions/index.tsx:136
-#: src/components/header-actions/index.tsx:182
+#: src/components/preferences-modal/ai-panel.tsx:271
+#: src/components/header-actions/index.tsx:141
+#: src/components/header-actions/index.tsx:187
 msgid "Save"
 msgstr "保存"
 
-#: src/components/header-actions/index.tsx:190
+#: src/components/header-actions/index.tsx:195
 msgid "Save As…"
 msgstr "另存为…"
 
@@ -397,7 +432,7 @@ msgstr "保存当前文件。"
 msgid "Selection shortcuts"
 msgstr "选定快捷键"
 
-#: src/preferences/constants.ts:67
+#: src/preferences/constants.ts:69
 msgid "Serif"
 msgstr "衬线"
 
@@ -418,7 +453,7 @@ msgstr "显示区块面包屑"
 msgid "Show line numbers"
 msgstr "显示行号"
 
-#: src/actions/index.ts:524
+#: src/components/slide-preview/index.tsx:39
 msgid "Slide Preview"
 msgstr "幻灯片预览"
 
@@ -426,12 +461,12 @@ msgstr "幻灯片预览"
 msgid "Spell check"
 msgstr "拼写检查"
 
-#: src/components/header-actions/index.tsx:256
+#: src/components/header-actions/index.tsx:261
 msgid "Spotlight mode"
 msgstr "焦点模式"
 
-#: src/preferences/constants.ts:51
-#: src/preferences/constants.ts:60
+#: src/preferences/constants.ts:53
+#: src/preferences/constants.ts:62
 msgid "System Default"
 msgstr "系统默认"
 
@@ -447,15 +482,29 @@ msgstr "文字内容格式化"
 msgid "The API key cannot use this model."
 msgstr "此 API 密钥无法使用该模型。"
 
+#: src/components/preferences-modal/ai-panel.tsx:212
+msgid ""
+"The API key is kept in the system’s credential store and only sent to the "
+"Anthropic API."
+msgstr "API 密钥保存在系统的凭据存储中，并且只会发送到 Anthropic API。"
+
 #: src/ai/anthropic/errors.ts:35
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 密钥无效。请在设置中检查。"
+
+#: src/components/preferences-modal/ai-panel.tsx:291
+msgid "The API key was deleted."
+msgstr "API 密钥已删除。"
+
+#: src/components/preferences-modal/ai-panel.tsx:281
+msgid "The API key was saved."
+msgstr "API 密钥已保存。"
 
 #: src/ai/anthropic/errors.ts:50
 msgid "The Anthropic API is not available right now. Try again later."
 msgstr "Anthropic API 目前不可用。请稍后重试。"
 
-#: src/components/header-actions/index.tsx:378
+#: src/components/header-actions/index.tsx:383
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
@@ -481,6 +530,11 @@ msgstr "模型拒绝回答此请求。"
 msgid "The model was not found."
 msgstr "未找到该模型。"
 
+# %s: Why the models could not be loaded.
+#: src/components/preferences-modal/ai-panel.tsx:344
+msgid "The models could not be loaded: %s"
+msgstr "无法加载模型：%s"
+
 #: src/ai/anthropic/errors.ts:61
 msgid "The request failed."
 msgstr "请求失败。"
@@ -495,6 +549,10 @@ msgstr "请求失败：%s"
 msgid "Theme"
 msgstr "主题"
 
+#: src/ai/settings.ts:53
+msgid "This API key is not valid."
+msgstr "此 API 密钥无效。"
+
 #: src/components/preferences-modal/general-panel.tsx:166
 msgid ""
 "This platform does not support setting the default app from inside "
@@ -506,13 +564,17 @@ msgstr ""
 msgid "Too many requests. Wait a moment and try again."
 msgstr "请求过多。请稍候再试。"
 
-#: src/components/header-actions/index.tsx:306
+#: src/components/header-actions/index.tsx:311
 msgid "Tools"
 msgstr "工具"
 
-#: src/components/header-actions/index.tsx:240
+#: src/components/header-actions/index.tsx:245
 msgid "Top toolbar"
 msgstr "顶部工具栏"
+
+#: src/components/preferences-modal/ai-panel.tsx:353
+msgid "Try again"
+msgstr "重试"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:157
 msgid "Typeface used for the content area."
@@ -539,12 +601,12 @@ msgstr "有可用更新"
 msgid "Update check failed: %s"
 msgstr "检查更新失败：%s"
 
-#: src/components/header-actions/index.tsx:231
+#: src/components/header-actions/index.tsx:236
 msgid "View"
 msgstr "视图"
 
-#: src/components/preferences-modal/index.tsx:188
-#: src/components/header-actions/index.tsx:286
+#: src/components/preferences-modal/index.tsx:197
+#: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "可视化编辑器"
 

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T13:18:19.184Z\n"
-"PO-Revision-Date: 2026-11-08T13:18:21.313Z\n"
+"POT-Creation-Date: 2026-11-08T14:44:28.418Z\n"
+"PO-Revision-Date: 2026-11-08T14:44:30.432Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -150,7 +150,7 @@ msgctxt "slide pattern"
 msgid "Closing"
 msgstr "Abschluss"
 
-#: src/components/editor/index.tsx:102
+#: src/components/editor/index.tsx:105
 msgid "Code editor"
 msgstr "Code-Editor"
 
@@ -536,7 +536,7 @@ msgid "Size"
 msgstr "Größe"
 
 #: src/block-library/separator/use-marp-title.ts:39
-#: src/block-library/separator/edit.tsx:24
+#: src/block-library/separator/edit.tsx:25
 msgid "Slide Separator"
 msgstr "Folientrenner"
 

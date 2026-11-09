@@ -1,0 +1,216 @@
+/**
+ * External dependencies
+ */
+import { act } from 'react';
+import { createRoot, type Root } from 'react-dom/client';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { clearMocks, mockIPC } from '@tauri-apps/api/mocks';
+
+/**
+ * Internal dependencies
+ */
+import { AiPanel, getModelItems } from './ai-panel';
+
+const MODELS = [
+	{ id: 'claude-opus-5-5', displayName: 'Claude Opus 5.5' },
+	{ id: 'claude-sonnet-5-5', displayName: 'Claude Sonnet 5.5' },
+];
+
+describe( 'getModelItems', () => {
+	it( 'lists the default model first, by its name', () => {
+		expect( getModelItems( MODELS, '' ) ).toEqual( [
+			{ value: 'default', label: 'Default (Claude Opus 5.5)' },
+			{ value: 'claude-opus-5-5', label: 'Claude Opus 5.5' },
+			{ value: 'claude-sonnet-5-5', label: 'Claude Sonnet 5.5' },
+		] );
+	} );
+
+	it( 'keeps a chosen model that is not listed', () => {
+		expect( getModelItems( [], 'claude-old' ) ).toEqual( [
+			{ value: 'default', label: 'Default (claude-opus-5-5)' },
+			{ value: 'claude-old', label: 'claude-old' },
+		] );
+	} );
+} );
+
+describe( 'AiPanel', () => {
+	let container: HTMLDivElement;
+	let root: Root;
+	let savedKey: string | null;
+	const commands: string[] = [];
+
+	beforeEach( () => {
+		savedKey = null;
+		commands.length = 0;
+		onChange.mockReset();
+		mockIPC( ( command, args ) => {
+			commands.push( command );
+			const payload = args as { key?: string };
+			switch ( command ) {
+				case 'has_ai_api_key':
+					return savedKey !== null;
+				case 'check_ai_api_key':
+					if ( payload.key === 'sk-ant-invalid' ) {
+						throw {
+							code: 'http',
+							status: 401,
+							body: '{"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"}}',
+						};
+					}
+					return null;
+				case 'save_ai_api_key':
+					savedKey = payload.key ?? '';
+					return null;
+				case 'delete_ai_api_key':
+					savedKey = null;
+					return null;
+				case 'list_ai_models':
+					return MODELS;
+			}
+		} );
+		container = document.createElement( 'div' );
+		document.body.append( container );
+		root = createRoot( container );
+	} );
+
+	afterEach( () => {
+		act( () => root.unmount() );
+		container.remove();
+		clearMocks();
+	} );
+
+	const onChange = vi.fn();
+
+	async function render() {
+		await act( async () => {
+			root.render(
+				<AiPanel settings={ { model: '' } } onChange={ onChange } />
+			);
+		} );
+	}
+
+	function input() {
+		return container.querySelector(
+			'input[type="password"]'
+		) as HTMLInputElement;
+	}
+
+	function button( label: string ) {
+		return [ ...container.querySelectorAll( 'button' ) ].find(
+			( element ) => element.textContent === label
+		);
+	}
+
+	it( 'does not load the models without an API key', async () => {
+		await render();
+		expect( container.textContent ).not.toContain( 'Model' );
+		expect( commands ).not.toContain( 'list_ai_models' );
+	} );
+
+	it( 'saves the API key, then loads the models', async () => {
+		await render();
+		await act( async () => {
+			const setValue = Object.getOwnPropertyDescriptor(
+				HTMLInputElement.prototype,
+				'value'
+			)!.set!;
+			setValue.call( input(), 'sk-ant-key' );
+			input().dispatchEvent( new Event( 'input', { bubbles: true } ) );
+		} );
+		await act( async () => {
+			button( 'Save' )!.click();
+		} );
+		expect( savedKey ).toBe( 'sk-ant-key' );
+		expect( input().value ).not.toContain( 'sk-ant' );
+		expect( input().disabled ).toBe( true );
+		expect( button( 'Delete' ) ).toBeDefined();
+		expect( commands ).toContain( 'list_ai_models' );
+	} );
+
+	it( 'does not save an API key the API refuses', async () => {
+		await render();
+		await act( async () => {
+			const setValue = Object.getOwnPropertyDescriptor(
+				HTMLInputElement.prototype,
+				'value'
+			)!.set!;
+			setValue.call( input(), 'sk-ant-invalid' );
+			input().dispatchEvent( new Event( 'input', { bubbles: true } ) );
+		} );
+		await act( async () => {
+			button( 'Save' )!.click();
+		} );
+		expect( savedKey ).toBeNull();
+		expect( input().value ).toBe( 'sk-ant-invalid' );
+		expect( container.textContent ).toContain(
+			'This API key is not valid.'
+		);
+	} );
+
+	it( 'ignores the models of a replaced API key', async () => {
+		savedKey = 'sk-ant-old';
+		const pending: Array< ( models: unknown ) => void > = [];
+		mockIPC( ( command, args ) => {
+			switch ( command ) {
+				case 'has_ai_api_key':
+					return savedKey !== null;
+				case 'check_ai_api_key':
+					return null;
+				case 'save_ai_api_key':
+					savedKey = ( args as { key: string } ).key;
+					return null;
+				case 'delete_ai_api_key':
+					savedKey = null;
+					return null;
+				case 'list_ai_models':
+					return new Promise( ( resolve ) =>
+						pending.push( resolve )
+					);
+			}
+		} );
+		await render();
+		await act( async () => {
+			button( 'Delete' )!.click();
+		} );
+		await act( async () => {
+			const setValue = Object.getOwnPropertyDescriptor(
+				HTMLInputElement.prototype,
+				'value'
+			)!.set!;
+			setValue.call( input(), 'sk-ant-new' );
+			input().dispatchEvent( new Event( 'input', { bubbles: true } ) );
+		} );
+		await act( async () => {
+			button( 'Save' )!.click();
+		} );
+		expect( pending ).toHaveLength( 2 );
+		await act( async () => {
+			pending[ 1 ]( [] );
+		} );
+		await act( async () => {
+			pending[ 0 ]( MODELS );
+		} );
+		expect( container.textContent ).not.toContain( 'Loading the models' );
+		const combobox = container.querySelector( '[role="combobox"]' );
+		await act( async () => {
+			( combobox as HTMLElement ).click();
+		} );
+		expect( document.body.textContent ).not.toContain(
+			'Claude Sonnet 5.5'
+		);
+	} );
+
+	it( 'deletes the API key', async () => {
+		savedKey = 'sk-ant-key';
+		await render();
+		await act( async () => {
+			button( 'Delete' )!.click();
+		} );
+		expect( savedKey ).toBeNull();
+		expect( container.textContent ).toContain( 'The API key was deleted.' );
+		expect( input().disabled ).toBe( false );
+		expect( input().value ).toBe( '' );
+		expect( onChange ).toHaveBeenCalledWith( { model: '' } );
+		expect( container.textContent ).not.toContain( 'Model' );
+	} );
+} );

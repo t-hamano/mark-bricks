@@ -33,3 +33,9 @@ export function getSlidePatternMarkdown( pattern: SlidePattern ): string {
 		escapeMarkdown
 	);
 }
+
+export {
+	SLIDE_PATTERN_THEMES,
+	type SlidePatternPreviews,
+	type SlidePatternTheme,
+} from './previews';
