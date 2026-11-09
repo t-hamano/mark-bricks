@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:19:54.419Z\n"
-"PO-Revision-Date: 2026-11-09T14:20:03.986Z\n"
+"POT-Creation-Date: 2026-11-09T14:36:19.677Z\n"
+"PO-Revision-Date: 2026-11-09T14:36:29.387Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -42,24 +42,50 @@ msgstr "(不正確的標題階層)"
 msgid "(Multiple H1 headings are not recommended)"
 msgstr "(不建議在同一篇內容中有多個 H1 標題)"
 
+#: src/marp-patterns/patterns/key-figure.ts:21
+msgctxt "slide pattern"
+msgid "85%"
+msgstr "85%"
+
 #: style.css
 #. Name of the generic
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/marp-patterns/patterns/section.ts:21
+#: src/marp-patterns/patterns/image-and-caption.ts:23
+msgctxt "slide pattern"
+msgid "A caption for the image"
+msgstr "圖片的說明文字"
+
+#: src/marp-patterns/patterns/nested-list.ts:24
+msgctxt "slide pattern"
+msgid "A detail about the first point"
+msgstr "第一點的詳情"
+
+#: src/marp-patterns/patterns/nested-list.ts:30
+msgctxt "slide pattern"
+msgid "A detail about the second point"
+msgstr "第二點的詳情"
+
+#: src/marp-patterns/patterns/quote.ts:21
+#: src/marp-patterns/patterns/quote-on-image.ts:24
+msgctxt "slide pattern"
+msgid "A quote that supports your point."
+msgstr "支持你觀點的一句引言。"
+
+#: src/marp-patterns/patterns/section.ts:22
 msgctxt "slide pattern"
 msgid "A short line about this section"
 msgstr "關於本節的簡短說明"
 
-#: src/components/editor-header/index.tsx:195
+#: src/components/editor-header/index.tsx:194
 #: src/components/ai-sidebar/sidebar.tsx:61
 #: src/components/ai-sidebar/sidebar.tsx:92
 msgid "AI Assistant"
 msgstr "AI 助理"
 
 #: src/marp-patterns/patterns/agenda.ts:13
-#: src/marp-patterns/patterns/agenda.ts:20
+#: src/marp-patterns/patterns/agenda.ts:21
 msgctxt "slide pattern"
 msgid "Agenda"
 msgstr "議程"
@@ -92,7 +118,7 @@ msgstr ""
 "請 AI 助理撰寫或編輯內容。你的選取範圍，或程式碼編輯器中游標所在的那一行，會"
 "隨訊息一起傳送。"
 
-#: src/marp-patterns/patterns/agenda.ts:21
+#: src/marp-patterns/patterns/agenda.ts:22
 msgctxt "slide pattern"
 msgid "Background"
 msgstr "背景"
@@ -116,6 +142,16 @@ msgstr "粗體"
 msgid "Browse local file"
 msgstr "瀏覽本機檔案"
 
+#: src/marp-patterns/patterns/steps.ts:24
+msgctxt "slide pattern"
+msgid "Build"
+msgstr "執行"
+
+#: src/marp-patterns/patterns/bullet-list.ts:13
+msgctxt "slide pattern"
+msgid "Bullet points"
+msgstr "項目符號"
+
 #: src/block-library/quote/edit.tsx:100
 msgid "Caution"
 msgstr "注意"
@@ -131,6 +167,11 @@ msgstr "變更語言"
 #: src/components/keyboard-shortcuts/hooks.ts:92
 msgid "Change the block type after adding a new paragraph."
 msgstr "新增段落後，藉以變更區塊類型"
+
+#: src/marp-patterns/patterns/steps.ts:27
+msgctxt "slide pattern"
+msgid "Check the results"
+msgstr "檢查結果"
 
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
@@ -150,7 +191,7 @@ msgstr "清除格式"
 msgid "Close"
 msgstr "關閉"
 
-#: src/components/editor-header/index.tsx:194
+#: src/components/editor-header/index.tsx:193
 msgid "Close AI Assistant"
 msgstr "關閉 AI 助理"
 
@@ -158,26 +199,81 @@ msgstr "關閉 AI 助理"
 msgid "Close Block Inserter"
 msgstr "關閉區塊插入器"
 
+#: src/marp-patterns/categories.ts:40
+msgctxt "slide pattern category"
+msgid "Closing"
+msgstr "結尾"
+
 #: src/marp-patterns/patterns/closing.ts:13
 msgctxt "slide pattern"
 msgid "Closing"
 msgstr "結尾"
 
+#: src/marp-patterns/patterns/closing-on-image.ts:14
+msgctxt "slide pattern"
+msgid "Closing on an image"
+msgstr "圖片上的結尾"
+
+#: src/marp-patterns/patterns/code.ts:13
+msgctxt "slide pattern"
+msgid "Code"
+msgstr "程式碼"
+
 #: src/components/editor/index.tsx:111
 msgid "Code editor"
 msgstr "程式碼編輯器"
+
+#: src/marp-patterns/patterns/code.ts:25
+msgctxt "slide pattern"
+msgid "Code example"
+msgstr "程式碼範例"
 
 #: src/block-library/table/edit.tsx:246
 msgid "Column count"
 msgstr "資料行數"
 
+#: src/marp-patterns/patterns/table.ts:34
+msgctxt "slide pattern"
+msgid "Community"
+msgstr "社群"
+
+#: src/marp-patterns/patterns/table.ts:23
+msgctxt "slide pattern"
+msgid "Comparison"
+msgstr "比較"
+
+#: src/marp-patterns/patterns/table.ts:13
+msgctxt "slide pattern"
+msgid "Comparison table"
+msgstr "比較表"
+
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
 msgstr "將選取內容轉換成連結"
 
+#: src/marp-patterns/patterns/table.ts:27
+msgctxt "slide pattern"
+msgid "Cost"
+msgstr "成本"
+
 #: src/block-library/table/edit.tsx:259
 msgid "Create Table"
 msgstr "建立表格"
+
+#: src/marp-patterns/categories.ts:36
+msgctxt "slide pattern category"
+msgid "Data"
+msgstr "資料"
+
+#: src/marp-patterns/patterns/steps.ts:23
+msgctxt "slide pattern"
+msgid "Decide what to do"
+msgstr "決定要做什麼"
+
+#: src/marp-patterns/patterns/table.ts:35
+msgctxt "slide pattern"
+msgid "Dedicated team"
+msgstr "專屬團隊"
 
 #: src/block-library/quote/edit.tsx:151
 msgid "Default"
@@ -196,6 +292,11 @@ msgstr "刪除資料列"
 msgid "Describes the image for screen readers."
 msgstr "為螢幕閱讀器描述圖片。"
 
+#: src/marp-patterns/patterns/timeline.ts:26
+msgctxt "slide pattern"
+msgid "Development"
+msgstr "開發"
+
 #: src/components/keyboard-shortcuts/index.tsx:103
 msgid "Display these keyboard shortcuts."
 msgstr "顯示鍵盤快速鍵清單"
@@ -204,6 +305,11 @@ msgstr "顯示鍵盤快速鍵清單"
 #: src/components/editor-header/index.tsx:153
 msgid "Document Overview"
 msgstr "內容總覽"
+
+#: src/marp-patterns/patterns/resources.ts:22
+msgctxt "slide pattern"
+msgid "Documentation"
+msgstr "說明文件"
 
 #: src/block-library/image/edit.tsx:162
 msgid "Edit image"
@@ -231,7 +337,20 @@ msgstr "輸入標題…"
 msgid "Failed to load image."
 msgstr "圖片載入失敗。"
 
-#: src/marp-patterns/patterns/image-and-text.ts:24
+#: src/marp-patterns/patterns/table.ts:32
+msgctxt "slide pattern"
+msgid "Fast"
+msgstr "快"
+
+#: src/marp-patterns/patterns/questions.ts:22
+msgctxt "slide pattern"
+msgid "Feel free to ask anything"
+msgstr "歡迎隨時提問"
+
+#: src/marp-patterns/patterns/nested-list.ts:23
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:26
+#: src/marp-patterns/patterns/image-and-text.ts:25
+#: src/marp-patterns/patterns/bullet-list.ts:22
 msgctxt "slide pattern"
 msgid "First point"
 msgstr "第一點"
@@ -248,6 +367,11 @@ msgstr "正斜線"
 #: src/components/front-matter-editor/index.tsx:131
 msgid "Front matter settings"
 msgstr "前置資料設定"
+
+#: src/marp-patterns/patterns/full-image.ts:14
+msgctxt "slide pattern"
+msgid "Full-screen image"
+msgstr "全螢幕圖片"
 
 #: src/block-library/quote/edit.tsx:148
 msgid "GitHub alert type"
@@ -275,11 +399,31 @@ msgstr "標題"
 msgid "Heading %d"
 msgstr "標題 %d"
 
+#: src/marp-patterns/patterns/heading-and-paragraph.ts:13
+msgctxt "slide pattern"
+msgid "Heading and paragraph"
+msgstr "標題和段落"
+
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "隱藏內容總覽"
 
+#: src/marp-patterns/patterns/table.ts:29
+msgctxt "slide pattern"
+msgid "High"
+msgstr "高"
+
+#: src/marp-patterns/patterns/steps.ts:21
+msgctxt "slide pattern"
+msgid "How it works"
+msgstr "運作方式"
+
 #: src/block-library/image/edit.tsx:76
+msgid "Image"
+msgstr "圖片"
+
+#: src/marp-patterns/categories.ts:32
+msgctxt "slide pattern category"
 msgid "Image"
 msgstr "圖片"
 
@@ -287,6 +431,16 @@ msgstr "圖片"
 msgctxt "slide pattern"
 msgid "Image and text"
 msgstr "圖片與文字"
+
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:15
+msgctxt "slide pattern"
+msgid "Image on the left and text"
+msgstr "左側圖片和文字"
+
+#: src/marp-patterns/patterns/image-and-caption.ts:14
+msgctxt "slide pattern"
+msgid "Image with a caption"
+msgstr "附說明的圖片"
 
 #: src/block-library/quote/edit.tsx:70
 msgid "Important"
@@ -332,9 +486,29 @@ msgstr "在目前位置上方插入資料列"
 msgid "Italic"
 msgstr "斜體"
 
+#: src/marp-patterns/patterns/table.ts:24
+msgctxt "slide pattern"
+msgid "Item"
+msgstr "項目"
+
+#: src/marp-patterns/patterns/key-figure.ts:13
+msgctxt "slide pattern"
+msgid "Key figure"
+msgstr "關鍵數字"
+
+#: src/marp-patterns/patterns/key-message.ts:13
+msgctxt "slide pattern"
+msgid "Key message"
+msgstr "核心訊息"
+
 #: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr "語言"
+
+#: src/marp-patterns/patterns/timeline.ts:27
+msgctxt "slide pattern"
+msgid "Launch"
+msgstr "發布"
 
 # %d: The line number.
 #: src/ai/selection-summary.ts:22
@@ -356,6 +530,16 @@ msgstr "清單檢視"
 #: src/block-library/list-item/edit.tsx:147
 msgid "List text"
 msgstr "清單文字"
+
+#: src/marp-patterns/patterns/table.ts:28
+msgctxt "slide pattern"
+msgid "Low"
+msgstr "低"
+
+#: src/marp-patterns/patterns/steps.ts:25
+msgctxt "slide pattern"
+msgid "Make it happen"
+msgstr "付諸實行"
 
 #: src/components/keyboard-shortcuts/hooks.ts:106
 msgid "Make the selected text bold."
@@ -393,6 +577,17 @@ msgstr "訊息"
 msgid "Minimal and modern, with centered content."
 msgstr "簡約現代，內容置中。"
 
+#: src/marp-patterns/patterns/table.ts:31
+msgctxt "slide pattern"
+msgid "Moderate"
+msgstr "中等"
+
+#: src/marp-patterns/patterns/quote.ts:26
+#: src/marp-patterns/patterns/quote-on-image.ts:29
+msgctxt "slide pattern"
+msgid "Name, Role"
+msgstr "姓名，職稱"
+
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
@@ -403,7 +598,7 @@ msgstr "瀏覽這篇內容的結構並解決標題層級為空或不正確等問
 msgid "New conversation"
 msgstr "新對話"
 
-#: src/marp-patterns/patterns/agenda.ts:23
+#: src/marp-patterns/patterns/agenda.ts:24
 msgctxt "slide pattern"
 msgid "Next steps"
 msgstr "後續步驟"
@@ -420,6 +615,16 @@ msgstr "沒有符合的語言。"
 msgid "Note"
 msgstr "說明"
 
+#: src/marp-patterns/patterns/numbered-section.ts:14
+msgctxt "slide pattern"
+msgid "Numbered section divider"
+msgstr "帶編號的章節分隔頁"
+
+#: src/marp-patterns/patterns/key-message.ts:19
+msgctxt "slide pattern"
+msgid "One message you want everyone to remember"
+msgstr "希望每個人都記住的一句話"
+
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "預設開啟"
@@ -427,6 +632,16 @@ msgstr "預設開啟"
 #: src/components/ai-sidebar/chat.tsx:202
 msgid "Open settings"
 msgstr "開啟設定"
+
+#: src/marp-patterns/patterns/table.ts:25
+msgctxt "slide pattern"
+msgid "Option A"
+msgstr "方案 A"
+
+#: src/marp-patterns/patterns/table.ts:26
+msgctxt "slide pattern"
+msgid "Option B"
+msgstr "方案 B"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
@@ -444,6 +659,12 @@ msgstr "大綱"
 msgid "Paginate"
 msgstr "頁碼"
 
+#: src/marp-patterns/patterns/section-and-image.ts:25
+#: src/marp-patterns/patterns/numbered-section.ts:22
+msgctxt "slide pattern"
+msgid "Part 1"
+msgstr "第 1 部分"
+
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
 msgid "Paste or type URL"
@@ -454,20 +675,69 @@ msgstr "貼上或輸入網址"
 msgid "Paste or type URL or file path"
 msgstr "貼上或輸入網址或檔案路徑"
 
-#: src/marp-patterns/patterns/title.ts:20
+#: src/marp-patterns/patterns/timeline.ts:22
+msgctxt "slide pattern"
+msgid "Phase 1"
+msgstr "第 1 階段"
+
+#: src/marp-patterns/patterns/timeline.ts:23
+msgctxt "slide pattern"
+msgid "Phase 2"
+msgstr "第 2 階段"
+
+#: src/marp-patterns/patterns/timeline.ts:24
+msgctxt "slide pattern"
+msgid "Phase 3"
+msgstr "第 3 階段"
+
+#: src/marp-patterns/patterns/steps.ts:22
+msgctxt "slide pattern"
+msgid "Plan"
+msgstr "規劃"
+
+#: src/marp-patterns/patterns/nested-list.ts:13
+msgctxt "slide pattern"
+msgid "Points with details"
+msgstr "帶詳情的要點"
+
+#: src/marp-patterns/patterns/title.ts:21
+#: src/marp-patterns/patterns/title-on-gradient.ts:24
+#: src/marp-patterns/patterns/title-and-image.ts:24
+#: src/marp-patterns/patterns/title-and-background-image.ts:24
 msgctxt "slide pattern"
 msgid "Presentation title"
 msgstr "簡報標題"
 
-#: src/marp-patterns/patterns/agenda.ts:22
+#: src/marp-patterns/patterns/agenda.ts:23
 msgctxt "slide pattern"
 msgid "Proposal"
 msgstr "提案"
 
-#: src/marp-patterns/patterns/closing.ts:21
+#: src/marp-patterns/patterns/questions.ts:13
+msgctxt "slide pattern"
+msgid "Questions"
+msgstr "問答"
+
+#: src/marp-patterns/patterns/closing.ts:22
+#: src/marp-patterns/patterns/closing-on-image.ts:25
 msgctxt "slide pattern"
 msgid "Questions and contact details"
 msgstr "問題與聯絡方式"
+
+#: src/marp-patterns/patterns/questions.ts:21
+msgctxt "slide pattern"
+msgid "Questions?"
+msgstr "有問題嗎？"
+
+#: src/marp-patterns/patterns/quote.ts:13
+msgctxt "slide pattern"
+msgid "Quote"
+msgstr "引言"
+
+#: src/marp-patterns/patterns/quote-on-image.ts:14
+msgctxt "slide pattern"
+msgid "Quote on an image"
+msgstr "圖片上的引言"
 
 #: src/components/editor-header/index.tsx:137
 msgid "Redo"
@@ -477,9 +747,19 @@ msgstr "取消復原"
 msgid "Redo your last undo."
 msgstr "取消復原變更"
 
+#: src/marp-patterns/patterns/resources.ts:24
+msgctxt "slide pattern"
+msgid "Related article"
+msgstr "相關文章"
+
 #: src/components/keyboard-shortcuts/hooks.ts:127
 msgid "Remove a link."
 msgstr "移除連結"
+
+#: src/marp-patterns/patterns/timeline.ts:25
+msgctxt "slide pattern"
+msgid "Research"
+msgstr "調查"
 
 #: src/block-library/image/edit.tsx:274
 msgid "Reset"
@@ -492,6 +772,17 @@ msgstr "重設搜尋"
 #: src/components/editor-shell/side-panel-resizer.tsx:134
 msgid "Resize side panel"
 msgstr "調整側邊面板大小"
+
+#: src/marp-patterns/patterns/resources.ts:13
+#: src/marp-patterns/patterns/resources.ts:21
+msgctxt "slide pattern"
+msgid "Resources"
+msgstr "參考資料"
+
+#: src/marp-patterns/patterns/steps.ts:26
+msgctxt "slide pattern"
+msgid "Review"
+msgstr "檢討"
 
 #: src/block-library/table/edit.tsx:253
 msgid "Row count"
@@ -509,17 +800,32 @@ msgstr "搜尋區塊"
 msgid "Search for slide patterns"
 msgstr "搜尋投影片版型"
 
-#: src/marp-patterns/patterns/image-and-text.ts:25
+#: src/marp-patterns/patterns/nested-list.ts:29
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:27
+#: src/marp-patterns/patterns/image-and-text.ts:26
+#: src/marp-patterns/patterns/bullet-list.ts:23
 msgctxt "slide pattern"
 msgid "Second point"
 msgstr "第二點"
+
+#: src/marp-patterns/categories.ts:24
+msgctxt "slide pattern category"
+msgid "Section"
+msgstr "章節"
 
 #: src/marp-patterns/patterns/section.ts:13
 msgctxt "slide pattern"
 msgid "Section divider"
 msgstr "章節分隔"
 
-#: src/marp-patterns/patterns/section.ts:20
+#: src/marp-patterns/patterns/section-and-image.ts:15
+msgctxt "slide pattern"
+msgid "Section divider with an image"
+msgstr "帶圖片的章節分隔頁"
+
+#: src/marp-patterns/patterns/section.ts:21
+#: src/marp-patterns/patterns/section-and-image.ts:26
+#: src/marp-patterns/patterns/numbered-section.ts:23
 msgctxt "slide pattern"
 msgid "Section title"
 msgstr "章節標題"
@@ -568,10 +874,31 @@ msgstr "投影片分隔符號"
 msgid "Slide patterns"
 msgstr "投影片版型"
 
-#: src/marp-patterns/patterns/image-and-text.ts:23
+#: src/marp-patterns/patterns/stacked-images-and-text.ts:24
+#: src/marp-patterns/patterns/nested-list.ts:22
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:25
+#: src/marp-patterns/patterns/image-and-text.ts:24
+#: src/marp-patterns/patterns/image-and-caption.ts:22
+#: src/marp-patterns/patterns/heading-and-paragraph.ts:19
+#: src/marp-patterns/patterns/bullet-list.ts:21
 msgctxt "slide pattern"
 msgid "Slide title"
 msgstr "投影片標題"
+
+#: src/marp-patterns/patterns/resources.ts:23
+msgctxt "slide pattern"
+msgid "Source code"
+msgstr "原始碼"
+
+#: src/marp-patterns/patterns/table.ts:30
+msgctxt "slide pattern"
+msgid "Speed"
+msgstr "速度"
+
+#: src/marp-patterns/patterns/steps.ts:13
+msgctxt "slide pattern"
+msgid "Steps"
+msgstr "步驟"
 
 #: src/components/ai-sidebar/chat.tsx:243
 msgid "Stop"
@@ -589,6 +916,11 @@ msgstr "刪除線"
 msgid "Strikethrough the selected text."
 msgstr "為選取內容加上刪除線"
 
+#: src/marp-patterns/patterns/table.ts:33
+msgctxt "slide pattern"
+msgid "Support"
+msgstr "支援"
+
 #: src/components/keyboard-shortcuts/index.tsx:79
 msgid "Switch between the visual editor and the code editor."
 msgstr "在視覺化編輯器和程式碼編輯器之間切換。"
@@ -596,6 +928,11 @@ msgstr "在視覺化編輯器和程式碼編輯器之間切換。"
 #: src/block-library/table/edit.tsx:231
 msgid "Table"
 msgstr "表格"
+
+#: src/marp-patterns/categories.ts:28
+msgctxt "slide pattern category"
+msgid "Text"
+msgstr "文字"
 
 #: src/components/front-matter-editor/index.tsx:294
 msgid "Text shown at the bottom of each slide."
@@ -605,7 +942,8 @@ msgstr "顯示在每張投影片底部的文字。"
 msgid "Text shown at the top of each slide."
 msgstr "顯示在每張投影片頂端的文字。"
 
-#: src/marp-patterns/patterns/closing.ts:20
+#: src/marp-patterns/patterns/closing.ts:21
+#: src/marp-patterns/patterns/closing-on-image.ts:24
 msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "謝謝"
@@ -636,10 +974,23 @@ msgstr "無法轉譯公式。"
 msgid "Theme"
 msgstr "主題"
 
-#: src/marp-patterns/patterns/image-and-text.ts:26
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:28
+#: src/marp-patterns/patterns/image-and-text.ts:27
+#: src/marp-patterns/patterns/bullet-list.ts:24
 msgctxt "slide pattern"
 msgid "Third point"
 msgstr "第三點"
+
+#: src/marp-patterns/patterns/image-gallery.ts:15
+msgctxt "slide pattern"
+msgid "Three images side by side"
+msgstr "並排的三張圖片"
+
+#: src/marp-patterns/patterns/timeline.ts:13
+#: src/marp-patterns/patterns/timeline.ts:21
+msgctxt "slide pattern"
+msgid "Timeline"
+msgstr "時間軸"
 
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
@@ -651,10 +1002,30 @@ msgstr "提示"
 msgid "Title"
 msgstr "標題"
 
+#: src/marp-patterns/categories.ts:20
+msgctxt "slide pattern category"
+msgid "Title"
+msgstr "標題"
+
 #: src/marp-patterns/patterns/title.ts:13
 msgctxt "slide pattern"
 msgid "Title"
 msgstr "標題"
+
+#: src/marp-patterns/patterns/title-and-image.ts:14
+msgctxt "slide pattern"
+msgid "Title beside an image"
+msgstr "圖片旁的標題"
+
+#: src/marp-patterns/patterns/title-on-gradient.ts:13
+msgctxt "slide pattern"
+msgid "Title on a gradient"
+msgstr "漸層背景上的標題"
+
+#: src/marp-patterns/patterns/title-and-background-image.ts:14
+msgctxt "slide pattern"
+msgid "Title on an image"
+msgstr "圖片上的標題"
 
 #: src/block-library/list-item/edit.tsx:133
 msgid "Toggle task"
@@ -671,6 +1042,11 @@ msgstr "轉換為任務項目"
 #: src/components/front-matter-editor/index.tsx:136
 msgid "Turn the document into a slide deck."
 msgstr "將文件轉換為投影片。"
+
+#: src/marp-patterns/patterns/stacked-images-and-text.ts:15
+msgctxt "slide pattern"
+msgid "Two stacked images and text"
+msgstr "上下排列的兩張圖片和文字"
 
 #: src/block-library/paragraph/edit.tsx:41
 msgid "Type / to choose a block"
@@ -715,6 +1091,16 @@ msgstr "正在等待回答…"
 msgid "Warning"
 msgstr "警告"
 
+#: src/marp-patterns/patterns/code.ts:26
+msgctxt "slide pattern"
+msgid "What this code does"
+msgstr "這段程式碼的作用"
+
+#: src/marp-patterns/patterns/key-figure.ts:22
+msgctxt "slide pattern"
+msgid "What this number means"
+msgstr "這個數字的意義"
+
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
 msgstr "撰寫 HTML 程式碼..."
@@ -726,6 +1112,13 @@ msgstr "撰寫 TeX..."
 #: src/components/front-matter-editor/index.tsx:67
 msgid "Write YAML front matter…"
 msgstr "撰寫 YAML 前置資料…"
+
+#: src/marp-patterns/patterns/stacked-images-and-text.ts:25
+#: src/marp-patterns/patterns/heading-and-paragraph.ts:20
+msgctxt "slide pattern"
+msgid ""
+"Write a few sentences here to explain the idea of this slide in more detail."
+msgstr "在這裡寫幾句話，更詳細地說明這張投影片的內容。"
 
 #: src/block-library/code/edit.tsx:74
 msgid "Write code…"
@@ -739,7 +1132,10 @@ msgstr "撰寫摘要..."
 msgid "YAML front matter"
 msgstr "YAML 前置資料"
 
-#: src/marp-patterns/patterns/title.ts:21
+#: src/marp-patterns/patterns/title.ts:22
+#: src/marp-patterns/patterns/title-on-gradient.ts:25
+#: src/marp-patterns/patterns/title-and-image.ts:25
+#: src/marp-patterns/patterns/title-and-background-image.ts:25
 msgctxt "slide pattern"
 msgid "Your name · Date"
 msgstr "姓名 · 日期"

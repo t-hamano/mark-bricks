@@ -12,6 +12,7 @@ import type { SlidePattern } from '../types';
 const pattern: SlidePattern = {
 	name: 'image-and-text',
 	title: () => _x( 'Image and text', 'slide pattern', 'mark-bricks' ),
+	categories: [ 'image' ],
 	markdown: `![bg right:40%](${ PLACEHOLDER_IMAGE })
 
 ## {{heading}}

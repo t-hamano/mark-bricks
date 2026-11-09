@@ -1,4 +1,11 @@
 /**
+ * Name of a group of slide patterns, such as title slides or image slides.
+ * `SLIDE_PATTERN_CATEGORIES` lists them, with their labels.
+ */
+export type SlidePatternCategory =
+	'title' | 'section' | 'text' | 'image' | 'data' | 'closing';
+
+/**
  * A ready-made set of slides that the inserter offers in Marp mode.
  *
  * The text people read is kept out of `markdown`, so it can be translated:
@@ -12,6 +19,8 @@ export type SlidePattern = {
 	name: string;
 	// Label shown in the inserter.
 	title: () => string;
+	// The groups the pattern belongs to, the one it fits best first.
+	categories: readonly SlidePatternCategory[];
 	// Markdown of the slides, without front matter. Slides are separated by
 	// `---`, and translatable text is written as `{{key}}`.
 	markdown: string;
