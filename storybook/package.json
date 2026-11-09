@@ -13,7 +13,8 @@
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
-		"@mark-bricks/fixtures": "workspace:*"
+		"@mark-bricks/fixtures": "workspace:*",
+		"@mark-bricks/marp-preview": "workspace:*"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.64.1",
