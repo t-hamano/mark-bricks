@@ -66,6 +66,13 @@ export function App() {
 		'visual'
 	);
 
+	// The slide preview's share of the width, in percent, of each tab that
+	// the user resized it in. It lasts while the tab is open: another tab, or
+	// a file opened again, starts at half.
+	const [ slidePreviewSizes, setSlidePreviewSizes ] = useState<
+		Record< string, number >
+	>( {} );
+
 	const editorRef = useRef< EditorHandle >( null );
 
 	useEditorFlush( editorRef );
@@ -167,6 +174,13 @@ export function App() {
 									isSlideMode={ isSlideMode }
 								/>
 							)
+						}
+						sidePanelSize={ slidePreviewSizes[ activeTab.id ] }
+						onSidePanelSizeChange={ ( size ) =>
+							setSlidePreviewSizes( ( sizes ) => ( {
+								...sizes,
+								[ activeTab.id ]: size,
+							} ) )
 						}
 						headerActions={
 							<HeaderActions
