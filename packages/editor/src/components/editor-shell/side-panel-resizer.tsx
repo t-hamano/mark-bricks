@@ -18,7 +18,7 @@ export const DEFAULT_SIDE_PANEL_SIZE = 50;
 const MIN_SIZE = 30;
 const MAX_SIZE = 90;
 const KEYBOARD_STEP = 5;
-const RESIZING_CLASS = 'is-resizing-side-panel';
+const OVERLAY_CLASS = 'editor-shell__side-panel-resize-overlay';
 
 export function clampSidePanelSize( size: number ): number {
 	return Math.min( MAX_SIZE, Math.max( MIN_SIZE, size ) );
@@ -49,18 +49,12 @@ export function SidePanelResizer( {
 	size,
 	onChange,
 }: Props ) {
-	const isDraggingRef = useRef( false );
+	// Ends the drag in progress, if any.
+	const endDragRef = useRef< ( () => void ) | null >( null );
 
-	// A bar that goes away mid-drag, such as when the viewport narrows,
-	// handles no more pointer events, so it gives the frames the pointer back.
-	useEffect(
-		() => () => {
-			if ( isDraggingRef.current ) {
-				document.body.classList.remove( RESIZING_CLASS );
-			}
-		},
-		[]
-	);
+	// A bar that goes away mid-drag, such as when the viewport narrows, ends
+	// the drag, so that its overlay does not stay over the page.
+	useEffect( () => () => endDragRef.current?.(), [] );
 
 	function sizeAt( clientX: number ): number | null {
 		const content = contentRef.current?.getBoundingClientRect();
@@ -83,32 +77,33 @@ export function SidePanelResizer( {
 			return;
 		}
 		event.preventDefault();
-		event.currentTarget.setPointerCapture( event.pointerId );
-		isDraggingRef.current = true;
-		// Keeps frames, such as the canvas and the side panel's content, from
-		// taking the pointer while the bar moves over them.
-		document.body.classList.add( RESIZING_CLASS );
-	}
+		endDragRef.current?.();
+		// Covers the page while the bar moves, so that frames, such as the
+		// canvas and the side panel's content, do not take the pointer. The
+		// frames themselves stay as they are: turning their pointer events off
+		// and on, or capturing the pointer, can leave WebKit sending the wheel
+		// nowhere until the user clicks inside a frame.
+		const overlay = document.createElement( 'div' );
+		overlay.className = OVERLAY_CLASS;
+		document.body.appendChild( overlay );
 
-	function onPointerMove( event: PointerEvent< HTMLDivElement > ) {
-		if ( ! isDraggingRef.current ) {
-			return;
+		function onMove( moveEvent: globalThis.PointerEvent ) {
+			const next = sizeAt( moveEvent.clientX );
+			if ( next !== null ) {
+				onChange( next );
+			}
 		}
-		const next = sizeAt( event.clientX );
-		if ( next !== null ) {
-			onChange( next );
+		function endDrag() {
+			overlay.remove();
+			window.removeEventListener( 'pointermove', onMove );
+			window.removeEventListener( 'pointerup', endDrag );
+			window.removeEventListener( 'pointercancel', endDrag );
+			endDragRef.current = null;
 		}
-	}
-
-	function onPointerEnd( event: PointerEvent< HTMLDivElement > ) {
-		if ( ! isDraggingRef.current ) {
-			return;
-		}
-		isDraggingRef.current = false;
-		document.body.classList.remove( RESIZING_CLASS );
-		if ( event.currentTarget.hasPointerCapture( event.pointerId ) ) {
-			event.currentTarget.releasePointerCapture( event.pointerId );
-		}
+		window.addEventListener( 'pointermove', onMove );
+		window.addEventListener( 'pointerup', endDrag );
+		window.addEventListener( 'pointercancel', endDrag );
+		endDragRef.current = endDrag;
 	}
 
 	function onKeyDown( event: KeyboardEvent< HTMLDivElement > ) {
@@ -141,10 +136,6 @@ export function SidePanelResizer( {
 			aria-valuemax={ 100 - MIN_SIZE }
 			tabIndex={ 0 }
 			onPointerDown={ onPointerDown }
-			onPointerMove={ onPointerMove }
-			onPointerUp={ onPointerEnd }
-			onPointerCancel={ onPointerEnd }
-			onLostPointerCapture={ onPointerEnd }
 			onKeyDown={ onKeyDown }
 		/>
 	);
