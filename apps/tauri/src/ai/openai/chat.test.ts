@@ -135,11 +135,19 @@ describe( 'createChat with OpenAI', () => {
 			[
 				{
 					type: 'usage',
-					usage: { inputTokens: 130, outputTokens: 48 },
+					usage: {
+						inputTokens: 130,
+						cachedInputTokens: 0,
+						outputTokens: 48,
+					},
 				},
 				{
 					type: 'usage',
-					usage: { inputTokens: 190, outputTokens: 12 },
+					usage: {
+						inputTokens: 190,
+						cachedInputTokens: 128,
+						outputTokens: 12,
+					},
 				},
 			]
 		);
