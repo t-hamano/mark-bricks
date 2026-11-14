@@ -17,19 +17,19 @@ import {
 
 describe( 'parseMarpDirectiveComment', () => {
 	it( 'reads a one-line spot directive', () => {
-		expect( parseMarpDirectiveComment( ' _class: lead invert ' ) ).toEqual(
-			{
-				values: { class: 'lead invert' },
-				isSpot: true,
-				otherLines: [],
-			}
-		);
+		expect(
+			parseMarpDirectiveComment( ' _class: lead invert ' )
+		).toMatchObject( {
+			values: { class: 'lead invert' },
+			isSpot: true,
+			otherLines: [],
+		} );
 	} );
 
 	it( 'reads an empty value', () => {
 		expect(
 			parseMarpDirectiveComment( "\n_class: lead\n_header: ''\n" )
-		).toEqual( {
+		).toMatchObject( {
 			values: { class: 'lead', header: '' },
 			isSpot: true,
 			otherLines: [],
@@ -41,7 +41,7 @@ describe( 'parseMarpDirectiveComment', () => {
 			parseMarpDirectiveComment(
 				'\nheader: "Hello: world"\npaginate: true\n'
 			)
-		).toEqual( {
+		).toMatchObject( {
 			values: { header: 'Hello: world', paginate: 'true' },
 			isSpot: false,
 			otherLines: [],
@@ -53,7 +53,7 @@ describe( 'parseMarpDirectiveComment', () => {
 			parseMarpDirectiveComment(
 				'\n_class: lead\n_backgroundSize: cover\nclass: [a, b]\n'
 			)
-		).toEqual( {
+		).toMatchObject( {
 			values: { class: 'lead' },
 			isSpot: true,
 			otherLines: [ '_backgroundSize: cover', 'class: [a, b]' ],
@@ -103,6 +103,18 @@ describe( 'serializeMarpDirectiveComment', () => {
 				otherLines: [],
 			} )
 		).toBe( '<!-- _header: "" -->' );
+	} );
+
+	it( 'keeps the quotes of a value that did not change', () => {
+		const comment = parseMarpDirectiveComment(
+			"\n_class: lead\n_header: ''\n_footer: 'Hi'\n"
+		);
+		expect(
+			serializeMarpDirectiveComment( {
+				...comment!,
+				values: { ...comment!.values, class: 'invert', footer: 'Bye' },
+			} )
+		).toBe( "<!--\n_class: invert\n_header: ''\n_footer: Bye\n-->" );
 	} );
 
 	it( 'writes nothing for no directives', () => {
@@ -172,7 +184,9 @@ describe( 'Marp classes', () => {
 	const classes = [ 'lead', 'invert', 'gaia' ];
 
 	it( 'splits the theme classes from the others', () => {
-		expect( splitMarpClasses( 'invert custom lead', classes ) ).toEqual( {
+		expect(
+			splitMarpClasses( 'invert custom lead', classes )
+		).toMatchObject( {
 			selected: [ 'invert', 'lead' ],
 			other: 'custom',
 		} );

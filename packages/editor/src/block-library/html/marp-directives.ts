@@ -40,6 +40,11 @@ export interface MarpDirectiveComment {
 	isSpot: boolean;
 	/** Lines of the comment that the settings do not edit, kept as written. */
 	otherLines: string[];
+	/**
+	 * The values as written, with their quotes, such as `''`. A value that
+	 * did not change is written back this way, so its quotes are kept.
+	 */
+	rawValues?: MarpDirectiveValues;
 }
 
 /**
@@ -83,6 +88,7 @@ export function parseMarpDirectiveComment(
 ): MarpDirectiveComment | null {
 	const lines = body.split( /\r?\n/ ).filter( ( line ) => line.trim() );
 	const values: MarpDirectiveValues = {};
+	const rawValues: MarpDirectiveValues = {};
 	const otherLines: string[] = [];
 	let spotCount = 0;
 	let globalCount = 0;
@@ -100,6 +106,7 @@ export function parseMarpDirectiveComment(
 			continue;
 		}
 		values[ name ] = scalar.value;
+		rawValues[ name ] = raw.trim();
 		if ( underscore ) {
 			spotCount++;
 		} else {
@@ -109,7 +116,12 @@ export function parseMarpDirectiveComment(
 	if ( spotCount + globalCount === 0 ) {
 		return null;
 	}
-	return { values, isSpot: spotCount >= globalCount, otherLines };
+	return {
+		values,
+		isSpot: spotCount >= globalCount,
+		otherLines,
+		rawValues,
+	};
 }
 
 /**
@@ -147,9 +159,15 @@ export function serializeMarpDirectiveComment(
 			// An empty value is written too: `_header: ""` hides the header
 			// that earlier slides set.
 			const value = comment.values[ name ]?.trim();
-			return value === undefined
-				? []
-				: [ `${ prefix }${ name }: ${ formatScalar( value ) }` ];
+			if ( value === undefined ) {
+				return [];
+			}
+			const raw = comment.rawValues?.[ name ];
+			const written =
+				raw !== undefined && parseScalar( raw ).value === value
+					? raw
+					: formatScalar( value );
+			return [ `${ prefix }${ name }: ${ written }` ];
 		} ),
 		...comment.otherLines,
 	];
