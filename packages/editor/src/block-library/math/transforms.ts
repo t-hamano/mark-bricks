@@ -1,18 +1,9 @@
 /**
  * WordPress dependencies
  */
-import {
-	createBlock,
-	type BlockConfiguration,
-	type BlockTransform,
-} from '@wordpress/blocks';
+import { createBlock, type BlockConfiguration } from '@wordpress/blocks';
 
 const name = 'core/math';
-
-type InputTransform = Omit< BlockTransform, 'type' > & {
-	type: 'input';
-	regExp: RegExp;
-};
 
 /**
  * Typing `$$` in an empty paragraph starts a math block, as typing ```` ``` ````
@@ -24,7 +15,7 @@ const transforms: BlockConfiguration[ 'transforms' ] = {
 			type: 'input',
 			regExp: /^\$\$$/,
 			transform: () => createBlock( name ),
-		} as InputTransform as unknown as BlockTransform,
+		},
 	],
 };
 

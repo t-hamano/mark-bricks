@@ -42,12 +42,6 @@ type Boundary = {
 };
 
 /**
- * The format shape `applyFormat` takes. It accepts attributes at runtime; the
- * public type omits them.
- */
-type AppliedFormat = Parameters< typeof applyFormat >[ 1 ];
-
-/**
  * Finds the range of text the link under the selection covers.
  *
  * The selection says where the caret is, not where the link it sits in begins
@@ -129,7 +123,7 @@ export function setLink(
 	const format = {
 		type: LINK_FORMAT,
 		attributes,
-	} as unknown as AppliedFormat;
+	};
 	const currentText = getTextContent( slice( value, start, end ) );
 
 	// A range of only objects, such as a linked image, reads as empty text, so

@@ -14,12 +14,6 @@ import type { ImageValue } from './inline';
 export const IMAGE_FORMAT = 'core/image';
 
 /**
- * The format shape `insertObject` takes. It accepts attributes at runtime; the
- * public type omits them.
- */
-type InsertedObject = Parameters< typeof insertObject >[ 1 ];
-
-/**
  * Builds the format attributes for an image, keeping any others it already
  * carries, such as the title's delimiter. A cleared title drops them both.
  *
@@ -59,7 +53,7 @@ export function insertImage(
 	return insertObject( value, {
 		type: IMAGE_FORMAT,
 		attributes: toAttributes( image ),
-	} as unknown as InsertedObject );
+	} );
 }
 
 /**

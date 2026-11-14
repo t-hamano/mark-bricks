@@ -8,26 +8,7 @@ import { cloneBlock } from '@wordpress/blocks';
 
 export default function useOutdentListItem() {
 	const registry = useRegistry();
-	const dispatch = useDispatch( blockEditorStore ) as unknown as {
-		moveBlocksToPosition: (
-			clientIds: string[],
-			fromRootClientId: string,
-			toRootClientId: string,
-			index?: number
-		) => void;
-		removeBlock: ( clientId: string, selectPrevious?: boolean ) => void;
-		removeBlocks: ( clientIds: string[], selectPrevious?: boolean ) => void;
-		insertBlock: (
-			block: unknown,
-			index: number,
-			rootClientId: string,
-			updateSelection: boolean
-		) => void;
-		updateBlockListSettings: (
-			clientId: string,
-			settings: unknown
-		) => void;
-	};
+	const dispatch = useDispatch( blockEditorStore );
 	const {
 		moveBlocksToPosition,
 		removeBlock,

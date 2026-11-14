@@ -64,19 +64,9 @@
 	}
 
 	.components-popover:not(.is-unstyled) > .components-popover__content {
-		background: var(--wpds-color-background-surface-neutral-strong);
-		color: var(--wpds-color-foreground-content-neutral);
 		box-shadow:
 			0 0 0 1px var(--wpds-color-stroke-surface-neutral),
 			0 4px 12px rgb(0 0 0 / 25%);
-	}
-
-	.components-popover.is-expanded:not(.is-unstyled) > .components-popover__content {
-		box-shadow: 0 -1px 0 var(--wpds-color-stroke-surface-neutral);
-	}
-
-	.components-popover .components-popover__triangle-border {
-		stroke: var(--wpds-color-stroke-surface-neutral);
 	}
 
 	.components-popover .components-menu-group + .components-menu-group {
@@ -86,16 +76,6 @@
 	.components-popover .components-menu-item__button:hover:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-primary),
 	.components-popover .components-dropdown-menu__menu-item:hover:not(:disabled, [aria-disabled="true"], .is-destructive, .is-pressed, .is-primary) {
 		color: var(--wpds-color-foreground-interactive-brand);
-	}
-
-	.components-popover__header,
-	.components-popover__arrow::before {
-		background-color: var(--wpds-color-background-surface-neutral-strong);
-		color: var(--wpds-color-foreground-content-neutral);
-	}
-
-	.components-popover__triangle-bg {
-		fill: var(--wpds-color-background-surface-neutral-strong);
 	}
 
 	.components-dropdown__content.is-alternate .components-menu-group + .components-menu-group {
