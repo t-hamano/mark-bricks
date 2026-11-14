@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T08:42:41.954Z\n"
-"PO-Revision-Date: 2026-11-14T08:42:47.671Z\n"
+"POT-Creation-Date: 2026-11-14T09:13:34.243Z\n"
+"PO-Revision-Date: 2026-11-14T09:13:40.455Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -67,7 +67,7 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/block-library/html/marp-directive-settings.tsx:321
+#: src/block-library/html/marp-directive-settings.tsx:324
 msgid "A CSS background image, such as a gradient."
 msgstr "그라데이션 같은 CSS 배경 이미지입니다."
 
@@ -149,7 +149,7 @@ msgstr "아무 편집기"
 msgid "Apply"
 msgstr "적용"
 
-#: src/block-library/html/marp-directive-settings.tsx:173
+#: src/block-library/html/marp-directive-settings.tsx:176
 msgid "Apply to"
 msgstr "적용 대상"
 
@@ -174,11 +174,11 @@ msgstr "자동"
 msgid "Background"
 msgstr "배경"
 
-#: src/block-library/html/marp-directive-settings.tsx:298
+#: src/block-library/html/marp-directive-settings.tsx:301
 msgid "Background color"
 msgstr "배경색"
 
-#: src/block-library/html/marp-directive-settings.tsx:320
+#: src/block-library/html/marp-directive-settings.tsx:323
 msgid "Background image"
 msgstr "배경 이미지"
 
@@ -252,17 +252,17 @@ msgstr "새 단락을 추가한 후 블록 유형을 변경."
 msgid "Choose language…"
 msgstr "언어 선택…"
 
-#: src/block-library/html/marp-directive-settings.tsx:200
-#: src/block-library/html/marp-directive-settings.tsx:226
+#: src/block-library/html/marp-directive-settings.tsx:203
+#: src/block-library/html/marp-directive-settings.tsx:229
 msgid "Class"
 msgstr "클래스"
 
-#: src/block-library/html/marp-directive-settings.tsx:238
+#: src/block-library/html/marp-directive-settings.tsx:241
 msgid "Classes of the slide, separated by spaces."
 msgstr "슬라이드의 클래스입니다. 공백으로 구분합니다."
 
 # %s: A theme name, such as "gaia".
-#: src/block-library/html/marp-directive-settings.tsx:232
+#: src/block-library/html/marp-directive-settings.tsx:235
 msgid "Classes that the %s theme does not provide, separated by spaces."
 msgstr "%s 테마에 없는 클래스입니다. 공백으로 구분합니다."
 
@@ -407,16 +407,16 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "메시지에 집중하기"
 
-#: src/block-library/html/marp-directive-settings.tsx:194
+#: src/block-library/html/marp-directive-settings.tsx:197
 msgid "Following slides"
 msgstr "이후 슬라이드"
 
-#: src/block-library/html/marp-directive-settings.tsx:80
+#: src/block-library/html/marp-directive-settings.tsx:83
 msgid "Follows the setting of the deck."
 msgstr "덱 설정을 따릅니다."
 
 #: src/components/front-matter-editor/index.tsx:293
-#: src/block-library/html/marp-directive-settings.tsx:289
+#: src/block-library/html/marp-directive-settings.tsx:292
 msgid "Footer"
 msgstr "바닥글"
 
@@ -454,7 +454,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:282
-#: src/block-library/html/marp-directive-settings.tsx:280
+#: src/block-library/html/marp-directive-settings.tsx:283
 msgid "Header"
 msgstr "머리글"
 
@@ -535,7 +535,7 @@ msgstr "제목, 텍스트와 목록의 2단 구성"
 msgid "Height"
 msgstr "높이"
 
-#: src/block-library/html/marp-directive-settings.tsx:268
+#: src/block-library/html/marp-directive-settings.tsx:271
 msgid "Hide"
 msgstr "숨기기"
 
@@ -543,15 +543,15 @@ msgstr "숨기기"
 msgid "Hide Document Overview"
 msgstr "문서 개요 숨기기"
 
-#: src/block-library/html/marp-directive-settings.tsx:75
+#: src/block-library/html/marp-directive-settings.tsx:78
 msgid "Hides the page number without counting this slide."
 msgstr "이 슬라이드를 세지 않고 페이지 번호를 숨깁니다."
 
-#: src/block-library/html/marp-directive-settings.tsx:68
+#: src/block-library/html/marp-directive-settings.tsx:71
 msgid "Hides the page number."
 msgstr "페이지 번호를 숨깁니다."
 
-#: src/block-library/html/marp-directive-settings.tsx:272
+#: src/block-library/html/marp-directive-settings.tsx:275
 msgid "Hold"
 msgstr "유지"
 
@@ -779,7 +779,7 @@ msgstr "순서 있음"
 msgid "Original"
 msgstr "원본 크기"
 
-#: src/block-library/html/marp-directive-settings.tsx:225
+#: src/block-library/html/marp-directive-settings.tsx:228
 msgid "Other classes"
 msgstr "기타 클래스"
 
@@ -791,7 +791,7 @@ msgstr "내어쓰기"
 msgid "Outline"
 msgstr "아웃라인"
 
-#: src/block-library/html/marp-directive-settings.tsx:252
+#: src/block-library/html/marp-directive-settings.tsx:255
 msgid "Page number"
 msgstr "페이지 번호"
 
@@ -942,7 +942,7 @@ msgctxt "slide pattern"
 msgid "Share"
 msgstr "공유"
 
-#: src/block-library/html/marp-directive-settings.tsx:264
+#: src/block-library/html/marp-directive-settings.tsx:267
 msgid "Show"
 msgstr "표시"
 
@@ -965,11 +965,11 @@ msgstr "슬라이드를 전체 화면으로 표시"
 msgid "Shown as a tooltip on hover."
 msgstr "마우스를 올리면 툴팁으로 표시됩니다."
 
-#: src/block-library/html/marp-directive-settings.tsx:70
+#: src/block-library/html/marp-directive-settings.tsx:73
 msgid "Shows the page number without counting this slide."
 msgstr "이 슬라이드를 세지 않고 페이지 번호를 표시합니다."
 
-#: src/block-library/html/marp-directive-settings.tsx:66
+#: src/block-library/html/marp-directive-settings.tsx:69
 msgid "Shows the page number."
 msgstr "페이지 번호를 표시합니다."
 
@@ -981,7 +981,7 @@ msgstr "GitHub Markdown 스타일 기반의 깔끔한 테마."
 msgid "Size"
 msgstr "크기"
 
-#: src/block-library/html/marp-directive-settings.tsx:276
+#: src/block-library/html/marp-directive-settings.tsx:279
 msgid "Skip"
 msgstr "건너뛰기"
 
@@ -1048,6 +1048,10 @@ msgstr "선택한 텍스트에 취소선을 표시합니다."
 msgid "Switch between the visual editor and the code editor."
 msgstr "비주얼 편집기와 코드 편집기 간에 전환합니다."
 
+#: src/block-library/html/marp-directive-settings.tsx:58
+msgid "Switches to the theme's alternate color scheme."
+msgstr "테마의 대체 색 구성표로 전환합니다."
+
 #: src/block-library/table/edit.tsx:231
 msgid "Table"
 msgstr "테이블"
@@ -1057,7 +1061,7 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "텍스트"
 
-#: src/block-library/html/marp-directive-settings.tsx:310
+#: src/block-library/html/marp-directive-settings.tsx:313
 msgid "Text color"
 msgstr "텍스트 색상"
 
@@ -1065,7 +1069,7 @@ msgstr "텍스트 색상"
 msgid "Text shown at the bottom of each slide."
 msgstr "각 슬라이드 하단에 표시되는 텍스트."
 
-#: src/block-library/html/marp-directive-settings.tsx:290
+#: src/block-library/html/marp-directive-settings.tsx:293
 msgid "Text shown at the bottom of the slide."
 msgstr "슬라이드 아래쪽에 표시되는 텍스트입니다."
 
@@ -1073,7 +1077,7 @@ msgstr "슬라이드 아래쪽에 표시되는 텍스트입니다."
 msgid "Text shown at the top of each slide."
 msgstr "각 슬라이드 상단에 표시되는 텍스트."
 
-#: src/block-library/html/marp-directive-settings.tsx:281
+#: src/block-library/html/marp-directive-settings.tsx:284
 msgid "Text shown at the top of the slide."
 msgstr "슬라이드 위쪽에 표시되는 텍스트입니다."
 
@@ -1107,11 +1111,11 @@ msgstr "이미지가 콘텐츠 뒤에서 슬라이드 전체 또는 한쪽을 �
 msgid "The image sits in the slide content."
 msgstr "이미지가 슬라이드 콘텐츠 안에 표시됩니다."
 
-#: src/block-library/html/marp-directive-settings.tsx:180
+#: src/block-library/html/marp-directive-settings.tsx:183
 msgid "The settings apply to this slide and the slides after it."
 msgstr "이 슬라이드와 이후 슬라이드에 적용됩니다."
 
-#: src/block-library/html/marp-directive-settings.tsx:176
+#: src/block-library/html/marp-directive-settings.tsx:179
 msgid "The settings apply to this slide only."
 msgstr "이 슬라이드에만 적용됩니다."
 
@@ -1136,7 +1140,7 @@ msgstr "테마"
 msgid "Thinking…"
 msgstr "생각하는 중…"
 
-#: src/block-library/html/marp-directive-settings.tsx:190
+#: src/block-library/html/marp-directive-settings.tsx:193
 msgid "This slide"
 msgstr "이 슬라이드"
 
@@ -1274,10 +1278,6 @@ msgctxt "slide pattern"
 msgid "Use any text editor"
 msgstr "아무 텍스트 편집기나 사용"
 
-#: src/block-library/html/marp-directive-settings.tsx:58
-msgid "Uses the gaia color scheme."
-msgstr "gaia 색 구성표를 사용합니다."
-
 #: style.css
 #. Description of the generic
 msgid "Visual markdown block editor."
@@ -1364,8 +1364,8 @@ msgstr "YAML 프런트 매터"
 
 # %s: An example value, such as "1.5".
 #: src/block-library/image/marp-image-settings.tsx:485
-#: src/block-library/html/marp-directive-settings.tsx:301
-#: src/block-library/html/marp-directive-settings.tsx:313
-#: src/block-library/html/marp-directive-settings.tsx:327
+#: src/block-library/html/marp-directive-settings.tsx:304
+#: src/block-library/html/marp-directive-settings.tsx:316
+#: src/block-library/html/marp-directive-settings.tsx:330
 msgid "e.g. %s"
 msgstr "예: %s"

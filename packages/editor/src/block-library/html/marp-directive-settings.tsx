@@ -55,7 +55,10 @@ function getClassDescription( name: string ): string | undefined {
 		case 'invert':
 			return __( 'Inverts the colors of the slide.', 'mark-bricks' );
 		case 'gaia':
-			return __( 'Uses the gaia color scheme.', 'mark-bricks' );
+			return __(
+				"Switches to the theme's alternate color scheme.",
+				'mark-bricks'
+			);
 	}
 	return undefined;
 }
