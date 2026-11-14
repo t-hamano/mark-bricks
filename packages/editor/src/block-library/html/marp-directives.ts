@@ -87,15 +87,22 @@ function isDirectiveName( name: string ): name is MarpDirectiveName {
  * @return The entries, each with its first line trimmed.
  */
 function groupYamlLines( body: string ): string[] {
-	const lines = body.split( /\r?\n/ ).filter( ( line ) => line.trim() );
+	const lines = body.split( /\r?\n/ );
 	const indent = ( line: string ) => /^[ \t]*/.exec( line )![ 0 ].length;
-	const baseIndent = lines.length ? indent( lines[ 0 ] ) : 0;
+	const first = lines.find( ( line ) => line.trim() );
+	const baseIndent = first ? indent( first ) : 0;
 	const entries: string[] = [];
+	// Blank lines are kept only inside a multi-line value.
+	let blankLines = '';
 	for ( const line of lines ) {
-		if ( entries.length && indent( line ) > baseIndent ) {
-			entries[ entries.length - 1 ] += `\n${ line }`;
+		if ( ! line.trim() ) {
+			blankLines += `\n${ line }`;
+		} else if ( entries.length && indent( line ) > baseIndent ) {
+			entries[ entries.length - 1 ] += `${ blankLines }\n${ line }`;
+			blankLines = '';
 		} else {
 			entries.push( line.trim() );
+			blankLines = '';
 		}
 	}
 	return entries;
@@ -123,13 +130,18 @@ export function parseMarpDirectiveComment(
 	let spotCount = 0;
 	let globalCount = 0;
 	for ( const line of lines ) {
+		// A YAML comment, such as `# Title slide`, is kept as written.
+		if ( line.startsWith( '#' ) ) {
+			otherLines.push( line );
+			continue;
+		}
 		const match = LINE_PATTERN.exec( line.split( '\n' )[ 0 ] );
 		if ( ! match ) {
 			return null;
 		}
 		const [ , underscore, name, raw ] = match;
 		if ( ! isDirectiveName( name ) ) {
-			otherLines.push( line.trim() );
+			otherLines.push( line );
 			continue;
 		}
 		if ( underscore ) {
@@ -146,7 +158,7 @@ export function parseMarpDirectiveComment(
 		// show, or a second one in the other scope, such as `class` beside
 		// `_class`, is kept as written.
 		if ( ! isPlainValue || name in spotDirectives ) {
-			otherLines.push( line.trim() );
+			otherLines.push( line );
 			spotDirectives[ name ] ??= !! underscore;
 			continue;
 		}
@@ -183,6 +195,38 @@ export function findMarpDirectiveComment(
 		}
 	}
 	return null;
+}
+
+/**
+ * Applies one scope to every directive of the comment, including those kept
+ * as written. A kept directive that would then share its key with another
+ * one is dropped, since Marp drops a comment with the same key twice.
+ *
+ * @param comment The directives.
+ * @param isSpot  Whether they apply to this slide only.
+ * @return The directives with the scope applied.
+ */
+export function setMarpDirectiveScope(
+	comment: MarpDirectiveComment,
+	isSpot: boolean
+): MarpDirectiveComment {
+	const prefix = isSpot ? '_' : '';
+	const keys = new Set(
+		Object.keys( comment.values ).map( ( name ) => prefix + name )
+	);
+	const otherLines = comment.otherLines.flatMap( ( line ) => {
+		const match = LINE_PATTERN.exec( line.split( '\n' )[ 0 ] );
+		if ( ! match || ! isDirectiveName( match[ 2 ] ) ) {
+			return [ line ];
+		}
+		const key = prefix + match[ 2 ];
+		if ( keys.has( key ) ) {
+			return [];
+		}
+		keys.add( key );
+		return [ key + line.slice( match[ 1 ].length + match[ 2 ].length ) ];
+	} );
+	return { ...comment, isSpot, spotDirectives: undefined, otherLines };
 }
 
 /**

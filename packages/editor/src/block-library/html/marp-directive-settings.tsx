@@ -22,6 +22,7 @@ import {
 	joinMarpClasses,
 	serializeMarpDirectiveComment,
 	setMarpDirectiveComment,
+	setMarpDirectiveScope,
 	splitMarpClasses,
 	type MarpDirectiveComment,
 	type MarpDirectiveName,
@@ -189,10 +190,7 @@ export function MarpDirectiveSettings( {
 				// Choosing a scope applies it to every directive, including those
 				// written with the other one.
 				onChange={ ( next ) =>
-					update( {
-						isSpot: next === 'spot',
-						spotDirectives: undefined,
-					} )
+					update( setMarpDirectiveScope( comment, next === 'spot' ) )
 				}
 			>
 				<ToggleGroupControlOption

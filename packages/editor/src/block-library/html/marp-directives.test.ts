@@ -12,6 +12,7 @@ import {
 	parseMarpDirectiveComment,
 	serializeMarpDirectiveComment,
 	setMarpDirectiveComment,
+	setMarpDirectiveScope,
 	splitMarpClasses,
 } from './marp-directives';
 
@@ -229,6 +230,32 @@ describe( 'serializeMarpDirectiveComment', () => {
 		} );
 	} );
 
+	it( 'keeps blank lines inside a multi-line value', () => {
+		const html =
+			'<!--\n_header: |\n  First\n\n  Second\n\n_class: lead\n-->';
+		const found = findMarpDirectiveComment( html );
+		expect(
+			setMarpDirectiveComment( html, {
+				...found!,
+				values: { ...found!.values, footer: 'Bye' },
+			} )
+		).toBe(
+			'<!--\n_class: lead\n_footer: Bye\n_header: |\n  First\n\n  Second\n-->'
+		);
+	} );
+
+	it( 'keeps a YAML comment as written', () => {
+		const html = '<!--\n# Title slide\n_header: Old\n-->';
+		const found = findMarpDirectiveComment( html );
+		expect( found ).toMatchObject( { values: { header: 'Old' } } );
+		expect(
+			setMarpDirectiveComment( html, {
+				...found!,
+				values: { header: 'New' },
+			} )
+		).toBe( '<!--\n_header: New\n# Title slide\n-->' );
+	} );
+
 	it( 'writes nothing for no directives', () => {
 		expect(
 			serializeMarpDirectiveComment( {
@@ -308,5 +335,29 @@ describe( 'Marp classes', () => {
 		expect(
 			joinMarpClasses( [ 'invert', 'lead' ], ' custom  more ', classes )
 		).toBe( 'lead invert custom more' );
+	} );
+} );
+
+describe( 'setMarpDirectiveScope', () => {
+	it( 'applies the scope to the directives kept as written', () => {
+		const comment = parseMarpDirectiveComment(
+			'\n_class: [lead, invert]\n_header: Hi\n'
+		)!;
+		expect(
+			serializeMarpDirectiveComment(
+				setMarpDirectiveScope( comment, false )
+			)
+		).toBe( '<!--\nheader: Hi\nclass: [lead, invert]\n-->' );
+	} );
+
+	it( 'drops a kept directive that would repeat a key', () => {
+		const comment = parseMarpDirectiveComment(
+			'\nclass: invert\n_class: lead\n'
+		)!;
+		expect(
+			serializeMarpDirectiveComment(
+				setMarpDirectiveScope( comment, true )
+			)
+		).toBe( '<!-- _class: invert -->' );
 	} );
 } );
