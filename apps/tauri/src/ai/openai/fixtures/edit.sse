@@ -29,5 +29,5 @@ event: response.output_item.done
 data: {"type":"response.output_item.done","sequence_number":8,"output_index":1,"item":{"id":"fc_01","type":"function_call","status":"completed","call_id":"call_01","name":"edit_selection","arguments":"{\"action\":\"replace\",\"markdown\":\"A short\\nparagraph.\"}"}}
 
 event: response.completed
-data: {"type":"response.completed","sequence_number":9,"response":{"id":"resp_02","object":"response","status":"completed","model":"gpt-6-astra","incomplete_details":null}}
+data: {"type":"response.completed","sequence_number":9,"response":{"id":"resp_02","object":"response","status":"completed","model":"gpt-6-astra","incomplete_details":null,"usage":{"input_tokens":130,"input_tokens_details":{"cached_tokens":0},"output_tokens":48,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":178}}}
 

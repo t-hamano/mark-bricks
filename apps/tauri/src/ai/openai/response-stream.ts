@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { AiActivity } from '@mark-bricks/editor';
+import type { AiActivity, AiUsage } from '@mark-bricks/editor';
 
 /**
  * Internal dependencies
@@ -34,6 +34,11 @@ type StreamEvent = {
 	response?: {
 		incomplete_details?: { reason?: string } | null;
 		error?: ApiError | null;
+		/**
+		 * The input counts the cached tokens too, and the output the
+		 * reasoning tokens.
+		 */
+		usage?: { input_tokens?: number; output_tokens?: number } | null;
 	};
 	code?: string | null;
 	message?: string | null;
@@ -64,6 +69,7 @@ export function readAnswer(
 	let refused = false;
 	let incompleteReason: string | null = null;
 	let isComplete = false;
+	let usage: AiUsage | undefined;
 
 	const handle = ( data: unknown ) => {
 		const event = data as StreamEvent;
@@ -109,9 +115,17 @@ export function readAnswer(
 				}
 				return;
 			}
-			case 'response.completed':
+			case 'response.completed': {
 				isComplete = true;
+				const counts = event.response?.usage;
+				if ( counts ) {
+					usage = {
+						inputTokens: counts.input_tokens ?? 0,
+						outputTokens: counts.output_tokens ?? 0,
+					};
+				}
 				return;
+			}
 			case 'response.incomplete':
 				isComplete = true;
 				incompleteReason =
@@ -137,7 +151,7 @@ export function readAnswer(
 			throw lengthLimitError();
 		}
 		if ( ! editCall ) {
-			return { continuation: [] };
+			return { continuation: [], usage };
 		}
 		const output: FunctionCallOutputItem = {
 			type: 'function_call_output',
@@ -147,6 +161,7 @@ export function readAnswer(
 		return {
 			editCall: { input: parseArguments( editCall.arguments ) },
 			continuation: [ ...outputItems, output ],
+			usage,
 		};
 	};
 

@@ -51,8 +51,9 @@ function toAnswer( message: StreamedMessage ): ProviderAnswer {
 						( block as ToolUseBlock ).name === EDIT_TOOL_NAME
 				)
 			: undefined;
+	const { usage } = message;
 	if ( ! toolUse ) {
-		return { continuation: [] };
+		return { continuation: [], usage };
 	}
 	const continuation: MessageParam[] = [
 		{ role: 'assistant', content },
@@ -67,7 +68,7 @@ function toAnswer( message: StreamedMessage ): ProviderAnswer {
 			],
 		},
 	];
-	return { editCall: { input: toolUse.input }, continuation };
+	return { editCall: { input: toolUse.input }, continuation, usage };
 }
 
 /**

@@ -204,6 +204,7 @@ export function AiProviderCard( {
 		providerInfo.defaultModel
 	);
 	const keyHost = new URL( providerInfo.keyUrl ).host;
+	const usageHost = new URL( providerInfo.usageUrl ).host;
 
 	return (
 		<CollapsibleCard.Root className="preferences-modal__provider-card">
@@ -306,30 +307,58 @@ export function AiProviderCard( {
 							</Button>
 						</Stack>
 					</form>
-					<Text variant="body-sm" render={ <p /> }>
-						{ createInterpolateElement(
-							sprintf(
-								/* translators: %s: The address of the site where API keys are created, such as platform.claude.com. */
-								__(
-									'Get your API key at <a>%s</a>',
-									'mark-bricks'
+					<Stack direction="column" gap="xs">
+						<Text variant="body-sm" render={ <p /> }>
+							{ createInterpolateElement(
+								sprintf(
+									/* translators: %s: The address of the site where API keys are created, such as platform.claude.com. */
+									__(
+										'Get your API key at <a>%s</a>',
+										'mark-bricks'
+									),
+									keyHost
 								),
-								keyHost
-							),
-							{
-								a: (
-									<Link
-										href={ providerInfo.keyUrl }
-										openInNewTab
-										onClick={ ( event ) => {
-											event.preventDefault();
-											openUrl( providerInfo.keyUrl );
-										} }
-									/>
+								{
+									a: (
+										<Link
+											href={ providerInfo.keyUrl }
+											openInNewTab
+											onClick={ ( event ) => {
+												event.preventDefault();
+												openUrl( providerInfo.keyUrl );
+											} }
+										/>
+									),
+								}
+							) }
+						</Text>
+						<Text variant="body-sm" render={ <p /> }>
+							{ createInterpolateElement(
+								sprintf(
+									/* translators: %s: The address of the site that shows the API's usage and billing, such as platform.claude.com. */
+									__(
+										'Check your usage and billing at <a>%s</a>',
+										'mark-bricks'
+									),
+									usageHost
 								),
-							}
-						) }
-					</Text>
+								{
+									a: (
+										<Link
+											href={ providerInfo.usageUrl }
+											openInNewTab
+											onClick={ ( event ) => {
+												event.preventDefault();
+												openUrl(
+													providerInfo.usageUrl
+												);
+											} }
+										/>
+									),
+								}
+							) }
+						</Text>
+					</Stack>
 					{ keyStatus.kind === 'saved' && (
 						<Notice.Root intent="success">
 							<Notice.Description>

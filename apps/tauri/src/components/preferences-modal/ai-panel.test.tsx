@@ -174,13 +174,22 @@ describe( 'AiPanel', () => {
 		} );
 	}
 
-	it( 'shows a card for each provider, with a link to its API keys', async () => {
+	it( 'shows a card for each provider, with links to its API keys and usage', async () => {
 		await render();
 		expect( card( 'anthropic' ).textContent ).toContain( 'Anthropic' );
 		expect( card( 'anthropic' ).textContent ).toContain( 'Not connected' );
-		expect(
-			card( 'anthropic' ).querySelector( 'a' )?.getAttribute( 'href' )
-		).toBe( 'https://platform.claude.com/settings/keys' );
+		const links = ( provider: AiProvider ) =>
+			Array.from( card( provider ).querySelectorAll( 'a' ), ( link ) =>
+				link.getAttribute( 'href' )
+			);
+		expect( links( 'anthropic' ) ).toEqual( [
+			'https://platform.claude.com/settings/keys',
+			'https://platform.claude.com/usage',
+		] );
+		expect( links( 'openai' ) ).toEqual( [
+			'https://platform.openai.com/api-keys',
+			'https://platform.openai.com/usage',
+		] );
 		expect( card( 'openai' ).textContent ).toContain( 'OpenAI' );
 		expect( card( 'openai' ).textContent ).toContain(
 			'only sent to the OpenAI API.'

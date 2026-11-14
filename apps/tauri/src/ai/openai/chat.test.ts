@@ -108,16 +108,39 @@ describe( 'createChat with OpenAI', () => {
 	it( 'reports when the model thinks and when it edits', async () => {
 		const plain = run( [ answer ] );
 		await plain.result;
-		expect( toSteps( plain.events ) ).toEqual( [ 'thinking', 'text' ] );
+		expect( toSteps( plain.events ) ).toEqual( [
+			'thinking',
+			'text',
+			'usage',
+		] );
 
 		const edited = run( [ edit, afterEdit ] );
 		await edited.result;
 		expect( toSteps( edited.events ) ).toEqual( [
 			'text',
 			'editing',
+			'usage',
 			'edit',
 			'text',
+			'usage',
 		] );
+	} );
+
+	it( 'reports the tokens of each request', async () => {
+		const { result, events } = run( [ edit, afterEdit ] );
+		await result;
+		expect( events.filter( ( event ) => event.type === 'usage' ) ).toEqual(
+			[
+				{
+					type: 'usage',
+					usage: { inputTokens: 130, outputTokens: 48 },
+				},
+				{
+					type: 'usage',
+					usage: { inputTokens: 190, outputTokens: 12 },
+				},
+			]
+		);
 	} );
 
 	it( 'reports an edit, then continues the answer after it', async () => {
