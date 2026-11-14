@@ -540,28 +540,3 @@ pub fn run() {
 
 #[cfg(test)]
 mod tests;
-
-#[cfg(test)]
-mod tests {
-    use super::preview_window_path;
-
-    #[test]
-    fn preview_window_path_keeps_locale_slugs() {
-        assert_eq!(
-            preview_window_path("pt_BR"),
-            "pages/preview.html?placement=window&locale=pt_BR"
-        );
-    }
-
-    #[test]
-    fn preview_window_path_encodes_reserved_characters() {
-        assert_eq!(
-            preview_window_path("ja&placement=panel#x"),
-            "pages/preview.html?placement=window&locale=ja%26placement%3Dpanel%23x"
-        );
-        assert_eq!(
-            preview_window_path("日"),
-            "pages/preview.html?placement=window&locale=%E6%97%A5"
-        );
-    }
-}
