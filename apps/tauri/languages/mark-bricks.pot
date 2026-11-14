@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:42:28.127Z\n"
+"POT-Creation-Date: 2026-11-14T02:48:18.561Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -204,7 +204,7 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:314
+#: src/components/preferences-modal/ai-panel.tsx:317
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -391,55 +391,55 @@ msgid "Provider"
 msgstr ""
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:242
+#: src/components/preferences-modal/ai-panel.tsx:245
 msgid "%s API key"
 msgstr ""
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:253
+#: src/components/preferences-modal/ai-panel.tsx:256
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the "
 "%s API."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:282
+#: src/components/preferences-modal/ai-panel.tsx:285
 msgid "API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:302
+#: src/components/preferences-modal/ai-panel.tsx:305
 msgid "Deleting the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:306
+#: src/components/preferences-modal/ai-panel.tsx:309
 msgid "Checking the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:313
+#: src/components/preferences-modal/ai-panel.tsx:316
 msgid "Delete"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:324
+#: src/components/preferences-modal/ai-panel.tsx:327
 msgid "The API key was saved."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:334
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The API key was deleted."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:353
+#: src/components/preferences-modal/ai-panel.tsx:356
 msgid "Loading the models…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:361
+#: src/components/preferences-modal/ai-panel.tsx:364
 msgid "Model"
 msgstr ""
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:393
+#: src/components/preferences-modal/ai-panel.tsx:396
 msgid "The models could not be loaded: %s"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:402
+#: src/components/preferences-modal/ai-panel.tsx:405
 msgid "Try again"
 msgstr ""
 
@@ -597,7 +597,7 @@ msgstr ""
 msgid "Report an issue"
 msgstr ""
 
-#: src/ai/openai/response-stream.ts:122
+#: src/ai/openai/response-stream.ts:137
 #: src/ai/anthropic/message-stream.ts:134
 msgid "The connection closed before the answer was complete."
 msgstr ""
@@ -648,12 +648,12 @@ msgstr ""
 msgid "The edit from the model could not be read."
 msgstr ""
 
-#: src/ai/openai/chat.ts:145
+#: src/ai/openai/chat.ts:144
 #: src/ai/anthropic/chat.ts:146
 msgid "The model declined to answer this request."
 msgstr ""
 
-#: src/ai/openai/chat.ts:151
+#: src/ai/openai/chat.ts:150
 #: src/ai/anthropic/chat.ts:152
 msgid "The answer was cut off because it reached the length limit."
 msgstr ""

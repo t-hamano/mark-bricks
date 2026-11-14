@@ -5,10 +5,11 @@ import type { AiModel } from '../settings';
 
 /**
  * Words in the ids of models that do not answer in text through the
- * Responses API, such as audio and image models.
+ * Responses API, such as audio and image models, or that cannot stream the
+ * answer, such as the `pro` models.
  */
 const NON_CHAT_WORDS =
-	/(?:^|-)(?:audio|realtime|tts|transcribe|image|embedding|moderation|instruct|search|computer|deep-research)(?:-|$)/;
+	/(?:^|-)(?:audio|realtime|tts|transcribe|image|embedding|moderation|instruct|search|computer|deep-research|pro)(?:-|$)/;
 
 /**
  * Keeps the models the assistant can chat with. The Models API lists every

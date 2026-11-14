@@ -35,7 +35,14 @@ export type FunctionCallOutputItem = {
 	output: string;
 };
 
-export type InputItem = MessageItem | FunctionCallItem | FunctionCallOutputItem;
+/**
+ * An item of the model's output that is sent back to the API as is, such as
+ * a `reasoning` item with its encrypted content.
+ */
+export type OutputItem = { type: string; [ key: string ]: unknown };
+
+export type InputItem =
+	MessageItem | FunctionCallItem | FunctionCallOutputItem | OutputItem;
 
 export type RequestBody = {
 	model: string;
@@ -46,6 +53,7 @@ export type RequestBody = {
 	parallel_tool_calls: false;
 	stream: true;
 	store: false;
+	include: [ 'reasoning.encrypted_content' ];
 };
 
 const EDIT_TOOL = {
@@ -144,5 +152,8 @@ export function buildRequestBody( {
 		// The conversation is sent in full with each request, so OpenAI
 		// does not need to keep it.
 		store: false,
+		// Since OpenAI does not keep the answer, the model's reasoning
+		// comes back encrypted, to be sent with the edit's result.
+		include: [ 'reasoning.encrypted_content' ],
 	};
 }

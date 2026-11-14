@@ -1,6 +1,9 @@
 event: response.created
 data: {"type":"response.created","sequence_number":0,"response":{"id":"resp_02","object":"response","status":"in_progress","model":"gpt-6-astra","output":[]}}
 
+event: response.output_item.done
+data: {"type":"response.output_item.done","sequence_number":1,"output_index":0,"item":{"id":"rs_02","type":"reasoning","summary":[],"encrypted_content":"enc_edit"}}
+
 event: response.output_item.added
 data: {"type":"response.output_item.added","sequence_number":1,"output_index":0,"item":{"id":"msg_02","type":"message","status":"in_progress","role":"assistant","content":[]}}
 

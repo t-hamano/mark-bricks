@@ -7,10 +7,11 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { createStreamError, OpenAiError } from './errors';
-import type { FunctionCallItem } from './request';
+import type { FunctionCallItem, OutputItem as ReplayItem } from './request';
 
 type OutputItem = {
 	type: string;
+	[ key: string ]: unknown;
 	call_id?: string;
 	name?: string;
 	arguments?: string;
@@ -41,6 +42,11 @@ export type StreamedResponse = {
 	 */
 	functionCalls: FunctionCallItem[];
 	/**
+	 * The output items to send back to continue the answer, in order: its
+	 * reasoning, messages, and function calls, as the API sent them.
+	 */
+	outputItems: ReplayItem[];
+	/**
 	 * Whether the model declined to answer.
 	 */
 	refused: boolean;
@@ -60,6 +66,7 @@ export type StreamedResponse = {
 export function createResponseStream( onText: ( text: string ) => void ) {
 	let text = '';
 	const functionCalls: FunctionCallItem[] = [];
+	const outputItems: ReplayItem[] = [];
 	let refused = false;
 	let incompleteReason: string | null = null;
 	let isComplete = false;
@@ -78,6 +85,14 @@ export function createResponseStream( onText: ( text: string ) => void ) {
 				return;
 			case 'response.output_item.done': {
 				const item = event.item;
+				if (
+					item &&
+					[ 'reasoning', 'message', 'function_call' ].includes(
+						item.type
+					)
+				) {
+					outputItems.push( item );
+				}
 				if (
 					item?.type === 'function_call' &&
 					item.call_id &&
@@ -125,7 +140,13 @@ export function createResponseStream( onText: ( text: string ) => void ) {
 				)
 			);
 		}
-		return { text, functionCalls, refused, incompleteReason };
+		return {
+			text,
+			functionCalls,
+			outputItems,
+			refused,
+			incompleteReason,
+		};
 	};
 
 	return { handle, finish };

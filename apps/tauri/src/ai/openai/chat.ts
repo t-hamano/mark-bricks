@@ -106,12 +106,11 @@ export function createOpenAiChat( {
 		// Separate the text before the edit from the text after it.
 		let needsSeparator = hasText;
 		const { output } = toEditCallItems( edit, call.call_id );
+		// The answer's items go back as the API sent them, including the
+		// reasoning that led to the edit.
 		const continuation: InputItem[] = [
 			...input,
-			...( first.text
-				? [ { role: 'assistant' as const, content: first.text } ]
-				: [] ),
-			call,
+			...first.outputItems,
 			output,
 		];
 		const second = await streamResponse(

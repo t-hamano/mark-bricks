@@ -253,4 +253,28 @@ describe( 'AiPanel', () => {
 			model: '',
 		} );
 	} );
+
+	it( 'does not switch providers while the key is deleted', async () => {
+		savedKey = 'sk-ant-key';
+		mockIPC( ( command ) => {
+			switch ( command ) {
+				case 'has_ai_api_key':
+					return true;
+				case 'list_ai_models':
+					return MODELS;
+				case 'delete_ai_api_key':
+					return new Promise( () => {} );
+			}
+		} );
+		await render();
+		const providerSelect = () =>
+			container.querySelector( '[role="combobox"]' ) as HTMLElement;
+		expect( providerSelect().hasAttribute( 'data-disabled' ) ).toBe(
+			false
+		);
+		await act( async () => {
+			button( 'Delete' )!.click();
+		} );
+		expect( providerSelect().hasAttribute( 'data-disabled' ) ).toBe( true );
+	} );
 } );

@@ -223,6 +223,9 @@ export function AiPanel( { settings, onChange }: Props ) {
 						) ?? null
 					}
 					isItemEqualToValue={ ( a, b ) => a.value === b.value }
+					// The key being saved or deleted is the current
+					// provider's, and so is the model its deletion resets.
+					disabled={ isBusy }
 					onValueChange={ ( item ) => {
 						if ( item && item.value !== provider ) {
 							// The model was chosen from the other provider's

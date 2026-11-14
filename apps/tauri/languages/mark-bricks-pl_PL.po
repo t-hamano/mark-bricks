@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:42:28.127Z\n"
-"PO-Revision-Date: 2026-11-14T02:42:33.956Z\n"
+"POT-Creation-Date: 2026-11-14T02:48:18.561Z\n"
+"PO-Revision-Date: 2026-11-14T02:48:24.148Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -31,7 +31,7 @@ msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "„%s” zawiera niezapisane zmiany. Czy odrzucić je i zamknąć?"
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:242
+#: src/components/preferences-modal/ai-panel.tsx:245
 msgid "%s API key"
 msgstr "Klucz API %s"
 
@@ -44,7 +44,7 @@ msgstr "(Bez nazwy)"
 msgid "AI Assistant"
 msgstr "Asystent AI"
 
-#: src/components/preferences-modal/ai-panel.tsx:282
+#: src/components/preferences-modal/ai-panel.tsx:285
 msgid "API key"
 msgstr "Klucz API"
 
@@ -94,7 +94,7 @@ msgstr "Sprawdź aktualizacje"
 msgid "Check updates automatically"
 msgstr "Automatycznie sprawdzaj aktualizacje"
 
-#: src/components/preferences-modal/ai-panel.tsx:306
+#: src/components/preferences-modal/ai-panel.tsx:309
 msgid "Checking the API key…"
 msgstr "Sprawdzanie klucza API…"
 
@@ -165,11 +165,11 @@ msgstr "Ciemny"
 msgid "Default (%s)"
 msgstr "Domyślny (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:313
+#: src/components/preferences-modal/ai-panel.tsx:316
 msgid "Delete"
 msgstr "Usuń"
 
-#: src/components/preferences-modal/ai-panel.tsx:302
+#: src/components/preferences-modal/ai-panel.tsx:305
 msgid "Deleting the API key…"
 msgstr "Usuwanie klucza API…"
 
@@ -295,7 +295,7 @@ msgstr "Jasny"
 msgid "List View shortcuts"
 msgstr "Skróty widoku listy"
 
-#: src/components/preferences-modal/ai-panel.tsx:353
+#: src/components/preferences-modal/ai-panel.tsx:356
 msgid "Loading the models…"
 msgstr "Wczytywanie modeli…"
 
@@ -312,7 +312,7 @@ msgstr "MarkBricks jest teraz domyślną aplikacją dla plików Markdown."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Maksymalna szerokość obszaru treści w pikselach."
 
-#: src/components/preferences-modal/ai-panel.tsx:361
+#: src/components/preferences-modal/ai-panel.tsx:364
 msgid "Model"
 msgstr "Model"
 
@@ -424,7 +424,7 @@ msgid "Sans-serif"
 msgstr "Bezszeryfowa"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:314
+#: src/components/preferences-modal/ai-panel.tsx:317
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -508,7 +508,7 @@ msgid "The API key cannot use this model."
 msgstr "Ten klucz API nie pozwala używać tego modelu."
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:253
+#: src/components/preferences-modal/ai-panel.tsx:256
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the %s "
 "API."
@@ -521,11 +521,11 @@ msgstr ""
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Klucz API jest nieprawidłowy. Sprawdź go w ustawieniach."
 
-#: src/components/preferences-modal/ai-panel.tsx:334
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The API key was deleted."
 msgstr "Klucz API został usunięty."
 
-#: src/components/preferences-modal/ai-panel.tsx:324
+#: src/components/preferences-modal/ai-panel.tsx:327
 msgid "The API key was saved."
 msgstr "Klucz API został zapisany."
 
@@ -543,12 +543,12 @@ msgid ""
 "document."
 msgstr "YAML front matter i cała jego zawartość zostaną usunięte z dokumentu."
 
-#: src/ai/openai/chat.ts:151
+#: src/ai/openai/chat.ts:150
 #: src/ai/anthropic/chat.ts:152
 msgid "The answer was cut off because it reached the length limit."
 msgstr "Odpowiedź została ucięta, ponieważ osiągnęła limit długości."
 
-#: src/ai/openai/response-stream.ts:122
+#: src/ai/openai/response-stream.ts:137
 #: src/ai/anthropic/message-stream.ts:134
 msgid "The connection closed before the answer was complete."
 msgstr "Połączenie zostało zamknięte, zanim odpowiedź była kompletna."
@@ -558,7 +558,7 @@ msgstr "Połączenie zostało zamknięte, zanim odpowiedź była kompletna."
 msgid "The edit from the model could not be read."
 msgstr "Nie udało się odczytać zmiany wprowadzonej przez model."
 
-#: src/ai/openai/chat.ts:145
+#: src/ai/openai/chat.ts:144
 #: src/ai/anthropic/chat.ts:146
 msgid "The model declined to answer this request."
 msgstr "Model odmówił odpowiedzi na to żądanie."
@@ -569,7 +569,7 @@ msgid "The model was not found."
 msgstr "Nie znaleziono modelu."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:393
+#: src/components/preferences-modal/ai-panel.tsx:396
 msgid "The models could not be loaded: %s"
 msgstr "Nie udało się wczytać modeli: %s"
 
@@ -614,7 +614,7 @@ msgstr "Narzędzia"
 msgid "Top toolbar"
 msgstr "Górny pasek narzędzi"
 
-#: src/components/preferences-modal/ai-panel.tsx:402
+#: src/components/preferences-modal/ai-panel.tsx:405
 msgid "Try again"
 msgstr "Spróbuj ponownie"
 

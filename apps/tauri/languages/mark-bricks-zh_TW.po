@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:42:28.127Z\n"
-"PO-Revision-Date: 2026-11-14T02:42:37.390Z\n"
+"POT-Creation-Date: 2026-11-14T02:48:18.561Z\n"
+"PO-Revision-Date: 2026-11-14T02:48:27.560Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -29,7 +29,7 @@ msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "「%s」有未儲存的變更。要捨棄變更並關閉嗎？"
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:242
+#: src/components/preferences-modal/ai-panel.tsx:245
 msgid "%s API key"
 msgstr "%s API 金鑰"
 
@@ -42,7 +42,7 @@ msgstr "(未命名)"
 msgid "AI Assistant"
 msgstr "AI 助理"
 
-#: src/components/preferences-modal/ai-panel.tsx:282
+#: src/components/preferences-modal/ai-panel.tsx:285
 msgid "API key"
 msgstr "API 金鑰"
 
@@ -90,7 +90,7 @@ msgstr "檢查更新"
 msgid "Check updates automatically"
 msgstr "自動檢查更新"
 
-#: src/components/preferences-modal/ai-panel.tsx:306
+#: src/components/preferences-modal/ai-panel.tsx:309
 msgid "Checking the API key…"
 msgstr "正在檢查 API 金鑰…"
 
@@ -161,11 +161,11 @@ msgstr "深色"
 msgid "Default (%s)"
 msgstr "預設（%s）"
 
-#: src/components/preferences-modal/ai-panel.tsx:313
+#: src/components/preferences-modal/ai-panel.tsx:316
 msgid "Delete"
 msgstr "刪除"
 
-#: src/components/preferences-modal/ai-panel.tsx:302
+#: src/components/preferences-modal/ai-panel.tsx:305
 msgid "Deleting the API key…"
 msgstr "正在刪除 API 金鑰…"
 
@@ -290,7 +290,7 @@ msgstr "淺色"
 msgid "List View shortcuts"
 msgstr "[清單檢視] 快速鍵"
 
-#: src/components/preferences-modal/ai-panel.tsx:353
+#: src/components/preferences-modal/ai-panel.tsx:356
 msgid "Loading the models…"
 msgstr "正在載入模型…"
 
@@ -307,7 +307,7 @@ msgstr "MarkBricks 現在是 Markdown 檔案的預設應用程式。"
 msgid "Maximum width of the content area, in pixels."
 msgstr "內容區域的最大寬度 (像素)。"
 
-#: src/components/preferences-modal/ai-panel.tsx:361
+#: src/components/preferences-modal/ai-panel.tsx:364
 msgid "Model"
 msgstr "模型"
 
@@ -419,7 +419,7 @@ msgid "Sans-serif"
 msgstr "無襯線"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:314
+#: src/components/preferences-modal/ai-panel.tsx:317
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -503,7 +503,7 @@ msgid "The API key cannot use this model."
 msgstr "此 API 金鑰無法使用這個模型。"
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:253
+#: src/components/preferences-modal/ai-panel.tsx:256
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the %s "
 "API."
@@ -514,11 +514,11 @@ msgstr "API 金鑰儲存在系統的憑證存放區中，且只會傳送至 %s A
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 金鑰無效。請在設定中檢查。"
 
-#: src/components/preferences-modal/ai-panel.tsx:334
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The API key was deleted."
 msgstr "API 金鑰已刪除。"
 
-#: src/components/preferences-modal/ai-panel.tsx:324
+#: src/components/preferences-modal/ai-panel.tsx:327
 msgid "The API key was saved."
 msgstr "API 金鑰已儲存。"
 
@@ -536,12 +536,12 @@ msgid ""
 "document."
 msgstr "將從文件中移除 YAML 前置資料及其所有內容。"
 
-#: src/ai/openai/chat.ts:151
+#: src/ai/openai/chat.ts:150
 #: src/ai/anthropic/chat.ts:152
 msgid "The answer was cut off because it reached the length limit."
 msgstr "回答已達到長度上限，因此被截斷。"
 
-#: src/ai/openai/response-stream.ts:122
+#: src/ai/openai/response-stream.ts:137
 #: src/ai/anthropic/message-stream.ts:134
 msgid "The connection closed before the answer was complete."
 msgstr "回答完成前連線已關閉。"
@@ -551,7 +551,7 @@ msgstr "回答完成前連線已關閉。"
 msgid "The edit from the model could not be read."
 msgstr "無法讀取模型的編輯內容。"
 
-#: src/ai/openai/chat.ts:145
+#: src/ai/openai/chat.ts:144
 #: src/ai/anthropic/chat.ts:146
 msgid "The model declined to answer this request."
 msgstr "模型拒絕回答此請求。"
@@ -562,7 +562,7 @@ msgid "The model was not found."
 msgstr "找不到該模型。"
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:393
+#: src/components/preferences-modal/ai-panel.tsx:396
 msgid "The models could not be loaded: %s"
 msgstr "無法載入模型：%s"
 
@@ -606,7 +606,7 @@ msgstr "工具"
 msgid "Top toolbar"
 msgstr "頂端工具列"
 
-#: src/components/preferences-modal/ai-panel.tsx:402
+#: src/components/preferences-modal/ai-panel.tsx:405
 msgid "Try again"
 msgstr "重試"
 

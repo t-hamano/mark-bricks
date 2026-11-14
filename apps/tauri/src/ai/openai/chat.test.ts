@@ -86,6 +86,7 @@ describe( 'createOpenAiChat', () => {
 				parallel_tool_calls: false,
 				stream: true,
 				store: false,
+				include: [ 'reasoning.encrypted_content' ],
 			},
 		] );
 	} );
@@ -111,9 +112,29 @@ describe( 'createOpenAiChat', () => {
 		expect( second.tool_choice ).toBe( 'none' );
 		expect( second.input ).toEqual( [
 			{ role: 'user', content: 'Make it shorter' },
-			{ role: 'assistant', content: 'Shortening the paragraph.' },
 			{
+				id: 'rs_02',
+				type: 'reasoning',
+				summary: [],
+				encrypted_content: 'enc_edit',
+			},
+			{
+				id: 'msg_02',
+				type: 'message',
+				status: 'completed',
+				role: 'assistant',
+				content: [
+					{
+						type: 'output_text',
+						text: 'Shortening the paragraph.',
+						annotations: [],
+					},
+				],
+			},
+			{
+				id: 'fc_01',
 				type: 'function_call',
+				status: 'completed',
 				call_id: 'call_01',
 				name: 'edit_selection',
 				arguments:

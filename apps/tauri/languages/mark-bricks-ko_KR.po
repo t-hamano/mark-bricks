@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:42:28.127Z\n"
-"PO-Revision-Date: 2026-11-14T02:42:33.242Z\n"
+"POT-Creation-Date: 2026-11-14T02:48:18.561Z\n"
+"PO-Revision-Date: 2026-11-14T02:48:23.475Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,7 +33,7 @@ msgstr ""
 "까?"
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:242
+#: src/components/preferences-modal/ai-panel.tsx:245
 msgid "%s API key"
 msgstr "%s API 키"
 
@@ -46,7 +46,7 @@ msgstr "(제목 없음)"
 msgid "AI Assistant"
 msgstr "AI 어시스턴트"
 
-#: src/components/preferences-modal/ai-panel.tsx:282
+#: src/components/preferences-modal/ai-panel.tsx:285
 msgid "API key"
 msgstr "API 키"
 
@@ -94,7 +94,7 @@ msgstr "업데이트 확인"
 msgid "Check updates automatically"
 msgstr "자동으로 업데이트 확인"
 
-#: src/components/preferences-modal/ai-panel.tsx:306
+#: src/components/preferences-modal/ai-panel.tsx:309
 msgid "Checking the API key…"
 msgstr "API 키를 확인하는 중…"
 
@@ -165,11 +165,11 @@ msgstr "어둡게"
 msgid "Default (%s)"
 msgstr "기본값 (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:313
+#: src/components/preferences-modal/ai-panel.tsx:316
 msgid "Delete"
 msgstr "삭제"
 
-#: src/components/preferences-modal/ai-panel.tsx:302
+#: src/components/preferences-modal/ai-panel.tsx:305
 msgid "Deleting the API key…"
 msgstr "API 키를 삭제하는 중…"
 
@@ -294,7 +294,7 @@ msgstr "밝게"
 msgid "List View shortcuts"
 msgstr "목록 보기 바로 가기"
 
-#: src/components/preferences-modal/ai-panel.tsx:353
+#: src/components/preferences-modal/ai-panel.tsx:356
 msgid "Loading the models…"
 msgstr "모델을 불러오는 중…"
 
@@ -311,7 +311,7 @@ msgstr "이제 MarkBricks가 Markdown 파일의 기본 앱입니다."
 msgid "Maximum width of the content area, in pixels."
 msgstr "콘텐츠 영역의 최대 너비(픽셀)입니다."
 
-#: src/components/preferences-modal/ai-panel.tsx:361
+#: src/components/preferences-modal/ai-panel.tsx:364
 msgid "Model"
 msgstr "모델"
 
@@ -423,7 +423,7 @@ msgid "Sans-serif"
 msgstr "산세리프"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:314
+#: src/components/preferences-modal/ai-panel.tsx:317
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -507,7 +507,7 @@ msgid "The API key cannot use this model."
 msgstr "이 API 키로는 이 모델을 사용할 수 없습니다."
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:253
+#: src/components/preferences-modal/ai-panel.tsx:256
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the %s "
 "API."
@@ -518,11 +518,11 @@ msgstr "API 키는 시스템의 자격 증명 저장소에 보관되며 %s API�
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 키가 올바르지 않습니다. 설정에서 확인하세요."
 
-#: src/components/preferences-modal/ai-panel.tsx:334
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The API key was deleted."
 msgstr "API 키를 삭제했습니다."
 
-#: src/components/preferences-modal/ai-panel.tsx:324
+#: src/components/preferences-modal/ai-panel.tsx:327
 msgid "The API key was saved."
 msgstr "API 키를 저장했습니다."
 
@@ -540,12 +540,12 @@ msgid ""
 "document."
 msgstr "YAML 프런트 매터와 그 내용이 모두 문서에서 제거됩니다."
 
-#: src/ai/openai/chat.ts:151
+#: src/ai/openai/chat.ts:150
 #: src/ai/anthropic/chat.ts:152
 msgid "The answer was cut off because it reached the length limit."
 msgstr "길이 제한에 도달하여 답변이 중간에 끊겼습니다."
 
-#: src/ai/openai/response-stream.ts:122
+#: src/ai/openai/response-stream.ts:137
 #: src/ai/anthropic/message-stream.ts:134
 msgid "The connection closed before the answer was complete."
 msgstr "답변이 완료되기 전에 연결이 끊어졌습니다."
@@ -555,7 +555,7 @@ msgstr "답변이 완료되기 전에 연결이 끊어졌습니다."
 msgid "The edit from the model could not be read."
 msgstr "모델의 편집 내용을 읽을 수 없습니다."
 
-#: src/ai/openai/chat.ts:145
+#: src/ai/openai/chat.ts:144
 #: src/ai/anthropic/chat.ts:146
 msgid "The model declined to answer this request."
 msgstr "모델이 이 요청에 대한 답변을 거부했습니다."
@@ -566,7 +566,7 @@ msgid "The model was not found."
 msgstr "모델을 찾을 수 없습니다."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:393
+#: src/components/preferences-modal/ai-panel.tsx:396
 msgid "The models could not be loaded: %s"
 msgstr "모델을 불러오지 못했습니다: %s"
 
@@ -611,7 +611,7 @@ msgstr "도구"
 msgid "Top toolbar"
 msgstr "상단 툴바"
 
-#: src/components/preferences-modal/ai-panel.tsx:402
+#: src/components/preferences-modal/ai-panel.tsx:405
 msgid "Try again"
 msgstr "다시 시도"
 
