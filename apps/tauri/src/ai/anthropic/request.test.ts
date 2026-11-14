@@ -6,7 +6,12 @@ import { describe, expect, it } from 'vitest';
 /**
  * Internal dependencies
  */
-import { buildRequestBody, toMessageParams } from './request';
+import {
+	buildRequestBody,
+	NO_MORE_EDITS,
+	toMessageParams,
+	type MessageParam,
+} from './request';
 
 describe( 'toMessageParams', () => {
 	it( 'converts text messages', () => {
@@ -123,20 +128,28 @@ describe( 'buildRequestBody', () => {
 		] );
 	} );
 
-	it( 'ends a cache entry before the document', () => {
-		const system = 'Instructions.\n\n<document>\nOne.\n</document>';
-		expect( buildRequestBody( { ...base, system } ).system ).toEqual( [
+	it( 'ends a cache entry after the last message', () => {
+		const messages: MessageParam[] = [
+			{ role: 'user', content: [ { type: 'text', text: 'One' } ] },
+			{ role: 'assistant', content: [ { type: 'text', text: 'Two' } ] },
+			{ role: 'user', content: 'Three' },
+		];
+		expect( buildRequestBody( { ...base, messages } ).messages ).toEqual( [
+			messages[ 0 ],
+			messages[ 1 ],
 			{
-				type: 'text',
-				text: 'Instructions.\n',
-				cache_control: { type: 'ephemeral' },
-			},
-			{
-				type: 'text',
-				text: '\n<document>\nOne.\n</document>',
-				cache_control: { type: 'ephemeral' },
+				role: 'user',
+				content: [
+					{
+						type: 'text',
+						text: 'Three',
+						cache_control: { type: 'ephemeral' },
+					},
+				],
 			},
 		] );
+		// The messages given are left as they are.
+		expect( messages[ 2 ].content ).toBe( 'Three' );
 	} );
 
 	it( 'leaves out an empty system prompt', () => {
@@ -145,9 +158,35 @@ describe( 'buildRequestBody', () => {
 		);
 	} );
 
-	it( 'keeps the tool but forbids calling it when edits are not allowed', () => {
-		const body = buildRequestBody( { ...base, allowEditTool: false } );
-		expect( body.tool_choice ).toEqual( { type: 'none' } );
+	it( 'tells the model it may not edit, without changing the tools', () => {
+		const messages: MessageParam[] = [
+			{
+				role: 'user',
+				content: [
+					{
+						type: 'tool_result',
+						tool_use_id: 'toolu_1',
+						content: 'The edit was applied.',
+					},
+				],
+			},
+		];
+		const body = buildRequestBody( {
+			...base,
+			messages,
+			allowEditTool: false,
+		} );
+		expect( body.tool_choice ).toEqual(
+			buildRequestBody( base ).tool_choice
+		);
 		expect( body.tools ).toEqual( buildRequestBody( base ).tools );
+		expect( body.messages[ 0 ].content ).toEqual( [
+			messages[ 0 ].content[ 0 ],
+			{
+				type: 'text',
+				text: NO_MORE_EDITS,
+				cache_control: { type: 'ephemeral' },
+			},
+		] );
 	} );
 } );
