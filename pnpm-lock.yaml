@@ -428,6 +428,9 @@ importers:
       uuid:
         specifier: ^14.0.3
         version: 14.0.3
+      yaml:
+        specifier: ^2.9.1
+        version: 2.9.1
     devDependencies:
       '@mark-bricks/fixtures':
         specifier: workspace:*
@@ -18685,8 +18688,7 @@ snapshots:
 
   yaml@1.10.3: {}
 
-  yaml@2.9.1:
-    optional: true
+  yaml@2.9.1: {}
 
   yargs-parser@21.1.1: {}
 

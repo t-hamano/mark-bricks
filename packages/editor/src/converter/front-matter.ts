@@ -1,3 +1,8 @@
+/**
+ * External dependencies
+ */
+import { isMap, isNode, isScalar, parseDocument } from 'yaml';
+
 // `---` fences at the start of the document, optionally after a UTF-8
 // BOM. The content may be empty.
 const FRONT_MATTER_PATTERN =
@@ -189,121 +194,69 @@ export function getFrontMatterValue(
 	return null;
 }
 
-// A block scalar indicator such as `|`, `|-` or `>2`, optionally followed
-// by a YAML comment.
-const BLOCK_INDICATOR_PATTERN = /^[ \t]*[|>][1-9+-]{0,2}[ \t]*(?:#.*)?$/;
-
 type KeyRange = {
-	start: number;
-	// Index after the last line belonging to the key.
-	end: number;
-	// The value, without the key or a trailing comment.
-	value: string;
-	// Whether the value is a plain string the editor can rewrite. Anchors,
-	// tags, aliases and collections are read as they are written, so
-	// rewriting them would lose their meaning.
+	// Lines the key and its value span, or `null` when the key is missing.
+	lines: { start: number; end: number } | null;
+	// The value as YAML reads it, or `null` when the key is missing or holds
+	// something other than a string.
+	value: string | null;
+	// Whether the editor can rewrite the value. It can't when the front
+	// matter isn't valid YAML, or when the value is more than a plain string,
+	// such as one with an anchor or a tag, an alias or a collection,
+	// because rewriting it would lose its meaning.
 	editable: boolean;
 };
 
-// The start of a value with YAML properties (`&anchor`, `!tag`), an alias
-// (`*anchor`) or a flow collection.
-const UNSUPPORTED_VALUE_PATTERN = /^[&!*[{]/;
+const NOT_EDITABLE: KeyRange = { lines: null, value: null, editable: false };
 
-// Finds a top-level key and the lines its value spans, reading a block
-// scalar (`|`, `>`) as its indented lines with the indentation removed.
-function findKeyRange( lines: string[], key: string ): KeyRange | null {
-	const pattern = keyLinePattern( key );
-	const start = lines.findIndex( ( line ) => pattern.test( line ) );
-	if ( start === -1 ) {
-		return null;
-	}
-	const rest = pattern.exec( lines[ start ] )?.[ 1 ] ?? '';
-	// Every indented line after the key continues its value, whether the
-	// value is a block scalar or a quoted or plain one spanning lines.
-	let end = start + 1;
-	while (
-		end < lines.length &&
-		( lines[ end ].trim() === '' || /^[ \t]/.test( lines[ end ] ) )
-	) {
-		end++;
-	}
-	// Trailing blank lines belong to whatever follows.
-	while ( end > start + 1 && lines[ end - 1 ].trim() === '' ) {
-		end--;
-	}
-	const content = lines.slice( start + 1, end );
-	const firstToken = (
-		/^[ \t]*(?:#.*)?$/.test( rest )
-			? ( content.find( ( line ) => line.trim() !== '' ) ?? '' )
-			: rest
-	).trim();
-	const editable = ! UNSUPPORTED_VALUE_PATTERN.test( firstToken );
-	if ( ! BLOCK_INDICATOR_PATTERN.test( rest ) ) {
-		// YAML folds a flow scalar's line breaks into spaces, and a blank
-		// line into a line break.
-		// When the key line holds nothing but maybe a comment, the value
-		// starts on the next line.
-		const valueLines = /^[ \t]*(?:#.*)?$/.test( rest )
-			? content
-			: [ rest, ...content ];
-		const folded = valueLines
-			.map( ( line ) => line.trim() )
-			.reduce( ( text, line ) => {
-				if ( line === '' ) {
-					return `${ text }\n`;
-				}
-				return text === '' || text.endsWith( '\n' )
-					? `${ text }${ line }`
-					: `${ text } ${ line }`;
-			}, '' );
-		return { start, end, value: parseScalar( folded ).value, editable };
-	}
-	const indent = Math.min(
-		...content
-			.filter( ( line ) => line.trim() !== '' )
-			.map( ( line ) => /^[ \t]*/.exec( line )?.[ 0 ].length ?? 0 )
-	);
-	const unindented = content.map( ( line ) =>
-		line.trim() === '' ? '' : line.slice( indent )
-	);
-	return {
-		start,
-		end,
-		editable,
-		value: /^[ \t]*>/.test( rest )
-			? foldLines( unindented )
-			: unindented.join( '\n' ),
-	};
+// Index of the line holding a character offset.
+function lineAt( text: string, offset: number ): number {
+	return text.slice( 0, offset ).split( '\n' ).length - 1;
 }
 
-// Joins the lines of a folded block scalar (`>`) the way YAML does: a line
-// break between two lines of text becomes a space, while blank lines and
-// more indented lines keep their line breaks.
-function foldLines( lines: string[] ): string {
-	let text = '';
-	lines.forEach( ( line, index ) => {
-		if ( index === 0 ) {
-			text = line;
-			return;
-		}
-		const previous = lines[ index - 1 ];
-		const isText = ( item: string ) =>
-			item !== '' && ! /^[ \t]/.test( item );
-		const separator = isText( previous ) && isText( line ) ? ' ' : '\n';
-		// A blank line between two lines of text stands for the break that
-		// folding removed, so it adds nothing more.
-		if (
-			line === '' &&
-			isText( previous ) &&
-			isText(
-				lines.slice( index + 1 ).find( ( item ) => item !== '' ) ?? ''
-			)
-		) {
-			return;
-		}
-		text += `${ separator }${ line }`;
-	} );
-	return text;
+// Finds a top-level key with a YAML parser, so that every way of writing
+// the key and its value reads as YAML would read it.
+function findKeyRange( frontMatter: string, key: string ): KeyRange {
+	const doc = parseDocument( frontMatter );
+	if ( doc.errors.length > 0 ) {
+		return NOT_EDITABLE;
+	}
+	if ( doc.contents === null ) {
+		return { lines: null, value: null, editable: true };
+	}
+	if ( ! isMap( doc.contents ) || doc.contents.flow ) {
+		return NOT_EDITABLE;
+	}
+	const pair = doc.contents.items.find(
+		( item ) => isScalar( item.key ) && item.key.value === key
+	);
+	if ( ! pair || ! isScalar( pair.key ) || ! pair.key.range ) {
+		return { lines: null, value: null, editable: true };
+	}
+	const node = pair.value;
+	const nodeEnd = isNode( node ) && node.range ? node.range[ 2 ] : null;
+	const end = nodeEnd ?? pair.key.range[ 2 ];
+	const lines = {
+		start: lineAt( frontMatter, pair.key.range[ 0 ] ),
+		end:
+			lineAt(
+				frontMatter,
+				frontMatter.slice( 0, end ).replace( /\s+$/, '' ).length
+			) + 1,
+	};
+	if ( node === null || ( isScalar( node ) && node.value === null ) ) {
+		return { lines, value: null, editable: ! isNode( node ) || ! node.tag };
+	}
+	const editable =
+		isScalar( node ) &&
+		typeof node.value === 'string' &&
+		! node.anchor &&
+		! node.tag;
+	return {
+		lines,
+		value: editable ? ( node.value as string ).replace( /\n+$/, '' ) : null,
+		editable,
+	};
 }
 
 /**
@@ -322,8 +275,8 @@ export function getFrontMatterBlockValue(
 	if ( frontMatter === null ) {
 		return null;
 	}
-	const range = findKeyRange( frontMatter.split( '\n' ), key );
-	return range && range.value.trim() !== '' ? range.value : null;
+	const { value } = findKeyRange( frontMatter, key );
+	return value !== null && value.trim() !== '' ? value : null;
 }
 
 /**
@@ -342,7 +295,7 @@ export function isFrontMatterBlockValueEditable(
 	if ( frontMatter === null ) {
 		return true;
 	}
-	return findKeyRange( frontMatter.split( '\n' ), key )?.editable ?? true;
+	return findKeyRange( frontMatter, key ).editable;
 }
 
 /**
@@ -361,11 +314,11 @@ export function setFrontMatterBlockValue(
 	key: string,
 	value: string | null
 ): string {
-	const lines = frontMatter === '' ? [] : frontMatter.split( '\n' );
-	const range = findKeyRange( lines, key );
-	if ( range && ! range.editable ) {
+	const range = findKeyRange( frontMatter, key );
+	if ( ! range.editable ) {
 		return frontMatter;
 	}
+	const lines = frontMatter === '' ? [] : frontMatter.split( '\n' );
 	const next =
 		value === null || value.trim() === ''
 			? []
@@ -378,8 +331,12 @@ export function setFrontMatterBlockValue(
 							line === '' ? '' : `  ${ line }`
 						),
 				];
-	if ( range ) {
-		lines.splice( range.start, range.end - range.start, ...next );
+	if ( range.lines ) {
+		lines.splice(
+			range.lines.start,
+			range.lines.end - range.lines.start,
+			...next
+		);
 	} else {
 		lines.push( ...next );
 	}

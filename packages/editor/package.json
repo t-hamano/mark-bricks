@@ -103,7 +103,8 @@
 		"remark-parse": "^11.0.0",
 		"remark-stringify": "^11.0.0",
 		"unified": "^11.0.5",
-		"uuid": "^14.0.3"
+		"uuid": "^14.0.3",
+		"yaml": "^2.9.1"
 	},
 	"peerDependencies": {
 		"react": "^19.3.1",

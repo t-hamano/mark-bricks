@@ -405,6 +405,15 @@ describe( 'getFrontMatterBlockValue', () => {
 		).toBe( 'section { color: red; }' );
 	} );
 
+	it( 'reads a quoted key and YAML escapes', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'"style": "section {\\x20color: red; }"',
+				'style'
+			)
+		).toBe( 'section { color: red; }' );
+	} );
+
 	it( 'returns null when the key is missing', () => {
 		expect( getFrontMatterBlockValue( 'marp: true', 'style' ) ).toBeNull();
 	} );
@@ -435,6 +444,26 @@ describe( 'setFrontMatterBlockValue', () => {
 				'h2 {}'
 			)
 		).toBe( 'style: |\n  h2 {}\npaginate: true' );
+	} );
+
+	it( 'replaces a quoted key instead of adding another', () => {
+		expect(
+			setFrontMatterBlockValue(
+				'marp: true\n"style": |\n  h1 {}\npaginate: true',
+				'style',
+				'h2 {}'
+			)
+		).toBe( 'marp: true\nstyle: |\n  h2 {}\npaginate: true' );
+	} );
+
+	it( 'leaves front matter that is not valid YAML as it is', () => {
+		const invalid = 'marp: true\nstyle: "h1 {}\npaginate: [';
+		expect( isFrontMatterBlockValueEditable( invalid, 'style' ) ).toBe(
+			false
+		);
+		expect( setFrontMatterBlockValue( invalid, 'style', 'h2 {}' ) ).toBe(
+			invalid
+		);
 	} );
 
 	it( 'adds the key at the end', () => {
