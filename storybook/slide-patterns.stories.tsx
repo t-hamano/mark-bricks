@@ -45,9 +45,19 @@ const PREVIEW_STYLE = `
 div.marpit > svg { display: block; width: 100%; height: auto; }
 `;
 
+// The slide sizes that every built-in theme offers, and the grid's aspect
+// ratio for each.
+const SLIDE_SIZES = [
+	{ size: '16:9', aspectRatio: '16/9' },
+	{ size: '4:3', aspectRatio: '4/3' },
+] as const;
+
+type SlideSize = ( typeof SLIDE_SIZES )[ number ][ 'size' ];
+
 type SlidePatternPreviewProps = {
 	pattern: SlidePattern;
 	theme: SlidePatternTheme;
+	size: SlideSize;
 };
 
 /**
@@ -60,17 +70,22 @@ type SlidePatternPreviewProps = {
  * @param props         Component props.
  * @param props.pattern The pattern to show.
  * @param props.theme   The theme to show it in.
+ * @param props.size    The slide size to show it at.
  */
-function SlidePatternPreview( { pattern, theme }: SlidePatternPreviewProps ) {
+function SlidePatternPreview( {
+	pattern,
+	theme,
+	size,
+}: SlidePatternPreviewProps ) {
 	const ref = useRef< HTMLDivElement >( null );
 	const { html, css } = useMemo(
 		() =>
 			renderSlides(
-				`---\nmarp: true\ntheme: ${ theme }\n---\n\n${ getSlidePatternMarkdown(
+				`---\nmarp: true\ntheme: ${ theme }\nsize: ${ size }\n---\n\n${ getSlidePatternMarkdown(
 					pattern
 				) }\n`
 			),
-		[ pattern, theme ]
+		[ pattern, theme, size ]
 	);
 
 	useLayoutEffect( () => {
@@ -111,7 +126,7 @@ const DEFAULT_VIEW: View = {
 	fields: [ 'categories' ],
 	perPage: SLIDE_PATTERNS.length,
 	layout: {
-		aspectRatio: '16/9',
+		aspectRatio: SLIDE_SIZES[ 0 ].aspectRatio,
 		previewSize: PREVIEW_SIZES[ 0 ],
 		badgeFields: [ 'categories' ],
 	},
@@ -132,6 +147,12 @@ function SlidePatterns() {
 			?.value?.[ 0 ] ?? null;
 	const previewSize =
 		view.type === 'grid' ? view.layout?.previewSize : undefined;
+	const size =
+		SLIDE_SIZES.find(
+			( item ) =>
+				view.type === 'grid' &&
+				item.aspectRatio === view.layout?.aspectRatio
+		)?.size ?? SLIDE_SIZES[ 0 ].size;
 
 	const fields = useMemo< Field< SlidePattern >[] >(
 		() => [
@@ -139,7 +160,11 @@ function SlidePatterns() {
 				id: 'preview',
 				label: 'Preview',
 				render: ( { item } ) => (
-					<SlidePatternPreview pattern={ item } theme={ theme } />
+					<SlidePatternPreview
+						pattern={ item }
+						theme={ theme }
+						size={ size }
+					/>
 				),
 				enableSorting: false,
 				enableHiding: false,
@@ -173,7 +198,7 @@ function SlidePatterns() {
 				enableSorting: false,
 			},
 		],
-		[ theme ]
+		[ theme, size ]
 	);
 
 	const { data, paginationInfo } = useMemo(
@@ -251,6 +276,30 @@ function SlidePatterns() {
 								key={ name }
 								value={ name }
 								label={ name }
+							/>
+						) ) }
+					</ToggleGroupControl>
+					<ToggleGroupControl
+						__next40pxDefaultSize
+						label="Aspect ratio"
+						value={ size }
+						onChange={ ( value ) =>
+							setView( {
+								...view,
+								layout: {
+									...view.layout,
+									aspectRatio: SLIDE_SIZES.find(
+										( item ) => item.size === value
+									)?.aspectRatio,
+								},
+							} as View )
+						}
+					>
+						{ SLIDE_SIZES.map( ( item ) => (
+							<ToggleGroupControlOption
+								key={ item.size }
+								value={ item.size }
+								label={ item.size }
 							/>
 						) ) }
 					</ToggleGroupControl>
