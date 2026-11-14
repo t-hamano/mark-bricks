@@ -126,9 +126,7 @@ function SlidePatterns() {
 		SLIDE_PATTERN_THEMES[ 0 ]
 	);
 	const [ view, setView ] = useState< View >( DEFAULT_VIEW );
-	// Below this width even the smallest previews fit one column only, so the
-	// size control would change nothing.
-	const isMobile = useViewportMatch( 'mobile', '<' );
+	const isSmall = useViewportMatch( 'small', '<' );
 	const selectedCategory: string | null =
 		view.filters?.find( ( filter ) => filter.field === 'categories' )
 			?.value?.[ 0 ] ?? null;
@@ -193,12 +191,9 @@ function SlidePatterns() {
 			defaultLayouts={ { grid: {} } }
 			getItemId={ ( item ) => item.name }
 		>
-			{ /* Inside DataViews, so it shares the grid's background. */ }
 			<Text
 				variant="body-md"
 				render={ <p /> }
-				// The bottom padding keeps the link's focus ring clear of the
-				// toolbar below, which paints over it.
 				style={ { margin: 0, padding: '24px 24px 8px' } }
 			>
 				These are the slide patterns that MarkBricks lets you insert
@@ -208,10 +203,6 @@ function SlidePatterns() {
 				</Link>{ ' ' }
 				deck, shown here in the built-in theme chosen below.
 			</Text>
-			{ /* A toolbar of its own in place of the default one: the view
-			options' preview sizes go smaller than a slide can be read at, and
-			a select picks a category more simply than the filters. It stays at
-			the top of the page while the grid scrolls. */ }
 			<Stack
 				direction="row"
 				align="end"
@@ -264,7 +255,7 @@ function SlidePatterns() {
 						) ) }
 					</ToggleGroupControl>
 				</Stack>
-				{ ! isMobile && (
+				{ ! isSmall && (
 					<div style={ { width: 160 } }>
 						<RangeControl
 							__next40pxDefaultSize
