@@ -31,6 +31,7 @@ import {
 import type { AssistantChatMessage, ChatMessage } from '../../ai/conversation';
 import type { AiChat as AiChatState } from '../../ai/use-ai-chat';
 import type { AiPlatform } from '../../platform';
+import { AnswerMarkdown } from './answer-markdown';
 
 // A filled square, the usual stop symbol. `@wordpress/icons` has none.
 const stopIcon = (
@@ -70,7 +71,7 @@ function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 			gap="sm"
 		>
 			{ message.text && (
-				<Text className="ai-chat__message-text">{ message.text }</Text>
+				<AnswerMarkdown>{ message.text }</AnswerMarkdown>
 			) }
 			{ message.editStatus === 'applied' && (
 				<Text variant="body-sm" className="ai-chat__message-status">

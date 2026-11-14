@@ -18,6 +18,7 @@ const SERVICE: &str = "com.markbricks.app";
 pub enum Provider {
     Anthropic,
     OpenAi,
+    Google,
 }
 
 impl Provider {
@@ -26,6 +27,7 @@ impl Provider {
         match self {
             Provider::Anthropic => "anthropic-api-key",
             Provider::OpenAi => "openai-api-key",
+            Provider::Google => "google-api-key",
         }
     }
 }
@@ -213,6 +215,10 @@ mod tests {
         assert_eq!(
             serde_json::from_str::<Provider>("\"openai\"").unwrap(),
             Provider::OpenAi
+        );
+        assert_eq!(
+            serde_json::from_str::<Provider>("\"google\"").unwrap(),
+            Provider::Google
         );
         assert!(serde_json::from_str::<Provider>("\"unknown\"").is_err());
     }

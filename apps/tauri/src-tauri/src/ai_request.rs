@@ -2,8 +2,9 @@
 //! and streams the response back to the webview. The key stays here: the
 //! webview sends the request body and gets the response, but never the key.
 //!
-//! Each provider has one fixed endpoint, so the command cannot be used to
-//! send the key anywhere else.
+//! Each provider has fixed endpoints, so the command cannot be used to send
+//! the key anywhere else. The Gemini API names the model in the URL, so only
+//! a model id is accepted there.
 
 use std::collections::HashMap;
 use std::sync::{Mutex, OnceLock};
@@ -21,9 +22,13 @@ const ANTHROPIC_MESSAGES_URL: &str = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_MODELS_URL: &str = "https://api.anthropic.com/v1/models";
 const OPENAI_RESPONSES_URL: &str = "https://api.openai.com/v1/responses";
 const OPENAI_MODELS_URL: &str = "https://api.openai.com/v1/models";
+const GEMINI_MODELS_URL: &str = "https://generativelanguage.googleapis.com/v1beta/models";
 
 /// The most models the Models API lists in one page.
 const MODELS_PAGE_LIMIT: &str = "1000";
+
+/// The most models the Gemini Models API lists in one page.
+const GEMINI_MODELS_PAGE_SIZE: &str = "1000";
 
 /// The API version the adapter's requests are written for.
 const ANTHROPIC_VERSION: &str = "2026-10-21";
@@ -83,9 +88,11 @@ impl AiRequestError {
 
 /// The API endpoints the commands send requests to.
 #[derive(Clone, Copy, Debug, PartialEq)]
-enum Endpoint {
-    /// Sends a message and streams the answer.
-    Messages,
+enum Endpoint<'a> {
+    /// Sends a message and streams the answer. The Gemini API names the
+    /// model in the URL, and the other APIs in the body, where `model` is
+    /// not used.
+    Messages { model: &'a str },
     /// Lists the models.
     Models,
 }
@@ -95,7 +102,7 @@ fn request_parts(
     provider: Provider,
     endpoint: Endpoint,
     api_key: &str,
-) -> (&'static str, Vec<(&'static str, String)>) {
+) -> (String, Vec<(&'static str, String)>) {
     match provider {
         Provider::Anthropic => {
             let mut headers = vec![
@@ -104,26 +111,68 @@ fn request_parts(
                 ("anthropic-beta", ANTHROPIC_BETAS.to_string()),
             ];
             let url = match endpoint {
-                Endpoint::Messages => {
+                Endpoint::Messages { .. } => {
                     headers.push(("content-type", "application/json".to_string()));
                     ANTHROPIC_MESSAGES_URL
                 }
                 Endpoint::Models => ANTHROPIC_MODELS_URL,
             };
-            (url, headers)
+            (url.to_string(), headers)
         }
         Provider::OpenAi => {
             let mut headers = vec![("authorization", format!("Bearer {api_key}"))];
             let url = match endpoint {
-                Endpoint::Messages => {
+                Endpoint::Messages { .. } => {
                     headers.push(("content-type", "application/json".to_string()));
                     OPENAI_RESPONSES_URL
                 }
                 Endpoint::Models => OPENAI_MODELS_URL,
             };
+            (url.to_string(), headers)
+        }
+        Provider::Google => {
+            let mut headers = vec![("x-goog-api-key", api_key.to_string())];
+            let url = match endpoint {
+                Endpoint::Messages { model } => {
+                    headers.push(("content-type", "application/json".to_string()));
+                    format!("{GEMINI_MODELS_URL}/{model}:streamGenerateContent?alt=sse")
+                }
+                Endpoint::Models => GEMINI_MODELS_URL.to_string(),
+            };
             (url, headers)
         }
     }
+}
+
+/// Whether `model` can be put in the path of a Gemini API URL: a model id,
+/// such as `gemini-3.6-flash`, and nothing that changes the path.
+fn is_model_id(model: &str) -> bool {
+    !model.is_empty()
+        && !model.starts_with('.')
+        && model
+            .chars()
+            .all(|c| c.is_ascii_alphanumeric() || matches!(c, '-' | '.' | '_'))
+}
+
+/// Splits the model from a request's body, for the APIs that name it in the
+/// URL. The webview sends it in the body's `model`, which the Gemini API
+/// does not accept, so it is taken out.
+///
+/// Returns the model, or an empty string for the other APIs, and the body
+/// to send.
+fn split_model(provider: Provider, body: String) -> Result<(String, String), AiRequestError> {
+    if provider != Provider::Google {
+        return Ok((String::new(), body));
+    }
+    let mut value: serde_json::Value =
+        serde_json::from_str(&body).map_err(AiRequestError::other)?;
+    let model = value
+        .as_object_mut()
+        .and_then(|object| object.remove("model"))
+        .and_then(|model| model.as_str().map(str::to_string))
+        .filter(|model| is_model_id(model))
+        .ok_or_else(|| AiRequestError::other("The request names no valid model."))?;
+    Ok((model, value.to_string()))
 }
 
 /// Reads the saved key, off the main thread.
@@ -209,7 +258,8 @@ async fn send(
     body: String,
     on_event: &Channel<AiStreamEvent>,
 ) -> Result<(), AiRequestError> {
-    let (url, headers) = request_parts(provider, Endpoint::Messages, &api_key);
+    let (model, body) = split_model(provider, body)?;
+    let (url, headers) = request_parts(provider, Endpoint::Messages { model: &model }, &api_key);
     let mut request = client()?.post(url).body(body);
     for (name, value) in headers {
         request = request.header(name, value);
@@ -342,6 +392,57 @@ impl OpenAiModelList {
     }
 }
 
+/// A model of the Gemini Models API's list.
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct GeminiModel {
+    /// The model's resource name, such as `models/gemini-3.6-flash`.
+    name: String,
+    #[serde(default)]
+    display_name: String,
+    #[serde(default)]
+    supported_generation_methods: Vec<String>,
+}
+
+/// A page of the Gemini Models API's list.
+#[derive(Debug, Default, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct GeminiModelsPage {
+    #[serde(default)]
+    models: Vec<GeminiModel>,
+    next_page_token: Option<String>,
+}
+
+impl GeminiModelsPage {
+    /// The models that can answer a message, named by their ids.
+    fn into_models(self) -> Vec<AiModel> {
+        self.models
+            .into_iter()
+            .filter(|model| {
+                model
+                    .supported_generation_methods
+                    .iter()
+                    .any(|method| method == "generateContent")
+            })
+            .map(|model| {
+                let id = model
+                    .name
+                    .strip_prefix("models/")
+                    .unwrap_or(&model.name)
+                    .to_string();
+                AiModel {
+                    display_name: if model.display_name.is_empty() {
+                        id.clone()
+                    } else {
+                        model.display_name
+                    },
+                    id,
+                }
+            })
+            .collect()
+    }
+}
+
 /// The most pages read, so that a broken `has_more` cannot loop forever.
 const MAX_MODELS_PAGES: usize = 10;
 
@@ -353,7 +454,8 @@ async fn get_models(
     params: &[(&str, &str)],
 ) -> Result<String, AiRequestError> {
     let (url, headers) = request_parts(provider, Endpoint::Models, api_key);
-    let models_url = reqwest::Url::parse_with_params(url, params).map_err(AiRequestError::other)?;
+    let models_url =
+        reqwest::Url::parse_with_params(&url, params).map_err(AiRequestError::other)?;
     let mut request = client()?.get(models_url);
     for (name, value) in headers {
         request = request.header(name, value);
@@ -384,6 +486,41 @@ async fn fetch_models_page(
     serde_json::from_str(&body).map_err(AiRequestError::other)
 }
 
+/// Reads one page of the Gemini Models API's list.
+async fn fetch_gemini_models_page(
+    api_key: &str,
+    page_size: &str,
+    page_token: Option<&str>,
+) -> Result<GeminiModelsPage, AiRequestError> {
+    let mut params = vec![("pageSize", page_size)];
+    if let Some(page_token) = page_token {
+        params.push(("pageToken", page_token));
+    }
+    let body = get_models(Provider::Google, api_key, &params).await?;
+    serde_json::from_str(&body).map_err(AiRequestError::other)
+}
+
+/// Reads the Gemini Models API's list.
+async fn fetch_gemini_models(api_key: &str) -> Result<Vec<AiModel>, AiRequestError> {
+    let mut models = Vec::new();
+    let mut page_token: Option<String> = None;
+    for _ in 0..MAX_MODELS_PAGES {
+        let mut page =
+            fetch_gemini_models_page(api_key, GEMINI_MODELS_PAGE_SIZE, page_token.as_deref())
+                .await?;
+        let next = page
+            .next_page_token
+            .take()
+            .filter(|token| !token.is_empty());
+        models.extend(page.into_models());
+        match next {
+            Some(token) => page_token = Some(token),
+            None => break,
+        }
+    }
+    Ok(models)
+}
+
 /// Reads the OpenAI Models API's list.
 async fn fetch_openai_models(api_key: &str) -> Result<Vec<AiModel>, AiRequestError> {
     let body = get_models(Provider::OpenAi, api_key, &[]).await?;
@@ -392,8 +529,10 @@ async fn fetch_openai_models(api_key: &str) -> Result<Vec<AiModel>, AiRequestErr
 }
 
 async fn fetch_models(provider: Provider, api_key: String) -> Result<Vec<AiModel>, AiRequestError> {
-    if provider == Provider::OpenAi {
-        return fetch_openai_models(&api_key).await;
+    match provider {
+        Provider::OpenAi => return fetch_openai_models(&api_key).await,
+        Provider::Google => return fetch_gemini_models(&api_key).await,
+        Provider::Anthropic => {}
     }
     let mut models = Vec::new();
     let mut after_id: Option<String> = None;
@@ -426,6 +565,9 @@ pub async fn check_ai_api_key(
         Provider::OpenAi => {
             get_models(provider, key, &[]).await?;
         }
+        Provider::Google => {
+            fetch_gemini_models_page(key, "1", None).await?;
+        }
     }
     Ok(())
 }
@@ -447,7 +589,11 @@ mod tests {
 
     #[test]
     fn sends_anthropic_requests_to_its_api_with_the_key() {
-        let (url, headers) = request_parts(Provider::Anthropic, Endpoint::Messages, "sk-ant-key");
+        let (url, headers) = request_parts(
+            Provider::Anthropic,
+            Endpoint::Messages { model: "" },
+            "sk-ant-key",
+        );
         assert_eq!(url, "https://api.anthropic.com/v1/messages");
         assert!(headers.contains(&("x-api-key", "sk-ant-key".to_string())));
         assert!(headers.contains(&("anthropic-version", "2026-10-21".to_string())));
@@ -467,7 +613,8 @@ mod tests {
 
     #[test]
     fn sends_openai_requests_to_its_api_with_the_key() {
-        let (url, headers) = request_parts(Provider::OpenAi, Endpoint::Messages, "sk-key");
+        let (url, headers) =
+            request_parts(Provider::OpenAi, Endpoint::Messages { model: "" }, "sk-key");
         assert_eq!(url, "https://api.openai.com/v1/responses");
         assert!(headers.contains(&("authorization", "Bearer sk-key".to_string())));
         assert!(headers.contains(&("content-type", "application/json".to_string())));
@@ -480,6 +627,84 @@ mod tests {
         assert_eq!(
             headers,
             vec![("authorization", "Bearer sk-key".to_string())]
+        );
+    }
+
+    #[test]
+    fn sends_gemini_requests_to_the_model_s_url_with_the_key() {
+        let (url, headers) = request_parts(
+            Provider::Google,
+            Endpoint::Messages {
+                model: "gemini-3.6-flash",
+            },
+            "AIza-key",
+        );
+        assert_eq!(
+            url,
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:streamGenerateContent?alt=sse"
+        );
+        assert!(headers.contains(&("x-goog-api-key", "AIza-key".to_string())));
+        assert!(headers.contains(&("content-type", "application/json".to_string())));
+    }
+
+    #[test]
+    fn lists_gemini_models_from_its_api_with_the_key() {
+        let (url, headers) = request_parts(Provider::Google, Endpoint::Models, "AIza-key");
+        assert_eq!(
+            url,
+            "https://generativelanguage.googleapis.com/v1beta/models"
+        );
+        assert_eq!(headers, vec![("x-goog-api-key", "AIza-key".to_string())]);
+    }
+
+    #[test]
+    fn takes_the_model_out_of_a_gemini_request() {
+        let (model, body) = split_model(
+            Provider::Google,
+            r#"{"model":"gemini-3.6-flash","contents":[]}"#.to_string(),
+        )
+        .unwrap();
+        assert_eq!(model, "gemini-3.6-flash");
+        assert_eq!(body, r#"{"contents":[]}"#);
+    }
+
+    #[test]
+    fn keeps_the_body_of_other_requests() {
+        let body = r#"{"model":"gpt-6-astra"}"#.to_string();
+        assert_eq!(
+            split_model(Provider::OpenAi, body.clone()).unwrap(),
+            (String::new(), body)
+        );
+    }
+
+    #[test]
+    fn rejects_a_model_that_would_change_the_url() {
+        for body in [
+            r#"{"contents":[]}"#,
+            r#"{"model":""}"#,
+            r#"{"model":"../files"}"#,
+            r#"{"model":"gemini?alt=json"}"#,
+            r#"{"model":"a/b"}"#,
+            r#"{"model":".."}"#,
+            r#"{"model":3}"#,
+        ] {
+            assert!(
+                split_model(Provider::Google, body.to_string()).is_err(),
+                "{body}"
+            );
+        }
+    }
+
+    #[test]
+    fn lists_the_gemini_models_that_answer_messages() {
+        let page: GeminiModelsPage = serde_json::from_str(
+            r#"{"models":[{"name":"models/gemini-3.6-flash","displayName":"Gemini 3.6 Flash","supportedGenerationMethods":["generateContent","countTokens"]},{"name":"models/gemini-embedding-2","displayName":"Gemini Embedding 2","supportedGenerationMethods":["embedContent"]}],"nextPageToken":"next"}"#,
+        )
+        .unwrap();
+        assert_eq!(page.next_page_token.as_deref(), Some("next"));
+        assert_eq!(
+            serde_json::to_value(page.into_models()).unwrap(),
+            serde_json::json!([{ "id": "gemini-3.6-flash", "displayName": "Gemini 3.6 Flash" }])
         );
     }
 

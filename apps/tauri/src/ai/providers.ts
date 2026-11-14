@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import { anthropic } from './anthropic';
+import { google } from './google';
 import { openai } from './openai';
 import type { AiProviderAdapter } from './provider';
 
@@ -13,6 +14,7 @@ import type { AiProviderAdapter } from './provider';
 export const PROVIDERS = {
 	anthropic,
 	openai,
+	google,
 } satisfies Record< string, AiProviderAdapter >;
 
 export type AiProvider = keyof typeof PROVIDERS;

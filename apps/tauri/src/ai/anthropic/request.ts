@@ -48,11 +48,20 @@ export type MessageParam = {
 	content: string | ContentBlock[];
 };
 
+/**
+ * Marks the end of a part of the request that the API keeps in its prompt
+ * cache, so that a later request starting with the same part reads it for
+ * a fraction of the price.
+ */
+export type CacheControl = { type: 'ephemeral' };
+
+export type SystemBlock = TextBlock & { cache_control?: CacheControl };
+
 export type RequestBody = {
 	model: string;
 	max_tokens: number;
 	stream: true;
-	system: string;
+	system: SystemBlock[];
 	messages: MessageParam[];
 	tools: unknown[];
 	tool_choice:
@@ -163,7 +172,23 @@ export function buildRequestBody( {
 		model,
 		max_tokens: MAX_TOKENS,
 		stream: true,
-		system,
+		// The system prompt, which holds the document, is cached together
+		// with the tool before it. The request that continues an answer
+		// after its edit reads it from the cache, and so does the next
+		// message while the document and the selection stay the same.
+		// The cache ends here and not after the messages: the continuation
+		// changes `tool_choice`, which the API does not let the cached
+		// messages outlive.
+		// The API rejects an empty text block.
+		system: system
+			? [
+					{
+						type: 'text',
+						text: system,
+						cache_control: { type: 'ephemeral' },
+					},
+				]
+			: [],
 		messages,
 		// The tool stays declared when it may no longer be called, so the
 		// request keeps the same tools as the one before it.

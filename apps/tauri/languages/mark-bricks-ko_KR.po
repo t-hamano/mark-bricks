@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:43:28.682Z\n"
-"PO-Revision-Date: 2026-11-14T06:43:32.385Z\n"
+"POT-Creation-Date: 2026-11-14T07:13:28.497Z\n"
+"PO-Revision-Date: 2026-11-14T07:13:43.833Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -37,11 +37,11 @@ msgstr ""
 msgid "(Untitled)"
 msgstr "(제목 없음)"
 
-#: src/components/preferences-modal/index.tsx:228
+#: src/components/preferences-modal/index.tsx:239
 msgid "AI Assistant"
 msgstr "AI 어시스턴트"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:274
+#: src/components/preferences-modal/ai-provider-card.tsx:279
 msgid "API key"
 msgstr "API 키"
 
@@ -90,11 +90,11 @@ msgid "Check updates automatically"
 msgstr "자동으로 업데이트 확인"
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:339
+#: src/components/preferences-modal/ai-provider-card.tsx:344
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr "<a>%s</a>에서 사용량과 청구 내역을 확인하세요"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:298
+#: src/components/preferences-modal/ai-provider-card.tsx:303
 msgid "Checking the API key…"
 msgstr "API 키를 확인하는 중…"
 
@@ -104,7 +104,7 @@ msgid "Checking…"
 msgstr "확인 중…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:213
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -123,7 +123,7 @@ msgstr "다른 탭 닫기"
 msgid "Close the active tab."
 msgstr "활성 탭을 닫습니다."
 
-#: src/components/preferences-modal/index.tsx:225
+#: src/components/preferences-modal/index.tsx:236
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "코드 편집기"
@@ -160,7 +160,11 @@ msgstr "새 Markdown 파일을 만들거나 기존 파일을 열어 편집을 �
 msgid "Create a new file."
 msgstr "새 파일을 만듭니다."
 
-#: src/preferences/constants.ts:58
+#: src/components/preferences-modal/ai-panel.tsx:181
+msgid "Custom instructions"
+msgstr "사용자 지정 지침"
+
+#: src/preferences/constants.ts:61
 msgid "Dark"
 msgstr "어둡게"
 
@@ -169,11 +173,11 @@ msgstr "어둡게"
 msgid "Default (%s)"
 msgstr "기본값 (%s)"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:305
+#: src/components/preferences-modal/ai-provider-card.tsx:310
 msgid "Delete"
 msgstr "삭제"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:294
+#: src/components/preferences-modal/ai-provider-card.tsx:299
 msgid "Deleting the API key…"
 msgstr "API 키를 삭제하는 중…"
 
@@ -240,12 +244,12 @@ msgstr "글꼴 모음"
 msgid "Font size"
 msgstr "글꼴 사이즈"
 
-#: src/components/preferences-modal/index.tsx:219
+#: src/components/preferences-modal/index.tsx:230
 msgid "General"
 msgstr "일반"
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:315
+#: src/components/preferences-modal/ai-provider-card.tsx:320
 msgid "Get your API key at <a>%s</a>"
 msgstr "<a>%s</a>에서 API 키를 발급받으세요"
 
@@ -261,7 +265,7 @@ msgstr "HTML 슬라이드 덱"
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:80
+#: src/preferences/constants.ts:83
 msgid "Handwriting"
 msgstr "손글씨"
 
@@ -295,7 +299,7 @@ msgstr "키보드 단축키"
 msgid "Language"
 msgstr "언어"
 
-#: src/preferences/constants.ts:57
+#: src/preferences/constants.ts:60
 msgid "Light"
 msgstr "밝게"
 
@@ -303,7 +307,7 @@ msgstr "밝게"
 msgid "List View shortcuts"
 msgstr "목록 보기 바로 가기"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:392
+#: src/components/preferences-modal/ai-provider-card.tsx:397
 msgid "Loading the models…"
 msgstr "모델을 불러오는 중…"
 
@@ -320,7 +324,7 @@ msgstr "이제 MarkBricks가 Markdown 파일의 기본 앱입니다."
 msgid "Maximum width of the content area, in pixels."
 msgstr "콘텐츠 영역의 최대 너비(픽셀)입니다."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:400
+#: src/components/preferences-modal/ai-provider-card.tsx:405
 msgid "Model"
 msgstr "모델"
 
@@ -329,7 +333,7 @@ msgstr "모델"
 msgid "Model: %s"
 msgstr "모델: %s"
 
-#: src/preferences/constants.ts:76
+#: src/preferences/constants.ts:79
 msgid "Monospace"
 msgstr "고정폭"
 
@@ -358,7 +362,7 @@ msgstr "열린 파일 없음"
 msgid "Not a Marp document"
 msgstr "Marp 문서가 아닙니다"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:230
+#: src/components/preferences-modal/ai-provider-card.tsx:240
 msgid "Not connected"
 msgstr "연결되지 않음"
 
@@ -395,7 +399,7 @@ msgstr "PDF 슬라이드 덱"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:200
+#: src/components/preferences-modal/index.tsx:211
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "환경설정"
@@ -404,7 +408,7 @@ msgstr "환경설정"
 msgid "Preview Slides"
 msgstr "슬라이드 미리 보기"
 
-#: src/components/preferences-modal/ai-panel.tsx:145
+#: src/components/preferences-modal/ai-panel.tsx:151
 msgid "Provider"
 msgstr "제공업체"
 
@@ -436,12 +440,12 @@ msgstr "새 언어를 적용하려면 앱을 다시 시작하세요."
 msgid "Restore default settings"
 msgstr "기본 설정 복원"
 
-#: src/preferences/constants.ts:68
+#: src/preferences/constants.ts:71
 msgid "Sans-serif"
 msgstr "산세리프"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:306
+#: src/components/preferences-modal/ai-provider-card.tsx:311
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -467,7 +471,13 @@ msgstr "활성 파일을 저장합니다."
 msgid "Selection shortcuts"
 msgstr "선택 단축키"
 
-#: src/preferences/constants.ts:72
+#: src/components/preferences-modal/ai-panel.tsx:182
+msgid ""
+"Sent with every message to the AI Assistant. For example, the tone to write "
+"in, or what your documents are about."
+msgstr "AI 어시스턴트에 보내는 모든 메시지와 함께 전송됩니다. 예: 글의 어조, 문서의 주제 등."
+
+#: src/preferences/constants.ts:75
 msgid "Serif"
 msgstr "세리프"
 
@@ -501,8 +511,8 @@ msgstr "맞춤법 검사"
 msgid "Spotlight mode"
 msgstr "스포트라이트 모드"
 
-#: src/preferences/constants.ts:56
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:59
+#: src/preferences/constants.ts:68
 msgid "System Default"
 msgstr "시스템 기본값"
 
@@ -524,7 +534,7 @@ msgstr "지금은 %s API를 사용할 수 없습니다. 나중에 다시 시도�
 msgid "The %s account has no credit left. Check its billing settings."
 msgstr "%s 계정에 남은 크레딧이 없습니다. 결제 설정을 확인하세요."
 
-#: src/components/preferences-modal/ai-panel.tsx:148
+#: src/components/preferences-modal/ai-panel.tsx:154
 msgid "The AI Assistant uses this provider."
 msgstr "AI 어시스턴트가 이 제공업체를 사용합니다."
 
@@ -533,7 +543,7 @@ msgid "The API key cannot use this model."
 msgstr "이 API 키로는 이 모델을 사용할 수 없습니다."
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-provider-card.tsx:246
+#: src/components/preferences-modal/ai-provider-card.tsx:251
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the %s "
 "API."
@@ -543,11 +553,11 @@ msgstr "API 키는 시스템의 자격 증명 저장소에 보관되며 %s API�
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 키가 올바르지 않습니다. 설정에서 확인하세요."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:375
+#: src/components/preferences-modal/ai-provider-card.tsx:380
 msgid "The API key was deleted."
 msgstr "API 키를 삭제했습니다."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:365
+#: src/components/preferences-modal/ai-provider-card.tsx:370
 msgid "The API key was saved."
 msgstr "API 키를 저장했습니다."
 
@@ -578,7 +588,7 @@ msgid "The model was not found."
 msgstr "모델을 찾을 수 없습니다."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:428
+#: src/components/preferences-modal/ai-provider-card.tsx:433
 msgid "The models could not be loaded: %s"
 msgstr "모델을 불러오지 못했습니다: %s"
 
@@ -620,7 +630,7 @@ msgstr "도구"
 msgid "Top toolbar"
 msgstr "상단 툴바"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:437
+#: src/components/preferences-modal/ai-provider-card.tsx:442
 msgid "Try again"
 msgstr "다시 시도"
 
@@ -653,7 +663,7 @@ msgstr "업데이트 확인 실패: %s"
 msgid "View"
 msgstr "보기"
 
-#: src/components/preferences-modal/index.tsx:222
+#: src/components/preferences-modal/index.tsx:233
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "비주얼 편집기"

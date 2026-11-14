@@ -98,6 +98,7 @@
 		"mermaid": "^12.3.0",
 		"micromark-extension-math": "^3.1.0",
 		"monaco-editor": "^0.57.0",
+		"react-markdown": "^10.1.0",
 		"remark-gfm": "^4.0.1",
 		"remark-parse": "^11.0.0",
 		"remark-stringify": "^11.0.0",

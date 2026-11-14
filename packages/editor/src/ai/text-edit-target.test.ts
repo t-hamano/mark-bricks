@@ -154,6 +154,77 @@ describe( 'createTextEditTarget', () => {
 			expect( getText() ).toBe( 'Intro.\n\n# Title\n\nNew.\n\nLast.\n' );
 		} );
 
+		it( 'rewrites malformed front matter in the edit', () => {
+			const { access, getText } = setup( '', 0 );
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\n\nmarp: true\n\n--------\n\n# Slide\n',
+			} );
+			expect( getText() ).toBe( '---\nmarp: true\n---\n\n# Slide\n' );
+		} );
+
+		it( 'replaces the front matter at the top when the selection is below it', () => {
+			const value = '---\nmarp: true\n---\n\n# Title\n\nBody.\n';
+			const { access, getText } = setup( value, value.indexOf( 'Body' ) );
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\ntheme: gaia\n---\n\nNew body.\n',
+			} );
+			expect( getText() ).toBe(
+				'---\nmarp: true\ntheme: gaia\n---\n\n# Title\n\nNew body.\n'
+			);
+		} );
+
+		it( 'replaces the whole front matter when the cursor is inside it', () => {
+			const value = '---\nmarp: true\ntheme: default\n---\n\n# Title\n';
+			const { access, getText, getUndoSteps } = setup(
+				value,
+				value.indexOf( 'theme' )
+			);
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\ntheme: gaia\n---\n',
+			} );
+			expect( getText() ).toBe(
+				'---\nmarp: true\ntheme: gaia\n---\n\n# Title\n'
+			);
+			expect( getUndoSteps() ).toBe( 1 );
+		} );
+
+		it( 'puts the body before the rest when the cursor is in the front matter', () => {
+			const value = '---\nmarp: true\n---\n# Existing title\n';
+			const { access, getText } = setup( value, value.indexOf( 'marp' ) );
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\ntheme: gaia\n---\n\n# New slide\n',
+			} );
+			expect( getText() ).toBe(
+				'---\nmarp: true\ntheme: gaia\n---\n\n# New slide\n\n# Existing title\n'
+			);
+		} );
+
+		it( 'changes the front matter and the body in one undo step', () => {
+			const value = '---\nmarp: true\n---\n\n# Title\n\nBody.\n';
+			const { access, getUndoSteps } = setup(
+				value,
+				value.indexOf( 'Body' )
+			);
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\ntheme: gaia\n---\n\nNew body.\n',
+			} );
+			expect( getUndoSteps() ).toBe( 1 );
+		} );
+
+		it( 'adds front matter at the top of a document without one', () => {
+			const { access, getText } = setup( '# Title\n', 3 );
+			createTextEditTarget( access ).apply( {
+				action: 'insert_after',
+				markdown: '---\nmarp: true\n---\n',
+			} );
+			expect( getText() ).toBe( '---\nmarp: true\n---\n\n# Title\n' );
+		} );
+
 		it( 'changes nothing when the selection no longer exists', () => {
 			const { access, getText, loseRanges } = setup( DOCUMENT, FIRST );
 			const target = createTextEditTarget( access );

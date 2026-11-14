@@ -128,6 +128,11 @@ type MarkdownDocument = {
 	onInput: ( next: Block[] ) => void;
 	frontMatter: string | null;
 	setFrontMatter: ( next: string | null ) => void;
+	/**
+	 * Replaces the front matter as part of the last undo step, for a
+	 * change made together with the block change just before it.
+	 */
+	mergeFrontMatter: ( next: string | null ) => void;
 	undo: () => void;
 	redo: () => void;
 	canUndo: boolean;
@@ -296,6 +301,18 @@ export function useMarkdownDocument( {
 		} );
 	}, [] );
 
+	const mergeFrontMatter = useCallback( ( next: string | null ) => {
+		setHistory( ( h ) =>
+			next === h.present.frontMatter
+				? h
+				: {
+						...h,
+						present: { ...h.present, frontMatter: next },
+						isEditingFrontMatter: false,
+					}
+		);
+	}, [] );
+
 	const undo = useCallback( () => {
 		setHistory( ( h ) => {
 			if ( h.past.length === 0 ) {
@@ -339,6 +356,7 @@ export function useMarkdownDocument( {
 		onInput,
 		frontMatter: history.present.frontMatter,
 		setFrontMatter,
+		mergeFrontMatter,
 		undo,
 		redo,
 		canUndo: history.past.length > 0,

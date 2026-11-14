@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:43:28.682Z\n"
-"PO-Revision-Date: 2026-11-14T06:43:33.845Z\n"
+"POT-Creation-Date: 2026-11-14T07:13:28.497Z\n"
+"PO-Revision-Date: 2026-11-14T07:13:45.778Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -35,11 +35,11 @@ msgstr "В «%s» есть несохраненные изменения. Отб
 msgid "(Untitled)"
 msgstr "(Без названия)"
 
-#: src/components/preferences-modal/index.tsx:228
+#: src/components/preferences-modal/index.tsx:239
 msgid "AI Assistant"
 msgstr "ИИ-ассистент"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:274
+#: src/components/preferences-modal/ai-provider-card.tsx:279
 msgid "API key"
 msgstr "Ключ API"
 
@@ -88,11 +88,11 @@ msgid "Check updates automatically"
 msgstr "Автоматически проверять обновления"
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:339
+#: src/components/preferences-modal/ai-provider-card.tsx:344
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr "Расход и оплату можно проверить на <a>%s</a>"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:298
+#: src/components/preferences-modal/ai-provider-card.tsx:303
 msgid "Checking the API key…"
 msgstr "Проверка ключа API…"
 
@@ -102,7 +102,7 @@ msgid "Checking…"
 msgstr "Проверка…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:213
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -121,7 +121,7 @@ msgstr "Закрыть другие вкладки"
 msgid "Close the active tab."
 msgstr "Закрыть активную вкладку."
 
-#: src/components/preferences-modal/index.tsx:225
+#: src/components/preferences-modal/index.tsx:236
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Редактор кода"
@@ -160,7 +160,11 @@ msgstr ""
 msgid "Create a new file."
 msgstr "Создать новый файл."
 
-#: src/preferences/constants.ts:58
+#: src/components/preferences-modal/ai-panel.tsx:181
+msgid "Custom instructions"
+msgstr "Пользовательские инструкции"
+
+#: src/preferences/constants.ts:61
 msgid "Dark"
 msgstr "Темная"
 
@@ -169,11 +173,11 @@ msgstr "Темная"
 msgid "Default (%s)"
 msgstr "По умолчанию (%s)"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:305
+#: src/components/preferences-modal/ai-provider-card.tsx:310
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:294
+#: src/components/preferences-modal/ai-provider-card.tsx:299
 msgid "Deleting the API key…"
 msgstr "Удаление ключа API…"
 
@@ -240,12 +244,12 @@ msgstr "Семейство шрифтов"
 msgid "Font size"
 msgstr "Размер шрифта"
 
-#: src/components/preferences-modal/index.tsx:219
+#: src/components/preferences-modal/index.tsx:230
 msgid "General"
 msgstr "Общие"
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:315
+#: src/components/preferences-modal/ai-provider-card.tsx:320
 msgid "Get your API key at <a>%s</a>"
 msgstr "Получите API-ключ на <a>%s</a>"
 
@@ -261,7 +265,7 @@ msgstr "Презентация HTML"
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:80
+#: src/preferences/constants.ts:83
 msgid "Handwriting"
 msgstr "Рукописный"
 
@@ -296,7 +300,7 @@ msgstr "Горячие клавиши"
 msgid "Language"
 msgstr "Язык"
 
-#: src/preferences/constants.ts:57
+#: src/preferences/constants.ts:60
 msgid "Light"
 msgstr "Светлая"
 
@@ -304,7 +308,7 @@ msgstr "Светлая"
 msgid "List View shortcuts"
 msgstr "Сочетания клавиш для обзора списком"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:392
+#: src/components/preferences-modal/ai-provider-card.tsx:397
 msgid "Loading the models…"
 msgstr "Загрузка моделей…"
 
@@ -321,7 +325,7 @@ msgstr "Теперь MarkBricks — приложение по умолчанию
 msgid "Maximum width of the content area, in pixels."
 msgstr "Максимальная ширина области содержимого в пикселях."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:400
+#: src/components/preferences-modal/ai-provider-card.tsx:405
 msgid "Model"
 msgstr "Модель"
 
@@ -330,7 +334,7 @@ msgstr "Модель"
 msgid "Model: %s"
 msgstr "Модель: %s"
 
-#: src/preferences/constants.ts:76
+#: src/preferences/constants.ts:79
 msgid "Monospace"
 msgstr "Моноширинный"
 
@@ -359,7 +363,7 @@ msgstr "Нет открытых файлов"
 msgid "Not a Marp document"
 msgstr "Это не документ Marp"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:230
+#: src/components/preferences-modal/ai-provider-card.tsx:240
 msgid "Not connected"
 msgstr "Не подключено"
 
@@ -396,7 +400,7 @@ msgstr "Презентация PDF"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:200
+#: src/components/preferences-modal/index.tsx:211
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "Предпочтения"
@@ -405,7 +409,7 @@ msgstr "Предпочтения"
 msgid "Preview Slides"
 msgstr "Просмотр слайдов"
 
-#: src/components/preferences-modal/ai-panel.tsx:145
+#: src/components/preferences-modal/ai-panel.tsx:151
 msgid "Provider"
 msgstr "Провайдер"
 
@@ -437,12 +441,12 @@ msgstr "Перезапустите приложение, чтобы примен
 msgid "Restore default settings"
 msgstr "Восстановить настройки по умолчанию"
 
-#: src/preferences/constants.ts:68
+#: src/preferences/constants.ts:71
 msgid "Sans-serif"
 msgstr "Без засечек"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:306
+#: src/components/preferences-modal/ai-provider-card.tsx:311
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -468,7 +472,13 @@ msgstr "Сохранить активный файл."
 msgid "Selection shortcuts"
 msgstr "Горячие клавиши (выбор)"
 
-#: src/preferences/constants.ts:72
+#: src/components/preferences-modal/ai-panel.tsx:182
+msgid ""
+"Sent with every message to the AI Assistant. For example, the tone to write "
+"in, or what your documents are about."
+msgstr "Отправляются с каждым сообщением ИИ-ассистенту. Например, тон текста или тематика ваших документов."
+
+#: src/preferences/constants.ts:75
 msgid "Serif"
 msgstr "С засечками"
 
@@ -502,8 +512,8 @@ msgstr "Проверка орфографии"
 msgid "Spotlight mode"
 msgstr "Режим подсветки"
 
-#: src/preferences/constants.ts:56
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:59
+#: src/preferences/constants.ts:68
 msgid "System Default"
 msgstr "Системный по умолчанию"
 
@@ -525,7 +535,7 @@ msgstr "API %s сейчас недоступен. Повторите попыт�
 msgid "The %s account has no credit left. Check its billing settings."
 msgstr "На счёте %s не осталось средств. Проверьте настройки оплаты."
 
-#: src/components/preferences-modal/ai-panel.tsx:148
+#: src/components/preferences-modal/ai-panel.tsx:154
 msgid "The AI Assistant uses this provider."
 msgstr "ИИ-ассистент использует этого провайдера."
 
@@ -534,7 +544,7 @@ msgid "The API key cannot use this model."
 msgstr "С этим ключом API нельзя использовать эту модель."
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-provider-card.tsx:246
+#: src/components/preferences-modal/ai-provider-card.tsx:251
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the %s "
 "API."
@@ -546,11 +556,11 @@ msgstr ""
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Ключ API недействителен. Проверьте его в настройках."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:375
+#: src/components/preferences-modal/ai-provider-card.tsx:380
 msgid "The API key was deleted."
 msgstr "Ключ API удалён."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:365
+#: src/components/preferences-modal/ai-provider-card.tsx:370
 msgid "The API key was saved."
 msgstr "Ключ API сохранён."
 
@@ -581,7 +591,7 @@ msgid "The model was not found."
 msgstr "Модель не найдена."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:428
+#: src/components/preferences-modal/ai-provider-card.tsx:433
 msgid "The models could not be loaded: %s"
 msgstr "Не удалось загрузить модели: %s"
 
@@ -623,7 +633,7 @@ msgstr "Инструменты"
 msgid "Top toolbar"
 msgstr "Верхняя панель инструментов"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:437
+#: src/components/preferences-modal/ai-provider-card.tsx:442
 msgid "Try again"
 msgstr "Повторить"
 
@@ -656,7 +666,7 @@ msgstr "Не удалось проверить обновления: %s"
 msgid "View"
 msgstr "Вид"
 
-#: src/components/preferences-modal/index.tsx:222
+#: src/components/preferences-modal/index.tsx:233
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Визуальный редактор"
