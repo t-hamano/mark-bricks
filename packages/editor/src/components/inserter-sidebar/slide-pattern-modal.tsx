@@ -21,7 +21,7 @@ import {
 /**
  * Internal dependencies
  */
-import { SLIDE_PATTERN_CATEGORIES } from '../../marp-patterns';
+import { SLIDE_PATTERN_CATEGORIES, SLIDE_PATTERNS } from '../../marp-patterns';
 import type { SlidePatternPreviews } from '../../marp-patterns/previews';
 import { SlidePatternPreview } from './slide-pattern-preview';
 import {
@@ -181,11 +181,22 @@ export function SlidePatternModal( { previews, onClose }: Props ) {
 	const [ category, setCategory ] =
 		useState< CategoryFilter >( ALL_CATEGORIES );
 
-	const categories: { name: CategoryFilter; label: string }[] = [
-		{ name: ALL_CATEGORIES, label: __( 'All', 'mark-bricks' ) },
+	const categories: {
+		name: CategoryFilter;
+		label: string;
+		count: number;
+	}[] = [
+		{
+			name: ALL_CATEGORIES,
+			label: __( 'All', 'mark-bricks' ),
+			count: SLIDE_PATTERNS.length,
+		},
 		...SLIDE_PATTERN_CATEGORIES.map( ( { name, label } ) => ( {
 			name,
 			label: label(),
+			count: SLIDE_PATTERNS.filter( ( pattern ) =>
+				pattern.categories.includes( name )
+			).length,
 		} ) ),
 	];
 
@@ -224,9 +235,14 @@ export function SlidePatternModal( { previews, onClose }: Props ) {
 							className="slide-pattern-modal__categories"
 							variant="minimal"
 						>
-							{ categories.map( ( { name, label } ) => (
+							{ categories.map( ( { name, label, count } ) => (
 								<Tabs.Tab key={ name } value={ name }>
-									{ label }
+									<span className="slide-pattern-modal__category-label">
+										{ label }
+									</span>
+									<span className="slide-pattern-modal__category-count">
+										{ count }
+									</span>
 								</Tabs.Tab>
 							) ) }
 						</Tabs.List>
