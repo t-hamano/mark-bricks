@@ -12,17 +12,11 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { AiError } from './error';
-import { filterChatModels } from './openai';
-import type { AiProvider } from './providers';
+import type { AiModel } from './provider';
+import { PROVIDERS, type AiProvider } from './providers';
 import { toTransportError } from './transport';
 
-/**
- * A model the API key can use.
- */
-export type AiModel = {
-	id: string;
-	displayName: string;
-};
+export type { AiModel };
 
 /**
  * Whether an API key is saved for the provider.
@@ -97,5 +91,6 @@ export async function listModels( provider: AiProvider ): Promise< AiModel[] > {
 	} catch ( error ) {
 		throw toTransportError( error, provider );
 	}
-	return provider === 'openai' ? filterChatModels( models ) : models;
+	const { filterModels } = PROVIDERS[ provider ];
+	return filterModels ? filterModels( models ) : models;
 }

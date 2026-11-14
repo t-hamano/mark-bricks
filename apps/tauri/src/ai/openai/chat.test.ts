@@ -7,7 +7,8 @@ import type { AiStreamEvent } from '@mark-bricks/editor';
 /**
  * Internal dependencies
  */
-import { createOpenAiChat } from './chat';
+import { createChat } from '../chat';
+import { openai } from '.';
 import { createHttpError } from './errors';
 import type { RequestBody } from './request';
 import answer from './fixtures/answer.sse?raw';
@@ -26,8 +27,8 @@ import failed from './fixtures/failed.sse?raw';
 function createTransport( streams: string[] ) {
 	const bodies: RequestBody[] = [];
 	const transport = vi.fn(
-		async ( body: RequestBody, onChunk: ( chunk: string ) => void ) => {
-			bodies.push( structuredClone( body ) );
+		async ( body: object, onChunk: ( chunk: string ) => void ) => {
+			bodies.push( structuredClone( body ) as RequestBody );
 			const stream = streams.shift();
 			if ( stream === undefined ) {
 				throw new Error( 'No more streams' );
@@ -44,12 +45,12 @@ function createTransport( streams: string[] ) {
 function run(
 	streams: string[],
 	messages: Parameters<
-		ReturnType< typeof createOpenAiChat >
+		ReturnType< typeof createChat >
 	>[ 0 ][ 'messages' ] = [ { role: 'user', text: 'Make it shorter' } ]
 ) {
 	const { transport, bodies } = createTransport( streams );
 	const events: AiStreamEvent[] = [];
-	const chat = createOpenAiChat( { transport } );
+	const chat = createChat( { provider: openai, transport } );
 	const result = chat( {
 		system: 'System prompt',
 		messages,
@@ -65,7 +66,7 @@ function joinText( events: AiStreamEvent[] ) {
 		.join( '' );
 }
 
-describe( 'createOpenAiChat', () => {
+describe( 'createChat with OpenAI', () => {
 	it( 'streams the text of an answer', async () => {
 		const { result, events, bodies } = run( [ answer ] );
 		await result;

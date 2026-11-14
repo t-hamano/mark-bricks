@@ -1,44 +1,23 @@
 /**
  * Internal dependencies
  */
-import { DEFAULT_MODEL as ANTHROPIC_DEFAULT_MODEL } from './anthropic';
-import { DEFAULT_MODEL as OPENAI_DEFAULT_MODEL } from './openai';
+import { anthropic } from './anthropic';
+import { openai } from './openai';
+import type { AiProviderAdapter } from './provider';
 
 /**
- * An AI provider the assistant can use. The native side names it the same
- * way.
+ * The providers the assistant can use. To add one, implement
+ * `AiProviderAdapter` in its own folder and list it here, and in the
+ * native side's `Provider`, which names it the same way.
  */
-export type AiProvider = 'anthropic' | 'openai';
+export const PROVIDERS = {
+	anthropic,
+	openai,
+} satisfies Record< string, AiProviderAdapter >;
+
+export type AiProvider = keyof typeof PROVIDERS;
 
 export const DEFAULT_PROVIDER: AiProvider = 'anthropic';
-
-type ProviderInfo = {
-	/**
-	 * The provider's name, which is not translated.
-	 */
-	name: string;
-	/**
-	 * The model used when none is chosen.
-	 */
-	defaultModel: string;
-	/**
-	 * How the provider's API keys start, for the input's placeholder.
-	 */
-	keyPlaceholder: string;
-};
-
-export const PROVIDERS: Record< AiProvider, ProviderInfo > = {
-	anthropic: {
-		name: 'Anthropic',
-		defaultModel: ANTHROPIC_DEFAULT_MODEL,
-		keyPlaceholder: 'sk-ant-…',
-	},
-	openai: {
-		name: 'OpenAI',
-		defaultModel: OPENAI_DEFAULT_MODEL,
-		keyPlaceholder: 'sk-…',
-	},
-};
 
 /**
  * Checks a provider read from the preferences.

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:48:18.561Z\n"
-"PO-Revision-Date: 2026-11-14T02:48:23.475Z\n"
+"POT-Creation-Date: 2026-11-14T03:21:24.815Z\n"
+"PO-Revision-Date: 2026-11-14T03:21:29.803Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -133,7 +133,7 @@ msgid "Content width"
 msgstr "콘텐츠 너비"
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/ai/transport.ts:69
+#: src/ai/transport.ts:59
 msgid "Could not connect to the %s API."
 msgstr "%s API에 연결할 수 없습니다."
 
@@ -332,7 +332,7 @@ msgstr "새 파일"
 msgid "New…"
 msgstr "새로 만들기…"
 
-#: src/ai/transport.ts:56
+#: src/ai/transport.ts:46
 msgid "No API key is saved. Add one in the settings."
 msgstr "저장된 API 키가 없습니다. 설정에서 추가하세요."
 
@@ -497,12 +497,16 @@ msgid "Text formatting"
 msgstr "텍스트 서식 지정"
 
 # %s: The name of the AI provider, such as OpenAI.
-#: src/ai/openai/errors.ts:84
+#: src/ai/error.ts:76
 msgid "The %s API is not available right now. Try again later."
 msgstr "지금은 %s API를 사용할 수 없습니다. 나중에 다시 시도하세요."
 
-#: src/ai/openai/errors.ts:68
-#: src/ai/anthropic/errors.ts:39
+# %s: The name of the AI provider, such as OpenAI.
+#: src/ai/error.ts:61
+msgid "The %s account has no credit left. Check its billing settings."
+msgstr "%s 계정에 남은 크레딧이 없습니다. 결제 설정을 확인하세요."
+
+#: src/ai/error.ts:55
 msgid "The API key cannot use this model."
 msgstr "이 API 키로는 이 모델을 사용할 수 없습니다."
 
@@ -513,8 +517,7 @@ msgid ""
 "API."
 msgstr "API 키는 시스템의 자격 증명 저장소에 보관되며 %s API로만 전송됩니다."
 
-#: src/ai/openai/errors.ts:63
-#: src/ai/anthropic/errors.ts:34
+#: src/ai/error.ts:50
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 키가 올바르지 않습니다. 설정에서 확인하세요."
 
@@ -526,42 +529,29 @@ msgstr "API 키를 삭제했습니다."
 msgid "The API key was saved."
 msgstr "API 키를 저장했습니다."
 
-#: src/ai/anthropic/errors.ts:49
-msgid "The Anthropic API is not available right now. Try again later."
-msgstr "지금은 Anthropic API를 사용할 수 없습니다. 나중에 다시 시도하세요."
-
-#: src/ai/openai/errors.ts:72
-msgid "The OpenAI account has no credit left. Check its billing settings."
-msgstr "OpenAI 계정에 남은 크레딧이 없습니다. 결제 설정을 확인하세요."
-
 #: src/components/header-actions/index.tsx:381
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr "YAML 프런트 매터와 그 내용이 모두 문서에서 제거됩니다."
 
-#: src/ai/openai/chat.ts:150
-#: src/ai/anthropic/chat.ts:152
+#: src/ai/error.ts:114
 msgid "The answer was cut off because it reached the length limit."
 msgstr "길이 제한에 도달하여 답변이 중간에 끊겼습니다."
 
-#: src/ai/openai/response-stream.ts:137
-#: src/ai/anthropic/message-stream.ts:134
+#: src/ai/error.ts:98
 msgid "The connection closed before the answer was complete."
 msgstr "답변이 완료되기 전에 연결이 끊어졌습니다."
 
-#: src/ai/openai/chat.ts:94
-#: src/ai/anthropic/chat.ts:98
+#: src/ai/chat.ts:81
 msgid "The edit from the model could not be read."
 msgstr "모델의 편집 내용을 읽을 수 없습니다."
 
-#: src/ai/openai/chat.ts:144
-#: src/ai/anthropic/chat.ts:146
+#: src/ai/error.ts:107
 msgid "The model declined to answer this request."
 msgstr "모델이 이 요청에 대한 답변을 거부했습니다."
 
-#: src/ai/openai/errors.ts:70
-#: src/ai/anthropic/errors.ts:41
+#: src/ai/error.ts:57
 msgid "The model was not found."
 msgstr "모델을 찾을 수 없습니다."
 
@@ -570,14 +560,12 @@ msgstr "모델을 찾을 수 없습니다."
 msgid "The models could not be loaded: %s"
 msgstr "모델을 불러오지 못했습니다: %s"
 
-#: src/ai/openai/errors.ts:97
-#: src/ai/anthropic/errors.ts:60
+#: src/ai/error.ts:89
 msgid "The request failed."
 msgstr "요청이 실패했습니다."
 
 # %s: The error message from the Anthropic API.
-#: src/ai/openai/errors.ts:94
-#: src/ai/anthropic/errors.ts:57
+#: src/ai/error.ts:86
 msgid "The request failed: %s"
 msgstr "요청이 실패했습니다: %s"
 
@@ -586,7 +574,7 @@ msgstr "요청이 실패했습니다: %s"
 msgid "Theme"
 msgstr "테마"
 
-#: src/ai/settings.ts:56
+#: src/ai/settings.ts:50
 msgid "This API key is not valid."
 msgstr "이 API 키는 올바르지 않습니다."
 
@@ -598,8 +586,7 @@ msgstr ""
 "이 플랫폼에서는 MarkBricks에서 기본 앱을 설정할 수 없습니다. 시스템 파일 관리"
 "자에서 설정하세요."
 
-#: src/ai/openai/errors.ts:77
-#: src/ai/anthropic/errors.ts:43
+#: src/ai/error.ts:68
 msgid "Too many requests. Wait a moment and try again."
 msgstr "요청이 너무 많습니다. 잠시 후 다시 시도하세요."
 

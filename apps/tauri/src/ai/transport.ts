@@ -11,9 +11,7 @@ import { __, sprintf } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { createHttpError as createAnthropicHttpError } from './anthropic';
 import { AiError } from './error';
-import { createHttpError as createOpenAiHttpError } from './openai';
 import { PROVIDERS, type AiProvider } from './providers';
 import type { AiTransport } from './transport-type';
 
@@ -29,14 +27,6 @@ type RequestError =
 function abortError() {
 	return new DOMException( 'The answer was stopped.', 'AbortError' );
 }
-
-const HTTP_ERRORS: Record<
-	AiProvider,
-	( status: number, body: string ) => Error
-> = {
-	anthropic: createAnthropicHttpError,
-	openai: createOpenAiHttpError,
-};
 
 /**
  * Converts the error of the `ai_request` command to the error the chat
@@ -60,7 +50,7 @@ export function toTransportError(
 			);
 		case 'http': {
 			const { status, body } = error as { status: number; body: string };
-			return HTTP_ERRORS[ provider ]( status, body );
+			return PROVIDERS[ provider ].createHttpError( status, body );
 		}
 		case 'network':
 			return new AiError(

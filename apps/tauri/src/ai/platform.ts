@@ -12,8 +12,7 @@ import { store as preferencesStore } from '@wordpress/preferences';
 /**
  * Internal dependencies
  */
-import { createAnthropicChat } from './anthropic';
-import { createOpenAiChat } from './openai';
+import { createChat } from './chat';
 import { PROVIDERS, toProvider, type AiProvider } from './providers';
 import { hasApiKey } from './settings';
 import { createTauriTransport } from './transport';
@@ -52,14 +51,11 @@ export const aiPlatform: AiPlatform = {
 		// The provider and the model are read for each message, so that the
 		// ones chosen during the conversation are used for the next message.
 		const provider = getChosenProvider();
-		const options = {
+		const chat = createChat( {
+			provider: PROVIDERS[ provider ],
 			transport: createTauriTransport( provider ),
 			model: getChosenModel(),
-		};
-		const chat =
-			provider === 'openai'
-				? createOpenAiChat( options )
-				: createAnthropicChat( options );
+		} );
 		return chat( request );
 	},
 	openSettings() {

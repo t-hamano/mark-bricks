@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:48:18.561Z\n"
-"PO-Revision-Date: 2026-11-14T02:48:19.490Z\n"
+"POT-Creation-Date: 2026-11-14T03:21:24.815Z\n"
+"PO-Revision-Date: 2026-11-14T03:21:25.791Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -131,7 +131,7 @@ msgid "Content width"
 msgstr "コンテンツ幅"
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/ai/transport.ts:69
+#: src/ai/transport.ts:59
 msgid "Could not connect to the %s API."
 msgstr "%s API に接続できませんでした。"
 
@@ -332,7 +332,7 @@ msgstr "新規ファイル"
 msgid "New…"
 msgstr "新規…"
 
-#: src/ai/transport.ts:56
+#: src/ai/transport.ts:46
 msgid "No API key is saved. Add one in the settings."
 msgstr "API キーが保存されていません。設定で追加してください。"
 
@@ -497,12 +497,16 @@ msgid "Text formatting"
 msgstr "書式設定"
 
 # %s: The name of the AI provider, such as OpenAI.
-#: src/ai/openai/errors.ts:84
+#: src/ai/error.ts:76
 msgid "The %s API is not available right now. Try again later."
 msgstr "%s API は現在利用できません。しばらくしてから再試行してください。"
 
-#: src/ai/openai/errors.ts:68
-#: src/ai/anthropic/errors.ts:39
+# %s: The name of the AI provider, such as OpenAI.
+#: src/ai/error.ts:61
+msgid "The %s account has no credit left. Check its billing settings."
+msgstr "%s アカウントのクレジットが残っていません。請求設定を確認してください。"
+
+#: src/ai/error.ts:55
 msgid "The API key cannot use this model."
 msgstr "この API キーではこのモデルを使えません。"
 
@@ -514,8 +518,7 @@ msgid ""
 msgstr ""
 "API キーはシステムの資格情報ストアに保存され、%s API にのみ送信されます。"
 
-#: src/ai/openai/errors.ts:63
-#: src/ai/anthropic/errors.ts:34
+#: src/ai/error.ts:50
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API キーが無効です。設定で確認してください。"
 
@@ -527,44 +530,29 @@ msgstr "API キーを削除しました。"
 msgid "The API key was saved."
 msgstr "API キーを保存しました。"
 
-#: src/ai/anthropic/errors.ts:49
-msgid "The Anthropic API is not available right now. Try again later."
-msgstr ""
-"Anthropic API は現在利用できません。しばらくしてから再試行してください。"
-
-#: src/ai/openai/errors.ts:72
-msgid "The OpenAI account has no credit left. Check its billing settings."
-msgstr ""
-"OpenAI アカウントのクレジットが残っていません。請求設定を確認してください。"
-
 #: src/components/header-actions/index.tsx:381
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr "YAML フロントマターとその内容はすべてドキュメントから削除されます。"
 
-#: src/ai/openai/chat.ts:150
-#: src/ai/anthropic/chat.ts:152
+#: src/ai/error.ts:114
 msgid "The answer was cut off because it reached the length limit."
 msgstr "長さの上限に達したため、回答が途中で終わりました。"
 
-#: src/ai/openai/response-stream.ts:137
-#: src/ai/anthropic/message-stream.ts:134
+#: src/ai/error.ts:98
 msgid "The connection closed before the answer was complete."
 msgstr "回答が完了する前に接続が切れました。"
 
-#: src/ai/openai/chat.ts:94
-#: src/ai/anthropic/chat.ts:98
+#: src/ai/chat.ts:81
 msgid "The edit from the model could not be read."
 msgstr "モデルの編集内容を読み取れませんでした。"
 
-#: src/ai/openai/chat.ts:144
-#: src/ai/anthropic/chat.ts:146
+#: src/ai/error.ts:107
 msgid "The model declined to answer this request."
 msgstr "モデルがこのリクエストへの回答を断りました。"
 
-#: src/ai/openai/errors.ts:70
-#: src/ai/anthropic/errors.ts:41
+#: src/ai/error.ts:57
 msgid "The model was not found."
 msgstr "モデルが見つかりませんでした。"
 
@@ -573,14 +561,12 @@ msgstr "モデルが見つかりませんでした。"
 msgid "The models could not be loaded: %s"
 msgstr "モデルを読み込めませんでした: %s"
 
-#: src/ai/openai/errors.ts:97
-#: src/ai/anthropic/errors.ts:60
+#: src/ai/error.ts:89
 msgid "The request failed."
 msgstr "リクエストに失敗しました。"
 
 # %s: The error message from the Anthropic API.
-#: src/ai/openai/errors.ts:94
-#: src/ai/anthropic/errors.ts:57
+#: src/ai/error.ts:86
 msgid "The request failed: %s"
 msgstr "リクエストに失敗しました: %s"
 
@@ -589,7 +575,7 @@ msgstr "リクエストに失敗しました: %s"
 msgid "Theme"
 msgstr "テーマ"
 
-#: src/ai/settings.ts:56
+#: src/ai/settings.ts:50
 msgid "This API key is not valid."
 msgstr "この API キーは無効です。"
 
@@ -601,8 +587,7 @@ msgstr ""
 "このプラットフォームでは MarkBricks 内から既定のアプリを設定できません。シス"
 "テムのファイルマネージャーから設定してください。"
 
-#: src/ai/openai/errors.ts:77
-#: src/ai/anthropic/errors.ts:43
+#: src/ai/error.ts:68
 msgid "Too many requests. Wait a moment and try again."
 msgstr "リクエストが多すぎます。少し待ってから再試行してください。"
 

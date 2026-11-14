@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import type { AiModel } from '../settings';
+import type { AiModel } from '../provider';
 
 /**
  * Words in the ids of models that do not answer in text through the

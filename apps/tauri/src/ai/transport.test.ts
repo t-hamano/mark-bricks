@@ -16,7 +16,7 @@ vi.mock( '@tauri-apps/api/core', () => ( {
  * Internal dependencies
  */
 import { createTauriTransport, toTransportError } from './transport';
-import type { RequestBody } from './anthropic';
+import type { RequestBody } from './anthropic/request';
 
 const body = { model: 'claude-opus-5-5' } as RequestBody;
 

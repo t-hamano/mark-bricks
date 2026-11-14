@@ -1,72 +1,56 @@
 /**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-
-/**
  * Internal dependencies
  */
-import { createStreamError, OpenAiError } from './errors';
-import type { FunctionCallItem, OutputItem as ReplayItem } from './request';
+import { EDIT_RESULT } from '../edit-tool';
+import {
+	connectionClosedError,
+	lengthLimitError,
+	refusalError,
+} from '../error';
+import type { ProviderAnswer } from '../provider';
+import { createStreamError } from './errors';
+import {
+	EDIT_TOOL_NAME,
+	type FunctionCallOutputItem,
+	type OutputItem,
+} from './request';
 
-type OutputItem = {
-	type: string;
-	[ key: string ]: unknown;
-	call_id?: string;
-	name?: string;
-	arguments?: string;
-	content?: { type: string }[];
-};
+type ApiError = { code?: string | null; message?: string | null };
 
 type StreamEvent = {
 	type: string;
 	delta?: string;
-	item?: OutputItem;
+	item?: OutputItem & {
+		call_id?: string;
+		name?: string;
+		arguments?: string;
+		content?: { type: string }[];
+	};
 	response?: {
-		status?: string;
 		incomplete_details?: { reason?: string } | null;
-		error?: { code?: string | null; message?: string | null } | null;
+		error?: ApiError | null;
 	};
 	code?: string | null;
 	message?: string | null;
-	error?: { code?: string | null; message?: string | null };
-};
-
-export type StreamedResponse = {
-	/**
-	 * The text of the answer.
-	 */
-	text: string;
-	/**
-	 * The function calls the model made, in order.
-	 */
-	functionCalls: FunctionCallItem[];
-	/**
-	 * The output items to send back to continue the answer, in order: its
-	 * reasoning, messages, and function calls, as the API sent them.
-	 */
-	outputItems: ReplayItem[];
-	/**
-	 * Whether the model declined to answer.
-	 */
-	refused: boolean;
-	/**
-	 * Why the answer stopped early, such as `max_output_tokens`, or `null`
-	 * when it is complete.
-	 */
-	incompleteReason: string | null;
+	error?: ApiError;
 };
 
 /**
- * Builds a response from the events of a streamed Responses API response.
+ * The output items that are sent back to continue the answer.
+ */
+const REPLAYED_TYPES = [ 'reasoning', 'message', 'function_call' ];
+
+/**
+ * Reads a streamed Responses API answer. See
+ * `AiProviderAdapter.readAnswer`.
  *
  * @param onText Called with each piece of the answer's text.
- * @return `handle` takes each event, and `finish` returns the response.
  */
-export function createResponseStream( onText: ( text: string ) => void ) {
-	let text = '';
-	const functionCalls: FunctionCallItem[] = [];
-	const outputItems: ReplayItem[] = [];
+export function readAnswer( onText: ( text: string ) => void ) {
+	// The answer's items, as the API sent them, including the reasoning
+	// that led to the edit.
+	const outputItems: OutputItem[] = [];
+	let editCall: { callId: string; arguments: string } | undefined;
 	let refused = false;
 	let incompleteReason: string | null = null;
 	let isComplete = false;
@@ -76,7 +60,6 @@ export function createResponseStream( onText: ( text: string ) => void ) {
 		switch ( event.type ) {
 			case 'response.output_text.delta':
 				if ( event.delta ) {
-					text += event.delta;
 					onText( event.delta );
 				}
 				return;
@@ -85,27 +68,21 @@ export function createResponseStream( onText: ( text: string ) => void ) {
 				return;
 			case 'response.output_item.done': {
 				const item = event.item;
-				if (
-					item &&
-					[ 'reasoning', 'message', 'function_call' ].includes(
-						item.type
-					)
-				) {
-					outputItems.push( item );
+				if ( ! item || ! REPLAYED_TYPES.includes( item.type ) ) {
+					return;
 				}
+				outputItems.push( item );
 				if (
-					item?.type === 'function_call' &&
+					item.type === 'function_call' &&
+					item.name === EDIT_TOOL_NAME &&
 					item.call_id &&
-					item.name
+					! editCall
 				) {
-					functionCalls.push( {
-						type: 'function_call',
-						call_id: item.call_id,
-						name: item.name,
+					editCall = {
+						callId: item.call_id,
 						arguments: item.arguments ?? '',
-					} );
+					};
 				} else if (
-					item?.type === 'message' &&
 					item.content?.some( ( part ) => part.type === 'refusal' )
 				) {
 					refused = true;
@@ -129,25 +106,43 @@ export function createResponseStream( onText: ( text: string ) => void ) {
 		}
 	};
 
-	const finish = (): StreamedResponse => {
-		// The response ended before the API finished it, for example
-		// because the connection dropped.
+	const finish = (): ProviderAnswer => {
 		if ( ! isComplete ) {
-			throw new OpenAiError(
-				__(
-					'The connection closed before the answer was complete.',
-					'mark-bricks'
-				)
-			);
+			throw connectionClosedError();
 		}
+		if ( refused || incompleteReason === 'content_filter' ) {
+			throw refusalError();
+		}
+		if ( incompleteReason === 'max_output_tokens' ) {
+			throw lengthLimitError();
+		}
+		if ( ! editCall ) {
+			return { continuation: [] };
+		}
+		const output: FunctionCallOutputItem = {
+			type: 'function_call_output',
+			call_id: editCall.callId,
+			output: EDIT_RESULT,
+		};
 		return {
-			text,
-			functionCalls,
-			outputItems,
-			refused,
-			incompleteReason,
+			editCall: { input: parseArguments( editCall.arguments ) },
+			continuation: [ ...outputItems, output ],
 		};
 	};
 
 	return { handle, finish };
+}
+
+/**
+ * Parses a function call's arguments.
+ *
+ * @param json The arguments' JSON.
+ * @return The arguments, or `undefined` when the JSON is not valid.
+ */
+function parseArguments( json: string ): unknown {
+	try {
+		return JSON.parse( json );
+	} catch {
+		return undefined;
+	}
 }

@@ -7,7 +7,9 @@ import type { AiStreamEvent } from '@mark-bricks/editor';
 /**
  * Internal dependencies
  */
-import { createAnthropicChat, toEchoContent } from './chat';
+import { createChat } from '../chat';
+import { toEchoContent } from './answer';
+import { anthropic } from '.';
 import { createHttpError } from './errors';
 import type { RequestBody } from './request';
 import answer from './fixtures/answer.sse?raw';
@@ -25,8 +27,8 @@ import overloaded from './fixtures/overloaded.sse?raw';
 function createTransport( streams: string[] ) {
 	const bodies: RequestBody[] = [];
 	const transport = vi.fn(
-		async ( body: RequestBody, onChunk: ( chunk: string ) => void ) => {
-			bodies.push( structuredClone( body ) );
+		async ( body: object, onChunk: ( chunk: string ) => void ) => {
+			bodies.push( structuredClone( body ) as RequestBody );
 			const stream = streams.shift();
 			if ( stream === undefined ) {
 				throw new Error( 'No more streams' );
@@ -43,7 +45,7 @@ function createTransport( streams: string[] ) {
 async function run( streams: string[], signal = new AbortController().signal ) {
 	const { transport, bodies } = createTransport( streams );
 	const events: AiStreamEvent[] = [];
-	const chat = createAnthropicChat( { transport } );
+	const chat = createChat( { provider: anthropic, transport } );
 	const result = chat( {
 		system: 'System prompt',
 		messages: [ { role: 'user', text: 'Make it shorter' } ],
@@ -59,7 +61,7 @@ function joinText( events: AiStreamEvent[] ) {
 		.join( '' );
 }
 
-describe( 'createAnthropicChat', () => {
+describe( 'createChat with Anthropic', () => {
 	it( 'streams the text of an answer', async () => {
 		const { result, events, bodies } = await run( [ answer ] );
 		await result;
@@ -131,7 +133,7 @@ describe( 'createAnthropicChat', () => {
 	it( 'does not continue when the answer is stopped after the edit', async () => {
 		const controller = new AbortController();
 		const { transport } = createTransport( [ edit, afterEdit ] );
-		const chat = createAnthropicChat( { transport } );
+		const chat = createChat( { provider: anthropic, transport } );
 		const result = chat( {
 			system: 'System prompt',
 			messages: [ { role: 'user', text: 'Make it shorter' } ],
@@ -184,7 +186,7 @@ describe( 'createAnthropicChat', () => {
 				'{"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"}}'
 			);
 		} );
-		const chat = createAnthropicChat( { transport } );
+		const chat = createChat( { provider: anthropic, transport } );
 		await expect(
 			chat( {
 				system: '',

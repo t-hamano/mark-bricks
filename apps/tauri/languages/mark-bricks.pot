@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:48:18.561Z\n"
+"POT-Creation-Date: 2026-11-14T03:21:24.815Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -142,17 +142,68 @@ msgstr ""
 msgid "Update check failed: %s"
 msgstr ""
 
-#: src/ai/transport.ts:56
+#: src/ai/transport.ts:46
 msgid "No API key is saved. Add one in the settings."
 msgstr ""
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/ai/transport.ts:69
+#: src/ai/transport.ts:59
 msgid "Could not connect to the %s API."
 msgstr ""
 
-#: src/ai/settings.ts:56
+#: src/ai/settings.ts:50
 msgid "This API key is not valid."
+msgstr ""
+
+#: src/ai/error.ts:50
+msgid "The API key is not valid. Check it in the settings."
+msgstr ""
+
+#: src/ai/error.ts:55
+msgid "The API key cannot use this model."
+msgstr ""
+
+#: src/ai/error.ts:57
+msgid "The model was not found."
+msgstr ""
+
+# %s: The name of the AI provider, such as OpenAI.
+#: src/ai/error.ts:61
+msgid "The %s account has no credit left. Check its billing settings."
+msgstr ""
+
+#: src/ai/error.ts:68
+msgid "Too many requests. Wait a moment and try again."
+msgstr ""
+
+# %s: The name of the AI provider, such as Anthropic.
+#: src/ai/error.ts:76
+msgid "The %s API is not available right now. Try again later."
+msgstr ""
+
+# %s: The error message from the AI provider's API.
+#: src/ai/error.ts:86
+msgid "The request failed: %s"
+msgstr ""
+
+#: src/ai/error.ts:89
+msgid "The request failed."
+msgstr ""
+
+#: src/ai/error.ts:98
+msgid "The connection closed before the answer was complete."
+msgstr ""
+
+#: src/ai/error.ts:107
+msgid "The model declined to answer this request."
+msgstr ""
+
+#: src/ai/error.ts:114
+msgid "The answer was cut off because it reached the length limit."
+msgstr ""
+
+#: src/ai/chat.ts:81
+msgid "The edit from the model could not be read."
 msgstr ""
 
 #: src/actions/index.ts:468
@@ -595,69 +646,4 @@ msgstr ""
 
 #: src/components/about-modal/index.tsx:132
 msgid "Report an issue"
-msgstr ""
-
-#: src/ai/openai/response-stream.ts:137
-#: src/ai/anthropic/message-stream.ts:134
-msgid "The connection closed before the answer was complete."
-msgstr ""
-
-#: src/ai/openai/errors.ts:63
-#: src/ai/anthropic/errors.ts:34
-msgid "The API key is not valid. Check it in the settings."
-msgstr ""
-
-#: src/ai/openai/errors.ts:68
-#: src/ai/anthropic/errors.ts:39
-msgid "The API key cannot use this model."
-msgstr ""
-
-#: src/ai/openai/errors.ts:70
-#: src/ai/anthropic/errors.ts:41
-msgid "The model was not found."
-msgstr ""
-
-#: src/ai/openai/errors.ts:72
-msgid "The OpenAI account has no credit left. Check its billing settings."
-msgstr ""
-
-#: src/ai/openai/errors.ts:77
-#: src/ai/anthropic/errors.ts:43
-msgid "Too many requests. Wait a moment and try again."
-msgstr ""
-
-# %s: The name of the AI provider, such as OpenAI.
-#: src/ai/openai/errors.ts:84
-msgid "The %s API is not available right now. Try again later."
-msgstr ""
-
-# %s: The error message from the OpenAI API.
-# %s: The error message from the Anthropic API.
-#: src/ai/openai/errors.ts:94
-#: src/ai/anthropic/errors.ts:57
-msgid "The request failed: %s"
-msgstr ""
-
-#: src/ai/openai/errors.ts:97
-#: src/ai/anthropic/errors.ts:60
-msgid "The request failed."
-msgstr ""
-
-#: src/ai/openai/chat.ts:94
-#: src/ai/anthropic/chat.ts:98
-msgid "The edit from the model could not be read."
-msgstr ""
-
-#: src/ai/openai/chat.ts:144
-#: src/ai/anthropic/chat.ts:146
-msgid "The model declined to answer this request."
-msgstr ""
-
-#: src/ai/openai/chat.ts:150
-#: src/ai/anthropic/chat.ts:152
-msgid "The answer was cut off because it reached the length limit."
-msgstr ""
-
-#: src/ai/anthropic/errors.ts:49
-msgid "The Anthropic API is not available right now. Try again later."
 msgstr ""

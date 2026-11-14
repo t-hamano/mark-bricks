@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:48:18.561Z\n"
-"PO-Revision-Date: 2026-11-14T02:48:24.148Z\n"
+"POT-Creation-Date: 2026-11-14T03:21:24.815Z\n"
+"PO-Revision-Date: 2026-11-14T03:21:30.490Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -133,7 +133,7 @@ msgid "Content width"
 msgstr "Szerokość treści"
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/ai/transport.ts:69
+#: src/ai/transport.ts:59
 msgid "Could not connect to the %s API."
 msgstr "Nie udało się połączyć z API %s."
 
@@ -333,7 +333,7 @@ msgstr "Nowy plik"
 msgid "New…"
 msgstr "Nowy…"
 
-#: src/ai/transport.ts:56
+#: src/ai/transport.ts:46
 msgid "No API key is saved. Add one in the settings."
 msgstr "Nie zapisano klucza API. Dodaj go w ustawieniach."
 
@@ -498,12 +498,16 @@ msgid "Text formatting"
 msgstr "Formatowanie tekstu"
 
 # %s: The name of the AI provider, such as OpenAI.
-#: src/ai/openai/errors.ts:84
+#: src/ai/error.ts:76
 msgid "The %s API is not available right now. Try again later."
 msgstr "API %s jest obecnie niedostępne. Spróbuj ponownie później."
 
-#: src/ai/openai/errors.ts:68
-#: src/ai/anthropic/errors.ts:39
+# %s: The name of the AI provider, such as OpenAI.
+#: src/ai/error.ts:61
+msgid "The %s account has no credit left. Check its billing settings."
+msgstr "Na koncie %s nie ma już środków. Sprawdź ustawienia rozliczeń."
+
+#: src/ai/error.ts:55
 msgid "The API key cannot use this model."
 msgstr "Ten klucz API nie pozwala używać tego modelu."
 
@@ -516,8 +520,7 @@ msgstr ""
 "Klucz API jest przechowywany w systemowym magazynie poświadczeń i wysyłany "
 "wyłącznie do API %s."
 
-#: src/ai/openai/errors.ts:63
-#: src/ai/anthropic/errors.ts:34
+#: src/ai/error.ts:50
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Klucz API jest nieprawidłowy. Sprawdź go w ustawieniach."
 
@@ -529,42 +532,29 @@ msgstr "Klucz API został usunięty."
 msgid "The API key was saved."
 msgstr "Klucz API został zapisany."
 
-#: src/ai/anthropic/errors.ts:49
-msgid "The Anthropic API is not available right now. Try again later."
-msgstr "API Anthropic jest obecnie niedostępne. Spróbuj ponownie później."
-
-#: src/ai/openai/errors.ts:72
-msgid "The OpenAI account has no credit left. Check its billing settings."
-msgstr "Na koncie OpenAI nie ma już środków. Sprawdź ustawienia rozliczeń."
-
 #: src/components/header-actions/index.tsx:381
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr "YAML front matter i cała jego zawartość zostaną usunięte z dokumentu."
 
-#: src/ai/openai/chat.ts:150
-#: src/ai/anthropic/chat.ts:152
+#: src/ai/error.ts:114
 msgid "The answer was cut off because it reached the length limit."
 msgstr "Odpowiedź została ucięta, ponieważ osiągnęła limit długości."
 
-#: src/ai/openai/response-stream.ts:137
-#: src/ai/anthropic/message-stream.ts:134
+#: src/ai/error.ts:98
 msgid "The connection closed before the answer was complete."
 msgstr "Połączenie zostało zamknięte, zanim odpowiedź była kompletna."
 
-#: src/ai/openai/chat.ts:94
-#: src/ai/anthropic/chat.ts:98
+#: src/ai/chat.ts:81
 msgid "The edit from the model could not be read."
 msgstr "Nie udało się odczytać zmiany wprowadzonej przez model."
 
-#: src/ai/openai/chat.ts:144
-#: src/ai/anthropic/chat.ts:146
+#: src/ai/error.ts:107
 msgid "The model declined to answer this request."
 msgstr "Model odmówił odpowiedzi na to żądanie."
 
-#: src/ai/openai/errors.ts:70
-#: src/ai/anthropic/errors.ts:41
+#: src/ai/error.ts:57
 msgid "The model was not found."
 msgstr "Nie znaleziono modelu."
 
@@ -573,14 +563,12 @@ msgstr "Nie znaleziono modelu."
 msgid "The models could not be loaded: %s"
 msgstr "Nie udało się wczytać modeli: %s"
 
-#: src/ai/openai/errors.ts:97
-#: src/ai/anthropic/errors.ts:60
+#: src/ai/error.ts:89
 msgid "The request failed."
 msgstr "Żądanie nie powiodło się."
 
 # %s: The error message from the Anthropic API.
-#: src/ai/openai/errors.ts:94
-#: src/ai/anthropic/errors.ts:57
+#: src/ai/error.ts:86
 msgid "The request failed: %s"
 msgstr "Żądanie nie powiodło się: %s"
 
@@ -589,7 +577,7 @@ msgstr "Żądanie nie powiodło się: %s"
 msgid "Theme"
 msgstr "Motyw"
 
-#: src/ai/settings.ts:56
+#: src/ai/settings.ts:50
 msgid "This API key is not valid."
 msgstr "Ten klucz API jest nieprawidłowy."
 
@@ -601,8 +589,7 @@ msgstr ""
 "Ta platforma nie obsługuje ustawiania domyślnej aplikacji z poziomu "
 "MarkBricks. Skonfiguruj ją w systemowym menedżerze plików."
 
-#: src/ai/openai/errors.ts:77
-#: src/ai/anthropic/errors.ts:43
+#: src/ai/error.ts:68
 msgid "Too many requests. Wait a moment and try again."
 msgstr "Zbyt wiele żądań. Odczekaj chwilę i spróbuj ponownie."
 

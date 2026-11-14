@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:48:18.561Z\n"
-"PO-Revision-Date: 2026-11-14T02:48:20.124Z\n"
+"POT-Creation-Date: 2026-11-14T03:21:24.815Z\n"
+"PO-Revision-Date: 2026-11-14T03:21:26.463Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -131,7 +131,7 @@ msgid "Content width"
 msgstr "Šířka obsahu"
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/ai/transport.ts:69
+#: src/ai/transport.ts:59
 msgid "Could not connect to the %s API."
 msgstr "Nepodařilo se připojit k API %s."
 
@@ -333,7 +333,7 @@ msgstr "Nový soubor"
 msgid "New…"
 msgstr "Nový…"
 
-#: src/ai/transport.ts:56
+#: src/ai/transport.ts:46
 msgid "No API key is saved. Add one in the settings."
 msgstr "Není uložen žádný klíč API. Přidejte ho v nastavení."
 
@@ -498,12 +498,16 @@ msgid "Text formatting"
 msgstr "Formátování textu"
 
 # %s: The name of the AI provider, such as OpenAI.
-#: src/ai/openai/errors.ts:84
+#: src/ai/error.ts:76
 msgid "The %s API is not available right now. Try again later."
 msgstr "API %s teď není dostupné. Zkuste to později."
 
-#: src/ai/openai/errors.ts:68
-#: src/ai/anthropic/errors.ts:39
+# %s: The name of the AI provider, such as OpenAI.
+#: src/ai/error.ts:61
+msgid "The %s account has no credit left. Check its billing settings."
+msgstr "Účet %s nemá žádný zbývající kredit. Zkontrolujte jeho nastavení fakturace."
+
+#: src/ai/error.ts:55
 msgid "The API key cannot use this model."
 msgstr "Tento klíč API nemůže používat tento model."
 
@@ -516,8 +520,7 @@ msgstr ""
 "Klíč API je uložen v systémovém úložišti přihlašovacích údajů a odesílá se "
 "pouze do API %s."
 
-#: src/ai/openai/errors.ts:63
-#: src/ai/anthropic/errors.ts:34
+#: src/ai/error.ts:50
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Klíč API není platný. Zkontrolujte ho v nastavení."
 
@@ -529,44 +532,29 @@ msgstr "Klíč API byl smazán."
 msgid "The API key was saved."
 msgstr "Klíč API byl uložen."
 
-#: src/ai/anthropic/errors.ts:49
-msgid "The Anthropic API is not available right now. Try again later."
-msgstr "API Anthropic teď není dostupné. Zkuste to později."
-
-#: src/ai/openai/errors.ts:72
-msgid "The OpenAI account has no credit left. Check its billing settings."
-msgstr ""
-"Účet OpenAI nemá žádný zbývající kredit. Zkontrolujte jeho nastavení "
-"fakturace."
-
 #: src/components/header-actions/index.tsx:381
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr "YAML front matter a veškerý jeho obsah budou z dokumentu odebrány."
 
-#: src/ai/openai/chat.ts:150
-#: src/ai/anthropic/chat.ts:152
+#: src/ai/error.ts:114
 msgid "The answer was cut off because it reached the length limit."
 msgstr "Odpověď byla zkrácena, protože dosáhla limitu délky."
 
-#: src/ai/openai/response-stream.ts:137
-#: src/ai/anthropic/message-stream.ts:134
+#: src/ai/error.ts:98
 msgid "The connection closed before the answer was complete."
 msgstr "Spojení se ukončilo dříve, než byla odpověď dokončena."
 
-#: src/ai/openai/chat.ts:94
-#: src/ai/anthropic/chat.ts:98
+#: src/ai/chat.ts:81
 msgid "The edit from the model could not be read."
 msgstr "Úpravu od modelu se nepodařilo přečíst."
 
-#: src/ai/openai/chat.ts:144
-#: src/ai/anthropic/chat.ts:146
+#: src/ai/error.ts:107
 msgid "The model declined to answer this request."
 msgstr "Model odmítl na tento požadavek odpovědět."
 
-#: src/ai/openai/errors.ts:70
-#: src/ai/anthropic/errors.ts:41
+#: src/ai/error.ts:57
 msgid "The model was not found."
 msgstr "Model nebyl nalezen."
 
@@ -575,14 +563,12 @@ msgstr "Model nebyl nalezen."
 msgid "The models could not be loaded: %s"
 msgstr "Modely se nepodařilo načíst: %s"
 
-#: src/ai/openai/errors.ts:97
-#: src/ai/anthropic/errors.ts:60
+#: src/ai/error.ts:89
 msgid "The request failed."
 msgstr "Požadavek selhal."
 
 # %s: The error message from the Anthropic API.
-#: src/ai/openai/errors.ts:94
-#: src/ai/anthropic/errors.ts:57
+#: src/ai/error.ts:86
 msgid "The request failed: %s"
 msgstr "Požadavek selhal: %s"
 
@@ -591,7 +577,7 @@ msgstr "Požadavek selhal: %s"
 msgid "Theme"
 msgstr "Motiv"
 
-#: src/ai/settings.ts:56
+#: src/ai/settings.ts:50
 msgid "This API key is not valid."
 msgstr "Tento klíč API není platný."
 
@@ -603,8 +589,7 @@ msgstr ""
 "Tato platforma nepodporuje nastavení výchozí aplikace přímo v MarkBricks. "
 "Nastavte ji ve správci souborů systému."
 
-#: src/ai/openai/errors.ts:77
-#: src/ai/anthropic/errors.ts:43
+#: src/ai/error.ts:68
 msgid "Too many requests. Wait a moment and try again."
 msgstr "Příliš mnoho požadavků. Chvíli počkejte a zkuste to znovu."
 
