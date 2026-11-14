@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T09:13:34.243Z\n"
-"PO-Revision-Date: 2026-11-14T09:13:44.266Z\n"
+"POT-Creation-Date: 2026-11-14T09:17:25.224Z\n"
+"PO-Revision-Date: 2026-11-14T09:17:34.836Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -67,7 +67,7 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/block-library/html/marp-directive-settings.tsx:324
+#: src/block-library/html/marp-directive-settings.tsx:329
 msgid "A CSS background image, such as a gradient."
 msgstr "CSS 背景图像，例如渐变。"
 
@@ -174,11 +174,11 @@ msgstr "自动"
 msgid "Background"
 msgstr "背景"
 
-#: src/block-library/html/marp-directive-settings.tsx:301
+#: src/block-library/html/marp-directive-settings.tsx:306
 msgid "Background color"
 msgstr "背景颜色"
 
-#: src/block-library/html/marp-directive-settings.tsx:323
+#: src/block-library/html/marp-directive-settings.tsx:328
 msgid "Background image"
 msgstr "背景图像"
 
@@ -314,6 +314,7 @@ msgid "Create Table"
 msgstr "创建表格"
 
 #: src/block-library/quote/edit.tsx:151
+#: src/block-library/html/marp-directive-settings.tsx:268
 msgid "Default"
 msgstr "默认"
 
@@ -416,7 +417,7 @@ msgid "Follows the setting of the deck."
 msgstr "沿用演示文稿的设置。"
 
 #: src/components/front-matter-editor/index.tsx:293
-#: src/block-library/html/marp-directive-settings.tsx:292
+#: src/block-library/html/marp-directive-settings.tsx:297
 msgid "Footer"
 msgstr "页脚"
 
@@ -454,7 +455,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:282
-#: src/block-library/html/marp-directive-settings.tsx:283
+#: src/block-library/html/marp-directive-settings.tsx:288
 msgid "Header"
 msgstr "页眉"
 
@@ -535,7 +536,7 @@ msgstr "标题、文本和列表分两栏"
 msgid "Height"
 msgstr "高度"
 
-#: src/block-library/html/marp-directive-settings.tsx:271
+#: src/block-library/html/marp-directive-settings.tsx:276
 msgid "Hide"
 msgstr "隐藏"
 
@@ -551,7 +552,7 @@ msgstr "隐藏页码，且不计入此幻灯片。"
 msgid "Hides the page number."
 msgstr "隐藏页码。"
 
-#: src/block-library/html/marp-directive-settings.tsx:275
+#: src/block-library/html/marp-directive-settings.tsx:280
 msgid "Hold"
 msgstr "保持"
 
@@ -790,7 +791,7 @@ msgstr "减少缩进量"
 msgid "Outline"
 msgstr "大纲"
 
-#: src/block-library/html/marp-directive-settings.tsx:255
+#: src/block-library/html/marp-directive-settings.tsx:254
 msgid "Page number"
 msgstr "页码"
 
@@ -941,7 +942,7 @@ msgctxt "slide pattern"
 msgid "Share"
 msgstr "分享"
 
-#: src/block-library/html/marp-directive-settings.tsx:267
+#: src/block-library/html/marp-directive-settings.tsx:272
 msgid "Show"
 msgstr "显示"
 
@@ -980,7 +981,7 @@ msgstr "简洁清爽，基于 GitHub Markdown 样式。"
 msgid "Size"
 msgstr "尺寸"
 
-#: src/block-library/html/marp-directive-settings.tsx:279
+#: src/block-library/html/marp-directive-settings.tsx:284
 msgid "Skip"
 msgstr "跳过"
 
@@ -1060,7 +1061,7 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "文本"
 
-#: src/block-library/html/marp-directive-settings.tsx:313
+#: src/block-library/html/marp-directive-settings.tsx:318
 msgid "Text color"
 msgstr "文字颜色"
 
@@ -1068,7 +1069,7 @@ msgstr "文字颜色"
 msgid "Text shown at the bottom of each slide."
 msgstr "显示在每张幻灯片底部的文本。"
 
-#: src/block-library/html/marp-directive-settings.tsx:293
+#: src/block-library/html/marp-directive-settings.tsx:298
 msgid "Text shown at the bottom of the slide."
 msgstr "显示在幻灯片底部的文字。"
 
@@ -1076,7 +1077,7 @@ msgstr "显示在幻灯片底部的文字。"
 msgid "Text shown at the top of each slide."
 msgstr "显示在每张幻灯片顶部的文本。"
 
-#: src/block-library/html/marp-directive-settings.tsx:284
+#: src/block-library/html/marp-directive-settings.tsx:289
 msgid "Text shown at the top of the slide."
 msgstr "显示在幻灯片顶部的文字。"
 
@@ -1363,8 +1364,8 @@ msgstr "YAML 前置元数据"
 
 # %s: An example value, such as "1.5".
 #: src/block-library/image/marp-image-settings.tsx:485
-#: src/block-library/html/marp-directive-settings.tsx:304
-#: src/block-library/html/marp-directive-settings.tsx:316
-#: src/block-library/html/marp-directive-settings.tsx:330
+#: src/block-library/html/marp-directive-settings.tsx:309
+#: src/block-library/html/marp-directive-settings.tsx:321
+#: src/block-library/html/marp-directive-settings.tsx:335
 msgid "e.g. %s"
 msgstr "例如 %s"

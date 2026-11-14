@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T09:13:34.243Z\n"
-"PO-Revision-Date: 2026-11-14T09:13:43.489Z\n"
+"POT-Creation-Date: 2026-11-14T09:17:25.224Z\n"
+"PO-Revision-Date: 2026-11-14T09:17:34.118Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -67,7 +67,7 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/block-library/html/marp-directive-settings.tsx:324
+#: src/block-library/html/marp-directive-settings.tsx:329
 msgid "A CSS background image, such as a gradient."
 msgstr "Degrade gibi bir CSS arka plan görseli."
 
@@ -174,11 +174,11 @@ msgstr "Otomatik"
 msgid "Background"
 msgstr "Arka plan"
 
-#: src/block-library/html/marp-directive-settings.tsx:301
+#: src/block-library/html/marp-directive-settings.tsx:306
 msgid "Background color"
 msgstr "Arka plan rengi"
 
-#: src/block-library/html/marp-directive-settings.tsx:323
+#: src/block-library/html/marp-directive-settings.tsx:328
 msgid "Background image"
 msgstr "Arka plan görseli"
 
@@ -314,6 +314,7 @@ msgid "Create Table"
 msgstr "Tablo oluştur"
 
 #: src/block-library/quote/edit.tsx:151
+#: src/block-library/html/marp-directive-settings.tsx:268
 msgid "Default"
 msgstr "Varsayılan"
 
@@ -416,7 +417,7 @@ msgid "Follows the setting of the deck."
 msgstr "Sunumun ayarını izler."
 
 #: src/components/front-matter-editor/index.tsx:293
-#: src/block-library/html/marp-directive-settings.tsx:292
+#: src/block-library/html/marp-directive-settings.tsx:297
 msgid "Footer"
 msgstr "Alt bilgi"
 
@@ -454,7 +455,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:282
-#: src/block-library/html/marp-directive-settings.tsx:283
+#: src/block-library/html/marp-directive-settings.tsx:288
 msgid "Header"
 msgstr "Üst bilgi"
 
@@ -535,7 +536,7 @@ msgstr "Başlık, metin ve listeyle iki sütun"
 msgid "Height"
 msgstr "Yükseklik"
 
-#: src/block-library/html/marp-directive-settings.tsx:271
+#: src/block-library/html/marp-directive-settings.tsx:276
 msgid "Hide"
 msgstr "Gizle"
 
@@ -551,7 +552,7 @@ msgstr "Bu slaytı saymadan sayfa numarasını gizler."
 msgid "Hides the page number."
 msgstr "Sayfa numarasını gizler."
 
-#: src/block-library/html/marp-directive-settings.tsx:275
+#: src/block-library/html/marp-directive-settings.tsx:280
 msgid "Hold"
 msgstr "Koru"
 
@@ -793,7 +794,7 @@ msgstr "Girintiyi azalt"
 msgid "Outline"
 msgstr "Anahat"
 
-#: src/block-library/html/marp-directive-settings.tsx:255
+#: src/block-library/html/marp-directive-settings.tsx:254
 msgid "Page number"
 msgstr "Sayfa numarası"
 
@@ -946,7 +947,7 @@ msgctxt "slide pattern"
 msgid "Share"
 msgstr "Paylaş"
 
-#: src/block-library/html/marp-directive-settings.tsx:267
+#: src/block-library/html/marp-directive-settings.tsx:272
 msgid "Show"
 msgstr "Göster"
 
@@ -985,7 +986,7 @@ msgstr "GitHub Markdown stiline dayanan sade ve temiz bir tema."
 msgid "Size"
 msgstr "Boyut"
 
-#: src/block-library/html/marp-directive-settings.tsx:279
+#: src/block-library/html/marp-directive-settings.tsx:284
 msgid "Skip"
 msgstr "Atla"
 
@@ -1065,7 +1066,7 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "Metin"
 
-#: src/block-library/html/marp-directive-settings.tsx:313
+#: src/block-library/html/marp-directive-settings.tsx:318
 msgid "Text color"
 msgstr "Metin rengi"
 
@@ -1073,7 +1074,7 @@ msgstr "Metin rengi"
 msgid "Text shown at the bottom of each slide."
 msgstr "Her slaytın altında gösterilen metin."
 
-#: src/block-library/html/marp-directive-settings.tsx:293
+#: src/block-library/html/marp-directive-settings.tsx:298
 msgid "Text shown at the bottom of the slide."
 msgstr "Slaytın altında gösterilen metin."
 
@@ -1081,7 +1082,7 @@ msgstr "Slaytın altında gösterilen metin."
 msgid "Text shown at the top of each slide."
 msgstr "Her slaytın üstünde gösterilen metin."
 
-#: src/block-library/html/marp-directive-settings.tsx:284
+#: src/block-library/html/marp-directive-settings.tsx:289
 msgid "Text shown at the top of the slide."
 msgstr "Slaytın üstünde gösterilen metin."
 
@@ -1372,8 +1373,8 @@ msgstr "YAML front matter"
 
 # %s: An example value, such as "1.5".
 #: src/block-library/image/marp-image-settings.tsx:485
-#: src/block-library/html/marp-directive-settings.tsx:304
-#: src/block-library/html/marp-directive-settings.tsx:316
-#: src/block-library/html/marp-directive-settings.tsx:330
+#: src/block-library/html/marp-directive-settings.tsx:309
+#: src/block-library/html/marp-directive-settings.tsx:321
+#: src/block-library/html/marp-directive-settings.tsx:335
 msgid "e.g. %s"
 msgstr "örn. %s"

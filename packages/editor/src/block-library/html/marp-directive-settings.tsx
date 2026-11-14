@@ -38,8 +38,8 @@ function readComment( html: string ): MarpDirectiveComment {
 	if ( ! found ) {
 		return EMPTY;
 	}
-	const { values, isSpot, otherLines } = found;
-	return { values, isSpot, otherLines };
+	const { values, isSpot, otherLines, rawValues } = found;
+	return { values, isSpot, otherLines, rawValues };
 }
 
 /**
@@ -169,7 +169,7 @@ export function MarpDirectiveSettings( {
 	const paginate = comment.values.paginate ?? '';
 
 	return (
-		<Stack direction="column" gap="md" style={ { width: '320px' } }>
+		<Stack direction="column" gap="md" style={ { width: '360px' } }>
 			<ToggleGroupControl
 				__next40pxDefaultSize
 				isBlock
@@ -251,17 +251,22 @@ export function MarpDirectiveSettings( {
 			<ToggleGroupControl
 				__next40pxDefaultSize
 				isBlock
-				isDeselectable
 				label={ __( 'Page number', 'mark-bricks' ) }
 				help={ getPaginateDescription( paginate ) }
-				value={ paginate || undefined }
+				value={ paginate || 'default' }
 				onChange={ ( next ) =>
 					setValue(
 						'paginate',
-						next === undefined ? '' : String( next )
+						next === undefined || next === 'default'
+							? ''
+							: String( next )
 					)
 				}
 			>
+				<ToggleGroupControlOption
+					value="default"
+					label={ __( 'Default', 'mark-bricks' ) }
+				/>
 				<ToggleGroupControlOption
 					value="true"
 					label={ __( 'Show', 'mark-bricks' ) }
