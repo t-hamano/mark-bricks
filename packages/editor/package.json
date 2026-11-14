@@ -6,6 +6,11 @@
 	"author": "Aki Hamano",
 	"license": "GPL-2.0-or-later",
 	"type": "module",
+	"sideEffects": [
+		"*.css",
+		"*.scss",
+		"./src/store/index.ts"
+	],
 	"main": "./src/index.ts",
 	"types": "./src/index.ts",
 	"exports": {
