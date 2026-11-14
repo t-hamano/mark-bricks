@@ -59,7 +59,12 @@ function getBackgroundSize( options: MarpImageOptions ): BackgroundSize {
 	if ( scale ) {
 		return 'scale';
 	}
-	if ( ! size || size === 'cover' ) {
+	// Without a size keyword, Marp sizes a background from its width and
+	// height when either one is set, as it does for `auto`.
+	if ( ! size ) {
+		return options.width || options.height ? 'auto' : 'cover';
+	}
+	if ( size === 'cover' ) {
 		return 'cover';
 	}
 	if ( size === 'contain' || size === 'fit' ) {
@@ -134,15 +139,10 @@ export function MarpImageSettings( {
 		}
 		// Without a size keyword, Marp sizes a background from its width and
 		// height, so Cover is written out when either one is set.
-		const isSizeChanged =
-			sizeMode !== getBackgroundSize( initial ) ||
-			options.width !== initial.width ||
-			options.height !== initial.height;
 		if (
 			sizeMode === 'cover' &&
 			! result.size &&
-			( result.width || result.height ) &&
-			isSizeChanged
+			( result.width || result.height )
 		) {
 			result.size = 'cover';
 		}
@@ -296,45 +296,55 @@ export function MarpImageSettings( {
 					) }
 				/>
 			) }
-			<Stack direction="column" gap="xs">
-				<Stack direction="row" gap="sm">
-					<div style={ { flex: 1 } }>
-						<UnitControl
-							__next40pxDefaultSize
-							label={ __( 'Width', 'mark-bricks' ) }
-							placeholder={ __( 'Auto', 'mark-bricks' ) }
-							units={ LENGTH_UNITS }
-							// `auto` has no unit, so it shows as an empty field.
-							value={
-								options.width === 'auto' ? '' : options.width
-							}
-							onChange={ ( value ) =>
-								update( { width: value || undefined } )
-							}
-						/>
-					</div>
-					<div style={ { flex: 1 } }>
-						<UnitControl
-							__next40pxDefaultSize
-							label={ __( 'Height', 'mark-bricks' ) }
-							placeholder={ __( 'Auto', 'mark-bricks' ) }
-							units={ LENGTH_UNITS }
-							value={
-								options.height === 'auto' ? '' : options.height
-							}
-							onChange={ ( value ) =>
-								update( { height: value || undefined } )
-							}
-						/>
-					</div>
+			{ /* Marp ignores the width and height of a background that covers
+			 * or fits the slide. */ }
+			{ ( ! options.background ||
+				sizeMode === 'auto' ||
+				sizeMode === 'scale' ) && (
+				<Stack direction="column" gap="xs">
+					<Stack direction="row" gap="sm">
+						<div style={ { flex: 1 } }>
+							<UnitControl
+								__next40pxDefaultSize
+								label={ __( 'Width', 'mark-bricks' ) }
+								placeholder={ __( 'Auto', 'mark-bricks' ) }
+								units={ LENGTH_UNITS }
+								// `auto` has no unit, so it shows as an empty field.
+								value={
+									options.width === 'auto'
+										? ''
+										: options.width
+								}
+								onChange={ ( value ) =>
+									update( { width: value || undefined } )
+								}
+							/>
+						</div>
+						<div style={ { flex: 1 } }>
+							<UnitControl
+								__next40pxDefaultSize
+								label={ __( 'Height', 'mark-bricks' ) }
+								placeholder={ __( 'Auto', 'mark-bricks' ) }
+								units={ LENGTH_UNITS }
+								value={
+									options.height === 'auto'
+										? ''
+										: options.height
+								}
+								onChange={ ( value ) =>
+									update( { height: value || undefined } )
+								}
+							/>
+						</div>
+					</Stack>
+					<Text variant="body-sm" style={ DESCRIPTION_STYLE }>
+						{ __(
+							'Leave empty to size the image automatically.',
+							'mark-bricks'
+						) }
+					</Text>
 				</Stack>
-				<Text variant="body-sm" style={ DESCRIPTION_STYLE }>
-					{ __(
-						'Leave empty to size the image automatically.',
-						'mark-bricks'
-					) }
-				</Text>
-			</Stack>
+			) }
 			{ options.background && (
 				<SwitchControl
 					label={ __( 'Stack vertically', 'mark-bricks' ) }
