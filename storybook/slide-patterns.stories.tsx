@@ -497,7 +497,7 @@ function SlidePatterns() {
 				aria-label="Markdown"
 				style={ {
 					boxSizing: 'border-box',
-					width: isMedium ? '100%' : 400,
+					width: isMedium ? '100%' : 480,
 					flexShrink: 0,
 					display: 'flex',
 					flexDirection: 'column',
