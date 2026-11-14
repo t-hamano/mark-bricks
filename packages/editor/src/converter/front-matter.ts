@@ -18,7 +18,7 @@ function keyLinePattern( key: string ): RegExp {
 	return new RegExp( `^${ escapeRegExp( key ) }[ \\t]*:(?=[ \\t]|$)(.*)$` );
 }
 
-type Scalar = {
+export type Scalar = {
 	value: string;
 	// A trailing YAML comment with its leading space, or `''`.
 	comment: string;
@@ -30,7 +30,7 @@ function readComment( rest: string ): string {
 }
 
 // Reads a one-line YAML scalar: plain, single-quoted or double-quoted.
-function parseScalar( raw: string ): Scalar {
+export function parseScalar( raw: string ): Scalar {
 	const text = raw.replace( /^[ \t]+/, '' );
 	const doubleQuoted = /^"((?:[^"\\]|\\.)*)"(.*)$/.exec( text );
 	if ( doubleQuoted ) {
@@ -61,7 +61,7 @@ function parseScalar( raw: string ): Scalar {
 
 // Writes a string as a YAML scalar, quoting it only when a plain scalar
 // would read back differently.
-function formatScalar( value: string ): string {
+export function formatScalar( value: string ): string {
 	const needsQuotes =
 		value === '' ||
 		/^\s|\s$/.test( value ) ||

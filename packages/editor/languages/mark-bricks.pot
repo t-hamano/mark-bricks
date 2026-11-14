@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:52:10.412Z\n"
+"POT-Creation-Date: 2026-11-14T08:42:41.954Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -346,6 +346,7 @@ msgid "The aspect ratio of the slides."
 msgstr ""
 
 #: src/components/front-matter-editor/index.tsx:282
+#: src/block-library/html/marp-directive-settings.tsx:280
 msgid "Header"
 msgstr ""
 
@@ -354,6 +355,7 @@ msgid "Text shown at the top of each slide."
 msgstr ""
 
 #: src/components/front-matter-editor/index.tsx:293
+#: src/block-library/html/marp-directive-settings.tsx:289
 msgid "Footer"
 msgstr ""
 
@@ -540,6 +542,11 @@ msgstr ""
 msgid "Delete column"
 msgstr ""
 
+#: src/block-library/separator/use-marp-title.ts:39
+#: src/block-library/separator/edit.tsx:25
+msgid "Slide Separator"
+msgstr ""
+
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr ""
@@ -568,13 +575,16 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: src/block-library/separator/use-marp-title.ts:39
-#: src/block-library/separator/edit.tsx:25
-msgid "Slide Separator"
-msgstr ""
-
 #: src/block-library/paragraph/edit.tsx:41
 msgid "Type / to choose a block"
+msgstr ""
+
+#: src/block-library/math/preview.tsx:89
+msgid "The formula could not be rendered."
+msgstr ""
+
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
 msgstr ""
 
 #: src/block-library/list-item/edit.tsx:62
@@ -605,14 +615,6 @@ msgstr ""
 msgid "Turn into a task item"
 msgstr ""
 
-#: src/block-library/math/preview.tsx:89
-msgid "The formula could not be rendered."
-msgstr ""
-
-#: src/block-library/math/edit.tsx:47
-msgid "Write TeX…"
-msgstr ""
-
 #: src/block-library/list/edit.tsx:45
 msgid "Unordered"
 msgstr ""
@@ -641,117 +643,121 @@ msgstr ""
 msgid "The x and y offsets, then an optional blur and color, separated by commas."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:246
+#: src/block-library/image/marp-image-settings.tsx:250
 msgid "Placement"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:249
+#: src/block-library/image/marp-image-settings.tsx:253
 msgid "The image sits in the slide content."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:253
+#: src/block-library/image/marp-image-settings.tsx:257
 msgid "The image fills the slide, or one side of it, behind the content."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:272
+#: src/block-library/image/marp-image-settings.tsx:276
 msgid "Inline"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:276
+#: src/block-library/image/marp-image-settings.tsx:280
 msgid "Background"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:280
+#: src/block-library/image/marp-image-settings.tsx:284
 msgid "Left"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:284
+#: src/block-library/image/marp-image-settings.tsx:288
 msgid "Right"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:290
+#: src/block-library/image/marp-image-settings.tsx:294
 msgid "Split width"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:297
+#: src/block-library/image/marp-image-settings.tsx:300
 msgid "The share of the slide the image takes, such as 40%."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:307
+#: src/block-library/image/marp-image-settings.tsx:310
 msgid "Background size"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:335
+#: src/block-library/image/marp-image-settings.tsx:338
 msgid "Cover"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:339
+#: src/block-library/image/marp-image-settings.tsx:342
 msgid "Contain"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:343
+#: src/block-library/image/marp-image-settings.tsx:346
 msgid "Original"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:347
-#: src/block-library/image/marp-image-settings.tsx:354
+#: src/block-library/image/marp-image-settings.tsx:350
+#: src/block-library/image/marp-image-settings.tsx:357
 msgid "Scale"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:361
+#: src/block-library/image/marp-image-settings.tsx:363
 msgid "The size relative to the original image, such as 50%."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:377
+#: src/block-library/image/marp-image-settings.tsx:379
 msgid "Width"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:378
-#: src/block-library/image/marp-image-settings.tsx:395
+#: src/block-library/image/marp-image-settings.tsx:380
+#: src/block-library/image/marp-image-settings.tsx:397
 msgid "Auto"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:394
+#: src/block-library/image/marp-image-settings.tsx:396
 msgid "Height"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:409
+#: src/block-library/image/marp-image-settings.tsx:411
 msgid "Leave empty to size the image automatically."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:418
+#: src/block-library/image/marp-image-settings.tsx:420
 msgid "Stack vertically"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:419
+#: src/block-library/image/marp-image-settings.tsx:421
 msgid ""
 "Lines up the background images of the slide from top to bottom instead of "
 "side by side."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:438
+#: src/block-library/image/marp-image-settings.tsx:440
 msgid "Filters"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:442
+#: src/block-library/image/marp-image-settings.tsx:444
 msgid "Add filter"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:474
+#: src/block-library/image/marp-image-settings.tsx:476
 msgid "No filters."
 msgstr ""
 
 # %s: An example value, such as "1.5".
-#: src/block-library/image/marp-image-settings.tsx:483
+# %s: An example value, such as "#f0f0f0".
+#: src/block-library/image/marp-image-settings.tsx:485
+#: src/block-library/html/marp-directive-settings.tsx:301
+#: src/block-library/html/marp-directive-settings.tsx:313
+#: src/block-library/html/marp-directive-settings.tsx:327
 msgid "e.g. %s"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:498
+#: src/block-library/image/marp-image-settings.tsx:500
 msgid "Remove filter"
 msgstr ""
 
 # %s: Words of the alt text, such as "right".
-#: src/block-library/image/marp-image-settings.tsx:519
+#: src/block-library/image/marp-image-settings.tsx:521
 #: src/block-library/image/edit.tsx:295
 msgid "Marp reads these words as settings: %s"
 msgstr ""
@@ -797,8 +803,126 @@ msgstr ""
 msgid "Failed to load image."
 msgstr ""
 
-#: src/block-library/html/edit.tsx:43
+#: src/block-library/html/marp-directive-settings.tsx:54
+msgid "Centers the content of the slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:56
+msgid "Inverts the colors of the slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:58
+msgid "Uses the gaia color scheme."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:66
+msgid "Shows the page number."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:68
+msgid "Hides the page number."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:70
+msgid "Shows the page number without counting this slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:75
+msgid "Hides the page number without counting this slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:80
+msgid "Follows the setting of the deck."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:173
+msgid "Apply to"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:176
+msgid "The settings apply to this slide only."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:180
+msgid "The settings apply to this slide and the slides after it."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:190
+msgid "This slide"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:194
+msgid "Following slides"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:200
+#: src/block-library/html/marp-directive-settings.tsx:226
+msgid "Class"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:225
+msgid "Other classes"
+msgstr ""
+
+# %s: A theme name, such as "gaia".
+#: src/block-library/html/marp-directive-settings.tsx:232
+msgid "Classes that the %s theme does not provide, separated by spaces."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:238
+msgid "Classes of the slide, separated by spaces."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:252
+msgid "Page number"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:264
+msgid "Show"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:268
+msgid "Hide"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:272
+msgid "Hold"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:276
+msgid "Skip"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:281
+msgid "Text shown at the top of the slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:290
+msgid "Text shown at the bottom of the slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:298
+msgid "Background color"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:310
+msgid "Text color"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:320
+msgid "Background image"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:321
+msgid "A CSS background image, such as a gradient."
+msgstr ""
+
+#: src/block-library/html/edit.tsx:52
 msgid "Write HTML…"
+msgstr ""
+
+#: src/block-library/html/edit.tsx:80
+msgid "Marp slide settings"
 msgstr ""
 
 # %d: heading level e.g: "1", "2", "3"
