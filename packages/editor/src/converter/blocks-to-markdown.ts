@@ -2,9 +2,11 @@
  * External dependencies
  */
 import { unified } from 'unified';
+import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
 import remarkGfm from 'remark-gfm';
 import type { Root } from 'mdast';
+import type { Options } from 'remark-stringify';
 
 /**
  * WordPress dependencies
@@ -26,7 +28,12 @@ import * as quoteConverter from '../block-library/quote/converter';
 import * as htmlConverter from '../block-library/html/converter';
 import * as detailsConverter from '../block-library/details/converter';
 import type { NodeResult } from '../block-library/types';
-import { sourceSyntaxHandlers } from './source-syntax';
+import {
+	hasAttention,
+	hasSameAttention,
+	sourceSyntaxFallbackHandlers,
+	sourceSyntaxHandlers,
+} from './source-syntax';
 import { remarkMathBlock } from './math-block';
 
 /**
@@ -89,12 +96,36 @@ export function blockToMarkdown( block: Block ): string {
 		children: [ result.node ],
 	};
 	const { handlers, ...options } = result.options ?? {};
+	const markdown = stringify( tree, {
+		...options,
+		handlers: { ...sourceSyntaxHandlers, ...handlers },
+	} );
+	// The source syntax handlers keep each emphasis and strong marker as it
+	// was written, which can merge adjacent ones (`*a**b*`). In that case the
+	// block is written again, letting the markers change where they must.
+	if (
+		! hasAttention( tree ) ||
+		hasSameAttention( tree, parseMarkdown( markdown ) )
+	) {
+		return markdown;
+	}
+	return stringify( tree, {
+		...options,
+		handlers: { ...sourceSyntaxFallbackHandlers, ...handlers },
+	} );
+}
+
+/**
+ * Stringifies a tree with the extensions the editor writes.
+ *
+ * @param tree    The tree to stringify.
+ * @param options remark-stringify options.
+ * @return Markdown without a trailing newline.
+ */
+function stringify( tree: Root, options: Options ): string {
 	return (
 		unified()
-			.use( remarkStringify, {
-				...options,
-				handlers: { ...sourceSyntaxHandlers, ...handlers },
-			} )
+			.use( remarkStringify, options )
 			.use( remarkGfm )
 			.use( remarkMathBlock )
 			.stringify( tree )
@@ -102,6 +133,20 @@ export function blockToMarkdown( block: Block ): string {
 			// blocks are joined with an explicit blank line.
 			.replace( /\n+$/, '' )
 	);
+}
+
+/**
+ * Parses Markdown with the extensions the editor reads.
+ *
+ * @param markdown The Markdown to parse.
+ * @return The mdast tree.
+ */
+function parseMarkdown( markdown: string ): Root {
+	return unified()
+		.use( remarkParse )
+		.use( remarkGfm )
+		.use( remarkMathBlock )
+		.parse( markdown ) as Root;
 }
 
 /**
