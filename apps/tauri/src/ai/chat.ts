@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { AiChatRequest } from '@mark-bricks/editor';
+import type { AiActivity, AiChatRequest } from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies
@@ -46,9 +46,10 @@ export function createChat( {
 	const streamAnswer = async (
 		body: object,
 		onText: ( text: string ) => void,
+		onActivity: ( activity: AiActivity ) => void,
 		signal: AbortSignal
 	) => {
-		const answer = provider.readAnswer( onText );
+		const answer = provider.readAnswer( onText, onActivity );
 		const parser = createSseParser( answer.handle );
 		await transport( body, parser.push, signal );
 		parser.end();
@@ -66,10 +67,13 @@ export function createChat( {
 			hasText = true;
 			onEvent( { type: 'text', text } );
 		};
+		const onActivity = ( activity: AiActivity ) =>
+			onEvent( { type: 'activity', activity } );
 
 		const first = await streamAnswer(
 			provider.buildRequest( { model, system, messages } ),
 			onText,
+			onActivity,
 			signal
 		);
 		if ( ! first.editCall ) {
@@ -106,6 +110,7 @@ export function createChat( {
 				}
 				onText( text );
 			},
+			onActivity,
 			signal
 		);
 	};
