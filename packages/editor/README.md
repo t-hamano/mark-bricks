@@ -21,6 +21,7 @@ They're exposed as two components, sharing the same header/footer/sidebars and u
 
 - `@mark-bricks/editor`: the two components, `setupEditor` and `getLocale` (see [Localization](#localization)), `EditorThemeProvider` and `useEditorTheme` (see [Appearance](#appearance)), `useFrontMatter`, the keyboard shortcut hooks, and `inspectCodePreviews` for the apps' smoke tests. The package declares its side effects, so a bundler leaves out what a host does not import: a host that renders only `<BlockEditor />` does not bundle Monaco.
 - `@mark-bricks/editor/ai`: the edit tool and the types a host needs to connect the AI assistant to a model. It depends on neither React nor `@wordpress/*`.
+- `@mark-bricks/editor/code-preview-report`: the type of what `inspectCodePreviews` reports. It uses no DOM types, so the VS Code extension host can use it.
 - `@mark-bricks/editor/font-families`: `FONT_FAMILIES` and `isFontFamily`, the font families the content area can be set to. It has no dependencies, so the VS Code extension host can load it to validate settings.
 - `@mark-bricks/editor/marp`: `isMarpDocument`. It depends on neither React nor `@wordpress/*`, so the VS Code extension host can load it.
 - `@mark-bricks/editor/marp-patterns`: the slide patterns, for Storybook.

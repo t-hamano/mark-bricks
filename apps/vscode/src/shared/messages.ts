@@ -1,14 +1,14 @@
 /**
+ * External dependencies
+ */
+import type { CodePreviewReport } from '@mark-bricks/editor/code-preview-report';
+
+/**
  * Internal dependencies
  */
 import type { Settings, WritableSettingKey } from './settings';
 
-// What `inspectCodePreviews` from `@mark-bricks/editor` reports. Repeated
-// here because the extension is built without the DOM types it uses.
-export type CodePreviewReport = {
-	previews: Array< { language: string; status: string } >;
-	katexFonts: Array< { family: string; status: string } >;
-};
+export type { CodePreviewReport };
 
 // Why the webview cannot display an image.
 export type ImageError = 'insecureUrl' | 'outsideRoots';

@@ -44,7 +44,7 @@ export default [
 					patterns: [
 						{
 							// Every `@mark-bricks/*` module but these.
-							regex: '^@mark-bricks/(?!(editor/(font-families|marp)|image-path|marp-preview/(export|render))$)',
+							regex: '^@mark-bricks/(?!(editor/(code-preview-report|font-families|marp)|image-path|marp-preview/(export|render))$)',
 							message:
 								'The extension host may import only the shared modules that run in Node without the DOM, React or Vite.',
 						},
