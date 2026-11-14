@@ -52,7 +52,7 @@ function parseScalar( raw: string ): Scalar {
 	if ( text.startsWith( '#' ) ) {
 		return { value: '', comment: ` ${ text }` };
 	}
-	const plain = /^(.*?)(?:[ \t]+(#.*))?$/.exec( text );
+	const plain = /^([\s\S]*?)(?:[ \t]+(#.*))?$/.exec( text );
 	return {
 		value: ( plain?.[ 1 ] ?? '' ).trim(),
 		comment: plain?.[ 2 ] ? ` ${ plain[ 2 ] }` : '',
@@ -210,9 +210,8 @@ function findKeyRange( lines: string[], key: string ): KeyRange | null {
 		return null;
 	}
 	const rest = pattern.exec( lines[ start ] )?.[ 1 ] ?? '';
-	if ( ! BLOCK_INDICATOR_PATTERN.test( rest ) ) {
-		return { start, end: start + 1, value: parseScalar( rest ).value };
-	}
+	// Every indented line after the key continues its value, whether the
+	// value is a block scalar or a quoted or plain one spanning lines.
 	let end = start + 1;
 	while (
 		end < lines.length &&
@@ -225,6 +224,21 @@ function findKeyRange( lines: string[], key: string ): KeyRange | null {
 		end--;
 	}
 	const content = lines.slice( start + 1, end );
+	if ( ! BLOCK_INDICATOR_PATTERN.test( rest ) ) {
+		// YAML folds a flow scalar's line breaks into spaces, and a blank
+		// line into a line break.
+		const folded = [ rest, ...content ]
+			.map( ( line ) => line.trim() )
+			.reduce( ( text, line ) => {
+				if ( line === '' ) {
+					return `${ text }\n`;
+				}
+				return text === '' || text.endsWith( '\n' )
+					? `${ text }${ line }`
+					: `${ text } ${ line }`;
+			}, '' );
+		return { start, end, value: parseScalar( folded ).value };
+	}
 	const indent = Math.min(
 		...content
 			.filter( ( line ) => line.trim() !== '' )

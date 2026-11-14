@@ -366,6 +366,15 @@ describe( 'getFrontMatterBlockValue', () => {
 		).toBe( 'h1 { color: red; }' );
 	} );
 
+	it( 'reads a quoted value spanning several lines', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'style: "section {\n  color: red;\n  }"\npaginate: true',
+				'style'
+			)
+		).toBe( 'section { color: red; }' );
+	} );
+
 	it( 'returns null when the key is missing', () => {
 		expect( getFrontMatterBlockValue( 'marp: true', 'style' ) ).toBeNull();
 	} );
@@ -386,6 +395,16 @@ describe( 'setFrontMatterBlockValue', () => {
 		expect(
 			setFrontMatterBlockValue( 'style: "h1 {}"', 'style', 'h2 {}' )
 		).toBe( 'style: |\n  h2 {}' );
+	} );
+
+	it( 'replaces a quoted value spanning several lines', () => {
+		expect(
+			setFrontMatterBlockValue(
+				'style: "section {\n  color: red;\n  }"\npaginate: true',
+				'style',
+				'h2 {}'
+			)
+		).toBe( 'style: |\n  h2 {}\npaginate: true' );
 	} );
 
 	it( 'adds the key at the end', () => {

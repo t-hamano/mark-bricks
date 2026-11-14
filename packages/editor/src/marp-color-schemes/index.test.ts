@@ -86,6 +86,18 @@ describe( 'setMarpColorScheme', () => {
 		).toBe( original );
 	} );
 
+	it( 'keeps a quoted style spanning several lines', () => {
+		const next = setMarpColorScheme(
+			'style: "section {\n  font-size: 34px;\n  }"\npaginate: true',
+			'gaia',
+			'ink'
+		);
+		expect( next ).toContain(
+			'\n\n  section { font-size: 34px; }\npaginate: true'
+		);
+		expect( next ).not.toContain( '"' );
+	} );
+
 	it( 'leaves front matter without a scheme as it is', () => {
 		const original = 'marp: true\nstyle: "section { color: red; }"';
 		expect( setMarpColorScheme( original, 'gaia', null ) ).toBe( original );
