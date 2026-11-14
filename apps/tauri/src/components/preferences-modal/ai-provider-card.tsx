@@ -213,23 +213,9 @@ export function AiProviderCard( {
 					direction="row"
 					gap="sm"
 					justify="space-between"
-					align="flex-start"
+					align="center"
 				>
-					<Stack direction="column" gap="sm">
-						<Card.Title>{ providerInfo.name }</Card.Title>
-						{ hasKey && (
-							<CollapsibleCard.HeaderDescription>
-								{ sprintf(
-									/* translators: %s: The name of the AI model, such as Claude Opus 5.5. */
-									__( 'Model: %s', 'mark-bricks' ),
-									getModelName(
-										loadedModels,
-										model || providerInfo.defaultModel
-									)
-								) }
-							</CollapsibleCard.HeaderDescription>
-						) }
-					</Stack>
+					<Card.Title>{ providerInfo.name }</Card.Title>
 					{ hasKey && (
 						<Badge intent="stable">
 							{ __( 'Connected', 'mark-bricks' ) }

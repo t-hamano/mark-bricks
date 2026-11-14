@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T09:32:33.730Z\n"
-"PO-Revision-Date: 2026-10-03T09:32:46.470Z\n"
+"POT-Creation-Date: 2026-11-14T08:35:16.058Z\n"
+"PO-Revision-Date: 2026-11-14T08:35:31.995Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -26,27 +26,31 @@ msgstr ""
 msgid "Aki Hamano"
 msgstr ""
 
-#: src/controls/controls.tsx:136
+#: src/controls/controls.tsx:177
 #: src/export/runtime/toolbar.tsx:94
 msgid "Enter slide mode"
 msgstr "Modo de slides"
 
-#: src/controls/controls.tsx:135
+#: src/controls/controls.tsx:176
 #: src/export/runtime/toolbar.tsx:93
 msgid "Exit slide mode"
 msgstr "Sair do modo de slides"
 
-#: src/controls/controls.tsx:103
+#: src/controls/controls.tsx:117
 #: src/export/runtime/toolbar.tsx:81
 msgid "Next slide"
 msgstr "Próximo slide"
 
-#: src/controls/controls.tsx:203
+#: src/controls/controls.tsx:165
+msgid "Open in new window"
+msgstr "Abrir em nova janela"
+
+#: src/controls/controls.tsx:248
 #: src/export/runtime/toolbar.tsx:165
 msgid "Press F or Escape to exit slide mode"
 msgstr "Pressione F ou Esc para sair do modo de slides"
 
-#: src/controls/controls.tsx:53
+#: src/controls/controls.tsx:67
 #: src/export/runtime/toolbar.tsx:61
 msgid "Previous slide"
 msgstr "Slide anterior"
@@ -58,13 +62,17 @@ msgid ""
 "shows them in the previews."
 msgstr ""
 
+#: src/controls/controls.tsx:166
+msgid "Show next to editor"
+msgstr "Mostrar ao lado do editor"
+
 # 1: Slide number. 2: Number of slides.
-#: src/browser/slide-view.ts:83
 #: src/export/runtime/deck.ts:43
+#: src/browser/slide-view.ts:83
 msgid "Slide %1$d of %2$d"
 msgstr "Slide %1$d de %2$d"
 
-#: src/controls/controls.tsx:62
+#: src/controls/controls.tsx:76
 #: src/export/runtime/toolbar.tsx:67
 msgid "Slide number"
 msgstr "Número do slide"

@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:35:21.932Z\n"
+"POT-Creation-Date: 2026-11-14T08:40:52.692Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -255,7 +255,7 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:299
+#: src/components/preferences-modal/ai-provider-card.tsx:285
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -437,67 +437,62 @@ msgstr ""
 msgid "Default (%s)"
 msgstr ""
 
-# %s: The name of the AI model, such as Claude Opus 5.5.
-#: src/components/preferences-modal/ai-provider-card.tsx:224
-msgid "Model: %s"
-msgstr ""
-
-#: src/components/preferences-modal/ai-provider-card.tsx:235
+#: src/components/preferences-modal/ai-provider-card.tsx:221
 msgid "Connected"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:240
+#: src/components/preferences-modal/ai-provider-card.tsx:226
 msgid "Not connected"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:267
+#: src/components/preferences-modal/ai-provider-card.tsx:253
 msgid "API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:287
+#: src/components/preferences-modal/ai-provider-card.tsx:273
 msgid "Deleting the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:291
+#: src/components/preferences-modal/ai-provider-card.tsx:277
 msgid "Checking the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:298
+#: src/components/preferences-modal/ai-provider-card.tsx:284
 msgid "Delete"
 msgstr ""
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:308
+#: src/components/preferences-modal/ai-provider-card.tsx:294
 msgid "Get your API key at <a>%s</a>"
 msgstr ""
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:332
+#: src/components/preferences-modal/ai-provider-card.tsx:318
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:358
+#: src/components/preferences-modal/ai-provider-card.tsx:344
 msgid "The API key was saved."
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:368
+#: src/components/preferences-modal/ai-provider-card.tsx:354
 msgid "The API key was deleted."
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:385
+#: src/components/preferences-modal/ai-provider-card.tsx:371
 msgid "Loading the models…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:393
+#: src/components/preferences-modal/ai-provider-card.tsx:379
 msgid "Model"
 msgstr ""
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:421
+#: src/components/preferences-modal/ai-provider-card.tsx:407
 msgid "The models could not be loaded: %s"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:430
+#: src/components/preferences-modal/ai-provider-card.tsx:416
 msgid "Try again"
 msgstr ""
 

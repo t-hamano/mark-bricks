@@ -218,7 +218,7 @@ describe( 'AiPanel', () => {
 		).toBe( false );
 	} );
 
-	it( 'saves the API key, then shows the connected model', async () => {
+	it( 'saves the API key, then shows the card as connected', async () => {
 		await render();
 		await typeKey( 'sk-ant-key' );
 		await act( async () => {
@@ -229,9 +229,6 @@ describe( 'AiPanel', () => {
 		expect( input().disabled ).toBe( true );
 		expect( button( 'Delete' ) ).toBeDefined();
 		expect( card( 'anthropic' ).textContent ).toContain( 'Connected' );
-		expect( card( 'anthropic' ).textContent ).toContain(
-			'Model: Claude Opus 5.5'
-		);
 		expect( card( 'openai' ).textContent ).toContain( 'Not connected' );
 	} );
 
@@ -301,9 +298,6 @@ describe( 'AiPanel', () => {
 		await render( {
 			models: { anthropic: 'claude-sonnet-5-5', openai: 'gpt-6-mini' },
 		} );
-		expect( card( 'anthropic' ).textContent ).toContain(
-			'Model: Claude Sonnet 5.5'
-		);
 		await act( async () => {
 			button( 'Delete' )!.click();
 		} );

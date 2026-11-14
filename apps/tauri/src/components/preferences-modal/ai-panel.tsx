@@ -191,7 +191,7 @@ export function AiPanel( { settings, onChange, onModelChange }: Props ) {
 					'Sent with every message to the AI Assistant. For example, the tone to write in, or what your documents are about.',
 					'mark-bricks'
 				) }
-				rows={ 6 }
+				rows={ 4 }
 				value={ instructions }
 				onValueChange={ ( value ) =>
 					onChange( { instructions: value } )

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:35:21.932Z\n"
-"PO-Revision-Date: 2026-11-14T07:35:26.936Z\n"
+"POT-Creation-Date: 2026-11-14T08:40:52.692Z\n"
+"PO-Revision-Date: 2026-11-14T08:40:58.039Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -37,7 +37,7 @@ msgstr "(未命名)"
 msgid "AI Assistant"
 msgstr "AI 助理"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:267
+#: src/components/preferences-modal/ai-provider-card.tsx:253
 msgid "API key"
 msgstr "API 金鑰"
 
@@ -92,11 +92,11 @@ msgid "Check updates automatically"
 msgstr "自動檢查更新"
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:332
+#: src/components/preferences-modal/ai-provider-card.tsx:318
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr "在 <a>%s</a> 查看用量與帳單"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:291
+#: src/components/preferences-modal/ai-provider-card.tsx:277
 msgid "Checking the API key…"
 msgstr "正在檢查 API 金鑰…"
 
@@ -130,7 +130,7 @@ msgstr "關閉目前的分頁。"
 msgid "Code editor"
 msgstr "程式碼編輯器"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:235
+#: src/components/preferences-modal/ai-provider-card.tsx:221
 msgid "Connected"
 msgstr "已連線"
 
@@ -175,11 +175,11 @@ msgstr "深色"
 msgid "Default (%s)"
 msgstr "預設（%s）"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:298
+#: src/components/preferences-modal/ai-provider-card.tsx:284
 msgid "Delete"
 msgstr "刪除"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:287
+#: src/components/preferences-modal/ai-provider-card.tsx:273
 msgid "Deleting the API key…"
 msgstr "正在刪除 API 金鑰…"
 
@@ -251,7 +251,7 @@ msgid "General"
 msgstr "一般"
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:308
+#: src/components/preferences-modal/ai-provider-card.tsx:294
 msgid "Get your API key at <a>%s</a>"
 msgstr "在 <a>%s</a> 取得 API 金鑰"
 
@@ -309,7 +309,7 @@ msgstr "淺色"
 msgid "List View shortcuts"
 msgstr "[清單檢視] 快速鍵"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:385
+#: src/components/preferences-modal/ai-provider-card.tsx:371
 msgid "Loading the models…"
 msgstr "正在載入模型…"
 
@@ -326,14 +326,9 @@ msgstr "MarkBricks 現在是 Markdown 檔案的預設應用程式。"
 msgid "Maximum width of the content area, in pixels."
 msgstr "內容區域的最大寬度 (像素)。"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:393
+#: src/components/preferences-modal/ai-provider-card.tsx:379
 msgid "Model"
 msgstr "模型"
-
-# %s: The name of the AI model, such as Claude Opus 5.5.
-#: src/components/preferences-modal/ai-provider-card.tsx:224
-msgid "Model: %s"
-msgstr "模型：%s"
 
 #: src/preferences/constants.ts:79
 msgid "Monospace"
@@ -364,7 +359,7 @@ msgstr "沒有開啟的檔案"
 msgid "Not a Marp document"
 msgstr "不是 Marp 文件"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:240
+#: src/components/preferences-modal/ai-provider-card.tsx:226
 msgid "Not connected"
 msgstr "未連線"
 
@@ -447,7 +442,7 @@ msgid "Sans-serif"
 msgstr "無襯線"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:299
+#: src/components/preferences-modal/ai-provider-card.tsx:285
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -548,11 +543,11 @@ msgstr "此 API 金鑰無法使用這個模型。"
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 金鑰無效。請在設定中檢查。"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:368
+#: src/components/preferences-modal/ai-provider-card.tsx:354
 msgid "The API key was deleted."
 msgstr "API 金鑰已刪除。"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:358
+#: src/components/preferences-modal/ai-provider-card.tsx:344
 msgid "The API key was saved."
 msgstr "API 金鑰已儲存。"
 
@@ -583,7 +578,7 @@ msgid "The model was not found."
 msgstr "找不到該模型。"
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:421
+#: src/components/preferences-modal/ai-provider-card.tsx:407
 msgid "The models could not be loaded: %s"
 msgstr "無法載入模型：%s"
 
@@ -624,7 +619,7 @@ msgstr "工具"
 msgid "Top toolbar"
 msgstr "頂端工具列"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:430
+#: src/components/preferences-modal/ai-provider-card.tsx:416
 msgid "Try again"
 msgstr "重試"
 
