@@ -5,22 +5,10 @@ import {
 	MATH_LANGUAGE,
 	MERMAID_LANGUAGE,
 } from './block-library/hooks/code-languages';
-
-export type CodePreviewStatus = 'rendered' | 'error' | 'pending';
-
-export type CodePreviewReport = {
-	/**
-	 * The preview of each math block and `mermaid` code block, in document
-	 * order. A math block is reported with the language `math`. `pending`
-	 * means it had not rendered when the wait timed out.
-	 */
-	previews: Array< { language: string; status: CodePreviewStatus } >;
-	/**
-	 * The KaTeX fonts the canvas has started to load, and how that went. A
-	 * font the app cannot reach, for example because of its CSP, is `error`.
-	 */
-	katexFonts: Array< { family: string; status: FontFaceLoadStatus } >;
-};
+import type {
+	CodePreviewReport,
+	CodePreviewStatus,
+} from './code-preview-report';
 
 /**
  * Reports how the previews of the math and code blocks in the block canvas

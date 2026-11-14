@@ -22,6 +22,10 @@
 			"types": "./src/ai.ts",
 			"default": "./src/ai.ts"
 		},
+		"./code-preview-report": {
+			"types": "./src/code-preview-report.ts",
+			"default": "./src/code-preview-report.ts"
+		},
 		"./font-families": {
 			"types": "./src/font-families.ts",
 			"default": "./src/font-families.ts"
