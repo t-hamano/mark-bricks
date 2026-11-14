@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import type { EditContext } from './edit-target';
+import { isMarpContextDocument, MARP_GUIDE } from './marp-guide';
 
 /**
  * Builds the instructions sent to the model with each message.
@@ -34,7 +35,14 @@ export function buildSystemPrompt( context: EditContext | null ): string {
 		'For "replace_text", set "find" to the exact text to change, copied from the document without the <selection> markers, and long enough to match only one place. The Markdown replaces only that text, so to change the front matter this way, replace only lines inside it. If the tool says the text was not found, or matches more than one place, correct "find" and try again.',
 		'Front matter, such as Marp directives, must be the first lines of the document: a line of exactly "---", the YAML keys with no blank lines, and a closing line of exactly "---". To change it, start your Markdown with the whole front matter in that form.',
 		'When the user only asks a question, answer it without editing.',
-		'After editing, briefly say what you changed. Do not repeat the content you wrote.',
+		'After editing, briefly say what you changed. Do not repeat the content you wrote.'
+	);
+	// The guide is fixed text placed before the document, so the prompt
+	// cache covers it.
+	if ( isMarpContextDocument( context.document ) ) {
+		lines.push( '', MARP_GUIDE );
+	}
+	lines.push(
 		'',
 		'<document>',
 		context.document.replace( /\n+$/, '' ),
