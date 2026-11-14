@@ -1,7 +1,8 @@
 /**
  * External dependencies
  */
-import type { EditorThemePreference } from '@mark-bricks/editor';
+import type { EditorThemePreference, FontFamily } from '@mark-bricks/editor';
+import { isFontFamily } from '@mark-bricks/editor/font-families';
 
 /**
  * WordPress dependencies
@@ -28,7 +29,7 @@ export type VisualEditorSettings = {
 	showBlockBreadcrumbs: boolean;
 	contentWidth: number;
 	fontSize: number;
-	fontFamily: string;
+	fontFamily: FontFamily;
 };
 
 type Props = {
@@ -144,14 +145,13 @@ export function VisualEditorPanel( { settings, onChange }: Props ) {
 					items={ fontFamilyItems }
 					value={
 						fontFamilyItems.find(
-							( item ) =>
-								( item.value ?? '' ) === settings.fontFamily
+							( item ) => item.value === settings.fontFamily
 						) ?? null
 					}
 					isItemEqualToValue={ ( a, b ) => a.value === b.value }
 					onValueChange={ ( item ) => {
-						if ( item ) {
-							onChange( { fontFamily: item.value ?? '' } );
+						if ( item && isFontFamily( item.value ) ) {
+							onChange( { fontFamily: item.value } );
 						}
 					} }
 					description={ __(
