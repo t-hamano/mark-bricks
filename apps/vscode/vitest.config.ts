@@ -15,6 +15,6 @@ export default defineConfig( {
 	},
 	test: {
 		environment: 'node',
-		include: [ 'src/extension/**/*.test.ts' ],
+		include: [ 'src/{extension,shared}/**/*.test.ts' ],
 	},
 } );
