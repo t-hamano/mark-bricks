@@ -199,7 +199,15 @@ type KeyRange = {
 	end: number;
 	// The value, without the key or a trailing comment.
 	value: string;
+	// Whether the value is a plain string the editor can rewrite. Anchors,
+	// tags, aliases and collections are read as they are written, so
+	// rewriting them would lose their meaning.
+	editable: boolean;
 };
+
+// The start of a value with YAML properties (`&anchor`, `!tag`), an alias
+// (`*anchor`) or a flow collection.
+const UNSUPPORTED_VALUE_PATTERN = /^[&!*[{]/;
 
 // Finds a top-level key and the lines its value spans, reading a block
 // scalar (`|`, `>`) as its indented lines with the indentation removed.
@@ -224,6 +232,12 @@ function findKeyRange( lines: string[], key: string ): KeyRange | null {
 		end--;
 	}
 	const content = lines.slice( start + 1, end );
+	const firstToken = (
+		/^[ \t]*#/.test( rest )
+			? ( content.find( ( line ) => line.trim() !== '' ) ?? '' )
+			: rest
+	).trim();
+	const editable = ! UNSUPPORTED_VALUE_PATTERN.test( firstToken );
 	if ( ! BLOCK_INDICATOR_PATTERN.test( rest ) ) {
 		// YAML folds a flow scalar's line breaks into spaces, and a blank
 		// line into a line break.
@@ -242,7 +256,7 @@ function findKeyRange( lines: string[], key: string ): KeyRange | null {
 					? `${ text }${ line }`
 					: `${ text } ${ line }`;
 			}, '' );
-		return { start, end, value: parseScalar( folded ).value };
+		return { start, end, value: parseScalar( folded ).value, editable };
 	}
 	const indent = Math.min(
 		...content
@@ -255,6 +269,7 @@ function findKeyRange( lines: string[], key: string ): KeyRange | null {
 	return {
 		start,
 		end,
+		editable,
 		value: /^[ \t]*>/.test( rest )
 			? foldLines( unindented )
 			: unindented.join( '\n' ),
@@ -312,9 +327,29 @@ export function getFrontMatterBlockValue(
 }
 
 /**
+ * Whether {@link setFrontMatterBlockValue} can rewrite a top-level value.
+ * It can't when the value uses YAML features beyond a plain string, such
+ * as an anchor, a tag, an alias or a collection.
+ *
+ * @param frontMatter Front matter content, or `null` when there is none.
+ * @param key         Top-level key.
+ * @return Whether the value can be rewritten, which a missing key can.
+ */
+export function isFrontMatterBlockValueEditable(
+	frontMatter: string | null,
+	key: string
+): boolean {
+	if ( frontMatter === null ) {
+		return true;
+	}
+	return findKeyRange( frontMatter.split( '\n' ), key )?.editable ?? true;
+}
+
+/**
  * Writes a top-level value into front matter as a literal block scalar
  * (`key: |`), replacing the key's existing lines in place or adding it at
- * the end.
+ * the end. A value that {@link isFrontMatterBlockValueEditable} rejects is
+ * left as it is.
  *
  * @param frontMatter Front matter content.
  * @param key         Top-level key.
@@ -328,6 +363,9 @@ export function setFrontMatterBlockValue(
 ): string {
 	const lines = frontMatter === '' ? [] : frontMatter.split( '\n' );
 	const range = findKeyRange( lines, key );
+	if ( range && ! range.editable ) {
+		return frontMatter;
+	}
 	const next =
 		value === null || value.trim() === ''
 			? []

@@ -31,6 +31,7 @@ import {
 import { useFrontMatter } from './context';
 import {
 	getFrontMatterValue,
+	isFrontMatterBlockValueEditable,
 	isMarpFrontMatter,
 	setFrontMatterValue,
 	setMarpFrontMatter,
@@ -53,6 +54,15 @@ const MARP_DIRECTIVES_URL = 'https://marpit.marp.app/directives';
 
 // The color scheme option that leaves the theme's own colors.
 const THEME_COLORS = 'theme';
+
+// Shown when `style` uses YAML the presets can't rewrite safely. A
+// function, so that it is translated with the locale loaded at render.
+function getStyleNotEditableText(): string {
+	return __(
+		'Unavailable because style uses YAML features the editor can’t change, such as an anchor or a tag.',
+		'mark-bricks'
+	);
+}
 
 // The font option that leaves the theme's own font.
 const THEME_FONT = 'theme';
@@ -411,6 +421,7 @@ function ColorSchemeField( {
 	const selected = colorScheme?.id ?? THEME_COLORS;
 	const isOverridden =
 		colorScheme !== null && isMarpColorSchemeOverridden( value, theme );
+	const isEditable = isFrontMatterBlockValueEditable( value, 'style' );
 
 	return (
 		<Field.Root>
@@ -418,6 +429,7 @@ function ColorSchemeField( {
 			<Select.Root
 				items={ items }
 				value={ selected }
+				disabled={ ! isEditable }
 				onValueChange={ ( next ) => {
 					if ( typeof next === 'string' ) {
 						setFrontMatter(
@@ -464,17 +476,28 @@ function ColorSchemeField( {
 				</Select.Popup>
 			</Select.Root>
 			<Field.Description>
-				{ isOverridden
-					? __(
-							'Your own CSS in style overrides some of these colors.',
-							'mark-bricks'
-						)
-					: __(
-							'Recolor the theme. The colors are written to style.',
-							'mark-bricks'
-						) }
+				{ getColorSchemeDescription( isEditable, isOverridden ) }
 			</Field.Description>
 		</Field.Root>
+	);
+}
+
+function getColorSchemeDescription(
+	isEditable: boolean,
+	isOverridden: boolean
+): string {
+	if ( ! isEditable ) {
+		return getStyleNotEditableText();
+	}
+	if ( isOverridden ) {
+		return __(
+			'Your own CSS in style overrides some of these colors.',
+			'mark-bricks'
+		);
+	}
+	return __(
+		'Recolor the theme. The colors are written to style.',
+		'mark-bricks'
 	);
 }
 
@@ -507,6 +530,7 @@ function FontStyleField( {
 		items.find(
 			( item ) => item.value === getMarpFontStyle( value )?.id
 		) ?? items[ 0 ];
+	const isEditable = isFrontMatterBlockValueEditable( value, 'style' );
 
 	return (
 		<Field.Root>
@@ -514,6 +538,7 @@ function FontStyleField( {
 			<Select.Root
 				items={ items }
 				value={ selected.value }
+				disabled={ ! isEditable }
 				onValueChange={ ( next ) => {
 					if ( typeof next === 'string' ) {
 						setFrontMatter(
@@ -549,10 +574,12 @@ function FontStyleField( {
 				</Select.Popup>
 			</Select.Root>
 			<Field.Description>
-				{ __(
-					'The font style of the slides. Each device shows its own font of that style.',
-					'mark-bricks'
-				) }
+				{ isEditable
+					? __(
+							'The font style of the slides. Each device shows its own font of that style.',
+							'mark-bricks'
+						)
+					: getStyleNotEditableText() }
 			</Field.Description>
 		</Field.Root>
 	);

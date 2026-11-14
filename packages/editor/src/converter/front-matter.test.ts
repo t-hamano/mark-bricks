@@ -10,6 +10,7 @@ import {
 	blocksToMarkdown,
 	getFrontMatterBlockValue,
 	getFrontMatterValue,
+	isFrontMatterBlockValueEditable,
 	isMarpDocument,
 	isMarpFrontMatter,
 	joinFrontMatter,
@@ -441,5 +442,36 @@ describe( 'setFrontMatterBlockValue', () => {
 				null
 			)
 		).toBe( 'marp: true\npaginate: true' );
+	} );
+} );
+
+describe( 'isFrontMatterBlockValueEditable', () => {
+	it( 'rejects anchors, tags, aliases and collections', () => {
+		for ( const frontMatter of [
+			'style: &css |\n  h1 {}',
+			'style: !!str h1 {}',
+			'style: *css',
+			'style: [ a ]',
+			'style: # note\n  &css "h1 {}"',
+		] ) {
+			expect(
+				isFrontMatterBlockValueEditable( frontMatter, 'style' )
+			).toBe( false );
+			expect(
+				setFrontMatterBlockValue( frontMatter, 'style', 'h2 {}' )
+			).toBe( frontMatter );
+		}
+	} );
+
+	it( 'accepts strings and a missing key', () => {
+		expect(
+			isFrontMatterBlockValueEditable( 'style: |\n  h1 {}', 'style' )
+		).toBe( true );
+		expect(
+			isFrontMatterBlockValueEditable( 'style: "h1 {}"', 'style' )
+		).toBe( true );
+		expect( isFrontMatterBlockValueEditable( 'marp: true', 'style' ) ).toBe(
+			true
+		);
 	} );
 } );

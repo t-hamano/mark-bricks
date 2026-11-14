@@ -18,6 +18,7 @@ export {
 	setFrontMatterValue,
 	getFrontMatterBlockValue,
 	setFrontMatterBlockValue,
+	isFrontMatterBlockValueEditable,
 } from './front-matter';
 export {
 	getBlockLineRanges,

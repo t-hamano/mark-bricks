@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:27:46.824Z\n"
-"PO-Revision-Date: 2026-11-14T11:27:50.911Z\n"
+"POT-Creation-Date: 2026-11-14T11:40:38.403Z\n"
+"PO-Revision-Date: 2026-11-14T11:40:42.091Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -195,7 +195,7 @@ msgstr "新規段落の追加後、ブロックタイプを変更します。"
 msgid "Choose language…"
 msgstr "言語を選択…"
 
-#: src/components/front-matter-editor/index.tsx:208
+#: src/components/front-matter-editor/index.tsx:218
 msgid "Classic look with a colored background."
 msgstr "背景色のついたクラシックなテーマ。"
 
@@ -222,7 +222,7 @@ msgstr "ブロックインサーターを閉じる"
 msgid "Code editor"
 msgstr "コードエディター"
 
-#: src/components/front-matter-editor/index.tsx:417
+#: src/components/front-matter-editor/index.tsx:428
 msgid "Color scheme"
 msgstr "配色"
 
@@ -324,11 +324,11 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "伝えたいことに集中する"
 
-#: src/components/front-matter-editor/index.tsx:513
+#: src/components/front-matter-editor/index.tsx:537
 msgid "Font"
 msgstr "書体"
 
-#: src/components/front-matter-editor/index.tsx:343
+#: src/components/front-matter-editor/index.tsx:353
 msgid "Footer"
 msgstr "フッター"
 
@@ -341,8 +341,8 @@ msgctxt "slide pattern"
 msgid "From the theme"
 msgstr "テーマで決まる"
 
-#: src/components/front-matter-editor/index.tsx:130
-#: src/components/front-matter-editor/index.tsx:149
+#: src/components/front-matter-editor/index.tsx:140
+#: src/components/front-matter-editor/index.tsx:159
 msgid "Front matter settings"
 msgstr "フロントマター設定"
 
@@ -365,7 +365,7 @@ msgstr "良いスライドは、1 つのことをはっきり伝える。"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:332
+#: src/components/front-matter-editor/index.tsx:342
 msgid "Header"
 msgstr "ヘッダー"
 
@@ -561,7 +561,7 @@ msgctxt "slide pattern"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/components/front-matter-editor/index.tsx:153
+#: src/components/front-matter-editor/index.tsx:163
 msgid "Marp"
 msgstr "Marp"
 
@@ -585,11 +585,11 @@ msgstr "Marp パターン"
 msgid "Message"
 msgstr "メッセージ"
 
-#: src/components/front-matter-editor/index.tsx:216
+#: src/components/front-matter-editor/index.tsx:226
 msgid "Minimal and modern, with centered content."
 msgstr "中央揃えのミニマルでモダンなテーマ。"
 
-#: src/components/front-matter-editor/index.tsx:492
+#: src/components/front-matter-editor/index.tsx:515
 msgid "Monospace"
 msgstr "等幅"
 
@@ -646,7 +646,7 @@ msgstr "インデント解除"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: src/components/front-matter-editor/index.tsx:354
+#: src/components/front-matter-editor/index.tsx:364
 msgid "Paginate"
 msgstr "ページ番号"
 
@@ -705,7 +705,7 @@ msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "画像の上に引用"
 
-#: src/components/front-matter-editor/index.tsx:472
+#: src/components/front-matter-editor/index.tsx:498
 msgid "Recolor the theme. The colors are written to style."
 msgstr "テーマの色を変更します。色は style に書き込まれます。"
 
@@ -737,7 +737,7 @@ msgstr "サイドパネルのサイズを変更"
 msgid "Row count"
 msgstr "行数"
 
-#: src/components/front-matter-editor/index.tsx:490
+#: src/components/front-matter-editor/index.tsx:513
 msgid "Sans-serif"
 msgstr "ゴシック"
 
@@ -760,7 +760,7 @@ msgctxt "slide pattern"
 msgid "See each slide as you type"
 msgstr "入力しながらスライドを確認"
 
-#: src/components/front-matter-editor/index.tsx:366
+#: src/components/front-matter-editor/index.tsx:376
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "その他の設定は<a>Marp のドキュメント</a>を参照してください。"
 
@@ -768,7 +768,7 @@ msgstr "その他の設定は<a>Marp のドキュメント</a>を参照してく
 msgid "Send"
 msgstr "送信"
 
-#: src/components/front-matter-editor/index.tsx:491
+#: src/components/front-matter-editor/index.tsx:514
 msgid "Serif"
 msgstr "明朝"
 
@@ -787,7 +787,7 @@ msgstr "共有"
 msgid "Show or hide the List View."
 msgstr "リストビューの表示、非表示。"
 
-#: src/components/front-matter-editor/index.tsx:355
+#: src/components/front-matter-editor/index.tsx:365
 msgid "Show the page number on each slide."
 msgstr "各スライドにページ番号を表示します。"
 
@@ -802,11 +802,11 @@ msgstr "スライドを全画面で表示"
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
 
-#: src/components/front-matter-editor/index.tsx:200
+#: src/components/front-matter-editor/index.tsx:210
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "GitHub の Markdown スタイルをベースにしたシンプルなテーマ。"
 
-#: src/components/front-matter-editor/index.tsx:305
+#: src/components/front-matter-editor/index.tsx:315
 msgid "Size"
 msgstr "サイズ"
 
@@ -874,11 +874,11 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "テキスト"
 
-#: src/components/front-matter-editor/index.tsx:344
+#: src/components/front-matter-editor/index.tsx:354
 msgid "Text shown at the bottom of each slide."
 msgstr "各スライドの下部に表示するテキスト。"
 
-#: src/components/front-matter-editor/index.tsx:333
+#: src/components/front-matter-editor/index.tsx:343
 msgid "Text shown at the top of each slide."
 msgstr "各スライドの上部に表示するテキスト。"
 
@@ -886,7 +886,7 @@ msgstr "各スライドの上部に表示するテキスト。"
 msgid "The answer could not be loaded."
 msgstr "回答を読み込めませんでした。"
 
-#: src/components/front-matter-editor/index.tsx:328
+#: src/components/front-matter-editor/index.tsx:338
 msgid "The aspect ratio of the slides."
 msgstr "スライドの縦横比。"
 
@@ -902,7 +902,7 @@ msgstr ""
 "エディターの切り替えなどで選択範囲が変わったため、編集は適用されませんでし"
 "た。"
 
-#: src/components/front-matter-editor/index.tsx:552
+#: src/components/front-matter-editor/index.tsx:578
 msgid ""
 "The font style of the slides. Each device shows its own font of that style."
 msgstr "スライドの書体の種類です。実際のフォントは端末ごとに異なります。"
@@ -911,15 +911,15 @@ msgstr "スライドの書体の種類です。実際のフォントは端末ご
 msgid "The formula could not be rendered."
 msgstr "数式を描画できませんでした。"
 
-#: src/components/front-matter-editor/index.tsx:239
+#: src/components/front-matter-editor/index.tsx:249
 msgid "Theme"
 msgstr "テーマ"
 
-#: src/components/front-matter-editor/index.tsx:405
+#: src/components/front-matter-editor/index.tsx:415
 msgid "Theme colors"
 msgstr "テーマの色"
 
-#: src/components/front-matter-editor/index.tsx:496
+#: src/components/front-matter-editor/index.tsx:519
 msgid "Theme font"
 msgstr "テーマの書体"
 
@@ -1005,7 +1005,7 @@ msgstr "通常の項目に変換"
 msgid "Turn into a task item"
 msgstr "タスク項目に変換"
 
-#: src/components/front-matter-editor/index.tsx:154
+#: src/components/front-matter-editor/index.tsx:164
 msgid "Turn the document into a slide deck."
 msgstr "ドキュメントをスライドデッキにします。"
 
@@ -1033,6 +1033,12 @@ msgstr "ブロックを選択するには「/」を入力"
 #: src/block-library/image/edit.tsx:196
 msgid "URL or file path"
 msgstr "URL またはファイルパス"
+
+#: src/components/front-matter-editor/index.tsx:61
+msgid ""
+"Unavailable because style uses YAML features the editor can’t change, such "
+"as an anchor or a tag."
+msgstr "style がエディターで変更できない YAML の機能（アンカーやタグなど）を使っているため、利用できません。"
 
 #: src/components/keyboard-shortcuts/hooks.ts:134
 msgid "Underline the selected text."
@@ -1089,7 +1095,7 @@ msgstr "HTML を入力…"
 msgid "Write TeX…"
 msgstr "TeX を入力…"
 
-#: src/components/front-matter-editor/index.tsx:85
+#: src/components/front-matter-editor/index.tsx:95
 msgid "Write YAML front matter…"
 msgstr "YAML フロントマターを入力…"
 
@@ -1137,10 +1143,10 @@ msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "Markdown でスライドを書く"
 
-#: src/components/front-matter-editor/index.tsx:103
+#: src/components/front-matter-editor/index.tsx:113
 msgid "YAML front matter"
 msgstr "YAML フロントマター"
 
-#: src/components/front-matter-editor/index.tsx:468
+#: src/components/front-matter-editor/index.tsx:493
 msgid "Your own CSS in style overrides some of these colors."
 msgstr "style 内の独自 CSS が一部の色を上書きしています。"
