@@ -68,7 +68,7 @@ async function requestOf() {
 
 beforeEach( () => {
 	invoke.mockReset();
-	dispatch( preferencesStore ).set( 'mark-bricks', 'aiModel', '' );
+	dispatch( preferencesStore ).set( 'mark-bricks', 'aiModels', {} );
 	dispatch( preferencesStore ).set( 'mark-bricks', 'aiProvider', undefined );
 } );
 
@@ -78,12 +78,26 @@ describe( 'aiPlatform', () => {
 	} );
 
 	it( 'uses the model chosen in the preferences', async () => {
+		dispatch( preferencesStore ).set( 'mark-bricks', 'aiModels', {
+			anthropic: 'claude-sonnet-5-5',
+		} );
+		expect( await modelOfRequest() ).toBe( 'claude-sonnet-5-5' );
+	} );
+
+	it( 'uses the model chosen for the chosen provider', async () => {
+		dispatch( preferencesStore ).set( 'mark-bricks', 'aiModels', {
+			anthropic: 'claude-sonnet-5-5',
+			openai: 'gpt-6-mini',
+		} );
 		dispatch( preferencesStore ).set(
 			'mark-bricks',
-			'aiModel',
-			'claude-sonnet-5-5'
+			'aiProvider',
+			'openai'
 		);
-		expect( await modelOfRequest() ).toBe( 'claude-sonnet-5-5' );
+		expect( await requestOf() ).toEqual( {
+			provider: 'openai',
+			model: 'gpt-6-mini',
+		} );
 	} );
 
 	it( 'uses OpenAI and its default model when it is chosen', async () => {

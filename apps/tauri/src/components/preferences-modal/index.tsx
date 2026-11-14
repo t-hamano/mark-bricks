@@ -52,7 +52,7 @@ export default function PreferencesModal() {
 		showBlockBreadcrumbs,
 		editorStyles,
 		aiProvider,
-		aiModel,
+		aiModels,
 	} = useSelect( ( select ) => {
 		const { get } = select( preferencesStore );
 		return {
@@ -73,7 +73,8 @@ export default function PreferencesModal() {
 				get( 'mark-bricks', 'editorStyles' ) ??
 				DEFAULT_PREFERENCES[ 'mark-bricks' ].editorStyles,
 			aiProvider: toProvider( get( 'mark-bricks', 'aiProvider' ) ),
-			aiModel: ( get( 'mark-bricks', 'aiModel' ) ?? '' ) as string,
+			aiModels: ( get( 'mark-bricks', 'aiModels' ) ??
+				{} ) as AiSettings[ 'models' ],
 		};
 	}, [] );
 
@@ -156,8 +157,8 @@ export default function PreferencesModal() {
 		if ( edits.provider !== undefined ) {
 			setPreference( 'mark-bricks', 'aiProvider', edits.provider );
 		}
-		if ( edits.model !== undefined ) {
-			setPreference( 'mark-bricks', 'aiModel', edits.model );
+		if ( edits.models !== undefined ) {
+			setPreference( 'mark-bricks', 'aiModels', edits.models );
 		}
 	};
 
@@ -266,12 +267,9 @@ export default function PreferencesModal() {
 							tabIndex={ -1 }
 						>
 							<AiPanel
-								// The panel starts over for another
-								// provider, whose key is saved apart.
-								key={ aiProvider }
 								settings={ {
 									provider: aiProvider,
-									model: aiModel,
+									models: aiModels,
 								} }
 								onChange={ handleAiChange }
 							/>

@@ -15,7 +15,7 @@ import { __ } from '@wordpress/i18n';
 
 export const STORE_FILE = 'preferences.json';
 export const STORE_KEY = 'root';
-export const PREFERENCES_VERSION = 2;
+export const PREFERENCES_VERSION = 3;
 
 const DEFAULT_EDITOR_STYLES = {
 	contentWidth: 700,
@@ -46,8 +46,9 @@ export const DEFAULT_PREFERENCES = {
 		codeEditor: DEFAULT_CODE_EDITOR,
 		// The AI Assistant's provider: `anthropic` or `openai`.
 		aiProvider: 'anthropic',
-		// The AI Assistant's model. Empty for the provider's default model.
-		aiModel: '',
+		// The AI Assistant's model for each provider, by the provider's name.
+		// Missing or empty for the provider's default model.
+		aiModels: {} as Record< string, string >,
 	},
 };
 

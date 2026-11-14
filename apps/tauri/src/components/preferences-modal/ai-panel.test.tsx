@@ -9,7 +9,12 @@ import { clearMocks, mockIPC } from '@tauri-apps/api/mocks';
 /**
  * Internal dependencies
  */
-import { AiPanel, getModelItems } from './ai-panel';
+import {
+	AiPanel,
+	getFallbackProvider,
+	getModelItems,
+	type AiSettings,
+} from './ai-panel';
 import type { AiProvider } from '../../ai/providers';
 
 const MODELS = [
@@ -36,25 +41,41 @@ describe( 'getModelItems', () => {
 	} );
 } );
 
+describe( 'getFallbackProvider', () => {
+	it( 'keeps a chosen provider that is connected', () => {
+		expect(
+			getFallbackProvider( 'openai', [ 'anthropic', 'openai' ] )
+		).toBeNull();
+	} );
+
+	it( 'switches to a connected provider', () => {
+		expect( getFallbackProvider( 'anthropic', [ 'openai' ] ) ).toBe(
+			'openai'
+		);
+	} );
+
+	it( 'keeps the chosen provider when none is connected', () => {
+		expect( getFallbackProvider( 'openai', [] ) ).toBeNull();
+	} );
+} );
+
 describe( 'AiPanel', () => {
 	let container: HTMLDivElement;
 	let root: Root;
-	let savedKey: string | null;
-	const commands: string[] = [];
-	const providers: unknown[] = [];
+	let savedKeys: Record< AiProvider, string | null >;
+	const commands: Array< { command: string; provider?: string } > = [];
+	const onChange = vi.fn();
 
 	beforeEach( () => {
-		savedKey = null;
+		savedKeys = { anthropic: null, openai: null };
 		commands.length = 0;
-		providers.length = 0;
 		onChange.mockReset();
 		mockIPC( ( command, args ) => {
-			commands.push( command );
-			const payload = args as { key?: string; provider?: string };
-			providers.push( payload.provider );
+			const payload = args as { key?: string; provider: AiProvider };
+			commands.push( { command, provider: payload?.provider } );
 			switch ( command ) {
 				case 'has_ai_api_key':
-					return savedKey !== null;
+					return savedKeys[ payload.provider ] !== null;
 				case 'check_ai_api_key':
 					if ( payload.key === 'sk-ant-invalid' ) {
 						throw {
@@ -65,13 +86,13 @@ describe( 'AiPanel', () => {
 					}
 					return null;
 				case 'save_ai_api_key':
-					savedKey = payload.key ?? '';
+					savedKeys[ payload.provider ] = payload.key ?? '';
 					return null;
 				case 'delete_ai_api_key':
-					savedKey = null;
+					savedKeys[ payload.provider ] = null;
 					return null;
 				case 'list_ai_models':
-					return MODELS;
+					return payload.provider === 'anthropic' ? MODELS : [];
 			}
 		} );
 		container = document.createElement( 'div' );
@@ -85,71 +106,117 @@ describe( 'AiPanel', () => {
 		clearMocks();
 	} );
 
-	const onChange = vi.fn();
-
-	async function render( provider: AiProvider = 'anthropic' ) {
+	async function render( settings: Partial< AiSettings > = {} ) {
 		await act( async () => {
 			root.render(
 				<AiPanel
-					settings={ { provider, model: '' } }
+					settings={ {
+						provider: 'anthropic',
+						models: {},
+						...settings,
+					} }
 					onChange={ onChange }
 				/>
 			);
 		} );
 	}
 
-	function input() {
-		return container.querySelector(
+	function card( provider: AiProvider ) {
+		return container.querySelectorAll(
+			'.preferences-modal__provider-card'
+		)[ provider === 'anthropic' ? 0 : 1 ] as HTMLElement;
+	}
+
+	function input( provider: AiProvider = 'anthropic' ) {
+		return card( provider ).querySelector(
 			'input[type="password"]'
 		) as HTMLInputElement;
 	}
 
-	function button( label: string ) {
-		return [ ...container.querySelectorAll( 'button' ) ].find(
+	function button( label: string, provider: AiProvider = 'anthropic' ) {
+		return [ ...card( provider ).querySelectorAll( 'button' ) ].find(
 			( element ) => element.textContent === label
 		);
 	}
 
-	it( 'does not load the models without an API key', async () => {
-		await render();
-		expect( container.textContent ).not.toContain( 'Model' );
-		expect( commands ).not.toContain( 'list_ai_models' );
-	} );
+	function providerSelect() {
+		return [ ...container.querySelectorAll( '[role="combobox"]' ) ].find(
+			( element ) =>
+				! element.closest( '.preferences-modal__provider-card' )
+		) as HTMLElement | undefined;
+	}
 
-	it( 'saves the API key, then loads the models', async () => {
-		await render();
+	async function typeKey( key: string, provider: AiProvider = 'anthropic' ) {
 		await act( async () => {
 			const setValue = Object.getOwnPropertyDescriptor(
 				HTMLInputElement.prototype,
 				'value'
 			)!.set!;
-			setValue.call( input(), 'sk-ant-key' );
-			input().dispatchEvent( new Event( 'input', { bubbles: true } ) );
+			setValue.call( input( provider ), key );
+			input( provider ).dispatchEvent(
+				new Event( 'input', { bubbles: true } )
+			);
 		} );
+	}
+
+	async function choose( combobox: HTMLElement, label: string ) {
+		await act( async () => {
+			combobox.click();
+		} );
+		const option = [
+			...document.querySelectorAll( '[role="option"]' ),
+		].find( ( element ) => element.textContent === label );
+		await act( async () => {
+			( option as HTMLElement ).click();
+		} );
+	}
+
+	it( 'shows a card for each provider, with a link to its API keys', async () => {
+		await render();
+		expect( card( 'anthropic' ).textContent ).toContain( 'Anthropic' );
+		expect( card( 'anthropic' ).textContent ).toContain( 'Not connected' );
+		expect(
+			card( 'anthropic' ).querySelector( 'a' )?.getAttribute( 'href' )
+		).toBe( 'https://platform.claude.com/settings/keys' );
+		expect( card( 'openai' ).textContent ).toContain( 'OpenAI' );
+		expect( card( 'openai' ).textContent ).toContain(
+			'only sent to the OpenAI API.'
+		);
+		expect( input( 'openai' ).placeholder ).toBe( 'sk-…' );
+	} );
+
+	it( 'hides the provider without a connected provider', async () => {
+		await render();
+		expect( providerSelect() ).toBeUndefined();
+		expect(
+			commands.some( ( { command } ) => command === 'list_ai_models' )
+		).toBe( false );
+	} );
+
+	it( 'saves the API key, then shows the connected model', async () => {
+		await render();
+		await typeKey( 'sk-ant-key' );
 		await act( async () => {
 			button( 'Save' )!.click();
 		} );
-		expect( savedKey ).toBe( 'sk-ant-key' );
+		expect( savedKeys.anthropic ).toBe( 'sk-ant-key' );
 		expect( input().value ).not.toContain( 'sk-ant' );
 		expect( input().disabled ).toBe( true );
 		expect( button( 'Delete' ) ).toBeDefined();
-		expect( commands ).toContain( 'list_ai_models' );
+		expect( card( 'anthropic' ).textContent ).toContain( 'Connected' );
+		expect( card( 'anthropic' ).textContent ).toContain(
+			'Model: Claude Opus 5.5'
+		);
+		expect( card( 'openai' ).textContent ).toContain( 'Not connected' );
 	} );
 
 	it( 'does not save an API key the API refuses', async () => {
 		await render();
-		await act( async () => {
-			const setValue = Object.getOwnPropertyDescriptor(
-				HTMLInputElement.prototype,
-				'value'
-			)!.set!;
-			setValue.call( input(), 'sk-ant-invalid' );
-			input().dispatchEvent( new Event( 'input', { bubbles: true } ) );
-		} );
+		await typeKey( 'sk-ant-invalid' );
 		await act( async () => {
 			button( 'Save' )!.click();
 		} );
-		expect( savedKey ).toBeNull();
+		expect( savedKeys.anthropic ).toBeNull();
 		expect( input().value ).toBe( 'sk-ant-invalid' );
 		expect( container.textContent ).toContain(
 			'This API key is not valid.'
@@ -157,19 +224,20 @@ describe( 'AiPanel', () => {
 	} );
 
 	it( 'ignores the models of a replaced API key', async () => {
-		savedKey = 'sk-ant-old';
+		savedKeys.anthropic = 'sk-ant-old';
 		const pending: Array< ( models: unknown ) => void > = [];
 		mockIPC( ( command, args ) => {
+			const payload = args as { key?: string; provider: AiProvider };
 			switch ( command ) {
 				case 'has_ai_api_key':
-					return savedKey !== null;
+					return savedKeys[ payload.provider ] !== null;
 				case 'check_ai_api_key':
 					return null;
 				case 'save_ai_api_key':
-					savedKey = ( args as { key: string } ).key;
+					savedKeys[ payload.provider ] = payload.key ?? '';
 					return null;
 				case 'delete_ai_api_key':
-					savedKey = null;
+					savedKeys[ payload.provider ] = null;
 					return null;
 				case 'list_ai_models':
 					return new Promise( ( resolve ) =>
@@ -181,14 +249,7 @@ describe( 'AiPanel', () => {
 		await act( async () => {
 			button( 'Delete' )!.click();
 		} );
-		await act( async () => {
-			const setValue = Object.getOwnPropertyDescriptor(
-				HTMLInputElement.prototype,
-				'value'
-			)!.set!;
-			setValue.call( input(), 'sk-ant-new' );
-			input().dispatchEvent( new Event( 'input', { bubbles: true } ) );
-		} );
+		await typeKey( 'sk-ant-new' );
 		await act( async () => {
 			button( 'Save' )!.click();
 		} );
@@ -200,9 +261,8 @@ describe( 'AiPanel', () => {
 			pending[ 0 ]( MODELS );
 		} );
 		expect( container.textContent ).not.toContain( 'Loading the models' );
-		const combobox = [
-			...container.querySelectorAll( '[role="combobox"]' ),
-		].pop();
+		const combobox =
+			card( 'anthropic' ).querySelector( '[role="combobox"]' );
 		await act( async () => {
 			( combobox as HTMLElement ).click();
 		} );
@@ -211,70 +271,71 @@ describe( 'AiPanel', () => {
 		);
 	} );
 
-	it( 'deletes the API key', async () => {
-		savedKey = 'sk-ant-key';
-		await render();
+	it( 'deletes the API key and forgets its model', async () => {
+		savedKeys.anthropic = 'sk-ant-key';
+		await render( {
+			models: { anthropic: 'claude-sonnet-5-5', openai: 'gpt-6-mini' },
+		} );
+		expect( card( 'anthropic' ).textContent ).toContain(
+			'Model: Claude Sonnet 5.5'
+		);
 		await act( async () => {
 			button( 'Delete' )!.click();
 		} );
-		expect( savedKey ).toBeNull();
+		expect( savedKeys.anthropic ).toBeNull();
 		expect( container.textContent ).toContain( 'The API key was deleted.' );
 		expect( input().disabled ).toBe( false );
 		expect( input().value ).toBe( '' );
-		expect( onChange ).toHaveBeenCalledWith( { model: '' } );
-		expect( container.textContent ).not.toContain( 'Model' );
-	} );
-
-	it( 'uses the key of the chosen provider', async () => {
-		await render( 'openai' );
-		expect( container.textContent ).toContain( 'OpenAI API key' );
-		expect( container.textContent ).toContain(
-			'only sent to the OpenAI API.'
-		);
-		expect( input().placeholder ).toBe( 'sk-…' );
-		expect( commands ).toContain( 'has_ai_api_key' );
-		expect( new Set( providers ) ).toEqual( new Set( [ 'openai' ] ) );
-	} );
-
-	it( 'resets the model when another provider is chosen', async () => {
-		await render();
-		const combobox = container.querySelector( '[role="combobox"]' );
-		await act( async () => {
-			( combobox as HTMLElement ).click();
-		} );
-		const option = [
-			...document.querySelectorAll( '[role="option"]' ),
-		].find( ( element ) => element.textContent === 'OpenAI' );
-		await act( async () => {
-			( option as HTMLElement ).click();
-		} );
 		expect( onChange ).toHaveBeenCalledWith( {
-			provider: 'openai',
-			model: '',
+			models: { openai: 'gpt-6-mini' },
+		} );
+		expect( card( 'anthropic' ).textContent ).not.toContain( 'Model' );
+		expect( providerSelect() ).toBeUndefined();
+	} );
+
+	it( 'keeps the models of the other providers', async () => {
+		savedKeys.anthropic = 'sk-ant-key';
+		await render( { models: { openai: 'gpt-6-mini' } } );
+		await choose(
+			card( 'anthropic' ).querySelector(
+				'[role="combobox"]'
+			) as HTMLElement,
+			'Claude Sonnet 5.5'
+		);
+		expect( onChange ).toHaveBeenCalledWith( {
+			models: { openai: 'gpt-6-mini', anthropic: 'claude-sonnet-5-5' },
 		} );
 	} );
 
-	it( 'does not switch providers while the key is deleted', async () => {
-		savedKey = 'sk-ant-key';
-		mockIPC( ( command ) => {
-			switch ( command ) {
-				case 'has_ai_api_key':
-					return true;
-				case 'list_ai_models':
-					return MODELS;
-				case 'delete_ai_api_key':
-					return new Promise( () => {} );
-			}
-		} );
+	it( 'uses the only connected provider', async () => {
+		savedKeys.openai = 'sk-key';
 		await render();
-		const providerSelect = () =>
-			container.querySelector( '[role="combobox"]' ) as HTMLElement;
-		expect( providerSelect().hasAttribute( 'data-disabled' ) ).toBe(
+		expect( onChange ).toHaveBeenCalledWith( { provider: 'openai' } );
+		expect( providerSelect()?.hasAttribute( 'data-disabled' ) ).toBe(
+			true
+		);
+	} );
+
+	it( 'chooses among the connected providers', async () => {
+		savedKeys.anthropic = 'sk-ant-key';
+		savedKeys.openai = 'sk-key';
+		await render();
+		expect( onChange ).not.toHaveBeenCalled();
+		expect( providerSelect()?.hasAttribute( 'data-disabled' ) ).toBe(
 			false
 		);
+		await choose( providerSelect()!, 'OpenAI' );
+		expect( onChange ).toHaveBeenCalledWith( { provider: 'openai' } );
+	} );
+
+	it( 'falls back to another connected provider when the key of the chosen one is deleted', async () => {
+		savedKeys.anthropic = 'sk-ant-key';
+		savedKeys.openai = 'sk-key';
+		await render( { provider: 'openai' } );
+		expect( onChange ).not.toHaveBeenCalled();
 		await act( async () => {
-			button( 'Delete' )!.click();
+			button( 'Delete', 'openai' )!.click();
 		} );
-		expect( providerSelect().hasAttribute( 'data-disabled' ) ).toBe( true );
+		expect( onChange ).toHaveBeenCalledWith( { provider: 'anthropic' } );
 	} );
 } );

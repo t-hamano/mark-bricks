@@ -52,6 +52,10 @@ export type AiProviderAdapter = {
 	 */
 	keyPlaceholder: string;
 	/**
+	 * The page of the provider's console where API keys are created.
+	 */
+	keyUrl: string;
+	/**
 	 * Builds the body of a streamed request.
 	 *
 	 * @param options              The request.

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T03:21:24.815Z\n"
-"PO-Revision-Date: 2026-11-14T03:21:31.120Z\n"
+"POT-Creation-Date: 2026-11-14T05:51:17.443Z\n"
+"PO-Revision-Date: 2026-11-14T05:51:33.042Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -30,21 +30,16 @@ msgstr ""
 msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "“%s” tem alterações não salvas. Deseja descartá-las e fechar?"
 
-# %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:245
-msgid "%s API key"
-msgstr "Chave de API da %s"
-
 #: src/store/reducer.ts:42
 #: src/store/constants.ts:13
 msgid "(Untitled)"
 msgstr "(Sem título)"
 
-#: src/components/preferences-modal/index.tsx:210
+#: src/components/preferences-modal/index.tsx:211
 msgid "AI Assistant"
 msgstr "Assistente de IA"
 
-#: src/components/preferences-modal/ai-panel.tsx:285
+#: src/components/preferences-modal/ai-provider-card.tsx:270
 msgid "API key"
 msgstr "Chave de API"
 
@@ -92,7 +87,7 @@ msgstr "Verificar atualizações"
 msgid "Check updates automatically"
 msgstr "Verificar atualizações automaticamente"
 
-#: src/components/preferences-modal/ai-panel.tsx:309
+#: src/components/preferences-modal/ai-provider-card.tsx:294
 msgid "Checking the API key…"
 msgstr "Verificando a chave de API…"
 
@@ -102,7 +97,7 @@ msgid "Checking…"
 msgstr "Verificando…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:184
+#: src/components/preferences-modal/index.tsx:185
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -121,10 +116,14 @@ msgstr "Fechar outras abas"
 msgid "Close the active tab."
 msgstr "Fechar a aba ativa."
 
-#: src/components/preferences-modal/index.tsx:207
+#: src/components/preferences-modal/index.tsx:208
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Editor de código"
+
+#: src/components/preferences-modal/ai-provider-card.tsx:215
+msgid "Connected"
+msgstr "Conectado"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:106
 msgid "Content width"
@@ -155,20 +154,20 @@ msgstr ""
 msgid "Create a new file."
 msgstr "Criar um novo arquivo."
 
-#: src/preferences/constants.ts:57
+#: src/preferences/constants.ts:58
 msgid "Dark"
 msgstr "Escuro"
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:101
+#: src/components/preferences-modal/ai-provider-card.tsx:108
 msgid "Default (%s)"
 msgstr "Padrão (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:316
+#: src/components/preferences-modal/ai-provider-card.tsx:301
 msgid "Delete"
 msgstr "Excluir"
 
-#: src/components/preferences-modal/ai-panel.tsx:305
+#: src/components/preferences-modal/ai-provider-card.tsx:290
 msgid "Deleting the API key…"
 msgstr "Excluindo a chave de API…"
 
@@ -235,9 +234,14 @@ msgstr "Família de fonte"
 msgid "Font size"
 msgstr "Tamanho da fonte"
 
-#: src/components/preferences-modal/index.tsx:201
+#: src/components/preferences-modal/index.tsx:202
 msgid "General"
 msgstr "Geral"
+
+# %s: The address of the site where API keys are created, such as platform.claude.com.
+#: src/components/preferences-modal/ai-provider-card.tsx:310
+msgid "Get your API key at <a>%s</a>"
+msgstr "Obtenha sua chave de API em <a>%s</a>"
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:249
 msgid "Global shortcuts"
@@ -251,7 +255,7 @@ msgstr "Apresentação HTML"
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:79
+#: src/preferences/constants.ts:80
 msgid "Handwriting"
 msgstr "Manuscrita"
 
@@ -286,7 +290,7 @@ msgstr "Atalhos do teclado"
 msgid "Language"
 msgstr "Idioma"
 
-#: src/preferences/constants.ts:56
+#: src/preferences/constants.ts:57
 msgid "Light"
 msgstr "Claro"
 
@@ -294,7 +298,7 @@ msgstr "Claro"
 msgid "List View shortcuts"
 msgstr "Atalhos da visualização em lista"
 
-#: src/components/preferences-modal/ai-panel.tsx:356
+#: src/components/preferences-modal/ai-provider-card.tsx:369
 msgid "Loading the models…"
 msgstr "Carregando os modelos…"
 
@@ -311,11 +315,16 @@ msgstr "O MarkBricks agora é o aplicativo padrão para arquivos Markdown."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Largura máxima da área de conteúdo, em pixels."
 
-#: src/components/preferences-modal/ai-panel.tsx:364
+#: src/components/preferences-modal/ai-provider-card.tsx:377
 msgid "Model"
 msgstr "Modelo"
 
-#: src/preferences/constants.ts:75
+# %s: The name of the AI model, such as Claude Opus 5.5.
+#: src/components/preferences-modal/ai-provider-card.tsx:223
+msgid "Model: %s"
+msgstr "Modelo: %s"
+
+#: src/preferences/constants.ts:76
 msgid "Monospace"
 msgstr "Monoespaçada"
 
@@ -343,6 +352,10 @@ msgstr "Nenhum arquivo aberto"
 #: src/hooks/use-preview-sync.ts:120
 msgid "Not a Marp document"
 msgstr "Não é um documento Marp"
+
+#: src/components/preferences-modal/ai-provider-card.tsx:229
+msgid "Not connected"
+msgstr "Não conectado"
 
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
@@ -377,7 +390,7 @@ msgstr "Apresentação PDF"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:182
+#: src/components/preferences-modal/index.tsx:183
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "Preferências"
@@ -386,7 +399,7 @@ msgstr "Preferências"
 msgid "Preview Slides"
 msgstr "Visualizar slides"
 
-#: src/components/preferences-modal/ai-panel.tsx:218
+#: src/components/preferences-modal/ai-panel.tsx:144
 msgid "Provider"
 msgstr "Provedor"
 
@@ -418,12 +431,12 @@ msgstr "Reinicie o aplicativo para aplicar o novo idioma."
 msgid "Restore default settings"
 msgstr "Restaurar configurações padrão"
 
-#: src/preferences/constants.ts:67
+#: src/preferences/constants.ts:68
 msgid "Sans-serif"
 msgstr "Sem serifa"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:317
+#: src/components/preferences-modal/ai-provider-card.tsx:302
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -449,7 +462,7 @@ msgstr "Salvar o arquivo ativo."
 msgid "Selection shortcuts"
 msgstr "Atalhos para seleção"
 
-#: src/preferences/constants.ts:71
+#: src/preferences/constants.ts:72
 msgid "Serif"
 msgstr "Serifa"
 
@@ -483,8 +496,8 @@ msgstr "Verificação ortográfica"
 msgid "Spotlight mode"
 msgstr "Modo sem distrações"
 
-#: src/preferences/constants.ts:55
-#: src/preferences/constants.ts:64
+#: src/preferences/constants.ts:56
+#: src/preferences/constants.ts:65
 msgid "System Default"
 msgstr "Padrão do sistema"
 
@@ -505,14 +518,24 @@ msgstr ""
 # %s: The name of the AI provider, such as OpenAI.
 #: src/ai/error.ts:61
 msgid "The %s account has no credit left. Check its billing settings."
-msgstr "A conta da %s não tem mais créditos. Verifique as configurações de faturamento."
+msgstr ""
+"A conta da %s não tem mais créditos. Verifique as configurações de "
+"faturamento."
+
+#: src/components/preferences-modal/ai-panel.tsx:151
+msgid "The AI Assistant uses the only connected provider."
+msgstr "O assistente de IA usa o único provedor conectado."
+
+#: src/components/preferences-modal/ai-panel.tsx:147
+msgid "The AI Assistant uses this provider."
+msgstr "O assistente de IA usa este provedor."
 
 #: src/ai/error.ts:55
 msgid "The API key cannot use this model."
 msgstr "Esta chave de API não pode usar este modelo."
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-panel.tsx:256
+#: src/components/preferences-modal/ai-provider-card.tsx:241
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the %s "
 "API."
@@ -524,11 +547,11 @@ msgstr ""
 msgid "The API key is not valid. Check it in the settings."
 msgstr "A chave de API não é válida. Verifique-a nas configurações."
 
-#: src/components/preferences-modal/ai-panel.tsx:337
+#: src/components/preferences-modal/ai-provider-card.tsx:349
 msgid "The API key was deleted."
 msgstr "A chave de API foi excluída."
 
-#: src/components/preferences-modal/ai-panel.tsx:327
+#: src/components/preferences-modal/ai-provider-card.tsx:336
 msgid "The API key was saved."
 msgstr "A chave de API foi salva."
 
@@ -547,7 +570,7 @@ msgstr "A resposta foi cortada porque atingiu o limite de tamanho."
 msgid "The connection closed before the answer was complete."
 msgstr "A conexão foi encerrada antes de a resposta ser concluída."
 
-#: src/ai/chat.ts:81
+#: src/ai/chat.ts:85
 msgid "The edit from the model could not be read."
 msgstr "Não foi possível ler a edição do modelo."
 
@@ -560,7 +583,7 @@ msgid "The model was not found."
 msgstr "O modelo não foi encontrado."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:396
+#: src/components/preferences-modal/ai-provider-card.tsx:408
 msgid "The models could not be loaded: %s"
 msgstr "Não foi possível carregar os modelos: %s"
 
@@ -602,7 +625,7 @@ msgstr "Ferramentas"
 msgid "Top toolbar"
 msgstr "Barra de ferramentas do topo"
 
-#: src/components/preferences-modal/ai-panel.tsx:405
+#: src/components/preferences-modal/ai-provider-card.tsx:417
 msgid "Try again"
 msgstr "Tentar novamente"
 
@@ -635,7 +658,7 @@ msgstr "Falha ao verificar atualizações: %s"
 msgid "View"
 msgstr "Visualizar"
 
-#: src/components/preferences-modal/index.tsx:204
+#: src/components/preferences-modal/index.tsx:205
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Editor visual"
