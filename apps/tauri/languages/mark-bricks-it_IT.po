@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:13:28.497Z\n"
-"PO-Revision-Date: 2026-11-14T07:13:43.147Z\n"
+"POT-Creation-Date: 2026-11-14T07:35:21.932Z\n"
+"PO-Revision-Date: 2026-11-14T07:35:24.174Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -39,9 +39,17 @@ msgstr "(senza titolo)"
 msgid "AI Assistant"
 msgstr "Assistente IA"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:279
+#: src/components/preferences-modal/ai-provider-card.tsx:267
 msgid "API key"
 msgstr "Chiave API"
+
+#: src/components/preferences-modal/ai-panel.tsx:134
+msgid ""
+"API keys are kept in the system’s credential store and only sent to the "
+"corresponding provider’s API."
+msgstr ""
+"Le chiavi API vengono conservate nell’archivio delle credenziali del sistema "
+"e inviate solo all’API del fornitore corrispondente."
 
 #: src/components/header-actions/index.tsx:358
 #: src/components/about-modal/index.tsx:80
@@ -88,11 +96,11 @@ msgid "Check updates automatically"
 msgstr "Verifica automaticamente gli aggiornamenti"
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:344
+#: src/components/preferences-modal/ai-provider-card.tsx:332
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr "Controlla l’utilizzo e la fatturazione su <a>%s</a>"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:303
+#: src/components/preferences-modal/ai-provider-card.tsx:291
 msgid "Checking the API key…"
 msgstr "Verifica della chiave API…"
 
@@ -159,7 +167,7 @@ msgstr ""
 msgid "Create a new file."
 msgstr "Crea un nuovo file."
 
-#: src/components/preferences-modal/ai-panel.tsx:181
+#: src/components/preferences-modal/ai-panel.tsx:189
 msgid "Custom instructions"
 msgstr "Istruzioni personalizzate"
 
@@ -172,11 +180,11 @@ msgstr "Scuro"
 msgid "Default (%s)"
 msgstr "Predefinito (%s)"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:310
+#: src/components/preferences-modal/ai-provider-card.tsx:298
 msgid "Delete"
 msgstr "Elimina"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:299
+#: src/components/preferences-modal/ai-provider-card.tsx:287
 msgid "Deleting the API key…"
 msgstr "Eliminazione della chiave API…"
 
@@ -248,7 +256,7 @@ msgid "General"
 msgstr "Generale"
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:320
+#: src/components/preferences-modal/ai-provider-card.tsx:308
 msgid "Get your API key at <a>%s</a>"
 msgstr "Ottieni la tua chiave API su <a>%s</a>"
 
@@ -310,7 +318,7 @@ msgstr "Chiaro"
 msgid "List View shortcuts"
 msgstr "Scorciatoia per la vista elenco"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:397
+#: src/components/preferences-modal/ai-provider-card.tsx:385
 msgid "Loading the models…"
 msgstr "Caricamento dei modelli…"
 
@@ -327,7 +335,7 @@ msgstr "MarkBricks è ora l’app predefinita per i file Markdown."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Larghezza massima dell’area del contenuto, in pixel."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:405
+#: src/components/preferences-modal/ai-provider-card.tsx:393
 msgid "Model"
 msgstr "Modello"
 
@@ -411,7 +419,7 @@ msgstr "Preferenze"
 msgid "Preview Slides"
 msgstr "Visualizza anteprima diapositive"
 
-#: src/components/preferences-modal/ai-panel.tsx:151
+#: src/components/preferences-modal/ai-panel.tsx:159
 msgid "Provider"
 msgstr "Fornitore"
 
@@ -448,7 +456,7 @@ msgid "Sans-serif"
 msgstr "Sans-serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:311
+#: src/components/preferences-modal/ai-provider-card.tsx:299
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -474,11 +482,13 @@ msgstr "Salva il file attivo."
 msgid "Selection shortcuts"
 msgstr "Scorciatoie per la selezione"
 
-#: src/components/preferences-modal/ai-panel.tsx:182
+#: src/components/preferences-modal/ai-panel.tsx:190
 msgid ""
 "Sent with every message to the AI Assistant. For example, the tone to write "
 "in, or what your documents are about."
-msgstr "Inviate con ogni messaggio all’assistente IA. Ad esempio, il tono da usare o l’argomento dei tuoi documenti."
+msgstr ""
+"Inviate con ogni messaggio all’assistente IA. Ad esempio, il tono da usare o "
+"l’argomento dei tuoi documenti."
 
 #: src/preferences/constants.ts:75
 msgid "Serif"
@@ -538,7 +548,7 @@ msgid "The %s account has no credit left. Check its billing settings."
 msgstr ""
 "L’account %s non ha più credito. Controlla le impostazioni di fatturazione."
 
-#: src/components/preferences-modal/ai-panel.tsx:154
+#: src/components/preferences-modal/ai-panel.tsx:162
 msgid "The AI Assistant uses this provider."
 msgstr "L’assistente IA usa questo fornitore."
 
@@ -546,24 +556,15 @@ msgstr "L’assistente IA usa questo fornitore."
 msgid "The API key cannot use this model."
 msgstr "Questa chiave API non può usare questo modello."
 
-# %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-provider-card.tsx:251
-msgid ""
-"The API key is kept in the system’s credential store and only sent to the %s "
-"API."
-msgstr ""
-"La chiave API viene conservata nell’archivio delle credenziali del sistema e "
-"inviata solo all’API di %s."
-
 #: src/ai/error.ts:50
 msgid "The API key is not valid. Check it in the settings."
 msgstr "La chiave API non è valida. Controllala nelle impostazioni."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:380
+#: src/components/preferences-modal/ai-provider-card.tsx:368
 msgid "The API key was deleted."
 msgstr "La chiave API è stata eliminata."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:370
+#: src/components/preferences-modal/ai-provider-card.tsx:358
 msgid "The API key was saved."
 msgstr "La chiave API è stata salvata."
 
@@ -596,7 +597,7 @@ msgid "The model was not found."
 msgstr "Modello non trovato."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:433
+#: src/components/preferences-modal/ai-provider-card.tsx:421
 msgid "The models could not be loaded: %s"
 msgstr "Impossibile caricare i modelli: %s"
 
@@ -638,7 +639,7 @@ msgstr "Strumenti"
 msgid "Top toolbar"
 msgstr "Barra degli strumenti in alto"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:442
+#: src/components/preferences-modal/ai-provider-card.tsx:430
 msgid "Try again"
 msgstr "Riprova"
 

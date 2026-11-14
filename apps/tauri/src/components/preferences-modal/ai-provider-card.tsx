@@ -244,18 +244,6 @@ export function AiProviderCard( {
 			</CollapsibleCard.Header>
 			<CollapsibleCard.Content>
 				<Stack direction="column" gap="lg">
-					<Notice.Root intent="info">
-						<Notice.Description>
-							{ sprintf(
-								/* translators: %s: The name of the AI provider, such as Anthropic. */
-								__(
-									'The API key is kept in the system’s credential store and only sent to the %s API.',
-									'mark-bricks'
-								),
-								providerInfo.name
-							) }
-						</Notice.Description>
-					</Notice.Root>
 					<form
 						onSubmit={ ( event ) => {
 							event.preventDefault();

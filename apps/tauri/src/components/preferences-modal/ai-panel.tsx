@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { SelectControl, Stack, TextareaControl } from '@wordpress/ui';
+import { Notice, SelectControl, Stack, TextareaControl } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -129,6 +129,14 @@ export function AiPanel( { settings, onChange, onModelChange }: Props ) {
 
 	return (
 		<Stack direction="column" gap="lg">
+			<Notice.Root intent="info">
+				<Notice.Description>
+					{ __(
+						'API keys are kept in the system’s credential store and only sent to the corresponding provider’s API.',
+						'mark-bricks'
+					) }
+				</Notice.Description>
+			</Notice.Root>
 			{ PROVIDER_NAMES.map( ( name ) => (
 				<AiProviderCard
 					key={ name }

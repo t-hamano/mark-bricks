@@ -192,19 +192,22 @@ describe( 'AiPanel', () => {
 			'https://platform.openai.com/usage',
 		] );
 		expect( card( 'openai' ).textContent ).toContain( 'OpenAI' );
-		expect( card( 'openai' ).textContent ).toContain(
-			'only sent to the OpenAI API.'
-		);
 		expect( input( 'openai' ).placeholder ).toBe( 'sk-…' );
 		expect( links( 'google' ) ).toEqual( [
 			'https://aistudio.google.com/api-keys',
 			'https://aistudio.google.com/usage',
 		] );
 		expect( card( 'google' ).textContent ).toContain( 'Google Gemini' );
-		expect( card( 'google' ).textContent ).toContain(
-			'only sent to the Google Gemini API.'
-		);
 		expect( input( 'google' ).placeholder ).toBe( 'AIza…' );
+	} );
+
+	it( 'shows the API key note once, above the cards', async () => {
+		await render();
+		const note = 'only sent to the corresponding provider’s API.';
+		expect( container.textContent?.split( note ).length ).toBe( 2 );
+		for ( const provider of [ 'anthropic', 'openai', 'google' ] as const ) {
+			expect( card( provider ).textContent ).not.toContain( note );
+		}
 	} );
 
 	it( 'hides the provider without a connected provider', async () => {
