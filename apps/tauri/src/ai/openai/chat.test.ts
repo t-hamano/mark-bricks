@@ -54,7 +54,9 @@ function run(
 	const result = chat( {
 		system: 'System prompt',
 		messages,
-		onEvent: ( event ) => events.push( event ),
+		onEvent: ( event ) => {
+			events.push( event );
+		},
 		signal: new AbortController().signal,
 	} );
 	return { result, events, bodies };
