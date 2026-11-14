@@ -15,6 +15,11 @@ export function createSseParser( onData: ( data: unknown ) => void ) {
 		}
 		const data = dataLines.join( '\n' );
 		dataLines = [];
+		// Some APIs mark the end of the stream with a `[DONE]` event, which
+		// is not JSON.
+		if ( data === '[DONE]' ) {
+			return;
+		}
 		onData( JSON.parse( data ) );
 	};
 

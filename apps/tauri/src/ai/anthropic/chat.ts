@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { AiChatRequest, AiEdit } from '@mark-bricks/editor';
+import type { AiChatRequest } from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies
@@ -11,6 +11,8 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
+import { toEdit } from '../edit-tool';
+import type { AiTransport } from '../transport-type';
 import { AnthropicError } from './errors';
 import { createMessageStream, type StreamedMessage } from './message-stream';
 import {
@@ -24,21 +26,12 @@ import {
 	type RequestBody,
 	type ToolUseBlock,
 } from './request';
-import { createSseParser } from './sse';
+import { createSseParser } from '../sse';
 
 /**
- * Sends a request to the Messages API and passes the response's body to
- * `onChunk` as it arrives. Resolves when the response ends.
- *
- * When the response fails with an HTTP status, rejects with the error
- * `createHttpError` builds. When `signal` is aborted, rejects with an
- * `AbortError`.
+ * Sends a request to the Messages API. See `AiTransport`.
  */
-export type AnthropicTransport = (
-	body: RequestBody,
-	onChunk: ( chunk: string ) => void,
-	signal: AbortSignal
-) => Promise< void >;
+export type AnthropicTransport = AiTransport< RequestBody >;
 
 export type AnthropicChatOptions = {
 	transport: AnthropicTransport;
@@ -175,26 +168,6 @@ function findEditToolUse( message: StreamedMessage ) {
 			block.type === 'tool_use' &&
 			( block as ToolUseBlock ).name === EDIT_TOOL_NAME
 	);
-}
-
-/**
- * Checks the edit tool's input.
- *
- * @param input The tool's parsed input.
- * @return The edit, or `null` when the input is not valid.
- */
-export function toEdit( input: unknown ): AiEdit | null {
-	if ( ! input || typeof input !== 'object' ) {
-		return null;
-	}
-	const { action, markdown } = input as Record< string, unknown >;
-	if (
-		( action !== 'replace' && action !== 'insert_after' ) ||
-		typeof markdown !== 'string'
-	) {
-		return null;
-	}
-	return { action, markdown };
 }
 
 /**

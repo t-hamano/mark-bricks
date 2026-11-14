@@ -4,19 +4,18 @@
 import { __, sprintf } from '@wordpress/i18n';
 
 /**
- * A failed request. The message is written for the user.
+ * Internal dependencies
  */
-export class AnthropicError extends Error {
-	/**
-	 * The API's error type, such as `rate_limit_error`, or `null` when the
-	 * failure did not come from the API.
-	 */
-	readonly errorType: string | null;
+import { AiError } from '../error';
 
+/**
+ * A failed request to the Anthropic API. The message is written for the
+ * user. `errorType` is the API's error type, such as `rate_limit_error`.
+ */
+export class AnthropicError extends AiError {
 	constructor( message: string, errorType: string | null = null ) {
-		super( message );
+		super( message, errorType );
 		this.name = 'AnthropicError';
-		this.errorType = errorType;
 	}
 }
 

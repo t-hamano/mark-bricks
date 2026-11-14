@@ -1,0 +1,6 @@
+event: response.output_text.delta
+data: {"type":"response.output_text.delta","sequence_number":0,"item_id":"msg_06","output_index":0,"content_index":0,"delta":"The first part"}
+
+event: response.failed
+data: {"type":"response.failed","sequence_number":1,"response":{"id":"resp_06","object":"response","status":"failed","error":{"code":"server_error","message":"The server had an error."}}}
+

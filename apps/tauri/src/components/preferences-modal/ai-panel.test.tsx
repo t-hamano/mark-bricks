@@ -10,6 +10,7 @@ import { clearMocks, mockIPC } from '@tauri-apps/api/mocks';
  * Internal dependencies
  */
 import { AiPanel, getModelItems } from './ai-panel';
+import type { AiProvider } from '../../ai/providers';
 
 const MODELS = [
 	{ id: 'claude-opus-5-5', displayName: 'Claude Opus 5.5' },
@@ -18,7 +19,7 @@ const MODELS = [
 
 describe( 'getModelItems', () => {
 	it( 'lists the default model first, by its name', () => {
-		expect( getModelItems( MODELS, '' ) ).toEqual( [
+		expect( getModelItems( MODELS, '', 'claude-opus-5-5' ) ).toEqual( [
 			{ value: 'default', label: 'Default (Claude Opus 5.5)' },
 			{ value: 'claude-opus-5-5', label: 'Claude Opus 5.5' },
 			{ value: 'claude-sonnet-5-5', label: 'Claude Sonnet 5.5' },
@@ -26,10 +27,12 @@ describe( 'getModelItems', () => {
 	} );
 
 	it( 'keeps a chosen model that is not listed', () => {
-		expect( getModelItems( [], 'claude-old' ) ).toEqual( [
-			{ value: 'default', label: 'Default (claude-opus-5-5)' },
-			{ value: 'claude-old', label: 'claude-old' },
-		] );
+		expect( getModelItems( [], 'claude-old', 'claude-opus-5-5' ) ).toEqual(
+			[
+				{ value: 'default', label: 'Default (claude-opus-5-5)' },
+				{ value: 'claude-old', label: 'claude-old' },
+			]
+		);
 	} );
 } );
 
@@ -38,14 +41,17 @@ describe( 'AiPanel', () => {
 	let root: Root;
 	let savedKey: string | null;
 	const commands: string[] = [];
+	const providers: unknown[] = [];
 
 	beforeEach( () => {
 		savedKey = null;
 		commands.length = 0;
+		providers.length = 0;
 		onChange.mockReset();
 		mockIPC( ( command, args ) => {
 			commands.push( command );
-			const payload = args as { key?: string };
+			const payload = args as { key?: string; provider?: string };
+			providers.push( payload.provider );
 			switch ( command ) {
 				case 'has_ai_api_key':
 					return savedKey !== null;
@@ -81,10 +87,13 @@ describe( 'AiPanel', () => {
 
 	const onChange = vi.fn();
 
-	async function render() {
+	async function render( provider: AiProvider = 'anthropic' ) {
 		await act( async () => {
 			root.render(
-				<AiPanel settings={ { model: '' } } onChange={ onChange } />
+				<AiPanel
+					settings={ { provider, model: '' } }
+					onChange={ onChange }
+				/>
 			);
 		} );
 	}
@@ -191,7 +200,9 @@ describe( 'AiPanel', () => {
 			pending[ 0 ]( MODELS );
 		} );
 		expect( container.textContent ).not.toContain( 'Loading the models' );
-		const combobox = container.querySelector( '[role="combobox"]' );
+		const combobox = [
+			...container.querySelectorAll( '[role="combobox"]' ),
+		].pop();
 		await act( async () => {
 			( combobox as HTMLElement ).click();
 		} );
@@ -212,5 +223,34 @@ describe( 'AiPanel', () => {
 		expect( input().value ).toBe( '' );
 		expect( onChange ).toHaveBeenCalledWith( { model: '' } );
 		expect( container.textContent ).not.toContain( 'Model' );
+	} );
+
+	it( 'uses the key of the chosen provider', async () => {
+		await render( 'openai' );
+		expect( container.textContent ).toContain( 'OpenAI API key' );
+		expect( container.textContent ).toContain(
+			'only sent to the OpenAI API.'
+		);
+		expect( input().placeholder ).toBe( 'sk-…' );
+		expect( commands ).toContain( 'has_ai_api_key' );
+		expect( new Set( providers ) ).toEqual( new Set( [ 'openai' ] ) );
+	} );
+
+	it( 'resets the model when another provider is chosen', async () => {
+		await render();
+		const combobox = container.querySelector( '[role="combobox"]' );
+		await act( async () => {
+			( combobox as HTMLElement ).click();
+		} );
+		const option = [
+			...document.querySelectorAll( '[role="option"]' ),
+		].find( ( element ) => element.textContent === 'OpenAI' );
+		await act( async () => {
+			( option as HTMLElement ).click();
+		} );
+		expect( onChange ).toHaveBeenCalledWith( {
+			provider: 'openai',
+			model: '',
+		} );
 	} );
 } );

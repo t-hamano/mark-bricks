@@ -1,0 +1,6 @@
+event: response.output_text.delta
+data: {"type":"response.output_text.delta","sequence_number":0,"item_id":"msg_05","output_index":0,"content_index":0,"delta":"The first part"}
+
+event: response.incomplete
+data: {"type":"response.incomplete","sequence_number":1,"response":{"id":"resp_05","object":"response","status":"incomplete","incomplete_details":{"reason":"max_output_tokens"}}}
+

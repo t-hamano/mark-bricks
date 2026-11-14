@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:14:58.685Z\n"
-"PO-Revision-Date: 2026-11-08T14:15:01.182Z\n"
+"POT-Creation-Date: 2026-11-14T02:42:28.127Z\n"
+"PO-Revision-Date: 2026-11-14T02:42:31.103Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -30,16 +30,21 @@ msgstr ""
 msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "«%s» tiene cambios sin guardar. ¿Quieres descartarlos y cerrar?"
 
+# %s: The name of the AI provider, such as Anthropic.
+#: src/components/preferences-modal/ai-panel.tsx:242
+msgid "%s API key"
+msgstr "Clave de API de %s"
+
 #: src/store/reducer.ts:42
 #: src/store/constants.ts:13
 msgid "(Untitled)"
 msgstr "(Sin título)"
 
-#: src/components/preferences-modal/index.tsx:203
+#: src/components/preferences-modal/index.tsx:210
 msgid "AI Assistant"
 msgstr "Asistente de IA"
 
-#: src/components/preferences-modal/ai-panel.tsx:239
+#: src/components/preferences-modal/ai-panel.tsx:282
 msgid "API key"
 msgstr "Clave de API"
 
@@ -57,14 +62,14 @@ msgstr ""
 msgid "Add YAML front matter"
 msgstr "Añadir front matter YAML"
 
+#: style.css
+#. Author of the generic
+msgid "Aki Hamano"
+msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "Abrir siempre la vista de lista"
-
-#: src/components/preferences-modal/ai-panel.tsx:205
-msgid "Anthropic API key"
-msgstr "Clave de API de Anthropic"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -74,7 +79,7 @@ msgstr "Tamaño de fuente base del área de contenido, en píxeles."
 msgid "Block shortcuts"
 msgstr "Atajos de bloques"
 
-#: src/components/header-actions/index.tsx:387
+#: src/components/header-actions/index.tsx:385
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "Cancelar"
@@ -88,7 +93,7 @@ msgstr "Buscar actualizaciones"
 msgid "Check updates automatically"
 msgstr "Buscar actualizaciones automáticamente"
 
-#: src/components/preferences-modal/ai-panel.tsx:263
+#: src/components/preferences-modal/ai-panel.tsx:306
 msgid "Checking the API key…"
 msgstr "Comprobando la clave de API…"
 
@@ -98,7 +103,7 @@ msgid "Checking…"
 msgstr "Comprobando…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:177
+#: src/components/preferences-modal/index.tsx:184
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -117,7 +122,7 @@ msgstr "Cerrar las demás pestañas"
 msgid "Close the active tab."
 msgstr "Cerrar la pestaña activa."
 
-#: src/components/preferences-modal/index.tsx:200
+#: src/components/preferences-modal/index.tsx:207
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Editor de código"
@@ -126,9 +131,10 @@ msgstr "Editor de código"
 msgid "Content width"
 msgstr "Ancho del contenido"
 
-#: src/ai/transport.ts:55
-msgid "Could not connect to the Anthropic API."
-msgstr "No se pudo conectar con la API de Anthropic."
+# %s: The name of the AI provider, such as Anthropic.
+#: src/ai/transport.ts:69
+msgid "Could not connect to the %s API."
+msgstr "No se pudo conectar con la API de %s."
 
 # %s: Error message.
 #: src/actions/index.ts:495
@@ -150,20 +156,20 @@ msgstr ""
 msgid "Create a new file."
 msgstr "Crear un archivo nuevo."
 
-#: src/preferences/constants.ts:55
+#: src/preferences/constants.ts:57
 msgid "Dark"
 msgstr "Oscuro"
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:87
+#: src/components/preferences-modal/ai-panel.tsx:101
 msgid "Default (%s)"
 msgstr "Predeterminado (%s)"
 
-#: src/components/preferences-modal/ai-panel.tsx:270
+#: src/components/preferences-modal/ai-panel.tsx:313
 msgid "Delete"
 msgstr "Eliminar"
 
-#: src/components/preferences-modal/ai-panel.tsx:259
+#: src/components/preferences-modal/ai-panel.tsx:302
 msgid "Deleting the API key…"
 msgstr "Eliminando la clave de API…"
 
@@ -230,7 +236,7 @@ msgstr "Familia de fuentes"
 msgid "Font size"
 msgstr "Tamaño de la fuente"
 
-#: src/components/preferences-modal/index.tsx:194
+#: src/components/preferences-modal/index.tsx:201
 msgid "General"
 msgstr "Generales"
 
@@ -246,7 +252,7 @@ msgstr "Presentación HTML"
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:77
+#: src/preferences/constants.ts:79
 msgid "Handwriting"
 msgstr "Manuscrita"
 
@@ -282,7 +288,7 @@ msgstr "Atajos del teclado"
 msgid "Language"
 msgstr "Idioma"
 
-#: src/preferences/constants.ts:54
+#: src/preferences/constants.ts:56
 msgid "Light"
 msgstr "Claro"
 
@@ -290,7 +296,7 @@ msgstr "Claro"
 msgid "List View shortcuts"
 msgstr "Atajos de la vista de lista"
 
-#: src/components/preferences-modal/ai-panel.tsx:198
+#: src/components/preferences-modal/ai-panel.tsx:353
 msgid "Loading the models…"
 msgstr "Cargando los modelos…"
 
@@ -308,12 +314,11 @@ msgstr ""
 msgid "Maximum width of the content area, in pixels."
 msgstr "Ancho máximo del área de contenido, en píxeles."
 
-#: src/components/preferences-modal/ai-panel.tsx:309
-#: src/components/preferences-modal/ai-panel.tsx:314
+#: src/components/preferences-modal/ai-panel.tsx:361
 msgid "Model"
 msgstr "Modelo"
 
-#: src/preferences/constants.ts:73
+#: src/preferences/constants.ts:75
 msgid "Monospace"
 msgstr "Monoespaciada"
 
@@ -330,13 +335,17 @@ msgstr "Nuevo archivo"
 msgid "New…"
 msgstr "Nuevo…"
 
-#: src/ai/transport.ts:44
+#: src/ai/transport.ts:56
 msgid "No API key is saved. Add one in the settings."
 msgstr "No hay ninguna clave de API guardada. Añade una en los ajustes."
 
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "No hay ningún archivo abierto"
+
+#: src/hooks/use-preview-sync.ts:120
+msgid "Not a Marp document"
+msgstr "No es un documento de Marp"
 
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
@@ -371,8 +380,8 @@ msgstr "Presentación PDF"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:175
-#: src/components/header-actions/index.tsx:367
+#: src/components/preferences-modal/index.tsx:182
+#: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -380,11 +389,15 @@ msgstr "Preferencias"
 msgid "Preview Slides"
 msgstr "Previsualizar diapositivas"
 
+#: src/components/preferences-modal/ai-panel.tsx:218
+msgid "Provider"
+msgstr "Proveedor"
+
 #: src/components/reload-prompt-dialog/index.tsx:68
 msgid "Reload"
 msgstr "Recargar"
 
-#: src/components/header-actions/index.tsx:388
+#: src/components/header-actions/index.tsx:386
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -392,7 +405,7 @@ msgstr "Eliminar"
 msgid "Remove YAML front matter"
 msgstr "Eliminar front matter YAML"
 
-#: src/components/header-actions/index.tsx:382
+#: src/components/header-actions/index.tsx:380
 msgid "Remove YAML front matter?"
 msgstr "¿Eliminar el front matter YAML?"
 
@@ -408,12 +421,12 @@ msgstr "Reinicia la aplicación para aplicar el nuevo idioma."
 msgid "Restore default settings"
 msgstr "Restablecer la configuración predeterminada"
 
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:67
 msgid "Sans-serif"
 msgstr "Sans serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:271
+#: src/components/preferences-modal/ai-panel.tsx:314
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -439,7 +452,7 @@ msgstr "Guardar el archivo activo."
 msgid "Selection shortcuts"
 msgstr "Atajos de selección"
 
-#: src/preferences/constants.ts:69
+#: src/preferences/constants.ts:71
 msgid "Serif"
 msgstr "Serif"
 
@@ -460,6 +473,7 @@ msgstr "Mostrar las migas de pan del bloque"
 msgid "Show line numbers"
 msgstr "Mostrar números de línea"
 
+#: src/hooks/use-preview-sync.ts:272
 #: src/components/slide-preview/index.tsx:39
 msgid "Slide Preview"
 msgstr "Vista previa de diapositivas"
@@ -472,8 +486,8 @@ msgstr "Corrector ortográfico"
 msgid "Spotlight mode"
 msgstr "Modo de enfoque"
 
-#: src/preferences/constants.ts:53
-#: src/preferences/constants.ts:62
+#: src/preferences/constants.ts:55
+#: src/preferences/constants.ts:64
 msgid "System Default"
 msgstr "Predeterminado del sistema"
 
@@ -485,73 +499,95 @@ msgstr "Tamaño de tabulación"
 msgid "Text formatting"
 msgstr "Formatos de texto"
 
-#: src/ai/anthropic/errors.ts:40
+# %s: The name of the AI provider, such as OpenAI.
+#: src/ai/openai/errors.ts:84
+msgid "The %s API is not available right now. Try again later."
+msgstr ""
+"La API de %s no está disponible en este momento. Inténtalo de nuevo más "
+"tarde."
+
+#: src/ai/openai/errors.ts:68
+#: src/ai/anthropic/errors.ts:39
 msgid "The API key cannot use this model."
 msgstr "Esta clave de API no puede usar este modelo."
 
-#: src/components/preferences-modal/ai-panel.tsx:212
+# %s: The name of the AI provider, such as Anthropic.
+#: src/components/preferences-modal/ai-panel.tsx:253
 msgid ""
-"The API key is kept in the system’s credential store and only sent to the "
-"Anthropic API."
+"The API key is kept in the system’s credential store and only sent to the %s "
+"API."
 msgstr ""
 "La clave de API se guarda en el almacén de credenciales del sistema y solo "
-"se envía a la API de Anthropic."
+"se envía a la API de %s."
 
-#: src/ai/anthropic/errors.ts:35
+#: src/ai/openai/errors.ts:63
+#: src/ai/anthropic/errors.ts:34
 msgid "The API key is not valid. Check it in the settings."
 msgstr "La clave de API no es válida. Revísala en los ajustes."
 
-#: src/components/preferences-modal/ai-panel.tsx:291
+#: src/components/preferences-modal/ai-panel.tsx:334
 msgid "The API key was deleted."
 msgstr "Se ha eliminado la clave de API."
 
-#: src/components/preferences-modal/ai-panel.tsx:281
+#: src/components/preferences-modal/ai-panel.tsx:324
 msgid "The API key was saved."
 msgstr "Se ha guardado la clave de API."
 
-#: src/ai/anthropic/errors.ts:50
+#: src/ai/anthropic/errors.ts:49
 msgid "The Anthropic API is not available right now. Try again later."
 msgstr ""
 "La API de Anthropic no está disponible en este momento. Inténtalo de nuevo "
 "más tarde."
 
-#: src/components/header-actions/index.tsx:383
+#: src/ai/openai/errors.ts:72
+msgid "The OpenAI account has no credit left. Check its billing settings."
+msgstr ""
+"La cuenta de OpenAI no tiene crédito. Revisa su configuración de facturación."
+
+#: src/components/header-actions/index.tsx:381
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr "El front matter YAML y todo su contenido se eliminarán del documento."
 
-#: src/ai/anthropic/chat.ts:159
+#: src/ai/openai/chat.ts:151
+#: src/ai/anthropic/chat.ts:152
 msgid "The answer was cut off because it reached the length limit."
 msgstr "La respuesta se cortó porque alcanzó el límite de longitud."
 
+#: src/ai/openai/response-stream.ts:122
 #: src/ai/anthropic/message-stream.ts:134
 msgid "The connection closed before the answer was complete."
 msgstr "La conexión se cerró antes de que la respuesta estuviera completa."
 
-#: src/ai/anthropic/chat.ts:105
+#: src/ai/openai/chat.ts:94
+#: src/ai/anthropic/chat.ts:98
 msgid "The edit from the model could not be read."
 msgstr "No se pudo leer la edición del modelo."
 
-#: src/ai/anthropic/chat.ts:153
+#: src/ai/openai/chat.ts:145
+#: src/ai/anthropic/chat.ts:146
 msgid "The model declined to answer this request."
 msgstr "El modelo se negó a responder a esta solicitud."
 
-#: src/ai/anthropic/errors.ts:42
+#: src/ai/openai/errors.ts:70
+#: src/ai/anthropic/errors.ts:41
 msgid "The model was not found."
 msgstr "No se encontró el modelo."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:344
+#: src/components/preferences-modal/ai-panel.tsx:393
 msgid "The models could not be loaded: %s"
 msgstr "No se pudieron cargar los modelos: %s"
 
-#: src/ai/anthropic/errors.ts:61
+#: src/ai/openai/errors.ts:97
+#: src/ai/anthropic/errors.ts:60
 msgid "The request failed."
 msgstr "La solicitud falló."
 
 # %s: The error message from the Anthropic API.
-#: src/ai/anthropic/errors.ts:58
+#: src/ai/openai/errors.ts:94
+#: src/ai/anthropic/errors.ts:57
 msgid "The request failed: %s"
 msgstr "La solicitud falló: %s"
 
@@ -560,7 +596,7 @@ msgstr "La solicitud falló: %s"
 msgid "Theme"
 msgstr "Temas"
 
-#: src/ai/settings.ts:53
+#: src/ai/settings.ts:56
 msgid "This API key is not valid."
 msgstr "Esta clave de API no es válida."
 
@@ -572,7 +608,8 @@ msgstr ""
 "Esta plataforma no permite establecer la aplicación predeterminada desde "
 "MarkBricks. Configúrala desde el gestor de archivos del sistema."
 
-#: src/ai/anthropic/errors.ts:44
+#: src/ai/openai/errors.ts:77
+#: src/ai/anthropic/errors.ts:43
 msgid "Too many requests. Wait a moment and try again."
 msgstr "Demasiadas solicitudes. Espera un momento e inténtalo de nuevo."
 
@@ -584,7 +621,7 @@ msgstr "Herramientas"
 msgid "Top toolbar"
 msgstr "Barra de herramientas superior"
 
-#: src/components/preferences-modal/ai-panel.tsx:353
+#: src/components/preferences-modal/ai-panel.tsx:402
 msgid "Try again"
 msgstr "Reintentar"
 
@@ -617,7 +654,7 @@ msgstr "Error al buscar actualizaciones: %s"
 msgid "View"
 msgstr "Ver"
 
-#: src/components/preferences-modal/index.tsx:197
+#: src/components/preferences-modal/index.tsx:204
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Editor visual"
@@ -635,3 +672,7 @@ msgstr "Estás usando la versión más reciente (%s)."
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "Tienes cambios sin guardar. Guárdalos antes de actualizar."
 
+#: style.css
+#. Name of the generic
+msgid "mark-bricks-desktop"
+msgstr ""

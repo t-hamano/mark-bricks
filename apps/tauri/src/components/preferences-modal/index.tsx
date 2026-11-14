@@ -29,6 +29,7 @@ import {
 	type VisualEditorSettings,
 } from './visual-editor-panel';
 import { getInitialPreferencesTab, PREFERENCES_MODAL_NAME } from './open';
+import { toProvider } from '../../ai/providers';
 import { DEFAULT_PREFERENCES } from '../../preferences/constants';
 import './style.scss';
 
@@ -50,6 +51,7 @@ export default function PreferencesModal() {
 		showListViewByDefault,
 		showBlockBreadcrumbs,
 		editorStyles,
+		aiProvider,
 		aiModel,
 	} = useSelect( ( select ) => {
 		const { get } = select( preferencesStore );
@@ -70,6 +72,7 @@ export default function PreferencesModal() {
 			editorStyles:
 				get( 'mark-bricks', 'editorStyles' ) ??
 				DEFAULT_PREFERENCES[ 'mark-bricks' ].editorStyles,
+			aiProvider: toProvider( get( 'mark-bricks', 'aiProvider' ) ),
 			aiModel: ( get( 'mark-bricks', 'aiModel' ) ?? '' ) as string,
 		};
 	}, [] );
@@ -150,6 +153,9 @@ export default function PreferencesModal() {
 	};
 
 	const handleAiChange = ( edits: Partial< AiSettings > ) => {
+		if ( edits.provider !== undefined ) {
+			setPreference( 'mark-bricks', 'aiProvider', edits.provider );
+		}
 		if ( edits.model !== undefined ) {
 			setPreference( 'mark-bricks', 'aiModel', edits.model );
 		}
@@ -260,7 +266,13 @@ export default function PreferencesModal() {
 							tabIndex={ -1 }
 						>
 							<AiPanel
-								settings={ { model: aiModel } }
+								// The panel starts over for another
+								// provider, whose key is saved apart.
+								key={ aiProvider }
+								settings={ {
+									provider: aiProvider,
+									model: aiModel,
+								} }
 								onChange={ handleAiChange }
 							/>
 						</Tabs.Panel>

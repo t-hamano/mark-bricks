@@ -19,6 +19,8 @@ use crate::api_key::{self, OsKeyStore, Provider};
 
 const ANTHROPIC_MESSAGES_URL: &str = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_MODELS_URL: &str = "https://api.anthropic.com/v1/models";
+const OPENAI_RESPONSES_URL: &str = "https://api.openai.com/v1/responses";
+const OPENAI_MODELS_URL: &str = "https://api.openai.com/v1/models";
 
 /// The most models the Models API lists in one page.
 const MODELS_PAGE_LIMIT: &str = "1000";
@@ -107,6 +109,17 @@ fn request_parts(
                     ANTHROPIC_MESSAGES_URL
                 }
                 Endpoint::Models => ANTHROPIC_MODELS_URL,
+            };
+            (url, headers)
+        }
+        Provider::OpenAi => {
+            let mut headers = vec![("authorization", format!("Bearer {api_key}"))];
+            let url = match endpoint {
+                Endpoint::Messages => {
+                    headers.push(("content-type", "application/json".to_string()));
+                    OPENAI_RESPONSES_URL
+                }
+                Endpoint::Models => OPENAI_MODELS_URL,
             };
             (url, headers)
         }
@@ -300,23 +313,48 @@ struct ModelsPage {
     last_id: Option<String>,
 }
 
+/// A model of the OpenAI Models API's list, which has no display name.
+#[derive(Debug, Deserialize)]
+struct OpenAiModel {
+    id: String,
+    #[serde(default)]
+    created: i64,
+}
+
+/// The OpenAI Models API's list, which comes in one page.
+#[derive(Debug, Deserialize)]
+struct OpenAiModelList {
+    data: Vec<OpenAiModel>,
+}
+
+impl OpenAiModelList {
+    /// The models, newest first, named by their ids.
+    fn into_models(self) -> Vec<AiModel> {
+        let mut models = self.data;
+        models.sort_by(|a, b| b.created.cmp(&a.created).then_with(|| a.id.cmp(&b.id)));
+        models
+            .into_iter()
+            .map(|model| AiModel {
+                display_name: model.id.clone(),
+                id: model.id,
+            })
+            .collect()
+    }
+}
+
 /// The most pages read, so that a broken `has_more` cannot loop forever.
 const MAX_MODELS_PAGES: usize = 10;
 
-/// Reads one page of the Models API's list.
-async fn fetch_models_page(
+/// Sends a GET request to the provider's Models API, and returns the
+/// response body.
+async fn get_models(
     provider: Provider,
     api_key: &str,
-    limit: &str,
-    after_id: Option<&str>,
-) -> Result<ModelsPage, AiRequestError> {
+    params: &[(&str, &str)],
+) -> Result<String, AiRequestError> {
     let (url, headers) = request_parts(provider, Endpoint::Models, api_key);
-    let mut params = vec![("limit", limit)];
-    if let Some(after_id) = after_id {
-        params.push(("after_id", after_id));
-    }
-    let page_url = reqwest::Url::parse_with_params(url, &params).map_err(AiRequestError::other)?;
-    let mut request = client()?.get(page_url);
+    let models_url = reqwest::Url::parse_with_params(url, params).map_err(AiRequestError::other)?;
+    let mut request = client()?.get(models_url);
     for (name, value) in headers {
         request = request.header(name, value);
     }
@@ -329,15 +367,38 @@ async fn fetch_models_page(
             body,
         });
     }
+    Ok(body)
+}
+
+/// Reads one page of the Anthropic Models API's list.
+async fn fetch_models_page(
+    api_key: &str,
+    limit: &str,
+    after_id: Option<&str>,
+) -> Result<ModelsPage, AiRequestError> {
+    let mut params = vec![("limit", limit)];
+    if let Some(after_id) = after_id {
+        params.push(("after_id", after_id));
+    }
+    let body = get_models(Provider::Anthropic, api_key, &params).await?;
     serde_json::from_str(&body).map_err(AiRequestError::other)
 }
 
+/// Reads the OpenAI Models API's list.
+async fn fetch_openai_models(api_key: &str) -> Result<Vec<AiModel>, AiRequestError> {
+    let body = get_models(Provider::OpenAi, api_key, &[]).await?;
+    let list: OpenAiModelList = serde_json::from_str(&body).map_err(AiRequestError::other)?;
+    Ok(list.into_models())
+}
+
 async fn fetch_models(provider: Provider, api_key: String) -> Result<Vec<AiModel>, AiRequestError> {
+    if provider == Provider::OpenAi {
+        return fetch_openai_models(&api_key).await;
+    }
     let mut models = Vec::new();
     let mut after_id: Option<String> = None;
     for _ in 0..MAX_MODELS_PAGES {
-        let page =
-            fetch_models_page(provider, &api_key, MODELS_PAGE_LIMIT, after_id.as_deref()).await?;
+        let page = fetch_models_page(&api_key, MODELS_PAGE_LIMIT, after_id.as_deref()).await?;
         models.extend(page.data);
         match page.last_id {
             Some(last_id) if page.has_more => after_id = Some(last_id),
@@ -356,7 +417,16 @@ pub async fn check_ai_api_key(
     key: String,
 ) -> Result<(), AiRequestError> {
     api_key::check_window(&window).map_err(AiRequestError::other)?;
-    fetch_models_page(provider, key.trim(), "1", None).await?;
+    let key = key.trim();
+    match provider {
+        Provider::Anthropic => {
+            fetch_models_page(key, "1", None).await?;
+        }
+        // The list comes in one page, so there is no shorter request.
+        Provider::OpenAi => {
+            get_models(provider, key, &[]).await?;
+        }
+    }
     Ok(())
 }
 
@@ -393,6 +463,39 @@ mod tests {
         assert_eq!(url, "https://api.anthropic.com/v1/models");
         assert!(headers.contains(&("x-api-key", "sk-ant-key".to_string())));
         assert!(headers.contains(&("anthropic-version", "2026-10-21".to_string())));
+    }
+
+    #[test]
+    fn sends_openai_requests_to_its_api_with_the_key() {
+        let (url, headers) = request_parts(Provider::OpenAi, Endpoint::Messages, "sk-key");
+        assert_eq!(url, "https://api.openai.com/v1/responses");
+        assert!(headers.contains(&("authorization", "Bearer sk-key".to_string())));
+        assert!(headers.contains(&("content-type", "application/json".to_string())));
+    }
+
+    #[test]
+    fn lists_openai_models_from_its_api_with_the_key() {
+        let (url, headers) = request_parts(Provider::OpenAi, Endpoint::Models, "sk-key");
+        assert_eq!(url, "https://api.openai.com/v1/models");
+        assert_eq!(
+            headers,
+            vec![("authorization", "Bearer sk-key".to_string())]
+        );
+    }
+
+    #[test]
+    fn lists_openai_models_newest_first() {
+        let list: OpenAiModelList = serde_json::from_str(
+            r#"{"object":"list","data":[{"id":"gpt-old","object":"model","created":100,"owned_by":"openai"},{"id":"gpt-new","object":"model","created":200,"owned_by":"openai"}]}"#,
+        )
+        .unwrap();
+        assert_eq!(
+            serde_json::to_value(list.into_models()).unwrap(),
+            serde_json::json!([
+                { "id": "gpt-new", "displayName": "gpt-new" },
+                { "id": "gpt-old", "displayName": "gpt-old" }
+            ])
+        );
     }
 
     #[test]

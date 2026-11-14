@@ -30,16 +30,27 @@ import { store as preferencesStore } from '@wordpress/preferences';
  */
 import { aiPlatform } from './platform';
 import { DEFAULT_MODEL } from './anthropic';
+import { DEFAULT_MODEL as OPENAI_DEFAULT_MODEL } from './openai';
 
 /**
  * Sends a message, and resolves with the model of the request.
  */
 async function modelOfRequest() {
+	return ( await requestOf() ).model;
+}
+
+/**
+ * Sends a message, and resolves with the provider and the model of the
+ * request.
+ */
+async function requestOf() {
 	let model: unknown;
+	let provider: unknown;
 	invoke.mockImplementation(
-		async ( command: string, args: { body: string } ) => {
+		async ( command: string, args: { body: string; provider: string } ) => {
 			if ( command === 'ai_request' ) {
 				model = JSON.parse( args.body ).model;
+				provider = args.provider;
 				throw { code: 'cancelled' };
 			}
 		}
@@ -52,12 +63,13 @@ async function modelOfRequest() {
 			signal: new AbortController().signal,
 		} )
 	).rejects.toThrow();
-	return model;
+	return { model, provider };
 }
 
 beforeEach( () => {
 	invoke.mockReset();
 	dispatch( preferencesStore ).set( 'mark-bricks', 'aiModel', '' );
+	dispatch( preferencesStore ).set( 'mark-bricks', 'aiProvider', undefined );
 } );
 
 describe( 'aiPlatform', () => {
@@ -72,6 +84,23 @@ describe( 'aiPlatform', () => {
 			'claude-sonnet-5-5'
 		);
 		expect( await modelOfRequest() ).toBe( 'claude-sonnet-5-5' );
+	} );
+
+	it( 'uses OpenAI and its default model when it is chosen', async () => {
+		dispatch( preferencesStore ).set(
+			'mark-bricks',
+			'aiProvider',
+			'openai'
+		);
+		expect( await requestOf() ).toEqual( {
+			provider: 'openai',
+			model: OPENAI_DEFAULT_MODEL,
+		} );
+		invoke.mockResolvedValue( false );
+		await aiPlatform.hasApiKey();
+		expect( invoke ).toHaveBeenLastCalledWith( 'has_ai_api_key', {
+			provider: 'openai',
+		} );
 	} );
 
 	it( 'checks the API key', async () => {

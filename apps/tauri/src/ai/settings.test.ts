@@ -25,8 +25,32 @@ describe( 'listModels', () => {
 				return models;
 			}
 		} );
-		await expect( listModels() ).resolves.toEqual( models );
+		await expect( listModels( 'anthropic' ) ).resolves.toEqual( models );
 		expect( provider ).toBe( 'anthropic' );
+	} );
+
+	it( 'lists only the chat models of the OpenAI API key', async () => {
+		let provider: unknown;
+		mockIPC( ( command, args ) => {
+			if ( command === 'list_ai_models' ) {
+				provider = ( args as { provider: string } ).provider;
+				return [
+					{ id: 'gpt-6-astra', displayName: 'gpt-6-astra' },
+					{
+						id: 'text-embedding-3-large',
+						displayName: 'text-embedding-3-large',
+					},
+					{
+						id: 'gpt-realtime-2',
+						displayName: 'gpt-realtime-2',
+					},
+				];
+			}
+		} );
+		await expect( listModels( 'openai' ) ).resolves.toEqual( [
+			{ id: 'gpt-6-astra', displayName: 'gpt-6-astra' },
+		] );
+		expect( provider ).toBe( 'openai' );
 	} );
 
 	it( 'describes a failed request for the user', async () => {
@@ -37,7 +61,7 @@ describe( 'listModels', () => {
 				body: '{"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"}}',
 			};
 		} );
-		await expect( listModels() ).rejects.toThrow(
+		await expect( listModels( 'anthropic' ) ).rejects.toThrow(
 			'The API key is not valid. Check it in the settings.'
 		);
 	} );

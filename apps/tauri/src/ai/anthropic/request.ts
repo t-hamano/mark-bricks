@@ -3,16 +3,21 @@
  */
 import type { AiEdit, AiMessage } from '@mark-bricks/editor';
 
+/**
+ * Internal dependencies
+ */
+import {
+	EDIT_RESULT,
+	EDIT_TOOL_DESCRIPTION,
+	EDIT_TOOL_NAME,
+	EDIT_TOOL_SCHEMA,
+} from '../edit-tool';
+
+export { EDIT_TOOL_NAME };
+
 export const DEFAULT_MODEL = 'claude-opus-5-5';
 
-export const EDIT_TOOL_NAME = 'edit_selection';
-
 const MAX_TOKENS = 64000;
-
-/**
- * The text sent back to the model after it edits the selection.
- */
-const EDIT_RESULT = 'The edit was applied.';
 
 export type TextBlock = { type: 'text'; text: string };
 
@@ -58,26 +63,9 @@ export type RequestBody = {
 
 const EDIT_TOOL = {
 	name: EDIT_TOOL_NAME,
-	description:
-		'Edits the document at the selection. Use it when the user asks you to write or change content. "replace" replaces the selection with the Markdown, and "insert_after" inserts the Markdown after the selection.',
+	description: EDIT_TOOL_DESCRIPTION,
 	strict: true,
-	input_schema: {
-		type: 'object',
-		properties: {
-			action: {
-				type: 'string',
-				enum: [ 'replace', 'insert_after' ],
-				description: 'How to apply the Markdown to the selection.',
-			},
-			markdown: {
-				type: 'string',
-				description:
-					'The new content in Markdown, without the selection markers.',
-			},
-		},
-		required: [ 'action', 'markdown' ],
-		additionalProperties: false,
-	},
+	input_schema: EDIT_TOOL_SCHEMA,
 };
 
 /**
