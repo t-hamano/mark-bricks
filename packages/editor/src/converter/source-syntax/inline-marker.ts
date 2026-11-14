@@ -111,20 +111,29 @@ function nodeMarker( node: unknown ): InlineMarker | undefined {
 /**
  * Wraps a default handler so it emits the marker stored on the node.
  *
- * @param type The node type to handle.
+ * @param type   The node type to handle.
+ * @param strict Whether to offer only the stored (or default) marker. When
+ *               `false`, the other marker is offered as a fallback.
  * @return The wrapped handler.
  */
-function createHandler( type: MarkedType ): Handle {
+function createHandler( type: MarkedType, strict: boolean ): Handle {
 	const defaultHandler = defaultHandlers[ type ];
 	const handle: Handle = ( ...args ) => defaultHandler( ...args );
 	// `containerPhrasing` writes the node itself from the `attention` info of
-	// its handler. Only the recorded (or default) marker is offered, because
-	// with more than one candidate it may swap the marker for another one
-	// that does not touch a neighbor's (`**a *b***` as `**a _b_**`).
+	// its handler, choosing among the markers listed there. Given more than
+	// one, it may swap the stored marker for one that does not touch a
+	// neighbor's, even where the stored one parses back fine (`**a *b***` as
+	// `**a _b_**`). The strict handlers therefore offer the stored marker
+	// alone, and the fallback handlers put it first among the markers.
 	const attention: Attention = ( node, state ) => {
 		const info = defaultHandler.attention( node, state );
 		const marker = nodeMarker( node ) ?? state.options[ type ] ?? '*';
-		return { ...info, markers: [ marker ] };
+		return {
+			...info,
+			markers: strict
+				? [ marker ]
+				: [ marker, ...info.markers.filter( ( m ) => m !== marker ) ],
+		};
 	};
 	// `containerPhrasing` peeks at the first character of the next sibling to
 	// decide how to escape the current one. Without a `peek` the whole handler
@@ -135,12 +144,92 @@ function createHandler( type: MarkedType ): Handle {
 }
 
 /**
+ * Builds the emphasis and strong handlers.
+ *
+ * @param strict See {@link createHandler}.
+ * @return The handlers.
+ */
+function createHandlers( strict: boolean ): Partial< Handlers > {
+	return Object.fromEntries(
+		MARKED_TYPES.map( ( type ) => [ type, createHandler( type, strict ) ] )
+	);
+}
+
+/**
  * remark-stringify handlers that restore the original emphasis and strong
  * markers recorded by {@link annotateInlineMarker}.
  *
  * Nodes without a recorded marker fall back to the default, so text formatted
  * in the editor is written with `*` and `**`.
+ *
+ * Only that one marker is offered, so the output can fail to parse back as the
+ * same nodes, as with adjacent emphasis (`*a**b*`). Check the output with
+ * {@link hasSameAttention} and write it again with
+ * {@link inlineMarkerFallbackHandlers} when it does not match.
  */
-export const inlineMarkerHandlers: Partial< Handlers > = Object.fromEntries(
-	MARKED_TYPES.map( ( type ) => [ type, createHandler( type ) ] )
-);
+export const inlineMarkerHandlers = createHandlers( true );
+
+/**
+ * Like {@link inlineMarkerHandlers}, but lets the serializer switch to the
+ * other marker where the stored one would not parse back (`*a*_b_`).
+ */
+export const inlineMarkerFallbackHandlers = createHandlers( false );
+
+/**
+ * Lists the emphasis and strong nodes of a tree in document order, each with
+ * its type and text, to compare whether two trees format the same text.
+ *
+ * @param node The node to walk.
+ * @param out  The list to append to.
+ * @return The list.
+ */
+function attentionSignature( node: Nodes, out: string[] = [] ): string[] {
+	if ( node.type === 'emphasis' || node.type === 'strong' ) {
+		out.push( `${ node.type }:${ textOf( node ) }` );
+	}
+	if ( 'children' in node ) {
+		for ( const child of node.children ) {
+			attentionSignature( child as Nodes, out );
+		}
+	}
+	return out;
+}
+
+/**
+ * Concatenates the literal text inside a node.
+ *
+ * @param node The node to read.
+ * @return Its text.
+ */
+function textOf( node: Nodes ): string {
+	if ( 'value' in node ) {
+		return node.value;
+	}
+	return 'children' in node
+		? node.children.map( ( child ) => textOf( child as Nodes ) ).join( '' )
+		: '';
+}
+
+/**
+ * Whether a tree contains any emphasis or strong node.
+ *
+ * @param node The node to check.
+ * @return `true` when it does.
+ */
+export function hasAttention( node: Nodes ): boolean {
+	return attentionSignature( node ).length > 0;
+}
+
+/**
+ * Whether two trees have the same emphasis and strong nodes around the same
+ * text, ignoring the markers they are written with.
+ *
+ * @param expected The tree that was serialized.
+ * @param actual   The tree parsed back from the output.
+ * @return `true` when they match.
+ */
+export function hasSameAttention( expected: Nodes, actual: Nodes ): boolean {
+	const a = attentionSignature( expected );
+	const b = attentionSignature( actual );
+	return a.length === b.length && a.every( ( value, i ) => value === b[ i ] );
+}
