@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T09:26:40.229Z\n"
-"PO-Revision-Date: 2026-11-14T09:27:04.900Z\n"
+"POT-Creation-Date: 2026-11-14T09:51:28.612Z\n"
+"PO-Revision-Date: 2026-11-14T09:51:59.575Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -67,7 +67,7 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/block-library/html/marp-directive-settings.tsx:329
+#: src/block-library/html/marp-directive-settings.tsx:365
 msgid "A CSS background image, such as a gradient."
 msgstr "グラデーションなどのCSS背景画像です。"
 
@@ -149,7 +149,7 @@ msgstr "どのエディターでも"
 msgid "Apply"
 msgstr "適用"
 
-#: src/block-library/html/marp-directive-settings.tsx:176
+#: src/block-library/html/marp-directive-settings.tsx:177
 msgid "Apply to"
 msgstr "適用範囲"
 
@@ -174,11 +174,11 @@ msgstr "自動"
 msgid "Background"
 msgstr "背景"
 
-#: src/block-library/html/marp-directive-settings.tsx:306
+#: src/block-library/html/marp-directive-settings.tsx:342
 msgid "Background color"
 msgstr "背景色"
 
-#: src/block-library/html/marp-directive-settings.tsx:328
+#: src/block-library/html/marp-directive-settings.tsx:364
 msgid "Background image"
 msgstr "背景画像"
 
@@ -236,7 +236,7 @@ msgstr "注意"
 msgid "Cell content"
 msgstr "セルの内容"
 
-#: src/block-library/html/marp-directive-settings.tsx:54
+#: src/block-library/html/marp-directive-settings.tsx:55
 msgid "Centers the content of the slide."
 msgstr "スライドの内容を中央に配置します。"
 
@@ -252,17 +252,17 @@ msgstr "新規段落の追加後、ブロックタイプを変更します。"
 msgid "Choose language…"
 msgstr "言語を選択…"
 
-#: src/block-library/html/marp-directive-settings.tsx:203
-#: src/block-library/html/marp-directive-settings.tsx:229
+#: src/block-library/html/marp-directive-settings.tsx:208
+#: src/block-library/html/marp-directive-settings.tsx:234
 msgid "Class"
 msgstr "クラス"
 
-#: src/block-library/html/marp-directive-settings.tsx:241
+#: src/block-library/html/marp-directive-settings.tsx:246
 msgid "Classes of the slide, separated by spaces."
 msgstr "スライドのクラスです。スペースで区切ります。"
 
 # %s: A theme name, such as "gaia".
-#: src/block-library/html/marp-directive-settings.tsx:235
+#: src/block-library/html/marp-directive-settings.tsx:240
 msgid "Classes that the %s theme does not provide, separated by spaces."
 msgstr "%s テーマにないクラスです。スペースで区切ります。"
 
@@ -314,7 +314,7 @@ msgid "Create Table"
 msgstr "表を作成"
 
 #: src/block-library/quote/edit.tsx:151
-#: src/block-library/html/marp-directive-settings.tsx:268
+#: src/block-library/html/marp-directive-settings.tsx:273
 msgid "Default"
 msgstr "デフォルト"
 
@@ -408,16 +408,16 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "伝えたいことに集中する"
 
-#: src/block-library/html/marp-directive-settings.tsx:197
+#: src/block-library/html/marp-directive-settings.tsx:202
 msgid "Following slides"
 msgstr "以降のスライド"
 
-#: src/block-library/html/marp-directive-settings.tsx:83
+#: src/block-library/html/marp-directive-settings.tsx:84
 msgid "Follows the setting of the deck."
 msgstr "デッキの設定に従います。"
 
 #: src/components/front-matter-editor/index.tsx:293
-#: src/block-library/html/marp-directive-settings.tsx:297
+#: src/block-library/html/marp-directive-settings.tsx:302
 msgid "Footer"
 msgstr "フッター"
 
@@ -455,7 +455,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:282
-#: src/block-library/html/marp-directive-settings.tsx:288
+#: src/block-library/html/marp-directive-settings.tsx:301
 msgid "Header"
 msgstr "ヘッダー"
 
@@ -536,7 +536,7 @@ msgstr "見出し、テキストとリストの 2 段組み"
 msgid "Height"
 msgstr "高さ"
 
-#: src/block-library/html/marp-directive-settings.tsx:276
+#: src/block-library/html/marp-directive-settings.tsx:281
 msgid "Hide"
 msgstr "非表示"
 
@@ -544,15 +544,23 @@ msgstr "非表示"
 msgid "Hide Document Overview"
 msgstr "ドキュメント概観を非表示"
 
-#: src/block-library/html/marp-directive-settings.tsx:78
+#: src/block-library/html/marp-directive-settings.tsx:325
+msgid "Hide the footer"
+msgstr "フッターを非表示"
+
+#: src/block-library/html/marp-directive-settings.tsx:324
+msgid "Hide the header"
+msgstr "ヘッダーを非表示"
+
+#: src/block-library/html/marp-directive-settings.tsx:79
 msgid "Hides the page number without counting this slide."
 msgstr "このスライドを数えずに、ページ番号を非表示にします。"
 
-#: src/block-library/html/marp-directive-settings.tsx:71
+#: src/block-library/html/marp-directive-settings.tsx:72
 msgid "Hides the page number."
 msgstr "ページ番号を非表示にします。"
 
-#: src/block-library/html/marp-directive-settings.tsx:280
+#: src/block-library/html/marp-directive-settings.tsx:285
 msgid "Hold"
 msgstr "保持"
 
@@ -624,7 +632,7 @@ msgstr "行を下に挿入"
 msgid "Insert row before"
 msgstr "行を上に挿入"
 
-#: src/block-library/html/marp-directive-settings.tsx:56
+#: src/block-library/html/marp-directive-settings.tsx:57
 msgid "Inverts the colors of the slide."
 msgstr "スライドの色を反転します。"
 
@@ -780,7 +788,7 @@ msgstr "順序付きリスト"
 msgid "Original"
 msgstr "元のサイズ"
 
-#: src/block-library/html/marp-directive-settings.tsx:228
+#: src/block-library/html/marp-directive-settings.tsx:233
 msgid "Other classes"
 msgstr "その他のクラス"
 
@@ -792,7 +800,7 @@ msgstr "インデント解除"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: src/block-library/html/marp-directive-settings.tsx:254
+#: src/block-library/html/marp-directive-settings.tsx:259
 msgid "Page number"
 msgstr "ページ番号"
 
@@ -943,7 +951,7 @@ msgctxt "slide pattern"
 msgid "Share"
 msgstr "共有"
 
-#: src/block-library/html/marp-directive-settings.tsx:272
+#: src/block-library/html/marp-directive-settings.tsx:277
 msgid "Show"
 msgstr "表示"
 
@@ -966,11 +974,11 @@ msgstr "スライドを全画面で表示"
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
 
-#: src/block-library/html/marp-directive-settings.tsx:73
+#: src/block-library/html/marp-directive-settings.tsx:74
 msgid "Shows the page number without counting this slide."
 msgstr "このスライドを数えずに、ページ番号を表示します。"
 
-#: src/block-library/html/marp-directive-settings.tsx:69
+#: src/block-library/html/marp-directive-settings.tsx:70
 msgid "Shows the page number."
 msgstr "ページ番号を表示します。"
 
@@ -982,7 +990,7 @@ msgstr "GitHub の Markdown スタイルをベースにしたシンプルなテ�
 msgid "Size"
 msgstr "サイズ"
 
-#: src/block-library/html/marp-directive-settings.tsx:284
+#: src/block-library/html/marp-directive-settings.tsx:289
 msgid "Skip"
 msgstr "スキップ"
 
@@ -1049,7 +1057,7 @@ msgstr "選択したテキストに取り消し線を追加する。"
 msgid "Switch between the visual editor and the code editor."
 msgstr "ビジュアルエディターとコードエディターを切り替える。"
 
-#: src/block-library/html/marp-directive-settings.tsx:58
+#: src/block-library/html/marp-directive-settings.tsx:59
 msgid "Switches to the theme's alternate color scheme."
 msgstr "テーマのもう1つの配色に切り替えます。"
 
@@ -1062,7 +1070,7 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "テキスト"
 
-#: src/block-library/html/marp-directive-settings.tsx:318
+#: src/block-library/html/marp-directive-settings.tsx:354
 msgid "Text color"
 msgstr "文字色"
 
@@ -1070,17 +1078,25 @@ msgstr "文字色"
 msgid "Text shown at the bottom of each slide."
 msgstr "各スライドの下部に表示するテキスト。"
 
-#: src/block-library/html/marp-directive-settings.tsx:298
-msgid "Text shown at the bottom of the slide."
-msgstr "スライドの下部に表示するテキストです。"
+#: src/block-library/html/marp-directive-settings.tsx:310
+msgid ""
+"Text shown at the bottom of the slide. Leave empty to keep the one of the "
+"earlier slides."
+msgstr ""
+"スライドの下部に表示するテキストです。空欄にすると前のスライドの設定を引き継"
+"ぎます。"
 
 #: src/components/front-matter-editor/index.tsx:283
 msgid "Text shown at the top of each slide."
 msgstr "各スライドの上部に表示するテキスト。"
 
-#: src/block-library/html/marp-directive-settings.tsx:289
-msgid "Text shown at the top of the slide."
-msgstr "スライドの上部に表示するテキストです。"
+#: src/block-library/html/marp-directive-settings.tsx:306
+msgid ""
+"Text shown at the top of the slide. Leave empty to keep the one of the "
+"earlier slides."
+msgstr ""
+"スライドの上部に表示するテキストです。空欄にすると前のスライドの設定を引き継"
+"ぎます。"
 
 #: src/components/ai-sidebar/chat.tsx:112
 msgid "The answer could not be loaded."
@@ -1115,11 +1131,11 @@ msgstr ""
 msgid "The image sits in the slide content."
 msgstr "画像がスライドのコンテンツ内に表示されます。"
 
-#: src/block-library/html/marp-directive-settings.tsx:183
+#: src/block-library/html/marp-directive-settings.tsx:184
 msgid "The settings apply to this slide and the slides after it."
 msgstr "このスライドと以降のスライドに適用します。"
 
-#: src/block-library/html/marp-directive-settings.tsx:179
+#: src/block-library/html/marp-directive-settings.tsx:180
 msgid "The settings apply to this slide only."
 msgstr "このスライドのみに適用します。"
 
@@ -1144,7 +1160,7 @@ msgstr "テーマ"
 msgid "Thinking…"
 msgstr "考えています…"
 
-#: src/block-library/html/marp-directive-settings.tsx:193
+#: src/block-library/html/marp-directive-settings.tsx:198
 msgid "This slide"
 msgstr "このスライド"
 
@@ -1369,8 +1385,8 @@ msgstr "YAML フロントマター"
 # %s: An example value, such as "1.5".
 # %s: An example value, such as "#f0f0f0".
 #: src/block-library/image/marp-image-settings.tsx:485
-#: src/block-library/html/marp-directive-settings.tsx:309
-#: src/block-library/html/marp-directive-settings.tsx:321
-#: src/block-library/html/marp-directive-settings.tsx:335
+#: src/block-library/html/marp-directive-settings.tsx:345
+#: src/block-library/html/marp-directive-settings.tsx:357
+#: src/block-library/html/marp-directive-settings.tsx:371
 msgid "e.g. %s"
 msgstr "例: %s"

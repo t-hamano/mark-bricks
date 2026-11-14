@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T09:26:40.229Z\n"
-"PO-Revision-Date: 2026-11-14T09:27:05.648Z\n"
+"POT-Creation-Date: 2026-11-14T09:51:28.612Z\n"
+"PO-Revision-Date: 2026-11-14T09:52:00.290Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -67,7 +67,7 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/block-library/html/marp-directive-settings.tsx:329
+#: src/block-library/html/marp-directive-settings.tsx:365
 msgid "A CSS background image, such as a gradient."
 msgstr "Obrázek pozadí v CSS, například přechod."
 
@@ -149,7 +149,7 @@ msgstr "Libovolný editor"
 msgid "Apply"
 msgstr "Použít"
 
-#: src/block-library/html/marp-directive-settings.tsx:176
+#: src/block-library/html/marp-directive-settings.tsx:177
 msgid "Apply to"
 msgstr "Použít na"
 
@@ -174,11 +174,11 @@ msgstr "Automaticky"
 msgid "Background"
 msgstr "Pozadí"
 
-#: src/block-library/html/marp-directive-settings.tsx:306
+#: src/block-library/html/marp-directive-settings.tsx:342
 msgid "Background color"
 msgstr "Barva pozadí"
 
-#: src/block-library/html/marp-directive-settings.tsx:328
+#: src/block-library/html/marp-directive-settings.tsx:364
 msgid "Background image"
 msgstr "Obrázek pozadí"
 
@@ -236,7 +236,7 @@ msgstr "Upozornění"
 msgid "Cell content"
 msgstr "Obsah buňky"
 
-#: src/block-library/html/marp-directive-settings.tsx:54
+#: src/block-library/html/marp-directive-settings.tsx:55
 msgid "Centers the content of the slide."
 msgstr "Zarovná obsah snímku na střed."
 
@@ -252,17 +252,17 @@ msgstr "Změnit typ bloku po přidání nového odstavce."
 msgid "Choose language…"
 msgstr "Vyberte jazyk…"
 
-#: src/block-library/html/marp-directive-settings.tsx:203
-#: src/block-library/html/marp-directive-settings.tsx:229
+#: src/block-library/html/marp-directive-settings.tsx:208
+#: src/block-library/html/marp-directive-settings.tsx:234
 msgid "Class"
 msgstr "Třída"
 
-#: src/block-library/html/marp-directive-settings.tsx:241
+#: src/block-library/html/marp-directive-settings.tsx:246
 msgid "Classes of the slide, separated by spaces."
 msgstr "Třídy snímku oddělené mezerami."
 
 # %s: A theme name, such as "gaia".
-#: src/block-library/html/marp-directive-settings.tsx:235
+#: src/block-library/html/marp-directive-settings.tsx:240
 msgid "Classes that the %s theme does not provide, separated by spaces."
 msgstr "Třídy, které motiv %s neposkytuje, oddělené mezerami."
 
@@ -314,7 +314,7 @@ msgid "Create Table"
 msgstr "Vytvořit"
 
 #: src/block-library/quote/edit.tsx:151
-#: src/block-library/html/marp-directive-settings.tsx:268
+#: src/block-library/html/marp-directive-settings.tsx:273
 msgid "Default"
 msgstr "Výchozí"
 
@@ -408,16 +408,16 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "Soustřeďte se na sdělení"
 
-#: src/block-library/html/marp-directive-settings.tsx:197
+#: src/block-library/html/marp-directive-settings.tsx:202
 msgid "Following slides"
 msgstr "Následující snímky"
 
-#: src/block-library/html/marp-directive-settings.tsx:83
+#: src/block-library/html/marp-directive-settings.tsx:84
 msgid "Follows the setting of the deck."
 msgstr "Řídí se nastavením prezentace."
 
 #: src/components/front-matter-editor/index.tsx:293
-#: src/block-library/html/marp-directive-settings.tsx:297
+#: src/block-library/html/marp-directive-settings.tsx:302
 msgid "Footer"
 msgstr "Zápatí"
 
@@ -455,7 +455,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:282
-#: src/block-library/html/marp-directive-settings.tsx:288
+#: src/block-library/html/marp-directive-settings.tsx:301
 msgid "Header"
 msgstr "Záhlaví"
 
@@ -536,7 +536,7 @@ msgstr "Nadpis, text a seznam ve dvou sloupcích"
 msgid "Height"
 msgstr "Výška"
 
-#: src/block-library/html/marp-directive-settings.tsx:276
+#: src/block-library/html/marp-directive-settings.tsx:281
 msgid "Hide"
 msgstr "Skrýt"
 
@@ -544,15 +544,23 @@ msgstr "Skrýt"
 msgid "Hide Document Overview"
 msgstr "Skrýt přehled dokumentu"
 
-#: src/block-library/html/marp-directive-settings.tsx:78
+#: src/block-library/html/marp-directive-settings.tsx:325
+msgid "Hide the footer"
+msgstr "Skrýt zápatí"
+
+#: src/block-library/html/marp-directive-settings.tsx:324
+msgid "Hide the header"
+msgstr "Skrýt záhlaví"
+
+#: src/block-library/html/marp-directive-settings.tsx:79
 msgid "Hides the page number without counting this slide."
 msgstr "Skryje číslo stránky a tento snímek nezapočítá."
 
-#: src/block-library/html/marp-directive-settings.tsx:71
+#: src/block-library/html/marp-directive-settings.tsx:72
 msgid "Hides the page number."
 msgstr "Skryje číslo stránky."
 
-#: src/block-library/html/marp-directive-settings.tsx:280
+#: src/block-library/html/marp-directive-settings.tsx:285
 msgid "Hold"
 msgstr "Podržet"
 
@@ -624,7 +632,7 @@ msgstr "Vložit nový řádek dolů"
 msgid "Insert row before"
 msgstr "Vložit nový řádek nahoru"
 
-#: src/block-library/html/marp-directive-settings.tsx:56
+#: src/block-library/html/marp-directive-settings.tsx:57
 msgid "Inverts the colors of the slide."
 msgstr "Invertuje barvy snímku."
 
@@ -781,7 +789,7 @@ msgstr "Číslovaný"
 msgid "Original"
 msgstr "Původní"
 
-#: src/block-library/html/marp-directive-settings.tsx:228
+#: src/block-library/html/marp-directive-settings.tsx:233
 msgid "Other classes"
 msgstr "Další třídy"
 
@@ -793,7 +801,7 @@ msgstr "Zmenšit odsazení"
 msgid "Outline"
 msgstr "Osnova"
 
-#: src/block-library/html/marp-directive-settings.tsx:254
+#: src/block-library/html/marp-directive-settings.tsx:259
 msgid "Page number"
 msgstr "Číslo stránky"
 
@@ -946,7 +954,7 @@ msgctxt "slide pattern"
 msgid "Share"
 msgstr "Sdílet"
 
-#: src/block-library/html/marp-directive-settings.tsx:272
+#: src/block-library/html/marp-directive-settings.tsx:277
 msgid "Show"
 msgstr "Zobrazit"
 
@@ -969,11 +977,11 @@ msgstr "Zobrazte snímky na celé obrazovce"
 msgid "Shown as a tooltip on hover."
 msgstr "Zobrazí se jako popisek při najetí myší."
 
-#: src/block-library/html/marp-directive-settings.tsx:73
+#: src/block-library/html/marp-directive-settings.tsx:74
 msgid "Shows the page number without counting this slide."
 msgstr "Zobrazí číslo stránky a tento snímek nezapočítá."
 
-#: src/block-library/html/marp-directive-settings.tsx:69
+#: src/block-library/html/marp-directive-settings.tsx:70
 msgid "Shows the page number."
 msgstr "Zobrazí číslo stránky."
 
@@ -985,7 +993,7 @@ msgstr "Jednoduchý a čistý, založený na stylu GitHub Markdown."
 msgid "Size"
 msgstr "Velikost"
 
-#: src/block-library/html/marp-directive-settings.tsx:284
+#: src/block-library/html/marp-directive-settings.tsx:289
 msgid "Skip"
 msgstr "Přeskočit"
 
@@ -1052,7 +1060,7 @@ msgstr "Vybraný text přeškrtni."
 msgid "Switch between the visual editor and the code editor."
 msgstr "Přepnout mezi vizuálním editorem a editorem kódu."
 
-#: src/block-library/html/marp-directive-settings.tsx:58
+#: src/block-library/html/marp-directive-settings.tsx:59
 msgid "Switches to the theme's alternate color scheme."
 msgstr "Přepne na alternativní barevné schéma motivu."
 
@@ -1065,7 +1073,7 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "Text"
 
-#: src/block-library/html/marp-directive-settings.tsx:318
+#: src/block-library/html/marp-directive-settings.tsx:354
 msgid "Text color"
 msgstr "Barva textu"
 
@@ -1073,17 +1081,25 @@ msgstr "Barva textu"
 msgid "Text shown at the bottom of each slide."
 msgstr "Text zobrazený v dolní části každého snímku."
 
-#: src/block-library/html/marp-directive-settings.tsx:298
-msgid "Text shown at the bottom of the slide."
-msgstr "Text zobrazený v dolní části snímku."
+#: src/block-library/html/marp-directive-settings.tsx:310
+msgid ""
+"Text shown at the bottom of the slide. Leave empty to keep the one of the "
+"earlier slides."
+msgstr ""
+"Text zobrazený v dolní části snímku. Ponechte prázdné, chcete-li zachovat "
+"text předchozích snímků."
 
 #: src/components/front-matter-editor/index.tsx:283
 msgid "Text shown at the top of each slide."
 msgstr "Text zobrazený v horní části každého snímku."
 
-#: src/block-library/html/marp-directive-settings.tsx:289
-msgid "Text shown at the top of the slide."
-msgstr "Text zobrazený v horní části snímku."
+#: src/block-library/html/marp-directive-settings.tsx:306
+msgid ""
+"Text shown at the top of the slide. Leave empty to keep the one of the "
+"earlier slides."
+msgstr ""
+"Text zobrazený v horní části snímku. Ponechte prázdné, chcete-li zachovat "
+"text předchozích snímků."
 
 #: src/components/ai-sidebar/chat.tsx:112
 msgid "The answer could not be loaded."
@@ -1116,11 +1132,11 @@ msgstr "Obrázek vyplní snímek nebo jeho jednu stranu za obsahem."
 msgid "The image sits in the slide content."
 msgstr "Obrázek je součástí obsahu snímku."
 
-#: src/block-library/html/marp-directive-settings.tsx:183
+#: src/block-library/html/marp-directive-settings.tsx:184
 msgid "The settings apply to this slide and the slides after it."
 msgstr "Nastavení platí pro tento a všechny následující snímky."
 
-#: src/block-library/html/marp-directive-settings.tsx:179
+#: src/block-library/html/marp-directive-settings.tsx:180
 msgid "The settings apply to this slide only."
 msgstr "Nastavení platí jen pro tento snímek."
 
@@ -1145,7 +1161,7 @@ msgstr "Motiv"
 msgid "Thinking…"
 msgstr "Přemýšlím…"
 
-#: src/block-library/html/marp-directive-settings.tsx:193
+#: src/block-library/html/marp-directive-settings.tsx:198
 msgid "This slide"
 msgstr "Tento snímek"
 
@@ -1370,8 +1386,8 @@ msgstr "YAML front matter"
 # %s: An example value, such as "1.5".
 # %s: An example value, such as "#f0f0f0".
 #: src/block-library/image/marp-image-settings.tsx:485
-#: src/block-library/html/marp-directive-settings.tsx:309
-#: src/block-library/html/marp-directive-settings.tsx:321
-#: src/block-library/html/marp-directive-settings.tsx:335
+#: src/block-library/html/marp-directive-settings.tsx:345
+#: src/block-library/html/marp-directive-settings.tsx:357
+#: src/block-library/html/marp-directive-settings.tsx:371
 msgid "e.g. %s"
 msgstr "např. %s"
