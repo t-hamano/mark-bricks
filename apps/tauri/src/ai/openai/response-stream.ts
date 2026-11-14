@@ -38,7 +38,11 @@ type StreamEvent = {
 		 * The input counts the cached tokens too, and the output the
 		 * reasoning tokens.
 		 */
-		usage?: { input_tokens?: number; output_tokens?: number } | null;
+		usage?: {
+			input_tokens?: number;
+			input_tokens_details?: { cached_tokens?: number } | null;
+			output_tokens?: number;
+		} | null;
 	};
 	code?: string | null;
 	message?: string | null;
@@ -121,6 +125,8 @@ export function readAnswer(
 				if ( counts ) {
 					usage = {
 						inputTokens: counts.input_tokens ?? 0,
+						cachedInputTokens:
+							counts.input_tokens_details?.cached_tokens ?? 0,
 						outputTokens: counts.output_tokens ?? 0,
 					};
 				}

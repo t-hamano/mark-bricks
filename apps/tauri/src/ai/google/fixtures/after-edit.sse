@@ -1,4 +1,4 @@
 data: {"candidates":[{"content":{"parts":[{"text":"I cut it to one sentence."}],"role":"model"},"index":0}],"usageMetadata":{"promptTokenCount":190,"totalTokenCount":190},"modelVersion":"gemini-3.6-flash","responseId":"resp_03"}
 
-data: {"candidates":[{"content":{"parts":[{"text":""}],"role":"model"},"finishReason":"STOP","index":0}],"usageMetadata":{"promptTokenCount":190,"candidatesTokenCount":12,"totalTokenCount":202},"modelVersion":"gemini-3.6-flash","responseId":"resp_03"}
+data: {"candidates":[{"content":{"parts":[{"text":""}],"role":"model"},"finishReason":"STOP","index":0}],"usageMetadata":{"promptTokenCount":190,"cachedContentTokenCount":128,"candidatesTokenCount":12,"totalTokenCount":202},"modelVersion":"gemini-3.6-flash","responseId":"resp_03"}
 

@@ -131,9 +131,20 @@ describe( 'createChat with Anthropic', () => {
 			[
 				{
 					type: 'usage',
-					usage: { inputTokens: 150, outputTokens: 60 },
+					usage: {
+						inputTokens: 150,
+						cachedInputTokens: 0,
+						outputTokens: 60,
+					},
 				},
-				{ type: 'usage', usage: { inputTokens: 220, outputTokens: 9 } },
+				{
+					type: 'usage',
+					usage: {
+						inputTokens: 220,
+						cachedInputTokens: 0,
+						outputTokens: 9,
+					},
+				},
 			]
 		);
 	} );

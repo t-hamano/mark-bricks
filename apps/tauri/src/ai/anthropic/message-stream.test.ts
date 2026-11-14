@@ -30,6 +30,7 @@ describe( 'createMessageStream', () => {
 		message.handle( { type: 'message_stop' } );
 		expect( message.finish().usage ).toEqual( {
 			inputTokens: 1210,
+			cachedInputTokens: 1000,
 			outputTokens: 42,
 		} );
 	} );

@@ -143,7 +143,14 @@ describe( 'createChat with Google Gemini', () => {
 		expect(
 			plain.events.filter( ( event ) => event.type === 'usage' )
 		).toEqual( [
-			{ type: 'usage', usage: { inputTokens: 220, outputTokens: 49 } },
+			{
+				type: 'usage',
+				usage: {
+					inputTokens: 220,
+					cachedInputTokens: 0,
+					outputTokens: 49,
+				},
+			},
 		] );
 
 		const edited = run( [ edit, afterEdit ] );
@@ -151,8 +158,22 @@ describe( 'createChat with Google Gemini', () => {
 		expect(
 			edited.events.filter( ( event ) => event.type === 'usage' )
 		).toEqual( [
-			{ type: 'usage', usage: { inputTokens: 130, outputTokens: 48 } },
-			{ type: 'usage', usage: { inputTokens: 190, outputTokens: 12 } },
+			{
+				type: 'usage',
+				usage: {
+					inputTokens: 130,
+					cachedInputTokens: 0,
+					outputTokens: 48,
+				},
+			},
+			{
+				type: 'usage',
+				usage: {
+					inputTokens: 190,
+					cachedInputTokens: 128,
+					outputTokens: 12,
+				},
+			},
 		] );
 	} );
 

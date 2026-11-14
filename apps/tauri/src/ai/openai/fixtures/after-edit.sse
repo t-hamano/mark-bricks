@@ -5,5 +5,5 @@ event: response.output_text.delta
 data: {"type":"response.output_text.delta","sequence_number":1,"item_id":"msg_03","output_index":0,"content_index":0,"delta":"I cut it to one sentence."}
 
 event: response.completed
-data: {"type":"response.completed","sequence_number":2,"response":{"id":"resp_03","object":"response","status":"completed","model":"gpt-6-astra","incomplete_details":null,"usage":{"input_tokens":190,"input_tokens_details":{"cached_tokens":0},"output_tokens":12,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":202}}}
+data: {"type":"response.completed","sequence_number":2,"response":{"id":"resp_03","object":"response","status":"completed","model":"gpt-6-astra","incomplete_details":null,"usage":{"input_tokens":190,"input_tokens_details":{"cached_tokens":128},"output_tokens":12,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":202}}}
 

@@ -219,7 +219,8 @@ function withoutNulls( usage: Usage ): Usage {
 
 /**
  * Counts the input read from or written to the prompt cache as input too,
- * since the model read it all.
+ * since the model read it all. The part read from the cache, which costs
+ * less, is reported apart too.
  *
  * @param usage The message's counts.
  */
@@ -229,6 +230,7 @@ function toAiUsage( usage: Usage ): AiUsage {
 			( usage.input_tokens ?? 0 ) +
 			( usage.cache_creation_input_tokens ?? 0 ) +
 			( usage.cache_read_input_tokens ?? 0 ),
+		cachedInputTokens: usage.cache_read_input_tokens ?? 0,
 		outputTokens: usage.output_tokens ?? 0,
 	};
 }
