@@ -189,6 +189,115 @@ export function getFrontMatterValue(
 	return null;
 }
 
+// A block scalar indicator such as `|`, `|-` or `>2`, optionally followed
+// by a YAML comment.
+const BLOCK_INDICATOR_PATTERN = /^[ \t]*[|>][1-9+-]{0,2}[ \t]*(?:#.*)?$/;
+
+type KeyRange = {
+	start: number;
+	// Index after the last line belonging to the key.
+	end: number;
+	// The value, without the key or a trailing comment.
+	value: string;
+};
+
+// Finds a top-level key and the lines its value spans, reading a block
+// scalar (`|`, `>`) as its indented lines with the indentation removed.
+function findKeyRange( lines: string[], key: string ): KeyRange | null {
+	const pattern = keyLinePattern( key );
+	const start = lines.findIndex( ( line ) => pattern.test( line ) );
+	if ( start === -1 ) {
+		return null;
+	}
+	const rest = pattern.exec( lines[ start ] )?.[ 1 ] ?? '';
+	if ( ! BLOCK_INDICATOR_PATTERN.test( rest ) ) {
+		return { start, end: start + 1, value: parseScalar( rest ).value };
+	}
+	let end = start + 1;
+	while (
+		end < lines.length &&
+		( lines[ end ].trim() === '' || /^[ \t]/.test( lines[ end ] ) )
+	) {
+		end++;
+	}
+	// Trailing blank lines belong to whatever follows.
+	while ( end > start + 1 && lines[ end - 1 ].trim() === '' ) {
+		end--;
+	}
+	const content = lines.slice( start + 1, end );
+	const indent = Math.min(
+		...content
+			.filter( ( line ) => line.trim() !== '' )
+			.map( ( line ) => /^[ \t]*/.exec( line )?.[ 0 ].length ?? 0 )
+	);
+	return {
+		start,
+		end,
+		value: content
+			.map( ( line ) =>
+				line.trim() === '' ? '' : line.slice( indent )
+			)
+			.join( '\n' ),
+	};
+}
+
+/**
+ * Reads a top-level value from front matter that may span several lines,
+ * such as `style: |` followed by indented CSS. A one-line value is read
+ * like {@link getFrontMatterValue}.
+ *
+ * @param frontMatter Front matter content, or `null` when there is none.
+ * @param key         Top-level key.
+ * @return The value, or `null` when the key is missing or empty.
+ */
+export function getFrontMatterBlockValue(
+	frontMatter: string | null,
+	key: string
+): string | null {
+	if ( frontMatter === null ) {
+		return null;
+	}
+	const range = findKeyRange( frontMatter.split( '\n' ), key );
+	return range && range.value.trim() !== '' ? range.value : null;
+}
+
+/**
+ * Writes a top-level value into front matter as a literal block scalar
+ * (`key: |`), replacing the key's existing lines in place or adding it at
+ * the end.
+ *
+ * @param frontMatter Front matter content.
+ * @param key         Top-level key.
+ * @param value       New value, or `null` to remove the key.
+ * @return The updated front matter content.
+ */
+export function setFrontMatterBlockValue(
+	frontMatter: string,
+	key: string,
+	value: string | null
+): string {
+	const lines = frontMatter === '' ? [] : frontMatter.split( '\n' );
+	const range = findKeyRange( lines, key );
+	const next =
+		value === null || value.trim() === ''
+			? []
+			: [
+					`${ key }: |`,
+					...value
+						.replace( /\s+$/, '' )
+						.split( '\n' )
+						.map( ( line ) =>
+							line === '' ? '' : `  ${ line }`
+						),
+				];
+	if ( range ) {
+		lines.splice( range.start, range.end - range.start, ...next );
+	} else {
+		lines.push( ...next );
+	}
+	return lines.join( '\n' );
+}
+
 /**
  * Writes a top-level scalar value into front matter, quoting it when
  * needed. An existing line for the key is replaced in place, keeping its

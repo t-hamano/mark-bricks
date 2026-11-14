@@ -47,3 +47,23 @@
 	color: var(--wpds-color-foreground-content-neutral-weak);
 }
 
+.front-matter-editor__color-scheme {
+	display: inline-flex;
+	gap: 0.5rem;
+	align-items: center;
+}
+
+.front-matter-editor__color-scheme-swatches {
+	display: inline-flex;
+}
+
+.front-matter-editor__color-scheme-swatch {
+	width: 0.875rem;
+	height: 0.875rem;
+	border: 1px solid var(--wpds-color-stroke-surface-neutral);
+	border-radius: 50%;
+
+	& + & {
+		margin-left: -0.25rem;
+	}
+}

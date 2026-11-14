@@ -8,11 +8,13 @@ import { describe, it, expect } from 'vitest';
  */
 import {
 	blocksToMarkdown,
+	getFrontMatterBlockValue,
 	getFrontMatterValue,
 	isMarpDocument,
 	isMarpFrontMatter,
 	joinFrontMatter,
 	markdownToBlocks,
+	setFrontMatterBlockValue,
 	setFrontMatterValue,
 	setMarpFrontMatter,
 	splitFrontMatter,
@@ -345,5 +347,60 @@ describe( 'isMarpDocument', () => {
 		],
 	] )( 'does not detect a document that %s', ( _name, markdown ) => {
 		expect( isMarpDocument( markdown ) ).toBe( false );
+	} );
+} );
+
+describe( 'getFrontMatterBlockValue', () => {
+	it( 'reads a block scalar without its indentation', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'marp: true\nstyle: |\n  section {\n    color: red;\n  }\n\n  h1 {}\npaginate: true',
+				'style'
+			)
+		).toBe( 'section {\n  color: red;\n}\n\nh1 {}' );
+	} );
+
+	it( 'reads a one-line value', () => {
+		expect(
+			getFrontMatterBlockValue( 'style: "h1 { color: red; }"', 'style' )
+		).toBe( 'h1 { color: red; }' );
+	} );
+
+	it( 'returns null when the key is missing', () => {
+		expect( getFrontMatterBlockValue( 'marp: true', 'style' ) ).toBeNull();
+	} );
+} );
+
+describe( 'setFrontMatterBlockValue', () => {
+	it( 'replaces a block scalar in place', () => {
+		expect(
+			setFrontMatterBlockValue(
+				'marp: true\nstyle: |-\n  h1 {}\n\npaginate: true',
+				'style',
+				'h2 {}\n\nh3 {}'
+			)
+		).toBe( 'marp: true\nstyle: |\n  h2 {}\n\n  h3 {}\n\npaginate: true' );
+	} );
+
+	it( 'replaces a one-line value with a block scalar', () => {
+		expect(
+			setFrontMatterBlockValue( 'style: "h1 {}"', 'style', 'h2 {}' )
+		).toBe( 'style: |\n  h2 {}' );
+	} );
+
+	it( 'adds the key at the end', () => {
+		expect(
+			setFrontMatterBlockValue( 'marp: true', 'style', 'h1 {}' )
+		).toBe( 'marp: true\nstyle: |\n  h1 {}' );
+	} );
+
+	it( 'removes the key', () => {
+		expect(
+			setFrontMatterBlockValue(
+				'marp: true\nstyle: |\n  h1 {}\npaginate: true',
+				'style',
+				null
+			)
+		).toBe( 'marp: true\npaginate: true' );
 	} );
 } );

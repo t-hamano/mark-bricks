@@ -16,6 +16,8 @@ export {
 	setMarpFrontMatter,
 	getFrontMatterValue,
 	setFrontMatterValue,
+	getFrontMatterBlockValue,
+	setFrontMatterBlockValue,
 } from './front-matter';
 export {
 	getBlockLineRanges,

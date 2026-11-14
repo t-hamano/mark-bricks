@@ -34,10 +34,21 @@ import {
 	setFrontMatterValue,
 	setMarpFrontMatter,
 } from '../../converter/front-matter';
+import {
+	MARP_COLOR_SCHEMES,
+	getMarpColorScheme,
+	isMarpColorSchemeOverridden,
+	setMarpColorScheme,
+	supportsMarpColorScheme,
+	type MarpColorScheme,
+} from '../../marp-color-schemes';
 import { useCodeMirror } from '../../block-library/hooks/use-code-mirror';
 import { usePlatform } from '../../platform';
 
 const MARP_DIRECTIVES_URL = 'https://marpit.marp.app/directives';
+
+// The color scheme option that leaves the theme's own colors.
+const THEME_COLORS = 'theme';
 
 export { FrontMatterContext, useFrontMatter } from './context';
 export type { FrontMatterContextValue } from './context';
@@ -206,6 +217,8 @@ function MarpSettings( {
 		themes.push( { label: theme, value: theme } );
 	}
 
+	const colorScheme = getMarpColorScheme( value );
+
 	const size = getFrontMatterValue( value, 'size' ) ?? '16:9';
 	// The sizes that Marp's built-in themes provide.
 	const sizes = [ '16:9', '4:3' ];
@@ -221,9 +234,27 @@ function MarpSettings( {
 					items={ themes }
 					value={ theme }
 					onValueChange={ ( next ) => {
-						if ( typeof next === 'string' ) {
-							setValue( 'theme', next );
+						if ( typeof next !== 'string' ) {
+							return;
 						}
+						const nextValue = setFrontMatterValue(
+							value,
+							'theme',
+							next
+						);
+						// Rewrites the color scheme for the variables the new
+						// theme reads its colors from.
+						setFrontMatter(
+							colorScheme
+								? setMarpColorScheme(
+										nextValue,
+										next,
+										supportsMarpColorScheme( next )
+											? colorScheme.id
+											: null
+									)
+								: nextValue
+						);
 					} }
 				>
 					<Select.Trigger />
@@ -251,6 +282,14 @@ function MarpSettings( {
 					</Select.Popup>
 				</Select.Root>
 			</Field.Root>
+			{ supportsMarpColorScheme( theme ) && (
+				<ColorSchemeField
+					value={ value }
+					theme={ theme }
+					colorScheme={ colorScheme }
+					portalContainer={ portalContainer }
+				/>
+			) }
 			<Field.Root>
 				<Field.Label>{ __( 'Size', 'mark-bricks' ) }</Field.Label>
 				<Select.Root
@@ -336,5 +375,126 @@ function MarpSettings( {
 				) }
 			</p>
 		</>
+	);
+}
+
+function ColorSchemeField( {
+	value,
+	theme,
+	colorScheme,
+	portalContainer,
+}: {
+	value: string;
+	theme: string;
+	colorScheme: MarpColorScheme | null;
+	portalContainer: HTMLElement | null;
+} ) {
+	const { setFrontMatter } = useFrontMatter();
+	const items = [
+		{ label: __( 'Theme colors', 'mark-bricks' ), value: THEME_COLORS },
+		...MARP_COLOR_SCHEMES.map( ( scheme ) => ( {
+			label: scheme.label,
+			value: scheme.id,
+		} ) ),
+	];
+	const selected = colorScheme?.id ?? THEME_COLORS;
+	const isOverridden =
+		colorScheme !== null && isMarpColorSchemeOverridden( value, theme );
+
+	return (
+		<Field.Root>
+			<Field.Label>{ __( 'Color scheme', 'mark-bricks' ) }</Field.Label>
+			<Select.Root
+				items={ items }
+				value={ selected }
+				onValueChange={ ( next ) => {
+					if ( typeof next === 'string' ) {
+						setFrontMatter(
+							setMarpColorScheme(
+								value,
+								theme,
+								next === THEME_COLORS ? null : next
+							)
+						);
+					}
+				} }
+			>
+				<Select.Trigger>
+					<ColorSchemeLabel
+						scheme={ colorScheme }
+						label={
+							items.find( ( item ) => item.value === selected )
+								?.label ?? ''
+						}
+					/>
+				</Select.Trigger>
+				<Select.Popup
+					portal={ <Select.Portal container={ portalContainer } /> }
+				>
+					{ items.map( ( item ) => (
+						<Select.Item
+							key={ item.value }
+							value={ item.value }
+							label={ item.label }
+						>
+							<Select.ItemLabel>
+								<ColorSchemeLabel
+									scheme={
+										MARP_COLOR_SCHEMES.find(
+											( scheme ) =>
+												scheme.id === item.value
+										) ?? null
+									}
+									label={ item.label }
+								/>
+							</Select.ItemLabel>
+						</Select.Item>
+					) ) }
+				</Select.Popup>
+			</Select.Root>
+			<Field.Description>
+				{ isOverridden
+					? __(
+							'Your own CSS in style overrides some of these colors.',
+							'mark-bricks'
+						)
+					: __(
+							'Recolor the theme. The colors are written to style.',
+							'mark-bricks'
+						) }
+			</Field.Description>
+		</Field.Root>
+	);
+}
+
+function ColorSchemeLabel( {
+	scheme,
+	label,
+}: {
+	scheme: MarpColorScheme | null;
+	label: string;
+} ) {
+	return (
+		<span className="front-matter-editor__color-scheme">
+			{ scheme && (
+				<span
+					className="front-matter-editor__color-scheme-swatches"
+					aria-hidden="true"
+				>
+					{ [
+						scheme.colors.background,
+						scheme.colors.foreground,
+						scheme.colors.accent,
+					].map( ( color, index ) => (
+						<span
+							key={ index }
+							className="front-matter-editor__color-scheme-swatch"
+							style={ { backgroundColor: color } }
+						/>
+					) ) }
+				</span>
+			) }
+			{ label }
+		</span>
 	);
 }
