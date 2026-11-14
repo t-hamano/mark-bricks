@@ -60,34 +60,78 @@ export function formatDocument( document: string ): string {
 }
 
 /**
+ * How long finding the changes may take, in milliseconds. Comparing two
+ * very different versions of a long document takes long, and then the
+ * whole document is sent instead.
+ */
+const DIFF_TIMEOUT = 100;
+
+/**
+ * Compares two versions of the document line by line.
+ *
+ * @param before The old version.
+ * @param after  The new version.
+ * @return The changes, or `undefined` when comparing takes too long.
+ */
+function diffLines( before: string, after: string ) {
+	return structuredPatch( '', '', before, after, '', '', {
+		context: CONTEXT_LINES,
+		timeout: DIFF_TIMEOUT,
+	} );
+}
+
+/**
  * Finds the lines that changed between two versions of the document. Each
  * change is shown as its lines after the change, with the unchanged lines
- * around it, numbered as in the new version. Removed lines are not shown.
+ * around it, numbered as in the new version. Where lines were removed, a
+ * line without a number says how many.
  *
  * @param before The document the model saw last.
  * @param after  The document now.
- * @return The changed lines, or an empty string when nothing changed.
+ * @return The changed lines, an empty string when nothing changed, or
+ *         `null` when comparing the versions takes too long.
  */
-export function formatChangedLines( before: string, after: string ): string {
+export function formatChangedLines(
+	before: string,
+	after: string
+): string | null {
 	if ( before === after ) {
 		return '';
 	}
-	const patch = structuredPatch( '', '', before, after, '', '', {
-		context: CONTEXT_LINES,
-	} );
+	const patch = diffLines( before, after );
+	if ( ! patch ) {
+		return null;
+	}
 	return patch.hunks
-		.map( ( hunk ) =>
-			numberLines(
-				hunk.lines
-					.filter(
-						( line ) =>
-							! line.startsWith( '-' ) &&
-							! line.startsWith( '\\' )
-					)
-					.map( ( line ) => line.slice( 1 ) ),
-				hunk.newStart
-			)
-		)
+		.map( ( hunk ) => {
+			const lines: string[] = [];
+			let number = hunk.newStart;
+			let removed = 0;
+			const flushRemoved = () => {
+				if ( removed ) {
+					lines.push(
+						`[${ removed } ${
+							removed === 1 ? 'line' : 'lines'
+						} removed]`
+					);
+					removed = 0;
+				}
+			};
+			hunk.lines.forEach( ( line ) => {
+				if ( line.startsWith( '\\' ) ) {
+					return;
+				}
+				if ( line.startsWith( '-' ) ) {
+					removed++;
+					return;
+				}
+				flushRemoved();
+				lines.push( `${ number }\t${ line.slice( 1 ) }` );
+				number++;
+			} );
+			flushRemoved();
+			return lines.join( '\n' );
+		} )
 		.join( '\n...\n' );
 }
 
@@ -110,12 +154,11 @@ export function applyChange(
 	if ( seen === before ) {
 		return after;
 	}
-	const result = applyPatch(
-		seen,
-		structuredPatch( '', '', before, after, '', '', {
-			context: CONTEXT_LINES,
-		} )
-	);
+	const patch = diffLines( before, after );
+	if ( ! patch ) {
+		return null;
+	}
+	const result = applyPatch( seen, patch );
 	return result === false ? null : result;
 }
 
@@ -162,28 +205,28 @@ export function buildMessageContext(
 	previous: string | null
 ): string {
 	const parts: string[] = [];
+	const { document } = context;
 	const changes =
-		previous === null
-			? null
-			: formatChangedLines( previous, context.document );
-	if ( changes === null ) {
-		parts.push( formatDocument( context.document ) );
+		previous === null ? null : formatChangedLines( previous, document );
+	if ( previous === null ) {
+		parts.push( formatDocument( document ) );
 	} else if (
+		changes === null ||
 		changes.length > MAX_CHANGES_LENGTH ||
-		changes.length > context.document.length ||
-		// Removed lines are not shown, so removing every line leaves
-		// nothing to show.
-		( changes === '' && previous !== context.document )
+		changes.length > document.length
 	) {
 		parts.push(
 			'The document changed a lot after your last answer. This is the whole document now.',
-			formatDocument( context.document )
+			formatDocument( document )
 		);
 	} else if ( changes ) {
+		const lineCount = toLines( document ).length;
 		parts.push(
 			[
 				'<document_changes>',
-				'The user changed the document after your last answer. These are the changed lines, with the lines around them, numbered as in the document now:',
+				`The user changed the document after your last answer. These are the changed lines, with the lines around them, numbered as in the document now, which has ${ lineCount } ${
+					lineCount === 1 ? 'line' : 'lines'
+				}:`,
 				changes,
 				'</document_changes>',
 			].join( '\n' )
