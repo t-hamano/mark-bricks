@@ -42,3 +42,7 @@ $sidebar-width: 200px;
 	flex: 1;
 	min-width: 0;
 }
+
+.preferences-modal__provider-card {
+	--wp-ui-card-padding: var(--wpds-dimension-padding-xl);
+}
