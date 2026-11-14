@@ -35,11 +35,7 @@ Both components link the selected block to the lines of the document as `content
 
 ## AI assistant
 
-The editor has a sidebar where the user chats with an AI model to write and edit the document. The host connects it to a model by passing `ai` in its `Platform`: `hasApiKey` reports whether a key is set, `chat` sends the conversation and streams the answer as `AiStreamEvent`s (text, the edit, activity, and token usage), and `openSettings` opens the host's settings. The editor never sees the API key, and does not send requests itself.
-
-When a host does not provide `ai`, the assistant is hidden: there is no button and no sidebar. The VS Code extension and `apps/site` do not provide it.
-
-The editor builds the context from the selection, in either editor mode, and applies the model's edits through an edit target. In the visual editor, the selected blocks are converted to Markdown, and the edit is converted back to blocks. In the text editor, the selected text is used, or the current line when nothing is selected. The model's edit either replaces the selection or inserts Markdown after it, as one undo step. When the user switches editor modes before the edit arrives, it is not applied. The conversation is kept in memory only.
+The AI assistant appears only when the host passes `ai` in its `Platform`, which sends the requests and keeps the API key.
 
 ## Appearance
 
