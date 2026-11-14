@@ -157,6 +157,7 @@ function UnforwardedEditorShell(
 		flush,
 		frontMatter,
 		setFrontMatter,
+		mergeFrontMatter,
 	} = useMarkdownDocument( { content, onChange, isVisualMode } );
 
 	const sourceLineSyncRef = useRef< SourceLineSyncHandle >( null );
@@ -297,6 +298,8 @@ function UnforwardedEditorShell(
 										isOpened={ isAiSidebarOpened }
 										editorMode={ editorMode }
 										frontMatter={ frontMatter }
+										setFrontMatter={ setFrontMatter }
+										mergeFrontMatter={ mergeFrontMatter }
 									/>
 								) }
 							</Stack>

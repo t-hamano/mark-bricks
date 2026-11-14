@@ -2,6 +2,9 @@
  * Internal dependencies
  */
 import { SELECTION_END, SELECTION_START, type EditTarget } from './edit-target';
+import { joinFrontMatter, splitFrontMatter } from '../converter';
+import type { AiEdit } from '../platform';
+import { splitAiFrontMatter } from './front-matter';
 
 /**
  * A range of the text editor's content, as character offsets.
@@ -45,6 +48,125 @@ function getEditRange( value: string, selection: TextRange ): TextRange {
 	return { start, end: lineEnd === -1 ? value.length : lineEnd };
 }
 
+type Replacement = {
+	range: TextRange;
+	text: string;
+};
+
+/**
+ * Works out how to replace the selection with `markdown`, or to insert it
+ * after the selection's last line.
+ *
+ * @param text     The editor's content.
+ * @param current  The selection's current range.
+ * @param action   How to apply the Markdown.
+ * @param markdown Markdown to apply.
+ * @return The replacement to make.
+ */
+function getReplacement(
+	text: string,
+	current: TextRange,
+	action: AiEdit[ 'action' ],
+	markdown: string
+): Replacement {
+	const content = markdown.replace( /\n+$/, '' );
+
+	if ( action === 'replace' ) {
+		// Keep the line break that ended the selection, if any.
+		const selected = text.slice( current.start, current.end );
+		const lineBreak = /\n+$/.exec( selected )?.[ 0 ] ?? '';
+		return { range: current, text: content + lineBreak };
+	}
+
+	// Insert after the selection's last line, separated from it, and from
+	// what follows, by a blank line.
+	const lastLineEnd =
+		current.end > current.start && text[ current.end - 1 ] === '\n'
+			? current.end - 1
+			: text.indexOf( '\n', current.end );
+	const at = lastLineEnd === -1 ? text.length : lastLineEnd;
+	const rest = text.slice( at );
+	const needsBlankLineAfter =
+		rest !== '' && rest !== '\n' && ! rest.startsWith( '\n\n' );
+	return {
+		range: { start: at, end: at },
+		text: '\n\n' + content + ( needsBlankLineAfter ? '\n' : '' ),
+	};
+}
+
+function applyReplacement(
+	text: string,
+	{ range, text: inserted }: Replacement
+) {
+	return text.slice( 0, range.start ) + inserted + text.slice( range.end );
+}
+
+/**
+ * The smallest replacement that turns `before` into `after`.
+ *
+ * @param before Text now.
+ * @param after  Text wanted.
+ * @return The replacement.
+ */
+function diff( before: string, after: string ): Replacement {
+	let start = 0;
+	const max = Math.min( before.length, after.length );
+	while ( start < max && before[ start ] === after[ start ] ) {
+		start++;
+	}
+	let end = 0;
+	while (
+		end < max - start &&
+		before[ before.length - 1 - end ] === after[ after.length - 1 - end ]
+	) {
+		end++;
+	}
+	return {
+		range: { start, end: before.length - end },
+		text: after.slice( start, after.length - end ),
+	};
+}
+
+/**
+ * Applies the model's front matter and body to the document: the front
+ * matter replaces the document's own, and the body goes to the selection.
+ *
+ * @param text        The editor's content.
+ * @param current     The selection's current range.
+ * @param action      How to apply the body.
+ * @param frontMatter The model's front matter.
+ * @param body        The model's Markdown after the front matter.
+ * @return The new content.
+ */
+function applyWithFrontMatter(
+	text: string,
+	current: TextRange,
+	action: AiEdit[ 'action' ],
+	frontMatter: string,
+	body: string
+): string {
+	const headerLength = text.length - splitFrontMatter( text ).body.length;
+	let rest = text.slice( headerLength );
+	if ( body.trim() !== '' && current.end <= headerLength ) {
+		// The selection is all inside the old front matter: the body goes
+		// first, separated from what follows by a blank line.
+		const after = rest.replace( /^\n+/, '' );
+		rest = body.replace( /\n+$/, '' ) + ( after ? '\n\n' + after : '\n' );
+	} else if ( body.trim() !== '' ) {
+		// The part of the selection inside the old front matter goes with
+		// it.
+		const range = {
+			start: Math.max( current.start - headerLength, 0 ),
+			end: Math.max( current.end - headerLength, 0 ),
+		};
+		rest = applyReplacement(
+			rest,
+			getReplacement( rest, range, action, body )
+		);
+	}
+	return joinFrontMatter( frontMatter, rest.replace( /^\n+/, '' ) );
+}
+
 /**
  * Creates the edit target for the text editor, from the selection now. With
  * no selection, the target is the line the cursor is on.
@@ -76,30 +198,21 @@ export function createTextEditTarget( access: TextEditorAccess ): EditTarget {
 				return false;
 			}
 			const text = access.getValue();
-			const content = markdown.replace( /\n+$/, '' );
-
-			if ( action === 'replace' ) {
-				// Keep the line break that ended the selection, if any.
-				const selected = text.slice( current.start, current.end );
-				const lineBreak = /\n+$/.exec( selected )?.[ 0 ] ?? '';
-				access.replaceRange( current, content + lineBreak );
-				return true;
-			}
-
-			// Insert after the selection's last line, separated from it, and
-			// from what follows, by a blank line.
-			const lastLineEnd =
-				current.end > current.start && text[ current.end - 1 ] === '\n'
-					? current.end - 1
-					: text.indexOf( '\n', current.end );
-			const at = lastLineEnd === -1 ? text.length : lastLineEnd;
-			const rest = text.slice( at );
-			const needsBlankLineAfter =
-				rest !== '' && rest !== '\n' && ! rest.startsWith( '\n\n' );
-			access.replaceRange(
-				{ start: at, end: at },
-				'\n\n' + content + ( needsBlankLineAfter ? '\n' : '' )
-			);
+			const { frontMatter, body } = splitAiFrontMatter( markdown );
+			const replacement =
+				frontMatter === null
+					? getReplacement( text, current, action, markdown )
+					: diff(
+							text,
+							applyWithFrontMatter(
+								text,
+								current,
+								action,
+								frontMatter,
+								body
+							)
+						);
+			access.replaceRange( replacement.range, replacement.text );
 			return true;
 		},
 	};
