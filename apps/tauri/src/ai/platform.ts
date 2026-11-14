@@ -52,6 +52,8 @@ export function getChosenModel(): string {
  * settings.
  */
 export const aiPlatform: AiPlatform = {
+	// Every provider's edit tool offers `replace_text`, in `edit-tool.ts`.
+	canReplaceText: true,
 	async hasApiKey() {
 		const chosen = getChosenProvider();
 		if ( await hasApiKey( chosen ) ) {
