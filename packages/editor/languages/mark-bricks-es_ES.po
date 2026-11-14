@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:41:52.124Z\n"
-"PO-Revision-Date: 2026-11-14T05:41:55.089Z\n"
+"POT-Creation-Date: 2026-11-14T05:46:00.484Z\n"
+"PO-Revision-Date: 2026-11-14T05:46:03.321Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -75,7 +75,6 @@ msgstr "Asistente de IA"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/marp-patterns/patterns/quote.ts:26
 #: src/marp-patterns/patterns/quote-on-image.ts:29
 msgctxt "slide pattern"
 msgid "Alex Kim, Designer"
@@ -288,7 +287,6 @@ msgstr "Imagen a pantalla completa"
 msgid "GitHub alert type"
 msgstr "Tipo de alerta de GitHub"
 
-#: src/marp-patterns/patterns/quote.ts:21
 #: src/marp-patterns/patterns/quote-on-image.ts:24
 msgctxt "slide pattern"
 msgid "Good slides say one thing, and say it clearly."
@@ -561,11 +559,6 @@ msgstr "Previsualiza mientras escribes"
 #: src/components/slide-pattern-modal/index.tsx:135
 msgid "Preview size"
 msgstr "Tamaño de la vista previa"
-
-#: src/marp-patterns/patterns/quote.ts:13
-msgctxt "slide pattern"
-msgid "Quote"
-msgstr "Cita"
 
 #: src/marp-patterns/patterns/quote-on-image.ts:14
 msgctxt "slide pattern"
