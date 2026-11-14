@@ -72,18 +72,17 @@
 .inserter-sidebar__pattern-filter {
 	flex: 0 0 auto;
 	padding: var(--wpds-dimension-padding-sm);
+	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
 }
 
 .inserter-sidebar__pattern-empty {
-	padding: 0 var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-sm);
+	padding: var(--wpds-dimension-padding-sm);
 }
 
 .inserter-sidebar__pattern-list {
 	flex: 1 1 auto;
 	min-height: 0;
-	// The category filter's padding keeps the space above the list, so the
-	// cards scroll out of view below it instead of touching it.
-	padding: 0 var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-sm);
+	padding: var(--wpds-dimension-padding-sm);
 	display: flex;
 	flex-direction: column;
 	gap: var(--wpds-dimension-gap-sm);
