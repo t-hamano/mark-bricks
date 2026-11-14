@@ -27,23 +27,5 @@ export function migrate( version: number | undefined, scopes: Scopes ): Scopes {
 			};
 		}
 	}
-	if ( ( version ?? 0 ) < 3 ) {
-		// v2 -> v3: the single `aiModel`, chosen for `aiProvider`, became
-		// `aiModels`, a model for each provider.
-		const { aiModel, ...rest } = scopes[ 'mark-bricks' ] ?? {};
-		if ( typeof aiModel === 'string' ) {
-			const provider =
-				typeof rest.aiProvider === 'string'
-					? rest.aiProvider
-					: 'anthropic';
-			scopes = {
-				...scopes,
-				'mark-bricks': {
-					...rest,
-					...( aiModel && { aiModels: { [ provider ]: aiModel } } ),
-				},
-			};
-		}
-	}
 	return scopes;
 }

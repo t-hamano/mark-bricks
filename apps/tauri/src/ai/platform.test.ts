@@ -22,7 +22,7 @@ vi.mock( '../components/preferences-modal/open', () => ( {
 /**
  * WordPress dependencies
  */
-import { dispatch } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 import { store as preferencesStore } from '@wordpress/preferences';
 
 /**
@@ -112,7 +112,7 @@ describe( 'aiPlatform', () => {
 		} );
 		invoke.mockResolvedValue( false );
 		await aiPlatform.hasApiKey();
-		expect( invoke ).toHaveBeenLastCalledWith( 'has_ai_api_key', {
+		expect( invoke ).toHaveBeenCalledWith( 'has_ai_api_key', {
 			provider: 'openai',
 		} );
 	} );
@@ -123,6 +123,22 @@ describe( 'aiPlatform', () => {
 		expect( invoke ).toHaveBeenCalledWith( 'has_ai_api_key', {
 			provider: 'anthropic',
 		} );
+	} );
+
+	it( 'switches to a provider with a key when the chosen one has none', async () => {
+		invoke.mockImplementation(
+			async ( _command: string, args: { provider: string } ) =>
+				args.provider === 'openai'
+		);
+		await expect( aiPlatform.hasApiKey() ).resolves.toBe( true );
+		expect(
+			select( preferencesStore ).get( 'mark-bricks', 'aiProvider' )
+		).toBe( 'openai' );
+	} );
+
+	it( 'reports no key when no provider has one', async () => {
+		invoke.mockResolvedValue( false );
+		await expect( aiPlatform.hasApiKey() ).resolves.toBe( false );
 	} );
 
 	it( 'opens the preferences on the AI Assistant tab', () => {

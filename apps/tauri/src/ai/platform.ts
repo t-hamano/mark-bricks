@@ -6,7 +6,7 @@ import type { AiPlatform } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import { select } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 import { store as preferencesStore } from '@wordpress/preferences';
 
 /**
@@ -51,8 +51,25 @@ export function getChosenModel(): string {
  * settings.
  */
 export const aiPlatform: AiPlatform = {
-	hasApiKey() {
-		return hasApiKey( getChosenProvider() );
+	async hasApiKey() {
+		const chosen = getChosenProvider();
+		if ( await hasApiKey( chosen ) ) {
+			return true;
+		}
+		// The chosen provider has no key, but another one may: one whose key
+		// was saved after the settings were closed, before the panel could
+		// choose it. The assistant then uses that one.
+		for ( const provider of Object.keys( PROVIDERS ) as AiProvider[] ) {
+			if ( provider !== chosen && ( await hasApiKey( provider ) ) ) {
+				dispatch( preferencesStore ).set(
+					'mark-bricks',
+					'aiProvider',
+					provider
+				);
+				return true;
+			}
+		}
+		return false;
 	},
 	chat( request ) {
 		// The provider and the model are read for each message, so that the

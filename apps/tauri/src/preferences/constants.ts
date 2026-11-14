@@ -15,7 +15,7 @@ import { __ } from '@wordpress/i18n';
 
 export const STORE_FILE = 'preferences.json';
 export const STORE_KEY = 'root';
-export const PREFERENCES_VERSION = 3;
+export const PREFERENCES_VERSION = 2;
 
 const DEFAULT_EDITOR_STYLES = {
 	contentWidth: 700,
