@@ -132,7 +132,8 @@ pub async fn delete_ai_api_key(window: WebviewWindow, provider: Provider) -> Res
 }
 
 #[tauri::command]
-pub async fn has_ai_api_key(provider: Provider) -> Result<bool, String> {
+pub async fn has_ai_api_key(window: WebviewWindow, provider: Provider) -> Result<bool, String> {
+    check_window(&window)?;
     run_blocking(move || has_key(&OsKeyStore, provider)).await
 }
 
