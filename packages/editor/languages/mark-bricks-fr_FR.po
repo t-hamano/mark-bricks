@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T03:01:14.467Z\n"
-"PO-Revision-Date: 2026-11-14T03:01:17.569Z\n"
+"POT-Creation-Date: 2026-11-14T03:43:17.879Z\n"
+"PO-Revision-Date: 2026-11-14T03:43:20.785Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,7 +95,7 @@ msgstr "Ordre du jour"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:185
+#: src/components/slide-pattern-modal/index.tsx:192
 msgid "All"
 msgstr "Tous"
 
@@ -198,8 +198,8 @@ msgstr "Style classique avec un arrière-plan coloré."
 msgid "Clear formatting"
 msgstr "Effacer la mise en forme"
 
+#: src/components/slide-pattern-modal/index.tsx:224
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:212
 #: src/components/inserter-sidebar/index.tsx:284
 #: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
@@ -588,7 +588,7 @@ msgstr ""
 "la taille. Les autres mots deviennent le texte alternatif, ou la légende "
 "d’une image d’arrière-plan."
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:210
+#: src/components/slide-pattern-modal/index.tsx:222
 msgid "Marp patterns"
 msgstr "Modèles Marp"
 
@@ -636,7 +636,7 @@ msgstr "Aucun bloc sélectionné"
 msgid "No matching language."
 msgstr "Aucun langage correspondant."
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:119
+#: src/components/slide-pattern-modal/index.tsx:120
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:93
 msgid "No slide patterns found."
 msgstr "Aucun modèle de diapositive trouvé."
@@ -738,11 +738,11 @@ msgctxt "slide pattern"
 msgid "Presentation title"
 msgstr "Titre de la présentation"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:56
+#: src/components/slide-pattern-modal/index.tsx:57
 msgid "Preview"
 msgstr "Aperçu"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:134
+#: src/components/slide-pattern-modal/index.tsx:135
 msgid "Preview size"
 msgstr "Taille de l’aperçu"
 
@@ -1038,7 +1038,7 @@ msgstr "Astuce"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:69
+#: src/components/slide-pattern-modal/index.tsx:70
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "Titre"

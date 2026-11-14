@@ -16,16 +16,16 @@ import {
 	SLIDE_PATTERNS,
 	type SlidePattern,
 	type SlidePatternCategory,
-} from '../../marp-patterns';
-import { getSlidePatternBlocks } from '../../marp-patterns/insert';
+} from '../marp-patterns';
+import { getSlidePatternBlocks } from '../marp-patterns/insert';
 import {
 	getSlidePatternPreview,
 	getSlidePatternTheme,
 	loadSlidePatternPreviews,
 	type SlidePatternPreviews,
-} from '../../marp-patterns/previews';
-import { getFrontMatterValue } from '../../converter/front-matter';
-import { useFrontMatter } from '../front-matter-editor/context';
+} from '../marp-patterns/previews';
+import { getFrontMatterValue } from '../converter/front-matter';
+import { useFrontMatter } from '../components/front-matter-editor/context';
 import { getInsertionTarget } from './insertion-target';
 
 // The category that shows every pattern.

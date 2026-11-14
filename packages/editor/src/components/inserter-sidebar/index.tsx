@@ -50,7 +50,7 @@ import { SlidePatternList } from './slide-pattern-list';
 import {
 	getInsertionTarget,
 	useInsertionPointPreview,
-} from './insertion-target';
+} from '../../inserter/insertion-target';
 import './style.scss';
 
 const BLOCKS_PER_ROW = 2;

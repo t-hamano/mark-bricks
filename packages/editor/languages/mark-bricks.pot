@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T03:01:14.467Z\n"
+"POT-Creation-Date: 2026-11-14T03:43:17.879Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -76,7 +76,7 @@ msgstr[1] ""
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:69
+#: src/components/slide-pattern-modal/index.tsx:70
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr ""
@@ -142,16 +142,37 @@ msgstr ""
 msgid "Inline image"
 msgstr ""
 
-#: src/components/list-view-sidebar/index.tsx:43
-#: src/components/editor-header/index.tsx:153
-msgid "Document Overview"
+#: src/components/slide-pattern-modal/index.tsx:57
+msgid "Preview"
 msgstr ""
 
+#: src/components/slide-pattern-modal/index.tsx:120
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:93
+msgid "No slide patterns found."
+msgstr ""
+
+#: src/components/slide-pattern-modal/index.tsx:135
+msgid "Preview size"
+msgstr ""
+
+#: src/components/slide-pattern-modal/index.tsx:192
+msgid "All"
+msgstr ""
+
+#: src/components/slide-pattern-modal/index.tsx:222
+msgid "Marp patterns"
+msgstr ""
+
+#: src/components/slide-pattern-modal/index.tsx:224
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:212
 #: src/components/inserter-sidebar/index.tsx:284
 #: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
+msgstr ""
+
+#: src/components/list-view-sidebar/index.tsx:43
+#: src/components/editor-header/index.tsx:153
+msgid "Document Overview"
 msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:77
@@ -239,27 +260,6 @@ msgstr ""
 
 #: src/components/keyboard-shortcuts/hooks.ts:148
 msgid "Make the selected text inline code."
-msgstr ""
-
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:56
-msgid "Preview"
-msgstr ""
-
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:119
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:93
-msgid "No slide patterns found."
-msgstr ""
-
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:134
-msgid "Preview size"
-msgstr ""
-
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:185
-msgid "All"
-msgstr ""
-
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:210
-msgid "Marp patterns"
 msgstr ""
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:49

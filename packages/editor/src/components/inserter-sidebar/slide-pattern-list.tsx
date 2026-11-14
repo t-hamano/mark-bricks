@@ -17,16 +17,16 @@ import {
 	SLIDE_PATTERN_CATEGORIES,
 	type SlidePattern,
 } from '../../marp-patterns';
-import { SlidePatternPreview } from './slide-pattern-preview';
-import { SlidePatternModal } from './slide-pattern-modal';
-import { useInsertionPointPreview } from './insertion-target';
+import { SlidePatternPreview } from '../slide-pattern-preview';
+import { SlidePatternModal } from '../slide-pattern-modal';
+import { useInsertionPointPreview } from '../../inserter/insertion-target';
 import {
 	ALL_CATEGORIES,
 	useInsertSlidePattern,
 	useSlidePatternItems,
 	useSlidePatternPreviews,
 	type CategoryFilter,
-} from './use-slide-patterns';
+} from '../../inserter/use-slide-patterns';
 
 type Props = {
 	search: string;

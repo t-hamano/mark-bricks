@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T03:01:14.467Z\n"
-"PO-Revision-Date: 2026-11-14T03:01:22.789Z\n"
+"POT-Creation-Date: 2026-11-14T03:43:17.879Z\n"
+"PO-Revision-Date: 2026-11-14T03:43:26.178Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,7 +95,7 @@ msgstr "議程"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:185
+#: src/components/slide-pattern-modal/index.tsx:192
 msgid "All"
 msgstr "全部"
 
@@ -197,8 +197,8 @@ msgstr "帶有彩色背景的經典風格。"
 msgid "Clear formatting"
 msgstr "清除格式"
 
+#: src/components/slide-pattern-modal/index.tsx:224
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:212
 #: src/components/inserter-sidebar/index.tsx:284
 #: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
@@ -586,7 +586,7 @@ msgstr ""
 "bg、w:200px、sepia 等 Marp 關鍵字用於設定版面配置與尺寸。其餘文字會成為替代文"
 "字，背景圖片則成為說明文字。"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:210
+#: src/components/slide-pattern-modal/index.tsx:222
 msgid "Marp patterns"
 msgstr "Marp 版型"
 
@@ -632,7 +632,7 @@ msgstr "未選取區塊"
 msgid "No matching language."
 msgstr "沒有符合的語言。"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:119
+#: src/components/slide-pattern-modal/index.tsx:120
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:93
 msgid "No slide patterns found."
 msgstr "找不到投影片版型。"
@@ -734,11 +734,11 @@ msgctxt "slide pattern"
 msgid "Presentation title"
 msgstr "簡報標題"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:56
+#: src/components/slide-pattern-modal/index.tsx:57
 msgid "Preview"
 msgstr "預覽"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:134
+#: src/components/slide-pattern-modal/index.tsx:135
 msgid "Preview size"
 msgstr "預覽大小"
 
@@ -1032,7 +1032,7 @@ msgstr "提示"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:69
+#: src/components/slide-pattern-modal/index.tsx:70
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "標題"

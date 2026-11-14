@@ -23,13 +23,14 @@ import {
  */
 import { SLIDE_PATTERN_CATEGORIES, SLIDE_PATTERNS } from '../../marp-patterns';
 import type { SlidePatternPreviews } from '../../marp-patterns/previews';
-import { SlidePatternPreview } from './slide-pattern-preview';
+import { SlidePatternPreview } from '../slide-pattern-preview';
 import {
 	ALL_CATEGORIES,
 	useInsertSlidePattern,
 	useSlidePatternItems,
 	type CategoryFilter,
-} from './use-slide-patterns';
+} from '../../inserter/use-slide-patterns';
+import './style.scss';
 
 // The widths of the previews that the size slider offers, in pixels.
 // DataViews' own smallest sizes are too small to read a slide at.
