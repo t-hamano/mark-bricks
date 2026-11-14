@@ -59,22 +59,6 @@ function getActivityLabel(
 
 const numberFormat = new Intl.NumberFormat();
 
-/**
- * What the answer used, for example "1,234 input tokens, 56 output tokens".
- *
- * @param usage The answer's tokens.
- */
-function getUsageLabel(
-	usage: NonNullable< AssistantChatMessage[ 'usage' ] >
-) {
-	return sprintf(
-		/* translators: 1: The number of tokens the AI model read. 2: The number of tokens it wrote. */
-		__( '%1$s input tokens, %2$s output tokens', 'mark-bricks' ),
-		numberFormat.format( usage.inputTokens ),
-		numberFormat.format( usage.outputTokens )
-	);
-}
-
 function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 	const activity =
 		message.status === 'streaming' ? message.activity : undefined;
@@ -133,7 +117,15 @@ function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 			) }
 			{ message.usage && message.status !== 'streaming' && (
 				<Text variant="body-sm" className="ai-chat__message-usage">
-					{ getUsageLabel( message.usage ) }
+					{ sprintf(
+						/* translators: 1: The number of tokens the AI model read. 2: The number of tokens it wrote. */
+						__(
+							'%1$s input tokens, %2$s output tokens',
+							'mark-bricks'
+						),
+						numberFormat.format( message.usage.inputTokens ),
+						numberFormat.format( message.usage.outputTokens )
+					) }
 				</Text>
 			) }
 		</Stack>

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:39:54.559Z\n"
-"PO-Revision-Date: 2026-11-14T06:40:26.404Z\n"
+"POT-Creation-Date: 2026-11-14T06:47:35.607Z\n"
+"PO-Revision-Date: 2026-11-14T06:47:41.959Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:72
+#: src/components/ai-sidebar/chat.tsx:122
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "输入 %1$s 个 token，输出 %2$s 个 token"
 
@@ -125,11 +125,11 @@ msgstr "任意编辑器"
 msgid "Apply"
 msgstr "应用"
 
-#: src/components/ai-sidebar/chat.tsx:305
+#: src/components/ai-sidebar/chat.tsx:297
 msgid "Ask the AI Assistant"
 msgstr "询问 AI 助手"
 
-#: src/components/ai-sidebar/chat.tsx:283
+#: src/components/ai-sidebar/chat.tsx:275
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -268,7 +268,7 @@ msgstr "编辑图片"
 msgid "Edit table"
 msgstr "编辑表格"
 
-#: src/components/ai-sidebar/chat.tsx:93
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "Edited the document."
 msgstr "已编辑文档。"
 
@@ -573,7 +573,7 @@ msgstr ""
 msgid "Marp patterns"
 msgstr "Marp 模式"
 
-#: src/components/ai-sidebar/chat.tsx:303
+#: src/components/ai-sidebar/chat.tsx:295
 msgid "Message"
 msgstr "消息"
 
@@ -617,7 +617,7 @@ msgstr "专用应用"
 msgid "Open by default"
 msgstr "默认打开"
 
-#: src/components/ai-sidebar/chat.tsx:275
+#: src/components/ai-sidebar/chat.tsx:267
 msgid "Open settings"
 msgstr "打开设置"
 
@@ -743,11 +743,11 @@ msgstr "边输入边查看每张幻灯片"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 
-#: src/components/ai-sidebar/chat.tsx:326
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Send"
 msgstr "发送"
 
-#: src/components/ai-sidebar/chat.tsx:265
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Set an API key to use the AI Assistant."
 msgstr "请设置 API 密钥以使用 AI 助手。"
 
@@ -820,11 +820,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "纯文本幻灯片"
 
-#: src/components/ai-sidebar/chat.tsx:317
+#: src/components/ai-sidebar/chat.tsx:309
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:120
+#: src/components/ai-sidebar/chat.tsx:104
 msgid "Stopped."
 msgstr "已停止。"
 
@@ -857,7 +857,7 @@ msgstr "显示在每张幻灯片底部的文本。"
 msgid "Text shown at the top of each slide."
 msgstr "显示在每张幻灯片顶部的文本。"
 
-#: src/components/ai-sidebar/chat.tsx:127
+#: src/components/ai-sidebar/chat.tsx:111
 msgid "The answer could not be loaded."
 msgstr "无法加载回答。"
 
@@ -869,7 +869,7 @@ msgstr "幻灯片的宽高比。"
 msgid "The diagram could not be rendered."
 msgstr "无法渲染图表。"
 
-#: src/components/ai-sidebar/chat.tsx:98
+#: src/components/ai-sidebar/chat.tsx:82
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."

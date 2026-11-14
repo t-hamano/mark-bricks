@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:39:54.559Z\n"
-"PO-Revision-Date: 2026-11-14T06:40:20.563Z\n"
+"POT-Creation-Date: 2026-11-14T06:47:35.607Z\n"
+"PO-Revision-Date: 2026-11-14T06:47:36.565Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:72
+#: src/components/ai-sidebar/chat.tsx:122
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "Vstupní tokeny: %1$s, výstupní tokeny: %2$s"
 
@@ -125,11 +125,11 @@ msgstr "Libovolný editor"
 msgid "Apply"
 msgstr "Použít"
 
-#: src/components/ai-sidebar/chat.tsx:305
+#: src/components/ai-sidebar/chat.tsx:297
 msgid "Ask the AI Assistant"
 msgstr "Zeptejte se asistenta AI"
 
-#: src/components/ai-sidebar/chat.tsx:283
+#: src/components/ai-sidebar/chat.tsx:275
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -268,7 +268,7 @@ msgstr "Upravit obrázek"
 msgid "Edit table"
 msgstr "Upravit tabulku"
 
-#: src/components/ai-sidebar/chat.tsx:93
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "Edited the document."
 msgstr "Dokument byl upraven."
 
@@ -573,7 +573,7 @@ msgstr ""
 msgid "Marp patterns"
 msgstr "Vzory Marp"
 
-#: src/components/ai-sidebar/chat.tsx:303
+#: src/components/ai-sidebar/chat.tsx:295
 msgid "Message"
 msgstr "Zpráva"
 
@@ -619,7 +619,7 @@ msgstr "Jedna aplikace"
 msgid "Open by default"
 msgstr "Ve výchozím nastavení otevřeno"
 
-#: src/components/ai-sidebar/chat.tsx:275
+#: src/components/ai-sidebar/chat.tsx:267
 msgid "Open settings"
 msgstr "Otevřít nastavení"
 
@@ -745,11 +745,11 @@ msgstr "Každý snímek vidíte při psaní"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
 
-#: src/components/ai-sidebar/chat.tsx:326
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Send"
 msgstr "Odeslat"
 
-#: src/components/ai-sidebar/chat.tsx:265
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Set an API key to use the AI Assistant."
 msgstr "Pro použití asistenta AI nastavte klíč API."
 
@@ -822,11 +822,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "Snímky jako prostý text"
 
-#: src/components/ai-sidebar/chat.tsx:317
+#: src/components/ai-sidebar/chat.tsx:309
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/components/ai-sidebar/chat.tsx:120
+#: src/components/ai-sidebar/chat.tsx:104
 msgid "Stopped."
 msgstr "Zastaveno."
 
@@ -859,7 +859,7 @@ msgstr "Text zobrazený v dolní části každého snímku."
 msgid "Text shown at the top of each slide."
 msgstr "Text zobrazený v horní části každého snímku."
 
-#: src/components/ai-sidebar/chat.tsx:127
+#: src/components/ai-sidebar/chat.tsx:111
 msgid "The answer could not be loaded."
 msgstr "Odpověď se nepodařilo načíst."
 
@@ -871,7 +871,7 @@ msgstr "Poměr stran snímků."
 msgid "The diagram could not be rendered."
 msgstr "Diagram se nepodařilo vykreslit."
 
-#: src/components/ai-sidebar/chat.tsx:98
+#: src/components/ai-sidebar/chat.tsx:82
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
