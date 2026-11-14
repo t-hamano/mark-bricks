@@ -152,6 +152,12 @@ export type AiPlatform = {
 	 */
 	chat: ( request: AiChatRequest ) => Promise< void >;
 	/**
+	 * Whether the host's edit tool offers `replace_text`, which lets the
+	 * model change the part of the document the user means without a
+	 * selection. The system prompt mentions it only when it does.
+	 */
+	canReplaceText?: boolean;
+	/**
 	 * Opens the host's settings where the user sets the API key. Omitted
 	 * when the host has no such place.
 	 */
