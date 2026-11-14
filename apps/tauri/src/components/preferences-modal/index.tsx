@@ -7,6 +7,7 @@ import {
 	type CodeEditorSettings,
 	type EditorThemePreference,
 } from '@mark-bricks/editor';
+import { isFontFamily } from '@mark-bricks/editor/font-families';
 
 /**
  * WordPress dependencies
@@ -273,10 +274,12 @@ export default function PreferencesModal() {
 										editorStyles.fontSize ??
 										DEFAULT_PREFERENCES[ 'mark-bricks' ]
 											.editorStyles.fontSize,
-									fontFamily:
-										editorStyles.fontFamily ??
-										DEFAULT_PREFERENCES[ 'mark-bricks' ]
-											.editorStyles.fontFamily,
+									fontFamily: isFontFamily(
+										editorStyles.fontFamily
+									)
+										? editorStyles.fontFamily
+										: DEFAULT_PREFERENCES[ 'mark-bricks' ]
+												.editorStyles.fontFamily,
 								} }
 								onChange={ handleVisualEditorChange }
 							/>

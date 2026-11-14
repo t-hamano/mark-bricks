@@ -1,11 +1,11 @@
 /**
  * External dependencies
  */
-import {
-	FONT_FAMILY_STACKS,
-	type CodeEditorSettings,
-	type EditorStyles,
-	type EditorThemePreference,
+import type {
+	CodeEditorSettings,
+	EditorStyles,
+	EditorThemePreference,
+	FontFamily,
 } from '@mark-bricks/editor';
 
 /**
@@ -15,12 +15,12 @@ import { __ } from '@wordpress/i18n';
 
 export const STORE_FILE = 'preferences.json';
 export const STORE_KEY = 'root';
-export const PREFERENCES_VERSION = 2;
+export const PREFERENCES_VERSION = 3;
 
 const DEFAULT_EDITOR_STYLES = {
 	contentWidth: 700,
 	fontSize: 13,
-	fontFamily: '',
+	fontFamily: 'system' as FontFamily,
 } satisfies EditorStyles;
 
 const DEFAULT_CODE_EDITOR: CodeEditorSettings = {
@@ -62,24 +62,12 @@ export const getThemeOptions = (): { value: string; label: string }[] => [
 ];
 
 export const getFontFamilyOptions = (): {
-	value: string | null;
+	value: FontFamily;
 	label: string;
 }[] => [
-	{ value: null, label: __( 'System Default', 'mark-bricks' ) },
-	{
-		value: FONT_FAMILY_STACKS[ 'sans-serif' ],
-		label: __( 'Sans-serif', 'mark-bricks' ),
-	},
-	{
-		value: FONT_FAMILY_STACKS.serif,
-		label: __( 'Serif', 'mark-bricks' ),
-	},
-	{
-		value: FONT_FAMILY_STACKS.monospace,
-		label: __( 'Monospace', 'mark-bricks' ),
-	},
-	{
-		value: FONT_FAMILY_STACKS.handwriting,
-		label: __( 'Handwriting', 'mark-bricks' ),
-	},
+	{ value: 'system', label: __( 'System Default', 'mark-bricks' ) },
+	{ value: 'sans-serif', label: __( 'Sans-serif', 'mark-bricks' ) },
+	{ value: 'serif', label: __( 'Serif', 'mark-bricks' ) },
+	{ value: 'monospace', label: __( 'Monospace', 'mark-bricks' ) },
+	{ value: 'handwriting', label: __( 'Handwriting', 'mark-bricks' ) },
 ];
