@@ -53,11 +53,8 @@
 	background: var(--wpds-color-background-surface-neutral-weak);
 }
 
-.ai-chat__spinner {
-	align-self: center;
-}
-
 .ai-chat__message-status,
+.ai-chat__activity,
 .ai-chat__intro,
 .ai-chat__selection {
 	color: var(--wpds-color-foreground-content-neutral-weak);

@@ -10,6 +10,7 @@ import {
 	conversationReducer,
 	createConversation,
 	toAiMessages,
+	type AssistantChatMessage,
 	type Conversation,
 	type ConversationAction,
 } from './conversation';
@@ -38,6 +39,32 @@ describe( 'conversationReducer', () => {
 				editStatus: 'applied',
 				status: 'done',
 			},
+		] );
+	} );
+
+	it( 'shows what the model does until its text arrives', () => {
+		const actions: ConversationAction[] = [
+			{ type: 'START', text: 'Rewrite this' },
+			{ type: 'ACTIVITY', activity: 'thinking' },
+			{ type: 'APPEND_TEXT', text: 'Sure.' },
+			{ type: 'ACTIVITY', activity: 'editing' },
+			{ type: 'EDIT', edit: EDIT, applied: true },
+			{ type: 'APPEND_TEXT', text: 'Done.' },
+			{ type: 'FINISH', status: 'done' },
+		];
+		const activities = actions.map( ( _, index ) => {
+			const answer = run( ...actions.slice( 0, index + 1 ) )
+				.messages[ 1 ] as AssistantChatMessage;
+			return answer.activity;
+		} );
+		expect( activities ).toEqual( [
+			'waiting',
+			'thinking',
+			undefined,
+			'editing',
+			'waiting',
+			undefined,
+			undefined,
 		] );
 	} );
 
