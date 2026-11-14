@@ -193,7 +193,9 @@ function SlidePatterns() {
 			<Text
 				variant="body-md"
 				render={ <p /> }
-				style={ { margin: 0, padding: '24px 24px 0' } }
+				// The bottom padding keeps the link's focus ring clear of the
+				// toolbar below, which paints over it.
+				style={ { margin: 0, padding: '24px 24px 8px' } }
 			>
 				These are the slide patterns that MarkBricks lets you insert
 				when Marp mode is on. Each one is a ready-made slide for a{ ' ' }
@@ -204,13 +206,15 @@ function SlidePatterns() {
 			</Text>
 			{ /* A toolbar of its own in place of the default one: the view
 			options' preview sizes go smaller than a slide can be read at, and
-			a select picks a category more simply than the filters. */ }
+			a select picks a category more simply than the filters. It stays at
+			the top of the page while the grid scrolls. */ }
 			<Stack
 				direction="row"
 				align="center"
 				justify="space-between"
 				gap="md"
 				className="dataviews__view-actions"
+				style={ { top: 0, zIndex: 1, paddingTop: 8 } }
 			>
 				<Stack direction="row" align="center" gap="lg">
 					<div style={ { width: 200 } }>
