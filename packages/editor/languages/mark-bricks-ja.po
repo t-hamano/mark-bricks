@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T10:55:19.441Z\n"
-"PO-Revision-Date: 2026-11-14T10:55:25.318Z\n"
+"POT-Creation-Date: 2026-11-14T11:09:59.709Z\n"
+"PO-Revision-Date: 2026-11-14T11:10:10.018Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -67,11 +67,6 @@ msgctxt "slide pattern"
 msgid "3"
 msgstr "3"
 
-#: style.css
-#. Name of the generic
-msgid "@mark-bricks/editor"
-msgstr ""
-
 #: src/block-library/html/marp-directive-settings.tsx:334
 msgid "A CSS background image, such as a gradient."
 msgstr "グラデーションなどのCSS背景画像です。"
@@ -115,11 +110,6 @@ msgstr "AI アシスタント"
 #: src/block-library/image/marp-image-settings.tsx:444
 msgid "Add filter"
 msgstr "フィルターを追加"
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr "Aki Hamano"
 
 #: src/marp-patterns/patterns/quote-on-image.ts:29
 msgctxt "slide pattern"
@@ -1286,11 +1276,6 @@ msgstr "デバイスから画像をアップロードするか、URL から挿�
 msgctxt "slide pattern"
 msgid "Use any text editor"
 msgstr "好きなテキストエディターで"
-
-#: style.css
-#. Description of the generic
-msgid "Visual markdown block editor."
-msgstr "ビジュアルマークダウンブロックエディター。"
 
 #: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"

@@ -16,16 +16,6 @@ msgstr ""
 "Language: tr_TR\n"
 "X-Domain: mark-bricks\n"
 
-#: style.css
-#. Name of the generic
-msgid "@mark-bricks/marp-preview"
-msgstr ""
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
-
 #: src/controls/controls.tsx:177
 #: src/export/runtime/toolbar.tsx:94
 msgid "Enter slide mode"
@@ -54,13 +44,6 @@ msgstr "Slayt modundan çıkmak için F veya Esc tuşuna basın"
 #: src/export/runtime/toolbar.tsx:61
 msgid "Previous slide"
 msgstr "Önceki slayt"
-
-#: style.css
-#. Description of the generic
-msgid ""
-"Renders Marp slide decks for the hosts' slide previews and exports, and "
-"shows them in the previews."
-msgstr ""
 
 #: src/controls/controls.tsx:166
 msgid "Show next to editor"

@@ -8,18 +8,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T08:35:17.378Z\n"
-"PO-Revision-Date: 2026-11-14T08:35:33.823Z\n"
+"POT-Creation-Date: 2026-11-14T11:10:00.712Z\n"
+"PO-Revision-Date: 2026-11-14T11:10:10.127Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: ja\n"
 "X-Domain: mark-bricks\n"
-
-#: style.css
-#. Description of the generic
-msgid "%description%"
-msgstr ""
 
 #: src/webview/header-actions/index.tsx:81
 msgid "Access all block and document tools in a single place"
@@ -28,11 +23,6 @@ msgstr "ブロック・ドキュメントツールを同じ場所にまとめる
 #: src/webview/header-actions/index.tsx:116
 msgid "Add YAML front matter"
 msgstr "YAML フロントマターを追加"
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
 
 #: src/webview/header-actions/index.tsx:97
 msgid "Focus on one block at a time"
@@ -51,7 +41,8 @@ msgid ""
 "Only images in the folder of the document or in a workspace folder can be "
 "displayed."
 msgstr ""
-"表示できるのは、ドキュメントのあるフォルダとワークスペースフォルダ内の画像のみです。"
+"表示できるのは、ドキュメントのあるフォルダとワークスペースフォルダ内の画像の"
+"みです。"
 
 #: src/webview/header-actions/index.tsx:56
 msgid "Options"
@@ -84,8 +75,3 @@ msgstr "トップツールバー"
 #: src/webview/header-actions/index.tsx:69
 msgid "View"
 msgstr "表示"
-
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-vscode"
-msgstr ""

@@ -60,11 +60,6 @@ msgstr "可在同一位置使用全部區塊及內容工具"
 msgid "Add YAML front matter"
 msgstr "新增 YAML 前置資料"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
-
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "永遠開啟 [清單檢視]"
@@ -669,8 +664,3 @@ msgstr "你正在使用最新版本 (%s)。"
 #: src/hooks/use-auto-updater.ts:41
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "你有未儲存的變更。請在更新前儲存。"
-
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""

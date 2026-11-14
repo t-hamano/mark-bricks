@@ -66,11 +66,6 @@ msgstr ""
 msgid "Add YAML front matter"
 msgstr "Dodaj YAML front matter"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
-
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "Zawsze otwieraj widok listy"
@@ -679,8 +674,3 @@ msgstr "Używasz najnowszej wersji (%s)."
 #: src/hooks/use-auto-updater.ts:41
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "Masz niezapisane zmiany. Zapisz je przed aktualizacją."
-
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""

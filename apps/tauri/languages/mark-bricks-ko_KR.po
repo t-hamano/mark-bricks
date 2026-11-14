@@ -66,11 +66,6 @@ msgstr "한 곳에서 모든 블록과 문서 도구에 접근합니다"
 msgid "Add YAML front matter"
 msgstr "YAML 프런트 매터 추가"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
-
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "항상 목록 보기 열기"
@@ -678,8 +673,3 @@ msgstr "최신 버전(%s)을 사용하고 있습니다."
 #: src/hooks/use-auto-updater.ts:41
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "저장되지 않은 변경 사항이 있습니다. 업데이트하기 전에 저장하세요."
-
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""

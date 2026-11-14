@@ -66,11 +66,6 @@ msgstr "Zentraler Zugriff auf alle Block- und Dokument-Werkzeuge"
 msgid "Add YAML front matter"
 msgstr "YAML-Front-Matter hinzufügen"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
-
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "Immer die Listenansicht öffnen"
@@ -690,8 +685,3 @@ msgstr "Sie verwenden die neueste Version (%s)."
 msgid "You have unsaved changes. Please save them before updating."
 msgstr ""
 "Sie haben ungespeicherte Änderungen. Bitte speichern Sie sie vor dem Update."
-
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""

@@ -67,11 +67,6 @@ msgctxt "slide pattern"
 msgid "3"
 msgstr "3"
 
-#: style.css
-#. Name of the generic
-msgid "@mark-bricks/editor"
-msgstr ""
-
 #: src/block-library/html/marp-directive-settings.tsx:334
 msgid "A CSS background image, such as a gradient."
 msgstr "Un’immagine di sfondo CSS, come una sfumatura."
@@ -115,11 +110,6 @@ msgstr "Assistente IA"
 #: src/block-library/image/marp-image-settings.tsx:444
 msgid "Add filter"
 msgstr "Aggiungi filtro"
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr "Aki Hamano"
 
 #: src/marp-patterns/patterns/quote-on-image.ts:29
 msgctxt "slide pattern"
@@ -1294,11 +1284,6 @@ msgstr "Carica un’immagine dal tuo dispositivo o inseriscila da un URL."
 msgctxt "slide pattern"
 msgid "Use any text editor"
 msgstr "Usa qualsiasi editor di testo"
-
-#: style.css
-#. Description of the generic
-msgid "Visual markdown block editor."
-msgstr "Editor a blocchi Markdown visuale."
 
 #: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"
