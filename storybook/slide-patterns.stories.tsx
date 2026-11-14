@@ -28,6 +28,7 @@ import {
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
 /* eslint-enable @wordpress/no-unsafe-wp-apis */
+import { useViewportMatch } from '@wordpress/compose';
 import {
 	DataViews,
 	filterSortAndPaginate,
@@ -94,15 +95,6 @@ function SlidePatternPreview( { pattern, theme }: SlidePatternPreviewProps ) {
 // at.
 const PREVIEW_SIZES = [ 230, 290, 350, 430 ];
 
-// Hides the size control where even the smallest previews leave room for one
-// column only, so that it would change nothing. DataViews fits as many columns
-// as `( width + 32 ) / ( size + 32 )` in `dataviews-wrapper`, its container.
-const PREVIEW_SIZE_STYLE = `
-@container dataviews-wrapper (max-width: ${ 2 * PREVIEW_SIZES[ 0 ] + 32 - 1 }px) {
-	.slide-patterns__preview-size { display: none; }
-}
-`;
-
 // The options of the category select, all of them first.
 const CATEGORY_ITEMS = [
 	{ label: 'All categories', value: null },
@@ -134,6 +126,9 @@ function SlidePatterns() {
 		SLIDE_PATTERN_THEMES[ 0 ]
 	);
 	const [ view, setView ] = useState< View >( DEFAULT_VIEW );
+	// Below this width even the smallest previews fit one column only, so the
+	// size control would change nothing.
+	const isMobile = useViewportMatch( 'mobile', '<' );
 	const selectedCategory: string | null =
 		view.filters?.find( ( filter ) => filter.field === 'categories' )
 			?.value?.[ 0 ] ?? null;
@@ -198,7 +193,6 @@ function SlidePatterns() {
 			defaultLayouts={ { grid: {} } }
 			getItemId={ ( item ) => item.name }
 		>
-			<style>{ PREVIEW_SIZE_STYLE }</style>
 			{ /* Inside DataViews, so it shares the grid's background. */ }
 			<Text
 				variant="body-md"
@@ -270,38 +264,37 @@ function SlidePatterns() {
 						) ) }
 					</ToggleGroupControl>
 				</Stack>
-				<div
-					className="slide-patterns__preview-size"
-					style={ { width: 160 } }
-				>
-					<RangeControl
-						__next40pxDefaultSize
-						label="Preview size"
-						showTooltip={ false }
-						withInputField={ false }
-						min={ 0 }
-						max={ PREVIEW_SIZES.length - 1 }
-						step={ 1 }
-						marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
-							value: index,
-						} ) ) }
-						value={ Math.max(
-							0,
-							PREVIEW_SIZES.indexOf(
-								previewSize ?? PREVIEW_SIZES[ 0 ]
-							)
-						) }
-						onChange={ ( index = 0 ) =>
-							setView( {
-								...view,
-								layout: {
-									...view.layout,
-									previewSize: PREVIEW_SIZES[ index ],
-								},
-							} as View )
-						}
-					/>
-				</div>
+				{ ! isMobile && (
+					<div style={ { width: 160 } }>
+						<RangeControl
+							__next40pxDefaultSize
+							label="Preview size"
+							showTooltip={ false }
+							withInputField={ false }
+							min={ 0 }
+							max={ PREVIEW_SIZES.length - 1 }
+							step={ 1 }
+							marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
+								value: index,
+							} ) ) }
+							value={ Math.max(
+								0,
+								PREVIEW_SIZES.indexOf(
+									previewSize ?? PREVIEW_SIZES[ 0 ]
+								)
+							) }
+							onChange={ ( index = 0 ) =>
+								setView( {
+									...view,
+									layout: {
+										...view.layout,
+										previewSize: PREVIEW_SIZES[ index ],
+									},
+								} as View )
+							}
+						/>
+					</div>
+				) }
 			</Stack>
 			<DataViews.Layout />
 		</DataViews>
