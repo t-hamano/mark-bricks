@@ -62,9 +62,17 @@ describe( 'parseMarpImageAlt', () => {
 		expect( parseMarpImageAlt( 'Caption left bg 50%' ) ).toMatchObject( {
 			background: true,
 			split: 'left',
-			size: '50%',
+			scale: '50%',
 			text: 'Caption',
 		} );
+	} );
+
+	it( 'keeps a scale and a size keyword apart', () => {
+		const options = parseMarpImageAlt( 'bg 50% contain Caption' );
+		expect( options ).toMatchObject( { size: 'contain', scale: '50%' } );
+		expect( serializeMarpImageAlt( options ) ).toBe(
+			'bg contain 50% Caption'
+		);
 	} );
 
 	it( 'keeps background keywords as text without bg', () => {

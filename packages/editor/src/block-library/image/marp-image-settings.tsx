@@ -12,6 +12,7 @@ import {
 	MenuItem,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { closeSmall, plus } from '@wordpress/icons';
@@ -52,18 +53,34 @@ function getPlacement( options: MarpImageOptions ): Placement {
 	return options.split ?? 'background';
 }
 
-function getBackgroundSize( size: string | undefined ): BackgroundSize {
+function getBackgroundSize( options: MarpImageOptions ): BackgroundSize {
+	const { size, scale } = options;
+	// Marp uses the scale over a size keyword.
+	if ( scale ) {
+		return 'scale';
+	}
 	if ( ! size || size === 'cover' ) {
 		return 'cover';
 	}
 	if ( size === 'contain' || size === 'fit' ) {
 		return 'contain';
 	}
-	if ( size === 'auto' ) {
-		return 'auto';
-	}
-	return 'scale';
+	return 'auto';
 }
+
+const LENGTH_UNITS = [
+	'px',
+	'%',
+	'em',
+	'ch',
+	'ex',
+	'cm',
+	'mm',
+	'in',
+	'pt',
+	'pc',
+].map( ( unit ) => ( { value: unit, label: unit } ) );
+const PERCENT_UNITS = [ { value: '%', label: '%' } ];
 
 /**
  * The form of the Marp image settings popover. It edits the Marp keywords of
@@ -85,11 +102,15 @@ export function MarpImageSettings( {
 } ) {
 	const [ initial ] = useState( () => parseMarpImageAlt( alt ) );
 	const [ options, setOptions ] = useState( initial );
+	// Kept apart from the scale value, so Scale stays selected while its
+	// field is empty.
+	const [ sizeMode, setSizeMode ] = useState( () =>
+		getBackgroundSize( initial )
+	);
 	const update = ( next: Partial< MarpImageOptions > ) =>
 		setOptions( ( current ) => ( { ...current, ...next } ) );
 
 	const placement = getPlacement( options );
-	const backgroundSize = getBackgroundSize( options.size );
 	const isSplit = placement === 'left' || placement === 'right';
 
 	const isWidthValid = ! options.width || isValidMarpLength( options.width );
@@ -101,15 +122,32 @@ export function MarpImageSettings( {
 		isValidMarpPercentage( options.splitSize );
 	const isScaleValid =
 		! options.background ||
-		backgroundSize !== 'scale' ||
-		isValidMarpPercentage( options.size ?? '' );
+		sizeMode !== 'scale' ||
+		isValidMarpPercentage( options.scale ?? '' );
 	const isValid =
 		isWidthValid && isHeightValid && isSplitSizeValid && isScaleValid;
 
-	const lengthDescription = __(
-		'Such as 200px, 50% or auto.',
-		'mark-bricks'
-	);
+	const getResult = (): MarpImageOptions => {
+		const result = { ...options };
+		if ( sizeMode !== 'scale' ) {
+			delete result.scale;
+		}
+		// Without a size keyword, Marp sizes a background from its width and
+		// height, so Cover is written out when either one is set.
+		const isSizeChanged =
+			sizeMode !== getBackgroundSize( initial ) ||
+			options.width !== initial.width ||
+			options.height !== initial.height;
+		if (
+			sizeMode === 'cover' &&
+			! result.size &&
+			( result.width || result.height ) &&
+			isSizeChanged
+		) {
+			result.size = 'cover';
+		}
+		return result;
+	};
 
 	return (
 		<Stack
@@ -120,13 +158,14 @@ export function MarpImageSettings( {
 						if ( ! isValid ) {
 							return;
 						}
+						const result = getResult();
 						// Keeps the alt text as written when nothing changed,
 						// so the Markdown is not reformatted.
 						if (
-							JSON.stringify( options ) !==
+							JSON.stringify( result ) !==
 							JSON.stringify( initial )
 						) {
-							onApply( serializeMarpImageAlt( options ) );
+							onApply( serializeMarpImageAlt( result ) );
 						}
 						onClose();
 					} }
@@ -181,15 +220,16 @@ export function MarpImageSettings( {
 				/>
 			</ToggleGroupControl>
 			{ isSplit && (
-				<InputControl
+				<UnitControl
+					__next40pxDefaultSize
 					label={ __( 'Split width', 'mark-bricks' ) }
-					placeholder="50%"
+					placeholder="50"
+					units={ PERCENT_UNITS }
 					value={ options.splitSize ?? '' }
-					onValueChange={ ( value ) =>
-						update( { splitSize: value.trim() || undefined } )
+					onChange={ ( value ) =>
+						update( { splitSize: value || undefined } )
 					}
-					aria-invalid={ ! isSplitSizeValid }
-					description={ __(
+					help={ __(
 						'The share of the slide the image takes, such as 40%.',
 						'mark-bricks'
 					) }
@@ -200,21 +240,24 @@ export function MarpImageSettings( {
 					__next40pxDefaultSize
 					isBlock
 					label={ __( 'Background size', 'mark-bricks' ) }
-					value={ backgroundSize }
+					value={ sizeMode }
 					onChange={ ( next ) => {
 						const value = next as BackgroundSize;
+						setSizeMode( value );
+						if ( value === 'scale' ) {
+							update( {
+								scale: options.scale ?? initial.scale ?? '50%',
+							} );
+							return;
+						}
 						let size: string | undefined;
 						if ( value === 'contain' ) {
 							// Keeps `fit`, Marp's other name for `contain`.
-							size = options.size === 'fit' ? 'fit' : 'contain';
+							size = initial.size === 'fit' ? 'fit' : 'contain';
 						} else if ( value === 'auto' ) {
 							size = 'auto';
-						} else if ( value === 'scale' ) {
-							size =
-								initial.size &&
-								isValidMarpPercentage( initial.size )
-									? initial.size
-									: '50%';
+						} else if ( initial.size === 'cover' ) {
+							size = 'cover';
 						}
 						update( { size } );
 					} }
@@ -237,16 +280,17 @@ export function MarpImageSettings( {
 					/>
 				</ToggleGroupControl>
 			) }
-			{ options.background && backgroundSize === 'scale' && (
-				<InputControl
+			{ options.background && sizeMode === 'scale' && (
+				<UnitControl
+					__next40pxDefaultSize
 					label={ __( 'Scale', 'mark-bricks' ) }
-					placeholder="50%"
-					value={ options.size ?? '' }
-					onValueChange={ ( value ) =>
-						update( { size: value.trim() } )
+					placeholder="50"
+					units={ PERCENT_UNITS }
+					value={ options.scale ?? '' }
+					onChange={ ( value ) =>
+						update( { scale: value || undefined } )
 					}
-					aria-invalid={ ! isScaleValid }
-					description={ __(
+					help={ __(
 						'The size relative to the original image, such as 50%.',
 						'mark-bricks'
 					) }
@@ -255,30 +299,40 @@ export function MarpImageSettings( {
 			<Stack direction="column" gap="xs">
 				<Stack direction="row" gap="sm">
 					<div style={ { flex: 1 } }>
-						<InputControl
+						<UnitControl
+							__next40pxDefaultSize
 							label={ __( 'Width', 'mark-bricks' ) }
-							placeholder="auto"
-							value={ options.width ?? '' }
-							onValueChange={ ( value ) =>
-								update( { width: value.trim() || undefined } )
+							placeholder={ __( 'Auto', 'mark-bricks' ) }
+							units={ LENGTH_UNITS }
+							// `auto` has no unit, so it shows as an empty field.
+							value={
+								options.width === 'auto' ? '' : options.width
 							}
-							aria-invalid={ ! isWidthValid }
+							onChange={ ( value ) =>
+								update( { width: value || undefined } )
+							}
 						/>
 					</div>
 					<div style={ { flex: 1 } }>
-						<InputControl
+						<UnitControl
+							__next40pxDefaultSize
 							label={ __( 'Height', 'mark-bricks' ) }
-							placeholder="auto"
-							value={ options.height ?? '' }
-							onValueChange={ ( value ) =>
-								update( { height: value.trim() || undefined } )
+							placeholder={ __( 'Auto', 'mark-bricks' ) }
+							units={ LENGTH_UNITS }
+							value={
+								options.height === 'auto' ? '' : options.height
 							}
-							aria-invalid={ ! isHeightValid }
+							onChange={ ( value ) =>
+								update( { height: value || undefined } )
+							}
 						/>
 					</div>
 				</Stack>
 				<Text variant="body-sm" style={ DESCRIPTION_STYLE }>
-					{ lengthDescription }
+					{ __(
+						'Leave empty to size the image automatically.',
+						'mark-bricks'
+					) }
 				</Text>
 			</Stack>
 			{ options.background && (
@@ -291,7 +345,11 @@ export function MarpImageSettings( {
 					checked={ options.direction === 'vertical' }
 					onCheckedChange={ ( checked ) =>
 						update( {
-							direction: checked ? 'vertical' : undefined,
+							// Writes `horizontal` when turned off, since another
+							// background of the slide may still set `vertical`.
+							direction: checked
+								? 'vertical'
+								: initial.direction && 'horizontal',
 						} )
 					}
 				/>

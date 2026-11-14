@@ -50,11 +50,13 @@ export interface MarpImageOptions {
 	split?: 'left' | 'right';
 	/** The width of a split background, such as `40%`. */
 	splitSize?: string;
-	/**
-	 * The background size: `cover`, `contain`, `fit`, `auto` or a scale such
-	 * as `50%`.
-	 */
+	/** The background size keyword: `cover`, `contain`, `fit` or `auto`. */
 	size?: string;
+	/**
+	 * The background scale, such as `50%`. Marp uses it over `size` when both
+	 * are present.
+	 */
+	scale?: string;
 	/** `w:` / `width:`, such as `200px` or `auto`. */
 	width?: string;
 	/** `h:` / `height:`, such as `30%` or `auto`. */
@@ -120,7 +122,7 @@ export function parseMarpImageAlt( alt: string ): MarpImageOptions {
 	for ( const word of words ) {
 		let matched: RegExpMatchArray | null;
 		if ( SCALE.test( word ) ) {
-			options.size = word;
+			options.scale = word;
 		} else if ( ( matched = word.match( WIDTH ) ) ) {
 			options.width = matched[ 1 ];
 		} else if ( ( matched = word.match( HEIGHT ) ) ) {
@@ -182,6 +184,9 @@ export function serializeMarpImageAlt( options: MarpImageOptions ): string {
 		}
 		if ( options.size ) {
 			words.push( options.size );
+		}
+		if ( options.scale ) {
+			words.push( options.scale );
 		}
 	}
 	if ( options.width ) {

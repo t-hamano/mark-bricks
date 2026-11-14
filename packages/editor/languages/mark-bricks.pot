@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:51:04.935Z\n"
+"POT-Creation-Date: 2026-11-14T06:58:24.291Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -129,7 +129,7 @@ msgid "Enter title…"
 msgstr ""
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/marp-image-settings.tsx:387
+#: src/block-library/image/marp-image-settings.tsx:445
 #: src/block-library/image/edit.tsx:143
 #: src/block-library/image/edit.tsx:302
 msgid "Apply"
@@ -617,102 +617,107 @@ msgstr ""
 msgid "Ordered"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:109
-msgid "Such as 200px, 50% or auto."
-msgstr ""
-
-#: src/block-library/image/marp-image-settings.tsx:142
+#: src/block-library/image/marp-image-settings.tsx:181
 msgid "Placement"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:145
+#: src/block-library/image/marp-image-settings.tsx:184
 msgid "The image sits in the slide content."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:149
+#: src/block-library/image/marp-image-settings.tsx:188
 msgid "The image fills the slide, or one side of it, behind the content."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:168
+#: src/block-library/image/marp-image-settings.tsx:207
 msgid "Inline"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:172
+#: src/block-library/image/marp-image-settings.tsx:211
 msgid "Background"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:176
+#: src/block-library/image/marp-image-settings.tsx:215
 msgid "Left"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:180
+#: src/block-library/image/marp-image-settings.tsx:219
 msgid "Right"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:185
+#: src/block-library/image/marp-image-settings.tsx:225
 msgid "Split width"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:192
+#: src/block-library/image/marp-image-settings.tsx:232
 msgid "The share of the slide the image takes, such as 40%."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:202
+#: src/block-library/image/marp-image-settings.tsx:242
 msgid "Background size"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:224
+#: src/block-library/image/marp-image-settings.tsx:267
 msgid "Cover"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:228
+#: src/block-library/image/marp-image-settings.tsx:271
 msgid "Contain"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:232
+#: src/block-library/image/marp-image-settings.tsx:275
 msgid "Original"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:236
-#: src/block-library/image/marp-image-settings.tsx:242
+#: src/block-library/image/marp-image-settings.tsx:279
+#: src/block-library/image/marp-image-settings.tsx:286
 msgid "Scale"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:249
+#: src/block-library/image/marp-image-settings.tsx:293
 msgid "The size relative to the original image, such as 50%."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:259
+#: src/block-library/image/marp-image-settings.tsx:304
 msgid "Width"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:270
+#: src/block-library/image/marp-image-settings.tsx:305
+#: src/block-library/image/marp-image-settings.tsx:320
+msgid "Auto"
+msgstr ""
+
+#: src/block-library/image/marp-image-settings.tsx:319
 msgid "Height"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:286
+#: src/block-library/image/marp-image-settings.tsx:332
+msgid "Leave empty to size the image automatically."
+msgstr ""
+
+#: src/block-library/image/marp-image-settings.tsx:340
 msgid "Stack vertically"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:287
+#: src/block-library/image/marp-image-settings.tsx:341
 msgid ""
 "Lines up the background images of the slide from top to bottom instead of "
 "side by side."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:302
+#: src/block-library/image/marp-image-settings.tsx:360
 msgid "Filters"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:306
+#: src/block-library/image/marp-image-settings.tsx:364
 msgid "Add filter"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:338
+#: src/block-library/image/marp-image-settings.tsx:396
 msgid "No filters."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:369
+#: src/block-library/image/marp-image-settings.tsx:427
 msgid "Remove filter"
 msgstr ""
 
