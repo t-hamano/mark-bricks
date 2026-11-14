@@ -71,7 +71,8 @@
 
 .inserter-sidebar__pattern-filter {
 	flex: 0 0 auto;
-	padding: var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-sm) 0;
+	padding: var(--wpds-dimension-padding-sm);
+	border-bottom: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
 }
 
 .inserter-sidebar__pattern-empty {
