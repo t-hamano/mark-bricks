@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:14:11.191Z\n"
-"PO-Revision-Date: 2026-11-14T11:14:37.207Z\n"
+"POT-Creation-Date: 2026-11-14T11:19:43.962Z\n"
+"PO-Revision-Date: 2026-11-14T11:19:58.179Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -195,7 +195,7 @@ msgstr "新增段落後，藉以變更區塊類型"
 msgid "Choose language…"
 msgstr "選擇語言…"
 
-#: src/components/front-matter-editor/index.tsx:201
+#: src/components/front-matter-editor/index.tsx:202
 msgid "Classic look with a colored background."
 msgstr "帶有彩色背景的經典風格。"
 
@@ -222,7 +222,7 @@ msgstr "關閉區塊插入器"
 msgid "Code editor"
 msgstr "程式碼編輯器"
 
-#: src/components/front-matter-editor/index.tsx:406
+#: src/components/front-matter-editor/index.tsx:407
 msgid "Color scheme"
 msgstr "配色方案"
 
@@ -324,7 +324,7 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "專注於你的訊息"
 
-#: src/components/front-matter-editor/index.tsx:332
+#: src/components/front-matter-editor/index.tsx:333
 msgid "Footer"
 msgstr "頁尾"
 
@@ -337,8 +337,8 @@ msgctxt "slide pattern"
 msgid "From the theme"
 msgstr "由佈景主題決定"
 
-#: src/components/front-matter-editor/index.tsx:123
-#: src/components/front-matter-editor/index.tsx:142
+#: src/components/front-matter-editor/index.tsx:124
+#: src/components/front-matter-editor/index.tsx:143
 msgid "Front matter settings"
 msgstr "前置資料設定"
 
@@ -361,7 +361,7 @@ msgstr "好的投影片只講一件事，並講清楚。"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:321
+#: src/components/front-matter-editor/index.tsx:322
 msgid "Header"
 msgstr "頁首"
 
@@ -557,7 +557,7 @@ msgctxt "slide pattern"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/components/front-matter-editor/index.tsx:146
+#: src/components/front-matter-editor/index.tsx:147
 msgid "Marp"
 msgstr "Marp"
 
@@ -581,7 +581,7 @@ msgstr "Marp 版型"
 msgid "Message"
 msgstr "訊息"
 
-#: src/components/front-matter-editor/index.tsx:209
+#: src/components/front-matter-editor/index.tsx:210
 msgid "Minimal and modern, with centered content."
 msgstr "簡約現代，內容置中。"
 
@@ -637,7 +637,7 @@ msgstr "減少縮排"
 msgid "Outline"
 msgstr "大綱"
 
-#: src/components/front-matter-editor/index.tsx:343
+#: src/components/front-matter-editor/index.tsx:344
 msgid "Paginate"
 msgstr "頁碼"
 
@@ -696,7 +696,7 @@ msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "圖片上的引言"
 
-#: src/components/front-matter-editor/index.tsx:461
+#: src/components/front-matter-editor/index.tsx:462
 msgid "Recolor the theme. The colors are written to style."
 msgstr "為主題重新配色。顏色會寫入 style。"
 
@@ -747,7 +747,7 @@ msgctxt "slide pattern"
 msgid "See each slide as you type"
 msgstr "邊輸入邊查看每張投影片"
 
-#: src/components/front-matter-editor/index.tsx:355
+#: src/components/front-matter-editor/index.tsx:356
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他設定請參閱 <a>Marp 文件</a>。"
 
@@ -770,7 +770,7 @@ msgstr "分享"
 msgid "Show or hide the List View."
 msgstr "顯示或隱藏清單檢視"
 
-#: src/components/front-matter-editor/index.tsx:344
+#: src/components/front-matter-editor/index.tsx:345
 msgid "Show the page number on each slide."
 msgstr "在每張投影片上顯示頁碼。"
 
@@ -785,11 +785,11 @@ msgstr "以全螢幕顯示投影片"
 msgid "Shown as a tooltip on hover."
 msgstr "滑鼠懸停時會顯示為工具提示。"
 
-#: src/components/front-matter-editor/index.tsx:193
+#: src/components/front-matter-editor/index.tsx:194
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "簡潔清爽，以 GitHub Markdown 樣式為基礎。"
 
-#: src/components/front-matter-editor/index.tsx:294
+#: src/components/front-matter-editor/index.tsx:295
 msgid "Size"
 msgstr "尺寸"
 
@@ -857,11 +857,11 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "文字"
 
-#: src/components/front-matter-editor/index.tsx:333
+#: src/components/front-matter-editor/index.tsx:334
 msgid "Text shown at the bottom of each slide."
 msgstr "顯示在每張投影片底部的文字。"
 
-#: src/components/front-matter-editor/index.tsx:322
+#: src/components/front-matter-editor/index.tsx:323
 msgid "Text shown at the top of each slide."
 msgstr "顯示在每張投影片頂端的文字。"
 
@@ -869,7 +869,7 @@ msgstr "顯示在每張投影片頂端的文字。"
 msgid "The answer could not be loaded."
 msgstr "無法載入回答。"
 
-#: src/components/front-matter-editor/index.tsx:317
+#: src/components/front-matter-editor/index.tsx:318
 msgid "The aspect ratio of the slides."
 msgstr "投影片的長寬比。"
 
@@ -887,11 +887,11 @@ msgstr "由於選取範圍已變更（例如切換了編輯器），編輯未套
 msgid "The formula could not be rendered."
 msgstr "無法轉譯公式。"
 
-#: src/components/front-matter-editor/index.tsx:232
+#: src/components/front-matter-editor/index.tsx:233
 msgid "Theme"
 msgstr "主題"
 
-#: src/components/front-matter-editor/index.tsx:394
+#: src/components/front-matter-editor/index.tsx:395
 msgid "Theme colors"
 msgstr "主題顏色"
 
@@ -915,8 +915,8 @@ msgstr "提示"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
-#: src/block-library/image/edit.tsx:253
 #: src/components/slide-pattern-modal/index.tsx:70
+#: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "標題"
 
@@ -977,7 +977,7 @@ msgstr "轉換為一般項目"
 msgid "Turn into a task item"
 msgstr "轉換為任務項目"
 
-#: src/components/front-matter-editor/index.tsx:147
+#: src/components/front-matter-editor/index.tsx:148
 msgid "Turn the document into a slide deck."
 msgstr "將文件轉換為投影片。"
 
@@ -1061,7 +1061,7 @@ msgstr "撰寫 HTML 程式碼..."
 msgid "Write TeX…"
 msgstr "撰寫 TeX..."
 
-#: src/components/front-matter-editor/index.tsx:78
+#: src/components/front-matter-editor/index.tsx:79
 msgid "Write YAML front matter…"
 msgstr "撰寫 YAML 前置資料…"
 
@@ -1109,10 +1109,10 @@ msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "用 Markdown 撰寫投影片"
 
-#: src/components/front-matter-editor/index.tsx:96
+#: src/components/front-matter-editor/index.tsx:97
 msgid "YAML front matter"
 msgstr "YAML 前置資料"
 
-#: src/components/front-matter-editor/index.tsx:457
+#: src/components/front-matter-editor/index.tsx:458
 msgid "Your own CSS in style overrides some of these colors."
 msgstr "style 中你自己的 CSS 覆寫了其中部分顏色。"

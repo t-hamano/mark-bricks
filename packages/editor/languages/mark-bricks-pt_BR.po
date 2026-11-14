@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:14:11.191Z\n"
-"PO-Revision-Date: 2026-11-14T11:14:34.987Z\n"
+"POT-Creation-Date: 2026-11-14T11:19:43.962Z\n"
+"PO-Revision-Date: 2026-11-14T11:19:55.877Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -195,7 +195,7 @@ msgstr "Mude o tipo de bloco após adicionar um novo parágrafo."
 msgid "Choose language…"
 msgstr "Escolher linguagem…"
 
-#: src/components/front-matter-editor/index.tsx:201
+#: src/components/front-matter-editor/index.tsx:202
 msgid "Classic look with a colored background."
 msgstr "Visual clássico com fundo colorido."
 
@@ -222,7 +222,7 @@ msgstr "Fechar Inserir bloco"
 msgid "Code editor"
 msgstr "Editor de código"
 
-#: src/components/front-matter-editor/index.tsx:406
+#: src/components/front-matter-editor/index.tsx:407
 msgid "Color scheme"
 msgstr "Esquema de cores"
 
@@ -324,7 +324,7 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "Foque na sua mensagem"
 
-#: src/components/front-matter-editor/index.tsx:332
+#: src/components/front-matter-editor/index.tsx:333
 msgid "Footer"
 msgstr "Rodapé"
 
@@ -337,8 +337,8 @@ msgctxt "slide pattern"
 msgid "From the theme"
 msgstr "Vem do tema"
 
-#: src/components/front-matter-editor/index.tsx:123
-#: src/components/front-matter-editor/index.tsx:142
+#: src/components/front-matter-editor/index.tsx:124
+#: src/components/front-matter-editor/index.tsx:143
 msgid "Front matter settings"
 msgstr "Configurações do front matter"
 
@@ -361,7 +361,7 @@ msgstr "Um bom slide diz uma coisa, e diz com clareza."
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:321
+#: src/components/front-matter-editor/index.tsx:322
 msgid "Header"
 msgstr "Cabeçalho"
 
@@ -557,7 +557,7 @@ msgctxt "slide pattern"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/components/front-matter-editor/index.tsx:146
+#: src/components/front-matter-editor/index.tsx:147
 msgid "Marp"
 msgstr "Marp"
 
@@ -582,7 +582,7 @@ msgstr "Padrões do Marp"
 msgid "Message"
 msgstr "Mensagem"
 
-#: src/components/front-matter-editor/index.tsx:209
+#: src/components/front-matter-editor/index.tsx:210
 msgid "Minimal and modern, with centered content."
 msgstr "Minimalista e moderno, com conteúdo centralizado."
 
@@ -640,7 +640,7 @@ msgstr "Diminuir recuo"
 msgid "Outline"
 msgstr "Estrutura"
 
-#: src/components/front-matter-editor/index.tsx:343
+#: src/components/front-matter-editor/index.tsx:344
 msgid "Paginate"
 msgstr "Paginar"
 
@@ -699,7 +699,7 @@ msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "Citação sobre uma imagem"
 
-#: src/components/front-matter-editor/index.tsx:461
+#: src/components/front-matter-editor/index.tsx:462
 msgid "Recolor the theme. The colors are written to style."
 msgstr "Muda as cores do tema. As cores são gravadas em style."
 
@@ -750,7 +750,7 @@ msgctxt "slide pattern"
 msgid "See each slide as you type"
 msgstr "Veja cada slide enquanto digita"
 
-#: src/components/front-matter-editor/index.tsx:355
+#: src/components/front-matter-editor/index.tsx:356
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Consulte a <a>documentação do Marp</a> para outras configurações."
 
@@ -773,7 +773,7 @@ msgstr "Compartilhar"
 msgid "Show or hide the List View."
 msgstr "Exibir ou ocultar a visualização em lista."
 
-#: src/components/front-matter-editor/index.tsx:344
+#: src/components/front-matter-editor/index.tsx:345
 msgid "Show the page number on each slide."
 msgstr "Mostra o número da página em cada slide."
 
@@ -788,11 +788,11 @@ msgstr "Mostre seus slides em tela cheia"
 msgid "Shown as a tooltip on hover."
 msgstr "Exibido como dica ao passar o mouse."
 
-#: src/components/front-matter-editor/index.tsx:193
+#: src/components/front-matter-editor/index.tsx:194
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "Simples e limpo, baseado no estilo Markdown do GitHub."
 
-#: src/components/front-matter-editor/index.tsx:294
+#: src/components/front-matter-editor/index.tsx:295
 msgid "Size"
 msgstr "Tamanho"
 
@@ -860,11 +860,11 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "Texto"
 
-#: src/components/front-matter-editor/index.tsx:333
+#: src/components/front-matter-editor/index.tsx:334
 msgid "Text shown at the bottom of each slide."
 msgstr "Texto exibido na parte inferior de cada slide."
 
-#: src/components/front-matter-editor/index.tsx:322
+#: src/components/front-matter-editor/index.tsx:323
 msgid "Text shown at the top of each slide."
 msgstr "Texto exibido no topo de cada slide."
 
@@ -872,7 +872,7 @@ msgstr "Texto exibido no topo de cada slide."
 msgid "The answer could not be loaded."
 msgstr "Não foi possível carregar a resposta."
 
-#: src/components/front-matter-editor/index.tsx:317
+#: src/components/front-matter-editor/index.tsx:318
 msgid "The aspect ratio of the slides."
 msgstr "A proporção dos slides."
 
@@ -892,11 +892,11 @@ msgstr ""
 msgid "The formula could not be rendered."
 msgstr "Não foi possível renderizar a fórmula."
 
-#: src/components/front-matter-editor/index.tsx:232
+#: src/components/front-matter-editor/index.tsx:233
 msgid "Theme"
 msgstr "Tema"
 
-#: src/components/front-matter-editor/index.tsx:394
+#: src/components/front-matter-editor/index.tsx:395
 msgid "Theme colors"
 msgstr "Cores do tema"
 
@@ -920,8 +920,8 @@ msgstr "Dica"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
-#: src/block-library/image/edit.tsx:253
 #: src/components/slide-pattern-modal/index.tsx:70
+#: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "Título"
 
@@ -982,7 +982,7 @@ msgstr "Transformar em item normal"
 msgid "Turn into a task item"
 msgstr "Transformar em tarefa"
 
-#: src/components/front-matter-editor/index.tsx:147
+#: src/components/front-matter-editor/index.tsx:148
 msgid "Turn the document into a slide deck."
 msgstr "Transforma o documento em uma apresentação de slides."
 
@@ -1066,7 +1066,7 @@ msgstr "Escreva HTML…"
 msgid "Write TeX…"
 msgstr "Escreva TeX…"
 
-#: src/components/front-matter-editor/index.tsx:78
+#: src/components/front-matter-editor/index.tsx:79
 msgid "Write YAML front matter…"
 msgstr "Escreva o front matter YAML…"
 
@@ -1114,10 +1114,10 @@ msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "Escrevendo slides em Markdown"
 
-#: src/components/front-matter-editor/index.tsx:96
+#: src/components/front-matter-editor/index.tsx:97
 msgid "YAML front matter"
 msgstr "Front matter YAML"
 
-#: src/components/front-matter-editor/index.tsx:457
+#: src/components/front-matter-editor/index.tsx:458
 msgid "Your own CSS in style overrides some of these colors."
 msgstr "Seu próprio CSS em style substitui algumas dessas cores."

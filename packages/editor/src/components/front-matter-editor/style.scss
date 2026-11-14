@@ -57,13 +57,11 @@
 	display: inline-flex;
 }
 
-.front-matter-editor__color-scheme-swatch {
+.front-matter-editor__color-scheme-swatches .component-color-indicator {
 	width: 0.875rem;
 	height: 0.875rem;
-	border: 1px solid var(--wpds-color-stroke-surface-neutral);
-	border-radius: 50%;
 
-	& + & {
+	+ .component-color-indicator {
 		margin-left: -0.25rem;
 	}
 }

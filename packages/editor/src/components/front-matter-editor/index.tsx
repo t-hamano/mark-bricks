@@ -8,6 +8,7 @@ import { useState } from 'react';
  */
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import type { Block } from '@wordpress/blocks';
+import { ColorIndicator } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { createInterpolateElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -486,11 +487,7 @@ function ColorSchemeLabel( {
 						scheme.colors.foreground,
 						scheme.colors.accent,
 					].map( ( color, index ) => (
-						<span
-							key={ index }
-							className="front-matter-editor__color-scheme-swatch"
-							style={ { backgroundColor: color } }
-						/>
+						<ColorIndicator key={ index } colorValue={ color } />
 					) ) }
 				</span>
 			) }

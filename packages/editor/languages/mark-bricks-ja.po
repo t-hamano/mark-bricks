@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:14:11.191Z\n"
-"PO-Revision-Date: 2026-11-14T11:14:12.210Z\n"
+"POT-Creation-Date: 2026-11-14T11:19:43.962Z\n"
+"PO-Revision-Date: 2026-11-14T11:19:54.004Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -195,7 +195,7 @@ msgstr "新規段落の追加後、ブロックタイプを変更します。"
 msgid "Choose language…"
 msgstr "言語を選択…"
 
-#: src/components/front-matter-editor/index.tsx:201
+#: src/components/front-matter-editor/index.tsx:202
 msgid "Classic look with a colored background."
 msgstr "背景色のついたクラシックなテーマ。"
 
@@ -222,7 +222,7 @@ msgstr "ブロックインサーターを閉じる"
 msgid "Code editor"
 msgstr "コードエディター"
 
-#: src/components/front-matter-editor/index.tsx:406
+#: src/components/front-matter-editor/index.tsx:407
 msgid "Color scheme"
 msgstr "配色"
 
@@ -324,7 +324,7 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "伝えたいことに集中する"
 
-#: src/components/front-matter-editor/index.tsx:332
+#: src/components/front-matter-editor/index.tsx:333
 msgid "Footer"
 msgstr "フッター"
 
@@ -337,8 +337,8 @@ msgctxt "slide pattern"
 msgid "From the theme"
 msgstr "テーマで決まる"
 
-#: src/components/front-matter-editor/index.tsx:123
-#: src/components/front-matter-editor/index.tsx:142
+#: src/components/front-matter-editor/index.tsx:124
+#: src/components/front-matter-editor/index.tsx:143
 msgid "Front matter settings"
 msgstr "フロントマター設定"
 
@@ -361,7 +361,7 @@ msgstr "良いスライドは、1 つのことをはっきり伝える。"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:321
+#: src/components/front-matter-editor/index.tsx:322
 msgid "Header"
 msgstr "ヘッダー"
 
@@ -557,7 +557,7 @@ msgctxt "slide pattern"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/components/front-matter-editor/index.tsx:146
+#: src/components/front-matter-editor/index.tsx:147
 msgid "Marp"
 msgstr "Marp"
 
@@ -581,7 +581,7 @@ msgstr "Marp パターン"
 msgid "Message"
 msgstr "メッセージ"
 
-#: src/components/front-matter-editor/index.tsx:209
+#: src/components/front-matter-editor/index.tsx:210
 msgid "Minimal and modern, with centered content."
 msgstr "中央揃えのミニマルでモダンなテーマ。"
 
@@ -638,7 +638,7 @@ msgstr "インデント解除"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: src/components/front-matter-editor/index.tsx:343
+#: src/components/front-matter-editor/index.tsx:344
 msgid "Paginate"
 msgstr "ページ番号"
 
@@ -697,7 +697,7 @@ msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "画像の上に引用"
 
-#: src/components/front-matter-editor/index.tsx:461
+#: src/components/front-matter-editor/index.tsx:462
 msgid "Recolor the theme. The colors are written to style."
 msgstr "テーマの色を変更します。色は style に書き込まれます。"
 
@@ -748,7 +748,7 @@ msgctxt "slide pattern"
 msgid "See each slide as you type"
 msgstr "入力しながらスライドを確認"
 
-#: src/components/front-matter-editor/index.tsx:355
+#: src/components/front-matter-editor/index.tsx:356
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "その他の設定は<a>Marp のドキュメント</a>を参照してください。"
 
@@ -771,7 +771,7 @@ msgstr "共有"
 msgid "Show or hide the List View."
 msgstr "リストビューの表示、非表示。"
 
-#: src/components/front-matter-editor/index.tsx:344
+#: src/components/front-matter-editor/index.tsx:345
 msgid "Show the page number on each slide."
 msgstr "各スライドにページ番号を表示します。"
 
@@ -786,11 +786,11 @@ msgstr "スライドを全画面で表示"
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
 
-#: src/components/front-matter-editor/index.tsx:193
+#: src/components/front-matter-editor/index.tsx:194
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "GitHub の Markdown スタイルをベースにしたシンプルなテーマ。"
 
-#: src/components/front-matter-editor/index.tsx:294
+#: src/components/front-matter-editor/index.tsx:295
 msgid "Size"
 msgstr "サイズ"
 
@@ -858,11 +858,11 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "テキスト"
 
-#: src/components/front-matter-editor/index.tsx:333
+#: src/components/front-matter-editor/index.tsx:334
 msgid "Text shown at the bottom of each slide."
 msgstr "各スライドの下部に表示するテキスト。"
 
-#: src/components/front-matter-editor/index.tsx:322
+#: src/components/front-matter-editor/index.tsx:323
 msgid "Text shown at the top of each slide."
 msgstr "各スライドの上部に表示するテキスト。"
 
@@ -870,7 +870,7 @@ msgstr "各スライドの上部に表示するテキスト。"
 msgid "The answer could not be loaded."
 msgstr "回答を読み込めませんでした。"
 
-#: src/components/front-matter-editor/index.tsx:317
+#: src/components/front-matter-editor/index.tsx:318
 msgid "The aspect ratio of the slides."
 msgstr "スライドの縦横比。"
 
@@ -890,11 +890,11 @@ msgstr ""
 msgid "The formula could not be rendered."
 msgstr "数式を描画できませんでした。"
 
-#: src/components/front-matter-editor/index.tsx:232
+#: src/components/front-matter-editor/index.tsx:233
 msgid "Theme"
 msgstr "テーマ"
 
-#: src/components/front-matter-editor/index.tsx:394
+#: src/components/front-matter-editor/index.tsx:395
 msgid "Theme colors"
 msgstr "テーマの色"
 
@@ -918,8 +918,8 @@ msgstr "ヒント"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
-#: src/block-library/image/edit.tsx:253
 #: src/components/slide-pattern-modal/index.tsx:70
+#: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "タイトル"
 
@@ -980,7 +980,7 @@ msgstr "通常の項目に変換"
 msgid "Turn into a task item"
 msgstr "タスク項目に変換"
 
-#: src/components/front-matter-editor/index.tsx:147
+#: src/components/front-matter-editor/index.tsx:148
 msgid "Turn the document into a slide deck."
 msgstr "ドキュメントをスライドデッキにします。"
 
@@ -1064,7 +1064,7 @@ msgstr "HTML を入力…"
 msgid "Write TeX…"
 msgstr "TeX を入力…"
 
-#: src/components/front-matter-editor/index.tsx:78
+#: src/components/front-matter-editor/index.tsx:79
 msgid "Write YAML front matter…"
 msgstr "YAML フロントマターを入力…"
 
@@ -1112,10 +1112,10 @@ msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "Markdown でスライドを書く"
 
-#: src/components/front-matter-editor/index.tsx:96
+#: src/components/front-matter-editor/index.tsx:97
 msgid "YAML front matter"
 msgstr "YAML フロントマター"
 
-#: src/components/front-matter-editor/index.tsx:457
+#: src/components/front-matter-editor/index.tsx:458
 msgid "Your own CSS in style overrides some of these colors."
 msgstr "style 内の独自 CSS が一部の色を上書きしています。"
