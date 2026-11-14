@@ -193,6 +193,10 @@ fn client() -> Result<&'static reqwest::Client, AiRequestError> {
         let _ = rustls::crypto::ring::default_provider().install_default();
     }
     let client = reqwest::Client::builder()
+        // The key is sent in headers, such as `x-api-key`, that reqwest
+        // keeps when a redirect leads to another host. The APIs do not
+        // redirect, so a redirect is answered as an error instead.
+        .redirect(reqwest::redirect::Policy::none())
         .connect_timeout(Duration::from_secs(30))
         // The API sends pings while the model thinks, so a long silence
         // means the connection is gone.
