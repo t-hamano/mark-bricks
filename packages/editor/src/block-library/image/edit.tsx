@@ -10,7 +10,7 @@ import { BlockControls, useBlockProps } from '@wordpress/block-editor';
 import { Dropdown, ToolbarButton } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Button, InputControl, Notice, Stack } from '@wordpress/ui';
-import { image as imageIcon, pencil } from '@wordpress/icons';
+import { cog, image as imageIcon, pencil } from '@wordpress/icons';
 
 /**
  * Internal dependencies
@@ -21,6 +21,8 @@ import { BlockPlaceholder } from '../../components/block-placeholder';
 import { useFrontMatter } from '../../components/front-matter-editor/context';
 import { isMarpFrontMatter } from '../../converter/front-matter';
 import { useImageNotice, usePlatform } from '../../platform';
+import { MarpImageSettings } from './marp-image-settings';
+import { parseMarpImageAlt, serializeMarpImageAlt } from './marp-image-options';
 
 export default function Edit( props: BlockEditProps ) {
 	const { attributes, setAttributes } =
@@ -28,10 +30,25 @@ export default function Edit( props: BlockEditProps ) {
 	const { url, alt, title } = attributes;
 	const { pickImageFile, resolveImageSrc } = usePlatform();
 	// Marp reads layout and size keywords such as `bg` from the alt text.
+	// They are set from the Marp image settings, so the alt text field shows
+	// only the other words.
 	const { frontMatter } = useFrontMatter();
 	const isMarp = isMarpFrontMatter( frontMatter );
+	const getAltText = () =>
+		isMarp ? parseMarpImageAlt( alt || '' ).text : alt || '';
+	const buildAlt = ( text: string ) => {
+		if ( ! isMarp ) {
+			return text;
+		}
+		const options = parseMarpImageAlt( alt || '' );
+		// Keeps the alt text as written when the words did not change.
+		return text === options.text
+			? alt || ''
+			: serializeMarpImageAlt( { ...options, text } );
+	};
 
 	const [ urlInput, setUrlInput ] = useState( () => url || '' );
+	const isBackground = isMarp && parseMarpImageAlt( alt || '' ).background;
 	const [ altInput, setAltInput ] = useState( () => alt || '' );
 	const [ titleInput, setTitleInput ] = useState( () => title || '' );
 	const imageNotice = useImageNotice( urlInput );
@@ -152,7 +169,7 @@ export default function Edit( props: BlockEditProps ) {
 					onToggle={ ( willOpen ) => {
 						if ( willOpen ) {
 							setUrlInput( url || '' );
-							setAltInput( alt || '' );
+							setAltInput( getAltText() );
 							setTitleInput( title || '' );
 						}
 					} }
@@ -177,7 +194,7 @@ export default function Edit( props: BlockEditProps ) {
 										}
 										setAttributes( {
 											url: nextUrl,
-											alt: altInput,
+											alt: buildAlt( altInput ),
 											title: titleInput,
 										} );
 										onClose();
@@ -230,17 +247,22 @@ export default function Edit( props: BlockEditProps ) {
 								</Notice.Root>
 							) }
 							<InputControl
-								label={ __( 'Alt text', 'mark-bricks' ) }
+								label={
+									isBackground
+										? __( 'Caption', 'mark-bricks' )
+										: __( 'Alt text', 'mark-bricks' )
+								}
 								value={ altInput }
 								onValueChange={ setAltInput }
-								placeholder={ __(
-									'Enter alt text…',
-									'mark-bricks'
-								) }
+								placeholder={
+									isBackground
+										? __( 'Enter caption…', 'mark-bricks' )
+										: __( 'Enter alt text…', 'mark-bricks' )
+								}
 								description={
 									isMarp
 										? __(
-												'Marp keywords such as bg, w:200px or sepia set the layout and size. The other words become the alt text, or the caption of a background image.',
+												'Set the placement, size and filters from Marp image settings in the toolbar.',
 												'mark-bricks'
 											)
 										: __(
@@ -283,6 +305,32 @@ export default function Edit( props: BlockEditProps ) {
 						</Stack>
 					) }
 				/>
+				{ isMarp && (
+					<Dropdown
+						popoverProps={ { placement: 'bottom-start' } }
+						renderToggle={ ( { isOpen, onToggle } ) => (
+							<ToolbarButton
+								icon={ cog }
+								title={ __(
+									'Marp image settings',
+									'mark-bricks'
+								) }
+								onClick={ onToggle }
+								aria-expanded={ isOpen }
+								aria-haspopup="true"
+							/>
+						) }
+						renderContent={ ( { onClose } ) => (
+							<MarpImageSettings
+								alt={ alt || '' }
+								onApply={ ( next ) =>
+									setAttributes( { alt: next } )
+								}
+								onClose={ onClose }
+							/>
+						) }
+					/>
+				) }
 			</BlockControls>
 			<div { ...blockProps }>
 				{ hasLoadError ? (
@@ -295,7 +343,7 @@ export default function Edit( props: BlockEditProps ) {
 					resolvedSrc && (
 						<img
 							src={ resolvedSrc }
-							alt={ alt || '' }
+							alt={ getAltText() }
 							onError={ () => setHasLoadError( true ) }
 							onLoad={ () => setHasLoadError( false ) }
 						/>
