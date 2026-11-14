@@ -237,6 +237,10 @@ export function MarpImageSettings( {
 	const isSplit = placement === 'left' || placement === 'right';
 	const lengthUnits = options.background ? LENGTH_UNITS : INLINE_LENGTH_UNITS;
 	const keywordWords = getKeywordsInText( result );
+	// Each filter can be added once.
+	const availableFilters = MARP_FILTERS.filter(
+		( name ) => ! options.filters.some( ( filter ) => filter.name === name )
+	);
 
 	return (
 		<Stack direction="column" gap="md" style={ { width: '400px' } }>
@@ -288,7 +292,6 @@ export function MarpImageSettings( {
 				<UnitControl
 					__next40pxDefaultSize
 					label={ __( 'Split width', 'mark-bricks' ) }
-					placeholder="50"
 					units={ PERCENT_UNITS }
 					value={ options.splitSize ?? '' }
 					onChange={ ( value ) =>
@@ -432,7 +435,7 @@ export function MarpImageSettings( {
 					}
 				/>
 			) }
-			<Stack direction="column" gap="sm">
+			<Stack direction="column" gap="md">
 				<Stack direction="row" justify="space-between" align="center">
 					<Text variant="heading-sm" render={ <h3 /> }>
 						{ __( 'Filters', 'mark-bricks' ) }
@@ -440,16 +443,16 @@ export function MarpImageSettings( {
 					<DropdownMenu
 						icon={ plus }
 						label={ __( 'Add filter', 'mark-bricks' ) }
-						toggleProps={ { size: 'compact' } }
+						toggleProps={ {
+							size: 'compact',
+							// Stays focusable, so its label can still be read.
+							disabled: availableFilters.length === 0,
+							accessibleWhenDisabled: true,
+						} }
 					>
 						{ ( { onClose: closeMenu } ) => (
 							<MenuGroup>
-								{ MARP_FILTERS.filter(
-									( name ) =>
-										! options.filters.some(
-											( filter ) => filter.name === name
-										)
-								).map( ( name ) => (
+								{ availableFilters.map( ( name ) => (
 									<MenuItem
 										key={ name }
 										onClick={ () => {
