@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { EditorStyles } from '@mark-bricks/editor/block-editor';
+import type { EditorStyles } from '@mark-bricks/editor';
 
 /**
  * Internal dependencies

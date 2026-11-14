@@ -2,7 +2,7 @@
  * External dependencies
  */
 import type { RefObject } from 'react';
-import { getLocale } from '@mark-bricks/editor/locale';
+import { getLocale } from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies

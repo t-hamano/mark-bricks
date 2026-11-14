@@ -13,7 +13,7 @@ import { languages } from '@codemirror/language-data';
 import { Compartment, EditorState } from '@codemirror/state';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { EditorView } from '@codemirror/view';
-import { useEditorTheme } from '@mark-bricks/editor/editor-theme-provider';
+import { useEditorTheme } from '@mark-bricks/editor';
 import {
 	SLIDE_PATTERNS,
 	SLIDE_PATTERN_CATEGORIES,

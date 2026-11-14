@@ -1,15 +1,15 @@
 /**
  * External dependencies
  */
-import type { Platform } from '@mark-bricks/editor';
 import {
 	BlockEditor,
+	EditorThemeProvider,
+	inspectCodePreviews,
+	setupEditor,
 	type EditorHandle,
-} from '@mark-bricks/editor/block-editor';
-import { inspectCodePreviews } from '@mark-bricks/editor/code-previews';
-import { EditorThemeProvider } from '@mark-bricks/editor/editor-theme-provider';
+	type Platform,
+} from '@mark-bricks/editor';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
-import { setupEditor } from '@mark-bricks/editor/setup';
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
