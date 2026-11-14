@@ -1,7 +1,17 @@
 /**
  * External dependencies
  */
-import * as monaco from 'monaco-editor';
+// The editor, its features and the syntax highlighting of every language,
+// which code fences in the Markdown use. The package's main entry also bundles
+// the TypeScript, CSS and HTML language services with their workers, which the
+// Markdown source never uses. JSON has no basic highlighting of its own, so
+// its language service stays to color `json` fences.
+import * as monaco from 'monaco-editor/editor';
+import 'monaco-editor/features/register.all';
+import 'monaco-editor/basic-languages/monaco.contribution';
+import 'monaco-editor/languages/features/json/register';
+// `Paste As...` and the default paste providers, which `register.all` misses.
+import 'monaco-editor/editor/contrib/dropOrPasteInto/browser/copyPasteContribution';
 import EditorWorker from 'monaco-editor/editor/editor.worker?worker';
 import { useContext, useEffect, useRef } from 'react';
 
