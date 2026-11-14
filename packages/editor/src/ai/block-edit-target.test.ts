@@ -72,21 +72,23 @@ const DOCUMENT = '# Title\n\nFirst.\n\nSecond.\n\nThird.\n';
 
 describe( 'createBlockEditTarget', () => {
 	describe( 'getContext', () => {
-		it( 'returns the selected blocks and marks them in the document', () => {
+		it( 'returns the document and where the selected blocks are in it', () => {
 			const { access } = setup( DOCUMENT, [ 1, 2 ] );
 			expect( createBlockEditTarget( access ).getContext() ).toEqual( {
+				document: DOCUMENT,
 				selection: 'First.\n\nSecond.\n',
-				document:
-					'# Title\n\n<selection>\nFirst.\n\nSecond.\n</selection>\n\nThird.\n',
+				selectionStart: DOCUMENT.indexOf( 'First.' ),
+				selectionEnd: DOCUMENT.indexOf( '\n\nThird.' ),
 			} );
 		} );
 
-		it( 'marks the end of the document when nothing is selected', () => {
+		it( 'places an empty selection at the end of the document', () => {
 			const { access } = setup( DOCUMENT );
 			expect( createBlockEditTarget( access ).getContext() ).toEqual( {
+				document: DOCUMENT,
 				selection: '',
-				document:
-					'# Title\n\nFirst.\n\nSecond.\n\nThird.\n\n<selection></selection>\n',
+				selectionStart: DOCUMENT.length,
+				selectionEnd: DOCUMENT.length,
 			} );
 		} );
 
@@ -105,7 +107,22 @@ describe( 'createBlockEditTarget', () => {
 				createBlockEditTarget( access, 'marp: true' ).getContext()
 					.document
 			).toBe(
-				'---\nmarp: true\n---\n\n<selection>\n# Title\n</selection>\n\nFirst.\n\nSecond.\n\nThird.\n'
+				'---\nmarp: true\n---\n\n# Title\n\nFirst.\n\nSecond.\n\nThird.\n'
+			);
+		} );
+
+		it( 'reads the document as it is now, with the current front matter', () => {
+			const { access } = setup( DOCUMENT, [ 1 ] );
+			let frontMatter: string | null = 'marp: true';
+			const target = createBlockEditTarget( access, frontMatter, {
+				get: () => frontMatter,
+				set: () => {},
+				merge: () => {},
+			} );
+			target.apply( { action: 'replace', markdown: 'Changed.\n' } );
+			frontMatter = 'marp: true\npaginate: true';
+			expect( target.getDocument() ).toBe(
+				'---\nmarp: true\npaginate: true\n---\n\n# Title\n\nChanged.\n\nSecond.\n\nThird.\n'
 			);
 		} );
 	} );

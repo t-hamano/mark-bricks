@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { SELECTION_END, SELECTION_START, type EditTarget } from './edit-target';
+import type { EditTarget } from './edit-target';
 import { joinFrontMatter, splitFrontMatter } from '../converter';
 import type { AiEdit } from '../platform';
 import { findUniqueText } from './find-text';
@@ -186,14 +186,15 @@ export function createTextEditTarget( access: TextEditorAccess ): EditTarget {
 	return {
 		getContext() {
 			return {
+				document: value,
 				selection: value.slice( range.start, range.end ),
-				document:
-					value.slice( 0, range.start ) +
-					SELECTION_START +
-					value.slice( range.start, range.end ) +
-					SELECTION_END +
-					value.slice( range.end ),
+				selectionStart: range.start,
+				selectionEnd: range.end,
 			};
+		},
+
+		getDocument() {
+			return access.getValue();
 		},
 
 		apply( edit: AiEdit ) {

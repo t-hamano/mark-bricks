@@ -91,6 +91,7 @@
 		"@wordpress/ui": "^0.23.0",
 		"clsx": "^2.1.1",
 		"codemirror-lang-mermaid": "^0.5.0",
+		"diff": "^9.0.0",
 		"hast-util-from-html": "^2.1.0",
 		"katex": "^0.19.1",
 		"mdast-util-math": "^3.0.0",

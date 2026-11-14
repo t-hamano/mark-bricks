@@ -57,13 +57,22 @@ const SECOND_END = DOCUMENT.indexOf( '\n\nLast' );
 
 describe( 'createTextEditTarget', () => {
 	describe( 'getContext', () => {
-		it( 'returns the selected text and marks it in the document', () => {
+		it( 'returns the document and where the selection is in it', () => {
 			const { access } = setup( DOCUMENT, FIRST, SECOND_END );
 			expect( createTextEditTarget( access ).getContext() ).toEqual( {
+				document: DOCUMENT,
 				selection: 'First line.\nSecond line.',
-				document:
-					'# Title\n\n<selection>First line.\nSecond line.</selection>\n\nLast.\n',
+				selectionStart: FIRST,
+				selectionEnd: SECOND_END,
 			} );
+		} );
+
+		it( 'reads the document as it is now', () => {
+			const { access } = setup( DOCUMENT, FIRST );
+			const target = createTextEditTarget( access );
+			target.apply( { action: 'replace', markdown: 'New line.' } );
+			expect( target.getDocument() ).toBe( access.getValue() );
+			expect( target.getDocument() ).toContain( 'New line.' );
 		} );
 
 		it( 'selects the line the cursor is on when nothing is selected', () => {

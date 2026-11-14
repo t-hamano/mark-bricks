@@ -4,8 +4,7 @@
 import type { AiEdit, AiEditResult } from '../platform';
 
 /**
- * Wraps the selection in the document sent to the model, so the model
- * sees where the selection sits.
+ * Wraps the selection in the context sent to the model with each message.
  */
 export const SELECTION_START = '<selection>';
 export const SELECTION_END = '</selection>';
@@ -15,14 +14,19 @@ export const SELECTION_END = '</selection>';
  */
 export type EditContext = {
 	/**
+	 * The whole document as Markdown.
+	 */
+	document: string;
+	/**
 	 * The selection as Markdown. Empty when nothing is selected.
 	 */
 	selection: string;
 	/**
-	 * The whole document as Markdown, with the selection wrapped in
-	 * `SELECTION_START` and `SELECTION_END`.
+	 * Where the selection is in `document`, as character offsets. Both are
+	 * the place where new content goes when nothing is selected.
 	 */
-	document: string;
+	selectionStart: number;
+	selectionEnd: number;
 };
 
 /**
@@ -31,6 +35,11 @@ export type EditContext = {
  */
 export type EditTarget = {
 	getContext: () => EditContext;
+	/**
+	 * The whole document as it is now, in the same form as the context's
+	 * `document`.
+	 */
+	getDocument: () => string;
 	/**
 	 * Applies the model's edit, as one undo step: to the captured
 	 * selection, or for `replace_text`, to the text it names. Changes
@@ -43,24 +52,33 @@ export type EditTarget = {
 
 /**
  * Joins the Markdown before, inside and after the selection into the
- * document sent to the model.
+ * document sent to the model, separated by blank lines.
  *
  * @param before    Markdown before the selection.
  * @param selection Markdown of the selection.
  * @param after     Markdown after the selection.
- * @return The document with the selection markers.
+ * @return The document, and where the selection is in it.
  */
-export function joinWithSelectionMarkers(
+export function joinAroundSelection(
 	before: string,
 	selection: string,
 	after: string
-): string {
-	const marked = selection
-		? `${ SELECTION_START }\n${ selection.replace( /\n+$/, '' ) }\n${ SELECTION_END }`
-		: SELECTION_START + SELECTION_END;
-	return [ before, marked, after ]
-		.map( ( part ) => part.replace( /\n+$/, '' ) )
-		.filter( ( part ) => part !== '' )
-		.join( '\n\n' )
-		.concat( '\n' );
+): EditContext {
+	const trim = ( part: string ) => part.replace( /\n+$/, '' );
+	const head = trim( before );
+	const marked = trim( selection );
+	const tail = trim( after );
+	const parts = [ head, marked, tail ].filter( ( part ) => part !== '' );
+	const document = parts.length ? parts.join( '\n\n' ) + '\n' : '';
+	let selectionStart = head ? head.length + 2 : 0;
+	if ( ! marked && ! tail ) {
+		// Nothing follows, so new content goes at the end.
+		selectionStart = document.length;
+	}
+	return {
+		document,
+		selection,
+		selectionStart,
+		selectionEnd: selectionStart + marked.length,
+	};
 }
