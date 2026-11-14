@@ -48,6 +48,10 @@
 		"./marp": {
 			"types": "./src/marp.ts",
 			"default": "./src/marp.ts"
+		},
+		"./vite-dedupe": {
+			"types": "./vite-dedupe.d.mts",
+			"default": "./vite-dedupe.mjs"
 		}
 	},
 	"scripts": {
