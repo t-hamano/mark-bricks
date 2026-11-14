@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:43:28.682Z\n"
-"PO-Revision-Date: 2026-11-14T06:43:29.410Z\n"
+"POT-Creation-Date: 2026-11-14T07:13:28.497Z\n"
+"PO-Revision-Date: 2026-11-14T07:13:40.618Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -35,11 +35,11 @@ msgstr "„%s“ obsahuje neuložené změny. Chcete je zahodit a zavřít?"
 msgid "(Untitled)"
 msgstr "(Bez názvu)"
 
-#: src/components/preferences-modal/index.tsx:228
+#: src/components/preferences-modal/index.tsx:239
 msgid "AI Assistant"
 msgstr "Asistent AI"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:274
+#: src/components/preferences-modal/ai-provider-card.tsx:279
 msgid "API key"
 msgstr "Klíč API"
 
@@ -88,11 +88,11 @@ msgid "Check updates automatically"
 msgstr "Automaticky kontrolovat aktualizace"
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:339
+#: src/components/preferences-modal/ai-provider-card.tsx:344
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr "Využití a fakturaci zkontrolujete na <a>%s</a>"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:298
+#: src/components/preferences-modal/ai-provider-card.tsx:303
 msgid "Checking the API key…"
 msgstr "Ověřování klíče API…"
 
@@ -102,7 +102,7 @@ msgid "Checking…"
 msgstr "Kontrola…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:213
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -121,7 +121,7 @@ msgstr "Zavřít ostatní karty"
 msgid "Close the active tab."
 msgstr "Zavřít aktivní kartu."
 
-#: src/components/preferences-modal/index.tsx:225
+#: src/components/preferences-modal/index.tsx:236
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Editor kódu"
@@ -159,7 +159,11 @@ msgstr ""
 msgid "Create a new file."
 msgstr "Vytvořit nový soubor."
 
-#: src/preferences/constants.ts:58
+#: src/components/preferences-modal/ai-panel.tsx:181
+msgid "Custom instructions"
+msgstr "Vlastní pokyny"
+
+#: src/preferences/constants.ts:61
 msgid "Dark"
 msgstr "Tmavý"
 
@@ -168,11 +172,11 @@ msgstr "Tmavý"
 msgid "Default (%s)"
 msgstr "Výchozí (%s)"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:305
+#: src/components/preferences-modal/ai-provider-card.tsx:310
 msgid "Delete"
 msgstr "Smazat"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:294
+#: src/components/preferences-modal/ai-provider-card.tsx:299
 msgid "Deleting the API key…"
 msgstr "Mazání klíče API…"
 
@@ -239,12 +243,12 @@ msgstr "Rodina písem"
 msgid "Font size"
 msgstr "Velikost písma"
 
-#: src/components/preferences-modal/index.tsx:219
+#: src/components/preferences-modal/index.tsx:230
 msgid "General"
 msgstr "Obecné"
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:315
+#: src/components/preferences-modal/ai-provider-card.tsx:320
 msgid "Get your API key at <a>%s</a>"
 msgstr "Klíč API získáte na <a>%s</a>"
 
@@ -260,7 +264,7 @@ msgstr "Prezentace HTML"
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:80
+#: src/preferences/constants.ts:83
 msgid "Handwriting"
 msgstr "Ručně psané"
 
@@ -296,7 +300,7 @@ msgstr "Klávesové zkratky"
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/preferences/constants.ts:57
+#: src/preferences/constants.ts:60
 msgid "Light"
 msgstr "Světlý"
 
@@ -304,7 +308,7 @@ msgstr "Světlý"
 msgid "List View shortcuts"
 msgstr "Klávesové zkratky Zobrazení seznamu"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:392
+#: src/components/preferences-modal/ai-provider-card.tsx:397
 msgid "Loading the models…"
 msgstr "Načítání modelů…"
 
@@ -321,7 +325,7 @@ msgstr "MarkBricks je nyní výchozí aplikací pro soubory Markdown."
 msgid "Maximum width of the content area, in pixels."
 msgstr "Maximální šířka oblasti obsahu v pixelech."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:400
+#: src/components/preferences-modal/ai-provider-card.tsx:405
 msgid "Model"
 msgstr "Model"
 
@@ -330,7 +334,7 @@ msgstr "Model"
 msgid "Model: %s"
 msgstr "Model: %s"
 
-#: src/preferences/constants.ts:76
+#: src/preferences/constants.ts:79
 msgid "Monospace"
 msgstr "Neproporcionální"
 
@@ -359,7 +363,7 @@ msgstr "Není otevřen žádný soubor"
 msgid "Not a Marp document"
 msgstr "Nejde o dokument Marp"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:230
+#: src/components/preferences-modal/ai-provider-card.tsx:240
 msgid "Not connected"
 msgstr "Nepřipojeno"
 
@@ -396,7 +400,7 @@ msgstr "Prezentace PDF"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:200
+#: src/components/preferences-modal/index.tsx:211
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "Předvolby"
@@ -405,7 +409,7 @@ msgstr "Předvolby"
 msgid "Preview Slides"
 msgstr "Zobrazit náhled snímků"
 
-#: src/components/preferences-modal/ai-panel.tsx:145
+#: src/components/preferences-modal/ai-panel.tsx:151
 msgid "Provider"
 msgstr "Poskytovatel"
 
@@ -437,12 +441,12 @@ msgstr "Restartujte aplikaci, aby se použil nový jazyk."
 msgid "Restore default settings"
 msgstr "Obnovit výchozí nastavení"
 
-#: src/preferences/constants.ts:68
+#: src/preferences/constants.ts:71
 msgid "Sans-serif"
 msgstr "Bezpatkové"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:306
+#: src/components/preferences-modal/ai-provider-card.tsx:311
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -468,7 +472,13 @@ msgstr "Uložit aktivní soubor."
 msgid "Selection shortcuts"
 msgstr "Zkratky výběru textu"
 
-#: src/preferences/constants.ts:72
+#: src/components/preferences-modal/ai-panel.tsx:182
+msgid ""
+"Sent with every message to the AI Assistant. For example, the tone to write "
+"in, or what your documents are about."
+msgstr "Odesílají se s každou zprávou AI asistentovi. Například tón, kterým psát, nebo o čem jsou vaše dokumenty."
+
+#: src/preferences/constants.ts:75
 msgid "Serif"
 msgstr "Patkové"
 
@@ -502,8 +512,8 @@ msgstr "Kontrola pravopisu"
 msgid "Spotlight mode"
 msgstr "Režim nevyrušovaného psaní"
 
-#: src/preferences/constants.ts:56
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:59
+#: src/preferences/constants.ts:68
 msgid "System Default"
 msgstr "Výchozí systémové"
 
@@ -526,7 +536,7 @@ msgid "The %s account has no credit left. Check its billing settings."
 msgstr ""
 "Účet %s nemá žádný zbývající kredit. Zkontrolujte jeho nastavení fakturace."
 
-#: src/components/preferences-modal/ai-panel.tsx:148
+#: src/components/preferences-modal/ai-panel.tsx:154
 msgid "The AI Assistant uses this provider."
 msgstr "Asistent AI používá tohoto poskytovatele."
 
@@ -535,7 +545,7 @@ msgid "The API key cannot use this model."
 msgstr "Tento klíč API nemůže používat tento model."
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-provider-card.tsx:246
+#: src/components/preferences-modal/ai-provider-card.tsx:251
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the %s "
 "API."
@@ -547,11 +557,11 @@ msgstr ""
 msgid "The API key is not valid. Check it in the settings."
 msgstr "Klíč API není platný. Zkontrolujte ho v nastavení."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:375
+#: src/components/preferences-modal/ai-provider-card.tsx:380
 msgid "The API key was deleted."
 msgstr "Klíč API byl smazán."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:365
+#: src/components/preferences-modal/ai-provider-card.tsx:370
 msgid "The API key was saved."
 msgstr "Klíč API byl uložen."
 
@@ -582,7 +592,7 @@ msgid "The model was not found."
 msgstr "Model nebyl nalezen."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:428
+#: src/components/preferences-modal/ai-provider-card.tsx:433
 msgid "The models could not be loaded: %s"
 msgstr "Modely se nepodařilo načíst: %s"
 
@@ -624,7 +634,7 @@ msgstr "Nástroje"
 msgid "Top toolbar"
 msgstr "Horní panel nástrojů"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:437
+#: src/components/preferences-modal/ai-provider-card.tsx:442
 msgid "Try again"
 msgstr "Zkusit znovu"
 
@@ -657,7 +667,7 @@ msgstr "Kontrola aktualizací selhala: %s"
 msgid "View"
 msgstr "Zobrazení"
 
-#: src/components/preferences-modal/index.tsx:222
+#: src/components/preferences-modal/index.tsx:233
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Vizuální editor"

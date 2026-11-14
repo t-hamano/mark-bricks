@@ -1,0 +1,6 @@
+data: {"candidates":[{"content":{"parts":[{"text":"**Counting the headings**","thought":true}],"role":"model"},"index":0}],"usageMetadata":{"promptTokenCount":220,"totalTokenCount":220},"modelVersion":"gemini-3.6-flash","responseId":"resp_01"}
+
+data: {"candidates":[{"content":{"parts":[{"text":"見出しは"}],"role":"model"},"index":0}],"usageMetadata":{"promptTokenCount":220,"candidatesTokenCount":3,"thoughtsTokenCount":40,"totalTokenCount":263},"modelVersion":"gemini-3.6-flash","responseId":"resp_01"}
+
+data: {"candidates":[{"content":{"parts":[{"text":"2つあります。","thoughtSignature":"sig_answer"}],"role":"model"},"finishReason":"STOP","index":0}],"usageMetadata":{"promptTokenCount":220,"candidatesTokenCount":9,"thoughtsTokenCount":40,"totalTokenCount":269},"modelVersion":"gemini-3.6-flash","responseId":"resp_01"}
+

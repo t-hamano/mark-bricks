@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { SelectControl, Stack } from '@wordpress/ui';
+import { SelectControl, Stack, TextareaControl } from '@wordpress/ui';
 
 /**
  * Internal dependencies
@@ -28,11 +28,17 @@ export type AiSettings = {
 	 * for the provider's default model.
 	 */
 	models: Partial< Record< AiProvider, string > >;
+	/**
+	 * The user's instructions, sent with every message.
+	 */
+	instructions: string;
 };
 
 type Props = {
 	settings: AiSettings;
-	onChange: ( edits: Pick< Partial< AiSettings >, 'provider' > ) => void;
+	onChange: (
+		edits: Pick< Partial< AiSettings >, 'provider' | 'instructions' >
+	) => void;
 	/**
 	 * Called with a provider's new model, or an empty string for its default
 	 * model. The change applies to the models saved when it is made, which
@@ -67,7 +73,7 @@ export function getFallbackProvider(
 }
 
 export function AiPanel( { settings, onChange, onModelChange }: Props ) {
-	const { provider, models } = settings;
+	const { provider, models, instructions } = settings;
 	const [ keys, setKeys ] = useState< Keys >(
 		() =>
 			Object.fromEntries(
@@ -171,6 +177,18 @@ export function AiPanel( { settings, onChange, onModelChange }: Props ) {
 					/>
 				</Stack>
 			) }
+			<TextareaControl
+				label={ __( 'Custom instructions', 'mark-bricks' ) }
+				description={ __(
+					'Sent with every message to the AI Assistant. For example, the tone to write in, or what your documents are about.',
+					'mark-bricks'
+				) }
+				rows={ 6 }
+				value={ instructions }
+				onValueChange={ ( value ) =>
+					onChange( { instructions: value } )
+				}
+			/>
 		</Stack>
 	);
 }

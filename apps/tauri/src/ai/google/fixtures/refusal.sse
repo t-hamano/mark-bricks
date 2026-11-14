@@ -1,0 +1,4 @@
+data: {"candidates":[{"content":{"parts":[{"text":"I"}],"role":"model"},"index":0}],"modelVersion":"gemini-3.6-flash","responseId":"resp_04"}
+
+data: {"candidates":[{"finishReason":"PROHIBITED_CONTENT","index":0}],"usageMetadata":{"promptTokenCount":80,"candidatesTokenCount":1,"totalTokenCount":81},"modelVersion":"gemini-3.6-flash","responseId":"resp_04"}
+

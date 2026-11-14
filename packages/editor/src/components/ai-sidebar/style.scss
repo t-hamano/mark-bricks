@@ -45,6 +45,112 @@
 	overflow-wrap: anywhere;
 }
 
+.ai-chat__markdown {
+	overflow-wrap: anywhere;
+
+	> :first-child {
+		margin-top: 0;
+	}
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+
+	p,
+	ul,
+	ol,
+	pre,
+	blockquote,
+	table,
+	hr {
+		margin: 0 0 0.75em;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 1em 0 0.5em;
+		font-size: inherit;
+		font-weight: 600;
+	}
+
+	h1 {
+		font-size: 1.25em;
+	}
+
+	h2 {
+		font-size: 1.125em;
+	}
+
+	ul,
+	ol {
+		padding-left: 1.5em;
+
+		ul,
+		ol {
+			margin-bottom: 0;
+		}
+	}
+
+	li + li {
+		margin-top: 0.25em;
+	}
+
+	strong {
+		font-weight: 600;
+	}
+
+	code {
+		padding: 0.1em 0.3em;
+		border-radius: var(--wpds-border-radius-sm);
+		background: var(--wpds-color-background-surface-neutral-weak);
+		font-family: var(--wpds-typography-font-family-mono);
+		font-size: 0.9em;
+	}
+
+	pre {
+		padding: var(--wpds-dimension-padding-sm);
+		border-radius: var(--wpds-border-radius-md);
+		background: var(--wpds-color-background-surface-neutral-weak);
+		overflow-x: auto;
+		overflow-wrap: normal;
+
+		code {
+			padding: 0;
+			background: none;
+		}
+	}
+
+	blockquote {
+		padding-left: 0.75em;
+		border-left: 3px solid var(--wpds-color-stroke-surface-neutral-weak);
+		color: var(--wpds-color-foreground-content-neutral-weak);
+	}
+
+	table {
+		display: block;
+		max-width: 100%;
+		overflow-x: auto;
+		border-collapse: collapse;
+		overflow-wrap: normal;
+	}
+
+	th,
+	td {
+		padding: 0.25em 0.5em;
+		border: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+		text-align: left;
+	}
+
+	hr {
+		border: 0;
+		border-top: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+	}
+}
+
 .ai-chat__message.is-user {
 	align-self: flex-end;
 	max-width: 85%;

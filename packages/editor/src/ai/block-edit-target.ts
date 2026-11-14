@@ -12,6 +12,7 @@ import {
 	markdownToBlocks,
 } from '../converter';
 import { joinWithSelectionMarkers, type EditTarget } from './edit-target';
+import { splitAiFrontMatter } from './front-matter';
 
 /**
  * The parts of the block editor store the target reads and changes.
@@ -49,18 +50,37 @@ function getSelectedRootClientIds( access: BlockEditorAccess ): string[] {
 }
 
 /**
+ * Changes the document's front matter.
+ */
+export type FrontMatterAccess = {
+	/**
+	 * Replaces the front matter as its own undo step.
+	 */
+	set: ( next: string ) => void;
+	/**
+	 * Replaces the front matter as part of the block change just made.
+	 */
+	merge: ( next: string ) => void;
+};
+
+/**
  * Creates the edit target for the visual editor, from the blocks selected
  * now. With no block selected, the selection is empty, and edits are added
  * at the end of the document.
  *
- * @param access      Block editor access.
- * @param frontMatter The document's front matter, sent as part of the
- *                    document.
+ * Front matter at the start of the model's Markdown replaces the
+ * document's front matter instead of becoming blocks.
+ *
+ * @param access            Block editor access.
+ * @param frontMatter       The document's front matter, sent as part of
+ *                          the document.
+ * @param frontMatterAccess Changes the document's front matter.
  * @return The edit target.
  */
 export function createBlockEditTarget(
 	access: BlockEditorAccess,
-	frontMatter: string | null = null
+	frontMatter: string | null = null,
+	frontMatterAccess?: FrontMatterAccess
 ): EditTarget {
 	const clientIds = getSelectedRootClientIds( access );
 
@@ -99,7 +119,16 @@ export function createBlockEditTarget(
 			if ( indexes.includes( -1 ) ) {
 				return false;
 			}
-			const newBlocks = markdownToBlocks( markdown );
+			const split = frontMatterAccess
+				? splitAiFrontMatter( markdown )
+				: { frontMatter: null, body: markdown };
+			// An edit of the front matter alone leaves the blocks as they
+			// are.
+			if ( split.frontMatter !== null && split.body.trim() === '' ) {
+				frontMatterAccess?.set( split.frontMatter );
+				return true;
+			}
+			const newBlocks = markdownToBlocks( split.body );
 
 			if ( clientIds.length === 0 ) {
 				access.insertBlocks( newBlocks, blocks.length );
@@ -107,6 +136,11 @@ export function createBlockEditTarget(
 				access.replaceBlocks( clientIds, newBlocks );
 			} else {
 				access.insertBlocks( newBlocks, Math.max( ...indexes ) + 1 );
+			}
+			// The block change above has made the undo step, which the front
+			// matter joins, so one undo reverts the whole edit.
+			if ( split.frontMatter !== null ) {
+				frontMatterAccess?.merge( split.frontMatter );
 			}
 			return true;
 		},

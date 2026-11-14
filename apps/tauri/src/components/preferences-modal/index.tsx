@@ -58,6 +58,7 @@ export default function PreferencesModal() {
 		editorStyles,
 		aiProvider,
 		aiModels,
+		aiInstructions,
 	} = useSelect( ( select ) => {
 		const { get } = select( preferencesStore );
 		return {
@@ -80,6 +81,9 @@ export default function PreferencesModal() {
 			aiProvider: toProvider( get( 'mark-bricks', 'aiProvider' ) ),
 			aiModels: ( get( 'mark-bricks', 'aiModels' ) ??
 				{} ) as AiSettings[ 'models' ],
+			aiInstructions: String(
+				get( 'mark-bricks', 'aiInstructions' ) ?? ''
+			),
 		};
 	}, [] );
 
@@ -159,10 +163,17 @@ export default function PreferencesModal() {
 	};
 
 	const handleAiChange = (
-		edits: Pick< Partial< AiSettings >, 'provider' >
+		edits: Pick< Partial< AiSettings >, 'provider' | 'instructions' >
 	) => {
 		if ( edits.provider !== undefined ) {
 			setPreference( 'mark-bricks', 'aiProvider', edits.provider );
+		}
+		if ( edits.instructions !== undefined ) {
+			setPreference(
+				'mark-bricks',
+				'aiInstructions',
+				edits.instructions
+			);
 		}
 	};
 
@@ -287,6 +298,7 @@ export default function PreferencesModal() {
 								settings={ {
 									provider: aiProvider,
 									models: aiModels,
+									instructions: aiInstructions,
 								} }
 								onChange={ handleAiChange }
 								onModelChange={ handleAiModelChange }
