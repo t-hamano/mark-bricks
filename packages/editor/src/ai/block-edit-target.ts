@@ -58,6 +58,11 @@ function getSelectedRootClientIds( access: BlockEditorAccess ): string[] {
  */
 export type FrontMatterAccess = {
 	/**
+	 * Returns the document's front matter now. Omitted when the front
+	 * matter given to the target stays current.
+	 */
+	get?: () => string | null;
+	/**
 	 * Replaces the front matter as its own undo step.
 	 */
 	set: ( next: string ) => void;
@@ -108,7 +113,10 @@ function replaceText(
 		length += text.length;
 	} );
 	const body = blocksToMarkdown( blocks );
-	const document = joinFrontMatter( frontMatter, body );
+	const document = joinFrontMatter(
+		frontMatterAccess?.get ? frontMatterAccess.get() : frontMatter,
+		body
+	);
 	const headerLength = document.length - body.length;
 
 	const found = findUniqueText( document, find );
@@ -128,14 +136,15 @@ function replaceText(
 			header.slice( 0, found.start ) +
 				markdown +
 				header.slice( found.end )
-		).frontMatter;
-		if ( next === null ) {
+		);
+		// Text left after the front matter would be lost.
+		if ( next.frontMatter === null || next.body.trim() !== '' ) {
 			return {
 				status: 'failed',
-				reason: 'The edit would break the front matter. Keep its "---" lines, and try again.',
+				reason: 'The edit would break the front matter. Replace only the lines inside it, without "---" lines, and try again.',
 			};
 		}
-		frontMatterAccess.set( next );
+		frontMatterAccess.set( next.frontMatter );
 		return { status: 'applied' };
 	}
 

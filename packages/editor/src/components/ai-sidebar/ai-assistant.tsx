@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useCallback, useContext, type RefObject } from 'react';
+import { useCallback, useContext, useRef, type RefObject } from 'react';
 
 /**
  * WordPress dependencies
@@ -55,6 +55,10 @@ export function AiAssistant( {
 	const { ai } = usePlatform();
 	const registry = useRegistry();
 	const textEditor = useContext( TextEditorContext )?.editor ?? null;
+	// Edits that arrive while the answer streams read the front matter as
+	// it is then, not as it was when the message was sent.
+	const frontMatterRef = useRef( frontMatter );
+	frontMatterRef.current = frontMatter;
 
 	const createTarget = useCallback( () => {
 		if ( editorMode === 'text' ) {
@@ -65,7 +69,11 @@ export function AiAssistant( {
 		return createBlockEditTarget(
 			getBlockEditorAccess( registry ),
 			frontMatter,
-			{ set: setFrontMatter, merge: mergeFrontMatter }
+			{
+				get: () => frontMatterRef.current,
+				set: setFrontMatter,
+				merge: mergeFrontMatter,
+			}
 		);
 	}, [
 		editorMode,

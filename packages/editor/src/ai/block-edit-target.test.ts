@@ -286,6 +286,42 @@ describe( 'createBlockEditTarget', () => {
 			expect( getMarkdown() ).toBe( DOCUMENT );
 		} );
 
+		it( 'reads the front matter as it is when the edit arrives', () => {
+			const { access } = setup( DOCUMENT );
+			let frontMatter: string | null = 'marp: true\ntheme: default';
+			const result = createBlockEditTarget( access, 'marp: true', {
+				get: () => frontMatter,
+				set: ( next ) => {
+					frontMatter = next;
+				},
+				merge: () => {},
+			} ).apply( {
+				action: 'replace_text',
+				find: 'theme: default',
+				markdown: 'theme: gaia',
+			} );
+			expect( result ).toEqual( { status: 'applied' } );
+			expect( frontMatter ).toBe( 'marp: true\ntheme: gaia' );
+		} );
+
+		it( 'fails when the edit would push text out of the front matter', () => {
+			const { access } = setup( DOCUMENT );
+			let frontMatter: string | null = 'marp: true\ntheme: default';
+			expect(
+				createBlockEditTarget( access, frontMatter, {
+					set: ( next ) => {
+						frontMatter = next;
+					},
+					merge: () => {},
+				} ).apply( {
+					action: 'replace_text',
+					find: 'theme: default',
+					markdown: '---\nmarp: true\ntheme: gaia\n---',
+				} )
+			).toMatchObject( { status: 'failed' } );
+			expect( frontMatter ).toBe( 'marp: true\ntheme: default' );
+		} );
+
 		it( 'fails when the edit would break the front matter', () => {
 			const { access } = setup( DOCUMENT );
 			expect(
