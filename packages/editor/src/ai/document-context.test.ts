@@ -42,7 +42,9 @@ describe( 'formatChangedLines', () => {
 	it( 'shows the changed lines with the lines around them', () => {
 		const before = lines( 30 );
 		const after = before.replace( 'Line 15.', 'Changed.' );
-		const changes = formatChangedLines( before, after ).split( '\n' );
+		const changes = ( formatChangedLines( before, after ) ?? '' ).split(
+			'\n'
+		);
 		expect( changes[ 0 ] ).toBe( '7\tLine 7.' );
 		expect( changes ).toContain( '15\tChanged.' );
 		expect( changes[ changes.length - 1 ] ).toBe( '23\tLine 23.' );
@@ -59,6 +61,27 @@ describe( 'formatChangedLines', () => {
 		expect( changes ).toContain( '\n...\n' );
 		expect( changes ).toContain( '50\tSecond.' );
 		expect( changes ).not.toContain( 'Line 25.' );
+	} );
+
+	it( 'says where and how many lines were removed', () => {
+		const before = lines( 40 );
+		const after = before.replace( 'Line 20.\nLine 21.\n', '' );
+		const changes = formatChangedLines( before, after ) ?? '';
+		expect( changes ).toContain(
+			'19\tLine 19.\n[2 lines removed]\n20\tLine 22.'
+		);
+	} );
+
+	it( 'tells apart removing lines at the end', () => {
+		const before = lines( 100 );
+		const edited = before.replace( 'Line 20.', 'Changed.' );
+		const cut = edited.split( '\n' ).slice( 0, 28 ).join( '\n' ) + '\n';
+		expect( formatChangedLines( before, cut ) ).not.toBe(
+			formatChangedLines( before, edited )
+		);
+		expect( formatChangedLines( before, cut ) ).toContain(
+			'[72 lines removed]'
+		);
 	} );
 
 	it( 'numbers the lines as in the new document', () => {
@@ -124,6 +147,7 @@ describe( 'buildMessageContext', () => {
 		const previous = context.document.replace( 'Line 20.', 'Old.' );
 		const result = buildMessageContext( context, previous );
 		expect( result ).toMatch( /^<document_changes>\n/ );
+		expect( result ).toContain( 'which has 30 lines' );
 		expect( result ).toContain( '20\tLine 20.' );
 		expect( result ).not.toContain( '<document>' );
 	} );
@@ -135,9 +159,12 @@ describe( 'buildMessageContext', () => {
 			''
 		);
 		const previous = lines( 2000, 'Another line of text' );
-		expect(
-			formatChangedLines( previous, long.document ).length
-		).toBeGreaterThan( MAX_CHANGES_LENGTH );
+		// Comparing so different versions may also take too long, which
+		// sends the whole document too.
+		const changes = formatChangedLines( previous, long.document );
+		expect( changes === null || changes.length > MAX_CHANGES_LENGTH ).toBe(
+			true
+		);
 		const result = buildMessageContext( long, previous );
 		expect( result ).toContain( 'The document changed a lot' );
 		expect( result ).toContain( formatDocument( long.document ) );

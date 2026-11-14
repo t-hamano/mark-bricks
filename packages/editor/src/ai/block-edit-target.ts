@@ -175,6 +175,56 @@ function replaceText(
 }
 
 /**
+ * Wraps the front matter access so that it returns the front matter the
+ * target set at once. The host's front matter may update only after the
+ * next render, and the document is read right after an edit.
+ *
+ * @param frontMatter       The front matter when the target was created.
+ * @param frontMatterAccess The host's front matter access.
+ * @return The wrapped access, or `undefined` without one.
+ */
+function trackFrontMatter(
+	frontMatter: string | null,
+	frontMatterAccess: FrontMatterAccess | undefined
+): FrontMatterAccess | undefined {
+	if ( ! frontMatterAccess ) {
+		return undefined;
+	}
+	const read = () =>
+		frontMatterAccess.get ? frontMatterAccess.get() : frontMatter;
+	// The front matter the target set, and the host's before it. Once the
+	// host's changes, whether to the value set or because the user changed
+	// it, the host's is current again.
+	let pending: { value: string; hostBefore: string | null } | null = null;
+	const remember = ( value: string ) => {
+		const live = read();
+		// Before the host caught up with an earlier value, it still holds
+		// the one before that.
+		const hostBefore =
+			pending && live === pending.hostBefore ? pending.hostBefore : live;
+		pending = { value, hostBefore };
+	};
+	return {
+		get: () => {
+			const live = read();
+			if ( pending && live === pending.hostBefore ) {
+				return pending.value;
+			}
+			pending = null;
+			return live;
+		},
+		set: ( next ) => {
+			remember( next );
+			frontMatterAccess.set( next );
+		},
+		merge: ( next ) => {
+			remember( next );
+			frontMatterAccess.merge( next );
+		},
+	};
+}
+
+/**
  * Creates the edit target for the visual editor, from the blocks selected
  * now. With no block selected, the selection is empty, and edits are added
  * at the end of the document.
@@ -183,18 +233,22 @@ function replaceText(
  * document's front matter instead of becoming blocks. A `replace_text` edit
  * changes the text it names instead, wherever it is.
  *
- * @param access            Block editor access.
- * @param frontMatter       The document's front matter, sent as part of
- *                          the document.
- * @param frontMatterAccess Changes the document's front matter.
+ * @param access                 Block editor access.
+ * @param frontMatter            The document's front matter, sent as part of
+ *                               the document.
+ * @param givenFrontMatterAccess Changes the document's front matter.
  * @return The edit target.
  */
 export function createBlockEditTarget(
 	access: BlockEditorAccess,
 	frontMatter: string | null = null,
-	frontMatterAccess?: FrontMatterAccess
+	givenFrontMatterAccess?: FrontMatterAccess
 ): EditTarget {
 	const clientIds = getSelectedRootClientIds( access );
+	const frontMatterAccess = trackFrontMatter(
+		frontMatter,
+		givenFrontMatterAccess
+	);
 
 	return {
 		getContext() {
