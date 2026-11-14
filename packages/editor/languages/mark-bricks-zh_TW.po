@@ -8,13 +8,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:29:03.392Z\n"
-"PO-Revision-Date: 2026-11-09T14:29:30.116Z\n"
+"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
+"PO-Revision-Date: 2026-11-09T14:46:30.047Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: zh_TW\n"
 "X-Domain: mark-bricks\n"
+
+# %d: The number of blocks.
+#: src/ai/selection-summary.ts:46
+msgid "%d block selected"
+msgid_plural "%d blocks selected"
+msgstr[0] "已選取 %d 個區塊"
+msgstr[1] "已選取 %d 個區塊"
+
+# %d: The number of lines.
+#: src/ai/selection-summary.ts:29
+msgid "%d line selected"
+msgid_plural "%d lines selected"
+msgstr[0] "已選取 %d 行"
+msgstr[1] "已選取 %d 行"
 
 #: src/components/list-view-outline/index.tsx:159
 msgid "(Empty heading)"
@@ -64,9 +78,9 @@ msgctxt "slide pattern"
 msgid "A short line about this section"
 msgstr "關於本節的簡短說明"
 
-#: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/sidebar.tsx:60
-#: src/components/ai-sidebar/sidebar.tsx:91
+#: src/components/editor-header/index.tsx:194
+#: src/components/ai-sidebar/sidebar.tsx:61
+#: src/components/ai-sidebar/sidebar.tsx:92
 msgid "AI Assistant"
 msgstr "AI 助理"
 
@@ -96,11 +110,11 @@ msgstr "替代文字"
 msgid "Apply"
 msgstr "套用"
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:259
 msgid "Ask the AI Assistant"
 msgstr "詢問 AI 助理"
 
-#: src/components/ai-sidebar/chat.tsx:198
+#: src/components/ai-sidebar/chat.tsx:237
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -181,11 +195,11 @@ msgstr "清除格式"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:278
-#: src/components/ai-sidebar/sidebar.tsx:106
+#: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr "關閉"
 
-#: src/components/editor-header/index.tsx:194
+#: src/components/editor-header/index.tsx:193
 msgid "Close AI Assistant"
 msgstr "關閉 AI 助理"
 
@@ -313,7 +327,7 @@ msgstr "編輯圖片"
 msgid "Edit table"
 msgstr "編輯表格"
 
-#: src/components/ai-sidebar/chat.tsx:57
+#: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr "已編輯文件。"
 
@@ -504,6 +518,11 @@ msgctxt "slide pattern"
 msgid "Launch"
 msgstr "發布"
 
+# %d: The line number.
+#: src/ai/selection-summary.ts:22
+msgid "Line %d"
+msgstr "第 %d 行"
+
 #: src/format-library/link/index.tsx:36
 msgid "Link"
 msgstr "連結"
@@ -558,7 +577,7 @@ msgstr ""
 "bg、w:200px、sepia 等 Marp 關鍵字用於設定版面配置與尺寸。其餘文字會成為替代文"
 "字，背景圖片則成為說明文字。"
 
-#: src/components/ai-sidebar/chat.tsx:217
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "訊息"
 
@@ -583,7 +602,7 @@ msgid ""
 "incorrect heading levels."
 msgstr "瀏覽這篇內容的結構並解決標題層級為空或不正確等問題。"
 
-#: src/components/ai-sidebar/sidebar.tsx:96
+#: src/components/ai-sidebar/sidebar.tsx:97
 msgid "New conversation"
 msgstr "新對話"
 
@@ -591,6 +610,10 @@ msgstr "新對話"
 msgctxt "slide pattern"
 msgid "Next steps"
 msgstr "後續步驟"
+
+#: src/ai/selection-summary.ts:42
+msgid "No block selected"
+msgstr "未選取區塊"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
@@ -618,7 +641,7 @@ msgstr "希望每個人都記住的一句話"
 msgid "Open by default"
 msgstr "預設開啟"
 
-#: src/components/ai-sidebar/chat.tsx:190
+#: src/components/ai-sidebar/chat.tsx:229
 msgid "Open settings"
 msgstr "開啟設定"
 
@@ -760,7 +783,7 @@ msgstr "重設搜尋"
 
 #: src/components/editor-shell/side-panel-resizer.tsx:134
 msgid "Resize side panel"
-msgstr ""
+msgstr "調整側邊面板大小"
 
 #: src/marp-patterns/patterns/resources.ts:13
 #: src/marp-patterns/patterns/resources.ts:21
@@ -823,11 +846,11 @@ msgstr "章節標題"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他設定請參閱 <a>Marp 文件</a>。"
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Send"
 msgstr "傳送"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr "請設定 API 金鑰以使用 AI 助理。"
 
@@ -889,11 +912,11 @@ msgctxt "slide pattern"
 msgid "Steps"
 msgstr "步驟"
 
-#: src/components/ai-sidebar/chat.tsx:228
+#: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:70
+#: src/components/ai-sidebar/chat.tsx:79
 msgid "Stopped."
 msgstr "已停止。"
 
@@ -937,7 +960,7 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "謝謝"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:86
 msgid "The answer could not be loaded."
 msgstr "無法載入回答。"
 
@@ -949,7 +972,7 @@ msgstr "投影片的長寬比。"
 msgid "The diagram could not be rendered."
 msgstr "無法轉譯圖表。"
 
-#: src/components/ai-sidebar/chat.tsx:62
+#: src/components/ai-sidebar/chat.tsx:71
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1072,7 +1095,7 @@ msgstr "從裝置上傳圖片或透過網址插入。"
 msgid "Visual markdown block editor."
 msgstr "視覺化 Markdown 區塊編輯器。"
 
-#: src/components/ai-sidebar/chat.tsx:46
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Waiting for the answer…"
 msgstr "正在等待回答…"
 

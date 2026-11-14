@@ -18,6 +18,7 @@ import { createTextEditTarget } from '../../ai/text-edit-target';
 import { getTextEditorAccess } from '../../ai/text-editor-access';
 import { TextEditorContext } from '../../ai/text-editor-context';
 import { useAiChat } from '../../ai/use-ai-chat';
+import { useSelectionSummary } from '../../ai/use-selection-summary';
 import { usePlatform } from '../../platform';
 import { AiSidebar } from './sidebar';
 
@@ -47,11 +48,10 @@ export function AiAssistant( {
 }: Props ) {
 	const { ai } = usePlatform();
 	const registry = useRegistry();
-	const textEditorRef = useContext( TextEditorContext );
+	const textEditor = useContext( TextEditorContext )?.editor ?? null;
 
 	const createTarget = useCallback( () => {
 		if ( editorMode === 'text' ) {
-			const textEditor = textEditorRef?.current;
 			return textEditor
 				? createTextEditTarget( getTextEditorAccess( textEditor ) )
 				: null;
@@ -60,13 +60,20 @@ export function AiAssistant( {
 			getBlockEditorAccess( registry ),
 			frontMatter
 		);
-	}, [ editorMode, registry, frontMatter, textEditorRef ] );
+	}, [ editorMode, registry, frontMatter, textEditor ] );
 
 	const chat = useAiChat( { ai, editorMode, createTarget } );
+	const selectionSummary = useSelectionSummary( editorMode, textEditor );
 
 	return (
 		<AnimatePresence initial={ false }>
-			{ isOpened && <AiSidebar toggleRef={ toggleRef } chat={ chat } /> }
+			{ isOpened && (
+				<AiSidebar
+					toggleRef={ toggleRef }
+					chat={ chat }
+					selectionSummary={ selectionSummary }
+				/>
+			) }
 		</AnimatePresence>
 	);
 }

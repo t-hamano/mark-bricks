@@ -29,9 +29,10 @@ const AI_SIDEBAR_WIDTH = SIDEBAR_WIDTH + 60;
 type Props = {
 	toggleRef: RefObject< HTMLButtonElement | null >;
 	chat: AiChatState;
+	selectionSummary: string | null;
 };
 
-export function AiSidebar( { toggleRef, chat }: Props ) {
+export function AiSidebar( { toggleRef, chat, selectionSummary }: Props ) {
 	const { ai } = usePlatform();
 	const { setIsAiSidebarOpened } = useDispatch( editorStore );
 	const disableMotion = useReducedMotion();
@@ -113,7 +114,13 @@ export function AiSidebar( { toggleRef, chat }: Props ) {
 					</Stack>
 				</Stack>
 				<div className="ai-sidebar__body">
-					{ ai && <AiChat ai={ ai } chat={ chat } /> }
+					{ ai && (
+						<AiChat
+							ai={ ai }
+							chat={ chat }
+							selectionSummary={ selectionSummary }
+						/>
+					) }
 				</div>
 			</Stack>
 		</motion.aside>
