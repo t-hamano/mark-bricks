@@ -16,7 +16,7 @@ const pattern: SlidePattern = {
 	categories: [ 'title', 'image' ],
 	markdown: `<!-- _class: lead -->
 
-![bg left:40%](${ PLACEHOLDER_IMAGE })
+![bg left:30%](${ PLACEHOLDER_IMAGE })
 
 # {{title}}
 

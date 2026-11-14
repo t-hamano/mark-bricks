@@ -14,7 +14,7 @@ const pattern: SlidePattern = {
 	title: () =>
 		_x( 'Image on the left and text', 'slide pattern', 'mark-bricks' ),
 	categories: [ 'image' ],
-	markdown: `![bg left:40%](${ PLACEHOLDER_IMAGE })
+	markdown: `![bg left:30%](${ PLACEHOLDER_IMAGE })
 
 ## {{heading}}
 
