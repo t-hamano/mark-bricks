@@ -202,137 +202,146 @@ function SlidePatterns() {
 	);
 
 	return (
-		<DataViews
-			data={ data }
-			fields={ fields }
-			view={ view }
-			onChangeView={ setView }
-			paginationInfo={ paginationInfo }
-			defaultLayouts={ { grid: {} } }
-			getItemId={ ( item ) => item.name }
+		<div
+			style={ {
+				minHeight: '100vh',
+				background:
+					'var( --wpds-color-background-surface-neutral-strong )',
+			} }
 		>
-			<Text
-				variant="body-md"
-				render={ <p /> }
-				style={ { margin: 0, padding: '24px 24px 8px' } }
+			<DataViews
+				data={ data }
+				fields={ fields }
+				view={ view }
+				onChangeView={ setView }
+				paginationInfo={ paginationInfo }
+				defaultLayouts={ { grid: {} } }
+				getItemId={ ( item ) => item.name }
 			>
-				These are the slide patterns that MarkBricks lets you insert
-				when Marp mode is on. Each one is a ready-made slide for a{ ' ' }
-				<Link href="https://marp.app/" openInNewTab>
-					Marp
-				</Link>{ ' ' }
-				deck, shown here in the built-in theme chosen below.
-			</Text>
-			<Stack
-				direction="row"
-				align="end"
-				justify="space-between"
-				wrap="wrap"
-				gap="md"
-				className="dataviews__view-actions"
-				style={ { top: 0, zIndex: 1, paddingTop: 8 } }
-			>
-				<Stack direction="row" align="end" wrap="wrap" gap="lg">
-					<div style={ { width: 200 } }>
-						<SelectControl
-							label="Category"
-							items={ CATEGORY_ITEMS }
-							value={
-								CATEGORY_ITEMS.find(
-									( item ) => item.value === selectedCategory
-								) ?? CATEGORY_ITEMS[ 0 ]
-							}
-							onValueChange={ ( item ) =>
-								setView( {
-									...view,
-									filters: item?.value
-										? [
-												{
-													field: 'categories',
-													operator: 'isAny',
-													value: [ item.value ],
-												},
-											]
-										: [],
-								} )
-							}
-						/>
-					</div>
-					<ToggleGroupControl
-						__next40pxDefaultSize
-						label="Theme"
-						value={ theme }
-						onChange={ ( value ) =>
-							setTheme( value as SlidePatternTheme )
-						}
-					>
-						{ SLIDE_PATTERN_THEMES.map( ( name ) => (
-							<ToggleGroupControlOption
-								key={ name }
-								value={ name }
-								label={ name }
+				<Text
+					variant="body-md"
+					render={ <p /> }
+					style={ { margin: 0, padding: '24px 24px 8px' } }
+				>
+					These are the slide patterns that MarkBricks lets you insert
+					when Marp mode is on. Each one is a ready-made slide for a{ ' ' }
+					<Link href="https://marp.app/" openInNewTab>
+						Marp
+					</Link>{ ' ' }
+					deck, shown here in the built-in theme chosen below.
+				</Text>
+				<Stack
+					direction="row"
+					align="end"
+					justify="space-between"
+					wrap="wrap"
+					gap="md"
+					className="dataviews__view-actions"
+					style={ { top: 0, zIndex: 1, paddingTop: 8 } }
+				>
+					<Stack direction="row" align="end" wrap="wrap" gap="lg">
+						<div style={ { width: 200 } }>
+							<SelectControl
+								label="Category"
+								items={ CATEGORY_ITEMS }
+								value={
+									CATEGORY_ITEMS.find(
+										( item ) =>
+											item.value === selectedCategory
+									) ?? CATEGORY_ITEMS[ 0 ]
+								}
+								onValueChange={ ( item ) =>
+									setView( {
+										...view,
+										filters: item?.value
+											? [
+													{
+														field: 'categories',
+														operator: 'isAny',
+														value: [ item.value ],
+													},
+												]
+											: [],
+									} )
+								}
 							/>
-						) ) }
-					</ToggleGroupControl>
-					<ToggleGroupControl
-						__next40pxDefaultSize
-						label="Aspect ratio"
-						value={ size }
-						onChange={ ( value ) =>
-							setView( {
-								...view,
-								layout: {
-									...view.layout,
-									aspectRatio: SLIDE_SIZES.find(
-										( item ) => item.size === value
-									)?.aspectRatio,
-								},
-							} as View )
-						}
-					>
-						{ SLIDE_SIZES.map( ( item ) => (
-							<ToggleGroupControlOption
-								key={ item.size }
-								value={ item.size }
-								label={ item.size }
-							/>
-						) ) }
-					</ToggleGroupControl>
-				</Stack>
-				{ ! isSmall && (
-					<div style={ { width: 160 } }>
-						<RangeControl
+						</div>
+						<ToggleGroupControl
 							__next40pxDefaultSize
-							label="Preview size"
-							showTooltip={ false }
-							withInputField={ false }
-							min={ 0 }
-							max={ PREVIEW_SIZES.length - 1 }
-							step={ 1 }
-							marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
-								value: index,
-							} ) ) }
-							value={ Math.max(
-								0,
-								PREVIEW_SIZES.indexOf(
-									previewSize ?? PREVIEW_SIZES[ 0 ]
-								)
-							) }
-							onChange={ ( index = 0 ) =>
+							label="Theme"
+							value={ theme }
+							onChange={ ( value ) =>
+								setTheme( value as SlidePatternTheme )
+							}
+						>
+							{ SLIDE_PATTERN_THEMES.map( ( name ) => (
+								<ToggleGroupControlOption
+									key={ name }
+									value={ name }
+									label={ name }
+								/>
+							) ) }
+						</ToggleGroupControl>
+						<ToggleGroupControl
+							__next40pxDefaultSize
+							label="Aspect ratio"
+							value={ size }
+							onChange={ ( value ) =>
 								setView( {
 									...view,
 									layout: {
 										...view.layout,
-										previewSize: PREVIEW_SIZES[ index ],
+										aspectRatio: SLIDE_SIZES.find(
+											( item ) => item.size === value
+										)?.aspectRatio,
 									},
 								} as View )
 							}
-						/>
-					</div>
-				) }
-			</Stack>
-			<DataViews.Layout />
-		</DataViews>
+						>
+							{ SLIDE_SIZES.map( ( item ) => (
+								<ToggleGroupControlOption
+									key={ item.size }
+									value={ item.size }
+									label={ item.size }
+								/>
+							) ) }
+						</ToggleGroupControl>
+					</Stack>
+					{ ! isSmall && (
+						<div style={ { width: 160 } }>
+							<RangeControl
+								__next40pxDefaultSize
+								label="Preview size"
+								showTooltip={ false }
+								withInputField={ false }
+								min={ 0 }
+								max={ PREVIEW_SIZES.length - 1 }
+								step={ 1 }
+								marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
+									value: index,
+								} ) ) }
+								value={ Math.max(
+									0,
+									PREVIEW_SIZES.indexOf(
+										previewSize ?? PREVIEW_SIZES[ 0 ]
+									)
+								) }
+								onChange={ ( index = 0 ) =>
+									setView( {
+										...view,
+										layout: {
+											...view.layout,
+											previewSize: PREVIEW_SIZES[ index ],
+										},
+									} as View )
+								}
+							/>
+						</div>
+					) }
+				</Stack>
+				<DataViews.Layout />
+			</DataViews>
+		</div>
 	);
 }
 
