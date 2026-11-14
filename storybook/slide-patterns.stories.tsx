@@ -36,7 +36,7 @@ import {
 	type View,
 } from '@wordpress/dataviews';
 import '@wordpress/dataviews/build-style/style.css';
-import { Link, SelectControl, Stack, Text } from '@wordpress/ui';
+import { Badge, Link, SelectControl, Stack, Text } from '@wordpress/ui';
 
 // The slide sizes that every built-in theme offers, and the grid's aspect
 // ratio for each.
@@ -116,12 +116,12 @@ const DEFAULT_VIEW: View = {
 	type: 'grid',
 	titleField: 'title',
 	mediaField: 'preview',
-	fields: [ 'categories' ],
+	descriptionField: 'categories',
+	fields: [],
 	perPage: SLIDE_PATTERNS.length,
 	layout: {
 		aspectRatio: SLIDE_SIZES[ 0 ].aspectRatio,
 		previewSize: PREVIEW_SIZES[ 0 ],
-		badgeFields: [ 'categories' ],
 	},
 };
 
@@ -175,15 +175,17 @@ function SlidePatterns() {
 				label: 'Categories',
 				type: 'array',
 				getValue: ( { item } ) => [ ...item.categories ],
-				render: ( { item } ) =>
-					item.categories
-						.map(
-							( name ) =>
-								SLIDE_PATTERN_CATEGORIES.find(
+				render: ( { item } ) => (
+					<Stack direction="row" wrap="wrap" gap="sm">
+						{ item.categories.map( ( name ) => (
+							<Badge key={ name }>
+								{ SLIDE_PATTERN_CATEGORIES.find(
 									( category ) => category.name === name
-								)?.label() ?? name
-						)
-						.join( ', ' ),
+								)?.label() ?? name }
+							</Badge>
+						) ) }
+					</Stack>
+				),
 				elements: SLIDE_PATTERN_CATEGORIES.map(
 					( { name, label } ) => ( { value: name, label: label() } )
 				),
