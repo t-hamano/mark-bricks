@@ -72,7 +72,6 @@
 		"@codemirror/view": "^6.43.15",
 		"@fontsource/lato": "^5.3.0",
 		"@mark-bricks/katex-fonts": "workspace:*",
-		"@mark-bricks/marp-preview": "workspace:*",
 		"@marp-team/marp-core": "^4.4.0",
 		"@wordpress/base-styles": "^13.2.0",
 		"@wordpress/block-editor": "^18.0.0",
@@ -118,6 +117,7 @@
 	"devDependencies": {
 		"@mark-bricks/fixtures": "workspace:*",
 		"@mark-bricks/i18n-tools": "workspace:*",
+		"@mark-bricks/marp-preview": "workspace:*",
 		"@types/hast": "^3.0.5",
 		"@types/mdast": "^4.0.4",
 		"@types/react": "^19.3.0",
