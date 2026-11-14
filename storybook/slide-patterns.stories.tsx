@@ -23,6 +23,7 @@ import '@fontsource/lato/900.css';
 // `@wordpress/ui` has no toggle group yet.
 /* eslint-disable @wordpress/no-unsafe-wp-apis */
 import {
+	RangeControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
@@ -34,6 +35,7 @@ import {
 	type View,
 } from '@wordpress/dataviews';
 import '@wordpress/dataviews/build-style/style.css';
+import { Stack } from '@wordpress/ui';
 
 // Fits the slide to the card. The slide is an SVG, so it scales with its
 // width.
@@ -87,6 +89,11 @@ function SlidePatternPreview( { pattern, theme }: SlidePatternPreviewProps ) {
 	return <div ref={ ref } />;
 }
 
+// The widths of the previews that the size control offers, in pixels. The
+// smallest that DataViews' own control offers are too small to read a slide
+// at.
+const PREVIEW_SIZES = [ 230, 290, 350, 430 ];
+
 const DEFAULT_VIEW: View = {
 	type: 'grid',
 	titleField: 'title',
@@ -95,20 +102,22 @@ const DEFAULT_VIEW: View = {
 	perPage: SLIDE_PATTERNS.length,
 	layout: {
 		aspectRatio: '16/9',
+		previewSize: PREVIEW_SIZES[ 0 ],
 		badgeFields: [ 'categories' ],
 	},
 };
 
 /**
  * Every slide pattern of the inserter in a grid, rendered in the built-in
- * theme chosen at the top. The patterns can be searched by name and filtered
- * by category.
+ * theme chosen at the top. The patterns can be filtered by category.
  */
 function SlidePatterns() {
 	const [ theme, setTheme ] = useState< SlidePatternTheme >(
 		SLIDE_PATTERN_THEMES[ 0 ]
 	);
 	const [ view, setView ] = useState< View >( DEFAULT_VIEW );
+	const previewSize =
+		view.type === 'grid' ? view.layout?.previewSize : undefined;
 
 	const fields = useMemo< Field< SlidePattern >[] >(
 		() => [
@@ -127,7 +136,7 @@ function SlidePatterns() {
 				type: 'text',
 				getValue: ( { item } ) => item.title(),
 				enableHiding: false,
-				enableGlobalSearch: true,
+				filterBy: false,
 			},
 			{
 				id: 'categories',
@@ -167,26 +176,71 @@ function SlidePatterns() {
 			paginationInfo={ paginationInfo }
 			defaultLayouts={ { grid: {} } }
 			getItemId={ ( item ) => item.name }
-			header={
-				<ToggleGroupControl
-					__next40pxDefaultSize
-					hideLabelFromVision
-					label="Theme"
-					value={ theme }
-					onChange={ ( value ) =>
-						setTheme( value as SlidePatternTheme )
-					}
-				>
-					{ SLIDE_PATTERN_THEMES.map( ( name ) => (
-						<ToggleGroupControlOption
-							key={ name }
-							value={ name }
-							label={ name }
+		>
+			{ /* The default toolbar without the search and the view options,
+			whose preview sizes go smaller than a slide can be read at, and
+			whose density does not suit slides. */ }
+			<Stack
+				direction="row"
+				align="center"
+				justify="space-between"
+				gap="md"
+				className="dataviews__view-actions"
+			>
+				<DataViews.FiltersToggle />
+				<Stack direction="row" align="center" gap="lg">
+					<div style={ { width: 160 } }>
+						<RangeControl
+							__next40pxDefaultSize
+							hideLabelFromVision
+							label="Preview size"
+							showTooltip={ false }
+							withInputField={ false }
+							min={ 0 }
+							max={ PREVIEW_SIZES.length - 1 }
+							step={ 1 }
+							marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
+								value: index,
+							} ) ) }
+							value={ Math.max(
+								0,
+								PREVIEW_SIZES.indexOf(
+									previewSize ?? PREVIEW_SIZES[ 0 ]
+								)
+							) }
+							onChange={ ( index = 0 ) =>
+								setView( {
+									...view,
+									layout: {
+										...view.layout,
+										previewSize: PREVIEW_SIZES[ index ],
+									},
+								} as View )
+							}
 						/>
-					) ) }
-				</ToggleGroupControl>
-			}
-		/>
+					</div>
+					<ToggleGroupControl
+						__next40pxDefaultSize
+						hideLabelFromVision
+						label="Theme"
+						value={ theme }
+						onChange={ ( value ) =>
+							setTheme( value as SlidePatternTheme )
+						}
+					>
+						{ SLIDE_PATTERN_THEMES.map( ( name ) => (
+							<ToggleGroupControlOption
+								key={ name }
+								value={ name }
+								label={ name }
+							/>
+						) ) }
+					</ToggleGroupControl>
+				</Stack>
+			</Stack>
+			<DataViews.FiltersToggled className="dataviews-filters__container" />
+			<DataViews.Layout />
+		</DataViews>
 	);
 }
 
