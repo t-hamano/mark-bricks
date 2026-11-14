@@ -127,6 +127,7 @@ function SlidePatterns() {
 				type: 'text',
 				getValue: ( { item } ) => item.title(),
 				enableHiding: false,
+				enableGlobalSearch: true,
 			},
 			{
 				id: 'categories',
