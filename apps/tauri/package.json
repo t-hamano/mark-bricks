@@ -22,8 +22,8 @@
 		"i18n:make-po": "mb-i18n make-po",
 		"i18n:make-json": "mb-i18n make-json",
 		"preversion": "node scripts/check-releasable.mjs",
-		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md -s --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path --commit-path ../../packages/katex-fonts --commit-path ../../packages/marp-preview && node scripts/bump-version.mjs",
-		"version:preview": "pnpm exec conventional-changelog -p angular --tag-prefix tauri-v --commit-path . --commit-path ../../packages/editor --commit-path ../../packages/image-path --commit-path ../../packages/katex-fonts --commit-path ../../packages/marp-preview"
+		"version": "pnpm exec conventional-changelog -p angular -i CHANGELOG.md --tag-prefix tauri-v -n ../../changelog.config.mjs && node scripts/bump-version.mjs",
+		"version:preview": "pnpm exec conventional-changelog -p angular --stdout -i /dev/null --tag-prefix tauri-v -n ../../changelog.config.mjs"
 	},
 	"dependencies": {
 		"@mark-bricks/editor": "workspace:*",
