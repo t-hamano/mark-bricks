@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T08:35:16.388Z\n"
+"POT-Creation-Date: 2026-11-14T09:26:40.229Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -346,6 +346,7 @@ msgid "The aspect ratio of the slides."
 msgstr ""
 
 #: src/components/front-matter-editor/index.tsx:282
+#: src/block-library/html/marp-directive-settings.tsx:288
 msgid "Header"
 msgstr ""
 
@@ -354,6 +355,7 @@ msgid "Text shown at the top of each slide."
 msgstr ""
 
 #: src/components/front-matter-editor/index.tsx:293
+#: src/block-library/html/marp-directive-settings.tsx:297
 msgid "Footer"
 msgstr ""
 
@@ -570,6 +572,7 @@ msgid "GitHub alert type"
 msgstr ""
 
 #: src/block-library/quote/edit.tsx:151
+#: src/block-library/html/marp-directive-settings.tsx:268
 msgid "Default"
 msgstr ""
 
@@ -742,7 +745,11 @@ msgid "No filters."
 msgstr ""
 
 # %s: An example value, such as "1.5".
+# %s: An example value, such as "#f0f0f0".
 #: src/block-library/image/marp-image-settings.tsx:485
+#: src/block-library/html/marp-directive-settings.tsx:309
+#: src/block-library/html/marp-directive-settings.tsx:321
+#: src/block-library/html/marp-directive-settings.tsx:335
 msgid "e.g. %s"
 msgstr ""
 
@@ -797,8 +804,126 @@ msgstr ""
 msgid "Failed to load image."
 msgstr ""
 
-#: src/block-library/html/edit.tsx:43
+#: src/block-library/html/marp-directive-settings.tsx:54
+msgid "Centers the content of the slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:56
+msgid "Inverts the colors of the slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:58
+msgid "Switches to the theme's alternate color scheme."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:69
+msgid "Shows the page number."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:71
+msgid "Hides the page number."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:73
+msgid "Shows the page number without counting this slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:78
+msgid "Hides the page number without counting this slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:83
+msgid "Follows the setting of the deck."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:176
+msgid "Apply to"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:179
+msgid "The settings apply to this slide only."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:183
+msgid "The settings apply to this slide and the slides after it."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:193
+msgid "This slide"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:197
+msgid "Following slides"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:203
+#: src/block-library/html/marp-directive-settings.tsx:229
+msgid "Class"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:228
+msgid "Other classes"
+msgstr ""
+
+# %s: A theme name, such as "gaia".
+#: src/block-library/html/marp-directive-settings.tsx:235
+msgid "Classes that the %s theme does not provide, separated by spaces."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:241
+msgid "Classes of the slide, separated by spaces."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:254
+msgid "Page number"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:272
+msgid "Show"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:276
+msgid "Hide"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:280
+msgid "Hold"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:284
+msgid "Skip"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:289
+msgid "Text shown at the top of the slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:298
+msgid "Text shown at the bottom of the slide."
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:306
+msgid "Background color"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:318
+msgid "Text color"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:328
+msgid "Background image"
+msgstr ""
+
+#: src/block-library/html/marp-directive-settings.tsx:329
+msgid "A CSS background image, such as a gradient."
+msgstr ""
+
+#: src/block-library/html/edit.tsx:52
 msgid "Write HTML…"
+msgstr ""
+
+#: src/block-library/html/edit.tsx:80
+msgid "Marp slide settings"
 msgstr ""
 
 # %d: heading level e.g: "1", "2", "3"
