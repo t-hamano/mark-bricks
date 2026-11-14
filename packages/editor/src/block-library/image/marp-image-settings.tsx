@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * WordPress dependencies
@@ -93,6 +93,44 @@ const INLINE_LENGTH_UNITS = LENGTH_UNITS.filter(
 const PERCENT_UNITS = [ { value: '%', label: '%' } ];
 
 /**
+ * Checks the values of the form and builds the keywords it writes.
+ *
+ * @param options  The values of the form.
+ * @param sizeMode The selected background size.
+ * @return Whether the values are valid, and the keywords to write.
+ */
+function getFormState(
+	options: MarpImageOptions,
+	sizeMode: BackgroundSize
+): { isValid: boolean; result: MarpImageOptions } {
+	const isSplit = !! options.background && !! options.split;
+	const isValid =
+		( ! options.width || isValidMarpLength( options.width ) ) &&
+		( ! options.height || isValidMarpLength( options.height ) ) &&
+		( ! isSplit ||
+			! options.splitSize ||
+			isValidMarpPercentage( options.splitSize ) ) &&
+		( ! options.background ||
+			sizeMode !== 'scale' ||
+			isValidMarpPercentage( options.scale ?? '' ) );
+
+	const result = { ...options };
+	if ( sizeMode !== 'scale' ) {
+		delete result.scale;
+	}
+	// Without a size keyword, Marp sizes a background from its width and
+	// height, so Cover is written out when either one is set.
+	if (
+		sizeMode === 'cover' &&
+		! result.size &&
+		( result.width || result.height )
+	) {
+		result.size = 'cover';
+	}
+	return { isValid, result };
+}
+
+/**
  * The form of the Marp image settings popover. It edits the Marp keywords of
  * the alt text and leaves the other words as they are.
  *
@@ -109,66 +147,60 @@ export function MarpImageSettings( {
 	alt: string;
 	onChange: ( alt: string ) => void;
 } ) {
-	const [ initialAlt ] = useState( alt );
-	const [ initial ] = useState( () => parseMarpImageAlt( alt ) );
+	// The alt text as this form last read or wrote it. A different `alt`,
+	// such as one restored by undo, resets the form.
+	const lastAlt = useRef( alt );
+	const [ initialAlt, setInitialAlt ] = useState( alt );
+	const [ initial, setInitial ] = useState( () => parseMarpImageAlt( alt ) );
 	const [ options, setOptions ] = useState( initial );
 	// Kept apart from the scale value, so Scale stays selected while its
 	// field is empty.
 	const [ sizeMode, setSizeMode ] = useState( () =>
 		getBackgroundSize( initial )
 	);
-	const update = ( next: Partial< MarpImageOptions > ) =>
-		setOptions( ( current ) => ( { ...current, ...next } ) );
+
+	useEffect( () => {
+		if ( alt === lastAlt.current ) {
+			return;
+		}
+		lastAlt.current = alt;
+		const parsed = parseMarpImageAlt( alt );
+		setInitialAlt( alt );
+		setInitial( parsed );
+		setOptions( parsed );
+		setSizeMode( getBackgroundSize( parsed ) );
+	}, [ alt ] );
+
+	const { result } = getFormState( options, sizeMode );
+
+	// Applies a change as it is made. The alt text is kept as written when
+	// nothing changed, so the Markdown is not reformatted, and an invalid
+	// value is not applied until it is fixed.
+	const update = (
+		next: Partial< MarpImageOptions >,
+		nextSizeMode: BackgroundSize = sizeMode
+	) => {
+		const nextOptions = { ...options, ...next };
+		setOptions( nextOptions );
+		setSizeMode( nextSizeMode );
+		const state = getFormState( nextOptions, nextSizeMode );
+		if ( ! state.isValid ) {
+			return;
+		}
+		const nextAlt =
+			JSON.stringify( state.result ) === JSON.stringify( initial )
+				? initialAlt
+				: serializeMarpImageAlt( state.result );
+		if ( nextAlt !== lastAlt.current ) {
+			lastAlt.current = nextAlt;
+			onChange( nextAlt );
+		}
+	};
 
 	const placement = getPlacement( options );
 	const isSplit = placement === 'left' || placement === 'right';
-
-	const isWidthValid = ! options.width || isValidMarpLength( options.width );
-	const isHeightValid =
-		! options.height || isValidMarpLength( options.height );
-	const isSplitSizeValid =
-		! isSplit ||
-		! options.splitSize ||
-		isValidMarpPercentage( options.splitSize );
-	const isScaleValid =
-		! options.background ||
-		sizeMode !== 'scale' ||
-		isValidMarpPercentage( options.scale ?? '' );
-	const isValid =
-		isWidthValid && isHeightValid && isSplitSizeValid && isScaleValid;
-
-	const getResult = (): MarpImageOptions => {
-		const result = { ...options };
-		if ( sizeMode !== 'scale' ) {
-			delete result.scale;
-		}
-		// Without a size keyword, Marp sizes a background from its width and
-		// height, so Cover is written out when either one is set.
-		if (
-			sizeMode === 'cover' &&
-			! result.size &&
-			( result.width || result.height )
-		) {
-			result.size = 'cover';
-		}
-		return result;
-	};
-
 	const lengthUnits = options.background ? LENGTH_UNITS : INLINE_LENGTH_UNITS;
-
-	const result = getResult();
 	const keywordWords = getKeywordsInText( result );
-	// Keeps the alt text as written when nothing changed, so the Markdown is
-	// not reformatted. An invalid value is not applied until it is fixed.
-	const nextAlt =
-		JSON.stringify( result ) === JSON.stringify( initial )
-			? initialAlt
-			: serializeMarpImageAlt( result );
-	useEffect( () => {
-		if ( isValid && nextAlt !== alt ) {
-			onChange( nextAlt );
-		}
-	}, [ isValid, nextAlt, alt, onChange ] );
 
 	return (
 		<Stack direction="column" gap="md" style={ { width: '400px' } }>
@@ -240,11 +272,14 @@ export function MarpImageSettings( {
 					value={ sizeMode }
 					onChange={ ( next ) => {
 						const value = next as BackgroundSize;
-						setSizeMode( value );
 						if ( value === 'scale' ) {
-							update( {
-								scale: options.scale ?? initial.scale ?? '50%',
-							} );
+							update(
+								{
+									scale:
+										options.scale ?? initial.scale ?? '50%',
+								},
+								value
+							);
 							return;
 						}
 						let size: string | undefined;
@@ -256,7 +291,7 @@ export function MarpImageSettings( {
 						} else if ( initial.size === 'cover' ) {
 							size = 'cover';
 						}
-						update( { size } );
+						update( { size }, value );
 					} }
 				>
 					<ToggleGroupControlOption
