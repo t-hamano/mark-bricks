@@ -14,7 +14,7 @@ import {
 } from './conversation';
 import type { EditTarget } from './edit-target';
 import { buildSystemPrompt } from './prompt';
-import type { AiPlatform } from '../platform';
+import type { AiEditResult, AiPlatform } from '../platform';
 
 type EditorMode = 'visual' | 'text';
 
@@ -109,11 +109,21 @@ export function useAiChat( {
 						} );
 						return;
 					}
-					const applied =
-						!! target &&
-						editorModeRef.current === mode &&
-						target.apply( event.edit );
-					dispatch( { type: 'EDIT', edit: event.edit, applied } );
+					const result: AiEditResult =
+						target && editorModeRef.current === mode
+							? target.apply( event.edit )
+							: { status: 'dropped' };
+					// The model tries again after a failed edit, so the
+					// answer shows only the edit that changed the document,
+					// or that was dropped.
+					if ( result.status !== 'failed' ) {
+						dispatch( {
+							type: 'EDIT',
+							edit: event.edit,
+							applied: result.status === 'applied',
+						} );
+					}
+					return result;
 				},
 			} )
 				.then(

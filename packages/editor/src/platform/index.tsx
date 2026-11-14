@@ -24,16 +24,37 @@ export type AiMessage =
 	  };
 
 /**
- * An edit the AI assistant makes to the selection it was given.
+ * An edit the AI assistant makes to the document.
  */
-export type AiEdit = {
-	/**
-	 * `replace` replaces the selection, and `insert_after` inserts the
-	 * Markdown after it.
-	 */
-	action: 'replace' | 'insert_after';
-	markdown: string;
-};
+export type AiEdit =
+	| {
+			/**
+			 * `replace` replaces the selection it was given, and
+			 * `insert_after` inserts the Markdown after it.
+			 */
+			action: 'replace' | 'insert_after';
+			markdown: string;
+	  }
+	| {
+			/**
+			 * Replaces the one place in the document whose text is `find`
+			 * with the Markdown, wherever the selection is.
+			 */
+			action: 'replace_text';
+			find: string;
+			markdown: string;
+	  };
+
+/**
+ * What became of an edit: `applied` when it changed the document,
+ * `dropped` when the selection it was for no longer exists, and `failed`
+ * when the model can fix it and try again, for example when its `find`
+ * text is not in the document. `reason` tells the model what went wrong.
+ */
+export type AiEditResult =
+	| { status: 'applied' }
+	| { status: 'dropped' }
+	| { status: 'failed'; reason: string };
 
 /**
  * What the model is doing while it is not writing text: `thinking` while it
@@ -69,7 +90,7 @@ export type AiStreamEvent =
 	  }
 	| {
 			/**
-			 * The model edited the selection.
+			 * The model edited the document.
 			 */
 			type: 'edit';
 			edit: AiEdit;
@@ -103,9 +124,11 @@ export type AiChatRequest = {
 	 */
 	messages: AiMessage[];
 	/**
-	 * Called for each event while the model answers.
+	 * Called for each event while the model answers. For an `edit`, it
+	 * applies the edit and returns what became of it, so the host can tell
+	 * the model.
 	 */
-	onEvent: ( event: AiStreamEvent ) => void;
+	onEvent: ( event: AiStreamEvent ) => AiEditResult | void;
 	/**
 	 * Aborted when the user stops the answer.
 	 */
