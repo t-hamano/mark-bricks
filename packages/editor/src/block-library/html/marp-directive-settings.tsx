@@ -38,8 +38,8 @@ function readComment( html: string ): MarpDirectiveComment {
 	if ( ! found ) {
 		return EMPTY;
 	}
-	const { values, isSpot, otherLines, rawValues } = found;
-	return { values, isSpot, otherLines, rawValues };
+	const { values, isSpot, otherLines, rawValues, spotDirectives } = found;
+	return { values, isSpot, otherLines, rawValues, spotDirectives };
 }
 
 /**
@@ -186,7 +186,14 @@ export function MarpDirectiveSettings( {
 							)
 				}
 				value={ comment.isSpot ? 'spot' : 'local' }
-				onChange={ ( next ) => update( { isSpot: next === 'spot' } ) }
+				// Choosing a scope applies it to every directive, including those
+				// written with the other one.
+				onChange={ ( next ) =>
+					update( {
+						isSpot: next === 'spot',
+						spotDirectives: undefined,
+					} )
+				}
 			>
 				<ToggleGroupControlOption
 					value="spot"

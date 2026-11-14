@@ -117,6 +117,45 @@ describe( 'serializeMarpDirectiveComment', () => {
 		).toBe( "<!--\n_class: invert\n_header: ''\n_footer: Bye\n-->" );
 	} );
 
+	it( 'keeps the scope of each directive in a mixed comment', () => {
+		const comment = parseMarpDirectiveComment(
+			'\nclass: invert\n_header: only here\n'
+		);
+		expect(
+			serializeMarpDirectiveComment( {
+				...comment!,
+				values: { ...comment!.values, footer: 'Bye' },
+			} )
+		).toBe( '<!--\nclass: invert\n_header: only here\n_footer: Bye\n-->' );
+	} );
+
+	it( 'replaces a value it cannot show once its field is set', () => {
+		const comment = parseMarpDirectiveComment(
+			'\n_class: [lead, invert]\n_header: Hi\n'
+		);
+		expect(
+			serializeMarpDirectiveComment( {
+				...comment!,
+				values: { ...comment!.values, class: 'invert' },
+			} )
+		).toBe( '<!--\n_class: invert\n_header: Hi\n-->' );
+		expect( serializeMarpDirectiveComment( comment! ) ).toBe(
+			'<!--\n_header: Hi\n_class: [lead, invert]\n-->'
+		);
+	} );
+
+	it( 'escapes a comment terminator in a value', () => {
+		const serialized = serializeMarpDirectiveComment( {
+			values: { header: 'A --> B' },
+			isSpot: true,
+			otherLines: [],
+		} );
+		expect( serialized ).toBe( '<!-- _header: "A --\\u003E B" -->' );
+		expect( findMarpDirectiveComment( serialized )?.values ).toEqual( {
+			header: 'A --> B',
+		} );
+	} );
+
 	it( 'writes nothing for no directives', () => {
 		expect(
 			serializeMarpDirectiveComment( {

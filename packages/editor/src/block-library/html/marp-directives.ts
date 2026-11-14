@@ -45,6 +45,12 @@ export interface MarpDirectiveComment {
 	 * did not change is written back this way, so its quotes are kept.
 	 */
 	rawValues?: MarpDirectiveValues;
+	/**
+	 * Whether each directive was written for this slide only. A comment can
+	 * mix both scopes, so each directive keeps its own until `isSpot` is
+	 * chosen for all of them.
+	 */
+	spotDirectives?: Partial< Record< MarpDirectiveName, boolean > >;
 }
 
 /**
@@ -89,6 +95,7 @@ export function parseMarpDirectiveComment(
 	const lines = body.split( /\r?\n/ ).filter( ( line ) => line.trim() );
 	const values: MarpDirectiveValues = {};
 	const rawValues: MarpDirectiveValues = {};
+	const spotDirectives: Partial< Record< MarpDirectiveName, boolean > > = {};
 	const otherLines: string[] = [];
 	let spotCount = 0;
 	let globalCount = 0;
@@ -107,6 +114,7 @@ export function parseMarpDirectiveComment(
 		}
 		values[ name ] = scalar.value;
 		rawValues[ name ] = raw.trim();
+		spotDirectives[ name ] = !! underscore;
 		if ( underscore ) {
 			spotCount++;
 		} else {
@@ -121,6 +129,7 @@ export function parseMarpDirectiveComment(
 		isSpot: spotCount >= globalCount,
 		otherLines,
 		rawValues,
+		spotDirectives,
 	};
 }
 
@@ -144,6 +153,21 @@ export function findMarpDirectiveComment(
 }
 
 /**
+ * Writes a value as a YAML scalar that can sit in an HTML comment. A `-->`
+ * would end the comment, so it is written with an escaped `>` inside double
+ * quotes, which YAML reads back as `-->`.
+ *
+ * @param value The value.
+ * @return The YAML scalar.
+ */
+function formatMarpDirectiveValue( value: string ): string {
+	if ( ! value.includes( '-->' ) ) {
+		return formatScalar( value );
+	}
+	return JSON.stringify( value ).replace( /-->/g, '--\\u003E' );
+}
+
+/**
  * Writes the directives as an HTML comment: on one line when it holds one
  * line, otherwise one line per directive.
  *
@@ -153,7 +177,7 @@ export function findMarpDirectiveComment(
 export function serializeMarpDirectiveComment(
 	comment: MarpDirectiveComment
 ): string {
-	const prefix = comment.isSpot ? '_' : '';
+	const keys: string[] = [];
 	const lines = [
 		...MARP_DIRECTIVES.flatMap( ( name ) => {
 			// An empty value is written too: `_header: ""` hides the header
@@ -162,14 +186,23 @@ export function serializeMarpDirectiveComment(
 			if ( value === undefined ) {
 				return [];
 			}
+			const isSpot = comment.spotDirectives?.[ name ] ?? comment.isSpot;
+			const key = `${ isSpot ? '_' : '' }${ name }`;
+			keys.push( key );
 			const raw = comment.rawValues?.[ name ];
 			const written =
 				raw !== undefined && parseScalar( raw ).value === value
 					? raw
-					: formatScalar( value );
-			return [ `${ prefix }${ name }: ${ written }` ];
+					: formatMarpDirectiveValue( value );
+			return [ `${ key }: ${ written }` ];
 		} ),
-		...comment.otherLines,
+		// A value the settings cannot show, such as a YAML array, is
+		// replaced once its field is set, since Marp drops a comment with
+		// the same key twice.
+		...comment.otherLines.filter( ( line ) => {
+			const match = LINE_PATTERN.exec( line );
+			return ! match || ! keys.includes( match[ 1 ] + match[ 2 ] );
+		} ),
 	];
 	if ( lines.length === 0 ) {
 		return '';
