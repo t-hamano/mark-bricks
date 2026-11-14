@@ -118,21 +118,13 @@ function createHandler( type: MarkedType ): Handle {
 	const defaultHandler = defaultHandlers[ type ];
 	const handle: Handle = ( ...args ) => defaultHandler( ...args );
 	// `containerPhrasing` writes the node itself from the `attention` info of
-	// its handler, so the recorded marker is put first among the markers it
-	// may choose from. It still falls back to another marker when the
-	// recorded one would not parse back as the same node.
+	// its handler. Only the recorded (or default) marker is offered, because
+	// with more than one candidate it may swap the marker for another one
+	// that does not touch a neighbor's (`**a *b***` as `**a _b_**`).
 	const attention: Attention = ( node, state ) => {
 		const info = defaultHandler.attention( node, state );
-		const marker = nodeMarker( node );
-		return marker
-			? {
-					...info,
-					markers: [
-						marker,
-						...info.markers.filter( ( m ) => m !== marker ),
-					],
-				}
-			: info;
+		const marker = nodeMarker( node ) ?? state.options[ type ] ?? '*';
+		return { ...info, markers: [ marker ] };
 	};
 	// `containerPhrasing` peeks at the first character of the next sibling to
 	// decide how to escape the current one. Without a `peek` the whole handler
