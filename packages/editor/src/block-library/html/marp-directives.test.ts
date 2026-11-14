@@ -156,6 +156,33 @@ describe( 'serializeMarpDirectiveComment', () => {
 		} );
 	} );
 
+	it( 'keeps both scopes of the same directive', () => {
+		const comment = parseMarpDirectiveComment(
+			'\nclass: invert\n_class: lead\n'
+		);
+		expect(
+			serializeMarpDirectiveComment( {
+				...comment!,
+				values: { ...comment!.values, footer: 'Bye' },
+			} )
+		).toBe( '<!--\nclass: invert\n_footer: Bye\n_class: lead\n-->' );
+	} );
+
+	it( 'reads a comment that holds only values it cannot show', () => {
+		const html = '<!-- _class: [lead, invert] -->';
+		const found = findMarpDirectiveComment( html );
+		expect( found ).toMatchObject( {
+			values: {},
+			otherLines: [ '_class: [lead, invert]' ],
+		} );
+		expect(
+			setMarpDirectiveComment( html, {
+				...found!,
+				values: { class: 'invert' },
+			} )
+		).toBe( '<!-- _class: invert -->' );
+	} );
+
 	it( 'writes nothing for no directives', () => {
 		expect(
 			serializeMarpDirectiveComment( {

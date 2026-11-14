@@ -105,21 +105,29 @@ export function parseMarpDirectiveComment(
 			return null;
 		}
 		const [ , underscore, name, raw ] = match;
-		const scalar = parseScalar( raw );
-		const isPlainValue =
-			! /^[ \t]*[[{|>&*!]/.test( raw ) && scalar.comment === '';
-		if ( ! isDirectiveName( name ) || ! isPlainValue ) {
+		if ( ! isDirectiveName( name ) ) {
 			otherLines.push( line.trim() );
 			continue;
 		}
-		values[ name ] = scalar.value;
-		rawValues[ name ] = raw.trim();
-		spotDirectives[ name ] = !! underscore;
 		if ( underscore ) {
 			spotCount++;
 		} else {
 			globalCount++;
 		}
+		const scalar = parseScalar( raw );
+		const isPlainValue =
+			! /^[ \t]*[[{|>&*!]/.test( raw ) && scalar.comment === '';
+		// The form shows one value for each directive. A value it cannot
+		// show, or a second one in the other scope, such as `class` beside
+		// `_class`, is kept as written.
+		if ( ! isPlainValue || name in spotDirectives ) {
+			otherLines.push( line.trim() );
+			spotDirectives[ name ] ??= !! underscore;
+			continue;
+		}
+		values[ name ] = scalar.value;
+		rawValues[ name ] = raw.trim();
+		spotDirectives[ name ] = !! underscore;
 	}
 	if ( spotCount + globalCount === 0 ) {
 		return null;
