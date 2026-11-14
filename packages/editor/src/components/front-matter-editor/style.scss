@@ -58,10 +58,7 @@
 }
 
 .front-matter-editor__color-scheme-swatches .component-color-indicator {
-	width: 0.875rem;
-	height: 0.875rem;
-
 	+ .component-color-indicator {
-		margin-left: -0.25rem;
+		margin-left: -6px;
 	}
 }
