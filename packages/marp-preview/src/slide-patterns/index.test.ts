@@ -50,7 +50,7 @@ describe( 'renderSlidePatternPreviews', () => {
 				expect( html[ pattern.name ][ theme ] ).not.toContain( '![' );
 			}
 		}
-		expect( html[ 'image-and-text' ].default ).toContain(
+		expect( html[ 'image-on-right-and-text' ].default ).toContain(
 			'background-image:url(&quot;data:image/png;base64,'
 		);
 	} );

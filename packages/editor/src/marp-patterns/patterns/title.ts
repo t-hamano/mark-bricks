@@ -18,8 +18,8 @@ const pattern: SlidePattern = {
 
 {{subtitle}}`,
 	strings: () => ( {
-		title: _x( 'Presentation title', 'slide pattern', 'mark-bricks' ),
-		subtitle: _x( 'Your name · Date', 'slide pattern', 'mark-bricks' ),
+		title: _x( 'Title', 'slide pattern', 'mark-bricks' ),
+		subtitle: _x( 'Subtitle', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 

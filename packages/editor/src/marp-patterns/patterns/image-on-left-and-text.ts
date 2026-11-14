@@ -18,14 +18,14 @@ const pattern: SlidePattern = {
 
 ## {{heading}}
 
-- {{point1}}
-- {{point2}}
-- {{point3}}`,
+{{text}}`,
 	strings: () => ( {
-		heading: _x( 'Slide title', 'slide pattern', 'mark-bricks' ),
-		point1: _x( 'First point', 'slide pattern', 'mark-bricks' ),
-		point2: _x( 'Second point', 'slide pattern', 'mark-bricks' ),
-		point3: _x( 'Third point', 'slide pattern', 'mark-bricks' ),
+		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
+		text: _x(
+			'Write a short paragraph here.',
+			'slide pattern',
+			'mark-bricks'
+		),
 	} ),
 };
 

@@ -10,13 +10,10 @@ import { PLACEHOLDER_IMAGE } from '../placeholder-image';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'image-gallery',
-	title: () =>
-		_x( 'Three images side by side', 'slide pattern', 'mark-bricks' ),
+	name: 'full-screen-image',
+	title: () => _x( 'Full-screen image', 'slide pattern', 'mark-bricks' ),
 	categories: [ 'image' ],
-	markdown: `![bg](${ PLACEHOLDER_IMAGE })
-![bg](${ PLACEHOLDER_IMAGE })
-![bg](${ PLACEHOLDER_IMAGE })`,
+	markdown: `![bg](${ PLACEHOLDER_IMAGE })`,
 	strings: () => ( {} ),
 };
 

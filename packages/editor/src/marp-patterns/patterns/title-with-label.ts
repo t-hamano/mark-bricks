@@ -9,18 +9,17 @@ import { _x } from '@wordpress/i18n';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'key-message',
-	title: () => _x( 'Key message', 'slide pattern', 'mark-bricks' ),
-	categories: [ 'text' ],
+	name: 'title-with-label',
+	title: () => _x( 'Title with a label', 'slide pattern', 'mark-bricks' ),
+	categories: [ 'title' ],
 	markdown: `<!-- _class: lead -->
 
-## {{message}}`,
+## {{label}}
+
+# {{title}}`,
 	strings: () => ( {
-		message: _x(
-			'One message you want everyone to remember',
-			'slide pattern',
-			'mark-bricks'
-		),
+		label: _x( 'Label', 'slide pattern', 'mark-bricks' ),
+		title: _x( 'Title', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 

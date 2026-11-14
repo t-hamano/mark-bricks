@@ -10,23 +10,20 @@ import { PLACEHOLDER_IMAGE } from '../placeholder-image';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'closing-on-image',
-	title: () => _x( 'Closing on an image', 'slide pattern', 'mark-bricks' ),
-	categories: [ 'closing', 'image' ],
+	name: 'title-on-blurred-image',
+	title: () =>
+		_x( 'Title on a blurred image', 'slide pattern', 'mark-bricks' ),
+	categories: [ 'title', 'image' ],
 	markdown: `<!-- _class: lead -->
 
 ![bg blur:12px](${ PLACEHOLDER_IMAGE })
 
-# {{heading}}
+# {{title}}
 
-{{contact}}`,
+{{subtitle}}`,
 	strings: () => ( {
-		heading: _x( 'Thank you', 'slide pattern', 'mark-bricks' ),
-		contact: _x(
-			'Questions and contact details',
-			'slide pattern',
-			'mark-bricks'
-		),
+		title: _x( 'Title', 'slide pattern', 'mark-bricks' ),
+		subtitle: _x( 'Subtitle', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 

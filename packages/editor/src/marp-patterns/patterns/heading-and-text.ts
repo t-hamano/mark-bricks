@@ -9,16 +9,16 @@ import { _x } from '@wordpress/i18n';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'heading-and-paragraph',
-	title: () => _x( 'Heading and paragraph', 'slide pattern', 'mark-bricks' ),
+	name: 'heading-and-text',
+	title: () => _x( 'Heading and text', 'slide pattern', 'mark-bricks' ),
 	categories: [ 'text' ],
 	markdown: `## {{heading}}
 
-{{body}}`,
+{{text}}`,
 	strings: () => ( {
-		heading: _x( 'Slide title', 'slide pattern', 'mark-bricks' ),
-		body: _x(
-			'Write a few sentences here to explain the idea of this slide in more detail.',
+		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
+		text: _x(
+			'Write a short paragraph here.',
 			'slide pattern',
 			'mark-bricks'
 		),

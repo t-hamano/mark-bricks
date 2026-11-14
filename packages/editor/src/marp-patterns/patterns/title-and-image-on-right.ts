@@ -10,19 +10,20 @@ import { PLACEHOLDER_IMAGE } from '../placeholder-image';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'title-and-image',
-	title: () => _x( 'Title beside an image', 'slide pattern', 'mark-bricks' ),
+	name: 'title-and-image-on-right',
+	title: () =>
+		_x( 'Title and an image on the right', 'slide pattern', 'mark-bricks' ),
 	categories: [ 'title', 'image' ],
 	markdown: `<!-- _class: lead -->
 
-![bg left:40%](${ PLACEHOLDER_IMAGE })
+![bg right:40%](${ PLACEHOLDER_IMAGE })
 
 # {{title}}
 
 {{subtitle}}`,
 	strings: () => ( {
-		title: _x( 'Presentation title', 'slide pattern', 'mark-bricks' ),
-		subtitle: _x( 'Your name · Date', 'slide pattern', 'mark-bricks' ),
+		title: _x( 'Title', 'slide pattern', 'mark-bricks' ),
+		subtitle: _x( 'Subtitle', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 

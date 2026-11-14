@@ -16,14 +16,10 @@ const pattern: SlidePattern = {
 
 > {{quote}}
 
-{{author}}`,
+{{citation}}`,
 	strings: () => ( {
-		quote: _x(
-			'A quote that supports your point.',
-			'slide pattern',
-			'mark-bricks'
-		),
-		author: _x( 'Name, Role', 'slide pattern', 'mark-bricks' ),
+		quote: _x( 'Quote text', 'slide pattern', 'mark-bricks' ),
+		citation: _x( 'Citation', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 
