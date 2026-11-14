@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest';
 /**
  * Internal dependencies
  */
-import { normalizeAiFrontMatter, splitAiFrontMatter } from './front-matter';
+import { splitAiFrontMatter } from './front-matter';
 
 describe( 'splitAiFrontMatter', () => {
 	it( 'splits well-formed front matter', () => {
@@ -64,6 +64,13 @@ describe( 'splitAiFrontMatter', () => {
 		}
 	} );
 
+	it( 'accepts a comment before the first key', () => {
+		expect(
+			splitAiFrontMatter( '---\n# Slide settings\nmarp: true\n---\n' )
+				.frontMatter
+		).toBe( '# Slide settings\nmarp: true' );
+	} );
+
 	it( 'keeps lists under a key', () => {
 		expect(
 			splitAiFrontMatter( '---\nmarp: true\ntags:\n- a\n- b\n---\n' )
@@ -76,21 +83,5 @@ describe( 'splitAiFrontMatter', () => {
 			frontMatter: null,
 			body: '# Title\n',
 		} );
-	} );
-} );
-
-describe( 'normalizeAiFrontMatter', () => {
-	it( 'rewrites malformed front matter', () => {
-		expect(
-			normalizeAiFrontMatter(
-				'---\n\nmarp: true\ntheme: default\n\n-------\n\n# Title\n'
-			)
-		).toBe( '---\nmarp: true\ntheme: default\n---\n\n# Title\n' );
-	} );
-
-	it( 'leaves Markdown without front matter alone', () => {
-		expect( normalizeAiFrontMatter( '# Title\n\n---\n\nNext.\n' ) ).toBe(
-			'# Title\n\n---\n\nNext.\n'
-		);
 	} );
 } );

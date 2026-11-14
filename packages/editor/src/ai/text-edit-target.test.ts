@@ -175,6 +175,35 @@ describe( 'createTextEditTarget', () => {
 			);
 		} );
 
+		it( 'replaces the whole front matter when the cursor is inside it', () => {
+			const value = '---\nmarp: true\ntheme: default\n---\n\n# Title\n';
+			const { access, getText, getUndoSteps } = setup(
+				value,
+				value.indexOf( 'theme' )
+			);
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\ntheme: gaia\n---\n',
+			} );
+			expect( getText() ).toBe(
+				'---\nmarp: true\ntheme: gaia\n---\n\n# Title\n'
+			);
+			expect( getUndoSteps() ).toBe( 1 );
+		} );
+
+		it( 'changes the front matter and the body in one undo step', () => {
+			const value = '---\nmarp: true\n---\n\n# Title\n\nBody.\n';
+			const { access, getUndoSteps } = setup(
+				value,
+				value.indexOf( 'Body' )
+			);
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\ntheme: gaia\n---\n\nNew body.\n',
+			} );
+			expect( getUndoSteps() ).toBe( 1 );
+		} );
+
 		it( 'adds front matter at the top of a document without one', () => {
 			const { access, getText } = setup( '# Title\n', 3 );
 			createTextEditTarget( access ).apply( {

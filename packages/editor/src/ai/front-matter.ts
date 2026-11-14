@@ -1,8 +1,6 @@
 /**
  * Internal dependencies
  */
-import { joinFrontMatter } from '../converter';
-
 export type AiFrontMatterResult = {
 	// `null` when the Markdown does not start with front matter.
 	frontMatter: string | null;
@@ -35,6 +33,7 @@ function looksLikeYaml( content: string ): boolean {
 	const lines = content.split( /\r?\n/ );
 	let canNest = false;
 	let isNested = false;
+	let hasKey = false;
 	for ( const line of lines ) {
 		if ( /^[ \t]*#/.test( line ) ) {
 			continue;
@@ -57,10 +56,11 @@ function looksLikeYaml( content: string ): boolean {
 			return false;
 		}
 		const value = ( match[ 1 ] ?? '' ).replace( /[ \t]+#.*$/, '' ).trim();
+		hasKey = true;
 		canNest = value === '' || /^[|>][-+]?\d*$/.test( value );
 		isNested = false;
 	}
-	return KEY_LINE_PATTERN.test( lines[ 0 ] );
+	return hasKey;
 }
 
 /**
@@ -84,18 +84,4 @@ export function splitAiFrontMatter( markdown: string ): AiFrontMatterResult {
 			.slice( loose[ 0 ].length )
 			.replace( LEADING_BLANK_LINES, '' ),
 	};
-}
-
-/**
- * Rewrites leading front matter in Markdown written by the model into
- * the well-formed shape, leaving the rest as it is.
- *
- * @param markdown Markdown written by the model.
- * @return The Markdown with well-formed front matter.
- */
-export function normalizeAiFrontMatter( markdown: string ): string {
-	const { frontMatter, body } = splitAiFrontMatter( markdown );
-	return frontMatter === null
-		? markdown
-		: joinFrontMatter( frontMatter, body );
 }
