@@ -6,7 +6,7 @@ import { setupEditor } from '@mark-bricks/editor';
 /**
  * Internal dependencies
  */
-import { getInitialLanguage } from './preferences';
+import { getInitialLanguage } from './preferences/initial-language';
 import { applyDesktopLocale } from './i18n';
 
 async function main() {
