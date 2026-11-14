@@ -204,6 +204,26 @@ describe( 'createBlockEditTarget', () => {
 			);
 		} );
 
+		it( 'reads the host front matter again once it changes', () => {
+			const { access } = setup( DOCUMENT, [ 1 ] );
+			let host = 'marp: true';
+			const target = createBlockEditTarget( access, host, {
+				get: () => host,
+				set: () => {},
+				merge: () => {},
+			} );
+			target.apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\npaginate: true\n---\n',
+			} );
+			// The host catches up, then the user changes the front matter.
+			host = 'marp: true\npaginate: true';
+			host = 'marp: true\ntheme: gaia';
+			expect( target.getDocument() ).toMatch(
+				/^---\nmarp: true\ntheme: gaia\n---\n/
+			);
+		} );
+
 		it( 'keeps the selected blocks for a front matter only edit', () => {
 			const { access, getMarkdown } = setup( DOCUMENT, [ 1 ] );
 			let frontMatter: string | null = null;

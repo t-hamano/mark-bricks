@@ -190,22 +190,35 @@ function trackFrontMatter(
 	if ( ! frontMatterAccess ) {
 		return undefined;
 	}
-	let last: { value: string } | null = null;
+	const read = () =>
+		frontMatterAccess.get ? frontMatterAccess.get() : frontMatter;
+	// The front matter the target set, and the host's before it. Once the
+	// host's changes, whether to the value set or because the user changed
+	// it, the host's is current again.
+	let pending: { value: string; hostBefore: string | null } | null = null;
+	const remember = ( value: string ) => {
+		const live = read();
+		// Before the host caught up with an earlier value, it still holds
+		// the one before that.
+		const hostBefore =
+			pending && live === pending.hostBefore ? pending.hostBefore : live;
+		pending = { value, hostBefore };
+	};
 	return {
 		get: () => {
-			if ( last ) {
-				return last.value;
+			const live = read();
+			if ( pending && live === pending.hostBefore ) {
+				return pending.value;
 			}
-			return frontMatterAccess.get
-				? frontMatterAccess.get()
-				: frontMatter;
+			pending = null;
+			return live;
 		},
 		set: ( next ) => {
-			last = { value: next };
+			remember( next );
 			frontMatterAccess.set( next );
 		},
 		merge: ( next ) => {
-			last = { value: next };
+			remember( next );
 			frontMatterAccess.merge( next );
 		},
 	};
