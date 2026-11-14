@@ -1,4 +1,5 @@
 export { getLocale } from './locale';
+export { SUPPORTED_LOCALES, type SupportedLocale } from './locales';
 export { setupEditor } from './setup';
 export { Editor } from './components/editor';
 export {
