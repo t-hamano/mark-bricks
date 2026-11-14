@@ -15,7 +15,7 @@ import {
 	getModelItems,
 	type AiSettings,
 } from './ai-panel';
-import type { AiProvider } from '../../ai/providers';
+import { PROVIDERS, type AiProvider } from '../../ai/providers';
 
 const MODELS = [
 	{ id: 'claude-opus-5-5', displayName: 'Claude Opus 5.5' },
@@ -68,7 +68,7 @@ describe( 'AiPanel', () => {
 	const onModelChange = vi.fn();
 
 	beforeEach( () => {
-		savedKeys = { anthropic: null, openai: null };
+		savedKeys = { anthropic: null, openai: null, google: null };
 		commands.length = 0;
 		onChange.mockReset();
 		onModelChange.mockReset();
@@ -127,7 +127,7 @@ describe( 'AiPanel', () => {
 	function card( provider: AiProvider ) {
 		return container.querySelectorAll(
 			'.preferences-modal__provider-card'
-		)[ provider === 'anthropic' ? 0 : 1 ] as HTMLElement;
+		)[ Object.keys( PROVIDERS ).indexOf( provider ) ] as HTMLElement;
 	}
 
 	function input( provider: AiProvider = 'anthropic' ) {
@@ -195,6 +195,15 @@ describe( 'AiPanel', () => {
 			'only sent to the OpenAI API.'
 		);
 		expect( input( 'openai' ).placeholder ).toBe( 'sk-…' );
+		expect( links( 'google' ) ).toEqual( [
+			'https://aistudio.google.com/api-keys',
+			'https://aistudio.google.com/usage',
+		] );
+		expect( card( 'google' ).textContent ).toContain( 'Google Gemini' );
+		expect( card( 'google' ).textContent ).toContain(
+			'only sent to the Google Gemini API.'
+		);
+		expect( input( 'google' ).placeholder ).toBe( 'AIza…' );
 	} );
 
 	it( 'hides the provider without a connected provider', async () => {
