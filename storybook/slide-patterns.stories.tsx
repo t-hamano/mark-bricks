@@ -501,7 +501,7 @@ function SlidePatterns() {
 					flexShrink: 0,
 					display: 'flex',
 					flexDirection: 'column',
-					gap: 8,
+					gap: 16,
 					padding: 24,
 					...( isMedium
 						? {
@@ -526,9 +526,25 @@ function SlidePatterns() {
 					{ selectedPattern ? selectedPattern.title() : 'Markdown' }
 				</Text>
 				{ selectedPattern ? (
-					<MarkdownCode
-						value={ getSlidePatternMarkdown( selectedPattern ) }
-					/>
+					<>
+						<div
+							style={ {
+								flexShrink: 0,
+								border: '1px solid var( --wpds-color-stroke-surface-neutral-weak )',
+								borderRadius: 4,
+								overflow: 'hidden',
+							} }
+						>
+							<SlidePatternPreview
+								pattern={ selectedPattern }
+								theme={ theme }
+								size={ size }
+							/>
+						</div>
+						<MarkdownCode
+							value={ getSlidePatternMarkdown( selectedPattern ) }
+						/>
+					</>
 				) : (
 					<Text
 						variant="body-md"
