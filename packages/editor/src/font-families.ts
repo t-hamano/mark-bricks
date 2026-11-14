@@ -1,9 +1,10 @@
-/**
- * Font stacks the content area can be set to, keyed by font family. Kept free
- * of dependencies so the VS Code extension host can import it to validate
- * settings. An empty stack leaves the editor's own default font in place.
- */
-export const FONT_FAMILY_STACKS = {
+// Kept free of dependencies so the VS Code extension host can import it to
+// validate settings.
+
+// The font stack of each font family. An empty stack leaves the editor's own
+// default font in place. Hosts save the font family, never its stack, so a
+// stack can change without breaking what they saved.
+const FONT_FAMILY_STACKS = {
 	system: '',
 	'sans-serif':
 		"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif",
@@ -36,11 +37,11 @@ export function isFontFamily( value: unknown ): value is FontFamily {
 }
 
 /**
- * Returns the font stack for the content area.
+ * Returns the font stack of a font family for the content area.
  *
- * @param value A font family, or a font stack, which is kept as it is.
+ * @param family The font family.
  * @return The font stack, empty for the editor's own default font.
  */
-export function getFontFamilyStack( value: string ): string {
-	return isFontFamily( value ) ? FONT_FAMILY_STACKS[ value ] : value;
+export function getFontFamilyStack( family: FontFamily ): string {
+	return FONT_FAMILY_STACKS[ family ];
 }

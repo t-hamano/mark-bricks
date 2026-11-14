@@ -8,7 +8,6 @@ import { describe, expect, it } from 'vitest';
  */
 import {
 	FONT_FAMILIES,
-	FONT_FAMILY_STACKS,
 	getFontFamilyStack,
 	isFontFamily,
 } from './font-families';
@@ -27,18 +26,10 @@ describe( 'isFontFamily', () => {
 
 describe( 'getFontFamilyStack', () => {
 	it( 'returns the stack of a font family', () => {
-		expect( getFontFamilyStack( 'serif' ) ).toBe(
-			FONT_FAMILY_STACKS.serif
-		);
+		expect( getFontFamilyStack( 'serif' ) ).toContain( 'serif' );
 	} );
 
 	it( 'leaves the default font for the system font family', () => {
 		expect( getFontFamilyStack( 'system' ) ).toBe( '' );
-	} );
-
-	it( 'keeps a font stack as it is', () => {
-		expect( getFontFamilyStack( 'Georgia, serif' ) ).toBe(
-			'Georgia, serif'
-		);
 	} );
 } );

@@ -138,8 +138,7 @@ export const WithCustomStyles: Story = {
 		editorStyles: {
 			contentWidth: 900,
 			fontSize: 20,
-			fontFamily:
-				"'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Marker Felt', cursive",
+			fontFamily: 'handwriting',
 			css: `
 				body {
 					background: #f5f0e1;

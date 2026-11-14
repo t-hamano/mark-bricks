@@ -2,8 +2,6 @@
  * External dependencies
  */
 import {
-	FONT_FAMILIES,
-	FONT_FAMILY_STACKS,
 	isFontFamily,
 	type FontFamily,
 } from '@mark-bricks/editor/font-families';
@@ -23,15 +21,27 @@ const CODE_EDITOR_THEME_V1_TO_V2: Record< string, string > = {
 
 // v2 -> v3: `editorStyles.fontFamily` held the font stack itself, which no
 // longer matched any choice once the editor changed a stack. It now holds the
-// font family. A stack that matches none falls back to the default font.
+// font family. These are the stacks v2 saved, kept here as they were so that
+// a later change to the editor's stacks leaves them readable. A stack that
+// matches none falls back to the default font.
+const FONT_FAMILY_V2_TO_V3: Partial< Record< string, FontFamily > > = {
+	'': 'system',
+	"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif":
+		'sans-serif',
+	"Georgia, Cambria, 'Times New Roman', Times, serif": 'serif',
+	"ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace":
+		'monospace',
+	"'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Marker Felt', cursive":
+		'handwriting',
+};
+
 function toFontFamily( value: unknown ): FontFamily {
 	if ( isFontFamily( value ) ) {
 		return value;
 	}
 	return (
-		FONT_FAMILIES.find(
-			( family ) => FONT_FAMILY_STACKS[ family ] === value
-		) ?? 'system'
+		( typeof value === 'string' && FONT_FAMILY_V2_TO_V3[ value ] ) ||
+		'system'
 	);
 }
 
