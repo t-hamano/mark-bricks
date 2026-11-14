@@ -12,7 +12,12 @@ import {
  * WordPress dependencies
  */
 import { useViewportMatch } from '@wordpress/compose';
-import { dispatch, useDispatch, useSelect } from '@wordpress/data';
+import {
+	dispatch,
+	select as selectFromStore,
+	useDispatch,
+	useSelect,
+} from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as preferencesStore } from '@wordpress/preferences';
@@ -29,7 +34,7 @@ import {
 	type VisualEditorSettings,
 } from './visual-editor-panel';
 import { getInitialPreferencesTab, PREFERENCES_MODAL_NAME } from './open';
-import { toProvider } from '../../ai/providers';
+import { toProvider, type AiProvider } from '../../ai/providers';
 import { DEFAULT_PREFERENCES } from '../../preferences/constants';
 import './style.scss';
 
@@ -153,13 +158,25 @@ export default function PreferencesModal() {
 		} );
 	};
 
-	const handleAiChange = ( edits: Partial< AiSettings > ) => {
+	const handleAiChange = (
+		edits: Pick< Partial< AiSettings >, 'provider' >
+	) => {
 		if ( edits.provider !== undefined ) {
 			setPreference( 'mark-bricks', 'aiProvider', edits.provider );
 		}
-		if ( edits.models !== undefined ) {
-			setPreference( 'mark-bricks', 'aiModels', edits.models );
-		}
+	};
+
+	const handleAiModelChange = ( provider: AiProvider, model: string ) => {
+		// Reads the saved models now, not from this render, so that a change
+		// made after a key's deletion started is not undone when it ends.
+		const { [ provider ]: _, ...rest } = ( selectFromStore(
+			preferencesStore
+		).get( 'mark-bricks', 'aiModels' ) ?? {} ) as AiSettings[ 'models' ];
+		setPreference(
+			'mark-bricks',
+			'aiModels',
+			model ? { ...rest, [ provider ]: model } : rest
+		);
 	};
 
 	return (
@@ -272,6 +289,7 @@ export default function PreferencesModal() {
 									models: aiModels,
 								} }
 								onChange={ handleAiChange }
+								onModelChange={ handleAiModelChange }
 							/>
 						</Tabs.Panel>
 					</Tabs.Root>

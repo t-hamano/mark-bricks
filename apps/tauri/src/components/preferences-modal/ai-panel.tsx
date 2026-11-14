@@ -32,7 +32,13 @@ export type AiSettings = {
 
 type Props = {
 	settings: AiSettings;
-	onChange: ( edits: Partial< AiSettings > ) => void;
+	onChange: ( edits: Pick< Partial< AiSettings >, 'provider' > ) => void;
+	/**
+	 * Called with a provider's new model, or an empty string for its default
+	 * model. The change applies to the models saved when it is made, which
+	 * may be newer than `settings`, since a key is deleted asynchronously.
+	 */
+	onModelChange: ( provider: AiProvider, model: string ) => void;
 };
 
 const PROVIDER_NAMES = Object.keys( PROVIDERS ) as AiProvider[];
@@ -60,7 +66,7 @@ export function getFallbackProvider(
 		: null;
 }
 
-export function AiPanel( { settings, onChange }: Props ) {
+export function AiPanel( { settings, onChange, onModelChange }: Props ) {
 	const { provider, models } = settings;
 	const [ keys, setKeys ] = useState< Keys >(
 		() =>
@@ -129,12 +135,7 @@ export function AiPanel( { settings, onChange }: Props ) {
 							[ name ]: value,
 						} ) )
 					}
-					onModelChange={ ( model ) => {
-						const { [ name ]: _, ...rest } = models;
-						onChange( {
-							models: model ? { ...rest, [ name ]: model } : rest,
-						} );
-					} }
+					onModelChange={ ( model ) => onModelChange( name, model ) }
 				/>
 			) ) }
 			{ connected.length > 0 && (

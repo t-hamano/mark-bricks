@@ -65,11 +65,13 @@ describe( 'AiPanel', () => {
 	let savedKeys: Record< AiProvider, string | null >;
 	const commands: Array< { command: string; provider?: string } > = [];
 	const onChange = vi.fn();
+	const onModelChange = vi.fn();
 
 	beforeEach( () => {
 		savedKeys = { anthropic: null, openai: null };
 		commands.length = 0;
 		onChange.mockReset();
+		onModelChange.mockReset();
 		mockIPC( ( command, args ) => {
 			const payload = args as { key?: string; provider: AiProvider };
 			commands.push( { command, provider: payload?.provider } );
@@ -116,6 +118,7 @@ describe( 'AiPanel', () => {
 						...settings,
 					} }
 					onChange={ onChange }
+					onModelChange={ onModelChange }
 				/>
 			);
 		} );
@@ -286,14 +289,12 @@ describe( 'AiPanel', () => {
 		expect( container.textContent ).toContain( 'The API key was deleted.' );
 		expect( input().disabled ).toBe( false );
 		expect( input().value ).toBe( '' );
-		expect( onChange ).toHaveBeenCalledWith( {
-			models: { openai: 'gpt-6-mini' },
-		} );
+		expect( onModelChange ).toHaveBeenCalledWith( 'anthropic', '' );
 		expect( card( 'anthropic' ).textContent ).not.toContain( 'Model' );
 		expect( providerSelect() ).toBeUndefined();
 	} );
 
-	it( 'keeps the models of the other providers', async () => {
+	it( 'changes the model of its provider', async () => {
 		savedKeys.anthropic = 'sk-ant-key';
 		await render( { models: { openai: 'gpt-6-mini' } } );
 		await choose(
@@ -302,9 +303,10 @@ describe( 'AiPanel', () => {
 			) as HTMLElement,
 			'Claude Sonnet 5.5'
 		);
-		expect( onChange ).toHaveBeenCalledWith( {
-			models: { openai: 'gpt-6-mini', anthropic: 'claude-sonnet-5-5' },
-		} );
+		expect( onModelChange ).toHaveBeenCalledWith(
+			'anthropic',
+			'claude-sonnet-5-5'
+		);
 	} );
 
 	it( 'uses the only connected provider', async () => {
