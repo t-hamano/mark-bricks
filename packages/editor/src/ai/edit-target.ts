@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import type { AiEdit } from '../platform';
+import type { AiEdit, AiEditResult } from '../platform';
 
 /**
  * Wraps the selection in the document sent to the model, so the model
@@ -32,11 +32,13 @@ export type EditContext = {
 export type EditTarget = {
 	getContext: () => EditContext;
 	/**
-	 * Applies the model's edit to the captured selection, as one undo step.
-	 * Returns `false`, and changes nothing, when the selection no longer
-	 * exists.
+	 * Applies the model's edit, as one undo step: to the captured
+	 * selection, or for `replace_text`, to the text it names. Changes
+	 * nothing, and returns `dropped` when the selection no longer exists,
+	 * or `failed` when the text to replace is not in the document, or is
+	 * in more than one place.
 	 */
-	apply: ( edit: AiEdit ) => boolean;
+	apply: ( edit: AiEdit ) => AiEditResult;
 };
 
 /**

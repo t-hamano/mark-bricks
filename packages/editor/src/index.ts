@@ -12,6 +12,7 @@ export type {
 	AiActivity,
 	AiChatRequest,
 	AiEdit,
+	AiEditResult,
 	AiMessage,
 	AiPlatform,
 	AiStreamEvent,

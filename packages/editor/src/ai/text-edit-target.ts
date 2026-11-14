@@ -4,6 +4,7 @@
 import { SELECTION_END, SELECTION_START, type EditTarget } from './edit-target';
 import { joinFrontMatter, splitFrontMatter } from '../converter';
 import type { AiEdit } from '../platform';
+import { findUniqueText } from './find-text';
 import { splitAiFrontMatter } from './front-matter';
 
 /**
@@ -48,6 +49,8 @@ function getEditRange( value: string, selection: TextRange ): TextRange {
 	return { start, end: lineEnd === -1 ? value.length : lineEnd };
 }
 
+type SelectionAction = 'replace' | 'insert_after';
+
 type Replacement = {
 	range: TextRange;
 	text: string;
@@ -66,7 +69,7 @@ type Replacement = {
 function getReplacement(
 	text: string,
 	current: TextRange,
-	action: AiEdit[ 'action' ],
+	action: SelectionAction,
 	markdown: string
 ): Replacement {
 	const content = markdown.replace( /\n+$/, '' );
@@ -141,7 +144,7 @@ function diff( before: string, after: string ): Replacement {
 function applyWithFrontMatter(
 	text: string,
 	current: TextRange,
-	action: AiEdit[ 'action' ],
+	action: SelectionAction,
 	frontMatter: string,
 	body: string
 ): string {
@@ -169,7 +172,8 @@ function applyWithFrontMatter(
 
 /**
  * Creates the edit target for the text editor, from the selection now. With
- * no selection, the target is the line the cursor is on.
+ * no selection, the target is the line the cursor is on. A `replace_text`
+ * edit changes the text it names instead, wherever it is.
  *
  * @param access Text editor access.
  * @return The edit target.
@@ -192,10 +196,21 @@ export function createTextEditTarget( access: TextEditorAccess ): EditTarget {
 			};
 		},
 
-		apply( { action, markdown } ) {
+		apply( edit: AiEdit ) {
+			if ( edit.action === 'replace_text' ) {
+				// The front matter is part of the text, so it needs no
+				// special handling.
+				const found = findUniqueText( access.getValue(), edit.find );
+				if ( 'reason' in found ) {
+					return { status: 'failed', reason: found.reason };
+				}
+				access.replaceRange( found, edit.markdown );
+				return { status: 'applied' };
+			}
+			const { action, markdown } = edit;
 			const current = getRange();
 			if ( ! current ) {
-				return false;
+				return { status: 'dropped' };
 			}
 			const text = access.getValue();
 			const { frontMatter, body } = splitAiFrontMatter( markdown );
@@ -213,7 +228,7 @@ export function createTextEditTarget( access: TextEditorAccess ): EditTarget {
 							)
 						);
 			access.replaceRange( replacement.range, replacement.text );
-			return true;
+			return { status: 'applied' };
 		},
 	};
 }

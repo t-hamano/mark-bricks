@@ -49,7 +49,9 @@ async function run( streams: string[], signal = new AbortController().signal ) {
 	const result = chat( {
 		system: 'System prompt',
 		messages: [ { role: 'user', text: 'Make it shorter' } ],
-		onEvent: ( event ) => events.push( event ),
+		onEvent: ( event ) => {
+			events.push( event );
+		},
 		signal,
 	} );
 	return { result, events, bodies, transport };
