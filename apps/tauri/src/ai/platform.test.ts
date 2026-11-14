@@ -22,7 +22,7 @@ vi.mock( '../components/preferences-modal/open', () => ( {
 /**
  * WordPress dependencies
  */
-import { dispatch } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 import { store as preferencesStore } from '@wordpress/preferences';
 
 /**
@@ -68,7 +68,7 @@ async function requestOf() {
 
 beforeEach( () => {
 	invoke.mockReset();
-	dispatch( preferencesStore ).set( 'mark-bricks', 'aiModel', '' );
+	dispatch( preferencesStore ).set( 'mark-bricks', 'aiModels', {} );
 	dispatch( preferencesStore ).set( 'mark-bricks', 'aiProvider', undefined );
 } );
 
@@ -78,12 +78,26 @@ describe( 'aiPlatform', () => {
 	} );
 
 	it( 'uses the model chosen in the preferences', async () => {
+		dispatch( preferencesStore ).set( 'mark-bricks', 'aiModels', {
+			anthropic: 'claude-sonnet-5-5',
+		} );
+		expect( await modelOfRequest() ).toBe( 'claude-sonnet-5-5' );
+	} );
+
+	it( 'uses the model chosen for the chosen provider', async () => {
+		dispatch( preferencesStore ).set( 'mark-bricks', 'aiModels', {
+			anthropic: 'claude-sonnet-5-5',
+			openai: 'gpt-6-mini',
+		} );
 		dispatch( preferencesStore ).set(
 			'mark-bricks',
-			'aiModel',
-			'claude-sonnet-5-5'
+			'aiProvider',
+			'openai'
 		);
-		expect( await modelOfRequest() ).toBe( 'claude-sonnet-5-5' );
+		expect( await requestOf() ).toEqual( {
+			provider: 'openai',
+			model: 'gpt-6-mini',
+		} );
 	} );
 
 	it( 'uses OpenAI and its default model when it is chosen', async () => {
@@ -98,7 +112,7 @@ describe( 'aiPlatform', () => {
 		} );
 		invoke.mockResolvedValue( false );
 		await aiPlatform.hasApiKey();
-		expect( invoke ).toHaveBeenLastCalledWith( 'has_ai_api_key', {
+		expect( invoke ).toHaveBeenCalledWith( 'has_ai_api_key', {
 			provider: 'openai',
 		} );
 	} );
@@ -109,6 +123,22 @@ describe( 'aiPlatform', () => {
 		expect( invoke ).toHaveBeenCalledWith( 'has_ai_api_key', {
 			provider: 'anthropic',
 		} );
+	} );
+
+	it( 'switches to a provider with a key when the chosen one has none', async () => {
+		invoke.mockImplementation(
+			async ( _command: string, args: { provider: string } ) =>
+				args.provider === 'openai'
+		);
+		await expect( aiPlatform.hasApiKey() ).resolves.toBe( true );
+		expect(
+			select( preferencesStore ).get( 'mark-bricks', 'aiProvider' )
+		).toBe( 'openai' );
+	} );
+
+	it( 'reports no key when no provider has one', async () => {
+		invoke.mockResolvedValue( false );
+		await expect( aiPlatform.hasApiKey() ).resolves.toBe( false );
 	} );
 
 	it( 'opens the preferences on the AI Assistant tab', () => {

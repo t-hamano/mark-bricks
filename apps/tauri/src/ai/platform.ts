@@ -6,14 +6,19 @@ import type { AiPlatform } from '@mark-bricks/editor';
 /**
  * WordPress dependencies
  */
-import { select } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 import { store as preferencesStore } from '@wordpress/preferences';
 
 /**
  * Internal dependencies
  */
 import { createChat } from './chat';
-import { PROVIDERS, toProvider, type AiProvider } from './providers';
+import {
+	getModelOf,
+	PROVIDERS,
+	toProvider,
+	type AiProvider,
+} from './providers';
 import { hasApiKey } from './settings';
 import { createTauriTransport } from './transport';
 import { openPreferences } from '../components/preferences-modal/open';
@@ -32,10 +37,12 @@ export function getChosenProvider(): AiProvider {
  * model.
  */
 export function getChosenModel(): string {
-	const model = select( preferencesStore ).get( 'mark-bricks', 'aiModel' );
-	return typeof model === 'string' && model
-		? model
-		: PROVIDERS[ getChosenProvider() ].defaultModel;
+	const provider = getChosenProvider();
+	const model = getModelOf(
+		select( preferencesStore ).get( 'mark-bricks', 'aiModels' ),
+		provider
+	);
+	return model || PROVIDERS[ provider ].defaultModel;
 }
 
 /**
@@ -44,8 +51,25 @@ export function getChosenModel(): string {
  * settings.
  */
 export const aiPlatform: AiPlatform = {
-	hasApiKey() {
-		return hasApiKey( getChosenProvider() );
+	async hasApiKey() {
+		const chosen = getChosenProvider();
+		if ( await hasApiKey( chosen ) ) {
+			return true;
+		}
+		// The chosen provider has no key, but another one may: one whose key
+		// was saved after the settings were closed, before the panel could
+		// choose it. The assistant then uses that one.
+		for ( const provider of Object.keys( PROVIDERS ) as AiProvider[] ) {
+			if ( provider !== chosen && ( await hasApiKey( provider ) ) ) {
+				dispatch( preferencesStore ).set(
+					'mark-bricks',
+					'aiProvider',
+					provider
+				);
+				return true;
+			}
+		}
+		return false;
 	},
 	chat( request ) {
 		// The provider and the model are read for each message, so that the

@@ -9,21 +9,22 @@ import { _x } from '@wordpress/i18n';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'section',
-	title: () => _x( 'Section divider', 'slide pattern', 'mark-bricks' ),
-	categories: [ 'section' ],
+	name: 'title-in-inverted-colors',
+	title: () =>
+		_x( 'Title in inverted colors', 'slide pattern', 'mark-bricks' ),
+	categories: [ 'title' ],
 	markdown: `<!-- _class: lead invert -->
 
-# {{heading}}
+# {{title}}
 
-{{description}}`,
+{{subtitle}}`,
 	strings: () => ( {
-		heading: _x( 'Section title', 'slide pattern', 'mark-bricks' ),
-		description: _x(
-			'A short line about this section',
+		title: _x(
+			'Writing slides in Markdown',
 			'slide pattern',
 			'mark-bricks'
 		),
+		subtitle: _x( 'A short introduction', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 

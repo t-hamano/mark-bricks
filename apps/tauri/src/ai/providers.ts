@@ -31,3 +31,18 @@ export function toProvider( value: unknown ): AiProvider {
 		? ( value as AiProvider )
 		: DEFAULT_PROVIDER;
 }
+
+/**
+ * Reads the model chosen for a provider from the preferences.
+ *
+ * @param models   The saved models, by provider.
+ * @param provider The provider.
+ * @return The model's id, or an empty string for the default model.
+ */
+export function getModelOf( models: unknown, provider: AiProvider ): string {
+	const model =
+		models && typeof models === 'object'
+			? ( models as Record< string, unknown > )[ provider ]
+			: undefined;
+	return typeof model === 'string' ? model : '';
+}

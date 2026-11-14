@@ -10,20 +10,19 @@ import { PLACEHOLDER_IMAGE } from '../placeholder-image';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'stacked-images-and-text',
+	name: 'heading-image-and-caption',
 	title: () =>
-		_x( 'Two stacked images and text', 'slide pattern', 'mark-bricks' ),
+		_x( 'Heading, image, and caption', 'slide pattern', 'mark-bricks' ),
 	categories: [ 'image' ],
-	markdown: `![bg right vertical](${ PLACEHOLDER_IMAGE })
-![bg](${ PLACEHOLDER_IMAGE })
+	markdown: `## {{heading}}
 
-## {{heading}}
+![h:360](${ PLACEHOLDER_IMAGE })
 
-{{body}}`,
+{{caption}}`,
 	strings: () => ( {
-		heading: _x( 'Slide title', 'slide pattern', 'mark-bricks' ),
-		body: _x(
-			'Write a few sentences here to explain the idea of this slide in more detail.',
+		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
+		caption: _x(
+			'A slide written in Markdown',
 			'slide pattern',
 			'mark-bricks'
 		),

@@ -14,18 +14,29 @@ const pattern: SlidePattern = {
 	title: () =>
 		_x( 'Image on the left and text', 'slide pattern', 'mark-bricks' ),
 	categories: [ 'image' ],
-	markdown: `![bg left:40%](${ PLACEHOLDER_IMAGE })
+	markdown: `![bg left:30%](${ PLACEHOLDER_IMAGE })
 
 ## {{heading}}
 
-- {{point1}}
-- {{point2}}
-- {{point3}}`,
+{{text}}
+
+- {{item1}}
+- {{item2}}
+- {{item3}}`,
 	strings: () => ( {
-		heading: _x( 'Slide title', 'slide pattern', 'mark-bricks' ),
-		point1: _x( 'First point', 'slide pattern', 'mark-bricks' ),
-		point2: _x( 'Second point', 'slide pattern', 'mark-bricks' ),
-		point3: _x( 'Third point', 'slide pattern', 'mark-bricks' ),
+		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
+		text: _x(
+			'Write your slides as plain text and let the theme take care of the design.',
+			'slide pattern',
+			'mark-bricks'
+		),
+		item1: _x( 'Write in plain text', 'slide pattern', 'mark-bricks' ),
+		item2: _x( 'Preview as you type', 'slide pattern', 'mark-bricks' ),
+		item3: _x(
+			'Export when you are ready',
+			'slide pattern',
+			'mark-bricks'
+		),
 	} ),
 };
 

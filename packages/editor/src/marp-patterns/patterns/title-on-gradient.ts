@@ -21,8 +21,12 @@ _backgroundImage: "linear-gradient(135deg, #1e3a8a, #0e7490)"
 
 {{subtitle}}`,
 	strings: () => ( {
-		title: _x( 'Presentation title', 'slide pattern', 'mark-bricks' ),
-		subtitle: _x( 'Your name · Date', 'slide pattern', 'mark-bricks' ),
+		title: _x(
+			'Writing slides in Markdown',
+			'slide pattern',
+			'mark-bricks'
+		),
+		subtitle: _x( 'A short introduction', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:13:15.680Z\n"
-"PO-Revision-Date: 2026-11-14T04:13:46.685Z\n"
+"POT-Creation-Date: 2026-11-14T05:57:36.283Z\n"
+"PO-Revision-Date: 2026-11-14T05:57:57.032Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -42,41 +42,28 @@ msgstr "(niveau de titre erroné)"
 msgid "(Multiple H1 headings are not recommended)"
 msgstr "(il est déconseillé d’utiliser plusieurs titres H1)"
 
-#: src/marp-patterns/patterns/key-figure.ts:21
-msgctxt "slide pattern"
-msgid "85%"
-msgstr "85 %"
-
 #: style.css
 #. Name of the generic
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/marp-patterns/patterns/image-and-caption.ts:23
+#: src/marp-patterns/patterns/title.ts:26
+#: src/marp-patterns/patterns/title-on-image.ts:29
+#: src/marp-patterns/patterns/title-on-gradient.ts:29
+#: src/marp-patterns/patterns/title-on-blurred-image.ts:30
+#: src/marp-patterns/patterns/title-in-inverted-colors.ts:27
+#: src/marp-patterns/patterns/title-and-image-on-right.ts:30
+#: src/marp-patterns/patterns/title-and-image-on-left.ts:30
+#: src/marp-patterns/patterns/title-and-image-on-left-half.ts:34
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:31
 msgctxt "slide pattern"
-msgid "A caption for the image"
-msgstr "Une légende pour l'image"
+msgid "A short introduction"
+msgstr "Une courte introduction"
 
-#: src/marp-patterns/patterns/nested-list.ts:24
+#: src/marp-patterns/patterns/heading-image-and-caption.ts:24
 msgctxt "slide pattern"
-msgid "A detail about the first point"
-msgstr "Un détail sur le premier point"
-
-#: src/marp-patterns/patterns/nested-list.ts:30
-msgctxt "slide pattern"
-msgid "A detail about the second point"
-msgstr "Un détail sur le deuxième point"
-
-#: src/marp-patterns/patterns/quote.ts:21
-#: src/marp-patterns/patterns/quote-on-image.ts:24
-msgctxt "slide pattern"
-msgid "A quote that supports your point."
-msgstr "Une citation qui appuie votre propos."
-
-#: src/marp-patterns/patterns/section.ts:22
-msgctxt "slide pattern"
-msgid "A short line about this section"
-msgstr "Une courte ligne sur cette section"
+msgid "A slide written in Markdown"
+msgstr "Une diapositive écrite en Markdown"
 
 #: src/components/editor-header/index.tsx:194
 #: src/components/ai-sidebar/sidebar.tsx:61
@@ -84,16 +71,15 @@ msgstr "Une courte ligne sur cette section"
 msgid "AI Assistant"
 msgstr "Assistant IA"
 
-#: src/marp-patterns/patterns/agenda.ts:13
-#: src/marp-patterns/patterns/agenda.ts:21
-msgctxt "slide pattern"
-msgid "Agenda"
-msgstr "Ordre du jour"
-
 #: style.css
 #. Author of the generic
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
+
+#: src/marp-patterns/patterns/quote-on-image.ts:29
+msgctxt "slide pattern"
+msgid "Alex Kim, Designer"
+msgstr "Alex Kim, designer"
 
 #: src/components/slide-pattern-modal/index.tsx:192
 msgid "All"
@@ -127,11 +113,6 @@ msgstr ""
 "sélection, ou la ligne où se trouve le curseur dans l’éditeur de code, est "
 "envoyée avec votre message."
 
-#: src/marp-patterns/patterns/agenda.ts:22
-msgctxt "slide pattern"
-msgid "Background"
-msgstr "Contexte"
-
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
 msgstr "Outil d’insertion de blocs"
@@ -150,16 +131,6 @@ msgstr "Gras"
 #: src/block-library/image/edit.tsx:218
 msgid "Browse local file"
 msgstr "Parcourir un fichier local"
-
-#: src/marp-patterns/patterns/steps.ts:24
-msgctxt "slide pattern"
-msgid "Build"
-msgstr "Réaliser"
-
-#: src/marp-patterns/patterns/bullet-list.ts:13
-msgctxt "slide pattern"
-msgid "Bullet points"
-msgstr "Liste à puces"
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
@@ -180,11 +151,6 @@ msgstr "Changer le langage"
 #: src/components/keyboard-shortcuts/hooks.ts:92
 msgid "Change the block type after adding a new paragraph."
 msgstr "Modifier le type de bloc après l’ajout d’un nouveau paragraphe."
-
-#: src/marp-patterns/patterns/steps.ts:27
-msgctxt "slide pattern"
-msgid "Check the results"
-msgstr "Vérifier les résultats"
 
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
@@ -213,81 +179,21 @@ msgstr "Fermer l’assistant IA"
 msgid "Close Block Inserter"
 msgstr "Fermer l’inserteur de bloc"
 
-#: src/marp-patterns/categories.ts:40
-msgctxt "slide pattern category"
-msgid "Closing"
-msgstr "Conclusion"
-
-#: src/marp-patterns/patterns/closing.ts:13
-msgctxt "slide pattern"
-msgid "Closing"
-msgstr "Conclusion"
-
-#: src/marp-patterns/patterns/closing-on-image.ts:14
-msgctxt "slide pattern"
-msgid "Closing on an image"
-msgstr "Conclusion sur une image"
-
-#: src/marp-patterns/patterns/code.ts:13
-msgctxt "slide pattern"
-msgid "Code"
-msgstr "Code"
-
 #: src/components/editor/index.tsx:111
 msgid "Code editor"
 msgstr "Éditeur de code"
-
-#: src/marp-patterns/patterns/code.ts:25
-msgctxt "slide pattern"
-msgid "Code example"
-msgstr "Exemple de code"
 
 #: src/block-library/table/edit.tsx:246
 msgid "Column count"
 msgstr "Nombre de colonnes"
 
-#: src/marp-patterns/patterns/table.ts:34
-msgctxt "slide pattern"
-msgid "Community"
-msgstr "Communauté"
-
-#: src/marp-patterns/patterns/table.ts:23
-msgctxt "slide pattern"
-msgid "Comparison"
-msgstr "Comparaison"
-
-#: src/marp-patterns/patterns/table.ts:13
-msgctxt "slide pattern"
-msgid "Comparison table"
-msgstr "Tableau comparatif"
-
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
 msgstr "Convertir le texte sélectionné en lien."
 
-#: src/marp-patterns/patterns/table.ts:27
-msgctxt "slide pattern"
-msgid "Cost"
-msgstr "Coût"
-
 #: src/block-library/table/edit.tsx:259
 msgid "Create Table"
 msgstr "Créer un tableau"
-
-#: src/marp-patterns/categories.ts:36
-msgctxt "slide pattern category"
-msgid "Data"
-msgstr "Données"
-
-#: src/marp-patterns/patterns/steps.ts:23
-msgctxt "slide pattern"
-msgid "Decide what to do"
-msgstr "Décider quoi faire"
-
-#: src/marp-patterns/patterns/table.ts:35
-msgctxt "slide pattern"
-msgid "Dedicated team"
-msgstr "Équipe dédiée"
 
 #: src/block-library/quote/edit.tsx:151
 msgid "Default"
@@ -306,11 +212,6 @@ msgstr "Supprimer la ligne"
 msgid "Describes the image for screen readers."
 msgstr "Décrit l’image pour les lecteurs d’écran."
 
-#: src/marp-patterns/patterns/timeline.ts:26
-msgctxt "slide pattern"
-msgid "Development"
-msgstr "Développement"
-
 #: src/components/keyboard-shortcuts/index.tsx:103
 msgid "Display these keyboard shortcuts."
 msgstr "Afficher ces raccourcis clavier."
@@ -319,11 +220,6 @@ msgstr "Afficher ces raccourcis clavier."
 #: src/components/editor-header/index.tsx:153
 msgid "Document Overview"
 msgstr "Vue d’ensemble du document"
-
-#: src/marp-patterns/patterns/resources.ts:22
-msgctxt "slide pattern"
-msgid "Documentation"
-msgstr "Documentation"
 
 #: src/block-library/image/edit.tsx:162
 msgid "Edit image"
@@ -355,27 +251,22 @@ msgstr "Saisir le titre…"
 msgid "Explore Marp patterns"
 msgstr "Explorer les modèles Marp"
 
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
+#: src/marp-patterns/patterns/three-stacked-images-and-text.ts:37
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:35
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:35
+msgctxt "slide pattern"
+msgid "Export when you are ready"
+msgstr "Exporter une fois prêt"
+
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "Échec du chargement de l’image."
 
-#: src/marp-patterns/patterns/table.ts:32
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
-msgid "Fast"
-msgstr "Rapide"
-
-#: src/marp-patterns/patterns/questions.ts:22
-msgctxt "slide pattern"
-msgid "Feel free to ask anything"
-msgstr "N'hésitez pas à poser vos questions"
-
-#: src/marp-patterns/patterns/nested-list.ts:23
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:26
-#: src/marp-patterns/patterns/image-and-text.ts:25
-#: src/marp-patterns/patterns/bullet-list.ts:22
-msgctxt "slide pattern"
-msgid "First point"
-msgstr "Premier point"
+msgid "Focus on your message"
+msgstr "Concentrez-vous sur votre message"
 
 #: src/components/front-matter-editor/index.tsx:293
 msgid "Footer"
@@ -390,7 +281,7 @@ msgstr "Barre oblique"
 msgid "Front matter settings"
 msgstr "Réglages du front matter"
 
-#: src/marp-patterns/patterns/full-image.ts:14
+#: src/marp-patterns/patterns/full-screen-image.ts:14
 msgctxt "slide pattern"
 msgid "Full-screen image"
 msgstr "Image plein écran"
@@ -398,6 +289,11 @@ msgstr "Image plein écran"
 #: src/block-library/quote/edit.tsx:148
 msgid "GitHub alert type"
 msgstr "Type d’alerte GitHub"
+
+#: src/marp-patterns/patterns/quote-on-image.ts:24
+msgctxt "slide pattern"
+msgid "Good slides say one thing, and say it clearly."
+msgstr "Une bonne diapositive dit une seule chose, et la dit clairement."
 
 # %d: heading level (1-6)
 #: src/components/list-view-outline/index.tsx:109
@@ -412,6 +308,11 @@ msgstr "En-tête"
 msgid "Header label"
 msgstr "Libellé d’en-tête"
 
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:14
+msgctxt "slide pattern"
+msgid "Header, footer, and page number"
+msgstr "En-tête, pied de page et numéro de page"
+
 #: src/block-library/heading/edit.tsx:53
 msgid "Heading"
 msgstr "Titre"
@@ -421,48 +322,53 @@ msgstr "Titre"
 msgid "Heading %d"
 msgstr "Titre %d"
 
-#: src/marp-patterns/patterns/heading-and-paragraph.ts:13
+#: src/marp-patterns/patterns/heading-and-text-on-image.ts:15
 msgctxt "slide pattern"
-msgid "Heading and paragraph"
-msgstr "Titre et paragraphe"
+msgid "Heading and text on an image"
+msgstr "Titre de section et texte sur une image"
+
+#: src/marp-patterns/patterns/heading-and-two-images.ts:14
+msgctxt "slide pattern"
+msgid "Heading and two images"
+msgstr "Titre de section et deux images"
+
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:14
+msgctxt "slide pattern"
+msgid "Heading and two subsections"
+msgstr "Titre de section et deux sous-sections"
+
+#: src/marp-patterns/patterns/heading-image-and-caption.ts:15
+msgctxt "slide pattern"
+msgid "Heading, image, and caption"
+msgstr "Titre de section, image et légende"
 
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "Masquer la vue d’ensemble du document"
 
-#: src/marp-patterns/patterns/table.ts:29
-msgctxt "slide pattern"
-msgid "High"
-msgstr "Élevé"
-
-#: src/marp-patterns/patterns/steps.ts:21
-msgctxt "slide pattern"
-msgid "How it works"
-msgstr "Comment ça marche"
-
 #: src/block-library/image/edit.tsx:76
 msgid "Image"
 msgstr "Image"
 
-#: src/marp-patterns/categories.ts:32
+#: src/marp-patterns/categories.ts:28
 msgctxt "slide pattern category"
 msgid "Image"
 msgstr "Image"
 
-#: src/marp-patterns/patterns/image-and-text.ts:14
+#: src/marp-patterns/patterns/fitted-image.ts:15
 msgctxt "slide pattern"
-msgid "Image and text"
-msgstr "Image et texte"
+msgid "Image fitted to the slide"
+msgstr "Image ajustée à la diapositive"
 
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:15
 msgctxt "slide pattern"
 msgid "Image on the left and text"
 msgstr "Image à gauche et texte"
 
-#: src/marp-patterns/patterns/image-and-caption.ts:14
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:15
 msgctxt "slide pattern"
-msgid "Image with a caption"
-msgstr "Image avec légende"
+msgid "Image on the right and text"
+msgstr "Image à droite et texte"
 
 #: src/block-library/quote/edit.tsx:70
 msgid "Important"
@@ -508,29 +414,14 @@ msgstr "Insérer une ligne avant"
 msgid "Italic"
 msgstr "Italique"
 
-#: src/marp-patterns/patterns/table.ts:24
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:37
 msgctxt "slide pattern"
-msgid "Item"
-msgstr "Critère"
-
-#: src/marp-patterns/patterns/key-figure.ts:13
-msgctxt "slide pattern"
-msgid "Key figure"
-msgstr "Chiffre clé"
-
-#: src/marp-patterns/patterns/key-message.ts:13
-msgctxt "slide pattern"
-msgid "Key message"
-msgstr "Message clé"
+msgid "Keep every version"
+msgstr "Garder chaque version"
 
 #: src/block-library/code/edit.tsx:114
 msgid "Language"
 msgstr "Langage"
-
-#: src/marp-patterns/patterns/timeline.ts:27
-msgctxt "slide pattern"
-msgid "Launch"
-msgstr "Lancement"
 
 # %d: The line number.
 #: src/ai/selection-summary.ts:22
@@ -552,16 +443,6 @@ msgstr "Vue en liste"
 #: src/block-library/list-item/edit.tsx:147
 msgid "List text"
 msgstr "Texte de la liste"
-
-#: src/marp-patterns/patterns/table.ts:28
-msgctxt "slide pattern"
-msgid "Low"
-msgstr "Faible"
-
-#: src/marp-patterns/patterns/steps.ts:25
-msgctxt "slide pattern"
-msgid "Make it happen"
-msgstr "Passer à l'action"
 
 #: src/components/keyboard-shortcuts/hooks.ts:106
 msgid "Make the selected text bold."
@@ -604,17 +485,6 @@ msgstr "Message"
 msgid "Minimal and modern, with centered content."
 msgstr "Minimaliste et moderne, avec un contenu centré."
 
-#: src/marp-patterns/patterns/table.ts:31
-msgctxt "slide pattern"
-msgid "Moderate"
-msgstr "Moyenne"
-
-#: src/marp-patterns/patterns/quote.ts:26
-#: src/marp-patterns/patterns/quote-on-image.ts:29
-msgctxt "slide pattern"
-msgid "Name, Role"
-msgstr "Nom, fonction"
-
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
 "Navigate the structure of your document and address issues like empty or "
@@ -626,11 +496,6 @@ msgstr ""
 #: src/components/ai-sidebar/sidebar.tsx:97
 msgid "New conversation"
 msgstr "Nouvelle conversation"
-
-#: src/marp-patterns/patterns/agenda.ts:24
-msgctxt "slide pattern"
-msgid "Next steps"
-msgstr "Prochaines étapes"
 
 #: src/ai/selection-summary.ts:42
 msgid "No block selected"
@@ -649,16 +514,6 @@ msgstr "Aucun modèle de diapositive trouvé."
 msgid "Note"
 msgstr "Remarque"
 
-#: src/marp-patterns/patterns/numbered-section.ts:14
-msgctxt "slide pattern"
-msgid "Numbered section divider"
-msgstr "Séparateur de section numéroté"
-
-#: src/marp-patterns/patterns/key-message.ts:19
-msgctxt "slide pattern"
-msgid "One message you want everyone to remember"
-msgstr "Un message que chacun doit retenir"
-
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "Ouvert par défaut"
@@ -666,16 +521,6 @@ msgstr "Ouvert par défaut"
 #: src/components/ai-sidebar/chat.tsx:252
 msgid "Open settings"
 msgstr "Ouvrir les réglages"
-
-#: src/marp-patterns/patterns/table.ts:25
-msgctxt "slide pattern"
-msgid "Option A"
-msgstr "Option A"
-
-#: src/marp-patterns/patterns/table.ts:26
-msgctxt "slide pattern"
-msgid "Option B"
-msgstr "Option B"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
@@ -693,12 +538,6 @@ msgstr "Plan"
 msgid "Paginate"
 msgstr "Pagination"
 
-#: src/marp-patterns/patterns/section-and-image.ts:25
-#: src/marp-patterns/patterns/numbered-section.ts:22
-msgctxt "slide pattern"
-msgid "Part 1"
-msgstr "Partie 1"
-
 #: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
 msgid "Paste or type URL"
@@ -709,72 +548,26 @@ msgstr "Collez ou saisissez l’URL"
 msgid "Paste or type URL or file path"
 msgstr "Collez ou saisissez une URL ou un chemin de fichier"
 
-#: src/marp-patterns/patterns/timeline.ts:22
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:38
 msgctxt "slide pattern"
-msgid "Phase 1"
-msgstr "Phase 1"
-
-#: src/marp-patterns/patterns/timeline.ts:23
-msgctxt "slide pattern"
-msgid "Phase 2"
-msgstr "Phase 2"
-
-#: src/marp-patterns/patterns/timeline.ts:24
-msgctxt "slide pattern"
-msgid "Phase 3"
-msgstr "Phase 3"
-
-#: src/marp-patterns/patterns/steps.ts:22
-msgctxt "slide pattern"
-msgid "Plan"
-msgstr "Planifier"
-
-#: src/marp-patterns/patterns/nested-list.ts:13
-msgctxt "slide pattern"
-msgid "Points with details"
-msgstr "Points avec détails"
-
-#: src/marp-patterns/patterns/title.ts:21
-#: src/marp-patterns/patterns/title-on-gradient.ts:24
-#: src/marp-patterns/patterns/title-and-image.ts:24
-#: src/marp-patterns/patterns/title-and-background-image.ts:24
-msgctxt "slide pattern"
-msgid "Presentation title"
-msgstr "Titre de la présentation"
+msgid "Plain text is easy to compare, review and keep in version control."
+msgstr "Le texte brut est facile à comparer, à relire et à versionner."
 
 #: src/components/slide-pattern-modal/index.tsx:57
 msgid "Preview"
 msgstr "Aperçu"
 
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:35
+#: src/marp-patterns/patterns/three-stacked-images-and-text.ts:36
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:34
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:34
+msgctxt "slide pattern"
+msgid "Preview as you type"
+msgstr "Prévisualiser en tapant"
+
 #: src/components/slide-pattern-modal/index.tsx:135
 msgid "Preview size"
 msgstr "Taille de l’aperçu"
-
-#: src/marp-patterns/patterns/agenda.ts:23
-msgctxt "slide pattern"
-msgid "Proposal"
-msgstr "Proposition"
-
-#: src/marp-patterns/patterns/questions.ts:13
-msgctxt "slide pattern"
-msgid "Questions"
-msgstr "Questions"
-
-#: src/marp-patterns/patterns/closing.ts:22
-#: src/marp-patterns/patterns/closing-on-image.ts:25
-msgctxt "slide pattern"
-msgid "Questions and contact details"
-msgstr "Questions et coordonnées"
-
-#: src/marp-patterns/patterns/questions.ts:21
-msgctxt "slide pattern"
-msgid "Questions?"
-msgstr "Des questions ?"
-
-#: src/marp-patterns/patterns/quote.ts:13
-msgctxt "slide pattern"
-msgid "Quote"
-msgstr "Citation"
 
 #: src/marp-patterns/patterns/quote-on-image.ts:14
 msgctxt "slide pattern"
@@ -789,19 +582,9 @@ msgstr "Rétablir"
 msgid "Redo your last undo."
 msgstr "Remettre en place votre dernière annulation."
 
-#: src/marp-patterns/patterns/resources.ts:24
-msgctxt "slide pattern"
-msgid "Related article"
-msgstr "Article connexe"
-
 #: src/components/keyboard-shortcuts/hooks.ts:127
 msgid "Remove a link."
 msgstr "Retirer un lien."
-
-#: src/marp-patterns/patterns/timeline.ts:25
-msgctxt "slide pattern"
-msgid "Research"
-msgstr "Recherche"
 
 #: src/block-library/image/edit.tsx:274
 msgid "Reset"
@@ -814,17 +597,6 @@ msgstr "Réinitialiser la recherche"
 #: src/components/editor-shell/side-panel-resizer.tsx:134
 msgid "Resize side panel"
 msgstr "Redimensionner le panneau latéral"
-
-#: src/marp-patterns/patterns/resources.ts:13
-#: src/marp-patterns/patterns/resources.ts:21
-msgctxt "slide pattern"
-msgid "Resources"
-msgstr "Ressources"
-
-#: src/marp-patterns/patterns/steps.ts:26
-msgctxt "slide pattern"
-msgid "Review"
-msgstr "Évaluer"
 
 #: src/block-library/table/edit.tsx:253
 msgid "Row count"
@@ -841,36 +613,6 @@ msgstr "Rechercher des blocs"
 #: src/components/inserter-sidebar/index.tsx:247
 msgid "Search for slide patterns"
 msgstr "Rechercher des modèles de diapositives"
-
-#: src/marp-patterns/patterns/nested-list.ts:29
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:27
-#: src/marp-patterns/patterns/image-and-text.ts:26
-#: src/marp-patterns/patterns/bullet-list.ts:23
-msgctxt "slide pattern"
-msgid "Second point"
-msgstr "Deuxième point"
-
-#: src/marp-patterns/categories.ts:24
-msgctxt "slide pattern category"
-msgid "Section"
-msgstr "Section"
-
-#: src/marp-patterns/patterns/section.ts:13
-msgctxt "slide pattern"
-msgid "Section divider"
-msgstr "Séparateur de section"
-
-#: src/marp-patterns/patterns/section-and-image.ts:15
-msgctxt "slide pattern"
-msgid "Section divider with an image"
-msgstr "Séparateur de section avec image"
-
-#: src/marp-patterns/patterns/section.ts:21
-#: src/marp-patterns/patterns/section-and-image.ts:26
-#: src/marp-patterns/patterns/numbered-section.ts:23
-msgctxt "slide pattern"
-msgid "Section title"
-msgstr "Titre de la section"
 
 #: src/components/front-matter-editor/index.tsx:316
 msgid "See the <a>Marp documentation</a> for other settings."
@@ -916,31 +658,18 @@ msgstr "Séparateur de diapositives"
 msgid "Slide patterns"
 msgstr "Modèles de diapositives"
 
-#: src/marp-patterns/patterns/stacked-images-and-text.ts:24
-#: src/marp-patterns/patterns/nested-list.ts:22
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:25
-#: src/marp-patterns/patterns/image-and-text.ts:24
-#: src/marp-patterns/patterns/image-and-caption.ts:22
-#: src/marp-patterns/patterns/heading-and-paragraph.ts:19
-#: src/marp-patterns/patterns/bullet-list.ts:21
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:28
+#: src/marp-patterns/patterns/three-stacked-images-and-text.ts:29
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:27
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:27
+#: src/marp-patterns/patterns/heading-image-and-caption.ts:23
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
+#: src/marp-patterns/patterns/heading-and-two-images.ts:20
+#: src/marp-patterns/patterns/heading-and-text-on-image.ts:25
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:32
 msgctxt "slide pattern"
-msgid "Slide title"
-msgstr "Titre de la diapositive"
-
-#: src/marp-patterns/patterns/resources.ts:23
-msgctxt "slide pattern"
-msgid "Source code"
-msgstr "Code source"
-
-#: src/marp-patterns/patterns/table.ts:30
-msgctxt "slide pattern"
-msgid "Speed"
-msgstr "Vitesse"
-
-#: src/marp-patterns/patterns/steps.ts:13
-msgctxt "slide pattern"
-msgid "Steps"
-msgstr "Étapes"
+msgid "Slides as plain text"
+msgstr "Des diapositives en texte brut"
 
 #: src/components/ai-sidebar/chat.tsx:294
 msgid "Stop"
@@ -958,11 +687,6 @@ msgstr "Barrer"
 msgid "Strikethrough the selected text."
 msgstr "Barrer le texte sélectionné."
 
-#: src/marp-patterns/patterns/table.ts:33
-msgctxt "slide pattern"
-msgid "Support"
-msgstr "Assistance"
-
 #: src/components/keyboard-shortcuts/index.tsx:79
 msgid "Switch between the visual editor and the code editor."
 msgstr "Basculer entre l’éditeur visuel et l’éditeur de code."
@@ -971,7 +695,7 @@ msgstr "Basculer entre l’éditeur visuel et l’éditeur de code."
 msgid "Table"
 msgstr "Tableau"
 
-#: src/marp-patterns/categories.ts:28
+#: src/marp-patterns/categories.ts:24
 msgctxt "slide pattern category"
 msgid "Text"
 msgstr "Texte"
@@ -983,12 +707,6 @@ msgstr "Texte affiché en bas de chaque diapositive."
 #: src/components/front-matter-editor/index.tsx:283
 msgid "Text shown at the top of each slide."
 msgstr "Texte affiché en haut de chaque diapositive."
-
-#: src/marp-patterns/patterns/closing.ts:21
-#: src/marp-patterns/patterns/closing-on-image.ts:24
-msgctxt "slide pattern"
-msgid "Thank you"
-msgstr "Merci"
 
 #: src/components/ai-sidebar/chat.tsx:109
 msgid "The answer could not be loaded."
@@ -1022,23 +740,15 @@ msgstr "Thème"
 msgid "Thinking…"
 msgstr "Réflexion en cours…"
 
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:28
-#: src/marp-patterns/patterns/image-and-text.ts:27
-#: src/marp-patterns/patterns/bullet-list.ts:24
-msgctxt "slide pattern"
-msgid "Third point"
-msgstr "Troisième point"
-
-#: src/marp-patterns/patterns/image-gallery.ts:15
+#: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
 msgid "Three images side by side"
 msgstr "Trois images côte à côte"
 
-#: src/marp-patterns/patterns/timeline.ts:13
-#: src/marp-patterns/patterns/timeline.ts:21
+#: src/marp-patterns/patterns/three-stacked-images-and-text.ts:15
 msgctxt "slide pattern"
-msgid "Timeline"
-msgstr "Chronologie"
+msgid "Three stacked images and text"
+msgstr "Trois images superposées et texte"
 
 #: src/block-library/quote/edit.tsx:55
 msgid "Tip"
@@ -1061,17 +771,37 @@ msgctxt "slide pattern"
 msgid "Title"
 msgstr "Titre"
 
-#: src/marp-patterns/patterns/title-and-image.ts:14
+#: src/marp-patterns/patterns/title-and-image-on-left.ts:15
 msgctxt "slide pattern"
-msgid "Title beside an image"
-msgstr "Titre à côté d'une image"
+msgid "Title and an image on the left"
+msgstr "Titre et une image à gauche"
+
+#: src/marp-patterns/patterns/title-and-image-on-left-half.ts:15
+msgctxt "slide pattern"
+msgid "Title and an image on the left half"
+msgstr "Titre et une image sur la moitié gauche"
+
+#: src/marp-patterns/patterns/title-and-image-on-right.ts:15
+msgctxt "slide pattern"
+msgid "Title and an image on the right"
+msgstr "Titre et une image à droite"
+
+#: src/marp-patterns/patterns/title-in-inverted-colors.ts:14
+msgctxt "slide pattern"
+msgid "Title in inverted colors"
+msgstr "Titre en couleurs inversées"
+
+#: src/marp-patterns/patterns/title-on-blurred-image.ts:15
+msgctxt "slide pattern"
+msgid "Title on a blurred image"
+msgstr "Titre sur une image floutée"
 
 #: src/marp-patterns/patterns/title-on-gradient.ts:13
 msgctxt "slide pattern"
 msgid "Title on a gradient"
 msgstr "Titre sur un dégradé"
 
-#: src/marp-patterns/patterns/title-and-background-image.ts:14
+#: src/marp-patterns/patterns/title-on-image.ts:14
 msgctxt "slide pattern"
 msgid "Title on an image"
 msgstr "Titre sur une image"
@@ -1092,7 +822,17 @@ msgstr "Transformer en tâche"
 msgid "Turn the document into a slide deck."
 msgstr "Transforme le document en présentation."
 
-#: src/marp-patterns/patterns/stacked-images-and-text.ts:15
+#: src/marp-patterns/patterns/two-images-side-by-side.ts:15
+msgctxt "slide pattern"
+msgid "Two images side by side"
+msgstr "Deux images côte à côte"
+
+#: src/marp-patterns/patterns/two-stacked-images.ts:14
+msgctxt "slide pattern"
+msgid "Two stacked images"
+msgstr "Deux images superposées"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:15
 msgctxt "slide pattern"
 msgid "Two stacked images and text"
 msgstr "Deux images superposées et texte"
@@ -1141,16 +881,6 @@ msgstr "En attente de la réponse…"
 msgid "Warning"
 msgstr "Avertissement"
 
-#: src/marp-patterns/patterns/code.ts:26
-msgctxt "slide pattern"
-msgid "What this code does"
-msgstr "Ce que fait ce code"
-
-#: src/marp-patterns/patterns/key-figure.ts:22
-msgctxt "slide pattern"
-msgid "What this number means"
-msgstr "Ce que signifie ce chiffre"
-
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
 msgstr "Écriture de HTML…"
@@ -1163,31 +893,49 @@ msgstr "Écriture de TeX…"
 msgid "Write YAML front matter…"
 msgstr "Rédiger le front matter YAML…"
 
-#: src/marp-patterns/patterns/stacked-images-and-text.ts:25
-#: src/marp-patterns/patterns/heading-and-paragraph.ts:20
-msgctxt "slide pattern"
-msgid ""
-"Write a few sentences here to explain the idea of this slide in more detail."
-msgstr ""
-"Écrivez ici quelques phrases pour expliquer plus en détail l'idée de cette "
-"diapositive."
-
 #: src/block-library/code/edit.tsx:74
 msgid "Write code…"
 msgstr "Rédiger du code…"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:34
+#: src/marp-patterns/patterns/three-stacked-images-and-text.ts:35
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:33
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:33
+msgctxt "slide pattern"
+msgid "Write in plain text"
+msgstr "Écrire en texte brut"
 
 #: src/block-library/details/edit.tsx:83
 msgid "Write summary…"
 msgstr "Rédiger un résumé…"
 
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:29
+#: src/marp-patterns/patterns/three-stacked-images-and-text.ts:30
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:28
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:28
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:32
+#: src/marp-patterns/patterns/heading-and-text-on-image.ts:26
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:33
+msgctxt "slide pattern"
+msgid ""
+"Write your slides as plain text and let the theme take care of the design."
+msgstr ""
+"Écrivez vos diapositives en texte brut et laissez le thème s’occuper du "
+"design."
+
+#: src/marp-patterns/patterns/title.ts:21
+#: src/marp-patterns/patterns/title-on-image.ts:24
+#: src/marp-patterns/patterns/title-on-gradient.ts:24
+#: src/marp-patterns/patterns/title-on-blurred-image.ts:25
+#: src/marp-patterns/patterns/title-in-inverted-colors.ts:22
+#: src/marp-patterns/patterns/title-and-image-on-right.ts:25
+#: src/marp-patterns/patterns/title-and-image-on-left.ts:25
+#: src/marp-patterns/patterns/title-and-image-on-left-half.ts:29
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:26
+msgctxt "slide pattern"
+msgid "Writing slides in Markdown"
+msgstr "Écrire des diapositives en Markdown"
+
 #: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "Front matter YAML"
-
-#: src/marp-patterns/patterns/title.ts:22
-#: src/marp-patterns/patterns/title-on-gradient.ts:25
-#: src/marp-patterns/patterns/title-and-image.ts:25
-#: src/marp-patterns/patterns/title-and-background-image.ts:25
-msgctxt "slide pattern"
-msgid "Your name · Date"
-msgstr "Votre nom · Date"
