@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:43:28.682Z\n"
-"PO-Revision-Date: 2026-11-14T06:43:34.338Z\n"
+"POT-Creation-Date: 2026-11-14T07:13:28.497Z\n"
+"PO-Revision-Date: 2026-11-14T07:13:46.387Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -37,11 +37,11 @@ msgstr ""
 msgid "(Untitled)"
 msgstr "(Başlıksız)"
 
-#: src/components/preferences-modal/index.tsx:228
+#: src/components/preferences-modal/index.tsx:239
 msgid "AI Assistant"
 msgstr "Yapay Zekâ Asistanı"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:274
+#: src/components/preferences-modal/ai-provider-card.tsx:279
 msgid "API key"
 msgstr "API anahtarı"
 
@@ -90,11 +90,11 @@ msgid "Check updates automatically"
 msgstr "Güncellemeleri otomatik denetle"
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:339
+#: src/components/preferences-modal/ai-provider-card.tsx:344
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr "Kullanımınızı ve faturalandırmanızı <a>%s</a> adresinden kontrol edin"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:298
+#: src/components/preferences-modal/ai-provider-card.tsx:303
 msgid "Checking the API key…"
 msgstr "API anahtarı kontrol ediliyor…"
 
@@ -104,7 +104,7 @@ msgid "Checking…"
 msgstr "Denetleniyor…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:213
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -123,7 +123,7 @@ msgstr "Diğer sekmeleri kapat"
 msgid "Close the active tab."
 msgstr "Etkin sekmeyi kapat."
 
-#: src/components/preferences-modal/index.tsx:225
+#: src/components/preferences-modal/index.tsx:236
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Kod düzenleyici"
@@ -162,7 +162,11 @@ msgstr ""
 msgid "Create a new file."
 msgstr "Yeni bir dosya oluştur."
 
-#: src/preferences/constants.ts:58
+#: src/components/preferences-modal/ai-panel.tsx:181
+msgid "Custom instructions"
+msgstr "Özel talimatlar"
+
+#: src/preferences/constants.ts:61
 msgid "Dark"
 msgstr "Koyu"
 
@@ -171,11 +175,11 @@ msgstr "Koyu"
 msgid "Default (%s)"
 msgstr "Varsayılan (%s)"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:305
+#: src/components/preferences-modal/ai-provider-card.tsx:310
 msgid "Delete"
 msgstr "Sil"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:294
+#: src/components/preferences-modal/ai-provider-card.tsx:299
 msgid "Deleting the API key…"
 msgstr "API anahtarı siliniyor…"
 
@@ -242,12 +246,12 @@ msgstr "Yazı tipi ailesi"
 msgid "Font size"
 msgstr "Yazı boyutu"
 
-#: src/components/preferences-modal/index.tsx:219
+#: src/components/preferences-modal/index.tsx:230
 msgid "General"
 msgstr "Genel"
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:315
+#: src/components/preferences-modal/ai-provider-card.tsx:320
 msgid "Get your API key at <a>%s</a>"
 msgstr "API anahtarınızı <a>%s</a> adresinden alın"
 
@@ -263,7 +267,7 @@ msgstr "HTML slayt destesi"
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:80
+#: src/preferences/constants.ts:83
 msgid "Handwriting"
 msgstr "El yazısı"
 
@@ -300,7 +304,7 @@ msgstr "Klavye kısayolları"
 msgid "Language"
 msgstr "Dil"
 
-#: src/preferences/constants.ts:57
+#: src/preferences/constants.ts:60
 msgid "Light"
 msgstr "Açık"
 
@@ -308,7 +312,7 @@ msgstr "Açık"
 msgid "List View shortcuts"
 msgstr "Liste görünümü kısayolları"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:392
+#: src/components/preferences-modal/ai-provider-card.tsx:397
 msgid "Loading the models…"
 msgstr "Modeller yükleniyor…"
 
@@ -325,7 +329,7 @@ msgstr "MarkBricks artık Markdown dosyaları için varsayılan uygulama."
 msgid "Maximum width of the content area, in pixels."
 msgstr "İçerik alanının piksel cinsinden en büyük genişliği."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:400
+#: src/components/preferences-modal/ai-provider-card.tsx:405
 msgid "Model"
 msgstr "Model"
 
@@ -334,7 +338,7 @@ msgstr "Model"
 msgid "Model: %s"
 msgstr "Model: %s"
 
-#: src/preferences/constants.ts:76
+#: src/preferences/constants.ts:79
 msgid "Monospace"
 msgstr "Eş aralıklı"
 
@@ -363,7 +367,7 @@ msgstr "Açık dosya yok"
 msgid "Not a Marp document"
 msgstr "Marp belgesi değil"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:230
+#: src/components/preferences-modal/ai-provider-card.tsx:240
 msgid "Not connected"
 msgstr "Bağlı değil"
 
@@ -400,7 +404,7 @@ msgstr "PDF slayt destesi"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:200
+#: src/components/preferences-modal/index.tsx:211
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "Tercihler"
@@ -409,7 +413,7 @@ msgstr "Tercihler"
 msgid "Preview Slides"
 msgstr "Slaytları önizle"
 
-#: src/components/preferences-modal/ai-panel.tsx:145
+#: src/components/preferences-modal/ai-panel.tsx:151
 msgid "Provider"
 msgstr "Sağlayıcı"
 
@@ -441,12 +445,12 @@ msgstr "Yeni dili uygulamak için uygulamayı yeniden başlatın."
 msgid "Restore default settings"
 msgstr "Varsayılan ayarları geri yükle"
 
-#: src/preferences/constants.ts:68
+#: src/preferences/constants.ts:71
 msgid "Sans-serif"
 msgstr "Sans-serif"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:306
+#: src/components/preferences-modal/ai-provider-card.tsx:311
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -472,7 +476,13 @@ msgstr "Etkin dosyayı kaydet."
 msgid "Selection shortcuts"
 msgstr "Seçim kısayolları"
 
-#: src/preferences/constants.ts:72
+#: src/components/preferences-modal/ai-panel.tsx:182
+msgid ""
+"Sent with every message to the AI Assistant. For example, the tone to write "
+"in, or what your documents are about."
+msgstr "Yapay zekâ asistanına gönderilen her mesajla birlikte gönderilir. Örneğin, yazım tonu veya belgelerinizin konusu."
+
+#: src/preferences/constants.ts:75
 msgid "Serif"
 msgstr "Serif"
 
@@ -506,8 +516,8 @@ msgstr "Yazım denetimi"
 msgid "Spotlight mode"
 msgstr "Sahne ışığı kipi"
 
-#: src/preferences/constants.ts:56
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:59
+#: src/preferences/constants.ts:68
 msgid "System Default"
 msgstr "Sistem Varsayılanı"
 
@@ -529,7 +539,7 @@ msgstr "%s API'si şu anda kullanılamıyor. Daha sonra tekrar deneyin."
 msgid "The %s account has no credit left. Check its billing settings."
 msgstr "%s hesabında kredi kalmadı. Faturalandırma ayarlarını kontrol edin."
 
-#: src/components/preferences-modal/ai-panel.tsx:148
+#: src/components/preferences-modal/ai-panel.tsx:154
 msgid "The AI Assistant uses this provider."
 msgstr "Yapay Zekâ Asistanı bu sağlayıcıyı kullanır."
 
@@ -538,7 +548,7 @@ msgid "The API key cannot use this model."
 msgstr "Bu API anahtarı bu modeli kullanamaz."
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-provider-card.tsx:246
+#: src/components/preferences-modal/ai-provider-card.tsx:251
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the %s "
 "API."
@@ -550,11 +560,11 @@ msgstr ""
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API anahtarı geçerli değil. Ayarlardan kontrol edin."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:375
+#: src/components/preferences-modal/ai-provider-card.tsx:380
 msgid "The API key was deleted."
 msgstr "API anahtarı silindi."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:365
+#: src/components/preferences-modal/ai-provider-card.tsx:370
 msgid "The API key was saved."
 msgstr "API anahtarı kaydedildi."
 
@@ -585,7 +595,7 @@ msgid "The model was not found."
 msgstr "Model bulunamadı."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:428
+#: src/components/preferences-modal/ai-provider-card.tsx:433
 msgid "The models could not be loaded: %s"
 msgstr "Modeller yüklenemedi: %s"
 
@@ -627,7 +637,7 @@ msgstr "Araçlar"
 msgid "Top toolbar"
 msgstr "Üst araç çubuğu"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:437
+#: src/components/preferences-modal/ai-provider-card.tsx:442
 msgid "Try again"
 msgstr "Tekrar dene"
 
@@ -660,7 +670,7 @@ msgstr "Güncelleme denetimi başarısız oldu: %s"
 msgid "View"
 msgstr "Görünüm"
 
-#: src/components/preferences-modal/index.tsx:222
+#: src/components/preferences-modal/index.tsx:233
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Görsel düzenleyici"

@@ -49,6 +49,9 @@ export const DEFAULT_PREFERENCES = {
 		// The AI Assistant's model for each provider, by the provider's name.
 		// Missing or empty for the provider's default model.
 		aiModels: {} as Record< string, string >,
+		// The user's instructions, sent with every message to the AI
+		// Assistant.
+		aiInstructions: '',
 	},
 };
 

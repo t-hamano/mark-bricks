@@ -115,6 +115,7 @@ describe( 'AiPanel', () => {
 					settings={ {
 						provider: 'anthropic',
 						models: {},
+						instructions: '',
 						...settings,
 					} }
 					onChange={ onChange }
@@ -348,5 +349,22 @@ describe( 'AiPanel', () => {
 			button( 'Delete', 'openai' )!.click();
 		} );
 		expect( onChange ).toHaveBeenCalledWith( { provider: 'anthropic' } );
+	} );
+
+	it( 'saves the custom instructions', async () => {
+		await render( { instructions: 'Be brief.' } );
+		const textarea = container.querySelector( 'textarea' )!;
+		expect( textarea.value ).toBe( 'Be brief.' );
+		await act( async () => {
+			const setValue = Object.getOwnPropertyDescriptor(
+				HTMLTextAreaElement.prototype,
+				'value'
+			)!.set!;
+			setValue.call( textarea, 'Write in English.' );
+			textarea.dispatchEvent( new Event( 'input', { bubbles: true } ) );
+		} );
+		expect( onChange ).toHaveBeenCalledWith( {
+			instructions: 'Write in English.',
+		} );
 	} );
 } );
