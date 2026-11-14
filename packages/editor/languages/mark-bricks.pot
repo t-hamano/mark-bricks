@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:58:24.291Z\n"
+"POT-Creation-Date: 2026-11-14T07:00:26.786Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -432,51 +432,56 @@ msgstr ""
 msgid "Waiting for the answer…"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:75
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "Edited the document."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:80
+#: src/components/ai-sidebar/chat.tsx:82
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:102
+#: src/components/ai-sidebar/chat.tsx:104
 msgid "Stopped."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:109
+#: src/components/ai-sidebar/chat.tsx:111
 msgid "The answer could not be loaded."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:242
+# 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
+#: src/components/ai-sidebar/chat.tsx:122
+msgid "%1$s input tokens, %2$s output tokens"
+msgstr ""
+
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Set an API key to use the AI Assistant."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:252
+#: src/components/ai-sidebar/chat.tsx:267
 msgid "Open settings"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:260
+#: src/components/ai-sidebar/chat.tsx:275
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:280
+#: src/components/ai-sidebar/chat.tsx:295
 msgid "Message"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:282
+#: src/components/ai-sidebar/chat.tsx:297
 msgid "Ask the AI Assistant"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:294
+#: src/components/ai-sidebar/chat.tsx:309
 msgid "Stop"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:303
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Send"
 msgstr ""
 
@@ -536,11 +541,6 @@ msgstr ""
 msgid "Delete column"
 msgstr ""
 
-#: src/block-library/separator/use-marp-title.ts:39
-#: src/block-library/separator/edit.tsx:25
-msgid "Slide Separator"
-msgstr ""
-
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr ""
@@ -567,6 +567,11 @@ msgstr ""
 
 #: src/block-library/quote/edit.tsx:151
 msgid "Default"
+msgstr ""
+
+#: src/block-library/separator/use-marp-title.ts:39
+#: src/block-library/separator/edit.tsx:25
+msgid "Slide Separator"
 msgstr ""
 
 #: src/block-library/paragraph/edit.tsx:41

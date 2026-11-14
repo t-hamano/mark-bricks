@@ -8,13 +8,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:58:24.291Z\n"
-"PO-Revision-Date: 2026-11-14T06:58:26.306Z\n"
+"POT-Creation-Date: 2026-11-14T07:00:26.786Z\n"
+"PO-Revision-Date: 2026-11-14T07:00:28.911Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: fr_FR\n"
 "X-Domain: mark-bricks\n"
+
+# 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
+#: src/components/ai-sidebar/chat.tsx:122
+msgid "%1$s input tokens, %2$s output tokens"
+msgstr "%1$s jetons d’entrée, %2$s jetons de sortie"
 
 # %d: The number of blocks.
 #: src/ai/selection-summary.ts:46
@@ -125,11 +130,11 @@ msgstr "N’importe quel éditeur"
 msgid "Apply"
 msgstr "Appliquer"
 
-#: src/components/ai-sidebar/chat.tsx:282
+#: src/components/ai-sidebar/chat.tsx:297
 msgid "Ask the AI Assistant"
 msgstr "Demander à l’assistant IA"
 
-#: src/components/ai-sidebar/chat.tsx:260
+#: src/components/ai-sidebar/chat.tsx:275
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -294,7 +299,7 @@ msgstr "Modifier l’image"
 msgid "Edit table"
 msgstr "Modifier le tableau"
 
-#: src/components/ai-sidebar/chat.tsx:75
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "Edited the document."
 msgstr "Le document a été modifié."
 
@@ -574,9 +579,7 @@ msgstr "Ligne %d"
 msgid ""
 "Lines up the background images of the slide from top to bottom instead of "
 "side by side."
-msgstr ""
-"Aligne les images d’arrière-plan de la diapositive de haut en bas plutôt que "
-"côte à côte."
+msgstr "Aligne les images d’arrière-plan de la diapositive de haut en bas plutôt que côte à côte."
 
 #: src/format-library/link/index.tsx:36
 msgid "Link"
@@ -627,7 +630,7 @@ msgstr "Réglages d’image Marp"
 msgid "Marp patterns"
 msgstr "Modèles Marp"
 
-#: src/components/ai-sidebar/chat.tsx:280
+#: src/components/ai-sidebar/chat.tsx:295
 msgid "Message"
 msgstr "Message"
 
@@ -677,7 +680,7 @@ msgstr "Une seule application"
 msgid "Open by default"
 msgstr "Ouvert par défaut"
 
-#: src/components/ai-sidebar/chat.tsx:252
+#: src/components/ai-sidebar/chat.tsx:267
 msgid "Open settings"
 msgstr "Ouvrir les réglages"
 
@@ -824,20 +827,18 @@ msgstr "Voir chaque diapositive en tapant"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Consultez la <a>documentation de Marp</a> pour les autres réglages."
 
-#: src/components/ai-sidebar/chat.tsx:303
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/components/ai-sidebar/chat.tsx:242
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Set an API key to use the AI Assistant."
 msgstr "Définissez une clé d’API pour utiliser l’assistant IA."
 
 #: src/block-library/image/edit.tsx:264
 msgid ""
 "Set the placement, size and filters from Marp image settings in the toolbar."
-msgstr ""
-"Définissez le placement, la taille et les filtres depuis les réglages "
-"d’image Marp de la barre d’outils."
+msgstr "Définissez le placement, la taille et les filtres depuis les réglages d’image Marp de la barre d’outils."
 
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:42
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:37
@@ -916,11 +917,11 @@ msgstr "Largeur de la division"
 msgid "Stack vertically"
 msgstr "Empiler verticalement"
 
-#: src/components/ai-sidebar/chat.tsx:294
+#: src/components/ai-sidebar/chat.tsx:309
 msgid "Stop"
 msgstr "Arrêter"
 
-#: src/components/ai-sidebar/chat.tsx:102
+#: src/components/ai-sidebar/chat.tsx:104
 msgid "Stopped."
 msgstr "Arrêté."
 
@@ -953,7 +954,7 @@ msgstr "Texte affiché en bas de chaque diapositive."
 msgid "Text shown at the top of each slide."
 msgstr "Texte affiché en haut de chaque diapositive."
 
-#: src/components/ai-sidebar/chat.tsx:109
+#: src/components/ai-sidebar/chat.tsx:111
 msgid "The answer could not be loaded."
 msgstr "La réponse n’a pas pu être chargée."
 
@@ -965,7 +966,7 @@ msgstr "Le format des diapositives."
 msgid "The diagram could not be rendered."
 msgstr "Le diagramme n’a pas pu être affiché."
 
-#: src/components/ai-sidebar/chat.tsx:80
+#: src/components/ai-sidebar/chat.tsx:82
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -979,8 +980,7 @@ msgstr "La formule n’a pas pu être affichée."
 
 #: src/block-library/image/marp-image-settings.tsx:188
 msgid "The image fills the slide, or one side of it, behind the content."
-msgstr ""
-"L’image remplit la diapositive, ou l’un de ses côtés, derrière le contenu."
+msgstr "L’image remplit la diapositive, ou l’un de ses côtés, derrière le contenu."
 
 #: src/block-library/image/marp-image-settings.tsx:184
 msgid "The image sits in the slide content."

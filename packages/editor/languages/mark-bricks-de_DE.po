@@ -8,13 +8,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:58:24.291Z\n"
-"PO-Revision-Date: 2026-11-14T06:58:25.705Z\n"
+"POT-Creation-Date: 2026-11-14T07:00:26.786Z\n"
+"PO-Revision-Date: 2026-11-14T07:00:28.312Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: de_DE\n"
 "X-Domain: mark-bricks\n"
+
+# 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
+#: src/components/ai-sidebar/chat.tsx:122
+msgid "%1$s input tokens, %2$s output tokens"
+msgstr "%1$s Eingabe-Tokens, %2$s Ausgabe-Tokens"
 
 # %d: The number of blocks.
 #: src/ai/selection-summary.ts:46
@@ -125,11 +130,11 @@ msgstr "Jeder Editor"
 msgid "Apply"
 msgstr "Anwenden"
 
-#: src/components/ai-sidebar/chat.tsx:282
+#: src/components/ai-sidebar/chat.tsx:297
 msgid "Ask the AI Assistant"
 msgstr "KI-Assistenten fragen"
 
-#: src/components/ai-sidebar/chat.tsx:260
+#: src/components/ai-sidebar/chat.tsx:275
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -294,7 +299,7 @@ msgstr "Bild bearbeiten"
 msgid "Edit table"
 msgstr "Tabelle bearbeiten"
 
-#: src/components/ai-sidebar/chat.tsx:75
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "Edited the document."
 msgstr "Das Dokument wurde bearbeitet."
 
@@ -574,9 +579,7 @@ msgstr "Zeile %d"
 msgid ""
 "Lines up the background images of the slide from top to bottom instead of "
 "side by side."
-msgstr ""
-"Ordnet die Hintergrundbilder der Folie von oben nach unten statt "
-"nebeneinander an."
+msgstr "Ordnet die Hintergrundbilder der Folie von oben nach unten statt nebeneinander an."
 
 #: src/format-library/link/index.tsx:36
 msgid "Link"
@@ -627,7 +630,7 @@ msgstr "Marp-Bildeinstellungen"
 msgid "Marp patterns"
 msgstr "Marp-Vorlagen"
 
-#: src/components/ai-sidebar/chat.tsx:280
+#: src/components/ai-sidebar/chat.tsx:295
 msgid "Message"
 msgstr "Nachricht"
 
@@ -677,7 +680,7 @@ msgstr "Eine App"
 msgid "Open by default"
 msgstr "Standardmäßig offen"
 
-#: src/components/ai-sidebar/chat.tsx:252
+#: src/components/ai-sidebar/chat.tsx:267
 msgid "Open settings"
 msgstr "Einstellungen öffnen"
 
@@ -824,20 +827,18 @@ msgstr "Jede Folie beim Tippen sehen"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Weitere Einstellungen findest du in der <a>Marp-Dokumentation</a>."
 
-#: src/components/ai-sidebar/chat.tsx:303
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Send"
 msgstr "Senden"
 
-#: src/components/ai-sidebar/chat.tsx:242
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Set an API key to use the AI Assistant."
 msgstr "Lege einen API-Schlüssel fest, um den KI-Assistenten zu verwenden."
 
 #: src/block-library/image/edit.tsx:264
 msgid ""
 "Set the placement, size and filters from Marp image settings in the toolbar."
-msgstr ""
-"Platzierung, Größe und Filter werden in der Werkzeugleiste unter Marp-"
-"Bildeinstellungen festgelegt."
+msgstr "Platzierung, Größe und Filter werden in der Werkzeugleiste unter Marp-Bildeinstellungen festgelegt."
 
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:42
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:37
@@ -916,11 +917,11 @@ msgstr "Breite der Teilung"
 msgid "Stack vertically"
 msgstr "Vertikal stapeln"
 
-#: src/components/ai-sidebar/chat.tsx:294
+#: src/components/ai-sidebar/chat.tsx:309
 msgid "Stop"
 msgstr "Anhalten"
 
-#: src/components/ai-sidebar/chat.tsx:102
+#: src/components/ai-sidebar/chat.tsx:104
 msgid "Stopped."
 msgstr "Angehalten."
 
@@ -953,7 +954,7 @@ msgstr "Text unten auf jeder Folie."
 msgid "Text shown at the top of each slide."
 msgstr "Text oben auf jeder Folie."
 
-#: src/components/ai-sidebar/chat.tsx:109
+#: src/components/ai-sidebar/chat.tsx:111
 msgid "The answer could not be loaded."
 msgstr "Die Antwort konnte nicht geladen werden."
 
@@ -965,7 +966,7 @@ msgstr "Das Seitenverhältnis der Folien."
 msgid "The diagram could not be rendered."
 msgstr "Das Diagramm konnte nicht dargestellt werden."
 
-#: src/components/ai-sidebar/chat.tsx:80
+#: src/components/ai-sidebar/chat.tsx:82
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."

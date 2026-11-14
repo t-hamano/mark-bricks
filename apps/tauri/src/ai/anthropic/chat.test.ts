@@ -97,7 +97,11 @@ describe( 'createChat with Anthropic', () => {
 	it( 'reports when the model thinks and when it edits', async () => {
 		const plain = await run( [ answer ] );
 		await plain.result;
-		expect( toSteps( plain.events ) ).toEqual( [ 'thinking', 'text' ] );
+		expect( toSteps( plain.events ) ).toEqual( [
+			'thinking',
+			'text',
+			'usage',
+		] );
 
 		const edited = await run( [ edit, afterEdit ] );
 		await edited.result;
@@ -105,9 +109,25 @@ describe( 'createChat with Anthropic', () => {
 			'thinking',
 			'text',
 			'editing',
+			'usage',
 			'edit',
 			'text',
+			'usage',
 		] );
+	} );
+
+	it( 'reports the tokens of each request', async () => {
+		const { result, events } = await run( [ edit, afterEdit ] );
+		await result;
+		expect( events.filter( ( event ) => event.type === 'usage' ) ).toEqual(
+			[
+				{
+					type: 'usage',
+					usage: { inputTokens: 150, outputTokens: 60 },
+				},
+				{ type: 'usage', usage: { inputTokens: 220, outputTokens: 9 } },
+			]
+		);
 	} );
 
 	it( 'reports an edit, then continues the answer after it', async () => {
