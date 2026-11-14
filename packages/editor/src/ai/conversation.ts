@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 /**
  * Internal dependencies
  */
-import type { AiEdit, AiMessage } from '../platform';
+import type { AiActivity, AiEdit, AiMessage } from '../platform';
 
 export type UserChatMessage = {
 	id: string;
@@ -19,6 +19,12 @@ export type AssistantChatMessage = {
 	role: 'assistant';
 	text: string;
 	status: 'streaming' | 'done' | 'stopped' | 'error';
+	/**
+	 * What the model is doing while the answer streams and no text is
+	 * arriving. `waiting` until the model starts, and again after an edit,
+	 * while the model goes on to say what it changed.
+	 */
+	activity?: 'waiting' | AiActivity;
 	edit?: AiEdit;
 	/**
 	 * `applied` when the edit changed the document, and `dropped` when the
@@ -42,6 +48,7 @@ export type Conversation = {
 export type ConversationAction =
 	| { type: 'START'; text: string }
 	| { type: 'APPEND_TEXT'; text: string }
+	| { type: 'ACTIVITY'; activity: AiActivity }
 	| { type: 'EDIT'; edit: AiEdit; applied: boolean }
 	| {
 			type: 'FINISH';
@@ -91,6 +98,7 @@ export function conversationReducer(
 						role: 'assistant',
 						text: '',
 						status: 'streaming',
+						activity: 'waiting',
 					},
 				],
 			};
@@ -98,17 +106,25 @@ export function conversationReducer(
 			return updateAnswer( conversation, ( message ) => ( {
 				...message,
 				text: message.text + action.text,
+				activity: undefined,
+			} ) );
+		case 'ACTIVITY':
+			return updateAnswer( conversation, ( message ) => ( {
+				...message,
+				activity: action.activity,
 			} ) );
 		case 'EDIT':
 			return updateAnswer( conversation, ( message ) => ( {
 				...message,
 				edit: action.edit,
 				editStatus: action.applied ? 'applied' : 'dropped',
+				activity: 'waiting',
 			} ) );
 		case 'FINISH':
 			return updateAnswer( conversation, ( message ) => ( {
 				...message,
 				status: action.status,
+				activity: undefined,
 				error: action.error,
 			} ) );
 		case 'RESET':

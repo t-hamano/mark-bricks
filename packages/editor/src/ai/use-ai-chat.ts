@@ -98,6 +98,13 @@ export function useAiChat( {
 						dispatch( { type: 'APPEND_TEXT', text: event.text } );
 						return;
 					}
+					if ( event.type === 'activity' ) {
+						dispatch( {
+							type: 'ACTIVITY',
+							activity: event.activity,
+						} );
+						return;
+					}
 					const applied =
 						!! target &&
 						editorModeRef.current === mode &&

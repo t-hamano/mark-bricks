@@ -36,6 +36,12 @@ export type AiEdit = {
 };
 
 /**
+ * What the model is doing while it is not writing text: `thinking` while it
+ * reasons, and `editing` while it writes an edit of the selection.
+ */
+export type AiActivity = 'thinking' | 'editing';
+
+/**
  * What the host reports while the model answers.
  */
 export type AiStreamEvent =
@@ -52,6 +58,14 @@ export type AiStreamEvent =
 			 */
 			type: 'edit';
 			edit: AiEdit;
+	  }
+	| {
+			/**
+			 * The model started something other than text. Text that
+			 * follows ends it. Hosts that cannot tell may leave it out.
+			 */
+			type: 'activity';
+			activity: AiActivity;
 	  };
 
 export type AiChatRequest = {

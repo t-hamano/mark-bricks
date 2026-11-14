@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:37:26.987Z\n"
-"PO-Revision-Date: 2026-11-14T05:37:34.571Z\n"
+"POT-Creation-Date: 2026-11-14T05:38:18.812Z\n"
+"PO-Revision-Date: 2026-11-14T05:38:39.812Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -107,11 +107,11 @@ msgstr "任意编辑器"
 msgid "Apply"
 msgstr "应用"
 
-#: src/components/ai-sidebar/chat.tsx:259
+#: src/components/ai-sidebar/chat.tsx:282
 msgid "Ask the AI Assistant"
 msgstr "询问 AI 助手"
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:260
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -279,7 +279,7 @@ msgstr "编辑图片"
 msgid "Edit table"
 msgstr "编辑表格"
 
-#: src/components/ai-sidebar/chat.tsx:66
+#: src/components/ai-sidebar/chat.tsx:75
 msgid "Edited the document."
 msgstr "已编辑文档。"
 
@@ -289,6 +289,10 @@ msgstr "已编辑文档。"
 msgctxt "slide pattern"
 msgid "Editing"
 msgstr "编辑"
+
+#: src/components/ai-sidebar/chat.tsx:54
+msgid "Editing the document…"
+msgstr "正在编辑文档…"
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -627,7 +631,7 @@ msgstr ""
 msgid "Marp patterns"
 msgstr "Marp 模式"
 
-#: src/components/ai-sidebar/chat.tsx:257
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Message"
 msgstr "消息"
 
@@ -677,7 +681,7 @@ msgstr "专用应用"
 msgid "Open by default"
 msgstr "默认打开"
 
-#: src/components/ai-sidebar/chat.tsx:229
+#: src/components/ai-sidebar/chat.tsx:252
 msgid "Open settings"
 msgstr "打开设置"
 
@@ -697,8 +701,8 @@ msgstr "大纲"
 msgid "Paginate"
 msgstr "页码"
 
-#: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
+#: src/format-library/link/inline.tsx:138
 msgid "Paste or type URL"
 msgstr "粘贴或键入 URL"
 
@@ -803,11 +807,11 @@ msgstr "边输入边查看每张幻灯片"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 
-#: src/components/ai-sidebar/chat.tsx:280
+#: src/components/ai-sidebar/chat.tsx:303
 msgid "Send"
 msgstr "发送"
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:242
 msgid "Set an API key to use the AI Assistant."
 msgstr "请设置 API 密钥以使用 AI 助手。"
 
@@ -824,8 +828,8 @@ msgstr "显示或隐藏列表视图。"
 msgid "Show the page number on each slide."
 msgstr "在每张幻灯片上显示页码。"
 
-#: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
+#: src/format-library/link/inline.tsx:115
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "悬停时显示为工具提示。"
@@ -881,11 +885,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "纯文本幻灯片"
 
-#: src/components/ai-sidebar/chat.tsx:271
+#: src/components/ai-sidebar/chat.tsx:294
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:79
+#: src/components/ai-sidebar/chat.tsx:102
 msgid "Stopped."
 msgstr "已停止。"
 
@@ -948,7 +952,7 @@ msgstr "显示在每张幻灯片底部的文本。"
 msgid "Text shown at the top of each slide."
 msgstr "显示在每张幻灯片顶部的文本。"
 
-#: src/components/ai-sidebar/chat.tsx:86
+#: src/components/ai-sidebar/chat.tsx:109
 msgid "The answer could not be loaded."
 msgstr "无法加载回答。"
 
@@ -960,7 +964,7 @@ msgstr "幻灯片的宽高比。"
 msgid "The diagram could not be rendered."
 msgstr "无法渲染图表。"
 
-#: src/components/ai-sidebar/chat.tsx:71
+#: src/components/ai-sidebar/chat.tsx:80
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -974,6 +978,10 @@ msgstr "无法渲染公式。"
 msgid "Theme"
 msgstr "主题"
 
+#: src/components/ai-sidebar/chat.tsx:52
+msgid "Thinking…"
+msgstr "正在思考…"
+
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
 msgid "Three images side by side"
@@ -983,8 +991,8 @@ msgstr "并排的三张图片"
 msgid "Tip"
 msgstr "提示"
 
-#: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
+#: src/format-library/link/inline.tsx:100
 #: src/components/slide-pattern-modal/index.tsx:70
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
@@ -1101,7 +1109,7 @@ msgstr "使用任意文本编辑器"
 msgid "Visual markdown block editor."
 msgstr "可视化 Markdown 区块编辑器。"
 
-#: src/components/ai-sidebar/chat.tsx:55
+#: src/components/ai-sidebar/chat.tsx:56
 msgid "Waiting for the answer…"
 msgstr "正在等待回答…"
 

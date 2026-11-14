@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:37:26.987Z\n"
-"PO-Revision-Date: 2026-11-14T05:37:34.003Z\n"
+"POT-Creation-Date: 2026-11-14T05:38:18.812Z\n"
+"PO-Revision-Date: 2026-11-14T05:38:39.217Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -107,11 +107,11 @@ msgstr "Herhangi bir düzenleyici"
 msgid "Apply"
 msgstr "Uygula"
 
-#: src/components/ai-sidebar/chat.tsx:259
+#: src/components/ai-sidebar/chat.tsx:282
 msgid "Ask the AI Assistant"
 msgstr "Yapay Zekâ Asistanına sorun"
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:260
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -279,7 +279,7 @@ msgstr "Görseli düzenle"
 msgid "Edit table"
 msgstr "Tabloyu düzenle"
 
-#: src/components/ai-sidebar/chat.tsx:66
+#: src/components/ai-sidebar/chat.tsx:75
 msgid "Edited the document."
 msgstr "Belge düzenlendi."
 
@@ -289,6 +289,10 @@ msgstr "Belge düzenlendi."
 msgctxt "slide pattern"
 msgid "Editing"
 msgstr "Düzenleme"
+
+#: src/components/ai-sidebar/chat.tsx:54
+msgid "Editing the document…"
+msgstr "Belge düzenleniyor…"
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -628,7 +632,7 @@ msgstr ""
 msgid "Marp patterns"
 msgstr "Marp desenleri"
 
-#: src/components/ai-sidebar/chat.tsx:257
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Message"
 msgstr "Mesaj"
 
@@ -680,7 +684,7 @@ msgstr "Tek uygulama"
 msgid "Open by default"
 msgstr "Varsayılan olarak açık"
 
-#: src/components/ai-sidebar/chat.tsx:229
+#: src/components/ai-sidebar/chat.tsx:252
 msgid "Open settings"
 msgstr "Ayarları aç"
 
@@ -700,8 +704,8 @@ msgstr "Anahat"
 msgid "Paginate"
 msgstr "Sayfa numarası"
 
-#: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
+#: src/format-library/link/inline.tsx:138
 msgid "Paste or type URL"
 msgstr "Bir adres yazın ya da yapıştırın"
 
@@ -806,11 +810,11 @@ msgstr "Yazarken her slaytı görün"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Diğer ayarlar için <a>Marp belgelerine</a> bakın."
 
-#: src/components/ai-sidebar/chat.tsx:280
+#: src/components/ai-sidebar/chat.tsx:303
 msgid "Send"
 msgstr "Gönder"
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:242
 msgid "Set an API key to use the AI Assistant."
 msgstr "Yapay Zekâ Asistanını kullanmak için bir API anahtarı ayarlayın."
 
@@ -827,8 +831,8 @@ msgstr "Liste görünümünü gösterin veya gizleyin."
 msgid "Show the page number on each slide."
 msgstr "Her slaytta sayfa numarasını gösterir."
 
-#: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
+#: src/format-library/link/inline.tsx:115
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Üzerine gelindiğinde araç ipucu olarak gösterilir."
@@ -884,11 +888,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "Düz metin olarak slaytlar"
 
-#: src/components/ai-sidebar/chat.tsx:271
+#: src/components/ai-sidebar/chat.tsx:294
 msgid "Stop"
 msgstr "Durdur"
 
-#: src/components/ai-sidebar/chat.tsx:79
+#: src/components/ai-sidebar/chat.tsx:102
 msgid "Stopped."
 msgstr "Durduruldu."
 
@@ -951,7 +955,7 @@ msgstr "Her slaytın altında gösterilen metin."
 msgid "Text shown at the top of each slide."
 msgstr "Her slaytın üstünde gösterilen metin."
 
-#: src/components/ai-sidebar/chat.tsx:86
+#: src/components/ai-sidebar/chat.tsx:109
 msgid "The answer could not be loaded."
 msgstr "Yanıt yüklenemedi."
 
@@ -963,7 +967,7 @@ msgstr "Slaytların en boy oranı."
 msgid "The diagram could not be rendered."
 msgstr "Diyagram oluşturulamadı."
 
-#: src/components/ai-sidebar/chat.tsx:71
+#: src/components/ai-sidebar/chat.tsx:80
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -979,6 +983,10 @@ msgstr "Formül oluşturulamadı."
 msgid "Theme"
 msgstr "Tema"
 
+#: src/components/ai-sidebar/chat.tsx:52
+msgid "Thinking…"
+msgstr "Düşünülüyor…"
+
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
 msgid "Three images side by side"
@@ -988,8 +996,8 @@ msgstr "Yan yana üç görsel"
 msgid "Tip"
 msgstr "İpucu"
 
-#: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
+#: src/format-library/link/inline.tsx:100
 #: src/components/slide-pattern-modal/index.tsx:70
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
@@ -1106,7 +1114,7 @@ msgstr "Herhangi bir metin düzenleyici"
 msgid "Visual markdown block editor."
 msgstr "Görsel Markdown blok düzenleyicisi."
 
-#: src/components/ai-sidebar/chat.tsx:55
+#: src/components/ai-sidebar/chat.tsx:56
 msgid "Waiting for the answer…"
 msgstr "Yanıt bekleniyor…"
 

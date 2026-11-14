@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:37:26.987Z\n"
-"PO-Revision-Date: 2026-11-14T05:37:33.402Z\n"
+"POT-Creation-Date: 2026-11-14T05:38:18.812Z\n"
+"PO-Revision-Date: 2026-11-14T05:38:38.537Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -107,11 +107,11 @@ msgstr "Любой редактор"
 msgid "Apply"
 msgstr "Применить"
 
-#: src/components/ai-sidebar/chat.tsx:259
+#: src/components/ai-sidebar/chat.tsx:282
 msgid "Ask the AI Assistant"
 msgstr "Спросите ИИ-ассистента"
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:260
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -280,7 +280,7 @@ msgstr "Редактировать изображение"
 msgid "Edit table"
 msgstr "Редактировать таблицу"
 
-#: src/components/ai-sidebar/chat.tsx:66
+#: src/components/ai-sidebar/chat.tsx:75
 msgid "Edited the document."
 msgstr "Документ изменён."
 
@@ -290,6 +290,10 @@ msgstr "Документ изменён."
 msgctxt "slide pattern"
 msgid "Editing"
 msgstr "Редактирование"
+
+#: src/components/ai-sidebar/chat.tsx:54
+msgid "Editing the document…"
+msgstr "Редактирование документа…"
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -629,7 +633,7 @@ msgstr ""
 msgid "Marp patterns"
 msgstr "Шаблоны Marp"
 
-#: src/components/ai-sidebar/chat.tsx:257
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Message"
 msgstr "Сообщение"
 
@@ -681,7 +685,7 @@ msgstr "Одно приложение"
 msgid "Open by default"
 msgstr "Открыто по умолчанию"
 
-#: src/components/ai-sidebar/chat.tsx:229
+#: src/components/ai-sidebar/chat.tsx:252
 msgid "Open settings"
 msgstr "Открыть настройки"
 
@@ -701,8 +705,8 @@ msgstr "Структура"
 msgid "Paginate"
 msgstr "Нумерация страниц"
 
-#: src/format-library/link/inline.tsx:138
 #: src/format-library/image/inline.tsx:119
+#: src/format-library/link/inline.tsx:138
 msgid "Paste or type URL"
 msgstr "Вставить или ввести URL-адрес"
 
@@ -809,11 +813,11 @@ msgstr "Каждый слайд виден по мере ввода"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Другие настройки описаны в <a>документации Marp</a>."
 
-#: src/components/ai-sidebar/chat.tsx:280
+#: src/components/ai-sidebar/chat.tsx:303
 msgid "Send"
 msgstr "Отправить"
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:242
 msgid "Set an API key to use the AI Assistant."
 msgstr "Укажите ключ API, чтобы использовать ИИ-ассистента."
 
@@ -830,8 +834,8 @@ msgstr "Показать или скрыть представление в ви�
 msgid "Show the page number on each slide."
 msgstr "Показывает номер страницы на каждом слайде."
 
-#: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
+#: src/format-library/link/inline.tsx:115
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "Показывается как всплывающая подсказка при наведении."
@@ -887,11 +891,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "Слайды в виде текста"
 
-#: src/components/ai-sidebar/chat.tsx:271
+#: src/components/ai-sidebar/chat.tsx:294
 msgid "Stop"
 msgstr "Остановить"
 
-#: src/components/ai-sidebar/chat.tsx:79
+#: src/components/ai-sidebar/chat.tsx:102
 msgid "Stopped."
 msgstr "Остановлено."
 
@@ -954,7 +958,7 @@ msgstr "Текст в нижней части каждого слайда."
 msgid "Text shown at the top of each slide."
 msgstr "Текст в верхней части каждого слайда."
 
-#: src/components/ai-sidebar/chat.tsx:86
+#: src/components/ai-sidebar/chat.tsx:109
 msgid "The answer could not be loaded."
 msgstr "Не удалось загрузить ответ."
 
@@ -966,7 +970,7 @@ msgstr "Соотношение сторон слайдов."
 msgid "The diagram could not be rendered."
 msgstr "Не удалось отобразить диаграмму."
 
-#: src/components/ai-sidebar/chat.tsx:71
+#: src/components/ai-sidebar/chat.tsx:80
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -982,6 +986,10 @@ msgstr "Не удалось отобразить формулу."
 msgid "Theme"
 msgstr "Тема"
 
+#: src/components/ai-sidebar/chat.tsx:52
+msgid "Thinking…"
+msgstr "Обдумывание…"
+
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
 msgid "Three images side by side"
@@ -991,8 +999,8 @@ msgstr "Три изображения в ряд"
 msgid "Tip"
 msgstr "Совет"
 
-#: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
+#: src/format-library/link/inline.tsx:100
 #: src/components/slide-pattern-modal/index.tsx:70
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
@@ -1109,7 +1117,7 @@ msgstr "В любом текстовом редакторе"
 msgid "Visual markdown block editor."
 msgstr "Визуальный блочный редактор Markdown."
 
-#: src/components/ai-sidebar/chat.tsx:55
+#: src/components/ai-sidebar/chat.tsx:56
 msgid "Waiting for the answer…"
 msgstr "Ожидание ответа…"
 
