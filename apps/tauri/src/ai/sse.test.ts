@@ -50,6 +50,12 @@ describe( 'createSseParser', () => {
 		] );
 	} );
 
+	it( 'skips the event that marks the end of the stream', () => {
+		expect(
+			parse( [ 'data: {"type":"ping"}\n\ndata: [DONE]\n\n' ] )
+		).toEqual( [ { type: 'ping' } ] );
+	} );
+
 	it( 'dispatches the last event when the stream ends without a blank line', () => {
 		expect( parse( [ 'data: {"type":"ping"}' ] ) ).toEqual( [
 			{ type: 'ping' },

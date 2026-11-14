@@ -1,12 +1,8 @@
 /**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-
-/**
  * Internal dependencies
  */
-import { AnthropicError, describeApiError } from './errors';
+import { connectionClosedError, createApiError } from '../error';
+import { PROVIDER_NAME } from './errors';
 import type { ContentBlock } from './request';
 
 type StreamEvent = {
@@ -118,9 +114,10 @@ export function createMessageStream( onText: ( text: string ) => void ) {
 			case 'error': {
 				// For example `overloaded_error` after the answer started.
 				const errorType = event.error?.type ?? '';
-				throw new AnthropicError(
-					describeApiError( errorType, event.error?.message ?? '' ),
-					errorType || null
+				throw createApiError(
+					errorType,
+					event.error?.message ?? '',
+					PROVIDER_NAME
 				);
 			}
 		}
@@ -130,12 +127,7 @@ export function createMessageStream( onText: ( text: string ) => void ) {
 		// The response ended before the API finished the message, for
 		// example because the connection dropped.
 		if ( ! isComplete ) {
-			throw new AnthropicError(
-				__(
-					'The connection closed before the answer was complete.',
-					'mark-bricks'
-				)
-			);
+			throw connectionClosedError();
 		}
 		return {
 			content: blocks

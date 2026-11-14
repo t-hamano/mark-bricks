@@ -16,7 +16,7 @@ vi.mock( '@tauri-apps/api/core', () => ( {
  * Internal dependencies
  */
 import { createTauriTransport, toTransportError } from './transport';
-import type { RequestBody } from './anthropic';
+import type { RequestBody } from './anthropic/request';
 
 const body = { model: 'claude-opus-5-5' } as RequestBody;
 
@@ -55,7 +55,7 @@ describe( 'createTauriTransport', () => {
 			Promise.resolve()
 		);
 		const chunks: string[] = [];
-		await createTauriTransport()(
+		await createTauriTransport( 'anthropic' )(
 			body,
 			( chunk ) => chunks.push( chunk ),
 			new AbortController().signal
@@ -69,6 +69,19 @@ describe( 'createTauriTransport', () => {
 		} );
 	} );
 
+	it( 'sends the request to the provider it was created for', async () => {
+		answerWith( [ { event: 'end' } ], Promise.resolve() );
+		await createTauriTransport( 'openai' )(
+			body,
+			() => {},
+			new AbortController().signal
+		);
+		expect( invoke ).toHaveBeenCalledWith(
+			'ai_request',
+			expect.objectContaining( { provider: 'openai' } )
+		);
+	} );
+
 	it( 'waits for the end event when the command returns first', async () => {
 		let channel: Channel | undefined;
 		invoke.mockImplementation(
@@ -77,7 +90,7 @@ describe( 'createTauriTransport', () => {
 			}
 		);
 		let done = false;
-		const request = createTauriTransport()(
+		const request = createTauriTransport( 'anthropic' )(
 			body,
 			() => {},
 			new AbortController().signal
@@ -99,7 +112,7 @@ describe( 'createTauriTransport', () => {
 			} )
 		);
 		await expect(
-			createTauriTransport()(
+			createTauriTransport( 'anthropic' )(
 				body,
 				() => {},
 				new AbortController().signal
@@ -110,7 +123,7 @@ describe( 'createTauriTransport', () => {
 	it( 'cancels the request when the signal is aborted', async () => {
 		invoke.mockImplementation( () => new Promise( () => {} ) );
 		const controller = new AbortController();
-		const request = createTauriTransport()(
+		const request = createTauriTransport( 'anthropic' )(
 			body,
 			() => {},
 			controller.signal
@@ -127,7 +140,11 @@ describe( 'createTauriTransport', () => {
 		const controller = new AbortController();
 		controller.abort();
 		await expect(
-			createTauriTransport()( body, () => {}, controller.signal )
+			createTauriTransport( 'anthropic' )(
+				body,
+				() => {},
+				controller.signal
+			)
 		).rejects.toMatchObject( { name: 'AbortError' } );
 		expect( invoke ).not.toHaveBeenCalled();
 	} );
@@ -138,7 +155,7 @@ describe( 'createTauriTransport', () => {
 			new Promise( () => {} )
 		);
 		await expect(
-			createTauriTransport()(
+			createTauriTransport( 'anthropic' )(
 				body,
 				() => {
 					throw new Error( 'Bad stream' );
@@ -154,21 +171,45 @@ describe( 'createTauriTransport', () => {
 
 describe( 'toTransportError', () => {
 	it( 'describes a missing API key', () => {
-		expect( toTransportError( { code: 'no_api_key' } ).message ).toBe(
-			'No API key is saved. Add one in the settings.'
-		);
+		expect(
+			toTransportError( { code: 'no_api_key' }, 'anthropic' ).message
+		).toBe( 'No API key is saved. Add one in the settings.' );
 	} );
 
 	it( 'describes a network failure', () => {
 		expect(
-			toTransportError( { code: 'network', message: 'dns error' } )
-				.message
+			toTransportError(
+				{ code: 'network', message: 'dns error' },
+				'anthropic'
+			).message
 		).toBe( 'Could not connect to the Anthropic API.' );
+		expect(
+			toTransportError(
+				{ code: 'network', message: 'dns error' },
+				'openai'
+			).message
+		).toBe( 'Could not connect to the OpenAI API.' );
+	} );
+
+	it( 'describes a failed OpenAI request', () => {
+		expect(
+			toTransportError(
+				{
+					code: 'http',
+					status: 401,
+					body: '{"error":{"message":"Incorrect API key provided","type":"invalid_request_error","param":null,"code":"invalid_api_key"}}',
+				},
+				'openai'
+			)
+		).toMatchObject( {
+			errorType: 'authentication_error',
+			message: 'The API key is not valid. Check it in the settings.',
+		} );
 	} );
 
 	it( 'turns a cancelled request into an AbortError', () => {
-		expect( toTransportError( { code: 'cancelled' } ).name ).toBe(
-			'AbortError'
-		);
+		expect(
+			toTransportError( { code: 'cancelled' }, 'anthropic' ).name
+		).toBe( 'AbortError' );
 	} );
 } );

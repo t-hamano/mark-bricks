@@ -12,30 +12,48 @@ import { store as preferencesStore } from '@wordpress/preferences';
 /**
  * Internal dependencies
  */
-import { createAnthropicChat, DEFAULT_MODEL } from './anthropic';
+import { createChat } from './chat';
+import { PROVIDERS, toProvider, type AiProvider } from './providers';
 import { hasApiKey } from './settings';
 import { createTauriTransport } from './transport';
 import { openPreferences } from '../components/preferences-modal/open';
 
 /**
- * The model chosen in the preferences, or the default model.
+ * The provider chosen in the preferences, or the default provider.
  */
-export function getChosenModel(): string {
-	const model = select( preferencesStore ).get( 'mark-bricks', 'aiModel' );
-	return typeof model === 'string' && model ? model : DEFAULT_MODEL;
+export function getChosenProvider(): AiProvider {
+	return toProvider(
+		select( preferencesStore ).get( 'mark-bricks', 'aiProvider' )
+	);
 }
 
 /**
- * The Tauri implementation of `Platform.ai`: the Anthropic API, through the
- * `ai_request` command, with the API key and the model from the settings.
+ * The model chosen in the preferences, or the chosen provider's default
+ * model.
+ */
+export function getChosenModel(): string {
+	const model = select( preferencesStore ).get( 'mark-bricks', 'aiModel' );
+	return typeof model === 'string' && model
+		? model
+		: PROVIDERS[ getChosenProvider() ].defaultModel;
+}
+
+/**
+ * The Tauri implementation of `Platform.ai`: the chosen provider's API,
+ * through the `ai_request` command, with the API key and the model from the
+ * settings.
  */
 export const aiPlatform: AiPlatform = {
-	hasApiKey,
+	hasApiKey() {
+		return hasApiKey( getChosenProvider() );
+	},
 	chat( request ) {
-		// The model is read for each message, so that a model chosen during
-		// the conversation is used for the next message.
-		const chat = createAnthropicChat( {
-			transport: createTauriTransport(),
+		// The provider and the model are read for each message, so that the
+		// ones chosen during the conversation are used for the next message.
+		const provider = getChosenProvider();
+		const chat = createChat( {
+			provider: PROVIDERS[ provider ],
+			transport: createTauriTransport( provider ),
 			model: getChosenModel(),
 		} );
 		return chat( request );

@@ -17,6 +17,7 @@ const SERVICE: &str = "com.markbricks.app";
 #[serde(rename_all = "lowercase")]
 pub enum Provider {
     Anthropic,
+    OpenAi,
 }
 
 impl Provider {
@@ -24,6 +25,7 @@ impl Provider {
     fn account(self) -> &'static str {
         match self {
             Provider::Anthropic => "anthropic-api-key",
+            Provider::OpenAi => "openai-api-key",
         }
     }
 }
@@ -208,6 +210,10 @@ mod tests {
             serde_json::from_str::<Provider>("\"anthropic\"").unwrap(),
             Provider::Anthropic
         );
+        assert_eq!(
+            serde_json::from_str::<Provider>("\"openai\"").unwrap(),
+            Provider::OpenAi
+        );
         assert!(serde_json::from_str::<Provider>("\"unknown\"").is_err());
     }
 
@@ -215,5 +221,21 @@ mod tests {
     fn keeps_the_account_of_the_anthropic_key() {
         // Changing it would lose the keys users already saved.
         assert_eq!(Provider::Anthropic.account(), "anthropic-api-key");
+    }
+
+    #[test]
+    fn keeps_each_provider_s_key_apart() {
+        let store = MemoryKeyStore::default();
+        save_key(&store, ANTHROPIC, "sk-ant-key").unwrap();
+        assert_eq!(has_key(&store, Provider::OpenAi), Ok(false));
+        save_key(&store, Provider::OpenAi, "sk-openai-key").unwrap();
+        assert_eq!(
+            read_key(&store, ANTHROPIC),
+            Ok(Some("sk-ant-key".to_string()))
+        );
+        assert_eq!(
+            read_key(&store, Provider::OpenAi),
+            Ok(Some("sk-openai-key".to_string()))
+        );
     }
 }

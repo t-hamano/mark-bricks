@@ -6,16 +6,14 @@ import { Channel, invoke } from '@tauri-apps/api/core';
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
  */
-import {
-	AnthropicError,
-	createHttpError,
-	type AnthropicTransport,
-} from './anthropic';
+import { AiError } from './error';
+import { PROVIDERS, type AiProvider } from './providers';
+import type { AiTransport } from './transport-type';
 
 type StreamEvent = { event: 'chunk'; data: string } | { event: 'end' };
 
@@ -34,13 +32,17 @@ function abortError() {
  * Converts the error of the `ai_request` command to the error the chat
  * shows.
  *
- * @param error What the command rejected with.
+ * @param error    What the command rejected with.
+ * @param provider The provider the request was sent to.
  */
-export function toTransportError( error: unknown ): Error {
+export function toTransportError(
+	error: unknown,
+	provider: AiProvider
+): Error {
 	const { code } = ( error ?? {} ) as Partial< RequestError >;
 	switch ( code ) {
 		case 'no_api_key':
-			return new AnthropicError(
+			return new AiError(
 				__(
 					'No API key is saved. Add one in the settings.',
 					'mark-bricks'
@@ -48,26 +50,30 @@ export function toTransportError( error: unknown ): Error {
 			);
 		case 'http': {
 			const { status, body } = error as { status: number; body: string };
-			return createHttpError( status, body );
+			return PROVIDERS[ provider ].createHttpError( status, body );
 		}
 		case 'network':
-			return new AnthropicError(
-				__( 'Could not connect to the Anthropic API.', 'mark-bricks' )
+			return new AiError(
+				sprintf(
+					/* translators: %s: The name of the AI provider, such as Anthropic. */
+					__( 'Could not connect to the %s API.', 'mark-bricks' ),
+					PROVIDERS[ provider ].name
+				)
 			);
 		case 'cancelled':
 			return abortError();
 		case 'other':
-			return new AnthropicError(
-				( error as { message: string } ).message
-			);
+			return new AiError( ( error as { message: string } ).message );
 	}
-	return new AnthropicError( String( error ) );
+	return new AiError( String( error ) );
 }
 
 /**
  * Sends the requests through the native side, which adds the API key.
+ *
+ * @param provider The provider to send the requests to.
  */
-export function createTauriTransport(): AnthropicTransport {
+export function createTauriTransport( provider: AiProvider ): AiTransport {
 	return ( body, onChunk, signal ) =>
 		new Promise< void >( ( resolve, reject ) => {
 			if ( signal.aborted ) {
@@ -126,7 +132,7 @@ export function createTauriTransport(): AnthropicTransport {
 
 			invoke( 'ai_request', {
 				id,
-				provider: 'anthropic',
+				provider,
 				body: JSON.stringify( body ),
 				onEvent: channel,
 			} ).then(
@@ -134,7 +140,7 @@ export function createTauriTransport(): AnthropicTransport {
 					returned = true;
 					settleIfDone();
 				},
-				( error ) => settle( toTransportError( error ) )
+				( error ) => settle( toTransportError( error, provider ) )
 			);
 		} );
 }

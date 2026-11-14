@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:14:58.685Z\n"
+"POT-Creation-Date: 2026-11-14T03:21:24.815Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -31,32 +31,32 @@ msgstr ""
 msgid "(Untitled)"
 msgstr ""
 
-#: src/preferences/constants.ts:53
-#: src/preferences/constants.ts:62
+#: src/preferences/constants.ts:55
+#: src/preferences/constants.ts:64
 msgid "System Default"
 msgstr ""
 
-#: src/preferences/constants.ts:54
+#: src/preferences/constants.ts:56
 msgid "Light"
 msgstr ""
 
-#: src/preferences/constants.ts:55
+#: src/preferences/constants.ts:57
 msgid "Dark"
 msgstr ""
 
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:67
 msgid "Sans-serif"
 msgstr ""
 
-#: src/preferences/constants.ts:69
+#: src/preferences/constants.ts:71
 msgid "Serif"
 msgstr ""
 
-#: src/preferences/constants.ts:73
+#: src/preferences/constants.ts:75
 msgid "Monospace"
 msgstr ""
 
-#: src/preferences/constants.ts:77
+#: src/preferences/constants.ts:79
 msgid "Handwriting"
 msgstr ""
 
@@ -86,6 +86,15 @@ msgstr ""
 
 #: src/hooks/use-shortcuts.ts:77
 msgid "Close the active tab."
+msgstr ""
+
+#: src/hooks/use-preview-sync.ts:120
+msgid "Not a Marp document"
+msgstr ""
+
+#: src/hooks/use-preview-sync.ts:272
+#: src/components/slide-preview/index.tsx:39
+msgid "Slide Preview"
 msgstr ""
 
 #: src/hooks/use-file-open-events.ts:43
@@ -133,16 +142,68 @@ msgstr ""
 msgid "Update check failed: %s"
 msgstr ""
 
-#: src/ai/transport.ts:44
+#: src/ai/transport.ts:46
 msgid "No API key is saved. Add one in the settings."
 msgstr ""
 
-#: src/ai/transport.ts:55
-msgid "Could not connect to the Anthropic API."
+# %s: The name of the AI provider, such as Anthropic.
+#: src/ai/transport.ts:59
+msgid "Could not connect to the %s API."
 msgstr ""
 
-#: src/ai/settings.ts:53
+#: src/ai/settings.ts:50
 msgid "This API key is not valid."
+msgstr ""
+
+#: src/ai/error.ts:50
+msgid "The API key is not valid. Check it in the settings."
+msgstr ""
+
+#: src/ai/error.ts:55
+msgid "The API key cannot use this model."
+msgstr ""
+
+#: src/ai/error.ts:57
+msgid "The model was not found."
+msgstr ""
+
+# %s: The name of the AI provider, such as OpenAI.
+#: src/ai/error.ts:61
+msgid "The %s account has no credit left. Check its billing settings."
+msgstr ""
+
+#: src/ai/error.ts:68
+msgid "Too many requests. Wait a moment and try again."
+msgstr ""
+
+# %s: The name of the AI provider, such as Anthropic.
+#: src/ai/error.ts:76
+msgid "The %s API is not available right now. Try again later."
+msgstr ""
+
+# %s: The error message from the AI provider's API.
+#: src/ai/error.ts:86
+msgid "The request failed: %s"
+msgstr ""
+
+#: src/ai/error.ts:89
+msgid "The request failed."
+msgstr ""
+
+#: src/ai/error.ts:98
+msgid "The connection closed before the answer was complete."
+msgstr ""
+
+#: src/ai/error.ts:107
+msgid "The model declined to answer this request."
+msgstr ""
+
+#: src/ai/error.ts:114
+msgid "The answer was cut off because it reached the length limit."
+msgstr ""
+
+#: src/ai/chat.ts:81
+msgid "The edit from the model could not be read."
 msgstr ""
 
 #: src/actions/index.ts:468
@@ -183,7 +244,7 @@ msgid "Open file…"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:177
+#: src/components/preferences-modal/index.tsx:184
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -194,7 +255,7 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:271
+#: src/components/preferences-modal/ai-panel.tsx:317
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -209,8 +270,23 @@ msgstr ""
 msgid "Close %s"
 msgstr ""
 
-#: src/components/slide-preview/index.tsx:39
-msgid "Slide Preview"
+#: src/components/reload-prompt-dialog/index.tsx:58
+msgid "File changed"
+msgstr ""
+
+# %s: tab title.
+#: src/components/reload-prompt-dialog/index.tsx:61
+msgid ""
+"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
+"version?"
+msgstr ""
+
+#: src/components/reload-prompt-dialog/index.tsx:67
+msgid "Keep my version"
+msgstr ""
+
+#: src/components/reload-prompt-dialog/index.tsx:68
+msgid "Reload"
 msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:47
@@ -276,26 +352,26 @@ msgstr ""
 msgid "Typeface used for the content area."
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:175
-#: src/components/header-actions/index.tsx:367
+#: src/components/preferences-modal/index.tsx:182
+#: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:194
+#: src/components/preferences-modal/index.tsx:201
 msgid "General"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:197
+#: src/components/preferences-modal/index.tsx:204
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:200
+#: src/components/preferences-modal/index.tsx:207
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:203
+#: src/components/preferences-modal/index.tsx:210
 msgid "AI Assistant"
 msgstr ""
 
@@ -357,79 +433,65 @@ msgid "Restore default settings"
 msgstr ""
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:87
+#: src/components/preferences-modal/ai-panel.tsx:101
 msgid "Default (%s)"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:198
-msgid "Loading the models…"
+#: src/components/preferences-modal/ai-panel.tsx:218
+msgid "Provider"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:205
-msgid "Anthropic API key"
+# %s: The name of the AI provider, such as Anthropic.
+#: src/components/preferences-modal/ai-panel.tsx:245
+msgid "%s API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:212
+# %s: The name of the AI provider, such as Anthropic.
+#: src/components/preferences-modal/ai-panel.tsx:256
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the "
-"Anthropic API."
+"%s API."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:239
+#: src/components/preferences-modal/ai-panel.tsx:285
 msgid "API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:259
+#: src/components/preferences-modal/ai-panel.tsx:305
 msgid "Deleting the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:263
+#: src/components/preferences-modal/ai-panel.tsx:309
 msgid "Checking the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:270
+#: src/components/preferences-modal/ai-panel.tsx:316
 msgid "Delete"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:281
+#: src/components/preferences-modal/ai-panel.tsx:327
 msgid "The API key was saved."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:291
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The API key was deleted."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:309
-#: src/components/preferences-modal/ai-panel.tsx:314
+#: src/components/preferences-modal/ai-panel.tsx:356
+msgid "Loading the models…"
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:364
 msgid "Model"
 msgstr ""
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:344
+#: src/components/preferences-modal/ai-panel.tsx:396
 msgid "The models could not be loaded: %s"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:353
+#: src/components/preferences-modal/ai-panel.tsx:405
 msgid "Try again"
-msgstr ""
-
-#: src/components/reload-prompt-dialog/index.tsx:58
-msgid "File changed"
-msgstr ""
-
-# %s: tab title.
-#: src/components/reload-prompt-dialog/index.tsx:61
-msgid ""
-"\"%s\" changed on disk. Reload it and discard your changes, or keep your "
-"version?"
-msgstr ""
-
-#: src/components/reload-prompt-dialog/index.tsx:67
-msgid "Keep my version"
-msgstr ""
-
-#: src/components/reload-prompt-dialog/index.tsx:68
-msgid "Reload"
 msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228
@@ -542,22 +604,22 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:382
+#: src/components/header-actions/index.tsx:380
 msgid "Remove YAML front matter?"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:383
+#: src/components/header-actions/index.tsx:381
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr ""
 
-#: src/components/header-actions/index.tsx:387
+#: src/components/header-actions/index.tsx:385
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr ""
 
-#: src/components/header-actions/index.tsx:388
+#: src/components/header-actions/index.tsx:386
 msgid "Remove"
 msgstr ""
 
@@ -584,49 +646,4 @@ msgstr ""
 
 #: src/components/about-modal/index.tsx:132
 msgid "Report an issue"
-msgstr ""
-
-#: src/ai/anthropic/message-stream.ts:134
-msgid "The connection closed before the answer was complete."
-msgstr ""
-
-#: src/ai/anthropic/errors.ts:35
-msgid "The API key is not valid. Check it in the settings."
-msgstr ""
-
-#: src/ai/anthropic/errors.ts:40
-msgid "The API key cannot use this model."
-msgstr ""
-
-#: src/ai/anthropic/errors.ts:42
-msgid "The model was not found."
-msgstr ""
-
-#: src/ai/anthropic/errors.ts:44
-msgid "Too many requests. Wait a moment and try again."
-msgstr ""
-
-#: src/ai/anthropic/errors.ts:50
-msgid "The Anthropic API is not available right now. Try again later."
-msgstr ""
-
-# %s: The error message from the Anthropic API.
-#: src/ai/anthropic/errors.ts:58
-msgid "The request failed: %s"
-msgstr ""
-
-#: src/ai/anthropic/errors.ts:61
-msgid "The request failed."
-msgstr ""
-
-#: src/ai/anthropic/chat.ts:105
-msgid "The edit from the model could not be read."
-msgstr ""
-
-#: src/ai/anthropic/chat.ts:153
-msgid "The model declined to answer this request."
-msgstr ""
-
-#: src/ai/anthropic/chat.ts:159
-msgid "The answer was cut off because it reached the length limit."
 msgstr ""

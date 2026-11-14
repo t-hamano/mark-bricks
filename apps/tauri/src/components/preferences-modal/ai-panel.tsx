@@ -20,7 +20,7 @@ import {
 /**
  * Internal dependencies
  */
-import { DEFAULT_MODEL } from '../../ai/anthropic';
+import { PROVIDERS, toProvider, type AiProvider } from '../../ai/providers';
 import {
 	checkApiKey,
 	deleteApiKey,
@@ -31,6 +31,7 @@ import {
 } from '../../ai/settings';
 
 export type AiSettings = {
+	provider: AiProvider;
 	/**
 	 * The model's id, or an empty string for the default model.
 	 */
@@ -57,6 +58,13 @@ type Models =
 
 type ModelItem = { value: string; label: string };
 
+const PROVIDER_ITEMS = ( Object.keys( PROVIDERS ) as AiProvider[] ).map(
+	( provider ) => ( {
+		value: provider,
+		label: PROVIDERS[ provider ].name,
+	} )
+);
+
 /**
  * The value shown, masked, in place of a saved API key.
  */
@@ -73,13 +81,18 @@ export const DEFAULT_MODEL_ITEM = 'default';
  * API key can use. A chosen model that is not listed stays, so the setting
  * is not lost while the list cannot be loaded.
  *
- * @param models The models the API key can use.
- * @param chosen The chosen model's id, or an empty string.
+ * @param models       The models the API key can use.
+ * @param chosen       The chosen model's id, or an empty string.
+ * @param defaultModel The id of the provider's default model.
  */
-export function getModelItems( models: AiModel[], chosen: string ) {
+export function getModelItems(
+	models: AiModel[],
+	chosen: string,
+	defaultModel: string
+) {
 	const defaultName =
-		models.find( ( model ) => model.id === DEFAULT_MODEL )?.displayName ??
-		DEFAULT_MODEL;
+		models.find( ( model ) => model.id === defaultModel )?.displayName ??
+		defaultModel;
 	const items: ModelItem[] = [
 		{
 			value: DEFAULT_MODEL_ITEM,
@@ -101,6 +114,8 @@ export function getModelItems( models: AiModel[], chosen: string ) {
 }
 
 export function AiPanel( { settings, onChange }: Props ) {
+	const { provider } = settings;
+	const providerInfo = PROVIDERS[ provider ];
 	const [ hasKey, setHasKey ] = useState< boolean | null >( null );
 	const [ key, setKey ] = useState( '' );
 	const [ keyStatus, setKeyStatus ] = useState< KeyStatus >( {
@@ -117,18 +132,18 @@ export function AiPanel( { settings, onChange }: Props ) {
 		setModels( { kind: 'loading' } );
 		let next: Models;
 		try {
-			next = { kind: 'loaded', models: await listModels() };
+			next = { kind: 'loaded', models: await listModels( provider ) };
 		} catch ( error ) {
 			next = { kind: 'error', message: ( error as Error ).message };
 		}
 		if ( request === modelsRequest.current ) {
 			setModels( next );
 		}
-	}, [] );
+	}, [ provider ] );
 
 	useEffect( () => {
 		let isCurrent = true;
-		hasApiKey().then(
+		hasApiKey( provider ).then(
 			( value ) => {
 				if ( isCurrent ) {
 					setHasKey( value );
@@ -143,7 +158,7 @@ export function AiPanel( { settings, onChange }: Props ) {
 		return () => {
 			isCurrent = false;
 		};
-	}, [] );
+	}, [ provider ] );
 
 	useEffect( () => {
 		if ( hasKey ) {
@@ -157,7 +172,7 @@ export function AiPanel( { settings, onChange }: Props ) {
 	const onSave = async () => {
 		setKeyStatus( { kind: 'busy' } );
 		try {
-			await checkApiKey( key );
+			await checkApiKey( provider, key );
 		} catch ( error ) {
 			setKeyStatus( {
 				kind: 'error',
@@ -166,7 +181,7 @@ export function AiPanel( { settings, onChange }: Props ) {
 			return;
 		}
 		try {
-			await saveApiKey( key );
+			await saveApiKey( provider, key );
 			setKey( '' );
 			setKeyStatus( { kind: 'saved' } );
 			setHasKey( true );
@@ -178,7 +193,7 @@ export function AiPanel( { settings, onChange }: Props ) {
 	const onDelete = async () => {
 		setKeyStatus( { kind: 'busy' } );
 		try {
-			await deleteApiKey();
+			await deleteApiKey( provider );
 			setKeyStatus( { kind: 'deleted' } );
 			setHasKey( false );
 			// The model was chosen for that key.
@@ -191,23 +206,58 @@ export function AiPanel( { settings, onChange }: Props ) {
 	const isBusy = keyStatus.kind === 'busy';
 	const modelItems = getModelItems(
 		models.kind === 'loaded' ? models.models : [],
-		settings.model
+		settings.model,
+		providerInfo.defaultModel
 	);
 
 	return (
 		<Stack direction="column" gap="xl">
+			<Stack direction="column" align="flex-start">
+				<SelectControl
+					size="compact"
+					label={ __( 'Provider', 'mark-bricks' ) }
+					items={ PROVIDER_ITEMS }
+					value={
+						PROVIDER_ITEMS.find(
+							( item ) => item.value === provider
+						) ?? null
+					}
+					isItemEqualToValue={ ( a, b ) => a.value === b.value }
+					// The key being saved or deleted is the current
+					// provider's, and so is the model its deletion resets.
+					disabled={ isBusy }
+					onValueChange={ ( item ) => {
+						if ( item && item.value !== provider ) {
+							// The model was chosen from the other provider's
+							// models.
+							onChange( {
+								provider: toProvider( item.value ),
+								model: '',
+							} );
+						}
+					} }
+				/>
+			</Stack>
 			<Stack direction="column" gap="md" align="flex-start">
 				<Text variant="heading-xl" render={ <h2 /> }>
-					{ __( 'Anthropic API key', 'mark-bricks' ) }
+					{ sprintf(
+						/* translators: %s: The name of the AI provider, such as Anthropic. */
+						__( '%s API key', 'mark-bricks' ),
+						providerInfo.name
+					) }
 				</Text>
 				<Notice.Root
 					className="preferences-modal__notice"
 					intent="info"
 				>
 					<Notice.Description>
-						{ __(
-							'The API key is kept in the system’s credential store and only sent to the Anthropic API.',
-							'mark-bricks'
+						{ sprintf(
+							/* translators: %s: The name of the AI provider, such as Anthropic. */
+							__(
+								'The API key is kept in the system’s credential store and only sent to the %s API.',
+								'mark-bricks'
+							),
+							providerInfo.name
 						) }
 					</Notice.Description>
 				</Notice.Root>
@@ -233,7 +283,7 @@ export function AiPanel( { settings, onChange }: Props ) {
 							autoComplete="off"
 							spellCheck={ false }
 							label={ __( 'API key', 'mark-bricks' ) }
-							placeholder="sk-ant-…"
+							placeholder={ providerInfo.keyPlaceholder }
 							// The saved key never reaches the webview, so a
 							// placeholder value stands for it.
 							value={ hasKey ? SAVED_KEY_MASK : key }

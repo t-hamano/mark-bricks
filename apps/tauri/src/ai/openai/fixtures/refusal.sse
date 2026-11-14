@@ -1,0 +1,12 @@
+event: response.created
+data: {"type":"response.created","sequence_number":0,"response":{"id":"resp_04","object":"response","status":"in_progress","model":"gpt-6-astra","output":[]}}
+
+event: response.refusal.delta
+data: {"type":"response.refusal.delta","sequence_number":1,"item_id":"msg_04","output_index":0,"content_index":0,"delta":"I can't help with that."}
+
+event: response.output_item.done
+data: {"type":"response.output_item.done","sequence_number":2,"output_index":0,"item":{"id":"msg_04","type":"message","status":"completed","role":"assistant","content":[{"type":"refusal","refusal":"I can't help with that."}]}}
+
+event: response.completed
+data: {"type":"response.completed","sequence_number":3,"response":{"id":"resp_04","object":"response","status":"completed","model":"gpt-6-astra","incomplete_details":null}}
+

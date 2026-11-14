@@ -1,0 +1,33 @@
+event: response.created
+data: {"type":"response.created","sequence_number":0,"response":{"id":"resp_02","object":"response","status":"in_progress","model":"gpt-6-astra","output":[]}}
+
+event: response.output_item.done
+data: {"type":"response.output_item.done","sequence_number":1,"output_index":0,"item":{"id":"rs_02","type":"reasoning","summary":[],"encrypted_content":"enc_edit"}}
+
+event: response.output_item.added
+data: {"type":"response.output_item.added","sequence_number":1,"output_index":0,"item":{"id":"msg_02","type":"message","status":"in_progress","role":"assistant","content":[]}}
+
+event: response.output_text.delta
+data: {"type":"response.output_text.delta","sequence_number":2,"item_id":"msg_02","output_index":0,"content_index":0,"delta":"Shortening the paragraph."}
+
+event: response.output_item.done
+data: {"type":"response.output_item.done","sequence_number":3,"output_index":0,"item":{"id":"msg_02","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Shortening the paragraph.","annotations":[]}]}}
+
+event: response.output_item.added
+data: {"type":"response.output_item.added","sequence_number":4,"output_index":1,"item":{"id":"fc_01","type":"function_call","status":"in_progress","call_id":"call_01","name":"edit_selection","arguments":""}}
+
+event: response.function_call_arguments.delta
+data: {"type":"response.function_call_arguments.delta","sequence_number":5,"item_id":"fc_01","output_index":1,"delta":"{\"action\":\"replace\","}
+
+event: response.function_call_arguments.delta
+data: {"type":"response.function_call_arguments.delta","sequence_number":6,"item_id":"fc_01","output_index":1,"delta":"\"markdown\":\"A short\\nparagraph.\"}"}
+
+event: response.function_call_arguments.done
+data: {"type":"response.function_call_arguments.done","sequence_number":7,"item_id":"fc_01","output_index":1,"arguments":"{\"action\":\"replace\",\"markdown\":\"A short\\nparagraph.\"}"}
+
+event: response.output_item.done
+data: {"type":"response.output_item.done","sequence_number":8,"output_index":1,"item":{"id":"fc_01","type":"function_call","status":"completed","call_id":"call_01","name":"edit_selection","arguments":"{\"action\":\"replace\",\"markdown\":\"A short\\nparagraph.\"}"}}
+
+event: response.completed
+data: {"type":"response.completed","sequence_number":9,"response":{"id":"resp_02","object":"response","status":"completed","model":"gpt-6-astra","incomplete_details":null}}
+

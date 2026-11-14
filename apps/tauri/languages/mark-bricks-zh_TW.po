@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-08T14:14:58.685Z\n"
-"PO-Revision-Date: 2026-11-08T14:15:06.375Z\n"
+"POT-Creation-Date: 2026-11-14T03:21:24.815Z\n"
+"PO-Revision-Date: 2026-11-14T03:21:33.825Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -28,16 +28,21 @@ msgstr "「%s」已在磁碟上變更。要重新載入並捨棄你的變更，�
 msgid "\"%s\" has unsaved changes. Do you want to discard them and close?"
 msgstr "「%s」有未儲存的變更。要捨棄變更並關閉嗎？"
 
+# %s: The name of the AI provider, such as Anthropic.
+#: src/components/preferences-modal/ai-panel.tsx:245
+msgid "%s API key"
+msgstr "%s API 金鑰"
+
 #: src/store/reducer.ts:42
 #: src/store/constants.ts:13
 msgid "(Untitled)"
 msgstr "(未命名)"
 
-#: src/components/preferences-modal/index.tsx:203
+#: src/components/preferences-modal/index.tsx:210
 msgid "AI Assistant"
 msgstr "AI 助理"
 
-#: src/components/preferences-modal/ai-panel.tsx:239
+#: src/components/preferences-modal/ai-panel.tsx:285
 msgid "API key"
 msgstr "API 金鑰"
 
@@ -54,14 +59,14 @@ msgstr "可在同一位置使用全部區塊及內容工具"
 msgid "Add YAML front matter"
 msgstr "新增 YAML 前置資料"
 
+#: style.css
+#. Author of the generic
+msgid "Aki Hamano"
+msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
 msgstr "永遠開啟 [清單檢視]"
-
-#: src/components/preferences-modal/ai-panel.tsx:205
-msgid "Anthropic API key"
-msgstr "Anthropic API 金鑰"
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:136
 msgid "Base font size of the content area, in pixels."
@@ -71,7 +76,7 @@ msgstr "內容區域的基本字型大小 (像素)。"
 msgid "Block shortcuts"
 msgstr "區塊快速鍵"
 
-#: src/components/header-actions/index.tsx:387
+#: src/components/header-actions/index.tsx:385
 #: src/components/dirty-confirm-dialog/index.tsx:64
 msgid "Cancel"
 msgstr "取消"
@@ -85,7 +90,7 @@ msgstr "檢查更新"
 msgid "Check updates automatically"
 msgstr "自動檢查更新"
 
-#: src/components/preferences-modal/ai-panel.tsx:263
+#: src/components/preferences-modal/ai-panel.tsx:309
 msgid "Checking the API key…"
 msgstr "正在檢查 API 金鑰…"
 
@@ -95,7 +100,7 @@ msgid "Checking…"
 msgstr "正在檢查…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:177
+#: src/components/preferences-modal/index.tsx:184
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -114,7 +119,7 @@ msgstr "關閉其他分頁"
 msgid "Close the active tab."
 msgstr "關閉目前的分頁。"
 
-#: src/components/preferences-modal/index.tsx:200
+#: src/components/preferences-modal/index.tsx:207
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "程式碼編輯器"
@@ -123,9 +128,10 @@ msgstr "程式碼編輯器"
 msgid "Content width"
 msgstr "內容寬度"
 
-#: src/ai/transport.ts:55
-msgid "Could not connect to the Anthropic API."
-msgstr "無法連線至 Anthropic API。"
+# %s: The name of the AI provider, such as Anthropic.
+#: src/ai/transport.ts:59
+msgid "Could not connect to the %s API."
+msgstr "無法連線至 %s API。"
 
 # %s: Error message.
 #: src/actions/index.ts:495
@@ -146,20 +152,20 @@ msgstr "建立新的 Markdown 檔案或開啟現有檔案以開始編輯。"
 msgid "Create a new file."
 msgstr "建立新檔案。"
 
-#: src/preferences/constants.ts:55
+#: src/preferences/constants.ts:57
 msgid "Dark"
 msgstr "深色"
 
 # %s: The name of the default AI model.
-#: src/components/preferences-modal/ai-panel.tsx:87
+#: src/components/preferences-modal/ai-panel.tsx:101
 msgid "Default (%s)"
 msgstr "預設（%s）"
 
-#: src/components/preferences-modal/ai-panel.tsx:270
+#: src/components/preferences-modal/ai-panel.tsx:316
 msgid "Delete"
 msgstr "刪除"
 
-#: src/components/preferences-modal/ai-panel.tsx:259
+#: src/components/preferences-modal/ai-panel.tsx:305
 msgid "Deleting the API key…"
 msgstr "正在刪除 API 金鑰…"
 
@@ -226,7 +232,7 @@ msgstr "字型系列"
 msgid "Font size"
 msgstr "字型大小"
 
-#: src/components/preferences-modal/index.tsx:194
+#: src/components/preferences-modal/index.tsx:201
 msgid "General"
 msgstr "一般"
 
@@ -242,7 +248,7 @@ msgstr "HTML 投影片"
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:77
+#: src/preferences/constants.ts:79
 msgid "Handwriting"
 msgstr "手寫"
 
@@ -276,7 +282,7 @@ msgstr "鍵盤快速鍵"
 msgid "Language"
 msgstr "語言"
 
-#: src/preferences/constants.ts:54
+#: src/preferences/constants.ts:56
 msgid "Light"
 msgstr "淺色"
 
@@ -284,7 +290,7 @@ msgstr "淺色"
 msgid "List View shortcuts"
 msgstr "[清單檢視] 快速鍵"
 
-#: src/components/preferences-modal/ai-panel.tsx:198
+#: src/components/preferences-modal/ai-panel.tsx:356
 msgid "Loading the models…"
 msgstr "正在載入模型…"
 
@@ -301,12 +307,11 @@ msgstr "MarkBricks 現在是 Markdown 檔案的預設應用程式。"
 msgid "Maximum width of the content area, in pixels."
 msgstr "內容區域的最大寬度 (像素)。"
 
-#: src/components/preferences-modal/ai-panel.tsx:309
-#: src/components/preferences-modal/ai-panel.tsx:314
+#: src/components/preferences-modal/ai-panel.tsx:364
 msgid "Model"
 msgstr "模型"
 
-#: src/preferences/constants.ts:73
+#: src/preferences/constants.ts:75
 msgid "Monospace"
 msgstr "等寬"
 
@@ -323,13 +328,17 @@ msgstr "新增檔案"
 msgid "New…"
 msgstr "新增…"
 
-#: src/ai/transport.ts:44
+#: src/ai/transport.ts:46
 msgid "No API key is saved. Add one in the settings."
 msgstr "尚未儲存 API 金鑰。請在設定中新增。"
 
 #: src/components/editor-placeholder/index.tsx:23
 msgid "No file open"
 msgstr "沒有開啟的檔案"
+
+#: src/hooks/use-preview-sync.ts:120
+msgid "Not a Marp document"
+msgstr "不是 Marp 文件"
 
 #: src/hooks/use-shortcuts.ts:49
 msgid "Open a file."
@@ -364,8 +373,8 @@ msgstr "PDF 投影片"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:175
-#: src/components/header-actions/index.tsx:367
+#: src/components/preferences-modal/index.tsx:182
+#: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -373,11 +382,15 @@ msgstr "偏好設定"
 msgid "Preview Slides"
 msgstr "預覽投影片"
 
+#: src/components/preferences-modal/ai-panel.tsx:218
+msgid "Provider"
+msgstr "供應商"
+
 #: src/components/reload-prompt-dialog/index.tsx:68
 msgid "Reload"
 msgstr "重新載入"
 
-#: src/components/header-actions/index.tsx:388
+#: src/components/header-actions/index.tsx:386
 msgid "Remove"
 msgstr "移除"
 
@@ -385,7 +398,7 @@ msgstr "移除"
 msgid "Remove YAML front matter"
 msgstr "移除 YAML 前置資料"
 
-#: src/components/header-actions/index.tsx:382
+#: src/components/header-actions/index.tsx:380
 msgid "Remove YAML front matter?"
 msgstr "要移除 YAML 前置資料嗎？"
 
@@ -401,12 +414,12 @@ msgstr "重新啟動應用程式以套用新語言。"
 msgid "Restore default settings"
 msgstr "還原預設設定"
 
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:67
 msgid "Sans-serif"
 msgstr "無襯線"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-panel.tsx:271
+#: src/components/preferences-modal/ai-panel.tsx:317
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -432,7 +445,7 @@ msgstr "儲存目前的檔案。"
 msgid "Selection shortcuts"
 msgstr "內容選取快速鍵"
 
-#: src/preferences/constants.ts:69
+#: src/preferences/constants.ts:71
 msgid "Serif"
 msgstr "襯線"
 
@@ -453,6 +466,7 @@ msgstr "顯示區塊導覽標記"
 msgid "Show line numbers"
 msgstr "顯示行號"
 
+#: src/hooks/use-preview-sync.ts:272
 #: src/components/slide-preview/index.tsx:39
 msgid "Slide Preview"
 msgstr "投影片預覽"
@@ -465,8 +479,8 @@ msgstr "拼字檢查"
 msgid "Spotlight mode"
 msgstr "焦點模式"
 
-#: src/preferences/constants.ts:53
-#: src/preferences/constants.ts:62
+#: src/preferences/constants.ts:55
+#: src/preferences/constants.ts:64
 msgid "System Default"
 msgstr "系統預設"
 
@@ -478,69 +492,76 @@ msgstr "定位點大小"
 msgid "Text formatting"
 msgstr "內容格式化"
 
-#: src/ai/anthropic/errors.ts:40
+# %s: The name of the AI provider, such as OpenAI.
+#: src/ai/error.ts:76
+msgid "The %s API is not available right now. Try again later."
+msgstr "%s API 目前無法使用。請稍後再試。"
+
+# %s: The name of the AI provider, such as OpenAI.
+#: src/ai/error.ts:61
+msgid "The %s account has no credit left. Check its billing settings."
+msgstr "%s 帳戶已沒有剩餘額度。請檢查其帳單設定。"
+
+#: src/ai/error.ts:55
 msgid "The API key cannot use this model."
 msgstr "此 API 金鑰無法使用這個模型。"
 
-#: src/components/preferences-modal/ai-panel.tsx:212
+# %s: The name of the AI provider, such as Anthropic.
+#: src/components/preferences-modal/ai-panel.tsx:256
 msgid ""
-"The API key is kept in the system’s credential store and only sent to the "
-"Anthropic API."
-msgstr "API 金鑰儲存在系統的憑證存放區中，且只會傳送至 Anthropic API。"
+"The API key is kept in the system’s credential store and only sent to the %s "
+"API."
+msgstr "API 金鑰儲存在系統的憑證存放區中，且只會傳送至 %s API。"
 
-#: src/ai/anthropic/errors.ts:35
+#: src/ai/error.ts:50
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 金鑰無效。請在設定中檢查。"
 
-#: src/components/preferences-modal/ai-panel.tsx:291
+#: src/components/preferences-modal/ai-panel.tsx:337
 msgid "The API key was deleted."
 msgstr "API 金鑰已刪除。"
 
-#: src/components/preferences-modal/ai-panel.tsx:281
+#: src/components/preferences-modal/ai-panel.tsx:327
 msgid "The API key was saved."
 msgstr "API 金鑰已儲存。"
 
-#: src/ai/anthropic/errors.ts:50
-msgid "The Anthropic API is not available right now. Try again later."
-msgstr "Anthropic API 目前無法使用。請稍後再試。"
-
-#: src/components/header-actions/index.tsx:383
+#: src/components/header-actions/index.tsx:381
 msgid ""
 "The YAML front matter and all of its content will be removed from the "
 "document."
 msgstr "將從文件中移除 YAML 前置資料及其所有內容。"
 
-#: src/ai/anthropic/chat.ts:159
+#: src/ai/error.ts:114
 msgid "The answer was cut off because it reached the length limit."
 msgstr "回答已達到長度上限，因此被截斷。"
 
-#: src/ai/anthropic/message-stream.ts:134
+#: src/ai/error.ts:98
 msgid "The connection closed before the answer was complete."
 msgstr "回答完成前連線已關閉。"
 
-#: src/ai/anthropic/chat.ts:105
+#: src/ai/chat.ts:81
 msgid "The edit from the model could not be read."
 msgstr "無法讀取模型的編輯內容。"
 
-#: src/ai/anthropic/chat.ts:153
+#: src/ai/error.ts:107
 msgid "The model declined to answer this request."
 msgstr "模型拒絕回答此請求。"
 
-#: src/ai/anthropic/errors.ts:42
+#: src/ai/error.ts:57
 msgid "The model was not found."
 msgstr "找不到該模型。"
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-panel.tsx:344
+#: src/components/preferences-modal/ai-panel.tsx:396
 msgid "The models could not be loaded: %s"
 msgstr "無法載入模型：%s"
 
-#: src/ai/anthropic/errors.ts:61
+#: src/ai/error.ts:89
 msgid "The request failed."
 msgstr "請求失敗。"
 
 # %s: The error message from the Anthropic API.
-#: src/ai/anthropic/errors.ts:58
+#: src/ai/error.ts:86
 msgid "The request failed: %s"
 msgstr "請求失敗：%s"
 
@@ -549,7 +570,7 @@ msgstr "請求失敗：%s"
 msgid "Theme"
 msgstr "佈景主題"
 
-#: src/ai/settings.ts:53
+#: src/ai/settings.ts:50
 msgid "This API key is not valid."
 msgstr "此 API 金鑰無效。"
 
@@ -560,7 +581,7 @@ msgid ""
 msgstr ""
 "此平台不支援從 MarkBricks 內設定預設應用程式。請從系統的檔案管理員進行設定。"
 
-#: src/ai/anthropic/errors.ts:44
+#: src/ai/error.ts:68
 msgid "Too many requests. Wait a moment and try again."
 msgstr "請求過多。請稍候再試。"
 
@@ -572,7 +593,7 @@ msgstr "工具"
 msgid "Top toolbar"
 msgstr "頂端工具列"
 
-#: src/components/preferences-modal/ai-panel.tsx:353
+#: src/components/preferences-modal/ai-panel.tsx:405
 msgid "Try again"
 msgstr "重試"
 
@@ -605,7 +626,7 @@ msgstr "檢查更新失敗：%s"
 msgid "View"
 msgstr "檢視"
 
-#: src/components/preferences-modal/index.tsx:197
+#: src/components/preferences-modal/index.tsx:204
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "視覺化編輯器"
@@ -623,3 +644,7 @@ msgstr "你正在使用最新版本 (%s)。"
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "你有未儲存的變更。請在更新前儲存。"
 
+#: style.css
+#. Name of the generic
+msgid "mark-bricks-desktop"
+msgstr ""
