@@ -1,7 +1,13 @@
 /**
  * External dependencies
  */
-import * as monaco from 'monaco-editor';
+// The editor, its features and the syntax highlighting of every language,
+// which code fences in the Markdown use. The package's main entry also bundles
+// the TypeScript, CSS, HTML and JSON language services with their workers,
+// which the Markdown source never uses.
+import * as monaco from 'monaco-editor/editor';
+import 'monaco-editor/features/register.all';
+import 'monaco-editor/basic-languages/monaco.contribution';
 import EditorWorker from 'monaco-editor/editor/editor.worker?worker';
 import { useContext, useEffect, useRef } from 'react';
 
