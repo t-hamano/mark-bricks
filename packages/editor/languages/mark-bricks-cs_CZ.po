@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T02:43:50.964Z\n"
-"PO-Revision-Date: 2026-11-14T02:44:07.277Z\n"
+"POT-Creation-Date: 2026-11-14T03:01:14.467Z\n"
+"PO-Revision-Date: 2026-11-14T03:01:15.630Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,7 +95,7 @@ msgstr "Program"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:116
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:185
 msgid "All"
 msgstr "Vše"
 
@@ -198,7 +198,7 @@ msgid "Clear formatting"
 msgstr "Vymazat formátování"
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:143
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:212
 #: src/components/inserter-sidebar/index.tsx:284
 #: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
@@ -586,7 +586,7 @@ msgstr ""
 "Klíčová slova Marp jako bg, w:200px nebo sepia určují rozvržení a velikost. "
 "Ostatní slova se stanou alternativním textem nebo popiskem obrázku na pozadí."
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:141
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:210
 msgid "Marp patterns"
 msgstr "Vzory Marp"
 
@@ -634,7 +634,7 @@ msgstr "Není vybrán žádný blok"
 msgid "No matching language."
 msgstr "Žádný odpovídající jazyk."
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:55
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:119
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:93
 msgid "No slide patterns found."
 msgstr "Nebyly nalezeny žádné vzory snímků."
@@ -736,6 +736,14 @@ msgctxt "slide pattern"
 msgid "Presentation title"
 msgstr "Název prezentace"
 
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:56
+msgid "Preview"
+msgstr "Náhled"
+
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:134
+msgid "Preview size"
+msgstr "Velikost náhledu"
+
 #: src/marp-patterns/patterns/agenda.ts:23
 msgctxt "slide pattern"
 msgid "Proposal"
@@ -793,7 +801,6 @@ msgstr "Výzkum"
 msgid "Reset"
 msgstr "Obnovit"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:175
 #: src/components/inserter-sidebar/index.tsx:269
 msgid "Reset search"
 msgstr "Resetovat vyhledávání"
@@ -817,7 +824,6 @@ msgstr "Kontrola"
 msgid "Row count"
 msgstr "Počet řádků"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:162
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr "Hledat"
@@ -826,7 +832,6 @@ msgstr "Hledat"
 msgid "Search for blocks"
 msgstr "Hledat bloky"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:156
 #: src/components/inserter-sidebar/index.tsx:247
 msgid "Search for slide patterns"
 msgstr "Hledat vzory snímků"
@@ -900,7 +905,6 @@ msgstr "Velikost"
 msgid "Slide Separator"
 msgstr "Oddělovač snímků"
 
-#: src/components/inserter-sidebar/slide-pattern-modal.tsx:64
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:99
 #: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
@@ -1031,6 +1035,7 @@ msgstr "Tip"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:69
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "Název"

@@ -1,21 +1,19 @@
 /**
  * External dependencies
  */
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 /**
  * WordPress dependencies
  */
-import { Composite } from '@wordpress/components';
+import { RangeControl } from '@wordpress/components';
+import { DataViews, type Field, type ViewGrid } from '@wordpress/dataviews';
+import '@wordpress/dataviews/build-style/style.css';
 import { __ } from '@wordpress/i18n';
-import { closeSmall, search as searchIcon } from '@wordpress/icons';
 import {
 	Dialog,
 	getWpCompatOverlaySlot,
-	Icon,
-	IconButton,
-	InputControl,
-	InputLayout,
+	Stack,
 	Tabs,
 	Text,
 } from '@wordpress/ui';
@@ -33,63 +31,133 @@ import {
 	type CategoryFilter,
 } from './use-slide-patterns';
 
+// The widths of the previews that the size slider offers, in pixels.
+// DataViews' own smallest sizes are too small to read a slide at.
+const PREVIEW_SIZES = [ 230, 290, 350, 430 ];
+
+const DEFAULT_VIEW: ViewGrid = {
+	type: 'grid',
+	titleField: 'title',
+	mediaField: 'preview',
+	fields: [],
+	layout: {
+		aspectRatio: '16/9',
+		previewSize: PREVIEW_SIZES[ 1 ],
+	},
+};
+
+type Item = ReturnType< typeof useSlidePatternItems >[ number ];
+
+// A function, so the labels are translated with the locale set when the
+// modal opens, not when the module loads.
+const getFields = (): Field< Item >[] => [
+	{
+		id: 'preview',
+		label: __( 'Preview', 'mark-bricks' ),
+		render: ( { item } ) =>
+			item.preview ? (
+				<SlidePatternPreview
+					html={ item.preview.html }
+					css={ item.preview.css }
+				/>
+			) : null,
+		enableSorting: false,
+		enableHiding: false,
+	},
+	{
+		id: 'title',
+		label: __( 'Title', 'mark-bricks' ),
+		type: 'text',
+		getValue: ( { item } ) => item.title,
+		enableSorting: false,
+		enableHiding: false,
+		filterBy: false,
+	},
+];
+
 type GridProps = {
-	search: string;
 	category: CategoryFilter;
 	previews: SlidePatternPreviews | null;
+	view: ViewGrid;
+	onChangeView: ( view: ViewGrid ) => void;
 	onInsert: () => void;
 };
 
 function SlidePatternGrid( {
-	search,
 	category,
 	previews,
+	view,
+	onChangeView,
 	onInsert,
 }: GridProps ) {
-	const patterns = useSlidePatternItems( search, category, previews );
+	const items = useSlidePatternItems( '', category, previews );
 	const insert = useInsertSlidePattern();
-
-	if ( patterns.length === 0 ) {
-		return (
-			<Text variant="body-sm" className="slide-pattern-modal__empty">
-				{ __( 'No slide patterns found.', 'mark-bricks' ) }
-			</Text>
-		);
-	}
+	const fields = useMemo( getFields, [] );
+	const previewSize = view.layout?.previewSize ?? PREVIEW_SIZES[ 1 ];
+	// Every pattern shows on one page.
+	const paginationInfo = useMemo(
+		() => ( { totalItems: items.length, totalPages: 1 } ),
+		[ items.length ]
+	);
 
 	return (
-		<Composite
-			className="slide-pattern-modal__grid"
-			role="listbox"
-			aria-label={ __( 'Slide patterns', 'mark-bricks' ) }
-			focusLoop
-			focusWrap
+		<DataViews< Item >
+			data={ items }
+			fields={ fields }
+			view={ { ...view, perPage: items.length } }
+			onChangeView={ ( next ) => onChangeView( next as ViewGrid ) }
+			paginationInfo={ paginationInfo }
+			defaultLayouts={ { grid: {} } }
+			getItemId={ ( item ) => item.pattern.name }
+			onClickItem={ ( item: Item ) => {
+				insert( item.pattern );
+				onInsert();
+			} }
+			isItemClickable={ () => true }
+			empty={
+				<Text variant="body-sm">
+					{ __( 'No slide patterns found.', 'mark-bricks' ) }
+				</Text>
+			}
 		>
-			{ patterns.map( ( { pattern, title, preview } ) => (
-				<Composite.Item
-					key={ pattern.name }
-					role="option"
-					aria-label={ title }
-					className="slide-pattern-modal__item"
-					onClick={ () => {
-						insert( pattern );
-						onInsert();
-					} }
-				>
-					<div className="slide-pattern-modal__thumbnail">
-						{ preview && (
-							<SlidePatternPreview
-								html={ preview.html }
-								css={ preview.css }
-							/>
+			{ /* A toolbar of its own in place of the default one: only the
+			size of the previews can be changed. */ }
+			<Stack
+				direction="row"
+				justify="flex-end"
+				className="slide-pattern-modal__toolbar"
+			>
+				<div className="slide-pattern-modal__preview-size">
+					<RangeControl
+						__next40pxDefaultSize
+						hideLabelFromVision
+						label={ __( 'Preview size', 'mark-bricks' ) }
+						showTooltip={ false }
+						withInputField={ false }
+						min={ 0 }
+						max={ PREVIEW_SIZES.length - 1 }
+						step={ 1 }
+						marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
+							value: index,
+						} ) ) }
+						value={ Math.max(
+							0,
+							PREVIEW_SIZES.indexOf( previewSize )
 						) }
-					</div>
-					<Text variant="body-sm" aria-hidden>
-						{ title }
-					</Text>
-				</Composite.Item>
-			) ) }
-		</Composite>
+						onChange={ ( index = 0 ) =>
+							onChangeView( {
+								...view,
+								layout: {
+									...view.layout,
+									previewSize: PREVIEW_SIZES[ index ],
+								},
+							} )
+						}
+					/>
+				</div>
+			</Stack>
+			<DataViews.Layout />
+		</DataViews>
 	);
 }
 
@@ -108,7 +176,8 @@ type Props = {
  * @param props.onClose  Called when the modal closes.
  */
 export function SlidePatternModal( { previews, onClose }: Props ) {
-	const [ search, setSearch ] = useState( '' );
+	// The preview size is kept as the categories change.
+	const [ view, setView ] = useState< ViewGrid >( DEFAULT_VIEW );
 	const [ category, setCategory ] =
 		useState< CategoryFilter >( ALL_CATEGORIES );
 
@@ -151,40 +220,6 @@ export function SlidePatternModal( { previews, onClose }: Props ) {
 					}
 				>
 					<div className="slide-pattern-modal__sidebar">
-						<InputControl
-							className="slide-pattern-modal__search"
-							label={ __(
-								'Search for slide patterns',
-								'mark-bricks'
-							) }
-							hideLabelFromVision
-							type="search"
-							placeholder={ __( 'Search', 'mark-bricks' ) }
-							value={ search }
-							onValueChange={ setSearch }
-							prefix={
-								<InputLayout.Slot>
-									<Icon icon={ searchIcon } />
-								</InputLayout.Slot>
-							}
-							suffix={
-								search ? (
-									<InputLayout.Slot padding="minimal">
-										<IconButton
-											icon={ closeSmall }
-											label={ __(
-												'Reset search',
-												'mark-bricks'
-											) }
-											variant="minimal"
-											tone="neutral"
-											size="small"
-											onClick={ () => setSearch( '' ) }
-										/>
-									</InputLayout.Slot>
-								) : undefined
-							}
-						/>
 						<Tabs.List
 							className="slide-pattern-modal__categories"
 							variant="minimal"
@@ -204,9 +239,10 @@ export function SlidePatternModal( { previews, onClose }: Props ) {
 							tabIndex={ -1 }
 						>
 							<SlidePatternGrid
-								search={ search }
 								category={ name }
 								previews={ previews }
+								view={ view }
+								onChangeView={ setView }
 								onInsert={ onClose }
 							/>
 						</Tabs.Panel>
