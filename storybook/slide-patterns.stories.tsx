@@ -2,13 +2,20 @@
  * External dependencies
  */
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { browser } from '@marp-team/marp-core/browser';
 import {
 	SLIDE_PATTERNS,
+	SLIDE_PATTERN_CATEGORIES,
 	SLIDE_PATTERN_THEMES,
 	getSlidePatternMarkdown,
+	type SlidePattern,
 	type SlidePatternTheme,
 } from '@mark-bricks/editor/marp-patterns';
+import { renderSlides } from '@mark-bricks/marp-preview/render';
+// The web fonts of the built-in Gaia theme.
+import '@fontsource/lato/400.css';
+import '@fontsource/lato/900.css';
 
 /**
  * WordPress dependencies
@@ -20,46 +27,149 @@ import {
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
 /* eslint-enable @wordpress/no-unsafe-wp-apis */
+import {
+	DataViews,
+	filterSortAndPaginate,
+	type Field,
+	type View,
+} from '@wordpress/dataviews';
+import '@wordpress/dataviews/build-style/style.css';
+
+// Fits the slide to the card. The slide is an SVG, so it scales with its
+// width.
+const PREVIEW_STYLE = `
+:host { display: block; width: 100%; }
+div.marpit > svg { display: block; width: 100%; height: auto; }
+`;
+
+type SlidePatternPreviewProps = {
+	pattern: SlidePattern;
+	theme: SlidePatternTheme;
+};
 
 /**
- * Internal dependencies
- */
-import { SlidePreview } from './slide-preview';
-
-/**
- * Builds one deck of every slide pattern, in the order the inserter lists
- * them, in a built-in theme.
+ * Renders a pattern's slide in a built-in theme, as the app's slide preview
+ * does.
  *
- * @param theme The theme to show the patterns in.
- * @return Markdown of the deck.
+ * It renders in a shadow root, so the theme's stylesheet and the page's styles
+ * leave each other alone.
+ *
+ * @param props         Component props.
+ * @param props.pattern The pattern to show.
+ * @param props.theme   The theme to show it in.
  */
-function getSlidePatternDeck( theme: SlidePatternTheme ): string {
-	const slides = SLIDE_PATTERNS.map( getSlidePatternMarkdown );
-	return `---\nmarp: true\ntheme: ${ theme }\n---\n\n${ slides.join(
-		'\n\n---\n\n'
-	) }\n`;
+function SlidePatternPreview( { pattern, theme }: SlidePatternPreviewProps ) {
+	const ref = useRef< HTMLDivElement >( null );
+	const { html, css } = useMemo(
+		() =>
+			renderSlides(
+				`---\nmarp: true\ntheme: ${ theme }\n---\n\n${ getSlidePatternMarkdown(
+					pattern
+				) }\n`
+			),
+		[ pattern, theme ]
+	);
+
+	useLayoutEffect( () => {
+		const host = ref.current;
+		if ( ! host ) {
+			return;
+		}
+		const root = host.shadowRoot ?? host.attachShadow( { mode: 'open' } );
+		root.innerHTML = `<style>${ PREVIEW_STYLE }${ css }</style>${ html }`;
+		// Scales auto-scaling elements, and lays out the slide in WebKit,
+		// which cannot render HTML inside an SVG on its own. It must observe
+		// the shadow root: an observer on the document would not reach it.
+		const marpBrowser = browser( root );
+		return () => marpBrowser.cleanup();
+	}, [ html, css ] );
+
+	return <div ref={ ref } />;
 }
 
+const DEFAULT_VIEW: View = {
+	type: 'grid',
+	titleField: 'title',
+	mediaField: 'preview',
+	fields: [ 'categories' ],
+	perPage: SLIDE_PATTERNS.length,
+	layout: {
+		aspectRatio: '16/9',
+		badgeFields: [ 'categories' ],
+	},
+};
+
 /**
- * Every slide pattern of the inserter, rendered as the app's slide preview
- * shows them, in the built-in theme chosen at the top.
+ * Every slide pattern of the inserter in a grid, rendered in the built-in
+ * theme chosen at the top. The patterns can be searched by name and filtered
+ * by category.
  */
 function SlidePatterns() {
 	const [ theme, setTheme ] = useState< SlidePatternTheme >(
 		SLIDE_PATTERN_THEMES[ 0 ]
 	);
+	const [ view, setView ] = useState< View >( DEFAULT_VIEW );
+
+	const fields = useMemo< Field< SlidePattern >[] >(
+		() => [
+			{
+				id: 'preview',
+				label: 'Preview',
+				render: ( { item } ) => (
+					<SlidePatternPreview pattern={ item } theme={ theme } />
+				),
+				enableSorting: false,
+				enableHiding: false,
+			},
+			{
+				id: 'title',
+				label: 'Title',
+				type: 'text',
+				getValue: ( { item } ) => item.title(),
+				enableHiding: false,
+			},
+			{
+				id: 'categories',
+				label: 'Categories',
+				type: 'array',
+				getValue: ( { item } ) => [ ...item.categories ],
+				render: ( { item } ) =>
+					item.categories
+						.map(
+							( name ) =>
+								SLIDE_PATTERN_CATEGORIES.find(
+									( category ) => category.name === name
+								)?.label() ?? name
+						)
+						.join( ', ' ),
+				elements: SLIDE_PATTERN_CATEGORIES.map(
+					( { name, label } ) => ( { value: name, label: label() } )
+				),
+				filterBy: { operators: [ 'isAny' ] },
+				enableSorting: false,
+			},
+		],
+		[ theme ]
+	);
+
+	const { data, paginationInfo } = useMemo(
+		() => filterSortAndPaginate( [ ...SLIDE_PATTERNS ], view, fields ),
+		[ view, fields ]
+	);
+
 	return (
-		<div
-			style={ {
-				display: 'flex',
-				flexDirection: 'column',
-				height: '100vh',
-			} }
-		>
-			<div style={ { padding: '16px 16px 0' } }>
+		<DataViews
+			data={ data }
+			fields={ fields }
+			view={ view }
+			onChangeView={ setView }
+			paginationInfo={ paginationInfo }
+			defaultLayouts={ { grid: {} } }
+			getItemId={ ( item ) => item.name }
+			header={
 				<ToggleGroupControl
 					__next40pxDefaultSize
-					isBlock
+					hideLabelFromVision
 					label="Theme"
 					value={ theme }
 					onChange={ ( value ) =>
@@ -74,11 +184,8 @@ function SlidePatterns() {
 						/>
 					) ) }
 				</ToggleGroupControl>
-			</div>
-			<div style={ { flex: 1, minHeight: 0 } }>
-				<SlidePreview markdown={ getSlidePatternDeck( theme ) } />
-			</div>
-		</div>
+			}
+		/>
 	);
 }
 

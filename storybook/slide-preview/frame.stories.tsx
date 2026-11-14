@@ -12,8 +12,8 @@ import { renderSlides } from '@mark-bricks/marp-preview/render';
 import { SLIDE_PREVIEW_READY, type SlidePreviewMessage } from './messages';
 
 /**
- * The page of the slide preview that `SlidePreview` shows in a frame, as the
- * app does. The frame keeps the preview's page
+ * The page of the slide preview that the editor's stories show in a frame
+ * next to the editor, as the app does. The frame keeps the preview's page
  * styles and keys away from the editor. It renders the Markdown that the story
  * sends it.
  */
@@ -46,7 +46,7 @@ function SlidePreviewFrame() {
 const meta: Meta = {
 	title: 'Internal/Slide Preview Frame',
 	component: SlidePreviewFrame,
-	// Only `SlidePreview` shows it, in its frame.
+	// Only the editor's stories show it, in their frame.
 	tags: [ '!dev', '!autodocs' ],
 	parameters: { layout: 'fullscreen' },
 };

@@ -14,9 +14,7 @@ type Props = {
 };
 
 /**
- * A frame that shows the slides of a Marp deck, as the app's slide preview
- * does. The editor's stories show it in their side panel, and the slide
- * patterns' story shows every pattern in it.
+ * A frame that shows the slides of a Marp deck, for the editor's side panel.
  *
  * @param props          Component props.
  * @param props.markdown The Markdown of the deck to show.

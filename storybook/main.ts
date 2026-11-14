@@ -6,7 +6,7 @@ const config: StorybookConfig = {
 	staticDirs: [ '../packages/fixtures/markdown' ],
 	stories: [
 		'./*.stories.@(ts|tsx)',
-		// The page that `SlidePreview` shows the slides in, in a frame.
+		// The page that the editor's stories show their slides in, in a frame.
 		'./slide-preview/*.stories.@(ts|tsx)',
 		// The visual regression tests' stories stay out of the published
 		// Storybook.
