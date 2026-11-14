@@ -180,7 +180,16 @@ function SlidePatterns() {
 	);
 
 	return (
-		<>
+		<DataViews
+			data={ data }
+			fields={ fields }
+			view={ view }
+			onChangeView={ setView }
+			paginationInfo={ paginationInfo }
+			defaultLayouts={ { grid: {} } }
+			getItemId={ ( item ) => item.name }
+		>
+			{ /* Inside DataViews, so it shares the grid's background. */ }
 			<Text
 				variant="body-md"
 				render={ <p /> }
@@ -193,105 +202,94 @@ function SlidePatterns() {
 				</Link>{ ' ' }
 				deck, shown here in the built-in theme chosen below.
 			</Text>
-			<DataViews
-				data={ data }
-				fields={ fields }
-				view={ view }
-				onChangeView={ setView }
-				paginationInfo={ paginationInfo }
-				defaultLayouts={ { grid: {} } }
-				getItemId={ ( item ) => item.name }
-			>
-				{ /* A toolbar of its own in place of the default one: the view
+			{ /* A toolbar of its own in place of the default one: the view
 			options' preview sizes go smaller than a slide can be read at, and
 			a select picks a category more simply than the filters. */ }
-				<Stack
-					direction="row"
-					align="center"
-					justify="space-between"
-					gap="md"
-					className="dataviews__view-actions"
-				>
-					<Stack direction="row" align="center" gap="lg">
-						<div style={ { width: 200 } }>
-							<SelectControl
-								label="Category"
-								hideLabelFromVision
-								items={ CATEGORY_ITEMS }
-								value={
-									CATEGORY_ITEMS.find(
-										( item ) =>
-											item.value === selectedCategory
-									) ?? CATEGORY_ITEMS[ 0 ]
-								}
-								onValueChange={ ( item ) =>
-									setView( {
-										...view,
-										filters: item?.value
-											? [
-													{
-														field: 'categories',
-														operator: 'isAny',
-														value: [ item.value ],
-													},
-												]
-											: [],
-									} )
-								}
-							/>
-						</div>
-						<ToggleGroupControl
-							__next40pxDefaultSize
+			<Stack
+				direction="row"
+				align="center"
+				justify="space-between"
+				gap="md"
+				className="dataviews__view-actions"
+			>
+				<Stack direction="row" align="center" gap="lg">
+					<div style={ { width: 200 } }>
+						<SelectControl
+							label="Category"
 							hideLabelFromVision
-							label="Theme"
-							value={ theme }
-							onChange={ ( value ) =>
-								setTheme( value as SlidePatternTheme )
+							items={ CATEGORY_ITEMS }
+							value={
+								CATEGORY_ITEMS.find(
+									( item ) => item.value === selectedCategory
+								) ?? CATEGORY_ITEMS[ 0 ]
 							}
-						>
-							{ SLIDE_PATTERN_THEMES.map( ( name ) => (
-								<ToggleGroupControlOption
-									key={ name }
-									value={ name }
-									label={ name }
-								/>
-							) ) }
-						</ToggleGroupControl>
-					</Stack>
-					<div style={ { width: 160 } }>
-						<RangeControl
-							__next40pxDefaultSize
-							hideLabelFromVision
-							label="Preview size"
-							showTooltip={ false }
-							withInputField={ false }
-							min={ 0 }
-							max={ PREVIEW_SIZES.length - 1 }
-							step={ 1 }
-							marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
-								value: index,
-							} ) ) }
-							value={ Math.max(
-								0,
-								PREVIEW_SIZES.indexOf(
-									previewSize ?? PREVIEW_SIZES[ 0 ]
-								)
-							) }
-							onChange={ ( index = 0 ) =>
+							onValueChange={ ( item ) =>
 								setView( {
 									...view,
-									layout: {
-										...view.layout,
-										previewSize: PREVIEW_SIZES[ index ],
-									},
-								} as View )
+									filters: item?.value
+										? [
+												{
+													field: 'categories',
+													operator: 'isAny',
+													value: [ item.value ],
+												},
+											]
+										: [],
+								} )
 							}
 						/>
 					</div>
+					<ToggleGroupControl
+						__next40pxDefaultSize
+						hideLabelFromVision
+						label="Theme"
+						value={ theme }
+						onChange={ ( value ) =>
+							setTheme( value as SlidePatternTheme )
+						}
+					>
+						{ SLIDE_PATTERN_THEMES.map( ( name ) => (
+							<ToggleGroupControlOption
+								key={ name }
+								value={ name }
+								label={ name }
+							/>
+						) ) }
+					</ToggleGroupControl>
 				</Stack>
-				<DataViews.Layout />
-			</DataViews>
-		</>
+				<div style={ { width: 160 } }>
+					<RangeControl
+						__next40pxDefaultSize
+						hideLabelFromVision
+						label="Preview size"
+						showTooltip={ false }
+						withInputField={ false }
+						min={ 0 }
+						max={ PREVIEW_SIZES.length - 1 }
+						step={ 1 }
+						marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
+							value: index,
+						} ) ) }
+						value={ Math.max(
+							0,
+							PREVIEW_SIZES.indexOf(
+								previewSize ?? PREVIEW_SIZES[ 0 ]
+							)
+						) }
+						onChange={ ( index = 0 ) =>
+							setView( {
+								...view,
+								layout: {
+									...view.layout,
+									previewSize: PREVIEW_SIZES[ index ],
+								},
+							} as View )
+						}
+					/>
+				</div>
+			</Stack>
+			<DataViews.Layout />
+		</DataViews>
 	);
 }
 
