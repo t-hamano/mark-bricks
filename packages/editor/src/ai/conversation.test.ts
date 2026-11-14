@@ -88,6 +88,37 @@ describe( 'conversationReducer', () => {
 		} );
 	} );
 
+	it( 'adds up the tokens read from the cache when reported', () => {
+		const { messages } = run(
+			{ type: 'START', text: 'Rewrite this' },
+			{
+				type: 'USAGE',
+				usage: {
+					inputTokens: 1200,
+					cachedInputTokens: 1000,
+					outputTokens: 80,
+				},
+			},
+			{
+				type: 'USAGE',
+				usage: { inputTokens: 1300, outputTokens: 20 },
+			},
+			{ type: 'FINISH', status: 'done' }
+		);
+		expect( messages[ 1 ] ).toMatchObject( {
+			usage: {
+				inputTokens: 2500,
+				cachedInputTokens: 1000,
+				outputTokens: 100,
+			},
+		} );
+		const unreported = run(
+			{ type: 'START', text: 'Hi' },
+			{ type: 'USAGE', usage: { inputTokens: 10, outputTokens: 5 } }
+		).messages[ 1 ] as AssistantChatMessage;
+		expect( unreported.usage ).not.toHaveProperty( 'cachedInputTokens' );
+	} );
+
 	it( 'ignores events after the answer finished', () => {
 		const { messages } = run(
 			{ type: 'START', text: 'Hi' },

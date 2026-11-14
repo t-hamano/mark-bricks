@@ -8,16 +8,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T09:26:40.229Z\n"
-"PO-Revision-Date: 2026-11-14T09:27:14.158Z\n"
+"POT-Creation-Date: 2026-11-14T10:55:19.441Z\n"
+"PO-Revision-Date: 2026-11-14T10:55:39.695Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: zh_TW\n"
 "X-Domain: mark-bricks\n"
 
+# 1: The number of tokens the AI model read. 2: How many of them it read from the cache, at a lower price. 3: The number of tokens it wrote.
+#: src/components/ai-sidebar/chat.tsx:74
+msgid "%1$s input tokens (%2$s cached), %3$s output tokens"
+msgstr "輸入 %1$s 個 token（快取 %2$s 個），輸出 %3$s 個 token"
+
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:123
+#: src/components/ai-sidebar/chat.tsx:85
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "輸入 %1$s 個 token，輸出 %2$s 個 token"
 
@@ -67,7 +72,7 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/block-library/html/marp-directive-settings.tsx:329
+#: src/block-library/html/marp-directive-settings.tsx:334
 msgid "A CSS background image, such as a gradient."
 msgstr "CSS 背景圖片，例如漸層。"
 
@@ -149,15 +154,15 @@ msgstr "任何編輯器"
 msgid "Apply"
 msgstr "套用"
 
-#: src/block-library/html/marp-directive-settings.tsx:176
+#: src/block-library/html/marp-directive-settings.tsx:177
 msgid "Apply to"
 msgstr "套用至"
 
-#: src/components/ai-sidebar/chat.tsx:298
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Ask the AI Assistant"
 msgstr "詢問 AI 助理"
 
-#: src/components/ai-sidebar/chat.tsx:276
+#: src/components/ai-sidebar/chat.tsx:296
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -174,11 +179,11 @@ msgstr "自動"
 msgid "Background"
 msgstr "背景"
 
-#: src/block-library/html/marp-directive-settings.tsx:306
+#: src/block-library/html/marp-directive-settings.tsx:311
 msgid "Background color"
 msgstr "背景顏色"
 
-#: src/block-library/html/marp-directive-settings.tsx:328
+#: src/block-library/html/marp-directive-settings.tsx:333
 msgid "Background image"
 msgstr "背景圖片"
 
@@ -236,7 +241,7 @@ msgstr "注意"
 msgid "Cell content"
 msgstr "儲存格內容"
 
-#: src/block-library/html/marp-directive-settings.tsx:54
+#: src/block-library/html/marp-directive-settings.tsx:55
 msgid "Centers the content of the slide."
 msgstr "將投影片內容置中。"
 
@@ -252,17 +257,17 @@ msgstr "新增段落後，藉以變更區塊類型"
 msgid "Choose language…"
 msgstr "選擇語言…"
 
-#: src/block-library/html/marp-directive-settings.tsx:203
-#: src/block-library/html/marp-directive-settings.tsx:229
+#: src/block-library/html/marp-directive-settings.tsx:208
+#: src/block-library/html/marp-directive-settings.tsx:234
 msgid "Class"
 msgstr "類別"
 
-#: src/block-library/html/marp-directive-settings.tsx:241
+#: src/block-library/html/marp-directive-settings.tsx:246
 msgid "Classes of the slide, separated by spaces."
 msgstr "投影片的類別，以空格分隔。"
 
 # %s: A theme name, such as "gaia".
-#: src/block-library/html/marp-directive-settings.tsx:235
+#: src/block-library/html/marp-directive-settings.tsx:240
 msgid "Classes that the %s theme does not provide, separated by spaces."
 msgstr "%s 佈景主題未提供的類別，以空格分隔。"
 
@@ -314,7 +319,7 @@ msgid "Create Table"
 msgstr "建立表格"
 
 #: src/block-library/quote/edit.tsx:151
-#: src/block-library/html/marp-directive-settings.tsx:268
+#: src/block-library/html/marp-directive-settings.tsx:273
 msgid "Default"
 msgstr "預設"
 
@@ -348,7 +353,7 @@ msgstr "編輯圖片"
 msgid "Edit table"
 msgstr "編輯表格"
 
-#: src/components/ai-sidebar/chat.tsx:78
+#: src/components/ai-sidebar/chat.tsx:106
 msgid "Edited the document."
 msgstr "已編輯文件。"
 
@@ -408,16 +413,16 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "專注於你的訊息"
 
-#: src/block-library/html/marp-directive-settings.tsx:197
+#: src/block-library/html/marp-directive-settings.tsx:202
 msgid "Following slides"
 msgstr "後續投影片"
 
-#: src/block-library/html/marp-directive-settings.tsx:83
+#: src/block-library/html/marp-directive-settings.tsx:84
 msgid "Follows the setting of the deck."
 msgstr "沿用簡報的設定。"
 
 #: src/components/front-matter-editor/index.tsx:293
-#: src/block-library/html/marp-directive-settings.tsx:297
+#: src/block-library/html/marp-directive-settings.tsx:302
 msgid "Footer"
 msgstr "頁尾"
 
@@ -455,7 +460,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:282
-#: src/block-library/html/marp-directive-settings.tsx:288
+#: src/block-library/html/marp-directive-settings.tsx:293
 msgid "Header"
 msgstr "頁首"
 
@@ -536,7 +541,7 @@ msgstr "標題、文字和清單分兩欄"
 msgid "Height"
 msgstr "高度"
 
-#: src/block-library/html/marp-directive-settings.tsx:276
+#: src/block-library/html/marp-directive-settings.tsx:281
 msgid "Hide"
 msgstr "隱藏"
 
@@ -544,15 +549,15 @@ msgstr "隱藏"
 msgid "Hide Document Overview"
 msgstr "隱藏內容總覽"
 
-#: src/block-library/html/marp-directive-settings.tsx:78
+#: src/block-library/html/marp-directive-settings.tsx:79
 msgid "Hides the page number without counting this slide."
 msgstr "隱藏頁碼，且不計入此投影片。"
 
-#: src/block-library/html/marp-directive-settings.tsx:71
+#: src/block-library/html/marp-directive-settings.tsx:72
 msgid "Hides the page number."
 msgstr "隱藏頁碼。"
 
-#: src/block-library/html/marp-directive-settings.tsx:280
+#: src/block-library/html/marp-directive-settings.tsx:285
 msgid "Hold"
 msgstr "保持"
 
@@ -624,7 +629,7 @@ msgstr "在目前位置下方插入資料列"
 msgid "Insert row before"
 msgstr "在目前位置上方插入資料列"
 
-#: src/block-library/html/marp-directive-settings.tsx:56
+#: src/block-library/html/marp-directive-settings.tsx:57
 msgid "Inverts the colors of the slide."
 msgstr "反轉投影片的顏色。"
 
@@ -719,7 +724,7 @@ msgstr "Marp 會將這些詞讀作設定：%s"
 msgid "Marp slide settings"
 msgstr "Marp 投影片設定"
 
-#: src/components/ai-sidebar/chat.tsx:296
+#: src/components/ai-sidebar/chat.tsx:316
 msgid "Message"
 msgstr "訊息"
 
@@ -767,7 +772,7 @@ msgstr "專用應用程式"
 msgid "Open by default"
 msgstr "預設開啟"
 
-#: src/components/ai-sidebar/chat.tsx:268
+#: src/components/ai-sidebar/chat.tsx:288
 msgid "Open settings"
 msgstr "開啟設定"
 
@@ -779,7 +784,7 @@ msgstr "有序"
 msgid "Original"
 msgstr "原始尺寸"
 
-#: src/block-library/html/marp-directive-settings.tsx:228
+#: src/block-library/html/marp-directive-settings.tsx:233
 msgid "Other classes"
 msgstr "其他類別"
 
@@ -791,7 +796,7 @@ msgstr "減少縮排"
 msgid "Outline"
 msgstr "大綱"
 
-#: src/block-library/html/marp-directive-settings.tsx:254
+#: src/block-library/html/marp-directive-settings.tsx:259
 msgid "Page number"
 msgstr "頁碼"
 
@@ -922,11 +927,11 @@ msgstr "邊輸入邊查看每張投影片"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他設定請參閱 <a>Marp 文件</a>。"
 
-#: src/components/ai-sidebar/chat.tsx:319
+#: src/components/ai-sidebar/chat.tsx:339
 msgid "Send"
 msgstr "傳送"
 
-#: src/components/ai-sidebar/chat.tsx:258
+#: src/components/ai-sidebar/chat.tsx:278
 msgid "Set an API key to use the AI Assistant."
 msgstr "請設定 API 金鑰以使用 AI 助理。"
 
@@ -942,7 +947,7 @@ msgctxt "slide pattern"
 msgid "Share"
 msgstr "分享"
 
-#: src/block-library/html/marp-directive-settings.tsx:272
+#: src/block-library/html/marp-directive-settings.tsx:277
 msgid "Show"
 msgstr "顯示"
 
@@ -965,11 +970,11 @@ msgstr "以全螢幕顯示投影片"
 msgid "Shown as a tooltip on hover."
 msgstr "滑鼠懸停時會顯示為工具提示。"
 
-#: src/block-library/html/marp-directive-settings.tsx:73
+#: src/block-library/html/marp-directive-settings.tsx:74
 msgid "Shows the page number without counting this slide."
 msgstr "顯示頁碼，但不計入此投影片。"
 
-#: src/block-library/html/marp-directive-settings.tsx:69
+#: src/block-library/html/marp-directive-settings.tsx:70
 msgid "Shows the page number."
 msgstr "顯示頁碼。"
 
@@ -981,7 +986,7 @@ msgstr "簡潔清爽，以 GitHub Markdown 樣式為基礎。"
 msgid "Size"
 msgstr "尺寸"
 
-#: src/block-library/html/marp-directive-settings.tsx:284
+#: src/block-library/html/marp-directive-settings.tsx:289
 msgid "Skip"
 msgstr "略過"
 
@@ -1028,11 +1033,11 @@ msgstr "分割寬度"
 msgid "Stack vertically"
 msgstr "垂直堆疊"
 
-#: src/components/ai-sidebar/chat.tsx:310
+#: src/components/ai-sidebar/chat.tsx:330
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:105
+#: src/components/ai-sidebar/chat.tsx:133
 msgid "Stopped."
 msgstr "已停止。"
 
@@ -1048,7 +1053,7 @@ msgstr "為選取內容加上刪除線"
 msgid "Switch between the visual editor and the code editor."
 msgstr "在視覺化編輯器和程式碼編輯器之間切換。"
 
-#: src/block-library/html/marp-directive-settings.tsx:58
+#: src/block-library/html/marp-directive-settings.tsx:59
 msgid "Switches to the theme's alternate color scheme."
 msgstr "切換到佈景主題的另一種配色方案。"
 
@@ -1061,7 +1066,7 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "文字"
 
-#: src/block-library/html/marp-directive-settings.tsx:318
+#: src/block-library/html/marp-directive-settings.tsx:323
 msgid "Text color"
 msgstr "文字顏色"
 
@@ -1069,7 +1074,7 @@ msgstr "文字顏色"
 msgid "Text shown at the bottom of each slide."
 msgstr "顯示在每張投影片底部的文字。"
 
-#: src/block-library/html/marp-directive-settings.tsx:298
+#: src/block-library/html/marp-directive-settings.tsx:303
 msgid "Text shown at the bottom of the slide."
 msgstr "顯示在投影片底部的文字。"
 
@@ -1077,11 +1082,11 @@ msgstr "顯示在投影片底部的文字。"
 msgid "Text shown at the top of each slide."
 msgstr "顯示在每張投影片頂端的文字。"
 
-#: src/block-library/html/marp-directive-settings.tsx:289
+#: src/block-library/html/marp-directive-settings.tsx:294
 msgid "Text shown at the top of the slide."
 msgstr "顯示在投影片頂部的文字。"
 
-#: src/components/ai-sidebar/chat.tsx:112
+#: src/components/ai-sidebar/chat.tsx:140
 msgid "The answer could not be loaded."
 msgstr "無法載入回答。"
 
@@ -1093,7 +1098,7 @@ msgstr "投影片的長寬比。"
 msgid "The diagram could not be rendered."
 msgstr "無法轉譯圖表。"
 
-#: src/components/ai-sidebar/chat.tsx:83
+#: src/components/ai-sidebar/chat.tsx:111
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1111,11 +1116,11 @@ msgstr "圖片在內容後方填滿投影片或其一側。"
 msgid "The image sits in the slide content."
 msgstr "圖片位於投影片內容中。"
 
-#: src/block-library/html/marp-directive-settings.tsx:183
+#: src/block-library/html/marp-directive-settings.tsx:184
 msgid "The settings apply to this slide and the slides after it."
 msgstr "設定套用至此投影片及之後的投影片。"
 
-#: src/block-library/html/marp-directive-settings.tsx:179
+#: src/block-library/html/marp-directive-settings.tsx:180
 msgid "The settings apply to this slide only."
 msgstr "設定僅套用至此投影片。"
 
@@ -1140,7 +1145,7 @@ msgstr "主題"
 msgid "Thinking…"
 msgstr "正在思考…"
 
-#: src/block-library/html/marp-directive-settings.tsx:193
+#: src/block-library/html/marp-directive-settings.tsx:198
 msgid "This slide"
 msgstr "此投影片"
 
@@ -1365,8 +1370,8 @@ msgstr "YAML 前置資料"
 # %s: An example value, such as "1.5".
 # %s: An example value, such as "#f0f0f0".
 #: src/block-library/image/marp-image-settings.tsx:485
-#: src/block-library/html/marp-directive-settings.tsx:309
-#: src/block-library/html/marp-directive-settings.tsx:321
-#: src/block-library/html/marp-directive-settings.tsx:335
+#: src/block-library/html/marp-directive-settings.tsx:314
+#: src/block-library/html/marp-directive-settings.tsx:326
+#: src/block-library/html/marp-directive-settings.tsx:340
 msgid "e.g. %s"
 msgstr "例如 %s"

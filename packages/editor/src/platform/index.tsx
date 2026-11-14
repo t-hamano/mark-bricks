@@ -72,6 +72,11 @@ export type AiUsage = {
 	 */
 	inputTokens: number;
 	/**
+	 * The part of `inputTokens` the model read from the prompt cache, for
+	 * a fraction of the price. Omitted when the host does not report it.
+	 */
+	cachedInputTokens?: number;
+	/**
 	 * The tokens the model wrote, including its thinking.
 	 */
 	outputTokens: number;

@@ -8,16 +8,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T09:26:40.229Z\n"
-"PO-Revision-Date: 2026-11-14T09:27:10.987Z\n"
+"POT-Creation-Date: 2026-11-14T10:55:19.441Z\n"
+"PO-Revision-Date: 2026-11-14T10:55:37.985Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: pt_BR\n"
 "X-Domain: mark-bricks\n"
 
+# 1: The number of tokens the AI model read. 2: How many of them it read from the cache, at a lower price. 3: The number of tokens it wrote.
+#: src/components/ai-sidebar/chat.tsx:74
+msgid "%1$s input tokens (%2$s cached), %3$s output tokens"
+msgstr "%1$s tokens de entrada (%2$s em cache), %3$s tokens de saída"
+
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:123
+#: src/components/ai-sidebar/chat.tsx:85
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "%1$s tokens de entrada, %2$s tokens de saída"
 
@@ -67,7 +72,7 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/block-library/html/marp-directive-settings.tsx:329
+#: src/block-library/html/marp-directive-settings.tsx:334
 msgid "A CSS background image, such as a gradient."
 msgstr "Uma imagem de fundo CSS, como um degradê."
 
@@ -149,15 +154,15 @@ msgstr "Qualquer editor"
 msgid "Apply"
 msgstr "Aplicar"
 
-#: src/block-library/html/marp-directive-settings.tsx:176
+#: src/block-library/html/marp-directive-settings.tsx:177
 msgid "Apply to"
 msgstr "Aplicar a"
 
-#: src/components/ai-sidebar/chat.tsx:298
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Ask the AI Assistant"
 msgstr "Pergunte ao assistente de IA"
 
-#: src/components/ai-sidebar/chat.tsx:276
+#: src/components/ai-sidebar/chat.tsx:296
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -174,11 +179,11 @@ msgstr "Automático"
 msgid "Background"
 msgstr "Fundo"
 
-#: src/block-library/html/marp-directive-settings.tsx:306
+#: src/block-library/html/marp-directive-settings.tsx:311
 msgid "Background color"
 msgstr "Cor de fundo"
 
-#: src/block-library/html/marp-directive-settings.tsx:328
+#: src/block-library/html/marp-directive-settings.tsx:333
 msgid "Background image"
 msgstr "Imagem de fundo"
 
@@ -236,7 +241,7 @@ msgstr "Cuidado"
 msgid "Cell content"
 msgstr "Conteúdo da célula"
 
-#: src/block-library/html/marp-directive-settings.tsx:54
+#: src/block-library/html/marp-directive-settings.tsx:55
 msgid "Centers the content of the slide."
 msgstr "Centraliza o conteúdo do slide."
 
@@ -252,17 +257,17 @@ msgstr "Mude o tipo de bloco após adicionar um novo parágrafo."
 msgid "Choose language…"
 msgstr "Escolher linguagem…"
 
-#: src/block-library/html/marp-directive-settings.tsx:203
-#: src/block-library/html/marp-directive-settings.tsx:229
+#: src/block-library/html/marp-directive-settings.tsx:208
+#: src/block-library/html/marp-directive-settings.tsx:234
 msgid "Class"
 msgstr "Classe"
 
-#: src/block-library/html/marp-directive-settings.tsx:241
+#: src/block-library/html/marp-directive-settings.tsx:246
 msgid "Classes of the slide, separated by spaces."
 msgstr "Classes do slide, separadas por espaços."
 
 # %s: A theme name, such as "gaia".
-#: src/block-library/html/marp-directive-settings.tsx:235
+#: src/block-library/html/marp-directive-settings.tsx:240
 msgid "Classes that the %s theme does not provide, separated by spaces."
 msgstr "Classes que o tema %s não oferece, separadas por espaços."
 
@@ -314,7 +319,7 @@ msgid "Create Table"
 msgstr "Criar tabela"
 
 #: src/block-library/quote/edit.tsx:151
-#: src/block-library/html/marp-directive-settings.tsx:268
+#: src/block-library/html/marp-directive-settings.tsx:273
 msgid "Default"
 msgstr "Padrão"
 
@@ -348,7 +353,7 @@ msgstr "Editar imagem"
 msgid "Edit table"
 msgstr "Editar tabela"
 
-#: src/components/ai-sidebar/chat.tsx:78
+#: src/components/ai-sidebar/chat.tsx:106
 msgid "Edited the document."
 msgstr "O documento foi editado."
 
@@ -408,16 +413,16 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "Foque na sua mensagem"
 
-#: src/block-library/html/marp-directive-settings.tsx:197
+#: src/block-library/html/marp-directive-settings.tsx:202
 msgid "Following slides"
 msgstr "Slides seguintes"
 
-#: src/block-library/html/marp-directive-settings.tsx:83
+#: src/block-library/html/marp-directive-settings.tsx:84
 msgid "Follows the setting of the deck."
 msgstr "Segue a configuração da apresentação."
 
 #: src/components/front-matter-editor/index.tsx:293
-#: src/block-library/html/marp-directive-settings.tsx:297
+#: src/block-library/html/marp-directive-settings.tsx:302
 msgid "Footer"
 msgstr "Rodapé"
 
@@ -455,7 +460,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:282
-#: src/block-library/html/marp-directive-settings.tsx:288
+#: src/block-library/html/marp-directive-settings.tsx:293
 msgid "Header"
 msgstr "Cabeçalho"
 
@@ -536,7 +541,7 @@ msgstr "Título da seção, texto e lista em duas colunas"
 msgid "Height"
 msgstr "Altura"
 
-#: src/block-library/html/marp-directive-settings.tsx:276
+#: src/block-library/html/marp-directive-settings.tsx:281
 msgid "Hide"
 msgstr "Ocultar"
 
@@ -544,15 +549,15 @@ msgstr "Ocultar"
 msgid "Hide Document Overview"
 msgstr "Ocultar visão geral do documento"
 
-#: src/block-library/html/marp-directive-settings.tsx:78
+#: src/block-library/html/marp-directive-settings.tsx:79
 msgid "Hides the page number without counting this slide."
 msgstr "Oculta o número da página sem contar este slide."
 
-#: src/block-library/html/marp-directive-settings.tsx:71
+#: src/block-library/html/marp-directive-settings.tsx:72
 msgid "Hides the page number."
 msgstr "Oculta o número da página."
 
-#: src/block-library/html/marp-directive-settings.tsx:280
+#: src/block-library/html/marp-directive-settings.tsx:285
 msgid "Hold"
 msgstr "Manter"
 
@@ -624,7 +629,7 @@ msgstr "Inserir linha depois"
 msgid "Insert row before"
 msgstr "Inserir linha antes"
 
-#: src/block-library/html/marp-directive-settings.tsx:56
+#: src/block-library/html/marp-directive-settings.tsx:57
 msgid "Inverts the colors of the slide."
 msgstr "Inverte as cores do slide."
 
@@ -720,7 +725,7 @@ msgstr "O Marp lê estas palavras como configurações: %s"
 msgid "Marp slide settings"
 msgstr "Configurações do slide Marp"
 
-#: src/components/ai-sidebar/chat.tsx:296
+#: src/components/ai-sidebar/chat.tsx:316
 msgid "Message"
 msgstr "Mensagem"
 
@@ -770,7 +775,7 @@ msgstr "Um único app"
 msgid "Open by default"
 msgstr "Aberto por padrão"
 
-#: src/components/ai-sidebar/chat.tsx:268
+#: src/components/ai-sidebar/chat.tsx:288
 msgid "Open settings"
 msgstr "Abrir configurações"
 
@@ -782,7 +787,7 @@ msgstr "Ordenada"
 msgid "Original"
 msgstr "Original"
 
-#: src/block-library/html/marp-directive-settings.tsx:228
+#: src/block-library/html/marp-directive-settings.tsx:233
 msgid "Other classes"
 msgstr "Outras classes"
 
@@ -794,7 +799,7 @@ msgstr "Diminuir recuo"
 msgid "Outline"
 msgstr "Estrutura"
 
-#: src/block-library/html/marp-directive-settings.tsx:254
+#: src/block-library/html/marp-directive-settings.tsx:259
 msgid "Page number"
 msgstr "Número da página"
 
@@ -925,11 +930,11 @@ msgstr "Veja cada slide enquanto digita"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Consulte a <a>documentação do Marp</a> para outras configurações."
 
-#: src/components/ai-sidebar/chat.tsx:319
+#: src/components/ai-sidebar/chat.tsx:339
 msgid "Send"
 msgstr "Enviar"
 
-#: src/components/ai-sidebar/chat.tsx:258
+#: src/components/ai-sidebar/chat.tsx:278
 msgid "Set an API key to use the AI Assistant."
 msgstr "Defina uma chave de API para usar o assistente de IA."
 
@@ -947,7 +952,7 @@ msgctxt "slide pattern"
 msgid "Share"
 msgstr "Compartilhar"
 
-#: src/block-library/html/marp-directive-settings.tsx:272
+#: src/block-library/html/marp-directive-settings.tsx:277
 msgid "Show"
 msgstr "Mostrar"
 
@@ -970,11 +975,11 @@ msgstr "Mostre seus slides em tela cheia"
 msgid "Shown as a tooltip on hover."
 msgstr "Exibido como dica ao passar o mouse."
 
-#: src/block-library/html/marp-directive-settings.tsx:73
+#: src/block-library/html/marp-directive-settings.tsx:74
 msgid "Shows the page number without counting this slide."
 msgstr "Mostra o número da página sem contar este slide."
 
-#: src/block-library/html/marp-directive-settings.tsx:69
+#: src/block-library/html/marp-directive-settings.tsx:70
 msgid "Shows the page number."
 msgstr "Mostra o número da página."
 
@@ -986,7 +991,7 @@ msgstr "Simples e limpo, baseado no estilo Markdown do GitHub."
 msgid "Size"
 msgstr "Tamanho"
 
-#: src/block-library/html/marp-directive-settings.tsx:284
+#: src/block-library/html/marp-directive-settings.tsx:289
 msgid "Skip"
 msgstr "Pular"
 
@@ -1033,11 +1038,11 @@ msgstr "Largura da divisão"
 msgid "Stack vertically"
 msgstr "Empilhar verticalmente"
 
-#: src/components/ai-sidebar/chat.tsx:310
+#: src/components/ai-sidebar/chat.tsx:330
 msgid "Stop"
 msgstr "Parar"
 
-#: src/components/ai-sidebar/chat.tsx:105
+#: src/components/ai-sidebar/chat.tsx:133
 msgid "Stopped."
 msgstr "Interrompido."
 
@@ -1053,7 +1058,7 @@ msgstr "Adicionar um tachado ao texto selecionado."
 msgid "Switch between the visual editor and the code editor."
 msgstr "Alternar entre o editor visual e o editor de código."
 
-#: src/block-library/html/marp-directive-settings.tsx:58
+#: src/block-library/html/marp-directive-settings.tsx:59
 msgid "Switches to the theme's alternate color scheme."
 msgstr "Muda para o esquema de cores alternativo do tema."
 
@@ -1066,7 +1071,7 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "Texto"
 
-#: src/block-library/html/marp-directive-settings.tsx:318
+#: src/block-library/html/marp-directive-settings.tsx:323
 msgid "Text color"
 msgstr "Cor do texto"
 
@@ -1074,7 +1079,7 @@ msgstr "Cor do texto"
 msgid "Text shown at the bottom of each slide."
 msgstr "Texto exibido na parte inferior de cada slide."
 
-#: src/block-library/html/marp-directive-settings.tsx:298
+#: src/block-library/html/marp-directive-settings.tsx:303
 msgid "Text shown at the bottom of the slide."
 msgstr "Texto exibido na parte inferior do slide."
 
@@ -1082,11 +1087,11 @@ msgstr "Texto exibido na parte inferior do slide."
 msgid "Text shown at the top of each slide."
 msgstr "Texto exibido no topo de cada slide."
 
-#: src/block-library/html/marp-directive-settings.tsx:289
+#: src/block-library/html/marp-directive-settings.tsx:294
 msgid "Text shown at the top of the slide."
 msgstr "Texto exibido na parte superior do slide."
 
-#: src/components/ai-sidebar/chat.tsx:112
+#: src/components/ai-sidebar/chat.tsx:140
 msgid "The answer could not be loaded."
 msgstr "Não foi possível carregar a resposta."
 
@@ -1098,7 +1103,7 @@ msgstr "A proporção dos slides."
 msgid "The diagram could not be rendered."
 msgstr "Não foi possível renderizar o diagrama."
 
-#: src/components/ai-sidebar/chat.tsx:83
+#: src/components/ai-sidebar/chat.tsx:111
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1118,11 +1123,11 @@ msgstr "A imagem preenche o slide, ou um dos lados dele, atrás do conteúdo."
 msgid "The image sits in the slide content."
 msgstr "A imagem fica no conteúdo do slide."
 
-#: src/block-library/html/marp-directive-settings.tsx:183
+#: src/block-library/html/marp-directive-settings.tsx:184
 msgid "The settings apply to this slide and the slides after it."
 msgstr "As configurações se aplicam a este slide e aos seguintes."
 
-#: src/block-library/html/marp-directive-settings.tsx:179
+#: src/block-library/html/marp-directive-settings.tsx:180
 msgid "The settings apply to this slide only."
 msgstr "As configurações se aplicam somente a este slide."
 
@@ -1149,7 +1154,7 @@ msgstr "Tema"
 msgid "Thinking…"
 msgstr "Pensando…"
 
-#: src/block-library/html/marp-directive-settings.tsx:193
+#: src/block-library/html/marp-directive-settings.tsx:198
 msgid "This slide"
 msgstr "Este slide"
 
@@ -1374,8 +1379,8 @@ msgstr "Front matter YAML"
 # %s: An example value, such as "1.5".
 # %s: An example value, such as "#f0f0f0".
 #: src/block-library/image/marp-image-settings.tsx:485
-#: src/block-library/html/marp-directive-settings.tsx:309
-#: src/block-library/html/marp-directive-settings.tsx:321
-#: src/block-library/html/marp-directive-settings.tsx:335
+#: src/block-library/html/marp-directive-settings.tsx:314
+#: src/block-library/html/marp-directive-settings.tsx:326
+#: src/block-library/html/marp-directive-settings.tsx:340
 msgid "e.g. %s"
 msgstr "ex.: %s"

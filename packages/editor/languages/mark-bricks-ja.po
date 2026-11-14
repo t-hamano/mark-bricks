@@ -8,16 +8,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T09:26:40.229Z\n"
-"PO-Revision-Date: 2026-11-14T09:27:04.900Z\n"
+"POT-Creation-Date: 2026-11-14T10:55:19.441Z\n"
+"PO-Revision-Date: 2026-11-14T10:55:25.318Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: ja\n"
 "X-Domain: mark-bricks\n"
 
+# 1: The number of tokens the AI model read. 2: How many of them it read from the cache, at a lower price. 3: The number of tokens it wrote.
+#: src/components/ai-sidebar/chat.tsx:74
+msgid "%1$s input tokens (%2$s cached), %3$s output tokens"
+msgstr "入力 %1$s トークン（キャッシュ %2$s）、出力 %3$s トークン"
+
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:123
+#: src/components/ai-sidebar/chat.tsx:85
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "入力 %1$s トークン、出力 %2$s トークン"
 
@@ -67,7 +72,7 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
-#: src/block-library/html/marp-directive-settings.tsx:329
+#: src/block-library/html/marp-directive-settings.tsx:334
 msgid "A CSS background image, such as a gradient."
 msgstr "グラデーションなどのCSS背景画像です。"
 
@@ -149,15 +154,15 @@ msgstr "どのエディターでも"
 msgid "Apply"
 msgstr "適用"
 
-#: src/block-library/html/marp-directive-settings.tsx:176
+#: src/block-library/html/marp-directive-settings.tsx:177
 msgid "Apply to"
 msgstr "適用範囲"
 
-#: src/components/ai-sidebar/chat.tsx:298
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Ask the AI Assistant"
 msgstr "AI アシスタントに質問"
 
-#: src/components/ai-sidebar/chat.tsx:276
+#: src/components/ai-sidebar/chat.tsx:296
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -174,11 +179,11 @@ msgstr "自動"
 msgid "Background"
 msgstr "背景"
 
-#: src/block-library/html/marp-directive-settings.tsx:306
+#: src/block-library/html/marp-directive-settings.tsx:311
 msgid "Background color"
 msgstr "背景色"
 
-#: src/block-library/html/marp-directive-settings.tsx:328
+#: src/block-library/html/marp-directive-settings.tsx:333
 msgid "Background image"
 msgstr "背景画像"
 
@@ -236,7 +241,7 @@ msgstr "注意"
 msgid "Cell content"
 msgstr "セルの内容"
 
-#: src/block-library/html/marp-directive-settings.tsx:54
+#: src/block-library/html/marp-directive-settings.tsx:55
 msgid "Centers the content of the slide."
 msgstr "スライドの内容を中央に配置します。"
 
@@ -252,17 +257,17 @@ msgstr "新規段落の追加後、ブロックタイプを変更します。"
 msgid "Choose language…"
 msgstr "言語を選択…"
 
-#: src/block-library/html/marp-directive-settings.tsx:203
-#: src/block-library/html/marp-directive-settings.tsx:229
+#: src/block-library/html/marp-directive-settings.tsx:208
+#: src/block-library/html/marp-directive-settings.tsx:234
 msgid "Class"
 msgstr "クラス"
 
-#: src/block-library/html/marp-directive-settings.tsx:241
+#: src/block-library/html/marp-directive-settings.tsx:246
 msgid "Classes of the slide, separated by spaces."
 msgstr "スライドのクラスです。スペースで区切ります。"
 
 # %s: A theme name, such as "gaia".
-#: src/block-library/html/marp-directive-settings.tsx:235
+#: src/block-library/html/marp-directive-settings.tsx:240
 msgid "Classes that the %s theme does not provide, separated by spaces."
 msgstr "%s テーマにないクラスです。スペースで区切ります。"
 
@@ -314,7 +319,7 @@ msgid "Create Table"
 msgstr "表を作成"
 
 #: src/block-library/quote/edit.tsx:151
-#: src/block-library/html/marp-directive-settings.tsx:268
+#: src/block-library/html/marp-directive-settings.tsx:273
 msgid "Default"
 msgstr "デフォルト"
 
@@ -348,7 +353,7 @@ msgstr "画像を編集"
 msgid "Edit table"
 msgstr "表を編集"
 
-#: src/components/ai-sidebar/chat.tsx:78
+#: src/components/ai-sidebar/chat.tsx:106
 msgid "Edited the document."
 msgstr "ドキュメントを編集しました。"
 
@@ -408,16 +413,16 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "伝えたいことに集中する"
 
-#: src/block-library/html/marp-directive-settings.tsx:197
+#: src/block-library/html/marp-directive-settings.tsx:202
 msgid "Following slides"
 msgstr "以降のスライド"
 
-#: src/block-library/html/marp-directive-settings.tsx:83
+#: src/block-library/html/marp-directive-settings.tsx:84
 msgid "Follows the setting of the deck."
 msgstr "デッキの設定に従います。"
 
 #: src/components/front-matter-editor/index.tsx:293
-#: src/block-library/html/marp-directive-settings.tsx:297
+#: src/block-library/html/marp-directive-settings.tsx:302
 msgid "Footer"
 msgstr "フッター"
 
@@ -455,7 +460,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:282
-#: src/block-library/html/marp-directive-settings.tsx:288
+#: src/block-library/html/marp-directive-settings.tsx:293
 msgid "Header"
 msgstr "ヘッダー"
 
@@ -536,7 +541,7 @@ msgstr "見出し、テキストとリストの 2 段組み"
 msgid "Height"
 msgstr "高さ"
 
-#: src/block-library/html/marp-directive-settings.tsx:276
+#: src/block-library/html/marp-directive-settings.tsx:281
 msgid "Hide"
 msgstr "非表示"
 
@@ -544,15 +549,15 @@ msgstr "非表示"
 msgid "Hide Document Overview"
 msgstr "ドキュメント概観を非表示"
 
-#: src/block-library/html/marp-directive-settings.tsx:78
+#: src/block-library/html/marp-directive-settings.tsx:79
 msgid "Hides the page number without counting this slide."
 msgstr "このスライドを数えずに、ページ番号を非表示にします。"
 
-#: src/block-library/html/marp-directive-settings.tsx:71
+#: src/block-library/html/marp-directive-settings.tsx:72
 msgid "Hides the page number."
 msgstr "ページ番号を非表示にします。"
 
-#: src/block-library/html/marp-directive-settings.tsx:280
+#: src/block-library/html/marp-directive-settings.tsx:285
 msgid "Hold"
 msgstr "保持"
 
@@ -624,7 +629,7 @@ msgstr "行を下に挿入"
 msgid "Insert row before"
 msgstr "行を上に挿入"
 
-#: src/block-library/html/marp-directive-settings.tsx:56
+#: src/block-library/html/marp-directive-settings.tsx:57
 msgid "Inverts the colors of the slide."
 msgstr "スライドの色を反転します。"
 
@@ -719,7 +724,7 @@ msgstr "Marp はこれらの単語を設定として読み取ります: %s"
 msgid "Marp slide settings"
 msgstr "Marp スライド設定"
 
-#: src/components/ai-sidebar/chat.tsx:296
+#: src/components/ai-sidebar/chat.tsx:316
 msgid "Message"
 msgstr "メッセージ"
 
@@ -768,7 +773,7 @@ msgstr "専用アプリ"
 msgid "Open by default"
 msgstr "デフォルトで開く"
 
-#: src/components/ai-sidebar/chat.tsx:268
+#: src/components/ai-sidebar/chat.tsx:288
 msgid "Open settings"
 msgstr "設定を開く"
 
@@ -780,7 +785,7 @@ msgstr "順序付きリスト"
 msgid "Original"
 msgstr "元のサイズ"
 
-#: src/block-library/html/marp-directive-settings.tsx:228
+#: src/block-library/html/marp-directive-settings.tsx:233
 msgid "Other classes"
 msgstr "その他のクラス"
 
@@ -792,7 +797,7 @@ msgstr "インデント解除"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: src/block-library/html/marp-directive-settings.tsx:254
+#: src/block-library/html/marp-directive-settings.tsx:259
 msgid "Page number"
 msgstr "ページ番号"
 
@@ -923,11 +928,11 @@ msgstr "入力しながらスライドを確認"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "その他の設定は<a>Marp のドキュメント</a>を参照してください。"
 
-#: src/components/ai-sidebar/chat.tsx:319
+#: src/components/ai-sidebar/chat.tsx:339
 msgid "Send"
 msgstr "送信"
 
-#: src/components/ai-sidebar/chat.tsx:258
+#: src/components/ai-sidebar/chat.tsx:278
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI アシスタントを使うには API キーを設定してください。"
 
@@ -943,7 +948,7 @@ msgctxt "slide pattern"
 msgid "Share"
 msgstr "共有"
 
-#: src/block-library/html/marp-directive-settings.tsx:272
+#: src/block-library/html/marp-directive-settings.tsx:277
 msgid "Show"
 msgstr "表示"
 
@@ -966,11 +971,11 @@ msgstr "スライドを全画面で表示"
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
 
-#: src/block-library/html/marp-directive-settings.tsx:73
+#: src/block-library/html/marp-directive-settings.tsx:74
 msgid "Shows the page number without counting this slide."
 msgstr "このスライドを数えずに、ページ番号を表示します。"
 
-#: src/block-library/html/marp-directive-settings.tsx:69
+#: src/block-library/html/marp-directive-settings.tsx:70
 msgid "Shows the page number."
 msgstr "ページ番号を表示します。"
 
@@ -982,7 +987,7 @@ msgstr "GitHub の Markdown スタイルをベースにしたシンプルなテ�
 msgid "Size"
 msgstr "サイズ"
 
-#: src/block-library/html/marp-directive-settings.tsx:284
+#: src/block-library/html/marp-directive-settings.tsx:289
 msgid "Skip"
 msgstr "スキップ"
 
@@ -1029,11 +1034,11 @@ msgstr "分割幅"
 msgid "Stack vertically"
 msgstr "縦に並べる"
 
-#: src/components/ai-sidebar/chat.tsx:310
+#: src/components/ai-sidebar/chat.tsx:330
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:105
+#: src/components/ai-sidebar/chat.tsx:133
 msgid "Stopped."
 msgstr "停止しました。"
 
@@ -1049,7 +1054,7 @@ msgstr "選択したテキストに取り消し線を追加する。"
 msgid "Switch between the visual editor and the code editor."
 msgstr "ビジュアルエディターとコードエディターを切り替える。"
 
-#: src/block-library/html/marp-directive-settings.tsx:58
+#: src/block-library/html/marp-directive-settings.tsx:59
 msgid "Switches to the theme's alternate color scheme."
 msgstr "テーマのもう1つの配色に切り替えます。"
 
@@ -1062,7 +1067,7 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "テキスト"
 
-#: src/block-library/html/marp-directive-settings.tsx:318
+#: src/block-library/html/marp-directive-settings.tsx:323
 msgid "Text color"
 msgstr "文字色"
 
@@ -1070,7 +1075,7 @@ msgstr "文字色"
 msgid "Text shown at the bottom of each slide."
 msgstr "各スライドの下部に表示するテキスト。"
 
-#: src/block-library/html/marp-directive-settings.tsx:298
+#: src/block-library/html/marp-directive-settings.tsx:303
 msgid "Text shown at the bottom of the slide."
 msgstr "スライドの下部に表示するテキストです。"
 
@@ -1078,11 +1083,11 @@ msgstr "スライドの下部に表示するテキストです。"
 msgid "Text shown at the top of each slide."
 msgstr "各スライドの上部に表示するテキスト。"
 
-#: src/block-library/html/marp-directive-settings.tsx:289
+#: src/block-library/html/marp-directive-settings.tsx:294
 msgid "Text shown at the top of the slide."
 msgstr "スライドの上部に表示するテキストです。"
 
-#: src/components/ai-sidebar/chat.tsx:112
+#: src/components/ai-sidebar/chat.tsx:140
 msgid "The answer could not be loaded."
 msgstr "回答を読み込めませんでした。"
 
@@ -1094,7 +1099,7 @@ msgstr "スライドの縦横比。"
 msgid "The diagram could not be rendered."
 msgstr "図を描画できませんでした。"
 
-#: src/components/ai-sidebar/chat.tsx:83
+#: src/components/ai-sidebar/chat.tsx:111
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1115,11 +1120,11 @@ msgstr ""
 msgid "The image sits in the slide content."
 msgstr "画像がスライドのコンテンツ内に表示されます。"
 
-#: src/block-library/html/marp-directive-settings.tsx:183
+#: src/block-library/html/marp-directive-settings.tsx:184
 msgid "The settings apply to this slide and the slides after it."
 msgstr "このスライドと以降のスライドに適用します。"
 
-#: src/block-library/html/marp-directive-settings.tsx:179
+#: src/block-library/html/marp-directive-settings.tsx:180
 msgid "The settings apply to this slide only."
 msgstr "このスライドのみに適用します。"
 
@@ -1144,7 +1149,7 @@ msgstr "テーマ"
 msgid "Thinking…"
 msgstr "考えています…"
 
-#: src/block-library/html/marp-directive-settings.tsx:193
+#: src/block-library/html/marp-directive-settings.tsx:198
 msgid "This slide"
 msgstr "このスライド"
 
@@ -1369,8 +1374,8 @@ msgstr "YAML フロントマター"
 # %s: An example value, such as "1.5".
 # %s: An example value, such as "#f0f0f0".
 #: src/block-library/image/marp-image-settings.tsx:485
-#: src/block-library/html/marp-directive-settings.tsx:309
-#: src/block-library/html/marp-directive-settings.tsx:321
-#: src/block-library/html/marp-directive-settings.tsx:335
+#: src/block-library/html/marp-directive-settings.tsx:314
+#: src/block-library/html/marp-directive-settings.tsx:326
+#: src/block-library/html/marp-directive-settings.tsx:340
 msgid "e.g. %s"
 msgstr "例: %s"

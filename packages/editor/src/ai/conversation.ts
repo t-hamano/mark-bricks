@@ -157,17 +157,28 @@ export function conversationReducer(
 				activity: 'waiting',
 			} ) );
 		case 'USAGE':
-			return updateAnswer( conversation, ( message ) => ( {
-				...message,
-				usage: {
-					inputTokens:
-						( message.usage?.inputTokens ?? 0 ) +
-						action.usage.inputTokens,
-					outputTokens:
-						( message.usage?.outputTokens ?? 0 ) +
-						action.usage.outputTokens,
-				},
-			} ) );
+			return updateAnswer( conversation, ( message ) => {
+				const cached =
+					message.usage?.cachedInputTokens === undefined &&
+					action.usage.cachedInputTokens === undefined
+						? undefined
+						: ( message.usage?.cachedInputTokens ?? 0 ) +
+							( action.usage.cachedInputTokens ?? 0 );
+				return {
+					...message,
+					usage: {
+						inputTokens:
+							( message.usage?.inputTokens ?? 0 ) +
+							action.usage.inputTokens,
+						...( cached === undefined
+							? {}
+							: { cachedInputTokens: cached } ),
+						outputTokens:
+							( message.usage?.outputTokens ?? 0 ) +
+							action.usage.outputTokens,
+					},
+				};
+			} );
 		case 'FINISH':
 			return updateAnswer( conversation, ( message ) => ( {
 				...message,
