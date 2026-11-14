@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:19:43.962Z\n"
-"PO-Revision-Date: 2026-11-14T11:19:50.983Z\n"
+"POT-Creation-Date: 2026-11-14T11:27:46.824Z\n"
+"PO-Revision-Date: 2026-11-14T11:27:47.898Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -195,7 +195,7 @@ msgstr "Změnit typ bloku po přidání nového odstavce."
 msgid "Choose language…"
 msgstr "Vyberte jazyk…"
 
-#: src/components/front-matter-editor/index.tsx:202
+#: src/components/front-matter-editor/index.tsx:208
 msgid "Classic look with a colored background."
 msgstr "Klasický vzhled s barevným pozadím."
 
@@ -222,7 +222,7 @@ msgstr "Zavřít vkládání bloku"
 msgid "Code editor"
 msgstr "HTML editor"
 
-#: src/components/front-matter-editor/index.tsx:407
+#: src/components/front-matter-editor/index.tsx:417
 msgid "Color scheme"
 msgstr "Barevné schéma"
 
@@ -324,7 +324,11 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "Soustřeďte se na sdělení"
 
-#: src/components/front-matter-editor/index.tsx:333
+#: src/components/front-matter-editor/index.tsx:513
+msgid "Font"
+msgstr "Písmo"
+
+#: src/components/front-matter-editor/index.tsx:343
 msgid "Footer"
 msgstr "Zápatí"
 
@@ -337,8 +341,8 @@ msgctxt "slide pattern"
 msgid "From the theme"
 msgstr "Z motivu"
 
-#: src/components/front-matter-editor/index.tsx:124
-#: src/components/front-matter-editor/index.tsx:143
+#: src/components/front-matter-editor/index.tsx:130
+#: src/components/front-matter-editor/index.tsx:149
 msgid "Front matter settings"
 msgstr "Nastavení front matter"
 
@@ -361,7 +365,7 @@ msgstr "Dobrý snímek říká jednu věc a říká ji jasně."
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:322
+#: src/components/front-matter-editor/index.tsx:332
 msgid "Header"
 msgstr "Záhlaví"
 
@@ -557,7 +561,7 @@ msgctxt "slide pattern"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/components/front-matter-editor/index.tsx:147
+#: src/components/front-matter-editor/index.tsx:153
 msgid "Marp"
 msgstr "Marp"
 
@@ -581,9 +585,13 @@ msgstr "Vzory Marp"
 msgid "Message"
 msgstr "Zpráva"
 
-#: src/components/front-matter-editor/index.tsx:210
+#: src/components/front-matter-editor/index.tsx:216
 msgid "Minimal and modern, with centered content."
 msgstr "Minimalistický a moderní, s obsahem na středu."
+
+#: src/components/front-matter-editor/index.tsx:492
+msgid "Monospace"
+msgstr "Neproporcionální"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -639,7 +647,7 @@ msgstr "Zmenšit odsazení"
 msgid "Outline"
 msgstr "Osnova"
 
-#: src/components/front-matter-editor/index.tsx:344
+#: src/components/front-matter-editor/index.tsx:354
 msgid "Paginate"
 msgstr "Číslování stránek"
 
@@ -698,7 +706,7 @@ msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "Citát na obrázku"
 
-#: src/components/front-matter-editor/index.tsx:462
+#: src/components/front-matter-editor/index.tsx:472
 msgid "Recolor the theme. The colors are written to style."
 msgstr "Přebarví motiv. Barvy se zapíší do style."
 
@@ -730,6 +738,10 @@ msgstr "Změnit velikost bočního panelu"
 msgid "Row count"
 msgstr "Počet řádků"
 
+#: src/components/front-matter-editor/index.tsx:490
+msgid "Sans-serif"
+msgstr "Bezpatkové"
+
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr "Hledat"
@@ -749,13 +761,17 @@ msgctxt "slide pattern"
 msgid "See each slide as you type"
 msgstr "Každý snímek vidíte při psaní"
 
-#: src/components/front-matter-editor/index.tsx:356
+#: src/components/front-matter-editor/index.tsx:366
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
 
 #: src/components/ai-sidebar/chat.tsx:319
 msgid "Send"
 msgstr "Odeslat"
+
+#: src/components/front-matter-editor/index.tsx:491
+msgid "Serif"
+msgstr "Patkové"
 
 #: src/components/ai-sidebar/chat.tsx:258
 msgid "Set an API key to use the AI Assistant."
@@ -772,7 +788,7 @@ msgstr "Sdílet"
 msgid "Show or hide the List View."
 msgstr "Zobrazit nebo skrýt Zobrazení seznamu."
 
-#: src/components/front-matter-editor/index.tsx:345
+#: src/components/front-matter-editor/index.tsx:355
 msgid "Show the page number on each slide."
 msgstr "Zobrazí číslo stránky na každém snímku."
 
@@ -787,11 +803,11 @@ msgstr "Zobrazte snímky na celé obrazovce"
 msgid "Shown as a tooltip on hover."
 msgstr "Zobrazí se jako popisek při najetí myší."
 
-#: src/components/front-matter-editor/index.tsx:194
+#: src/components/front-matter-editor/index.tsx:200
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "Jednoduchý a čistý, založený na stylu GitHub Markdown."
 
-#: src/components/front-matter-editor/index.tsx:295
+#: src/components/front-matter-editor/index.tsx:305
 msgid "Size"
 msgstr "Velikost"
 
@@ -859,11 +875,11 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "Text"
 
-#: src/components/front-matter-editor/index.tsx:334
+#: src/components/front-matter-editor/index.tsx:344
 msgid "Text shown at the bottom of each slide."
 msgstr "Text zobrazený v dolní části každého snímku."
 
-#: src/components/front-matter-editor/index.tsx:323
+#: src/components/front-matter-editor/index.tsx:333
 msgid "Text shown at the top of each slide."
 msgstr "Text zobrazený v horní části každého snímku."
 
@@ -871,7 +887,7 @@ msgstr "Text zobrazený v horní části každého snímku."
 msgid "The answer could not be loaded."
 msgstr "Odpověď se nepodařilo načíst."
 
-#: src/components/front-matter-editor/index.tsx:318
+#: src/components/front-matter-editor/index.tsx:328
 msgid "The aspect ratio of the slides."
 msgstr "Poměr stran snímků."
 
@@ -886,17 +902,26 @@ msgid ""
 msgstr ""
 "Úprava nebyla použita, protože se změnil výběr, například přepnutím editoru."
 
+#: src/components/front-matter-editor/index.tsx:552
+msgid ""
+"The font style of the slides. Each device shows its own font of that style."
+msgstr "Styl písma snímků. Každé zařízení zobrazí vlastní písmo tohoto stylu."
+
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Vzorec se nepodařilo vykreslit."
 
-#: src/components/front-matter-editor/index.tsx:233
+#: src/components/front-matter-editor/index.tsx:239
 msgid "Theme"
 msgstr "Motiv"
 
-#: src/components/front-matter-editor/index.tsx:395
+#: src/components/front-matter-editor/index.tsx:405
 msgid "Theme colors"
 msgstr "Barvy motivu"
+
+#: src/components/front-matter-editor/index.tsx:496
+msgid "Theme font"
+msgstr "Písmo motivu"
 
 #: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
@@ -980,7 +1005,7 @@ msgstr "Převést na běžnou položku"
 msgid "Turn into a task item"
 msgstr "Převést na úkol"
 
-#: src/components/front-matter-editor/index.tsx:148
+#: src/components/front-matter-editor/index.tsx:154
 msgid "Turn the document into a slide deck."
 msgstr "Změní dokument na sadu snímků."
 
@@ -1064,7 +1089,7 @@ msgstr "Začněte psát HTML…"
 msgid "Write TeX…"
 msgstr "Začněte psát TeX…"
 
-#: src/components/front-matter-editor/index.tsx:79
+#: src/components/front-matter-editor/index.tsx:85
 msgid "Write YAML front matter…"
 msgstr "Napište YAML front matter…"
 
@@ -1112,10 +1137,10 @@ msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "Psaní snímků v Markdownu"
 
-#: src/components/front-matter-editor/index.tsx:97
+#: src/components/front-matter-editor/index.tsx:103
 msgid "YAML front matter"
 msgstr "YAML front matter"
 
-#: src/components/front-matter-editor/index.tsx:458
+#: src/components/front-matter-editor/index.tsx:468
 msgid "Your own CSS in style overrides some of these colors."
 msgstr "Vaše vlastní CSS ve style přepisuje některé z těchto barev."

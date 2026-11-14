@@ -8,8 +8,10 @@ import { describe, it, expect } from 'vitest';
  */
 import {
 	getMarpColorScheme,
+	getMarpFontStyle,
 	isMarpColorSchemeOverridden,
 	setMarpColorScheme,
+	setMarpFontStyle,
 	supportsMarpColorScheme,
 } from '.';
 
@@ -135,5 +137,50 @@ describe( 'supportsMarpColorScheme', () => {
 		expect( supportsMarpColorScheme( 'uncover' ) ).toBe( true );
 		expect( supportsMarpColorScheme( 'my-theme' ) ).toBe( false );
 		expect( supportsMarpColorScheme( 'constructor' ) ).toBe( false );
+	} );
+} );
+
+describe( 'setMarpFontStyle', () => {
+	it( 'adds the font after the color scheme and before CSS written by hand', () => {
+		const next = setMarpFontStyle(
+			setMarpColorScheme(
+				'marp: true\nstyle: |\n  h1 {}',
+				'gaia',
+				'ink'
+			),
+			'serif'
+		);
+		const style = next.slice( next.indexOf( 'style: |' ) );
+		expect( style.indexOf( 'mark-bricks-color-scheme: ink' ) ).toBeLessThan(
+			style.indexOf( 'mark-bricks-font: serif' )
+		);
+		expect( style.indexOf( 'mark-bricks-font: serif' ) ).toBeLessThan(
+			style.indexOf( 'h1 {}' )
+		);
+		expect( next ).toContain( '    font-family: serif;' );
+		expect( getMarpFontStyle( next )?.id ).toBe( 'serif' );
+		expect( getMarpColorScheme( next )?.id ).toBe( 'ink' );
+	} );
+
+	it( 'keeps the font when the color scheme changes', () => {
+		const next = setMarpColorScheme(
+			setMarpFontStyle( 'marp: true', 'monospace' ),
+			'default',
+			'slate'
+		);
+		expect( getMarpFontStyle( next )?.id ).toBe( 'monospace' );
+		expect( next.indexOf( 'mark-bricks-color-scheme' ) ).toBeLessThan(
+			next.indexOf( 'mark-bricks-font' )
+		);
+	} );
+
+	it( 'removes only the font', () => {
+		const withScheme = setMarpColorScheme( 'marp: true', 'gaia', 'ink' );
+		expect(
+			setMarpFontStyle( setMarpFontStyle( withScheme, 'serif' ), null )
+		).toBe( withScheme );
+		expect(
+			setMarpFontStyle( setMarpFontStyle( 'marp: true', 'serif' ), null )
+		).toBe( 'marp: true' );
 	} );
 } );

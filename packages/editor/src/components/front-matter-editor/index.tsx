@@ -37,12 +37,15 @@ import {
 } from '../../converter/front-matter';
 import {
 	MARP_COLOR_SCHEMES,
+	MARP_FONT_STYLES,
 	getMarpColorScheme,
+	getMarpFontStyle,
 	isMarpColorSchemeOverridden,
 	setMarpColorScheme,
+	setMarpFontStyle,
 	supportsMarpColorScheme,
 	type MarpColorScheme,
-} from '../../marp-color-schemes';
+} from '../../marp-style-presets';
 import { useCodeMirror } from '../../block-library/hooks/use-code-mirror';
 import { usePlatform } from '../../platform';
 
@@ -50,6 +53,9 @@ const MARP_DIRECTIVES_URL = 'https://marpit.marp.app/directives';
 
 // The color scheme option that leaves the theme's own colors.
 const THEME_COLORS = 'theme';
+
+// The font option that leaves the theme's own font.
+const THEME_FONT = 'theme';
 
 export { FrontMatterContext, useFrontMatter } from './context';
 export type { FrontMatterContextValue } from './context';
@@ -291,6 +297,10 @@ function MarpSettings( {
 					portalContainer={ portalContainer }
 				/>
 			) }
+			<FontStyleField
+				value={ value }
+				portalContainer={ portalContainer }
+			/>
 			<Field.Root>
 				<Field.Label>{ __( 'Size', 'mark-bricks' ) }</Field.Label>
 				<Select.Root
@@ -463,6 +473,86 @@ function ColorSchemeField( {
 							'Recolor the theme. The colors are written to style.',
 							'mark-bricks'
 						) }
+			</Field.Description>
+		</Field.Root>
+	);
+}
+
+function FontStyleField( {
+	value,
+	portalContainer,
+}: {
+	value: string;
+	portalContainer: HTMLElement | null;
+} ) {
+	const { setFrontMatter } = useFrontMatter();
+	const labels: Record< string, string > = {
+		'sans-serif': __( 'Sans-serif', 'mark-bricks' ),
+		serif: __( 'Serif', 'mark-bricks' ),
+		monospace: __( 'Monospace', 'mark-bricks' ),
+	};
+	const items = [
+		{
+			label: __( 'Theme font', 'mark-bricks' ),
+			value: THEME_FONT,
+			fontFamily: undefined as string | undefined,
+		},
+		...MARP_FONT_STYLES.map( ( font ) => ( {
+			label: labels[ font.id ] ?? font.label,
+			value: font.id,
+			fontFamily: font.fontFamily as string | undefined,
+		} ) ),
+	];
+	const selected =
+		items.find(
+			( item ) => item.value === getMarpFontStyle( value )?.id
+		) ?? items[ 0 ];
+
+	return (
+		<Field.Root>
+			<Field.Label>{ __( 'Font', 'mark-bricks' ) }</Field.Label>
+			<Select.Root
+				items={ items }
+				value={ selected.value }
+				onValueChange={ ( next ) => {
+					if ( typeof next === 'string' ) {
+						setFrontMatter(
+							setMarpFontStyle(
+								value,
+								next === THEME_FONT ? null : next
+							)
+						);
+					}
+				} }
+			>
+				<Select.Trigger>
+					<span style={ { fontFamily: selected.fontFamily } }>
+						{ selected.label }
+					</span>
+				</Select.Trigger>
+				<Select.Popup
+					portal={ <Select.Portal container={ portalContainer } /> }
+				>
+					{ items.map( ( item ) => (
+						<Select.Item
+							key={ item.value }
+							value={ item.value }
+							label={ item.label }
+						>
+							<Select.ItemLabel>
+								<span style={ { fontFamily: item.fontFamily } }>
+									{ item.label }
+								</span>
+							</Select.ItemLabel>
+						</Select.Item>
+					) ) }
+				</Select.Popup>
+			</Select.Root>
+			<Field.Description>
+				{ __(
+					'The font style of the slides. Each device shows its own font of that style.',
+					'mark-bricks'
+				) }
 			</Field.Description>
 		</Field.Root>
 	);

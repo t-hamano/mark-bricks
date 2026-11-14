@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:19:43.962Z\n"
-"PO-Revision-Date: 2026-11-14T11:19:54.679Z\n"
+"POT-Creation-Date: 2026-11-14T11:27:46.824Z\n"
+"PO-Revision-Date: 2026-11-14T11:27:51.493Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -195,7 +195,7 @@ msgstr "새 단락을 추가한 후 블록 유형을 변경."
 msgid "Choose language…"
 msgstr "언어 선택…"
 
-#: src/components/front-matter-editor/index.tsx:202
+#: src/components/front-matter-editor/index.tsx:208
 msgid "Classic look with a colored background."
 msgstr "색상 배경이 있는 클래식한 테마."
 
@@ -222,7 +222,7 @@ msgstr "블록 삽입기 닫기"
 msgid "Code editor"
 msgstr "코드 편집기"
 
-#: src/components/front-matter-editor/index.tsx:407
+#: src/components/front-matter-editor/index.tsx:417
 msgid "Color scheme"
 msgstr "색 구성"
 
@@ -324,7 +324,11 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "메시지에 집중하기"
 
-#: src/components/front-matter-editor/index.tsx:333
+#: src/components/front-matter-editor/index.tsx:513
+msgid "Font"
+msgstr "글꼴"
+
+#: src/components/front-matter-editor/index.tsx:343
 msgid "Footer"
 msgstr "바닥글"
 
@@ -337,8 +341,8 @@ msgctxt "slide pattern"
 msgid "From the theme"
 msgstr "테마가 결정"
 
-#: src/components/front-matter-editor/index.tsx:124
-#: src/components/front-matter-editor/index.tsx:143
+#: src/components/front-matter-editor/index.tsx:130
+#: src/components/front-matter-editor/index.tsx:149
 msgid "Front matter settings"
 msgstr "프런트 매터 설정"
 
@@ -361,7 +365,7 @@ msgstr "좋은 슬라이드는 한 가지를 분명하게 말한다."
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:322
+#: src/components/front-matter-editor/index.tsx:332
 msgid "Header"
 msgstr "머리글"
 
@@ -557,7 +561,7 @@ msgctxt "slide pattern"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/components/front-matter-editor/index.tsx:147
+#: src/components/front-matter-editor/index.tsx:153
 msgid "Marp"
 msgstr "Marp"
 
@@ -581,9 +585,13 @@ msgstr "Marp 패턴"
 msgid "Message"
 msgstr "메시지"
 
-#: src/components/front-matter-editor/index.tsx:210
+#: src/components/front-matter-editor/index.tsx:216
 msgid "Minimal and modern, with centered content."
 msgstr "콘텐츠가 가운데 정렬된 미니멀하고 모던한 테마."
+
+#: src/components/front-matter-editor/index.tsx:492
+msgid "Monospace"
+msgstr "고정폭"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -638,7 +646,7 @@ msgstr "내어쓰기"
 msgid "Outline"
 msgstr "아웃라인"
 
-#: src/components/front-matter-editor/index.tsx:344
+#: src/components/front-matter-editor/index.tsx:354
 msgid "Paginate"
 msgstr "페이지 번호"
 
@@ -697,7 +705,7 @@ msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "이미지 위 인용"
 
-#: src/components/front-matter-editor/index.tsx:462
+#: src/components/front-matter-editor/index.tsx:472
 msgid "Recolor the theme. The colors are written to style."
 msgstr "테마의 색상을 바꿉니다. 색상은 style에 기록됩니다."
 
@@ -729,6 +737,10 @@ msgstr "사이드 패널 크기 조절"
 msgid "Row count"
 msgstr "행 수"
 
+#: src/components/front-matter-editor/index.tsx:490
+msgid "Sans-serif"
+msgstr "고딕"
+
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr "검색"
@@ -748,13 +760,17 @@ msgctxt "slide pattern"
 msgid "See each slide as you type"
 msgstr "입력하면서 각 슬라이드 확인"
 
-#: src/components/front-matter-editor/index.tsx:356
+#: src/components/front-matter-editor/index.tsx:366
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "다른 설정은 <a>Marp 문서</a>를 참고하세요."
 
 #: src/components/ai-sidebar/chat.tsx:319
 msgid "Send"
 msgstr "보내기"
+
+#: src/components/front-matter-editor/index.tsx:491
+msgid "Serif"
+msgstr "명조"
 
 #: src/components/ai-sidebar/chat.tsx:258
 msgid "Set an API key to use the AI Assistant."
@@ -771,7 +787,7 @@ msgstr "공유"
 msgid "Show or hide the List View."
 msgstr "목록 보기를 표시하거나 숨깁니다."
 
-#: src/components/front-matter-editor/index.tsx:345
+#: src/components/front-matter-editor/index.tsx:355
 msgid "Show the page number on each slide."
 msgstr "각 슬라이드에 페이지 번호를 표시합니다."
 
@@ -786,11 +802,11 @@ msgstr "슬라이드를 전체 화면으로 표시"
 msgid "Shown as a tooltip on hover."
 msgstr "마우스를 올리면 툴팁으로 표시됩니다."
 
-#: src/components/front-matter-editor/index.tsx:194
+#: src/components/front-matter-editor/index.tsx:200
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "GitHub Markdown 스타일 기반의 깔끔한 테마."
 
-#: src/components/front-matter-editor/index.tsx:295
+#: src/components/front-matter-editor/index.tsx:305
 msgid "Size"
 msgstr "크기"
 
@@ -858,11 +874,11 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "텍스트"
 
-#: src/components/front-matter-editor/index.tsx:334
+#: src/components/front-matter-editor/index.tsx:344
 msgid "Text shown at the bottom of each slide."
 msgstr "각 슬라이드 하단에 표시되는 텍스트."
 
-#: src/components/front-matter-editor/index.tsx:323
+#: src/components/front-matter-editor/index.tsx:333
 msgid "Text shown at the top of each slide."
 msgstr "각 슬라이드 상단에 표시되는 텍스트."
 
@@ -870,7 +886,7 @@ msgstr "각 슬라이드 상단에 표시되는 텍스트."
 msgid "The answer could not be loaded."
 msgstr "답변을 불러오지 못했습니다."
 
-#: src/components/front-matter-editor/index.tsx:318
+#: src/components/front-matter-editor/index.tsx:328
 msgid "The aspect ratio of the slides."
 msgstr "슬라이드의 가로세로 비율."
 
@@ -884,17 +900,26 @@ msgid ""
 "switching editors."
 msgstr "편집기 전환 등으로 선택 영역이 바뀌어 편집이 적용되지 않았습니다."
 
+#: src/components/front-matter-editor/index.tsx:552
+msgid ""
+"The font style of the slides. Each device shows its own font of that style."
+msgstr "슬라이드의 글꼴 스타일입니다. 실제 글꼴은 기기마다 다릅니다."
+
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "수식을 렌더링할 수 없습니다."
 
-#: src/components/front-matter-editor/index.tsx:233
+#: src/components/front-matter-editor/index.tsx:239
 msgid "Theme"
 msgstr "테마"
 
-#: src/components/front-matter-editor/index.tsx:395
+#: src/components/front-matter-editor/index.tsx:405
 msgid "Theme colors"
 msgstr "테마 색상"
+
+#: src/components/front-matter-editor/index.tsx:496
+msgid "Theme font"
+msgstr "테마 글꼴"
 
 #: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
@@ -978,7 +1003,7 @@ msgstr "일반 항목으로 변환"
 msgid "Turn into a task item"
 msgstr "작업 항목으로 변환"
 
-#: src/components/front-matter-editor/index.tsx:148
+#: src/components/front-matter-editor/index.tsx:154
 msgid "Turn the document into a slide deck."
 msgstr "문서를 슬라이드 덱으로 만듭니다."
 
@@ -1062,7 +1087,7 @@ msgstr "HTML 작성…"
 msgid "Write TeX…"
 msgstr "TeX 작성…"
 
-#: src/components/front-matter-editor/index.tsx:79
+#: src/components/front-matter-editor/index.tsx:85
 msgid "Write YAML front matter…"
 msgstr "YAML 프런트 매터 작성…"
 
@@ -1110,10 +1135,10 @@ msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "Markdown으로 슬라이드 작성하기"
 
-#: src/components/front-matter-editor/index.tsx:97
+#: src/components/front-matter-editor/index.tsx:103
 msgid "YAML front matter"
 msgstr "YAML 프런트 매터"
 
-#: src/components/front-matter-editor/index.tsx:458
+#: src/components/front-matter-editor/index.tsx:468
 msgid "Your own CSS in style overrides some of these colors."
 msgstr "style의 직접 작성한 CSS가 일부 색상을 덮어씁니다."

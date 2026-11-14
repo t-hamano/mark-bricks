@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:19:43.962Z\n"
+"POT-Creation-Date: 2026-11-14T11:27:46.824Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -300,93 +300,117 @@ msgstr ""
 msgid "Reset search"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:79
+#: src/components/front-matter-editor/index.tsx:85
 msgid "Write YAML front matter…"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:97
+#: src/components/front-matter-editor/index.tsx:103
 msgid "YAML front matter"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:124
-#: src/components/front-matter-editor/index.tsx:143
+#: src/components/front-matter-editor/index.tsx:130
+#: src/components/front-matter-editor/index.tsx:149
 msgid "Front matter settings"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:147
+#: src/components/front-matter-editor/index.tsx:153
 msgid "Marp"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:148
+#: src/components/front-matter-editor/index.tsx:154
 msgid "Turn the document into a slide deck."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:194
+#: src/components/front-matter-editor/index.tsx:200
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:202
+#: src/components/front-matter-editor/index.tsx:208
 msgid "Classic look with a colored background."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:210
+#: src/components/front-matter-editor/index.tsx:216
 msgid "Minimal and modern, with centered content."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:233
+#: src/components/front-matter-editor/index.tsx:239
 msgid "Theme"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:295
+#: src/components/front-matter-editor/index.tsx:305
 msgid "Size"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:318
+#: src/components/front-matter-editor/index.tsx:328
 msgid "The aspect ratio of the slides."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:322
+#: src/components/front-matter-editor/index.tsx:332
 msgid "Header"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:323
+#: src/components/front-matter-editor/index.tsx:333
 msgid "Text shown at the top of each slide."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:333
+#: src/components/front-matter-editor/index.tsx:343
 msgid "Footer"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:334
+#: src/components/front-matter-editor/index.tsx:344
 msgid "Text shown at the bottom of each slide."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:344
+#: src/components/front-matter-editor/index.tsx:354
 msgid "Paginate"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:345
+#: src/components/front-matter-editor/index.tsx:355
 msgid "Show the page number on each slide."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:356
+#: src/components/front-matter-editor/index.tsx:366
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:395
+#: src/components/front-matter-editor/index.tsx:405
 msgid "Theme colors"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:407
+#: src/components/front-matter-editor/index.tsx:417
 msgid "Color scheme"
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:458
+#: src/components/front-matter-editor/index.tsx:468
 msgid "Your own CSS in style overrides some of these colors."
 msgstr ""
 
-#: src/components/front-matter-editor/index.tsx:462
+#: src/components/front-matter-editor/index.tsx:472
 msgid "Recolor the theme. The colors are written to style."
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:490
+msgid "Sans-serif"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:491
+msgid "Serif"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:492
+msgid "Monospace"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:496
+msgid "Theme font"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:513
+msgid "Font"
+msgstr ""
+
+#: src/components/front-matter-editor/index.tsx:552
+msgid "The font style of the slides. Each device shows its own font of that style."
 msgstr ""
 
 #: src/components/editor-shell/side-panel-resizer.tsx:134

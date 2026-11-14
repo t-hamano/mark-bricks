@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:19:43.962Z\n"
-"PO-Revision-Date: 2026-11-14T11:19:57.061Z\n"
+"POT-Creation-Date: 2026-11-14T11:27:46.824Z\n"
+"PO-Revision-Date: 2026-11-14T11:27:53.931Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -195,7 +195,7 @@ msgstr "Yeni paragraf ekledikten sonra blok türünü değiştirin."
 msgid "Choose language…"
 msgstr "Dil seçin…"
 
-#: src/components/front-matter-editor/index.tsx:202
+#: src/components/front-matter-editor/index.tsx:208
 msgid "Classic look with a colored background."
 msgstr "Renkli arka planlı klasik bir görünüm."
 
@@ -222,7 +222,7 @@ msgstr "Blok yerleştiriciyi kapat"
 msgid "Code editor"
 msgstr "Kod düzenleyici"
 
-#: src/components/front-matter-editor/index.tsx:407
+#: src/components/front-matter-editor/index.tsx:417
 msgid "Color scheme"
 msgstr "Renk şeması"
 
@@ -324,7 +324,11 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "Mesajınıza odaklanın"
 
-#: src/components/front-matter-editor/index.tsx:333
+#: src/components/front-matter-editor/index.tsx:513
+msgid "Font"
+msgstr "Yazı tipi"
+
+#: src/components/front-matter-editor/index.tsx:343
 msgid "Footer"
 msgstr "Alt bilgi"
 
@@ -337,8 +341,8 @@ msgctxt "slide pattern"
 msgid "From the theme"
 msgstr "Temadan gelir"
 
-#: src/components/front-matter-editor/index.tsx:124
-#: src/components/front-matter-editor/index.tsx:143
+#: src/components/front-matter-editor/index.tsx:130
+#: src/components/front-matter-editor/index.tsx:149
 msgid "Front matter settings"
 msgstr "Front matter ayarları"
 
@@ -361,7 +365,7 @@ msgstr "İyi bir slayt tek bir şey söyler ve bunu açıkça söyler."
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:322
+#: src/components/front-matter-editor/index.tsx:332
 msgid "Header"
 msgstr "Üst bilgi"
 
@@ -557,7 +561,7 @@ msgctxt "slide pattern"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/components/front-matter-editor/index.tsx:147
+#: src/components/front-matter-editor/index.tsx:153
 msgid "Marp"
 msgstr "Marp"
 
@@ -582,9 +586,13 @@ msgstr "Marp desenleri"
 msgid "Message"
 msgstr "Mesaj"
 
-#: src/components/front-matter-editor/index.tsx:210
+#: src/components/front-matter-editor/index.tsx:216
 msgid "Minimal and modern, with centered content."
 msgstr "İçeriği ortalanmış, minimal ve modern bir tema."
+
+#: src/components/front-matter-editor/index.tsx:492
+msgid "Monospace"
+msgstr "Eş aralıklı"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -640,7 +648,7 @@ msgstr "Girintiyi azalt"
 msgid "Outline"
 msgstr "Anahat"
 
-#: src/components/front-matter-editor/index.tsx:344
+#: src/components/front-matter-editor/index.tsx:354
 msgid "Paginate"
 msgstr "Sayfa numarası"
 
@@ -699,7 +707,7 @@ msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "Görsel üzerinde alıntı"
 
-#: src/components/front-matter-editor/index.tsx:462
+#: src/components/front-matter-editor/index.tsx:472
 msgid "Recolor the theme. The colors are written to style."
 msgstr "Temayı yeniden renklendirir. Renkler style içine yazılır."
 
@@ -731,6 +739,10 @@ msgstr "Yan paneli yeniden boyutlandır"
 msgid "Row count"
 msgstr "Satır sayısı"
 
+#: src/components/front-matter-editor/index.tsx:490
+msgid "Sans-serif"
+msgstr "Tırnaksız"
+
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr "Ara"
@@ -750,13 +762,17 @@ msgctxt "slide pattern"
 msgid "See each slide as you type"
 msgstr "Yazarken her slaytı görün"
 
-#: src/components/front-matter-editor/index.tsx:356
+#: src/components/front-matter-editor/index.tsx:366
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Diğer ayarlar için <a>Marp belgelerine</a> bakın."
 
 #: src/components/ai-sidebar/chat.tsx:319
 msgid "Send"
 msgstr "Gönder"
+
+#: src/components/front-matter-editor/index.tsx:491
+msgid "Serif"
+msgstr "Tırnaklı"
 
 #: src/components/ai-sidebar/chat.tsx:258
 msgid "Set an API key to use the AI Assistant."
@@ -773,7 +789,7 @@ msgstr "Paylaş"
 msgid "Show or hide the List View."
 msgstr "Liste görünümünü gösterin veya gizleyin."
 
-#: src/components/front-matter-editor/index.tsx:345
+#: src/components/front-matter-editor/index.tsx:355
 msgid "Show the page number on each slide."
 msgstr "Her slaytta sayfa numarasını gösterir."
 
@@ -788,11 +804,11 @@ msgstr "Slaytlarınızı tam ekranda gösterin"
 msgid "Shown as a tooltip on hover."
 msgstr "Üzerine gelindiğinde araç ipucu olarak gösterilir."
 
-#: src/components/front-matter-editor/index.tsx:194
+#: src/components/front-matter-editor/index.tsx:200
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "GitHub Markdown stiline dayanan sade ve temiz bir tema."
 
-#: src/components/front-matter-editor/index.tsx:295
+#: src/components/front-matter-editor/index.tsx:305
 msgid "Size"
 msgstr "Boyut"
 
@@ -860,11 +876,11 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "Metin"
 
-#: src/components/front-matter-editor/index.tsx:334
+#: src/components/front-matter-editor/index.tsx:344
 msgid "Text shown at the bottom of each slide."
 msgstr "Her slaytın altında gösterilen metin."
 
-#: src/components/front-matter-editor/index.tsx:323
+#: src/components/front-matter-editor/index.tsx:333
 msgid "Text shown at the top of each slide."
 msgstr "Her slaytın üstünde gösterilen metin."
 
@@ -872,7 +888,7 @@ msgstr "Her slaytın üstünde gösterilen metin."
 msgid "The answer could not be loaded."
 msgstr "Yanıt yüklenemedi."
 
-#: src/components/front-matter-editor/index.tsx:318
+#: src/components/front-matter-editor/index.tsx:328
 msgid "The aspect ratio of the slides."
 msgstr "Slaytların en boy oranı."
 
@@ -888,17 +904,26 @@ msgstr ""
 "Seçim değiştiği için (örneğin düzenleyici değiştirildiğinde) düzenleme "
 "uygulanmadı."
 
+#: src/components/front-matter-editor/index.tsx:552
+msgid ""
+"The font style of the slides. Each device shows its own font of that style."
+msgstr "Slaytların yazı tipi stili. Her cihaz bu stildeki kendi yazı tipini gösterir."
+
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Formül oluşturulamadı."
 
-#: src/components/front-matter-editor/index.tsx:233
+#: src/components/front-matter-editor/index.tsx:239
 msgid "Theme"
 msgstr "Tema"
 
-#: src/components/front-matter-editor/index.tsx:395
+#: src/components/front-matter-editor/index.tsx:405
 msgid "Theme colors"
 msgstr "Tema renkleri"
+
+#: src/components/front-matter-editor/index.tsx:496
+msgid "Theme font"
+msgstr "Tema yazı tipi"
 
 #: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
@@ -982,7 +1007,7 @@ msgstr "Normal öğeye dönüştür"
 msgid "Turn into a task item"
 msgstr "Görev öğesine dönüştür"
 
-#: src/components/front-matter-editor/index.tsx:148
+#: src/components/front-matter-editor/index.tsx:154
 msgid "Turn the document into a slide deck."
 msgstr "Belgeyi bir slayt sunusuna dönüştürür."
 
@@ -1066,7 +1091,7 @@ msgstr "HTML yazın…"
 msgid "Write TeX…"
 msgstr "TeX yazın…"
 
-#: src/components/front-matter-editor/index.tsx:79
+#: src/components/front-matter-editor/index.tsx:85
 msgid "Write YAML front matter…"
 msgstr "YAML front matter yazın…"
 
@@ -1114,11 +1139,11 @@ msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "Markdown ile slayt yazmak"
 
-#: src/components/front-matter-editor/index.tsx:97
+#: src/components/front-matter-editor/index.tsx:103
 msgid "YAML front matter"
 msgstr "YAML front matter"
 
-#: src/components/front-matter-editor/index.tsx:458
+#: src/components/front-matter-editor/index.tsx:468
 msgid "Your own CSS in style overrides some of these colors."
 msgstr ""
 "style içindeki kendi CSS'iniz bu renklerin bazılarını geçersiz kılıyor."

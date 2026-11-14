@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:19:43.962Z\n"
-"PO-Revision-Date: 2026-11-14T11:19:57.632Z\n"
+"POT-Creation-Date: 2026-11-14T11:27:46.824Z\n"
+"PO-Revision-Date: 2026-11-14T11:27:54.518Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -195,7 +195,7 @@ msgstr "在新增段落后修改区块类型。"
 msgid "Choose language…"
 msgstr "选择语言…"
 
-#: src/components/front-matter-editor/index.tsx:202
+#: src/components/front-matter-editor/index.tsx:208
 msgid "Classic look with a colored background."
 msgstr "带有彩色背景的经典风格。"
 
@@ -222,7 +222,7 @@ msgstr "关闭区块插入器"
 msgid "Code editor"
 msgstr "代码编辑器"
 
-#: src/components/front-matter-editor/index.tsx:407
+#: src/components/front-matter-editor/index.tsx:417
 msgid "Color scheme"
 msgstr "配色方案"
 
@@ -324,7 +324,11 @@ msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "专注于你的信息"
 
-#: src/components/front-matter-editor/index.tsx:333
+#: src/components/front-matter-editor/index.tsx:513
+msgid "Font"
+msgstr "字体"
+
+#: src/components/front-matter-editor/index.tsx:343
 msgid "Footer"
 msgstr "页脚"
 
@@ -337,8 +341,8 @@ msgctxt "slide pattern"
 msgid "From the theme"
 msgstr "由主题决定"
 
-#: src/components/front-matter-editor/index.tsx:124
-#: src/components/front-matter-editor/index.tsx:143
+#: src/components/front-matter-editor/index.tsx:130
+#: src/components/front-matter-editor/index.tsx:149
 msgid "Front matter settings"
 msgstr "前置元数据设置"
 
@@ -361,7 +365,7 @@ msgstr "好的幻灯片只讲一件事，并讲清楚。"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:322
+#: src/components/front-matter-editor/index.tsx:332
 msgid "Header"
 msgstr "页眉"
 
@@ -557,7 +561,7 @@ msgctxt "slide pattern"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/components/front-matter-editor/index.tsx:147
+#: src/components/front-matter-editor/index.tsx:153
 msgid "Marp"
 msgstr "Marp"
 
@@ -581,9 +585,13 @@ msgstr "Marp 模式"
 msgid "Message"
 msgstr "消息"
 
-#: src/components/front-matter-editor/index.tsx:210
+#: src/components/front-matter-editor/index.tsx:216
 msgid "Minimal and modern, with centered content."
 msgstr "简约现代，内容居中。"
+
+#: src/components/front-matter-editor/index.tsx:492
+msgid "Monospace"
+msgstr "等宽"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -637,7 +645,7 @@ msgstr "减少缩进量"
 msgid "Outline"
 msgstr "大纲"
 
-#: src/components/front-matter-editor/index.tsx:344
+#: src/components/front-matter-editor/index.tsx:354
 msgid "Paginate"
 msgstr "页码"
 
@@ -696,7 +704,7 @@ msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "图片上的引用"
 
-#: src/components/front-matter-editor/index.tsx:462
+#: src/components/front-matter-editor/index.tsx:472
 msgid "Recolor the theme. The colors are written to style."
 msgstr "为主题重新配色。颜色会写入 style。"
 
@@ -728,6 +736,10 @@ msgstr "调整侧边面板大小"
 msgid "Row count"
 msgstr "行数"
 
+#: src/components/front-matter-editor/index.tsx:490
+msgid "Sans-serif"
+msgstr "无衬线"
+
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr "搜索"
@@ -747,13 +759,17 @@ msgctxt "slide pattern"
 msgid "See each slide as you type"
 msgstr "边输入边查看每张幻灯片"
 
-#: src/components/front-matter-editor/index.tsx:356
+#: src/components/front-matter-editor/index.tsx:366
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 
 #: src/components/ai-sidebar/chat.tsx:319
 msgid "Send"
 msgstr "发送"
+
+#: src/components/front-matter-editor/index.tsx:491
+msgid "Serif"
+msgstr "衬线"
 
 #: src/components/ai-sidebar/chat.tsx:258
 msgid "Set an API key to use the AI Assistant."
@@ -770,7 +786,7 @@ msgstr "分享"
 msgid "Show or hide the List View."
 msgstr "显示或隐藏列表视图。"
 
-#: src/components/front-matter-editor/index.tsx:345
+#: src/components/front-matter-editor/index.tsx:355
 msgid "Show the page number on each slide."
 msgstr "在每张幻灯片上显示页码。"
 
@@ -785,11 +801,11 @@ msgstr "全屏显示幻灯片"
 msgid "Shown as a tooltip on hover."
 msgstr "悬停时显示为工具提示。"
 
-#: src/components/front-matter-editor/index.tsx:194
+#: src/components/front-matter-editor/index.tsx:200
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "简洁清爽，基于 GitHub Markdown 样式。"
 
-#: src/components/front-matter-editor/index.tsx:295
+#: src/components/front-matter-editor/index.tsx:305
 msgid "Size"
 msgstr "尺寸"
 
@@ -857,11 +873,11 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "文本"
 
-#: src/components/front-matter-editor/index.tsx:334
+#: src/components/front-matter-editor/index.tsx:344
 msgid "Text shown at the bottom of each slide."
 msgstr "显示在每张幻灯片底部的文本。"
 
-#: src/components/front-matter-editor/index.tsx:323
+#: src/components/front-matter-editor/index.tsx:333
 msgid "Text shown at the top of each slide."
 msgstr "显示在每张幻灯片顶部的文本。"
 
@@ -869,7 +885,7 @@ msgstr "显示在每张幻灯片顶部的文本。"
 msgid "The answer could not be loaded."
 msgstr "无法加载回答。"
 
-#: src/components/front-matter-editor/index.tsx:318
+#: src/components/front-matter-editor/index.tsx:328
 msgid "The aspect ratio of the slides."
 msgstr "幻灯片的宽高比。"
 
@@ -883,17 +899,26 @@ msgid ""
 "switching editors."
 msgstr "由于选区已更改（例如切换了编辑器），编辑未被应用。"
 
+#: src/components/front-matter-editor/index.tsx:552
+msgid ""
+"The font style of the slides. Each device shows its own font of that style."
+msgstr "幻灯片的字体风格。各设备会显示自己的该风格字体。"
+
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "无法渲染公式。"
 
-#: src/components/front-matter-editor/index.tsx:233
+#: src/components/front-matter-editor/index.tsx:239
 msgid "Theme"
 msgstr "主题"
 
-#: src/components/front-matter-editor/index.tsx:395
+#: src/components/front-matter-editor/index.tsx:405
 msgid "Theme colors"
 msgstr "主题颜色"
+
+#: src/components/front-matter-editor/index.tsx:496
+msgid "Theme font"
+msgstr "主题字体"
 
 #: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
@@ -977,7 +1002,7 @@ msgstr "转换为普通项目"
 msgid "Turn into a task item"
 msgstr "转换为任务项目"
 
-#: src/components/front-matter-editor/index.tsx:148
+#: src/components/front-matter-editor/index.tsx:154
 msgid "Turn the document into a slide deck."
 msgstr "将文档转换为幻灯片。"
 
@@ -1061,7 +1086,7 @@ msgstr "编写 HTML…"
 msgid "Write TeX…"
 msgstr "编写 TeX…"
 
-#: src/components/front-matter-editor/index.tsx:79
+#: src/components/front-matter-editor/index.tsx:85
 msgid "Write YAML front matter…"
 msgstr "编写 YAML 前置元数据…"
 
@@ -1109,10 +1134,10 @@ msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "用 Markdown 编写幻灯片"
 
-#: src/components/front-matter-editor/index.tsx:97
+#: src/components/front-matter-editor/index.tsx:103
 msgid "YAML front matter"
 msgstr "YAML 前置元数据"
 
-#: src/components/front-matter-editor/index.tsx:458
+#: src/components/front-matter-editor/index.tsx:468
 msgid "Your own CSS in style overrides some of these colors."
 msgstr "style 中你自己的 CSS 覆盖了其中部分颜色。"
