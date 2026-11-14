@@ -36,6 +36,7 @@ import {
 	isValidMarpPercentage,
 	parseMarpImageAlt,
 	serializeMarpImageAlt,
+	type MarpFilterName,
 	type MarpImageOptions,
 } from './marp-image-options';
 
@@ -91,6 +92,41 @@ const INLINE_LENGTH_UNITS = LENGTH_UNITS.filter(
 	( unit ) => unit.value !== '%'
 );
 const PERCENT_UNITS = [ { value: '%', label: '%' } ];
+
+/**
+ * Describes the values a CSS filter takes, as Marp passes the value to it.
+ *
+ * @param name The filter name.
+ * @return The description.
+ */
+function getFilterDescription( name: MarpFilterName ): string {
+	switch ( name ) {
+		case 'blur':
+			return __( 'A length of 0 or more, such as 10px.', 'mark-bricks' );
+		case 'brightness':
+		case 'contrast':
+		case 'saturate':
+			return __(
+				'A number or percentage of 0 or more. 1 keeps the original.',
+				'mark-bricks'
+			);
+		case 'grayscale':
+		case 'invert':
+		case 'opacity':
+		case 'sepia':
+			return __(
+				'A number from 0 to 1, or a percentage up to 100%.',
+				'mark-bricks'
+			);
+		case 'hue-rotate':
+			return __( 'An angle, such as 90deg or 0.5turn.', 'mark-bricks' );
+		case 'drop-shadow':
+			return __(
+				'The x and y offsets, then an optional blur and color, separated by commas.',
+				'mark-bricks'
+			);
+	}
+}
 
 /**
  * Checks the values of the form and builds the keywords it writes.
@@ -442,7 +478,12 @@ export function MarpImageSettings( {
 					<InputControl
 						key={ index }
 						label={ filter.name }
-						placeholder={ MARP_FILTER_DEFAULTS[ filter.name ] }
+						placeholder={ sprintf(
+							/* translators: %s: An example value, such as "1.5". */
+							__( 'e.g. %s', 'mark-bricks' ),
+							MARP_FILTER_DEFAULTS[ filter.name ]
+						) }
+						description={ getFilterDescription( filter.name ) }
 						value={ filter.value }
 						onValueChange={ ( value ) =>
 							update( {

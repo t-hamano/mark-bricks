@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:32:30.268Z\n"
-"PO-Revision-Date: 2026-11-14T07:32:33.654Z\n"
+"POT-Creation-Date: 2026-11-14T07:52:10.412Z\n"
+"PO-Revision-Date: 2026-11-14T07:52:13.754Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -67,6 +67,18 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/block-library/image/marp-image-settings.tsx:105
+msgid "A length of 0 or more, such as 10px."
+msgstr "0 veya daha büyük bir uzunluk, örneğin 10px."
+
+#: src/block-library/image/marp-image-settings.tsx:117
+msgid "A number from 0 to 1, or a percentage up to 100%."
+msgstr "0 ile 1 arasında bir sayı veya %100’e kadar bir yüzde."
+
+#: src/block-library/image/marp-image-settings.tsx:109
+msgid "A number or percentage of 0 or more. 1 keeps the original."
+msgstr "0 veya daha büyük bir sayı ya da yüzde. 1 orijinali korur."
+
 #: src/marp-patterns/patterns/title.ts:26
 #: src/marp-patterns/patterns/title-on-image.ts:29
 #: src/marp-patterns/patterns/title-on-gradient.ts:29
@@ -91,7 +103,7 @@ msgstr "Markdown ile yazılmış bir slayt"
 msgid "AI Assistant"
 msgstr "Yapay Zekâ Asistanı"
 
-#: src/block-library/image/marp-image-settings.tsx:371
+#: src/block-library/image/marp-image-settings.tsx:442
 msgid "Add filter"
 msgstr "Filtre ekle"
 
@@ -118,6 +130,10 @@ msgstr "Tüm kategoriler"
 msgid "Alt text"
 msgstr "Alternatif metin"
 
+#: src/block-library/image/marp-image-settings.tsx:122
+msgid "An angle, such as 90deg or 0.5turn."
+msgstr "Bir açı, örneğin 90deg veya 0.5turn."
+
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
 msgctxt "slide pattern"
 msgid "Any editor"
@@ -141,16 +157,16 @@ msgstr ""
 "Yapay Zekâ Asistanından yazmasını veya düzenlemesini isteyin. Seçiminiz ya "
 "da kod düzenleyicide imlecin bulunduğu satır mesajınızla birlikte gönderilir."
 
-#: src/block-library/image/marp-image-settings.tsx:307
-#: src/block-library/image/marp-image-settings.tsx:324
+#: src/block-library/image/marp-image-settings.tsx:378
+#: src/block-library/image/marp-image-settings.tsx:395
 msgid "Auto"
 msgstr "Otomatik"
 
-#: src/block-library/image/marp-image-settings.tsx:208
+#: src/block-library/image/marp-image-settings.tsx:276
 msgid "Background"
 msgstr "Arka plan"
 
-#: src/block-library/image/marp-image-settings.tsx:239
+#: src/block-library/image/marp-image-settings.tsx:307
 msgid "Background size"
 msgstr "Arka plan boyutu"
 
@@ -247,7 +263,7 @@ msgstr "Kod düzenleyici"
 msgid "Column count"
 msgstr "Sütun sayısı"
 
-#: src/block-library/image/marp-image-settings.tsx:268
+#: src/block-library/image/marp-image-settings.tsx:339
 msgid "Contain"
 msgstr "Sığdır"
 
@@ -255,7 +271,7 @@ msgstr "Sığdır"
 msgid "Convert the selected text into a link."
 msgstr "Seçilmiş metni bağlantıya dönüştür."
 
-#: src/block-library/image/marp-image-settings.tsx:264
+#: src/block-library/image/marp-image-settings.tsx:335
 msgid "Cover"
 msgstr "Kapla"
 
@@ -348,7 +364,7 @@ msgctxt "slide pattern"
 msgid "File for each deck"
 msgstr "Sunu başına dosya"
 
-#: src/block-library/image/marp-image-settings.tsx:367
+#: src/block-library/image/marp-image-settings.tsx:438
 msgid "Filters"
 msgstr "Filtreler"
 
@@ -471,7 +487,7 @@ msgctxt "slide pattern"
 msgid "Heading, text and list in two columns"
 msgstr "Başlık, metin ve listeyle iki sütun"
 
-#: src/block-library/image/marp-image-settings.tsx:323
+#: src/block-library/image/marp-image-settings.tsx:394
 msgid "Height"
 msgstr "Yükseklik"
 
@@ -511,7 +527,7 @@ msgstr "Önemli"
 msgid "Indent"
 msgstr "Girintiyi artır"
 
-#: src/block-library/image/marp-image-settings.tsx:204
+#: src/block-library/image/marp-image-settings.tsx:272
 msgid "Inline"
 msgstr "Satır içi"
 
@@ -560,11 +576,11 @@ msgstr "Her sürümü saklayın"
 msgid "Language"
 msgstr "Dil"
 
-#: src/block-library/image/marp-image-settings.tsx:338
+#: src/block-library/image/marp-image-settings.tsx:409
 msgid "Leave empty to size the image automatically."
 msgstr "Boyutu otomatik belirlemek için boş bırakın."
 
-#: src/block-library/image/marp-image-settings.tsx:212
+#: src/block-library/image/marp-image-settings.tsx:280
 msgid "Left"
 msgstr "Sol"
 
@@ -573,7 +589,7 @@ msgstr "Sol"
 msgid "Line %d"
 msgstr "Satır %d"
 
-#: src/block-library/image/marp-image-settings.tsx:348
+#: src/block-library/image/marp-image-settings.tsx:419
 msgid ""
 "Lines up the background images of the slide from top to bottom instead of "
 "side by side."
@@ -630,7 +646,7 @@ msgid "Marp patterns"
 msgstr "Marp desenleri"
 
 # %s: Words of the alt text, such as "right".
-#: src/block-library/image/marp-image-settings.tsx:443
+#: src/block-library/image/marp-image-settings.tsx:519
 #: src/block-library/image/edit.tsx:295
 msgid "Marp reads these words as settings: %s"
 msgstr "Marp bu kelimeleri ayar olarak okur: %s"
@@ -659,7 +675,7 @@ msgstr "Yeni konuşma"
 msgid "No block selected"
 msgstr "Blok seçilmedi"
 
-#: src/block-library/image/marp-image-settings.tsx:403
+#: src/block-library/image/marp-image-settings.tsx:474
 msgid "No filters."
 msgstr "Filtre yok."
 
@@ -693,7 +709,7 @@ msgstr "Ayarları aç"
 msgid "Ordered"
 msgstr "Sıralı"
 
-#: src/block-library/image/marp-image-settings.tsx:272
+#: src/block-library/image/marp-image-settings.tsx:343
 msgid "Original"
 msgstr "Orijinal"
 
@@ -719,7 +735,7 @@ msgstr "Bir adres yazın ya da yapıştırın"
 msgid "Paste or type URL or file path"
 msgstr "Bir adres ya da dosya yolu yazın veya yapıştırın"
 
-#: src/block-library/image/marp-image-settings.tsx:178
+#: src/block-library/image/marp-image-settings.tsx:246
 msgid "Placement"
 msgstr "Yerleşim"
 
@@ -780,7 +796,7 @@ msgstr "Son geri aldığınız şeyi yeniden yapın."
 msgid "Remove a link."
 msgstr "Bir bağlantıyı kaldırın."
 
-#: src/block-library/image/marp-image-settings.tsx:422
+#: src/block-library/image/marp-image-settings.tsx:498
 msgid "Remove filter"
 msgstr "Filtreyi kaldır"
 
@@ -796,7 +812,7 @@ msgstr "Aramayı sıfırla"
 msgid "Resize side panel"
 msgstr "Yan paneli yeniden boyutlandır"
 
-#: src/block-library/image/marp-image-settings.tsx:216
+#: src/block-library/image/marp-image-settings.tsx:284
 msgid "Right"
 msgstr "Sağ"
 
@@ -804,8 +820,8 @@ msgstr "Sağ"
 msgid "Row count"
 msgstr "Satır sayısı"
 
-#: src/block-library/image/marp-image-settings.tsx:276
-#: src/block-library/image/marp-image-settings.tsx:283
+#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:354
 msgid "Scale"
 msgstr "Ölçek"
 
@@ -916,11 +932,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "Düz metin olarak slaytlar"
 
-#: src/block-library/image/marp-image-settings.tsx:222
+#: src/block-library/image/marp-image-settings.tsx:290
 msgid "Split width"
 msgstr "Bölme genişliği"
 
-#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:418
 msgid "Stack vertically"
 msgstr "Dikey olarak diz"
 
@@ -985,21 +1001,26 @@ msgstr ""
 msgid "The formula could not be rendered."
 msgstr "Formül oluşturulamadı."
 
-#: src/block-library/image/marp-image-settings.tsx:185
+#: src/block-library/image/marp-image-settings.tsx:253
 msgid "The image fills the slide, or one side of it, behind the content."
 msgstr "Görsel, içeriğin arkasında slaydı ya da bir tarafını doldurur."
 
-#: src/block-library/image/marp-image-settings.tsx:181
+#: src/block-library/image/marp-image-settings.tsx:249
 msgid "The image sits in the slide content."
 msgstr "Görsel slayt içeriğinde yer alır."
 
-#: src/block-library/image/marp-image-settings.tsx:229
+#: src/block-library/image/marp-image-settings.tsx:297
 msgid "The share of the slide the image takes, such as 40%."
 msgstr "Görselin kapladığı slayt oranı, örneğin %40."
 
-#: src/block-library/image/marp-image-settings.tsx:290
+#: src/block-library/image/marp-image-settings.tsx:361
 msgid "The size relative to the original image, such as 50%."
 msgstr "Orijinal görsele göre boyut, örneğin %50."
+
+#: src/block-library/image/marp-image-settings.tsx:124
+msgid ""
+"The x and y offsets, then an optional blur and color, separated by commas."
+msgstr "x ve y kaydırmaları, ardından isteğe bağlı bulanıklık ve renk, virgülle ayrılmış."
 
 #: src/components/front-matter-editor/index.tsx:219
 msgid "Theme"
@@ -1156,7 +1177,7 @@ msgstr "Yanıt bekleniyor…"
 msgid "Warning"
 msgstr "Uyarı"
 
-#: src/block-library/image/marp-image-settings.tsx:306
+#: src/block-library/image/marp-image-settings.tsx:377
 msgid "Width"
 msgstr "Genişlik"
 
@@ -1226,3 +1247,8 @@ msgstr "Markdown ile slayt yazmak"
 #: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML front matter"
+
+# %s: An example value, such as "1.5".
+#: src/block-library/image/marp-image-settings.tsx:483
+msgid "e.g. %s"
+msgstr "örn. %s"

@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:32:30.268Z\n"
+"POT-Creation-Date: 2026-11-14T07:52:10.412Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -540,11 +540,6 @@ msgstr ""
 msgid "Delete column"
 msgstr ""
 
-#: src/block-library/separator/use-marp-title.ts:39
-#: src/block-library/separator/edit.tsx:25
-msgid "Slide Separator"
-msgstr ""
-
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr ""
@@ -573,16 +568,13 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
+#: src/block-library/separator/use-marp-title.ts:39
+#: src/block-library/separator/edit.tsx:25
+msgid "Slide Separator"
+msgstr ""
+
 #: src/block-library/paragraph/edit.tsx:41
 msgid "Type / to choose a block"
-msgstr ""
-
-#: src/block-library/math/preview.tsx:89
-msgid "The formula could not be rendered."
-msgstr ""
-
-#: src/block-library/math/edit.tsx:47
-msgid "Write TeX…"
 msgstr ""
 
 #: src/block-library/list-item/edit.tsx:62
@@ -613,6 +605,14 @@ msgstr ""
 msgid "Turn into a task item"
 msgstr ""
 
+#: src/block-library/math/preview.tsx:89
+msgid "The formula could not be rendered."
+msgstr ""
+
+#: src/block-library/math/edit.tsx:47
+msgid "Write TeX…"
+msgstr ""
+
 #: src/block-library/list/edit.tsx:45
 msgid "Unordered"
 msgstr ""
@@ -621,112 +621,137 @@ msgstr ""
 msgid "Ordered"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:178
+#: src/block-library/image/marp-image-settings.tsx:105
+msgid "A length of 0 or more, such as 10px."
+msgstr ""
+
+#: src/block-library/image/marp-image-settings.tsx:109
+msgid "A number or percentage of 0 or more. 1 keeps the original."
+msgstr ""
+
+#: src/block-library/image/marp-image-settings.tsx:117
+msgid "A number from 0 to 1, or a percentage up to 100%."
+msgstr ""
+
+#: src/block-library/image/marp-image-settings.tsx:122
+msgid "An angle, such as 90deg or 0.5turn."
+msgstr ""
+
+#: src/block-library/image/marp-image-settings.tsx:124
+msgid "The x and y offsets, then an optional blur and color, separated by commas."
+msgstr ""
+
+#: src/block-library/image/marp-image-settings.tsx:246
 msgid "Placement"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:181
+#: src/block-library/image/marp-image-settings.tsx:249
 msgid "The image sits in the slide content."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:185
+#: src/block-library/image/marp-image-settings.tsx:253
 msgid "The image fills the slide, or one side of it, behind the content."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:204
+#: src/block-library/image/marp-image-settings.tsx:272
 msgid "Inline"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:208
+#: src/block-library/image/marp-image-settings.tsx:276
 msgid "Background"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:212
+#: src/block-library/image/marp-image-settings.tsx:280
 msgid "Left"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:216
+#: src/block-library/image/marp-image-settings.tsx:284
 msgid "Right"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:222
+#: src/block-library/image/marp-image-settings.tsx:290
 msgid "Split width"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:229
+#: src/block-library/image/marp-image-settings.tsx:297
 msgid "The share of the slide the image takes, such as 40%."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:239
+#: src/block-library/image/marp-image-settings.tsx:307
 msgid "Background size"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:264
+#: src/block-library/image/marp-image-settings.tsx:335
 msgid "Cover"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:268
+#: src/block-library/image/marp-image-settings.tsx:339
 msgid "Contain"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:272
+#: src/block-library/image/marp-image-settings.tsx:343
 msgid "Original"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:276
-#: src/block-library/image/marp-image-settings.tsx:283
+#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:354
 msgid "Scale"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:290
+#: src/block-library/image/marp-image-settings.tsx:361
 msgid "The size relative to the original image, such as 50%."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:306
+#: src/block-library/image/marp-image-settings.tsx:377
 msgid "Width"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:307
-#: src/block-library/image/marp-image-settings.tsx:324
+#: src/block-library/image/marp-image-settings.tsx:378
+#: src/block-library/image/marp-image-settings.tsx:395
 msgid "Auto"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:323
+#: src/block-library/image/marp-image-settings.tsx:394
 msgid "Height"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:338
+#: src/block-library/image/marp-image-settings.tsx:409
 msgid "Leave empty to size the image automatically."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:418
 msgid "Stack vertically"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:348
+#: src/block-library/image/marp-image-settings.tsx:419
 msgid ""
 "Lines up the background images of the slide from top to bottom instead of "
 "side by side."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:367
+#: src/block-library/image/marp-image-settings.tsx:438
 msgid "Filters"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:371
+#: src/block-library/image/marp-image-settings.tsx:442
 msgid "Add filter"
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:403
+#: src/block-library/image/marp-image-settings.tsx:474
 msgid "No filters."
 msgstr ""
 
-#: src/block-library/image/marp-image-settings.tsx:422
+# %s: An example value, such as "1.5".
+#: src/block-library/image/marp-image-settings.tsx:483
+msgid "e.g. %s"
+msgstr ""
+
+#: src/block-library/image/marp-image-settings.tsx:498
 msgid "Remove filter"
 msgstr ""
 
 # %s: Words of the alt text, such as "right".
-#: src/block-library/image/marp-image-settings.tsx:443
+#: src/block-library/image/marp-image-settings.tsx:519
 #: src/block-library/image/edit.tsx:295
 msgid "Marp reads these words as settings: %s"
 msgstr ""

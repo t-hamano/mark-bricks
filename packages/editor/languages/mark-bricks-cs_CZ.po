@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:32:30.268Z\n"
-"PO-Revision-Date: 2026-11-14T07:32:31.230Z\n"
+"POT-Creation-Date: 2026-11-14T07:52:10.412Z\n"
+"PO-Revision-Date: 2026-11-14T07:52:11.519Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -67,6 +67,18 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/block-library/image/marp-image-settings.tsx:105
+msgid "A length of 0 or more, such as 10px."
+msgstr "Délka 0 nebo více, například 10px."
+
+#: src/block-library/image/marp-image-settings.tsx:117
+msgid "A number from 0 to 1, or a percentage up to 100%."
+msgstr "Číslo od 0 do 1 nebo procento do 100%."
+
+#: src/block-library/image/marp-image-settings.tsx:109
+msgid "A number or percentage of 0 or more. 1 keeps the original."
+msgstr "Číslo nebo procento 0 nebo více. 1 zachová původní stav."
+
 #: src/marp-patterns/patterns/title.ts:26
 #: src/marp-patterns/patterns/title-on-image.ts:29
 #: src/marp-patterns/patterns/title-on-gradient.ts:29
@@ -91,7 +103,7 @@ msgstr "Snímek napsaný v Markdownu"
 msgid "AI Assistant"
 msgstr "Asistent AI"
 
-#: src/block-library/image/marp-image-settings.tsx:371
+#: src/block-library/image/marp-image-settings.tsx:442
 msgid "Add filter"
 msgstr "Přidat filtr"
 
@@ -118,6 +130,10 @@ msgstr "Všechny kategorie"
 msgid "Alt text"
 msgstr "Alternativní text"
 
+#: src/block-library/image/marp-image-settings.tsx:122
+msgid "An angle, such as 90deg or 0.5turn."
+msgstr "Úhel, například 90deg nebo 0.5turn."
+
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
 msgctxt "slide pattern"
 msgid "Any editor"
@@ -141,16 +157,16 @@ msgstr ""
 "Požádejte asistenta AI o napsání nebo úpravu. Váš výběr, nebo řádek s "
 "kurzorem v editoru kódu, se odešle spolu se zprávou."
 
-#: src/block-library/image/marp-image-settings.tsx:307
-#: src/block-library/image/marp-image-settings.tsx:324
+#: src/block-library/image/marp-image-settings.tsx:378
+#: src/block-library/image/marp-image-settings.tsx:395
 msgid "Auto"
 msgstr "Automaticky"
 
-#: src/block-library/image/marp-image-settings.tsx:208
+#: src/block-library/image/marp-image-settings.tsx:276
 msgid "Background"
 msgstr "Pozadí"
 
-#: src/block-library/image/marp-image-settings.tsx:239
+#: src/block-library/image/marp-image-settings.tsx:307
 msgid "Background size"
 msgstr "Velikost pozadí"
 
@@ -247,7 +263,7 @@ msgstr "HTML editor"
 msgid "Column count"
 msgstr "Počet sloupců"
 
-#: src/block-library/image/marp-image-settings.tsx:268
+#: src/block-library/image/marp-image-settings.tsx:339
 msgid "Contain"
 msgstr "Přizpůsobit"
 
@@ -255,7 +271,7 @@ msgstr "Přizpůsobit"
 msgid "Convert the selected text into a link."
 msgstr "Převede označený text na odkaz."
 
-#: src/block-library/image/marp-image-settings.tsx:264
+#: src/block-library/image/marp-image-settings.tsx:335
 msgid "Cover"
 msgstr "Vyplnit"
 
@@ -348,7 +364,7 @@ msgctxt "slide pattern"
 msgid "File for each deck"
 msgstr "Soubor pro každou prezentaci"
 
-#: src/block-library/image/marp-image-settings.tsx:367
+#: src/block-library/image/marp-image-settings.tsx:438
 msgid "Filters"
 msgstr "Filtry"
 
@@ -471,7 +487,7 @@ msgctxt "slide pattern"
 msgid "Heading, text and list in two columns"
 msgstr "Nadpis, text a seznam ve dvou sloupcích"
 
-#: src/block-library/image/marp-image-settings.tsx:323
+#: src/block-library/image/marp-image-settings.tsx:394
 msgid "Height"
 msgstr "Výška"
 
@@ -511,7 +527,7 @@ msgstr "Důležité"
 msgid "Indent"
 msgstr "Zvětšit odsazení"
 
-#: src/block-library/image/marp-image-settings.tsx:204
+#: src/block-library/image/marp-image-settings.tsx:272
 msgid "Inline"
 msgstr "V textu"
 
@@ -560,11 +576,11 @@ msgstr "Uchovejte každou verzi"
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/block-library/image/marp-image-settings.tsx:338
+#: src/block-library/image/marp-image-settings.tsx:409
 msgid "Leave empty to size the image automatically."
 msgstr "Ponechte prázdné pro automatickou velikost."
 
-#: src/block-library/image/marp-image-settings.tsx:212
+#: src/block-library/image/marp-image-settings.tsx:280
 msgid "Left"
 msgstr "Vlevo"
 
@@ -573,7 +589,7 @@ msgstr "Vlevo"
 msgid "Line %d"
 msgstr "Řádek %d"
 
-#: src/block-library/image/marp-image-settings.tsx:348
+#: src/block-library/image/marp-image-settings.tsx:419
 msgid ""
 "Lines up the background images of the slide from top to bottom instead of "
 "side by side."
@@ -629,7 +645,7 @@ msgid "Marp patterns"
 msgstr "Vzory Marp"
 
 # %s: Words of the alt text, such as "right".
-#: src/block-library/image/marp-image-settings.tsx:443
+#: src/block-library/image/marp-image-settings.tsx:519
 #: src/block-library/image/edit.tsx:295
 msgid "Marp reads these words as settings: %s"
 msgstr "Marp čte tato slova jako nastavení: %s"
@@ -658,7 +674,7 @@ msgstr "Nová konverzace"
 msgid "No block selected"
 msgstr "Není vybrán žádný blok"
 
-#: src/block-library/image/marp-image-settings.tsx:403
+#: src/block-library/image/marp-image-settings.tsx:474
 msgid "No filters."
 msgstr "Žádné filtry."
 
@@ -692,7 +708,7 @@ msgstr "Otevřít nastavení"
 msgid "Ordered"
 msgstr "Číslovaný"
 
-#: src/block-library/image/marp-image-settings.tsx:272
+#: src/block-library/image/marp-image-settings.tsx:343
 msgid "Original"
 msgstr "Původní"
 
@@ -718,7 +734,7 @@ msgstr "Vložte nebo napište adresu URL"
 msgid "Paste or type URL or file path"
 msgstr "Vložte nebo napište adresu URL nebo cestu k souboru"
 
-#: src/block-library/image/marp-image-settings.tsx:178
+#: src/block-library/image/marp-image-settings.tsx:246
 msgid "Placement"
 msgstr "Umístění"
 
@@ -779,7 +795,7 @@ msgstr "Provést znovu změny."
 msgid "Remove a link."
 msgstr "Odstranit odkaz."
 
-#: src/block-library/image/marp-image-settings.tsx:422
+#: src/block-library/image/marp-image-settings.tsx:498
 msgid "Remove filter"
 msgstr "Odebrat filtr"
 
@@ -795,7 +811,7 @@ msgstr "Resetovat vyhledávání"
 msgid "Resize side panel"
 msgstr "Změnit velikost bočního panelu"
 
-#: src/block-library/image/marp-image-settings.tsx:216
+#: src/block-library/image/marp-image-settings.tsx:284
 msgid "Right"
 msgstr "Vpravo"
 
@@ -803,8 +819,8 @@ msgstr "Vpravo"
 msgid "Row count"
 msgstr "Počet řádků"
 
-#: src/block-library/image/marp-image-settings.tsx:276
-#: src/block-library/image/marp-image-settings.tsx:283
+#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:354
 msgid "Scale"
 msgstr "Měřítko"
 
@@ -915,11 +931,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "Snímky jako prostý text"
 
-#: src/block-library/image/marp-image-settings.tsx:222
+#: src/block-library/image/marp-image-settings.tsx:290
 msgid "Split width"
 msgstr "Šířka rozdělení"
 
-#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:418
 msgid "Stack vertically"
 msgstr "Skládat svisle"
 
@@ -983,21 +999,26 @@ msgstr ""
 msgid "The formula could not be rendered."
 msgstr "Vzorec se nepodařilo vykreslit."
 
-#: src/block-library/image/marp-image-settings.tsx:185
+#: src/block-library/image/marp-image-settings.tsx:253
 msgid "The image fills the slide, or one side of it, behind the content."
 msgstr "Obrázek vyplní snímek nebo jeho jednu stranu za obsahem."
 
-#: src/block-library/image/marp-image-settings.tsx:181
+#: src/block-library/image/marp-image-settings.tsx:249
 msgid "The image sits in the slide content."
 msgstr "Obrázek je součástí obsahu snímku."
 
-#: src/block-library/image/marp-image-settings.tsx:229
+#: src/block-library/image/marp-image-settings.tsx:297
 msgid "The share of the slide the image takes, such as 40%."
 msgstr "Podíl snímku, který obrázek zabírá, například 40%."
 
-#: src/block-library/image/marp-image-settings.tsx:290
+#: src/block-library/image/marp-image-settings.tsx:361
 msgid "The size relative to the original image, such as 50%."
 msgstr "Velikost vzhledem k původnímu obrázku, například 50%."
+
+#: src/block-library/image/marp-image-settings.tsx:124
+msgid ""
+"The x and y offsets, then an optional blur and color, separated by commas."
+msgstr "Posun x a y, poté volitelně rozostření a barva, oddělené čárkami."
 
 #: src/components/front-matter-editor/index.tsx:219
 msgid "Theme"
@@ -1154,7 +1175,7 @@ msgstr "Čekání na odpověď…"
 msgid "Warning"
 msgstr "Varování"
 
-#: src/block-library/image/marp-image-settings.tsx:306
+#: src/block-library/image/marp-image-settings.tsx:377
 msgid "Width"
 msgstr "Šířka"
 
@@ -1224,3 +1245,8 @@ msgstr "Psaní snímků v Markdownu"
 #: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML front matter"
+
+# %s: An example value, such as "1.5".
+#: src/block-library/image/marp-image-settings.tsx:483
+msgid "e.g. %s"
+msgstr "např. %s"

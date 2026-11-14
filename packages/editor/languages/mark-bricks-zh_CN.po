@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:32:30.268Z\n"
-"PO-Revision-Date: 2026-11-14T07:32:33.999Z\n"
+"POT-Creation-Date: 2026-11-14T07:52:10.412Z\n"
+"PO-Revision-Date: 2026-11-14T07:52:14.005Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -67,6 +67,18 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/block-library/image/marp-image-settings.tsx:105
+msgid "A length of 0 or more, such as 10px."
+msgstr "0 或以上的长度，例如 10px。"
+
+#: src/block-library/image/marp-image-settings.tsx:117
+msgid "A number from 0 to 1, or a percentage up to 100%."
+msgstr "0 到 1 的数字，或不超过 100% 的百分比。"
+
+#: src/block-library/image/marp-image-settings.tsx:109
+msgid "A number or percentage of 0 or more. 1 keeps the original."
+msgstr "0 或以上的数字或百分比。1 保持原样。"
+
 #: src/marp-patterns/patterns/title.ts:26
 #: src/marp-patterns/patterns/title-on-image.ts:29
 #: src/marp-patterns/patterns/title-on-gradient.ts:29
@@ -91,7 +103,7 @@ msgstr "用 Markdown 编写的幻灯片"
 msgid "AI Assistant"
 msgstr "AI 助手"
 
-#: src/block-library/image/marp-image-settings.tsx:371
+#: src/block-library/image/marp-image-settings.tsx:442
 msgid "Add filter"
 msgstr "添加滤镜"
 
@@ -118,6 +130,10 @@ msgstr "所有分类"
 msgid "Alt text"
 msgstr "替代文字"
 
+#: src/block-library/image/marp-image-settings.tsx:122
+msgid "An angle, such as 90deg or 0.5turn."
+msgstr "角度，例如 90deg 或 0.5turn。"
+
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
 msgctxt "slide pattern"
 msgid "Any editor"
@@ -141,16 +157,16 @@ msgstr ""
 "让 AI 助手撰写或编辑内容。你的选区，或代码编辑器中光标所在的行，会随消息一起"
 "发送。"
 
-#: src/block-library/image/marp-image-settings.tsx:307
-#: src/block-library/image/marp-image-settings.tsx:324
+#: src/block-library/image/marp-image-settings.tsx:378
+#: src/block-library/image/marp-image-settings.tsx:395
 msgid "Auto"
 msgstr "自动"
 
-#: src/block-library/image/marp-image-settings.tsx:208
+#: src/block-library/image/marp-image-settings.tsx:276
 msgid "Background"
 msgstr "背景"
 
-#: src/block-library/image/marp-image-settings.tsx:239
+#: src/block-library/image/marp-image-settings.tsx:307
 msgid "Background size"
 msgstr "背景尺寸"
 
@@ -247,7 +263,7 @@ msgstr "代码编辑器"
 msgid "Column count"
 msgstr "栏目数"
 
-#: src/block-library/image/marp-image-settings.tsx:268
+#: src/block-library/image/marp-image-settings.tsx:339
 msgid "Contain"
 msgstr "包含"
 
@@ -255,7 +271,7 @@ msgstr "包含"
 msgid "Convert the selected text into a link."
 msgstr "将选中的文字转换为链接。"
 
-#: src/block-library/image/marp-image-settings.tsx:264
+#: src/block-library/image/marp-image-settings.tsx:335
 msgid "Cover"
 msgstr "覆盖"
 
@@ -348,7 +364,7 @@ msgctxt "slide pattern"
 msgid "File for each deck"
 msgstr "每份演示文稿的文件数"
 
-#: src/block-library/image/marp-image-settings.tsx:367
+#: src/block-library/image/marp-image-settings.tsx:438
 msgid "Filters"
 msgstr "滤镜"
 
@@ -471,7 +487,7 @@ msgctxt "slide pattern"
 msgid "Heading, text and list in two columns"
 msgstr "标题、文本和列表分两栏"
 
-#: src/block-library/image/marp-image-settings.tsx:323
+#: src/block-library/image/marp-image-settings.tsx:394
 msgid "Height"
 msgstr "高度"
 
@@ -511,7 +527,7 @@ msgstr "重要"
 msgid "Indent"
 msgstr "增加缩进量"
 
-#: src/block-library/image/marp-image-settings.tsx:204
+#: src/block-library/image/marp-image-settings.tsx:272
 msgid "Inline"
 msgstr "行内"
 
@@ -560,11 +576,11 @@ msgstr "保留每个版本"
 msgid "Language"
 msgstr "语言"
 
-#: src/block-library/image/marp-image-settings.tsx:338
+#: src/block-library/image/marp-image-settings.tsx:409
 msgid "Leave empty to size the image automatically."
 msgstr "留空则自动确定尺寸。"
 
-#: src/block-library/image/marp-image-settings.tsx:212
+#: src/block-library/image/marp-image-settings.tsx:280
 msgid "Left"
 msgstr "左侧"
 
@@ -573,7 +589,7 @@ msgstr "左侧"
 msgid "Line %d"
 msgstr "第 %d 行"
 
-#: src/block-library/image/marp-image-settings.tsx:348
+#: src/block-library/image/marp-image-settings.tsx:419
 msgid ""
 "Lines up the background images of the slide from top to bottom instead of "
 "side by side."
@@ -629,7 +645,7 @@ msgid "Marp patterns"
 msgstr "Marp 模式"
 
 # %s: Words of the alt text, such as "right".
-#: src/block-library/image/marp-image-settings.tsx:443
+#: src/block-library/image/marp-image-settings.tsx:519
 #: src/block-library/image/edit.tsx:295
 msgid "Marp reads these words as settings: %s"
 msgstr "Marp 会将这些词读作设置：%s"
@@ -656,7 +672,7 @@ msgstr "新对话"
 msgid "No block selected"
 msgstr "未选择区块"
 
-#: src/block-library/image/marp-image-settings.tsx:403
+#: src/block-library/image/marp-image-settings.tsx:474
 msgid "No filters."
 msgstr "没有滤镜。"
 
@@ -690,7 +706,7 @@ msgstr "打开设置"
 msgid "Ordered"
 msgstr "有序"
 
-#: src/block-library/image/marp-image-settings.tsx:272
+#: src/block-library/image/marp-image-settings.tsx:343
 msgid "Original"
 msgstr "原始尺寸"
 
@@ -716,7 +732,7 @@ msgstr "粘贴或键入 URL"
 msgid "Paste or type URL or file path"
 msgstr "粘贴或键入 URL 或文件路径"
 
-#: src/block-library/image/marp-image-settings.tsx:178
+#: src/block-library/image/marp-image-settings.tsx:246
 msgid "Placement"
 msgstr "位置"
 
@@ -777,7 +793,7 @@ msgstr "重做您撤销的操作。"
 msgid "Remove a link."
 msgstr "移除链接。"
 
-#: src/block-library/image/marp-image-settings.tsx:422
+#: src/block-library/image/marp-image-settings.tsx:498
 msgid "Remove filter"
 msgstr "移除滤镜"
 
@@ -793,7 +809,7 @@ msgstr "重置搜索"
 msgid "Resize side panel"
 msgstr "调整侧边面板大小"
 
-#: src/block-library/image/marp-image-settings.tsx:216
+#: src/block-library/image/marp-image-settings.tsx:284
 msgid "Right"
 msgstr "右侧"
 
@@ -801,8 +817,8 @@ msgstr "右侧"
 msgid "Row count"
 msgstr "行数"
 
-#: src/block-library/image/marp-image-settings.tsx:276
-#: src/block-library/image/marp-image-settings.tsx:283
+#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:354
 msgid "Scale"
 msgstr "缩放"
 
@@ -911,11 +927,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "纯文本幻灯片"
 
-#: src/block-library/image/marp-image-settings.tsx:222
+#: src/block-library/image/marp-image-settings.tsx:290
 msgid "Split width"
 msgstr "分割宽度"
 
-#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:418
 msgid "Stack vertically"
 msgstr "垂直堆叠"
 
@@ -978,21 +994,26 @@ msgstr "由于选区已更改（例如切换了编辑器），编辑未被应用
 msgid "The formula could not be rendered."
 msgstr "无法渲染公式。"
 
-#: src/block-library/image/marp-image-settings.tsx:185
+#: src/block-library/image/marp-image-settings.tsx:253
 msgid "The image fills the slide, or one side of it, behind the content."
 msgstr "图片在内容后方填满幻灯片或其一侧。"
 
-#: src/block-library/image/marp-image-settings.tsx:181
+#: src/block-library/image/marp-image-settings.tsx:249
 msgid "The image sits in the slide content."
 msgstr "图片位于幻灯片内容中。"
 
-#: src/block-library/image/marp-image-settings.tsx:229
+#: src/block-library/image/marp-image-settings.tsx:297
 msgid "The share of the slide the image takes, such as 40%."
 msgstr "图片占幻灯片的比例，例如 40%。"
 
-#: src/block-library/image/marp-image-settings.tsx:290
+#: src/block-library/image/marp-image-settings.tsx:361
 msgid "The size relative to the original image, such as 50%."
 msgstr "相对于原始图片的尺寸，例如 50%。"
+
+#: src/block-library/image/marp-image-settings.tsx:124
+msgid ""
+"The x and y offsets, then an optional blur and color, separated by commas."
+msgstr "x 和 y 偏移，之后可选模糊和颜色，用逗号分隔。"
 
 #: src/components/front-matter-editor/index.tsx:219
 msgid "Theme"
@@ -1149,7 +1170,7 @@ msgstr "正在等待回答…"
 msgid "Warning"
 msgstr "警告"
 
-#: src/block-library/image/marp-image-settings.tsx:306
+#: src/block-library/image/marp-image-settings.tsx:377
 msgid "Width"
 msgstr "宽度"
 
@@ -1219,3 +1240,8 @@ msgstr "用 Markdown 编写幻灯片"
 #: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML 前置元数据"
+
+# %s: An example value, such as "1.5".
+#: src/block-library/image/marp-image-settings.tsx:483
+msgid "e.g. %s"
+msgstr "例如 %s"
