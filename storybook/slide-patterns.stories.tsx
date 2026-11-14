@@ -210,18 +210,17 @@ function SlidePatterns() {
 			the top of the page while the grid scrolls. */ }
 			<Stack
 				direction="row"
-				align="center"
+				align="end"
 				justify="space-between"
 				wrap="wrap"
 				gap="md"
 				className="dataviews__view-actions"
 				style={ { top: 0, zIndex: 1, paddingTop: 8 } }
 			>
-				<Stack direction="row" align="center" wrap="wrap" gap="lg">
+				<Stack direction="row" align="end" wrap="wrap" gap="lg">
 					<div style={ { width: 200 } }>
 						<SelectControl
 							label="Category"
-							hideLabelFromVision
 							items={ CATEGORY_ITEMS }
 							value={
 								CATEGORY_ITEMS.find(
@@ -246,7 +245,6 @@ function SlidePatterns() {
 					</div>
 					<ToggleGroupControl
 						__next40pxDefaultSize
-						hideLabelFromVision
 						label="Theme"
 						value={ theme }
 						onChange={ ( value ) =>
@@ -265,7 +263,6 @@ function SlidePatterns() {
 				<div style={ { width: 160 } }>
 					<RangeControl
 						__next40pxDefaultSize
-						hideLabelFromVision
 						label="Preview size"
 						showTooltip={ false }
 						withInputField={ false }
