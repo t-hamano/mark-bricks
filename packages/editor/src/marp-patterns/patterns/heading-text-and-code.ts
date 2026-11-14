@@ -1,0 +1,35 @@
+/**
+ * WordPress dependencies
+ */
+import { _x } from '@wordpress/i18n';
+
+/**
+ * Internal dependencies
+ */
+import type { SlidePattern } from '../types';
+
+const pattern: SlidePattern = {
+	name: 'heading-text-and-code',
+	title: () =>
+		_x( 'Heading, text, and code', 'slide pattern', 'mark-bricks' ),
+	categories: [ 'code' ],
+	markdown: `## {{heading}}
+
+{{text}}
+
+\`\`\`js
+function example( value ) {
+  return value * 2;
+}
+\`\`\``,
+	strings: () => ( {
+		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
+		text: _x(
+			'Write a short paragraph here.',
+			'slide pattern',
+			'mark-bricks'
+		),
+	} ),
+};
+
+export default pattern;

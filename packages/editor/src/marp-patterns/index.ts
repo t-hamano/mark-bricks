@@ -20,7 +20,6 @@ import bulletedList from './patterns/bulleted-list';
 import orderedList from './patterns/ordered-list';
 import nestedList from './patterns/nested-list';
 import labeledList from './patterns/labeled-list';
-import linkList from './patterns/link-list';
 import textAndList from './patterns/text-and-list';
 import imageOnLeftAndText from './patterns/image-on-left-and-text';
 import imageOnRightAndText from './patterns/image-on-right-and-text';
@@ -38,6 +37,11 @@ import threeColumnTable from './patterns/three-column-table';
 import fourColumnTable from './patterns/four-column-table';
 import headingAndCode from './patterns/heading-and-code';
 import headingCodeAndText from './patterns/heading-code-and-text';
+import code from './patterns/code';
+import headingTextAndCode from './patterns/heading-text-and-code';
+import headingCodeAndList from './patterns/heading-code-and-list';
+import headingAndTwoCodeBlocks from './patterns/heading-and-two-code-blocks';
+import imageOnRightAndCode from './patterns/image-on-right-and-code';
 
 export type { SlidePattern, SlidePatternCategory } from './types';
 export { SLIDE_PATTERN_CATEGORIES } from './categories';
@@ -62,7 +66,6 @@ export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	orderedList,
 	nestedList,
 	labeledList,
-	linkList,
 	textAndList,
 	imageOnLeftAndText,
 	imageOnRightAndText,
@@ -78,8 +81,13 @@ export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	twoColumnTable,
 	threeColumnTable,
 	fourColumnTable,
+	code,
 	headingAndCode,
+	headingTextAndCode,
 	headingCodeAndText,
+	headingCodeAndList,
+	headingAndTwoCodeBlocks,
+	imageOnRightAndCode,
 ];
 
 /**

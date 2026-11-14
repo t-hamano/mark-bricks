@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:19:16.762Z\n"
-"PO-Revision-Date: 2026-11-14T04:19:19.382Z\n"
+"POT-Creation-Date: 2026-11-14T04:21:28.404Z\n"
+"PO-Revision-Date: 2026-11-14T04:21:30.954Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -204,6 +204,11 @@ msgctxt "slide pattern category"
 msgid "Code"
 msgstr "Code"
 
+#: src/marp-patterns/patterns/code.ts:13
+msgctxt "slide pattern"
+msgid "Code"
+msgstr "Code"
+
 #: src/components/editor/index.tsx:111
 msgid "Code editor"
 msgstr "Code-Editor"
@@ -288,15 +293,11 @@ msgstr "Das Bild konnte nicht geladen werden."
 #: src/marp-patterns/patterns/nested-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:26
 #: src/marp-patterns/patterns/image-on-left-and-list.ts:26
+#: src/marp-patterns/patterns/heading-code-and-list.ts:29
 #: src/marp-patterns/patterns/bulleted-list.ts:22
 msgctxt "slide pattern"
 msgid "First item"
 msgstr "Erster Eintrag"
-
-#: src/marp-patterns/patterns/link-list.ts:22
-msgctxt "slide pattern"
-msgid "First link"
-msgstr "Erster Link"
 
 #: src/components/front-matter-editor/index.tsx:293
 msgid "Footer"
@@ -356,17 +357,20 @@ msgstr "Überschrift"
 #: src/marp-patterns/patterns/text-and-list.ts:23
 #: src/marp-patterns/patterns/ordered-list.ts:21
 #: src/marp-patterns/patterns/nested-list.ts:23
-#: src/marp-patterns/patterns/link-list.ts:21
 #: src/marp-patterns/patterns/labeled-list.ts:21
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:23
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:25
+#: src/marp-patterns/patterns/image-on-right-and-code.ts:27
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:23
 #: src/marp-patterns/patterns/image-on-left-and-list.ts:25
+#: src/marp-patterns/patterns/heading-text-and-code.ts:26
 #: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:23
 #: src/marp-patterns/patterns/heading-code-and-text.ts:26
+#: src/marp-patterns/patterns/heading-code-and-list.ts:28
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
 #: src/marp-patterns/patterns/heading-and-two-images.ts:20
+#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:29
 #: src/marp-patterns/patterns/heading-and-text.ts:19
 #: src/marp-patterns/patterns/heading-and-quote.ts:21
 #: src/marp-patterns/patterns/heading-and-code.ts:23
@@ -396,6 +400,11 @@ msgctxt "slide pattern"
 msgid "Heading and text"
 msgstr "Überschrift und Text"
 
+#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:14
+msgctxt "slide pattern"
+msgid "Heading and two code blocks"
+msgstr "Überschrift und zwei Codeblöcke"
+
 #: src/marp-patterns/patterns/heading-and-two-images.ts:14
 msgctxt "slide pattern"
 msgid "Heading and two images"
@@ -405,6 +414,11 @@ msgstr "Überschrift und zwei Bilder"
 msgctxt "slide pattern"
 msgid "Heading and two subsections"
 msgstr "Überschrift und zwei Unterabschnitte"
+
+#: src/marp-patterns/patterns/heading-code-and-list.ts:14
+msgctxt "slide pattern"
+msgid "Heading, code, and list"
+msgstr "Überschrift, Code und Liste"
 
 #: src/marp-patterns/patterns/heading-code-and-text.ts:14
 msgctxt "slide pattern"
@@ -420,6 +434,11 @@ msgstr "Überschrift, Bild und Bildunterschrift"
 msgctxt "slide pattern"
 msgid "Heading, subheading, and text"
 msgstr "Überschrift, Unterüberschrift und Text"
+
+#: src/marp-patterns/patterns/heading-text-and-code.ts:14
+msgctxt "slide pattern"
+msgid "Heading, text, and code"
+msgstr "Überschrift, Text und Code"
 
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
@@ -443,6 +462,11 @@ msgstr "Bild links und Liste"
 msgctxt "slide pattern"
 msgid "Image on the left and text"
 msgstr "Bild links und Text"
+
+#: src/marp-patterns/patterns/image-on-right-and-code.ts:15
+msgctxt "slide pattern"
+msgid "Image on the right and code"
+msgstr "Bild rechts und Code"
 
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:15
 msgctxt "slide pattern"
@@ -536,11 +560,6 @@ msgstr "Liste (Aufzählung)"
 msgctxt "slide pattern"
 msgid "List (Labeled)"
 msgstr "Liste (Mit Bezeichnungen)"
-
-#: src/marp-patterns/patterns/link-list.ts:13
-msgctxt "slide pattern"
-msgid "List (Links)"
-msgstr "Liste (Links)"
 
 #: src/marp-patterns/patterns/nested-list.ts:13
 msgctxt "slide pattern"
@@ -741,15 +760,11 @@ msgstr "Nach Folienvorlagen suchen"
 #: src/marp-patterns/patterns/nested-list.ts:27
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:27
 #: src/marp-patterns/patterns/image-on-left-and-list.ts:27
+#: src/marp-patterns/patterns/heading-code-and-list.ts:30
 #: src/marp-patterns/patterns/bulleted-list.ts:23
 msgctxt "slide pattern"
 msgid "Second item"
 msgstr "Zweiter Eintrag"
-
-#: src/marp-patterns/patterns/link-list.ts:23
-msgctxt "slide pattern"
-msgid "Second link"
-msgstr "Zweiter Link"
 
 #: src/components/front-matter-editor/index.tsx:316
 msgid "See the <a>Marp documentation</a> for other settings."
@@ -907,15 +922,11 @@ msgstr "Theme"
 #: src/marp-patterns/patterns/ordered-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:28
 #: src/marp-patterns/patterns/image-on-left-and-list.ts:28
+#: src/marp-patterns/patterns/heading-code-and-list.ts:31
 #: src/marp-patterns/patterns/bulleted-list.ts:24
 msgctxt "slide pattern"
 msgid "Third item"
 msgstr "Dritter Eintrag"
-
-#: src/marp-patterns/patterns/link-list.ts:24
-msgctxt "slide pattern"
-msgid "Third link"
-msgstr "Dritter Link"
 
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
@@ -1070,6 +1081,7 @@ msgstr "YAML-Front-Matter schreiben …"
 #: src/marp-patterns/patterns/text-and-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:24
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:24
+#: src/marp-patterns/patterns/heading-text-and-code.ts:27
 #: src/marp-patterns/patterns/heading-subheading-and-text.ts:24
 #: src/marp-patterns/patterns/heading-code-and-text.ts:27
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:28

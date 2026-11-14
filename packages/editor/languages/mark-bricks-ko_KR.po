@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:19:16.762Z\n"
-"PO-Revision-Date: 2026-11-14T04:19:22.226Z\n"
+"POT-Creation-Date: 2026-11-14T04:21:28.404Z\n"
+"PO-Revision-Date: 2026-11-14T04:21:33.628Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -203,6 +203,11 @@ msgctxt "slide pattern category"
 msgid "Code"
 msgstr "코드"
 
+#: src/marp-patterns/patterns/code.ts:13
+msgctxt "slide pattern"
+msgid "Code"
+msgstr "코드"
+
 #: src/components/editor/index.tsx:111
 msgid "Code editor"
 msgstr "코드 편집기"
@@ -287,15 +292,11 @@ msgstr "이미지를 불러오지 못했습니다."
 #: src/marp-patterns/patterns/nested-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:26
 #: src/marp-patterns/patterns/image-on-left-and-list.ts:26
+#: src/marp-patterns/patterns/heading-code-and-list.ts:29
 #: src/marp-patterns/patterns/bulleted-list.ts:22
 msgctxt "slide pattern"
 msgid "First item"
 msgstr "첫 번째 항목"
-
-#: src/marp-patterns/patterns/link-list.ts:22
-msgctxt "slide pattern"
-msgid "First link"
-msgstr "첫 번째 링크"
 
 #: src/components/front-matter-editor/index.tsx:293
 msgid "Footer"
@@ -355,17 +356,20 @@ msgstr "헤딩요소"
 #: src/marp-patterns/patterns/text-and-list.ts:23
 #: src/marp-patterns/patterns/ordered-list.ts:21
 #: src/marp-patterns/patterns/nested-list.ts:23
-#: src/marp-patterns/patterns/link-list.ts:21
 #: src/marp-patterns/patterns/labeled-list.ts:21
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:23
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:25
+#: src/marp-patterns/patterns/image-on-right-and-code.ts:27
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:23
 #: src/marp-patterns/patterns/image-on-left-and-list.ts:25
+#: src/marp-patterns/patterns/heading-text-and-code.ts:26
 #: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:23
 #: src/marp-patterns/patterns/heading-code-and-text.ts:26
+#: src/marp-patterns/patterns/heading-code-and-list.ts:28
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
 #: src/marp-patterns/patterns/heading-and-two-images.ts:20
+#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:29
 #: src/marp-patterns/patterns/heading-and-text.ts:19
 #: src/marp-patterns/patterns/heading-and-quote.ts:21
 #: src/marp-patterns/patterns/heading-and-code.ts:23
@@ -395,6 +399,11 @@ msgctxt "slide pattern"
 msgid "Heading and text"
 msgstr "제목과 텍스트"
 
+#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:14
+msgctxt "slide pattern"
+msgid "Heading and two code blocks"
+msgstr "제목과 두 코드 블록"
+
 #: src/marp-patterns/patterns/heading-and-two-images.ts:14
 msgctxt "slide pattern"
 msgid "Heading and two images"
@@ -404,6 +413,11 @@ msgstr "제목과 두 이미지"
 msgctxt "slide pattern"
 msgid "Heading and two subsections"
 msgstr "제목과 두 개의 소제목"
+
+#: src/marp-patterns/patterns/heading-code-and-list.ts:14
+msgctxt "slide pattern"
+msgid "Heading, code, and list"
+msgstr "제목, 코드, 목록"
 
 #: src/marp-patterns/patterns/heading-code-and-text.ts:14
 msgctxt "slide pattern"
@@ -419,6 +433,11 @@ msgstr "제목, 이미지, 캡션"
 msgctxt "slide pattern"
 msgid "Heading, subheading, and text"
 msgstr "제목, 소제목, 텍스트"
+
+#: src/marp-patterns/patterns/heading-text-and-code.ts:14
+msgctxt "slide pattern"
+msgid "Heading, text, and code"
+msgstr "제목, 텍스트, 코드"
 
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
@@ -442,6 +461,11 @@ msgstr "왼쪽 이미지와 목록"
 msgctxt "slide pattern"
 msgid "Image on the left and text"
 msgstr "왼쪽 이미지와 텍스트"
+
+#: src/marp-patterns/patterns/image-on-right-and-code.ts:15
+msgctxt "slide pattern"
+msgid "Image on the right and code"
+msgstr "오른쪽 이미지와 코드"
 
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:15
 msgctxt "slide pattern"
@@ -535,11 +559,6 @@ msgstr "목록 (글머리 기호)"
 msgctxt "slide pattern"
 msgid "List (Labeled)"
 msgstr "목록 (레이블)"
-
-#: src/marp-patterns/patterns/link-list.ts:13
-msgctxt "slide pattern"
-msgid "List (Links)"
-msgstr "목록 (링크)"
 
 #: src/marp-patterns/patterns/nested-list.ts:13
 msgctxt "slide pattern"
@@ -738,15 +757,11 @@ msgstr "슬라이드 패턴 검색"
 #: src/marp-patterns/patterns/nested-list.ts:27
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:27
 #: src/marp-patterns/patterns/image-on-left-and-list.ts:27
+#: src/marp-patterns/patterns/heading-code-and-list.ts:30
 #: src/marp-patterns/patterns/bulleted-list.ts:23
 msgctxt "slide pattern"
 msgid "Second item"
 msgstr "두 번째 항목"
-
-#: src/marp-patterns/patterns/link-list.ts:23
-msgctxt "slide pattern"
-msgid "Second link"
-msgstr "두 번째 링크"
 
 #: src/components/front-matter-editor/index.tsx:316
 msgid "See the <a>Marp documentation</a> for other settings."
@@ -902,15 +917,11 @@ msgstr "테마"
 #: src/marp-patterns/patterns/ordered-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-list.ts:28
 #: src/marp-patterns/patterns/image-on-left-and-list.ts:28
+#: src/marp-patterns/patterns/heading-code-and-list.ts:31
 #: src/marp-patterns/patterns/bulleted-list.ts:24
 msgctxt "slide pattern"
 msgid "Third item"
 msgstr "세 번째 항목"
-
-#: src/marp-patterns/patterns/link-list.ts:24
-msgctxt "slide pattern"
-msgid "Third link"
-msgstr "세 번째 링크"
 
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
@@ -1065,6 +1076,7 @@ msgstr "YAML 프런트 매터 작성…"
 #: src/marp-patterns/patterns/text-and-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:24
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:24
+#: src/marp-patterns/patterns/heading-text-and-code.ts:27
 #: src/marp-patterns/patterns/heading-subheading-and-text.ts:24
 #: src/marp-patterns/patterns/heading-code-and-text.ts:27
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:28
