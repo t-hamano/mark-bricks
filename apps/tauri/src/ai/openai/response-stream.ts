@@ -151,16 +151,19 @@ export function readAnswer(
 			throw lengthLimitError();
 		}
 		if ( ! editCall ) {
-			return { continuation: [], usage };
+			return { continuation: () => [], usage };
 		}
-		const output: FunctionCallOutputItem = {
-			type: 'function_call_output',
-			call_id: editCall.callId,
-			output: EDIT_RESULT,
-		};
+		const { callId } = editCall;
 		return {
 			editCall: { input: parseArguments( editCall.arguments ) },
-			continuation: [ ...outputItems, output ],
+			continuation: ( error ) => {
+				const output: FunctionCallOutputItem = {
+					type: 'function_call_output',
+					call_id: callId,
+					output: error ?? EDIT_RESULT,
+				};
+				return [ ...outputItems, output ];
+			},
 			usage,
 		};
 	};

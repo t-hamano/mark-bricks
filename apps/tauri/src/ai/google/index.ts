@@ -21,7 +21,13 @@ export const google: AiProviderAdapter = {
 	keyPlaceholder: 'AIza…',
 	keyUrl: 'https://aistudio.google.com/api-keys',
 	usageUrl: 'https://aistudio.google.com/usage',
-	buildRequest: ( { model, system, messages, continuation } ) =>
+	buildRequest: ( {
+		model,
+		system,
+		messages,
+		continuation,
+		allowEditTool = true,
+	} ) =>
 		buildRequestBody( {
 			model,
 			system,
@@ -29,7 +35,7 @@ export const google: AiProviderAdapter = {
 				messages,
 				( continuation ?? [] ) as Content[]
 			),
-			allowEditTool: ! continuation,
+			allowEditTool,
 		} ),
 	readAnswer,
 	createHttpError,

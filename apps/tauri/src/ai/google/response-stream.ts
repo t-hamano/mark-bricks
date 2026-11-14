@@ -169,17 +169,18 @@ export function readAnswer(
 			if ( MALFORMED_CALL_REASONS.includes( finishReason ) ) {
 				return {
 					editCall: { input: undefined },
-					continuation: [],
+					continuation: () => [],
 					usage,
 				};
 			}
-			return { continuation: [], usage };
+			return { continuation: () => [], usage };
 		}
+		const call = editCall;
 		return {
-			editCall: { input: editCall.args },
-			continuation: [
+			editCall: { input: call.args },
+			continuation: ( error ) => [
 				{ role: 'model', parts },
-				toEditResponse( editCall ),
+				toEditResponse( call, error ),
 			],
 			usage,
 		};

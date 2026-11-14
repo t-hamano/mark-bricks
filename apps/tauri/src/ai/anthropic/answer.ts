@@ -53,9 +53,9 @@ function toAnswer( message: StreamedMessage ): ProviderAnswer {
 			: undefined;
 	const { usage } = message;
 	if ( ! toolUse ) {
-		return { continuation: [], usage };
+		return { continuation: () => [], usage };
 	}
-	const continuation: MessageParam[] = [
+	const continuation = ( error?: string ): MessageParam[] => [
 		{ role: 'assistant', content },
 		{
 			role: 'user',
@@ -63,7 +63,8 @@ function toAnswer( message: StreamedMessage ): ProviderAnswer {
 				{
 					type: 'tool_result',
 					tool_use_id: toolUse.id,
-					content: EDIT_RESULT,
+					content: error ?? EDIT_RESULT,
+					...( error ? { is_error: true } : {} ),
 				},
 			],
 		},

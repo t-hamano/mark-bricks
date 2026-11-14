@@ -49,7 +49,9 @@ async function run( streams: string[], signal = new AbortController().signal ) {
 	const result = chat( {
 		system: 'System prompt',
 		messages: [ { role: 'user', text: 'Make it shorter' } ],
-		onEvent: ( event ) => events.push( event ),
+		onEvent: ( event ) => {
+			events.push( event );
+		},
 		signal,
 	} );
 	return { result, events, bodies, transport };
@@ -164,7 +166,7 @@ describe( 'createChat with Anthropic', () => {
 					{
 						type: 'tool_use',
 						id: 'toolu_01',
-						name: 'edit_selection',
+						name: 'edit_document',
 						input: {
 							action: 'replace',
 							markdown: 'A short\nparagraph.',
@@ -183,6 +185,80 @@ describe( 'createChat with Anthropic', () => {
 				],
 			},
 		] );
+	} );
+
+	it( 'lets the model try again after a failed edit', async () => {
+		const { transport, bodies } = createTransport( [
+			edit,
+			edit,
+			afterEdit,
+		] );
+		const chat = createChat( { provider: anthropic, transport } );
+		let edits = 0;
+		await chat( {
+			system: 'System prompt',
+			messages: [ { role: 'user', text: 'Make it shorter' } ],
+			onEvent: ( event ) => {
+				if ( event.type !== 'edit' ) {
+					return;
+				}
+				edits++;
+				return edits === 1
+					? { status: 'failed', reason: 'Not found.' }
+					: { status: 'applied' };
+			},
+			signal: new AbortController().signal,
+		} );
+
+		expect( bodies ).toHaveLength( 3 );
+		expect( bodies[ 1 ].tool_choice ).toEqual( {
+			type: 'auto',
+			disable_parallel_tool_use: true,
+		} );
+		expect( bodies[ 1 ].messages[ 2 ] ).toEqual( {
+			role: 'user',
+			content: [
+				{
+					type: 'tool_result',
+					tool_use_id: 'toolu_01',
+					content: 'Not found.',
+					is_error: true,
+				},
+			],
+		} );
+		expect( bodies[ 2 ].tool_choice ).toEqual( { type: 'none' } );
+		// Both attempts stay in the conversation.
+		expect( bodies[ 2 ].messages ).toHaveLength( 5 );
+		expect( bodies[ 2 ].messages[ 4 ].content ).toEqual( [
+			{
+				type: 'tool_result',
+				tool_use_id: 'toolu_01',
+				content: 'The edit was applied.',
+			},
+		] );
+	} );
+
+	it( 'stops letting the model edit after three failed edits', async () => {
+		const { transport, bodies } = createTransport( [
+			edit,
+			edit,
+			edit,
+			afterEdit,
+		] );
+		const chat = createChat( { provider: anthropic, transport } );
+		await chat( {
+			system: 'System prompt',
+			messages: [ { role: 'user', text: 'Make it shorter' } ],
+			onEvent: ( event ) =>
+				event.type === 'edit'
+					? { status: 'failed', reason: 'Not found.' }
+					: undefined,
+			signal: new AbortController().signal,
+		} );
+
+		expect( bodies ).toHaveLength( 4 );
+		expect( bodies[ 2 ].tool_choice ).toMatchObject( { type: 'auto' } );
+		expect( bodies[ 3 ].tool_choice ).toEqual( { type: 'none' } );
 	} );
 
 	it( 'does not continue when the answer is stopped after the edit', async () => {
@@ -273,7 +349,7 @@ describe( 'toEchoContent', () => {
 				{
 					type: 'tool_use',
 					id: 'toolu_a',
-					name: 'edit_selection',
+					name: 'edit_document',
 					input: {},
 				},
 				{ type: 'fallback', from: {}, to: {} },
