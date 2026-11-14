@@ -366,6 +366,17 @@ describe( 'getFrontMatterBlockValue', () => {
 		).toBe( 'h1 { color: red; }' );
 	} );
 
+	it( 'folds a folded block scalar like YAML', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'style: >\n  section::after { content: "hello\n  world"; }\n\n  h1 {\n    color: red;\n  }',
+				'style'
+			)
+		).toBe(
+			'section::after { content: "hello world"; }\nh1 {\n  color: red;\n}'
+		);
+	} );
+
 	it( 'reads a quoted value spanning several lines', () => {
 		expect(
 			getFrontMatterBlockValue(

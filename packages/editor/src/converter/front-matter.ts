@@ -244,15 +244,46 @@ function findKeyRange( lines: string[], key: string ): KeyRange | null {
 			.filter( ( line ) => line.trim() !== '' )
 			.map( ( line ) => /^[ \t]*/.exec( line )?.[ 0 ].length ?? 0 )
 	);
+	const unindented = content.map( ( line ) =>
+		line.trim() === '' ? '' : line.slice( indent )
+	);
 	return {
 		start,
 		end,
-		value: content
-			.map( ( line ) =>
-				line.trim() === '' ? '' : line.slice( indent )
-			)
-			.join( '\n' ),
+		value: /^[ \t]*>/.test( rest )
+			? foldLines( unindented )
+			: unindented.join( '\n' ),
 	};
+}
+
+// Joins the lines of a folded block scalar (`>`) the way YAML does: a line
+// break between two lines of text becomes a space, while blank lines and
+// more indented lines keep their line breaks.
+function foldLines( lines: string[] ): string {
+	let text = '';
+	lines.forEach( ( line, index ) => {
+		if ( index === 0 ) {
+			text = line;
+			return;
+		}
+		const previous = lines[ index - 1 ];
+		const isText = ( item: string ) =>
+			item !== '' && ! /^[ \t]/.test( item );
+		const separator = isText( previous ) && isText( line ) ? ' ' : '\n';
+		// A blank line between two lines of text stands for the break that
+		// folding removed, so it adds nothing more.
+		if (
+			line === '' &&
+			isText( previous ) &&
+			isText(
+				lines.slice( index + 1 ).find( ( item ) => item !== '' ) ?? ''
+			)
+		) {
+			return;
+		}
+		text += `${ separator }${ line }`;
+	} );
+	return text;
 }
 
 /**
