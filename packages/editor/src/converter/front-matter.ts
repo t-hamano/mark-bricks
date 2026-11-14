@@ -245,7 +245,11 @@ function findKeyRange( frontMatter: string, key: string ): KeyRange {
 			) + 1,
 	};
 	if ( node === null || ( isScalar( node ) && node.value === null ) ) {
-		return { lines, value: null, editable: ! isNode( node ) || ! node.tag };
+		return {
+			lines,
+			value: null,
+			editable: ! isNode( node ) || ( ! node.tag && ! node.anchor ),
+		};
 	}
 	const editable =
 		isScalar( node ) &&
@@ -341,7 +345,12 @@ export function setFrontMatterBlockValue(
 			...next
 		);
 	} else {
-		lines.push( ...next );
+		// A new key goes before a document-end marker (`...`), since YAML
+		// and Marp ignore whatever follows it.
+		const docEnd = lines.findIndex( ( line ) =>
+			/^\.\.\.(\s|$)/.test( line )
+		);
+		lines.splice( docEnd === -1 ? lines.length : docEnd, 0, ...next );
 	}
 	return lines.join( '\n' );
 }

@@ -420,6 +420,22 @@ describe( 'getFrontMatterBlockValue', () => {
 } );
 
 describe( 'setFrontMatterBlockValue', () => {
+	it( 'adds a new key before a document-end marker', () => {
+		expect(
+			setFrontMatterBlockValue( 'marp: true\n...', 'style', 'h1 {}' )
+		).toBe( 'marp: true\nstyle: |\n  h1 {}\n...' );
+	} );
+
+	it( 'leaves an anchored empty value as it is', () => {
+		const frontMatter = 'style: &empty\nheader: *empty';
+		expect( isFrontMatterBlockValueEditable( frontMatter, 'style' ) ).toBe(
+			false
+		);
+		expect(
+			setFrontMatterBlockValue( frontMatter, 'style', 'h1 {}' )
+		).toBe( frontMatter );
+	} );
+
 	it( 'keeps leading spaces with an indentation indicator', () => {
 		const value = '  h1 {\n  color: red;\n}';
 		const result = setFrontMatterBlockValue( 'marp: true', 'style', value );
