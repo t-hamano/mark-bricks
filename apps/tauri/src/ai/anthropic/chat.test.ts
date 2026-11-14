@@ -11,7 +11,7 @@ import { createChat } from '../chat';
 import { toEchoContent } from './answer';
 import { anthropic } from '.';
 import { createHttpError } from './errors';
-import type { RequestBody } from './request';
+import { NO_MORE_EDITS, type RequestBody } from './request';
 import answer from './fixtures/answer.sse?raw';
 import edit from './fixtures/edit.sse?raw';
 import afterEdit from './fixtures/after-edit.sse?raw';
@@ -156,7 +156,9 @@ describe( 'createChat with Anthropic', () => {
 		const [ first, second ] = bodies;
 		expect( second.system ).toEqual( first.system );
 		expect( second.tools ).toEqual( first.tools );
-		expect( second.tool_choice ).toEqual( { type: 'none' } );
+		// The tool choice stays the same, so the messages are read from
+		// the cache.
+		expect( second.tool_choice ).toEqual( first.tool_choice );
 		expect( second.messages.slice( 1 ) ).toEqual( [
 			{
 				role: 'assistant',
@@ -181,6 +183,11 @@ describe( 'createChat with Anthropic', () => {
 						type: 'tool_result',
 						tool_use_id: 'toolu_01',
 						content: 'The edit was applied.',
+					},
+					{
+						type: 'text',
+						text: NO_MORE_EDITS,
+						cache_control: { type: 'ephemeral' },
 					},
 				],
 			},
@@ -223,10 +230,11 @@ describe( 'createChat with Anthropic', () => {
 					tool_use_id: 'toolu_01',
 					content: 'Not found.',
 					is_error: true,
+					cache_control: { type: 'ephemeral' },
 				},
 			],
 		} );
-		expect( bodies[ 2 ].tool_choice ).toEqual( { type: 'none' } );
+		expect( bodies[ 2 ].tool_choice ).toEqual( bodies[ 1 ].tool_choice );
 		// Both attempts stay in the conversation.
 		expect( bodies[ 2 ].messages ).toHaveLength( 5 );
 		expect( bodies[ 2 ].messages[ 4 ].content ).toEqual( [
@@ -234,6 +242,11 @@ describe( 'createChat with Anthropic', () => {
 				type: 'tool_result',
 				tool_use_id: 'toolu_01',
 				content: 'The edit was applied.',
+			},
+			{
+				type: 'text',
+				text: NO_MORE_EDITS,
+				cache_control: { type: 'ephemeral' },
 			},
 		] );
 	} );
@@ -258,7 +271,12 @@ describe( 'createChat with Anthropic', () => {
 
 		expect( bodies ).toHaveLength( 4 );
 		expect( bodies[ 2 ].tool_choice ).toMatchObject( { type: 'auto' } );
-		expect( bodies[ 3 ].tool_choice ).toEqual( { type: 'none' } );
+		expect( bodies[ 3 ].tool_choice ).toEqual( bodies[ 2 ].tool_choice );
+		expect(
+			JSON.stringify(
+				bodies[ 3 ].messages[ bodies[ 3 ].messages.length - 1 ]
+			)
+		).toContain( 'You cannot edit the document again' );
 	} );
 
 	it( 'does not continue when the answer is stopped after the edit', async () => {
