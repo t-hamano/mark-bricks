@@ -8,11 +8,14 @@ import { describe, it, expect } from 'vitest';
  */
 import {
 	blocksToMarkdown,
+	getFrontMatterBlockValue,
 	getFrontMatterValue,
+	isFrontMatterBlockValueEditable,
 	isMarpDocument,
 	isMarpFrontMatter,
 	joinFrontMatter,
 	markdownToBlocks,
+	setFrontMatterBlockValue,
 	setFrontMatterValue,
 	setMarpFrontMatter,
 	splitFrontMatter,
@@ -345,5 +348,200 @@ describe( 'isMarpDocument', () => {
 		],
 	] )( 'does not detect a document that %s', ( _name, markdown ) => {
 		expect( isMarpDocument( markdown ) ).toBe( false );
+	} );
+} );
+
+describe( 'getFrontMatterBlockValue', () => {
+	it( 'reads a block scalar without its indentation', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'marp: true\nstyle: |\n  section {\n    color: red;\n  }\n\n  h1 {}\npaginate: true',
+				'style'
+			)
+		).toBe( 'section {\n  color: red;\n}\n\nh1 {}' );
+	} );
+
+	it( 'reads a one-line value', () => {
+		expect(
+			getFrontMatterBlockValue( 'style: "h1 { color: red; }"', 'style' )
+		).toBe( 'h1 { color: red; }' );
+	} );
+
+	it( 'folds a folded block scalar like YAML', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'style: >\n  section::after { content: "hello\n  world"; }\n\n  h1 {\n    color: red;\n  }',
+				'style'
+			)
+		).toBe(
+			'section::after { content: "hello world"; }\nh1 {\n  color: red;\n}'
+		);
+	} );
+
+	it( 'reads a value starting after a comment', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'style: # custom CSS\n  "section { color: red; }"',
+				'style'
+			)
+		).toBe( 'section { color: red; }' );
+	} );
+
+	it( 'reads a quoted value starting on the next line', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'style:\n  "section { color: red; }"',
+				'style'
+			)
+		).toBe( 'section { color: red; }' );
+	} );
+
+	it( 'reads a quoted value spanning several lines', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'style: "section {\n  color: red;\n  }"\npaginate: true',
+				'style'
+			)
+		).toBe( 'section { color: red; }' );
+	} );
+
+	it( 'reads a quoted key and YAML escapes', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'"style": "section {\\x20color: red; }"',
+				'style'
+			)
+		).toBe( 'section { color: red; }' );
+	} );
+
+	it( 'returns null when the key is missing', () => {
+		expect( getFrontMatterBlockValue( 'marp: true', 'style' ) ).toBeNull();
+	} );
+} );
+
+describe( 'setFrontMatterBlockValue', () => {
+	it( 'adds a new key before a document-end marker', () => {
+		expect(
+			setFrontMatterBlockValue( 'marp: true\n...', 'style', 'h1 {}' )
+		).toBe( 'marp: true\nstyle: |\n  h1 {}\n...' );
+	} );
+
+	it( 'leaves a value with an anchored key as it is', () => {
+		const frontMatter = '&k style: "h1 {}"\nheader: *k';
+		expect( isFrontMatterBlockValueEditable( frontMatter, 'style' ) ).toBe(
+			false
+		);
+	} );
+
+	it( 'leaves an anchored empty value as it is', () => {
+		const frontMatter = 'style: &empty\nheader: *empty';
+		expect( isFrontMatterBlockValueEditable( frontMatter, 'style' ) ).toBe(
+			false
+		);
+		expect(
+			setFrontMatterBlockValue( frontMatter, 'style', 'h1 {}' )
+		).toBe( frontMatter );
+	} );
+
+	it( 'keeps leading spaces with an indentation indicator', () => {
+		const value = '  h1 {\n  color: red;\n}';
+		const result = setFrontMatterBlockValue( 'marp: true', 'style', value );
+		expect( result ).toBe(
+			'marp: true\nstyle: |2\n    h1 {\n    color: red;\n  }'
+		);
+		expect( getFrontMatterBlockValue( result, 'style' ) ).toBe( value );
+	} );
+
+	it( 'replaces a block scalar in place', () => {
+		expect(
+			setFrontMatterBlockValue(
+				'marp: true\nstyle: |-\n  h1 {}\n\npaginate: true',
+				'style',
+				'h2 {}\n\nh3 {}'
+			)
+		).toBe( 'marp: true\nstyle: |\n  h2 {}\n\n  h3 {}\n\npaginate: true' );
+	} );
+
+	it( 'replaces a one-line value with a block scalar', () => {
+		expect(
+			setFrontMatterBlockValue( 'style: "h1 {}"', 'style', 'h2 {}' )
+		).toBe( 'style: |\n  h2 {}' );
+	} );
+
+	it( 'replaces a quoted value spanning several lines', () => {
+		expect(
+			setFrontMatterBlockValue(
+				'style: "section {\n  color: red;\n  }"\npaginate: true',
+				'style',
+				'h2 {}'
+			)
+		).toBe( 'style: |\n  h2 {}\npaginate: true' );
+	} );
+
+	it( 'replaces a quoted key instead of adding another', () => {
+		expect(
+			setFrontMatterBlockValue(
+				'marp: true\n"style": |\n  h1 {}\npaginate: true',
+				'style',
+				'h2 {}'
+			)
+		).toBe( 'marp: true\nstyle: |\n  h2 {}\npaginate: true' );
+	} );
+
+	it( 'leaves front matter that is not valid YAML as it is', () => {
+		const invalid = 'marp: true\nstyle: "h1 {}\npaginate: [';
+		expect( isFrontMatterBlockValueEditable( invalid, 'style' ) ).toBe(
+			false
+		);
+		expect( setFrontMatterBlockValue( invalid, 'style', 'h2 {}' ) ).toBe(
+			invalid
+		);
+	} );
+
+	it( 'adds the key at the end', () => {
+		expect(
+			setFrontMatterBlockValue( 'marp: true', 'style', 'h1 {}' )
+		).toBe( 'marp: true\nstyle: |\n  h1 {}' );
+	} );
+
+	it( 'removes the key', () => {
+		expect(
+			setFrontMatterBlockValue(
+				'marp: true\nstyle: |\n  h1 {}\npaginate: true',
+				'style',
+				null
+			)
+		).toBe( 'marp: true\npaginate: true' );
+	} );
+} );
+
+describe( 'isFrontMatterBlockValueEditable', () => {
+	it( 'rejects anchors, tags, aliases and collections', () => {
+		for ( const frontMatter of [
+			'style: &css |\n  h1 {}',
+			'style: !!str h1 {}',
+			'style: *css',
+			'style: [ a ]',
+			'style: # note\n  &css "h1 {}"',
+		] ) {
+			expect(
+				isFrontMatterBlockValueEditable( frontMatter, 'style' )
+			).toBe( false );
+			expect(
+				setFrontMatterBlockValue( frontMatter, 'style', 'h2 {}' )
+			).toBe( frontMatter );
+		}
+	} );
+
+	it( 'accepts strings and a missing key', () => {
+		expect(
+			isFrontMatterBlockValueEditable( 'style: |\n  h1 {}', 'style' )
+		).toBe( true );
+		expect(
+			isFrontMatterBlockValueEditable( 'style: "h1 {}"', 'style' )
+		).toBe( true );
+		expect( isFrontMatterBlockValueEditable( 'marp: true', 'style' ) ).toBe(
+			true
+		);
 	} );
 } );

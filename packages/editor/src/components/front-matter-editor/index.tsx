@@ -8,6 +8,7 @@ import { useState } from 'react';
  */
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import type { Block } from '@wordpress/blocks';
+import { ColorIndicator } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { createInterpolateElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -30,14 +31,41 @@ import {
 import { useFrontMatter } from './context';
 import {
 	getFrontMatterValue,
+	isFrontMatterBlockValueEditable,
 	isMarpFrontMatter,
 	setFrontMatterValue,
 	setMarpFrontMatter,
 } from '../../converter/front-matter';
+import {
+	MARP_COLOR_SCHEMES,
+	MARP_FONT_STYLES,
+	getMarpColorScheme,
+	getMarpFontStyle,
+	isMarpColorSchemeOverridden,
+	setMarpColorScheme,
+	setMarpFontStyle,
+	supportsMarpColorScheme,
+	type MarpColorScheme,
+} from '../../marp-style-presets';
 import { useCodeMirror } from '../../block-library/hooks/use-code-mirror';
 import { usePlatform } from '../../platform';
 
 const MARP_DIRECTIVES_URL = 'https://marpit.marp.app/directives';
+
+// The color scheme option that leaves the theme's own colors.
+const THEME_COLORS = 'theme';
+
+// Shown when `style` uses YAML the presets can't rewrite safely. A
+// function, so that it is translated with the locale loaded at render.
+function getStyleNotEditableText(): string {
+	return __(
+		'Unavailable because style uses YAML features the editor can’t change, such as an anchor or a tag.',
+		'mark-bricks'
+	);
+}
+
+// The font option that leaves the theme's own font.
+const THEME_FONT = 'theme';
 
 export { FrontMatterContext, useFrontMatter } from './context';
 export type { FrontMatterContextValue } from './context';
@@ -206,6 +234,8 @@ function MarpSettings( {
 		themes.push( { label: theme, value: theme } );
 	}
 
+	const colorScheme = getMarpColorScheme( value );
+
 	const size = getFrontMatterValue( value, 'size' ) ?? '16:9';
 	// The sizes that Marp's built-in themes provide.
 	const sizes = [ '16:9', '4:3' ];
@@ -221,9 +251,27 @@ function MarpSettings( {
 					items={ themes }
 					value={ theme }
 					onValueChange={ ( next ) => {
-						if ( typeof next === 'string' ) {
-							setValue( 'theme', next );
+						if ( typeof next !== 'string' ) {
+							return;
 						}
+						const nextValue = setFrontMatterValue(
+							value,
+							'theme',
+							next
+						);
+						// Rewrites the color scheme for the variables the new
+						// theme reads its colors from.
+						setFrontMatter(
+							colorScheme
+								? setMarpColorScheme(
+										nextValue,
+										next,
+										supportsMarpColorScheme( next )
+											? colorScheme.id
+											: null
+									)
+								: nextValue
+						);
 					} }
 				>
 					<Select.Trigger />
@@ -251,6 +299,18 @@ function MarpSettings( {
 					</Select.Popup>
 				</Select.Root>
 			</Field.Root>
+			{ supportsMarpColorScheme( theme ) && (
+				<ColorSchemeField
+					value={ value }
+					theme={ theme }
+					colorScheme={ colorScheme }
+					portalContainer={ portalContainer }
+				/>
+			) }
+			<FontStyleField
+				value={ value }
+				portalContainer={ portalContainer }
+			/>
 			<Field.Root>
 				<Field.Label>{ __( 'Size', 'mark-bricks' ) }</Field.Label>
 				<Select.Root
@@ -336,5 +396,219 @@ function MarpSettings( {
 				) }
 			</p>
 		</>
+	);
+}
+
+function ColorSchemeField( {
+	value,
+	theme,
+	colorScheme,
+	portalContainer,
+}: {
+	value: string;
+	theme: string;
+	colorScheme: MarpColorScheme | null;
+	portalContainer: HTMLElement | null;
+} ) {
+	const { setFrontMatter } = useFrontMatter();
+	const items = [
+		{ label: __( 'Theme colors', 'mark-bricks' ), value: THEME_COLORS },
+		...MARP_COLOR_SCHEMES.map( ( scheme ) => ( {
+			label: scheme.label,
+			value: scheme.id,
+		} ) ),
+	];
+	const selected = colorScheme?.id ?? THEME_COLORS;
+	const isOverridden =
+		colorScheme !== null && isMarpColorSchemeOverridden( value, theme );
+	const isEditable = isFrontMatterBlockValueEditable( value, 'style' );
+
+	return (
+		<Field.Root>
+			<Field.Label>{ __( 'Color scheme', 'mark-bricks' ) }</Field.Label>
+			<Select.Root
+				items={ items }
+				value={ selected }
+				disabled={ ! isEditable }
+				onValueChange={ ( next ) => {
+					if ( typeof next === 'string' ) {
+						setFrontMatter(
+							setMarpColorScheme(
+								value,
+								theme,
+								next === THEME_COLORS ? null : next
+							)
+						);
+					}
+				} }
+			>
+				<Select.Trigger>
+					<ColorSchemeLabel
+						scheme={ colorScheme }
+						label={
+							items.find( ( item ) => item.value === selected )
+								?.label ?? ''
+						}
+					/>
+				</Select.Trigger>
+				<Select.Popup
+					portal={ <Select.Portal container={ portalContainer } /> }
+				>
+					{ items.map( ( item ) => (
+						<Select.Item
+							key={ item.value }
+							value={ item.value }
+							label={ item.label }
+						>
+							<Select.ItemLabel>
+								<ColorSchemeLabel
+									scheme={
+										MARP_COLOR_SCHEMES.find(
+											( scheme ) =>
+												scheme.id === item.value
+										) ?? null
+									}
+									label={ item.label }
+								/>
+							</Select.ItemLabel>
+						</Select.Item>
+					) ) }
+				</Select.Popup>
+			</Select.Root>
+			<Field.Description>
+				{ getColorSchemeDescription( isEditable, isOverridden ) }
+			</Field.Description>
+		</Field.Root>
+	);
+}
+
+function getColorSchemeDescription(
+	isEditable: boolean,
+	isOverridden: boolean
+): string {
+	if ( ! isEditable ) {
+		return getStyleNotEditableText();
+	}
+	if ( isOverridden ) {
+		return __(
+			'Your own CSS in style overrides some of these colors.',
+			'mark-bricks'
+		);
+	}
+	return __(
+		'Recolor the theme. The colors are written to style.',
+		'mark-bricks'
+	);
+}
+
+function FontStyleField( {
+	value,
+	portalContainer,
+}: {
+	value: string;
+	portalContainer: HTMLElement | null;
+} ) {
+	const { setFrontMatter } = useFrontMatter();
+	const labels: Record< string, string > = {
+		'sans-serif': __( 'Sans-serif', 'mark-bricks' ),
+		serif: __( 'Serif', 'mark-bricks' ),
+		monospace: __( 'Monospace', 'mark-bricks' ),
+	};
+	const items = [
+		{
+			label: __( 'Theme font', 'mark-bricks' ),
+			value: THEME_FONT,
+			fontFamily: undefined as string | undefined,
+		},
+		...MARP_FONT_STYLES.map( ( font ) => ( {
+			label: labels[ font.id ] ?? font.label,
+			value: font.id,
+			fontFamily: font.fontFamily as string | undefined,
+		} ) ),
+	];
+	const selected =
+		items.find(
+			( item ) => item.value === getMarpFontStyle( value )?.id
+		) ?? items[ 0 ];
+	const isEditable = isFrontMatterBlockValueEditable( value, 'style' );
+
+	return (
+		<Field.Root>
+			<Field.Label>{ __( 'Font', 'mark-bricks' ) }</Field.Label>
+			<Select.Root
+				items={ items }
+				value={ selected.value }
+				disabled={ ! isEditable }
+				onValueChange={ ( next ) => {
+					if ( typeof next === 'string' ) {
+						setFrontMatter(
+							setMarpFontStyle(
+								value,
+								next === THEME_FONT ? null : next
+							)
+						);
+					}
+				} }
+			>
+				<Select.Trigger>
+					<span style={ { fontFamily: selected.fontFamily } }>
+						{ selected.label }
+					</span>
+				</Select.Trigger>
+				<Select.Popup
+					portal={ <Select.Portal container={ portalContainer } /> }
+				>
+					{ items.map( ( item ) => (
+						<Select.Item
+							key={ item.value }
+							value={ item.value }
+							label={ item.label }
+						>
+							<Select.ItemLabel>
+								<span style={ { fontFamily: item.fontFamily } }>
+									{ item.label }
+								</span>
+							</Select.ItemLabel>
+						</Select.Item>
+					) ) }
+				</Select.Popup>
+			</Select.Root>
+			<Field.Description>
+				{ isEditable
+					? __(
+							'The font style of the slides. Each device shows its own font of that style.',
+							'mark-bricks'
+						)
+					: getStyleNotEditableText() }
+			</Field.Description>
+		</Field.Root>
+	);
+}
+
+function ColorSchemeLabel( {
+	scheme,
+	label,
+}: {
+	scheme: MarpColorScheme | null;
+	label: string;
+} ) {
+	return (
+		<span className="front-matter-editor__color-scheme">
+			{ scheme && (
+				<span
+					className="front-matter-editor__color-scheme-swatches"
+					aria-hidden="true"
+				>
+					{ [
+						scheme.colors.background,
+						scheme.colors.foreground,
+						scheme.colors.accent,
+					].map( ( color, index ) => (
+						<ColorIndicator key={ index } colorValue={ color } />
+					) ) }
+				</span>
+			) }
+			{ label }
+		</span>
 	);
 }

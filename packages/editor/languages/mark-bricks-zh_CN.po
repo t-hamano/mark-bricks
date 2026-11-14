@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T10:55:19.441Z\n"
-"PO-Revision-Date: 2026-11-14T10:55:39.254Z\n"
+"POT-Creation-Date: 2026-11-14T12:14:49.238Z\n"
+"PO-Revision-Date: 2026-11-14T12:14:57.123Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -261,7 +261,7 @@ msgstr "幻灯片的类，以空格分隔。"
 msgid "Classes that the %s theme does not provide, separated by spaces."
 msgstr "%s 主题未提供的类，以空格分隔。"
 
-#: src/components/front-matter-editor/index.tsx:190
+#: src/components/front-matter-editor/index.tsx:218
 msgid "Classic look with a colored background."
 msgstr "带有彩色背景的经典风格。"
 
@@ -287,6 +287,10 @@ msgstr "关闭区块插入器"
 #: src/components/editor/index.tsx:111
 msgid "Code editor"
 msgstr "代码编辑器"
+
+#: src/components/front-matter-editor/index.tsx:428
+msgid "Color scheme"
+msgstr "配色方案"
 
 #: src/block-library/table/edit.tsx:246
 msgid "Column count"
@@ -411,7 +415,11 @@ msgstr "后续幻灯片"
 msgid "Follows the setting of the deck."
 msgstr "沿用演示文稿的设置。"
 
-#: src/components/front-matter-editor/index.tsx:293
+#: src/components/front-matter-editor/index.tsx:537
+msgid "Font"
+msgstr "字体"
+
+#: src/components/front-matter-editor/index.tsx:353
 #: src/block-library/html/marp-directive-settings.tsx:302
 msgid "Footer"
 msgstr "页脚"
@@ -425,8 +433,8 @@ msgctxt "slide pattern"
 msgid "From the theme"
 msgstr "由主题决定"
 
-#: src/components/front-matter-editor/index.tsx:112
-#: src/components/front-matter-editor/index.tsx:131
+#: src/components/front-matter-editor/index.tsx:140
+#: src/components/front-matter-editor/index.tsx:159
 msgid "Front matter settings"
 msgstr "前置元数据设置"
 
@@ -449,7 +457,7 @@ msgstr "好的幻灯片只讲一件事，并讲清楚。"
 msgid "H%d"
 msgstr "H%d"
 
-#: src/components/front-matter-editor/index.tsx:282
+#: src/components/front-matter-editor/index.tsx:342
 #: src/block-library/html/marp-directive-settings.tsx:293
 msgid "Header"
 msgstr "页眉"
@@ -688,7 +696,7 @@ msgctxt "slide pattern"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: src/components/front-matter-editor/index.tsx:135
+#: src/components/front-matter-editor/index.tsx:163
 msgid "Marp"
 msgstr "Marp"
 
@@ -718,9 +726,13 @@ msgstr "Marp 幻灯片设置"
 msgid "Message"
 msgstr "消息"
 
-#: src/components/front-matter-editor/index.tsx:198
+#: src/components/front-matter-editor/index.tsx:226
 msgid "Minimal and modern, with centered content."
 msgstr "简约现代，内容居中。"
+
+#: src/components/front-matter-editor/index.tsx:515
+msgid "Monospace"
+msgstr "等宽"
 
 #: src/components/list-view-outline/index.tsx:97
 msgid ""
@@ -790,7 +802,7 @@ msgstr "大纲"
 msgid "Page number"
 msgstr "页码"
 
-#: src/components/front-matter-editor/index.tsx:304
+#: src/components/front-matter-editor/index.tsx:364
 msgid "Paginate"
 msgstr "页码"
 
@@ -853,6 +865,10 @@ msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "图片上的引用"
 
+#: src/components/front-matter-editor/index.tsx:498
+msgid "Recolor the theme. The colors are written to style."
+msgstr "为主题重新配色。颜色会写入 style。"
+
 #: src/components/editor-header/index.tsx:137
 msgid "Redo"
 msgstr "重做"
@@ -889,6 +905,10 @@ msgstr "右侧"
 msgid "Row count"
 msgstr "行数"
 
+#: src/components/front-matter-editor/index.tsx:513
+msgid "Sans-serif"
+msgstr "无衬线"
+
 #: src/block-library/image/marp-image-settings.tsx:350
 #: src/block-library/image/marp-image-settings.tsx:357
 msgid "Scale"
@@ -913,13 +933,17 @@ msgctxt "slide pattern"
 msgid "See each slide as you type"
 msgstr "边输入边查看每张幻灯片"
 
-#: src/components/front-matter-editor/index.tsx:316
+#: src/components/front-matter-editor/index.tsx:376
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他设置请参阅 <a>Marp 文档</a>。"
 
 #: src/components/ai-sidebar/chat.tsx:339
 msgid "Send"
 msgstr "发送"
+
+#: src/components/front-matter-editor/index.tsx:514
+msgid "Serif"
+msgstr "衬线"
 
 #: src/components/ai-sidebar/chat.tsx:278
 msgid "Set an API key to use the AI Assistant."
@@ -945,7 +969,7 @@ msgstr "显示"
 msgid "Show or hide the List View."
 msgstr "显示或隐藏列表视图。"
 
-#: src/components/front-matter-editor/index.tsx:305
+#: src/components/front-matter-editor/index.tsx:365
 msgid "Show the page number on each slide."
 msgstr "在每张幻灯片上显示页码。"
 
@@ -968,11 +992,11 @@ msgstr "显示页码，但不计入此幻灯片。"
 msgid "Shows the page number."
 msgstr "显示页码。"
 
-#: src/components/front-matter-editor/index.tsx:182
+#: src/components/front-matter-editor/index.tsx:210
 msgid "Simple and clean, based on GitHub Markdown style."
 msgstr "简洁清爽，基于 GitHub Markdown 样式。"
 
-#: src/components/front-matter-editor/index.tsx:255
+#: src/components/front-matter-editor/index.tsx:315
 msgid "Size"
 msgstr "尺寸"
 
@@ -1060,7 +1084,7 @@ msgstr "文本"
 msgid "Text color"
 msgstr "文字颜色"
 
-#: src/components/front-matter-editor/index.tsx:294
+#: src/components/front-matter-editor/index.tsx:354
 msgid "Text shown at the bottom of each slide."
 msgstr "显示在每张幻灯片底部的文本。"
 
@@ -1068,7 +1092,7 @@ msgstr "显示在每张幻灯片底部的文本。"
 msgid "Text shown at the bottom of the slide."
 msgstr "显示在幻灯片底部的文字。"
 
-#: src/components/front-matter-editor/index.tsx:283
+#: src/components/front-matter-editor/index.tsx:343
 msgid "Text shown at the top of each slide."
 msgstr "显示在每张幻灯片顶部的文本。"
 
@@ -1080,7 +1104,7 @@ msgstr "显示在幻灯片顶部的文字。"
 msgid "The answer could not be loaded."
 msgstr "无法加载回答。"
 
-#: src/components/front-matter-editor/index.tsx:278
+#: src/components/front-matter-editor/index.tsx:338
 msgid "The aspect ratio of the slides."
 msgstr "幻灯片的宽高比。"
 
@@ -1093,6 +1117,11 @@ msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
 msgstr "由于选区已更改（例如切换了编辑器），编辑未被应用。"
+
+#: src/components/front-matter-editor/index.tsx:578
+msgid ""
+"The font style of the slides. Each device shows its own font of that style."
+msgstr "幻灯片的字体风格。各设备会显示自己的该风格字体。"
 
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
@@ -1127,9 +1156,17 @@ msgid ""
 "The x and y offsets, then an optional blur and color, separated by commas."
 msgstr "x 和 y 偏移，之后可选模糊和颜色，用逗号分隔。"
 
-#: src/components/front-matter-editor/index.tsx:219
+#: src/components/front-matter-editor/index.tsx:249
 msgid "Theme"
 msgstr "主题"
+
+#: src/components/front-matter-editor/index.tsx:415
+msgid "Theme colors"
+msgstr "主题颜色"
+
+#: src/components/front-matter-editor/index.tsx:519
+msgid "Theme font"
+msgstr "主题字体"
 
 #: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
@@ -1217,7 +1254,7 @@ msgstr "转换为普通项目"
 msgid "Turn into a task item"
 msgstr "转换为任务项目"
 
-#: src/components/front-matter-editor/index.tsx:136
+#: src/components/front-matter-editor/index.tsx:164
 msgid "Turn the document into a slide deck."
 msgstr "将文档转换为幻灯片。"
 
@@ -1245,6 +1282,12 @@ msgstr "输入 / 来选择一个区块"
 #: src/block-library/image/edit.tsx:229
 msgid "URL or file path"
 msgstr "URL 或文件路径"
+
+#: src/components/front-matter-editor/index.tsx:61
+msgid ""
+"Unavailable because style uses YAML features the editor can’t change, such "
+"as an anchor or a tag."
+msgstr "不可用，因为 style 使用了编辑器无法更改的 YAML 功能，例如锚点或标签。"
 
 #: src/components/keyboard-shortcuts/hooks.ts:134
 msgid "Underline the selected text."
@@ -1300,7 +1343,7 @@ msgstr "编写 HTML…"
 msgid "Write TeX…"
 msgstr "编写 TeX…"
 
-#: src/components/front-matter-editor/index.tsx:67
+#: src/components/front-matter-editor/index.tsx:95
 msgid "Write YAML front matter…"
 msgstr "编写 YAML 前置元数据…"
 
@@ -1348,9 +1391,13 @@ msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "用 Markdown 编写幻灯片"
 
-#: src/components/front-matter-editor/index.tsx:85
+#: src/components/front-matter-editor/index.tsx:113
 msgid "YAML front matter"
 msgstr "YAML 前置元数据"
+
+#: src/components/front-matter-editor/index.tsx:493
+msgid "Your own CSS in style overrides some of these colors."
+msgstr "style 中你自己的 CSS 覆盖了其中部分颜色。"
 
 # %s: An example value, such as "1.5".
 # %s: An example value, such as "#f0f0f0".

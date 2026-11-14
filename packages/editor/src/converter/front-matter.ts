@@ -1,3 +1,8 @@
+/**
+ * External dependencies
+ */
+import { isMap, isNode, isScalar, parseDocument } from 'yaml';
+
 // `---` fences at the start of the document, optionally after a UTF-8
 // BOM. The content may be empty.
 const FRONT_MATTER_PATTERN =
@@ -52,7 +57,7 @@ export function parseScalar( raw: string ): Scalar {
 	if ( text.startsWith( '#' ) ) {
 		return { value: '', comment: ` ${ text }` };
 	}
-	const plain = /^(.*?)(?:[ \t]+(#.*))?$/.exec( text );
+	const plain = /^([\s\S]*?)(?:[ \t]+(#.*))?$/.exec( text );
 	return {
 		value: ( plain?.[ 1 ] ?? '' ).trim(),
 		comment: plain?.[ 2 ] ? ` ${ plain[ 2 ] }` : '',
@@ -187,6 +192,171 @@ export function getFrontMatterValue(
 		}
 	}
 	return null;
+}
+
+type KeyRange = {
+	// Lines the key and its value span, or `null` when the key is missing.
+	lines: { start: number; end: number } | null;
+	// The value as YAML reads it, or `null` when the key is missing or holds
+	// something other than a string.
+	value: string | null;
+	// Whether the editor can rewrite the value. It can't when the front
+	// matter isn't valid YAML, or when the value is more than a plain string,
+	// such as one with an anchor or a tag, an alias or a collection,
+	// because rewriting it would lose its meaning.
+	editable: boolean;
+};
+
+const NOT_EDITABLE: KeyRange = { lines: null, value: null, editable: false };
+
+// Index of the line holding a character offset.
+function lineAt( text: string, offset: number ): number {
+	return text.slice( 0, offset ).split( '\n' ).length - 1;
+}
+
+// Finds a top-level key with a YAML parser, so that every way of writing
+// the key and its value reads as YAML would read it.
+function findKeyRange( frontMatter: string, key: string ): KeyRange {
+	const doc = parseDocument( frontMatter );
+	if ( doc.errors.length > 0 ) {
+		return NOT_EDITABLE;
+	}
+	if ( doc.contents === null ) {
+		return { lines: null, value: null, editable: true };
+	}
+	if ( ! isMap( doc.contents ) || doc.contents.flow ) {
+		return NOT_EDITABLE;
+	}
+	const pair = doc.contents.items.find(
+		( item ) => isScalar( item.key ) && item.key.value === key
+	);
+	if ( ! pair || ! isScalar( pair.key ) || ! pair.key.range ) {
+		return { lines: null, value: null, editable: true };
+	}
+	// Rewriting the key line would drop an anchor or a tag on the key.
+	if ( pair.key.anchor || pair.key.tag ) {
+		return NOT_EDITABLE;
+	}
+	const node = pair.value;
+	const nodeEnd = isNode( node ) && node.range ? node.range[ 2 ] : null;
+	const end = nodeEnd ?? pair.key.range[ 2 ];
+	const lines = {
+		start: lineAt( frontMatter, pair.key.range[ 0 ] ),
+		end:
+			lineAt(
+				frontMatter,
+				frontMatter.slice( 0, end ).replace( /\s+$/, '' ).length
+			) + 1,
+	};
+	if ( node === null || ( isScalar( node ) && node.value === null ) ) {
+		return {
+			lines,
+			value: null,
+			editable: ! isNode( node ) || ( ! node.tag && ! node.anchor ),
+		};
+	}
+	const editable =
+		isScalar( node ) &&
+		typeof node.value === 'string' &&
+		! node.anchor &&
+		! node.tag;
+	return {
+		lines,
+		value: editable ? ( node.value as string ).replace( /\n+$/, '' ) : null,
+		editable,
+	};
+}
+
+/**
+ * Reads a top-level value from front matter that may span several lines,
+ * such as `style: |` followed by indented CSS. A one-line value is read
+ * like {@link getFrontMatterValue}.
+ *
+ * @param frontMatter Front matter content, or `null` when there is none.
+ * @param key         Top-level key.
+ * @return The value, or `null` when the key is missing or empty.
+ */
+export function getFrontMatterBlockValue(
+	frontMatter: string | null,
+	key: string
+): string | null {
+	if ( frontMatter === null ) {
+		return null;
+	}
+	const { value } = findKeyRange( frontMatter, key );
+	return value !== null && value.trim() !== '' ? value : null;
+}
+
+/**
+ * Whether {@link setFrontMatterBlockValue} can rewrite a top-level value.
+ * It can't when the value uses YAML features beyond a plain string, such
+ * as an anchor, a tag, an alias or a collection.
+ *
+ * @param frontMatter Front matter content, or `null` when there is none.
+ * @param key         Top-level key.
+ * @return Whether the value can be rewritten, which a missing key can.
+ */
+export function isFrontMatterBlockValueEditable(
+	frontMatter: string | null,
+	key: string
+): boolean {
+	if ( frontMatter === null ) {
+		return true;
+	}
+	return findKeyRange( frontMatter, key ).editable;
+}
+
+/**
+ * Writes a top-level value into front matter as a literal block scalar
+ * (`key: |`), replacing the key's existing lines in place or adding it at
+ * the end. A value that {@link isFrontMatterBlockValueEditable} rejects is
+ * left as it is.
+ *
+ * @param frontMatter Front matter content.
+ * @param key         Top-level key.
+ * @param value       New value, or `null` to remove the key.
+ * @return The updated front matter content.
+ */
+export function setFrontMatterBlockValue(
+	frontMatter: string,
+	key: string,
+	value: string | null
+): string {
+	const range = findKeyRange( frontMatter, key );
+	if ( ! range.editable ) {
+		return frontMatter;
+	}
+	const lines = frontMatter === '' ? [] : frontMatter.split( '\n' );
+	const valueLines =
+		value === null ? [] : value.replace( /\s+$/, '' ).split( '\n' );
+	// YAML infers a block's indentation from its first non-empty line, so a
+	// value starting with spaces needs an explicit indentation indicator.
+	const firstLine = valueLines.find( ( line ) => line !== '' ) ?? '';
+	const header = /^\s/.test( firstLine ) ? `${ key }: |2` : `${ key }: |`;
+	const next =
+		value === null || value.trim() === ''
+			? []
+			: [
+					header,
+					...valueLines.map( ( line ) =>
+						line === '' ? '' : `  ${ line }`
+					),
+				];
+	if ( range.lines ) {
+		lines.splice(
+			range.lines.start,
+			range.lines.end - range.lines.start,
+			...next
+		);
+	} else {
+		// A new key goes before a document-end marker (`...`), since YAML
+		// and Marp ignore whatever follows it.
+		const docEnd = lines.findIndex( ( line ) =>
+			/^\.\.\.(\s|$)/.test( line )
+		);
+		lines.splice( docEnd === -1 ? lines.length : docEnd, 0, ...next );
+	}
+	return lines.join( '\n' );
 }
 
 /**

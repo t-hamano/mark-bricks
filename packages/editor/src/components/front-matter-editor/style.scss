@@ -46,3 +46,21 @@
 	font-size: 0.8125rem;
 	color: var(--wpds-color-foreground-content-neutral-weak);
 }
+
+// A block-level flex box, so the trigger doesn't reserve descender space
+// below an inline box and push the label up.
+.front-matter-editor__color-scheme {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+}
+
+.front-matter-editor__color-scheme-swatches {
+	display: inline-flex;
+}
+
+.front-matter-editor__color-scheme-swatches .component-color-indicator {
+	+ .component-color-indicator {
+		margin-left: -6px;
+	}
+}
