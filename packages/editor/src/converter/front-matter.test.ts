@@ -420,6 +420,15 @@ describe( 'getFrontMatterBlockValue', () => {
 } );
 
 describe( 'setFrontMatterBlockValue', () => {
+	it( 'keeps leading spaces with an indentation indicator', () => {
+		const value = '  h1 {\n  color: red;\n}';
+		const result = setFrontMatterBlockValue( 'marp: true', 'style', value );
+		expect( result ).toBe(
+			'marp: true\nstyle: |2\n    h1 {\n    color: red;\n  }'
+		);
+		expect( getFrontMatterBlockValue( result, 'style' ) ).toBe( value );
+	} );
+
 	it( 'replaces a block scalar in place', () => {
 		expect(
 			setFrontMatterBlockValue(

@@ -319,17 +319,20 @@ export function setFrontMatterBlockValue(
 		return frontMatter;
 	}
 	const lines = frontMatter === '' ? [] : frontMatter.split( '\n' );
+	const valueLines =
+		value === null ? [] : value.replace( /\s+$/, '' ).split( '\n' );
+	// YAML infers a block's indentation from its first non-empty line, so a
+	// value starting with spaces needs an explicit indentation indicator.
+	const firstLine = valueLines.find( ( line ) => line !== '' ) ?? '';
+	const header = /^\s/.test( firstLine ) ? `${ key }: |2` : `${ key }: |`;
 	const next =
 		value === null || value.trim() === ''
 			? []
 			: [
-					`${ key }: |`,
-					...value
-						.replace( /\s+$/, '' )
-						.split( '\n' )
-						.map( ( line ) =>
-							line === '' ? '' : `  ${ line }`
-						),
+					header,
+					...valueLines.map( ( line ) =>
+						line === '' ? '' : `  ${ line }`
+					),
 				];
 	if ( range.lines ) {
 		lines.splice(
