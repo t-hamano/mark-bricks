@@ -53,6 +53,12 @@ MarkBricks supports [Marp](https://marp.app/) slide decks. Add `marp: true` to a
 
 For an example deck that uses directives, split backgrounds, image filters, tables and math, see [`marp.md`](packages/fixtures/markdown/marp.md).
 
+### AI assistant
+
+![AI assistant](.github/assets/feature-ai-assistant.png)
+
+MarkBricks Desktop has an AI assistant that writes and edits the selected blocks or text through chat, with your own Anthropic, OpenAI, or Google Gemini API key. Each edit lands right away, one undo reverts it, and the key stays in your system's credential store.
+
 ### Light and dark themes, in your language
 
 ![Light and dark themes, in your language](.github/assets/feature-light-and-dark-themes-in-your-language.png)

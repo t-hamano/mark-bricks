@@ -33,6 +33,10 @@ They're exposed as two components, sharing the same header/footer/sidebars and u
 
 Both components link the selected block to the lines of the document as `content` writes it, counted from 0 with the front matter's lines, for a host that follows it elsewhere, such as in a slide preview. `onSelectedLineChange` reports the line that the selected top-level block starts at whenever it changes, or `null` when no block is selected or the code editor is shown. The handle's `selectLine` selects the top-level block that shows a line and scrolls it into view.
 
+## AI assistant
+
+The AI assistant appears only when the host passes `ai` in its `Platform`, which sends the requests and keeps the API key.
+
 ## Appearance
 
 The editor supports light and dark modes through `EditorThemeProvider`. It uses `ThemeProvider` from `@wordpress/theme` to update WPDS design tokens for the selected theme.
