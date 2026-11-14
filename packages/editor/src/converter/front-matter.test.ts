@@ -426,6 +426,13 @@ describe( 'setFrontMatterBlockValue', () => {
 		).toBe( 'marp: true\nstyle: |\n  h1 {}\n...' );
 	} );
 
+	it( 'leaves a value with an anchored key as it is', () => {
+		const frontMatter = '&k style: "h1 {}"\nheader: *k';
+		expect( isFrontMatterBlockValueEditable( frontMatter, 'style' ) ).toBe(
+			false
+		);
+	} );
+
 	it( 'leaves an anchored empty value as it is', () => {
 		const frontMatter = 'style: &empty\nheader: *empty';
 		expect( isFrontMatterBlockValueEditable( frontMatter, 'style' ) ).toBe(

@@ -233,6 +233,10 @@ function findKeyRange( frontMatter: string, key: string ): KeyRange {
 	if ( ! pair || ! isScalar( pair.key ) || ! pair.key.range ) {
 		return { lines: null, value: null, editable: true };
 	}
+	// Rewriting the key line would drop an anchor or a tag on the key.
+	if ( pair.key.anchor || pair.key.tag ) {
+		return NOT_EDITABLE;
+	}
 	const node = pair.value;
 	const nodeEnd = isNode( node ) && node.range ? node.range[ 2 ] : null;
 	const end = nodeEnd ?? pair.key.range[ 2 ];
