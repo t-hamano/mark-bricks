@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { dedupe } from '@mark-bricks/editor/vite-dedupe';
 
 const config: StorybookConfig = {
 	// Relative image URLs in the shared Markdown examples resolve against
@@ -24,6 +25,11 @@ const config: StorybookConfig = {
 	addons: [ '@storybook/addon-docs', '@storybook/addon-themes' ],
 	viteFinal: ( viteConfig ) => ( {
 		...viteConfig,
+		resolve: {
+			...viteConfig.resolve,
+			// Like the apps, so that one copy of each store package loads.
+			dedupe: [ ...( viteConfig.resolve?.dedupe ?? [] ), ...dedupe ],
+		},
 		build: {
 			...viteConfig.build,
 			// Preserve light-dark(): color-scheme is injected at runtime, so
