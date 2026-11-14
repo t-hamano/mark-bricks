@@ -21,13 +21,13 @@ import '@fontsource/lato/900.css';
  * WordPress dependencies
  */
 // `@wordpress/ui` has no toggle group yet.
-/* eslint-disable @wordpress/no-unsafe-wp-apis */
 import {
 	RangeControl,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalToggleGroupControl as ToggleGroupControl,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
-/* eslint-enable @wordpress/no-unsafe-wp-apis */
 import { useViewportMatch } from '@wordpress/compose';
 import {
 	DataViews,
