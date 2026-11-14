@@ -16,7 +16,7 @@ import { applyLocale } from './i18n';
  * @return Applied locale slug.
  */
 export async function setupEditor( value: unknown ): Promise< string > {
-	const locale = applyLocale( value );
+	const locale = await applyLocale( value );
 	const [ { registerBlocks }, { registerFormats } ] = await Promise.all( [
 		import( './block-library' ),
 		import( './format-library' ),
