@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:17:32.878Z\n"
-"PO-Revision-Date: 2026-11-14T04:17:38.582Z\n"
+"POT-Creation-Date: 2026-11-14T04:19:16.762Z\n"
+"PO-Revision-Date: 2026-11-14T04:19:22.226Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -497,8 +497,6 @@ msgstr "앞에 행 삽입"
 msgid "Italic"
 msgstr "이탤릭"
 
-#: src/marp-patterns/patterns/title-with-label.ts:21
-#: src/marp-patterns/patterns/title-with-label-and-image.ts:23
 #: src/marp-patterns/patterns/labeled-list.ts:22
 #: src/marp-patterns/patterns/labeled-list.ts:24
 #: src/marp-patterns/patterns/labeled-list.ts:26
@@ -937,8 +935,6 @@ msgstr "제목"
 
 #: src/marp-patterns/patterns/title.ts:13
 #: src/marp-patterns/patterns/title.ts:21
-#: src/marp-patterns/patterns/title-with-label.ts:22
-#: src/marp-patterns/patterns/title-with-label-and-image.ts:24
 #: src/marp-patterns/patterns/title-on-image.ts:24
 #: src/marp-patterns/patterns/title-on-gradient.ts:24
 #: src/marp-patterns/patterns/title-on-blurred-image.ts:25
@@ -978,16 +974,6 @@ msgstr "그라디언트 위 제목"
 msgctxt "slide pattern"
 msgid "Title on an image"
 msgstr "이미지 위 제목"
-
-#: src/marp-patterns/patterns/title-with-label.ts:13
-msgctxt "slide pattern"
-msgid "Title with a label"
-msgstr "레이블이 있는 제목"
-
-#: src/marp-patterns/patterns/title-with-label-and-image.ts:15
-msgctxt "slide pattern"
-msgid "Title with a label and an image"
-msgstr "레이블이 있는 제목과 이미지"
 
 #: src/block-library/list-item/edit.tsx:133
 msgid "Toggle task"

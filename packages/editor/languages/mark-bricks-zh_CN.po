@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:17:32.878Z\n"
-"PO-Revision-Date: 2026-11-14T04:17:42.133Z\n"
+"POT-Creation-Date: 2026-11-14T04:19:16.762Z\n"
+"PO-Revision-Date: 2026-11-14T04:19:25.703Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -497,8 +497,6 @@ msgstr "在上方插入行"
 msgid "Italic"
 msgstr "斜体"
 
-#: src/marp-patterns/patterns/title-with-label.ts:21
-#: src/marp-patterns/patterns/title-with-label-and-image.ts:23
 #: src/marp-patterns/patterns/labeled-list.ts:22
 #: src/marp-patterns/patterns/labeled-list.ts:24
 #: src/marp-patterns/patterns/labeled-list.ts:26
@@ -936,8 +934,6 @@ msgstr "标题"
 
 #: src/marp-patterns/patterns/title.ts:13
 #: src/marp-patterns/patterns/title.ts:21
-#: src/marp-patterns/patterns/title-with-label.ts:22
-#: src/marp-patterns/patterns/title-with-label-and-image.ts:24
 #: src/marp-patterns/patterns/title-on-image.ts:24
 #: src/marp-patterns/patterns/title-on-gradient.ts:24
 #: src/marp-patterns/patterns/title-on-blurred-image.ts:25
@@ -977,16 +973,6 @@ msgstr "渐变背景上的标题"
 msgctxt "slide pattern"
 msgid "Title on an image"
 msgstr "图片上的标题"
-
-#: src/marp-patterns/patterns/title-with-label.ts:13
-msgctxt "slide pattern"
-msgid "Title with a label"
-msgstr "带标签的标题"
-
-#: src/marp-patterns/patterns/title-with-label-and-image.ts:15
-msgctxt "slide pattern"
-msgid "Title with a label and an image"
-msgstr "带标签的标题和图片"
 
 #: src/block-library/list-item/edit.tsx:133
 msgid "Toggle task"
