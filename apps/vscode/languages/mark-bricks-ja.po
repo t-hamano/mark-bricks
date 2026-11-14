@@ -23,7 +23,7 @@ msgstr ""
 
 #: src/webview/header-actions/index.tsx:81
 msgid "Access all block and document tools in a single place"
-msgstr "ブロック・文書ツールを同じ場所にまとめる"
+msgstr "ブロック・ドキュメントツールを同じ場所にまとめる"
 
 #: src/webview/header-actions/index.tsx:116
 msgid "Add YAML front matter"
@@ -51,7 +51,7 @@ msgid ""
 "Only images in the folder of the document or in a workspace folder can be "
 "displayed."
 msgstr ""
-"表示できるのは、文書のあるフォルダとワークスペースフォルダ内の画像のみです。"
+"表示できるのは、ドキュメントのあるフォルダとワークスペースフォルダ内の画像のみです。"
 
 #: src/webview/header-actions/index.tsx:56
 msgid "Options"
