@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { useEffect, useRef } from 'react';
+import { getLocale } from '@mark-bricks/editor';
 
 /**
  * Internal dependencies
@@ -55,7 +56,8 @@ export function SlidePreview( { markdown }: Props ) {
 		<iframe
 			ref={ frameRef }
 			title="Slide preview"
-			src={ `iframe.html?id=${ SLIDE_PREVIEW_STORY_ID }&viewMode=story` }
+			// The frame starts in the story's locale.
+			src={ `iframe.html?id=${ SLIDE_PREVIEW_STORY_ID }&viewMode=story&globals=locale:${ getLocale() }` }
 			style={ {
 				display: 'block',
 				width: '100%',

@@ -3,6 +3,7 @@
  */
 import { useEffect, useRef } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { getLocale } from '@mark-bricks/editor';
 import { createSlidePreview } from '@mark-bricks/marp-preview/controls';
 import { renderSlides } from '@mark-bricks/marp-preview/render';
 
@@ -25,7 +26,9 @@ function SlidePreviewFrame() {
 		if ( ! container ) {
 			return;
 		}
-		const preview = createSlidePreview( container );
+		const preview = createSlidePreview( container, {
+			locale: getLocale(),
+		} );
 		function onMessage( event: MessageEvent< SlidePreviewMessage > ) {
 			if (
 				event.origin === location.origin &&
