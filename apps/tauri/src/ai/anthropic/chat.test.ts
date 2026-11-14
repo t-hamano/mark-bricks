@@ -84,7 +84,13 @@ describe( 'createChat with Anthropic', () => {
 		);
 		expect( bodies ).toHaveLength( 1 );
 		expect( bodies[ 0 ] ).toMatchObject( {
-			system: 'System prompt',
+			system: [
+				{
+					type: 'text',
+					text: 'System prompt',
+					cache_control: { type: 'ephemeral' },
+				},
+			],
 			messages: [
 				{
 					role: 'user',
@@ -146,7 +152,7 @@ describe( 'createChat with Anthropic', () => {
 
 		expect( bodies ).toHaveLength( 2 );
 		const [ first, second ] = bodies;
-		expect( second.system ).toBe( first.system );
+		expect( second.system ).toEqual( first.system );
 		expect( second.tools ).toEqual( first.tools );
 		expect( second.tool_choice ).toEqual( { type: 'none' } );
 		expect( second.messages.slice( 1 ) ).toEqual( [
