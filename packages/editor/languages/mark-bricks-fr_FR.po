@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:31:33.439Z\n"
-"PO-Revision-Date: 2026-11-14T07:31:35.364Z\n"
+"POT-Creation-Date: 2026-11-14T07:32:30.268Z\n"
+"PO-Revision-Date: 2026-11-14T07:32:32.034Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:122
+#: src/components/ai-sidebar/chat.tsx:123
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "%1$s jetons d’entrée, %2$s jetons de sortie"
 
@@ -129,11 +129,11 @@ msgstr "N’importe quel éditeur"
 msgid "Apply"
 msgstr "Appliquer"
 
-#: src/components/ai-sidebar/chat.tsx:297
+#: src/components/ai-sidebar/chat.tsx:298
 msgid "Ask the AI Assistant"
 msgstr "Demander à l’assistant IA"
 
-#: src/components/ai-sidebar/chat.tsx:275
+#: src/components/ai-sidebar/chat.tsx:276
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -298,11 +298,11 @@ msgstr "Modifier l’image"
 msgid "Edit table"
 msgstr "Modifier le tableau"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:78
 msgid "Edited the document."
 msgstr "Le document a été modifié."
 
-#: src/components/ai-sidebar/chat.tsx:54
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Editing the document…"
 msgstr "Modification du document…"
 
@@ -637,7 +637,7 @@ msgstr "Modèles Marp"
 msgid "Marp reads these words as settings: %s"
 msgstr "Marp lit ces mots comme des réglages : %s"
 
-#: src/components/ai-sidebar/chat.tsx:295
+#: src/components/ai-sidebar/chat.tsx:296
 msgid "Message"
 msgstr "Message"
 
@@ -687,7 +687,7 @@ msgstr "Une seule application"
 msgid "Open by default"
 msgstr "Ouvert par défaut"
 
-#: src/components/ai-sidebar/chat.tsx:267
+#: src/components/ai-sidebar/chat.tsx:268
 msgid "Open settings"
 msgstr "Ouvrir les réglages"
 
@@ -834,11 +834,11 @@ msgstr "Voir chaque diapositive en tapant"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Consultez la <a>documentation de Marp</a> pour les autres réglages."
 
-#: src/components/ai-sidebar/chat.tsx:318
+#: src/components/ai-sidebar/chat.tsx:319
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/components/ai-sidebar/chat.tsx:257
+#: src/components/ai-sidebar/chat.tsx:258
 msgid "Set an API key to use the AI Assistant."
 msgstr "Définissez une clé d’API pour utiliser l’assistant IA."
 
@@ -926,11 +926,11 @@ msgstr "Largeur de la division"
 msgid "Stack vertically"
 msgstr "Empiler verticalement"
 
-#: src/components/ai-sidebar/chat.tsx:309
+#: src/components/ai-sidebar/chat.tsx:310
 msgid "Stop"
 msgstr "Arrêter"
 
-#: src/components/ai-sidebar/chat.tsx:104
+#: src/components/ai-sidebar/chat.tsx:105
 msgid "Stopped."
 msgstr "Arrêté."
 
@@ -963,7 +963,7 @@ msgstr "Texte affiché en bas de chaque diapositive."
 msgid "Text shown at the top of each slide."
 msgstr "Texte affiché en haut de chaque diapositive."
 
-#: src/components/ai-sidebar/chat.tsx:111
+#: src/components/ai-sidebar/chat.tsx:112
 msgid "The answer could not be loaded."
 msgstr "La réponse n’a pas pu être chargée."
 
@@ -975,7 +975,7 @@ msgstr "Le format des diapositives."
 msgid "The diagram could not be rendered."
 msgstr "Le diagramme n’a pas pu être affiché."
 
-#: src/components/ai-sidebar/chat.tsx:82
+#: src/components/ai-sidebar/chat.tsx:83
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1008,7 +1008,7 @@ msgstr "La taille par rapport à l’image d’origine, par exemple 50%."
 msgid "Theme"
 msgstr "Thème"
 
-#: src/components/ai-sidebar/chat.tsx:52
+#: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
 msgstr "Réflexion en cours…"
 
@@ -1152,7 +1152,7 @@ msgstr "Utiliser n’importe quel éditeur"
 msgid "Visual markdown block editor."
 msgstr "Éditeur de blocs Markdown visuel."
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"
 msgstr "En attente de la réponse…"
 

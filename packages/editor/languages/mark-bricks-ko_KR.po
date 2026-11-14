@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:31:33.439Z\n"
-"PO-Revision-Date: 2026-11-14T07:31:35.892Z\n"
+"POT-Creation-Date: 2026-11-14T07:32:30.268Z\n"
+"PO-Revision-Date: 2026-11-14T07:32:32.588Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:122
+#: src/components/ai-sidebar/chat.tsx:123
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "입력 토큰 %1$s개, 출력 토큰 %2$s개"
 
@@ -129,11 +129,11 @@ msgstr "아무 편집기"
 msgid "Apply"
 msgstr "적용"
 
-#: src/components/ai-sidebar/chat.tsx:297
+#: src/components/ai-sidebar/chat.tsx:298
 msgid "Ask the AI Assistant"
 msgstr "AI 어시스턴트에게 질문"
 
-#: src/components/ai-sidebar/chat.tsx:275
+#: src/components/ai-sidebar/chat.tsx:276
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -297,11 +297,11 @@ msgstr "이미지 편집"
 msgid "Edit table"
 msgstr "테이블 편집"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:78
 msgid "Edited the document."
 msgstr "문서를 편집했습니다."
 
-#: src/components/ai-sidebar/chat.tsx:54
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Editing the document…"
 msgstr "문서를 편집하는 중…"
 
@@ -634,7 +634,7 @@ msgstr "Marp 패턴"
 msgid "Marp reads these words as settings: %s"
 msgstr "Marp는 이 단어를 설정으로 읽습니다: %s"
 
-#: src/components/ai-sidebar/chat.tsx:295
+#: src/components/ai-sidebar/chat.tsx:296
 msgid "Message"
 msgstr "메시지"
 
@@ -683,7 +683,7 @@ msgstr "전용 앱"
 msgid "Open by default"
 msgstr "기본적으로 열기"
 
-#: src/components/ai-sidebar/chat.tsx:267
+#: src/components/ai-sidebar/chat.tsx:268
 msgid "Open settings"
 msgstr "설정 열기"
 
@@ -830,11 +830,11 @@ msgstr "입력하면서 각 슬라이드 확인"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "다른 설정은 <a>Marp 문서</a>를 참고하세요."
 
-#: src/components/ai-sidebar/chat.tsx:318
+#: src/components/ai-sidebar/chat.tsx:319
 msgid "Send"
 msgstr "보내기"
 
-#: src/components/ai-sidebar/chat.tsx:257
+#: src/components/ai-sidebar/chat.tsx:258
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI 어시스턴트를 사용하려면 API 키를 설정하세요."
 
@@ -920,11 +920,11 @@ msgstr "분할 너비"
 msgid "Stack vertically"
 msgstr "세로로 쌓기"
 
-#: src/components/ai-sidebar/chat.tsx:309
+#: src/components/ai-sidebar/chat.tsx:310
 msgid "Stop"
 msgstr "중지"
 
-#: src/components/ai-sidebar/chat.tsx:104
+#: src/components/ai-sidebar/chat.tsx:105
 msgid "Stopped."
 msgstr "중지했습니다."
 
@@ -957,7 +957,7 @@ msgstr "각 슬라이드 하단에 표시되는 텍스트."
 msgid "Text shown at the top of each slide."
 msgstr "각 슬라이드 상단에 표시되는 텍스트."
 
-#: src/components/ai-sidebar/chat.tsx:111
+#: src/components/ai-sidebar/chat.tsx:112
 msgid "The answer could not be loaded."
 msgstr "답변을 불러오지 못했습니다."
 
@@ -969,7 +969,7 @@ msgstr "슬라이드의 가로세로 비율."
 msgid "The diagram could not be rendered."
 msgstr "다이어그램을 렌더링할 수 없습니다."
 
-#: src/components/ai-sidebar/chat.tsx:82
+#: src/components/ai-sidebar/chat.tsx:83
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -999,7 +999,7 @@ msgstr "원본 이미지에 대한 크기. 예: 50%."
 msgid "Theme"
 msgstr "테마"
 
-#: src/components/ai-sidebar/chat.tsx:52
+#: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
 msgstr "생각하는 중…"
 
@@ -1142,7 +1142,7 @@ msgstr "아무 텍스트 편집기나 사용"
 msgid "Visual markdown block editor."
 msgstr "비주얼 Markdown 블록 편집기."
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"
 msgstr "답변을 기다리는 중…"
 

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:31:33.439Z\n"
-"PO-Revision-Date: 2026-11-14T07:31:34.536Z\n"
+"POT-Creation-Date: 2026-11-14T07:32:30.268Z\n"
+"PO-Revision-Date: 2026-11-14T07:32:31.230Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:122
+#: src/components/ai-sidebar/chat.tsx:123
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "Vstupní tokeny: %1$s, výstupní tokeny: %2$s"
 
@@ -129,11 +129,11 @@ msgstr "Libovolný editor"
 msgid "Apply"
 msgstr "Použít"
 
-#: src/components/ai-sidebar/chat.tsx:297
+#: src/components/ai-sidebar/chat.tsx:298
 msgid "Ask the AI Assistant"
 msgstr "Zeptejte se asistenta AI"
 
-#: src/components/ai-sidebar/chat.tsx:275
+#: src/components/ai-sidebar/chat.tsx:276
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -297,11 +297,11 @@ msgstr "Upravit obrázek"
 msgid "Edit table"
 msgstr "Upravit tabulku"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:78
 msgid "Edited the document."
 msgstr "Dokument byl upraven."
 
-#: src/components/ai-sidebar/chat.tsx:54
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Editing the document…"
 msgstr "Upravuji dokument…"
 
@@ -634,7 +634,7 @@ msgstr "Vzory Marp"
 msgid "Marp reads these words as settings: %s"
 msgstr "Marp čte tato slova jako nastavení: %s"
 
-#: src/components/ai-sidebar/chat.tsx:295
+#: src/components/ai-sidebar/chat.tsx:296
 msgid "Message"
 msgstr "Zpráva"
 
@@ -684,7 +684,7 @@ msgstr "Jedna aplikace"
 msgid "Open by default"
 msgstr "Ve výchozím nastavení otevřeno"
 
-#: src/components/ai-sidebar/chat.tsx:267
+#: src/components/ai-sidebar/chat.tsx:268
 msgid "Open settings"
 msgstr "Otevřít nastavení"
 
@@ -831,11 +831,11 @@ msgstr "Každý snímek vidíte při psaní"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
 
-#: src/components/ai-sidebar/chat.tsx:318
+#: src/components/ai-sidebar/chat.tsx:319
 msgid "Send"
 msgstr "Odeslat"
 
-#: src/components/ai-sidebar/chat.tsx:257
+#: src/components/ai-sidebar/chat.tsx:258
 msgid "Set an API key to use the AI Assistant."
 msgstr "Pro použití asistenta AI nastavte klíč API."
 
@@ -923,11 +923,11 @@ msgstr "Šířka rozdělení"
 msgid "Stack vertically"
 msgstr "Skládat svisle"
 
-#: src/components/ai-sidebar/chat.tsx:309
+#: src/components/ai-sidebar/chat.tsx:310
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/components/ai-sidebar/chat.tsx:104
+#: src/components/ai-sidebar/chat.tsx:105
 msgid "Stopped."
 msgstr "Zastaveno."
 
@@ -960,7 +960,7 @@ msgstr "Text zobrazený v dolní části každého snímku."
 msgid "Text shown at the top of each slide."
 msgstr "Text zobrazený v horní části každého snímku."
 
-#: src/components/ai-sidebar/chat.tsx:111
+#: src/components/ai-sidebar/chat.tsx:112
 msgid "The answer could not be loaded."
 msgstr "Odpověď se nepodařilo načíst."
 
@@ -972,7 +972,7 @@ msgstr "Poměr stran snímků."
 msgid "The diagram could not be rendered."
 msgstr "Diagram se nepodařilo vykreslit."
 
-#: src/components/ai-sidebar/chat.tsx:82
+#: src/components/ai-sidebar/chat.tsx:83
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1003,7 +1003,7 @@ msgstr "Velikost vzhledem k původnímu obrázku, například 50%."
 msgid "Theme"
 msgstr "Motiv"
 
-#: src/components/ai-sidebar/chat.tsx:52
+#: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
 msgstr "Přemýšlím…"
 
@@ -1146,7 +1146,7 @@ msgstr "Libovolný textový editor"
 msgid "Visual markdown block editor."
 msgstr "Vizuální blokový editor Markdownu."
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"
 msgstr "Čekání na odpověď…"
 
