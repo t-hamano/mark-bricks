@@ -94,6 +94,15 @@ function SlidePatternPreview( { pattern, theme }: SlidePatternPreviewProps ) {
 // at.
 const PREVIEW_SIZES = [ 230, 290, 350, 430 ];
 
+// Hides the size control where even the smallest previews leave room for one
+// column only, so that it would change nothing. DataViews fits as many columns
+// as `( width + 32 ) / ( size + 32 )` in `dataviews-wrapper`, its container.
+const PREVIEW_SIZE_STYLE = `
+@container dataviews-wrapper (max-width: ${ 2 * PREVIEW_SIZES[ 0 ] + 32 - 1 }px) {
+	.slide-patterns__preview-size { display: none; }
+}
+`;
+
 // The options of the category select, all of them first.
 const CATEGORY_ITEMS = [
 	{ label: 'All categories', value: null },
@@ -189,6 +198,7 @@ function SlidePatterns() {
 			defaultLayouts={ { grid: {} } }
 			getItemId={ ( item ) => item.name }
 		>
+			<style>{ PREVIEW_SIZE_STYLE }</style>
 			{ /* Inside DataViews, so it shares the grid's background. */ }
 			<Text
 				variant="body-md"
@@ -260,7 +270,10 @@ function SlidePatterns() {
 						) ) }
 					</ToggleGroupControl>
 				</Stack>
-				<div style={ { width: 160 } }>
+				<div
+					className="slide-patterns__preview-size"
+					style={ { width: 160 } }
+				>
 					<RangeControl
 						__next40pxDefaultSize
 						label="Preview size"
