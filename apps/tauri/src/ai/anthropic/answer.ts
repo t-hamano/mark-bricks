@@ -1,12 +1,12 @@
 /**
  * External dependencies
  */
-import type { AiActivity } from '@mark-bricks/editor';
+import type { AiActivity } from '@mark-bricks/editor/ai';
+import { EDIT_RESULT } from '@mark-bricks/editor/ai';
 
 /**
  * Internal dependencies
  */
-import { EDIT_RESULT } from '../edit-tool';
 import { lengthLimitError, refusalError } from '../error';
 import type { ProviderAnswer } from '../provider';
 import { createMessageStream, type StreamedMessage } from './message-stream';

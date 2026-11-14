@@ -1,18 +1,14 @@
 /**
  * External dependencies
  */
-import type { AiEdit, AiMessage } from '@mark-bricks/editor';
-
-/**
- * Internal dependencies
- */
+import type { AiEdit, AiMessage } from '@mark-bricks/editor/ai';
 import {
 	EDIT_RESULT,
 	EDIT_TOOL_DESCRIPTION,
 	EDIT_TOOL_NAME,
 	EDIT_TOOL_SCHEMA,
 	toToolInput,
-} from '../edit-tool';
+} from '@mark-bricks/editor/ai';
 
 export { EDIT_TOOL_NAME };
 

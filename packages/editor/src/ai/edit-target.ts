@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import type { AiEdit, AiEditResult } from '../platform';
+import type { AiEdit, AiEditResult } from './types';
 
 /**
  * Wraps the selection in the context sent to the model with each message.

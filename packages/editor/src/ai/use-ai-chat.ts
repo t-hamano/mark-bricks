@@ -18,7 +18,7 @@ import {
 import { applyChange, buildMessageContext } from './document-context';
 import type { EditTarget } from './edit-target';
 import { buildSystemPrompt } from './prompt';
-import type { AiEditResult, AiPlatform } from '../platform';
+import type { AiEditResult, AiPlatform } from './types';
 
 type EditorMode = 'visual' | 'text';
 

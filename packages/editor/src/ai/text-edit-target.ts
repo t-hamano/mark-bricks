@@ -3,7 +3,7 @@
  */
 import type { EditTarget } from './edit-target';
 import { joinFrontMatter, splitFrontMatter } from '../converter';
-import type { AiEdit } from '../platform';
+import type { AiEdit } from './types';
 import { findUniqueText } from './find-text';
 import { splitAiFrontMatter } from './front-matter';
 

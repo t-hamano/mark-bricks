@@ -30,7 +30,7 @@ import {
  */
 import type { AssistantChatMessage, ChatMessage } from '../../ai/conversation';
 import type { AiChat as AiChatState } from '../../ai/use-ai-chat';
-import type { AiPlatform, AiUsage } from '../../platform';
+import type { AiPlatform, AiUsage } from '../../ai/types';
 import { AnswerMarkdown } from './answer-markdown';
 
 // A filled square, the usual stop symbol. `@wordpress/icons` has none.

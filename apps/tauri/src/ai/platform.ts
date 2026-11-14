@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { AiPlatform } from '@mark-bricks/editor';
+import type { AiPlatform } from '@mark-bricks/editor/ai';
 
 /**
  * WordPress dependencies

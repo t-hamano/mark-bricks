@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { describe, expect, it, vi } from 'vitest';
-import type { AiStreamEvent } from '@mark-bricks/editor';
+import type { AiStreamEvent } from '@mark-bricks/editor/ai';
 
 /**
  * Internal dependencies
