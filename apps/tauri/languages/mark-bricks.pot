@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:51:17.443Z\n"
+"POT-Creation-Date: 2026-11-14T05:57:59.305Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -244,7 +244,7 @@ msgid "Open file…"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:202
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -352,26 +352,26 @@ msgstr ""
 msgid "Typeface used for the content area."
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:183
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:219
 msgid "General"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:205
+#: src/components/preferences-modal/index.tsx:222
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:208
+#: src/components/preferences-modal/index.tsx:225
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr ""
 
-#: src/components/preferences-modal/index.tsx:211
+#: src/components/preferences-modal/index.tsx:228
 msgid "AI Assistant"
 msgstr ""
 
@@ -503,16 +503,12 @@ msgstr ""
 msgid "Try again"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:144
+#: src/components/preferences-modal/ai-panel.tsx:145
 msgid "Provider"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:147
+#: src/components/preferences-modal/ai-panel.tsx:148
 msgid "The AI Assistant uses this provider."
-msgstr ""
-
-#: src/components/preferences-modal/ai-panel.tsx:151
-msgid "The AI Assistant uses the only connected provider."
 msgstr ""
 
 #: src/components/keyboard-shortcuts-modal/index.tsx:228

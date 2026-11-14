@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:51:17.443Z\n"
-"PO-Revision-Date: 2026-11-14T05:51:33.749Z\n"
+"POT-Creation-Date: 2026-11-14T05:57:59.305Z\n"
+"PO-Revision-Date: 2026-11-14T05:58:02.463Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,7 +33,7 @@ msgstr "“%s”有未保存的更改。要放弃更改并关闭吗？"
 msgid "(Untitled)"
 msgstr "(未命名)"
 
-#: src/components/preferences-modal/index.tsx:211
+#: src/components/preferences-modal/index.tsx:228
 msgid "AI Assistant"
 msgstr "AI 助手"
 
@@ -95,7 +95,7 @@ msgid "Checking…"
 msgstr "正在检查…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:202
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -114,7 +114,7 @@ msgstr "关闭其他标签页"
 msgid "Close the active tab."
 msgstr "关闭当前标签页。"
 
-#: src/components/preferences-modal/index.tsx:208
+#: src/components/preferences-modal/index.tsx:225
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "代码编辑器"
@@ -231,7 +231,7 @@ msgstr "字体"
 msgid "Font size"
 msgstr "字号"
 
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:219
 msgid "General"
 msgstr "常规"
 
@@ -386,7 +386,7 @@ msgstr "PDF 幻灯片"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:183
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "偏好设置"
@@ -395,7 +395,7 @@ msgstr "偏好设置"
 msgid "Preview Slides"
 msgstr "预览幻灯片"
 
-#: src/components/preferences-modal/ai-panel.tsx:144
+#: src/components/preferences-modal/ai-panel.tsx:145
 msgid "Provider"
 msgstr "提供商"
 
@@ -515,11 +515,7 @@ msgstr "%s API 目前不可用。请稍后重试。"
 msgid "The %s account has no credit left. Check its billing settings."
 msgstr "%s 账户已没有剩余额度。请检查其账单设置。"
 
-#: src/components/preferences-modal/ai-panel.tsx:151
-msgid "The AI Assistant uses the only connected provider."
-msgstr "AI 助手使用唯一已连接的提供商。"
-
-#: src/components/preferences-modal/ai-panel.tsx:147
+#: src/components/preferences-modal/ai-panel.tsx:148
 msgid "The AI Assistant uses this provider."
 msgstr "AI 助手使用此提供商。"
 
@@ -647,7 +643,7 @@ msgstr "检查更新失败：%s"
 msgid "View"
 msgstr "视图"
 
-#: src/components/preferences-modal/index.tsx:205
+#: src/components/preferences-modal/index.tsx:222
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "可视化编辑器"

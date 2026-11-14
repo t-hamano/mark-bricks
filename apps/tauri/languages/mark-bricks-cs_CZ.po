@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:51:17.443Z\n"
-"PO-Revision-Date: 2026-11-14T05:51:31.273Z\n"
+"POT-Creation-Date: 2026-11-14T05:57:59.305Z\n"
+"PO-Revision-Date: 2026-11-14T05:58:00.038Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -35,7 +35,7 @@ msgstr "„%s“ obsahuje neuložené změny. Chcete je zahodit a zavřít?"
 msgid "(Untitled)"
 msgstr "(Bez názvu)"
 
-#: src/components/preferences-modal/index.tsx:211
+#: src/components/preferences-modal/index.tsx:228
 msgid "AI Assistant"
 msgstr "Asistent AI"
 
@@ -97,7 +97,7 @@ msgid "Checking…"
 msgstr "Kontrola…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:202
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -116,7 +116,7 @@ msgstr "Zavřít ostatní karty"
 msgid "Close the active tab."
 msgstr "Zavřít aktivní kartu."
 
-#: src/components/preferences-modal/index.tsx:208
+#: src/components/preferences-modal/index.tsx:225
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Editor kódu"
@@ -234,7 +234,7 @@ msgstr "Rodina písem"
 msgid "Font size"
 msgstr "Velikost písma"
 
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:219
 msgid "General"
 msgstr "Obecné"
 
@@ -391,7 +391,7 @@ msgstr "Prezentace PDF"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:183
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "Předvolby"
@@ -400,7 +400,7 @@ msgstr "Předvolby"
 msgid "Preview Slides"
 msgstr "Zobrazit náhled snímků"
 
-#: src/components/preferences-modal/ai-panel.tsx:144
+#: src/components/preferences-modal/ai-panel.tsx:145
 msgid "Provider"
 msgstr "Poskytovatel"
 
@@ -521,11 +521,7 @@ msgid "The %s account has no credit left. Check its billing settings."
 msgstr ""
 "Účet %s nemá žádný zbývající kredit. Zkontrolujte jeho nastavení fakturace."
 
-#: src/components/preferences-modal/ai-panel.tsx:151
-msgid "The AI Assistant uses the only connected provider."
-msgstr "Asistent AI používá jediného připojeného poskytovatele."
-
-#: src/components/preferences-modal/ai-panel.tsx:147
+#: src/components/preferences-modal/ai-panel.tsx:148
 msgid "The AI Assistant uses this provider."
 msgstr "Asistent AI používá tohoto poskytovatele."
 
@@ -656,7 +652,7 @@ msgstr "Kontrola aktualizací selhala: %s"
 msgid "View"
 msgstr "Zobrazení"
 
-#: src/components/preferences-modal/index.tsx:205
+#: src/components/preferences-modal/index.tsx:222
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Vizuální editor"

@@ -149,10 +149,7 @@ export function AiPanel( { settings, onChange, onModelChange }: Props ) {
 										'The AI Assistant uses this provider.',
 										'mark-bricks'
 									)
-								: __(
-										'The AI Assistant uses the only connected provider.',
-										'mark-bricks'
-									)
+								: undefined
 						}
 						items={ providerItems }
 						value={

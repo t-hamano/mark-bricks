@@ -208,26 +208,33 @@ export function AiProviderCard( {
 	return (
 		<CollapsibleCard.Root className="preferences-modal__provider-card">
 			<CollapsibleCard.Header>
-				<Stack direction="row" gap="sm" align="center" wrap="wrap">
-					<Card.Title>{ providerInfo.name }</Card.Title>
+				<Stack
+					direction="row"
+					gap="sm"
+					justify="space-between"
+					align="flex-start"
+				>
+					<Stack direction="column" gap="sm">
+						<Card.Title>{ providerInfo.name }</Card.Title>
+						<CollapsibleCard.HeaderDescription>
+							{ hasKey
+								? sprintf(
+										/* translators: %s: The name of the AI model, such as Claude Opus 5.5. */
+										__( 'Model: %s', 'mark-bricks' ),
+										getModelName(
+											loadedModels,
+											model || providerInfo.defaultModel
+										)
+									)
+								: __( 'Not connected', 'mark-bricks' ) }
+						</CollapsibleCard.HeaderDescription>
+					</Stack>
 					{ hasKey && (
 						<Badge intent="stable">
 							{ __( 'Connected', 'mark-bricks' ) }
 						</Badge>
 					) }
 				</Stack>
-				<CollapsibleCard.HeaderDescription>
-					{ hasKey
-						? sprintf(
-								/* translators: %s: The name of the AI model, such as Claude Opus 5.5. */
-								__( 'Model: %s', 'mark-bricks' ),
-								getModelName(
-									loadedModels,
-									model || providerInfo.defaultModel
-								)
-							)
-						: __( 'Not connected', 'mark-bricks' ) }
-				</CollapsibleCard.HeaderDescription>
 			</CollapsibleCard.Header>
 			<CollapsibleCard.Content>
 				<Stack direction="column" gap="lg" align="flex-start">

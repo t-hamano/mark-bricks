@@ -39,6 +39,11 @@ $sidebar-width: 200px;
 	}
 }
 
+// Lets the provider cards fill the content area.
+.preferences-modal__panel--full-width {
+	max-width: none;
+}
+
 .preferences-modal__api-key-form {
 	align-self: stretch;
 }

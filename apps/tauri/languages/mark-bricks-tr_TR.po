@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:51:17.443Z\n"
-"PO-Revision-Date: 2026-11-14T05:51:33.508Z\n"
+"POT-Creation-Date: 2026-11-14T05:57:59.305Z\n"
+"PO-Revision-Date: 2026-11-14T05:58:02.198Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "(Untitled)"
 msgstr "(Başlıksız)"
 
-#: src/components/preferences-modal/index.tsx:211
+#: src/components/preferences-modal/index.tsx:228
 msgid "AI Assistant"
 msgstr "Yapay Zekâ Asistanı"
 
@@ -99,7 +99,7 @@ msgid "Checking…"
 msgstr "Denetleniyor…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:202
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -118,7 +118,7 @@ msgstr "Diğer sekmeleri kapat"
 msgid "Close the active tab."
 msgstr "Etkin sekmeyi kapat."
 
-#: src/components/preferences-modal/index.tsx:208
+#: src/components/preferences-modal/index.tsx:225
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Kod düzenleyici"
@@ -237,7 +237,7 @@ msgstr "Yazı tipi ailesi"
 msgid "Font size"
 msgstr "Yazı boyutu"
 
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:219
 msgid "General"
 msgstr "Genel"
 
@@ -395,7 +395,7 @@ msgstr "PDF slayt destesi"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:183
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "Tercihler"
@@ -404,7 +404,7 @@ msgstr "Tercihler"
 msgid "Preview Slides"
 msgstr "Slaytları önizle"
 
-#: src/components/preferences-modal/ai-panel.tsx:144
+#: src/components/preferences-modal/ai-panel.tsx:145
 msgid "Provider"
 msgstr "Sağlayıcı"
 
@@ -524,11 +524,7 @@ msgstr "%s API'si şu anda kullanılamıyor. Daha sonra tekrar deneyin."
 msgid "The %s account has no credit left. Check its billing settings."
 msgstr "%s hesabında kredi kalmadı. Faturalandırma ayarlarını kontrol edin."
 
-#: src/components/preferences-modal/ai-panel.tsx:151
-msgid "The AI Assistant uses the only connected provider."
-msgstr "Yapay Zekâ Asistanı bağlı tek sağlayıcıyı kullanır."
-
-#: src/components/preferences-modal/ai-panel.tsx:147
+#: src/components/preferences-modal/ai-panel.tsx:148
 msgid "The AI Assistant uses this provider."
 msgstr "Yapay Zekâ Asistanı bu sağlayıcıyı kullanır."
 
@@ -659,7 +655,7 @@ msgstr "Güncelleme denetimi başarısız oldu: %s"
 msgid "View"
 msgstr "Görünüm"
 
-#: src/components/preferences-modal/index.tsx:205
+#: src/components/preferences-modal/index.tsx:222
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Görsel düzenleyici"

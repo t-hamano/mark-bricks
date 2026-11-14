@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:51:17.443Z\n"
-"PO-Revision-Date: 2026-11-14T05:51:31.800Z\n"
+"POT-Creation-Date: 2026-11-14T05:57:59.305Z\n"
+"PO-Revision-Date: 2026-11-14T05:58:00.550Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -35,7 +35,7 @@ msgstr "«%s» tiene cambios sin guardar. ¿Quieres descartarlos y cerrar?"
 msgid "(Untitled)"
 msgstr "(Sin título)"
 
-#: src/components/preferences-modal/index.tsx:211
+#: src/components/preferences-modal/index.tsx:228
 msgid "AI Assistant"
 msgstr "Asistente de IA"
 
@@ -98,7 +98,7 @@ msgid "Checking…"
 msgstr "Comprobando…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:202
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -117,7 +117,7 @@ msgstr "Cerrar las demás pestañas"
 msgid "Close the active tab."
 msgstr "Cerrar la pestaña activa."
 
-#: src/components/preferences-modal/index.tsx:208
+#: src/components/preferences-modal/index.tsx:225
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Editor de código"
@@ -235,7 +235,7 @@ msgstr "Familia de fuentes"
 msgid "Font size"
 msgstr "Tamaño de la fuente"
 
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:219
 msgid "General"
 msgstr "Generales"
 
@@ -393,7 +393,7 @@ msgstr "Presentación PDF"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:183
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "Preferencias"
@@ -402,7 +402,7 @@ msgstr "Preferencias"
 msgid "Preview Slides"
 msgstr "Previsualizar diapositivas"
 
-#: src/components/preferences-modal/ai-panel.tsx:144
+#: src/components/preferences-modal/ai-panel.tsx:145
 msgid "Provider"
 msgstr "Proveedor"
 
@@ -525,11 +525,7 @@ msgid "The %s account has no credit left. Check its billing settings."
 msgstr ""
 "La cuenta de %s no tiene crédito. Revisa su configuración de facturación."
 
-#: src/components/preferences-modal/ai-panel.tsx:151
-msgid "The AI Assistant uses the only connected provider."
-msgstr "El asistente de IA usa el único proveedor conectado."
-
-#: src/components/preferences-modal/ai-panel.tsx:147
+#: src/components/preferences-modal/ai-panel.tsx:148
 msgid "The AI Assistant uses this provider."
 msgstr "El asistente de IA usa este proveedor."
 
@@ -660,7 +656,7 @@ msgstr "Error al buscar actualizaciones: %s"
 msgid "View"
 msgstr "Ver"
 
-#: src/components/preferences-modal/index.tsx:205
+#: src/components/preferences-modal/index.tsx:222
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Editor visual"

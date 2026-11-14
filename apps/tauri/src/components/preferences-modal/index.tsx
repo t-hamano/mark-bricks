@@ -280,7 +280,7 @@ export default function PreferencesModal() {
 						</Tabs.Panel>
 						<Tabs.Panel
 							value="ai"
-							className="preferences-modal__panel"
+							className="preferences-modal__panel preferences-modal__panel--full-width"
 							tabIndex={ -1 }
 						>
 							<AiPanel

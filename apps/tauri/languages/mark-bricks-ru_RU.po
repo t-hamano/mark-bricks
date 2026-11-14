@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:51:17.443Z\n"
-"PO-Revision-Date: 2026-11-14T05:51:33.269Z\n"
+"POT-Creation-Date: 2026-11-14T05:57:59.305Z\n"
+"PO-Revision-Date: 2026-11-14T05:58:01.961Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -35,7 +35,7 @@ msgstr "В «%s» есть несохраненные изменения. Отб
 msgid "(Untitled)"
 msgstr "(Без названия)"
 
-#: src/components/preferences-modal/index.tsx:211
+#: src/components/preferences-modal/index.tsx:228
 msgid "AI Assistant"
 msgstr "ИИ-ассистент"
 
@@ -97,7 +97,7 @@ msgid "Checking…"
 msgstr "Проверка…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:202
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -116,7 +116,7 @@ msgstr "Закрыть другие вкладки"
 msgid "Close the active tab."
 msgstr "Закрыть активную вкладку."
 
-#: src/components/preferences-modal/index.tsx:208
+#: src/components/preferences-modal/index.tsx:225
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "Редактор кода"
@@ -235,7 +235,7 @@ msgstr "Семейство шрифтов"
 msgid "Font size"
 msgstr "Размер шрифта"
 
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:219
 msgid "General"
 msgstr "Общие"
 
@@ -391,7 +391,7 @@ msgstr "Презентация PDF"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:183
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "Предпочтения"
@@ -400,7 +400,7 @@ msgstr "Предпочтения"
 msgid "Preview Slides"
 msgstr "Просмотр слайдов"
 
-#: src/components/preferences-modal/ai-panel.tsx:144
+#: src/components/preferences-modal/ai-panel.tsx:145
 msgid "Provider"
 msgstr "Провайдер"
 
@@ -520,11 +520,7 @@ msgstr "API %s сейчас недоступен. Повторите попыт�
 msgid "The %s account has no credit left. Check its billing settings."
 msgstr "На счёте %s не осталось средств. Проверьте настройки оплаты."
 
-#: src/components/preferences-modal/ai-panel.tsx:151
-msgid "The AI Assistant uses the only connected provider."
-msgstr "ИИ-ассистент использует единственного подключённого провайдера."
-
-#: src/components/preferences-modal/ai-panel.tsx:147
+#: src/components/preferences-modal/ai-panel.tsx:148
 msgid "The AI Assistant uses this provider."
 msgstr "ИИ-ассистент использует этого провайдера."
 
@@ -655,7 +651,7 @@ msgstr "Не удалось проверить обновления: %s"
 msgid "View"
 msgstr "Вид"
 
-#: src/components/preferences-modal/index.tsx:205
+#: src/components/preferences-modal/index.tsx:222
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "Визуальный редактор"

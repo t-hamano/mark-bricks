@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:51:17.443Z\n"
-"PO-Revision-Date: 2026-11-14T05:51:32.571Z\n"
+"POT-Creation-Date: 2026-11-14T05:57:59.305Z\n"
+"PO-Revision-Date: 2026-11-14T05:58:01.257Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "(Untitled)"
 msgstr "(제목 없음)"
 
-#: src/components/preferences-modal/index.tsx:211
+#: src/components/preferences-modal/index.tsx:228
 msgid "AI Assistant"
 msgstr "AI 어시스턴트"
 
@@ -99,7 +99,7 @@ msgid "Checking…"
 msgstr "확인 중…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:202
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -118,7 +118,7 @@ msgstr "다른 탭 닫기"
 msgid "Close the active tab."
 msgstr "활성 탭을 닫습니다."
 
-#: src/components/preferences-modal/index.tsx:208
+#: src/components/preferences-modal/index.tsx:225
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "코드 편집기"
@@ -235,7 +235,7 @@ msgstr "글꼴 모음"
 msgid "Font size"
 msgstr "글꼴 사이즈"
 
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:219
 msgid "General"
 msgstr "일반"
 
@@ -390,7 +390,7 @@ msgstr "PDF 슬라이드 덱"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:183
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "환경설정"
@@ -399,7 +399,7 @@ msgstr "환경설정"
 msgid "Preview Slides"
 msgstr "슬라이드 미리 보기"
 
-#: src/components/preferences-modal/ai-panel.tsx:144
+#: src/components/preferences-modal/ai-panel.tsx:145
 msgid "Provider"
 msgstr "제공업체"
 
@@ -519,11 +519,7 @@ msgstr "지금은 %s API를 사용할 수 없습니다. 나중에 다시 시도�
 msgid "The %s account has no credit left. Check its billing settings."
 msgstr "%s 계정에 남은 크레딧이 없습니다. 결제 설정을 확인하세요."
 
-#: src/components/preferences-modal/ai-panel.tsx:151
-msgid "The AI Assistant uses the only connected provider."
-msgstr "AI 어시스턴트가 연결된 유일한 제공업체를 사용합니다."
-
-#: src/components/preferences-modal/ai-panel.tsx:147
+#: src/components/preferences-modal/ai-panel.tsx:148
 msgid "The AI Assistant uses this provider."
 msgstr "AI 어시스턴트가 이 제공업체를 사용합니다."
 
@@ -652,7 +648,7 @@ msgstr "업데이트 확인 실패: %s"
 msgid "View"
 msgstr "보기"
 
-#: src/components/preferences-modal/index.tsx:205
+#: src/components/preferences-modal/index.tsx:222
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "비주얼 편집기"

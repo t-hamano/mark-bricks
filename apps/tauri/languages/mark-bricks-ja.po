@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:51:17.443Z\n"
-"PO-Revision-Date: 2026-11-14T05:51:18.204Z\n"
+"POT-Creation-Date: 2026-11-14T05:57:59.305Z\n"
+"PO-Revision-Date: 2026-11-14T05:57:59.809Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -35,7 +35,7 @@ msgstr "「%s」に保存されていない変更があります。変更を破�
 msgid "(Untitled)"
 msgstr "(無題)"
 
-#: src/components/preferences-modal/index.tsx:211
+#: src/components/preferences-modal/index.tsx:228
 msgid "AI Assistant"
 msgstr "AI アシスタント"
 
@@ -97,7 +97,7 @@ msgid "Checking…"
 msgstr "確認しています ..."
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:185
+#: src/components/preferences-modal/index.tsx:202
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -116,7 +116,7 @@ msgstr "他のタブを閉じる"
 msgid "Close the active tab."
 msgstr "アクティブなタブを閉じる。"
 
-#: src/components/preferences-modal/index.tsx:208
+#: src/components/preferences-modal/index.tsx:225
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "コードエディター"
@@ -235,7 +235,7 @@ msgstr "フォントファミリー"
 msgid "Font size"
 msgstr "フォントサイズ"
 
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:219
 msgid "General"
 msgstr "一般"
 
@@ -390,7 +390,7 @@ msgstr "PDF スライドデッキ"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:183
+#: src/components/preferences-modal/index.tsx:200
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "設定"
@@ -399,7 +399,7 @@ msgstr "設定"
 msgid "Preview Slides"
 msgstr "スライドをプレビュー"
 
-#: src/components/preferences-modal/ai-panel.tsx:144
+#: src/components/preferences-modal/ai-panel.tsx:145
 msgid "Provider"
 msgstr "プロバイダ"
 
@@ -517,14 +517,11 @@ msgstr "%s API は現在利用できません。しばらくしてから再試�
 # %s: The name of the AI provider, such as OpenAI.
 #: src/ai/error.ts:61
 msgid "The %s account has no credit left. Check its billing settings."
-msgstr "%s アカウントのクレジットが残っていません。請求設定を確認してください。"
-"%s アカウントのクレジットが残っていません。請求設定を確認してください。"
+msgstr ""
+"%s アカウントのクレジットが残っていません。請求設定を確認してください。%s ア"
+"カウントのクレジットが残っていません。請求設定を確認してください。"
 
-#: src/components/preferences-modal/ai-panel.tsx:151
-msgid "The AI Assistant uses the only connected provider."
-msgstr "AI アシスタントは接続済みの唯一のプロバイダーを使用します。"
-
-#: src/components/preferences-modal/ai-panel.tsx:147
+#: src/components/preferences-modal/ai-panel.tsx:148
 msgid "The AI Assistant uses this provider."
 msgstr "AI アシスタントはこのプロバイダーを使用します。"
 
@@ -654,7 +651,7 @@ msgstr "アップデートの確認に失敗しました: %s"
 msgid "View"
 msgstr "表示"
 
-#: src/components/preferences-modal/index.tsx:205
+#: src/components/preferences-modal/index.tsx:222
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "ビジュアルエディター"
