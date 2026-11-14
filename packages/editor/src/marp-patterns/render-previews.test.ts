@@ -2,18 +2,17 @@
  * External dependencies
  */
 import { describe, it, expect } from 'vitest';
-import { SLIDE_PATTERNS } from '@mark-bricks/editor/marp-patterns';
 
 /**
  * Internal dependencies
  */
-import { SLIDE_PATTERN_THEMES, renderSlidePatternPreviews } from '.';
+import { SLIDE_PATTERN_THEMES, SLIDE_PATTERNS } from '.';
+import { renderSlidePatternPreviews } from './render-previews';
 
 // The editor bundles the previews from this file. Run
-// `pnpm --filter @mark-bricks/marp-preview slide-patterns:update` after
-// changing a pattern, or Marp, to write it again.
-const PREVIEWS_PATH =
-	'../../../editor/src/marp-patterns/previews.generated.json';
+// `pnpm --filter @mark-bricks/editor slide-patterns:update` after changing a
+// pattern, or Marp, to write it again.
+const PREVIEWS_PATH = './previews.generated.json';
 
 describe( 'renderSlidePatternPreviews', () => {
 	it( 'renders every pattern in every theme', () => {

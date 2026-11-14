@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import type { AiActivity } from '@mark-bricks/editor';
+
+/**
  * Internal dependencies
  */
 import { EDIT_RESULT } from '../edit-tool';
@@ -15,10 +20,14 @@ import {
 /**
  * Reads a streamed Messages API answer. See `AiProviderAdapter.readAnswer`.
  *
- * @param onText Called with each piece of the answer's text.
+ * @param onText     Called with each piece of the answer's text.
+ * @param onActivity Called when the model starts to think, or to edit.
  */
-export function readAnswer( onText: ( text: string ) => void ) {
-	const message = createMessageStream( onText );
+export function readAnswer(
+	onText: ( text: string ) => void,
+	onActivity: ( activity: AiActivity ) => void
+) {
+	const message = createMessageStream( onText, onActivity );
 	return {
 		handle: message.handle,
 		finish: (): ProviderAnswer => toAnswer( message.finish() ),

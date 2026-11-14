@@ -7,7 +7,7 @@ import katexCss from 'katex/dist/katex.min.css?raw';
 /**
  * Internal dependencies
  */
-import { rewriteFontSources } from './fonts';
+import { rewriteFontSources } from '.';
 
 describe( 'rewriteFontSources', () => {
 	it( 'points every KaTeX font at its WOFF2 file only', () => {

@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { AiMessage } from '@mark-bricks/editor';
+import type { AiActivity, AiMessage } from '@mark-bricks/editor';
 
 /**
  * Internal dependencies
@@ -73,9 +73,14 @@ export type AiProviderAdapter = {
 	 * Reads a streamed answer from the payloads of its server-sent events.
 	 * `finish` throws when the answer did not end normally.
 	 *
-	 * @param onText Called with each piece of the answer's text.
+	 * @param onText     Called with each piece of the answer's text.
+	 * @param onActivity Called when the model starts to think, or to write
+	 *                   its edit.
 	 */
-	readAnswer: ( onText: ( text: string ) => void ) => {
+	readAnswer: (
+		onText: ( text: string ) => void,
+		onActivity: ( activity: AiActivity ) => void
+	) => {
 		handle: ( data: unknown ) => void;
 		finish: () => ProviderAnswer;
 	};

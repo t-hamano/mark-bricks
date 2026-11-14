@@ -66,6 +66,19 @@ function joinText( events: AiStreamEvent[] ) {
 		.join( '' );
 }
 
+/**
+ * The kinds of the events, in order, with each run of text as one `text`.
+ *
+ * @param events The events.
+ */
+function toSteps( events: AiStreamEvent[] ) {
+	return events
+		.map( ( event ) =>
+			event.type === 'activity' ? event.activity : event.type
+		)
+		.filter( ( step, index, steps ) => step !== steps[ index - 1 ] );
+}
+
 describe( 'createChat with OpenAI', () => {
 	it( 'streams the text of an answer', async () => {
 		const { result, events, bodies } = run( [ answer ] );
@@ -89,6 +102,21 @@ describe( 'createChat with OpenAI', () => {
 				store: false,
 				include: [ 'reasoning.encrypted_content' ],
 			},
+		] );
+	} );
+
+	it( 'reports when the model thinks and when it edits', async () => {
+		const plain = run( [ answer ] );
+		await plain.result;
+		expect( toSteps( plain.events ) ).toEqual( [ 'thinking', 'text' ] );
+
+		const edited = run( [ edit, afterEdit ] );
+		await edited.result;
+		expect( toSteps( edited.events ) ).toEqual( [
+			'text',
+			'editing',
+			'edit',
+			'text',
 		] );
 	} );
 
