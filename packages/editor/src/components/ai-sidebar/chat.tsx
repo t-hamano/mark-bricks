@@ -30,7 +30,7 @@ import {
  */
 import type { AssistantChatMessage, ChatMessage } from '../../ai/conversation';
 import type { AiChat as AiChatState } from '../../ai/use-ai-chat';
-import type { AiPlatform } from '../../platform';
+import type { AiPlatform, AiUsage } from '../../platform';
 import { AnswerMarkdown } from './answer-markdown';
 
 // A filled square, the usual stop symbol. `@wordpress/icons` has none.
@@ -59,6 +59,34 @@ function getActivityLabel(
 }
 
 const numberFormat = new Intl.NumberFormat();
+
+/**
+ * Describes the tokens an answer used. The tokens read from the prompt
+ * cache are shown when there are any.
+ *
+ * @param usage The tokens the answer used.
+ * @return The description.
+ */
+function formatUsage( usage: AiUsage ): string {
+	if ( usage.cachedInputTokens ) {
+		return sprintf(
+			/* translators: 1: The number of tokens the AI model read. 2: How many of them it read from the cache, at a lower price. 3: The number of tokens it wrote. */
+			__(
+				'%1$s input tokens (%2$s cached), %3$s output tokens',
+				'mark-bricks'
+			),
+			numberFormat.format( usage.inputTokens ),
+			numberFormat.format( usage.cachedInputTokens ),
+			numberFormat.format( usage.outputTokens )
+		);
+	}
+	return sprintf(
+		/* translators: 1: The number of tokens the AI model read. 2: The number of tokens it wrote. */
+		__( '%1$s input tokens, %2$s output tokens', 'mark-bricks' ),
+		numberFormat.format( usage.inputTokens ),
+		numberFormat.format( usage.outputTokens )
+	);
+}
 
 function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 	const activity =
@@ -118,15 +146,7 @@ function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 			) }
 			{ message.usage && message.status !== 'streaming' && (
 				<Text variant="body-sm" className="ai-chat__message-usage">
-					{ sprintf(
-						/* translators: 1: The number of tokens the AI model read. 2: The number of tokens it wrote. */
-						__(
-							'%1$s input tokens, %2$s output tokens',
-							'mark-bricks'
-						),
-						numberFormat.format( message.usage.inputTokens ),
-						numberFormat.format( message.usage.outputTokens )
-					) }
+					{ formatUsage( message.usage ) }
 				</Text>
 			) }
 		</Stack>
