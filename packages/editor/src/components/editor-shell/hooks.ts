@@ -23,6 +23,7 @@ import blockEditorContentStyles from '@wordpress/block-editor/build-style/conten
  * Internal dependencies
  */
 import canvasStyles from './canvas.scss?inline';
+import { getFontFamilyStack, type FontFamily } from '../../font-families';
 import {
 	blocksToMarkdown,
 	joinFrontMatter,
@@ -57,7 +58,11 @@ const baseContentStyles = [
 export type EditorStyles = {
 	contentWidth?: number;
 	fontSize?: number;
-	fontFamily?: string;
+	/**
+	 * The font family of the content area. A font stack is still accepted,
+	 * as the desktop app saved one in its preferences, but is deprecated.
+	 */
+	fontFamily?: FontFamily | ( string & {} );
 	css?: string;
 };
 
@@ -66,7 +71,9 @@ export function useContentStyles(
 ): Array< { css: string } > {
 	const contentWidth = editorStyles?.contentWidth;
 	const fontSize = editorStyles?.fontSize;
-	const fontFamily = editorStyles?.fontFamily;
+	const fontFamily =
+		editorStyles?.fontFamily &&
+		getFontFamilyStack( editorStyles.fontFamily );
 	const customStyles = editorStyles?.css;
 
 	return useMemo( () => {
