@@ -4,7 +4,6 @@
 import { escapeMarkdown, fillPlaceholders } from './placeholders';
 import type { SlidePattern } from './types';
 import title from './patterns/title';
-import titleOnly from './patterns/title-only';
 import titleInInvertedColors from './patterns/title-in-inverted-colors';
 import titleOnGradient from './patterns/title-on-gradient';
 import titleOnImage from './patterns/title-on-image';
@@ -49,7 +48,6 @@ export { SLIDE_PATTERN_CATEGORIES } from './categories';
 // best, in the order of `SLIDE_PATTERN_CATEGORIES`.
 export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	title,
-	titleOnly,
 	titleInInvertedColors,
 	titleOnGradient,
 	titleOnImage,

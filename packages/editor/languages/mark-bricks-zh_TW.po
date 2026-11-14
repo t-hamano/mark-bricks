@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:08:16.933Z\n"
-"PO-Revision-Date: 2026-11-14T04:08:39.943Z\n"
+"POT-Creation-Date: 2026-11-14T04:17:32.878Z\n"
+"PO-Revision-Date: 2026-11-14T04:17:42.814Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -938,7 +938,6 @@ msgstr "標題"
 #: src/marp-patterns/patterns/title.ts:21
 #: src/marp-patterns/patterns/title-with-label.ts:22
 #: src/marp-patterns/patterns/title-with-label-and-image.ts:24
-#: src/marp-patterns/patterns/title-only.ts:19
 #: src/marp-patterns/patterns/title-on-image.ts:24
 #: src/marp-patterns/patterns/title-on-gradient.ts:24
 #: src/marp-patterns/patterns/title-on-blurred-image.ts:25
@@ -978,11 +977,6 @@ msgstr "漸層背景上的標題"
 msgctxt "slide pattern"
 msgid "Title on an image"
 msgstr "圖片上的標題"
-
-#: src/marp-patterns/patterns/title-only.ts:13
-msgctxt "slide pattern"
-msgid "Title only"
-msgstr "僅標題"
 
 #: src/marp-patterns/patterns/title-with-label.ts:13
 msgctxt "slide pattern"
