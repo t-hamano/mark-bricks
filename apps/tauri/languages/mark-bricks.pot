@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T08:35:47.739Z\n"
+"POT-Creation-Date: 2026-11-14T08:40:52.692Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -549,14 +549,6 @@ msgstr ""
 msgid "List View shortcuts"
 msgstr ""
 
-#: src/components/editor-placeholder/index.tsx:23
-msgid "No file open"
-msgstr ""
-
-#: src/components/editor-placeholder/index.tsx:26
-msgid "Create a new Markdown file or open an existing one to start editing."
-msgstr ""
-
 #: src/components/header-actions/index.tsx:115
 msgid "Exporting the slide deck…"
 msgstr ""
@@ -655,6 +647,14 @@ msgstr ""
 
 #: src/components/header-actions/index.tsx:386
 msgid "Remove"
+msgstr ""
+
+#: src/components/editor-placeholder/index.tsx:23
+msgid "No file open"
+msgstr ""
+
+#: src/components/editor-placeholder/index.tsx:26
+msgid "Create a new Markdown file or open an existing one to start editing."
 msgstr ""
 
 # %s: tab title.
