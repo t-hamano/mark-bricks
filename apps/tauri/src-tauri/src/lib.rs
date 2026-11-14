@@ -1,6 +1,6 @@
 use std::ffi::OsString;
 use std::path::{Component, Path, PathBuf};
-use std::sync::{Mutex, OnceLock};
+use std::sync::{Mutex, OnceLock, PoisonError};
 
 use tauri::{Emitter, Env, Manager};
 
@@ -20,6 +20,9 @@ use export::export_slide_deck;
 /// launch passes its file to the first. We hold them in a simple shared place
 /// because they can arrive before startup finishes, when the usual storage is
 /// not ready yet and they would otherwise be lost.
+///
+/// Callers recover the list from a poisoned lock instead of panicking: it is a
+/// plain list of paths, so a panic elsewhere cannot leave it half-updated.
 fn pending_open_files() -> &'static Mutex<Vec<PathBuf>> {
     static PENDING: OnceLock<Mutex<Vec<PathBuf>>> = OnceLock::new();
     PENDING.get_or_init(|| Mutex::new(Vec::new()))
@@ -38,7 +41,11 @@ async fn take_pending_documents(
     state: tauri::State<'_, Documents>,
 ) -> Result<Vec<OpenRequestResult>, String> {
     with_documents(state.inner().clone(), |documents| {
-        let paths = std::mem::take(&mut *pending_open_files().lock().map_err(|e| e.to_string())?);
+        let paths = std::mem::take(
+            &mut *pending_open_files()
+                .lock()
+                .unwrap_or_else(PoisonError::into_inner),
+        );
         Ok(paths
             .into_iter()
             .map(|path| {
@@ -418,14 +425,17 @@ pub fn run() {
 
     // Seed this instance's own argv-provided files before the event loop;
     // the single-instance callback may fire before `setup` would have run.
-    pending_open_files().lock().unwrap().extend(
-        collect_markdown_paths(
-            std::env::args(),
-            &std::env::current_dir().unwrap_or_default(),
-        )
-        .into_iter()
-        .map(PathBuf::from),
-    );
+    pending_open_files()
+        .lock()
+        .unwrap_or_else(PoisonError::into_inner)
+        .extend(
+            collect_markdown_paths(
+                std::env::args(),
+                &std::env::current_dir().unwrap_or_default(),
+            )
+            .into_iter()
+            .map(PathBuf::from),
+        );
 
     let mut builder = tauri::Builder::default();
 
@@ -443,7 +453,7 @@ pub fn run() {
             // queue has new requests; their payload cannot authorize paths.
             pending_open_files()
                 .lock()
-                .unwrap()
+                .unwrap_or_else(PoisonError::into_inner)
                 .extend(paths.into_iter().map(PathBuf::from));
             let _ = app.emit("open-files", ());
         }
@@ -456,7 +466,7 @@ pub fn run() {
             if let Ok(file) = relaunch_documents_file(app.handle()) {
                 pending_open_files()
                     .lock()
-                    .unwrap()
+                    .unwrap_or_else(PoisonError::into_inner)
                     .splice(0..0, take_relaunch_documents(&file));
             }
             // The updater and `relaunch()` restart the app with `Env`'s
@@ -535,7 +545,10 @@ pub fn run() {
                 if paths.is_empty() {
                     return;
                 }
-                pending_open_files().lock().unwrap().extend(paths);
+                pending_open_files()
+                    .lock()
+                    .unwrap_or_else(PoisonError::into_inner)
+                    .extend(paths);
                 let _ = app.emit("open-files", ());
             }
 
