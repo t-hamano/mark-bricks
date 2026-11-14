@@ -9,20 +9,26 @@ import { _x } from '@wordpress/i18n';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'heading-code-and-text',
+	name: 'header-footer-and-page-number',
 	title: () =>
-		_x( 'Heading, code, and text', 'slide pattern', 'mark-bricks' ),
-	categories: [ 'code' ],
-	markdown: `## {{heading}}
+		_x( 'Header, footer, and page number', 'slide pattern', 'mark-bricks' ),
+	categories: [ 'text' ],
+	markdown: `<!--
+_header: "{{header}}"
+_footer: "{{footer}}"
+_paginate: true
+-->
 
-\`\`\`js
-function example( value ) {
-  return value * 2;
-}
-\`\`\`
+## {{heading}}
 
 {{text}}`,
 	strings: () => ( {
+		header: _x(
+			'Writing slides in Markdown',
+			'slide pattern',
+			'mark-bricks'
+		),
+		footer: _x( 'A short introduction', 'slide pattern', 'mark-bricks' ),
 		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
 		text: _x(
 			'Write your slides as plain text and let the theme take care of the design.',

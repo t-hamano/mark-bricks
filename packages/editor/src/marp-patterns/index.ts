@@ -10,16 +10,11 @@ import titleOnImage from './patterns/title-on-image';
 import titleOnBlurredImage from './patterns/title-on-blurred-image';
 import titleAndImageOnLeft from './patterns/title-and-image-on-left';
 import titleAndImageOnRight from './patterns/title-and-image-on-right';
-import headingAndText from './patterns/heading-and-text';
 import headingAndTwoSubsections from './patterns/heading-and-two-subsections';
 import quote from './patterns/quote';
-import headingAndQuote from './patterns/heading-and-quote';
+import headingAndTextOnImage from './patterns/heading-and-text-on-image';
+import headerFooterAndPageNumber from './patterns/header-footer-and-page-number';
 import quoteOnImage from './patterns/quote-on-image';
-import bulletedList from './patterns/bulleted-list';
-import orderedList from './patterns/ordered-list';
-import nestedList from './patterns/nested-list';
-import labeledList from './patterns/labeled-list';
-import textAndList from './patterns/text-and-list';
 import imageOnLeftAndText from './patterns/image-on-left-and-text';
 import imageOnRightAndText from './patterns/image-on-right-and-text';
 import twoStackedImagesAndText from './patterns/two-stacked-images-and-text';
@@ -29,17 +24,6 @@ import fullScreenImage from './patterns/full-screen-image';
 import twoImagesSideBySide from './patterns/two-images-side-by-side';
 import threeImagesSideBySide from './patterns/three-images-side-by-side';
 import twoStackedImages from './patterns/two-stacked-images';
-import twoColumnTable from './patterns/two-column-table';
-import threeColumnTable from './patterns/three-column-table';
-import fourColumnTable from './patterns/four-column-table';
-import headingAndCode from './patterns/heading-and-code';
-import headingCodeAndText from './patterns/heading-code-and-text';
-import code from './patterns/code';
-import headingTextAndCode from './patterns/heading-text-and-code';
-import headingCodeAndList from './patterns/heading-code-and-list';
-import headingAndTwoCodeBlocks from './patterns/heading-and-two-code-blocks';
-import imageOnLeftAndCode from './patterns/image-on-left-and-code';
-import imageOnRightAndCode from './patterns/image-on-right-and-code';
 
 export type { SlidePattern, SlidePatternCategory } from './types';
 export { SLIDE_PATTERN_CATEGORIES } from './categories';
@@ -54,16 +38,11 @@ export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	titleOnBlurredImage,
 	titleAndImageOnLeft,
 	titleAndImageOnRight,
-	headingAndText,
 	headingAndTwoSubsections,
 	quote,
-	headingAndQuote,
+	headingAndTextOnImage,
+	headerFooterAndPageNumber,
 	quoteOnImage,
-	bulletedList,
-	orderedList,
-	nestedList,
-	labeledList,
-	textAndList,
 	imageOnLeftAndText,
 	imageOnRightAndText,
 	twoStackedImagesAndText,
@@ -73,17 +52,6 @@ export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	twoImagesSideBySide,
 	threeImagesSideBySide,
 	twoStackedImages,
-	twoColumnTable,
-	threeColumnTable,
-	fourColumnTable,
-	code,
-	headingAndCode,
-	headingTextAndCode,
-	headingCodeAndText,
-	headingCodeAndList,
-	headingAndTwoCodeBlocks,
-	imageOnLeftAndCode,
-	imageOnRightAndCode,
 ];
 
 /**

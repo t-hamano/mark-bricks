@@ -6,22 +6,21 @@ import { _x } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
+import { PLACEHOLDER_IMAGE } from '../placeholder-image';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'heading-text-and-code',
+	name: 'heading-and-text-on-image',
 	title: () =>
-		_x( 'Heading, text, and code', 'slide pattern', 'mark-bricks' ),
-	categories: [ 'code' ],
-	markdown: `## {{heading}}
+		_x( 'Heading and text on an image', 'slide pattern', 'mark-bricks' ),
+	categories: [ 'text', 'image' ],
+	markdown: `<!-- _class: invert -->
 
-{{text}}
+![bg brightness:0.4](${ PLACEHOLDER_IMAGE })
 
-\`\`\`js
-function example( value ) {
-  return value * 2;
-}
-\`\`\``,
+## {{heading}}
+
+{{text}}`,
 	strings: () => ( {
 		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
 		text: _x(

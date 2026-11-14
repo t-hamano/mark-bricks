@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:38:18.812Z\n"
-"PO-Revision-Date: 2026-11-14T05:38:33.065Z\n"
+"POT-Creation-Date: 2026-11-14T05:41:52.124Z\n"
+"PO-Revision-Date: 2026-11-14T05:41:53.222Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -54,6 +54,7 @@ msgstr ""
 #: src/marp-patterns/patterns/title-in-inverted-colors.ts:27
 #: src/marp-patterns/patterns/title-and-image-on-right.ts:30
 #: src/marp-patterns/patterns/title-and-image-on-left.ts:30
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:31
 msgctxt "slide pattern"
 msgid "A short introduction"
 msgstr "かんたんな紹介"
@@ -76,7 +77,6 @@ msgstr "Aki Hamano"
 
 #: src/marp-patterns/patterns/quote.ts:26
 #: src/marp-patterns/patterns/quote-on-image.ts:29
-#: src/marp-patterns/patterns/heading-and-quote.ts:27
 msgctxt "slide pattern"
 msgid "Alex Kim, Designer"
 msgstr "Alex Kim、デザイナー"
@@ -93,13 +93,6 @@ msgstr "すべてのカテゴリー"
 #: src/block-library/image/edit.tsx:233
 msgid "Alt text"
 msgstr "代替テキスト"
-
-#: src/marp-patterns/patterns/two-column-table.ts:31
-#: src/marp-patterns/patterns/three-column-table.ts:34
-#: src/marp-patterns/patterns/four-column-table.ts:37
-msgctxt "slide pattern"
-msgid "Any editor"
-msgstr "どのエディターでも"
 
 #: src/format-library/image/inline.tsx:169
 #: src/block-library/image/edit.tsx:126
@@ -119,12 +112,6 @@ msgstr ""
 "AI アシスタントに執筆や編集を依頼できます。選択範囲、またはコードエディターで"
 "カーソルがある行がメッセージと一緒に送信されます。"
 
-#: src/marp-patterns/patterns/three-column-table.ts:29
-#: src/marp-patterns/patterns/four-column-table.ts:30
-msgctxt "slide pattern"
-msgid "Binary file"
-msgstr "バイナリファイル"
-
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
 msgstr "ブロックインサーター"
@@ -143,12 +130,6 @@ msgstr "太字"
 #: src/block-library/image/edit.tsx:218
 msgid "Browse local file"
 msgstr "ローカルファイルを参照"
-
-#: src/marp-patterns/patterns/three-column-table.ts:32
-#: src/marp-patterns/patterns/four-column-table.ts:34
-msgctxt "slide pattern"
-msgid "By hand"
-msgstr "手作業"
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
@@ -197,21 +178,6 @@ msgstr "AI アシスタントを閉じる"
 msgid "Close Block Inserter"
 msgstr "ブロックインサーターを閉じる"
 
-#: src/marp-patterns/categories.ts:40
-msgctxt "slide pattern category"
-msgid "Code"
-msgstr "コード"
-
-#: src/marp-patterns/patterns/code.ts:13
-msgctxt "slide pattern"
-msgid "Code"
-msgstr "コード"
-
-#: src/marp-patterns/patterns/nested-list.ts:30
-msgctxt "slide pattern"
-msgid "Code and images"
-msgstr "コードと画像"
-
 #: src/components/editor/index.tsx:111
 msgid "Code editor"
 msgstr "コードエディター"
@@ -219,11 +185,6 @@ msgstr "コードエディター"
 #: src/block-library/table/edit.tsx:246
 msgid "Column count"
 msgstr "カラム数"
-
-#: src/marp-patterns/patterns/four-column-table.ts:35
-msgctxt "slide pattern"
-msgid "Consistent look"
-msgstr "統一された見た目"
 
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
@@ -250,13 +211,6 @@ msgstr "行を削除"
 msgid "Describes the image for screen readers."
 msgstr "スクリーンリーダー用に画像を説明します。"
 
-#: src/marp-patterns/patterns/two-column-table.ts:28
-#: src/marp-patterns/patterns/three-column-table.ts:30
-#: src/marp-patterns/patterns/four-column-table.ts:32
-msgctxt "slide pattern"
-msgid "Design"
-msgstr "デザイン"
-
 #: src/components/keyboard-shortcuts/index.tsx:103
 msgid "Display these keyboard shortcuts."
 msgstr "これらのキーボードショートカットを表示する。"
@@ -265,11 +219,6 @@ msgstr "これらのキーボードショートカットを表示する。"
 #: src/components/editor-header/index.tsx:153
 msgid "Document Overview"
 msgstr "ドキュメント概観"
-
-#: src/marp-patterns/patterns/four-column-table.ts:31
-msgctxt "slide pattern"
-msgid "Easy to compare"
-msgstr "比較しやすい"
 
 #: src/block-library/image/edit.tsx:162
 msgid "Edit image"
@@ -282,13 +231,6 @@ msgstr "表を編集"
 #: src/components/ai-sidebar/chat.tsx:75
 msgid "Edited the document."
 msgstr "ドキュメントを編集しました。"
-
-#: src/marp-patterns/patterns/two-column-table.ts:30
-#: src/marp-patterns/patterns/three-column-table.ts:33
-#: src/marp-patterns/patterns/four-column-table.ts:36
-msgctxt "slide pattern"
-msgid "Editing"
-msgstr "編集"
 
 #: src/components/ai-sidebar/chat.tsx:54
 msgid "Editing the document…"
@@ -308,18 +250,9 @@ msgstr "タイトルを入力…"
 msgid "Explore Marp patterns"
 msgstr "Marp パターンを探す"
 
-#: src/marp-patterns/patterns/labeled-list.ts:35
-msgctxt "slide pattern"
-msgid "Export to HTML or PDF"
-msgstr "HTML や PDF に書き出し"
-
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
-#: src/marp-patterns/patterns/text-and-list.ts:31
-#: src/marp-patterns/patterns/ordered-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:35
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:35
-#: src/marp-patterns/patterns/heading-code-and-list.ts:31
-#: src/marp-patterns/patterns/bulleted-list.ts:24
 msgctxt "slide pattern"
 msgid "Export when you are ready"
 msgstr "準備ができたら書き出す"
@@ -327,20 +260,6 @@ msgstr "準備ができたら書き出す"
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "画像の読み込みに失敗しました。"
-
-#: src/marp-patterns/patterns/two-column-table.ts:24
-#: src/marp-patterns/patterns/three-column-table.ts:24
-#: src/marp-patterns/patterns/four-column-table.ts:24
-msgctxt "slide pattern"
-msgid "Feature"
-msgstr "機能"
-
-#: src/marp-patterns/patterns/two-column-table.ts:26
-#: src/marp-patterns/patterns/three-column-table.ts:27
-#: src/marp-patterns/patterns/four-column-table.ts:28
-msgctxt "slide pattern"
-msgid "File format"
-msgstr "ファイル形式"
 
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
@@ -354,13 +273,6 @@ msgstr "フッター"
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "前方スラッシュ"
-
-#: src/marp-patterns/patterns/two-column-table.ts:29
-#: src/marp-patterns/patterns/three-column-table.ts:31
-#: src/marp-patterns/patterns/four-column-table.ts:33
-msgctxt "slide pattern"
-msgid "From the theme"
-msgstr "テーマで決まる"
 
 #: src/components/front-matter-editor/index.tsx:112
 #: src/components/front-matter-editor/index.tsx:131
@@ -378,7 +290,6 @@ msgstr "GitHub アラートタイプ"
 
 #: src/marp-patterns/patterns/quote.ts:21
 #: src/marp-patterns/patterns/quote-on-image.ts:24
-#: src/marp-patterns/patterns/heading-and-quote.ts:22
 msgctxt "slide pattern"
 msgid "Good slides say one thing, and say it clearly."
 msgstr "良いスライドは、1 つのことをはっきり伝える。"
@@ -396,6 +307,11 @@ msgstr "ヘッダー"
 msgid "Header label"
 msgstr "ヘッダーラベル"
 
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:14
+msgctxt "slide pattern"
+msgid "Header, footer, and page number"
+msgstr "ヘッダー、フッター、ページ番号"
+
 #: src/block-library/heading/edit.tsx:53
 msgid "Heading"
 msgstr "見出し"
@@ -405,25 +321,10 @@ msgstr "見出し"
 msgid "Heading %d"
 msgstr "見出し %d"
 
-#: src/marp-patterns/patterns/heading-and-code.ts:13
+#: src/marp-patterns/patterns/heading-and-text-on-image.ts:15
 msgctxt "slide pattern"
-msgid "Heading and code"
-msgstr "見出しとコード"
-
-#: src/marp-patterns/patterns/heading-and-quote.ts:13
-msgctxt "slide pattern"
-msgid "Heading and quote"
-msgstr "見出しと引用"
-
-#: src/marp-patterns/patterns/heading-and-text.ts:13
-msgctxt "slide pattern"
-msgid "Heading and text"
-msgstr "見出しとテキスト"
-
-#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:14
-msgctxt "slide pattern"
-msgid "Heading and two code blocks"
-msgstr "見出しと 2 つのコード"
+msgid "Heading and text on an image"
+msgstr "画像の上に見出しとテキスト"
 
 #: src/marp-patterns/patterns/heading-and-two-images.ts:14
 msgctxt "slide pattern"
@@ -435,30 +336,10 @@ msgctxt "slide pattern"
 msgid "Heading and two subsections"
 msgstr "見出しと 2 つの小見出し"
 
-#: src/marp-patterns/patterns/heading-code-and-list.ts:14
-msgctxt "slide pattern"
-msgid "Heading, code, and list"
-msgstr "見出し、コード、リスト"
-
-#: src/marp-patterns/patterns/heading-code-and-text.ts:14
-msgctxt "slide pattern"
-msgid "Heading, code, and text"
-msgstr "見出し、コード、テキスト"
-
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:15
 msgctxt "slide pattern"
 msgid "Heading, image, and caption"
 msgstr "見出し、画像、キャプション"
-
-#: src/marp-patterns/patterns/heading-text-and-code.ts:14
-msgctxt "slide pattern"
-msgid "Heading, text, and code"
-msgstr "見出し、テキスト、コード"
-
-#: src/marp-patterns/patterns/nested-list.ts:25
-msgctxt "slide pattern"
-msgid "Headings, lists and tables"
-msgstr "見出し、リスト、表"
 
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
@@ -468,25 +349,15 @@ msgstr "ドキュメント概観を非表示"
 msgid "Image"
 msgstr "画像"
 
-#: src/marp-patterns/categories.ts:32
+#: src/marp-patterns/categories.ts:28
 msgctxt "slide pattern category"
 msgid "Image"
 msgstr "画像"
-
-#: src/marp-patterns/patterns/image-on-left-and-code.ts:15
-msgctxt "slide pattern"
-msgid "Image on the left and code"
-msgstr "左に画像とコード"
 
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:15
 msgctxt "slide pattern"
 msgid "Image on the left and text"
 msgstr "左に画像とテキスト"
-
-#: src/marp-patterns/patterns/image-on-right-and-code.ts:15
-msgctxt "slide pattern"
-msgid "Image on the right and code"
-msgstr "右に画像とコード"
 
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:15
 msgctxt "slide pattern"
@@ -559,31 +430,6 @@ msgstr "リンク"
 msgid "List"
 msgstr "リスト"
 
-#: src/marp-patterns/categories.ts:28
-msgctxt "slide pattern category"
-msgid "List"
-msgstr "リスト"
-
-#: src/marp-patterns/patterns/bulleted-list.ts:13
-msgctxt "slide pattern"
-msgid "List (Bulleted)"
-msgstr "リスト (箇条書き)"
-
-#: src/marp-patterns/patterns/labeled-list.ts:13
-msgctxt "slide pattern"
-msgid "List (Labeled)"
-msgstr "リスト (ラベル付き)"
-
-#: src/marp-patterns/patterns/nested-list.ts:13
-msgctxt "slide pattern"
-msgid "List (Nested)"
-msgstr "リスト (入れ子)"
-
-#: src/marp-patterns/patterns/ordered-list.ts:13
-msgctxt "slide pattern"
-msgid "List (Ordered)"
-msgstr "リスト (番号付き)"
-
 #: src/components/list-view-sidebar/index.tsx:77
 msgid "List View"
 msgstr "リスト表示"
@@ -603,13 +449,6 @@ msgstr "選択したテキストをインラインコードにする。"
 #: src/components/keyboard-shortcuts/hooks.ts:113
 msgid "Make the selected text italic."
 msgstr "選択したテキストを斜体にする。"
-
-#: src/marp-patterns/patterns/two-column-table.ts:25
-#: src/marp-patterns/patterns/three-column-table.ts:25
-#: src/marp-patterns/patterns/four-column-table.ts:25
-msgctxt "slide pattern"
-msgid "Markdown"
-msgstr "Markdown"
 
 #: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
@@ -667,17 +506,6 @@ msgstr "スライドパターンが見つかりません。"
 msgid "Note"
 msgstr "ノート"
 
-#: src/marp-patterns/patterns/four-column-table.ts:27
-msgctxt "slide pattern"
-msgid "Notes"
-msgstr "メモ"
-
-#: src/marp-patterns/patterns/three-column-table.ts:35
-#: src/marp-patterns/patterns/four-column-table.ts:38
-msgctxt "slide pattern"
-msgid "One app"
-msgstr "専用アプリ"
-
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "デフォルトで開く"
@@ -702,8 +530,8 @@ msgstr "アウトライン"
 msgid "Paginate"
 msgstr "ページ番号"
 
-#: src/format-library/image/inline.tsx:119
 #: src/format-library/link/inline.tsx:138
+#: src/format-library/image/inline.tsx:119
 msgid "Paste or type URL"
 msgstr "URL を入力または貼り付け"
 
@@ -711,13 +539,6 @@ msgstr "URL を入力または貼り付け"
 #: src/block-library/image/edit.tsx:200
 msgid "Paste or type URL or file path"
 msgstr "URL またはファイルパスを入力または貼り付け"
-
-#: src/marp-patterns/patterns/two-column-table.ts:27
-#: src/marp-patterns/patterns/three-column-table.ts:28
-#: src/marp-patterns/patterns/four-column-table.ts:29
-msgctxt "slide pattern"
-msgid "Plain text"
-msgstr "テキスト"
 
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:38
 msgctxt "slide pattern"
@@ -728,19 +549,9 @@ msgstr "テキストなら、比較やレビュー、バージョン管理が簡
 msgid "Preview"
 msgstr "プレビュー"
 
-#: src/marp-patterns/patterns/labeled-list.ts:28
-msgctxt "slide pattern"
-msgid "Preview"
-msgstr "プレビュー"
-
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:35
-#: src/marp-patterns/patterns/text-and-list.ts:30
-#: src/marp-patterns/patterns/ordered-list.ts:23
-#: src/marp-patterns/patterns/nested-list.ts:31
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:34
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:34
-#: src/marp-patterns/patterns/heading-code-and-list.ts:30
-#: src/marp-patterns/patterns/bulleted-list.ts:23
 msgctxt "slide pattern"
 msgid "Preview as you type"
 msgstr "入力しながらプレビュー"
@@ -799,11 +610,6 @@ msgstr "ブロックを検索"
 msgid "Search for slide patterns"
 msgstr "スライドパターンを検索"
 
-#: src/marp-patterns/patterns/labeled-list.ts:29
-msgctxt "slide pattern"
-msgid "See each slide as you type"
-msgstr "入力しながらスライドを確認"
-
 #: src/components/front-matter-editor/index.tsx:316
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "その他の設定は<a>Marp のドキュメント</a>を参照してください。"
@@ -816,11 +622,6 @@ msgstr "送信"
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI アシスタントを使うには API キーを設定してください。"
 
-#: src/marp-patterns/patterns/labeled-list.ts:34
-msgctxt "slide pattern"
-msgid "Share"
-msgstr "共有"
-
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "リストビューの表示、非表示。"
@@ -829,8 +630,8 @@ msgstr "リストビューの表示、非表示。"
 msgid "Show the page number on each slide."
 msgstr "各スライドにページ番号を表示します。"
 
-#: src/format-library/image/inline.tsx:161
 #: src/format-library/link/inline.tsx:115
+#: src/format-library/image/inline.tsx:161
 #: src/block-library/image/edit.tsx:260
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
@@ -848,40 +649,19 @@ msgstr "サイズ"
 msgid "Slide Separator"
 msgstr "スライド区切り"
 
-#: src/marp-patterns/patterns/three-column-table.ts:26
-#: src/marp-patterns/patterns/four-column-table.ts:26
-msgctxt "slide pattern"
-msgid "Slide app"
-msgstr "スライドアプリ"
-
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:99
 #: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
 msgstr "スライドパターン"
 
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:28
-#: src/marp-patterns/patterns/two-column-table.ts:23
-#: src/marp-patterns/patterns/three-column-table.ts:23
-#: src/marp-patterns/patterns/text-and-list.ts:23
-#: src/marp-patterns/patterns/ordered-list.ts:21
-#: src/marp-patterns/patterns/nested-list.ts:23
-#: src/marp-patterns/patterns/labeled-list.ts:21
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:27
-#: src/marp-patterns/patterns/image-on-right-and-code.ts:27
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:27
-#: src/marp-patterns/patterns/image-on-left-and-code.ts:27
-#: src/marp-patterns/patterns/heading-text-and-code.ts:26
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:23
-#: src/marp-patterns/patterns/heading-code-and-text.ts:26
-#: src/marp-patterns/patterns/heading-code-and-list.ts:28
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
 #: src/marp-patterns/patterns/heading-and-two-images.ts:20
-#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:29
-#: src/marp-patterns/patterns/heading-and-text.ts:19
-#: src/marp-patterns/patterns/heading-and-quote.ts:21
-#: src/marp-patterns/patterns/heading-and-code.ts:23
-#: src/marp-patterns/patterns/four-column-table.ts:23
-#: src/marp-patterns/patterns/bulleted-list.ts:21
+#: src/marp-patterns/patterns/heading-and-text-on-image.ts:25
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:32
 msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "テキストで作るスライド"
@@ -906,44 +686,14 @@ msgstr "選択したテキストに取り消し線を追加する。"
 msgid "Switch between the visual editor and the code editor."
 msgstr "ビジュアルエディターとコードエディターを切り替える。"
 
-#: src/marp-patterns/patterns/nested-list.ts:32
-msgctxt "slide pattern"
-msgid "Switch themes at any time"
-msgstr "テーマはいつでも切り替え可能"
-
 #: src/block-library/table/edit.tsx:231
 msgid "Table"
 msgstr "テーブル"
-
-#: src/marp-patterns/categories.ts:36
-msgctxt "slide pattern category"
-msgid "Table"
-msgstr "表"
-
-#: src/marp-patterns/patterns/four-column-table.ts:13
-msgctxt "slide pattern"
-msgid "Table (Four columns)"
-msgstr "表 (4 列)"
-
-#: src/marp-patterns/patterns/three-column-table.ts:13
-msgctxt "slide pattern"
-msgid "Table (Three columns)"
-msgstr "表 (3 列)"
-
-#: src/marp-patterns/patterns/two-column-table.ts:13
-msgctxt "slide pattern"
-msgid "Table (Two columns)"
-msgstr "表 (2 列)"
 
 #: src/marp-patterns/categories.ts:24
 msgctxt "slide pattern category"
 msgid "Text"
 msgstr "テキスト"
-
-#: src/marp-patterns/patterns/text-and-list.ts:13
-msgctxt "slide pattern"
-msgid "Text and list"
-msgstr "テキストとリスト"
 
 #: src/components/front-matter-editor/index.tsx:294
 msgid "Text shown at the bottom of each slide."
@@ -994,8 +744,8 @@ msgstr "横に並んだ 3 枚の画像"
 msgid "Tip"
 msgstr "ヒント"
 
-#: src/format-library/image/inline.tsx:157
 #: src/format-library/link/inline.tsx:100
+#: src/format-library/image/inline.tsx:157
 #: src/components/slide-pattern-modal/index.tsx:70
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
@@ -1102,11 +852,6 @@ msgstr "順序なしリスト"
 msgid "Upload an image from your device or insert from a URL."
 msgstr "デバイスから画像をアップロードするか、URL から挿入します。"
 
-#: src/marp-patterns/patterns/labeled-list.ts:23
-msgctxt "slide pattern"
-msgid "Use any text editor"
-msgstr "好きなテキストエディターで"
-
 #: style.css
 #. Description of the generic
 msgid "Visual markdown block editor."
@@ -1119,16 +864,6 @@ msgstr "回答を待っています…"
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr "警告"
-
-#: src/marp-patterns/patterns/four-column-table.ts:39
-msgctxt "slide pattern"
-msgid "Works offline"
-msgstr "オフラインで使える"
-
-#: src/marp-patterns/patterns/labeled-list.ts:22
-msgctxt "slide pattern"
-msgid "Write"
-msgstr "書く"
 
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
@@ -1147,13 +882,8 @@ msgid "Write code…"
 msgstr "コードを入力..."
 
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:34
-#: src/marp-patterns/patterns/text-and-list.ts:29
-#: src/marp-patterns/patterns/ordered-list.ts:22
-#: src/marp-patterns/patterns/nested-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:33
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:33
-#: src/marp-patterns/patterns/heading-code-and-list.ts:29
-#: src/marp-patterns/patterns/bulleted-list.ts:22
 msgctxt "slide pattern"
 msgid "Write in plain text"
 msgstr "テキストで書く"
@@ -1163,13 +893,11 @@ msgid "Write summary…"
 msgstr "要約を入力…"
 
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:29
-#: src/marp-patterns/patterns/text-and-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:28
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:28
-#: src/marp-patterns/patterns/heading-text-and-code.ts:27
-#: src/marp-patterns/patterns/heading-code-and-text.ts:27
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:32
-#: src/marp-patterns/patterns/heading-and-text.ts:20
+#: src/marp-patterns/patterns/heading-and-text-on-image.ts:26
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:33
 msgctxt "slide pattern"
 msgid ""
 "Write your slides as plain text and let the theme take care of the design."
@@ -1182,6 +910,7 @@ msgstr "スライドはテキストで書き、デザインはテーマに任せ
 #: src/marp-patterns/patterns/title-in-inverted-colors.ts:22
 #: src/marp-patterns/patterns/title-and-image-on-right.ts:25
 #: src/marp-patterns/patterns/title-and-image-on-left.ts:25
+#: src/marp-patterns/patterns/header-footer-and-page-number.ts:26
 msgctxt "slide pattern"
 msgid "Writing slides in Markdown"
 msgstr "Markdown でスライドを書く"

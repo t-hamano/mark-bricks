@@ -3,8 +3,7 @@
  * slides or slides with images.
  * `SLIDE_PATTERN_CATEGORIES` lists them, with their labels.
  */
-export type SlidePatternCategory =
-	'title' | 'text' | 'list' | 'image' | 'table' | 'code';
+export type SlidePatternCategory = 'title' | 'text' | 'image';
 
 /**
  * A ready-made set of slides that the inserter offers in Marp mode.
