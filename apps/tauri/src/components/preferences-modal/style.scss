@@ -25,7 +25,6 @@ $sidebar-width: 200px;
 }
 
 .preferences-modal__panel {
-	max-width: var(--wpds-dimension-surface-width-sm);
 	padding: var(--wpds-dimension-padding-lg);
 
 	@include mixins.break-medium() {
@@ -39,23 +38,7 @@ $sidebar-width: 200px;
 	}
 }
 
-// Lets the provider cards fill the content area.
-.preferences-modal__panel--full-width {
-	max-width: none;
-}
-
-.preferences-modal__api-key-form {
-	align-self: stretch;
-}
-
 .preferences-modal__api-key-input {
 	flex: 1;
 	min-width: 0;
-}
-
-// Keeps a notice as wide as the panel. In a column aligned to the start,
-// it would otherwise shrink to its shortest line, which breaks CJK text at
-// every character.
-.preferences-modal__notice {
-	align-self: stretch;
 }
