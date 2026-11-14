@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import type { AiActivity } from '@mark-bricks/editor';
+
+/**
  * Internal dependencies
  */
 import { EDIT_RESULT } from '../edit-tool';
@@ -44,9 +49,14 @@ const REPLAYED_TYPES = [ 'reasoning', 'message', 'function_call' ];
  * Reads a streamed Responses API answer. See
  * `AiProviderAdapter.readAnswer`.
  *
- * @param onText Called with each piece of the answer's text.
+ * @param onText     Called with each piece of the answer's text.
+ * @param onActivity Called when the model starts to reason, or to write
+ *                   the edit tool's call.
  */
-export function readAnswer( onText: ( text: string ) => void ) {
+export function readAnswer(
+	onText: ( text: string ) => void,
+	onActivity: ( activity: AiActivity ) => void = () => {}
+) {
 	// The answer's items, as the API sent them, including the reasoning
 	// that led to the edit.
 	const outputItems: OutputItem[] = [];
@@ -61,6 +71,16 @@ export function readAnswer( onText: ( text: string ) => void ) {
 			case 'response.output_text.delta':
 				if ( event.delta ) {
 					onText( event.delta );
+				}
+				return;
+			case 'response.output_item.added':
+				if ( event.item?.type === 'reasoning' ) {
+					onActivity( 'thinking' );
+				} else if (
+					event.item?.type === 'function_call' &&
+					event.item.name === EDIT_TOOL_NAME
+				) {
+					onActivity( 'editing' );
 				}
 				return;
 			case 'response.refusal.delta':

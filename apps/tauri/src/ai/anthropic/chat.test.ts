@@ -61,13 +61,26 @@ function joinText( events: AiStreamEvent[] ) {
 		.join( '' );
 }
 
+/**
+ * The kinds of the events, in order, with each run of text as one `text`.
+ *
+ * @param events The events.
+ */
+function toSteps( events: AiStreamEvent[] ) {
+	return events
+		.map( ( event ) =>
+			event.type === 'activity' ? event.activity : event.type
+		)
+		.filter( ( step, index, steps ) => step !== steps[ index - 1 ] );
+}
+
 describe( 'createChat with Anthropic', () => {
 	it( 'streams the text of an answer', async () => {
 		const { result, events, bodies } = await run( [ answer ] );
 		await result;
 		expect( joinText( events ) ).toBe( '見出しは2つあります。' );
-		expect( events.every( ( event ) => event.type === 'text' ) ).toBe(
-			true
+		expect( events.some( ( event ) => event.type === 'edit' ) ).toBe(
+			false
 		);
 		expect( bodies ).toHaveLength( 1 );
 		expect( bodies[ 0 ] ).toMatchObject( {
@@ -79,6 +92,22 @@ describe( 'createChat with Anthropic', () => {
 				},
 			],
 		} );
+	} );
+
+	it( 'reports when the model thinks and when it edits', async () => {
+		const plain = await run( [ answer ] );
+		await plain.result;
+		expect( toSteps( plain.events ) ).toEqual( [ 'thinking', 'text' ] );
+
+		const edited = await run( [ edit, afterEdit ] );
+		await edited.result;
+		expect( toSteps( edited.events ) ).toEqual( [
+			'thinking',
+			'text',
+			'editing',
+			'edit',
+			'text',
+		] );
 	} );
 
 	it( 'reports an edit, then continues the answer after it', async () => {

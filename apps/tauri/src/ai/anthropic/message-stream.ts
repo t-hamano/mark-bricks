@@ -1,9 +1,16 @@
 /**
+ * External dependencies
+ */
+import type { AiActivity } from '@mark-bricks/editor';
+
+/**
  * Internal dependencies
  */
 import { connectionClosedError, createApiError } from '../error';
 import { PROVIDER_NAME } from './errors';
-import type { ContentBlock } from './request';
+import { EDIT_TOOL_NAME, type ContentBlock } from './request';
+
+const THINKING_TYPES = [ 'thinking', 'redacted_thinking' ];
 
 type StreamEvent = {
 	type: string;
@@ -37,10 +44,15 @@ type BlockState = {
 /**
  * Builds a message from the events of a streamed Messages API response.
  *
- * @param onText Called with each piece of the answer's text.
+ * @param onText     Called with each piece of the answer's text.
+ * @param onActivity Called when a thinking block starts, or the edit tool's
+ *                   call does.
  * @return `handle` takes each event, and `finish` returns the message.
  */
-export function createMessageStream( onText: ( text: string ) => void ) {
+export function createMessageStream(
+	onText: ( text: string ) => void,
+	onActivity: ( activity: AiActivity ) => void = () => {}
+) {
 	const blocks: BlockState[] = [];
 	let stopReason: string | null = null;
 	let isComplete = false;
@@ -56,12 +68,13 @@ export function createMessageStream( onText: ( text: string ) => void ) {
 					block: { ...event.content_block },
 					partialJson: '',
 				};
-				const text = event.content_block.text;
-				if (
-					event.content_block.type === 'text' &&
-					typeof text === 'string' &&
-					text
-				) {
+				const { type, name, text } = event.content_block;
+				if ( THINKING_TYPES.includes( type ) ) {
+					onActivity( 'thinking' );
+				} else if ( type === 'tool_use' && name === EDIT_TOOL_NAME ) {
+					onActivity( 'editing' );
+				}
+				if ( type === 'text' && typeof text === 'string' && text ) {
 					onText( text );
 				}
 				return;
