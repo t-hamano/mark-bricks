@@ -1,0 +1,28 @@
+{
+	"name": "@mark-bricks/katex-fonts",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Points KaTeX stylesheets at the WOFF2 fonts the hosts bundle, for the editor's math blocks and the slides' math.",
+	"author": "Aki Hamano",
+	"license": "GPL-2.0-or-later",
+	"type": "module",
+	"main": "./index.ts",
+	"types": "./index.ts",
+	"exports": {
+		".": {
+			"types": "./index.ts",
+			"default": "./index.ts"
+		}
+	},
+	"scripts": {
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"katex": "^0.19.1"
+	},
+	"devDependencies": {
+		"vite": "^8.3.7",
+		"vitest": "^5.1.0"
+	}
+}

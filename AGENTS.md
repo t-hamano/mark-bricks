@@ -29,9 +29,10 @@ slightly:
 
 Each app's changelog collects commits touching its own directory plus the
 shared packages (`packages/editor`, `packages/image-path`,
-`packages/marp-preview`). A single commit that changes both an app
-(`apps/tauri` or `apps/vscode`) and a shared package therefore appears in the
-other app's changelog too, even when the change only matters to one app.
+`packages/katex-fonts`, `packages/marp-preview`). A single commit that changes
+both an app (`apps/tauri` or `apps/vscode`) and a shared package therefore
+appears in the other app's changelog too, even when the change only matters to
+one app.
 
 When a task for one app requires modifying a shared package:
 

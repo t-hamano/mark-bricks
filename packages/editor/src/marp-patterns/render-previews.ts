@@ -1,23 +1,22 @@
 /**
  * External dependencies
  */
-import {
-	SLIDE_PATTERN_THEMES,
-	type SlidePattern,
-	type SlidePatternPreviews,
-	type SlidePatternTheme,
-} from '@mark-bricks/editor/marp-patterns';
+import { renderSlides } from '@mark-bricks/marp-preview/render';
 
 /**
  * Internal dependencies
  */
-import { renderSlides } from '../render';
-
-export { SLIDE_PATTERN_THEMES };
+import {
+	SLIDE_PATTERN_THEMES,
+	type SlidePatternPreviews,
+	type SlidePatternTheme,
+} from './previews';
+import type { SlidePattern } from './types';
 
 /**
- * Renders every slide pattern in every built-in theme, for the editor to show
- * as the inserter's previews without bundling Marp.
+ * Renders every slide pattern in every built-in theme, for the inserter's
+ * previews. Only the tests call it, to write `previews.generated.json`, so the
+ * editor shows the previews without bundling Marp.
  *
  * The text stays as `{{key}}` placeholders, so the editor can put in the text
  * of the current locale. A theme's stylesheet is kept once, since a pattern
