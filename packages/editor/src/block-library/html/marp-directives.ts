@@ -163,13 +163,16 @@ export function findMarpDirectiveComment(
 /**
  * Writes a value as a YAML scalar that can sit in an HTML comment. A `-->`
  * would end the comment, so it is written with an escaped `>` inside double
- * quotes, which YAML reads back as `-->`.
+ * quotes, which YAML reads back as `-->`. A backslash is written inside
+ * double quotes too: Marp's loose YAML wraps a plain value in double quotes
+ * without escaping it, so `C:\work` would read as an invalid escape and drop
+ * the whole comment.
  *
  * @param value The value.
  * @return The YAML scalar.
  */
 function formatMarpDirectiveValue( value: string ): string {
-	if ( ! value.includes( '-->' ) ) {
+	if ( ! value.includes( '-->' ) && ! value.includes( '\\' ) ) {
 		return formatScalar( value );
 	}
 	return JSON.stringify( value ).replace( /-->/g, '--\\u003E' );

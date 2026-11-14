@@ -183,6 +183,18 @@ describe( 'serializeMarpDirectiveComment', () => {
 		).toBe( '<!-- _class: invert -->' );
 	} );
 
+	it( 'quotes a value with a backslash', () => {
+		const serialized = serializeMarpDirectiveComment( {
+			values: { header: 'C:\\work' },
+			isSpot: true,
+			otherLines: [],
+		} );
+		expect( serialized ).toBe( '<!-- _header: "C:\\\\work" -->' );
+		expect( findMarpDirectiveComment( serialized )?.values ).toEqual( {
+			header: 'C:\\work',
+		} );
+	} );
+
 	it( 'writes nothing for no directives', () => {
 		expect(
 			serializeMarpDirectiveComment( {
