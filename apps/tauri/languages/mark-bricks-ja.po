@@ -58,7 +58,7 @@ msgstr "MarkBricks について"
 
 #: src/components/header-actions/index.tsx:248
 msgid "Access all block and document tools in a single place"
-msgstr "ブロック・文書ツールを同じ場所にまとめる"
+msgstr "ブロック・ドキュメントツールを同じ場所にまとめる"
 
 #: src/components/header-actions/index.tsx:327
 msgid "Add YAML front matter"
@@ -291,7 +291,7 @@ msgstr "HTTP の URL の画像は表示できません。HTTPS の URL を使用
 
 #: src/platform/index.ts:91
 msgid "Images with relative paths are displayed once the document is saved."
-msgstr "相対パスの画像は、文書を保存すると表示されます。"
+msgstr "相対パスの画像は、ドキュメントを保存すると表示されます。"
 
 #: src/components/reload-prompt-dialog/index.tsx:67
 msgid "Keep my version"
@@ -363,7 +363,7 @@ msgstr "開いているファイルがありません"
 
 #: src/hooks/use-preview-sync.ts:120
 msgid "Not a Marp document"
-msgstr "Marp 文書ではありません"
+msgstr "Marp ドキュメントではありません"
 
 #: src/components/preferences-modal/ai-provider-card.tsx:226
 msgid "Not connected"
