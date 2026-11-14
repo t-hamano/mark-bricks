@@ -54,7 +54,9 @@ function run(
 	const result = chat( {
 		system: 'System prompt',
 		messages,
-		onEvent: ( event ) => events.push( event ),
+		onEvent: ( event ) => {
+			events.push( event );
+		},
 		signal: new AbortController().signal,
 	} );
 	return { result, events, bodies };
@@ -92,7 +94,7 @@ describe( 'createChat with OpenAI', () => {
 				tools: [
 					expect.objectContaining( {
 						type: 'function',
-						name: 'edit_selection',
+						name: 'edit_document',
 						strict: true,
 					} ),
 				],
@@ -133,11 +135,19 @@ describe( 'createChat with OpenAI', () => {
 			[
 				{
 					type: 'usage',
-					usage: { inputTokens: 130, outputTokens: 48 },
+					usage: {
+						inputTokens: 130,
+						cachedInputTokens: 0,
+						outputTokens: 48,
+					},
 				},
 				{
 					type: 'usage',
-					usage: { inputTokens: 190, outputTokens: 12 },
+					usage: {
+						inputTokens: 190,
+						cachedInputTokens: 128,
+						outputTokens: 12,
+					},
 				},
 			]
 		);
@@ -188,7 +198,7 @@ describe( 'createChat with OpenAI', () => {
 				type: 'function_call',
 				status: 'completed',
 				call_id: 'call_01',
-				name: 'edit_selection',
+				name: 'edit_document',
 				arguments:
 					'{"action":"replace","markdown":"A short\\nparagraph."}',
 			},
@@ -219,8 +229,9 @@ describe( 'createChat with OpenAI', () => {
 			{
 				type: 'function_call',
 				call_id: 'call_history_1',
-				name: 'edit_selection',
-				arguments: '{"action":"insert_after","markdown":"More"}',
+				name: 'edit_document',
+				arguments:
+					'{"action":"insert_after","find":"","markdown":"More"}',
 			},
 			{
 				type: 'function_call_output',

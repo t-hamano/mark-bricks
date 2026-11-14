@@ -1,6 +1,6 @@
 use std::ffi::OsString;
 use std::path::{Component, Path, PathBuf};
-use std::sync::{Mutex, OnceLock};
+use std::sync::{Mutex, OnceLock, PoisonError};
 
 use tauri::{Emitter, Env, Manager};
 
@@ -20,6 +20,9 @@ use export::export_slide_deck;
 /// launch passes its file to the first. We hold them in a simple shared place
 /// because they can arrive before startup finishes, when the usual storage is
 /// not ready yet and they would otherwise be lost.
+///
+/// Callers recover the list from a poisoned lock instead of panicking: it is a
+/// plain list of paths, so a panic elsewhere cannot leave it half-updated.
 fn pending_open_files() -> &'static Mutex<Vec<PathBuf>> {
     static PENDING: OnceLock<Mutex<Vec<PathBuf>>> = OnceLock::new();
     PENDING.get_or_init(|| Mutex::new(Vec::new()))
@@ -38,7 +41,11 @@ async fn take_pending_documents(
     state: tauri::State<'_, Documents>,
 ) -> Result<Vec<OpenRequestResult>, String> {
     with_documents(state.inner().clone(), |documents| {
-        let paths = std::mem::take(&mut *pending_open_files().lock().map_err(|e| e.to_string())?);
+        let paths = std::mem::take(
+            &mut *pending_open_files()
+                .lock()
+                .unwrap_or_else(PoisonError::into_inner),
+        );
         Ok(paths
             .into_iter()
             .map(|path| {
@@ -102,9 +109,7 @@ async fn open_preview(app: tauri::AppHandle, title: String, locale: String) -> R
     tauri::WebviewWindowBuilder::new(
         &app,
         PREVIEW_WINDOW,
-        tauri::WebviewUrl::App(
-            format!("pages/preview.html?placement=window&locale={locale}").into(),
-        ),
+        tauri::WebviewUrl::App(preview_window_path(&locale).into()),
     )
     .title(title)
     .inner_size(960.0, 540.0)
@@ -112,6 +117,21 @@ async fn open_preview(app: tauri::AppHandle, title: String, locale: String) -> R
     .build()
     .map(|_| ())
     .map_err(|e| e.to_string())
+}
+
+/// The preview window's page, with `locale` percent-encoded the way the
+/// panel's `encodeURIComponent` does, so a value with `&` or `#` cannot break
+/// the query string.
+fn preview_window_path(locale: &str) -> String {
+    let mut encoded = String::with_capacity(locale.len());
+    for byte in locale.bytes() {
+        if byte.is_ascii_alphanumeric() || b"-_.!~*'()".contains(&byte) {
+            encoded.push(byte as char);
+        } else {
+            encoded.push_str(&format!("%{byte:02X}"));
+        }
+    }
+    format!("pages/preview.html?placement=window&locale={encoded}")
 }
 
 /// Closes the slide preview window, if it is open.
@@ -128,11 +148,17 @@ fn close_preview(app: tauri::AppHandle) -> Result<(), String> {
 /// - `"declined"`: the user dismissed the macOS confirmation.
 /// - `"unsupported"`: this platform has no in-app path.
 /// - `"idle"`: we opened the OS settings (Windows); no outcome to report.
+///
+/// Async because Tauri runs synchronous commands on the main thread, and the
+/// macOS path waits seconds for the user's answer, which would freeze the
+/// window meanwhile.
 #[tauri::command]
-fn set_as_default_markdown_handler() -> Result<String, String> {
+async fn set_as_default_markdown_handler() -> Result<String, String> {
     #[cfg(target_os = "macos")]
     {
-        set_default_markdown_handler_macos()
+        tauri::async_runtime::spawn_blocking(set_default_markdown_handler_macos)
+            .await
+            .map_err(|e| e.to_string())?
     }
     #[cfg(target_os = "windows")]
     {
@@ -399,14 +425,17 @@ pub fn run() {
 
     // Seed this instance's own argv-provided files before the event loop;
     // the single-instance callback may fire before `setup` would have run.
-    pending_open_files().lock().unwrap().extend(
-        collect_markdown_paths(
-            std::env::args(),
-            &std::env::current_dir().unwrap_or_default(),
-        )
-        .into_iter()
-        .map(PathBuf::from),
-    );
+    pending_open_files()
+        .lock()
+        .unwrap_or_else(PoisonError::into_inner)
+        .extend(
+            collect_markdown_paths(
+                std::env::args(),
+                &std::env::current_dir().unwrap_or_default(),
+            )
+            .into_iter()
+            .map(PathBuf::from),
+        );
 
     let mut builder = tauri::Builder::default();
 
@@ -424,7 +453,7 @@ pub fn run() {
             // queue has new requests; their payload cannot authorize paths.
             pending_open_files()
                 .lock()
-                .unwrap()
+                .unwrap_or_else(PoisonError::into_inner)
                 .extend(paths.into_iter().map(PathBuf::from));
             let _ = app.emit("open-files", ());
         }
@@ -437,7 +466,7 @@ pub fn run() {
             if let Ok(file) = relaunch_documents_file(app.handle()) {
                 pending_open_files()
                     .lock()
-                    .unwrap()
+                    .unwrap_or_else(PoisonError::into_inner)
                     .splice(0..0, take_relaunch_documents(&file));
             }
             // The updater and `relaunch()` restart the app with `Env`'s
@@ -516,7 +545,10 @@ pub fn run() {
                 if paths.is_empty() {
                     return;
                 }
-                pending_open_files().lock().unwrap().extend(paths);
+                pending_open_files()
+                    .lock()
+                    .unwrap_or_else(PoisonError::into_inner)
+                    .extend(paths);
                 let _ = app.emit("open-files", ());
             }
 

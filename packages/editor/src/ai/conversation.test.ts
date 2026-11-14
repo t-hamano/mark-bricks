@@ -9,6 +9,7 @@ import { describe, expect, it } from 'vitest';
 import {
 	conversationReducer,
 	createConversation,
+	getLastSeenDocument,
 	toAiMessages,
 	type AssistantChatMessage,
 	type Conversation,
@@ -87,6 +88,37 @@ describe( 'conversationReducer', () => {
 		} );
 	} );
 
+	it( 'adds up the tokens read from the cache when reported', () => {
+		const { messages } = run(
+			{ type: 'START', text: 'Rewrite this' },
+			{
+				type: 'USAGE',
+				usage: {
+					inputTokens: 1200,
+					cachedInputTokens: 1000,
+					outputTokens: 80,
+				},
+			},
+			{
+				type: 'USAGE',
+				usage: { inputTokens: 1300, outputTokens: 20 },
+			},
+			{ type: 'FINISH', status: 'done' }
+		);
+		expect( messages[ 1 ] ).toMatchObject( {
+			usage: {
+				inputTokens: 2500,
+				cachedInputTokens: 1000,
+				outputTokens: 100,
+			},
+		} );
+		const unreported = run(
+			{ type: 'START', text: 'Hi' },
+			{ type: 'USAGE', usage: { inputTokens: 10, outputTokens: 5 } }
+		).messages[ 1 ] as AssistantChatMessage;
+		expect( unreported.usage ).not.toHaveProperty( 'cachedInputTokens' );
+	} );
+
 	it( 'ignores events after the answer finished', () => {
 		const { messages } = run(
 			{ type: 'START', text: 'Hi' },
@@ -131,5 +163,80 @@ describe( 'toAiMessages', () => {
 			{ role: 'user', text: 'Four' },
 			{ role: 'assistant', text: 'Could not edit.' },
 		] );
+	} );
+} );
+
+describe( 'document context', () => {
+	const snapshot = ( document: string ) => ( {
+		editorMode: 'visual',
+		document,
+	} );
+
+	it( 'sends the context before the message, as it was sent', () => {
+		const { messages } = run(
+			{ type: 'START', text: 'Rewrite this', context: '<document>' },
+			{ type: 'APPEND_TEXT', text: 'Done.' },
+			{ type: 'FINISH', status: 'done' }
+		);
+		expect( toAiMessages( messages )[ 0 ] ).toEqual( {
+			role: 'user',
+			text: '<document>\n\nRewrite this',
+		} );
+	} );
+
+	it( 'returns the document when the last answer ended', () => {
+		const { messages } = run(
+			{ type: 'START', text: 'One', context: 'A' },
+			{ type: 'APPEND_TEXT', text: 'Done.' },
+			{
+				type: 'FINISH',
+				status: 'done',
+				documentAfter: snapshot( 'First.\n' ),
+			},
+			{ type: 'START', text: 'Two', context: 'B' },
+			{
+				type: 'FINISH',
+				status: 'stopped',
+				documentAfter: snapshot( 'Second.\n' ),
+			}
+		);
+		expect( getLastSeenDocument( messages, 'visual' ) ).toBe( 'Second.\n' );
+	} );
+
+	it( 'skips an exchange whose answer failed', () => {
+		const { messages } = run(
+			{ type: 'START', text: 'One', context: 'A' },
+			{ type: 'APPEND_TEXT', text: 'Done.' },
+			{
+				type: 'FINISH',
+				status: 'done',
+				documentAfter: snapshot( 'First.\n' ),
+			},
+			{ type: 'START', text: 'Two', context: 'B' },
+			{ type: 'FINISH', status: 'error', error: 'Failed' }
+		);
+		expect( getLastSeenDocument( messages, 'visual' ) ).toBe( 'First.\n' );
+	} );
+
+	it( 'returns null without a document from the same editor mode', () => {
+		const { messages } = run(
+			{ type: 'START', text: 'One', context: 'A' },
+			{
+				type: 'FINISH',
+				status: 'done',
+				documentAfter: snapshot( 'First.\n' ),
+			}
+		);
+		expect( getLastSeenDocument( messages, 'text' ) ).toBeNull();
+		expect( getLastSeenDocument( [], 'visual' ) ).toBeNull();
+		expect(
+			getLastSeenDocument(
+				run(
+					{ type: 'START', text: 'One' },
+					{ type: 'FINISH', status: 'done' }
+				).messages,
+				'visual'
+			)
+		).toBeNull();
 	} );
 } );

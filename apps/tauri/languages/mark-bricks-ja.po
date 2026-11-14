@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:35:21.932Z\n"
-"PO-Revision-Date: 2026-11-14T07:35:24.504Z\n"
+"POT-Creation-Date: 2026-11-14T11:10:00.722Z\n"
+"PO-Revision-Date: 2026-11-14T11:10:10.137Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -39,7 +39,7 @@ msgstr "(無題)"
 msgid "AI Assistant"
 msgstr "AI アシスタント"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:267
+#: src/components/preferences-modal/ai-provider-card.tsx:253
 msgid "API key"
 msgstr "API キー"
 
@@ -58,16 +58,11 @@ msgstr "MarkBricks について"
 
 #: src/components/header-actions/index.tsx:248
 msgid "Access all block and document tools in a single place"
-msgstr "ブロック・文書ツールを同じ場所にまとめる"
+msgstr "ブロック・ドキュメントツールを同じ場所にまとめる"
 
 #: src/components/header-actions/index.tsx:327
 msgid "Add YAML front matter"
 msgstr "YAML フロントマターを追加"
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
@@ -96,11 +91,11 @@ msgid "Check updates automatically"
 msgstr "自動的にアップデートを確認"
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:332
+#: src/components/preferences-modal/ai-provider-card.tsx:318
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr "使用量と請求は <a>%s</a> で確認できます"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:291
+#: src/components/preferences-modal/ai-provider-card.tsx:277
 msgid "Checking the API key…"
 msgstr "API キーを確認しています…"
 
@@ -134,7 +129,7 @@ msgstr "アクティブなタブを閉じる。"
 msgid "Code editor"
 msgstr "コードエディター"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:235
+#: src/components/preferences-modal/ai-provider-card.tsx:221
 msgid "Connected"
 msgstr "接続済み"
 
@@ -181,11 +176,11 @@ msgstr "ダーク"
 msgid "Default (%s)"
 msgstr "デフォルト (%s)"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:298
+#: src/components/preferences-modal/ai-provider-card.tsx:284
 msgid "Delete"
 msgstr "削除"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:287
+#: src/components/preferences-modal/ai-provider-card.tsx:273
 msgid "Deleting the API key…"
 msgstr "API キーを削除しています…"
 
@@ -257,7 +252,7 @@ msgid "General"
 msgstr "一般"
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:308
+#: src/components/preferences-modal/ai-provider-card.tsx:294
 msgid "Get your API key at <a>%s</a>"
 msgstr "API キーは <a>%s</a> で取得できます"
 
@@ -291,7 +286,7 @@ msgstr "HTTP の URL の画像は表示できません。HTTPS の URL を使用
 
 #: src/platform/index.ts:91
 msgid "Images with relative paths are displayed once the document is saved."
-msgstr "相対パスの画像は、文書を保存すると表示されます。"
+msgstr "相対パスの画像は、ドキュメントを保存すると表示されます。"
 
 #: src/components/reload-prompt-dialog/index.tsx:67
 msgid "Keep my version"
@@ -315,7 +310,7 @@ msgstr "ライト"
 msgid "List View shortcuts"
 msgstr "リストビューのショートカット"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:385
+#: src/components/preferences-modal/ai-provider-card.tsx:371
 msgid "Loading the models…"
 msgstr "モデルを読み込んでいます…"
 
@@ -332,14 +327,9 @@ msgstr "MarkBricks が Markdown ファイルの既定のアプリになりまし
 msgid "Maximum width of the content area, in pixels."
 msgstr "コンテンツ領域の最大幅 (ピクセル単位)。"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:393
+#: src/components/preferences-modal/ai-provider-card.tsx:379
 msgid "Model"
 msgstr "モデル"
-
-# %s: The name of the AI model, such as Claude Opus 5.5.
-#: src/components/preferences-modal/ai-provider-card.tsx:224
-msgid "Model: %s"
-msgstr "モデル: %s"
 
 #: src/preferences/constants.ts:79
 msgid "Monospace"
@@ -368,9 +358,9 @@ msgstr "開いているファイルがありません"
 
 #: src/hooks/use-preview-sync.ts:120
 msgid "Not a Marp document"
-msgstr "Marp 文書ではありません"
+msgstr "Marp ドキュメントではありません"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:240
+#: src/components/preferences-modal/ai-provider-card.tsx:226
 msgid "Not connected"
 msgstr "未接続"
 
@@ -453,7 +443,7 @@ msgid "Sans-serif"
 msgstr "サンセリフ"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:299
+#: src/components/preferences-modal/ai-provider-card.tsx:285
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -558,11 +548,11 @@ msgstr "この API キーではこのモデルを使えません。"
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API キーが無効です。設定で確認してください。"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:368
+#: src/components/preferences-modal/ai-provider-card.tsx:354
 msgid "The API key was deleted."
 msgstr "API キーを削除しました。"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:358
+#: src/components/preferences-modal/ai-provider-card.tsx:344
 msgid "The API key was saved."
 msgstr "API キーを保存しました。"
 
@@ -580,7 +570,7 @@ msgstr "長さの上限に達したため、回答が途中で終わりました
 msgid "The connection closed before the answer was complete."
 msgstr "回答が完了する前に接続が切れました。"
 
-#: src/ai/chat.ts:95
+#: src/ai/chat.ts:116
 msgid "The edit from the model could not be read."
 msgstr "モデルの編集内容を読み取れませんでした。"
 
@@ -593,7 +583,7 @@ msgid "The model was not found."
 msgstr "モデルが見つかりませんでした。"
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:421
+#: src/components/preferences-modal/ai-provider-card.tsx:407
 msgid "The models could not be loaded: %s"
 msgstr "モデルを読み込めませんでした: %s"
 
@@ -635,7 +625,7 @@ msgstr "ツール"
 msgid "Top toolbar"
 msgstr "トップツールバー"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:430
+#: src/components/preferences-modal/ai-provider-card.tsx:416
 msgid "Try again"
 msgstr "再試行"
 
@@ -685,8 +675,3 @@ msgstr "最新バージョン (%s) を使用しています。"
 #: src/hooks/use-auto-updater.ts:41
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "保存されていない変更があります。アップデートする前に保存してください。"
-
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""

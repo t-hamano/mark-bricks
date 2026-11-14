@@ -8,16 +8,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:40:38.403Z\n"
-"PO-Revision-Date: 2026-11-14T11:40:44.743Z\n"
+"POT-Creation-Date: 2026-11-14T12:14:49.238Z\n"
+"PO-Revision-Date: 2026-11-14T12:14:56.511Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: tr_TR\n"
 "X-Domain: mark-bricks\n"
 
+# 1: The number of tokens the AI model read. 2: How many of them it read from the cache, at a lower price. 3: The number of tokens it wrote.
+#: src/components/ai-sidebar/chat.tsx:74
+msgid "%1$s input tokens (%2$s cached), %3$s output tokens"
+msgstr "%1$s giriş tokeni (%2$s önbellekten), %3$s çıkış tokeni"
+
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:123
+#: src/components/ai-sidebar/chat.tsx:85
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "%1$s giriş tokeni, %2$s çıkış tokeni"
 
@@ -62,10 +67,21 @@ msgctxt "slide pattern"
 msgid "3"
 msgstr "3"
 
-#: style.css
-#. Name of the generic
-msgid "@mark-bricks/editor"
-msgstr ""
+#: src/block-library/html/marp-directive-settings.tsx:334
+msgid "A CSS background image, such as a gradient."
+msgstr "Degrade gibi bir CSS arka plan görseli."
+
+#: src/block-library/image/marp-image-settings.tsx:105
+msgid "A length of 0 or more, such as 10px."
+msgstr "0 veya daha büyük bir uzunluk, örneğin 10px."
+
+#: src/block-library/image/marp-image-settings.tsx:117
+msgid "A number from 0 to 1, or a percentage up to 100%."
+msgstr "0 ile 1 arasında bir sayı veya %100’e kadar bir yüzde."
+
+#: src/block-library/image/marp-image-settings.tsx:109
+msgid "A number or percentage of 0 or more. 1 keeps the original."
+msgstr "0 veya daha büyük bir sayı ya da yüzde. 1 orijinali korur."
 
 #: src/marp-patterns/patterns/title.ts:26
 #: src/marp-patterns/patterns/title-on-image.ts:29
@@ -91,10 +107,9 @@ msgstr "Markdown ile yazılmış bir slayt"
 msgid "AI Assistant"
 msgstr "Yapay Zekâ Asistanı"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr "Aki Hamano"
+#: src/block-library/image/marp-image-settings.tsx:444
+msgid "Add filter"
+msgstr "Filtre ekle"
 
 #: src/marp-patterns/patterns/quote-on-image.ts:29
 msgctxt "slide pattern"
@@ -110,9 +125,13 @@ msgid "All categories"
 msgstr "Tüm kategoriler"
 
 #: src/format-library/image/inline.tsx:147
-#: src/block-library/image/edit.tsx:233
+#: src/block-library/image/edit.tsx:269
 msgid "Alt text"
 msgstr "Alternatif metin"
+
+#: src/block-library/image/marp-image-settings.tsx:122
+msgid "An angle, such as 90deg or 0.5turn."
+msgstr "Bir açı, örneğin 90deg veya 0.5turn."
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
 msgctxt "slide pattern"
@@ -120,22 +139,47 @@ msgid "Any editor"
 msgstr "Herhangi bir düzenleyici"
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/edit.tsx:126
-#: src/block-library/image/edit.tsx:280
+#: src/block-library/image/edit.tsx:159
+#: src/block-library/image/edit.tsx:332
 msgid "Apply"
 msgstr "Uygula"
 
-#: src/components/ai-sidebar/chat.tsx:298
+#: src/block-library/html/marp-directive-settings.tsx:177
+msgid "Apply to"
+msgstr "Uygulanacak yer"
+
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Ask the AI Assistant"
 msgstr "Yapay Zekâ Asistanına sorun"
 
-#: src/components/ai-sidebar/chat.tsx:276
+#: src/components/ai-sidebar/chat.tsx:296
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
 msgstr ""
 "Yapay Zekâ Asistanından yazmasını veya düzenlemesini isteyin. Seçiminiz ya "
 "da kod düzenleyicide imlecin bulunduğu satır mesajınızla birlikte gönderilir."
+
+#: src/block-library/image/marp-image-settings.tsx:380
+#: src/block-library/image/marp-image-settings.tsx:397
+msgid "Auto"
+msgstr "Otomatik"
+
+#: src/block-library/image/marp-image-settings.tsx:280
+msgid "Background"
+msgstr "Arka plan"
+
+#: src/block-library/html/marp-directive-settings.tsx:311
+msgid "Background color"
+msgstr "Arka plan rengi"
+
+#: src/block-library/html/marp-directive-settings.tsx:333
+msgid "Background image"
+msgstr "Arka plan görseli"
+
+#: src/block-library/image/marp-image-settings.tsx:310
+msgid "Background size"
+msgstr "Arka plan boyutu"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:47
 msgctxt "slide pattern"
@@ -156,8 +200,8 @@ msgid "Bold"
 msgstr "Kalın"
 
 #: src/format-library/image/inline.tsx:137
-#: src/block-library/image/edit.tsx:122
-#: src/block-library/image/edit.tsx:218
+#: src/block-library/image/edit.tsx:155
+#: src/block-library/image/edit.tsx:251
 msgid "Browse local file"
 msgstr "Yerel dosyaya göz at"
 
@@ -171,6 +215,10 @@ msgctxt "slide pattern"
 msgid "By hand"
 msgstr "Elle"
 
+#: src/block-library/image/edit.tsx:268
+msgid "Caption"
+msgstr "Altyazı"
+
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
 msgstr "Kategori"
@@ -183,6 +231,10 @@ msgstr "Dikkat"
 msgid "Cell content"
 msgstr "Hücre içeriği"
 
+#: src/block-library/html/marp-directive-settings.tsx:55
+msgid "Centers the content of the slide."
+msgstr "Slayt içeriğini ortalar."
+
 #: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "Dili değiştir"
@@ -194,6 +246,20 @@ msgstr "Yeni paragraf ekledikten sonra blok türünü değiştirin."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Dil seçin…"
+
+#: src/block-library/html/marp-directive-settings.tsx:208
+#: src/block-library/html/marp-directive-settings.tsx:234
+msgid "Class"
+msgstr "Sınıf"
+
+#: src/block-library/html/marp-directive-settings.tsx:246
+msgid "Classes of the slide, separated by spaces."
+msgstr "Slaytın sınıfları, boşlukla ayrılır."
+
+# %s: A theme name, such as "gaia".
+#: src/block-library/html/marp-directive-settings.tsx:240
+msgid "Classes that the %s theme does not provide, separated by spaces."
+msgstr "%s temasının sağlamadığı sınıflar, boşlukla ayrılır."
 
 #: src/components/front-matter-editor/index.tsx:218
 msgid "Classic look with a colored background."
@@ -230,15 +296,24 @@ msgstr "Renk şeması"
 msgid "Column count"
 msgstr "Sütun sayısı"
 
+#: src/block-library/image/marp-image-settings.tsx:342
+msgid "Contain"
+msgstr "Sığdır"
+
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
 msgstr "Seçilmiş metni bağlantıya dönüştür."
+
+#: src/block-library/image/marp-image-settings.tsx:338
+msgid "Cover"
+msgstr "Kapla"
 
 #: src/block-library/table/edit.tsx:259
 msgid "Create Table"
 msgstr "Tablo oluştur"
 
 #: src/block-library/quote/edit.tsx:151
+#: src/block-library/html/marp-directive-settings.tsx:273
 msgid "Default"
 msgstr "Varsayılan"
 
@@ -251,7 +326,7 @@ msgid "Delete row"
 msgstr "Satırı sil"
 
 #: src/format-library/image/inline.tsx:151
-#: src/block-library/image/edit.tsx:246
+#: src/block-library/image/edit.tsx:284
 msgid "Describes the image for screen readers."
 msgstr "Görseli ekran okuyucular için açıklar."
 
@@ -264,7 +339,7 @@ msgstr "Bu klavye kısayollarını görüntüler."
 msgid "Document Overview"
 msgstr "Belge özeti"
 
-#: src/block-library/image/edit.tsx:162
+#: src/block-library/image/edit.tsx:195
 msgid "Edit image"
 msgstr "Görseli düzenle"
 
@@ -272,7 +347,7 @@ msgstr "Görseli düzenle"
 msgid "Edit table"
 msgstr "Tabloyu düzenle"
 
-#: src/components/ai-sidebar/chat.tsx:78
+#: src/components/ai-sidebar/chat.tsx:106
 msgid "Edited the document."
 msgstr "Belge düzenlendi."
 
@@ -281,12 +356,16 @@ msgid "Editing the document…"
 msgstr "Belge düzenleniyor…"
 
 #: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:236
+#: src/block-library/image/edit.tsx:276
 msgid "Enter alt text…"
 msgstr "Alternatif metni girin…"
 
+#: src/block-library/image/edit.tsx:275
+msgid "Enter caption…"
+msgstr "Altyazı girin…"
+
 #: src/format-library/image/inline.tsx:160
-#: src/block-library/image/edit.tsx:256
+#: src/block-library/image/edit.tsx:308
 msgid "Enter title…"
 msgstr "Başlığı girin…"
 
@@ -310,7 +389,7 @@ msgctxt "slide pattern"
 msgid "Export when you are ready"
 msgstr "Hazır olunca dışa aktarın"
 
-#: src/block-library/image/edit.tsx:291
+#: src/block-library/image/edit.tsx:366
 msgid "Failed to load image."
 msgstr "Görsel yüklenemedi."
 
@@ -319,16 +398,29 @@ msgctxt "slide pattern"
 msgid "File for each deck"
 msgstr "Sunu başına dosya"
 
+#: src/block-library/image/marp-image-settings.tsx:440
+msgid "Filters"
+msgstr "Filtreler"
+
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "Mesajınıza odaklanın"
+
+#: src/block-library/html/marp-directive-settings.tsx:202
+msgid "Following slides"
+msgstr "Sonraki slaytlar"
+
+#: src/block-library/html/marp-directive-settings.tsx:84
+msgid "Follows the setting of the deck."
+msgstr "Sunumun ayarını izler."
 
 #: src/components/front-matter-editor/index.tsx:537
 msgid "Font"
 msgstr "Yazı tipi"
 
 #: src/components/front-matter-editor/index.tsx:353
+#: src/block-library/html/marp-directive-settings.tsx:302
 msgid "Footer"
 msgstr "Alt bilgi"
 
@@ -366,6 +458,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:342
+#: src/block-library/html/marp-directive-settings.tsx:293
 msgid "Header"
 msgstr "Üst bilgi"
 
@@ -442,11 +535,31 @@ msgctxt "slide pattern"
 msgid "Heading, text and list in two columns"
 msgstr "Başlık, metin ve listeyle iki sütun"
 
+#: src/block-library/image/marp-image-settings.tsx:396
+msgid "Height"
+msgstr "Yükseklik"
+
+#: src/block-library/html/marp-directive-settings.tsx:281
+msgid "Hide"
+msgstr "Gizle"
+
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "Belge özetini gizle"
 
-#: src/block-library/image/edit.tsx:76
+#: src/block-library/html/marp-directive-settings.tsx:79
+msgid "Hides the page number without counting this slide."
+msgstr "Bu slaytı saymadan sayfa numarasını gizler."
+
+#: src/block-library/html/marp-directive-settings.tsx:72
+msgid "Hides the page number."
+msgstr "Sayfa numarasını gizler."
+
+#: src/block-library/html/marp-directive-settings.tsx:285
+msgid "Hold"
+msgstr "Koru"
+
+#: src/block-library/image/edit.tsx:109
 msgid "Image"
 msgstr "Görsel"
 
@@ -477,6 +590,10 @@ msgstr "Önemli"
 #: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "Girintiyi artır"
+
+#: src/block-library/image/marp-image-settings.tsx:276
+msgid "Inline"
+msgstr "Satır içi"
 
 #: src/format-library/code.tsx:17
 msgid "Inline code"
@@ -510,6 +627,10 @@ msgstr "Ardına satır ekle"
 msgid "Insert row before"
 msgstr "Önüne satır ekle"
 
+#: src/block-library/html/marp-directive-settings.tsx:57
+msgid "Inverts the colors of the slide."
+msgstr "Slaytın renklerini tersine çevirir."
+
 #: src/format-library/italic.tsx:17
 msgid "Italic"
 msgstr "Eğik"
@@ -523,10 +644,25 @@ msgstr "Her sürümü saklayın"
 msgid "Language"
 msgstr "Dil"
 
+#: src/block-library/image/marp-image-settings.tsx:411
+msgid "Leave empty to size the image automatically."
+msgstr "Boyutu otomatik belirlemek için boş bırakın."
+
+#: src/block-library/image/marp-image-settings.tsx:284
+msgid "Left"
+msgstr "Sol"
+
 # %d: The line number.
 #: src/ai/selection-summary.ts:22
 msgid "Line %d"
 msgstr "Satır %d"
+
+#: src/block-library/image/marp-image-settings.tsx:421
+msgid ""
+"Lines up the background images of the slide from top to bottom instead of "
+"side by side."
+msgstr ""
+"Slaydın arka plan görsellerini yan yana yerine yukarıdan aşağıya dizer."
 
 #: src/format-library/link/index.tsx:36
 msgid "Link"
@@ -569,20 +705,25 @@ msgstr "Marp"
 msgid "Marp Mode"
 msgstr "Marp modu"
 
-#: src/block-library/image/edit.tsx:242
-msgid ""
-"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
-"other words become the alt text, or the caption of a background image."
-msgstr ""
-"bg, w:200px veya sepia gibi Marp anahtar sözcükleri düzeni ve boyutu "
-"belirler. Diğer sözcükler alternatif metin ya da arka plan görselinin "
-"açıklaması olur."
+#: src/block-library/image/edit.tsx:344
+msgid "Marp image settings"
+msgstr "Marp görsel ayarları"
 
 #: src/components/slide-pattern-modal/index.tsx:222
 msgid "Marp patterns"
 msgstr "Marp desenleri"
 
-#: src/components/ai-sidebar/chat.tsx:296
+# %s: Words of the alt text, such as "right".
+#: src/block-library/image/marp-image-settings.tsx:521
+#: src/block-library/image/edit.tsx:295
+msgid "Marp reads these words as settings: %s"
+msgstr "Marp bu kelimeleri ayar olarak okur: %s"
+
+#: src/block-library/html/edit.tsx:80
+msgid "Marp slide settings"
+msgstr "Marp slayt ayarları"
+
+#: src/components/ai-sidebar/chat.tsx:316
 msgid "Message"
 msgstr "Mesaj"
 
@@ -610,6 +751,10 @@ msgstr "Yeni konuşma"
 msgid "No block selected"
 msgstr "Blok seçilmedi"
 
+#: src/block-library/image/marp-image-settings.tsx:476
+msgid "No filters."
+msgstr "Filtre yok."
+
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "Eşleşen dil yok."
@@ -632,13 +777,21 @@ msgstr "Tek uygulama"
 msgid "Open by default"
 msgstr "Varsayılan olarak açık"
 
-#: src/components/ai-sidebar/chat.tsx:268
+#: src/components/ai-sidebar/chat.tsx:288
 msgid "Open settings"
 msgstr "Ayarları aç"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
 msgstr "Sıralı"
+
+#: src/block-library/image/marp-image-settings.tsx:346
+msgid "Original"
+msgstr "Orijinal"
+
+#: src/block-library/html/marp-directive-settings.tsx:233
+msgid "Other classes"
+msgstr "Diğer sınıflar"
 
 #: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
@@ -647,6 +800,10 @@ msgstr "Girintiyi azalt"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "Anahat"
+
+#: src/block-library/html/marp-directive-settings.tsx:259
+msgid "Page number"
+msgstr "Sayfa numarası"
 
 #: src/components/front-matter-editor/index.tsx:364
 msgid "Paginate"
@@ -657,10 +814,14 @@ msgstr "Sayfa numarası"
 msgid "Paste or type URL"
 msgstr "Bir adres yazın ya da yapıştırın"
 
-#: src/block-library/image/edit.tsx:104
-#: src/block-library/image/edit.tsx:200
+#: src/block-library/image/edit.tsx:137
+#: src/block-library/image/edit.tsx:233
 msgid "Paste or type URL or file path"
 msgstr "Bir adres ya da dosya yolu yazın veya yapıştırın"
+
+#: src/block-library/image/marp-image-settings.tsx:250
+msgid "Placement"
+msgstr "Yerleşim"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:43
 #: src/marp-patterns/patterns/heading-and-three-numbers.ts:33
@@ -723,7 +884,11 @@ msgstr "Son geri aldığınız şeyi yeniden yapın."
 msgid "Remove a link."
 msgstr "Bir bağlantıyı kaldırın."
 
-#: src/block-library/image/edit.tsx:274
+#: src/block-library/image/marp-image-settings.tsx:500
+msgid "Remove filter"
+msgstr "Filtreyi kaldır"
+
+#: src/block-library/image/edit.tsx:326
 msgid "Reset"
 msgstr "Sıfırla"
 
@@ -735,6 +900,10 @@ msgstr "Aramayı sıfırla"
 msgid "Resize side panel"
 msgstr "Yan paneli yeniden boyutlandır"
 
+#: src/block-library/image/marp-image-settings.tsx:288
+msgid "Right"
+msgstr "Sağ"
+
 #: src/block-library/table/edit.tsx:253
 msgid "Row count"
 msgstr "Satır sayısı"
@@ -742,6 +911,11 @@ msgstr "Satır sayısı"
 #: src/components/front-matter-editor/index.tsx:513
 msgid "Sans-serif"
 msgstr "Tırnaksız"
+
+#: src/block-library/image/marp-image-settings.tsx:350
+#: src/block-library/image/marp-image-settings.tsx:357
+msgid "Scale"
+msgstr "Ölçek"
 
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
@@ -766,7 +940,7 @@ msgstr "Yazarken her slaytı görün"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Diğer ayarlar için <a>Marp belgelerine</a> bakın."
 
-#: src/components/ai-sidebar/chat.tsx:319
+#: src/components/ai-sidebar/chat.tsx:339
 msgid "Send"
 msgstr "Gönder"
 
@@ -774,9 +948,16 @@ msgstr "Gönder"
 msgid "Serif"
 msgstr "Tırnaklı"
 
-#: src/components/ai-sidebar/chat.tsx:258
+#: src/components/ai-sidebar/chat.tsx:278
 msgid "Set an API key to use the AI Assistant."
 msgstr "Yapay Zekâ Asistanını kullanmak için bir API anahtarı ayarlayın."
+
+#: src/block-library/image/edit.tsx:280
+msgid ""
+"Set the placement, size and filters from Marp image settings in the toolbar."
+msgstr ""
+"Yerleşimi, boyutu ve filtreleri araç çubuğundaki Marp görsel ayarlarından "
+"belirleyin."
 
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:42
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:37
@@ -784,6 +965,10 @@ msgstr "Yapay Zekâ Asistanını kullanmak için bir API anahtarı ayarlayın."
 msgctxt "slide pattern"
 msgid "Share"
 msgstr "Paylaş"
+
+#: src/block-library/html/marp-directive-settings.tsx:277
+msgid "Show"
+msgstr "Göster"
 
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
@@ -800,9 +985,17 @@ msgstr "Slaytlarınızı tam ekranda gösterin"
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
-#: src/block-library/image/edit.tsx:260
+#: src/block-library/image/edit.tsx:312
 msgid "Shown as a tooltip on hover."
 msgstr "Üzerine gelindiğinde araç ipucu olarak gösterilir."
+
+#: src/block-library/html/marp-directive-settings.tsx:74
+msgid "Shows the page number without counting this slide."
+msgstr "Bu slaytı saymadan sayfa numarasını gösterir."
+
+#: src/block-library/html/marp-directive-settings.tsx:70
+msgid "Shows the page number."
+msgstr "Sayfa numarasını gösterir."
 
 #: src/components/front-matter-editor/index.tsx:210
 msgid "Simple and clean, based on GitHub Markdown style."
@@ -811,6 +1004,10 @@ msgstr "GitHub Markdown stiline dayanan sade ve temiz bir tema."
 #: src/components/front-matter-editor/index.tsx:315
 msgid "Size"
 msgstr "Boyut"
+
+#: src/block-library/html/marp-directive-settings.tsx:289
+msgid "Skip"
+msgstr "Atla"
 
 #: src/block-library/separator/use-marp-title.ts:39
 #: src/block-library/separator/edit.tsx:25
@@ -847,11 +1044,19 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "Düz metin olarak slaytlar"
 
-#: src/components/ai-sidebar/chat.tsx:310
+#: src/block-library/image/marp-image-settings.tsx:294
+msgid "Split width"
+msgstr "Bölme genişliği"
+
+#: src/block-library/image/marp-image-settings.tsx:420
+msgid "Stack vertically"
+msgstr "Dikey olarak diz"
+
+#: src/components/ai-sidebar/chat.tsx:330
 msgid "Stop"
 msgstr "Durdur"
 
-#: src/components/ai-sidebar/chat.tsx:105
+#: src/components/ai-sidebar/chat.tsx:133
 msgid "Stopped."
 msgstr "Durduruldu."
 
@@ -867,6 +1072,10 @@ msgstr "Seçilmiş metnin üzerini çizer."
 msgid "Switch between the visual editor and the code editor."
 msgstr "Görsel düzenleyici ile kod düzenleyici arasında geçiş yap."
 
+#: src/block-library/html/marp-directive-settings.tsx:59
+msgid "Switches to the theme's alternate color scheme."
+msgstr "Temanın alternatif renk düzenine geçer."
+
 #: src/block-library/table/edit.tsx:231
 msgid "Table"
 msgstr "Tablo"
@@ -876,15 +1085,27 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "Metin"
 
+#: src/block-library/html/marp-directive-settings.tsx:323
+msgid "Text color"
+msgstr "Metin rengi"
+
 #: src/components/front-matter-editor/index.tsx:354
 msgid "Text shown at the bottom of each slide."
 msgstr "Her slaytın altında gösterilen metin."
+
+#: src/block-library/html/marp-directive-settings.tsx:303
+msgid "Text shown at the bottom of the slide."
+msgstr "Slaytın altında gösterilen metin."
 
 #: src/components/front-matter-editor/index.tsx:343
 msgid "Text shown at the top of each slide."
 msgstr "Her slaytın üstünde gösterilen metin."
 
-#: src/components/ai-sidebar/chat.tsx:112
+#: src/block-library/html/marp-directive-settings.tsx:294
+msgid "Text shown at the top of the slide."
+msgstr "Slaytın üstünde gösterilen metin."
+
+#: src/components/ai-sidebar/chat.tsx:140
 msgid "The answer could not be loaded."
 msgstr "Yanıt yüklenemedi."
 
@@ -896,7 +1117,7 @@ msgstr "Slaytların en boy oranı."
 msgid "The diagram could not be rendered."
 msgstr "Diyagram oluşturulamadı."
 
-#: src/components/ai-sidebar/chat.tsx:83
+#: src/components/ai-sidebar/chat.tsx:111
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -914,6 +1135,37 @@ msgstr ""
 msgid "The formula could not be rendered."
 msgstr "Formül oluşturulamadı."
 
+#: src/block-library/image/marp-image-settings.tsx:257
+msgid "The image fills the slide, or one side of it, behind the content."
+msgstr "Görsel, içeriğin arkasında slaydı ya da bir tarafını doldurur."
+
+#: src/block-library/image/marp-image-settings.tsx:253
+msgid "The image sits in the slide content."
+msgstr "Görsel slayt içeriğinde yer alır."
+
+#: src/block-library/html/marp-directive-settings.tsx:184
+msgid "The settings apply to this slide and the slides after it."
+msgstr "Ayarlar bu slayta ve sonraki slaytlara uygulanır."
+
+#: src/block-library/html/marp-directive-settings.tsx:180
+msgid "The settings apply to this slide only."
+msgstr "Ayarlar yalnızca bu slayta uygulanır."
+
+#: src/block-library/image/marp-image-settings.tsx:300
+msgid "The share of the slide the image takes, such as 40%."
+msgstr "Görselin kapladığı slayt oranı, örneğin %40."
+
+#: src/block-library/image/marp-image-settings.tsx:363
+msgid "The size relative to the original image, such as 50%."
+msgstr "Orijinal görsele göre boyut, örneğin %50."
+
+#: src/block-library/image/marp-image-settings.tsx:124
+msgid ""
+"The x and y offsets, then an optional blur and color, separated by commas."
+msgstr ""
+"x ve y kaydırmaları, ardından isteğe bağlı bulanıklık ve renk, virgülle "
+"ayrılmış."
+
 #: src/components/front-matter-editor/index.tsx:249
 msgid "Theme"
 msgstr "Tema"
@@ -929,6 +1181,10 @@ msgstr "Tema yazı tipi"
 #: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
 msgstr "Düşünülüyor…"
+
+#: src/block-library/html/marp-directive-settings.tsx:198
+msgid "This slide"
+msgstr "Bu slayt"
 
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
@@ -947,7 +1203,7 @@ msgstr "İpucu"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/components/slide-pattern-modal/index.tsx:70
-#: src/block-library/image/edit.tsx:253
+#: src/block-library/image/edit.tsx:305
 msgid "Title"
 msgstr "Başlık"
 
@@ -1032,8 +1288,8 @@ msgid "Type / to choose a block"
 msgstr "Bir blok seçmek için / yazın"
 
 #: src/format-library/image/inline.tsx:118
-#: src/block-library/image/edit.tsx:100
-#: src/block-library/image/edit.tsx:196
+#: src/block-library/image/edit.tsx:133
+#: src/block-library/image/edit.tsx:229
 msgid "URL or file path"
 msgstr "URL veya dosya yolu"
 
@@ -1059,7 +1315,7 @@ msgstr "Son değişikliklerinizi geri alın."
 msgid "Unordered"
 msgstr "Sırasız"
 
-#: src/block-library/image/edit.tsx:77
+#: src/block-library/image/edit.tsx:110
 msgid "Upload an image from your device or insert from a URL."
 msgstr "Cihazınızdan bir görsel yükleyin veya bir URL’den ekleyin."
 
@@ -1070,11 +1326,6 @@ msgctxt "slide pattern"
 msgid "Use any text editor"
 msgstr "Herhangi bir metin düzenleyici"
 
-#: style.css
-#. Description of the generic
-msgid "Visual markdown block editor."
-msgstr "Görsel Markdown blok düzenleyicisi."
-
 #: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"
 msgstr "Yanıt bekleniyor…"
@@ -1083,6 +1334,10 @@ msgstr "Yanıt bekleniyor…"
 msgid "Warning"
 msgstr "Uyarı"
 
+#: src/block-library/image/marp-image-settings.tsx:379
+msgid "Width"
+msgstr "Genişlik"
+
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:34
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:29
 #: src/marp-patterns/patterns/heading-and-four-cards.ts:29
@@ -1090,7 +1345,7 @@ msgctxt "slide pattern"
 msgid "Write"
 msgstr "Yaz"
 
-#: src/block-library/html/edit.tsx:43
+#: src/block-library/html/edit.tsx:52
 msgid "Write HTML…"
 msgstr "HTML yazın…"
 
@@ -1154,3 +1409,12 @@ msgstr "YAML front matter"
 msgid "Your own CSS in style overrides some of these colors."
 msgstr ""
 "style içindeki kendi CSS'iniz bu renklerin bazılarını geçersiz kılıyor."
+
+# %s: An example value, such as "1.5".
+# %s: An example value, such as "#f0f0f0".
+#: src/block-library/image/marp-image-settings.tsx:485
+#: src/block-library/html/marp-directive-settings.tsx:314
+#: src/block-library/html/marp-directive-settings.tsx:326
+#: src/block-library/html/marp-directive-settings.tsx:340
+msgid "e.g. %s"
+msgstr "örn. %s"

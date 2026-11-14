@@ -72,21 +72,23 @@ const DOCUMENT = '# Title\n\nFirst.\n\nSecond.\n\nThird.\n';
 
 describe( 'createBlockEditTarget', () => {
 	describe( 'getContext', () => {
-		it( 'returns the selected blocks and marks them in the document', () => {
+		it( 'returns the document and where the selected blocks are in it', () => {
 			const { access } = setup( DOCUMENT, [ 1, 2 ] );
 			expect( createBlockEditTarget( access ).getContext() ).toEqual( {
+				document: DOCUMENT,
 				selection: 'First.\n\nSecond.\n',
-				document:
-					'# Title\n\n<selection>\nFirst.\n\nSecond.\n</selection>\n\nThird.\n',
+				selectionStart: DOCUMENT.indexOf( 'First.' ),
+				selectionEnd: DOCUMENT.indexOf( '\n\nThird.' ),
 			} );
 		} );
 
-		it( 'marks the end of the document when nothing is selected', () => {
+		it( 'places an empty selection at the end of the document', () => {
 			const { access } = setup( DOCUMENT );
 			expect( createBlockEditTarget( access ).getContext() ).toEqual( {
+				document: DOCUMENT,
 				selection: '',
-				document:
-					'# Title\n\nFirst.\n\nSecond.\n\nThird.\n\n<selection></selection>\n',
+				selectionStart: DOCUMENT.length,
+				selectionEnd: DOCUMENT.length,
 			} );
 		} );
 
@@ -105,7 +107,22 @@ describe( 'createBlockEditTarget', () => {
 				createBlockEditTarget( access, 'marp: true' ).getContext()
 					.document
 			).toBe(
-				'---\nmarp: true\n---\n\n<selection>\n# Title\n</selection>\n\nFirst.\n\nSecond.\n\nThird.\n'
+				'---\nmarp: true\n---\n\n# Title\n\nFirst.\n\nSecond.\n\nThird.\n'
+			);
+		} );
+
+		it( 'reads the document as it is now, with the current front matter', () => {
+			const { access } = setup( DOCUMENT, [ 1 ] );
+			let frontMatter: string | null = 'marp: true';
+			const target = createBlockEditTarget( access, frontMatter, {
+				get: () => frontMatter,
+				set: () => {},
+				merge: () => {},
+			} );
+			target.apply( { action: 'replace', markdown: 'Changed.\n' } );
+			frontMatter = 'marp: true\npaginate: true';
+			expect( target.getDocument() ).toBe(
+				'---\nmarp: true\npaginate: true\n---\n\n# Title\n\nChanged.\n\nSecond.\n\nThird.\n'
 			);
 		} );
 	} );
@@ -116,7 +133,7 @@ describe( 'createBlockEditTarget', () => {
 			const target = createBlockEditTarget( access );
 			expect(
 				target.apply( { action: 'replace', markdown: '- New\n' } )
-			).toBe( true );
+			).toEqual( { status: 'applied' } );
 			expect( getMarkdown() ).toBe( '# Title\n\n- New\n\nThird.\n' );
 		} );
 
@@ -170,6 +187,43 @@ describe( 'createBlockEditTarget', () => {
 			expect( getMarkdown() ).toBe( DOCUMENT + '\n# Slide\n' );
 		} );
 
+		it( 'reads the front matter it set before the host updates it', () => {
+			const { access } = setup( DOCUMENT, [ 1 ] );
+			// The host's front matter updates only after the next render.
+			const target = createBlockEditTarget( access, 'marp: true', {
+				get: () => 'marp: true',
+				set: () => {},
+				merge: () => {},
+			} );
+			target.apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\npaginate: true\n---\n',
+			} );
+			expect( target.getDocument() ).toMatch(
+				/^---\nmarp: true\npaginate: true\n---\n/
+			);
+		} );
+
+		it( 'reads the host front matter again once it changes', () => {
+			const { access } = setup( DOCUMENT, [ 1 ] );
+			let host = 'marp: true';
+			const target = createBlockEditTarget( access, host, {
+				get: () => host,
+				set: () => {},
+				merge: () => {},
+			} );
+			target.apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\npaginate: true\n---\n',
+			} );
+			// The host catches up, then the user changes the front matter.
+			host = 'marp: true\npaginate: true';
+			host = 'marp: true\ntheme: gaia';
+			expect( target.getDocument() ).toMatch(
+				/^---\nmarp: true\ntheme: gaia\n---\n/
+			);
+		} );
+
 		it( 'keeps the selected blocks for a front matter only edit', () => {
 			const { access, getMarkdown } = setup( DOCUMENT, [ 1 ] );
 			let frontMatter: string | null = null;
@@ -192,8 +246,148 @@ describe( 'createBlockEditTarget', () => {
 			remove( 1 );
 			expect(
 				target.apply( { action: 'replace', markdown: 'New.\n' } )
-			).toBe( false );
+			).toEqual( { status: 'dropped' } );
 			expect( getMarkdown() ).toBe( '# Title\n\nSecond.\n\nThird.\n' );
+		} );
+	} );
+
+	describe( 'apply replace_text', () => {
+		it( 'rebuilds only the block the text is in', () => {
+			const { access, getMarkdown } = setup( DOCUMENT );
+			const before = access.getBlocks();
+			expect(
+				createBlockEditTarget( access ).apply( {
+					action: 'replace_text',
+					find: 'Second.',
+					markdown: 'Second, changed.',
+				} )
+			).toEqual( { status: 'applied' } );
+			expect( getMarkdown() ).toBe(
+				'# Title\n\nFirst.\n\nSecond, changed.\n\nThird.\n'
+			);
+			const after = access.getBlocks();
+			expect( after[ 1 ].clientId ).toBe( before[ 1 ].clientId );
+			expect( after[ 2 ].clientId ).not.toBe( before[ 2 ].clientId );
+			expect( after[ 3 ].clientId ).toBe( before[ 3 ].clientId );
+		} );
+
+		it( 'edits text outside the selection', () => {
+			const { access, getMarkdown } = setup( DOCUMENT, [ 3 ] );
+			createBlockEditTarget( access ).apply( {
+				action: 'replace_text',
+				find: '# Title',
+				markdown: '# A better title',
+			} );
+			expect( getMarkdown() ).toBe(
+				'# A better title\n\nFirst.\n\nSecond.\n\nThird.\n'
+			);
+		} );
+
+		it( 'replaces text that spans blocks with the blocks it becomes', () => {
+			const { access, getMarkdown } = setup( DOCUMENT );
+			createBlockEditTarget( access ).apply( {
+				action: 'replace_text',
+				find: 'First.\n\nSecond.',
+				markdown: 'Both.',
+			} );
+			expect( getMarkdown() ).toBe( '# Title\n\nBoth.\n\nThird.\n' );
+		} );
+
+		it( 'fails when the text is not in the document', () => {
+			const { access, getMarkdown } = setup( DOCUMENT );
+			expect(
+				createBlockEditTarget( access ).apply( {
+					action: 'replace_text',
+					find: 'Fourth.',
+					markdown: 'New.',
+				} )
+			).toMatchObject( { status: 'failed' } );
+			expect( getMarkdown() ).toBe( DOCUMENT );
+		} );
+
+		it( 'fails when the text is in more than one place', () => {
+			const { access } = setup( DOCUMENT );
+			const result = createBlockEditTarget( access ).apply( {
+				action: 'replace_text',
+				find: 'ir',
+				markdown: 'New.',
+			} );
+			expect( result ).toMatchObject( { status: 'failed' } );
+			expect( result.status === 'failed' && result.reason ).toContain(
+				'2 times'
+			);
+		} );
+
+		it( 'changes the front matter as its own step', () => {
+			const { access, getMarkdown } = setup( DOCUMENT );
+			let frontMatter: string | null = null;
+			const result = createBlockEditTarget(
+				access,
+				'marp: true\ntheme: default',
+				{
+					set: ( next ) => {
+						frontMatter = next;
+					},
+					merge: () => {},
+				}
+			).apply( {
+				action: 'replace_text',
+				find: 'theme: default',
+				markdown: 'theme: gaia',
+			} );
+			expect( result ).toEqual( { status: 'applied' } );
+			expect( frontMatter ).toBe( 'marp: true\ntheme: gaia' );
+			expect( getMarkdown() ).toBe( DOCUMENT );
+		} );
+
+		it( 'reads the front matter as it is when the edit arrives', () => {
+			const { access } = setup( DOCUMENT );
+			let frontMatter: string | null = 'marp: true\ntheme: default';
+			const result = createBlockEditTarget( access, 'marp: true', {
+				get: () => frontMatter,
+				set: ( next ) => {
+					frontMatter = next;
+				},
+				merge: () => {},
+			} ).apply( {
+				action: 'replace_text',
+				find: 'theme: default',
+				markdown: 'theme: gaia',
+			} );
+			expect( result ).toEqual( { status: 'applied' } );
+			expect( frontMatter ).toBe( 'marp: true\ntheme: gaia' );
+		} );
+
+		it( 'fails when the edit would push text out of the front matter', () => {
+			const { access } = setup( DOCUMENT );
+			let frontMatter: string | null = 'marp: true\ntheme: default';
+			expect(
+				createBlockEditTarget( access, frontMatter, {
+					set: ( next ) => {
+						frontMatter = next;
+					},
+					merge: () => {},
+				} ).apply( {
+					action: 'replace_text',
+					find: 'theme: default',
+					markdown: '---\nmarp: true\ntheme: gaia\n---',
+				} )
+			).toMatchObject( { status: 'failed' } );
+			expect( frontMatter ).toBe( 'marp: true\ntheme: default' );
+		} );
+
+		it( 'fails when the edit would break the front matter', () => {
+			const { access } = setup( DOCUMENT );
+			expect(
+				createBlockEditTarget( access, 'marp: true', {
+					set: () => {},
+					merge: () => {},
+				} ).apply( {
+					action: 'replace_text',
+					find: 'marp: true\n---',
+					markdown: 'marp: true',
+				} )
+			).toMatchObject( { status: 'failed' } );
 		} );
 	} );
 } );

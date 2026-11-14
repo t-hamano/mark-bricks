@@ -11,7 +11,7 @@ import { createChat } from '../chat';
 import { toEchoContent } from './answer';
 import { anthropic } from '.';
 import { createHttpError } from './errors';
-import type { RequestBody } from './request';
+import { NO_MORE_EDITS, type RequestBody } from './request';
 import answer from './fixtures/answer.sse?raw';
 import edit from './fixtures/edit.sse?raw';
 import afterEdit from './fixtures/after-edit.sse?raw';
@@ -49,7 +49,9 @@ async function run( streams: string[], signal = new AbortController().signal ) {
 	const result = chat( {
 		system: 'System prompt',
 		messages: [ { role: 'user', text: 'Make it shorter' } ],
-		onEvent: ( event ) => events.push( event ),
+		onEvent: ( event ) => {
+			events.push( event );
+		},
 		signal,
 	} );
 	return { result, events, bodies, transport };
@@ -129,9 +131,20 @@ describe( 'createChat with Anthropic', () => {
 			[
 				{
 					type: 'usage',
-					usage: { inputTokens: 150, outputTokens: 60 },
+					usage: {
+						inputTokens: 150,
+						cachedInputTokens: 0,
+						outputTokens: 60,
+					},
 				},
-				{ type: 'usage', usage: { inputTokens: 220, outputTokens: 9 } },
+				{
+					type: 'usage',
+					usage: {
+						inputTokens: 220,
+						cachedInputTokens: 0,
+						outputTokens: 9,
+					},
+				},
 			]
 		);
 	} );
@@ -154,7 +167,9 @@ describe( 'createChat with Anthropic', () => {
 		const [ first, second ] = bodies;
 		expect( second.system ).toEqual( first.system );
 		expect( second.tools ).toEqual( first.tools );
-		expect( second.tool_choice ).toEqual( { type: 'none' } );
+		// The tool choice stays the same, so the messages are read from
+		// the cache.
+		expect( second.tool_choice ).toEqual( first.tool_choice );
 		expect( second.messages.slice( 1 ) ).toEqual( [
 			{
 				role: 'assistant',
@@ -164,7 +179,7 @@ describe( 'createChat with Anthropic', () => {
 					{
 						type: 'tool_use',
 						id: 'toolu_01',
-						name: 'edit_selection',
+						name: 'edit_document',
 						input: {
 							action: 'replace',
 							markdown: 'A short\nparagraph.',
@@ -180,9 +195,99 @@ describe( 'createChat with Anthropic', () => {
 						tool_use_id: 'toolu_01',
 						content: 'The edit was applied.',
 					},
+					{
+						type: 'text',
+						text: NO_MORE_EDITS,
+						cache_control: { type: 'ephemeral' },
+					},
 				],
 			},
 		] );
+	} );
+
+	it( 'lets the model try again after a failed edit', async () => {
+		const { transport, bodies } = createTransport( [
+			edit,
+			edit,
+			afterEdit,
+		] );
+		const chat = createChat( { provider: anthropic, transport } );
+		let edits = 0;
+		await chat( {
+			system: 'System prompt',
+			messages: [ { role: 'user', text: 'Make it shorter' } ],
+			onEvent: ( event ) => {
+				if ( event.type !== 'edit' ) {
+					return;
+				}
+				edits++;
+				return edits === 1
+					? { status: 'failed', reason: 'Not found.' }
+					: { status: 'applied' };
+			},
+			signal: new AbortController().signal,
+		} );
+
+		expect( bodies ).toHaveLength( 3 );
+		expect( bodies[ 1 ].tool_choice ).toEqual( {
+			type: 'auto',
+			disable_parallel_tool_use: true,
+		} );
+		expect( bodies[ 1 ].messages[ 2 ] ).toEqual( {
+			role: 'user',
+			content: [
+				{
+					type: 'tool_result',
+					tool_use_id: 'toolu_01',
+					content: 'Not found.',
+					is_error: true,
+					cache_control: { type: 'ephemeral' },
+				},
+			],
+		} );
+		expect( bodies[ 2 ].tool_choice ).toEqual( bodies[ 1 ].tool_choice );
+		// Both attempts stay in the conversation.
+		expect( bodies[ 2 ].messages ).toHaveLength( 5 );
+		expect( bodies[ 2 ].messages[ 4 ].content ).toEqual( [
+			{
+				type: 'tool_result',
+				tool_use_id: 'toolu_01',
+				content: 'The edit was applied.',
+			},
+			{
+				type: 'text',
+				text: NO_MORE_EDITS,
+				cache_control: { type: 'ephemeral' },
+			},
+		] );
+	} );
+
+	it( 'stops letting the model edit after three failed edits', async () => {
+		const { transport, bodies } = createTransport( [
+			edit,
+			edit,
+			edit,
+			afterEdit,
+		] );
+		const chat = createChat( { provider: anthropic, transport } );
+		await chat( {
+			system: 'System prompt',
+			messages: [ { role: 'user', text: 'Make it shorter' } ],
+			onEvent: ( event ) =>
+				event.type === 'edit'
+					? { status: 'failed', reason: 'Not found.' }
+					: undefined,
+			signal: new AbortController().signal,
+		} );
+
+		expect( bodies ).toHaveLength( 4 );
+		expect( bodies[ 2 ].tool_choice ).toMatchObject( { type: 'auto' } );
+		expect( bodies[ 3 ].tool_choice ).toEqual( bodies[ 2 ].tool_choice );
+		expect(
+			JSON.stringify(
+				bodies[ 3 ].messages[ bodies[ 3 ].messages.length - 1 ]
+			)
+		).toContain( 'You cannot edit the document again' );
 	} );
 
 	it( 'does not continue when the answer is stopped after the edit', async () => {
@@ -273,7 +378,7 @@ describe( 'toEchoContent', () => {
 				{
 					type: 'tool_use',
 					id: 'toolu_a',
-					name: 'edit_selection',
+					name: 'edit_document',
 					input: {},
 				},
 				{ type: 'fallback', from: {}, to: {} },

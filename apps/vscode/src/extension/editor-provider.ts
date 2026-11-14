@@ -13,6 +13,7 @@ import type {
 	ImageError,
 	WebviewMessage,
 } from '../shared/messages';
+import { isWritableSettingKey } from '../shared/settings';
 import { getImageRoots, resolveImageUri } from './images';
 import { MarpPreview, isSourceLine } from './marp-preview';
 import { CONFIGURATION_SECTION, readSettings, writeSetting } from './settings';
@@ -215,11 +216,16 @@ class EditorSession {
 				break;
 
 			case 'updateSetting':
-				void writeSetting(
-					this.document.uri,
-					message.key,
-					message.value
-				);
+				if (
+					isWritableSettingKey( message.key ) &&
+					typeof message.value === 'boolean'
+				) {
+					void writeSetting(
+						this.document.uri,
+						message.key,
+						message.value
+					);
+				}
 				break;
 
 			case 'resolveImage':

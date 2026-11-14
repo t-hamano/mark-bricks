@@ -43,4 +43,18 @@ export const DEFAULT_SETTINGS: Settings = {
 /**
  * Settings the webview can change itself, from its header menu.
  */
-export type WritableSettingKey = 'topToolbar' | 'spotlightMode';
+export const WRITABLE_SETTING_KEYS = [ 'topToolbar', 'spotlightMode' ] as const;
+
+export type WritableSettingKey = ( typeof WRITABLE_SETTING_KEYS )[ number ];
+
+/**
+ * Whether a value from the webview names a setting it may change. Messages
+ * cross a process boundary, so their types are only a promise.
+ *
+ * @param key The key the webview sent.
+ */
+export function isWritableSettingKey(
+	key: unknown
+): key is WritableSettingKey {
+	return ( WRITABLE_SETTING_KEYS as readonly unknown[] ).includes( key );
+}

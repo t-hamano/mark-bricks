@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { toEdit } from './edit-tool';
+import { MAX_EDIT_ATTEMPTS, toEdit } from './edit-tool';
 import { AiError } from './error';
 import type { AiProviderAdapter, ProviderAnswer } from './provider';
 import { createSseParser } from './sse';
@@ -29,9 +29,12 @@ export type ChatOptions = {
 /**
  * Creates the `chat` function of `Platform.ai` for a provider.
  *
- * When the model edits the selection, the edit is reported, and the
- * conversation continues in a second request so that the model can say
- * what it changed. That request does not allow another edit.
+ * When the model edits the document, the edit is reported, and the
+ * conversation continues in another request so that the model can say
+ * what it changed. That request does not allow another edit, unless the
+ * edit failed, for example because its text to replace was not in the
+ * document: then the model may try again, up to `MAX_EDIT_ATTEMPTS` edits
+ * in all.
  *
  * @param options           The provider, the transport, and the model.
  * @param options.provider
@@ -79,50 +82,61 @@ export function createChat( {
 		const onActivity = ( activity: AiActivity ) =>
 			onEvent( { type: 'activity', activity } );
 
-		const first = await streamAnswer(
-			provider.buildRequest( { model, system, messages } ),
-			onText,
-			onActivity,
-			signal
-		);
-		reportUsage( first, onEvent );
-		if ( ! first.editCall ) {
-			return;
-		}
-		const edit = toEdit( first.editCall.input );
-		if ( ! edit ) {
-			throw new AiError(
-				__(
-					'The edit from the model could not be read.',
-					'mark-bricks'
-				)
+		let continuation: unknown[] | undefined;
+		let allowEditTool = true;
+		let attempts = 0;
+		while ( true ) {
+			// Separate the text before an edit from the text after it.
+			let needsSeparator = hasText;
+			const answer = await streamAnswer(
+				provider.buildRequest( {
+					model,
+					system,
+					messages,
+					continuation,
+					allowEditTool,
+				} ),
+				( text ) => {
+					if ( needsSeparator ) {
+						needsSeparator = false;
+						onText( '\n\n' );
+					}
+					onText( text );
+				},
+				onActivity,
+				signal
 			);
-		}
-		onEvent( { type: 'edit', edit } );
+			reportUsage( answer, onEvent );
+			if ( ! answer.editCall || ! allowEditTool ) {
+				return;
+			}
+			const edit = toEdit( answer.editCall.input );
+			if ( ! edit ) {
+				throw new AiError(
+					__(
+						'The edit from the model could not be read.',
+						'mark-bricks'
+					)
+				);
+			}
+			attempts++;
+			const result = onEvent( { type: 'edit', edit } );
 
-		if ( signal.aborted ) {
-			throw new DOMException( 'The answer was stopped.', 'AbortError' );
-		}
+			if ( signal.aborted ) {
+				throw new DOMException(
+					'The answer was stopped.',
+					'AbortError'
+				);
+			}
 
-		// Separate the text before the edit from the text after it.
-		let needsSeparator = hasText;
-		const second = await streamAnswer(
-			provider.buildRequest( {
-				model,
-				system,
-				messages,
-				continuation: first.continuation,
-			} ),
-			( text ) => {
-				if ( needsSeparator ) {
-					needsSeparator = false;
-					onText( '\n\n' );
-				}
-				onText( text );
-			},
-			onActivity,
-			signal
-		);
-		reportUsage( second, onEvent );
+			// After a failed edit, the model may correct it and try again.
+			const error =
+				result?.status === 'failed' ? result.reason : undefined;
+			continuation = [
+				...( continuation ?? [] ),
+				...answer.continuation( error ),
+			];
+			allowEditTool = !! error && attempts < MAX_EDIT_ATTEMPTS;
+		}
 	};
 }

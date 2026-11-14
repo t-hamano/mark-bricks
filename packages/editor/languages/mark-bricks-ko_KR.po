@@ -8,16 +8,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:40:38.403Z\n"
-"PO-Revision-Date: 2026-11-14T11:40:42.591Z\n"
+"POT-Creation-Date: 2026-11-14T12:14:49.238Z\n"
+"PO-Revision-Date: 2026-11-14T12:14:54.117Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: ko_KR\n"
 "X-Domain: mark-bricks\n"
 
+# 1: The number of tokens the AI model read. 2: How many of them it read from the cache, at a lower price. 3: The number of tokens it wrote.
+#: src/components/ai-sidebar/chat.tsx:74
+msgid "%1$s input tokens (%2$s cached), %3$s output tokens"
+msgstr "입력 토큰 %1$s개(캐시 %2$s개), 출력 토큰 %3$s개"
+
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:123
+#: src/components/ai-sidebar/chat.tsx:85
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "입력 토큰 %1$s개, 출력 토큰 %2$s개"
 
@@ -62,10 +67,21 @@ msgctxt "slide pattern"
 msgid "3"
 msgstr "3"
 
-#: style.css
-#. Name of the generic
-msgid "@mark-bricks/editor"
-msgstr ""
+#: src/block-library/html/marp-directive-settings.tsx:334
+msgid "A CSS background image, such as a gradient."
+msgstr "그라데이션 같은 CSS 배경 이미지입니다."
+
+#: src/block-library/image/marp-image-settings.tsx:105
+msgid "A length of 0 or more, such as 10px."
+msgstr "0 이상의 길이. 예: 10px."
+
+#: src/block-library/image/marp-image-settings.tsx:117
+msgid "A number from 0 to 1, or a percentage up to 100%."
+msgstr "0~1 사이의 숫자 또는 100%까지의 백분율."
+
+#: src/block-library/image/marp-image-settings.tsx:109
+msgid "A number or percentage of 0 or more. 1 keeps the original."
+msgstr "0 이상의 숫자 또는 백분율. 1이면 원본 그대로입니다."
 
 #: src/marp-patterns/patterns/title.ts:26
 #: src/marp-patterns/patterns/title-on-image.ts:29
@@ -91,10 +107,9 @@ msgstr "Markdown으로 작성한 슬라이드"
 msgid "AI Assistant"
 msgstr "AI 어시스턴트"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr "Aki Hamano"
+#: src/block-library/image/marp-image-settings.tsx:444
+msgid "Add filter"
+msgstr "필터 추가"
 
 #: src/marp-patterns/patterns/quote-on-image.ts:29
 msgctxt "slide pattern"
@@ -110,9 +125,13 @@ msgid "All categories"
 msgstr "모든 카테고리"
 
 #: src/format-library/image/inline.tsx:147
-#: src/block-library/image/edit.tsx:233
+#: src/block-library/image/edit.tsx:269
 msgid "Alt text"
 msgstr "대체 텍스트"
+
+#: src/block-library/image/marp-image-settings.tsx:122
+msgid "An angle, such as 90deg or 0.5turn."
+msgstr "각도. 예: 90deg, 0.5turn."
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
 msgctxt "slide pattern"
@@ -120,22 +139,47 @@ msgid "Any editor"
 msgstr "아무 편집기"
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/edit.tsx:126
-#: src/block-library/image/edit.tsx:280
+#: src/block-library/image/edit.tsx:159
+#: src/block-library/image/edit.tsx:332
 msgid "Apply"
 msgstr "적용"
 
-#: src/components/ai-sidebar/chat.tsx:298
+#: src/block-library/html/marp-directive-settings.tsx:177
+msgid "Apply to"
+msgstr "적용 대상"
+
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Ask the AI Assistant"
 msgstr "AI 어시스턴트에게 질문"
 
-#: src/components/ai-sidebar/chat.tsx:276
+#: src/components/ai-sidebar/chat.tsx:296
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
 msgstr ""
 "AI 어시스턴트에게 작성이나 편집을 요청하세요. 선택 영역 또는 코드 편집기에서 "
 "커서가 있는 줄이 메시지와 함께 전송됩니다."
+
+#: src/block-library/image/marp-image-settings.tsx:380
+#: src/block-library/image/marp-image-settings.tsx:397
+msgid "Auto"
+msgstr "자동"
+
+#: src/block-library/image/marp-image-settings.tsx:280
+msgid "Background"
+msgstr "배경"
+
+#: src/block-library/html/marp-directive-settings.tsx:311
+msgid "Background color"
+msgstr "배경색"
+
+#: src/block-library/html/marp-directive-settings.tsx:333
+msgid "Background image"
+msgstr "배경 이미지"
+
+#: src/block-library/image/marp-image-settings.tsx:310
+msgid "Background size"
+msgstr "배경 크기"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:47
 msgctxt "slide pattern"
@@ -156,8 +200,8 @@ msgid "Bold"
 msgstr "굵게"
 
 #: src/format-library/image/inline.tsx:137
-#: src/block-library/image/edit.tsx:122
-#: src/block-library/image/edit.tsx:218
+#: src/block-library/image/edit.tsx:155
+#: src/block-library/image/edit.tsx:251
 msgid "Browse local file"
 msgstr "로컬 파일 찾아보기"
 
@@ -171,6 +215,10 @@ msgctxt "slide pattern"
 msgid "By hand"
 msgstr "수작업"
 
+#: src/block-library/image/edit.tsx:268
+msgid "Caption"
+msgstr "캡션"
+
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
 msgstr "카테고리"
@@ -183,6 +231,10 @@ msgstr "주의"
 msgid "Cell content"
 msgstr "셀 내용"
 
+#: src/block-library/html/marp-directive-settings.tsx:55
+msgid "Centers the content of the slide."
+msgstr "슬라이드 내용을 가운데에 배치합니다."
+
 #: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "언어 변경"
@@ -194,6 +246,20 @@ msgstr "새 단락을 추가한 후 블록 유형을 변경."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "언어 선택…"
+
+#: src/block-library/html/marp-directive-settings.tsx:208
+#: src/block-library/html/marp-directive-settings.tsx:234
+msgid "Class"
+msgstr "클래스"
+
+#: src/block-library/html/marp-directive-settings.tsx:246
+msgid "Classes of the slide, separated by spaces."
+msgstr "슬라이드의 클래스입니다. 공백으로 구분합니다."
+
+# %s: A theme name, such as "gaia".
+#: src/block-library/html/marp-directive-settings.tsx:240
+msgid "Classes that the %s theme does not provide, separated by spaces."
+msgstr "%s 테마에 없는 클래스입니다. 공백으로 구분합니다."
 
 #: src/components/front-matter-editor/index.tsx:218
 msgid "Classic look with a colored background."
@@ -230,15 +296,24 @@ msgstr "색 구성"
 msgid "Column count"
 msgstr "컬럼 수"
 
+#: src/block-library/image/marp-image-settings.tsx:342
+msgid "Contain"
+msgstr "맞춤"
+
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
 msgstr "선택한 텍스트를 링크로 변환."
+
+#: src/block-library/image/marp-image-settings.tsx:338
+msgid "Cover"
+msgstr "채우기"
 
 #: src/block-library/table/edit.tsx:259
 msgid "Create Table"
 msgstr "테이블 생성"
 
 #: src/block-library/quote/edit.tsx:151
+#: src/block-library/html/marp-directive-settings.tsx:273
 msgid "Default"
 msgstr "기본값"
 
@@ -251,7 +326,7 @@ msgid "Delete row"
 msgstr "행 삭제"
 
 #: src/format-library/image/inline.tsx:151
-#: src/block-library/image/edit.tsx:246
+#: src/block-library/image/edit.tsx:284
 msgid "Describes the image for screen readers."
 msgstr "스크린 리더를 위해 이미지를 설명합니다."
 
@@ -264,7 +339,7 @@ msgstr "이 키보드 단축키 표시."
 msgid "Document Overview"
 msgstr "문서 개요"
 
-#: src/block-library/image/edit.tsx:162
+#: src/block-library/image/edit.tsx:195
 msgid "Edit image"
 msgstr "이미지 편집"
 
@@ -272,7 +347,7 @@ msgstr "이미지 편집"
 msgid "Edit table"
 msgstr "테이블 편집"
 
-#: src/components/ai-sidebar/chat.tsx:78
+#: src/components/ai-sidebar/chat.tsx:106
 msgid "Edited the document."
 msgstr "문서를 편집했습니다."
 
@@ -281,12 +356,16 @@ msgid "Editing the document…"
 msgstr "문서를 편집하는 중…"
 
 #: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:236
+#: src/block-library/image/edit.tsx:276
 msgid "Enter alt text…"
 msgstr "대체 텍스트 입력…"
 
+#: src/block-library/image/edit.tsx:275
+msgid "Enter caption…"
+msgstr "캡션 입력…"
+
 #: src/format-library/image/inline.tsx:160
-#: src/block-library/image/edit.tsx:256
+#: src/block-library/image/edit.tsx:308
 msgid "Enter title…"
 msgstr "제목 입력…"
 
@@ -310,7 +389,7 @@ msgctxt "slide pattern"
 msgid "Export when you are ready"
 msgstr "준비되면 내보내기"
 
-#: src/block-library/image/edit.tsx:291
+#: src/block-library/image/edit.tsx:366
 msgid "Failed to load image."
 msgstr "이미지를 불러오지 못했습니다."
 
@@ -319,16 +398,29 @@ msgctxt "slide pattern"
 msgid "File for each deck"
 msgstr "프레젠테이션당 파일 수"
 
+#: src/block-library/image/marp-image-settings.tsx:440
+msgid "Filters"
+msgstr "필터"
+
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "메시지에 집중하기"
+
+#: src/block-library/html/marp-directive-settings.tsx:202
+msgid "Following slides"
+msgstr "이후 슬라이드"
+
+#: src/block-library/html/marp-directive-settings.tsx:84
+msgid "Follows the setting of the deck."
+msgstr "덱 설정을 따릅니다."
 
 #: src/components/front-matter-editor/index.tsx:537
 msgid "Font"
 msgstr "글꼴"
 
 #: src/components/front-matter-editor/index.tsx:353
+#: src/block-library/html/marp-directive-settings.tsx:302
 msgid "Footer"
 msgstr "바닥글"
 
@@ -366,6 +458,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:342
+#: src/block-library/html/marp-directive-settings.tsx:293
 msgid "Header"
 msgstr "머리글"
 
@@ -442,11 +535,31 @@ msgctxt "slide pattern"
 msgid "Heading, text and list in two columns"
 msgstr "제목, 텍스트와 목록의 2단 구성"
 
+#: src/block-library/image/marp-image-settings.tsx:396
+msgid "Height"
+msgstr "높이"
+
+#: src/block-library/html/marp-directive-settings.tsx:281
+msgid "Hide"
+msgstr "숨기기"
+
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "문서 개요 숨기기"
 
-#: src/block-library/image/edit.tsx:76
+#: src/block-library/html/marp-directive-settings.tsx:79
+msgid "Hides the page number without counting this slide."
+msgstr "이 슬라이드를 세지 않고 페이지 번호를 숨깁니다."
+
+#: src/block-library/html/marp-directive-settings.tsx:72
+msgid "Hides the page number."
+msgstr "페이지 번호를 숨깁니다."
+
+#: src/block-library/html/marp-directive-settings.tsx:285
+msgid "Hold"
+msgstr "유지"
+
+#: src/block-library/image/edit.tsx:109
 msgid "Image"
 msgstr "이미지"
 
@@ -477,6 +590,10 @@ msgstr "중요"
 #: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "들여쓰기"
+
+#: src/block-library/image/marp-image-settings.tsx:276
+msgid "Inline"
+msgstr "인라인"
 
 #: src/format-library/code.tsx:17
 msgid "Inline code"
@@ -510,6 +627,10 @@ msgstr "뒤에 행 삽입"
 msgid "Insert row before"
 msgstr "앞에 행 삽입"
 
+#: src/block-library/html/marp-directive-settings.tsx:57
+msgid "Inverts the colors of the slide."
+msgstr "슬라이드 색상을 반전합니다."
+
 #: src/format-library/italic.tsx:17
 msgid "Italic"
 msgstr "이탤릭"
@@ -523,10 +644,24 @@ msgstr "모든 버전 보관하기"
 msgid "Language"
 msgstr "언어"
 
+#: src/block-library/image/marp-image-settings.tsx:411
+msgid "Leave empty to size the image automatically."
+msgstr "비워 두면 크기가 자동으로 정해집니다."
+
+#: src/block-library/image/marp-image-settings.tsx:284
+msgid "Left"
+msgstr "왼쪽"
+
 # %d: The line number.
 #: src/ai/selection-summary.ts:22
 msgid "Line %d"
 msgstr "%d번째 줄"
+
+#: src/block-library/image/marp-image-settings.tsx:421
+msgid ""
+"Lines up the background images of the slide from top to bottom instead of "
+"side by side."
+msgstr "슬라이드의 배경 이미지를 나란히 대신 위에서 아래로 배치합니다."
 
 #: src/format-library/link/index.tsx:36
 msgid "Link"
@@ -569,19 +704,25 @@ msgstr "Marp"
 msgid "Marp Mode"
 msgstr "Marp 모드"
 
-#: src/block-library/image/edit.tsx:242
-msgid ""
-"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
-"other words become the alt text, or the caption of a background image."
-msgstr ""
-"bg, w:200px, sepia 같은 Marp 키워드로 레이아웃과 크기를 지정합니다. 나머지 단"
-"어는 대체 텍스트가 되며, 배경 이미지에서는 캡션이 됩니다."
+#: src/block-library/image/edit.tsx:344
+msgid "Marp image settings"
+msgstr "Marp 이미지 설정"
 
 #: src/components/slide-pattern-modal/index.tsx:222
 msgid "Marp patterns"
 msgstr "Marp 패턴"
 
-#: src/components/ai-sidebar/chat.tsx:296
+# %s: Words of the alt text, such as "right".
+#: src/block-library/image/marp-image-settings.tsx:521
+#: src/block-library/image/edit.tsx:295
+msgid "Marp reads these words as settings: %s"
+msgstr "Marp는 이 단어를 설정으로 읽습니다: %s"
+
+#: src/block-library/html/edit.tsx:80
+msgid "Marp slide settings"
+msgstr "Marp 슬라이드 설정"
+
+#: src/components/ai-sidebar/chat.tsx:316
 msgid "Message"
 msgstr "메시지"
 
@@ -608,6 +749,10 @@ msgstr "새 대화"
 msgid "No block selected"
 msgstr "선택된 블록 없음"
 
+#: src/block-library/image/marp-image-settings.tsx:476
+msgid "No filters."
+msgstr "필터가 없습니다."
+
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "일치하는 언어가 없습니다."
@@ -630,13 +775,21 @@ msgstr "전용 앱"
 msgid "Open by default"
 msgstr "기본적으로 열기"
 
-#: src/components/ai-sidebar/chat.tsx:268
+#: src/components/ai-sidebar/chat.tsx:288
 msgid "Open settings"
 msgstr "설정 열기"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
 msgstr "순서 있음"
+
+#: src/block-library/image/marp-image-settings.tsx:346
+msgid "Original"
+msgstr "원본 크기"
+
+#: src/block-library/html/marp-directive-settings.tsx:233
+msgid "Other classes"
+msgstr "기타 클래스"
 
 #: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
@@ -645,6 +798,10 @@ msgstr "내어쓰기"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "아웃라인"
+
+#: src/block-library/html/marp-directive-settings.tsx:259
+msgid "Page number"
+msgstr "페이지 번호"
 
 #: src/components/front-matter-editor/index.tsx:364
 msgid "Paginate"
@@ -655,10 +812,14 @@ msgstr "페이지 번호"
 msgid "Paste or type URL"
 msgstr "URL 붙여넣기 또는 입력"
 
-#: src/block-library/image/edit.tsx:104
-#: src/block-library/image/edit.tsx:200
+#: src/block-library/image/edit.tsx:137
+#: src/block-library/image/edit.tsx:233
 msgid "Paste or type URL or file path"
 msgstr "URL 또는 파일 경로 붙여넣기 또는 입력"
+
+#: src/block-library/image/marp-image-settings.tsx:250
+msgid "Placement"
+msgstr "배치"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:43
 #: src/marp-patterns/patterns/heading-and-three-numbers.ts:33
@@ -721,7 +882,11 @@ msgstr "마지막 실행 취소를 다시 실행."
 msgid "Remove a link."
 msgstr "링크 제거."
 
-#: src/block-library/image/edit.tsx:274
+#: src/block-library/image/marp-image-settings.tsx:500
+msgid "Remove filter"
+msgstr "필터 제거"
+
+#: src/block-library/image/edit.tsx:326
 msgid "Reset"
 msgstr "초기화"
 
@@ -733,6 +898,10 @@ msgstr "검색 초기화"
 msgid "Resize side panel"
 msgstr "사이드 패널 크기 조절"
 
+#: src/block-library/image/marp-image-settings.tsx:288
+msgid "Right"
+msgstr "오른쪽"
+
 #: src/block-library/table/edit.tsx:253
 msgid "Row count"
 msgstr "행 수"
@@ -740,6 +909,11 @@ msgstr "행 수"
 #: src/components/front-matter-editor/index.tsx:513
 msgid "Sans-serif"
 msgstr "고딕"
+
+#: src/block-library/image/marp-image-settings.tsx:350
+#: src/block-library/image/marp-image-settings.tsx:357
+msgid "Scale"
+msgstr "배율"
 
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
@@ -764,7 +938,7 @@ msgstr "입력하면서 각 슬라이드 확인"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "다른 설정은 <a>Marp 문서</a>를 참고하세요."
 
-#: src/components/ai-sidebar/chat.tsx:319
+#: src/components/ai-sidebar/chat.tsx:339
 msgid "Send"
 msgstr "보내기"
 
@@ -772,9 +946,14 @@ msgstr "보내기"
 msgid "Serif"
 msgstr "명조"
 
-#: src/components/ai-sidebar/chat.tsx:258
+#: src/components/ai-sidebar/chat.tsx:278
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI 어시스턴트를 사용하려면 API 키를 설정하세요."
+
+#: src/block-library/image/edit.tsx:280
+msgid ""
+"Set the placement, size and filters from Marp image settings in the toolbar."
+msgstr "배치, 크기, 필터는 도구 모음의 Marp 이미지 설정에서 지정합니다."
 
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:42
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:37
@@ -782,6 +961,10 @@ msgstr "AI 어시스턴트를 사용하려면 API 키를 설정하세요."
 msgctxt "slide pattern"
 msgid "Share"
 msgstr "공유"
+
+#: src/block-library/html/marp-directive-settings.tsx:277
+msgid "Show"
+msgstr "표시"
 
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
@@ -798,9 +981,17 @@ msgstr "슬라이드를 전체 화면으로 표시"
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
-#: src/block-library/image/edit.tsx:260
+#: src/block-library/image/edit.tsx:312
 msgid "Shown as a tooltip on hover."
 msgstr "마우스를 올리면 툴팁으로 표시됩니다."
+
+#: src/block-library/html/marp-directive-settings.tsx:74
+msgid "Shows the page number without counting this slide."
+msgstr "이 슬라이드를 세지 않고 페이지 번호를 표시합니다."
+
+#: src/block-library/html/marp-directive-settings.tsx:70
+msgid "Shows the page number."
+msgstr "페이지 번호를 표시합니다."
 
 #: src/components/front-matter-editor/index.tsx:210
 msgid "Simple and clean, based on GitHub Markdown style."
@@ -809,6 +1000,10 @@ msgstr "GitHub Markdown 스타일 기반의 깔끔한 테마."
 #: src/components/front-matter-editor/index.tsx:315
 msgid "Size"
 msgstr "크기"
+
+#: src/block-library/html/marp-directive-settings.tsx:289
+msgid "Skip"
+msgstr "건너뛰기"
 
 #: src/block-library/separator/use-marp-title.ts:39
 #: src/block-library/separator/edit.tsx:25
@@ -845,11 +1040,19 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "텍스트로 만드는 슬라이드"
 
-#: src/components/ai-sidebar/chat.tsx:310
+#: src/block-library/image/marp-image-settings.tsx:294
+msgid "Split width"
+msgstr "분할 너비"
+
+#: src/block-library/image/marp-image-settings.tsx:420
+msgid "Stack vertically"
+msgstr "세로로 쌓기"
+
+#: src/components/ai-sidebar/chat.tsx:330
 msgid "Stop"
 msgstr "중지"
 
-#: src/components/ai-sidebar/chat.tsx:105
+#: src/components/ai-sidebar/chat.tsx:133
 msgid "Stopped."
 msgstr "중지했습니다."
 
@@ -865,6 +1068,10 @@ msgstr "선택한 텍스트에 취소선을 표시합니다."
 msgid "Switch between the visual editor and the code editor."
 msgstr "비주얼 편집기와 코드 편집기 간에 전환합니다."
 
+#: src/block-library/html/marp-directive-settings.tsx:59
+msgid "Switches to the theme's alternate color scheme."
+msgstr "테마의 대체 색 구성표로 전환합니다."
+
 #: src/block-library/table/edit.tsx:231
 msgid "Table"
 msgstr "테이블"
@@ -874,15 +1081,27 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "텍스트"
 
+#: src/block-library/html/marp-directive-settings.tsx:323
+msgid "Text color"
+msgstr "텍스트 색상"
+
 #: src/components/front-matter-editor/index.tsx:354
 msgid "Text shown at the bottom of each slide."
 msgstr "각 슬라이드 하단에 표시되는 텍스트."
+
+#: src/block-library/html/marp-directive-settings.tsx:303
+msgid "Text shown at the bottom of the slide."
+msgstr "슬라이드 아래쪽에 표시되는 텍스트입니다."
 
 #: src/components/front-matter-editor/index.tsx:343
 msgid "Text shown at the top of each slide."
 msgstr "각 슬라이드 상단에 표시되는 텍스트."
 
-#: src/components/ai-sidebar/chat.tsx:112
+#: src/block-library/html/marp-directive-settings.tsx:294
+msgid "Text shown at the top of the slide."
+msgstr "슬라이드 위쪽에 표시되는 텍스트입니다."
+
+#: src/components/ai-sidebar/chat.tsx:140
 msgid "The answer could not be loaded."
 msgstr "답변을 불러오지 못했습니다."
 
@@ -894,7 +1113,7 @@ msgstr "슬라이드의 가로세로 비율."
 msgid "The diagram could not be rendered."
 msgstr "다이어그램을 렌더링할 수 없습니다."
 
-#: src/components/ai-sidebar/chat.tsx:83
+#: src/components/ai-sidebar/chat.tsx:111
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -908,6 +1127,35 @@ msgstr "슬라이드의 글꼴 스타일입니다. 실제 글꼴은 기기마다
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "수식을 렌더링할 수 없습니다."
+
+#: src/block-library/image/marp-image-settings.tsx:257
+msgid "The image fills the slide, or one side of it, behind the content."
+msgstr "이미지가 콘텐츠 뒤에서 슬라이드 전체 또는 한쪽을 채웁니다."
+
+#: src/block-library/image/marp-image-settings.tsx:253
+msgid "The image sits in the slide content."
+msgstr "이미지가 슬라이드 콘텐츠 안에 표시됩니다."
+
+#: src/block-library/html/marp-directive-settings.tsx:184
+msgid "The settings apply to this slide and the slides after it."
+msgstr "이 슬라이드와 이후 슬라이드에 적용됩니다."
+
+#: src/block-library/html/marp-directive-settings.tsx:180
+msgid "The settings apply to this slide only."
+msgstr "이 슬라이드에만 적용됩니다."
+
+#: src/block-library/image/marp-image-settings.tsx:300
+msgid "The share of the slide the image takes, such as 40%."
+msgstr "이미지가 차지하는 슬라이드의 비율. 예: 40%."
+
+#: src/block-library/image/marp-image-settings.tsx:363
+msgid "The size relative to the original image, such as 50%."
+msgstr "원본 이미지에 대한 크기. 예: 50%."
+
+#: src/block-library/image/marp-image-settings.tsx:124
+msgid ""
+"The x and y offsets, then an optional blur and color, separated by commas."
+msgstr "x, y 오프셋 다음에 선택적으로 흐림과 색상을 쉼표로 구분해 지정합니다."
 
 #: src/components/front-matter-editor/index.tsx:249
 msgid "Theme"
@@ -924,6 +1172,10 @@ msgstr "테마 글꼴"
 #: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
 msgstr "생각하는 중…"
+
+#: src/block-library/html/marp-directive-settings.tsx:198
+msgid "This slide"
+msgstr "이 슬라이드"
 
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
@@ -942,7 +1194,7 @@ msgstr "팁"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/components/slide-pattern-modal/index.tsx:70
-#: src/block-library/image/edit.tsx:253
+#: src/block-library/image/edit.tsx:305
 msgid "Title"
 msgstr "제목"
 
@@ -1027,8 +1279,8 @@ msgid "Type / to choose a block"
 msgstr "입력 / 블록 선택"
 
 #: src/format-library/image/inline.tsx:118
-#: src/block-library/image/edit.tsx:100
-#: src/block-library/image/edit.tsx:196
+#: src/block-library/image/edit.tsx:133
+#: src/block-library/image/edit.tsx:229
 msgid "URL or file path"
 msgstr "URL 또는 파일 경로"
 
@@ -1054,7 +1306,7 @@ msgstr "마지막 변경사항을 취소."
 msgid "Unordered"
 msgstr "순서 없음"
 
-#: src/block-library/image/edit.tsx:77
+#: src/block-library/image/edit.tsx:110
 msgid "Upload an image from your device or insert from a URL."
 msgstr "기기에서 이미지를 업로드하거나 URL로 삽입하세요."
 
@@ -1065,11 +1317,6 @@ msgctxt "slide pattern"
 msgid "Use any text editor"
 msgstr "아무 텍스트 편집기나 사용"
 
-#: style.css
-#. Description of the generic
-msgid "Visual markdown block editor."
-msgstr "비주얼 Markdown 블록 편집기."
-
 #: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"
 msgstr "답변을 기다리는 중…"
@@ -1078,6 +1325,10 @@ msgstr "답변을 기다리는 중…"
 msgid "Warning"
 msgstr "경고"
 
+#: src/block-library/image/marp-image-settings.tsx:379
+msgid "Width"
+msgstr "너비"
+
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:34
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:29
 #: src/marp-patterns/patterns/heading-and-four-cards.ts:29
@@ -1085,7 +1336,7 @@ msgctxt "slide pattern"
 msgid "Write"
 msgstr "작성"
 
-#: src/block-library/html/edit.tsx:43
+#: src/block-library/html/edit.tsx:52
 msgid "Write HTML…"
 msgstr "HTML 작성…"
 
@@ -1148,3 +1399,12 @@ msgstr "YAML 프런트 매터"
 #: src/components/front-matter-editor/index.tsx:493
 msgid "Your own CSS in style overrides some of these colors."
 msgstr "style의 직접 작성한 CSS가 일부 색상을 덮어씁니다."
+
+# %s: An example value, such as "1.5".
+# %s: An example value, such as "#f0f0f0".
+#: src/block-library/image/marp-image-settings.tsx:485
+#: src/block-library/html/marp-directive-settings.tsx:314
+#: src/block-library/html/marp-directive-settings.tsx:326
+#: src/block-library/html/marp-directive-settings.tsx:340
+msgid "e.g. %s"
+msgstr "예: %s"

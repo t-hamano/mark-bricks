@@ -8,16 +8,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T11:40:38.403Z\n"
-"PO-Revision-Date: 2026-11-14T11:40:39.581Z\n"
+"POT-Creation-Date: 2026-11-14T12:14:49.238Z\n"
+"PO-Revision-Date: 2026-11-14T12:14:50.576Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: cs_CZ\n"
 "X-Domain: mark-bricks\n"
 
+# 1: The number of tokens the AI model read. 2: How many of them it read from the cache, at a lower price. 3: The number of tokens it wrote.
+#: src/components/ai-sidebar/chat.tsx:74
+msgid "%1$s input tokens (%2$s cached), %3$s output tokens"
+msgstr "Vstupní tokeny: %1$s (z mezipaměti %2$s), výstupní tokeny: %3$s"
+
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:123
+#: src/components/ai-sidebar/chat.tsx:85
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "Vstupní tokeny: %1$s, výstupní tokeny: %2$s"
 
@@ -62,10 +67,21 @@ msgctxt "slide pattern"
 msgid "3"
 msgstr "3"
 
-#: style.css
-#. Name of the generic
-msgid "@mark-bricks/editor"
-msgstr ""
+#: src/block-library/html/marp-directive-settings.tsx:334
+msgid "A CSS background image, such as a gradient."
+msgstr "Obrázek pozadí v CSS, například přechod."
+
+#: src/block-library/image/marp-image-settings.tsx:105
+msgid "A length of 0 or more, such as 10px."
+msgstr "Délka 0 nebo více, například 10px."
+
+#: src/block-library/image/marp-image-settings.tsx:117
+msgid "A number from 0 to 1, or a percentage up to 100%."
+msgstr "Číslo od 0 do 1 nebo procento do 100%."
+
+#: src/block-library/image/marp-image-settings.tsx:109
+msgid "A number or percentage of 0 or more. 1 keeps the original."
+msgstr "Číslo nebo procento 0 nebo více. 1 zachová původní stav."
 
 #: src/marp-patterns/patterns/title.ts:26
 #: src/marp-patterns/patterns/title-on-image.ts:29
@@ -91,10 +107,9 @@ msgstr "Snímek napsaný v Markdownu"
 msgid "AI Assistant"
 msgstr "Asistent AI"
 
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr "Aki Hamano"
+#: src/block-library/image/marp-image-settings.tsx:444
+msgid "Add filter"
+msgstr "Přidat filtr"
 
 #: src/marp-patterns/patterns/quote-on-image.ts:29
 msgctxt "slide pattern"
@@ -110,9 +125,13 @@ msgid "All categories"
 msgstr "Všechny kategorie"
 
 #: src/format-library/image/inline.tsx:147
-#: src/block-library/image/edit.tsx:233
+#: src/block-library/image/edit.tsx:269
 msgid "Alt text"
 msgstr "Alternativní text"
+
+#: src/block-library/image/marp-image-settings.tsx:122
+msgid "An angle, such as 90deg or 0.5turn."
+msgstr "Úhel, například 90deg nebo 0.5turn."
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
 msgctxt "slide pattern"
@@ -120,22 +139,47 @@ msgid "Any editor"
 msgstr "Libovolný editor"
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/edit.tsx:126
-#: src/block-library/image/edit.tsx:280
+#: src/block-library/image/edit.tsx:159
+#: src/block-library/image/edit.tsx:332
 msgid "Apply"
 msgstr "Použít"
 
-#: src/components/ai-sidebar/chat.tsx:298
+#: src/block-library/html/marp-directive-settings.tsx:177
+msgid "Apply to"
+msgstr "Použít na"
+
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Ask the AI Assistant"
 msgstr "Zeptejte se asistenta AI"
 
-#: src/components/ai-sidebar/chat.tsx:276
+#: src/components/ai-sidebar/chat.tsx:296
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
 msgstr ""
 "Požádejte asistenta AI o napsání nebo úpravu. Váš výběr, nebo řádek s "
 "kurzorem v editoru kódu, se odešle spolu se zprávou."
+
+#: src/block-library/image/marp-image-settings.tsx:380
+#: src/block-library/image/marp-image-settings.tsx:397
+msgid "Auto"
+msgstr "Automaticky"
+
+#: src/block-library/image/marp-image-settings.tsx:280
+msgid "Background"
+msgstr "Pozadí"
+
+#: src/block-library/html/marp-directive-settings.tsx:311
+msgid "Background color"
+msgstr "Barva pozadí"
+
+#: src/block-library/html/marp-directive-settings.tsx:333
+msgid "Background image"
+msgstr "Obrázek pozadí"
+
+#: src/block-library/image/marp-image-settings.tsx:310
+msgid "Background size"
+msgstr "Velikost pozadí"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:47
 msgctxt "slide pattern"
@@ -156,8 +200,8 @@ msgid "Bold"
 msgstr "Tučné"
 
 #: src/format-library/image/inline.tsx:137
-#: src/block-library/image/edit.tsx:122
-#: src/block-library/image/edit.tsx:218
+#: src/block-library/image/edit.tsx:155
+#: src/block-library/image/edit.tsx:251
 msgid "Browse local file"
 msgstr "Procházet místní soubor"
 
@@ -171,6 +215,10 @@ msgctxt "slide pattern"
 msgid "By hand"
 msgstr "Ručně"
 
+#: src/block-library/image/edit.tsx:268
+msgid "Caption"
+msgstr "Popisek"
+
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
 msgstr "Kategorie"
@@ -183,6 +231,10 @@ msgstr "Upozornění"
 msgid "Cell content"
 msgstr "Obsah buňky"
 
+#: src/block-library/html/marp-directive-settings.tsx:55
+msgid "Centers the content of the slide."
+msgstr "Zarovná obsah snímku na střed."
+
 #: src/block-library/code/edit.tsx:99
 msgid "Change language"
 msgstr "Změnit jazyk"
@@ -194,6 +246,20 @@ msgstr "Změnit typ bloku po přidání nového odstavce."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Vyberte jazyk…"
+
+#: src/block-library/html/marp-directive-settings.tsx:208
+#: src/block-library/html/marp-directive-settings.tsx:234
+msgid "Class"
+msgstr "Třída"
+
+#: src/block-library/html/marp-directive-settings.tsx:246
+msgid "Classes of the slide, separated by spaces."
+msgstr "Třídy snímku oddělené mezerami."
+
+# %s: A theme name, such as "gaia".
+#: src/block-library/html/marp-directive-settings.tsx:240
+msgid "Classes that the %s theme does not provide, separated by spaces."
+msgstr "Třídy, které motiv %s neposkytuje, oddělené mezerami."
 
 #: src/components/front-matter-editor/index.tsx:218
 msgid "Classic look with a colored background."
@@ -230,15 +296,24 @@ msgstr "Barevné schéma"
 msgid "Column count"
 msgstr "Počet sloupců"
 
+#: src/block-library/image/marp-image-settings.tsx:342
+msgid "Contain"
+msgstr "Přizpůsobit"
+
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
 msgstr "Převede označený text na odkaz."
+
+#: src/block-library/image/marp-image-settings.tsx:338
+msgid "Cover"
+msgstr "Vyplnit"
 
 #: src/block-library/table/edit.tsx:259
 msgid "Create Table"
 msgstr "Vytvořit"
 
 #: src/block-library/quote/edit.tsx:151
+#: src/block-library/html/marp-directive-settings.tsx:273
 msgid "Default"
 msgstr "Výchozí"
 
@@ -251,7 +326,7 @@ msgid "Delete row"
 msgstr "Smazat řádek"
 
 #: src/format-library/image/inline.tsx:151
-#: src/block-library/image/edit.tsx:246
+#: src/block-library/image/edit.tsx:284
 msgid "Describes the image for screen readers."
 msgstr "Popisuje obrázek pro čtečky obrazovky."
 
@@ -264,7 +339,7 @@ msgstr "Zobrazit tyto klávesové zkratky."
 msgid "Document Overview"
 msgstr "Přehled dokumentu"
 
-#: src/block-library/image/edit.tsx:162
+#: src/block-library/image/edit.tsx:195
 msgid "Edit image"
 msgstr "Upravit obrázek"
 
@@ -272,7 +347,7 @@ msgstr "Upravit obrázek"
 msgid "Edit table"
 msgstr "Upravit tabulku"
 
-#: src/components/ai-sidebar/chat.tsx:78
+#: src/components/ai-sidebar/chat.tsx:106
 msgid "Edited the document."
 msgstr "Dokument byl upraven."
 
@@ -281,12 +356,16 @@ msgid "Editing the document…"
 msgstr "Upravuji dokument…"
 
 #: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:236
+#: src/block-library/image/edit.tsx:276
 msgid "Enter alt text…"
 msgstr "Zadejte alternativní text…"
 
+#: src/block-library/image/edit.tsx:275
+msgid "Enter caption…"
+msgstr "Zadejte popisek…"
+
 #: src/format-library/image/inline.tsx:160
-#: src/block-library/image/edit.tsx:256
+#: src/block-library/image/edit.tsx:308
 msgid "Enter title…"
 msgstr "Zadejte název…"
 
@@ -310,7 +389,7 @@ msgctxt "slide pattern"
 msgid "Export when you are ready"
 msgstr "Exportujte, až budete připraveni"
 
-#: src/block-library/image/edit.tsx:291
+#: src/block-library/image/edit.tsx:366
 msgid "Failed to load image."
 msgstr "Obrázek se nepodařilo načíst."
 
@@ -319,16 +398,29 @@ msgctxt "slide pattern"
 msgid "File for each deck"
 msgstr "Soubor pro každou prezentaci"
 
+#: src/block-library/image/marp-image-settings.tsx:440
+msgid "Filters"
+msgstr "Filtry"
+
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
 msgid "Focus on your message"
 msgstr "Soustřeďte se na sdělení"
+
+#: src/block-library/html/marp-directive-settings.tsx:202
+msgid "Following slides"
+msgstr "Následující snímky"
+
+#: src/block-library/html/marp-directive-settings.tsx:84
+msgid "Follows the setting of the deck."
+msgstr "Řídí se nastavením prezentace."
 
 #: src/components/front-matter-editor/index.tsx:537
 msgid "Font"
 msgstr "Písmo"
 
 #: src/components/front-matter-editor/index.tsx:353
+#: src/block-library/html/marp-directive-settings.tsx:302
 msgid "Footer"
 msgstr "Zápatí"
 
@@ -366,6 +458,7 @@ msgid "H%d"
 msgstr "H%d"
 
 #: src/components/front-matter-editor/index.tsx:342
+#: src/block-library/html/marp-directive-settings.tsx:293
 msgid "Header"
 msgstr "Záhlaví"
 
@@ -442,11 +535,31 @@ msgctxt "slide pattern"
 msgid "Heading, text and list in two columns"
 msgstr "Nadpis, text a seznam ve dvou sloupcích"
 
+#: src/block-library/image/marp-image-settings.tsx:396
+msgid "Height"
+msgstr "Výška"
+
+#: src/block-library/html/marp-directive-settings.tsx:281
+msgid "Hide"
+msgstr "Skrýt"
+
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "Skrýt přehled dokumentu"
 
-#: src/block-library/image/edit.tsx:76
+#: src/block-library/html/marp-directive-settings.tsx:79
+msgid "Hides the page number without counting this slide."
+msgstr "Skryje číslo stránky a tento snímek nezapočítá."
+
+#: src/block-library/html/marp-directive-settings.tsx:72
+msgid "Hides the page number."
+msgstr "Skryje číslo stránky."
+
+#: src/block-library/html/marp-directive-settings.tsx:285
+msgid "Hold"
+msgstr "Podržet"
+
+#: src/block-library/image/edit.tsx:109
 msgid "Image"
 msgstr "Obrázek"
 
@@ -477,6 +590,10 @@ msgstr "Důležité"
 #: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "Zvětšit odsazení"
+
+#: src/block-library/image/marp-image-settings.tsx:276
+msgid "Inline"
+msgstr "V textu"
 
 #: src/format-library/code.tsx:17
 msgid "Inline code"
@@ -510,6 +627,10 @@ msgstr "Vložit nový řádek dolů"
 msgid "Insert row before"
 msgstr "Vložit nový řádek nahoru"
 
+#: src/block-library/html/marp-directive-settings.tsx:57
+msgid "Inverts the colors of the slide."
+msgstr "Invertuje barvy snímku."
+
 #: src/format-library/italic.tsx:17
 msgid "Italic"
 msgstr "Kurzíva"
@@ -523,10 +644,24 @@ msgstr "Uchovejte každou verzi"
 msgid "Language"
 msgstr "Jazyk"
 
+#: src/block-library/image/marp-image-settings.tsx:411
+msgid "Leave empty to size the image automatically."
+msgstr "Ponechte prázdné pro automatickou velikost."
+
+#: src/block-library/image/marp-image-settings.tsx:284
+msgid "Left"
+msgstr "Vlevo"
+
 # %d: The line number.
 #: src/ai/selection-summary.ts:22
 msgid "Line %d"
 msgstr "Řádek %d"
+
+#: src/block-library/image/marp-image-settings.tsx:421
+msgid ""
+"Lines up the background images of the slide from top to bottom instead of "
+"side by side."
+msgstr "Řadí obrázky pozadí snímku shora dolů místo vedle sebe."
 
 #: src/format-library/link/index.tsx:36
 msgid "Link"
@@ -569,19 +704,25 @@ msgstr "Marp"
 msgid "Marp Mode"
 msgstr "Režim Marp"
 
-#: src/block-library/image/edit.tsx:242
-msgid ""
-"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
-"other words become the alt text, or the caption of a background image."
-msgstr ""
-"Klíčová slova Marp jako bg, w:200px nebo sepia určují rozvržení a velikost. "
-"Ostatní slova se stanou alternativním textem nebo popiskem obrázku na pozadí."
+#: src/block-library/image/edit.tsx:344
+msgid "Marp image settings"
+msgstr "Nastavení obrázku Marp"
 
 #: src/components/slide-pattern-modal/index.tsx:222
 msgid "Marp patterns"
 msgstr "Vzory Marp"
 
-#: src/components/ai-sidebar/chat.tsx:296
+# %s: Words of the alt text, such as "right".
+#: src/block-library/image/marp-image-settings.tsx:521
+#: src/block-library/image/edit.tsx:295
+msgid "Marp reads these words as settings: %s"
+msgstr "Marp čte tato slova jako nastavení: %s"
+
+#: src/block-library/html/edit.tsx:80
+msgid "Marp slide settings"
+msgstr "Nastavení snímku Marp"
+
+#: src/components/ai-sidebar/chat.tsx:316
 msgid "Message"
 msgstr "Zpráva"
 
@@ -609,6 +750,10 @@ msgstr "Nová konverzace"
 msgid "No block selected"
 msgstr "Není vybrán žádný blok"
 
+#: src/block-library/image/marp-image-settings.tsx:476
+msgid "No filters."
+msgstr "Žádné filtry."
+
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "Žádný odpovídající jazyk."
@@ -631,13 +776,21 @@ msgstr "Jedna aplikace"
 msgid "Open by default"
 msgstr "Ve výchozím nastavení otevřeno"
 
-#: src/components/ai-sidebar/chat.tsx:268
+#: src/components/ai-sidebar/chat.tsx:288
 msgid "Open settings"
 msgstr "Otevřít nastavení"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
 msgstr "Číslovaný"
+
+#: src/block-library/image/marp-image-settings.tsx:346
+msgid "Original"
+msgstr "Původní"
+
+#: src/block-library/html/marp-directive-settings.tsx:233
+msgid "Other classes"
+msgstr "Další třídy"
 
 #: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
@@ -646,6 +799,10 @@ msgstr "Zmenšit odsazení"
 #: src/components/list-view-sidebar/index.tsx:80
 msgid "Outline"
 msgstr "Osnova"
+
+#: src/block-library/html/marp-directive-settings.tsx:259
+msgid "Page number"
+msgstr "Číslo stránky"
 
 #: src/components/front-matter-editor/index.tsx:364
 msgid "Paginate"
@@ -656,10 +813,14 @@ msgstr "Číslování stránek"
 msgid "Paste or type URL"
 msgstr "Vložte nebo napište adresu URL"
 
-#: src/block-library/image/edit.tsx:104
-#: src/block-library/image/edit.tsx:200
+#: src/block-library/image/edit.tsx:137
+#: src/block-library/image/edit.tsx:233
 msgid "Paste or type URL or file path"
 msgstr "Vložte nebo napište adresu URL nebo cestu k souboru"
+
+#: src/block-library/image/marp-image-settings.tsx:250
+msgid "Placement"
+msgstr "Umístění"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:43
 #: src/marp-patterns/patterns/heading-and-three-numbers.ts:33
@@ -722,7 +883,11 @@ msgstr "Provést znovu změny."
 msgid "Remove a link."
 msgstr "Odstranit odkaz."
 
-#: src/block-library/image/edit.tsx:274
+#: src/block-library/image/marp-image-settings.tsx:500
+msgid "Remove filter"
+msgstr "Odebrat filtr"
+
+#: src/block-library/image/edit.tsx:326
 msgid "Reset"
 msgstr "Obnovit"
 
@@ -734,6 +899,10 @@ msgstr "Resetovat vyhledávání"
 msgid "Resize side panel"
 msgstr "Změnit velikost bočního panelu"
 
+#: src/block-library/image/marp-image-settings.tsx:288
+msgid "Right"
+msgstr "Vpravo"
+
 #: src/block-library/table/edit.tsx:253
 msgid "Row count"
 msgstr "Počet řádků"
@@ -741,6 +910,11 @@ msgstr "Počet řádků"
 #: src/components/front-matter-editor/index.tsx:513
 msgid "Sans-serif"
 msgstr "Bezpatkové"
+
+#: src/block-library/image/marp-image-settings.tsx:350
+#: src/block-library/image/marp-image-settings.tsx:357
+msgid "Scale"
+msgstr "Měřítko"
 
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
@@ -765,7 +939,7 @@ msgstr "Každý snímek vidíte při psaní"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Další nastavení najdete v <a>dokumentaci Marp</a>."
 
-#: src/components/ai-sidebar/chat.tsx:319
+#: src/components/ai-sidebar/chat.tsx:339
 msgid "Send"
 msgstr "Odeslat"
 
@@ -773,9 +947,16 @@ msgstr "Odeslat"
 msgid "Serif"
 msgstr "Patkové"
 
-#: src/components/ai-sidebar/chat.tsx:258
+#: src/components/ai-sidebar/chat.tsx:278
 msgid "Set an API key to use the AI Assistant."
 msgstr "Pro použití asistenta AI nastavte klíč API."
+
+#: src/block-library/image/edit.tsx:280
+msgid ""
+"Set the placement, size and filters from Marp image settings in the toolbar."
+msgstr ""
+"Umístění, velikost a filtry nastavíte v nastavení obrázku Marp na panelu "
+"nástrojů."
 
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:42
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:37
@@ -783,6 +964,10 @@ msgstr "Pro použití asistenta AI nastavte klíč API."
 msgctxt "slide pattern"
 msgid "Share"
 msgstr "Sdílet"
+
+#: src/block-library/html/marp-directive-settings.tsx:277
+msgid "Show"
+msgstr "Zobrazit"
 
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
@@ -799,9 +984,17 @@ msgstr "Zobrazte snímky na celé obrazovce"
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
-#: src/block-library/image/edit.tsx:260
+#: src/block-library/image/edit.tsx:312
 msgid "Shown as a tooltip on hover."
 msgstr "Zobrazí se jako popisek při najetí myší."
+
+#: src/block-library/html/marp-directive-settings.tsx:74
+msgid "Shows the page number without counting this slide."
+msgstr "Zobrazí číslo stránky a tento snímek nezapočítá."
+
+#: src/block-library/html/marp-directive-settings.tsx:70
+msgid "Shows the page number."
+msgstr "Zobrazí číslo stránky."
 
 #: src/components/front-matter-editor/index.tsx:210
 msgid "Simple and clean, based on GitHub Markdown style."
@@ -810,6 +1003,10 @@ msgstr "Jednoduchý a čistý, založený na stylu GitHub Markdown."
 #: src/components/front-matter-editor/index.tsx:315
 msgid "Size"
 msgstr "Velikost"
+
+#: src/block-library/html/marp-directive-settings.tsx:289
+msgid "Skip"
+msgstr "Přeskočit"
 
 #: src/block-library/separator/use-marp-title.ts:39
 #: src/block-library/separator/edit.tsx:25
@@ -846,11 +1043,19 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "Snímky jako prostý text"
 
-#: src/components/ai-sidebar/chat.tsx:310
+#: src/block-library/image/marp-image-settings.tsx:294
+msgid "Split width"
+msgstr "Šířka rozdělení"
+
+#: src/block-library/image/marp-image-settings.tsx:420
+msgid "Stack vertically"
+msgstr "Skládat svisle"
+
+#: src/components/ai-sidebar/chat.tsx:330
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/components/ai-sidebar/chat.tsx:105
+#: src/components/ai-sidebar/chat.tsx:133
 msgid "Stopped."
 msgstr "Zastaveno."
 
@@ -866,6 +1071,10 @@ msgstr "Vybraný text přeškrtni."
 msgid "Switch between the visual editor and the code editor."
 msgstr "Přepnout mezi vizuálním editorem a editorem kódu."
 
+#: src/block-library/html/marp-directive-settings.tsx:59
+msgid "Switches to the theme's alternate color scheme."
+msgstr "Přepne na alternativní barevné schéma motivu."
+
 #: src/block-library/table/edit.tsx:231
 msgid "Table"
 msgstr "Tabulka"
@@ -875,15 +1084,27 @@ msgctxt "slide pattern category"
 msgid "Text"
 msgstr "Text"
 
+#: src/block-library/html/marp-directive-settings.tsx:323
+msgid "Text color"
+msgstr "Barva textu"
+
 #: src/components/front-matter-editor/index.tsx:354
 msgid "Text shown at the bottom of each slide."
 msgstr "Text zobrazený v dolní části každého snímku."
+
+#: src/block-library/html/marp-directive-settings.tsx:303
+msgid "Text shown at the bottom of the slide."
+msgstr "Text zobrazený v dolní části snímku."
 
 #: src/components/front-matter-editor/index.tsx:343
 msgid "Text shown at the top of each slide."
 msgstr "Text zobrazený v horní části každého snímku."
 
-#: src/components/ai-sidebar/chat.tsx:112
+#: src/block-library/html/marp-directive-settings.tsx:294
+msgid "Text shown at the top of the slide."
+msgstr "Text zobrazený v horní části snímku."
+
+#: src/components/ai-sidebar/chat.tsx:140
 msgid "The answer could not be loaded."
 msgstr "Odpověď se nepodařilo načíst."
 
@@ -895,7 +1116,7 @@ msgstr "Poměr stran snímků."
 msgid "The diagram could not be rendered."
 msgstr "Diagram se nepodařilo vykreslit."
 
-#: src/components/ai-sidebar/chat.tsx:83
+#: src/components/ai-sidebar/chat.tsx:111
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -910,6 +1131,35 @@ msgstr "Styl písma snímků. Každé zařízení zobrazí vlastní písmo tohot
 #: src/block-library/math/preview.tsx:89
 msgid "The formula could not be rendered."
 msgstr "Vzorec se nepodařilo vykreslit."
+
+#: src/block-library/image/marp-image-settings.tsx:257
+msgid "The image fills the slide, or one side of it, behind the content."
+msgstr "Obrázek vyplní snímek nebo jeho jednu stranu za obsahem."
+
+#: src/block-library/image/marp-image-settings.tsx:253
+msgid "The image sits in the slide content."
+msgstr "Obrázek je součástí obsahu snímku."
+
+#: src/block-library/html/marp-directive-settings.tsx:184
+msgid "The settings apply to this slide and the slides after it."
+msgstr "Nastavení platí pro tento a všechny následující snímky."
+
+#: src/block-library/html/marp-directive-settings.tsx:180
+msgid "The settings apply to this slide only."
+msgstr "Nastavení platí jen pro tento snímek."
+
+#: src/block-library/image/marp-image-settings.tsx:300
+msgid "The share of the slide the image takes, such as 40%."
+msgstr "Podíl snímku, který obrázek zabírá, například 40%."
+
+#: src/block-library/image/marp-image-settings.tsx:363
+msgid "The size relative to the original image, such as 50%."
+msgstr "Velikost vzhledem k původnímu obrázku, například 50%."
+
+#: src/block-library/image/marp-image-settings.tsx:124
+msgid ""
+"The x and y offsets, then an optional blur and color, separated by commas."
+msgstr "Posun x a y, poté volitelně rozostření a barva, oddělené čárkami."
 
 #: src/components/front-matter-editor/index.tsx:249
 msgid "Theme"
@@ -926,6 +1176,10 @@ msgstr "Písmo motivu"
 #: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
 msgstr "Přemýšlím…"
+
+#: src/block-library/html/marp-directive-settings.tsx:198
+msgid "This slide"
+msgstr "Tento snímek"
 
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
@@ -944,7 +1198,7 @@ msgstr "Tip"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/components/slide-pattern-modal/index.tsx:70
-#: src/block-library/image/edit.tsx:253
+#: src/block-library/image/edit.tsx:305
 msgid "Title"
 msgstr "Název"
 
@@ -1029,8 +1283,8 @@ msgid "Type / to choose a block"
 msgstr "Zadejte / pro výběr bloku"
 
 #: src/format-library/image/inline.tsx:118
-#: src/block-library/image/edit.tsx:100
-#: src/block-library/image/edit.tsx:196
+#: src/block-library/image/edit.tsx:133
+#: src/block-library/image/edit.tsx:229
 msgid "URL or file path"
 msgstr "Adresa URL nebo cesta k souboru"
 
@@ -1056,7 +1310,7 @@ msgstr "Vrátit poslední změny."
 msgid "Unordered"
 msgstr "Odrážkový"
 
-#: src/block-library/image/edit.tsx:77
+#: src/block-library/image/edit.tsx:110
 msgid "Upload an image from your device or insert from a URL."
 msgstr "Nahrajte obrázek ze zařízení nebo jej vložte z adresy URL."
 
@@ -1067,11 +1321,6 @@ msgctxt "slide pattern"
 msgid "Use any text editor"
 msgstr "Libovolný textový editor"
 
-#: style.css
-#. Description of the generic
-msgid "Visual markdown block editor."
-msgstr "Vizuální blokový editor Markdownu."
-
 #: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"
 msgstr "Čekání na odpověď…"
@@ -1080,6 +1329,10 @@ msgstr "Čekání na odpověď…"
 msgid "Warning"
 msgstr "Varování"
 
+#: src/block-library/image/marp-image-settings.tsx:379
+msgid "Width"
+msgstr "Šířka"
+
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:34
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:29
 #: src/marp-patterns/patterns/heading-and-four-cards.ts:29
@@ -1087,7 +1340,7 @@ msgctxt "slide pattern"
 msgid "Write"
 msgstr "Psát"
 
-#: src/block-library/html/edit.tsx:43
+#: src/block-library/html/edit.tsx:52
 msgid "Write HTML…"
 msgstr "Začněte psát HTML…"
 
@@ -1150,3 +1403,12 @@ msgstr "YAML front matter"
 #: src/components/front-matter-editor/index.tsx:493
 msgid "Your own CSS in style overrides some of these colors."
 msgstr "Vaše vlastní CSS ve style přepisuje některé z těchto barev."
+
+# %s: An example value, such as "1.5".
+# %s: An example value, such as "#f0f0f0".
+#: src/block-library/image/marp-image-settings.tsx:485
+#: src/block-library/html/marp-directive-settings.tsx:314
+#: src/block-library/html/marp-directive-settings.tsx:326
+#: src/block-library/html/marp-directive-settings.tsx:340
+msgid "e.g. %s"
+msgstr "např. %s"

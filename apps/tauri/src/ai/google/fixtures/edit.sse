@@ -2,5 +2,5 @@ data: {"candidates":[{"content":{"parts":[{"text":"Shortening "}],"role":"model"
 
 data: {"candidates":[{"content":{"parts":[{"text":"the paragraph."}],"role":"model"},"index":0}],"usageMetadata":{"promptTokenCount":130,"totalTokenCount":130},"modelVersion":"gemini-3.6-flash","responseId":"resp_02"}
 
-data: {"candidates":[{"content":{"parts":[{"functionCall":{"id":"call_01","name":"edit_selection","args":{"action":"replace","markdown":"A short\nparagraph."}},"thoughtSignature":"sig_edit"}],"role":"model"},"finishReason":"STOP","index":0}],"usageMetadata":{"promptTokenCount":130,"candidatesTokenCount":30,"thoughtsTokenCount":18,"totalTokenCount":178},"modelVersion":"gemini-3.6-flash","responseId":"resp_02"}
+data: {"candidates":[{"content":{"parts":[{"functionCall":{"id":"call_01","name":"edit_document","args":{"action":"replace","markdown":"A short\nparagraph."}},"thoughtSignature":"sig_edit"}],"role":"model"},"finishReason":"STOP","index":0}],"usageMetadata":{"promptTokenCount":130,"candidatesTokenCount":30,"thoughtsTokenCount":18,"totalTokenCount":178},"modelVersion":"gemini-3.6-flash","responseId":"resp_02"}
 

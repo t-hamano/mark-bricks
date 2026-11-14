@@ -57,13 +57,22 @@ const SECOND_END = DOCUMENT.indexOf( '\n\nLast' );
 
 describe( 'createTextEditTarget', () => {
 	describe( 'getContext', () => {
-		it( 'returns the selected text and marks it in the document', () => {
+		it( 'returns the document and where the selection is in it', () => {
 			const { access } = setup( DOCUMENT, FIRST, SECOND_END );
 			expect( createTextEditTarget( access ).getContext() ).toEqual( {
+				document: DOCUMENT,
 				selection: 'First line.\nSecond line.',
-				document:
-					'# Title\n\n<selection>First line.\nSecond line.</selection>\n\nLast.\n',
+				selectionStart: FIRST,
+				selectionEnd: SECOND_END,
 			} );
+		} );
+
+		it( 'reads the document as it is now', () => {
+			const { access } = setup( DOCUMENT, FIRST );
+			const target = createTextEditTarget( access );
+			target.apply( { action: 'replace', markdown: 'New line.' } );
+			expect( target.getDocument() ).toBe( access.getValue() );
+			expect( target.getDocument() ).toContain( 'New line.' );
 		} );
 
 		it( 'selects the line the cursor is on when nothing is selected', () => {
@@ -93,7 +102,7 @@ describe( 'createTextEditTarget', () => {
 					action: 'replace',
 					markdown: '- New\n',
 				} )
-			).toBe( true );
+			).toEqual( { status: 'applied' } );
 			expect( getText() ).toBe( '# Title\n\n- New\n\nLast.\n' );
 			expect( getUndoSteps() ).toBe( 1 );
 		} );
@@ -231,7 +240,55 @@ describe( 'createTextEditTarget', () => {
 			loseRanges();
 			expect(
 				target.apply( { action: 'replace', markdown: 'New.' } )
-			).toBe( false );
+			).toEqual( { status: 'dropped' } );
+			expect( getText() ).toBe( DOCUMENT );
+		} );
+	} );
+
+	describe( 'apply replace_text', () => {
+		it( 'replaces the text wherever the cursor is, as one undo step', () => {
+			const { access, getText, getUndoSteps } = setup( DOCUMENT, FIRST );
+			expect(
+				createTextEditTarget( access ).apply( {
+					action: 'replace_text',
+					find: '# Title',
+					markdown: '# A better title',
+				} )
+			).toEqual( { status: 'applied' } );
+			expect( getText() ).toBe(
+				DOCUMENT.replace( '# Title', '# A better title' )
+			);
+			expect( getUndoSteps() ).toBe( 1 );
+		} );
+
+		it( 'edits the front matter as text', () => {
+			const value = '---\nmarp: true\ntheme: default\n---\n\n' + DOCUMENT;
+			const { access, getText } = setup( value, value.length );
+			createTextEditTarget( access ).apply( {
+				action: 'replace_text',
+				find: 'theme: default',
+				markdown: 'theme: gaia',
+			} );
+			expect( getText() ).toBe( value.replace( 'default', 'gaia' ) );
+		} );
+
+		it( 'fails, and changes nothing, when the text is not in one place', () => {
+			const { access, getText } = setup( DOCUMENT, FIRST );
+			const target = createTextEditTarget( access );
+			expect(
+				target.apply( {
+					action: 'replace_text',
+					find: 'Missing',
+					markdown: 'New',
+				} )
+			).toMatchObject( { status: 'failed' } );
+			expect(
+				target.apply( {
+					action: 'replace_text',
+					find: 'line.',
+					markdown: 'New',
+				} )
+			).toMatchObject( { status: 'failed' } );
 			expect( getText() ).toBe( DOCUMENT );
 		} );
 	} );

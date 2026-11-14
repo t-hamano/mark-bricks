@@ -8,55 +8,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-10-03T09:32:33.730Z\n"
-"PO-Revision-Date: 2026-10-03T09:32:45.457Z\n"
+"POT-Creation-Date: 2026-11-14T11:09:59.369Z\n"
+"PO-Revision-Date: 2026-11-14T11:10:09.923Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: ja\n"
 "X-Domain: mark-bricks\n"
 
-#: style.css
-#. Name of the generic
-msgid "@mark-bricks/marp-preview"
-msgstr ""
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
-
-#: src/controls/controls.tsx:136
+#: src/controls/controls.tsx:177
 #: src/export/runtime/toolbar.tsx:94
 msgid "Enter slide mode"
 msgstr "スライドモード"
 
-#: src/controls/controls.tsx:135
+#: src/controls/controls.tsx:176
 #: src/export/runtime/toolbar.tsx:93
 msgid "Exit slide mode"
 msgstr "スライドモードを終了"
 
-#: src/controls/controls.tsx:103
+#: src/controls/controls.tsx:117
 #: src/export/runtime/toolbar.tsx:81
 msgid "Next slide"
 msgstr "次のスライド"
 
-#: src/controls/controls.tsx:203
+#: src/controls/controls.tsx:165
+msgid "Open in new window"
+msgstr "新しいウィンドウで開く"
+
+#: src/controls/controls.tsx:248
 #: src/export/runtime/toolbar.tsx:165
 msgid "Press F or Escape to exit slide mode"
 msgstr "F キーまたは Esc キーを押すとスライドモードを終了します"
 
-#: src/controls/controls.tsx:53
+#: src/controls/controls.tsx:67
 #: src/export/runtime/toolbar.tsx:61
 msgid "Previous slide"
 msgstr "前のスライド"
 
-#: style.css
-#. Description of the generic
-msgid ""
-"Renders Marp slide decks for the hosts' slide previews and exports, and "
-"shows them in the previews."
-msgstr ""
+#: src/controls/controls.tsx:166
+msgid "Show next to editor"
+msgstr "エディターの横に表示"
 
 # 1: Slide number. 2: Number of slides.
 #: src/browser/slide-view.ts:83
@@ -64,7 +55,7 @@ msgstr ""
 msgid "Slide %1$d of %2$d"
 msgstr "スライド %1$d / %2$d"
 
-#: src/controls/controls.tsx:62
+#: src/controls/controls.tsx:76
 #: src/export/runtime/toolbar.tsx:67
 msgid "Slide number"
 msgstr "スライド番号"

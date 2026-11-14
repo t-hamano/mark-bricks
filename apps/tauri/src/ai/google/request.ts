@@ -11,6 +11,7 @@ import {
 	EDIT_TOOL_DESCRIPTION,
 	EDIT_TOOL_NAME,
 	EDIT_TOOL_SCHEMA,
+	toToolInput,
 } from '../edit-tool';
 
 export { EDIT_TOOL_NAME };
@@ -35,7 +36,7 @@ export type Part = {
 	functionResponse?: {
 		id?: string;
 		name: string;
-		response: { result: string };
+		response: { result: string } | { error: string };
 	};
 	[ key: string ]: unknown;
 };
@@ -73,11 +74,12 @@ const EDIT_TOOL = {
 };
 
 /**
- * Builds the message that tells the model its edit was applied.
+ * Builds the message that tells the model whether its edit was applied.
  *
- * @param call The model's call of the edit tool.
+ * @param call  The model's call of the edit tool.
+ * @param error Why the edit failed, when it did.
  */
-export function toEditResponse( call: FunctionCall ): Content {
+export function toEditResponse( call: FunctionCall, error?: string ): Content {
 	return {
 		role: 'user',
 		parts: [
@@ -85,7 +87,7 @@ export function toEditResponse( call: FunctionCall ): Content {
 				functionResponse: {
 					...( call.id ? { id: call.id } : {} ),
 					name: EDIT_TOOL_NAME,
-					response: { result: EDIT_RESULT },
+					response: error ? { error } : { result: EDIT_RESULT },
 				},
 			},
 		],
@@ -101,7 +103,7 @@ export function toEditResponse( call: FunctionCall ): Content {
 function toEditContents( edit: AiEdit ): Content[] {
 	const call: FunctionCall = {
 		name: EDIT_TOOL_NAME,
-		args: { action: edit.action, markdown: edit.markdown },
+		args: toToolInput( edit ),
 	};
 	return [
 		{ role: 'model', parts: [ { functionCall: call } ] },

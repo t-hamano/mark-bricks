@@ -57,7 +57,9 @@ function run(
 	const result = chat( {
 		system: 'System prompt',
 		messages,
-		onEvent: ( event ) => events.push( event ),
+		onEvent: ( event ) => {
+			events.push( event );
+		},
 		signal: new AbortController().signal,
 	} );
 	return { result, events, bodies };
@@ -98,7 +100,7 @@ describe( 'createChat with Google Gemini', () => {
 					{
 						functionDeclarations: [
 							expect.objectContaining( {
-								name: 'edit_selection',
+								name: 'edit_document',
 								parametersJsonSchema: expect.objectContaining( {
 									type: 'object',
 								} ),
@@ -141,7 +143,14 @@ describe( 'createChat with Google Gemini', () => {
 		expect(
 			plain.events.filter( ( event ) => event.type === 'usage' )
 		).toEqual( [
-			{ type: 'usage', usage: { inputTokens: 220, outputTokens: 49 } },
+			{
+				type: 'usage',
+				usage: {
+					inputTokens: 220,
+					cachedInputTokens: 0,
+					outputTokens: 49,
+				},
+			},
 		] );
 
 		const edited = run( [ edit, afterEdit ] );
@@ -149,8 +158,22 @@ describe( 'createChat with Google Gemini', () => {
 		expect(
 			edited.events.filter( ( event ) => event.type === 'usage' )
 		).toEqual( [
-			{ type: 'usage', usage: { inputTokens: 130, outputTokens: 48 } },
-			{ type: 'usage', usage: { inputTokens: 190, outputTokens: 12 } },
+			{
+				type: 'usage',
+				usage: {
+					inputTokens: 130,
+					cachedInputTokens: 0,
+					outputTokens: 48,
+				},
+			},
+			{
+				type: 'usage',
+				usage: {
+					inputTokens: 190,
+					cachedInputTokens: 128,
+					outputTokens: 12,
+				},
+			},
 		] );
 	} );
 
@@ -184,7 +207,7 @@ describe( 'createChat with Google Gemini', () => {
 					{
 						functionCall: {
 							id: 'call_01',
-							name: 'edit_selection',
+							name: 'edit_document',
 							args: {
 								action: 'replace',
 								markdown: 'A short\nparagraph.',
@@ -200,7 +223,7 @@ describe( 'createChat with Google Gemini', () => {
 					{
 						functionResponse: {
 							id: 'call_01',
-							name: 'edit_selection',
+							name: 'edit_document',
 							response: { result: 'The edit was applied.' },
 						},
 					},
@@ -222,7 +245,7 @@ describe( 'createChat with Google Gemini', () => {
 					{
 						functionCall: {
 							id: 'call_01',
-							name: 'edit_selection',
+							name: 'edit_document',
 							args: { action: 'replace', markdown: 'First' },
 						},
 						thoughtSignature: 'sig_edit',
@@ -235,7 +258,7 @@ describe( 'createChat with Google Gemini', () => {
 					{
 						functionResponse: {
 							id: 'call_01',
-							name: 'edit_selection',
+							name: 'edit_document',
 							response: { result: 'The edit was applied.' },
 						},
 					},
@@ -266,7 +289,7 @@ describe( 'createChat with Google Gemini', () => {
 		await result;
 		const response = {
 			functionResponse: {
-				name: 'edit_selection',
+				name: 'edit_document',
 				response: { result: 'The edit was applied.' },
 			},
 		};
@@ -277,8 +300,12 @@ describe( 'createChat with Google Gemini', () => {
 				parts: [
 					{
 						functionCall: {
-							name: 'edit_selection',
-							args: { action: 'insert_after', markdown: 'More' },
+							name: 'edit_document',
+							args: {
+								action: 'insert_after',
+								find: '',
+								markdown: 'More',
+							},
 						},
 					},
 				],
@@ -291,8 +318,12 @@ describe( 'createChat with Google Gemini', () => {
 				parts: [
 					{
 						functionCall: {
-							name: 'edit_selection',
-							args: { action: 'replace', markdown: 'Less' },
+							name: 'edit_document',
+							args: {
+								action: 'replace',
+								find: '',
+								markdown: 'Less',
+							},
 						},
 					},
 				],
