@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:35:21.932Z\n"
-"PO-Revision-Date: 2026-11-14T07:35:24.865Z\n"
+"POT-Creation-Date: 2026-11-14T08:35:47.739Z\n"
+"PO-Revision-Date: 2026-11-14T08:36:26.267Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -41,7 +41,7 @@ msgstr "(제목 없음)"
 msgid "AI Assistant"
 msgstr "AI 어시스턴트"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:267
+#: src/components/preferences-modal/ai-provider-card.tsx:253
 msgid "API key"
 msgstr "API 키"
 
@@ -98,11 +98,11 @@ msgid "Check updates automatically"
 msgstr "자동으로 업데이트 확인"
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:332
+#: src/components/preferences-modal/ai-provider-card.tsx:318
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr "<a>%s</a>에서 사용량과 청구 내역을 확인하세요"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:291
+#: src/components/preferences-modal/ai-provider-card.tsx:277
 msgid "Checking the API key…"
 msgstr "API 키를 확인하는 중…"
 
@@ -136,7 +136,7 @@ msgstr "활성 탭을 닫습니다."
 msgid "Code editor"
 msgstr "코드 편집기"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:235
+#: src/components/preferences-modal/ai-provider-card.tsx:221
 msgid "Connected"
 msgstr "연결됨"
 
@@ -181,11 +181,11 @@ msgstr "어둡게"
 msgid "Default (%s)"
 msgstr "기본값 (%s)"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:298
+#: src/components/preferences-modal/ai-provider-card.tsx:284
 msgid "Delete"
 msgstr "삭제"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:287
+#: src/components/preferences-modal/ai-provider-card.tsx:273
 msgid "Deleting the API key…"
 msgstr "API 키를 삭제하는 중…"
 
@@ -257,7 +257,7 @@ msgid "General"
 msgstr "일반"
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:308
+#: src/components/preferences-modal/ai-provider-card.tsx:294
 msgid "Get your API key at <a>%s</a>"
 msgstr "<a>%s</a>에서 API 키를 발급받으세요"
 
@@ -315,7 +315,7 @@ msgstr "밝게"
 msgid "List View shortcuts"
 msgstr "목록 보기 바로 가기"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:385
+#: src/components/preferences-modal/ai-provider-card.tsx:371
 msgid "Loading the models…"
 msgstr "모델을 불러오는 중…"
 
@@ -332,14 +332,9 @@ msgstr "이제 MarkBricks가 Markdown 파일의 기본 앱입니다."
 msgid "Maximum width of the content area, in pixels."
 msgstr "콘텐츠 영역의 최대 너비(픽셀)입니다."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:393
+#: src/components/preferences-modal/ai-provider-card.tsx:379
 msgid "Model"
 msgstr "모델"
-
-# %s: The name of the AI model, such as Claude Opus 5.5.
-#: src/components/preferences-modal/ai-provider-card.tsx:224
-msgid "Model: %s"
-msgstr "모델: %s"
 
 #: src/preferences/constants.ts:79
 msgid "Monospace"
@@ -370,7 +365,7 @@ msgstr "열린 파일 없음"
 msgid "Not a Marp document"
 msgstr "Marp 문서가 아닙니다"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:240
+#: src/components/preferences-modal/ai-provider-card.tsx:226
 msgid "Not connected"
 msgstr "연결되지 않음"
 
@@ -453,7 +448,7 @@ msgid "Sans-serif"
 msgstr "산세리프"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:299
+#: src/components/preferences-modal/ai-provider-card.tsx:285
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -556,11 +551,11 @@ msgstr "이 API 키로는 이 모델을 사용할 수 없습니다."
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 키가 올바르지 않습니다. 설정에서 확인하세요."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:368
+#: src/components/preferences-modal/ai-provider-card.tsx:354
 msgid "The API key was deleted."
 msgstr "API 키를 삭제했습니다."
 
-#: src/components/preferences-modal/ai-provider-card.tsx:358
+#: src/components/preferences-modal/ai-provider-card.tsx:344
 msgid "The API key was saved."
 msgstr "API 키를 저장했습니다."
 
@@ -591,7 +586,7 @@ msgid "The model was not found."
 msgstr "모델을 찾을 수 없습니다."
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:421
+#: src/components/preferences-modal/ai-provider-card.tsx:407
 msgid "The models could not be loaded: %s"
 msgstr "모델을 불러오지 못했습니다: %s"
 
@@ -633,7 +628,7 @@ msgstr "도구"
 msgid "Top toolbar"
 msgstr "상단 툴바"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:430
+#: src/components/preferences-modal/ai-provider-card.tsx:416
 msgid "Try again"
 msgstr "다시 시도"
 
