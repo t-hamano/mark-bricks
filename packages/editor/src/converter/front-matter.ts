@@ -233,7 +233,7 @@ function findKeyRange( lines: string[], key: string ): KeyRange | null {
 	}
 	const content = lines.slice( start + 1, end );
 	const firstToken = (
-		/^[ \t]*#/.test( rest )
+		/^[ \t]*(?:#.*)?$/.test( rest )
 			? ( content.find( ( line ) => line.trim() !== '' ) ?? '' )
 			: rest
 	).trim();
@@ -241,9 +241,9 @@ function findKeyRange( lines: string[], key: string ): KeyRange | null {
 	if ( ! BLOCK_INDICATOR_PATTERN.test( rest ) ) {
 		// YAML folds a flow scalar's line breaks into spaces, and a blank
 		// line into a line break.
-		// A comment after the key ends that line, and the value starts on
-		// the next one.
-		const valueLines = /^[ \t]*#/.test( rest )
+		// When the key line holds nothing but maybe a comment, the value
+		// starts on the next line.
+		const valueLines = /^[ \t]*(?:#.*)?$/.test( rest )
 			? content
 			: [ rest, ...content ];
 		const folded = valueLines

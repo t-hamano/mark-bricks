@@ -387,6 +387,15 @@ describe( 'getFrontMatterBlockValue', () => {
 		).toBe( 'section { color: red; }' );
 	} );
 
+	it( 'reads a quoted value starting on the next line', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'style:\n  "section { color: red; }"',
+				'style'
+			)
+		).toBe( 'section { color: red; }' );
+	} );
+
 	it( 'reads a quoted value spanning several lines', () => {
 		expect(
 			getFrontMatterBlockValue(
