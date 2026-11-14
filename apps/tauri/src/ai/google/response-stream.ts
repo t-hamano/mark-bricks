@@ -105,11 +105,15 @@ export function readAnswer(
 			return;
 		}
 		if ( part.functionCall ) {
+			// One edit per answer, since the selection changes after an
+			// edit. The API cannot be told to call one function at a time,
+			// so other calls are left out: each call sent back needs its
+			// response.
 			if ( part.functionCall.name === EDIT_TOOL_NAME && ! editCall ) {
 				editCall = part.functionCall;
 				onActivity( 'editing' );
+				parts.push( part );
 			}
-			parts.push( part );
 			return;
 		}
 		if ( typeof part.text === 'string' ) {

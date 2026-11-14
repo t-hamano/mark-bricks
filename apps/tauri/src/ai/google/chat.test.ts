@@ -19,6 +19,7 @@ import blocked from './fixtures/blocked.sse?raw';
 import maxTokens from './fixtures/max-tokens.sse?raw';
 import malformedCall from './fixtures/malformed-call.sse?raw';
 import unavailable from './fixtures/unavailable.sse?raw';
+import twoEdits from './fixtures/two-edits.sse?raw';
 
 /**
  * A transport that answers each request with the next stream, in chunks
@@ -188,6 +189,41 @@ describe( 'createChat with Google Gemini', () => {
 								action: 'replace',
 								markdown: 'A short\nparagraph.',
 							},
+						},
+						thoughtSignature: 'sig_edit',
+					},
+				],
+			},
+			{
+				role: 'user',
+				parts: [
+					{
+						functionResponse: {
+							id: 'call_01',
+							name: 'edit_selection',
+							response: { result: 'The edit was applied.' },
+						},
+					},
+				],
+			},
+		] );
+	} );
+
+	it( 'applies only the first of several edits', async () => {
+		const { result, events, bodies } = run( [ twoEdits, afterEdit ] );
+		await result;
+		expect( events.filter( ( event ) => event.type === 'edit' ) ).toEqual( [
+			{ type: 'edit', edit: { action: 'replace', markdown: 'First' } },
+		] );
+		expect( bodies[ 1 ].contents.slice( 1 ) ).toEqual( [
+			{
+				role: 'model',
+				parts: [
+					{
+						functionCall: {
+							id: 'call_01',
+							name: 'edit_selection',
+							args: { action: 'replace', markdown: 'First' },
 						},
 						thoughtSignature: 'sig_edit',
 					},
