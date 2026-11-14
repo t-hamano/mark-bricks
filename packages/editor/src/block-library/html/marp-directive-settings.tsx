@@ -289,55 +289,24 @@ export function MarpDirectiveSettings( {
 					label={ __( 'Skip', 'mark-bricks' ) }
 				/>
 			</ToggleGroupControl>
-			{ ( [ 'header', 'footer' ] as const ).map( ( name ) => {
-				// An empty value hides the header or footer that earlier
-				// slides set, while a missing one keeps it.
-				const isHidden = comment.values[ name ] === '';
-				return (
-					<Stack key={ name } direction="column" gap="sm">
-						<InputControl
-							label={
-								name === 'header'
-									? __( 'Header', 'mark-bricks' )
-									: __( 'Footer', 'mark-bricks' )
-							}
-							description={
-								name === 'header'
-									? __(
-											'Text shown at the top of the slide. Leave empty to keep the one of the earlier slides.',
-											'mark-bricks'
-										)
-									: __(
-											'Text shown at the bottom of the slide. Leave empty to keep the one of the earlier slides.',
-											'mark-bricks'
-										)
-							}
-							disabled={ isHidden }
-							value={ comment.values[ name ] ?? '' }
-							onValueChange={ ( value ) =>
-								setValue( name, value )
-							}
-						/>
-						<CheckboxControl
-							label={
-								name === 'header'
-									? __( 'Hide the header', 'mark-bricks' )
-									: __( 'Hide the footer', 'mark-bricks' )
-							}
-							checked={ isHidden }
-							onCheckedChange={ ( checked ) => {
-								const values = { ...comment.values };
-								if ( checked ) {
-									values[ name ] = '';
-								} else {
-									delete values[ name ];
-								}
-								update( { values } );
-							} }
-						/>
-					</Stack>
-				);
-			} ) }
+			<InputControl
+				label={ __( 'Header', 'mark-bricks' ) }
+				description={ __(
+					'Text shown at the top of the slide.',
+					'mark-bricks'
+				) }
+				value={ comment.values.header ?? '' }
+				onValueChange={ ( value ) => setValue( 'header', value ) }
+			/>
+			<InputControl
+				label={ __( 'Footer', 'mark-bricks' ) }
+				description={ __(
+					'Text shown at the bottom of the slide.',
+					'mark-bricks'
+				) }
+				value={ comment.values.footer ?? '' }
+				onValueChange={ ( value ) => setValue( 'footer', value ) }
+			/>
 			<InputControl
 				label={ __( 'Background color', 'mark-bricks' ) }
 				placeholder={ sprintf(
