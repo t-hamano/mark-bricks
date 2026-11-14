@@ -1,3 +1,5 @@
+/// <reference path="../wp-block-library.d.ts" />
+
 /**
  * WordPress dependencies
  */
