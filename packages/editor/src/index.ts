@@ -9,6 +9,7 @@ export { BlockEditor } from './components/block-editor';
 export type { EditorHandle, EditorStyles } from './components/editor';
 export type { CodeEditorSettings } from './components/text-editor';
 export type {
+	AiActivity,
 	AiChatRequest,
 	AiEdit,
 	AiMessage,

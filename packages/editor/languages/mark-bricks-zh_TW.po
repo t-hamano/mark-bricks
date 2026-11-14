@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T03:43:17.879Z\n"
-"PO-Revision-Date: 2026-11-14T03:43:26.178Z\n"
+"POT-Creation-Date: 2026-11-14T04:13:15.680Z\n"
+"PO-Revision-Date: 2026-11-14T04:13:49.412Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -114,11 +114,11 @@ msgstr "替代文字"
 msgid "Apply"
 msgstr "套用"
 
-#: src/components/ai-sidebar/chat.tsx:259
+#: src/components/ai-sidebar/chat.tsx:282
 msgid "Ask the AI Assistant"
 msgstr "詢問 AI 助理"
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:260
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -332,9 +332,13 @@ msgstr "編輯圖片"
 msgid "Edit table"
 msgstr "編輯表格"
 
-#: src/components/ai-sidebar/chat.tsx:66
+#: src/components/ai-sidebar/chat.tsx:75
 msgid "Edited the document."
 msgstr "已編輯文件。"
+
+#: src/components/ai-sidebar/chat.tsx:54
+msgid "Editing the document…"
+msgstr "正在編輯文件…"
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -590,7 +594,7 @@ msgstr ""
 msgid "Marp patterns"
 msgstr "Marp 版型"
 
-#: src/components/ai-sidebar/chat.tsx:257
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Message"
 msgstr "訊息"
 
@@ -655,7 +659,7 @@ msgstr "希望每個人都記住的一句話"
 msgid "Open by default"
 msgstr "預設開啟"
 
-#: src/components/ai-sidebar/chat.tsx:229
+#: src/components/ai-sidebar/chat.tsx:252
 msgid "Open settings"
 msgstr "開啟設定"
 
@@ -868,11 +872,11 @@ msgstr "章節標題"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "其他設定請參閱 <a>Marp 文件</a>。"
 
-#: src/components/ai-sidebar/chat.tsx:280
+#: src/components/ai-sidebar/chat.tsx:303
 msgid "Send"
 msgstr "傳送"
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:242
 msgid "Set an API key to use the AI Assistant."
 msgstr "請設定 API 金鑰以使用 AI 助理。"
 
@@ -934,11 +938,11 @@ msgctxt "slide pattern"
 msgid "Steps"
 msgstr "步驟"
 
-#: src/components/ai-sidebar/chat.tsx:271
+#: src/components/ai-sidebar/chat.tsx:294
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:79
+#: src/components/ai-sidebar/chat.tsx:102
 msgid "Stopped."
 msgstr "已停止。"
 
@@ -982,7 +986,7 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "謝謝"
 
-#: src/components/ai-sidebar/chat.tsx:86
+#: src/components/ai-sidebar/chat.tsx:109
 msgid "The answer could not be loaded."
 msgstr "無法載入回答。"
 
@@ -994,7 +998,7 @@ msgstr "投影片的長寬比。"
 msgid "The diagram could not be rendered."
 msgstr "無法轉譯圖表。"
 
-#: src/components/ai-sidebar/chat.tsx:71
+#: src/components/ai-sidebar/chat.tsx:80
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1007,6 +1011,10 @@ msgstr "無法轉譯公式。"
 #: src/components/front-matter-editor/index.tsx:219
 msgid "Theme"
 msgstr "主題"
+
+#: src/components/ai-sidebar/chat.tsx:52
+msgid "Thinking…"
+msgstr "正在思考…"
 
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:28
 #: src/marp-patterns/patterns/image-and-text.ts:27
@@ -1118,7 +1126,7 @@ msgstr "從裝置上傳圖片或透過網址插入。"
 msgid "Visual markdown block editor."
 msgstr "視覺化 Markdown 區塊編輯器。"
 
-#: src/components/ai-sidebar/chat.tsx:55
+#: src/components/ai-sidebar/chat.tsx:56
 msgid "Waiting for the answer…"
 msgstr "正在等待回答…"
 

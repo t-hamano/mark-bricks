@@ -39,9 +39,27 @@ const stopIcon = (
 	</svg>
 );
 
+/**
+ * What the indicator says while the model is not writing text.
+ *
+ * @param activity What the model is doing.
+ */
+function getActivityLabel(
+	activity: NonNullable< AssistantChatMessage[ 'activity' ] >
+) {
+	switch ( activity ) {
+		case 'thinking':
+			return __( 'Thinking…', 'mark-bricks' );
+		case 'editing':
+			return __( 'Editing the document…', 'mark-bricks' );
+		default:
+			return __( 'Waiting for the answer…', 'mark-bricks' );
+	}
+}
+
 function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
-	const isWaiting =
-		message.status === 'streaming' && ! message.text && ! message.edit;
+	const activity =
+		message.status === 'streaming' ? message.activity : undefined;
 
 	return (
 		<Stack
@@ -49,15 +67,6 @@ function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 			direction="column"
 			gap="sm"
 		>
-			{ isWaiting && (
-				<Spinner
-					className="ai-chat__spinner"
-					aria-label={ __(
-						'Waiting for the answer…',
-						'mark-bricks'
-					) }
-				/>
-			) }
 			{ message.text && (
 				<Text className="ai-chat__message-text">{ message.text }</Text>
 			) }
@@ -73,6 +82,20 @@ function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 						'mark-bricks'
 					) }
 				</Text>
+			) }
+			{ activity && (
+				<Stack
+					className="ai-chat__activity"
+					direction="row"
+					align="center"
+					gap="sm"
+					role="status"
+				>
+					<Spinner aria-hidden />
+					<Text variant="body-sm">
+						{ getActivityLabel( activity ) }
+					</Text>
+				</Stack>
 			) }
 			{ message.status === 'stopped' && (
 				<Text variant="body-sm" className="ai-chat__message-status">
