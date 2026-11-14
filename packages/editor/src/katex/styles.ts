@@ -3,12 +3,12 @@
  */
 import { useEffect, useState } from 'react';
 import katexCss from 'katex/dist/katex.min.css?raw';
+import { KATEX_FONT_URLS, rewriteFontSources } from '@mark-bricks/katex-fonts';
 
 /**
  * Internal dependencies
  */
 import { usePlatform } from '../platform';
-import { KATEX_FONT_URLS, rewriteFontSources } from './fonts';
 
 /**
  * KaTeX's stylesheet for the block canvas.

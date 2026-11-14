@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { browser } from '@marp-team/marp-core/browser';
-import { rewriteFontSources } from '@mark-bricks/editor/katex-fonts';
+import { rewriteFontSources } from '@mark-bricks/katex-fonts';
 // The web fonts of the built-in Gaia theme.
 import '@fontsource/lato/400.css';
 import '@fontsource/lato/900.css';

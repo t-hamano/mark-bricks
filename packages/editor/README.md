@@ -19,7 +19,7 @@ They're exposed as two components, sharing the same header/footer/sidebars and u
 
 ## Entry points
 
-- `@mark-bricks/editor`: the two components, plus what the entry points below export except `marp` and `katex-fonts`, and the keyboard shortcut hooks. It references the source editor, so it is for hosts that bundle it (the Tauri app).
+- `@mark-bricks/editor`: the two components, plus what the entry points below export except `marp`, and the keyboard shortcut hooks. It references the source editor, so it is for hosts that bundle it (the Tauri app).
 - `@mark-bricks/editor/block-editor`: `<BlockEditor />`, without the source editor.
 - `@mark-bricks/editor/setup`: `setupEditor`, which applies the locale and registers the blocks and inline formats. See [Localization](#localization).
 - `@mark-bricks/editor/locale`: `getLocale`, which returns the applied locale. See [Localization](#localization).
@@ -27,7 +27,6 @@ They're exposed as two components, sharing the same header/footer/sidebars and u
 - `@mark-bricks/editor/front-matter`: `useFrontMatter`, for host UI that reads or updates the document's YAML front matter.
 - `@mark-bricks/editor/font-families`: `FONT_FAMILY_STACKS`, the font stacks the content area can be set to. It has no dependencies, so the VS Code extension host can load it to validate settings.
 - `@mark-bricks/editor/marp`: `isMarpDocument`. It depends on neither React nor `@wordpress/*`, so the VS Code extension host can load it.
-- `@mark-bricks/editor/katex-fonts`: `rewriteFontSources`, which points a KaTeX stylesheet at the bundled WOFF2 fonts. `@mark-bricks/marp-preview` uses it for the math in slides.
 - `@mark-bricks/editor/code-previews`: `inspectCodePreviews`, which reports how the previews of the math and code blocks rendered, for the apps' smoke tests.
 
 ## Source lines
