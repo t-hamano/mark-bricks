@@ -195,6 +195,40 @@ describe( 'serializeMarpDirectiveComment', () => {
 		} );
 	} );
 
+	it( 'keeps a multi-line value as written', () => {
+		const html =
+			'<!--\n_class: lead\n_header: |\n  Line one\n  Line two\n-->';
+		const found = findMarpDirectiveComment( html );
+		expect( found ).toMatchObject( {
+			values: { class: 'lead' },
+			otherLines: [ '_header: |\n  Line one\n  Line two' ],
+		} );
+		expect(
+			setMarpDirectiveComment( html, {
+				...found!,
+				values: { class: 'invert' },
+			} )
+		).toBe(
+			'<!--\n_class: invert\n_header: |\n  Line one\n  Line two\n-->'
+		);
+		expect(
+			setMarpDirectiveComment( html, {
+				...found!,
+				values: { ...found!.values, header: 'New' },
+			} )
+		).toBe( '<!--\n_class: lead\n_header: New\n-->' );
+	} );
+
+	it( 'reads an indented comment', () => {
+		expect(
+			parseMarpDirectiveComment(
+				'\n  _class: lead\n  _paginate: false\n'
+			)
+		).toMatchObject( {
+			values: { class: 'lead', paginate: 'false' },
+		} );
+	} );
+
 	it( 'writes nothing for no directives', () => {
 		expect(
 			serializeMarpDirectiveComment( {

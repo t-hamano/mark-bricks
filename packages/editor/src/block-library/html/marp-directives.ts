@@ -79,6 +79,29 @@ function isDirectiveName( name: string ): name is MarpDirectiveName {
 }
 
 /**
+ * Splits YAML into its top-level entries. A line indented more than the first
+ * one continues the entry before it, as in a multi-line value such as
+ * `_header: |`, and is kept with it as written.
+ *
+ * @param body The YAML.
+ * @return The entries, each with its first line trimmed.
+ */
+function groupYamlLines( body: string ): string[] {
+	const lines = body.split( /\r?\n/ ).filter( ( line ) => line.trim() );
+	const indent = ( line: string ) => /^[ \t]*/.exec( line )![ 0 ].length;
+	const baseIndent = lines.length ? indent( lines[ 0 ] ) : 0;
+	const entries: string[] = [];
+	for ( const line of lines ) {
+		if ( entries.length && indent( line ) > baseIndent ) {
+			entries[ entries.length - 1 ] += `\n${ line }`;
+		} else {
+			entries.push( line.trim() );
+		}
+	}
+	return entries;
+}
+
+/**
  * Reads the directives of the body of an HTML comment.
  *
  * Marp reads a comment that holds YAML as directives. The body is read as
@@ -92,7 +115,7 @@ function isDirectiveName( name: string ): name is MarpDirectiveName {
 export function parseMarpDirectiveComment(
 	body: string
 ): MarpDirectiveComment | null {
-	const lines = body.split( /\r?\n/ ).filter( ( line ) => line.trim() );
+	const lines = groupYamlLines( body );
 	const values: MarpDirectiveValues = {};
 	const rawValues: MarpDirectiveValues = {};
 	const spotDirectives: Partial< Record< MarpDirectiveName, boolean > > = {};
@@ -100,7 +123,7 @@ export function parseMarpDirectiveComment(
 	let spotCount = 0;
 	let globalCount = 0;
 	for ( const line of lines ) {
-		const match = LINE_PATTERN.exec( line );
+		const match = LINE_PATTERN.exec( line.split( '\n' )[ 0 ] );
 		if ( ! match ) {
 			return null;
 		}
@@ -116,7 +139,9 @@ export function parseMarpDirectiveComment(
 		}
 		const scalar = parseScalar( raw );
 		const isPlainValue =
-			! /^[ \t]*[[{|>&*!]/.test( raw ) && scalar.comment === '';
+			! line.includes( '\n' ) &&
+			! /^[ \t]*[[{|>&*!]/.test( raw ) &&
+			scalar.comment === '';
 		// The form shows one value for each directive. A value it cannot
 		// show, or a second one in the other scope, such as `class` beside
 		// `_class`, is kept as written.
@@ -211,7 +236,7 @@ export function serializeMarpDirectiveComment(
 		// replaced once its field is set, since Marp drops a comment with
 		// the same key twice.
 		...comment.otherLines.filter( ( line ) => {
-			const match = LINE_PATTERN.exec( line );
+			const match = LINE_PATTERN.exec( line.split( '\n' )[ 0 ] );
 			return ! match || ! keys.includes( match[ 1 ] + match[ 2 ] );
 		} ),
 	];
