@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { EditorTheme } from '@mark-bricks/editor/editor-theme-provider';
+import type { EditorTheme } from '@mark-bricks/editor';
 import { useSyncExternalStore } from 'react';
 
 function subscribe( onChange: () => void ): () => void {

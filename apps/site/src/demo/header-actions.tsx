@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useFrontMatter } from '@mark-bricks/editor/front-matter';
+import { useFrontMatter } from '@mark-bricks/editor';
 
 /**
  * WordPress dependencies

@@ -19,15 +19,14 @@ They're exposed as two components, sharing the same header/footer/sidebars and u
 
 ## Entry points
 
-- `@mark-bricks/editor`: the two components, plus what the entry points below export except `marp`, and the keyboard shortcut hooks. It references the source editor, so it is for hosts that bundle it (the Tauri app).
-- `@mark-bricks/editor/block-editor`: `<BlockEditor />`, without the source editor.
-- `@mark-bricks/editor/setup`: `setupEditor`, which applies the locale and registers the blocks and inline formats. See [Localization](#localization).
-- `@mark-bricks/editor/locale`: `getLocale`, which returns the applied locale. See [Localization](#localization).
-- `@mark-bricks/editor/editor-theme-provider`: `EditorThemeProvider` and `useEditorTheme`. See [Appearance](#appearance).
-- `@mark-bricks/editor/front-matter`: `useFrontMatter`, for host UI that reads or updates the document's YAML front matter.
-- `@mark-bricks/editor/font-families`: `FONT_FAMILY_STACKS`, the font stacks the content area can be set to. It has no dependencies, so the VS Code extension host can load it to validate settings.
+- `@mark-bricks/editor`: the two components, `setupEditor` and `getLocale` (see [Localization](#localization)), `EditorThemeProvider` and `useEditorTheme` (see [Appearance](#appearance)), `useFrontMatter`, the keyboard shortcut hooks, and `inspectCodePreviews` for the apps' smoke tests. The package declares its side effects, so a bundler leaves out what a host does not import: a host that renders only `<BlockEditor />` does not bundle Monaco.
+- `@mark-bricks/editor/ai`: the edit tool and the types a host needs to connect the AI assistant to a model. It depends on neither React nor `@wordpress/*`.
+- `@mark-bricks/editor/font-families`: `FONT_FAMILIES` and `isFontFamily`, the font families the content area can be set to. It has no dependencies, so the VS Code extension host can load it to validate settings.
 - `@mark-bricks/editor/marp`: `isMarpDocument`. It depends on neither React nor `@wordpress/*`, so the VS Code extension host can load it.
-- `@mark-bricks/editor/code-previews`: `inspectCodePreviews`, which reports how the previews of the math and code blocks rendered, for the apps' smoke tests.
+- `@mark-bricks/editor/marp-patterns`: the slide patterns, for Storybook.
+- `@mark-bricks/editor/vite-dedupe`: the packages each app's Vite config resolves from the app root.
+
+The VS Code extension host may import only the entry points that need neither the DOM nor React; lint enforces it.
 
 ## Source lines
 

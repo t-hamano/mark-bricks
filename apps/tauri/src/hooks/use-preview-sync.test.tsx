@@ -49,6 +49,12 @@ vi.mock( '@tauri-apps/api/core', () => ( {
 	invoke: mocks.invoke,
 } ) );
 
+// The editor's package root loads the whole editor, which this hook needs
+// only for the locale.
+vi.mock( '@mark-bricks/editor', () => ( {
+	getLocale: () => 'en',
+} ) );
+
 vi.mock( '../preview/render', () => ( {
 	renderSlides: ( markdown: string ) => ( { html: markdown, css: '' } ),
 } ) );

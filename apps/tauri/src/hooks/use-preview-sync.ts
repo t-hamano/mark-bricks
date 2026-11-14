@@ -12,7 +12,7 @@ import { invoke } from '@tauri-apps/api/core';
 import { emitTo, listen } from '@tauri-apps/api/event';
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import type { EditorHandle } from '@mark-bricks/editor';
-import { getLocale } from '@mark-bricks/editor/locale';
+import { getLocale } from '@mark-bricks/editor';
 import { isMarpDocument } from '@mark-bricks/editor/marp';
 
 /**
