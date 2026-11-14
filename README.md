@@ -53,6 +53,12 @@ MarkBricks supports [Marp](https://marp.app/) slide decks. Add `marp: true` to a
 
 For an example deck that uses directives, split backgrounds, image filters, tables and math, see [`marp.md`](packages/fixtures/markdown/marp.md).
 
+### AI assistant
+
+MarkBricks Desktop has an AI assistant that writes and edits the document through chat. Open it with the AI Assistant button in the header, in either the visual or the text editor. Select the blocks or the text you want to work on, and ask for a change: the assistant rewrites the selection or adds content after it. Each edit lands right away, and one undo reverts it.
+
+The assistant works with Anthropic, OpenAI, or Google Gemini, with your own API key. Add the key in **Preferences → AI Assistant**. The key is kept in the system's credential store (Keychain on macOS, Credential Manager on Windows, the Secret Service on Linux) and is sent only to that provider's API. With each message, the selection and the whole document are sent to the provider. Conversations are not saved. The VS Code extension does not include the assistant.
+
 ### Light and dark themes, in your language
 
 ![Light and dark themes, in your language](.github/assets/feature-light-and-dark-themes-in-your-language.png)
