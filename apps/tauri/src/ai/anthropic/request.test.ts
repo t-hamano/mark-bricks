@@ -108,13 +108,25 @@ describe( 'buildRequestBody', () => {
 		expect( body ).toMatchObject( {
 			model: 'claude-opus-5-5',
 			stream: true,
-			system: 'S',
+			system: [
+				{
+					type: 'text',
+					text: 'S',
+					cache_control: { type: 'ephemeral' },
+				},
+			],
 			tool_choice: { type: 'auto', disable_parallel_tool_use: true },
 			fallbacks: 'default',
 		} );
 		expect( body.tools ).toEqual( [
 			expect.objectContaining( { name: 'edit_selection', strict: true } ),
 		] );
+	} );
+
+	it( 'leaves out an empty system prompt', () => {
+		expect( buildRequestBody( { ...base, system: '' } ).system ).toEqual(
+			[]
+		);
 	} );
 
 	it( 'keeps the tool but forbids calling it when edits are not allowed', () => {
