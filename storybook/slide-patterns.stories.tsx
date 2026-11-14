@@ -35,7 +35,7 @@ import {
 	type View,
 } from '@wordpress/dataviews';
 import '@wordpress/dataviews/build-style/style.css';
-import { Stack } from '@wordpress/ui';
+import { SelectControl, Stack } from '@wordpress/ui';
 
 // Fits the slide to the card. The slide is an SVG, so it scales with its
 // width.
@@ -94,6 +94,15 @@ function SlidePatternPreview( { pattern, theme }: SlidePatternPreviewProps ) {
 // at.
 const PREVIEW_SIZES = [ 230, 290, 350, 430 ];
 
+// The options of the category select, all of them first.
+const CATEGORY_ITEMS = [
+	{ label: 'All categories', value: null },
+	...SLIDE_PATTERN_CATEGORIES.map( ( { name, label } ) => ( {
+		label: label(),
+		value: name,
+	} ) ),
+];
+
 const DEFAULT_VIEW: View = {
 	type: 'grid',
 	titleField: 'title',
@@ -116,6 +125,9 @@ function SlidePatterns() {
 		SLIDE_PATTERN_THEMES[ 0 ]
 	);
 	const [ view, setView ] = useState< View >( DEFAULT_VIEW );
+	const selectedCategory: string | null =
+		view.filters?.find( ( filter ) => filter.field === 'categories' )
+			?.value?.[ 0 ] ?? null;
 	const previewSize =
 		view.type === 'grid' ? view.layout?.previewSize : undefined;
 
@@ -177,9 +189,9 @@ function SlidePatterns() {
 			defaultLayouts={ { grid: {} } }
 			getItemId={ ( item ) => item.name }
 		>
-			{ /* The default toolbar without the search and the view options,
-			whose preview sizes go smaller than a slide can be read at, and
-			whose density does not suit slides. */ }
+			{ /* A toolbar of its own in place of the default one: the view
+			options' preview sizes go smaller than a slide can be read at, and
+			a select picks a category more simply than the filters. */ }
 			<Stack
 				direction="row"
 				align="center"
@@ -187,7 +199,32 @@ function SlidePatterns() {
 				gap="md"
 				className="dataviews__view-actions"
 			>
-				<DataViews.FiltersToggle />
+				<div style={ { width: 200 } }>
+					<SelectControl
+						label="Category"
+						hideLabelFromVision
+						items={ CATEGORY_ITEMS }
+						value={
+							CATEGORY_ITEMS.find(
+								( item ) => item.value === selectedCategory
+							) ?? CATEGORY_ITEMS[ 0 ]
+						}
+						onValueChange={ ( item ) =>
+							setView( {
+								...view,
+								filters: item?.value
+									? [
+											{
+												field: 'categories',
+												operator: 'isAny',
+												value: [ item.value ],
+											},
+										]
+									: [],
+							} )
+						}
+					/>
+				</div>
 				<Stack direction="row" align="center" gap="lg">
 					<div style={ { width: 160 } }>
 						<RangeControl
@@ -238,7 +275,6 @@ function SlidePatterns() {
 					</ToggleGroupControl>
 				</Stack>
 			</Stack>
-			<DataViews.FiltersToggled className="dataviews-filters__container" />
 			<DataViews.Layout />
 		</DataViews>
 	);
