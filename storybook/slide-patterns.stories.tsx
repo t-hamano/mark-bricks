@@ -199,60 +199,30 @@ function SlidePatterns() {
 				gap="md"
 				className="dataviews__view-actions"
 			>
-				<div style={ { width: 200 } }>
-					<SelectControl
-						label="Category"
-						hideLabelFromVision
-						items={ CATEGORY_ITEMS }
-						value={
-							CATEGORY_ITEMS.find(
-								( item ) => item.value === selectedCategory
-							) ?? CATEGORY_ITEMS[ 0 ]
-						}
-						onValueChange={ ( item ) =>
-							setView( {
-								...view,
-								filters: item?.value
-									? [
-											{
-												field: 'categories',
-												operator: 'isAny',
-												value: [ item.value ],
-											},
-										]
-									: [],
-							} )
-						}
-					/>
-				</div>
 				<Stack direction="row" align="center" gap="lg">
-					<div style={ { width: 160 } }>
-						<RangeControl
-							__next40pxDefaultSize
+					<div style={ { width: 200 } }>
+						<SelectControl
+							label="Category"
 							hideLabelFromVision
-							label="Preview size"
-							showTooltip={ false }
-							withInputField={ false }
-							min={ 0 }
-							max={ PREVIEW_SIZES.length - 1 }
-							step={ 1 }
-							marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
-								value: index,
-							} ) ) }
-							value={ Math.max(
-								0,
-								PREVIEW_SIZES.indexOf(
-									previewSize ?? PREVIEW_SIZES[ 0 ]
-								)
-							) }
-							onChange={ ( index = 0 ) =>
+							items={ CATEGORY_ITEMS }
+							value={
+								CATEGORY_ITEMS.find(
+									( item ) => item.value === selectedCategory
+								) ?? CATEGORY_ITEMS[ 0 ]
+							}
+							onValueChange={ ( item ) =>
 								setView( {
 									...view,
-									layout: {
-										...view.layout,
-										previewSize: PREVIEW_SIZES[ index ],
-									},
-								} as View )
+									filters: item?.value
+										? [
+												{
+													field: 'categories',
+													operator: 'isAny',
+													value: [ item.value ],
+												},
+											]
+										: [],
+								} )
 							}
 						/>
 					</div>
@@ -274,6 +244,36 @@ function SlidePatterns() {
 						) ) }
 					</ToggleGroupControl>
 				</Stack>
+				<div style={ { width: 160 } }>
+					<RangeControl
+						__next40pxDefaultSize
+						hideLabelFromVision
+						label="Preview size"
+						showTooltip={ false }
+						withInputField={ false }
+						min={ 0 }
+						max={ PREVIEW_SIZES.length - 1 }
+						step={ 1 }
+						marks={ PREVIEW_SIZES.map( ( _, index ) => ( {
+							value: index,
+						} ) ) }
+						value={ Math.max(
+							0,
+							PREVIEW_SIZES.indexOf(
+								previewSize ?? PREVIEW_SIZES[ 0 ]
+							)
+						) }
+						onChange={ ( index = 0 ) =>
+							setView( {
+								...view,
+								layout: {
+									...view.layout,
+									previewSize: PREVIEW_SIZES[ index ],
+								},
+							} as View )
+						}
+					/>
+				</div>
 			</Stack>
 			<DataViews.Layout />
 		</DataViews>
