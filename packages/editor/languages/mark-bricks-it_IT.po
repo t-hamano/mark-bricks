@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:21:28.404Z\n"
-"PO-Revision-Date: 2026-11-14T04:21:32.912Z\n"
+"POT-Creation-Date: 2026-11-14T04:22:52.269Z\n"
+"PO-Revision-Date: 2026-11-14T04:22:56.817Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -288,11 +288,12 @@ msgstr "Esplora i modelli Marp"
 msgid "Failed to load image."
 msgstr "Impossibile caricare l’immagine."
 
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:34
 #: src/marp-patterns/patterns/text-and-list.ts:29
 #: src/marp-patterns/patterns/ordered-list.ts:22
 #: src/marp-patterns/patterns/nested-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:26
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:26
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:33
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:33
 #: src/marp-patterns/patterns/heading-code-and-list.ts:29
 #: src/marp-patterns/patterns/bulleted-list.ts:22
 msgctxt "slide pattern"
@@ -351,18 +352,16 @@ msgstr "Etichetta intestazione"
 msgid "Heading"
 msgstr "Titolo"
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:24
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:28
 #: src/marp-patterns/patterns/two-column-table.ts:23
 #: src/marp-patterns/patterns/three-column-table.ts:23
 #: src/marp-patterns/patterns/text-and-list.ts:23
 #: src/marp-patterns/patterns/ordered-list.ts:21
 #: src/marp-patterns/patterns/nested-list.ts:23
 #: src/marp-patterns/patterns/labeled-list.ts:21
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:23
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:25
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:27
 #: src/marp-patterns/patterns/image-on-right-and-code.ts:27
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:23
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:25
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:27
 #: src/marp-patterns/patterns/heading-text-and-code.ts:26
 #: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:23
@@ -453,11 +452,6 @@ msgctxt "slide pattern category"
 msgid "Image"
 msgstr "Immagine"
 
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:15
-msgctxt "slide pattern"
-msgid "Image on the left and list"
-msgstr "Immagine a sinistra ed elenco"
-
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:15
 msgctxt "slide pattern"
 msgid "Image on the left and text"
@@ -467,11 +461,6 @@ msgstr "Immagine a sinistra e testo"
 msgctxt "slide pattern"
 msgid "Image on the right and code"
 msgstr "Immagine a destra e codice"
-
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:15
-msgctxt "slide pattern"
-msgid "Image on the right and list"
-msgstr "Immagine a destra ed elenco"
 
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:15
 msgctxt "slide pattern"
@@ -755,11 +744,12 @@ msgstr "Cerca blocchi"
 msgid "Search for slide patterns"
 msgstr "Cerca modelli di diapositive"
 
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:35
 #: src/marp-patterns/patterns/text-and-list.ts:30
 #: src/marp-patterns/patterns/ordered-list.ts:23
 #: src/marp-patterns/patterns/nested-list.ts:27
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:27
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:27
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:34
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:34
 #: src/marp-patterns/patterns/heading-code-and-list.ts:30
 #: src/marp-patterns/patterns/bulleted-list.ts:23
 msgctxt "slide pattern"
@@ -918,10 +908,11 @@ msgstr "Impossibile visualizzare la formula."
 msgid "Theme"
 msgstr "Tema"
 
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
 #: src/marp-patterns/patterns/text-and-list.ts:31
 #: src/marp-patterns/patterns/ordered-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:28
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:28
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:35
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:35
 #: src/marp-patterns/patterns/heading-code-and-list.ts:31
 #: src/marp-patterns/patterns/bulleted-list.ts:24
 msgctxt "slide pattern"
@@ -1077,10 +1068,10 @@ msgstr "Scrivi TeX…"
 msgid "Write YAML front matter…"
 msgstr "Scrivi il front matter YAML…"
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:25
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:29
 #: src/marp-patterns/patterns/text-and-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:24
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:24
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:28
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:28
 #: src/marp-patterns/patterns/heading-text-and-code.ts:27
 #: src/marp-patterns/patterns/heading-subheading-and-text.ts:24
 #: src/marp-patterns/patterns/heading-code-and-text.ts:27

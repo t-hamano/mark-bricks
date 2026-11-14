@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:21:28.404Z\n"
-"PO-Revision-Date: 2026-11-14T04:21:36.927Z\n"
+"POT-Creation-Date: 2026-11-14T04:22:52.269Z\n"
+"PO-Revision-Date: 2026-11-14T04:23:00.882Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -287,11 +287,12 @@ msgstr "浏览 Marp 模式"
 msgid "Failed to load image."
 msgstr "图片加载失败。"
 
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:34
 #: src/marp-patterns/patterns/text-and-list.ts:29
 #: src/marp-patterns/patterns/ordered-list.ts:22
 #: src/marp-patterns/patterns/nested-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:26
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:26
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:33
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:33
 #: src/marp-patterns/patterns/heading-code-and-list.ts:29
 #: src/marp-patterns/patterns/bulleted-list.ts:22
 msgctxt "slide pattern"
@@ -350,18 +351,16 @@ msgstr "表头标签"
 msgid "Heading"
 msgstr "标题"
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:24
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:28
 #: src/marp-patterns/patterns/two-column-table.ts:23
 #: src/marp-patterns/patterns/three-column-table.ts:23
 #: src/marp-patterns/patterns/text-and-list.ts:23
 #: src/marp-patterns/patterns/ordered-list.ts:21
 #: src/marp-patterns/patterns/nested-list.ts:23
 #: src/marp-patterns/patterns/labeled-list.ts:21
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:23
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:25
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:27
 #: src/marp-patterns/patterns/image-on-right-and-code.ts:27
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:23
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:25
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:27
 #: src/marp-patterns/patterns/heading-text-and-code.ts:26
 #: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:23
@@ -452,11 +451,6 @@ msgctxt "slide pattern category"
 msgid "Image"
 msgstr "图片"
 
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:15
-msgctxt "slide pattern"
-msgid "Image on the left and list"
-msgstr "左侧图片和列表"
-
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:15
 msgctxt "slide pattern"
 msgid "Image on the left and text"
@@ -466,11 +460,6 @@ msgstr "左侧图片和文本"
 msgctxt "slide pattern"
 msgid "Image on the right and code"
 msgstr "右侧图片和代码"
-
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:15
-msgctxt "slide pattern"
-msgid "Image on the right and list"
-msgstr "右侧图片和列表"
 
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:15
 msgctxt "slide pattern"
@@ -751,11 +740,12 @@ msgstr "搜索区块"
 msgid "Search for slide patterns"
 msgstr "搜索幻灯片模式"
 
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:35
 #: src/marp-patterns/patterns/text-and-list.ts:30
 #: src/marp-patterns/patterns/ordered-list.ts:23
 #: src/marp-patterns/patterns/nested-list.ts:27
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:27
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:27
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:34
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:34
 #: src/marp-patterns/patterns/heading-code-and-list.ts:30
 #: src/marp-patterns/patterns/bulleted-list.ts:23
 msgctxt "slide pattern"
@@ -912,10 +902,11 @@ msgstr "无法渲染公式。"
 msgid "Theme"
 msgstr "主题"
 
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
 #: src/marp-patterns/patterns/text-and-list.ts:31
 #: src/marp-patterns/patterns/ordered-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-list.ts:28
-#: src/marp-patterns/patterns/image-on-left-and-list.ts:28
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:35
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:35
 #: src/marp-patterns/patterns/heading-code-and-list.ts:31
 #: src/marp-patterns/patterns/bulleted-list.ts:24
 msgctxt "slide pattern"
@@ -1071,10 +1062,10 @@ msgstr "编写 TeX…"
 msgid "Write YAML front matter…"
 msgstr "编写 YAML 前置元数据…"
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:25
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:29
 #: src/marp-patterns/patterns/text-and-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:24
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:24
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:28
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:28
 #: src/marp-patterns/patterns/heading-text-and-code.ts:27
 #: src/marp-patterns/patterns/heading-subheading-and-text.ts:24
 #: src/marp-patterns/patterns/heading-code-and-text.ts:27

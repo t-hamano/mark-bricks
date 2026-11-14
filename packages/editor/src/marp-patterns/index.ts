@@ -23,8 +23,6 @@ import labeledList from './patterns/labeled-list';
 import textAndList from './patterns/text-and-list';
 import imageOnLeftAndText from './patterns/image-on-left-and-text';
 import imageOnRightAndText from './patterns/image-on-right-and-text';
-import imageOnLeftAndList from './patterns/image-on-left-and-list';
-import imageOnRightAndList from './patterns/image-on-right-and-list';
 import twoStackedImagesAndText from './patterns/two-stacked-images-and-text';
 import headingImageAndCaption from './patterns/heading-image-and-caption';
 import headingAndTwoImages from './patterns/heading-and-two-images';
@@ -69,8 +67,6 @@ export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	textAndList,
 	imageOnLeftAndText,
 	imageOnRightAndText,
-	imageOnLeftAndList,
-	imageOnRightAndList,
 	twoStackedImagesAndText,
 	headingImageAndCaption,
 	headingAndTwoImages,
