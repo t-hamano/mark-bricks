@@ -217,22 +217,27 @@ export function AiProviderCard( {
 				>
 					<Stack direction="column" gap="sm">
 						<Card.Title>{ providerInfo.name }</Card.Title>
-						<CollapsibleCard.HeaderDescription>
-							{ hasKey
-								? sprintf(
-										/* translators: %s: The name of the AI model, such as Claude Opus 5.5. */
-										__( 'Model: %s', 'mark-bricks' ),
-										getModelName(
-											loadedModels,
-											model || providerInfo.defaultModel
-										)
+						{ hasKey && (
+							<CollapsibleCard.HeaderDescription>
+								{ sprintf(
+									/* translators: %s: The name of the AI model, such as Claude Opus 5.5. */
+									__( 'Model: %s', 'mark-bricks' ),
+									getModelName(
+										loadedModels,
+										model || providerInfo.defaultModel
 									)
-								: __( 'Not connected', 'mark-bricks' ) }
-						</CollapsibleCard.HeaderDescription>
+								) }
+							</CollapsibleCard.HeaderDescription>
+						) }
 					</Stack>
 					{ hasKey && (
 						<Badge intent="stable">
 							{ __( 'Connected', 'mark-bricks' ) }
+						</Badge>
+					) }
+					{ hasKey === false && (
+						<Badge intent="none">
+							{ __( 'Not connected', 'mark-bricks' ) }
 						</Badge>
 					) }
 				</Stack>
