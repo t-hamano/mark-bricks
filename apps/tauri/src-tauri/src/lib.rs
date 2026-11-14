@@ -102,9 +102,7 @@ async fn open_preview(app: tauri::AppHandle, title: String, locale: String) -> R
     tauri::WebviewWindowBuilder::new(
         &app,
         PREVIEW_WINDOW,
-        tauri::WebviewUrl::App(
-            format!("pages/preview.html?placement=window&locale={locale}").into(),
-        ),
+        tauri::WebviewUrl::App(preview_window_path(&locale).into()),
     )
     .title(title)
     .inner_size(960.0, 540.0)
@@ -112,6 +110,21 @@ async fn open_preview(app: tauri::AppHandle, title: String, locale: String) -> R
     .build()
     .map(|_| ())
     .map_err(|e| e.to_string())
+}
+
+/// The preview window's page, with `locale` percent-encoded the way the
+/// panel's `encodeURIComponent` does, so a value with `&` or `#` cannot break
+/// the query string.
+fn preview_window_path(locale: &str) -> String {
+    let mut encoded = String::with_capacity(locale.len());
+    for byte in locale.bytes() {
+        if byte.is_ascii_alphanumeric() || b"-_.!~*'()".contains(&byte) {
+            encoded.push(byte as char);
+        } else {
+            encoded.push_str(&format!("%{byte:02X}"));
+        }
+    }
+    format!("pages/preview.html?placement=window&locale={encoded}")
 }
 
 /// Closes the slide preview window, if it is open.
@@ -527,3 +540,28 @@ pub fn run() {
 
 #[cfg(test)]
 mod tests;
+
+#[cfg(test)]
+mod tests {
+    use super::preview_window_path;
+
+    #[test]
+    fn preview_window_path_keeps_locale_slugs() {
+        assert_eq!(
+            preview_window_path("pt_BR"),
+            "pages/preview.html?placement=window&locale=pt_BR"
+        );
+    }
+
+    #[test]
+    fn preview_window_path_encodes_reserved_characters() {
+        assert_eq!(
+            preview_window_path("ja&placement=panel#x"),
+            "pages/preview.html?placement=window&locale=ja%26placement%3Dpanel%23x"
+        );
+        assert_eq!(
+            preview_window_path("日"),
+            "pages/preview.html?placement=window&locale=%E6%97%A5"
+        );
+    }
+}
