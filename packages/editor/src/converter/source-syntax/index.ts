@@ -8,7 +8,13 @@ import type { Nodes } from 'mdast';
  * Internal dependencies
  */
 import { annotateImageTitleQuote, imageHandler } from './image-title-quote';
-import { annotateInlineMarker, inlineMarkerHandlers } from './inline-marker';
+import {
+	annotateInlineMarker,
+	inlineMarkerFallbackHandlers,
+	inlineMarkerHandlers,
+} from './inline-marker';
+
+export { hasAttention, hasSameAttention } from './inline-marker';
 import { annotateLinkSyntax, linkHandler } from './link';
 
 /**
@@ -63,4 +69,13 @@ export const sourceSyntaxHandlers: Partial< Handlers > = {
 	...inlineMarkerHandlers,
 	link: linkHandler,
 	image: imageHandler,
+};
+
+/**
+ * {@link sourceSyntaxHandlers}, with inline markers that may switch to the
+ * other marker where the recorded one would not parse back.
+ */
+export const sourceSyntaxFallbackHandlers: Partial< Handlers > = {
+	...sourceSyntaxHandlers,
+	...inlineMarkerFallbackHandlers,
 };

@@ -54,10 +54,10 @@
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
 		"jsdom": "^31.0.0",
-		"preact": "^11.1.1",
+		"preact": "^11.2.0",
 		"react": "^19.3.1",
 		"react-dom": "^19.3.1",
-		"vite": "^8.3.5",
-		"vitest": "^5.0.5"
+		"vite": "^8.3.7",
+		"vitest": "^5.1.0"
 	}
 }

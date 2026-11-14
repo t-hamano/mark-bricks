@@ -203,6 +203,17 @@ describe( 'core/paragraph', () => {
 				'<a href="https://example.com" title="a title">text</a>',
 				'[text](https://example.com "a title")\n',
 			],
+			[
+				'emphasis inside strong',
+				'<strong>bold <em>italic</em></strong>',
+				'**bold *italic***\n',
+			],
+			[ 'adjacent emphasis', '<em>a</em><em>b</em>', '*a*_b_\n' ],
+			[
+				'adjacent strong',
+				'<strong>a</strong><strong>b</strong>',
+				'**a**__b__\n',
+			],
 		] )(
 			'converts formatted content of %s to markdown',
 			( _label, content, markdown ) => {
