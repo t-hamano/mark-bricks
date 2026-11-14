@@ -256,6 +256,18 @@ describe( 'serializeMarpDirectiveComment', () => {
 		).toBe( '<!--\n_header: New\n# Title slide\n-->' );
 	} );
 
+	it( 'keeps the spaces of a quoted value that did not change', () => {
+		const comment = parseMarpDirectiveComment(
+			'\n_header: "\\nHeader\\n"\n'
+		)!;
+		expect(
+			serializeMarpDirectiveComment( {
+				...comment,
+				values: { ...comment.values, footer: 'Bye' },
+			} )
+		).toBe( '<!--\n_header: "\\nHeader\\n"\n_footer: Bye\n-->' );
+	} );
+
 	it( 'writes nothing for no directives', () => {
 		expect(
 			serializeMarpDirectiveComment( {

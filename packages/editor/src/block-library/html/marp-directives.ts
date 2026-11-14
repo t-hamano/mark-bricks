@@ -262,16 +262,19 @@ export function serializeMarpDirectiveComment(
 		...MARP_DIRECTIVES.flatMap( ( name ) => {
 			// An empty value is written too: `_header: ""` hides the header
 			// that earlier slides set.
-			const value = comment.values[ name ]?.trim();
-			if ( value === undefined ) {
+			const untrimmed = comment.values[ name ];
+			if ( untrimmed === undefined ) {
 				return [];
 			}
+			const value = untrimmed.trim();
 			const isSpot = comment.spotDirectives?.[ name ] ?? comment.isSpot;
 			const key = `${ isSpot ? '_' : '' }${ name }`;
 			keys.push( key );
 			const raw = comment.rawValues?.[ name ];
+			// A value that did not change is compared as read, so the
+			// spaces inside its quotes are kept.
 			const written =
-				raw !== undefined && parseScalar( raw ).value === value
+				raw !== undefined && parseScalar( raw ).value === untrimmed
 					? raw
 					: formatMarpDirectiveValue( value );
 			return [ `${ key }: ${ written }` ];
