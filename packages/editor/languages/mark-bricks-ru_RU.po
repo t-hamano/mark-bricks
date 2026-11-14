@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:57:36.283Z\n"
-"PO-Revision-Date: 2026-11-14T05:58:00.081Z\n"
+"POT-Creation-Date: 2026-11-14T06:25:11.017Z\n"
+"PO-Revision-Date: 2026-11-14T06:25:17.930Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -41,6 +41,21 @@ msgstr "(Некорректный уровень заголовка)"
 #: src/components/list-view-outline/index.tsx:187
 msgid "(Multiple H1 headings are not recommended)"
 msgstr "(Не рекомендуется использовать более одного тега H1)"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:28
+msgctxt "slide pattern"
+msgid "1"
+msgstr "1"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:32
+msgctxt "slide pattern"
+msgid "100%"
+msgstr "100 %"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:30
+msgctxt "slide pattern"
+msgid "3"
+msgstr "3"
 
 #: style.css
 #. Name of the generic
@@ -94,6 +109,11 @@ msgstr "Все категории"
 msgid "Alt text"
 msgstr "Альтернативный текст"
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
+msgctxt "slide pattern"
+msgid "Any editor"
+msgstr "Любой редактор"
+
 #: src/format-library/image/inline.tsx:169
 #: src/block-library/image/edit.tsx:126
 #: src/block-library/image/edit.tsx:280
@@ -113,6 +133,11 @@ msgstr ""
 "фрагмент или строка с курсором в редакторе кода отправляется вместе с "
 "сообщением."
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:47
+msgctxt "slide pattern"
+msgid "Binary file"
+msgstr "Двоичный файл"
+
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
 msgstr "Вставка блоков"
@@ -131,6 +156,16 @@ msgstr "Жирный"
 #: src/block-library/image/edit.tsx:218
 msgid "Browse local file"
 msgstr "Выбрать локальный файл"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:31
+msgctxt "slide pattern"
+msgid "Built-in themes"
+msgstr "Встроенные темы"
+
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:48
+msgctxt "slide pattern"
+msgid "By hand"
+msgstr "Вручную"
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
@@ -251,10 +286,18 @@ msgstr "Введите заголовок…"
 msgid "Explore Marp patterns"
 msgstr "Просмотреть шаблоны Marp"
 
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:43
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:38
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:38
+msgctxt "slide pattern"
+msgid "Export to HTML or PDF"
+msgstr "Экспорт в HTML или PDF"
+
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:37
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:35
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:35
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:42
 msgctxt "slide pattern"
 msgid "Export when you are ready"
 msgstr "Экспортируйте, когда будете готовы"
@@ -262,6 +305,11 @@ msgstr "Экспортируйте, когда будете готовы"
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "Не удалось загрузить изображение."
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:29
+msgctxt "slide pattern"
+msgid "File for each deck"
+msgstr "Файл на презентацию"
 
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
@@ -275,6 +323,11 @@ msgstr "Нижний колонтитул"
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Косая черта"
+
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:44
+msgctxt "slide pattern"
+msgid "From the theme"
+msgstr "Задаётся темой"
 
 #: src/components/front-matter-editor/index.tsx:112
 #: src/components/front-matter-editor/index.tsx:131
@@ -322,15 +375,45 @@ msgstr "Заголовок"
 msgid "Heading %d"
 msgstr "Заголовок %d"
 
+#: src/marp-patterns/patterns/heading-and-centered-text.ts:14
+msgctxt "slide pattern"
+msgid "Heading and centered text"
+msgstr "Заголовок и текст по центру"
+
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:13
+msgctxt "slide pattern"
+msgid "Heading and four cards"
+msgstr "Заголовок и четыре карточки"
+
 #: src/marp-patterns/patterns/heading-and-text-on-image.ts:15
 msgctxt "slide pattern"
 msgid "Heading and text on an image"
 msgstr "Заголовок и текст на изображении"
 
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:14
+msgctxt "slide pattern"
+msgid "Heading and three cards"
+msgstr "Заголовок и три карточки"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:14
+msgctxt "slide pattern"
+msgid "Heading and three numbers"
+msgstr "Заголовок и три числа"
+
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:14
+msgctxt "slide pattern"
+msgid "Heading and three steps in a row"
+msgstr "Заголовок и три шага в ряд"
+
 #: src/marp-patterns/patterns/heading-and-two-images.ts:14
 msgctxt "slide pattern"
 msgid "Heading and two images"
 msgstr "Заголовок и два изображения"
+
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:14
+msgctxt "slide pattern"
+msgid "Heading and two lists side by side"
+msgstr "Заголовок и два списка рядом"
 
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:14
 msgctxt "slide pattern"
@@ -341,6 +424,11 @@ msgstr "Заголовок и два подраздела"
 msgctxt "slide pattern"
 msgid "Heading, image, and caption"
 msgstr "Заголовок, изображение и подпись"
+
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:14
+msgctxt "slide pattern"
+msgid "Heading, text and list in two columns"
+msgstr "Заголовок, текст и список в две колонки"
 
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
@@ -456,6 +544,11 @@ msgstr "Сделать выделенный текст встроенным ко
 msgid "Make the selected text italic."
 msgstr "Сделать выделенный текст курсивом."
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:42
+msgctxt "slide pattern"
+msgid "Markdown"
+msgstr "Markdown"
+
 #: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
@@ -514,6 +607,11 @@ msgstr "Шаблоны слайдов не найдены."
 msgid "Note"
 msgstr "Примечание"
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:49
+msgctxt "slide pattern"
+msgid "One app"
+msgstr "Одно приложение"
+
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "Открыто по умолчанию"
@@ -548,6 +646,12 @@ msgstr "Вставить или ввести URL-адрес"
 msgid "Paste or type URL or file path"
 msgstr "Вставьте или введите URL-адрес или путь к файлу"
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:43
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:33
+msgctxt "slide pattern"
+msgid "Plain text"
+msgstr "Обычный текст"
+
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:38
 msgctxt "slide pattern"
 msgid "Plain text is easy to compare, review and keep in version control."
@@ -555,14 +659,27 @@ msgstr ""
 "Обычный текст легко сравнивать, проверять и хранить в системе контроля "
 "версий."
 
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:39
+msgctxt "slide pattern"
+msgid "Present"
+msgstr "Показ"
+
 #: src/components/slide-pattern-modal/index.tsx:57
 msgid "Preview"
 msgstr "Предпросмотр"
+
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:36
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:31
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:31
+msgctxt "slide pattern"
+msgid "Preview"
+msgstr "Просмотр"
 
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:35
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:36
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:34
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:34
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:41
 msgctxt "slide pattern"
 msgid "Preview as you type"
 msgstr "Предпросмотр по мере ввода"
@@ -616,6 +733,13 @@ msgstr "Поиск блоков"
 msgid "Search for slide patterns"
 msgstr "Поиск шаблонов слайдов"
 
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:37
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:32
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:32
+msgctxt "slide pattern"
+msgid "See each slide as you type"
+msgstr "Каждый слайд виден по мере ввода"
+
 #: src/components/front-matter-editor/index.tsx:316
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Другие настройки описаны в <a>документации Marp</a>."
@@ -628,6 +752,13 @@ msgstr "Отправить"
 msgid "Set an API key to use the AI Assistant."
 msgstr "Укажите ключ API, чтобы использовать ИИ-ассистента."
 
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:42
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:37
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:37
+msgctxt "slide pattern"
+msgid "Share"
+msgstr "Делитесь"
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "Показать или скрыть представление в виде списка."
@@ -635,6 +766,11 @@ msgstr "Показать или скрыть представление в ви�
 #: src/components/front-matter-editor/index.tsx:305
 msgid "Show the page number on each slide."
 msgstr "Показывает номер страницы на каждом слайде."
+
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:40
+msgctxt "slide pattern"
+msgid "Show your slides in full screen"
+msgstr "Показывайте слайды во весь экран"
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
@@ -655,6 +791,11 @@ msgstr "Размер"
 msgid "Slide Separator"
 msgstr "Разделитель слайдов"
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:46
+msgctxt "slide pattern"
+msgid "Slide app"
+msgstr "Приложение для слайдов"
+
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:99
 #: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
@@ -664,10 +805,17 @@ msgstr "Шаблоны слайдов"
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:29
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:27
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:27
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:34
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:23
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:41
 #: src/marp-patterns/patterns/heading-and-two-images.ts:20
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:33
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:27
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:28
 #: src/marp-patterns/patterns/heading-and-text-on-image.ts:25
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:28
+#: src/marp-patterns/patterns/heading-and-centered-text.ts:25
 #: src/marp-patterns/patterns/header-footer-and-page-number.ts:32
 msgctxt "slide pattern"
 msgid "Slides as plain text"
@@ -869,6 +1017,13 @@ msgstr "Маркированный"
 msgid "Upload an image from your device or insert from a URL."
 msgstr "Загрузите изображение с устройства или вставьте по URL-адресу."
 
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:35
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:30
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:30
+msgctxt "slide pattern"
+msgid "Use any text editor"
+msgstr "В любом текстовом редакторе"
+
 #: style.css
 #. Description of the generic
 msgid "Visual markdown block editor."
@@ -881,6 +1036,13 @@ msgstr "Ожидание ответа…"
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr "Предупреждение"
+
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:34
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:29
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:29
+msgctxt "slide pattern"
+msgid "Write"
+msgstr "Пишите"
 
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
@@ -902,6 +1064,7 @@ msgstr "Введите код…"
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:35
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:33
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:33
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:40
 msgctxt "slide pattern"
 msgid "Write in plain text"
 msgstr "Пишите обычным текстом"
@@ -914,8 +1077,10 @@ msgstr "Написать резюме…"
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:30
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:28
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:28
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:35
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:32
 #: src/marp-patterns/patterns/heading-and-text-on-image.ts:26
+#: src/marp-patterns/patterns/heading-and-centered-text.ts:26
 #: src/marp-patterns/patterns/header-footer-and-page-number.ts:33
 msgctxt "slide pattern"
 msgid ""

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T05:57:36.283Z\n"
-"PO-Revision-Date: 2026-11-14T05:57:58.279Z\n"
+"POT-Creation-Date: 2026-11-14T06:25:11.017Z\n"
+"PO-Revision-Date: 2026-11-14T06:25:16.153Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -41,6 +41,21 @@ msgstr "(올바르지 않은 헤딩 레벨)"
 #: src/components/list-view-outline/index.tsx:187
 msgid "(Multiple H1 headings are not recommended)"
 msgstr "(다중 H1 헤딩은 추천하지 않습니다)"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:28
+msgctxt "slide pattern"
+msgid "1"
+msgstr "1"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:32
+msgctxt "slide pattern"
+msgid "100%"
+msgstr "100%"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:30
+msgctxt "slide pattern"
+msgid "3"
+msgstr "3"
 
 #: style.css
 #. Name of the generic
@@ -94,6 +109,11 @@ msgstr "모든 카테고리"
 msgid "Alt text"
 msgstr "대체 텍스트"
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
+msgctxt "slide pattern"
+msgid "Any editor"
+msgstr "아무 편집기"
+
 #: src/format-library/image/inline.tsx:169
 #: src/block-library/image/edit.tsx:126
 #: src/block-library/image/edit.tsx:280
@@ -111,6 +131,11 @@ msgid ""
 msgstr ""
 "AI 어시스턴트에게 작성이나 편집을 요청하세요. 선택 영역 또는 코드 편집기에서 "
 "커서가 있는 줄이 메시지와 함께 전송됩니다."
+
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:47
+msgctxt "slide pattern"
+msgid "Binary file"
+msgstr "바이너리 파일"
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -130,6 +155,16 @@ msgstr "굵게"
 #: src/block-library/image/edit.tsx:218
 msgid "Browse local file"
 msgstr "로컬 파일 찾아보기"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:31
+msgctxt "slide pattern"
+msgid "Built-in themes"
+msgstr "기본 제공 테마"
+
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:48
+msgctxt "slide pattern"
+msgid "By hand"
+msgstr "수작업"
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
@@ -250,10 +285,18 @@ msgstr "제목 입력…"
 msgid "Explore Marp patterns"
 msgstr "Marp 패턴 둘러보기"
 
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:43
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:38
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:38
+msgctxt "slide pattern"
+msgid "Export to HTML or PDF"
+msgstr "HTML 또는 PDF로 내보내기"
+
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:37
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:35
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:35
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:42
 msgctxt "slide pattern"
 msgid "Export when you are ready"
 msgstr "준비되면 내보내기"
@@ -261,6 +304,11 @@ msgstr "준비되면 내보내기"
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "이미지를 불러오지 못했습니다."
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:29
+msgctxt "slide pattern"
+msgid "File for each deck"
+msgstr "프레젠테이션당 파일 수"
 
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
@@ -274,6 +322,11 @@ msgstr "바닥글"
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "슬래시"
+
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:44
+msgctxt "slide pattern"
+msgid "From the theme"
+msgstr "테마가 결정"
 
 #: src/components/front-matter-editor/index.tsx:112
 #: src/components/front-matter-editor/index.tsx:131
@@ -321,15 +374,45 @@ msgstr "헤딩요소"
 msgid "Heading %d"
 msgstr "제목 %d"
 
+#: src/marp-patterns/patterns/heading-and-centered-text.ts:14
+msgctxt "slide pattern"
+msgid "Heading and centered text"
+msgstr "제목과 가운데 텍스트"
+
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:13
+msgctxt "slide pattern"
+msgid "Heading and four cards"
+msgstr "제목과 네 개의 카드"
+
 #: src/marp-patterns/patterns/heading-and-text-on-image.ts:15
 msgctxt "slide pattern"
 msgid "Heading and text on an image"
 msgstr "이미지 위 제목과 텍스트"
 
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:14
+msgctxt "slide pattern"
+msgid "Heading and three cards"
+msgstr "제목과 세 개의 카드"
+
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:14
+msgctxt "slide pattern"
+msgid "Heading and three numbers"
+msgstr "제목과 세 개의 숫자"
+
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:14
+msgctxt "slide pattern"
+msgid "Heading and three steps in a row"
+msgstr "제목과 나란히 놓인 세 단계"
+
 #: src/marp-patterns/patterns/heading-and-two-images.ts:14
 msgctxt "slide pattern"
 msgid "Heading and two images"
 msgstr "제목과 두 이미지"
+
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:14
+msgctxt "slide pattern"
+msgid "Heading and two lists side by side"
+msgstr "제목과 나란히 놓인 두 목록"
 
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:14
 msgctxt "slide pattern"
@@ -340,6 +423,11 @@ msgstr "제목과 두 개의 소제목"
 msgctxt "slide pattern"
 msgid "Heading, image, and caption"
 msgstr "제목, 이미지, 캡션"
+
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:14
+msgctxt "slide pattern"
+msgid "Heading, text and list in two columns"
+msgstr "제목, 텍스트와 목록의 2단 구성"
 
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
@@ -455,6 +543,11 @@ msgstr "선택한 텍스트를 인라인 코드로 만듭니다."
 msgid "Make the selected text italic."
 msgstr "선택한 텍스트에 이탤릭체로 적용."
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:42
+msgctxt "slide pattern"
+msgid "Markdown"
+msgstr "Markdown"
+
 #: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
@@ -511,6 +604,11 @@ msgstr "슬라이드 패턴을 찾을 수 없습니다."
 msgid "Note"
 msgstr "참고"
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:49
+msgctxt "slide pattern"
+msgid "One app"
+msgstr "전용 앱"
+
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
 msgstr "기본적으로 열기"
@@ -545,12 +643,30 @@ msgstr "URL 붙여넣기 또는 입력"
 msgid "Paste or type URL or file path"
 msgstr "URL 또는 파일 경로 붙여넣기 또는 입력"
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:43
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:33
+msgctxt "slide pattern"
+msgid "Plain text"
+msgstr "텍스트"
+
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:38
 msgctxt "slide pattern"
 msgid "Plain text is easy to compare, review and keep in version control."
 msgstr "텍스트는 비교, 검토, 버전 관리가 쉽습니다."
 
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:39
+msgctxt "slide pattern"
+msgid "Present"
+msgstr "발표"
+
 #: src/components/slide-pattern-modal/index.tsx:57
+msgid "Preview"
+msgstr "미리보기"
+
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:36
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:31
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:31
+msgctxt "slide pattern"
 msgid "Preview"
 msgstr "미리보기"
 
@@ -558,6 +674,7 @@ msgstr "미리보기"
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:36
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:34
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:34
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:41
 msgctxt "slide pattern"
 msgid "Preview as you type"
 msgstr "입력하면서 미리보기"
@@ -611,6 +728,13 @@ msgstr "블록 검색"
 msgid "Search for slide patterns"
 msgstr "슬라이드 패턴 검색"
 
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:37
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:32
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:32
+msgctxt "slide pattern"
+msgid "See each slide as you type"
+msgstr "입력하면서 각 슬라이드 확인"
+
 #: src/components/front-matter-editor/index.tsx:316
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "다른 설정은 <a>Marp 문서</a>를 참고하세요."
@@ -623,6 +747,13 @@ msgstr "보내기"
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI 어시스턴트를 사용하려면 API 키를 설정하세요."
 
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:42
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:37
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:37
+msgctxt "slide pattern"
+msgid "Share"
+msgstr "공유"
+
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
 msgstr "목록 보기를 표시하거나 숨깁니다."
@@ -630,6 +761,11 @@ msgstr "목록 보기를 표시하거나 숨깁니다."
 #: src/components/front-matter-editor/index.tsx:305
 msgid "Show the page number on each slide."
 msgstr "각 슬라이드에 페이지 번호를 표시합니다."
+
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:40
+msgctxt "slide pattern"
+msgid "Show your slides in full screen"
+msgstr "슬라이드를 전체 화면으로 표시"
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
@@ -650,6 +786,11 @@ msgstr "크기"
 msgid "Slide Separator"
 msgstr "슬라이드 구분자"
 
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:46
+msgctxt "slide pattern"
+msgid "Slide app"
+msgstr "슬라이드 앱"
+
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:99
 #: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
@@ -659,10 +800,17 @@ msgstr "슬라이드 패턴"
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:29
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:27
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:27
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:34
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:23
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
+#: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:41
 #: src/marp-patterns/patterns/heading-and-two-images.ts:20
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:33
+#: src/marp-patterns/patterns/heading-and-three-numbers.ts:27
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:28
 #: src/marp-patterns/patterns/heading-and-text-on-image.ts:25
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:28
+#: src/marp-patterns/patterns/heading-and-centered-text.ts:25
 #: src/marp-patterns/patterns/header-footer-and-page-number.ts:32
 msgctxt "slide pattern"
 msgid "Slides as plain text"
@@ -862,6 +1010,13 @@ msgstr "순서 없음"
 msgid "Upload an image from your device or insert from a URL."
 msgstr "기기에서 이미지를 업로드하거나 URL로 삽입하세요."
 
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:35
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:30
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:30
+msgctxt "slide pattern"
+msgid "Use any text editor"
+msgstr "아무 텍스트 편집기나 사용"
+
 #: style.css
 #. Description of the generic
 msgid "Visual markdown block editor."
@@ -874,6 +1029,13 @@ msgstr "답변을 기다리는 중…"
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr "경고"
+
+#: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:34
+#: src/marp-patterns/patterns/heading-and-three-cards.ts:29
+#: src/marp-patterns/patterns/heading-and-four-cards.ts:29
+msgctxt "slide pattern"
+msgid "Write"
+msgstr "작성"
 
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
@@ -895,6 +1057,7 @@ msgstr "코드 쓰기…"
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:35
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:33
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:33
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:40
 msgctxt "slide pattern"
 msgid "Write in plain text"
 msgstr "텍스트로 작성"
@@ -907,8 +1070,10 @@ msgstr "요약 쓰기..."
 #: src/marp-patterns/patterns/three-stacked-images-and-text.ts:30
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:28
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:28
+#: src/marp-patterns/patterns/heading-text-and-list-in-two-columns.ts:35
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:32
 #: src/marp-patterns/patterns/heading-and-text-on-image.ts:26
+#: src/marp-patterns/patterns/heading-and-centered-text.ts:26
 #: src/marp-patterns/patterns/header-footer-and-page-number.ts:33
 msgctxt "slide pattern"
 msgid ""

@@ -44,13 +44,26 @@ describe( 'getSlidePatternPreview', () => {
 				uncover: '<h1 class="uncover">{{heading}}</h1>',
 			},
 		},
+		styles: {
+			test: { default: '', gaia: 'h1{}', uncover: '' },
+		},
 	};
 
 	it( 'puts in the text, escaped', () => {
 		expect( getSlidePatternPreview( previews, pattern, 'gaia' ) ).toEqual( {
 			html: '<h1 class="gaia">Q&amp;A &lt;today></h1>',
-			css: 'g',
+			css: 'gh1{}',
 		} );
+	} );
+
+	it( 'uses the theme stylesheet alone for a pattern without a style', () => {
+		expect(
+			getSlidePatternPreview(
+				{ ...previews, styles: {} },
+				pattern,
+				'uncover'
+			)?.css
+		).toBe( 'u' );
 	} );
 
 	it( 'returns null for a pattern without previews', () => {
