@@ -7,6 +7,7 @@ import { describe, expect, it } from 'vitest';
  * Internal dependencies
  */
 import {
+	applyChange,
 	buildMessageContext,
 	formatChangedLines,
 	formatDocument,
@@ -142,9 +143,37 @@ describe( 'buildMessageContext', () => {
 		expect( result ).toContain( formatDocument( long.document ) );
 	} );
 
+	it( 'sends the empty document when the user removed everything', () => {
+		const empty = joinAroundSelection( '', '', '' );
+		expect( buildMessageContext( empty, 'One.\nTwo.\n' ) ).toBe(
+			'The document changed a lot after your last answer. This is the whole document now.\n\n<document>\n</document>\n\n<selection after-line="0"></selection>'
+		);
+	} );
+
 	it( 'sends the whole document again when it is shorter than the changes', () => {
 		const short = joinAroundSelection( 'New.\n', '', '' );
 		const result = buildMessageContext( short, 'Old.\n' );
 		expect( result ).toContain( formatDocument( 'New.\n' ) );
+	} );
+} );
+
+describe( 'applyChange', () => {
+	it( 'takes the new document when the model knows the old one', () => {
+		expect( applyChange( 'One.\n', 'One.\n', 'Two.\n' ) ).toBe( 'Two.\n' );
+	} );
+
+	it( 'leaves out changes the model has not been told about', () => {
+		const seen = lines( 30 );
+		const before = seen.replace( 'Line 25.', 'Typed by the user.' );
+		const after = before.replace( 'Line 3.', 'Edited by the model.' );
+		expect( applyChange( seen, before, after ) ).toBe(
+			seen.replace( 'Line 3.', 'Edited by the model.' )
+		);
+	} );
+
+	it( 'returns null when the change does not fit', () => {
+		expect(
+			applyChange( 'Something else.\n', 'One.\n', 'Two.\n' )
+		).toBeNull();
 	} );
 } );

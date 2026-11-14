@@ -15,7 +15,7 @@ import {
 	type Conversation,
 	type DocumentSnapshot,
 } from './conversation';
-import { buildMessageContext } from './document-context';
+import { applyChange, buildMessageContext } from './document-context';
 import type { EditTarget } from './edit-target';
 import { buildSystemPrompt } from './prompt';
 import type { AiEditResult, AiPlatform } from '../platform';
@@ -100,12 +100,14 @@ export function useAiChat( {
 			];
 			const controller = new AbortController();
 			controllerRef.current = controller;
-			// The document is read in the mode the message was sent in, so
-			// it is left out after switching modes.
+			// The document as the model knows it: as sent, with the model's
+			// edits. Changes the user makes while the answer streams are left
+			// out, so the next message tells the model about them.
+			let seenDocument = context?.document;
 			const readDocument = () =>
-				target && editorModeRef.current === mode
-					? { editorMode: mode, document: target.getDocument() }
-					: undefined;
+				seenDocument === undefined
+					? undefined
+					: { editorMode: mode, document: seenDocument };
 			readDocumentRef.current = readDocument;
 			dispatch( {
 				type: 'START',
@@ -142,10 +144,25 @@ export function useAiChat( {
 						} );
 						return;
 					}
-					const result: AiEditResult =
-						target && editorModeRef.current === mode
-							? target.apply( event.edit )
-							: { status: 'dropped' };
+					const canApply = target && editorModeRef.current === mode;
+					const before = canApply ? target.getDocument() : '';
+					const result: AiEditResult = canApply
+						? target.apply( event.edit )
+						: { status: 'dropped' };
+					if (
+						canApply &&
+						result.status === 'applied' &&
+						seenDocument !== undefined
+					) {
+						// When the edit does not fit, the next message sends
+						// the whole document.
+						seenDocument =
+							applyChange(
+								seenDocument,
+								before,
+								target.getDocument()
+							) ?? undefined;
+					}
 					// The model tries again after a failed edit, so the
 					// answer shows only the edit that changed the document,
 					// or that was dropped.

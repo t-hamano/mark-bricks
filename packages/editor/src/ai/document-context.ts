@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { structuredPatch } from 'diff';
+import { applyPatch, structuredPatch } from 'diff';
 
 /**
  * Internal dependencies
@@ -92,6 +92,34 @@ export function formatChangedLines( before: string, after: string ): string {
 }
 
 /**
+ * Applies to the document as the model knows it a change made to the
+ * document in the editor, such as the model's edit. The editor's document
+ * may hold changes the model has not been told about, which stay out.
+ *
+ * @param seen   The document as the model knows it.
+ * @param before The editor's document before the change.
+ * @param after  The editor's document after the change.
+ * @return The document as the model knows it, with the change, or `null`
+ *         when the change does not fit it.
+ */
+export function applyChange(
+	seen: string,
+	before: string,
+	after: string
+): string | null {
+	if ( seen === before ) {
+		return after;
+	}
+	const result = applyPatch(
+		seen,
+		structuredPatch( '', '', before, after, '', '', {
+			context: CONTEXT_LINES,
+		} )
+	);
+	return result === false ? null : result;
+}
+
+/**
  * Describes the selection, or where new content goes when nothing is
  * selected, with its line numbers in the document.
  *
@@ -142,7 +170,10 @@ export function buildMessageContext(
 		parts.push( formatDocument( context.document ) );
 	} else if (
 		changes.length > MAX_CHANGES_LENGTH ||
-		changes.length > context.document.length
+		changes.length > context.document.length ||
+		// Removed lines are not shown, so removing every line leaves
+		// nothing to show.
+		( changes === '' && previous !== context.document )
 	) {
 		parts.push(
 			'The document changed a lot after your last answer. This is the whole document now.',
