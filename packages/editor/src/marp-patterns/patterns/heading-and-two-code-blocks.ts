@@ -26,7 +26,7 @@ const result = example( 2 );
 console.log( result );
 \`\`\``,
 	strings: () => ( {
-		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
+		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 

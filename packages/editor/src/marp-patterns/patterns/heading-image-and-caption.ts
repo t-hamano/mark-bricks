@@ -20,8 +20,12 @@ const pattern: SlidePattern = {
 
 {{caption}}`,
 	strings: () => ( {
-		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
-		caption: _x( 'Caption', 'slide pattern', 'mark-bricks' ),
+		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
+		caption: _x(
+			'A slide written in Markdown',
+			'slide pattern',
+			'mark-bricks'
+		),
 	} ),
 };
 

@@ -39,6 +39,7 @@ import code from './patterns/code';
 import headingTextAndCode from './patterns/heading-text-and-code';
 import headingCodeAndList from './patterns/heading-code-and-list';
 import headingAndTwoCodeBlocks from './patterns/heading-and-two-code-blocks';
+import imageOnLeftAndCode from './patterns/image-on-left-and-code';
 import imageOnRightAndCode from './patterns/image-on-right-and-code';
 
 export type { SlidePattern, SlidePatternCategory } from './types';
@@ -83,6 +84,7 @@ export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	headingCodeAndText,
 	headingCodeAndList,
 	headingAndTwoCodeBlocks,
+	imageOnLeftAndCode,
 	imageOnRightAndCode,
 ];
 

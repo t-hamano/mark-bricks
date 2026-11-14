@@ -18,9 +18,13 @@ const pattern: SlidePattern = {
 
 {{citation}}`,
 	strings: () => ( {
-		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
-		quote: _x( 'Quote text', 'slide pattern', 'mark-bricks' ),
-		citation: _x( 'Citation', 'slide pattern', 'mark-bricks' ),
+		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
+		quote: _x(
+			'Good slides say one thing, and say it clearly.',
+			'slide pattern',
+			'mark-bricks'
+		),
+		citation: _x( 'Alex Kim, Designer', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 

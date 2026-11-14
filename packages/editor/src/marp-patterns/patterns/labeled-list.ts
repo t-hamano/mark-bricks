@@ -18,13 +18,25 @@ const pattern: SlidePattern = {
 - **{{label2}}**: {{description2}}
 - **{{label3}}**: {{description3}}`,
 	strings: () => ( {
-		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
-		label1: _x( 'Label', 'slide pattern', 'mark-bricks' ),
-		description1: _x( 'Description', 'slide pattern', 'mark-bricks' ),
-		label2: _x( 'Label', 'slide pattern', 'mark-bricks' ),
-		description2: _x( 'Description', 'slide pattern', 'mark-bricks' ),
-		label3: _x( 'Label', 'slide pattern', 'mark-bricks' ),
-		description3: _x( 'Description', 'slide pattern', 'mark-bricks' ),
+		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
+		label1: _x( 'Write', 'slide pattern', 'mark-bricks' ),
+		description1: _x(
+			'Use any text editor',
+			'slide pattern',
+			'mark-bricks'
+		),
+		label2: _x( 'Preview', 'slide pattern', 'mark-bricks' ),
+		description2: _x(
+			'See each slide as you type',
+			'slide pattern',
+			'mark-bricks'
+		),
+		label3: _x( 'Share', 'slide pattern', 'mark-bricks' ),
+		description3: _x(
+			'Export to HTML or PDF',
+			'slide pattern',
+			'mark-bricks'
+		),
 	} ),
 };
 

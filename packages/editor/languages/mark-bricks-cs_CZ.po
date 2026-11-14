@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:22:52.269Z\n"
-"PO-Revision-Date: 2026-11-14T04:22:54.190Z\n"
+"POT-Creation-Date: 2026-11-14T04:31:17.166Z\n"
+"PO-Revision-Date: 2026-11-14T04:31:19.117Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -47,6 +47,22 @@ msgstr "(Nedoporučuje se více nadpisů H1)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/marp-patterns/patterns/title.ts:26
+#: src/marp-patterns/patterns/title-on-image.ts:29
+#: src/marp-patterns/patterns/title-on-gradient.ts:29
+#: src/marp-patterns/patterns/title-on-blurred-image.ts:30
+#: src/marp-patterns/patterns/title-in-inverted-colors.ts:27
+#: src/marp-patterns/patterns/title-and-image-on-right.ts:30
+#: src/marp-patterns/patterns/title-and-image-on-left.ts:30
+msgctxt "slide pattern"
+msgid "A short introduction"
+msgstr "Krátký úvod"
+
+#: src/marp-patterns/patterns/heading-image-and-caption.ts:24
+msgctxt "slide pattern"
+msgid "A slide written in Markdown"
+msgstr "Snímek napsaný v Markdownu"
+
 #: src/components/editor-header/index.tsx:194
 #: src/components/ai-sidebar/sidebar.tsx:61
 #: src/components/ai-sidebar/sidebar.tsx:92
@@ -57,6 +73,13 @@ msgstr "Asistent AI"
 #. Author of the generic
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
+
+#: src/marp-patterns/patterns/quote.ts:26
+#: src/marp-patterns/patterns/quote-on-image.ts:29
+#: src/marp-patterns/patterns/heading-and-quote.ts:27
+msgctxt "slide pattern"
+msgid "Alex Kim, Designer"
+msgstr "Alex Kim, designér"
 
 #: src/components/slide-pattern-modal/index.tsx:192
 msgid "All"
@@ -70,6 +93,13 @@ msgstr "Všechny kategorie"
 #: src/block-library/image/edit.tsx:233
 msgid "Alt text"
 msgstr "Alternativní text"
+
+#: src/marp-patterns/patterns/two-column-table.ts:31
+#: src/marp-patterns/patterns/three-column-table.ts:34
+#: src/marp-patterns/patterns/four-column-table.ts:37
+msgctxt "slide pattern"
+msgid "Any editor"
+msgstr "Libovolný editor"
 
 #: src/format-library/image/inline.tsx:169
 #: src/block-library/image/edit.tsx:126
@@ -88,6 +118,12 @@ msgid ""
 msgstr ""
 "Požádejte asistenta AI o napsání nebo úpravu. Váš výběr, nebo řádek s "
 "kurzorem v editoru kódu, se odešle spolu se zprávou."
+
+#: src/marp-patterns/patterns/three-column-table.ts:29
+#: src/marp-patterns/patterns/four-column-table.ts:30
+msgctxt "slide pattern"
+msgid "Binary file"
+msgstr "Binární soubor"
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -108,10 +144,11 @@ msgstr "Tučné"
 msgid "Browse local file"
 msgstr "Procházet místní soubor"
 
-#: src/marp-patterns/patterns/heading-image-and-caption.ts:24
+#: src/marp-patterns/patterns/three-column-table.ts:32
+#: src/marp-patterns/patterns/four-column-table.ts:34
 msgctxt "slide pattern"
-msgid "Caption"
-msgstr "Popisek"
+msgid "By hand"
+msgstr "Ručně"
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
@@ -120,37 +157,6 @@ msgstr "Kategorie"
 #: src/block-library/quote/edit.tsx:100
 msgid "Caution"
 msgstr "Upozornění"
-
-#: src/marp-patterns/patterns/two-column-table.ts:26
-#: src/marp-patterns/patterns/two-column-table.ts:27
-#: src/marp-patterns/patterns/two-column-table.ts:28
-#: src/marp-patterns/patterns/two-column-table.ts:29
-#: src/marp-patterns/patterns/two-column-table.ts:30
-#: src/marp-patterns/patterns/two-column-table.ts:31
-#: src/marp-patterns/patterns/three-column-table.ts:27
-#: src/marp-patterns/patterns/three-column-table.ts:28
-#: src/marp-patterns/patterns/three-column-table.ts:29
-#: src/marp-patterns/patterns/three-column-table.ts:30
-#: src/marp-patterns/patterns/three-column-table.ts:31
-#: src/marp-patterns/patterns/three-column-table.ts:32
-#: src/marp-patterns/patterns/three-column-table.ts:33
-#: src/marp-patterns/patterns/three-column-table.ts:34
-#: src/marp-patterns/patterns/three-column-table.ts:35
-#: src/marp-patterns/patterns/four-column-table.ts:28
-#: src/marp-patterns/patterns/four-column-table.ts:29
-#: src/marp-patterns/patterns/four-column-table.ts:30
-#: src/marp-patterns/patterns/four-column-table.ts:31
-#: src/marp-patterns/patterns/four-column-table.ts:32
-#: src/marp-patterns/patterns/four-column-table.ts:33
-#: src/marp-patterns/patterns/four-column-table.ts:34
-#: src/marp-patterns/patterns/four-column-table.ts:35
-#: src/marp-patterns/patterns/four-column-table.ts:36
-#: src/marp-patterns/patterns/four-column-table.ts:37
-#: src/marp-patterns/patterns/four-column-table.ts:38
-#: src/marp-patterns/patterns/four-column-table.ts:39
-msgctxt "slide pattern"
-msgid "Cell"
-msgstr "Buňka"
 
 #: src/block-library/table/edit.tsx:301
 msgid "Cell content"
@@ -167,13 +173,6 @@ msgstr "Změnit typ bloku po přidání nového odstavce."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Vyberte jazyk…"
-
-#: src/marp-patterns/patterns/quote.ts:22
-#: src/marp-patterns/patterns/quote-on-image.ts:25
-#: src/marp-patterns/patterns/heading-and-quote.ts:23
-msgctxt "slide pattern"
-msgid "Citation"
-msgstr "Zdroj"
 
 #: src/components/front-matter-editor/index.tsx:190
 msgid "Classic look with a colored background."
@@ -208,6 +207,11 @@ msgctxt "slide pattern"
 msgid "Code"
 msgstr "Kód"
 
+#: src/marp-patterns/patterns/nested-list.ts:30
+msgctxt "slide pattern"
+msgid "Code and images"
+msgstr "Kód a obrázky"
+
 #: src/components/editor/index.tsx:111
 msgid "Code editor"
 msgstr "HTML editor"
@@ -215,6 +219,11 @@ msgstr "HTML editor"
 #: src/block-library/table/edit.tsx:246
 msgid "Column count"
 msgstr "Počet sloupců"
+
+#: src/marp-patterns/patterns/four-column-table.ts:35
+msgctxt "slide pattern"
+msgid "Consistent look"
+msgstr "Jednotný vzhled"
 
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
@@ -241,12 +250,12 @@ msgstr "Smazat řádek"
 msgid "Describes the image for screen readers."
 msgstr "Popisuje obrázek pro čtečky obrazovky."
 
-#: src/marp-patterns/patterns/labeled-list.ts:23
-#: src/marp-patterns/patterns/labeled-list.ts:25
-#: src/marp-patterns/patterns/labeled-list.ts:27
+#: src/marp-patterns/patterns/two-column-table.ts:28
+#: src/marp-patterns/patterns/three-column-table.ts:30
+#: src/marp-patterns/patterns/four-column-table.ts:32
 msgctxt "slide pattern"
-msgid "Description"
-msgstr "Popis"
+msgid "Design"
+msgstr "Vzhled"
 
 #: src/components/keyboard-shortcuts/index.tsx:103
 msgid "Display these keyboard shortcuts."
@@ -256,6 +265,11 @@ msgstr "Zobrazit tyto klávesové zkratky."
 #: src/components/editor-header/index.tsx:153
 msgid "Document Overview"
 msgstr "Přehled dokumentu"
+
+#: src/marp-patterns/patterns/four-column-table.ts:31
+msgctxt "slide pattern"
+msgid "Easy to compare"
+msgstr "Snadné porovnání"
 
 #: src/block-library/image/edit.tsx:162
 msgid "Edit image"
@@ -268,6 +282,13 @@ msgstr "Upravit tabulku"
 #: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr "Dokument byl upraven."
+
+#: src/marp-patterns/patterns/two-column-table.ts:30
+#: src/marp-patterns/patterns/three-column-table.ts:33
+#: src/marp-patterns/patterns/four-column-table.ts:36
+msgctxt "slide pattern"
+msgid "Editing"
+msgstr "Úpravy"
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -283,21 +304,45 @@ msgstr "Zadejte název…"
 msgid "Explore Marp patterns"
 msgstr "Procházet vzory Marp"
 
+#: src/marp-patterns/patterns/labeled-list.ts:35
+msgctxt "slide pattern"
+msgid "Export to HTML or PDF"
+msgstr "Export do HTML nebo PDF"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
+#: src/marp-patterns/patterns/text-and-list.ts:31
+#: src/marp-patterns/patterns/ordered-list.ts:24
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:35
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:35
+#: src/marp-patterns/patterns/heading-code-and-list.ts:31
+#: src/marp-patterns/patterns/bulleted-list.ts:24
+msgctxt "slide pattern"
+msgid "Export when you are ready"
+msgstr "Exportujte, až budete připraveni"
+
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "Obrázek se nepodařilo načíst."
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:34
-#: src/marp-patterns/patterns/text-and-list.ts:29
-#: src/marp-patterns/patterns/ordered-list.ts:22
-#: src/marp-patterns/patterns/nested-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:33
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:33
-#: src/marp-patterns/patterns/heading-code-and-list.ts:29
-#: src/marp-patterns/patterns/bulleted-list.ts:22
+#: src/marp-patterns/patterns/two-column-table.ts:24
+#: src/marp-patterns/patterns/three-column-table.ts:24
+#: src/marp-patterns/patterns/four-column-table.ts:24
 msgctxt "slide pattern"
-msgid "First item"
-msgstr "První položka"
+msgid "Feature"
+msgstr "Funkce"
+
+#: src/marp-patterns/patterns/two-column-table.ts:26
+#: src/marp-patterns/patterns/three-column-table.ts:27
+#: src/marp-patterns/patterns/four-column-table.ts:28
+msgctxt "slide pattern"
+msgid "File format"
+msgstr "Formát souboru"
+
+#: src/marp-patterns/patterns/heading-subheading-and-text.ts:23
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
+msgctxt "slide pattern"
+msgid "Focus on your message"
+msgstr "Soustřeďte se na sdělení"
 
 #: src/components/front-matter-editor/index.tsx:293
 msgid "Footer"
@@ -306,6 +351,13 @@ msgstr "Zápatí"
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Lomítko"
+
+#: src/marp-patterns/patterns/two-column-table.ts:29
+#: src/marp-patterns/patterns/three-column-table.ts:31
+#: src/marp-patterns/patterns/four-column-table.ts:33
+msgctxt "slide pattern"
+msgid "From the theme"
+msgstr "Z motivu"
 
 #: src/components/front-matter-editor/index.tsx:112
 #: src/components/front-matter-editor/index.tsx:131
@@ -321,6 +373,13 @@ msgstr "Obrázek přes celou obrazovku"
 msgid "GitHub alert type"
 msgstr "Typ výstrahy GitHub"
 
+#: src/marp-patterns/patterns/quote.ts:21
+#: src/marp-patterns/patterns/quote-on-image.ts:24
+#: src/marp-patterns/patterns/heading-and-quote.ts:22
+msgctxt "slide pattern"
+msgid "Good slides say one thing, and say it clearly."
+msgstr "Dobrý snímek říká jednu věc a říká ji jasně."
+
 # %d: heading level (1-6)
 #: src/components/list-view-outline/index.tsx:109
 msgid "H%d"
@@ -330,51 +389,11 @@ msgstr "H%d"
 msgid "Header"
 msgstr "Záhlaví"
 
-#: src/marp-patterns/patterns/two-column-table.ts:24
-#: src/marp-patterns/patterns/two-column-table.ts:25
-#: src/marp-patterns/patterns/three-column-table.ts:24
-#: src/marp-patterns/patterns/three-column-table.ts:25
-#: src/marp-patterns/patterns/three-column-table.ts:26
-#: src/marp-patterns/patterns/four-column-table.ts:24
-#: src/marp-patterns/patterns/four-column-table.ts:25
-#: src/marp-patterns/patterns/four-column-table.ts:26
-#: src/marp-patterns/patterns/four-column-table.ts:27
-msgctxt "slide pattern"
-msgid "Header"
-msgstr "Záhlaví sloupce"
-
 #: src/block-library/table/edit.tsx:300
 msgid "Header label"
 msgstr "Popisek záhlaví"
 
 #: src/block-library/heading/edit.tsx:53
-msgid "Heading"
-msgstr "Nadpis"
-
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:28
-#: src/marp-patterns/patterns/two-column-table.ts:23
-#: src/marp-patterns/patterns/three-column-table.ts:23
-#: src/marp-patterns/patterns/text-and-list.ts:23
-#: src/marp-patterns/patterns/ordered-list.ts:21
-#: src/marp-patterns/patterns/nested-list.ts:23
-#: src/marp-patterns/patterns/labeled-list.ts:21
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:27
-#: src/marp-patterns/patterns/image-on-right-and-code.ts:27
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:27
-#: src/marp-patterns/patterns/heading-text-and-code.ts:26
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
-#: src/marp-patterns/patterns/heading-image-and-caption.ts:23
-#: src/marp-patterns/patterns/heading-code-and-text.ts:26
-#: src/marp-patterns/patterns/heading-code-and-list.ts:28
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
-#: src/marp-patterns/patterns/heading-and-two-images.ts:20
-#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:29
-#: src/marp-patterns/patterns/heading-and-text.ts:19
-#: src/marp-patterns/patterns/heading-and-quote.ts:21
-#: src/marp-patterns/patterns/heading-and-code.ts:23
-#: src/marp-patterns/patterns/four-column-table.ts:23
-#: src/marp-patterns/patterns/bulleted-list.ts:21
-msgctxt "slide pattern"
 msgid "Heading"
 msgstr "Nadpis"
 
@@ -438,6 +457,11 @@ msgctxt "slide pattern"
 msgid "Heading, text, and code"
 msgstr "Nadpis, text a kód"
 
+#: src/marp-patterns/patterns/nested-list.ts:25
+msgctxt "slide pattern"
+msgid "Headings, lists and tables"
+msgstr "Nadpisy, seznamy a tabulky"
+
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "Skrýt přehled dokumentu"
@@ -450,6 +474,11 @@ msgstr "Obrázek"
 msgctxt "slide pattern category"
 msgid "Image"
 msgstr "Obrázek"
+
+#: src/marp-patterns/patterns/image-on-left-and-code.ts:15
+msgctxt "slide pattern"
+msgid "Image on the left and code"
+msgstr "Obrázek vlevo a kód"
 
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:15
 msgctxt "slide pattern"
@@ -510,12 +539,10 @@ msgstr "Vložit nový řádek nahoru"
 msgid "Italic"
 msgstr "Kurzíva"
 
-#: src/marp-patterns/patterns/labeled-list.ts:22
-#: src/marp-patterns/patterns/labeled-list.ts:24
-#: src/marp-patterns/patterns/labeled-list.ts:26
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:37
 msgctxt "slide pattern"
-msgid "Label"
-msgstr "Štítek"
+msgid "Keep every version"
+msgstr "Uchovejte každou verzi"
 
 #: src/block-library/code/edit.tsx:114
 msgid "Language"
@@ -579,6 +606,13 @@ msgstr "Změnit vybraný text na vložený kód."
 msgid "Make the selected text italic."
 msgstr "Kurzíva"
 
+#: src/marp-patterns/patterns/two-column-table.ts:25
+#: src/marp-patterns/patterns/three-column-table.ts:25
+#: src/marp-patterns/patterns/four-column-table.ts:25
+msgctxt "slide pattern"
+msgid "Markdown"
+msgstr "Markdown"
+
 #: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
@@ -615,13 +649,6 @@ msgstr ""
 "Projděte si strukturu dokumentu a vyřešte problémy, jako jsou prázdné nebo "
 "nesprávné úrovně nadpisů."
 
-#: src/marp-patterns/patterns/nested-list.ts:25
-#: src/marp-patterns/patterns/nested-list.ts:26
-#: src/marp-patterns/patterns/nested-list.ts:28
-msgctxt "slide pattern"
-msgid "Nested item"
-msgstr "Vnořená položka"
-
 #: src/components/ai-sidebar/sidebar.tsx:97
 msgid "New conversation"
 msgstr "Nová konverzace"
@@ -642,6 +669,17 @@ msgstr "Nebyly nalezeny žádné vzory snímků."
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "Poznámka"
+
+#: src/marp-patterns/patterns/four-column-table.ts:27
+msgctxt "slide pattern"
+msgid "Notes"
+msgstr "Poznámky"
+
+#: src/marp-patterns/patterns/three-column-table.ts:35
+#: src/marp-patterns/patterns/four-column-table.ts:38
+msgctxt "slide pattern"
+msgid "One app"
+msgstr "Jedna aplikace"
 
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
@@ -677,9 +715,38 @@ msgstr "Vložte nebo napište adresu URL"
 msgid "Paste or type URL or file path"
 msgstr "Vložte nebo napište adresu URL nebo cestu k souboru"
 
+#: src/marp-patterns/patterns/two-column-table.ts:27
+#: src/marp-patterns/patterns/three-column-table.ts:28
+#: src/marp-patterns/patterns/four-column-table.ts:29
+msgctxt "slide pattern"
+msgid "Plain text"
+msgstr "Prostý text"
+
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:38
+msgctxt "slide pattern"
+msgid "Plain text is easy to compare, review and keep in version control."
+msgstr "Prostý text se snadno porovnává, kontroluje a verzuje."
+
 #: src/components/slide-pattern-modal/index.tsx:57
 msgid "Preview"
 msgstr "Náhled"
+
+#: src/marp-patterns/patterns/labeled-list.ts:28
+msgctxt "slide pattern"
+msgid "Preview"
+msgstr "Náhled"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:35
+#: src/marp-patterns/patterns/text-and-list.ts:30
+#: src/marp-patterns/patterns/ordered-list.ts:23
+#: src/marp-patterns/patterns/nested-list.ts:31
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:34
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:34
+#: src/marp-patterns/patterns/heading-code-and-list.ts:30
+#: src/marp-patterns/patterns/bulleted-list.ts:23
+msgctxt "slide pattern"
+msgid "Preview as you type"
+msgstr "Náhled při psaní"
 
 #: src/components/slide-pattern-modal/index.tsx:135
 msgid "Preview size"
@@ -694,13 +761,6 @@ msgstr "Citát"
 msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "Citát na obrázku"
-
-#: src/marp-patterns/patterns/quote.ts:21
-#: src/marp-patterns/patterns/quote-on-image.ts:24
-#: src/marp-patterns/patterns/heading-and-quote.ts:22
-msgctxt "slide pattern"
-msgid "Quote text"
-msgstr "Text citace"
 
 #: src/components/editor-header/index.tsx:137
 msgid "Redo"
@@ -742,17 +802,10 @@ msgstr "Hledat bloky"
 msgid "Search for slide patterns"
 msgstr "Hledat vzory snímků"
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:35
-#: src/marp-patterns/patterns/text-and-list.ts:30
-#: src/marp-patterns/patterns/ordered-list.ts:23
-#: src/marp-patterns/patterns/nested-list.ts:27
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:34
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:34
-#: src/marp-patterns/patterns/heading-code-and-list.ts:30
-#: src/marp-patterns/patterns/bulleted-list.ts:23
+#: src/marp-patterns/patterns/labeled-list.ts:29
 msgctxt "slide pattern"
-msgid "Second item"
-msgstr "Druhá položka"
+msgid "See each slide as you type"
+msgstr "Každý snímek vidíte při psaní"
 
 #: src/components/front-matter-editor/index.tsx:316
 msgid "See the <a>Marp documentation</a> for other settings."
@@ -765,6 +818,11 @@ msgstr "Odeslat"
 #: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr "Pro použití asistenta AI nastavte klíč API."
+
+#: src/marp-patterns/patterns/labeled-list.ts:34
+msgctxt "slide pattern"
+msgid "Share"
+msgstr "Sdílet"
 
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
@@ -793,10 +851,44 @@ msgstr "Velikost"
 msgid "Slide Separator"
 msgstr "Oddělovač snímků"
 
+#: src/marp-patterns/patterns/three-column-table.ts:26
+#: src/marp-patterns/patterns/four-column-table.ts:26
+msgctxt "slide pattern"
+msgid "Slide app"
+msgstr "Aplikace na prezentace"
+
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:99
 #: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
 msgstr "Vzory snímků"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:28
+#: src/marp-patterns/patterns/two-column-table.ts:23
+#: src/marp-patterns/patterns/three-column-table.ts:23
+#: src/marp-patterns/patterns/text-and-list.ts:23
+#: src/marp-patterns/patterns/ordered-list.ts:21
+#: src/marp-patterns/patterns/nested-list.ts:23
+#: src/marp-patterns/patterns/labeled-list.ts:21
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:27
+#: src/marp-patterns/patterns/image-on-right-and-code.ts:27
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:27
+#: src/marp-patterns/patterns/image-on-left-and-code.ts:27
+#: src/marp-patterns/patterns/heading-text-and-code.ts:26
+#: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
+#: src/marp-patterns/patterns/heading-image-and-caption.ts:23
+#: src/marp-patterns/patterns/heading-code-and-text.ts:26
+#: src/marp-patterns/patterns/heading-code-and-list.ts:28
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
+#: src/marp-patterns/patterns/heading-and-two-images.ts:20
+#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:29
+#: src/marp-patterns/patterns/heading-and-text.ts:19
+#: src/marp-patterns/patterns/heading-and-quote.ts:21
+#: src/marp-patterns/patterns/heading-and-code.ts:23
+#: src/marp-patterns/patterns/four-column-table.ts:23
+#: src/marp-patterns/patterns/bulleted-list.ts:21
+msgctxt "slide pattern"
+msgid "Slides as plain text"
+msgstr "Snímky jako prostý text"
 
 #: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
@@ -814,27 +906,14 @@ msgstr "Přeškrtnuté"
 msgid "Strikethrough the selected text."
 msgstr "Vybraný text přeškrtni."
 
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:23
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:33
-msgctxt "slide pattern"
-msgid "Subheading"
-msgstr "Podnadpis"
-
-#: src/marp-patterns/patterns/title.ts:22
-#: src/marp-patterns/patterns/title-on-image.ts:25
-#: src/marp-patterns/patterns/title-on-gradient.ts:25
-#: src/marp-patterns/patterns/title-on-blurred-image.ts:26
-#: src/marp-patterns/patterns/title-in-inverted-colors.ts:23
-#: src/marp-patterns/patterns/title-and-image-on-right.ts:26
-#: src/marp-patterns/patterns/title-and-image-on-left.ts:26
-msgctxt "slide pattern"
-msgid "Subtitle"
-msgstr "Podtitul"
-
 #: src/components/keyboard-shortcuts/index.tsx:79
 msgid "Switch between the visual editor and the code editor."
 msgstr "Přepnout mezi vizuálním editorem a editorem kódu."
+
+#: src/marp-patterns/patterns/nested-list.ts:32
+msgctxt "slide pattern"
+msgid "Switch themes at any time"
+msgstr "Motiv lze kdykoli změnit"
 
 #: src/block-library/table/edit.tsx:231
 msgid "Table"
@@ -905,17 +984,6 @@ msgstr "Vzorec se nepodařilo vykreslit."
 msgid "Theme"
 msgstr "Motiv"
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
-#: src/marp-patterns/patterns/text-and-list.ts:31
-#: src/marp-patterns/patterns/ordered-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:35
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:35
-#: src/marp-patterns/patterns/heading-code-and-list.ts:31
-#: src/marp-patterns/patterns/bulleted-list.ts:24
-msgctxt "slide pattern"
-msgid "Third item"
-msgstr "Třetí položka"
-
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
 msgid "Three images side by side"
@@ -938,13 +1006,6 @@ msgid "Title"
 msgstr "Titul"
 
 #: src/marp-patterns/patterns/title.ts:13
-#: src/marp-patterns/patterns/title.ts:21
-#: src/marp-patterns/patterns/title-on-image.ts:24
-#: src/marp-patterns/patterns/title-on-gradient.ts:24
-#: src/marp-patterns/patterns/title-on-blurred-image.ts:25
-#: src/marp-patterns/patterns/title-in-inverted-colors.ts:22
-#: src/marp-patterns/patterns/title-and-image-on-right.ts:25
-#: src/marp-patterns/patterns/title-and-image-on-left.ts:25
 msgctxt "slide pattern"
 msgid "Title"
 msgstr "Titulní snímek"
@@ -1040,6 +1101,11 @@ msgstr "Odrážkový"
 msgid "Upload an image from your device or insert from a URL."
 msgstr "Nahrajte obrázek ze zařízení nebo jej vložte z adresy URL."
 
+#: src/marp-patterns/patterns/labeled-list.ts:23
+msgctxt "slide pattern"
+msgid "Use any text editor"
+msgstr "Libovolný textový editor"
+
 #: style.css
 #. Description of the generic
 msgid "Visual markdown block editor."
@@ -1053,6 +1119,16 @@ msgstr "Čekání na odpověď…"
 msgid "Warning"
 msgstr "Varování"
 
+#: src/marp-patterns/patterns/four-column-table.ts:39
+msgctxt "slide pattern"
+msgid "Works offline"
+msgstr "Funguje offline"
+
+#: src/marp-patterns/patterns/labeled-list.ts:22
+msgctxt "slide pattern"
+msgid "Write"
+msgstr "Psát"
+
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
 msgstr "Začněte psát HTML…"
@@ -1065,27 +1141,50 @@ msgstr "Začněte psát TeX…"
 msgid "Write YAML front matter…"
 msgstr "Napište YAML front matter…"
 
+#: src/block-library/code/edit.tsx:74
+msgid "Write code…"
+msgstr "Napište kód"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:34
+#: src/marp-patterns/patterns/text-and-list.ts:29
+#: src/marp-patterns/patterns/ordered-list.ts:22
+#: src/marp-patterns/patterns/nested-list.ts:24
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:33
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:33
+#: src/marp-patterns/patterns/heading-code-and-list.ts:29
+#: src/marp-patterns/patterns/bulleted-list.ts:22
+msgctxt "slide pattern"
+msgid "Write in plain text"
+msgstr "Pište prostým textem"
+
+#: src/block-library/details/edit.tsx:83
+msgid "Write summary…"
+msgstr "Napište shrnutí…"
+
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:29
 #: src/marp-patterns/patterns/text-and-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:28
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:28
 #: src/marp-patterns/patterns/heading-text-and-code.ts:27
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:24
+#: src/marp-patterns/patterns/heading-subheading-and-text.ts:28
 #: src/marp-patterns/patterns/heading-code-and-text.ts:27
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:28
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:34
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:32
 #: src/marp-patterns/patterns/heading-and-text.ts:20
 msgctxt "slide pattern"
-msgid "Write a short paragraph here."
-msgstr "Sem napište krátký odstavec."
+msgid ""
+"Write your slides as plain text and let the theme take care of the design."
+msgstr "Pište snímky jako prostý text a vzhled nechte na motivu."
 
-#: src/block-library/code/edit.tsx:74
-msgid "Write code…"
-msgstr "Napište kód"
-
-#: src/block-library/details/edit.tsx:83
-msgid "Write summary…"
-msgstr "Napište shrnutí…"
+#: src/marp-patterns/patterns/title.ts:21
+#: src/marp-patterns/patterns/title-on-image.ts:24
+#: src/marp-patterns/patterns/title-on-gradient.ts:24
+#: src/marp-patterns/patterns/title-on-blurred-image.ts:25
+#: src/marp-patterns/patterns/title-in-inverted-colors.ts:22
+#: src/marp-patterns/patterns/title-and-image-on-right.ts:25
+#: src/marp-patterns/patterns/title-and-image-on-left.ts:25
+msgctxt "slide pattern"
+msgid "Writing slides in Markdown"
+msgstr "Psaní snímků v Markdownu"
 
 #: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"

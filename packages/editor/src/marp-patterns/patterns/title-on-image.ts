@@ -21,8 +21,12 @@ const pattern: SlidePattern = {
 
 {{subtitle}}`,
 	strings: () => ( {
-		title: _x( 'Title', 'slide pattern', 'mark-bricks' ),
-		subtitle: _x( 'Subtitle', 'slide pattern', 'mark-bricks' ),
+		title: _x(
+			'Writing slides in Markdown',
+			'slide pattern',
+			'mark-bricks'
+		),
+		subtitle: _x( 'A short introduction', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 

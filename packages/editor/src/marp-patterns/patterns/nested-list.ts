@@ -20,12 +20,20 @@ const pattern: SlidePattern = {
 - {{item2}}
   - {{nested3}}`,
 	strings: () => ( {
-		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
-		item1: _x( 'First item', 'slide pattern', 'mark-bricks' ),
-		nested1: _x( 'Nested item', 'slide pattern', 'mark-bricks' ),
-		nested2: _x( 'Nested item', 'slide pattern', 'mark-bricks' ),
-		item2: _x( 'Second item', 'slide pattern', 'mark-bricks' ),
-		nested3: _x( 'Nested item', 'slide pattern', 'mark-bricks' ),
+		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
+		item1: _x( 'Write in plain text', 'slide pattern', 'mark-bricks' ),
+		nested1: _x(
+			'Headings, lists and tables',
+			'slide pattern',
+			'mark-bricks'
+		),
+		nested2: _x( 'Code and images', 'slide pattern', 'mark-bricks' ),
+		item2: _x( 'Preview as you type', 'slide pattern', 'mark-bricks' ),
+		nested3: _x(
+			'Switch themes at any time',
+			'slide pattern',
+			'mark-bricks'
+		),
 	} ),
 };
 

@@ -16,9 +16,9 @@ const pattern: SlidePattern = {
 
 {{text}}`,
 	strings: () => ( {
-		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
+		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
 		text: _x(
-			'Write a short paragraph here.',
+			'Write your slides as plain text and let the theme take care of the design.',
 			'slide pattern',
 			'mark-bricks'
 		),

@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:22:52.269Z\n"
-"PO-Revision-Date: 2026-11-14T04:23:00.218Z\n"
+"POT-Creation-Date: 2026-11-14T04:31:17.166Z\n"
+"PO-Revision-Date: 2026-11-14T04:31:25.288Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -47,6 +47,22 @@ msgstr "(Birden fazla H1 başlık kod imi önerilmez)"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/marp-patterns/patterns/title.ts:26
+#: src/marp-patterns/patterns/title-on-image.ts:29
+#: src/marp-patterns/patterns/title-on-gradient.ts:29
+#: src/marp-patterns/patterns/title-on-blurred-image.ts:30
+#: src/marp-patterns/patterns/title-in-inverted-colors.ts:27
+#: src/marp-patterns/patterns/title-and-image-on-right.ts:30
+#: src/marp-patterns/patterns/title-and-image-on-left.ts:30
+msgctxt "slide pattern"
+msgid "A short introduction"
+msgstr "Kısa bir giriş"
+
+#: src/marp-patterns/patterns/heading-image-and-caption.ts:24
+msgctxt "slide pattern"
+msgid "A slide written in Markdown"
+msgstr "Markdown ile yazılmış bir slayt"
+
 #: src/components/editor-header/index.tsx:194
 #: src/components/ai-sidebar/sidebar.tsx:61
 #: src/components/ai-sidebar/sidebar.tsx:92
@@ -57,6 +73,13 @@ msgstr "Yapay Zekâ Asistanı"
 #. Author of the generic
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
+
+#: src/marp-patterns/patterns/quote.ts:26
+#: src/marp-patterns/patterns/quote-on-image.ts:29
+#: src/marp-patterns/patterns/heading-and-quote.ts:27
+msgctxt "slide pattern"
+msgid "Alex Kim, Designer"
+msgstr "Alex Kim, Tasarımcı"
 
 #: src/components/slide-pattern-modal/index.tsx:192
 msgid "All"
@@ -70,6 +93,13 @@ msgstr "Tüm kategoriler"
 #: src/block-library/image/edit.tsx:233
 msgid "Alt text"
 msgstr "Alternatif metin"
+
+#: src/marp-patterns/patterns/two-column-table.ts:31
+#: src/marp-patterns/patterns/three-column-table.ts:34
+#: src/marp-patterns/patterns/four-column-table.ts:37
+msgctxt "slide pattern"
+msgid "Any editor"
+msgstr "Herhangi bir düzenleyici"
 
 #: src/format-library/image/inline.tsx:169
 #: src/block-library/image/edit.tsx:126
@@ -88,6 +118,12 @@ msgid ""
 msgstr ""
 "Yapay Zekâ Asistanından yazmasını veya düzenlemesini isteyin. Seçiminiz ya "
 "da kod düzenleyicide imlecin bulunduğu satır mesajınızla birlikte gönderilir."
+
+#: src/marp-patterns/patterns/three-column-table.ts:29
+#: src/marp-patterns/patterns/four-column-table.ts:30
+msgctxt "slide pattern"
+msgid "Binary file"
+msgstr "İkili dosya"
 
 #: src/components/editor-header/index.tsx:112
 msgid "Block Inserter"
@@ -108,10 +144,11 @@ msgstr "Kalın"
 msgid "Browse local file"
 msgstr "Yerel dosyaya göz at"
 
-#: src/marp-patterns/patterns/heading-image-and-caption.ts:24
+#: src/marp-patterns/patterns/three-column-table.ts:32
+#: src/marp-patterns/patterns/four-column-table.ts:34
 msgctxt "slide pattern"
-msgid "Caption"
-msgstr "Açıklama"
+msgid "By hand"
+msgstr "Elle"
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
@@ -120,37 +157,6 @@ msgstr "Kategori"
 #: src/block-library/quote/edit.tsx:100
 msgid "Caution"
 msgstr "Dikkat"
-
-#: src/marp-patterns/patterns/two-column-table.ts:26
-#: src/marp-patterns/patterns/two-column-table.ts:27
-#: src/marp-patterns/patterns/two-column-table.ts:28
-#: src/marp-patterns/patterns/two-column-table.ts:29
-#: src/marp-patterns/patterns/two-column-table.ts:30
-#: src/marp-patterns/patterns/two-column-table.ts:31
-#: src/marp-patterns/patterns/three-column-table.ts:27
-#: src/marp-patterns/patterns/three-column-table.ts:28
-#: src/marp-patterns/patterns/three-column-table.ts:29
-#: src/marp-patterns/patterns/three-column-table.ts:30
-#: src/marp-patterns/patterns/three-column-table.ts:31
-#: src/marp-patterns/patterns/three-column-table.ts:32
-#: src/marp-patterns/patterns/three-column-table.ts:33
-#: src/marp-patterns/patterns/three-column-table.ts:34
-#: src/marp-patterns/patterns/three-column-table.ts:35
-#: src/marp-patterns/patterns/four-column-table.ts:28
-#: src/marp-patterns/patterns/four-column-table.ts:29
-#: src/marp-patterns/patterns/four-column-table.ts:30
-#: src/marp-patterns/patterns/four-column-table.ts:31
-#: src/marp-patterns/patterns/four-column-table.ts:32
-#: src/marp-patterns/patterns/four-column-table.ts:33
-#: src/marp-patterns/patterns/four-column-table.ts:34
-#: src/marp-patterns/patterns/four-column-table.ts:35
-#: src/marp-patterns/patterns/four-column-table.ts:36
-#: src/marp-patterns/patterns/four-column-table.ts:37
-#: src/marp-patterns/patterns/four-column-table.ts:38
-#: src/marp-patterns/patterns/four-column-table.ts:39
-msgctxt "slide pattern"
-msgid "Cell"
-msgstr "Hücre"
 
 #: src/block-library/table/edit.tsx:301
 msgid "Cell content"
@@ -167,13 +173,6 @@ msgstr "Yeni paragraf ekledikten sonra blok türünü değiştirin."
 #: src/block-library/code/edit.tsx:131
 msgid "Choose language…"
 msgstr "Dil seçin…"
-
-#: src/marp-patterns/patterns/quote.ts:22
-#: src/marp-patterns/patterns/quote-on-image.ts:25
-#: src/marp-patterns/patterns/heading-and-quote.ts:23
-msgctxt "slide pattern"
-msgid "Citation"
-msgstr "Kaynak"
 
 #: src/components/front-matter-editor/index.tsx:190
 msgid "Classic look with a colored background."
@@ -208,6 +207,11 @@ msgctxt "slide pattern"
 msgid "Code"
 msgstr "Kod"
 
+#: src/marp-patterns/patterns/nested-list.ts:30
+msgctxt "slide pattern"
+msgid "Code and images"
+msgstr "Kod ve görseller"
+
 #: src/components/editor/index.tsx:111
 msgid "Code editor"
 msgstr "Kod düzenleyici"
@@ -215,6 +219,11 @@ msgstr "Kod düzenleyici"
 #: src/block-library/table/edit.tsx:246
 msgid "Column count"
 msgstr "Sütun sayısı"
+
+#: src/marp-patterns/patterns/four-column-table.ts:35
+msgctxt "slide pattern"
+msgid "Consistent look"
+msgstr "Tutarlı görünüm"
 
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
@@ -241,12 +250,12 @@ msgstr "Satırı sil"
 msgid "Describes the image for screen readers."
 msgstr "Görseli ekran okuyucular için açıklar."
 
-#: src/marp-patterns/patterns/labeled-list.ts:23
-#: src/marp-patterns/patterns/labeled-list.ts:25
-#: src/marp-patterns/patterns/labeled-list.ts:27
+#: src/marp-patterns/patterns/two-column-table.ts:28
+#: src/marp-patterns/patterns/three-column-table.ts:30
+#: src/marp-patterns/patterns/four-column-table.ts:32
 msgctxt "slide pattern"
-msgid "Description"
-msgstr "Tanım"
+msgid "Design"
+msgstr "Tasarım"
 
 #: src/components/keyboard-shortcuts/index.tsx:103
 msgid "Display these keyboard shortcuts."
@@ -256,6 +265,11 @@ msgstr "Bu klavye kısayollarını görüntüler."
 #: src/components/editor-header/index.tsx:153
 msgid "Document Overview"
 msgstr "Belge özeti"
+
+#: src/marp-patterns/patterns/four-column-table.ts:31
+msgctxt "slide pattern"
+msgid "Easy to compare"
+msgstr "Kolay karşılaştırma"
 
 #: src/block-library/image/edit.tsx:162
 msgid "Edit image"
@@ -268,6 +282,13 @@ msgstr "Tabloyu düzenle"
 #: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr "Belge düzenlendi."
+
+#: src/marp-patterns/patterns/two-column-table.ts:30
+#: src/marp-patterns/patterns/three-column-table.ts:33
+#: src/marp-patterns/patterns/four-column-table.ts:36
+msgctxt "slide pattern"
+msgid "Editing"
+msgstr "Düzenleme"
 
 #: src/format-library/image/inline.tsx:150
 #: src/block-library/image/edit.tsx:236
@@ -283,21 +304,45 @@ msgstr "Başlığı girin…"
 msgid "Explore Marp patterns"
 msgstr "Marp desenlerini keşfet"
 
+#: src/marp-patterns/patterns/labeled-list.ts:35
+msgctxt "slide pattern"
+msgid "Export to HTML or PDF"
+msgstr "HTML veya PDF olarak dışa aktarın"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
+#: src/marp-patterns/patterns/text-and-list.ts:31
+#: src/marp-patterns/patterns/ordered-list.ts:24
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:35
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:35
+#: src/marp-patterns/patterns/heading-code-and-list.ts:31
+#: src/marp-patterns/patterns/bulleted-list.ts:24
+msgctxt "slide pattern"
+msgid "Export when you are ready"
+msgstr "Hazır olunca dışa aktarın"
+
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
 msgstr "Görsel yüklenemedi."
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:34
-#: src/marp-patterns/patterns/text-and-list.ts:29
-#: src/marp-patterns/patterns/ordered-list.ts:22
-#: src/marp-patterns/patterns/nested-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:33
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:33
-#: src/marp-patterns/patterns/heading-code-and-list.ts:29
-#: src/marp-patterns/patterns/bulleted-list.ts:22
+#: src/marp-patterns/patterns/two-column-table.ts:24
+#: src/marp-patterns/patterns/three-column-table.ts:24
+#: src/marp-patterns/patterns/four-column-table.ts:24
 msgctxt "slide pattern"
-msgid "First item"
-msgstr "Birinci öğe"
+msgid "Feature"
+msgstr "Özellik"
+
+#: src/marp-patterns/patterns/two-column-table.ts:26
+#: src/marp-patterns/patterns/three-column-table.ts:27
+#: src/marp-patterns/patterns/four-column-table.ts:28
+msgctxt "slide pattern"
+msgid "File format"
+msgstr "Dosya biçimi"
+
+#: src/marp-patterns/patterns/heading-subheading-and-text.ts:23
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
+msgctxt "slide pattern"
+msgid "Focus on your message"
+msgstr "Mesajınıza odaklanın"
 
 #: src/components/front-matter-editor/index.tsx:293
 msgid "Footer"
@@ -306,6 +351,13 @@ msgstr "Alt bilgi"
 #: src/components/keyboard-shortcuts/hooks.ts:96
 msgid "Forward-slash"
 msgstr "Eğik çizgi"
+
+#: src/marp-patterns/patterns/two-column-table.ts:29
+#: src/marp-patterns/patterns/three-column-table.ts:31
+#: src/marp-patterns/patterns/four-column-table.ts:33
+msgctxt "slide pattern"
+msgid "From the theme"
+msgstr "Temadan gelir"
 
 #: src/components/front-matter-editor/index.tsx:112
 #: src/components/front-matter-editor/index.tsx:131
@@ -321,6 +373,13 @@ msgstr "Tam ekran görsel"
 msgid "GitHub alert type"
 msgstr "GitHub uyarı türü"
 
+#: src/marp-patterns/patterns/quote.ts:21
+#: src/marp-patterns/patterns/quote-on-image.ts:24
+#: src/marp-patterns/patterns/heading-and-quote.ts:22
+msgctxt "slide pattern"
+msgid "Good slides say one thing, and say it clearly."
+msgstr "İyi bir slayt tek bir şey söyler ve bunu açıkça söyler."
+
 # %d: heading level (1-6)
 #: src/components/list-view-outline/index.tsx:109
 msgid "H%d"
@@ -330,51 +389,11 @@ msgstr "H%d"
 msgid "Header"
 msgstr "Üst bilgi"
 
-#: src/marp-patterns/patterns/two-column-table.ts:24
-#: src/marp-patterns/patterns/two-column-table.ts:25
-#: src/marp-patterns/patterns/three-column-table.ts:24
-#: src/marp-patterns/patterns/three-column-table.ts:25
-#: src/marp-patterns/patterns/three-column-table.ts:26
-#: src/marp-patterns/patterns/four-column-table.ts:24
-#: src/marp-patterns/patterns/four-column-table.ts:25
-#: src/marp-patterns/patterns/four-column-table.ts:26
-#: src/marp-patterns/patterns/four-column-table.ts:27
-msgctxt "slide pattern"
-msgid "Header"
-msgstr "Sütun başlığı"
-
 #: src/block-library/table/edit.tsx:300
 msgid "Header label"
 msgstr "Başlık etiketi"
 
 #: src/block-library/heading/edit.tsx:53
-msgid "Heading"
-msgstr "Başlık"
-
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:28
-#: src/marp-patterns/patterns/two-column-table.ts:23
-#: src/marp-patterns/patterns/three-column-table.ts:23
-#: src/marp-patterns/patterns/text-and-list.ts:23
-#: src/marp-patterns/patterns/ordered-list.ts:21
-#: src/marp-patterns/patterns/nested-list.ts:23
-#: src/marp-patterns/patterns/labeled-list.ts:21
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:27
-#: src/marp-patterns/patterns/image-on-right-and-code.ts:27
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:27
-#: src/marp-patterns/patterns/heading-text-and-code.ts:26
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
-#: src/marp-patterns/patterns/heading-image-and-caption.ts:23
-#: src/marp-patterns/patterns/heading-code-and-text.ts:26
-#: src/marp-patterns/patterns/heading-code-and-list.ts:28
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
-#: src/marp-patterns/patterns/heading-and-two-images.ts:20
-#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:29
-#: src/marp-patterns/patterns/heading-and-text.ts:19
-#: src/marp-patterns/patterns/heading-and-quote.ts:21
-#: src/marp-patterns/patterns/heading-and-code.ts:23
-#: src/marp-patterns/patterns/four-column-table.ts:23
-#: src/marp-patterns/patterns/bulleted-list.ts:21
-msgctxt "slide pattern"
 msgid "Heading"
 msgstr "Başlık"
 
@@ -438,6 +457,11 @@ msgctxt "slide pattern"
 msgid "Heading, text, and code"
 msgstr "Başlık, metin ve kod"
 
+#: src/marp-patterns/patterns/nested-list.ts:25
+msgctxt "slide pattern"
+msgid "Headings, lists and tables"
+msgstr "Başlıklar, listeler ve tablolar"
+
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "Belge özetini gizle"
@@ -450,6 +474,11 @@ msgstr "Görsel"
 msgctxt "slide pattern category"
 msgid "Image"
 msgstr "Görsel"
+
+#: src/marp-patterns/patterns/image-on-left-and-code.ts:15
+msgctxt "slide pattern"
+msgid "Image on the left and code"
+msgstr "Solda görsel ve kod"
 
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:15
 msgctxt "slide pattern"
@@ -510,12 +539,10 @@ msgstr "Önüne satır ekle"
 msgid "Italic"
 msgstr "Eğik"
 
-#: src/marp-patterns/patterns/labeled-list.ts:22
-#: src/marp-patterns/patterns/labeled-list.ts:24
-#: src/marp-patterns/patterns/labeled-list.ts:26
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:37
 msgctxt "slide pattern"
-msgid "Label"
-msgstr "Etiket"
+msgid "Keep every version"
+msgstr "Her sürümü saklayın"
 
 #: src/block-library/code/edit.tsx:114
 msgid "Language"
@@ -579,6 +606,13 @@ msgstr "Seçilmiş metni satır içi koda dönüştürür."
 msgid "Make the selected text italic."
 msgstr "Seçilmiş metni yatık yapar."
 
+#: src/marp-patterns/patterns/two-column-table.ts:25
+#: src/marp-patterns/patterns/three-column-table.ts:25
+#: src/marp-patterns/patterns/four-column-table.ts:25
+msgctxt "slide pattern"
+msgid "Markdown"
+msgstr "Markdown"
+
 #: src/components/front-matter-editor/index.tsx:135
 msgid "Marp"
 msgstr "Marp"
@@ -616,13 +650,6 @@ msgstr ""
 "Belgenizin yapısında gezinin ve boş veya yanlış başlık düzeyleri gibi "
 "sorunları ele alın."
 
-#: src/marp-patterns/patterns/nested-list.ts:25
-#: src/marp-patterns/patterns/nested-list.ts:26
-#: src/marp-patterns/patterns/nested-list.ts:28
-msgctxt "slide pattern"
-msgid "Nested item"
-msgstr "İç içe öğe"
-
 #: src/components/ai-sidebar/sidebar.tsx:97
 msgid "New conversation"
 msgstr "Yeni konuşma"
@@ -643,6 +670,17 @@ msgstr "Slayt deseni bulunamadı."
 #: src/block-library/quote/edit.tsx:40
 msgid "Note"
 msgstr "Not"
+
+#: src/marp-patterns/patterns/four-column-table.ts:27
+msgctxt "slide pattern"
+msgid "Notes"
+msgstr "Notlar"
+
+#: src/marp-patterns/patterns/three-column-table.ts:35
+#: src/marp-patterns/patterns/four-column-table.ts:38
+msgctxt "slide pattern"
+msgid "One app"
+msgstr "Tek uygulama"
 
 #: src/block-library/details/edit.tsx:57
 msgid "Open by default"
@@ -678,9 +716,38 @@ msgstr "Bir adres yazın ya da yapıştırın"
 msgid "Paste or type URL or file path"
 msgstr "Bir adres ya da dosya yolu yazın veya yapıştırın"
 
+#: src/marp-patterns/patterns/two-column-table.ts:27
+#: src/marp-patterns/patterns/three-column-table.ts:28
+#: src/marp-patterns/patterns/four-column-table.ts:29
+msgctxt "slide pattern"
+msgid "Plain text"
+msgstr "Düz metin"
+
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:38
+msgctxt "slide pattern"
+msgid "Plain text is easy to compare, review and keep in version control."
+msgstr "Düz metni karşılaştırmak, gözden geçirmek ve sürümlemek kolaydır."
+
 #: src/components/slide-pattern-modal/index.tsx:57
 msgid "Preview"
 msgstr "Önizleme"
+
+#: src/marp-patterns/patterns/labeled-list.ts:28
+msgctxt "slide pattern"
+msgid "Preview"
+msgstr "Önizle"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:35
+#: src/marp-patterns/patterns/text-and-list.ts:30
+#: src/marp-patterns/patterns/ordered-list.ts:23
+#: src/marp-patterns/patterns/nested-list.ts:31
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:34
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:34
+#: src/marp-patterns/patterns/heading-code-and-list.ts:30
+#: src/marp-patterns/patterns/bulleted-list.ts:23
+msgctxt "slide pattern"
+msgid "Preview as you type"
+msgstr "Yazarken önizleyin"
 
 #: src/components/slide-pattern-modal/index.tsx:135
 msgid "Preview size"
@@ -695,13 +762,6 @@ msgstr "Alıntı"
 msgctxt "slide pattern"
 msgid "Quote on an image"
 msgstr "Görsel üzerinde alıntı"
-
-#: src/marp-patterns/patterns/quote.ts:21
-#: src/marp-patterns/patterns/quote-on-image.ts:24
-#: src/marp-patterns/patterns/heading-and-quote.ts:22
-msgctxt "slide pattern"
-msgid "Quote text"
-msgstr "Alıntı metni"
 
 #: src/components/editor-header/index.tsx:137
 msgid "Redo"
@@ -743,17 +803,10 @@ msgstr "Blok ara"
 msgid "Search for slide patterns"
 msgstr "Slayt desenlerinde ara"
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:35
-#: src/marp-patterns/patterns/text-and-list.ts:30
-#: src/marp-patterns/patterns/ordered-list.ts:23
-#: src/marp-patterns/patterns/nested-list.ts:27
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:34
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:34
-#: src/marp-patterns/patterns/heading-code-and-list.ts:30
-#: src/marp-patterns/patterns/bulleted-list.ts:23
+#: src/marp-patterns/patterns/labeled-list.ts:29
 msgctxt "slide pattern"
-msgid "Second item"
-msgstr "İkinci öğe"
+msgid "See each slide as you type"
+msgstr "Yazarken her slaytı görün"
 
 #: src/components/front-matter-editor/index.tsx:316
 msgid "See the <a>Marp documentation</a> for other settings."
@@ -766,6 +819,11 @@ msgstr "Gönder"
 #: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr "Yapay Zekâ Asistanını kullanmak için bir API anahtarı ayarlayın."
+
+#: src/marp-patterns/patterns/labeled-list.ts:34
+msgctxt "slide pattern"
+msgid "Share"
+msgstr "Paylaş"
 
 #: src/components/keyboard-shortcuts/index.tsx:93
 msgid "Show or hide the List View."
@@ -794,10 +852,44 @@ msgstr "Boyut"
 msgid "Slide Separator"
 msgstr "Slayt ayırıcı"
 
+#: src/marp-patterns/patterns/three-column-table.ts:26
+#: src/marp-patterns/patterns/four-column-table.ts:26
+msgctxt "slide pattern"
+msgid "Slide app"
+msgstr "Slayt uygulaması"
+
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:99
 #: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
 msgstr "Slayt desenleri"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:28
+#: src/marp-patterns/patterns/two-column-table.ts:23
+#: src/marp-patterns/patterns/three-column-table.ts:23
+#: src/marp-patterns/patterns/text-and-list.ts:23
+#: src/marp-patterns/patterns/ordered-list.ts:21
+#: src/marp-patterns/patterns/nested-list.ts:23
+#: src/marp-patterns/patterns/labeled-list.ts:21
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:27
+#: src/marp-patterns/patterns/image-on-right-and-code.ts:27
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:27
+#: src/marp-patterns/patterns/image-on-left-and-code.ts:27
+#: src/marp-patterns/patterns/heading-text-and-code.ts:26
+#: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
+#: src/marp-patterns/patterns/heading-image-and-caption.ts:23
+#: src/marp-patterns/patterns/heading-code-and-text.ts:26
+#: src/marp-patterns/patterns/heading-code-and-list.ts:28
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:26
+#: src/marp-patterns/patterns/heading-and-two-images.ts:20
+#: src/marp-patterns/patterns/heading-and-two-code-blocks.ts:29
+#: src/marp-patterns/patterns/heading-and-text.ts:19
+#: src/marp-patterns/patterns/heading-and-quote.ts:21
+#: src/marp-patterns/patterns/heading-and-code.ts:23
+#: src/marp-patterns/patterns/four-column-table.ts:23
+#: src/marp-patterns/patterns/bulleted-list.ts:21
+msgctxt "slide pattern"
+msgid "Slides as plain text"
+msgstr "Düz metin olarak slaytlar"
 
 #: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
@@ -815,27 +907,14 @@ msgstr "Üzeri çizili"
 msgid "Strikethrough the selected text."
 msgstr "Seçilmiş metnin üzerini çizer."
 
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:23
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:33
-msgctxt "slide pattern"
-msgid "Subheading"
-msgstr "Alt başlık"
-
-#: src/marp-patterns/patterns/title.ts:22
-#: src/marp-patterns/patterns/title-on-image.ts:25
-#: src/marp-patterns/patterns/title-on-gradient.ts:25
-#: src/marp-patterns/patterns/title-on-blurred-image.ts:26
-#: src/marp-patterns/patterns/title-in-inverted-colors.ts:23
-#: src/marp-patterns/patterns/title-and-image-on-right.ts:26
-#: src/marp-patterns/patterns/title-and-image-on-left.ts:26
-msgctxt "slide pattern"
-msgid "Subtitle"
-msgstr "Alt başlık"
-
 #: src/components/keyboard-shortcuts/index.tsx:79
 msgid "Switch between the visual editor and the code editor."
 msgstr "Görsel düzenleyici ile kod düzenleyici arasında geçiş yap."
+
+#: src/marp-patterns/patterns/nested-list.ts:32
+msgctxt "slide pattern"
+msgid "Switch themes at any time"
+msgstr "Temayı istediğiniz zaman değiştirin"
 
 #: src/block-library/table/edit.tsx:231
 msgid "Table"
@@ -907,17 +986,6 @@ msgstr "Formül oluşturulamadı."
 msgid "Theme"
 msgstr "Tema"
 
-#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:36
-#: src/marp-patterns/patterns/text-and-list.ts:31
-#: src/marp-patterns/patterns/ordered-list.ts:24
-#: src/marp-patterns/patterns/image-on-right-and-text.ts:35
-#: src/marp-patterns/patterns/image-on-left-and-text.ts:35
-#: src/marp-patterns/patterns/heading-code-and-list.ts:31
-#: src/marp-patterns/patterns/bulleted-list.ts:24
-msgctxt "slide pattern"
-msgid "Third item"
-msgstr "Üçüncü öğe"
-
 #: src/marp-patterns/patterns/three-images-side-by-side.ts:15
 msgctxt "slide pattern"
 msgid "Three images side by side"
@@ -940,13 +1008,6 @@ msgid "Title"
 msgstr "Başlık"
 
 #: src/marp-patterns/patterns/title.ts:13
-#: src/marp-patterns/patterns/title.ts:21
-#: src/marp-patterns/patterns/title-on-image.ts:24
-#: src/marp-patterns/patterns/title-on-gradient.ts:24
-#: src/marp-patterns/patterns/title-on-blurred-image.ts:25
-#: src/marp-patterns/patterns/title-in-inverted-colors.ts:22
-#: src/marp-patterns/patterns/title-and-image-on-right.ts:25
-#: src/marp-patterns/patterns/title-and-image-on-left.ts:25
 msgctxt "slide pattern"
 msgid "Title"
 msgstr "Başlık"
@@ -1042,6 +1103,11 @@ msgstr "Sırasız"
 msgid "Upload an image from your device or insert from a URL."
 msgstr "Cihazınızdan bir görsel yükleyin veya bir URL’den ekleyin."
 
+#: src/marp-patterns/patterns/labeled-list.ts:23
+msgctxt "slide pattern"
+msgid "Use any text editor"
+msgstr "Herhangi bir metin düzenleyici"
+
 #: style.css
 #. Description of the generic
 msgid "Visual markdown block editor."
@@ -1055,6 +1121,16 @@ msgstr "Yanıt bekleniyor…"
 msgid "Warning"
 msgstr "Uyarı"
 
+#: src/marp-patterns/patterns/four-column-table.ts:39
+msgctxt "slide pattern"
+msgid "Works offline"
+msgstr "Çevrimdışı çalışır"
+
+#: src/marp-patterns/patterns/labeled-list.ts:22
+msgctxt "slide pattern"
+msgid "Write"
+msgstr "Yaz"
+
 #: src/block-library/html/edit.tsx:43
 msgid "Write HTML…"
 msgstr "HTML yazın…"
@@ -1067,27 +1143,50 @@ msgstr "TeX yazın…"
 msgid "Write YAML front matter…"
 msgstr "YAML front matter yazın…"
 
+#: src/block-library/code/edit.tsx:74
+msgid "Write code…"
+msgstr "Kod yaz…"
+
+#: src/marp-patterns/patterns/two-stacked-images-and-text.ts:34
+#: src/marp-patterns/patterns/text-and-list.ts:29
+#: src/marp-patterns/patterns/ordered-list.ts:22
+#: src/marp-patterns/patterns/nested-list.ts:24
+#: src/marp-patterns/patterns/image-on-right-and-text.ts:33
+#: src/marp-patterns/patterns/image-on-left-and-text.ts:33
+#: src/marp-patterns/patterns/heading-code-and-list.ts:29
+#: src/marp-patterns/patterns/bulleted-list.ts:22
+msgctxt "slide pattern"
+msgid "Write in plain text"
+msgstr "Düz metinle yazın"
+
+#: src/block-library/details/edit.tsx:83
+msgid "Write summary…"
+msgstr "Özet yaz…"
+
 #: src/marp-patterns/patterns/two-stacked-images-and-text.ts:29
 #: src/marp-patterns/patterns/text-and-list.ts:24
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:28
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:28
 #: src/marp-patterns/patterns/heading-text-and-code.ts:27
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:24
+#: src/marp-patterns/patterns/heading-subheading-and-text.ts:28
 #: src/marp-patterns/patterns/heading-code-and-text.ts:27
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:28
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:34
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:32
 #: src/marp-patterns/patterns/heading-and-text.ts:20
 msgctxt "slide pattern"
-msgid "Write a short paragraph here."
-msgstr "Buraya kısa bir paragraf yazın."
+msgid ""
+"Write your slides as plain text and let the theme take care of the design."
+msgstr "Slaytlarınızı düz metin olarak yazın, tasarımı temaya bırakın."
 
-#: src/block-library/code/edit.tsx:74
-msgid "Write code…"
-msgstr "Kod yaz…"
-
-#: src/block-library/details/edit.tsx:83
-msgid "Write summary…"
-msgstr "Özet yaz…"
+#: src/marp-patterns/patterns/title.ts:21
+#: src/marp-patterns/patterns/title-on-image.ts:24
+#: src/marp-patterns/patterns/title-on-gradient.ts:24
+#: src/marp-patterns/patterns/title-on-blurred-image.ts:25
+#: src/marp-patterns/patterns/title-in-inverted-colors.ts:22
+#: src/marp-patterns/patterns/title-and-image-on-right.ts:25
+#: src/marp-patterns/patterns/title-and-image-on-left.ts:25
+msgctxt "slide pattern"
+msgid "Writing slides in Markdown"
+msgstr "Markdown ile slayt yazmak"
 
 #: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"

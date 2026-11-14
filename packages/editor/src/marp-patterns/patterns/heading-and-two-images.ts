@@ -17,7 +17,7 @@ const pattern: SlidePattern = {
 
 ![h:280](${ PLACEHOLDER_IMAGE }) ![h:280](${ PLACEHOLDER_IMAGE })`,
 	strings: () => ( {
-		heading: _x( 'Heading', 'slide pattern', 'mark-bricks' ),
+		heading: _x( 'Slides as plain text', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 
