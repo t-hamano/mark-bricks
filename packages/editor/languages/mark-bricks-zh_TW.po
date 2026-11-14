@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:00:26.786Z\n"
-"PO-Revision-Date: 2026-11-14T07:00:31.277Z\n"
+"POT-Creation-Date: 2026-11-14T07:31:33.439Z\n"
+"PO-Revision-Date: 2026-11-14T07:31:37.546Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -91,7 +91,7 @@ msgstr "用 Markdown 撰寫的投影片"
 msgid "AI Assistant"
 msgstr "AI 助理"
 
-#: src/block-library/image/marp-image-settings.tsx:364
+#: src/block-library/image/marp-image-settings.tsx:371
 msgid "Add filter"
 msgstr "新增濾鏡"
 
@@ -114,7 +114,7 @@ msgid "All categories"
 msgstr "所有分類"
 
 #: src/format-library/image/inline.tsx:147
-#: src/block-library/image/edit.tsx:253
+#: src/block-library/image/edit.tsx:269
 msgid "Alt text"
 msgstr "替代文字"
 
@@ -124,9 +124,8 @@ msgid "Any editor"
 msgstr "任何編輯器"
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/marp-image-settings.tsx:445
-#: src/block-library/image/edit.tsx:143
-#: src/block-library/image/edit.tsx:302
+#: src/block-library/image/edit.tsx:159
+#: src/block-library/image/edit.tsx:332
 msgid "Apply"
 msgstr "套用"
 
@@ -142,16 +141,16 @@ msgstr ""
 "請 AI 助理撰寫或編輯內容。你的選取範圍，或程式碼編輯器中游標所在的那一行，會"
 "隨訊息一起傳送。"
 
-#: src/block-library/image/marp-image-settings.tsx:305
-#: src/block-library/image/marp-image-settings.tsx:320
+#: src/block-library/image/marp-image-settings.tsx:307
+#: src/block-library/image/marp-image-settings.tsx:324
 msgid "Auto"
 msgstr "自動"
 
-#: src/block-library/image/marp-image-settings.tsx:211
+#: src/block-library/image/marp-image-settings.tsx:208
 msgid "Background"
 msgstr "背景"
 
-#: src/block-library/image/marp-image-settings.tsx:242
+#: src/block-library/image/marp-image-settings.tsx:239
 msgid "Background size"
 msgstr "背景尺寸"
 
@@ -174,8 +173,8 @@ msgid "Bold"
 msgstr "粗體"
 
 #: src/format-library/image/inline.tsx:137
-#: src/block-library/image/edit.tsx:139
-#: src/block-library/image/edit.tsx:235
+#: src/block-library/image/edit.tsx:155
+#: src/block-library/image/edit.tsx:251
 msgid "Browse local file"
 msgstr "瀏覽本機檔案"
 
@@ -189,7 +188,7 @@ msgctxt "slide pattern"
 msgid "By hand"
 msgstr "手動"
 
-#: src/block-library/image/edit.tsx:252
+#: src/block-library/image/edit.tsx:268
 msgid "Caption"
 msgstr "說明文字"
 
@@ -248,7 +247,7 @@ msgstr "程式碼編輯器"
 msgid "Column count"
 msgstr "資料行數"
 
-#: src/block-library/image/marp-image-settings.tsx:271
+#: src/block-library/image/marp-image-settings.tsx:268
 msgid "Contain"
 msgstr "包含"
 
@@ -256,7 +255,7 @@ msgstr "包含"
 msgid "Convert the selected text into a link."
 msgstr "將選取內容轉換成連結"
 
-#: src/block-library/image/marp-image-settings.tsx:267
+#: src/block-library/image/marp-image-settings.tsx:264
 msgid "Cover"
 msgstr "覆蓋"
 
@@ -277,7 +276,7 @@ msgid "Delete row"
 msgstr "刪除資料列"
 
 #: src/format-library/image/inline.tsx:151
-#: src/block-library/image/edit.tsx:268
+#: src/block-library/image/edit.tsx:284
 msgid "Describes the image for screen readers."
 msgstr "為螢幕閱讀器描述圖片。"
 
@@ -290,7 +289,7 @@ msgstr "顯示鍵盤快速鍵清單"
 msgid "Document Overview"
 msgstr "內容總覽"
 
-#: src/block-library/image/edit.tsx:179
+#: src/block-library/image/edit.tsx:195
 msgid "Edit image"
 msgstr "編輯圖片"
 
@@ -307,16 +306,16 @@ msgid "Editing the document…"
 msgstr "正在編輯文件…"
 
 #: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:260
+#: src/block-library/image/edit.tsx:276
 msgid "Enter alt text…"
 msgstr "輸入替代文字…"
 
-#: src/block-library/image/edit.tsx:259
+#: src/block-library/image/edit.tsx:275
 msgid "Enter caption…"
 msgstr "輸入說明文字…"
 
 #: src/format-library/image/inline.tsx:160
-#: src/block-library/image/edit.tsx:278
+#: src/block-library/image/edit.tsx:308
 msgid "Enter title…"
 msgstr "輸入標題…"
 
@@ -340,7 +339,7 @@ msgctxt "slide pattern"
 msgid "Export when you are ready"
 msgstr "準備好後匯出"
 
-#: src/block-library/image/edit.tsx:339
+#: src/block-library/image/edit.tsx:366
 msgid "Failed to load image."
 msgstr "圖片載入失敗。"
 
@@ -349,7 +348,7 @@ msgctxt "slide pattern"
 msgid "File for each deck"
 msgstr "每份簡報的檔案數"
 
-#: src/block-library/image/marp-image-settings.tsx:360
+#: src/block-library/image/marp-image-settings.tsx:367
 msgid "Filters"
 msgstr "濾鏡"
 
@@ -472,7 +471,7 @@ msgctxt "slide pattern"
 msgid "Heading, text and list in two columns"
 msgstr "標題、文字和清單分兩欄"
 
-#: src/block-library/image/marp-image-settings.tsx:319
+#: src/block-library/image/marp-image-settings.tsx:323
 msgid "Height"
 msgstr "高度"
 
@@ -480,7 +479,7 @@ msgstr "高度"
 msgid "Hide Document Overview"
 msgstr "隱藏內容總覽"
 
-#: src/block-library/image/edit.tsx:93
+#: src/block-library/image/edit.tsx:109
 msgid "Image"
 msgstr "圖片"
 
@@ -512,7 +511,7 @@ msgstr "重要"
 msgid "Indent"
 msgstr "增加縮排"
 
-#: src/block-library/image/marp-image-settings.tsx:207
+#: src/block-library/image/marp-image-settings.tsx:204
 msgid "Inline"
 msgstr "行內"
 
@@ -561,11 +560,11 @@ msgstr "保留每個版本"
 msgid "Language"
 msgstr "語言"
 
-#: src/block-library/image/marp-image-settings.tsx:332
+#: src/block-library/image/marp-image-settings.tsx:338
 msgid "Leave empty to size the image automatically."
 msgstr "留空則自動決定尺寸。"
 
-#: src/block-library/image/marp-image-settings.tsx:215
+#: src/block-library/image/marp-image-settings.tsx:212
 msgid "Left"
 msgstr "左側"
 
@@ -574,7 +573,7 @@ msgstr "左側"
 msgid "Line %d"
 msgstr "第 %d 行"
 
-#: src/block-library/image/marp-image-settings.tsx:341
+#: src/block-library/image/marp-image-settings.tsx:348
 msgid ""
 "Lines up the background images of the slide from top to bottom instead of "
 "side by side."
@@ -621,13 +620,19 @@ msgstr "Marp"
 msgid "Marp Mode"
 msgstr "Marp 模式"
 
-#: src/block-library/image/edit.tsx:314
+#: src/block-library/image/edit.tsx:344
 msgid "Marp image settings"
 msgstr "Marp 圖片設定"
 
 #: src/components/slide-pattern-modal/index.tsx:222
 msgid "Marp patterns"
 msgstr "Marp 版型"
+
+# %s: Words of the alt text, such as "right".
+#: src/block-library/image/marp-image-settings.tsx:443
+#: src/block-library/image/edit.tsx:295
+msgid "Marp reads these words as settings: %s"
+msgstr "Marp 會將這些詞讀作設定：%s"
 
 #: src/components/ai-sidebar/chat.tsx:295
 msgid "Message"
@@ -651,7 +656,7 @@ msgstr "新對話"
 msgid "No block selected"
 msgstr "未選取區塊"
 
-#: src/block-library/image/marp-image-settings.tsx:396
+#: src/block-library/image/marp-image-settings.tsx:403
 msgid "No filters."
 msgstr "沒有濾鏡。"
 
@@ -685,7 +690,7 @@ msgstr "開啟設定"
 msgid "Ordered"
 msgstr "有序"
 
-#: src/block-library/image/marp-image-settings.tsx:275
+#: src/block-library/image/marp-image-settings.tsx:272
 msgid "Original"
 msgstr "原始尺寸"
 
@@ -706,12 +711,12 @@ msgstr "頁碼"
 msgid "Paste or type URL"
 msgstr "貼上或輸入網址"
 
-#: src/block-library/image/edit.tsx:121
-#: src/block-library/image/edit.tsx:217
+#: src/block-library/image/edit.tsx:137
+#: src/block-library/image/edit.tsx:233
 msgid "Paste or type URL or file path"
 msgstr "貼上或輸入網址或檔案路徑"
 
-#: src/block-library/image/marp-image-settings.tsx:181
+#: src/block-library/image/marp-image-settings.tsx:178
 msgid "Placement"
 msgstr "位置"
 
@@ -772,11 +777,11 @@ msgstr "取消復原變更"
 msgid "Remove a link."
 msgstr "移除連結"
 
-#: src/block-library/image/marp-image-settings.tsx:427
+#: src/block-library/image/marp-image-settings.tsx:422
 msgid "Remove filter"
 msgstr "移除濾鏡"
 
-#: src/block-library/image/edit.tsx:296
+#: src/block-library/image/edit.tsx:326
 msgid "Reset"
 msgstr "重設"
 
@@ -788,7 +793,7 @@ msgstr "重設搜尋"
 msgid "Resize side panel"
 msgstr "調整側邊面板大小"
 
-#: src/block-library/image/marp-image-settings.tsx:219
+#: src/block-library/image/marp-image-settings.tsx:216
 msgid "Right"
 msgstr "右側"
 
@@ -796,8 +801,8 @@ msgstr "右側"
 msgid "Row count"
 msgstr "資料列數"
 
-#: src/block-library/image/marp-image-settings.tsx:279
-#: src/block-library/image/marp-image-settings.tsx:286
+#: src/block-library/image/marp-image-settings.tsx:276
+#: src/block-library/image/marp-image-settings.tsx:283
 msgid "Scale"
 msgstr "縮放"
 
@@ -832,7 +837,7 @@ msgstr "傳送"
 msgid "Set an API key to use the AI Assistant."
 msgstr "請設定 API 金鑰以使用 AI 助理。"
 
-#: src/block-library/image/edit.tsx:264
+#: src/block-library/image/edit.tsx:280
 msgid ""
 "Set the placement, size and filters from Marp image settings in the toolbar."
 msgstr "在工具列的 Marp 圖片設定中設定位置、尺寸和濾鏡。"
@@ -859,7 +864,7 @@ msgstr "以全螢幕顯示投影片"
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
-#: src/block-library/image/edit.tsx:282
+#: src/block-library/image/edit.tsx:312
 msgid "Shown as a tooltip on hover."
 msgstr "滑鼠懸停時會顯示為工具提示。"
 
@@ -906,11 +911,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "純文字投影片"
 
-#: src/block-library/image/marp-image-settings.tsx:225
+#: src/block-library/image/marp-image-settings.tsx:222
 msgid "Split width"
 msgstr "分割寬度"
 
-#: src/block-library/image/marp-image-settings.tsx:340
+#: src/block-library/image/marp-image-settings.tsx:347
 msgid "Stack vertically"
 msgstr "垂直堆疊"
 
@@ -973,19 +978,19 @@ msgstr "由於選取範圍已變更（例如切換了編輯器），編輯未套
 msgid "The formula could not be rendered."
 msgstr "無法轉譯公式。"
 
-#: src/block-library/image/marp-image-settings.tsx:188
+#: src/block-library/image/marp-image-settings.tsx:185
 msgid "The image fills the slide, or one side of it, behind the content."
 msgstr "圖片在內容後方填滿投影片或其一側。"
 
-#: src/block-library/image/marp-image-settings.tsx:184
+#: src/block-library/image/marp-image-settings.tsx:181
 msgid "The image sits in the slide content."
 msgstr "圖片位於投影片內容中。"
 
-#: src/block-library/image/marp-image-settings.tsx:232
+#: src/block-library/image/marp-image-settings.tsx:229
 msgid "The share of the slide the image takes, such as 40%."
 msgstr "圖片佔投影片的比例，例如 40%。"
 
-#: src/block-library/image/marp-image-settings.tsx:293
+#: src/block-library/image/marp-image-settings.tsx:290
 msgid "The size relative to the original image, such as 50%."
 msgstr "相對於原始圖片的尺寸，例如 50%。"
 
@@ -1014,7 +1019,7 @@ msgstr "提示"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/components/slide-pattern-modal/index.tsx:70
-#: src/block-library/image/edit.tsx:275
+#: src/block-library/image/edit.tsx:305
 msgid "Title"
 msgstr "標題"
 
@@ -1099,8 +1104,8 @@ msgid "Type / to choose a block"
 msgstr "輸入斜線 (/) 以選取區塊"
 
 #: src/format-library/image/inline.tsx:118
-#: src/block-library/image/edit.tsx:117
-#: src/block-library/image/edit.tsx:213
+#: src/block-library/image/edit.tsx:133
+#: src/block-library/image/edit.tsx:229
 msgid "URL or file path"
 msgstr "網址或檔案路徑"
 
@@ -1120,7 +1125,7 @@ msgstr "復原變更"
 msgid "Unordered"
 msgstr "無序"
 
-#: src/block-library/image/edit.tsx:94
+#: src/block-library/image/edit.tsx:110
 msgid "Upload an image from your device or insert from a URL."
 msgstr "從裝置上傳圖片或透過網址插入。"
 
@@ -1144,7 +1149,7 @@ msgstr "正在等待回答…"
 msgid "Warning"
 msgstr "警告"
 
-#: src/block-library/image/marp-image-settings.tsx:304
+#: src/block-library/image/marp-image-settings.tsx:306
 msgid "Width"
 msgstr "寬度"
 

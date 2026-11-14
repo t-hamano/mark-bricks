@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * WordPress dependencies
@@ -14,12 +14,12 @@ import {
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { closeSmall, plus } from '@wordpress/icons';
 import {
-	Button,
 	IconButton,
 	InputControl,
+	Notice,
 	Stack,
 	SwitchControl,
 	Text,
@@ -31,6 +31,7 @@ import {
 import {
 	MARP_FILTERS,
 	MARP_FILTER_DEFAULTS,
+	getKeywordsInText,
 	isValidMarpLength,
 	isValidMarpPercentage,
 	parseMarpImageAlt,
@@ -85,26 +86,30 @@ const LENGTH_UNITS = [
 	'pt',
 	'pc',
 ].map( ( unit ) => ( { value: unit, label: unit } ) );
+// Marp ignores a percentage width or height on an inline image.
+const INLINE_LENGTH_UNITS = LENGTH_UNITS.filter(
+	( unit ) => unit.value !== '%'
+);
 const PERCENT_UNITS = [ { value: '%', label: '%' } ];
 
 /**
  * The form of the Marp image settings popover. It edits the Marp keywords of
  * the alt text and leaves the other words as they are.
  *
- * @param props         Component props.
- * @param props.alt     The alt text of the image.
- * @param props.onApply Called with the new alt text.
- * @param props.onClose Closes the popover.
+ * Changes apply as they are made.
+ *
+ * @param props          Component props.
+ * @param props.alt      The alt text of the image.
+ * @param props.onChange Called with the new alt text.
  */
 export function MarpImageSettings( {
 	alt,
-	onApply,
-	onClose,
+	onChange,
 }: {
 	alt: string;
-	onApply: ( alt: string ) => void;
-	onClose: () => void;
+	onChange: ( alt: string ) => void;
 } ) {
+	const [ initialAlt ] = useState( alt );
 	const [ initial ] = useState( () => parseMarpImageAlt( alt ) );
 	const [ options, setOptions ] = useState( initial );
 	// Kept apart from the scale value, so Scale stays selected while its
@@ -149,32 +154,24 @@ export function MarpImageSettings( {
 		return result;
 	};
 
+	const lengthUnits = options.background ? LENGTH_UNITS : INLINE_LENGTH_UNITS;
+
+	const result = getResult();
+	const keywordWords = getKeywordsInText( result );
+	// Keeps the alt text as written when nothing changed, so the Markdown is
+	// not reformatted. An invalid value is not applied until it is fixed.
+	const nextAlt =
+		JSON.stringify( result ) === JSON.stringify( initial )
+			? initialAlt
+			: serializeMarpImageAlt( result );
+	useEffect( () => {
+		if ( isValid && nextAlt !== alt ) {
+			onChange( nextAlt );
+		}
+	}, [ isValid, nextAlt, alt, onChange ] );
+
 	return (
-		<Stack
-			render={
-				<form
-					onSubmit={ ( event ) => {
-						event.preventDefault();
-						if ( ! isValid ) {
-							return;
-						}
-						const result = getResult();
-						// Keeps the alt text as written when nothing changed,
-						// so the Markdown is not reformatted.
-						if (
-							JSON.stringify( result ) !==
-							JSON.stringify( initial )
-						) {
-							onApply( serializeMarpImageAlt( result ) );
-						}
-						onClose();
-					} }
-				/>
-			}
-			direction="column"
-			gap="md"
-			style={ { width: '400px' } }
-		>
+		<Stack direction="column" gap="md" style={ { width: '400px' } }>
 			<ToggleGroupControl
 				__next40pxDefaultSize
 				isBlock
@@ -308,7 +305,7 @@ export function MarpImageSettings( {
 								__next40pxDefaultSize
 								label={ __( 'Width', 'mark-bricks' ) }
 								placeholder={ __( 'Auto', 'mark-bricks' ) }
-								units={ LENGTH_UNITS }
+								units={ lengthUnits }
 								// `auto` has no unit, so it shows as an empty field.
 								value={
 									options.width === 'auto'
@@ -325,7 +322,7 @@ export function MarpImageSettings( {
 								__next40pxDefaultSize
 								label={ __( 'Height', 'mark-bricks' ) }
 								placeholder={ __( 'Auto', 'mark-bricks' ) }
-								units={ LENGTH_UNITS }
+								units={ lengthUnits }
 								value={
 									options.height === 'auto'
 										? ''
@@ -407,54 +404,51 @@ export function MarpImageSettings( {
 					</Text>
 				) }
 				{ options.filters.map( ( filter, index ) => (
-					<Stack
+					<InputControl
 						key={ index }
-						direction="row"
-						gap="sm"
-						align="center"
-					>
-						<div style={ { flex: 1 } }>
-							<InputControl
-								label={ filter.name }
-								placeholder={
-									MARP_FILTER_DEFAULTS[ filter.name ]
-								}
-								value={ filter.value }
-								onValueChange={ ( value ) =>
+						label={ filter.name }
+						placeholder={ MARP_FILTER_DEFAULTS[ filter.name ] }
+						value={ filter.value }
+						onValueChange={ ( value ) =>
+							update( {
+								filters: options.filters.map( ( item, i ) =>
+									i === index ? { ...item, value } : item
+								),
+							} )
+						}
+						suffix={
+							<IconButton
+								icon={ closeSmall }
+								label={ __( 'Remove filter', 'mark-bricks' ) }
+								variant="minimal"
+								tone="neutral"
+								size="small"
+								onClick={ () =>
 									update( {
-										filters: options.filters.map(
-											( item, i ) =>
-												i === index
-													? { ...item, value }
-													: item
+										filters: options.filters.filter(
+											( _, i ) => i !== index
 										),
 									} )
 								}
 							/>
-						</div>
-						<IconButton
-							icon={ closeSmall }
-							label={ __( 'Remove filter', 'mark-bricks' ) }
-							variant="minimal"
-							tone="neutral"
-							size="compact"
-							style={ { alignSelf: 'flex-end' } }
-							onClick={ () =>
-								update( {
-									filters: options.filters.filter(
-										( _, i ) => i !== index
-									),
-								} )
-							}
-						/>
-					</Stack>
+						}
+					/>
 				) ) }
 			</Stack>
-			<Stack justify="flex-end">
-				<Button type="submit" disabled={ ! isValid }>
-					{ __( 'Apply', 'mark-bricks' ) }
-				</Button>
-			</Stack>
+			{ keywordWords.length > 0 && (
+				<Notice.Root intent="warning">
+					<Notice.Description>
+						{ sprintf(
+							/* translators: %s: Words of the alt text, such as "right". */
+							__(
+								'Marp reads these words as settings: %s',
+								'mark-bricks'
+							),
+							keywordWords.join( ', ' )
+						) }
+					</Notice.Description>
+				</Notice.Root>
+			) }
 		</Stack>
 	);
 }

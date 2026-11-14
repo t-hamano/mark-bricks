@@ -209,3 +209,20 @@ export function serializeMarpImageAlt( options: MarpImageOptions ): string {
 	}
 	return words.join( ' ' );
 }
+
+/**
+ * Finds the words of the remaining text that Marp would read as keywords
+ * once the alt text is built, such as `right` in the caption of a
+ * background image.
+ *
+ * @param options The keywords and the remaining text.
+ * @return The words Marp would read as keywords.
+ */
+export function getKeywordsInText( options: MarpImageOptions ): string[] {
+	const kept = parseMarpImageAlt( serializeMarpImageAlt( options ) )
+		.text.split( ' ' )
+		.filter( Boolean );
+	return options.text
+		.split( /\s+/ )
+		.filter( ( word ) => word && ! kept.includes( word ) );
+}

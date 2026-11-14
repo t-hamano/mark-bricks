@@ -7,6 +7,7 @@ import { describe, it, expect } from 'vitest';
  * Internal dependencies
  */
 import {
+	getKeywordsInText,
 	isValidMarpLength,
 	parseMarpImageAlt,
 	serializeMarpImageAlt,
@@ -163,5 +164,26 @@ describe( 'isValidMarpLength', () => {
 
 	it.each( [ '', '200rem', 'big', '-1px' ] )( 'rejects %s', ( value ) => {
 		expect( isValidMarpLength( value ) ).toBe( false );
+	} );
+} );
+
+describe( 'getKeywordsInText', () => {
+	it( 'finds words Marp would read as background keywords', () => {
+		expect(
+			getKeywordsInText( {
+				...parseMarpImageAlt( 'bg left' ),
+				text: 'The right choice',
+			} )
+		).toEqual( [ 'right' ] );
+	} );
+
+	it( 'finds no keywords in the alt text of an inline image', () => {
+		expect(
+			getKeywordsInText( {
+				background: false,
+				filters: [],
+				text: 'The right choice',
+			} )
+		).toEqual( [] );
 	} );
 } );

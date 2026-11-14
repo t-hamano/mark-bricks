@@ -1,14 +1,14 @@
 /**
  * External dependencies
  */
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 /**
  * WordPress dependencies
  */
 import { BlockControls, useBlockProps } from '@wordpress/block-editor';
 import { Dropdown, ToolbarButton } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { Button, InputControl, Notice, Stack } from '@wordpress/ui';
 import { cog, image as imageIcon, pencil } from '@wordpress/icons';
 
@@ -22,7 +22,11 @@ import { useFrontMatter } from '../../components/front-matter-editor/context';
 import { isMarpFrontMatter } from '../../converter/front-matter';
 import { useImageNotice, usePlatform } from '../../platform';
 import { MarpImageSettings } from './marp-image-settings';
-import { parseMarpImageAlt, serializeMarpImageAlt } from './marp-image-options';
+import {
+	getKeywordsInText,
+	parseMarpImageAlt,
+	serializeMarpImageAlt,
+} from './marp-image-options';
 
 export default function Edit( props: BlockEditProps ) {
 	const { attributes, setAttributes } =
@@ -48,8 +52,20 @@ export default function Edit( props: BlockEditProps ) {
 	};
 
 	const [ urlInput, setUrlInput ] = useState( () => url || '' );
+	const onChangeAlt = useCallback(
+		( next: string ) => setAttributes( { alt: next } ),
+		[ setAttributes ]
+	);
 	const isBackground = isMarp && parseMarpImageAlt( alt || '' ).background;
 	const [ altInput, setAltInput ] = useState( () => alt || '' );
+	// Words of the alt text that Marp would read as keywords, such as
+	// `right` in the caption of a background image.
+	const altKeywords = isMarp
+		? getKeywordsInText( {
+				...parseMarpImageAlt( alt || '' ),
+				text: altInput,
+			} )
+		: [];
 	const [ titleInput, setTitleInput ] = useState( () => title || '' );
 	const imageNotice = useImageNotice( urlInput );
 	const [ resolvedSrc, setResolvedSrc ] = useState( '' );
@@ -271,6 +287,20 @@ export default function Edit( props: BlockEditProps ) {
 											)
 								}
 							/>
+							{ altKeywords.length > 0 && (
+								<Notice.Root intent="warning">
+									<Notice.Description>
+										{ sprintf(
+											/* translators: %s: Words of the alt text, such as "right". */
+											__(
+												'Marp reads these words as settings: %s',
+												'mark-bricks'
+											),
+											altKeywords.join( ', ' )
+										) }
+									</Notice.Description>
+								</Notice.Root>
+							) }
 							<InputControl
 								label={ __( 'Title', 'mark-bricks' ) }
 								value={ titleInput }
@@ -320,13 +350,10 @@ export default function Edit( props: BlockEditProps ) {
 								aria-haspopup="true"
 							/>
 						) }
-						renderContent={ ( { onClose } ) => (
+						renderContent={ () => (
 							<MarpImageSettings
 								alt={ alt || '' }
-								onApply={ ( next ) =>
-									setAttributes( { alt: next } )
-								}
-								onClose={ onClose }
+								onChange={ onChangeAlt }
 							/>
 						) }
 					/>
