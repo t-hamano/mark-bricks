@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:39:54.559Z\n"
-"PO-Revision-Date: 2026-11-14T06:40:24.252Z\n"
+"POT-Creation-Date: 2026-11-14T06:47:35.607Z\n"
+"PO-Revision-Date: 2026-11-14T06:47:40.026Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:72
+#: src/components/ai-sidebar/chat.tsx:122
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "Tokeny wejściowe: %1$s, tokeny wyjściowe: %2$s"
 
@@ -125,11 +125,11 @@ msgstr "Dowolny edytor"
 msgid "Apply"
 msgstr "Zastosuj"
 
-#: src/components/ai-sidebar/chat.tsx:305
+#: src/components/ai-sidebar/chat.tsx:297
 msgid "Ask the AI Assistant"
 msgstr "Zapytaj asystenta AI"
 
-#: src/components/ai-sidebar/chat.tsx:283
+#: src/components/ai-sidebar/chat.tsx:275
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -268,7 +268,7 @@ msgstr "Edytuj obrazek"
 msgid "Edit table"
 msgstr "Edytuj tabelę"
 
-#: src/components/ai-sidebar/chat.tsx:93
+#: src/components/ai-sidebar/chat.tsx:77
 msgid "Edited the document."
 msgstr "Dokument został zmieniony."
 
@@ -574,7 +574,7 @@ msgstr ""
 msgid "Marp patterns"
 msgstr "Wzory Marp"
 
-#: src/components/ai-sidebar/chat.tsx:303
+#: src/components/ai-sidebar/chat.tsx:295
 msgid "Message"
 msgstr "Wiadomość"
 
@@ -620,7 +620,7 @@ msgstr "Jedna aplikacja"
 msgid "Open by default"
 msgstr "Otwórz domyślnie"
 
-#: src/components/ai-sidebar/chat.tsx:275
+#: src/components/ai-sidebar/chat.tsx:267
 msgid "Open settings"
 msgstr "Otwórz ustawienia"
 
@@ -746,11 +746,11 @@ msgstr "Każdy slajd widoczny podczas pisania"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Inne ustawienia opisano w <a>dokumentacji Marp</a>."
 
-#: src/components/ai-sidebar/chat.tsx:326
+#: src/components/ai-sidebar/chat.tsx:318
 msgid "Send"
 msgstr "Wyślij"
 
-#: src/components/ai-sidebar/chat.tsx:265
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Set an API key to use the AI Assistant."
 msgstr "Ustaw klucz API, aby korzystać z asystenta AI."
 
@@ -823,11 +823,11 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "Slajdy jako zwykły tekst"
 
-#: src/components/ai-sidebar/chat.tsx:317
+#: src/components/ai-sidebar/chat.tsx:309
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: src/components/ai-sidebar/chat.tsx:120
+#: src/components/ai-sidebar/chat.tsx:104
 msgid "Stopped."
 msgstr "Zatrzymano."
 
@@ -860,7 +860,7 @@ msgstr "Tekst wyświetlany u dołu każdego slajdu."
 msgid "Text shown at the top of each slide."
 msgstr "Tekst wyświetlany u góry każdego slajdu."
 
-#: src/components/ai-sidebar/chat.tsx:127
+#: src/components/ai-sidebar/chat.tsx:111
 msgid "The answer could not be loaded."
 msgstr "Nie udało się wczytać odpowiedzi."
 
@@ -872,7 +872,7 @@ msgstr "Proporcje slajdów."
 msgid "The diagram could not be rendered."
 msgstr "Nie można wyrenderować diagramu."
 
-#: src/components/ai-sidebar/chat.tsx:98
+#: src/components/ai-sidebar/chat.tsx:82
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
