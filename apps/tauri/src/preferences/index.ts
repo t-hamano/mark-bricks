@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { LazyStore } from '@tauri-apps/plugin-store';
-
-/**
  * WordPress dependencies
  */
 import { dispatch } from '@wordpress/data';
@@ -15,23 +10,10 @@ import { store as preferencesStore } from '@wordpress/preferences';
 import {
 	DEFAULT_PREFERENCES,
 	PREFERENCES_VERSION,
-	STORE_FILE,
 	STORE_KEY,
 } from './constants';
+import { type PersistedShape, tauriStore } from './initial-language';
 import { migrate, type Scopes } from './migration';
-import { toWpLocale } from '../i18n';
-
-type PersistedShape = { version: number } & Scopes;
-
-const tauriStore = new LazyStore( STORE_FILE );
-
-export async function getInitialLanguage(): Promise< string > {
-	const raw = await tauriStore.get< PersistedShape >( STORE_KEY );
-	const language = raw?.[ 'mark-bricks' ]?.language;
-	return typeof language === 'string' && language
-		? language
-		: ( toWpLocale( navigator.language ) ?? 'en' );
-}
 
 export async function setupPreferences() {
 	const raw = await tauriStore.get< PersistedShape >( STORE_KEY );
