@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T08:40:52.692Z\n"
-"PO-Revision-Date: 2026-11-14T08:40:55.230Z\n"
+"POT-Creation-Date: 2026-11-14T11:10:00.722Z\n"
+"PO-Revision-Date: 2026-11-14T11:10:10.137Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -63,11 +63,6 @@ msgstr "ブロック・ドキュメントツールを同じ場所にまとめる
 #: src/components/header-actions/index.tsx:327
 msgid "Add YAML front matter"
 msgstr "YAML フロントマターを追加"
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
 
 #: src/components/preferences-modal/visual-editor-panel.tsx:79
 msgid "Always open List View"
@@ -575,7 +570,7 @@ msgstr "長さの上限に達したため、回答が途中で終わりました
 msgid "The connection closed before the answer was complete."
 msgstr "回答が完了する前に接続が切れました。"
 
-#: src/ai/chat.ts:95
+#: src/ai/chat.ts:116
 msgid "The edit from the model could not be read."
 msgstr "モデルの編集内容を読み取れませんでした。"
 
@@ -680,8 +675,3 @@ msgstr "最新バージョン (%s) を使用しています。"
 #: src/hooks/use-auto-updater.ts:41
 msgid "You have unsaved changes. Please save them before updating."
 msgstr "保存されていない変更があります。アップデートする前に保存してください。"
-
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""

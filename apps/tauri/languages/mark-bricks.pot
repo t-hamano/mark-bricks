@@ -8,23 +8,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T08:40:52.692Z\n"
+"POT-Creation-Date: 2026-11-14T11:10:49.272Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: en\n"
 "X-Domain: mark-bricks\n"
-
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-desktop"
-msgstr ""
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
 
 #: src/store/reducer.ts:42
 #: src/store/constants.ts:13
@@ -202,7 +192,7 @@ msgstr ""
 msgid "The answer was cut off because it reached the length limit."
 msgstr ""
 
-#: src/ai/chat.ts:95
+#: src/ai/chat.ts:116
 msgid "The edit from the model could not be read."
 msgstr ""
 
@@ -549,6 +539,14 @@ msgstr ""
 msgid "List View shortcuts"
 msgstr ""
 
+#: src/components/editor-placeholder/index.tsx:23
+msgid "No file open"
+msgstr ""
+
+#: src/components/editor-placeholder/index.tsx:26
+msgid "Create a new Markdown file or open an existing one to start editing."
+msgstr ""
+
 #: src/components/header-actions/index.tsx:115
 msgid "Exporting the slide deck…"
 msgstr ""
@@ -647,14 +645,6 @@ msgstr ""
 
 #: src/components/header-actions/index.tsx:386
 msgid "Remove"
-msgstr ""
-
-#: src/components/editor-placeholder/index.tsx:23
-msgid "No file open"
-msgstr ""
-
-#: src/components/editor-placeholder/index.tsx:26
-msgid "Create a new Markdown file or open an existing one to start editing."
 msgstr ""
 
 # %s: tab title.

@@ -67,11 +67,6 @@ msgctxt "slide pattern"
 msgid "3"
 msgstr "3"
 
-#: style.css
-#. Name of the generic
-msgid "@mark-bricks/editor"
-msgstr ""
-
 #: src/block-library/html/marp-directive-settings.tsx:334
 msgid "A CSS background image, such as a gradient."
 msgstr "CSS 背景圖片，例如漸層。"
@@ -115,11 +110,6 @@ msgstr "AI 助理"
 #: src/block-library/image/marp-image-settings.tsx:444
 msgid "Add filter"
 msgstr "新增濾鏡"
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr "Aki Hamano"
 
 #: src/marp-patterns/patterns/quote-on-image.ts:29
 msgctxt "slide pattern"
@@ -1282,11 +1272,6 @@ msgstr "從裝置上傳圖片或透過網址插入。"
 msgctxt "slide pattern"
 msgid "Use any text editor"
 msgstr "使用任何文字編輯器"
-
-#: style.css
-#. Description of the generic
-msgid "Visual markdown block editor."
-msgstr "視覺化 Markdown 區塊編輯器。"
 
 #: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"

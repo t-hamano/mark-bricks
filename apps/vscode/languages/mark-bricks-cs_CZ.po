@@ -16,11 +16,6 @@ msgstr ""
 "Language: cs_CZ\n"
 "X-Domain: mark-bricks\n"
 
-#: style.css
-#. Description of the generic
-msgid "%description%"
-msgstr ""
-
 #: src/webview/header-actions/index.tsx:81
 msgid "Access all block and document tools in a single place"
 msgstr "Mějte veškeré nástroje dokumentu a aktivního bloku na jednom místě"
@@ -28,11 +23,6 @@ msgstr "Mějte veškeré nástroje dokumentu a aktivního bloku na jednom míst�
 #: src/webview/header-actions/index.tsx:116
 msgid "Add YAML front matter"
 msgstr "Přidat YAML front matter"
-
-#: style.css
-#. Author of the generic
-msgid "Aki Hamano"
-msgstr ""
 
 #: src/webview/header-actions/index.tsx:97
 msgid "Focus on one block at a time"
@@ -87,8 +77,3 @@ msgstr "Horní panel nástrojů"
 #: src/webview/header-actions/index.tsx:69
 msgid "View"
 msgstr "Zobrazení"
-
-#: style.css
-#. Name of the generic
-msgid "mark-bricks-vscode"
-msgstr ""
