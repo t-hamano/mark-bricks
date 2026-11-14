@@ -377,6 +377,15 @@ describe( 'getFrontMatterBlockValue', () => {
 		);
 	} );
 
+	it( 'reads a value starting after a comment', () => {
+		expect(
+			getFrontMatterBlockValue(
+				'style: # custom CSS\n  "section { color: red; }"',
+				'style'
+			)
+		).toBe( 'section { color: red; }' );
+	} );
+
 	it( 'reads a quoted value spanning several lines', () => {
 		expect(
 			getFrontMatterBlockValue(
