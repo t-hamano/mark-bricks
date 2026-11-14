@@ -355,7 +355,6 @@ export function MarpImageSettings( {
 				<UnitControl
 					__next40pxDefaultSize
 					label={ __( 'Scale', 'mark-bricks' ) }
-					placeholder="50"
 					units={ PERCENT_UNITS }
 					value={ options.scale ?? '' }
 					onChange={ ( value ) =>
