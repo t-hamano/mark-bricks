@@ -27,12 +27,7 @@ const icon = (
 
 function Edit( { value, onChange, onFocus }: FormatEditProps ) {
 	const formatTypes = useSelect(
-		( select ) =>
-			select( richTextStore )
-				// @ts-expect-error -- `@wordpress/rich-text` types its
-				// store as plain `Object`, so selectors are not reachable
-				// through `select()`.
-				.getFormatTypes(),
+		( select ) => select( richTextStore ).getFormatTypes(),
 		[]
 	);
 

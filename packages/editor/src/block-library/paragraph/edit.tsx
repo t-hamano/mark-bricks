@@ -39,7 +39,6 @@ export default function Edit( {
 			onReplace={ onReplace }
 			onRemove={ onRemove }
 			placeholder={ __( 'Type / to choose a block', 'mark-bricks' ) }
-			// @ts-expect-error __unstableAllowPrefixTransformations is missing from type definitions
 			__unstableAllowPrefixTransformations
 		/>
 	);

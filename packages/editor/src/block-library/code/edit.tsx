@@ -150,7 +150,9 @@ export default function Edit( {
 															key={ name }
 															value={ name }
 														>
-															{ name }
+															<Autocomplete.ItemLabel>
+																{ name }
+															</Autocomplete.ItemLabel>
 														</Autocomplete.Item>
 													) }
 												</Autocomplete.Collection>

@@ -29,6 +29,6 @@ export function registerFormats() {
 		registerFormatType( name, {
 			...settings,
 			title: title(),
-		} as unknown as Parameters< typeof registerFormatType >[ 1 ] )
+		} )
 	);
 }

@@ -42,12 +42,6 @@ type Boundary = {
 };
 
 /**
- * The format shape `applyFormat` takes. It accepts attributes at runtime; the
- * public type omits them.
- */
-type AppliedFormat = Parameters< typeof applyFormat >[ 1 ];
-
-/**
  * Finds the range of text the link under the selection covers.
  *
  * The selection says where the caret is, not where the link it sits in begins
@@ -63,6 +57,9 @@ export function getFormatBoundary(
 	value: RichTextValue
 ): Boundary | undefined {
 	const { formats, start, end } = value;
+	if ( start === undefined || end === undefined ) {
+		return undefined;
+	}
 	const format = formats[ start ]?.find(
 		( { type } ) => type === LINK_FORMAT
 	);
@@ -95,7 +92,8 @@ export function getLinkValue(
 	attributes: Record< string, string >,
 	isActive: boolean
 ): LinkValue {
-	const { start, end } = ( isActive && getFormatBoundary( value ) ) || value;
+	const { start = 0, end = start } =
+		( isActive && getFormatBoundary( value ) ) || value;
 	return {
 		text: getTextContent( slice( value, start, end ) ),
 		url: attributes.url ?? '',
@@ -116,7 +114,8 @@ export function setLink(
 	isActive: boolean,
 	link: LinkValue
 ): RichTextValue {
-	const { start, end } = ( isActive && getFormatBoundary( value ) ) || value;
+	const { start = 0, end = start } =
+		( isActive && getFormatBoundary( value ) ) || value;
 	const attributes: Record< string, string > = { url: link.url };
 	if ( link.title ) {
 		attributes.title = link.title;
@@ -124,7 +123,7 @@ export function setLink(
 	const format = {
 		type: LINK_FORMAT,
 		attributes,
-	} as unknown as AppliedFormat;
+	};
 	const currentText = getTextContent( slice( value, start, end ) );
 
 	// A range of only objects, such as a linked image, reads as empty text, so

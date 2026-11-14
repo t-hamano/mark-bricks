@@ -31,7 +31,6 @@ export default function useMerge(
 		removeBlock,
 		updateBlockAttributes,
 		selectionChange,
-		// @ts-expect-error @types is outdated and missing moveBlocksToPosition on this dispatch type.
 		moveBlocksToPosition,
 	} = dispatch;
 	const outdentListItem = useOutdentListItem();

@@ -31,7 +31,6 @@ export default function Edit( props: BlockEditProps ) {
 		defaultBlock: DEFAULT_BLOCK,
 		directInsert: true,
 		templateLock: false,
-		// @ts-expect-error __experimentalCaptureToolbars is missing from type definitions.
 		__experimentalCaptureToolbars: true,
 	} );
 

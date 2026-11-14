@@ -1,10 +1,7 @@
 /**
  * WordPress dependencies
  */
-import {
-	// @ts-expect-error -- __experimentalListView is not declared.
-	__experimentalListView,
-} from '@wordpress/block-editor';
+import { __experimentalListView } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies

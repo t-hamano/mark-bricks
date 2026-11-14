@@ -221,7 +221,9 @@ export function SlidePatternModal( { previews, onClose }: Props ) {
 					<Dialog.Title>
 						{ __( 'Marp patterns', 'mark-bricks' ) }
 					</Dialog.Title>
-					<Dialog.CloseIcon label={ __( 'Close', 'mark-bricks' ) } />
+					<Dialog.CloseIconButton
+						label={ __( 'Close', 'mark-bricks' ) }
+					/>
 				</Dialog.Header>
 				<Tabs.Root
 					className="slide-pattern-modal__body"
