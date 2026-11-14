@@ -11,6 +11,7 @@ import {
 	EDIT_TOOL_DESCRIPTION,
 	EDIT_TOOL_NAME,
 	EDIT_TOOL_SCHEMA,
+	toToolInput,
 } from '../edit-tool';
 
 export { EDIT_TOOL_NAME };
@@ -75,10 +76,7 @@ export function toEditCallItems( edit: AiEdit, callId: string ) {
 		type: 'function_call',
 		call_id: callId,
 		name: EDIT_TOOL_NAME,
-		arguments: JSON.stringify( {
-			action: edit.action,
-			markdown: edit.markdown,
-		} ),
+		arguments: JSON.stringify( toToolInput( edit ) ),
 	};
 	const output: FunctionCallOutputItem = {
 		type: 'function_call_output',

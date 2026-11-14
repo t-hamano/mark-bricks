@@ -21,7 +21,13 @@ export const openai: AiProviderAdapter = {
 	keyPlaceholder: 'sk-…',
 	keyUrl: 'https://platform.openai.com/api-keys',
 	usageUrl: 'https://platform.openai.com/usage',
-	buildRequest: ( { model, system, messages, continuation } ) =>
+	buildRequest: ( {
+		model,
+		system,
+		messages,
+		continuation,
+		allowEditTool = true,
+	} ) =>
 		buildRequestBody( {
 			model,
 			system,
@@ -29,7 +35,7 @@ export const openai: AiProviderAdapter = {
 				...toInputItems( messages ),
 				...( ( continuation ?? [] ) as InputItem[] ),
 			],
-			allowEditTool: ! continuation,
+			allowEditTool,
 		} ),
 	readAnswer,
 	createHttpError,

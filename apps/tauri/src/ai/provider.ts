@@ -26,10 +26,12 @@ export type ProviderAnswer = {
 	 */
 	editCall?: { input: unknown };
 	/**
-	 * What follows the conversation to continue the answer after the edit:
-	 * the answer, and the edit tool's result, in the provider's own format.
+	 * Builds what follows the conversation to continue the answer after
+	 * the edit: the answer, and the edit tool's result, in the provider's
+	 * own format. The result is `error` when the edit failed, and
+	 * `EDIT_RESULT` otherwise.
 	 */
-	continuation: unknown[];
+	continuation: ( error?: string ) => unknown[];
 	/**
 	 * The tokens the request used, when the provider reported them.
 	 */
@@ -67,20 +69,23 @@ export type AiProviderAdapter = {
 	/**
 	 * Builds the body of a streamed request.
 	 *
-	 * @param options              The request.
-	 * @param options.model        The model to use.
-	 * @param options.system       The system prompt.
-	 * @param options.messages     The conversation, ending with the user's
-	 *                             new message.
-	 * @param options.continuation The `continuation` of the answer that
-	 *                             edited the selection, when the request
-	 *                             continues it. The model may not edit again.
+	 * @param options               The request.
+	 * @param options.model         The model to use.
+	 * @param options.system        The system prompt.
+	 * @param options.messages      The conversation, ending with the user's
+	 *                              new message.
+	 * @param options.continuation  The `continuation` of the answers that
+	 *                              edited the document, when the request
+	 *                              continues them.
+	 * @param options.allowEditTool Whether the model may call the edit
+	 *                              tool. Defaults to `true`.
 	 */
 	buildRequest: ( options: {
 		model: string;
 		system: string;
 		messages: AiMessage[];
 		continuation?: unknown[];
+		allowEditTool?: boolean;
 	} ) => object;
 	/**
 	 * Reads a streamed answer from the payloads of its server-sent events.

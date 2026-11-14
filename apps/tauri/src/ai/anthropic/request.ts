@@ -11,6 +11,7 @@ import {
 	EDIT_TOOL_DESCRIPTION,
 	EDIT_TOOL_NAME,
 	EDIT_TOOL_SCHEMA,
+	toToolInput,
 } from '../edit-tool';
 
 export { EDIT_TOOL_NAME };
@@ -32,6 +33,7 @@ export type ToolResultBlock = {
 	type: 'tool_result';
 	tool_use_id: string;
 	content: string;
+	is_error?: boolean;
 };
 
 /**
@@ -89,7 +91,7 @@ export function toEditToolRound( edit: AiEdit, id: string ) {
 		type: 'tool_use',
 		id,
 		name: EDIT_TOOL_NAME,
-		input: { action: edit.action, markdown: edit.markdown },
+		input: toToolInput( edit ),
 	};
 	const result: ToolResultBlock = {
 		type: 'tool_result',
@@ -193,7 +195,7 @@ export function buildRequestBody( {
 		// The tool stays declared when it may no longer be called, so the
 		// request keeps the same tools as the one before it.
 		tools: [ EDIT_TOOL ],
-		// One edit per answer, since the selection changes after an edit.
+		// One edit at a time, since the selection changes after an edit.
 		tool_choice: allowEditTool
 			? { type: 'auto', disable_parallel_tool_use: true }
 			: { type: 'none' },

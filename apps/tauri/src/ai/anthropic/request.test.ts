@@ -42,8 +42,8 @@ describe( 'toMessageParams', () => {
 					{
 						type: 'tool_use',
 						id: 'toolu_history_1',
-						name: 'edit_selection',
-						input: edit,
+						name: 'edit_document',
+						input: { ...edit, find: '' },
 					},
 				],
 			},
@@ -80,8 +80,8 @@ describe( 'toMessageParams', () => {
 					{
 						type: 'tool_use',
 						id: 'toolu_history_1',
-						name: 'edit_selection',
-						input: edit,
+						name: 'edit_document',
+						input: { ...edit, find: '' },
 					},
 				],
 			},
@@ -119,7 +119,7 @@ describe( 'buildRequestBody', () => {
 			fallbacks: 'default',
 		} );
 		expect( body.tools ).toEqual( [
-			expect.objectContaining( { name: 'edit_selection', strict: true } ),
+			expect.objectContaining( { name: 'edit_document', strict: true } ),
 		] );
 	} );
 

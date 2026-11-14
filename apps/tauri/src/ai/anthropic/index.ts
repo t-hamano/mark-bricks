@@ -20,7 +20,13 @@ export const anthropic: AiProviderAdapter = {
 	keyPlaceholder: 'sk-ant-…',
 	keyUrl: 'https://platform.claude.com/settings/keys',
 	usageUrl: 'https://platform.claude.com/usage',
-	buildRequest: ( { model, system, messages, continuation } ) =>
+	buildRequest: ( {
+		model,
+		system,
+		messages,
+		continuation,
+		allowEditTool = true,
+	} ) =>
 		buildRequestBody( {
 			model,
 			system,
@@ -28,7 +34,7 @@ export const anthropic: AiProviderAdapter = {
 				...toMessageParams( messages ),
 				...( ( continuation ?? [] ) as MessageParam[] ),
 			],
-			allowEditTool: ! continuation,
+			allowEditTool,
 		} ),
 	readAnswer,
 	createHttpError,
