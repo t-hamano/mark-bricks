@@ -138,6 +138,9 @@ importers:
       '@wordpress/data':
         specifier: ^10.56.0
         version: 10.56.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      '@wordpress/element':
+        specifier: ^8.8.0
+        version: 8.8.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@wordpress/i18n':
         specifier: ^6.29.0
         version: 6.29.0

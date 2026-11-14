@@ -18,6 +18,7 @@ export const anthropic: AiProviderAdapter = {
 	name: PROVIDER_NAME,
 	defaultModel: DEFAULT_MODEL,
 	keyPlaceholder: 'sk-ant-…',
+	keyUrl: 'https://platform.claude.com/settings/keys',
 	buildRequest: ( { model, system, messages, continuation } ) =>
 		buildRequestBody( {
 			model,

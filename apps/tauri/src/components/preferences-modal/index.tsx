@@ -12,7 +12,12 @@ import {
  * WordPress dependencies
  */
 import { useViewportMatch } from '@wordpress/compose';
-import { dispatch, useDispatch, useSelect } from '@wordpress/data';
+import {
+	dispatch,
+	select as selectFromStore,
+	useDispatch,
+	useSelect,
+} from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { store as interfaceStore } from '@wordpress/interface';
 import { store as preferencesStore } from '@wordpress/preferences';
@@ -29,7 +34,7 @@ import {
 	type VisualEditorSettings,
 } from './visual-editor-panel';
 import { getInitialPreferencesTab, PREFERENCES_MODAL_NAME } from './open';
-import { toProvider } from '../../ai/providers';
+import { toProvider, type AiProvider } from '../../ai/providers';
 import { DEFAULT_PREFERENCES } from '../../preferences/constants';
 import './style.scss';
 
@@ -52,7 +57,7 @@ export default function PreferencesModal() {
 		showBlockBreadcrumbs,
 		editorStyles,
 		aiProvider,
-		aiModel,
+		aiModels,
 	} = useSelect( ( select ) => {
 		const { get } = select( preferencesStore );
 		return {
@@ -73,7 +78,8 @@ export default function PreferencesModal() {
 				get( 'mark-bricks', 'editorStyles' ) ??
 				DEFAULT_PREFERENCES[ 'mark-bricks' ].editorStyles,
 			aiProvider: toProvider( get( 'mark-bricks', 'aiProvider' ) ),
-			aiModel: ( get( 'mark-bricks', 'aiModel' ) ?? '' ) as string,
+			aiModels: ( get( 'mark-bricks', 'aiModels' ) ??
+				{} ) as AiSettings[ 'models' ],
 		};
 	}, [] );
 
@@ -152,13 +158,25 @@ export default function PreferencesModal() {
 		} );
 	};
 
-	const handleAiChange = ( edits: Partial< AiSettings > ) => {
+	const handleAiChange = (
+		edits: Pick< Partial< AiSettings >, 'provider' >
+	) => {
 		if ( edits.provider !== undefined ) {
 			setPreference( 'mark-bricks', 'aiProvider', edits.provider );
 		}
-		if ( edits.model !== undefined ) {
-			setPreference( 'mark-bricks', 'aiModel', edits.model );
-		}
+	};
+
+	const handleAiModelChange = ( provider: AiProvider, model: string ) => {
+		// Reads the saved models now, not from this render, so that a change
+		// made after a key's deletion started is not undone when it ends.
+		const { [ provider ]: _, ...rest } = ( selectFromStore(
+			preferencesStore
+		).get( 'mark-bricks', 'aiModels' ) ?? {} ) as AiSettings[ 'models' ];
+		setPreference(
+			'mark-bricks',
+			'aiModels',
+			model ? { ...rest, [ provider ]: model } : rest
+		);
 	};
 
 	return (
@@ -262,18 +280,16 @@ export default function PreferencesModal() {
 						</Tabs.Panel>
 						<Tabs.Panel
 							value="ai"
-							className="preferences-modal__panel"
+							className="preferences-modal__panel preferences-modal__panel--full-width"
 							tabIndex={ -1 }
 						>
 							<AiPanel
-								// The panel starts over for another
-								// provider, whose key is saved apart.
-								key={ aiProvider }
 								settings={ {
 									provider: aiProvider,
-									model: aiModel,
+									models: aiModels,
 								} }
 								onChange={ handleAiChange }
+								onModelChange={ handleAiModelChange }
 							/>
 						</Tabs.Panel>
 					</Tabs.Root>
