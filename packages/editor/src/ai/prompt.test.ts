@@ -32,27 +32,20 @@ describe( 'buildSystemPrompt', () => {
 	} );
 
 	it( 'asks the model to find the part to change when nothing is selected', () => {
-		const context = {
+		const prompt = buildSystemPrompt( {
 			selection: '',
 			document: '# Title\n\n<selection></selection>\n',
-		};
-		expect( buildSystemPrompt( context ) ).not.toContain(
-			'"replace_text"'
-		);
-		const prompt = buildSystemPrompt( context, { canReplaceText: true } );
+		} );
 		expect( prompt ).toContain( 'without asking them to select it' );
 		expect( prompt ).toContain( '"replace_text"' );
 	} );
 
 	it( 'keeps edits on the selection when there is one', () => {
 		expect(
-			buildSystemPrompt(
-				{
-					selection: 'Two.\n',
-					document: '<selection>\nTwo.\n</selection>\n',
-				},
-				{ canReplaceText: true }
-			)
+			buildSystemPrompt( {
+				selection: 'Two.\n',
+				document: '<selection>\nTwo.\n</selection>\n',
+			} )
 		).toContain( 'Edit the selection, unless' );
 	} );
 

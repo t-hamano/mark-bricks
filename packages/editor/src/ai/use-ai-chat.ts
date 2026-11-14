@@ -87,9 +87,7 @@ export function useAiChat( {
 				! controller.signal.aborted;
 
 			ai.chat( {
-				system: buildSystemPrompt( target?.getContext() ?? null, {
-					canReplaceText: ai.canReplaceText,
-				} ),
+				system: buildSystemPrompt( target?.getContext() ?? null ),
 				messages,
 				signal: controller.signal,
 				onEvent( event ) {
