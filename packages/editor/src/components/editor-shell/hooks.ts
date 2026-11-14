@@ -59,10 +59,9 @@ export type EditorStyles = {
 	contentWidth?: number;
 	fontSize?: number;
 	/**
-	 * The font family of the content area. A font stack is still accepted,
-	 * as the desktop app saved one in its preferences, but is deprecated.
+	 * The font family of the content area.
 	 */
-	fontFamily?: FontFamily | ( string & {} );
+	fontFamily?: FontFamily;
 	css?: string;
 };
 

@@ -2,7 +2,6 @@
  * External dependencies
  */
 import { describe, expect, it } from 'vitest';
-import { FONT_FAMILY_STACKS } from '@mark-bricks/editor/font-families';
 
 /**
  * Internal dependencies
@@ -18,9 +17,11 @@ function fontFamilyAfterMigration( fontFamily: unknown, version = 2 ) {
 
 describe( 'migrate', () => {
 	it( 'turns a saved font stack into its font family', () => {
-		expect( fontFamilyAfterMigration( FONT_FAMILY_STACKS.serif ) ).toEqual(
-			{ fontSize: 15, fontFamily: 'serif' }
-		);
+		expect(
+			fontFamilyAfterMigration(
+				"Georgia, Cambria, 'Times New Roman', Times, serif"
+			)
+		).toEqual( { fontSize: 15, fontFamily: 'serif' } );
 	} );
 
 	it( 'turns the empty default into the system font family', () => {
