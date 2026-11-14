@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { toEdit } from './edit-tool';
 import { AiError } from './error';
-import type { AiProviderAdapter } from './provider';
+import type { AiProviderAdapter, ProviderAnswer } from './provider';
 import { createSseParser } from './sse';
 import type { AiTransport } from './transport-type';
 
@@ -56,6 +56,15 @@ export function createChat( {
 		return answer.finish();
 	};
 
+	const reportUsage = (
+		{ usage }: ProviderAnswer,
+		onEvent: AiChatRequest[ 'onEvent' ]
+	) => {
+		if ( usage ) {
+			onEvent( { type: 'usage', usage } );
+		}
+	};
+
 	return async function chat( {
 		system,
 		messages,
@@ -76,6 +85,7 @@ export function createChat( {
 			onActivity,
 			signal
 		);
+		reportUsage( first, onEvent );
 		if ( ! first.editCall ) {
 			return;
 		}
@@ -96,7 +106,7 @@ export function createChat( {
 
 		// Separate the text before the edit from the text after it.
 		let needsSeparator = hasText;
-		await streamAnswer(
+		const second = await streamAnswer(
 			provider.buildRequest( {
 				model,
 				system,
@@ -113,5 +123,6 @@ export function createChat( {
 			onActivity,
 			signal
 		);
+		reportUsage( second, onEvent );
 	};
 }

@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { AiActivity, AiMessage } from '@mark-bricks/editor';
+import type { AiActivity, AiMessage, AiUsage } from '@mark-bricks/editor';
 
 /**
  * Internal dependencies
@@ -30,6 +30,10 @@ export type ProviderAnswer = {
 	 * the answer, and the edit tool's result, in the provider's own format.
 	 */
 	continuation: unknown[];
+	/**
+	 * The tokens the request used, when the provider reported them.
+	 */
+	usage?: AiUsage;
 };
 
 /**
@@ -55,6 +59,11 @@ export type AiProviderAdapter = {
 	 * The page of the provider's console where API keys are created.
 	 */
 	keyUrl: string;
+	/**
+	 * The page of the provider's console that shows the tokens used and
+	 * what they cost, including use outside the app.
+	 */
+	usageUrl: string;
 	/**
 	 * Builds the body of a streamed request.
 	 *

@@ -20,5 +20,5 @@ event: response.output_item.done
 data: {"type":"response.output_item.done","sequence_number":6,"output_index":1,"item":{"id":"msg_01","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"見出しは2つあります。","annotations":[]}]}}
 
 event: response.completed
-data: {"type":"response.completed","sequence_number":7,"response":{"id":"resp_01","object":"response","status":"completed","model":"gpt-6-astra","incomplete_details":null}}
+data: {"type":"response.completed","sequence_number":7,"response":{"id":"resp_01","object":"response","status":"completed","model":"gpt-6-astra","incomplete_details":null,"usage":{"input_tokens":220,"input_tokens_details":{"cached_tokens":0},"output_tokens":9,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":229}}}
 

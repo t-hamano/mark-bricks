@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { AiActivity } from '@mark-bricks/editor';
+import type { AiActivity, AiUsage } from '@mark-bricks/editor';
 
 /**
  * Internal dependencies
@@ -12,9 +12,22 @@ import { EDIT_TOOL_NAME, type ContentBlock } from './request';
 
 const THINKING_TYPES = [ 'thinking', 'redacted_thinking' ];
 
+/**
+ * The token counts of a message. The input that was written to or read
+ * from the prompt cache is counted apart from the rest.
+ */
+type Usage = {
+	input_tokens?: number | null;
+	cache_creation_input_tokens?: number | null;
+	cache_read_input_tokens?: number | null;
+	output_tokens?: number | null;
+};
+
 type StreamEvent = {
 	type: string;
 	index?: number;
+	message?: { usage?: Usage };
+	usage?: Usage;
 	content_block?: { type: string; [ key: string ]: unknown };
 	delta?: {
 		type?: string;
@@ -34,6 +47,11 @@ export type StreamedMessage = {
 	 */
 	content: ContentBlock[];
 	stopReason: string | null;
+	/**
+	 * The tokens the message used, or `undefined` when the API did not
+	 * report them.
+	 */
+	usage?: AiUsage;
 };
 
 type BlockState = {
@@ -56,10 +74,21 @@ export function createMessageStream(
 	const blocks: BlockState[] = [];
 	let stopReason: string | null = null;
 	let isComplete = false;
+	// `message_start` counts the input, and `message_delta` the output so
+	// far. Either may update any of the counts.
+	let usage: Usage | undefined;
 
 	const handle = ( data: unknown ) => {
 		const event = data as StreamEvent;
 		switch ( event.type ) {
+			case 'message_start':
+				if ( event.message?.usage ) {
+					usage = {
+						...usage,
+						...withoutNulls( event.message.usage ),
+					};
+				}
+				return;
 			case 'content_block_start': {
 				if ( event.index === undefined || ! event.content_block ) {
 					return;
@@ -123,6 +152,9 @@ export function createMessageStream(
 				if ( event.delta && 'stop_reason' in event.delta ) {
 					stopReason = event.delta.stop_reason ?? null;
 				}
+				if ( event.usage ) {
+					usage = { ...usage, ...withoutNulls( event.usage ) };
+				}
 				return;
 			case 'error': {
 				// For example `overloaded_error` after the answer started.
@@ -147,6 +179,7 @@ export function createMessageStream(
 				.filter( ( state ) => state !== undefined )
 				.map( ( state ) => state.block as ContentBlock ),
 			stopReason,
+			usage: usage && toAiUsage( usage ),
 		};
 	};
 
@@ -168,4 +201,34 @@ function parseToolInput( json: string ): unknown {
 	} catch {
 		return undefined;
 	}
+}
+
+/**
+ * Keeps the counts the event set, so that a missing count does not erase
+ * an earlier one.
+ *
+ * @param usage The counts of an event.
+ */
+function withoutNulls( usage: Usage ): Usage {
+	return Object.fromEntries(
+		Object.entries( usage ).filter(
+			( [ , value ] ) => typeof value === 'number'
+		)
+	);
+}
+
+/**
+ * Counts the input read from or written to the prompt cache as input too,
+ * since the model read it all.
+ *
+ * @param usage The message's counts.
+ */
+function toAiUsage( usage: Usage ): AiUsage {
+	return {
+		inputTokens:
+			( usage.input_tokens ?? 0 ) +
+			( usage.cache_creation_input_tokens ?? 0 ) +
+			( usage.cache_read_input_tokens ?? 0 ),
+		outputTokens: usage.output_tokens ?? 0,
+	};
 }

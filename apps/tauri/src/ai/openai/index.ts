@@ -20,6 +20,7 @@ export const openai: AiProviderAdapter = {
 	defaultModel: DEFAULT_MODEL,
 	keyPlaceholder: 'sk-…',
 	keyUrl: 'https://platform.openai.com/api-keys',
+	usageUrl: 'https://platform.openai.com/usage',
 	buildRequest: ( { model, system, messages, continuation } ) =>
 		buildRequestBody( {
 			model,
