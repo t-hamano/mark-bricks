@@ -11,7 +11,6 @@ import titleOnBlurredImage from './patterns/title-on-blurred-image';
 import titleAndImageOnLeft from './patterns/title-and-image-on-left';
 import titleAndImageOnRight from './patterns/title-and-image-on-right';
 import headingAndText from './patterns/heading-and-text';
-import headingSubheadingAndText from './patterns/heading-subheading-and-text';
 import headingAndTwoSubsections from './patterns/heading-and-two-subsections';
 import quote from './patterns/quote';
 import headingAndQuote from './patterns/heading-and-quote';
@@ -56,7 +55,6 @@ export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	titleAndImageOnLeft,
 	titleAndImageOnRight,
 	headingAndText,
-	headingSubheadingAndText,
 	headingAndTwoSubsections,
 	quote,
 	headingAndQuote,

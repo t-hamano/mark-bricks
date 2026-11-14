@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:31:17.166Z\n"
-"PO-Revision-Date: 2026-11-14T04:31:26.657Z\n"
+"POT-Creation-Date: 2026-11-14T05:37:26.987Z\n"
+"PO-Revision-Date: 2026-11-14T05:37:35.142Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -338,7 +338,6 @@ msgctxt "slide pattern"
 msgid "File format"
 msgstr "檔案格式"
 
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:23
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
 msgid "Focus on your message"
@@ -446,11 +445,6 @@ msgstr "標題、程式碼和文字"
 msgctxt "slide pattern"
 msgid "Heading, image, and caption"
 msgstr "標題、圖片和說明文字"
-
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:14
-msgctxt "slide pattern"
-msgid "Heading, subheading, and text"
-msgstr "標題、副標題和文字"
 
 #: src/marp-patterns/patterns/heading-text-and-code.ts:14
 msgctxt "slide pattern"
@@ -872,7 +866,6 @@ msgstr "投影片版型"
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:27
 #: src/marp-patterns/patterns/image-on-left-and-code.ts:27
 #: src/marp-patterns/patterns/heading-text-and-code.ts:26
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:23
 #: src/marp-patterns/patterns/heading-code-and-text.ts:26
 #: src/marp-patterns/patterns/heading-code-and-list.ts:28
@@ -1163,7 +1156,6 @@ msgstr "撰寫摘要..."
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:28
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:28
 #: src/marp-patterns/patterns/heading-text-and-code.ts:27
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:28
 #: src/marp-patterns/patterns/heading-code-and-text.ts:27
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:32
 #: src/marp-patterns/patterns/heading-and-text.ts:20

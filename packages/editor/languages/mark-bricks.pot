@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T04:31:17.166Z\n"
+"POT-Creation-Date: 2026-11-14T05:37:26.987Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -736,7 +736,6 @@ msgstr ""
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:27
 #: src/marp-patterns/patterns/image-on-left-and-code.ts:27
 #: src/marp-patterns/patterns/heading-text-and-code.ts:26
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:22
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:23
 #: src/marp-patterns/patterns/heading-code-and-text.ts:26
 #: src/marp-patterns/patterns/heading-code-and-list.ts:28
@@ -757,7 +756,6 @@ msgstr ""
 #: src/marp-patterns/patterns/image-on-right-and-text.ts:28
 #: src/marp-patterns/patterns/image-on-left-and-text.ts:28
 #: src/marp-patterns/patterns/heading-text-and-code.ts:27
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:28
 #: src/marp-patterns/patterns/heading-code-and-text.ts:27
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:32
 #: src/marp-patterns/patterns/heading-and-text.ts:20
@@ -1071,17 +1069,6 @@ msgctxt "slide pattern"
 msgid "Heading, text, and code"
 msgstr ""
 
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:14
-msgctxt "slide pattern"
-msgid "Heading, subheading, and text"
-msgstr ""
-
-#: src/marp-patterns/patterns/heading-subheading-and-text.ts:23
-#: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
-msgctxt "slide pattern"
-msgid "Focus on your message"
-msgstr ""
-
 #: src/marp-patterns/patterns/heading-image-and-caption.ts:15
 msgctxt "slide pattern"
 msgid "Heading, image, and caption"
@@ -1105,6 +1092,11 @@ msgstr ""
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:14
 msgctxt "slide pattern"
 msgid "Heading and two subsections"
+msgstr ""
+
+#: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
+msgctxt "slide pattern"
+msgid "Focus on your message"
 msgstr ""
 
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:37
