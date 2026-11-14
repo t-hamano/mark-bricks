@@ -3,6 +3,11 @@
  */
 import { setLocaleData, type LocaleData } from '@wordpress/i18n';
 
+/**
+ * Internal dependencies
+ */
+import { SUPPORTED_LOCALES } from './locales';
+
 export const TEXT_DOMAIN = 'mark-bricks';
 
 type TextDomain = typeof TEXT_DOMAIN | 'default';
@@ -12,24 +17,16 @@ type LocaleJson = { locale_data: Dictionaries };
 
 const DEFAULT_LOCALE = 'en';
 
-// Every compiled catalog (and committed override) on disk, keyed by path, so a
-// new locale's JSON is picked up without listing it here. Each one loads only
-// when its locale is applied: together they weigh several megabytes, and a
-// session uses one.
+// Every compiled catalog (and committed override) on disk, keyed by path. Each
+// one loads only when its locale is applied: together they weigh several
+// megabytes, and a session uses one. A new locale is also added to
+// SUPPORTED_LOCALES, which a test checks against these files.
 const localeFiles: Partial< Record< string, () => Promise< LocaleJson > > > =
 	import.meta.glob< LocaleJson >( '../languages/mark-bricks-*.json', {
 		import: 'default',
 	} );
 
-// WordPress locale slugs that have a catalog. Hosts map their own language
-// settings to these slugs.
-const AVAILABLE_LOCALES: ReadonlySet< string > = new Set( [
-	DEFAULT_LOCALE,
-	...Object.keys( localeFiles ).flatMap( ( path ) => {
-		const match = path.match( /\/mark-bricks-(?!override-)(.+)\.json$/ );
-		return match ? [ match[ 1 ] ] : [];
-	} ),
-] );
+const AVAILABLE_LOCALES: ReadonlySet< string > = new Set( SUPPORTED_LOCALES );
 
 // The domains the catalogs hold: the editor's strings, and Gutenberg's.
 const ALL_DOMAINS: readonly TextDomain[] = [ TEXT_DOMAIN, 'default' ];
