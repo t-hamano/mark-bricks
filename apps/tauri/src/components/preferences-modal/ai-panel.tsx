@@ -139,7 +139,7 @@ export function AiPanel( { settings, onChange, onModelChange }: Props ) {
 				/>
 			) ) }
 			{ connected.length > 0 && (
-				<Stack direction="column" align="flex-start">
+				<Stack direction="column">
 					<SelectControl
 						size="compact"
 						label={ __( 'Provider', 'mark-bricks' ) }

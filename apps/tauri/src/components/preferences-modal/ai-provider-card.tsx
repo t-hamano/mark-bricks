@@ -237,11 +237,8 @@ export function AiProviderCard( {
 				</Stack>
 			</CollapsibleCard.Header>
 			<CollapsibleCard.Content>
-				<Stack direction="column" gap="lg" align="flex-start">
-					<Notice.Root
-						className="preferences-modal__notice"
-						intent="info"
-					>
+				<Stack direction="column" gap="lg">
+					<Notice.Root intent="info">
 						<Notice.Description>
 							{ sprintf(
 								/* translators: %s: The name of the AI provider, such as Anthropic. */
@@ -254,7 +251,6 @@ export function AiProviderCard( {
 						</Notice.Description>
 					</Notice.Root>
 					<form
-						className="preferences-modal__api-key-form"
 						onSubmit={ ( event ) => {
 							event.preventDefault();
 							if ( isBusy ) {
@@ -335,10 +331,7 @@ export function AiProviderCard( {
 						) }
 					</Text>
 					{ keyStatus.kind === 'saved' && (
-						<Notice.Root
-							className="preferences-modal__notice"
-							intent="success"
-						>
+						<Notice.Root intent="success">
 							<Notice.Description>
 								{ __(
 									'The API key was saved.',
@@ -348,10 +341,7 @@ export function AiProviderCard( {
 						</Notice.Root>
 					) }
 					{ keyStatus.kind === 'deleted' && (
-						<Notice.Root
-							className="preferences-modal__notice"
-							intent="success"
-						>
+						<Notice.Root intent="success">
 							<Notice.Description>
 								{ __(
 									'The API key was deleted.',
@@ -361,10 +351,7 @@ export function AiProviderCard( {
 						</Notice.Root>
 					) }
 					{ keyStatus.kind === 'error' && (
-						<Notice.Root
-							className="preferences-modal__notice"
-							intent="error"
-						>
+						<Notice.Root intent="error">
 							<Notice.Description>
 								{ keyStatus.message }
 							</Notice.Description>
@@ -405,10 +392,7 @@ export function AiProviderCard( {
 							/>
 						) ) }
 					{ hasKey && models.kind === 'error' && (
-						<Notice.Root
-							className="preferences-modal__notice"
-							intent="warning"
-						>
+						<Notice.Root intent="warning">
 							<Notice.Description>
 								{ sprintf(
 									/* translators: %s: Why the models could not be loaded. */
