@@ -32,7 +32,17 @@ export default defineConfig( {
 	root: resolve( appRoot, 'src/webview' ),
 	base: './',
 	plugins: [ react() ],
-	resolve: { dedupe },
+	resolve: {
+		dedupe,
+		alias: {
+			// The block editor's client-side image processing, which the
+			// extension never turns on. See `stubs/vips-worker.ts`.
+			'@wordpress/vips/worker': resolve(
+				appRoot,
+				'src/webview/stubs/vips-worker.ts'
+			),
+		},
+	},
 	build: {
 		outDir: resolve( appRoot, 'dist/webview' ),
 		emptyOutDir: true,
