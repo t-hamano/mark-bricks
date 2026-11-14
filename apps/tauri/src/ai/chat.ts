@@ -1,7 +1,8 @@
 /**
  * External dependencies
  */
-import type { AiActivity, AiChatRequest } from '@mark-bricks/editor';
+import type { AiActivity, AiChatRequest } from '@mark-bricks/editor/ai';
+import { MAX_EDIT_ATTEMPTS, toEdit } from '@mark-bricks/editor/ai';
 
 /**
  * WordPress dependencies
@@ -11,7 +12,6 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { MAX_EDIT_ATTEMPTS, toEdit } from './edit-tool';
 import { AiError } from './error';
 import type { AiProviderAdapter, ProviderAnswer } from './provider';
 import { createSseParser } from './sse';

@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 /**
  * Internal dependencies
  */
-import type { AiActivity, AiEdit, AiMessage, AiUsage } from '../platform';
+import type { AiActivity, AiEdit, AiMessage, AiUsage } from './types';
 
 export type UserChatMessage = {
 	id: string;

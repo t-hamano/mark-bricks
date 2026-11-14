@@ -13,7 +13,7 @@ import {
 	markdownToBlocks,
 	splitFrontMatter,
 } from '../converter';
-import type { AiEditResult } from '../platform';
+import type { AiEditResult } from './types';
 import { joinAroundSelection, type EditTarget } from './edit-target';
 import { findUniqueText } from './find-text';
 import { splitAiFrontMatter } from './front-matter';

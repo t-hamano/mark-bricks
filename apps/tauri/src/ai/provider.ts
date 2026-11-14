@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import type { AiActivity, AiMessage, AiUsage } from '@mark-bricks/editor';
+import type { AiActivity, AiMessage, AiUsage } from '@mark-bricks/editor/ai';
 
 /**
  * Internal dependencies

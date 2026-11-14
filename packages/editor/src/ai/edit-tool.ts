@@ -1,7 +1,7 @@
 /**
- * External dependencies
+ * Internal dependencies
  */
-import type { AiEdit } from '@mark-bricks/editor';
+import type { AiEdit } from './types';
 
 /**
  * The tool the model calls to edit the document. Every provider declares
@@ -12,12 +12,27 @@ export const EDIT_TOOL_NAME = 'edit_document';
 export const EDIT_TOOL_DESCRIPTION =
 	'Edits the document. Use it when the user asks you to write or change content. "replace" replaces the selection with the Markdown, and "insert_after" inserts the Markdown after the selection. "replace_text" replaces the text in "find", which must appear exactly once in the document, with the Markdown, wherever the selection is.';
 
+// Keyed by every action of `AiEdit`, so that adding or renaming one there
+// fails to compile until the tool's schema lists it too.
+const EDIT_ACTION_KEYS: Record< AiEdit[ 'action' ], true > = {
+	replace: true,
+	insert_after: true,
+	replace_text: true,
+};
+
+/**
+ * The actions the edit tool takes, as `AiEdit` defines them.
+ */
+export const EDIT_ACTIONS = Object.keys(
+	EDIT_ACTION_KEYS
+) as AiEdit[ 'action' ][];
+
 export const EDIT_TOOL_SCHEMA = {
 	type: 'object',
 	properties: {
 		action: {
 			type: 'string',
-			enum: [ 'replace', 'insert_after', 'replace_text' ],
+			enum: EDIT_ACTIONS,
 			description: 'How to apply the Markdown.',
 		},
 		find: {
