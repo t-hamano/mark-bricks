@@ -42,6 +42,21 @@ export type AiEdit = {
 export type AiActivity = 'thinking' | 'editing';
 
 /**
+ * The tokens a request to the model used, as the provider counted them.
+ */
+export type AiUsage = {
+	/**
+	 * The tokens the model read, including the conversation and the
+	 * instructions sent with it.
+	 */
+	inputTokens: number;
+	/**
+	 * The tokens the model wrote, including its thinking.
+	 */
+	outputTokens: number;
+};
+
+/**
  * What the host reports while the model answers.
  */
 export type AiStreamEvent =
@@ -66,6 +81,15 @@ export type AiStreamEvent =
 			 */
 			type: 'activity';
 			activity: AiActivity;
+	  }
+	| {
+			/**
+			 * What a request to the model used. An answer may take more
+			 * than one request, each reported once. Hosts that cannot tell
+			 * may leave it out.
+			 */
+			type: 'usage';
+			usage: AiUsage;
 	  };
 
 export type AiChatRequest = {
