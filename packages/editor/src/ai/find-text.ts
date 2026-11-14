@@ -27,13 +27,13 @@ export function findUniqueText(
 	}
 	if ( find.includes( SELECTION_START ) || find.includes( SELECTION_END ) ) {
 		return {
-			reason: `The "find" text includes the ${ SELECTION_START } markers, which are not part of the document. Leave them out, and try again.`,
+			reason: `The "find" text includes the ${ SELECTION_START } tags, which are not part of the document. Leave them out, and try again.`,
 		};
 	}
 	const start = text.indexOf( find );
 	if ( start === -1 ) {
 		return {
-			reason: 'The "find" text is not in the document. Copy it exactly from the document, including spaces and line breaks, and try again.',
+			reason: 'The "find" text is not in the document. Copy it exactly from the document, including spaces and line breaks but without the line numbers, and try again.',
 		};
 	}
 	let count = 1;

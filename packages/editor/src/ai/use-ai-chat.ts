@@ -9,9 +9,13 @@ import { useCallback, useEffect, useReducer, useRef } from 'react';
 import {
 	conversationReducer,
 	createConversation,
+	getLastSeenDocument,
 	toAiMessages,
+	toUserText,
 	type Conversation,
+	type DocumentSnapshot,
 } from './conversation';
+import { buildMessageContext } from './document-context';
 import type { EditTarget } from './edit-target';
 import { buildSystemPrompt } from './prompt';
 import type { AiEditResult, AiPlatform } from '../platform';
@@ -42,6 +46,10 @@ export type AiChat = {
  * An edit is dropped when the editor mode changed after the message was
  * sent.
  *
+ * The first message carries the whole document, and later ones only the
+ * lines the user changed since the last answer, so the conversation grows
+ * at its end only and the prompt cache covers what came before.
+ *
  * @param args              Arguments.
  * @param args.ai           The host's connection to the model.
  * @param args.editorMode   The active editor mode.
@@ -63,6 +71,10 @@ export function useAiChat( {
 	const editorModeRef = useRef( editorMode );
 	editorModeRef.current = editorMode;
 	const controllerRef = useRef< AbortController | null >( null );
+	// Reads the document when the answer being streamed ends.
+	const readDocumentRef = useRef<
+		( () => DocumentSnapshot | undefined ) | null
+	>( null );
 
 	const send = useCallback(
 		( text: string ) => {
@@ -72,13 +84,34 @@ export function useAiChat( {
 			}
 			const target = createTarget();
 			const mode = editorModeRef.current;
+			const context = target?.getContext() ?? null;
+			const messageContext = context
+				? buildMessageContext(
+						context,
+						getLastSeenDocument( messagesRef.current, mode )
+					)
+				: undefined;
 			const messages = [
 				...toAiMessages( messagesRef.current ),
-				{ role: 'user' as const, text: message },
+				{
+					role: 'user' as const,
+					text: toUserText( message, messageContext ),
+				},
 			];
 			const controller = new AbortController();
 			controllerRef.current = controller;
-			dispatch( { type: 'START', text: message } );
+			// The document is read in the mode the message was sent in, so
+			// it is left out after switching modes.
+			const readDocument = () =>
+				target && editorModeRef.current === mode
+					? { editorMode: mode, document: target.getDocument() }
+					: undefined;
+			readDocumentRef.current = readDocument;
+			dispatch( {
+				type: 'START',
+				text: message,
+				context: messageContext,
+			} );
 
 			// Once the user stops the answer or starts a new conversation, the
 			// request's late events and result are ignored.
@@ -87,7 +120,7 @@ export function useAiChat( {
 				! controller.signal.aborted;
 
 			ai.chat( {
-				system: buildSystemPrompt( target?.getContext() ?? null ),
+				system: buildSystemPrompt( context?.document ?? null ),
 				messages,
 				signal: controller.signal,
 				onEvent( event ) {
@@ -129,7 +162,11 @@ export function useAiChat( {
 				.then(
 					() => {
 						if ( isCurrent() ) {
-							dispatch( { type: 'FINISH', status: 'done' } );
+							dispatch( {
+								type: 'FINISH',
+								status: 'done',
+								documentAfter: readDocument(),
+							} );
 						}
 					},
 					( error: unknown ) => {
@@ -161,7 +198,11 @@ export function useAiChat( {
 		}
 		controllerRef.current = null;
 		controller.abort();
-		dispatch( { type: 'FINISH', status: 'stopped' } );
+		dispatch( {
+			type: 'FINISH',
+			status: 'stopped',
+			documentAfter: readDocumentRef.current?.(),
+		} );
 	}, [] );
 
 	const reset = useCallback( () => {

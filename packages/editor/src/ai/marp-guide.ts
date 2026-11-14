@@ -1,10 +1,4 @@
 /**
- * Internal dependencies
- */
-import { SELECTION_END, SELECTION_START } from './edit-target';
-import { isMarpDocument } from '../converter/front-matter';
-
-/**
  * A summary of the Marp syntax, added to the system prompt when the
  * document is a Marp slide deck. It follows Marpit and Marp Core, and covers
  * the parts the model tends to get wrong: the front matter, the scope of
@@ -68,18 +62,3 @@ Marp reads keywords from the image's alt text, separated by spaces, such as \`![
 ## Speaker notes
 An HTML comment that is not a directive, such as \`<!-- Mention the release date. -->\`, is a speaker note for its slide and does not show on the slide.
 </marp_guide>`;
-
-/**
- * Whether the document sent to the model is a Marp slide deck.
- *
- * @param document The document with the selection markers.
- * @return Whether the document is a Marp slide deck.
- */
-export function isMarpContextDocument( document: string ): boolean {
-	return isMarpDocument(
-		document
-			.replace( SELECTION_START, '' )
-			.replace( SELECTION_END, '' )
-			.trimStart()
-	);
-}

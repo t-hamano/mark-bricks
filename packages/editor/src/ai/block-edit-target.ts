@@ -14,7 +14,7 @@ import {
 	splitFrontMatter,
 } from '../converter';
 import type { AiEditResult } from '../platform';
-import { joinWithSelectionMarkers, type EditTarget } from './edit-target';
+import { joinAroundSelection, type EditTarget } from './edit-target';
 import { findUniqueText } from './find-text';
 import { splitAiFrontMatter } from './front-matter';
 
@@ -209,18 +209,27 @@ export function createBlockEditTarget(
 				? Math.min( ...indexes )
 				: blocks.length;
 			const end = indexes.length ? Math.max( ...indexes ) + 1 : start;
-			const selection = blocksToMarkdown( blocks.slice( start, end ) );
-			return {
-				selection,
-				document: joinWithSelectionMarkers(
-					joinFrontMatter(
-						frontMatter,
-						blocksToMarkdown( blocks.slice( 0, start ) )
-					),
-					selection,
-					blocksToMarkdown( blocks.slice( end ) )
+			return joinAroundSelection(
+				joinFrontMatter(
+					frontMatter,
+					blocksToMarkdown( blocks.slice( 0, start ) )
 				),
-			};
+				blocksToMarkdown( blocks.slice( start, end ) ),
+				blocksToMarkdown( blocks.slice( end ) )
+			);
+		},
+
+		getDocument() {
+			return joinAroundSelection(
+				joinFrontMatter(
+					frontMatterAccess?.get
+						? frontMatterAccess.get()
+						: frontMatter,
+					blocksToMarkdown( access.getBlocks() )
+				),
+				'',
+				''
+			).document;
 		},
 
 		apply( edit ) {
