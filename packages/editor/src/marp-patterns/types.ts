@@ -1,9 +1,9 @@
 /**
- * Name of a group of slide patterns, such as title slides or image slides.
+ * Name of a group of slide patterns, by the layout they share, such as title
+ * slides or slides with images.
  * `SLIDE_PATTERN_CATEGORIES` lists them, with their labels.
  */
-export type SlidePatternCategory =
-	'title' | 'section' | 'text' | 'image' | 'data' | 'closing';
+export type SlidePatternCategory = 'title' | 'text' | 'image';
 
 /**
  * A ready-made set of slides that the inserter offers in Marp mode.

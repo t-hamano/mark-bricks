@@ -20,23 +20,11 @@ export const SLIDE_PATTERN_CATEGORIES: readonly {
 		label: () => _x( 'Title', 'slide pattern category', 'mark-bricks' ),
 	},
 	{
-		name: 'section',
-		label: () => _x( 'Section', 'slide pattern category', 'mark-bricks' ),
-	},
-	{
 		name: 'text',
 		label: () => _x( 'Text', 'slide pattern category', 'mark-bricks' ),
 	},
 	{
 		name: 'image',
 		label: () => _x( 'Image', 'slide pattern category', 'mark-bricks' ),
-	},
-	{
-		name: 'data',
-		label: () => _x( 'Data', 'slide pattern category', 'mark-bricks' ),
-	},
-	{
-		name: 'closing',
-		label: () => _x( 'Closing', 'slide pattern category', 'mark-bricks' ),
 	},
 ];

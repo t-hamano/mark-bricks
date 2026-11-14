@@ -4,34 +4,28 @@
 import { escapeMarkdown, fillPlaceholders } from './placeholders';
 import type { SlidePattern } from './types';
 import title from './patterns/title';
-import titleAndBackgroundImage from './patterns/title-and-background-image';
-import titleAndImage from './patterns/title-and-image';
+import titleInInvertedColors from './patterns/title-in-inverted-colors';
 import titleOnGradient from './patterns/title-on-gradient';
-import section from './patterns/section';
-import numberedSection from './patterns/numbered-section';
-import sectionAndImage from './patterns/section-and-image';
-import agenda from './patterns/agenda';
-import bulletList from './patterns/bullet-list';
-import nestedList from './patterns/nested-list';
-import headingAndParagraph from './patterns/heading-and-paragraph';
-import steps from './patterns/steps';
-import keyMessage from './patterns/key-message';
-import quote from './patterns/quote';
-import imageAndText from './patterns/image-and-text';
-import imageOnLeftAndText from './patterns/image-on-left-and-text';
-import stackedImagesAndText from './patterns/stacked-images-and-text';
-import imageAndCaption from './patterns/image-and-caption';
-import fullImage from './patterns/full-image';
-import imageGallery from './patterns/image-gallery';
+import titleOnImage from './patterns/title-on-image';
+import titleOnBlurredImage from './patterns/title-on-blurred-image';
+import titleAndImageOnLeft from './patterns/title-and-image-on-left';
+import titleAndImageOnLeftHalf from './patterns/title-and-image-on-left-half';
+import titleAndImageOnRight from './patterns/title-and-image-on-right';
+import headingAndTwoSubsections from './patterns/heading-and-two-subsections';
+import headingAndTextOnImage from './patterns/heading-and-text-on-image';
+import headerFooterAndPageNumber from './patterns/header-footer-and-page-number';
 import quoteOnImage from './patterns/quote-on-image';
-import table from './patterns/table';
-import timeline from './patterns/timeline';
-import keyFigure from './patterns/key-figure';
-import code from './patterns/code';
-import closing from './patterns/closing';
-import questions from './patterns/questions';
-import closingOnImage from './patterns/closing-on-image';
-import resources from './patterns/resources';
+import imageOnLeftAndText from './patterns/image-on-left-and-text';
+import imageOnRightAndText from './patterns/image-on-right-and-text';
+import twoStackedImagesAndText from './patterns/two-stacked-images-and-text';
+import threeStackedImagesAndText from './patterns/three-stacked-images-and-text';
+import headingImageAndCaption from './patterns/heading-image-and-caption';
+import headingAndTwoImages from './patterns/heading-and-two-images';
+import fullScreenImage from './patterns/full-screen-image';
+import fittedImage from './patterns/fitted-image';
+import twoImagesSideBySide from './patterns/two-images-side-by-side';
+import threeImagesSideBySide from './patterns/three-images-side-by-side';
+import twoStackedImages from './patterns/two-stacked-images';
 
 export type { SlidePattern, SlidePatternCategory } from './types';
 export { SLIDE_PATTERN_CATEGORIES } from './categories';
@@ -40,34 +34,28 @@ export { SLIDE_PATTERN_CATEGORIES } from './categories';
 // best, in the order of `SLIDE_PATTERN_CATEGORIES`.
 export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	title,
-	titleAndBackgroundImage,
-	titleAndImage,
+	titleInInvertedColors,
 	titleOnGradient,
-	section,
-	numberedSection,
-	sectionAndImage,
-	agenda,
-	bulletList,
-	nestedList,
-	headingAndParagraph,
-	steps,
-	keyMessage,
-	quote,
-	imageAndText,
-	imageOnLeftAndText,
-	stackedImagesAndText,
-	imageAndCaption,
-	fullImage,
-	imageGallery,
+	titleOnImage,
+	titleOnBlurredImage,
+	titleAndImageOnLeft,
+	titleAndImageOnLeftHalf,
+	titleAndImageOnRight,
+	headingAndTwoSubsections,
+	headingAndTextOnImage,
+	headerFooterAndPageNumber,
 	quoteOnImage,
-	table,
-	timeline,
-	keyFigure,
-	code,
-	closing,
-	questions,
-	closingOnImage,
-	resources,
+	imageOnLeftAndText,
+	imageOnRightAndText,
+	twoStackedImagesAndText,
+	threeStackedImagesAndText,
+	headingImageAndCaption,
+	headingAndTwoImages,
+	fullScreenImage,
+	fittedImage,
+	twoImagesSideBySide,
+	threeImagesSideBySide,
+	twoStackedImages,
 ];
 
 /**

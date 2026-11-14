@@ -6,14 +6,15 @@ import { _x } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { PLACEHOLDER_IMAGE } from '../placeholder-image';
+import { PLACEHOLDER_IMAGE_PORTRAIT } from '../placeholder-image';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'full-image',
-	title: () => _x( 'Full-screen image', 'slide pattern', 'mark-bricks' ),
+	name: 'fitted-image',
+	title: () =>
+		_x( 'Image fitted to the slide', 'slide pattern', 'mark-bricks' ),
 	categories: [ 'image' ],
-	markdown: `![bg](${ PLACEHOLDER_IMAGE })`,
+	markdown: `![bg contain](${ PLACEHOLDER_IMAGE_PORTRAIT })`,
 	strings: () => ( {} ),
 };
 

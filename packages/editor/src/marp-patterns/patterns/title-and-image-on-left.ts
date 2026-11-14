@@ -10,23 +10,24 @@ import { PLACEHOLDER_IMAGE } from '../placeholder-image';
 import type { SlidePattern } from '../types';
 
 const pattern: SlidePattern = {
-	name: 'closing-on-image',
-	title: () => _x( 'Closing on an image', 'slide pattern', 'mark-bricks' ),
-	categories: [ 'closing', 'image' ],
+	name: 'title-and-image-on-left',
+	title: () =>
+		_x( 'Title and an image on the left', 'slide pattern', 'mark-bricks' ),
+	categories: [ 'title', 'image' ],
 	markdown: `<!-- _class: lead -->
 
-![bg blur:12px](${ PLACEHOLDER_IMAGE })
+![bg left:30%](${ PLACEHOLDER_IMAGE })
 
-# {{heading}}
+# {{title}}
 
-{{contact}}`,
+{{subtitle}}`,
 	strings: () => ( {
-		heading: _x( 'Thank you', 'slide pattern', 'mark-bricks' ),
-		contact: _x(
-			'Questions and contact details',
+		title: _x(
+			'Writing slides in Markdown',
 			'slide pattern',
 			'mark-bricks'
 		),
+		subtitle: _x( 'A short introduction', 'slide pattern', 'mark-bricks' ),
 	} ),
 };
 
