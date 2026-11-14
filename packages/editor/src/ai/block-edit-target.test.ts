@@ -167,6 +167,19 @@ describe( 'createBlockEditTarget', () => {
 			expect( getMarkdown() ).toBe( DOCUMENT + '\n# Slide\n' );
 		} );
 
+		it( 'keeps the selected blocks for a front matter only edit', () => {
+			const { access, getMarkdown } = setup( DOCUMENT, [ 1 ] );
+			let frontMatter: string | null = null;
+			createBlockEditTarget( access, 'marp: true', ( next ) => {
+				frontMatter = next;
+			} ).apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\ntheme: gaia\n---\n',
+			} );
+			expect( frontMatter ).toBe( 'marp: true\ntheme: gaia' );
+			expect( getMarkdown() ).toBe( DOCUMENT );
+		} );
+
 		it( 'changes nothing when the selection no longer exists', () => {
 			const { access, getMarkdown, remove } = setup( DOCUMENT, [ 1 ] );
 			const target = createBlockEditTarget( access );

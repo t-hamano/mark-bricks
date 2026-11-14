@@ -54,6 +54,23 @@ describe( 'splitAiFrontMatter', () => {
 		} );
 	} );
 
+	it( 'leaves slides with YAML-like prose alone', () => {
+		for ( const markdown of [
+			'---\n\nNote: Please remember\n\n- First item\n- Second item\n\n---\n\n# Next slide\n',
+			'---\nnote: remember\n- First item\n---\n',
+			'---\n\nNote: remember\n\n---\n',
+		] ) {
+			expect( splitAiFrontMatter( markdown ).frontMatter ).toBeNull();
+		}
+	} );
+
+	it( 'keeps lists under a key', () => {
+		expect(
+			splitAiFrontMatter( '---\nmarp: true\ntags:\n- a\n- b\n---\n' )
+				.frontMatter
+		).toBe( 'marp: true\ntags:\n- a\n- b' );
+	} );
+
 	it( 'leaves Markdown without front matter alone', () => {
 		expect( splitAiFrontMatter( '# Title\n' ) ).toEqual( {
 			frontMatter: null,

@@ -110,6 +110,11 @@ export function createBlockEditTarget(
 				: { frontMatter: null, body: markdown };
 			if ( split.frontMatter !== null ) {
 				setFrontMatter?.( split.frontMatter );
+				// An edit of the front matter alone leaves the blocks as
+				// they are.
+				if ( split.body.trim() === '' ) {
+					return true;
+				}
 			}
 			const newBlocks = markdownToBlocks( split.body );
 

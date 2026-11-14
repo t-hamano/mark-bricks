@@ -163,6 +163,27 @@ describe( 'createTextEditTarget', () => {
 			expect( getText() ).toBe( '---\nmarp: true\n---\n\n# Slide' );
 		} );
 
+		it( 'replaces the front matter at the top when the selection is below it', () => {
+			const value = '---\nmarp: true\n---\n\n# Title\n\nBody.\n';
+			const { access, getText } = setup( value, value.indexOf( 'Body' ) );
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\ntheme: gaia\n---\n\nNew body.\n',
+			} );
+			expect( getText() ).toBe(
+				'---\nmarp: true\ntheme: gaia\n---\n\n# Title\n\nNew body.\n'
+			);
+		} );
+
+		it( 'adds front matter at the top of a document without one', () => {
+			const { access, getText } = setup( '# Title\n', 3 );
+			createTextEditTarget( access ).apply( {
+				action: 'insert_after',
+				markdown: '---\nmarp: true\n---\n',
+			} );
+			expect( getText() ).toBe( '---\nmarp: true\n---\n\n# Title\n' );
+		} );
+
 		it( 'changes nothing when the selection no longer exists', () => {
 			const { access, getText, loseRanges } = setup( DOCUMENT, FIRST );
 			const target = createTextEditTarget( access );

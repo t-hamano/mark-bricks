@@ -2,7 +2,9 @@
  * Internal dependencies
  */
 import { SELECTION_END, SELECTION_START, type EditTarget } from './edit-target';
-import { normalizeAiFrontMatter } from './front-matter';
+import { joinFrontMatter, splitFrontMatter } from '../converter';
+import type { AiEdit } from '../platform';
+import { normalizeAiFrontMatter, splitAiFrontMatter } from './front-matter';
 
 /**
  * A range of the text editor's content, as character offsets.
@@ -47,6 +49,48 @@ function getEditRange( value: string, selection: TextRange ): TextRange {
 }
 
 /**
+ * Replaces the selection with `markdown`, or inserts it after the
+ * selection's last line, as one undo step.
+ *
+ * @param access   Text editor access.
+ * @param current  The selection's current range.
+ * @param action   How to apply the Markdown.
+ * @param markdown Markdown to apply.
+ */
+function applyContent(
+	access: TextEditorAccess,
+	current: TextRange,
+	action: AiEdit[ 'action' ],
+	markdown: string
+) {
+	const text = access.getValue();
+	const content = markdown.replace( /\n+$/, '' );
+
+	if ( action === 'replace' ) {
+		// Keep the line break that ended the selection, if any.
+		const selected = text.slice( current.start, current.end );
+		const lineBreak = /\n+$/.exec( selected )?.[ 0 ] ?? '';
+		access.replaceRange( current, content + lineBreak );
+		return;
+	}
+
+	// Insert after the selection's last line, separated from it, and from
+	// what follows, by a blank line.
+	const lastLineEnd =
+		current.end > current.start && text[ current.end - 1 ] === '\n'
+			? current.end - 1
+			: text.indexOf( '\n', current.end );
+	const at = lastLineEnd === -1 ? text.length : lastLineEnd;
+	const rest = text.slice( at );
+	const needsBlankLineAfter =
+		rest !== '' && rest !== '\n' && ! rest.startsWith( '\n\n' );
+	access.replaceRange(
+		{ start: at, end: at },
+		'\n\n' + content + ( needsBlankLineAfter ? '\n' : '' )
+	);
+}
+
+/**
  * Creates the edit target for the text editor, from the selection now. With
  * no selection, the target is the line the cursor is on.
  *
@@ -77,32 +121,38 @@ export function createTextEditTarget( access: TextEditorAccess ): EditTarget {
 				return false;
 			}
 			const text = access.getValue();
-			const content = normalizeAiFrontMatter( markdown ).replace(
-				/\n+$/,
-				''
-			);
+			const { frontMatter, body } = splitAiFrontMatter( markdown );
+			const headerLength =
+				text.length - splitFrontMatter( text ).body.length;
 
-			if ( action === 'replace' ) {
-				// Keep the line break that ended the selection, if any.
-				const selected = text.slice( current.start, current.end );
-				const lineBreak = /\n+$/.exec( selected )?.[ 0 ] ?? '';
-				access.replaceRange( current, content + lineBreak );
+			// A selection at the top of the document, or inside its front
+			// matter, takes the model's front matter in place.
+			if (
+				frontMatter === null ||
+				current.start < headerLength ||
+				( headerLength === 0 &&
+					current.start === 0 &&
+					action === 'replace' )
+			) {
+				applyContent(
+					access,
+					current,
+					action,
+					normalizeAiFrontMatter( markdown )
+				);
 				return true;
 			}
 
-			// Insert after the selection's last line, separated from it, and
-			// from what follows, by a blank line.
-			const lastLineEnd =
-				current.end > current.start && text[ current.end - 1 ] === '\n'
-					? current.end - 1
-					: text.indexOf( '\n', current.end );
-			const at = lastLineEnd === -1 ? text.length : lastLineEnd;
-			const rest = text.slice( at );
-			const needsBlankLineAfter =
-				rest !== '' && rest !== '\n' && ! rest.startsWith( '\n\n' );
+			// Otherwise the body goes to the selection, and the front matter
+			// replaces the document's own, at the top.
+			if ( body.trim() !== '' ) {
+				applyContent( access, current, action, body );
+			}
+			const block = joinFrontMatter( frontMatter, '' );
+			const after = access.getValue().slice( headerLength );
 			access.replaceRange(
-				{ start: at, end: at },
-				'\n\n' + content + ( needsBlankLineAfter ? '\n' : '' )
+				{ start: 0, end: headerLength },
+				headerLength === 0 && after !== '' ? block + '\n' : block
 			);
 			return true;
 		},
