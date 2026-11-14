@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:47:35.607Z\n"
-"PO-Revision-Date: 2026-11-14T06:47:38.562Z\n"
+"POT-Creation-Date: 2026-11-14T07:52:10.412Z\n"
+"PO-Revision-Date: 2026-11-14T07:52:12.557Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:122
+#: src/components/ai-sidebar/chat.tsx:123
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "%1$s token di input, %2$s token di output"
 
@@ -67,6 +67,18 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/block-library/image/marp-image-settings.tsx:105
+msgid "A length of 0 or more, such as 10px."
+msgstr "Una lunghezza di 0 o più, ad esempio 10px."
+
+#: src/block-library/image/marp-image-settings.tsx:117
+msgid "A number from 0 to 1, or a percentage up to 100%."
+msgstr "Un numero da 0 a 1, o una percentuale fino al 100%."
+
+#: src/block-library/image/marp-image-settings.tsx:109
+msgid "A number or percentage of 0 or more. 1 keeps the original."
+msgstr "Un numero o una percentuale di 0 o più. 1 mantiene l’originale."
+
 #: src/marp-patterns/patterns/title.ts:26
 #: src/marp-patterns/patterns/title-on-image.ts:29
 #: src/marp-patterns/patterns/title-on-gradient.ts:29
@@ -91,6 +103,10 @@ msgstr "Una slide scritta in Markdown"
 msgid "AI Assistant"
 msgstr "Assistente IA"
 
+#: src/block-library/image/marp-image-settings.tsx:442
+msgid "Add filter"
+msgstr "Aggiungi filtro"
+
 #: style.css
 #. Author of the generic
 msgid "Aki Hamano"
@@ -110,9 +126,13 @@ msgid "All categories"
 msgstr "Tutte le categorie"
 
 #: src/format-library/image/inline.tsx:147
-#: src/block-library/image/edit.tsx:233
+#: src/block-library/image/edit.tsx:269
 msgid "Alt text"
 msgstr "Testo alternativo"
+
+#: src/block-library/image/marp-image-settings.tsx:122
+msgid "An angle, such as 90deg or 0.5turn."
+msgstr "Un angolo, ad esempio 90deg o 0.5turn."
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
 msgctxt "slide pattern"
@@ -120,16 +140,16 @@ msgid "Any editor"
 msgstr "Qualsiasi editor"
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/edit.tsx:126
-#: src/block-library/image/edit.tsx:280
+#: src/block-library/image/edit.tsx:159
+#: src/block-library/image/edit.tsx:332
 msgid "Apply"
 msgstr "Applica"
 
-#: src/components/ai-sidebar/chat.tsx:297
+#: src/components/ai-sidebar/chat.tsx:298
 msgid "Ask the AI Assistant"
 msgstr "Chiedi all’assistente IA"
 
-#: src/components/ai-sidebar/chat.tsx:275
+#: src/components/ai-sidebar/chat.tsx:276
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -137,6 +157,19 @@ msgstr ""
 "Chiedi all’assistente IA di scrivere o modificare. La selezione, o la riga "
 "in cui si trova il cursore nell’editor di codice, viene inviata con il "
 "messaggio."
+
+#: src/block-library/image/marp-image-settings.tsx:378
+#: src/block-library/image/marp-image-settings.tsx:395
+msgid "Auto"
+msgstr "Automatico"
+
+#: src/block-library/image/marp-image-settings.tsx:276
+msgid "Background"
+msgstr "Sfondo"
+
+#: src/block-library/image/marp-image-settings.tsx:307
+msgid "Background size"
+msgstr "Dimensione dello sfondo"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:47
 msgctxt "slide pattern"
@@ -157,8 +190,8 @@ msgid "Bold"
 msgstr "Grassetto"
 
 #: src/format-library/image/inline.tsx:137
-#: src/block-library/image/edit.tsx:122
-#: src/block-library/image/edit.tsx:218
+#: src/block-library/image/edit.tsx:155
+#: src/block-library/image/edit.tsx:251
 msgid "Browse local file"
 msgstr "Sfoglia file locale"
 
@@ -171,6 +204,10 @@ msgstr "Temi integrati"
 msgctxt "slide pattern"
 msgid "By hand"
 msgstr "A mano"
+
+#: src/block-library/image/edit.tsx:268
+msgid "Caption"
+msgstr "Didascalia"
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
@@ -227,9 +264,17 @@ msgstr "Editor del codice"
 msgid "Column count"
 msgstr "Numero di colonne"
 
+#: src/block-library/image/marp-image-settings.tsx:339
+msgid "Contain"
+msgstr "Contieni"
+
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
 msgstr "Converte il testo selezionato in un link."
+
+#: src/block-library/image/marp-image-settings.tsx:335
+msgid "Cover"
+msgstr "Copri"
 
 #: src/block-library/table/edit.tsx:259
 msgid "Create Table"
@@ -248,7 +293,7 @@ msgid "Delete row"
 msgstr "Elimina riga"
 
 #: src/format-library/image/inline.tsx:151
-#: src/block-library/image/edit.tsx:246
+#: src/block-library/image/edit.tsx:284
 msgid "Describes the image for screen readers."
 msgstr "Descrive l’immagine per gli screen reader."
 
@@ -261,7 +306,7 @@ msgstr "Visualizza queste scorciatoie da tastiera."
 msgid "Document Overview"
 msgstr "Riepilogo del documento"
 
-#: src/block-library/image/edit.tsx:162
+#: src/block-library/image/edit.tsx:195
 msgid "Edit image"
 msgstr "Modifica immagine"
 
@@ -269,21 +314,25 @@ msgstr "Modifica immagine"
 msgid "Edit table"
 msgstr "Modifica tabella"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:78
 msgid "Edited the document."
 msgstr "Il documento è stato modificato."
 
-#: src/components/ai-sidebar/chat.tsx:54
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Editing the document…"
 msgstr "Modifica del documento in corso…"
 
 #: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:236
+#: src/block-library/image/edit.tsx:276
 msgid "Enter alt text…"
 msgstr "Inserisci il testo alternativo…"
 
+#: src/block-library/image/edit.tsx:275
+msgid "Enter caption…"
+msgstr "Inserisci la didascalia…"
+
 #: src/format-library/image/inline.tsx:160
-#: src/block-library/image/edit.tsx:256
+#: src/block-library/image/edit.tsx:308
 msgid "Enter title…"
 msgstr "Inserisci il titolo…"
 
@@ -307,7 +356,7 @@ msgctxt "slide pattern"
 msgid "Export when you are ready"
 msgstr "Esporta quando sei pronto"
 
-#: src/block-library/image/edit.tsx:291
+#: src/block-library/image/edit.tsx:366
 msgid "Failed to load image."
 msgstr "Impossibile caricare l’immagine."
 
@@ -315,6 +364,10 @@ msgstr "Impossibile caricare l’immagine."
 msgctxt "slide pattern"
 msgid "File for each deck"
 msgstr "File per presentazione"
+
+#: src/block-library/image/marp-image-settings.tsx:438
+msgid "Filters"
+msgstr "Filtri"
 
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
@@ -435,11 +488,15 @@ msgctxt "slide pattern"
 msgid "Heading, text and list in two columns"
 msgstr "Titolo di sezione, testo ed elenco su due colonne"
 
+#: src/block-library/image/marp-image-settings.tsx:394
+msgid "Height"
+msgstr "Altezza"
+
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "Nascondi riepilogo del documento"
 
-#: src/block-library/image/edit.tsx:76
+#: src/block-library/image/edit.tsx:109
 msgid "Image"
 msgstr "Immagine"
 
@@ -470,6 +527,10 @@ msgstr "Importante"
 #: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "Aumenta rientro"
+
+#: src/block-library/image/marp-image-settings.tsx:272
+msgid "Inline"
+msgstr "In linea"
 
 #: src/format-library/code.tsx:17
 msgid "Inline code"
@@ -516,10 +577,26 @@ msgstr "Conserva ogni versione"
 msgid "Language"
 msgstr "Linguaggio"
 
+#: src/block-library/image/marp-image-settings.tsx:409
+msgid "Leave empty to size the image automatically."
+msgstr "Lascia vuoto per dimensionare l’immagine automaticamente."
+
+#: src/block-library/image/marp-image-settings.tsx:280
+msgid "Left"
+msgstr "Sinistra"
+
 # %d: The line number.
 #: src/ai/selection-summary.ts:22
 msgid "Line %d"
 msgstr "Riga %d"
+
+#: src/block-library/image/marp-image-settings.tsx:419
+msgid ""
+"Lines up the background images of the slide from top to bottom instead of "
+"side by side."
+msgstr ""
+"Allinea le immagini di sfondo della diapositiva dall’alto verso il basso "
+"invece che affiancate."
 
 #: src/format-library/link/index.tsx:36
 msgid "Link"
@@ -562,20 +639,21 @@ msgstr "Marp"
 msgid "Marp Mode"
 msgstr "Modalità Marp"
 
-#: src/block-library/image/edit.tsx:242
-msgid ""
-"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
-"other words become the alt text, or the caption of a background image."
-msgstr ""
-"Le parole chiave di Marp come bg, w:200px o sepia impostano layout e "
-"dimensioni. Le altre parole diventano il testo alternativo o la didascalia "
-"di un’immagine di sfondo."
+#: src/block-library/image/edit.tsx:344
+msgid "Marp image settings"
+msgstr "Impostazioni immagine Marp"
 
 #: src/components/slide-pattern-modal/index.tsx:222
 msgid "Marp patterns"
 msgstr "Modelli Marp"
 
-#: src/components/ai-sidebar/chat.tsx:295
+# %s: Words of the alt text, such as "right".
+#: src/block-library/image/marp-image-settings.tsx:519
+#: src/block-library/image/edit.tsx:295
+msgid "Marp reads these words as settings: %s"
+msgstr "Marp legge queste parole come impostazioni: %s"
+
+#: src/components/ai-sidebar/chat.tsx:296
 msgid "Message"
 msgstr "Messaggio"
 
@@ -599,6 +677,10 @@ msgstr "Nuova conversazione"
 msgid "No block selected"
 msgstr "Nessun blocco selezionato"
 
+#: src/block-library/image/marp-image-settings.tsx:474
+msgid "No filters."
+msgstr "Nessun filtro."
+
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
 msgstr "Nessun linguaggio corrispondente."
@@ -621,13 +703,17 @@ msgstr "Una sola app"
 msgid "Open by default"
 msgstr "Apri come predefinito"
 
-#: src/components/ai-sidebar/chat.tsx:267
+#: src/components/ai-sidebar/chat.tsx:268
 msgid "Open settings"
 msgstr "Apri le impostazioni"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
 msgstr "Ordinato"
+
+#: src/block-library/image/marp-image-settings.tsx:343
+msgid "Original"
+msgstr "Originale"
 
 #: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
@@ -646,10 +732,14 @@ msgstr "Numerazione pagine"
 msgid "Paste or type URL"
 msgstr "Incolla o digita l'URL"
 
-#: src/block-library/image/edit.tsx:104
-#: src/block-library/image/edit.tsx:200
+#: src/block-library/image/edit.tsx:137
+#: src/block-library/image/edit.tsx:233
 msgid "Paste or type URL or file path"
 msgstr "Incolla o digita un URL o un percorso di file"
+
+#: src/block-library/image/marp-image-settings.tsx:246
+msgid "Placement"
+msgstr "Posizionamento"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:43
 #: src/marp-patterns/patterns/heading-and-three-numbers.ts:33
@@ -708,7 +798,11 @@ msgstr "Ripristina la modifica annullata."
 msgid "Remove a link."
 msgstr "Rimuove un link."
 
-#: src/block-library/image/edit.tsx:274
+#: src/block-library/image/marp-image-settings.tsx:498
+msgid "Remove filter"
+msgstr "Rimuovi filtro"
+
+#: src/block-library/image/edit.tsx:326
 msgid "Reset"
 msgstr "Reimposta"
 
@@ -720,9 +814,18 @@ msgstr "Reimposta la ricerca"
 msgid "Resize side panel"
 msgstr "Ridimensiona il pannello laterale"
 
+#: src/block-library/image/marp-image-settings.tsx:284
+msgid "Right"
+msgstr "Destra"
+
 #: src/block-library/table/edit.tsx:253
 msgid "Row count"
 msgstr "Numero di righe"
+
+#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:354
+msgid "Scale"
+msgstr "Scala"
 
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
@@ -747,13 +850,20 @@ msgstr "Vedi ogni slide mentre scrivi"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Consulta la <a>documentazione di Marp</a> per le altre impostazioni."
 
-#: src/components/ai-sidebar/chat.tsx:318
+#: src/components/ai-sidebar/chat.tsx:319
 msgid "Send"
 msgstr "Invia"
 
-#: src/components/ai-sidebar/chat.tsx:257
+#: src/components/ai-sidebar/chat.tsx:258
 msgid "Set an API key to use the AI Assistant."
 msgstr "Imposta una chiave API per usare l’assistente IA."
+
+#: src/block-library/image/edit.tsx:280
+msgid ""
+"Set the placement, size and filters from Marp image settings in the toolbar."
+msgstr ""
+"Imposta posizionamento, dimensione e filtri dalle impostazioni immagine Marp "
+"nella barra degli strumenti."
 
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:42
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:37
@@ -777,7 +887,7 @@ msgstr "Mostra le diapositive a schermo intero"
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
-#: src/block-library/image/edit.tsx:260
+#: src/block-library/image/edit.tsx:312
 msgid "Shown as a tooltip on hover."
 msgstr "Mostrato come tooltip al passaggio del mouse."
 
@@ -824,11 +934,19 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "Slide in testo semplice"
 
-#: src/components/ai-sidebar/chat.tsx:309
+#: src/block-library/image/marp-image-settings.tsx:290
+msgid "Split width"
+msgstr "Larghezza della divisione"
+
+#: src/block-library/image/marp-image-settings.tsx:418
+msgid "Stack vertically"
+msgstr "Impila verticalmente"
+
+#: src/components/ai-sidebar/chat.tsx:310
 msgid "Stop"
 msgstr "Interrompi"
 
-#: src/components/ai-sidebar/chat.tsx:104
+#: src/components/ai-sidebar/chat.tsx:105
 msgid "Stopped."
 msgstr "Interrotto."
 
@@ -861,7 +979,7 @@ msgstr "Testo mostrato in basso in ogni diapositiva."
 msgid "Text shown at the top of each slide."
 msgstr "Testo mostrato in alto in ogni diapositiva."
 
-#: src/components/ai-sidebar/chat.tsx:111
+#: src/components/ai-sidebar/chat.tsx:112
 msgid "The answer could not be loaded."
 msgstr "Impossibile caricare la risposta."
 
@@ -873,7 +991,7 @@ msgstr "Le proporzioni delle diapositive."
 msgid "The diagram could not be rendered."
 msgstr "Impossibile visualizzare il diagramma."
 
-#: src/components/ai-sidebar/chat.tsx:82
+#: src/components/ai-sidebar/chat.tsx:83
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -885,11 +1003,32 @@ msgstr ""
 msgid "The formula could not be rendered."
 msgstr "Impossibile visualizzare la formula."
 
+#: src/block-library/image/marp-image-settings.tsx:253
+msgid "The image fills the slide, or one side of it, behind the content."
+msgstr "L’immagine riempie la diapositiva, o un suo lato, dietro il contenuto."
+
+#: src/block-library/image/marp-image-settings.tsx:249
+msgid "The image sits in the slide content."
+msgstr "L’immagine si trova nel contenuto della diapositiva."
+
+#: src/block-library/image/marp-image-settings.tsx:297
+msgid "The share of the slide the image takes, such as 40%."
+msgstr "La parte di diapositiva occupata dall’immagine, ad esempio 40%."
+
+#: src/block-library/image/marp-image-settings.tsx:361
+msgid "The size relative to the original image, such as 50%."
+msgstr "La dimensione rispetto all’immagine originale, ad esempio 50%."
+
+#: src/block-library/image/marp-image-settings.tsx:124
+msgid ""
+"The x and y offsets, then an optional blur and color, separated by commas."
+msgstr "Gli spostamenti x e y, poi una sfocatura e un colore facoltativi, separati da virgole."
+
 #: src/components/front-matter-editor/index.tsx:219
 msgid "Theme"
 msgstr "Tema"
 
-#: src/components/ai-sidebar/chat.tsx:52
+#: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
 msgstr "Sto pensando…"
 
@@ -910,7 +1049,7 @@ msgstr "Suggerimento"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/components/slide-pattern-modal/index.tsx:70
-#: src/block-library/image/edit.tsx:253
+#: src/block-library/image/edit.tsx:305
 msgid "Title"
 msgstr "Titolo"
 
@@ -995,8 +1134,8 @@ msgid "Type / to choose a block"
 msgstr "Digita / per scegliere un blocco"
 
 #: src/format-library/image/inline.tsx:118
-#: src/block-library/image/edit.tsx:100
-#: src/block-library/image/edit.tsx:196
+#: src/block-library/image/edit.tsx:133
+#: src/block-library/image/edit.tsx:229
 msgid "URL or file path"
 msgstr "URL o percorso del file"
 
@@ -1016,7 +1155,7 @@ msgstr "Annulla l'ultima modifica."
 msgid "Unordered"
 msgstr "Non ordinato"
 
-#: src/block-library/image/edit.tsx:77
+#: src/block-library/image/edit.tsx:110
 msgid "Upload an image from your device or insert from a URL."
 msgstr "Carica un’immagine dal tuo dispositivo o inseriscila da un URL."
 
@@ -1032,13 +1171,17 @@ msgstr "Usa qualsiasi editor di testo"
 msgid "Visual markdown block editor."
 msgstr "Editor a blocchi Markdown visuale."
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"
 msgstr "In attesa della risposta…"
 
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr "Avviso"
+
+#: src/block-library/image/marp-image-settings.tsx:377
+msgid "Width"
+msgstr "Larghezza"
 
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:34
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:29
@@ -1106,3 +1249,8 @@ msgstr "Scrivere slide in Markdown"
 #: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "Front matter YAML"
+
+# %s: An example value, such as "1.5".
+#: src/block-library/image/marp-image-settings.tsx:483
+msgid "e.g. %s"
+msgstr "es. %s"

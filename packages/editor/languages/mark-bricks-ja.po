@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:47:35.607Z\n"
-"PO-Revision-Date: 2026-11-14T06:47:39.054Z\n"
+"POT-Creation-Date: 2026-11-14T07:52:10.412Z\n"
+"PO-Revision-Date: 2026-11-14T07:52:11.242Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: mark-bricks\n"
 
 # 1: The number of tokens the AI model read. 2: The number of tokens it wrote.
-#: src/components/ai-sidebar/chat.tsx:122
+#: src/components/ai-sidebar/chat.tsx:123
 msgid "%1$s input tokens, %2$s output tokens"
 msgstr "入力 %1$s トークン、出力 %2$s トークン"
 
@@ -67,6 +67,18 @@ msgstr "3"
 msgid "@mark-bricks/editor"
 msgstr ""
 
+#: src/block-library/image/marp-image-settings.tsx:105
+msgid "A length of 0 or more, such as 10px."
+msgstr "0 以上の長さ。10px など。"
+
+#: src/block-library/image/marp-image-settings.tsx:117
+msgid "A number from 0 to 1, or a percentage up to 100%."
+msgstr "0〜1 の数値、または 100% までの割合。"
+
+#: src/block-library/image/marp-image-settings.tsx:109
+msgid "A number or percentage of 0 or more. 1 keeps the original."
+msgstr "0 以上の数値または割合。1 で元のまま。"
+
 #: src/marp-patterns/patterns/title.ts:26
 #: src/marp-patterns/patterns/title-on-image.ts:29
 #: src/marp-patterns/patterns/title-on-gradient.ts:29
@@ -91,6 +103,10 @@ msgstr "Markdown で書いたスライド"
 msgid "AI Assistant"
 msgstr "AI アシスタント"
 
+#: src/block-library/image/marp-image-settings.tsx:442
+msgid "Add filter"
+msgstr "フィルターを追加"
+
 #: style.css
 #. Author of the generic
 msgid "Aki Hamano"
@@ -110,9 +126,13 @@ msgid "All categories"
 msgstr "すべてのカテゴリー"
 
 #: src/format-library/image/inline.tsx:147
-#: src/block-library/image/edit.tsx:233
+#: src/block-library/image/edit.tsx:269
 msgid "Alt text"
 msgstr "代替テキスト"
+
+#: src/block-library/image/marp-image-settings.tsx:122
+msgid "An angle, such as 90deg or 0.5turn."
+msgstr "角度。90deg や 0.5turn など。"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:45
 msgctxt "slide pattern"
@@ -120,22 +140,35 @@ msgid "Any editor"
 msgstr "どのエディターでも"
 
 #: src/format-library/image/inline.tsx:169
-#: src/block-library/image/edit.tsx:126
-#: src/block-library/image/edit.tsx:280
+#: src/block-library/image/edit.tsx:159
+#: src/block-library/image/edit.tsx:332
 msgid "Apply"
 msgstr "適用"
 
-#: src/components/ai-sidebar/chat.tsx:297
+#: src/components/ai-sidebar/chat.tsx:298
 msgid "Ask the AI Assistant"
 msgstr "AI アシスタントに質問"
 
-#: src/components/ai-sidebar/chat.tsx:275
+#: src/components/ai-sidebar/chat.tsx:276
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
 msgstr ""
 "AI アシスタントに執筆や編集を依頼できます。選択範囲、またはコードエディターで"
 "カーソルがある行がメッセージと一緒に送信されます。"
+
+#: src/block-library/image/marp-image-settings.tsx:378
+#: src/block-library/image/marp-image-settings.tsx:395
+msgid "Auto"
+msgstr "自動"
+
+#: src/block-library/image/marp-image-settings.tsx:276
+msgid "Background"
+msgstr "背景"
+
+#: src/block-library/image/marp-image-settings.tsx:307
+msgid "Background size"
+msgstr "背景サイズ"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:47
 msgctxt "slide pattern"
@@ -156,8 +189,8 @@ msgid "Bold"
 msgstr "太字"
 
 #: src/format-library/image/inline.tsx:137
-#: src/block-library/image/edit.tsx:122
-#: src/block-library/image/edit.tsx:218
+#: src/block-library/image/edit.tsx:155
+#: src/block-library/image/edit.tsx:251
 msgid "Browse local file"
 msgstr "ローカルファイルを参照"
 
@@ -170,6 +203,10 @@ msgstr "組み込みテーマ"
 msgctxt "slide pattern"
 msgid "By hand"
 msgstr "手作業"
+
+#: src/block-library/image/edit.tsx:268
+msgid "Caption"
+msgstr "キャプション"
 
 #: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
@@ -226,9 +263,17 @@ msgstr "コードエディター"
 msgid "Column count"
 msgstr "カラム数"
 
+#: src/block-library/image/marp-image-settings.tsx:339
+msgid "Contain"
+msgstr "含める"
+
 #: src/components/keyboard-shortcuts/hooks.ts:120
 msgid "Convert the selected text into a link."
 msgstr "選択したテキストをリンクに変換する。"
+
+#: src/block-library/image/marp-image-settings.tsx:335
+msgid "Cover"
+msgstr "カバー"
 
 #: src/block-library/table/edit.tsx:259
 msgid "Create Table"
@@ -247,7 +292,7 @@ msgid "Delete row"
 msgstr "行を削除"
 
 #: src/format-library/image/inline.tsx:151
-#: src/block-library/image/edit.tsx:246
+#: src/block-library/image/edit.tsx:284
 msgid "Describes the image for screen readers."
 msgstr "スクリーンリーダー用に画像を説明します。"
 
@@ -260,7 +305,7 @@ msgstr "これらのキーボードショートカットを表示する。"
 msgid "Document Overview"
 msgstr "ドキュメント概観"
 
-#: src/block-library/image/edit.tsx:162
+#: src/block-library/image/edit.tsx:195
 msgid "Edit image"
 msgstr "画像を編集"
 
@@ -268,21 +313,25 @@ msgstr "画像を編集"
 msgid "Edit table"
 msgstr "表を編集"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:78
 msgid "Edited the document."
 msgstr "ドキュメントを編集しました。"
 
-#: src/components/ai-sidebar/chat.tsx:54
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Editing the document…"
 msgstr "ドキュメントを編集しています…"
 
 #: src/format-library/image/inline.tsx:150
-#: src/block-library/image/edit.tsx:236
+#: src/block-library/image/edit.tsx:276
 msgid "Enter alt text…"
 msgstr "代替テキストを入力…"
 
+#: src/block-library/image/edit.tsx:275
+msgid "Enter caption…"
+msgstr "キャプションを入力…"
+
 #: src/format-library/image/inline.tsx:160
-#: src/block-library/image/edit.tsx:256
+#: src/block-library/image/edit.tsx:308
 msgid "Enter title…"
 msgstr "タイトルを入力…"
 
@@ -306,7 +355,7 @@ msgctxt "slide pattern"
 msgid "Export when you are ready"
 msgstr "準備ができたら書き出す"
 
-#: src/block-library/image/edit.tsx:291
+#: src/block-library/image/edit.tsx:366
 msgid "Failed to load image."
 msgstr "画像の読み込みに失敗しました。"
 
@@ -314,6 +363,10 @@ msgstr "画像の読み込みに失敗しました。"
 msgctxt "slide pattern"
 msgid "File for each deck"
 msgstr "デッキごとのファイル数"
+
+#: src/block-library/image/marp-image-settings.tsx:438
+msgid "Filters"
+msgstr "フィルター"
 
 #: src/marp-patterns/patterns/heading-and-two-subsections.ts:27
 msgctxt "slide pattern"
@@ -434,11 +487,15 @@ msgctxt "slide pattern"
 msgid "Heading, text and list in two columns"
 msgstr "見出し、テキストとリストの 2 段組み"
 
+#: src/block-library/image/marp-image-settings.tsx:394
+msgid "Height"
+msgstr "高さ"
+
 #: src/components/editor-header/index.tsx:152
 msgid "Hide Document Overview"
 msgstr "ドキュメント概観を非表示"
 
-#: src/block-library/image/edit.tsx:76
+#: src/block-library/image/edit.tsx:109
 msgid "Image"
 msgstr "画像"
 
@@ -469,6 +526,10 @@ msgstr "重要"
 #: src/block-library/list-item/edit.tsx:69
 msgid "Indent"
 msgstr "インデント"
+
+#: src/block-library/image/marp-image-settings.tsx:272
+msgid "Inline"
+msgstr "インライン"
 
 #: src/format-library/code.tsx:17
 msgid "Inline code"
@@ -515,10 +576,24 @@ msgstr "すべての版を残す"
 msgid "Language"
 msgstr "言語"
 
+#: src/block-library/image/marp-image-settings.tsx:409
+msgid "Leave empty to size the image automatically."
+msgstr "空欄にすると自動でサイズが決まります。"
+
+#: src/block-library/image/marp-image-settings.tsx:280
+msgid "Left"
+msgstr "左"
+
 # %d: The line number.
 #: src/ai/selection-summary.ts:22
 msgid "Line %d"
 msgstr "%d 行目"
+
+#: src/block-library/image/marp-image-settings.tsx:419
+msgid ""
+"Lines up the background images of the slide from top to bottom instead of "
+"side by side."
+msgstr "スライドの背景画像を横並びではなく上から下へ並べます。"
 
 #: src/format-library/link/index.tsx:36
 msgid "Link"
@@ -561,19 +636,21 @@ msgstr "Marp"
 msgid "Marp Mode"
 msgstr "Marp モード"
 
-#: src/block-library/image/edit.tsx:242
-msgid ""
-"Marp keywords such as bg, w:200px or sepia set the layout and size. The "
-"other words become the alt text, or the caption of a background image."
-msgstr ""
-"bg、w:200px、sepia などの Marp キーワードでレイアウトとサイズを指定します。そ"
-"れ以外の語は代替テキスト、背景画像の場合はキャプションになります。"
+#: src/block-library/image/edit.tsx:344
+msgid "Marp image settings"
+msgstr "Marp 画像設定"
 
 #: src/components/slide-pattern-modal/index.tsx:222
 msgid "Marp patterns"
 msgstr "Marp パターン"
 
-#: src/components/ai-sidebar/chat.tsx:295
+# %s: Words of the alt text, such as "right".
+#: src/block-library/image/marp-image-settings.tsx:519
+#: src/block-library/image/edit.tsx:295
+msgid "Marp reads these words as settings: %s"
+msgstr "Marp はこれらの単語を設定として読み取ります: %s"
+
+#: src/components/ai-sidebar/chat.tsx:296
 msgid "Message"
 msgstr "メッセージ"
 
@@ -595,6 +672,10 @@ msgstr "新しい会話"
 #: src/ai/selection-summary.ts:42
 msgid "No block selected"
 msgstr "選択中のブロックなし"
+
+#: src/block-library/image/marp-image-settings.tsx:474
+msgid "No filters."
+msgstr "フィルターはありません。"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
@@ -618,13 +699,17 @@ msgstr "専用アプリ"
 msgid "Open by default"
 msgstr "デフォルトで開く"
 
-#: src/components/ai-sidebar/chat.tsx:267
+#: src/components/ai-sidebar/chat.tsx:268
 msgid "Open settings"
 msgstr "設定を開く"
 
 #: src/block-library/list/edit.tsx:51
 msgid "Ordered"
 msgstr "順序付きリスト"
+
+#: src/block-library/image/marp-image-settings.tsx:343
+msgid "Original"
+msgstr "元のサイズ"
 
 #: src/block-library/list-item/edit.tsx:62
 msgid "Outdent"
@@ -643,10 +728,14 @@ msgstr "ページ番号"
 msgid "Paste or type URL"
 msgstr "URL を入力または貼り付け"
 
-#: src/block-library/image/edit.tsx:104
-#: src/block-library/image/edit.tsx:200
+#: src/block-library/image/edit.tsx:137
+#: src/block-library/image/edit.tsx:233
 msgid "Paste or type URL or file path"
 msgstr "URL またはファイルパスを入力または貼り付け"
+
+#: src/block-library/image/marp-image-settings.tsx:246
+msgid "Placement"
+msgstr "配置"
 
 #: src/marp-patterns/patterns/heading-and-two-lists-side-by-side.ts:43
 #: src/marp-patterns/patterns/heading-and-three-numbers.ts:33
@@ -705,7 +794,11 @@ msgstr "前回の取り消しをやり直す。"
 msgid "Remove a link."
 msgstr "リンクを削除する。"
 
-#: src/block-library/image/edit.tsx:274
+#: src/block-library/image/marp-image-settings.tsx:498
+msgid "Remove filter"
+msgstr "フィルターを削除"
+
+#: src/block-library/image/edit.tsx:326
 msgid "Reset"
 msgstr "リセット"
 
@@ -717,9 +810,18 @@ msgstr "検索をリセット"
 msgid "Resize side panel"
 msgstr "サイドパネルのサイズを変更"
 
+#: src/block-library/image/marp-image-settings.tsx:284
+msgid "Right"
+msgstr "右"
+
 #: src/block-library/table/edit.tsx:253
 msgid "Row count"
 msgstr "行数"
+
+#: src/block-library/image/marp-image-settings.tsx:347
+#: src/block-library/image/marp-image-settings.tsx:354
+msgid "Scale"
+msgstr "拡大縮小"
 
 #: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
@@ -744,13 +846,18 @@ msgstr "入力しながらスライドを確認"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "その他の設定は<a>Marp のドキュメント</a>を参照してください。"
 
-#: src/components/ai-sidebar/chat.tsx:318
+#: src/components/ai-sidebar/chat.tsx:319
 msgid "Send"
 msgstr "送信"
 
-#: src/components/ai-sidebar/chat.tsx:257
+#: src/components/ai-sidebar/chat.tsx:258
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI アシスタントを使うには API キーを設定してください。"
+
+#: src/block-library/image/edit.tsx:280
+msgid ""
+"Set the placement, size and filters from Marp image settings in the toolbar."
+msgstr "配置、サイズ、フィルターはツールバーの Marp 画像設定から設定します。"
 
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:42
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:37
@@ -774,7 +881,7 @@ msgstr "スライドを全画面で表示"
 
 #: src/format-library/link/inline.tsx:115
 #: src/format-library/image/inline.tsx:161
-#: src/block-library/image/edit.tsx:260
+#: src/block-library/image/edit.tsx:312
 msgid "Shown as a tooltip on hover."
 msgstr "ホバー時にツールチップとして表示されます。"
 
@@ -821,11 +928,19 @@ msgctxt "slide pattern"
 msgid "Slides as plain text"
 msgstr "テキストで作るスライド"
 
-#: src/components/ai-sidebar/chat.tsx:309
+#: src/block-library/image/marp-image-settings.tsx:290
+msgid "Split width"
+msgstr "分割幅"
+
+#: src/block-library/image/marp-image-settings.tsx:418
+msgid "Stack vertically"
+msgstr "縦に並べる"
+
+#: src/components/ai-sidebar/chat.tsx:310
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:104
+#: src/components/ai-sidebar/chat.tsx:105
 msgid "Stopped."
 msgstr "停止しました。"
 
@@ -858,7 +973,7 @@ msgstr "各スライドの下部に表示するテキスト。"
 msgid "Text shown at the top of each slide."
 msgstr "各スライドの上部に表示するテキスト。"
 
-#: src/components/ai-sidebar/chat.tsx:111
+#: src/components/ai-sidebar/chat.tsx:112
 msgid "The answer could not be loaded."
 msgstr "回答を読み込めませんでした。"
 
@@ -870,7 +985,7 @@ msgstr "スライドの縦横比。"
 msgid "The diagram could not be rendered."
 msgstr "図を描画できませんでした。"
 
-#: src/components/ai-sidebar/chat.tsx:82
+#: src/components/ai-sidebar/chat.tsx:83
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -882,11 +997,33 @@ msgstr ""
 msgid "The formula could not be rendered."
 msgstr "数式を描画できませんでした。"
 
+#: src/block-library/image/marp-image-settings.tsx:253
+msgid "The image fills the slide, or one side of it, behind the content."
+msgstr ""
+"画像がスライド全体、またはその片側を埋め、コンテンツの背後に表示されます。"
+
+#: src/block-library/image/marp-image-settings.tsx:249
+msgid "The image sits in the slide content."
+msgstr "画像がスライドのコンテンツ内に表示されます。"
+
+#: src/block-library/image/marp-image-settings.tsx:297
+msgid "The share of the slide the image takes, such as 40%."
+msgstr "画像が占めるスライドの割合。40% など。"
+
+#: src/block-library/image/marp-image-settings.tsx:361
+msgid "The size relative to the original image, such as 50%."
+msgstr "元の画像に対するサイズ。50% など。"
+
+#: src/block-library/image/marp-image-settings.tsx:124
+msgid ""
+"The x and y offsets, then an optional blur and color, separated by commas."
+msgstr "x と y のずらし幅、続けて任意でぼかしと色をカンマ区切りで指定します。"
+
 #: src/components/front-matter-editor/index.tsx:219
 msgid "Theme"
 msgstr "テーマ"
 
-#: src/components/ai-sidebar/chat.tsx:52
+#: src/components/ai-sidebar/chat.tsx:53
 msgid "Thinking…"
 msgstr "考えています…"
 
@@ -907,7 +1044,7 @@ msgstr "ヒント"
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
 #: src/components/slide-pattern-modal/index.tsx:70
-#: src/block-library/image/edit.tsx:253
+#: src/block-library/image/edit.tsx:305
 msgid "Title"
 msgstr "タイトル"
 
@@ -992,8 +1129,8 @@ msgid "Type / to choose a block"
 msgstr "ブロックを選択するには「/」を入力"
 
 #: src/format-library/image/inline.tsx:118
-#: src/block-library/image/edit.tsx:100
-#: src/block-library/image/edit.tsx:196
+#: src/block-library/image/edit.tsx:133
+#: src/block-library/image/edit.tsx:229
 msgid "URL or file path"
 msgstr "URL またはファイルパス"
 
@@ -1013,7 +1150,7 @@ msgstr "直前の変更を取り消す。"
 msgid "Unordered"
 msgstr "順序なしリスト"
 
-#: src/block-library/image/edit.tsx:77
+#: src/block-library/image/edit.tsx:110
 msgid "Upload an image from your device or insert from a URL."
 msgstr "デバイスから画像をアップロードするか、URL から挿入します。"
 
@@ -1029,13 +1166,17 @@ msgstr "好きなテキストエディターで"
 msgid "Visual markdown block editor."
 msgstr "ビジュアルマークダウンブロックエディター。"
 
-#: src/components/ai-sidebar/chat.tsx:56
+#: src/components/ai-sidebar/chat.tsx:57
 msgid "Waiting for the answer…"
 msgstr "回答を待っています…"
 
 #: src/block-library/quote/edit.tsx:85
 msgid "Warning"
 msgstr "警告"
+
+#: src/block-library/image/marp-image-settings.tsx:377
+msgid "Width"
+msgstr "幅"
 
 #: src/marp-patterns/patterns/heading-and-three-steps-in-a-row.ts:34
 #: src/marp-patterns/patterns/heading-and-three-cards.ts:29
@@ -1103,3 +1244,8 @@ msgstr "Markdown でスライドを書く"
 #: src/components/front-matter-editor/index.tsx:85
 msgid "YAML front matter"
 msgstr "YAML フロントマター"
+
+# %s: An example value, such as "1.5".
+#: src/block-library/image/marp-image-settings.tsx:483
+msgid "e.g. %s"
+msgstr "例: %s"
