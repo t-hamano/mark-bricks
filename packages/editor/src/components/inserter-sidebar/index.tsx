@@ -128,7 +128,13 @@ export function InserterSidebar( { toggleRef }: Props ) {
 
 	const closeOnEscape = useCallback(
 		( event: KeyboardEvent ) => {
-			if ( event.key === 'Escape' && ! event.defaultPrevented ) {
+			// Leaves Escape in the slide pattern modal to the modal: its
+			// events bubble here through the portal.
+			if (
+				event.key === 'Escape' &&
+				! event.defaultPrevented &&
+				event.currentTarget.contains( event.target as Node )
+			) {
 				event.preventDefault();
 				closeInserterSidebar();
 			}

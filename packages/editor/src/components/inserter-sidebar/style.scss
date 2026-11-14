@@ -23,7 +23,10 @@
 
 .inserter-sidebar__search-control {
 	flex: 1 1 auto;
+}
 
+.inserter-sidebar__search-control,
+.slide-pattern-modal__search {
 	// The reset button is rendered as an input suffix instead.
 	input[type="search"]::-webkit-search-cancel-button {
 		appearance: none;
@@ -110,4 +113,90 @@
 	aspect-ratio: 16 / 9;
 	overflow: hidden;
 	pointer-events: none;
+}
+
+.inserter-sidebar__pattern-footer {
+	flex: 0 0 auto;
+	padding: var(--wpds-dimension-padding-sm);
+	border-top: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+}
+
+.inserter-sidebar__pattern-explore {
+	width: 100%;
+}
+
+.slide-pattern-modal__body {
+	flex: 1 1 auto;
+	min-height: 0;
+	display: flex;
+}
+
+.slide-pattern-modal__sidebar {
+	flex: 0 0 240px;
+	display: flex;
+	flex-direction: column;
+	gap: var(--wpds-dimension-gap-md);
+	padding: var(--wpds-dimension-padding-md) var(--wpds-dimension-padding-xl);
+	overflow-y: auto;
+}
+
+.slide-pattern-modal__categories {
+	flex: 0 0 auto;
+}
+
+.slide-pattern-modal__panel {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow-y: auto;
+	padding: var(--wpds-dimension-padding-md) var(--wpds-dimension-padding-xl);
+}
+
+.slide-pattern-modal__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: var(--wpds-dimension-gap-xl);
+}
+
+.slide-pattern-modal__item {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wpds-dimension-gap-sm);
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	text-align: start;
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.slide-pattern-modal__thumbnail {
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	border: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral);
+	border-radius: var(--wpds-border-radius-sm);
+	background: var(--wpds-color-background-surface-neutral);
+
+	.slide-pattern-modal__item:hover & {
+		border-color: var(--wpds-color-stroke-interactive-neutral-strong);
+	}
+
+	.slide-pattern-modal__item:focus-visible & {
+		outline: var(--wpds-border-width-focus) solid var(--wpds-color-stroke-focus);
+		outline-offset: 2px;
+	}
+}
+
+@media (max-width: 600px) {
+	.slide-pattern-modal__body {
+		flex-direction: column;
+	}
+
+	.slide-pattern-modal__sidebar {
+		flex: 0 0 auto;
+		max-height: 40%;
+	}
 }

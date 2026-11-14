@@ -1,20 +1,12 @@
 /**
  * External dependencies
  */
-import {
-	useCallback,
-	useEffect,
-	useMemo,
-	useState,
-	type UIEventHandler,
-} from 'react';
+import { useCallback, useMemo, useState, type UIEventHandler } from 'react';
 
 /**
  * WordPress dependencies
  */
-import { store as blockEditorStore } from '@wordpress/block-editor';
 import { Composite } from '@wordpress/components';
-import { useRegistry } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { Button, SelectControl, Text, Tooltip } from '@wordpress/ui';
 
@@ -23,29 +15,18 @@ import { Button, SelectControl, Text, Tooltip } from '@wordpress/ui';
  */
 import {
 	SLIDE_PATTERN_CATEGORIES,
-	SLIDE_PATTERNS,
 	type SlidePattern,
-	type SlidePatternCategory,
 } from '../../marp-patterns';
-import { getSlidePatternBlocks } from '../../marp-patterns/insert';
-import {
-	getSlidePatternPreview,
-	getSlidePatternTheme,
-	loadSlidePatternPreviews,
-	type SlidePatternPreviews,
-} from '../../marp-patterns/previews';
-import { getFrontMatterValue } from '../../converter/front-matter';
-import { useFrontMatter } from '../front-matter-editor/context';
 import { SlidePatternPreview } from './slide-pattern-preview';
+import { SlidePatternModal } from './slide-pattern-modal';
+import { useInsertionPointPreview } from './insertion-target';
 import {
-	getInsertionTarget,
-	useInsertionPointPreview,
-} from './insertion-target';
-
-// The value of the category filter that shows every pattern.
-const ALL_CATEGORIES = 'all';
-
-type CategoryFilter = SlidePatternCategory | typeof ALL_CATEGORIES;
+	ALL_CATEGORIES,
+	useInsertSlidePattern,
+	useSlidePatternItems,
+	useSlidePatternPreviews,
+	type CategoryFilter,
+} from './use-slide-patterns';
 
 type Props = {
 	search: string;
@@ -53,48 +34,13 @@ type Props = {
 };
 
 export function SlidePatternList( { search, onScroll }: Props ) {
-	const registry = useRegistry();
-	const { frontMatter } = useFrontMatter();
-	const theme = getSlidePatternTheme(
-		getFrontMatterValue( frontMatter, 'theme' )
-	);
 	const [ category, setCategory ] =
 		useState< CategoryFilter >( ALL_CATEGORIES );
+	const [ isModalOpen, setIsModalOpen ] = useState( false );
 	// The cards show their titles until the previews have loaded. After that,
 	// a card shows its preview, and its title in a tooltip.
-	const [ previews, setPreviews ] = useState< SlidePatternPreviews | null >(
-		null
-	);
-
-	useEffect( () => {
-		let isMounted = true;
-		loadSlidePatternPreviews().then( ( loaded ) => {
-			if ( isMounted ) {
-				setPreviews( loaded );
-			}
-		} );
-		return () => {
-			isMounted = false;
-		};
-	}, [] );
-
-	const patterns = useMemo( () => {
-		const q = search.trim().toLowerCase();
-		const items = SLIDE_PATTERNS.filter(
-			( pattern ) =>
-				category === ALL_CATEGORIES ||
-				pattern.categories.includes( category )
-		).map( ( pattern ) => ( {
-			pattern,
-			title: pattern.title(),
-			preview: previews
-				? getSlidePatternPreview( previews, pattern, theme )
-				: null,
-		} ) );
-		return q
-			? items.filter( ( { title } ) => title.toLowerCase().includes( q ) )
-			: items;
-	}, [ search, category, previews, theme ] );
+	const previews = useSlidePatternPreviews();
+	const patterns = useSlidePatternItems( search, category, previews );
 
 	const categoryItems = useMemo(
 		() => [
@@ -111,44 +57,14 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 	);
 
 	const insertionPoint = useInsertionPointPreview();
+	const insert = useInsertSlidePattern();
 
 	const insertPattern = useCallback(
 		( pattern: SlidePattern ) => {
-			const { getBlock, getBlockOrder } =
-				registry.select( blockEditorStore );
-			const { insertBlocks, replaceBlocks } =
-				registry.dispatch( blockEditorStore );
-
-			const order = getBlockOrder( '' );
-			const at = ( i: number ) =>
-				order[ i ]
-					? ( getBlock( order[ i ] ) ?? undefined )
-					: undefined;
-			const { index, replaceClientId } = getInsertionTarget( registry );
-
-			if ( replaceClientId ) {
-				replaceBlocks(
-					replaceClientId,
-					getSlidePatternBlocks(
-						pattern,
-						at( index - 1 ),
-						at( index + 1 )
-					)
-				);
-			} else {
-				insertBlocks(
-					getSlidePatternBlocks(
-						pattern,
-						at( index - 1 ),
-						at( index )
-					),
-					index,
-					''
-				);
-			}
+			insert( pattern );
 			insertionPoint.hide();
 		},
-		[ registry, insertionPoint ]
+		[ insert, insertionPoint ]
 	);
 
 	return (
@@ -225,6 +141,21 @@ export function SlidePatternList( { search, onScroll }: Props ) {
 					</Tooltip.Root>
 				) ) }
 			</Composite>
+			<div className="inserter-sidebar__pattern-footer">
+				<Button
+					className="inserter-sidebar__pattern-explore"
+					variant="outline"
+					onClick={ () => setIsModalOpen( true ) }
+				>
+					{ __( 'Explore Marp patterns', 'mark-bricks' ) }
+				</Button>
+			</div>
+			{ isModalOpen && (
+				<SlidePatternModal
+					previews={ previews }
+					onClose={ () => setIsModalOpen( false ) }
+				/>
+			) }
 		</Tooltip.Provider>
 	);
 }

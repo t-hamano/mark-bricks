@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
-"PO-Revision-Date: 2026-11-09T14:46:22.561Z\n"
+"POT-Creation-Date: 2026-11-14T02:43:50.964Z\n"
+"PO-Revision-Date: 2026-11-14T02:44:07.277Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,7 +95,11 @@ msgstr "Program"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:116
+msgid "All"
+msgstr "Vše"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:49
 msgid "All categories"
 msgstr "Všechny kategorie"
 
@@ -131,8 +135,8 @@ msgstr "Souvislosti"
 msgid "Block Inserter"
 msgstr "Vkladač bloků"
 
-#: src/components/inserter-sidebar/index.tsx:162
-#: src/components/inserter-sidebar/index.tsx:294
+#: src/components/inserter-sidebar/index.tsx:168
+#: src/components/inserter-sidebar/index.tsx:300
 msgid "Blocks"
 msgstr "Bloků"
 
@@ -156,7 +160,7 @@ msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "Odrážky"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
 msgstr "Kategorie"
 
@@ -194,7 +198,8 @@ msgid "Clear formatting"
 msgstr "Vymazat formátování"
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:278
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:143
+#: src/components/inserter-sidebar/index.tsx:284
 #: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr "Zavřít"
@@ -340,6 +345,10 @@ msgstr "Zadejte alternativní text…"
 #: src/block-library/image/edit.tsx:256
 msgid "Enter title…"
 msgstr "Zadejte název…"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:150
+msgid "Explore Marp patterns"
+msgstr "Procházet vzory Marp"
 
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
@@ -577,6 +586,10 @@ msgstr ""
 "Klíčová slova Marp jako bg, w:200px nebo sepia určují rozvržení a velikost. "
 "Ostatní slova se stanou alternativním textem nebo popiskem obrázku na pozadí."
 
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:141
+msgid "Marp patterns"
+msgstr "Vzory Marp"
+
 #: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "Zpráva"
@@ -621,7 +634,8 @@ msgstr "Není vybrán žádný blok"
 msgid "No matching language."
 msgstr "Žádný odpovídající jazyk."
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:55
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:93
 msgid "No slide patterns found."
 msgstr "Nebyly nalezeny žádné vzory snímků."
 
@@ -779,7 +793,8 @@ msgstr "Výzkum"
 msgid "Reset"
 msgstr "Obnovit"
 
-#: src/components/inserter-sidebar/index.tsx:263
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:175
+#: src/components/inserter-sidebar/index.tsx:269
 msgid "Reset search"
 msgstr "Resetovat vyhledávání"
 
@@ -802,15 +817,17 @@ msgstr "Kontrola"
 msgid "Row count"
 msgstr "Počet řádků"
 
-#: src/components/inserter-sidebar/index.tsx:250
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:162
+#: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr "Hledat"
 
-#: src/components/inserter-sidebar/index.tsx:245
+#: src/components/inserter-sidebar/index.tsx:251
 msgid "Search for blocks"
 msgstr "Hledat bloky"
 
-#: src/components/inserter-sidebar/index.tsx:241
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:156
+#: src/components/inserter-sidebar/index.tsx:247
 msgid "Search for slide patterns"
 msgstr "Hledat vzory snímků"
 
@@ -883,8 +900,9 @@ msgstr "Velikost"
 msgid "Slide Separator"
 msgstr "Oddělovač snímků"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
-#: src/components/inserter-sidebar/index.tsx:297
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:64
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:99
+#: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
 msgstr "Vzory snímků"
 

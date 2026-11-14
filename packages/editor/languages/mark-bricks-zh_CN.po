@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
-"PO-Revision-Date: 2026-11-09T14:46:29.346Z\n"
+"POT-Creation-Date: 2026-11-14T02:43:50.964Z\n"
+"PO-Revision-Date: 2026-11-14T02:44:14.054Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,7 +95,11 @@ msgstr "议程"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:116
+msgid "All"
+msgstr "全部"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:49
 msgid "All categories"
 msgstr "所有分类"
 
@@ -131,8 +135,8 @@ msgstr "背景"
 msgid "Block Inserter"
 msgstr "区块插入器"
 
-#: src/components/inserter-sidebar/index.tsx:162
-#: src/components/inserter-sidebar/index.tsx:294
+#: src/components/inserter-sidebar/index.tsx:168
+#: src/components/inserter-sidebar/index.tsx:300
 msgid "Blocks"
 msgstr "区块"
 
@@ -156,7 +160,7 @@ msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "项目符号"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
 msgstr "分类"
 
@@ -194,7 +198,8 @@ msgid "Clear formatting"
 msgstr "清除格式"
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:278
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:143
+#: src/components/inserter-sidebar/index.tsx:284
 #: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr "关闭"
@@ -340,6 +345,10 @@ msgstr "输入替代文字…"
 #: src/block-library/image/edit.tsx:256
 msgid "Enter title…"
 msgstr "输入标题…"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:150
+msgid "Explore Marp patterns"
+msgstr "浏览 Marp 模式"
 
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
@@ -577,6 +586,10 @@ msgstr ""
 "bg、w:200px、sepia 等 Marp 关键字用于设置布局和尺寸。其余文字将作为替代文字，"
 "背景图片则作为说明文字。"
 
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:141
+msgid "Marp patterns"
+msgstr "Marp 模式"
+
 #: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "消息"
@@ -619,7 +632,8 @@ msgstr "未选择区块"
 msgid "No matching language."
 msgstr "没有匹配的语言。"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:55
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:93
 msgid "No slide patterns found."
 msgstr "未找到幻灯片模式。"
 
@@ -777,7 +791,8 @@ msgstr "调研"
 msgid "Reset"
 msgstr "重置"
 
-#: src/components/inserter-sidebar/index.tsx:263
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:175
+#: src/components/inserter-sidebar/index.tsx:269
 msgid "Reset search"
 msgstr "重置搜索"
 
@@ -800,15 +815,17 @@ msgstr "复盘"
 msgid "Row count"
 msgstr "行数"
 
-#: src/components/inserter-sidebar/index.tsx:250
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:162
+#: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr "搜索"
 
-#: src/components/inserter-sidebar/index.tsx:245
+#: src/components/inserter-sidebar/index.tsx:251
 msgid "Search for blocks"
 msgstr "搜索区块"
 
-#: src/components/inserter-sidebar/index.tsx:241
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:156
+#: src/components/inserter-sidebar/index.tsx:247
 msgid "Search for slide patterns"
 msgstr "搜索幻灯片模式"
 
@@ -881,8 +898,9 @@ msgstr "尺寸"
 msgid "Slide Separator"
 msgstr "幻灯片分隔符"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
-#: src/components/inserter-sidebar/index.tsx:297
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:64
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:99
+#: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
 msgstr "幻灯片模式"
 

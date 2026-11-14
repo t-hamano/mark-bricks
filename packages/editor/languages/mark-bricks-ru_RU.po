@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
-"PO-Revision-Date: 2026-11-09T14:46:28.026Z\n"
+"POT-Creation-Date: 2026-11-14T02:43:50.964Z\n"
+"PO-Revision-Date: 2026-11-14T02:44:12.775Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,7 +95,11 @@ msgstr "Повестка"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:116
+msgid "All"
+msgstr "Все"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:49
 msgid "All categories"
 msgstr "Все категории"
 
@@ -132,8 +136,8 @@ msgstr "Предыстория"
 msgid "Block Inserter"
 msgstr "Вставка блоков"
 
-#: src/components/inserter-sidebar/index.tsx:162
-#: src/components/inserter-sidebar/index.tsx:294
+#: src/components/inserter-sidebar/index.tsx:168
+#: src/components/inserter-sidebar/index.tsx:300
 msgid "Blocks"
 msgstr "Блоки"
 
@@ -157,7 +161,7 @@ msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "Маркированный список"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
 msgstr "Категория"
 
@@ -195,7 +199,8 @@ msgid "Clear formatting"
 msgstr "Очистить форматирование"
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:278
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:143
+#: src/components/inserter-sidebar/index.tsx:284
 #: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr "Закрыть"
@@ -341,6 +346,10 @@ msgstr "Введите альтернативный текст…"
 #: src/block-library/image/edit.tsx:256
 msgid "Enter title…"
 msgstr "Введите заголовок…"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:150
+msgid "Explore Marp patterns"
+msgstr "Просмотреть шаблоны Marp"
 
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
@@ -579,6 +588,10 @@ msgstr ""
 "Остальные слова становятся альтернативным текстом или подписью фонового "
 "изображения."
 
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:141
+msgid "Marp patterns"
+msgstr "Шаблоны Marp"
+
 #: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "Сообщение"
@@ -623,7 +636,8 @@ msgstr "Блок не выбран"
 msgid "No matching language."
 msgstr "Нет подходящего языка."
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:55
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:93
 msgid "No slide patterns found."
 msgstr "Шаблоны слайдов не найдены."
 
@@ -781,7 +795,8 @@ msgstr "Исследование"
 msgid "Reset"
 msgstr "Сбросить"
 
-#: src/components/inserter-sidebar/index.tsx:263
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:175
+#: src/components/inserter-sidebar/index.tsx:269
 msgid "Reset search"
 msgstr "Сбросить результаты поиска"
 
@@ -804,15 +819,17 @@ msgstr "Проверка"
 msgid "Row count"
 msgstr "Количество строк"
 
-#: src/components/inserter-sidebar/index.tsx:250
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:162
+#: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr "Поиск"
 
-#: src/components/inserter-sidebar/index.tsx:245
+#: src/components/inserter-sidebar/index.tsx:251
 msgid "Search for blocks"
 msgstr "Поиск блоков"
 
-#: src/components/inserter-sidebar/index.tsx:241
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:156
+#: src/components/inserter-sidebar/index.tsx:247
 msgid "Search for slide patterns"
 msgstr "Поиск шаблонов слайдов"
 
@@ -885,8 +902,9 @@ msgstr "Размер"
 msgid "Slide Separator"
 msgstr "Разделитель слайдов"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
-#: src/components/inserter-sidebar/index.tsx:297
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:64
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:99
+#: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
 msgstr "Шаблоны слайдов"
 

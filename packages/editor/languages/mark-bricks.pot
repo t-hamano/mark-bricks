@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
+"POT-Creation-Date: 2026-11-14T02:43:50.964Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -147,7 +147,8 @@ msgid "Document Overview"
 msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:278
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:143
+#: src/components/inserter-sidebar/index.tsx:284
 #: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr ""
@@ -239,42 +240,59 @@ msgstr ""
 msgid "Make the selected text inline code."
 msgstr ""
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
-msgid "All categories"
-msgstr ""
-
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
-msgid "Category"
-msgstr ""
-
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:55
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:93
 msgid "No slide patterns found."
 msgstr ""
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
-#: src/components/inserter-sidebar/index.tsx:297
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:64
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:99
+#: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
 msgstr ""
 
-#: src/components/inserter-sidebar/index.tsx:162
-#: src/components/inserter-sidebar/index.tsx:294
-msgid "Blocks"
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:116
+msgid "All"
 msgstr ""
 
-#: src/components/inserter-sidebar/index.tsx:241
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:141
+msgid "Marp patterns"
+msgstr ""
+
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:156
+#: src/components/inserter-sidebar/index.tsx:247
 msgid "Search for slide patterns"
 msgstr ""
 
-#: src/components/inserter-sidebar/index.tsx:245
-msgid "Search for blocks"
-msgstr ""
-
-#: src/components/inserter-sidebar/index.tsx:250
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:162
+#: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr ""
 
-#: src/components/inserter-sidebar/index.tsx:263
+#: src/components/inserter-sidebar/slide-pattern-modal.tsx:175
+#: src/components/inserter-sidebar/index.tsx:269
 msgid "Reset search"
+msgstr ""
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:49
+msgid "All categories"
+msgstr ""
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:74
+msgid "Category"
+msgstr ""
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:150
+msgid "Explore Marp patterns"
+msgstr ""
+
+#: src/components/inserter-sidebar/index.tsx:168
+#: src/components/inserter-sidebar/index.tsx:300
+msgid "Blocks"
+msgstr ""
+
+#: src/components/inserter-sidebar/index.tsx:251
+msgid "Search for blocks"
 msgstr ""
 
 #: src/components/front-matter-editor/index.tsx:67
