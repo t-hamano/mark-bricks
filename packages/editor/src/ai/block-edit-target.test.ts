@@ -156,8 +156,11 @@ describe( 'createBlockEditTarget', () => {
 		it( 'moves front matter in the edit into the document front matter', () => {
 			const { access, getMarkdown } = setup( DOCUMENT );
 			let frontMatter: string | null = null;
-			createBlockEditTarget( access, null, ( next ) => {
-				frontMatter = next;
+			createBlockEditTarget( access, null, {
+				set: () => {},
+				merge: ( next ) => {
+					frontMatter = next;
+				},
 			} ).apply( {
 				action: 'replace',
 				markdown:
@@ -170,8 +173,11 @@ describe( 'createBlockEditTarget', () => {
 		it( 'keeps the selected blocks for a front matter only edit', () => {
 			const { access, getMarkdown } = setup( DOCUMENT, [ 1 ] );
 			let frontMatter: string | null = null;
-			createBlockEditTarget( access, 'marp: true', ( next ) => {
-				frontMatter = next;
+			createBlockEditTarget( access, 'marp: true', {
+				set: ( next ) => {
+					frontMatter = next;
+				},
+				merge: () => {},
 			} ).apply( {
 				action: 'replace',
 				markdown: '---\nmarp: true\ntheme: gaia\n---\n',

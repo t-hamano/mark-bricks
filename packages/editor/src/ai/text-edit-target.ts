@@ -147,7 +147,12 @@ function applyWithFrontMatter(
 ): string {
 	const headerLength = text.length - splitFrontMatter( text ).body.length;
 	let rest = text.slice( headerLength );
-	if ( body.trim() !== '' ) {
+	if ( body.trim() !== '' && current.end <= headerLength ) {
+		// The selection is all inside the old front matter: the body goes
+		// first, separated from what follows by a blank line.
+		const after = rest.replace( /^\n+/, '' );
+		rest = body.replace( /\n+$/, '' ) + ( after ? '\n\n' + after : '\n' );
+	} else if ( body.trim() !== '' ) {
 		// The part of the selection inside the old front matter goes with
 		// it.
 		const range = {

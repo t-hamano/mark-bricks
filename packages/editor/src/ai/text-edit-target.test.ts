@@ -160,7 +160,7 @@ describe( 'createTextEditTarget', () => {
 				action: 'replace',
 				markdown: '---\n\nmarp: true\n\n--------\n\n# Slide\n',
 			} );
-			expect( getText() ).toBe( '---\nmarp: true\n---\n\n# Slide' );
+			expect( getText() ).toBe( '---\nmarp: true\n---\n\n# Slide\n' );
 		} );
 
 		it( 'replaces the front matter at the top when the selection is below it', () => {
@@ -189,6 +189,18 @@ describe( 'createTextEditTarget', () => {
 				'---\nmarp: true\ntheme: gaia\n---\n\n# Title\n'
 			);
 			expect( getUndoSteps() ).toBe( 1 );
+		} );
+
+		it( 'puts the body before the rest when the cursor is in the front matter', () => {
+			const value = '---\nmarp: true\n---\n# Existing title\n';
+			const { access, getText } = setup( value, value.indexOf( 'marp' ) );
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\nmarp: true\ntheme: gaia\n---\n\n# New slide\n',
+			} );
+			expect( getText() ).toBe(
+				'---\nmarp: true\ntheme: gaia\n---\n\n# New slide\n\n# Existing title\n'
+			);
 		} );
 
 		it( 'changes the front matter and the body in one undo step', () => {
