@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T06:43:28.682Z\n"
-"PO-Revision-Date: 2026-11-14T06:43:34.828Z\n"
+"POT-Creation-Date: 2026-11-14T07:13:28.497Z\n"
+"PO-Revision-Date: 2026-11-14T07:13:46.998Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -33,11 +33,11 @@ msgstr "“%s”有未保存的更改。要放弃更改并关闭吗？"
 msgid "(Untitled)"
 msgstr "(未命名)"
 
-#: src/components/preferences-modal/index.tsx:228
+#: src/components/preferences-modal/index.tsx:239
 msgid "AI Assistant"
 msgstr "AI 助手"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:274
+#: src/components/preferences-modal/ai-provider-card.tsx:279
 msgid "API key"
 msgstr "API 密钥"
 
@@ -86,11 +86,11 @@ msgid "Check updates automatically"
 msgstr "自动检查更新"
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:339
+#: src/components/preferences-modal/ai-provider-card.tsx:344
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr "在 <a>%s</a> 查看用量和账单"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:298
+#: src/components/preferences-modal/ai-provider-card.tsx:303
 msgid "Checking the API key…"
 msgstr "正在检查 API 密钥…"
 
@@ -100,7 +100,7 @@ msgid "Checking…"
 msgstr "正在检查…"
 
 #: src/components/tabbar/index.tsx:178
-#: src/components/preferences-modal/index.tsx:202
+#: src/components/preferences-modal/index.tsx:213
 #: src/components/keyboard-shortcuts-modal/index.tsx:230
 #: src/components/about-modal/index.tsx:82
 msgid "Close"
@@ -119,7 +119,7 @@ msgstr "关闭其他标签页"
 msgid "Close the active tab."
 msgstr "关闭当前标签页。"
 
-#: src/components/preferences-modal/index.tsx:225
+#: src/components/preferences-modal/index.tsx:236
 #: src/components/header-actions/index.tsx:303
 msgid "Code editor"
 msgstr "代码编辑器"
@@ -156,7 +156,11 @@ msgstr "新建 Markdown 文件或打开现有文件以开始编辑。"
 msgid "Create a new file."
 msgstr "新建文件。"
 
-#: src/preferences/constants.ts:58
+#: src/components/preferences-modal/ai-panel.tsx:181
+msgid "Custom instructions"
+msgstr "自定义指令"
+
+#: src/preferences/constants.ts:61
 msgid "Dark"
 msgstr "深色"
 
@@ -165,11 +169,11 @@ msgstr "深色"
 msgid "Default (%s)"
 msgstr "默认（%s）"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:305
+#: src/components/preferences-modal/ai-provider-card.tsx:310
 msgid "Delete"
 msgstr "删除"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:294
+#: src/components/preferences-modal/ai-provider-card.tsx:299
 msgid "Deleting the API key…"
 msgstr "正在删除 API 密钥…"
 
@@ -236,12 +240,12 @@ msgstr "字体"
 msgid "Font size"
 msgstr "字号"
 
-#: src/components/preferences-modal/index.tsx:219
+#: src/components/preferences-modal/index.tsx:230
 msgid "General"
 msgstr "常规"
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:315
+#: src/components/preferences-modal/ai-provider-card.tsx:320
 msgid "Get your API key at <a>%s</a>"
 msgstr "在 <a>%s</a> 获取 API 密钥"
 
@@ -257,7 +261,7 @@ msgstr "HTML 幻灯片"
 msgid "HTML…"
 msgstr "HTML…"
 
-#: src/preferences/constants.ts:80
+#: src/preferences/constants.ts:83
 msgid "Handwriting"
 msgstr "手写"
 
@@ -291,7 +295,7 @@ msgstr "键盘快捷键"
 msgid "Language"
 msgstr "语言"
 
-#: src/preferences/constants.ts:57
+#: src/preferences/constants.ts:60
 msgid "Light"
 msgstr "浅色"
 
@@ -299,7 +303,7 @@ msgstr "浅色"
 msgid "List View shortcuts"
 msgstr "列表视图快捷键"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:392
+#: src/components/preferences-modal/ai-provider-card.tsx:397
 msgid "Loading the models…"
 msgstr "正在加载模型…"
 
@@ -316,7 +320,7 @@ msgstr "MarkBricks 现已成为 Markdown 文件的默认应用。"
 msgid "Maximum width of the content area, in pixels."
 msgstr "内容区域的最大宽度（像素）。"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:400
+#: src/components/preferences-modal/ai-provider-card.tsx:405
 msgid "Model"
 msgstr "模型"
 
@@ -325,7 +329,7 @@ msgstr "模型"
 msgid "Model: %s"
 msgstr "模型：%s"
 
-#: src/preferences/constants.ts:76
+#: src/preferences/constants.ts:79
 msgid "Monospace"
 msgstr "等宽"
 
@@ -354,7 +358,7 @@ msgstr "没有打开的文件"
 msgid "Not a Marp document"
 msgstr "不是 Marp 文档"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:230
+#: src/components/preferences-modal/ai-provider-card.tsx:240
 msgid "Not connected"
 msgstr "未连接"
 
@@ -391,7 +395,7 @@ msgstr "PDF 幻灯片"
 msgid "PDF…"
 msgstr "PDF…"
 
-#: src/components/preferences-modal/index.tsx:200
+#: src/components/preferences-modal/index.tsx:211
 #: src/components/header-actions/index.tsx:365
 msgid "Preferences"
 msgstr "偏好设置"
@@ -400,7 +404,7 @@ msgstr "偏好设置"
 msgid "Preview Slides"
 msgstr "预览幻灯片"
 
-#: src/components/preferences-modal/ai-panel.tsx:145
+#: src/components/preferences-modal/ai-panel.tsx:151
 msgid "Provider"
 msgstr "提供商"
 
@@ -432,12 +436,12 @@ msgstr "重新启动应用以应用新语言。"
 msgid "Restore default settings"
 msgstr "恢复默认设置"
 
-#: src/preferences/constants.ts:68
+#: src/preferences/constants.ts:71
 msgid "Sans-serif"
 msgstr "无衬线"
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:306
+#: src/components/preferences-modal/ai-provider-card.tsx:311
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -463,7 +467,13 @@ msgstr "保存当前文件。"
 msgid "Selection shortcuts"
 msgstr "选定快捷键"
 
-#: src/preferences/constants.ts:72
+#: src/components/preferences-modal/ai-panel.tsx:182
+msgid ""
+"Sent with every message to the AI Assistant. For example, the tone to write "
+"in, or what your documents are about."
+msgstr "随每条消息一起发送给 AI 助手。例如写作语气，或文档的主题。"
+
+#: src/preferences/constants.ts:75
 msgid "Serif"
 msgstr "衬线"
 
@@ -497,8 +507,8 @@ msgstr "拼写检查"
 msgid "Spotlight mode"
 msgstr "焦点模式"
 
-#: src/preferences/constants.ts:56
-#: src/preferences/constants.ts:65
+#: src/preferences/constants.ts:59
+#: src/preferences/constants.ts:68
 msgid "System Default"
 msgstr "系统默认"
 
@@ -520,7 +530,7 @@ msgstr "%s API 目前不可用。请稍后重试。"
 msgid "The %s account has no credit left. Check its billing settings."
 msgstr "%s 账户已没有剩余额度。请检查其账单设置。"
 
-#: src/components/preferences-modal/ai-panel.tsx:148
+#: src/components/preferences-modal/ai-panel.tsx:154
 msgid "The AI Assistant uses this provider."
 msgstr "AI 助手使用此提供商。"
 
@@ -529,7 +539,7 @@ msgid "The API key cannot use this model."
 msgstr "此 API 密钥无法使用该模型。"
 
 # %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-provider-card.tsx:246
+#: src/components/preferences-modal/ai-provider-card.tsx:251
 msgid ""
 "The API key is kept in the system’s credential store and only sent to the %s "
 "API."
@@ -539,11 +549,11 @@ msgstr "API 密钥保存在系统的凭据存储中，并且只会发送到 %s A
 msgid "The API key is not valid. Check it in the settings."
 msgstr "API 密钥无效。请在设置中检查。"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:375
+#: src/components/preferences-modal/ai-provider-card.tsx:380
 msgid "The API key was deleted."
 msgstr "API 密钥已删除。"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:365
+#: src/components/preferences-modal/ai-provider-card.tsx:370
 msgid "The API key was saved."
 msgstr "API 密钥已保存。"
 
@@ -574,7 +584,7 @@ msgid "The model was not found."
 msgstr "未找到该模型。"
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:428
+#: src/components/preferences-modal/ai-provider-card.tsx:433
 msgid "The models could not be loaded: %s"
 msgstr "无法加载模型：%s"
 
@@ -615,7 +625,7 @@ msgstr "工具"
 msgid "Top toolbar"
 msgstr "顶部工具栏"
 
-#: src/components/preferences-modal/ai-provider-card.tsx:437
+#: src/components/preferences-modal/ai-provider-card.tsx:442
 msgid "Try again"
 msgstr "重试"
 
@@ -648,7 +658,7 @@ msgstr "检查更新失败：%s"
 msgid "View"
 msgstr "视图"
 
-#: src/components/preferences-modal/index.tsx:222
+#: src/components/preferences-modal/index.tsx:233
 #: src/components/header-actions/index.tsx:291
 msgid "Visual editor"
 msgstr "可视化编辑器"

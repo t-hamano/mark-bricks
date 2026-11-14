@@ -13,6 +13,7 @@ import { store as preferencesStore } from '@wordpress/preferences';
  * Internal dependencies
  */
 import { createChat } from './chat';
+import { withCustomInstructions } from './instructions';
 import {
 	getModelOf,
 	PROVIDERS,
@@ -72,15 +73,24 @@ export const aiPlatform: AiPlatform = {
 		return false;
 	},
 	chat( request ) {
-		// The provider and the model are read for each message, so that the
-		// ones chosen during the conversation are used for the next message.
+		// The provider, the model, and the custom instructions are read for each message, so that the
+		// ones changed during the conversation are used for the next message.
 		const provider = getChosenProvider();
 		const chat = createChat( {
 			provider: PROVIDERS[ provider ],
 			transport: createTauriTransport( provider ),
 			model: getChosenModel(),
 		} );
-		return chat( request );
+		return chat( {
+			...request,
+			system: withCustomInstructions(
+				request.system,
+				select( preferencesStore ).get(
+					'mark-bricks',
+					'aiInstructions'
+				)
+			),
+		} );
 	},
 	openSettings() {
 		openPreferences( 'ai' );
