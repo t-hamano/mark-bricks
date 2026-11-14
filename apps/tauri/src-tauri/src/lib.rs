@@ -128,11 +128,17 @@ fn close_preview(app: tauri::AppHandle) -> Result<(), String> {
 /// - `"declined"`: the user dismissed the macOS confirmation.
 /// - `"unsupported"`: this platform has no in-app path.
 /// - `"idle"`: we opened the OS settings (Windows); no outcome to report.
+///
+/// Async because Tauri runs synchronous commands on the main thread, and the
+/// macOS path waits seconds for the user's answer, which would freeze the
+/// window meanwhile.
 #[tauri::command]
-fn set_as_default_markdown_handler() -> Result<String, String> {
+async fn set_as_default_markdown_handler() -> Result<String, String> {
     #[cfg(target_os = "macos")]
     {
-        set_default_markdown_handler_macos()
+        tauri::async_runtime::spawn_blocking(set_default_markdown_handler_macos)
+            .await
+            .map_err(|e| e.to_string())?
     }
     #[cfg(target_os = "windows")]
     {
