@@ -15,8 +15,13 @@ import './style.scss';
 
 // Fits the first slide to the card. The slides are SVGs, so they scale with
 // their width.
+//
+// The card under the preview takes the pointer. The host's
+// \`pointer-events: none\` is inherited, but the figures of an image background
+// reset it with \`all: initial\`, so it is set on every element.
 const PREVIEW_STYLE = `
 :host { display: block; }
+* { pointer-events: none !important; }
 div.marpit > svg { display: block; width: 100%; height: auto; }
 div.marpit > svg:not( :first-child ) { display: none; }
 `;
