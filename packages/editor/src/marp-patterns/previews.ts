@@ -21,6 +21,9 @@ export type SlidePatternPreviews = {
 	// The slides' HTML of each pattern in each theme, with the `{{key}}`
 	// placeholders of its text left in.
 	html: Record< string, Record< SlidePatternTheme, string > >;
+	// The rules of each pattern's scoped style in each theme, for the patterns
+	// that have one.
+	styles: Record< string, Record< SlidePatternTheme, string > >;
 };
 
 let previews: Promise< SlidePatternPreviews > | undefined;
@@ -77,6 +80,6 @@ export function getSlidePatternPreview(
 	}
 	return {
 		html: fillPlaceholders( html, pattern.strings(), escapeHTML ),
-		css: all.css[ theme ],
+		css: all.css[ theme ] + ( all.styles[ pattern.name ]?.[ theme ] ?? '' ),
 	};
 }

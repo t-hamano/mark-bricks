@@ -61,7 +61,30 @@ describe( 'renderSlidePatternPreviews', () => {
 		}
 	} );
 
-	it( 'rejects a pattern that adds its own style', () => {
+	it( 'keeps a scoped style apart, named after the pattern', () => {
+		const { css, html, styles } = renderSlidePatternPreviews( [
+			{
+				name: 'scoped',
+				title: () => 'Scoped',
+				categories: [ 'text' ],
+				markdown:
+					'<style scoped>\nsection { text-align: center; }\np { margin: 0; }\n</style>\n\n# Title',
+				strings: () => ( {} ),
+			},
+		] );
+		const base = renderSlidePatternPreviews( [] ).css;
+		expect( css ).toEqual( base );
+		expect( html.scoped.default ).toContain(
+			'data-marpit-scope-scoped=""'
+		);
+		expect( html.scoped.default ).not.toMatch( /<style/ );
+		expect( styles.scoped.default ).toBe(
+			'div.marpit > svg > foreignObject > section[data-marpit-scope-scoped]{text-align:center}' +
+				'div.marpit > svg > foreignObject > section[data-marpit-scope-scoped] p{margin:0}'
+		);
+	} );
+
+	it( 'rejects a pattern that adds a global style', () => {
 		expect( () =>
 			renderSlidePatternPreviews( [
 				{

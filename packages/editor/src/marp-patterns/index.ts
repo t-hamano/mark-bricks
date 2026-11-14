@@ -12,6 +12,13 @@ import titleAndImageOnLeft from './patterns/title-and-image-on-left';
 import titleAndImageOnLeftHalf from './patterns/title-and-image-on-left-half';
 import titleAndImageOnRight from './patterns/title-and-image-on-right';
 import headingAndTwoSubsections from './patterns/heading-and-two-subsections';
+import headingTextAndListInTwoColumns from './patterns/heading-text-and-list-in-two-columns';
+import headingAndTwoListsSideBySide from './patterns/heading-and-two-lists-side-by-side';
+import headingAndCenteredText from './patterns/heading-and-centered-text';
+import headingAndThreeNumbers from './patterns/heading-and-three-numbers';
+import headingAndThreeCards from './patterns/heading-and-three-cards';
+import headingAndFourCards from './patterns/heading-and-four-cards';
+import headingAndThreeStepsInARow from './patterns/heading-and-three-steps-in-a-row';
 import headingAndTextOnImage from './patterns/heading-and-text-on-image';
 import headerFooterAndPageNumber from './patterns/header-footer-and-page-number';
 import quoteOnImage from './patterns/quote-on-image';
@@ -42,6 +49,13 @@ export const SLIDE_PATTERNS: readonly SlidePattern[] = [
 	titleAndImageOnLeftHalf,
 	titleAndImageOnRight,
 	headingAndTwoSubsections,
+	headingTextAndListInTwoColumns,
+	headingAndTwoListsSideBySide,
+	headingAndCenteredText,
+	headingAndThreeNumbers,
+	headingAndThreeCards,
+	headingAndFourCards,
+	headingAndThreeStepsInARow,
 	headingAndTextOnImage,
 	headerFooterAndPageNumber,
 	quoteOnImage,

@@ -81,10 +81,12 @@ describe( 'slide patterns', () => {
 		}
 	);
 
-	it.each( patterns )( '%s uses no style of its own', ( _name, pattern ) => {
-		// The previews share one stylesheet per theme, which a pattern's
-		// own `style` or `<style>` would change.
-		expect( pattern.markdown ).not.toMatch( /<style[\s>]|_?style:/ );
+	it.each( patterns )( '%s styles only its own slide', ( _name, pattern ) => {
+		// A `style` directive or a global style would change every slide
+		// of the deck, not only the one the pattern adds.
+		expect( pattern.markdown.replace( /<style scoped>/g, '' ) ).not.toMatch(
+			/<style[\s>]|^\s*_?style:/m
+		);
 	} );
 
 	it.each( patterns )(
