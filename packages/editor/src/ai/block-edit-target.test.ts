@@ -153,6 +153,20 @@ describe( 'createBlockEditTarget', () => {
 			);
 		} );
 
+		it( 'moves front matter in the edit into the document front matter', () => {
+			const { access, getMarkdown } = setup( DOCUMENT );
+			let frontMatter: string | null = null;
+			createBlockEditTarget( access, null, ( next ) => {
+				frontMatter = next;
+			} ).apply( {
+				action: 'replace',
+				markdown:
+					'---\n\nmarp: true\ntheme: default\n\n--------------\n\n# Slide\n',
+			} );
+			expect( frontMatter ).toBe( 'marp: true\ntheme: default' );
+			expect( getMarkdown() ).toBe( DOCUMENT + '\n# Slide\n' );
+		} );
+
 		it( 'changes nothing when the selection no longer exists', () => {
 			const { access, getMarkdown, remove } = setup( DOCUMENT, [ 1 ] );
 			const target = createBlockEditTarget( access );

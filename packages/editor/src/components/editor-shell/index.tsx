@@ -297,6 +297,7 @@ function UnforwardedEditorShell(
 										isOpened={ isAiSidebarOpened }
 										editorMode={ editorMode }
 										frontMatter={ frontMatter }
+										setFrontMatter={ setFrontMatter }
 									/>
 								) }
 							</Stack>

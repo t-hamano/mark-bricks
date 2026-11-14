@@ -154,6 +154,15 @@ describe( 'createTextEditTarget', () => {
 			expect( getText() ).toBe( 'Intro.\n\n# Title\n\nNew.\n\nLast.\n' );
 		} );
 
+		it( 'rewrites malformed front matter in the edit', () => {
+			const { access, getText } = setup( '', 0 );
+			createTextEditTarget( access ).apply( {
+				action: 'replace',
+				markdown: '---\n\nmarp: true\n\n--------\n\n# Slide\n',
+			} );
+			expect( getText() ).toBe( '---\nmarp: true\n---\n\n# Slide' );
+		} );
+
 		it( 'changes nothing when the selection no longer exists', () => {
 			const { access, getText, loseRanges } = setup( DOCUMENT, FIRST );
 			const target = createTextEditTarget( access );

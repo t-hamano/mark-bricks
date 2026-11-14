@@ -27,6 +27,7 @@ type Props = {
 	isOpened: boolean;
 	editorMode: 'visual' | 'text';
 	frontMatter: string | null;
+	setFrontMatter: ( next: string | null ) => void;
 };
 
 /**
@@ -34,17 +35,19 @@ type Props = {
  * and shows the sidebar when it is open. Must be rendered inside
  * `BlockEditorProvider`, whose registry holds the document's blocks.
  *
- * @param props             Props.
- * @param props.toggleRef   The header button that toggles the sidebar.
- * @param props.isOpened    Whether the sidebar is open.
- * @param props.editorMode  The active editor mode.
- * @param props.frontMatter The document's front matter.
+ * @param props                Props.
+ * @param props.toggleRef      The header button that toggles the sidebar.
+ * @param props.isOpened       Whether the sidebar is open.
+ * @param props.editorMode     The active editor mode.
+ * @param props.frontMatter    The document's front matter.
+ * @param props.setFrontMatter Replaces the document's front matter.
  */
 export function AiAssistant( {
 	toggleRef,
 	isOpened,
 	editorMode,
 	frontMatter,
+	setFrontMatter,
 }: Props ) {
 	const { ai } = usePlatform();
 	const registry = useRegistry();
@@ -58,9 +61,10 @@ export function AiAssistant( {
 		}
 		return createBlockEditTarget(
 			getBlockEditorAccess( registry ),
-			frontMatter
+			frontMatter,
+			setFrontMatter
 		);
-	}, [ editorMode, registry, frontMatter, textEditor ] );
+	}, [ editorMode, registry, frontMatter, setFrontMatter, textEditor ] );
 
 	const chat = useAiChat( { ai, editorMode, createTarget } );
 	const selectionSummary = useSelectionSummary( editorMode, textEditor );

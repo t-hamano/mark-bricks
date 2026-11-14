@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import { SELECTION_END, SELECTION_START, type EditTarget } from './edit-target';
+import { normalizeAiFrontMatter } from './front-matter';
 
 /**
  * A range of the text editor's content, as character offsets.
@@ -76,7 +77,10 @@ export function createTextEditTarget( access: TextEditorAccess ): EditTarget {
 				return false;
 			}
 			const text = access.getValue();
-			const content = markdown.replace( /\n+$/, '' );
+			const content = normalizeAiFrontMatter( markdown ).replace(
+				/\n+$/,
+				''
+			);
 
 			if ( action === 'replace' ) {
 				// Keep the line break that ended the selection, if any.
