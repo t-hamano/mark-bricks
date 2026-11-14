@@ -151,6 +151,46 @@ export function toMessageParams( messages: AiMessage[] ): MessageParam[] {
 }
 
 /**
+ * Where the document starts in the editor's system prompt.
+ */
+const DOCUMENT_START = '\n<document>\n';
+
+/**
+ * Splits the system prompt into cached blocks.
+ *
+ * The instructions before the document change only with the selection
+ * and the settings, while the document changes with every edit. Ending a
+ * cache entry before the document lets a request whose document changed
+ * still read the instructions, such as the Marp guide, from the cache.
+ *
+ * @param system The system prompt.
+ * @return The system blocks. Empty for an empty prompt, which the API
+ *         rejects as a text block.
+ */
+export function toSystemBlocks( system: string ): SystemBlock[] {
+	if ( ! system ) {
+		return [];
+	}
+	const cacheControl: CacheControl = { type: 'ephemeral' };
+	const index = system.indexOf( DOCUMENT_START );
+	if ( index <= 0 ) {
+		return [ { type: 'text', text: system, cache_control: cacheControl } ];
+	}
+	return [
+		{
+			type: 'text',
+			text: system.slice( 0, index ),
+			cache_control: cacheControl,
+		},
+		{
+			type: 'text',
+			text: system.slice( index ),
+			cache_control: cacheControl,
+		},
+	];
+}
+
+/**
  * Builds the body of a streamed Messages API request.
  *
  * @param options               The request.
@@ -174,23 +214,14 @@ export function buildRequestBody( {
 		model,
 		max_tokens: MAX_TOKENS,
 		stream: true,
-		// The system prompt, which holds the document, is cached together
-		// with the tool before it. The request that continues an answer
-		// after its edit reads it from the cache, and so does the next
-		// message while the document and the selection stay the same.
+		// The system prompt is cached together with the tool before it. The
+		// request that continues an answer after its edit reads it from the
+		// cache, and so does the next message while the document and the
+		// selection stay the same.
 		// The cache ends here and not after the messages: the continuation
 		// changes `tool_choice`, which the API does not let the cached
 		// messages outlive.
-		// The API rejects an empty text block.
-		system: system
-			? [
-					{
-						type: 'text',
-						text: system,
-						cache_control: { type: 'ephemeral' },
-					},
-				]
-			: [],
+		system: toSystemBlocks( system ),
 		messages,
 		// The tool stays declared when it may no longer be called, so the
 		// request keeps the same tools as the one before it.

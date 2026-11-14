@@ -123,6 +123,22 @@ describe( 'buildRequestBody', () => {
 		] );
 	} );
 
+	it( 'ends a cache entry before the document', () => {
+		const system = 'Instructions.\n\n<document>\nOne.\n</document>';
+		expect( buildRequestBody( { ...base, system } ).system ).toEqual( [
+			{
+				type: 'text',
+				text: 'Instructions.\n',
+				cache_control: { type: 'ephemeral' },
+			},
+			{
+				type: 'text',
+				text: '\n<document>\nOne.\n</document>',
+				cache_control: { type: 'ephemeral' },
+			},
+		] );
+	} );
+
 	it( 'leaves out an empty system prompt', () => {
 		expect( buildRequestBody( { ...base, system: '' } ).system ).toEqual(
 			[]
