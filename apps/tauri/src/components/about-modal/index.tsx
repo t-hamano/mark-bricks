@@ -79,7 +79,9 @@ export default function AboutModal( { name, version }: Props ) {
 					<Dialog.Title>
 						{ __( 'About', 'mark-bricks' ) }
 					</Dialog.Title>
-					<Dialog.CloseIcon label={ __( 'Close', 'mark-bricks' ) } />
+					<Dialog.CloseIconButton
+						label={ __( 'Close', 'mark-bricks' ) }
+					/>
 				</Dialog.Header>
 				<Dialog.Content>
 					<Stack direction="column" align="stretch" gap="3xl">

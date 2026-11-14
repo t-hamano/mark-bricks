@@ -75,6 +75,9 @@ export function updateImage(
 	image: ImageValue,
 	existing: Record< string, string >
 ): RichTextValue {
+	if ( value.start === undefined ) {
+		return value;
+	}
 	const replacements = value.replacements.slice();
 	replacements[ value.start ] = {
 		type: IMAGE_FORMAT,

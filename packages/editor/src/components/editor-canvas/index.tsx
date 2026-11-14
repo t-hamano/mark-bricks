@@ -9,7 +9,6 @@ import { useMemo } from 'react';
 
 import {
 	BlockList,
-	// @ts-expect-error -- `privateApis` is not declared in the type definitions.
 	privateApis as blockEditorPrivateApis,
 } from '@wordpress/block-editor';
 import { useMergeRefs } from '@wordpress/compose';

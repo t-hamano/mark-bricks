@@ -146,7 +146,6 @@ export default function useEnter( props: Props ) {
 			items.push( ...parentInnerBlocks.slice( blockIndex + 1 ) );
 			flushItems();
 			replaceBlocks( parentListClientId, [ head, middle, ...tail ], 1 );
-			// @ts-expect-error @types signature is outdated; runtime supports selectionChange( clientId ).
 			selectionChange( middle.clientId );
 		}
 

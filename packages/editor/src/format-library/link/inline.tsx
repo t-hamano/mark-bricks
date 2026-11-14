@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useMemo } from 'react';
+import { useMemo, type ComponentProps } from 'react';
 
 /**
  * WordPress dependencies
@@ -34,10 +34,14 @@ type ControlValue = {
 	linkTitle: string;
 };
 
-type Setting = {
-	id: string;
-	title: string;
-};
+type LinkControlProps = ComponentProps< typeof LinkControl >;
+
+/**
+ * The value `LinkControl` passes back, which may carry any setting.
+ */
+type LinkControlValue = NonNullable< LinkControlProps[ 'value' ] >;
+
+type Setting = NonNullable< LinkControlProps[ 'settings' ] >[ number ];
 
 type Props = {
 	link: LinkValue;
@@ -100,12 +104,12 @@ export function InlineLinkUI( {
 			title: __( 'Title', 'mark-bricks' ),
 			render: (
 				setting: Setting,
-				controlValue: ControlValue,
-				onControlChange: ( next: ControlValue ) => void
+				controlValue: LinkControlValue | undefined,
+				onControlChange: ( next: LinkControlValue ) => void
 			) => (
 				<InputControl
 					label={ setting.title }
-					value={ controlValue.linkTitle ?? '' }
+					value={ String( controlValue?.linkTitle ?? '' ) }
 					onChange={ ( linkTitle?: string ) =>
 						onControlChange( {
 							...controlValue,
@@ -134,17 +138,16 @@ export function InlineLinkUI( {
 				settings={ settings }
 				hasTextControl
 				showSuggestions={ false }
-				// @ts-expect-error searchInputPlaceholder is missing from the type definitions
 				searchInputPlaceholder={ __(
 					'Paste or type URL',
 					'mark-bricks'
 				) }
-				onChange={ ( next?: Partial< ControlValue > ) => {
+				onChange={ ( next: LinkControlValue ) => {
 					const { url, title, linkTitle } = { ...value, ...next };
 					onApply( {
 						text: title ?? '',
 						url: url ?? '',
-						title: linkTitle ?? '',
+						title: String( linkTitle ?? '' ),
 					} );
 				} }
 				onRemove={ canRemove ? onRemove : undefined }

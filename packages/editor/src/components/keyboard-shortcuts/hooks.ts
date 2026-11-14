@@ -22,7 +22,7 @@ type KeyboardShortcut = NonNullable<
 
 export type ShortcutKeyCombinationData = {
 	character: string;
-	modifier: WPKeycodeModifier | undefined;
+	modifier?: WPKeycodeModifier;
 };
 
 type StaticShortcutEntry = {

@@ -1,10 +1,7 @@
 /**
  * WordPress dependencies
  */
-import {
-	// @ts-expect-error -- `BlockBreadcrumb` is not declared in the type definitions.
-	BlockBreadcrumb,
-} from '@wordpress/block-editor';
+import { BlockBreadcrumb } from '@wordpress/block-editor';
 import { Stack } from '@wordpress/ui';
 
 /**

@@ -166,10 +166,7 @@ export function EditorHeader( {
 			</Stack>
 			{ showFixedToolbar && (
 				<Stack className="editor-header__block-toolbar" align="center">
-					<BlockToolbar
-						// @ts-expect-error -- hideDragHandle is missing from the published BlockToolbar type defs.
-						hideDragHandle
-					/>
+					<BlockToolbar hideDragHandle />
 					<Popover.Slot name="block-toolbar" />
 				</Stack>
 			) }

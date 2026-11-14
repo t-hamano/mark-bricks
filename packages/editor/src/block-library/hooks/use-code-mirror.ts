@@ -41,7 +41,7 @@ type Props = {
 		previousBlockClientId: string | null;
 		nextBlockClientId: string | null;
 		insertBlocksAfter: BlockEditProps[ 'insertBlocksAfter' ];
-		selectBlock: ( clientId: string, initialPosition?: number ) => void;
+		selectBlock: ( clientId: string, initialPosition?: 0 | -1 ) => void;
 		onChange: ( text: string ) => void;
 	};
 };
@@ -64,9 +64,7 @@ export function useCodeMirror( {
 	placeholder: placeholderText,
 	handlers,
 }: Props ) {
-	const [ container, setContainer ] = useState< HTMLDivElement | null >(
-		null
-	);
+	const [ container, setContainer ] = useState< HTMLElement | null >( null );
 	const viewRef = useRef< EditorView | null >( null );
 	const languageConf = useRef( new Compartment() );
 	const themeConf = useRef( new Compartment() );

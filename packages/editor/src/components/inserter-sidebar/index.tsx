@@ -16,12 +16,13 @@ import {
 /**
  * WordPress dependencies
  */
-import { useSelect, useDispatch, useRegistry } from '@wordpress/data';
 import {
-	store as blockEditorStore,
-	BlockIcon,
-	type EditorInserterItem,
-} from '@wordpress/block-editor';
+	useSelect,
+	useDispatch,
+	useRegistry,
+	type select,
+} from '@wordpress/data';
+import { store as blockEditorStore, BlockIcon } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
 import { __unstableMotion as motion, Composite } from '@wordpress/components';
 import { useReducedMotion, useViewportMatch } from '@wordpress/compose';
@@ -64,6 +65,11 @@ function chunk< T >( items: T[], size: number ) {
 	}
 	return rows;
 }
+
+// `@wordpress/block-editor` does not export the inserter item type.
+type InserterItem = ReturnType<
+	ReturnType< typeof select< typeof blockEditorStore > >[ 'getInserterItems' ]
+>[ number ];
 
 type Props = {
 	toggleRef: RefObject< HTMLButtonElement | null >;
@@ -111,8 +117,8 @@ export function InserterSidebar( { toggleRef }: Props ) {
 		}
 		return items.filter(
 			( item ) =>
-				item.title.toLowerCase().includes( q ) ||
-				item.keywords.some( ( k ) => k.toLowerCase().includes( q ) )
+				item.title?.toLowerCase().includes( q ) ||
+				item.keywords?.some( ( k ) => k.toLowerCase().includes( q ) )
 		);
 	}, [ items, search ] );
 
@@ -148,7 +154,7 @@ export function InserterSidebar( { toggleRef }: Props ) {
 	}, [] );
 
 	const onSelectItem = useCallback(
-		( item: EditorInserterItem ) => {
+		( item: InserterItem ) => {
 			const block = createBlock( item.name, item.initialAttributes );
 			const { index, replaceClientId } = getInsertionTarget( registry );
 			if ( replaceClientId ) {

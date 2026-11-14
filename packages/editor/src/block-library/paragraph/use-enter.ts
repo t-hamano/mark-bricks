@@ -35,12 +35,8 @@ type Props = {
  */
 export default function useEnter( props: Props ) {
 	const { batch } = useRegistry();
-	const {
-		// @ts-expect-error @types/wordpress__block-editor is missing moveBlocksToPosition.
-		moveBlocksToPosition,
-		replaceBlocks,
-		selectionChange,
-	} = useDispatch( blockEditorStore );
+	const { moveBlocksToPosition, replaceBlocks, selectionChange } =
+		useDispatch( blockEditorStore );
 	const {
 		getBlockRootClientId,
 		getBlockIndex,
@@ -138,7 +134,6 @@ export default function useEnter( props: Props ) {
 			} );
 			batch( () => {
 				replaceBlocks( wrapperClientId, [ head, middle, tail ] );
-				// @ts-expect-error @types signature is outdated; runtime supports selectionChange( clientId ).
 				selectionChange( middle.clientId );
 			} );
 		}

@@ -63,6 +63,9 @@ export function getFormatBoundary(
 	value: RichTextValue
 ): Boundary | undefined {
 	const { formats, start, end } = value;
+	if ( start === undefined || end === undefined ) {
+		return undefined;
+	}
 	const format = formats[ start ]?.find(
 		( { type } ) => type === LINK_FORMAT
 	);
@@ -95,7 +98,8 @@ export function getLinkValue(
 	attributes: Record< string, string >,
 	isActive: boolean
 ): LinkValue {
-	const { start, end } = ( isActive && getFormatBoundary( value ) ) || value;
+	const { start = 0, end = start } =
+		( isActive && getFormatBoundary( value ) ) || value;
 	return {
 		text: getTextContent( slice( value, start, end ) ),
 		url: attributes.url ?? '',
@@ -116,7 +120,8 @@ export function setLink(
 	isActive: boolean,
 	link: LinkValue
 ): RichTextValue {
-	const { start, end } = ( isActive && getFormatBoundary( value ) ) || value;
+	const { start = 0, end = start } =
+		( isActive && getFormatBoundary( value ) ) || value;
 	const attributes: Record< string, string > = { url: link.url };
 	if ( link.title ) {
 		attributes.title = link.title;

@@ -108,7 +108,6 @@ export default function Edit( props: BlockEditProps ) {
 	const blockProps = useBlockProps();
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		__unstableDisableDropZone: true,
-		// @ts-expect-error runtime accepts false to hide appender.
 		renderAppender: false,
 	} );
 	const useEnterRef = useEnter( { content, clientId, isTaskItem } );
@@ -135,8 +134,6 @@ export default function Edit( props: BlockEditProps ) {
 				) }
 				{ showText && (
 					<RichText
-						// @ts-expect-error @types mismatch: RichText ref is typed as
-						// LegacyRef<'div'>, but useMergeRefs returns RefCallback<HTMLElement>.
 						ref={ richTextRef }
 						identifier="content"
 						tagName="div"
