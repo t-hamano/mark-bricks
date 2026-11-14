@@ -98,6 +98,10 @@ export function useAiChat( {
 						dispatch( { type: 'APPEND_TEXT', text: event.text } );
 						return;
 					}
+					if ( event.type === 'usage' ) {
+						dispatch( { type: 'USAGE', usage: event.usage } );
+						return;
+					}
 					if ( event.type === 'activity' ) {
 						dispatch( {
 							type: 'ACTIVITY',

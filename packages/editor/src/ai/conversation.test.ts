@@ -68,6 +68,25 @@ describe( 'conversationReducer', () => {
 		] );
 	} );
 
+	it( 'adds up the tokens of the answer’s requests', () => {
+		const { messages } = run(
+			{ type: 'START', text: 'Rewrite this' },
+			{
+				type: 'USAGE',
+				usage: { inputTokens: 1200, outputTokens: 80 },
+			},
+			{ type: 'EDIT', edit: EDIT, applied: true },
+			{
+				type: 'USAGE',
+				usage: { inputTokens: 1300, outputTokens: 20 },
+			},
+			{ type: 'FINISH', status: 'done' }
+		);
+		expect( messages[ 1 ] ).toMatchObject( {
+			usage: { inputTokens: 2500, outputTokens: 100 },
+		} );
+	} );
+
 	it( 'ignores events after the answer finished', () => {
 		const { messages } = run(
 			{ type: 'START', text: 'Hi' },

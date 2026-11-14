@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 /**
  * Internal dependencies
  */
-import type { AiActivity, AiEdit, AiMessage } from '../platform';
+import type { AiActivity, AiEdit, AiMessage, AiUsage } from '../platform';
 
 export type UserChatMessage = {
 	id: string;
@@ -32,6 +32,11 @@ export type AssistantChatMessage = {
 	 * editor modes.
 	 */
 	editStatus?: 'applied' | 'dropped';
+	/**
+	 * The tokens the answer used, added up over its requests. Omitted when
+	 * the host did not report them.
+	 */
+	usage?: AiUsage;
 	error?: string;
 };
 
@@ -50,6 +55,7 @@ export type ConversationAction =
 	| { type: 'APPEND_TEXT'; text: string }
 	| { type: 'ACTIVITY'; activity: AiActivity }
 	| { type: 'EDIT'; edit: AiEdit; applied: boolean }
+	| { type: 'USAGE'; usage: AiUsage }
 	| {
 			type: 'FINISH';
 			status: 'done' | 'stopped' | 'error';
@@ -119,6 +125,18 @@ export function conversationReducer(
 				edit: action.edit,
 				editStatus: action.applied ? 'applied' : 'dropped',
 				activity: 'waiting',
+			} ) );
+		case 'USAGE':
+			return updateAnswer( conversation, ( message ) => ( {
+				...message,
+				usage: {
+					inputTokens:
+						( message.usage?.inputTokens ?? 0 ) +
+						action.usage.inputTokens,
+					outputTokens:
+						( message.usage?.outputTokens ?? 0 ) +
+						action.usage.outputTokens,
+				},
 			} ) );
 		case 'FINISH':
 			return updateAnswer( conversation, ( message ) => ( {

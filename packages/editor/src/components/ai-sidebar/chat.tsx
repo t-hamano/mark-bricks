@@ -13,7 +13,7 @@ import {
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { arrowUp } from '@wordpress/icons';
 import { isKeyboardEvent } from '@wordpress/keycodes';
 import {
@@ -56,6 +56,8 @@ function getActivityLabel(
 			return __( 'Waiting for the answer…', 'mark-bricks' );
 	}
 }
+
+const numberFormat = new Intl.NumberFormat();
 
 function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 	const activity =
@@ -112,6 +114,19 @@ function AssistantMessage( { message }: { message: AssistantChatMessage } ) {
 							) }
 					</Notice.Description>
 				</Notice.Root>
+			) }
+			{ message.usage && message.status !== 'streaming' && (
+				<Text variant="body-sm" className="ai-chat__message-usage">
+					{ sprintf(
+						/* translators: 1: The number of tokens the AI model read. 2: The number of tokens it wrote. */
+						__(
+							'%1$s input tokens, %2$s output tokens',
+							'mark-bricks'
+						),
+						numberFormat.format( message.usage.inputTokens ),
+						numberFormat.format( message.usage.outputTokens )
+					) }
+				</Text>
 			) }
 		</Stack>
 	);

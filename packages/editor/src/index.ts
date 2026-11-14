@@ -15,6 +15,7 @@ export type {
 	AiMessage,
 	AiPlatform,
 	AiStreamEvent,
+	AiUsage,
 	Platform,
 } from './platform';
 export { FONT_FAMILY_STACKS, type FontFamily } from './font-families';
