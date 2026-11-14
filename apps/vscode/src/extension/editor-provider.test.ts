@@ -146,6 +146,24 @@ describe( 'webview messages', () => {
 			expect.anything()
 		);
 	} );
+
+	it( 'ignores settings the webview may not change', () => {
+		const { send } = openEditor();
+
+		// Messages cross a process boundary, so their shape is not guaranteed.
+		send( {
+			type: 'updateSetting',
+			key: 'fontFamily',
+			value: true,
+		} as unknown as WebviewMessage );
+		send( {
+			type: 'updateSetting',
+			key: 'topToolbar',
+			value: 'yes',
+		} as unknown as WebviewMessage );
+
+		expect( configurationUpdate ).not.toHaveBeenCalled();
+	} );
 } );
 
 describe( 'webview edits', () => {

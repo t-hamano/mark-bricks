@@ -1,8 +1,8 @@
 [package]
 name = "mark-bricks"
 version = "0.17.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "A visual Markdown editor built on the WordPress block editor"
+authors = ["Aki Hamano"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
