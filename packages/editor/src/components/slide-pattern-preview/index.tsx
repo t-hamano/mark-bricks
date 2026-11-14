@@ -8,6 +8,11 @@ import { useLayoutEffect, useRef } from 'react';
 import '@fontsource/lato/400.css';
 import '@fontsource/lato/900.css';
 
+/**
+ * Internal dependencies
+ */
+import './style.scss';
+
 // Fits the first slide to the card. The slides are SVGs, so they scale with
 // their width.
 const PREVIEW_STYLE = `
@@ -50,11 +55,5 @@ export function SlidePatternPreview( { html, css }: Props ) {
 		return () => marpBrowser.cleanup();
 	}, [ html, css ] );
 
-	return (
-		<div
-			ref={ ref }
-			className="inserter-sidebar__pattern-preview"
-			aria-hidden
-		/>
-	);
+	return <div ref={ ref } className="slide-pattern-preview" aria-hidden />;
 }

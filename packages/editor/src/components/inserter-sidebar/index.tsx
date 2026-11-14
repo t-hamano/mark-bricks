@@ -50,7 +50,7 @@ import { SlidePatternList } from './slide-pattern-list';
 import {
 	getInsertionTarget,
 	useInsertionPointPreview,
-} from './insertion-target';
+} from '../../inserter/insertion-target';
 import './style.scss';
 
 const BLOCKS_PER_ROW = 2;
@@ -128,7 +128,13 @@ export function InserterSidebar( { toggleRef }: Props ) {
 
 	const closeOnEscape = useCallback(
 		( event: KeyboardEvent ) => {
-			if ( event.key === 'Escape' && ! event.defaultPrevented ) {
+			// Leaves Escape in the slide pattern modal to the modal: its
+			// events bubble here through the portal.
+			if (
+				event.key === 'Escape' &&
+				! event.defaultPrevented &&
+				event.currentTarget.contains( event.target as Node )
+			) {
 				event.preventDefault();
 				closeInserterSidebar();
 			}

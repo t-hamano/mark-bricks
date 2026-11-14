@@ -23,7 +23,6 @@
 
 .inserter-sidebar__search-control {
 	flex: 1 1 auto;
-
 	// The reset button is rendered as an input suffix instead.
 	input[type="search"]::-webkit-search-cancel-button {
 		appearance: none;
@@ -106,8 +105,13 @@
 	padding: var(--wpds-dimension-padding-sm);
 }
 
-.inserter-sidebar__pattern-preview {
-	aspect-ratio: 16 / 9;
-	overflow: hidden;
-	pointer-events: none;
+
+.inserter-sidebar__pattern-footer {
+	flex: 0 0 auto;
+	padding: var(--wpds-dimension-padding-sm);
+	border-top: var(--wpds-border-width-xs) solid var(--wpds-color-stroke-surface-neutral-weak);
+}
+
+.inserter-sidebar__pattern-explore {
+	width: 100%;
 }

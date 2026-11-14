@@ -8,8 +8,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
-"PO-Revision-Date: 2026-11-09T14:46:23.904Z\n"
+"POT-Creation-Date: 2026-11-14T03:43:17.879Z\n"
+"PO-Revision-Date: 2026-11-14T03:43:20.204Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
@@ -95,7 +95,11 @@ msgstr "Agenda"
 msgid "Aki Hamano"
 msgstr "Aki Hamano"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:103
+#: src/components/slide-pattern-modal/index.tsx:192
+msgid "All"
+msgstr "Todos"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:49
 msgid "All categories"
 msgstr "Todas las categorías"
 
@@ -131,8 +135,8 @@ msgstr "Contexto"
 msgid "Block Inserter"
 msgstr "Insertador de bloques"
 
-#: src/components/inserter-sidebar/index.tsx:162
-#: src/components/inserter-sidebar/index.tsx:294
+#: src/components/inserter-sidebar/index.tsx:168
+#: src/components/inserter-sidebar/index.tsx:300
 msgid "Blocks"
 msgstr "Bloques"
 
@@ -156,7 +160,7 @@ msgctxt "slide pattern"
 msgid "Bullet points"
 msgstr "Viñetas"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:158
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:74
 msgid "Category"
 msgstr "Categoría"
 
@@ -193,8 +197,9 @@ msgstr "Aspecto clásico con fondo de color."
 msgid "Clear formatting"
 msgstr "Borrar formato"
 
+#: src/components/slide-pattern-modal/index.tsx:224
 #: src/components/list-view-sidebar/index.tsx:64
-#: src/components/inserter-sidebar/index.tsx:278
+#: src/components/inserter-sidebar/index.tsx:284
 #: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr "Cerrar"
@@ -340,6 +345,10 @@ msgstr "Introduce el texto alternativo…"
 #: src/block-library/image/edit.tsx:256
 msgid "Enter title…"
 msgstr "Introduce el título…"
+
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:150
+msgid "Explore Marp patterns"
+msgstr "Explorar patrones de Marp"
 
 #: src/block-library/image/edit.tsx:291
 msgid "Failed to load image."
@@ -578,6 +587,10 @@ msgstr ""
 "tamaño. Las demás palabras se convierten en el texto alternativo o en el pie "
 "de una imagen de fondo."
 
+#: src/components/slide-pattern-modal/index.tsx:222
+msgid "Marp patterns"
+msgstr "Patrones de Marp"
+
 #: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "Mensaje"
@@ -622,7 +635,8 @@ msgstr "Ningún bloque seleccionado"
 msgid "No matching language."
 msgstr "No hay ningún lenguaje coincidente."
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:177
+#: src/components/slide-pattern-modal/index.tsx:120
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:93
 msgid "No slide patterns found."
 msgstr "No se han encontrado patrones de diapositivas."
 
@@ -723,6 +737,14 @@ msgctxt "slide pattern"
 msgid "Presentation title"
 msgstr "Título de la presentación"
 
+#: src/components/slide-pattern-modal/index.tsx:57
+msgid "Preview"
+msgstr "Vista previa"
+
+#: src/components/slide-pattern-modal/index.tsx:135
+msgid "Preview size"
+msgstr "Tamaño de la vista previa"
+
 #: src/marp-patterns/patterns/agenda.ts:23
 msgctxt "slide pattern"
 msgid "Proposal"
@@ -780,7 +802,7 @@ msgstr "Investigación"
 msgid "Reset"
 msgstr "Restablecer"
 
-#: src/components/inserter-sidebar/index.tsx:263
+#: src/components/inserter-sidebar/index.tsx:269
 msgid "Reset search"
 msgstr "Restablecer la búsqueda"
 
@@ -803,15 +825,15 @@ msgstr "Revisar"
 msgid "Row count"
 msgstr "Núm. filas"
 
-#: src/components/inserter-sidebar/index.tsx:250
+#: src/components/inserter-sidebar/index.tsx:256
 msgid "Search"
 msgstr "Buscar"
 
-#: src/components/inserter-sidebar/index.tsx:245
+#: src/components/inserter-sidebar/index.tsx:251
 msgid "Search for blocks"
 msgstr "Buscar bloques"
 
-#: src/components/inserter-sidebar/index.tsx:241
+#: src/components/inserter-sidebar/index.tsx:247
 msgid "Search for slide patterns"
 msgstr "Buscar patrones de diapositivas"
 
@@ -884,8 +906,8 @@ msgstr "Tamaño"
 msgid "Slide Separator"
 msgstr "Separador de diapositivas"
 
-#: src/components/inserter-sidebar/slide-pattern-list.tsx:183
-#: src/components/inserter-sidebar/index.tsx:297
+#: src/components/inserter-sidebar/slide-pattern-list.tsx:99
+#: src/components/inserter-sidebar/index.tsx:303
 msgid "Slide patterns"
 msgstr "Patrones de diapositivas"
 
@@ -1015,6 +1037,7 @@ msgstr "Consejo"
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
+#: src/components/slide-pattern-modal/index.tsx:70
 #: src/block-library/image/edit.tsx:253
 msgid "Title"
 msgstr "Título"
