@@ -127,7 +127,12 @@ function UnforwardedEditorShell(
 	const inserterToggleRef = useRef< HTMLButtonElement >( null );
 	const listViewToggleRef = useRef< HTMLButtonElement >( null );
 	const aiSidebarToggleRef = useRef< HTMLButtonElement >( null );
-	const textEditorRef = useRef< MonacoEditor.IStandaloneCodeEditor >( null );
+	const [ textEditor, setTextEditor ] =
+		useState< MonacoEditor.IStandaloneCodeEditor | null >( null );
+	const textEditorContext = useMemo(
+		() => ( { editor: textEditor, setEditor: setTextEditor } ),
+		[ textEditor ]
+	);
 	const hasAi = !! platform?.ai;
 	const hasSidePanel = !! sidePanel;
 	const contentRef = useRef< HTMLElement >( null );
@@ -200,7 +205,7 @@ function UnforwardedEditorShell(
 
 	return (
 		<PlatformProvider platform={ platform }>
-			<TextEditorContext.Provider value={ textEditorRef }>
+			<TextEditorContext.Provider value={ textEditorContext }>
 				<FrontMatterContext.Provider value={ frontMatterContext }>
 					<Stack
 						render={ <ShortcutProvider /> }

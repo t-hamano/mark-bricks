@@ -50,11 +50,16 @@
 	max-width: 85%;
 	padding: var(--wpds-dimension-padding-sm) var(--wpds-dimension-padding-md);
 	border-radius: var(--wpds-border-radius-md);
-	background: var(--wpds-color-background-surface-neutral);
+	background: var(--wpds-color-background-surface-neutral-weak);
+}
+
+.ai-chat__spinner {
+	align-self: center;
 }
 
 .ai-chat__message-status,
-.ai-chat__intro {
+.ai-chat__intro,
+.ai-chat__selection {
 	color: var(--wpds-color-foreground-content-neutral-weak);
 }
 
@@ -66,4 +71,14 @@
 
 .ai-chat__input {
 	flex: 1 1 auto;
+
+	// Starts as tall as the compact button next to it: one line of text
+	// (line-height 1.4), plus the padding and the 1px borders.
+	textarea {
+		--wp-ui-input-padding-block: calc((var(--wpds-dimension-size-md) - 2px - 1.4em) / 2);
+
+		// The chat grows the box with its text, up to about eight lines.
+		max-height: 12em;
+		resize: none;
+	}
 }

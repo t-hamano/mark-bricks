@@ -8,13 +8,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:29:03.392Z\n"
-"PO-Revision-Date: 2026-11-09T14:29:26.885Z\n"
+"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
+"PO-Revision-Date: 2026-11-09T14:46:25.965Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: ko_KR\n"
 "X-Domain: mark-bricks\n"
+
+# %d: The number of blocks.
+#: src/ai/selection-summary.ts:46
+msgid "%d block selected"
+msgid_plural "%d blocks selected"
+msgstr[0] "블록 %d개 선택됨"
+msgstr[1] "블록 %d개 선택됨"
+
+# %d: The number of lines.
+#: src/ai/selection-summary.ts:29
+msgid "%d line selected"
+msgid_plural "%d lines selected"
+msgstr[0] "%d줄 선택됨"
+msgstr[1] "%d줄 선택됨"
 
 #: src/components/list-view-outline/index.tsx:159
 msgid "(Empty heading)"
@@ -64,9 +78,9 @@ msgctxt "slide pattern"
 msgid "A short line about this section"
 msgstr "이 섹션에 대한 짧은 설명"
 
-#: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/sidebar.tsx:60
-#: src/components/ai-sidebar/sidebar.tsx:91
+#: src/components/editor-header/index.tsx:194
+#: src/components/ai-sidebar/sidebar.tsx:61
+#: src/components/ai-sidebar/sidebar.tsx:92
 msgid "AI Assistant"
 msgstr "AI 어시스턴트"
 
@@ -96,11 +110,11 @@ msgstr "대체 텍스트"
 msgid "Apply"
 msgstr "적용"
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:259
 msgid "Ask the AI Assistant"
 msgstr "AI 어시스턴트에게 질문"
 
-#: src/components/ai-sidebar/chat.tsx:198
+#: src/components/ai-sidebar/chat.tsx:237
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -181,11 +195,11 @@ msgstr "서식 지우기"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:278
-#: src/components/ai-sidebar/sidebar.tsx:106
+#: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr "닫기"
 
-#: src/components/editor-header/index.tsx:194
+#: src/components/editor-header/index.tsx:193
 msgid "Close AI Assistant"
 msgstr "AI 어시스턴트 닫기"
 
@@ -313,7 +327,7 @@ msgstr "이미지 편집"
 msgid "Edit table"
 msgstr "테이블 편집"
 
-#: src/components/ai-sidebar/chat.tsx:57
+#: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr "문서를 편집했습니다."
 
@@ -504,6 +518,11 @@ msgctxt "slide pattern"
 msgid "Launch"
 msgstr "출시"
 
+# %d: The line number.
+#: src/ai/selection-summary.ts:22
+msgid "Line %d"
+msgstr "%d번째 줄"
+
 #: src/format-library/link/index.tsx:36
 msgid "Link"
 msgstr "링크"
@@ -558,7 +577,7 @@ msgstr ""
 "bg, w:200px, sepia 같은 Marp 키워드로 레이아웃과 크기를 지정합니다. 나머지 단"
 "어는 대체 텍스트가 되며, 배경 이미지에서는 캡션이 됩니다."
 
-#: src/components/ai-sidebar/chat.tsx:217
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "메시지"
 
@@ -584,7 +603,7 @@ msgid ""
 msgstr ""
 "문서의 구조를 탐색하고 비어 있거나 잘못된 제목 수준과 같은 문제를 해결하세요."
 
-#: src/components/ai-sidebar/sidebar.tsx:96
+#: src/components/ai-sidebar/sidebar.tsx:97
 msgid "New conversation"
 msgstr "새 대화"
 
@@ -592,6 +611,10 @@ msgstr "새 대화"
 msgctxt "slide pattern"
 msgid "Next steps"
 msgstr "다음 단계"
+
+#: src/ai/selection-summary.ts:42
+msgid "No block selected"
+msgstr "선택된 블록 없음"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
@@ -619,7 +642,7 @@ msgstr "모두가 기억했으면 하는 한마디"
 msgid "Open by default"
 msgstr "기본적으로 열기"
 
-#: src/components/ai-sidebar/chat.tsx:190
+#: src/components/ai-sidebar/chat.tsx:229
 msgid "Open settings"
 msgstr "설정 열기"
 
@@ -761,7 +784,7 @@ msgstr "검색 초기화"
 
 #: src/components/editor-shell/side-panel-resizer.tsx:134
 msgid "Resize side panel"
-msgstr ""
+msgstr "사이드 패널 크기 조절"
 
 #: src/marp-patterns/patterns/resources.ts:13
 #: src/marp-patterns/patterns/resources.ts:21
@@ -824,11 +847,11 @@ msgstr "섹션 제목"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "다른 설정은 <a>Marp 문서</a>를 참고하세요."
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Send"
 msgstr "보내기"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI 어시스턴트를 사용하려면 API 키를 설정하세요."
 
@@ -890,11 +913,11 @@ msgctxt "slide pattern"
 msgid "Steps"
 msgstr "단계"
 
-#: src/components/ai-sidebar/chat.tsx:228
+#: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
 msgstr "중지"
 
-#: src/components/ai-sidebar/chat.tsx:70
+#: src/components/ai-sidebar/chat.tsx:79
 msgid "Stopped."
 msgstr "중지했습니다."
 
@@ -938,7 +961,7 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "감사합니다"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:86
 msgid "The answer could not be loaded."
 msgstr "답변을 불러오지 못했습니다."
 
@@ -950,7 +973,7 @@ msgstr "슬라이드의 가로세로 비율."
 msgid "The diagram could not be rendered."
 msgstr "다이어그램을 렌더링할 수 없습니다."
 
-#: src/components/ai-sidebar/chat.tsx:62
+#: src/components/ai-sidebar/chat.tsx:71
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1073,7 +1096,7 @@ msgstr "기기에서 이미지를 업로드하거나 URL로 삽입하세요."
 msgid "Visual markdown block editor."
 msgstr "비주얼 Markdown 블록 편집기."
 
-#: src/components/ai-sidebar/chat.tsx:46
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Waiting for the answer…"
 msgstr "답변을 기다리는 중…"
 

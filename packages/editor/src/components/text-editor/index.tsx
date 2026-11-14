@@ -63,7 +63,7 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 		null
 	);
 
-	const sharedEditorRef = useContext( TextEditorContext );
+	const setSharedEditor = useContext( TextEditorContext )?.setEditor;
 
 	const contentRef = useRef( content );
 	contentRef.current = content;
@@ -105,9 +105,7 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 			insertSpaces: true,
 		} );
 		editorRef.current = editor;
-		if ( sharedEditorRef ) {
-			sharedEditorRef.current = editor;
-		}
+		setSharedEditor?.( () => editor );
 
 		const changeSubscription = editor.onDidChangeModelContent( () => {
 			const value = editor.getValue();
@@ -143,11 +141,11 @@ export function TextEditor( { content, onChange, settings }: Props ) {
 			keySubscription.dispose();
 			editor.dispose();
 			editorRef.current = null;
-			if ( sharedEditorRef?.current === editor ) {
-				sharedEditorRef.current = null;
-			}
+			setSharedEditor?.( ( current ) =>
+				current === editor ? null : current
+			);
 		};
-	}, [ sharedEditorRef ] );
+	}, [ setSharedEditor ] );
 
 	// Reflect external `content` changes (e.g. switching tabs) into the model.
 	useEffect( () => {

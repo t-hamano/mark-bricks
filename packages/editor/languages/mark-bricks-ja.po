@@ -8,13 +8,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:29:03.392Z\n"
-"PO-Revision-Date: 2026-11-09T14:29:26.323Z\n"
+"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
+"PO-Revision-Date: 2026-11-09T14:46:21.854Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: ja\n"
 "X-Domain: mark-bricks\n"
+
+# %d: The number of blocks.
+#: src/ai/selection-summary.ts:46
+msgid "%d block selected"
+msgid_plural "%d blocks selected"
+msgstr[0] "%d 個のブロックを選択中"
+msgstr[1] "%d 個のブロックを選択中"
+
+# %d: The number of lines.
+#: src/ai/selection-summary.ts:29
+msgid "%d line selected"
+msgid_plural "%d lines selected"
+msgstr[0] "%d 行を選択中"
+msgstr[1] "%d 行を選択中"
 
 #: src/components/list-view-outline/index.tsx:159
 msgid "(Empty heading)"
@@ -64,9 +78,9 @@ msgctxt "slide pattern"
 msgid "A short line about this section"
 msgstr "このセクションの短い説明"
 
-#: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/sidebar.tsx:60
-#: src/components/ai-sidebar/sidebar.tsx:91
+#: src/components/editor-header/index.tsx:194
+#: src/components/ai-sidebar/sidebar.tsx:61
+#: src/components/ai-sidebar/sidebar.tsx:92
 msgid "AI Assistant"
 msgstr "AI アシスタント"
 
@@ -96,11 +110,11 @@ msgstr "代替テキスト"
 msgid "Apply"
 msgstr "適用"
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:259
 msgid "Ask the AI Assistant"
 msgstr "AI アシスタントに質問"
 
-#: src/components/ai-sidebar/chat.tsx:198
+#: src/components/ai-sidebar/chat.tsx:237
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -181,11 +195,11 @@ msgstr "書式をクリア"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:278
-#: src/components/ai-sidebar/sidebar.tsx:106
+#: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr "閉じる"
 
-#: src/components/editor-header/index.tsx:194
+#: src/components/editor-header/index.tsx:193
 msgid "Close AI Assistant"
 msgstr "AI アシスタントを閉じる"
 
@@ -313,7 +327,7 @@ msgstr "画像を編集"
 msgid "Edit table"
 msgstr "表を編集"
 
-#: src/components/ai-sidebar/chat.tsx:57
+#: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr "ドキュメントを編集しました。"
 
@@ -504,6 +518,11 @@ msgctxt "slide pattern"
 msgid "Launch"
 msgstr "リリース"
 
+# %d: The line number.
+#: src/ai/selection-summary.ts:22
+msgid "Line %d"
+msgstr "%d 行目"
+
 #: src/format-library/link/index.tsx:36
 msgid "Link"
 msgstr "リンク"
@@ -558,7 +577,7 @@ msgstr ""
 "bg、w:200px、sepia などの Marp キーワードでレイアウトとサイズを指定します。そ"
 "れ以外の語は代替テキスト、背景画像の場合はキャプションになります。"
 
-#: src/components/ai-sidebar/chat.tsx:217
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "メッセージ"
 
@@ -584,7 +603,7 @@ msgid ""
 msgstr ""
 "ドキュメントの構造を調べ、空白や不正確な見出しレベルなどの問題に対処します。"
 
-#: src/components/ai-sidebar/sidebar.tsx:96
+#: src/components/ai-sidebar/sidebar.tsx:97
 msgid "New conversation"
 msgstr "新しい会話"
 
@@ -592,6 +611,10 @@ msgstr "新しい会話"
 msgctxt "slide pattern"
 msgid "Next steps"
 msgstr "今後の進め方"
+
+#: src/ai/selection-summary.ts:42
+msgid "No block selected"
+msgstr "選択中のブロックなし"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
@@ -619,7 +642,7 @@ msgstr "全員に覚えてほしいひとこと"
 msgid "Open by default"
 msgstr "デフォルトで開く"
 
-#: src/components/ai-sidebar/chat.tsx:190
+#: src/components/ai-sidebar/chat.tsx:229
 msgid "Open settings"
 msgstr "設定を開く"
 
@@ -761,7 +784,7 @@ msgstr "検索をリセット"
 
 #: src/components/editor-shell/side-panel-resizer.tsx:134
 msgid "Resize side panel"
-msgstr ""
+msgstr "サイドパネルのサイズを変更"
 
 #: src/marp-patterns/patterns/resources.ts:13
 #: src/marp-patterns/patterns/resources.ts:21
@@ -824,11 +847,11 @@ msgstr "セクションのタイトル"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "その他の設定は<a>Marp のドキュメント</a>を参照してください。"
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Send"
 msgstr "送信"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr "AI アシスタントを使うには API キーを設定してください。"
 
@@ -890,11 +913,11 @@ msgctxt "slide pattern"
 msgid "Steps"
 msgstr "ステップ"
 
-#: src/components/ai-sidebar/chat.tsx:228
+#: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
 msgstr "停止"
 
-#: src/components/ai-sidebar/chat.tsx:70
+#: src/components/ai-sidebar/chat.tsx:79
 msgid "Stopped."
 msgstr "停止しました。"
 
@@ -938,7 +961,7 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "ありがとうございました"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:86
 msgid "The answer could not be loaded."
 msgstr "回答を読み込めませんでした。"
 
@@ -950,7 +973,7 @@ msgstr "スライドの縦横比。"
 msgid "The diagram could not be rendered."
 msgstr "図を描画できませんでした。"
 
-#: src/components/ai-sidebar/chat.tsx:62
+#: src/components/ai-sidebar/chat.tsx:71
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1075,7 +1098,7 @@ msgstr "デバイスから画像をアップロードするか、URL から挿�
 msgid "Visual markdown block editor."
 msgstr "ビジュアルマークダウンブロックエディター。"
 
-#: src/components/ai-sidebar/chat.tsx:46
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Waiting for the answer…"
 msgstr "回答を待っています…"
 

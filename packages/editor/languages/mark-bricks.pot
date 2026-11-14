@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:29:03.392Z\n"
+"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -50,6 +50,29 @@ msgstr ""
 #: src/format-library/bold.tsx:17
 msgid "Bold"
 msgstr ""
+
+# %d: The line number.
+#: src/ai/selection-summary.ts:22
+msgid "Line %d"
+msgstr ""
+
+# %d: The number of lines.
+#: src/ai/selection-summary.ts:29
+msgid "%d line selected"
+msgid_plural "%d lines selected"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/ai/selection-summary.ts:42
+msgid "No block selected"
+msgstr ""
+
+# %d: The number of blocks.
+#: src/ai/selection-summary.ts:46
+msgid "%d block selected"
+msgid_plural "%d blocks selected"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/format-library/link/inline.tsx:100
 #: src/format-library/image/inline.tsx:157
@@ -125,7 +148,7 @@ msgstr ""
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:278
-#: src/components/ai-sidebar/sidebar.tsx:106
+#: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr ""
 
@@ -355,13 +378,13 @@ msgstr ""
 msgid "Marp Mode"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:194
+#: src/components/editor-header/index.tsx:193
 msgid "Close AI Assistant"
 msgstr ""
 
-#: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/sidebar.tsx:60
-#: src/components/ai-sidebar/sidebar.tsx:91
+#: src/components/editor-header/index.tsx:194
+#: src/components/ai-sidebar/sidebar.tsx:61
+#: src/components/ai-sidebar/sidebar.tsx:92
 msgid "AI Assistant"
 msgstr ""
 
@@ -369,59 +392,59 @@ msgstr ""
 msgid "Code editor"
 msgstr ""
 
-#: src/components/ai-sidebar/sidebar.tsx:96
+#: src/components/ai-sidebar/sidebar.tsx:97
 msgid "New conversation"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:46
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Waiting for the answer…"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:57
+#: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:62
+#: src/components/ai-sidebar/chat.tsx:71
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:70
+#: src/components/ai-sidebar/chat.tsx:79
 msgid "Stopped."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:86
 msgid "The answer could not be loaded."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:190
+#: src/components/ai-sidebar/chat.tsx:229
 msgid "Open settings"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:198
+#: src/components/ai-sidebar/chat.tsx:237
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:217
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:259
 msgid "Ask the AI Assistant"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:228
+#: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
 msgstr ""
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Send"
 msgstr ""
 

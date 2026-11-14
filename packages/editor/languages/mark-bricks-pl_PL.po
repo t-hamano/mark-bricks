@@ -8,13 +8,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-09T14:29:03.392Z\n"
-"PO-Revision-Date: 2026-11-09T14:29:27.447Z\n"
+"POT-Creation-Date: 2026-11-09T14:46:20.597Z\n"
+"PO-Revision-Date: 2026-11-09T14:46:26.665Z\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
 "X-Generator: @wp-blocks/make-pot 1.6.6\n"
 "Language: pl_PL\n"
 "X-Domain: mark-bricks\n"
+
+# %d: The number of blocks.
+#: src/ai/selection-summary.ts:46
+msgid "%d block selected"
+msgid_plural "%d blocks selected"
+msgstr[0] "Wybrano %d blok"
+msgstr[1] "Wybrano bloki: %d"
+
+# %d: The number of lines.
+#: src/ai/selection-summary.ts:29
+msgid "%d line selected"
+msgid_plural "%d lines selected"
+msgstr[0] "Wybrano %d wiersz"
+msgstr[1] "Wybrane wiersze: %d"
 
 #: src/components/list-view-outline/index.tsx:159
 msgid "(Empty heading)"
@@ -64,9 +78,9 @@ msgctxt "slide pattern"
 msgid "A short line about this section"
 msgstr "Krótki opis tej sekcji"
 
-#: src/components/editor-header/index.tsx:195
-#: src/components/ai-sidebar/sidebar.tsx:60
-#: src/components/ai-sidebar/sidebar.tsx:91
+#: src/components/editor-header/index.tsx:194
+#: src/components/ai-sidebar/sidebar.tsx:61
+#: src/components/ai-sidebar/sidebar.tsx:92
 msgid "AI Assistant"
 msgstr "Asystent AI"
 
@@ -96,11 +110,11 @@ msgstr "Tekst alternatywny"
 msgid "Apply"
 msgstr "Zastosuj"
 
-#: src/components/ai-sidebar/chat.tsx:219
+#: src/components/ai-sidebar/chat.tsx:259
 msgid "Ask the AI Assistant"
 msgstr "Zapytaj asystenta AI"
 
-#: src/components/ai-sidebar/chat.tsx:198
+#: src/components/ai-sidebar/chat.tsx:237
 msgid ""
 "Ask the AI Assistant to write or edit. Your selection, or the line the "
 "cursor is on in the code editor, is sent with your message."
@@ -181,11 +195,11 @@ msgstr "Wyczyść formatowanie"
 
 #: src/components/list-view-sidebar/index.tsx:64
 #: src/components/inserter-sidebar/index.tsx:278
-#: src/components/ai-sidebar/sidebar.tsx:106
+#: src/components/ai-sidebar/sidebar.tsx:107
 msgid "Close"
 msgstr "Zamknij"
 
-#: src/components/editor-header/index.tsx:194
+#: src/components/editor-header/index.tsx:193
 msgid "Close AI Assistant"
 msgstr "Zamknij asystenta AI"
 
@@ -313,7 +327,7 @@ msgstr "Edytuj obrazek"
 msgid "Edit table"
 msgstr "Edytuj tabelę"
 
-#: src/components/ai-sidebar/chat.tsx:57
+#: src/components/ai-sidebar/chat.tsx:66
 msgid "Edited the document."
 msgstr "Dokument został zmieniony."
 
@@ -504,6 +518,11 @@ msgctxt "slide pattern"
 msgid "Launch"
 msgstr "Premiera"
 
+# %d: The line number.
+#: src/ai/selection-summary.ts:22
+msgid "Line %d"
+msgstr "Wiersz %d"
+
 #: src/format-library/link/index.tsx:36
 msgid "Link"
 msgstr "Odnośnik"
@@ -559,7 +578,7 @@ msgstr ""
 "rozmiar. Pozostałe słowa stają się tekstem alternatywnym lub podpisem "
 "obrazka w tle."
 
-#: src/components/ai-sidebar/chat.tsx:217
+#: src/components/ai-sidebar/chat.tsx:257
 msgid "Message"
 msgstr "Wiadomość"
 
@@ -586,7 +605,7 @@ msgstr ""
 "Poruszaj się po strukturze dokumentu i rozwiązuj problemy, takie jak puste "
 "lub nieprawidłowe poziomy nagłówków."
 
-#: src/components/ai-sidebar/sidebar.tsx:96
+#: src/components/ai-sidebar/sidebar.tsx:97
 msgid "New conversation"
 msgstr "Nowa rozmowa"
 
@@ -594,6 +613,10 @@ msgstr "Nowa rozmowa"
 msgctxt "slide pattern"
 msgid "Next steps"
 msgstr "Następne kroki"
+
+#: src/ai/selection-summary.ts:42
+msgid "No block selected"
+msgstr "Nie wybrano bloku"
 
 #: src/block-library/code/edit.tsx:140
 msgid "No matching language."
@@ -621,7 +644,7 @@ msgstr "Jeden przekaz, który wszyscy mają zapamiętać"
 msgid "Open by default"
 msgstr "Otwórz domyślnie"
 
-#: src/components/ai-sidebar/chat.tsx:190
+#: src/components/ai-sidebar/chat.tsx:229
 msgid "Open settings"
 msgstr "Otwórz ustawienia"
 
@@ -763,7 +786,7 @@ msgstr "Zresetuj wyszukiwanie"
 
 #: src/components/editor-shell/side-panel-resizer.tsx:134
 msgid "Resize side panel"
-msgstr ""
+msgstr "Zmień rozmiar panelu bocznego"
 
 #: src/marp-patterns/patterns/resources.ts:13
 #: src/marp-patterns/patterns/resources.ts:21
@@ -826,11 +849,11 @@ msgstr "Tytuł sekcji"
 msgid "See the <a>Marp documentation</a> for other settings."
 msgstr "Inne ustawienia opisano w <a>dokumentacji Marp</a>."
 
-#: src/components/ai-sidebar/chat.tsx:237
+#: src/components/ai-sidebar/chat.tsx:280
 msgid "Send"
 msgstr "Wyślij"
 
-#: src/components/ai-sidebar/chat.tsx:180
+#: src/components/ai-sidebar/chat.tsx:219
 msgid "Set an API key to use the AI Assistant."
 msgstr "Ustaw klucz API, aby korzystać z asystenta AI."
 
@@ -892,11 +915,11 @@ msgctxt "slide pattern"
 msgid "Steps"
 msgstr "Kroki"
 
-#: src/components/ai-sidebar/chat.tsx:228
+#: src/components/ai-sidebar/chat.tsx:271
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: src/components/ai-sidebar/chat.tsx:70
+#: src/components/ai-sidebar/chat.tsx:79
 msgid "Stopped."
 msgstr "Zatrzymano."
 
@@ -940,7 +963,7 @@ msgctxt "slide pattern"
 msgid "Thank you"
 msgstr "Dziękuję"
 
-#: src/components/ai-sidebar/chat.tsx:77
+#: src/components/ai-sidebar/chat.tsx:86
 msgid "The answer could not be loaded."
 msgstr "Nie udało się wczytać odpowiedzi."
 
@@ -952,7 +975,7 @@ msgstr "Proporcje slajdów."
 msgid "The diagram could not be rendered."
 msgstr "Nie można wyrenderować diagramu."
 
-#: src/components/ai-sidebar/chat.tsx:62
+#: src/components/ai-sidebar/chat.tsx:71
 msgid ""
 "The edit was not applied because the selection changed, for example by "
 "switching editors."
@@ -1077,7 +1100,7 @@ msgstr "Prześlij obrazek z urządzenia lub wstaw go z adresu URL."
 msgid "Visual markdown block editor."
 msgstr "Wizualny blokowy edytor Markdown."
 
-#: src/components/ai-sidebar/chat.tsx:46
+#: src/components/ai-sidebar/chat.tsx:55
 msgid "Waiting for the answer…"
 msgstr "Oczekiwanie na odpowiedź…"
 

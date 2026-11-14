@@ -184,7 +184,6 @@ export function EditorHeader( {
 						{ __( 'Marp Mode', 'mark-bricks' ) }
 					</Badge>
 				) }
-				{ headerActions }
 				{ hasAi && (
 					<IconButton
 						ref={ aiSidebarToggleRef }
@@ -204,6 +203,7 @@ export function EditorHeader( {
 						aria-pressed={ isAiSidebarOpened }
 					/>
 				) }
+				{ headerActions }
 			</Stack>
 		</Stack>
 	);
