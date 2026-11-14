@@ -5,7 +5,6 @@
 // plain `:root` here would lose. The doubled `:root:root` raises specificity
 // enough to win regardless of stylesheet order.
 :root:root {
-
 	@include mixins.admin-scheme(#3858e9);
 }
 

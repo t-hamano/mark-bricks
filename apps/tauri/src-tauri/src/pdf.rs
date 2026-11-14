@@ -203,8 +203,10 @@ fn decode_text_string(bytes: &[u8]) -> String {
     match bytes.strip_prefix(&[0xfe, 0xff]) {
         Some(utf16) => String::from_utf16_lossy(
             &utf16
-                .chunks_exact(2)
-                .map(|pair| u16::from_be_bytes([pair[0], pair[1]]))
+                .as_chunks::<2>()
+                .0
+                .iter()
+                .map(|pair| u16::from_be_bytes(*pair))
                 .collect::<Vec<_>>(),
         ),
         None => String::from_utf8_lossy(bytes).into_owned(),
@@ -500,8 +502,8 @@ mod native {
         // GTK names its file printer in the user's language, so the name
         // comes from GTK's own translations.
         settings.set_printer(&gtk::glib::dgettext(Some("gtk30"), "Print to File"));
-        settings.set(&gtk::PRINT_SETTINGS_OUTPUT_FILE_FORMAT, Some("pdf"));
-        settings.set(&gtk::PRINT_SETTINGS_OUTPUT_URI, Some(&uri));
+        settings.set(gtk::PRINT_SETTINGS_OUTPUT_FILE_FORMAT, Some("pdf"));
+        settings.set(gtk::PRINT_SETTINGS_OUTPUT_URI, Some(&uri));
         settings.set_paper_size(&paper);
         settings.set_orientation(PageOrientation::Portrait);
 

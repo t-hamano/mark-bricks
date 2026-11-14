@@ -2,8 +2,8 @@ node_modules
 dist
 storybook-static
 tmp
-src-tauri/target
-src-tauri/gen
+apps/tauri/src-tauri/target
+apps/tauri/src-tauri/gen
 package-lock.json
 **/languages/*.json
 pnpm-lock.yaml
@@ -14,3 +14,6 @@ packages/fixtures/markdown
 
 # Updater manifest copied verbatim from the desktop release assets.
 apps/tauri/latest.json
+
+# Google Search Console verification file, served verbatim.
+apps/site/public/google7ef978a1f45f39c7.html
