@@ -38,13 +38,6 @@ import {
 import '@wordpress/dataviews/build-style/style.css';
 import { Link, SelectControl, Stack, Text } from '@wordpress/ui';
 
-// Fits the slide to the card. The slide is an SVG, so it scales with its
-// width.
-const PREVIEW_STYLE = `
-:host { display: block; width: 100%; }
-div.marpit > svg { display: block; width: 100%; height: auto; }
-`;
-
 // The slide sizes that every built-in theme offers, and the grid's aspect
 // ratio for each.
 const SLIDE_SIZES = [
@@ -94,7 +87,7 @@ function SlidePatternPreview( {
 			return;
 		}
 		const root = host.shadowRoot ?? host.attachShadow( { mode: 'open' } );
-		root.innerHTML = `<style>${ PREVIEW_STYLE }${ css }</style>${ html }`;
+		root.innerHTML = `<style>:host { display: block; width: 100%; } div.marpit > svg { display: block; width: 100%; height: auto; }${ css }</style>${ html }`;
 		// Scales auto-scaling elements, and lays out the slide in WebKit,
 		// which cannot render HTML inside an SVG on its own. It must observe
 		// the shadow root: an observer on the document would not reach it.
