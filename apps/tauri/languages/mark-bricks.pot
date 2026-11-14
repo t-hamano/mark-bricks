@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-11-14T07:13:28.497Z\n"
+"POT-Creation-Date: 2026-11-14T07:35:21.932Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aki Hamano <->\n"
 "Language-Team: Aki Hamano <->\n"
@@ -255,7 +255,7 @@ msgid "Close other tabs"
 msgstr ""
 
 #: src/components/tabbar/index.tsx:195
-#: src/components/preferences-modal/ai-provider-card.tsx:311
+#: src/components/preferences-modal/ai-provider-card.tsx:299
 #: src/components/header-actions/index.tsx:141
 #: src/components/header-actions/index.tsx:187
 msgid "Save"
@@ -450,77 +450,76 @@ msgstr ""
 msgid "Not connected"
 msgstr ""
 
-# %s: The name of the AI provider, such as Anthropic.
-#: src/components/preferences-modal/ai-provider-card.tsx:251
-msgid ""
-"The API key is kept in the system’s credential store and only sent to the "
-"%s API."
-msgstr ""
-
-#: src/components/preferences-modal/ai-provider-card.tsx:279
+#: src/components/preferences-modal/ai-provider-card.tsx:267
 msgid "API key"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:299
+#: src/components/preferences-modal/ai-provider-card.tsx:287
 msgid "Deleting the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:303
+#: src/components/preferences-modal/ai-provider-card.tsx:291
 msgid "Checking the API key…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:310
+#: src/components/preferences-modal/ai-provider-card.tsx:298
 msgid "Delete"
 msgstr ""
 
 # %s: The address of the site where API keys are created, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:320
+#: src/components/preferences-modal/ai-provider-card.tsx:308
 msgid "Get your API key at <a>%s</a>"
 msgstr ""
 
 # %s: The address of the site that shows the API's usage and billing, such as platform.claude.com.
-#: src/components/preferences-modal/ai-provider-card.tsx:344
+#: src/components/preferences-modal/ai-provider-card.tsx:332
 msgid "Check your usage and billing at <a>%s</a>"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:370
+#: src/components/preferences-modal/ai-provider-card.tsx:358
 msgid "The API key was saved."
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:380
+#: src/components/preferences-modal/ai-provider-card.tsx:368
 msgid "The API key was deleted."
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:397
+#: src/components/preferences-modal/ai-provider-card.tsx:385
 msgid "Loading the models…"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:405
+#: src/components/preferences-modal/ai-provider-card.tsx:393
 msgid "Model"
 msgstr ""
 
 # %s: Why the models could not be loaded.
-#: src/components/preferences-modal/ai-provider-card.tsx:433
+#: src/components/preferences-modal/ai-provider-card.tsx:421
 msgid "The models could not be loaded: %s"
 msgstr ""
 
-#: src/components/preferences-modal/ai-provider-card.tsx:442
+#: src/components/preferences-modal/ai-provider-card.tsx:430
 msgid "Try again"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:151
+#: src/components/preferences-modal/ai-panel.tsx:134
+msgid ""
+"API keys are kept in the system’s credential store and only sent to the "
+"corresponding provider’s API."
+msgstr ""
+
+#: src/components/preferences-modal/ai-panel.tsx:159
 msgid "Provider"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:154
+#: src/components/preferences-modal/ai-panel.tsx:162
 msgid "The AI Assistant uses this provider."
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:181
+#: src/components/preferences-modal/ai-panel.tsx:189
 msgid "Custom instructions"
 msgstr ""
 
-#: src/components/preferences-modal/ai-panel.tsx:182
+#: src/components/preferences-modal/ai-panel.tsx:190
 msgid ""
 "Sent with every message to the AI Assistant. For example, the tone to write "
 "in, or what your documents are about."
