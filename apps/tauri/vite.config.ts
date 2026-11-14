@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -31,7 +32,16 @@ const dedupe = [
 export default defineConfig( async () => ( {
 	plugins: [ react() ],
 	clearScreen: false,
-	resolve: { dedupe },
+	resolve: {
+		dedupe,
+		alias: {
+			// The block editor's client-side image processing, which the app
+			// never turns on. See `src/stubs/vips-worker.ts`.
+			'@wordpress/vips/worker': fileURLToPath(
+				new URL( './src/stubs/vips-worker.ts', import.meta.url )
+			),
+		},
+	},
 	build: {
 		// Keeps `light-dark()` intact, since its fallback ignores the runtime
 		// `color-scheme` set by the theme provider.
