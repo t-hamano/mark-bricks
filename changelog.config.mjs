@@ -5,6 +5,8 @@
  * shared packages it ships. The CLI's `--commit-path` takes only one path, so
  * the list lives here. Paths are relative to the app directory the scripts
  * run from.
+ *
+ * The VS Code extension extends this in `changelog.vscode.config.mjs`.
  */
 export default {
 	commits: {
