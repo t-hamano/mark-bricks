@@ -28,6 +28,39 @@ export function hasApiKey( provider: AiProvider ): Promise< boolean > {
 }
 
 /**
+ * Whether an API key is saved for any provider.
+ */
+export async function hasAnyApiKey(): Promise< boolean > {
+	const results = await Promise.all(
+		( Object.keys( PROVIDERS ) as AiProvider[] ).map( ( provider ) =>
+			hasApiKey( provider ).catch( () => false )
+		)
+	);
+	return results.some( Boolean );
+}
+
+const apiKeyListeners = new Set< () => void >();
+
+/**
+ * Calls the listener each time an API key is saved or deleted.
+ *
+ * @param listener The listener.
+ * @return A function that stops calling the listener.
+ */
+export function subscribeApiKeys( listener: () => void ): () => void {
+	apiKeyListeners.add( listener );
+	return () => {
+		apiKeyListeners.delete( listener );
+	};
+}
+
+function notifyApiKeyChange() {
+	for ( const listener of apiKeyListeners ) {
+		listener();
+	}
+}
+
+/**
  * Checks that the provider's API accepts the key, before it is saved.
  * Rejects with an error whose message is written for the user.
  *
@@ -62,11 +95,12 @@ export async function checkApiKey(
  * @param provider The provider.
  * @param key      The API key.
  */
-export function saveApiKey(
+export async function saveApiKey(
 	provider: AiProvider,
 	key: string
 ): Promise< void > {
-	return invoke( 'save_ai_api_key', { provider, key } );
+	await invoke( 'save_ai_api_key', { provider, key } );
+	notifyApiKeyChange();
 }
 
 /**
@@ -74,8 +108,9 @@ export function saveApiKey(
  *
  * @param provider The provider.
  */
-export function deleteApiKey( provider: AiProvider ): Promise< void > {
-	return invoke( 'delete_ai_api_key', { provider } );
+export async function deleteApiKey( provider: AiProvider ): Promise< void > {
+	await invoke( 'delete_ai_api_key', { provider } );
+	notifyApiKeyChange();
 }
 
 /**

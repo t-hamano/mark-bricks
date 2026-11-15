@@ -39,6 +39,7 @@ import useAutoUpdater from '../../hooks/use-auto-updater';
 import useDocumentChangeEvents from '../../hooks/use-document-change-events';
 import useEditorFlush from '../../hooks/use-editor-flush';
 import useFileOpenEvents from '../../hooks/use-file-open-events';
+import useHasApiKey from '../../hooks/use-has-api-key';
 import usePreviewSync from '../../hooks/use-preview-sync';
 import useShortcuts from '../../hooks/use-shortcuts';
 import useWindowTitle from '../../hooks/use-window-title';
@@ -126,11 +127,16 @@ export function App() {
 	// Relative image paths resolve against the active document's folder, so
 	// the platform changes with it (e.g. when an untitled tab is saved). The
 	// AI assistant is added here, so that the preview window, which also
-	// uses the platform, does not load it.
+	// uses the platform, does not load it. It is left out until an API key is
+	// saved, so that the editor shows no AI Assistant button.
 	const filePath = activeTab?.filePath;
+	const hasApiKey = useHasApiKey();
 	const platform = useMemo(
-		() => ( { ...createPlatform( filePath ), ai: aiPlatform } ),
-		[ filePath ]
+		() => ( {
+			...createPlatform( filePath ),
+			ai: hasApiKey ? aiPlatform : undefined,
+		} ),
+		[ filePath, hasApiKey ]
 	);
 
 	useWindowTitle( activeTab );
