@@ -269,42 +269,40 @@ export default function HeaderActions( {
 						</Menu.CheckboxItem>
 					</Menu.Group>
 					<Menu.Separator />
-					<Menu.Group>
+					<Menu.RadioGroup
+						value={ editorMode }
+						onValueChange={ ( value ) =>
+							onEditorModeChange( value as 'visual' | 'text' )
+						}
+					>
 						<Menu.GroupLabel>
 							{ __( 'Editor', 'mark-bricks' ) }
 						</Menu.GroupLabel>
-						<Menu.RadioGroup
-							value={ editorMode }
-							onValueChange={ ( value ) =>
-								onEditorModeChange( value as 'visual' | 'text' )
+						<Menu.RadioItem
+							value="visual"
+							shortcut={
+								editorMode !== 'visual'
+									? toggleModeShortcut
+									: undefined
 							}
 						>
-							<Menu.RadioItem
-								value="visual"
-								shortcut={
-									editorMode !== 'visual'
-										? toggleModeShortcut
-										: undefined
-								}
-							>
-								<Menu.ItemLabel>
-									{ __( 'Visual editor', 'mark-bricks' ) }
-								</Menu.ItemLabel>
-							</Menu.RadioItem>
-							<Menu.RadioItem
-								value="text"
-								shortcut={
-									editorMode !== 'text'
-										? toggleModeShortcut
-										: undefined
-								}
-							>
-								<Menu.ItemLabel>
-									{ __( 'Code editor', 'mark-bricks' ) }
-								</Menu.ItemLabel>
-							</Menu.RadioItem>
-						</Menu.RadioGroup>
-					</Menu.Group>
+							<Menu.ItemLabel>
+								{ __( 'Visual editor', 'mark-bricks' ) }
+							</Menu.ItemLabel>
+						</Menu.RadioItem>
+						<Menu.RadioItem
+							value="text"
+							shortcut={
+								editorMode !== 'text'
+									? toggleModeShortcut
+									: undefined
+							}
+						>
+							<Menu.ItemLabel>
+								{ __( 'Code editor', 'mark-bricks' ) }
+							</Menu.ItemLabel>
+						</Menu.RadioItem>
+					</Menu.RadioGroup>
 					<Menu.Separator />
 					<Menu.Group>
 						<Menu.GroupLabel>
