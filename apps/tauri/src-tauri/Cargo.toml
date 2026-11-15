@@ -1,6 +1,6 @@
 [package]
 name = "mark-bricks"
-version = "0.17.0"
+version = "0.18.0"
 description = "A visual Markdown editor built on the WordPress block editor"
 authors = ["Aki Hamano"]
 edition = "2021"
