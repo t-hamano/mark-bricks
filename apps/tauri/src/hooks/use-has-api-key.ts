@@ -18,9 +18,13 @@ export default function useHasApiKey(): boolean {
 
 	useEffect( () => {
 		let isCurrent = true;
+		// Only the latest check sets the state, so that an earlier one that
+		// ends later does not undo a key that was saved or deleted since.
+		let latest = 0;
 		const check = () => {
+			const id = ++latest;
 			hasAnyApiKey().then( ( result ) => {
-				if ( isCurrent ) {
+				if ( isCurrent && id === latest ) {
 					setHasKey( result );
 				}
 			} );
