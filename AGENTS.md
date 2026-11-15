@@ -4,7 +4,8 @@ This repository enforces Conventional Commits via commitlint (commit-msg hook).
 Always format commits as `type(scope): subject`.
 
 - Allowed types: `feat`, `fix`, `refactor`, `perf`, `docs`, `style`, `test`, `build`, `ci`, `chore`
-- Scope (optional but preferred): `tauri`, `vscode`, `editor`, `storybook`, `repo`
+- Scope (optional but preferred): `tauri`, `vscode`, `editor`, `ai`, `storybook`, `repo`
+    - Use `ai` for changes to the AI assistant, including its code in `packages/editor`. Only MarkBricks Desktop provides the AI assistant, so the VS Code extension's changelog leaves out `ai` commits (`changelog.vscode.config.mjs`).
 - Subject: English, lower-case, imperative mood, no trailing period
 - Breaking changes: add a `BREAKING CHANGE:` footer
     - Do not use the `type(scope)!:` header form. The changelog's angular preset cannot parse it and drops the commit.
