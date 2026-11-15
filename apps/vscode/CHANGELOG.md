@@ -1,3 +1,56 @@
+# [0.6.0](https://github.com/t-hamano/mark-bricks/compare/vscode-v0.5.0...vscode-v0.6.0) (2026-11-15)
+
+### Bug Fixes
+
+- **editor:** count the selected block's lines in the document as written ([#264](https://github.com/t-hamano/mark-bricks/issues/264)) ([3e70e29](https://github.com/t-hamano/mark-bricks/commit/3e70e294e315e04caa4dd247b07637ff51d34f58))
+- **editor:** keep the original emphasis marker when serializing ([#291](https://github.com/t-hamano/mark-bricks/issues/291)) ([4f94262](https://github.com/t-hamano/mark-bricks/commit/4f942621ad8cab30b786e8f3c12674dd2c4c0bf1))
+- **editor:** keep the selection outline around the slide separator ([#275](https://github.com/t-hamano/mark-bricks/issues/275)) ([81a03c6](https://github.com/t-hamano/mark-bricks/commit/81a03c6fd72e28adbed6bf4b16b4d41d5b0e30fb))
+- **editor:** separate the slide pattern category filter with a border ([#296](https://github.com/t-hamano/mark-bricks/issues/296)) ([3e0ffa8](https://github.com/t-hamano/mark-bricks/commit/3e0ffa891007d0a84e12aaf8d5a588336a9238c8))
+- **editor:** show the pointer cursor over every slide pattern preview ([#297](https://github.com/t-hamano/mark-bricks/issues/297)) ([d78d4a1](https://github.com/t-hamano/mark-bricks/commit/d78d4a123813a74da2d8778336e726a6cfe3818b))
+- **editor:** use a png for the slide pattern placeholder image ([#267](https://github.com/t-hamano/mark-bricks/issues/267)) ([09d017c](https://github.com/t-hamano/mark-bricks/commit/09d017ccc9990d6488b6ddb5fddd9d0581c138d6))
+- **repo:** translate the slide preview placement buttons ([#321](https://github.com/t-hamano/mark-bricks/issues/321)) ([caa60a3](https://github.com/t-hamano/mark-bricks/commit/caa60a3cbef005c3f661d1aee778da05cb524438))
+- **repo:** use one japanese term for document ([#341](https://github.com/t-hamano/mark-bricks/issues/341)) ([7726f2f](https://github.com/t-hamano/mark-bricks/commit/7726f2fb062e3a0d1b9829604287fc10a1d6fba4))
+- **vscode:** ignore setting updates the webview may not change ([#344](https://github.com/t-hamano/mark-bricks/issues/344)) ([d0f3cba](https://github.com/t-hamano/mark-bricks/commit/d0f3cba9979ad0d594002f817f101f83a26a4b83))
+
+### Features
+
+- **editor:** add a marp toggle to the front matter settings ([#241](https://github.com/t-hamano/mark-bricks/issues/241)) ([f70eaa7](https://github.com/t-hamano/mark-bricks/commit/f70eaa76de2e3220902db8658f74d3dc67fb17bb))
+- **editor:** add a modal to explore all slide patterns ([#293](https://github.com/t-hamano/mark-bricks/issues/293)) ([94fed4f](https://github.com/t-hamano/mark-bricks/commit/94fed4f98dd34af65183f7688353d7382f39acdc))
+- **editor:** add a side panel to the right of the content ([#268](https://github.com/t-hamano/mark-bricks/issues/268)) ([a69e2c7](https://github.com/t-hamano/mark-bricks/commit/a69e2c75e4c7dc7c2e2713d19bebac8297bff0c6))
+- **editor:** add a slide patterns tab to the inserter in marp mode ([#254](https://github.com/t-hamano/mark-bricks/issues/254)) ([40b7dc8](https://github.com/t-hamano/mark-bricks/commit/40b7dc8506306af2d829f40d97fac48ee63ad7fc))
+- **editor:** add color scheme and font presets to the marp front matter settings ([#357](https://github.com/t-hamano/mark-bricks/issues/357)) ([ca120e9](https://github.com/t-hamano/mark-bricks/commit/ca120e99dd41484fe617e5fdaa3ec000870c69bf))
+- **editor:** add marp slide settings to the front matter ([#247](https://github.com/t-hamano/mark-bricks/issues/247)) ([07153c9](https://github.com/t-hamano/mark-bricks/commit/07153c9d7979e890f28a15042aea79ff22eb5e45))
+- **editor:** add more slide patterns and group them by category ([#281](https://github.com/t-hamano/mark-bricks/issues/281)) ([aa86a3d](https://github.com/t-hamano/mark-bricks/commit/aa86a3d1a43b0b3146528f94a6a05c7e575d00c9))
+- **editor:** add slide pattern definitions for marp mode ([#245](https://github.com/t-hamano/mark-bricks/issues/245)) ([4f629e9](https://github.com/t-hamano/mark-bricks/commit/4f629e9a6a98fedb32e2acc72a6cb0cd1bf3b6a3))
+- **editor:** add slide patterns with a scoped style of their own ([#308](https://github.com/t-hamano/mark-bricks/issues/308)) ([775b6c1](https://github.com/t-hamano/mark-bricks/commit/775b6c10fc12bde8c1d8737095e5cc2d934e7a02))
+- **editor:** add the edit target for the text editor ([#240](https://github.com/t-hamano/mark-bricks/issues/240)) ([24bce04](https://github.com/t-hamano/mark-bricks/commit/24bce04a3dbc82bf49983c3608ae4ee13d5d2219))
+- **editor:** add the edit target for the visual editor ([#238](https://github.com/t-hamano/mark-bricks/issues/238)) ([f434467](https://github.com/t-hamano/mark-bricks/commit/f434467fec127ccb309e77bc86fa2a84dd3da441))
+- **editor:** filter slide patterns by category in the inserter ([#283](https://github.com/t-hamano/mark-bricks/issues/283)) ([95ac6ff](https://github.com/t-hamano/mark-bricks/commit/95ac6ffc3b1af41d66a96ff904c9fe2d88bc43a9))
+- **editor:** label the separator block as a slide break in marp mode ([#261](https://github.com/t-hamano/mark-bricks/issues/261)) ([d6c8ee5](https://github.com/t-hamano/mark-bricks/commit/d6c8ee53fc08f77392e13d22abc475f734ac3201))
+- **editor:** let the user resize the side panel ([#279](https://github.com/t-hamano/mark-bricks/issues/279)) ([76239d4](https://github.com/t-hamano/mark-bricks/commit/76239d4c4654ff981b87416d380e56a99bb90c23))
+- **editor:** link the selected block to its source lines ([#249](https://github.com/t-hamano/mark-bricks/issues/249)) ([e0ad71e](https://github.com/t-hamano/mark-bricks/commit/e0ad71e8d5629d0281e4c885e0dda2ac0476568e))
+- **editor:** rename the separator block to slide separator in marp mode ([#256](https://github.com/t-hamano/mark-bricks/issues/256)) ([42e0462](https://github.com/t-hamano/mark-bricks/commit/42e0462e9f048de139841ca6dd82d5355dcdb27b))
+- **editor:** render slide pattern previews ahead of time ([#265](https://github.com/t-hamano/mark-bricks/issues/265)) ([56cd16c](https://github.com/t-hamano/mark-bricks/commit/56cd16c2540a0210d57b11b1f8d35aae0c9c4d86))
+- **editor:** rework the slide patterns around their layouts ([#298](https://github.com/t-hamano/mark-bricks/issues/298)) ([81fee60](https://github.com/t-hamano/mark-bricks/commit/81fee60d53700bca2edefb753b76fefc67959c4e))
+- **editor:** set marp image placement from dedicated settings ([#312](https://github.com/t-hamano/mark-bricks/issues/312)) ([67c0b6b](https://github.com/t-hamano/mark-bricks/commit/67c0b6b73a678d92148279fb76f431d093a15ccc))
+- **editor:** set marp slide directives of an html block from a form ([#324](https://github.com/t-hamano/mark-bricks/issues/324)) ([4c9fae8](https://github.com/t-hamano/mark-bricks/commit/4c9fae85f4c868b1f8144e3d99ecbf2ca0d3a390))
+- **editor:** show insertion point when hovering inserter items ([#276](https://github.com/t-hamano/mark-bricks/issues/276)) ([dec809d](https://github.com/t-hamano/mark-bricks/commit/dec809d3d005dca85ba8f49c94b9ae030cb8d589))
+- **editor:** show slide pattern previews in the inserter ([#273](https://github.com/t-hamano/mark-bricks/issues/273)) ([d4bb401](https://github.com/t-hamano/mark-bricks/commit/d4bb401f40157ae9fe10267aff51072bf66e4ed8))
+- **editor:** stretch the slide separator across the canvas in marp mode ([#278](https://github.com/t-hamano/mark-bricks/issues/278)) ([ca2774c](https://github.com/t-hamano/mark-bricks/commit/ca2774ca7de12c881c9c4bb25664132924db2395))
+- **repo:** add a button that moves the slide preview between a panel and a window ([#270](https://github.com/t-hamano/mark-bricks/issues/270)) ([cd17376](https://github.com/t-hamano/mark-bricks/commit/cd1737606ee30e226036b417627980cf11ad96d9))
+- **repo:** keep the marp preview's slide mode on the shown slide ([#263](https://github.com/t-hamano/mark-bricks/issues/263)) ([fa49122](https://github.com/t-hamano/mark-bricks/commit/fa49122cc749b705c06b47a1b5d01b9e8f6bd408))
+- **repo:** let a click on a slide's padding stand for the whole slide ([#258](https://github.com/t-hamano/mark-bricks/issues/258)) ([984f720](https://github.com/t-hamano/mark-bricks/commit/984f72072eb5367ef3b92daa353e9eff9aaabe3f))
+- **repo:** let the marp preview follow the markdown by slide ([#251](https://github.com/t-hamano/mark-bricks/issues/251)) ([89b5ca3](https://github.com/t-hamano/mark-bricks/commit/89b5ca3bef9b1e729c57124c944c08e6f1a97c45))
+- **repo:** link the marp preview's elements to their source lines ([#246](https://github.com/t-hamano/mark-bricks/issues/246)) ([cbf72ae](https://github.com/t-hamano/mark-bricks/commit/cbf72ae384229e2f443b2809cf3364e4fbedcb69))
+- **vscode:** link the preview's elements to the editor's blocks ([#260](https://github.com/t-hamano/mark-bricks/issues/260)) ([7e3c5ea](https://github.com/t-hamano/mark-bricks/commit/7e3c5ea136603af4f1edb8cbbde287b51fbe16c5))
+- **vscode:** sync the slide preview with the selected block ([#255](https://github.com/t-hamano/mark-bricks/issues/255)) ([5ac91a4](https://github.com/t-hamano/mark-bricks/commit/5ac91a44a15caab9e7c0d2a1f901085c433cb615))
+
+### Performance Improvements
+
+- **editor:** leave the unused monaco language services out of the bundle ([#330](https://github.com/t-hamano/mark-bricks/issues/330)) ([112e4ba](https://github.com/t-hamano/mark-bricks/commit/112e4bae43dd6f5d26390ab2ba95ac9d434ce8c0))
+- **editor:** load only the translations of the applied locale ([#328](https://github.com/t-hamano/mark-bricks/issues/328)) ([506131c](https://github.com/t-hamano/mark-bricks/commit/506131c8d8551e73f0f071588ecbc2803405fe20))
+- **repo:** leave the unused image processing worker out of the apps ([#331](https://github.com/t-hamano/mark-bricks/issues/331)) ([dc7e2cf](https://github.com/t-hamano/mark-bricks/commit/dc7e2cff889643af041c9458e115d99a100a4c6e))
+
 # [0.5.0](https://github.com/t-hamano/mark-bricks/compare/vscode-v0.4.0...vscode-v0.5.0) (2026-11-08)
 
 ### Bug Fixes
