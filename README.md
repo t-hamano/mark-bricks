@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="apps/tauri/src/assets/app-icon.png" alt="MarkBricks" width="120" height="120" />
-</p>
+![MarkBricks](.github/assets/social-preview.png)
 
 # MarkBricks
 
