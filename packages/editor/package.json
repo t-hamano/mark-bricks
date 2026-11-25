@@ -91,7 +91,7 @@
 		"hast-util-from-html": "^2.1.0",
 		"katex": "^0.19.1",
 		"mdast-util-math": "^3.0.0",
-		"mdast-util-to-markdown": "^2.2.3",
+		"mdast-util-to-markdown": "^2.2.4",
 		"mermaid": "^12.3.0",
 		"micromark-extension-math": "^3.1.0",
 		"monaco-editor": "^0.57.0",
@@ -121,6 +121,6 @@
 		"react-dom": "^19.3.1",
 		"sass": "^1.108.2",
 		"vite": "^8.3.8",
-		"vitest": "^5.1.0"
+		"vitest": "^5.1.1"
 	}
 }
